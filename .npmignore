@@ -1,0 +1,5 @@
+node_modules/
+# Ignore ts and semi-compiled files
+src/**/*.js
+src/**/*.ts
+src/**/*.d.ts
