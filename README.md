@@ -3,9 +3,9 @@
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Build dependencies
-- Node
+- Node (6.9.5 or higher)
 - Node Package Manager
-- Typescript
+- Typescript (2.3.0 or higher)
 
 ## Build scripts
 ### How to build
