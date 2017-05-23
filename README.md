@@ -10,19 +10,14 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 ## Build scripts
 ### How to build
 ```
-npm install
+gulp build
 ```
 This transpiles the typescript scripts into javascript files under the js folder.
 ### How to test
 ```
-npm test
+gulp test
 ```
 This runs the tests under tests directory.
-### How to publish
-```
-npm 
-```
-Packs up the Javascript files into a tar gz. This will be directly referenced by the AutoRest application. Moving forward, we can simply publish to the npm feeds from here and remove the js folder and tar gz file.
 
 ### How to write a new validation rule
 1. Add a typescript file under ```azure-openapi-validator``` directory named same as the name of the rule. Add the ```id```, ```name```, ```severity```, ```category```,  ```mergeState```,  ```openapiType```,  ```appliesTo_JsonQuery``` properties to the rule. ```appliesTo_JsonQuery``` is the node(s) to which the rule needs to be applied. This is evaluated using JsonPaths. Please refer (here)[https://www.npmjs.com/package/jsonpath#jsonpath-syntax] for a brief tutorial about JsonPaths.
