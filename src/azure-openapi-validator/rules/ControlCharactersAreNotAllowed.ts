@@ -7,7 +7,7 @@ export const ControlCharactersAreNotAllowed: string = "ControlCharactersAreNotAl
 
 rules.push({
   id: "SE40",
-  name: "ControlCharactersAreNotAllowed",
+  name: ControlCharactersAreNotAllowed,
   severity: "error",
   category: ["SDKViolation"],
   mergeState: MergeStates.individual,
@@ -20,7 +20,7 @@ rules.push({
       var controlChars = nodeValue.split('').filter(ch => ch < ' ' && ch !== '\t' && ch !== '\n' && ch !== '\r');
       if (controlChars.length > 0) {
         for (var token in controlChars) {
-          yield { message: "$(msg) Character:'${element}' in:'${nodeValue}'", location: path };
+          yield { message: `${msg} Character:'${token}' in:'${nodeValue}'`, location: path };
         }
       }
     }

@@ -8,21 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/olydis/azure-openapi-validator.git"
+    "url": "git+https://github.com/Azure/azure-open-api-validator.git"
   },
   "keywords": [
     "azure",
     "openapi",
     "swagger",
     "validation",
-    "validator"
+    "validator",
+    "linter"
   ],
-  "author": "",
+  "author": "Microsoft Corporation",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/olydis/azure-openapi-validator/issues"
+    "url": "https://github.com/Azure/azure-open-api-validator/issues"
   },
-  "homepage": "https://github.com/olydis/azure-openapi-validator#readme",
+  "homepage": "https://github.com/Azure/azure-open-api-validator/blob/master/README.md",
   "devDependencies": {
     "@types/js-yaml": "^3.5.30",
     "@types/jsonpath": "^0.1.29",

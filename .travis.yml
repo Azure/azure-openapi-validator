@@ -1,11 +1,8 @@
 language: node
-sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - "7"
-matrix:
-  fast_finish: true
+  - "6.9.5"
 before_script:
   - npm install
 script:

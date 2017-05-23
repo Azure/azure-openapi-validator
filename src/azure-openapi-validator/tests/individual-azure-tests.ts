@@ -15,9 +15,11 @@ import {
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
 
+const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
+
 @suite class IndividualAzureTests {
   @test @timeout(120000) async "control characters not allowed test"() {
-    const file = 'src/azure-openapi-validator/tests/resources/ContainsControlCharacters.json';
+    const file = filePathAnchor + 'ContainsControlCharacters.json';
     const openapiDefinitionDocument = ReadFileAsString(file);
     const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
 
