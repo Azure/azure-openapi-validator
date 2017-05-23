@@ -15,6 +15,11 @@ export enum MergeStates {
   "composed"
 }
 
+interface ValidationMessage {
+  message: string;
+  location: JsonPath;
+}
+
 export interface Rule {
   readonly id: string; // see Mxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string; // see same website as above
@@ -25,7 +30,7 @@ export interface Rule {
   readonly openapiType: OpenApiTypes;
 
   readonly appliesTo_JsonQuery?: string; // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
-  run: (openapiDocument: any, openapiSection: any, location: JsonPath) => Iterable<{ message: string, location: JsonPath }>;
+  run(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
 }
 
 export const rules: Rule[] = [];
