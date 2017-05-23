@@ -13,6 +13,7 @@ import {
   ReadFileAsString
 } from './utilities/tests-helper';
 import { MergeStates, OpenApiTypes } from '../rule';
+import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
 
 @suite class IndividualAzureTests {
   @test @timeout(120000) async "control characters not allowed test"() {
@@ -20,7 +21,7 @@ import { MergeStates, OpenApiTypes } from '../rule';
     const openapiDefinitionDocument = ReadFileAsString(file);
     const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
 
-    let messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.individual);
-    AssertValidationRuleCount(messages, 'ControlCharactersAreNotAllowed', 2);
+    const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.individual);
+    AssertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
   }
 }

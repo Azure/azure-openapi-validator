@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
+export const ControlCharactersAreNotAllowed: string = "ControlCharactersAreNotAllowed";
 
 rules.push({
   id: "SE40",
@@ -13,9 +14,9 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$..*",
   run: function* (doc, node, path) {
-    let msg: string = "May not contain control characters: ";
+    const msg: string = "May not contain control characters: ";
     if (typeof node === "string") {
-      let nodeValue: string = <string>node;
+      const nodeValue: string = <string>node;
       var controlChars = nodeValue.split('').filter(ch => ch < ' ' && ch !== '\t' && ch !== '\n' && ch !== '\r');
       if (controlChars.length > 0) {
         for (var token in controlChars) {

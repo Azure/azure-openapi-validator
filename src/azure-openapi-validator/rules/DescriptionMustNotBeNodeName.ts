@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-
+export const DescriptionMustNotBeNodeName: string = "DescriptionMustNotBeNodeName";
 rules.push({
   id: "M2065",
   name: "DescriptionMustNotBeNodeName",
@@ -14,8 +14,8 @@ rules.push({
 
   appliesTo_JsonQuery: "$..*[?(@.description)]",
   run: function* (doc, node, path) {
-    let msg: string = "Description must not match the name of the node it is supposed to describe";
-    let nodeName = <any>path[path.length - 1];
+    const msg: string = "Description must not match the name of the node it is supposed to describe";
+    const nodeName = <any>path[path.length - 1];
 
     if (!isNaN(nodeName)) {
       // if name is a property defined within the node, try and access it.
