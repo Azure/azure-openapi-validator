@@ -20,7 +20,7 @@ rules.push({
     if (node === 'array') {
       const propObject = jp.query(doc, path.splice(0, path.length - 2).join('.'));
       if (!(propObject.hasOwnProperty('items'))) {
-        yield { message: `${msg} ${path[path.length - 2]}`, location: path.concat(['description']) };
+        yield { message: `${msg} ${path[path.length - 2]}`, location: path.splice(0, path.length - 2) };
       }
     }
   }
