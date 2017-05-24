@@ -3,25 +3,24 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-export const ControlCharactersAreNotAllowed: string = "ControlCharactersAreNotAllowed";
+export const ArraySchemaMustHaveItems: string = "ArraySchemaMustHaveItems";
+
+const jp = require('jsonpath');
 
 rules.push({
-  id: "SE40",
-  name: ControlCharactersAreNotAllowed,
-  severity: "error",
+  id: "SE41",
+  name: ArraySchemaMustHaveItems,
+  severity: "warning",
   category: ["SDKViolation"],
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "$..*",
+  appliesTo_JsonQuery: "$.definitions.*.properties.*.type",
   run: function* (doc, node, path) {
-    const msg: string = "May not contain control characters: ";
-    if (typeof node === "string") {
-      const nodeValue: string = <string>node;
-      var controlChars = nodeValue.split('').filter(ch => ch < ' ' && ch !== '\t' && ch !== '\n' && ch !== '\r');
-      if (controlChars.length > 0) {
-        for (var token in controlChars) {
-          yield { message: `${msg} Character:'${token}' in:'${nodeValue}'`, location: path };
-        }
+    const msg: string = "Please provide an items property for array type: ";
+    if (node === 'array') {
+      const propObject = jp.query(doc, path.splice(0, path.length - 2).join('.'));
+      if (!(propObject.hasOwnProperty('items'))) {
+        yield { message: `${msg} ${path[path.length - 2]}`, location: path.concat(['description']) };
       }
     }
   }

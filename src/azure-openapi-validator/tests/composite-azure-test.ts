@@ -15,9 +15,11 @@ import {
 } from './utilities/tests-helper';
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
 
+const filePathAnchor: string = "src/azure-openapi-validator/tests/resources/";
+
 @suite class CompositeAzureTests {
   @test @timeout(120000) async "description should not be parameter name"() {
-    const file = 'src/azure-openapi-validator/tests/resources/DescriptionSameAsPropertyName.json';
+    const file = filePathAnchor + 'DescriptionSameAsPropertyName.json';
     const openapiDefinitionDocument = ReadFileAsString(file);
     const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
     const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.composed);

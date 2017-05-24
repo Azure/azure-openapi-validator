@@ -6,7 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const DescriptionMustNotBeNodeName: string = "DescriptionMustNotBeNodeName";
 rules.push({
   id: "M2065",
-  name: "DescriptionMustNotBeNodeName",
+  name: DescriptionMustNotBeNodeName,
   severity: "error",
   category: ["RPCViolation"],
   mergeState: MergeStates.composed,
@@ -23,11 +23,11 @@ rules.push({
         return;
       }
       if (node['name'].toLowerCase() === TrimDescription(node.description)) {
-        yield { message: "$(msg) Node name:'${node.name}' Description:'${node.Description}'", location: path.concat(['description']) };
+        yield { message: `${msg} Node name:'${node.name}' Description:'${node.Description}'`, location: path.concat(['description']) };
       }
     }
     else if (nodeName.toLowerCase() === TrimDescription(node.description)) {
-      yield { message: "$(msg) Node name:'${nodeName}' Description: '${node.description}'", location: path.concat(['description']) };
+      yield { message: `${msg} Node name:'${nodeName}' Description: '${node.description}'`, location: path.concat(['description']) };
     } else if (TrimDescription(node.description) === 'description') {
       yield { message: "Description cannot be named as 'Description'", location: path.concat(['description']) };
     }
