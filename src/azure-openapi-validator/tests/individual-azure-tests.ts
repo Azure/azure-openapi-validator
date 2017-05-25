@@ -14,6 +14,7 @@ import {
 } from './utilities/tests-helper';
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
+import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContainsUrlVerb';
 
 const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
 
@@ -25,5 +26,14 @@ const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
 
     const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.individual);
     AssertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
+  }
+
+  @test @timeout(120000) async "Post operation id must contain Url verb"() {
+    const file = filePathAnchor + 'PostOperationIdWithoutUrlVerb.json';
+    const openapiDefinitionDocument = ReadFileAsString(file);
+    const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
+
+    const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.individual);
+    AssertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
   }
 }

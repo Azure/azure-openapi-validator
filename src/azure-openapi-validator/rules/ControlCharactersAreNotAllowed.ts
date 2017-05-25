@@ -26,7 +26,3 @@ rules.push({
     }
   }
 });
-
-function TrimDescription(description: string): string {
-  return description.trim().replace(/\./g, '').toLowerCase();
-}
