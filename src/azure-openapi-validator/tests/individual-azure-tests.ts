@@ -8,9 +8,8 @@ import { safeLoad } from "js-yaml";
 import { AutoRestPluginHost } from "../../jsonrpc/plugin-host";
 import { run } from "../../azure-openapi-validator";
 import {
-  AssertValidationRuleCount,
-  CollectTestMessagesFromValidator,
-  ReadFileAsString
+  assertValidationRuleCount,
+  collectTestMessagesFromValidator
 } from './utilities/tests-helper';
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
@@ -19,11 +18,8 @@ const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
 
 @suite class IndividualAzureTests {
   @test @timeout(120000) async "control characters not allowed test"() {
-    const file = filePathAnchor + 'ContainsControlCharacters.json';
-    const openapiDefinitionDocument = ReadFileAsString(file);
-    const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
-
-    const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.individual);
-    AssertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
+    const fileName: string = 'ContainsControlCharacters.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
   }
 }
