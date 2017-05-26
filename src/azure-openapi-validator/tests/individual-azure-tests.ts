@@ -25,11 +25,8 @@ const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
   }
 
   @test @timeout(120000) async "Post operation id must contain Url verb"() {
-    const file = filePathAnchor + 'PostOperationIdWithoutUrlVerb.json';
-    const openapiDefinitionDocument = ReadFileAsString(file);
-    const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
-
-    const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.individual);
-    AssertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
+    const fileName = 'PostOperationIdWithoutUrlVerb.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
   }
 }
