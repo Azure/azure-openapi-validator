@@ -16,6 +16,8 @@ rules.push({
   run: function* (doc, node, path) {
     // get the url
     const urlVerb = (<string>path[path.length - 3]).split('/').pop();
+    // check if we have an operation id without the verb at the end of the url
+    // if not, this should be a violation
     if (node.toLowerCase().split('_').pop().indexOf(urlVerb) === -1) {
       yield { message: `OperationId must contain the verb:'${urlVerb}' in:'${node}'`, location: path };
     }

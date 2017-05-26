@@ -15,8 +15,6 @@ import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
 import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContainsUrlVerb';
 
-const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
-
 @suite class IndividualAzureTests {
   @test @timeout(120000) async "control characters not allowed test"() {
     const fileName: string = 'ContainsControlCharacters.json';
