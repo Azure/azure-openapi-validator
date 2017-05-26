@@ -14,10 +14,8 @@ import {
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
 
-const filePathAnchor: string = 'src/azure-openapi-validator/tests/resources/'
-
 @suite class IndividualAzureTests {
-  @test @timeout(120000) async "control characters not allowed test"() {
+  @test async "control characters not allowed test"() {
     const fileName: string = 'ContainsControlCharacters.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
