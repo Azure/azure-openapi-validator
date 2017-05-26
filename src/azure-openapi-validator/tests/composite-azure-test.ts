@@ -5,25 +5,19 @@
 import { MergeStates, OpenApiTypes } from '../rule';
 import { Message } from '../../jsonrpc/types';
 import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
-import { safeLoad } from "js-yaml";
 import { AutoRestPluginHost } from "../../jsonrpc/plugin-host";
 import { run } from "../../azure-openapi-validator";
 import {
-  AssertValidationRuleCount,
-  CollectTestMessagesFromValidator,
-  ReadFileAsString
+  assertValidationRuleCount,
+  collectTestMessagesFromValidator
 } from './utilities/tests-helper';
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
 
-const filePathAnchor: string = "src/azure-openapi-validator/tests/resources/";
-
 @suite class CompositeAzureTests {
   @test @timeout(120000) async "description should not be parameter name"() {
-    const file = filePathAnchor + 'DescriptionSameAsPropertyName.json';
-    const openapiDefinitionDocument = ReadFileAsString(file);
-    const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
-    const messages: Message[] = await CollectTestMessagesFromValidator(file, openapiDefinitionObject, OpenApiTypes.arm, MergeStates.composed);
-    AssertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 1);
+    const fileName: string = 'DescriptionSameAsPropertyName.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
+    assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 1);
   }
 
 }
