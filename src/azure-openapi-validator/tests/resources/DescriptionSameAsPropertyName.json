@@ -34,11 +34,11 @@
                         "description": "The name of the resource group."
                     },
                     {
-                        "name": "name",
+                        "name": "nodeNameSameAsDescriptionName",
                         "in": "path",
                         "required": true,
                         "type": "string",
-                        "description": "name.",
+                        "description": "nodeNameSameAsDescriptionName.",
                         "x-ms-client-name": "name"
                     },
                     {

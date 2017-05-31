@@ -6,10 +6,10 @@ import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const ControlCharactersAreNotAllowed: string = "ControlCharactersAreNotAllowed";
 
 rules.push({
-  id: "SE40",
+  id: "S2006",
   name: ControlCharactersAreNotAllowed,
   severity: "error",
-  category: ["SDKViolation"],
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$..*",
@@ -19,10 +19,9 @@ rules.push({
       const nodeValue: string = <string>node;
       var controlChars = nodeValue.split('').filter(ch => ch < ' ' && ch !== '\t' && ch !== '\n' && ch !== '\r');
       if (controlChars.length > 0) {
-        for (var token in controlChars) {
-          yield { message: `${msg} Character:'${token}' in:'${nodeValue}'`, location: path };
-        }
+        yield { message: `${msg} Characters:'${controlChars}' in:'${nodeValue}'`, location: path };
       }
+
     }
   }
 });

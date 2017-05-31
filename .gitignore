@@ -3,3 +3,4 @@ src/**/*.js
 src/**/*.d.ts
 node_modules/
 pack/
+*.tgz

@@ -14,7 +14,7 @@ import {
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
 
 @suite class CompositeAzureTests {
-  @test async "description should not be parameter name"() {
+  @test async "description should not be property name"() {
     const fileName: string = 'DescriptionSameAsPropertyName.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
     assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 1);

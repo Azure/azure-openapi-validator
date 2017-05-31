@@ -31,7 +31,7 @@
                         "schema": {
                             "$ref": "#/definitions/FooRequestParams"
                         },
-                        "description": "foo patch request \u0007"
+                        "description": "foo patch request \u0007 \u0006"
                     }
                 ],
                 "responses": {
