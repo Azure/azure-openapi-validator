@@ -2,5 +2,5 @@
 src/**/*.js
 src/**/*.d.ts
 node_modules/
-bin/
 pack/
+*.tgz

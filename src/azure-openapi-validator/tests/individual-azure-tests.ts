@@ -16,13 +16,13 @@ import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNot
 import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContainsUrlVerb';
 
 @suite class IndividualAzureTests {
-  @test @timeout(120000) async "control characters not allowed test"() {
+  @test async "control characters not allowed test"() {
     const fileName: string = 'ContainsControlCharacters.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
   }
 
-  @test @timeout(120000) async "Post operation id must contain Url verb"() {
+  @test async "Post operation id must contain Url verb"() {
     const fileName = 'PostOperationIdWithoutUrlVerb.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
