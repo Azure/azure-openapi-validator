@@ -4,7 +4,7 @@
   "description": "Azure OpenAPI Validator",
   "main": "src/index.js",
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha js/azure-openapi-validator/tests"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
