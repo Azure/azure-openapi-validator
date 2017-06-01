@@ -5,16 +5,16 @@
 import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const DescriptionMustNotBeNodeName: string = "DescriptionMustNotBeNodeName";
 rules.push({
-  id: "M2065",
+  id: "R3011",
   name: DescriptionMustNotBeNodeName,
   severity: "error",
-  category: ["RPCViolation"],
+  category: "RPCViolation",
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
 
   appliesTo_JsonQuery: "$..*[?(@.description)]",
   run: function* (doc, node, path) {
-    const msg: string = "Description must not match the name of the node it is supposed to describe";
+    const msg: string = "Description must not match the name of the node it is supposed to describe.";
     const nodeName = <any>path[path.length - 1];
 
     if (!isNaN(nodeName)) {
@@ -23,13 +23,13 @@ rules.push({
         return;
       }
       if (node['name'].toLowerCase() === TrimDescription(node.description)) {
-        yield { message: `${msg} Node name:'${node.name}' Description:'${node.Description}'`, location: path.concat(['description']) };
+        yield { message: `${msg} Node name:'${node.name}' Description:'${node.description}'`, location: path.concat(['description']) };
       }
     }
     else if (nodeName.toLowerCase() === TrimDescription(node.description)) {
       yield { message: `${msg} Node name:'${nodeName}' Description: '${node.description}'`, location: path.concat(['description']) };
     } else if (TrimDescription(node.description) === 'description') {
-      yield { message: "Description cannot be named as 'Description'", location: path.concat(['description']) };
+      yield { message: "Description cannot be named as 'Description'.", location: path.concat(['description']) };
     }
   }
 });

@@ -16,17 +16,16 @@ import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNot
 import { ArraySchemaMustHaveItems } from '../rules/ArraySchemaMustHaveItems';
 
 @suite class IndividualAzureTests {
-  @test @timeout(120000) async "control characters not allowed test"() {
+  @test async "control characters not allowed test"() {
     const fileName: string = 'ContainsControlCharacters.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
   }
 
-  @test @timeout(120000) async "array schema must have items test"() {
+  @test async "array schema must have items test"() {
     const fileName = 'ArraySchemaWithoutItems.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, ArraySchemaMustHaveItems, 1);
 
   }
-
 }

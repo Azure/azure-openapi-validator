@@ -11,7 +11,7 @@ rules.push({
   id: "SE41",
   name: ArraySchemaMustHaveItems,
   severity: "warning",
-  category: ["SDKViolation"],
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.definitions.*.properties.*.type",

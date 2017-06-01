@@ -16,7 +16,7 @@ export function run(document: string, openapiDefinition: any, sendMessage: (m: M
     for (const section of nodes(openapiDefinition, rule.appliesTo_JsonQuery || "$")) {
       for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1))) {
 
-        const readableCategory = rule.category.join() || "None";
+        const readableCategory = rule.category;
 
         // try to extract provider namespace and resource type
         const path = message.location[1] === "paths" && message.location[2];

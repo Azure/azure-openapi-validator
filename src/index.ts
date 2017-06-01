@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 // polyfills for language support
-require("./polyfill.min.js");
+require("../utilities/polyfill.min.js");
 
 import { safeLoad } from "js-yaml";
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host";

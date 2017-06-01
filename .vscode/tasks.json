@@ -1,13 +1,24 @@
 {
     "version": "0.1.0",
-    "command": "tsc",
+    "command": "gulp",
     "isShellCommand": true,
     "args": [
-        "-w",
-        "-p",
-        "."
+        "--no-color"
     ],
-    "showOutput": "silent",
-    "isBackground": true,
-    "problemMatcher": "$tsc-watch"
+    "showOutput": "always",
+    "tasks": [
+        {
+            "showInStatusBar": false,
+            "taskName": "build",
+            "args": [
+                "--watch"
+            ],
+            "isBuildCommand": true,
+            "isBackground": true,
+            "problemMatcher": [
+                "$msCompile",
+                "$tsc"
+            ]
+        }
+    ]
 }
