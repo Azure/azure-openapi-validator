@@ -1,0 +1,19 @@
+{
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "files.exclude": {
+    "node_modules/**": true,
+    "src/**/*.js": true,
+    "src/**/*.js.map": true,
+    "src/**/*.d.ts": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true
+  },
+  "eslint.enable": false
+}

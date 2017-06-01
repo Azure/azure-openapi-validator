@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "types": [
+            "node"
+        ],
+        "target": "es2016",
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ],
+    "sourcemap": true
+}

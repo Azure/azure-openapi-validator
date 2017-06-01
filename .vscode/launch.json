@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run tests",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
+            "args": [
+                "./bin/azure-openapi-validator/tests/*.js",
+                "--colors"
+            ],
+            "outFiles": [],
+            "protocol": "inspector",
+            "preLaunchTask": "build"
+        },
+        {
+            "type": "node",
+            "protocol": "inspector",
+            "request": "launch",
+            "name": "run bootstrapper",
+            "program": "${workspaceRoot}/src/index.js",
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "build"
+        }
+    ]
+}

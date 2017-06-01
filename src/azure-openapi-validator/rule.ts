@@ -1,0 +1,36 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+import { JsonPath } from "../jsonrpc/types";
+
+export enum OpenApiTypes {
+  "default" = 0,
+  "arm" = 1 << 0,
+  "DataPlane" = 1 << 1
+}
+
+export enum MergeStates {
+  "individual",
+  "composed"
+}
+
+interface ValidationMessage {
+  message: string;
+  location: JsonPath;
+}
+
+export interface Rule {
+  readonly id: string; // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
+  readonly name: string; // see same website as above
+  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation");
+  readonly severity: "error" | "warning";
+
+  readonly mergeState: MergeStates;
+  readonly openapiType: OpenApiTypes;
+
+  readonly appliesTo_JsonQuery?: string; // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
+  run(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
+}
+
+export const rules: Rule[] = [];
