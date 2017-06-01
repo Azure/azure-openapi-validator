@@ -22,7 +22,7 @@ import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContains
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
   }
 
-  @test async "Post operation id must contain Url verb"() {
+  @test async "post operation id must contain Url verb"() {
     const fileName = 'PostOperationIdWithoutUrlVerb.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
