@@ -8,7 +8,7 @@ rules.push({
   id: "M4001",
   name: PostOperationIdContainsUrlVerb,
   severity: "warning",
-  category: ["SDKViolation"],
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
 
