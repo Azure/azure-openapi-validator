@@ -1,5 +1,7 @@
-node_modules/
-# Ignore semi-compiled files
+# Ignore compiled files
+src/**/*.js
 src/**/*.d.ts
-# Any logs
-.log
+node_modules/
+pack/
+*.tgz
+*.log

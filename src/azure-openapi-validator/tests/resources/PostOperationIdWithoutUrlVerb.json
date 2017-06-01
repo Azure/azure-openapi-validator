@@ -1,0 +1,52 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "ApiManagementClient",
+        "description": "Use these REST APIs for performing operations on tenant entity associated with your Azure API Management deployment. Using this entity you can manage properties and configuration that apply to the entire API Management service instance.",
+        "version": "2016-10-10"
+    },
+    "host": "management.azure.com",
+    "paths": {
+        "/simpleManualTrigger/paths/invoke": {
+            "post": {
+                "description": "Trigger a run of the logic app.",
+                "operationId": "simpleManualTrigger_call",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The request body.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/requestSimpleManualTrigger"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "The Logic App Response.",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "requestSimpleManualTrigger": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Title."
+                },
+                "sendEmail": {
+                    "type": "boolean",
+                    "description": "Whether to send email."
+                }
+            }
+        }
+    },
+    "parameters": {}
+}
