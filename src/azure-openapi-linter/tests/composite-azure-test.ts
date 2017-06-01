@@ -6,7 +6,7 @@ import { MergeStates, OpenApiTypes } from '../rule';
 import { Message } from '../../jsonrpc/types';
 import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
 import { AutoRestPluginHost } from "../../jsonrpc/plugin-host";
-import { run } from "../../azure-openapi-validator";
+import { run } from "../../azure-openapi-linter";
 import {
   assertValidationRuleCount,
   collectTestMessagesFromValidator
