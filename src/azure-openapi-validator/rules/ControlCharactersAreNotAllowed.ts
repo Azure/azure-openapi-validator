@@ -21,7 +21,6 @@ rules.push({
       if (controlChars.length > 0) {
         yield { message: `${msg} Characters:'${controlChars}' in:'${nodeValue}'`, location: path };
       }
-
     }
   }
 });

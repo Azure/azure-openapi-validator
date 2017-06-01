@@ -13,11 +13,19 @@ import {
 } from './utilities/tests-helper';
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
+import { ArraySchemaMustHaveItems } from '../rules/ArraySchemaMustHaveItems';
 
 @suite class IndividualAzureTests {
   @test async "control characters not allowed test"() {
     const fileName: string = 'ContainsControlCharacters.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
+  }
+
+  @test async "array schema must have items test"() {
+    const fileName = 'ArraySchemaWithoutItems.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, ArraySchemaMustHaveItems, 1);
+
   }
 }
