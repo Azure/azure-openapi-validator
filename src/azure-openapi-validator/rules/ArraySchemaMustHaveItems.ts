@@ -24,12 +24,8 @@ rules.push({
 
       // if not, we have a violation
       if (!(propObject.hasOwnProperty('items'))) {
-        yield { message: `${msg} ${path[path.length - 2]}`, location: path.splice(0, path.length - 2) };
+        yield { message: `${msg} '${path[path.length - 2]}'`, location: path.splice(0, path.length - 2) };
       }
     }
   }
 });
-
-function TrimDescription(description: string): string {
-  return description.trim().replace(/\./g, '').toLowerCase();
-}
