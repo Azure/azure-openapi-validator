@@ -19,7 +19,7 @@ rules.push({
     // check if we have an operation id without the verb at the end of the url
     // if not, this should be a violation
     if (node.toLowerCase().split('_').pop().indexOf(urlVerb) === -1) {
-      yield { message: `OperationId must contain the verb:'${urlVerb}' in:'${node}'`, location: path };
+      yield { message: `OperationId must contain the verb: '${urlVerb}' in:'${node}'`, location: path };
     }
   }
 
