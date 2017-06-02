@@ -57,10 +57,7 @@
             "description": "the models to return",
             "properties": {
                 "mymodels": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Model"
-                    }
+                    "type": "array"
                 }
             }
         },

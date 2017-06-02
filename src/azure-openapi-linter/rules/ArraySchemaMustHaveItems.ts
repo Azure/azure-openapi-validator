@@ -12,19 +12,14 @@ rules.push({
   name: ArraySchemaMustHaveItems,
   severity: "warning",
   category: "SDKViolation",
-  mergeState: MergeStates.individual,
+  mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "$.definitions.*.properties.*.type",
+  appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type)]",
   run: function* (doc, node, path) {
-    const msg: string = "Please provide an items property for array type: ";
-    if (node === 'array') {
-      // climb up the json path to get hold of the parent element
-      // check if the parent element has an items node defined
-      const propObject = jp.query(doc, path.splice(0, path.length - 2).join('.'));
-
-      // if not, we have a violation
-      if (!(propObject.hasOwnProperty('items'))) {
-        yield { message: `${msg} '${path[path.length - 2]}'`, location: path.splice(0, path.length - 2) };
+    const msg: string = "Please provide an 'items' property for array type: ";
+    if (node.type === 'array') {
+      if (!node.hasOwnProperty('items')) {
+        yield { message: `${msg} '${path[path.length - 2]}'`, location: path.slice(0, path.length - 2) };
       }
     }
   }
