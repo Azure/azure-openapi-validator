@@ -15,6 +15,10 @@ rules.push({
   appliesTo_JsonQuery: "$..*[?(@.description)]",
   run: function* (doc, node, path) {
     const msg: string = "Description must not match the name of the node it is supposed to describe.";
+    // description can be of any type (including an object, so check for a string type)
+    if (typeof (node.description) !== 'string') {
+      return;
+    }
     const nodeName = <any>path[path.length - 1];
 
     if (!isNaN(nodeName)) {
@@ -22,11 +26,11 @@ rules.push({
       if (!('name' in node)) {
         return;
       }
-      if (node['name'].toLowerCase() === TrimDescription(node.description)) {
+      if (node['name'].toLowerCase() === TrimDescription(<string>node.description)) {
         yield { message: `${msg} Node name:'${node.name}' Description:'${node.description}'`, location: path.concat(['description']) };
       }
     }
-    else if (nodeName.toLowerCase() === TrimDescription(node.description)) {
+    else if (nodeName.toLowerCase() === TrimDescription(<string>node.description)) {
       yield { message: `${msg} Node name:'${nodeName}' Description: '${node.description}'`, location: path.concat(['description']) };
     } else if (TrimDescription(node.description) === 'description') {
       yield { message: "Description cannot be named as 'Description'.", location: path.concat(['description']) };
