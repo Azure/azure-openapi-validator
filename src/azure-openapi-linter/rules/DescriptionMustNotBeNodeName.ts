@@ -26,11 +26,11 @@ rules.push({
       if (!('name' in node)) {
         return;
       }
-      if (node['name'].toLowerCase() === TrimDescription(<string>node.description)) {
+      if (node['name'].toLowerCase() === TrimDescription(node.description)) {
         yield { message: `${msg} Node name:'${node.name}' Description:'${node.description}'`, location: path.concat(['description']) };
       }
     }
-    else if (nodeName.toLowerCase() === TrimDescription(<string>node.description)) {
+    else if (nodeName.toLowerCase() === TrimDescription(node.description)) {
       yield { message: `${msg} Node name:'${nodeName}' Description: '${node.description}'`, location: path.concat(['description']) };
     } else if (TrimDescription(node.description) === 'description') {
       yield { message: "Description cannot be named as 'Description'.", location: path.concat(['description']) };
