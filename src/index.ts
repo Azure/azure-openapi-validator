@@ -24,7 +24,15 @@ async function main() {
 
       const openapiDefinitionDocument = await initiator.ReadFile(file);
       const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
-      await run(file, openapiDefinitionObject, initiator.Message.bind(initiator), OpenApiTypes[openapiType], MergeStates[mergeState]);
+      try {
+        await run(file, openapiDefinitionObject, initiator.Message.bind(initiator), OpenApiTypes[openapiType], MergeStates[mergeState]);
+      }
+      catch (e) {
+        initiator.Message({
+          Channel: "fatal",
+          Text: `Failed validating: '${file}', error encountered: ` + e
+        });
+      }
     }
   });
 
