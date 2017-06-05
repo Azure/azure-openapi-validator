@@ -22,9 +22,9 @@ async function main() {
         Text: `Validating '${file}'`
       });
 
-      const openapiDefinitionDocument = await initiator.ReadFile(file);
-      const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
       try {
+        const openapiDefinitionDocument = await initiator.ReadFile(file);
+        const openapiDefinitionObject = safeLoad(openapiDefinitionDocument);
         await run(file, openapiDefinitionObject, initiator.Message.bind(initiator), OpenApiTypes[openapiType], MergeStates[mergeState]);
       }
       catch (e) {
