@@ -16,7 +16,7 @@ export interface SourceLocation {
 }
 
 export interface Message {
-  Channel: "information" | "warning" | "error" | "debug" | "verbose";
+  Channel: "information" | "warning" | "error" | "debug" | "verbose" | "fatal";
   Key?: Iterable<string>;
   Details?: any;
   Text: string;
