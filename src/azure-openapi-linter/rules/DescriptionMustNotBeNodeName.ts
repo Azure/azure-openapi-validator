@@ -19,7 +19,6 @@ rules.push({
     if (typeof (node.description) !== 'string') {
       return;
     }
-
     const nodeName = <any>path[path.length - 1];
 
     if (!isNaN(nodeName)) {
