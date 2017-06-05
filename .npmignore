@@ -1,3 +1,5 @@
+# Ignore semi-compiled files
 node_modules/
+src/**/*.d.ts
 # Any logs
 .log
