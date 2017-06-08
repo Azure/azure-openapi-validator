@@ -1,14 +1,14 @@
 {
-  "name": "azure-openapi-linter",
-  "version": "0.1.4",
-  "description": "Azure OpenAPI Linter",
+  "name": "@microsoft.azure/azure-openapi-validator",
+  "version": "0.1.0",
+  "description": "Azure OpenAPI Validator",
   "main": "src/index.js",
   "scripts": {
     "build": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Azure/azure-openapi-linter.git"
+    "url": "git+https://github.com/Azure/azure-openapi-validator.git"
   },
   "keywords": [
     "azure",
@@ -21,9 +21,9 @@
   "author": "Microsoft Corporation",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Azure/azure-openapi-linter/issues"
+    "url": "https://github.com/Azure/azure-openapi-validator/issues"
   },
-  "homepage": "https://github.com/Azure/azure-openapi-linter/blob/master/README.md",
+  "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
   "devDependencies": {
     "@types/js-yaml": "^3.5.30",
     "@types/jsonpath": "^0.1.29",
