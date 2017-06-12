@@ -5,13 +5,13 @@
 import { Message } from '../../../jsonrpc/types';
 import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
 import { AutoRestPluginHost } from "../../../jsonrpc/plugin-host";
-import { run } from "../../../azure-openapi-linter";
+import { run } from "../../../azure-openapi-validator";
 import { MergeStates, OpenApiTypes } from '../../rule';
 import * as assert from "assert";
 import { safeLoad } from "js-yaml";
 
 const fs = require('fs');
-const pathToTestResources: string = "src/azure-openapi-linter/tests/resources/";
+const pathToTestResources: string = "src/azure-openapi-validator/tests/resources/";
 
 // run the validator and gather all the messages generated
 export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes = OpenApiTypes.arm, mergeState: MergeStates = MergeStates.composed): Promise<Message[]> {

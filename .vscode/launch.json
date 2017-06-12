@@ -8,7 +8,7 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
             "args": [
-                "./src/azure-openapi-linter/tests/*.js",
+                "./src/azure-openapi-validator/tests/*.js",
                 "--colors"
             ],
             "outFiles": [],
