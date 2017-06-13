@@ -13,11 +13,18 @@ import {
 } from './utilities/tests-helper';
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
+import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContainsUrlVerb';
 
 @suite class IndividualAzureTests {
   @test async "control characters not allowed test"() {
     const fileName: string = 'ContainsControlCharacters.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2);
+  }
+
+  @test async "post operation id must contain Url verb"() {
+    const fileName = 'PostOperationIdWithoutUrlVerb.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
   }
 }
