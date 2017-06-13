@@ -12,6 +12,7 @@ import {
   collectTestMessagesFromValidator
 } from './utilities/tests-helper';
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
+import { ArraySchemaMustHaveItems } from '../rules/ArraySchemaMustHaveItems';
 
 @suite class CompositeAzureTests {
   @test async "description should not be property name"() {
@@ -20,4 +21,9 @@ import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeN
     assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 1);
   }
 
+  @test async "array schema must have items test"() {
+    const fileName = 'ArraySchemaWithoutItems.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
+    assertValidationRuleCount(messages, ArraySchemaMustHaveItems, 1);
+  }
 }
