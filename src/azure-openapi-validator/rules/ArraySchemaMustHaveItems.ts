@@ -8,7 +8,7 @@ export const ArraySchemaMustHaveItems: string = "ArraySchemaMustHaveItems";
 const jp = require('jsonpath');
 
 rules.push({
-  id: "S2009",
+  id: "R2009",
   name: ArraySchemaMustHaveItems,
   severity: "error",
   category: "SDKViolation",

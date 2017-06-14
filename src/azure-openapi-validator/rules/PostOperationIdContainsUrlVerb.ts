@@ -5,7 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const PostOperationIdContainsUrlVerb: string = "PostOperationIdContainsUrlVerb";
 rules.push({
-  id: "S2008",
+  id: "R2064",
   name: PostOperationIdContainsUrlVerb,
   severity: "warning",
   category: "SDKViolation",
