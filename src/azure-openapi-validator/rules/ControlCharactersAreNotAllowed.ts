@@ -6,7 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const ControlCharactersAreNotAllowed: string = "ControlCharactersAreNotAllowed";
 
 rules.push({
-  id: "S2006",
+  id: "R2006",
   name: ControlCharactersAreNotAllowed,
   severity: "error",
   category: "SDKViolation",
