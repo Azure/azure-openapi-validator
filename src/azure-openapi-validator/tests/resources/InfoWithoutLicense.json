@@ -1,0 +1,10 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SampleClient",
+        "description": "Simple OA with incorrect license",
+        "version": "0.0.0",
+        "license": "MICROSOFT_MIT_NO_VERSION"
+    },
+    "host": "management.azure.com"
+}

@@ -7,7 +7,7 @@ import { JsonPath } from "../jsonrpc/types";
 export enum OpenApiTypes {
   "default" = 0,
   "arm" = 1 << 0,
-  "DataPlane" = 1 << 1
+  "dataplane" = 1 << 1
 }
 
 export enum MergeStates {

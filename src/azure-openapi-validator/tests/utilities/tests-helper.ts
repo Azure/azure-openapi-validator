@@ -14,7 +14,7 @@ const fs = require('fs');
 const pathToTestResources: string = "src/azure-openapi-validator/tests/resources/";
 
 // run the validator and gather all the messages generated
-export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes = OpenApiTypes.arm, mergeState: MergeStates = MergeStates.composed): Promise<Message[]> {
+export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes, mergeState: MergeStates): Promise<Message[]> {
   let messages: Message[] = [];
   let getMessages = function (m: Message) {
     messages.push(m);
