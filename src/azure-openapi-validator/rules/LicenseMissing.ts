@@ -6,7 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const LicenseMissing: string = "LicenseMissing";
 
 rules.push({
-  id: "R2006",
+  id: "R2065",
   name: LicenseMissing,
   severity: "error",
   category: "SDKViolation",
