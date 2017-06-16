@@ -3,8 +3,7 @@
     "info": {
         "title": "SampleClient",
         "description": "Simple OA with incorrect license",
-        "version": "0.0.0",
-        "license": "MICROSOFT_MIT_NO_VERSION"
+        "version": "0.0.0"
     },
     "host": "management.azure.com"
 }

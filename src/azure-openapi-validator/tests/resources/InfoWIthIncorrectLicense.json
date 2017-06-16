@@ -3,7 +3,8 @@
     "info": {
         "title": "SampleClient",
         "description": "Simple OA without license",
-        "version": "0.0.0"
+        "version": "0.0.0",
+        "license": "Invalid license"
     },
     "host": "management.azure.com"
 }
