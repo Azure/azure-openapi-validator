@@ -14,10 +14,16 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..info",
   run: function* (doc, node, path) {
+
     const acceptableLicenseValue: string = 'MICROSOFT_MIT_NO_VERSION';
-    // check if a license is provided or whether license value provided is correct, if not raise hell!
-    if (node.license !== acceptableLicenseValue) {
-      yield { message: `Please provide correct licensing information here. Acceptable value: ${acceptableLicenseValue}`, location: path };
+    const msg: string = `Please provide correct licensing information here. Acceptable value: "name": "${acceptableLicenseValue}"`;
+    // check if a license is provided, if not raise hell!
+    if (node.license === undefined) {
+      yield { message: `${msg}`, location: path };
+    }
+    // check the name property of license object
+    else if (node.license.name !== acceptableLicenseValue) {
+      yield { message: `${msg}`, location: path };
     }
   }
 });
