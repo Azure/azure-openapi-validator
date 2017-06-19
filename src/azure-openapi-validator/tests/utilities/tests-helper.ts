@@ -58,7 +58,5 @@ function readObjectFromFile(filePath: string): any {
 }
 
 function getFilePath(fileName: string): string {
-  const p = path.resolve(path.join(__dirname, pathToTestResources, fileName));
-  console.error('finding path ' + p);
-  return p;
+  return path.resolve(path.join(__dirname, pathToTestResources, fileName));
 }
