@@ -14,7 +14,7 @@ import {
 import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
 import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContainsUrlVerb';
-import { LicenseMissing } from '../rules/LicenseMissing';
+import { LicenseHeaderMustNotBeSpecified } from '../rules/LicenseHeaderMustNotBeSpecified';
 
 @suite class IndividualAzureTests {
   @test async "control characters not allowed test"() {
@@ -28,17 +28,10 @@ import { LicenseMissing } from '../rules/LicenseMissing';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
   }
-
-  @test async "info section must contain a license section"() {
-    const fileName = 'InfoWithoutLicense.json';
+  @test async "info section with x-ms-code-generation-settings must not contain a header"() {
+    const fileName = 'InfoWithLicenseHeader.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
-    assertValidationRuleCount(messages, LicenseMissing, 1);
-  }
-
-  @test async "info section must contain acceptable license section"() {
-    const fileName = 'InfoWithIncorrectLicense.json';
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
-    assertValidationRuleCount(messages, LicenseMissing, 1);
+    assertValidationRuleCount(messages, LicenseHeaderMustNotBeSpecified, 1);
   }
 
 }
