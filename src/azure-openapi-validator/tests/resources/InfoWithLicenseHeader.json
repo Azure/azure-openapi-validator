@@ -4,8 +4,8 @@
         "title": "SampleClient",
         "description": "Simple OA without license",
         "version": "0.0.0",
-        "license": {
-            "name": "Invalid license"
+        "x-ms-code-generation-settings": {
+            "header": "Invalid license"
         }
     },
     "host": "management.azure.com"
