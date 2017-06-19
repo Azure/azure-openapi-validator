@@ -11,10 +11,12 @@ import * as assert from "assert";
 import { safeLoad } from "js-yaml";
 
 const fs = require('fs');
-const pathToTestResources: string = "src/azure-openapi-validator/tests/resources/";
+const path = require('path');
+const pathToTestResources: string = "../../tests/resources/";
 
 // run the validator and gather all the messages generated
-export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes = OpenApiTypes.arm, mergeState: MergeStates = MergeStates.composed): Promise<Message[]> {
+export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes, mergeState: MergeStates): Promise<Message[]> {
+
   let messages: Message[] = [];
   let getMessages = function (m: Message) {
     messages.push(m);
@@ -56,5 +58,5 @@ function readObjectFromFile(filePath: string): any {
 }
 
 function getFilePath(fileName: string): string {
-  return pathToTestResources + fileName;
+  return path.resolve(path.join(__dirname, pathToTestResources, fileName));
 }
