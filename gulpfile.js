@@ -16,7 +16,7 @@ gulp.task('build', ['clean'], function () {
 
 gulp.task('test', ['build'], function () {
     console.log('Running the unit tests...');
-    gulp.src(['src/azure-openapi-validator/tests/*.js'])
+    gulp.src(['src/typescript/azure-openapi-validator/tests/*.js'])
         .pipe(mocha({
             timeout: 120000
         }))

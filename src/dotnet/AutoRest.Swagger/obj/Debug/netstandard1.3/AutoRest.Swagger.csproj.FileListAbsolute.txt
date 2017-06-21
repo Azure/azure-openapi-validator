@@ -1,0 +1,11 @@
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\bin\Debug\netstandard1.3\AutoRest.Swagger.deps.json
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\bin\Debug\netstandard1.3\AutoRest.Swagger.dll
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\bin\Debug\netstandard1.3\AutoRest.Swagger.pdb
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\bin\Debug\netstandard1.3\AutoRest.Core.dll
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\bin\Debug\netstandard1.3\AutoRest.Core.pdb
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\obj\Debug\netstandard1.3\AutoRest.Swagger.Properties.Resources.resources
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\obj\Debug\netstandard1.3\AutoRest.Swagger.csproj.GenerateResource.Cache
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\obj\Debug\netstandard1.3\AutoRest.Swagger.AssemblyInfo.cs
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\obj\Debug\netstandard1.3\AutoRest.Swagger.dll
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\obj\Debug\netstandard1.3\AutoRest.Swagger.pdb
+F:\artemp\rcm\autorest\src\modeler\AutoRest.Swagger\obj\Debug\netstandard1.3\AutoRest.Swagger.csprojResolveAssemblyReference.cache
