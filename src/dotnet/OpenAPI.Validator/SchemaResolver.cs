@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using AutoRest.Swagger.Model;
+using OpenAPI.Validator.Model;
 
 namespace OpenAPI.Validator
 {

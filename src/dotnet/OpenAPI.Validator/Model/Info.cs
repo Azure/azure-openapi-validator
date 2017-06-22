@@ -4,8 +4,8 @@
 using System;
 using AutoRest.Core.Utilities;
 using Newtonsoft.Json;
-using AutoRest.Swagger.Validation;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator;
+using OpenAPI.Validator.Core;
 
 namespace OpenAPI.Validator.Model
 {

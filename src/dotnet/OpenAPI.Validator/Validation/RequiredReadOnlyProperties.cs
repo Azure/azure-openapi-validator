@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Core;
 using System.Collections.Generic;
 using AutoRest.Core.Properties;
-using AutoRest.Swagger.Model;
+using OpenAPI.Validator.Model;
 using AutoRest.Core.Logging;
 
 namespace OpenAPI.Validator.Validation

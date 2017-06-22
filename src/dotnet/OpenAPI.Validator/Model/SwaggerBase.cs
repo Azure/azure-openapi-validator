@@ -4,8 +4,8 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using AutoRest.Swagger.Validation;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator;
+using OpenAPI.Validator.Core;
 
 OpenAPI.Validator.Model
 {

@@ -9,7 +9,7 @@ using AutoRest.Core.Utilities.Collections;
 using System;
 using AutoRest.Core.Logging;
 using AutoRest.Core.Utilities;
-using AutoRest.Swagger.Model;
+using OpenAPI.Validator.Model;
 using Newtonsoft.Json;
 
 namespace OpenAPI.Validator.Validation.Core

@@ -4,9 +4,9 @@
 using System;
 using System.Globalization;
 using Newtonsoft.Json;
-using AutoRest.Swagger.Validation;
+using OpenAPI.Validator;
 using System.Collections.Generic;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Core;
 
 namespace OpenAPI.Validator.Model
 {

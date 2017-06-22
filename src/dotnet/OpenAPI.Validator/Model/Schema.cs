@@ -6,8 +6,8 @@ using System.Linq;
 using System.Globalization;
 
 using AutoRest.Core.Model;
-using AutoRest.Swagger.Validation.Core;
-using AutoRest.Swagger.Validation;
+using OpenAPI.Validator.Core;
+using OpenAPI.Validator;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;

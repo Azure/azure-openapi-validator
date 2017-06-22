@@ -9,11 +9,11 @@ using System.Text.RegularExpressions;
 using System.Diagnostics.CodeAnalysis;
 using AutoRest.Core.Model;
 using AutoRest.Core.Utilities;
-using AutoRest.Swagger.Properties;
-using AutoRest.Swagger.Validation;
+using OpenAPI.Validator.Properties;
+using OpenAPI.Validator;
 using Newtonsoft.Json;
 using static AutoRest.Core.Utilities.DependencyInjection;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Core;
 
 OpenAPI.Validator.Model
 {

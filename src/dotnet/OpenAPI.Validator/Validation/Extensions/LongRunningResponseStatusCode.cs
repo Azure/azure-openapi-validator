@@ -4,8 +4,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoRest.Core.Logging;
-using AutoRest.Swagger.Model;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Model;
+using OpenAPI.Validator.Core;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Properties;
 

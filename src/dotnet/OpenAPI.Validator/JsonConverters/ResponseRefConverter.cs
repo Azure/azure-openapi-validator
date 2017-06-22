@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
-using AutoRest.Swagger.Model;
+using OpenAPI.Validator.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

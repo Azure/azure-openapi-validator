@@ -6,9 +6,9 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using AutoRest.Core.Model;
-using AutoRest.Swagger.Model;
-using AutoRest.Swagger.Properties;
-using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
+using OpenAPI.Validator.Model;
+using OpenAPI.Validator.Properties;
+using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;
 
 namespace OpenAPI.Validator
 {

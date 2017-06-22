@@ -4,8 +4,8 @@
 using System;
 using System.Linq;
 using AutoRest.Core.Model;
-using AutoRest.Swagger.Model;
-using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
+using OpenAPI.Validator.Model;
+using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace OpenAPI.Validator

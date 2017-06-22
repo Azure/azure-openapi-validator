@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using AutoRest.Swagger.Model;
+using OpenAPI.Validator.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

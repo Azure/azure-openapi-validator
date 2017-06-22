@@ -2,10 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 using System;
 using System.Linq;
-using AutoRest.Swagger.Validation;
+using OpenAPI.Validator;
 using System.Collections.Generic;
 using AutoRest.Core.Utilities;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Core;
 
 OpenAPI.Validator.Model
 {

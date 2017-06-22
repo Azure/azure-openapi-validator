@@ -5,9 +5,9 @@ using AutoRest.Core.Logging;
 using AutoRest.Core.Properties;
 using AutoRest.Core.Utilities;
 using AutoRest.Swagger;
-using AutoRest.Swagger.Model;
-using AutoRest.Swagger.Model.Utilities;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Model;
+using OpenAPI.Validator.Model.Utilities;
+using OpenAPI.Validator.Core;
 using System.Collections.Generic;
 using System.Linq;
 

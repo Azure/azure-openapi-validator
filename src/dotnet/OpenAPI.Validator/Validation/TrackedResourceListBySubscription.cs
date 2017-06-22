@@ -3,10 +3,10 @@
 
 using AutoRest.Core.Logging;
 using AutoRest.Core.Properties;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using System.Collections.Generic;
-using AutoRest.Swagger.Model;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Model;
+using OpenAPI.Validator.Core;
 
 namespace OpenAPI.Validator.Validation
 {

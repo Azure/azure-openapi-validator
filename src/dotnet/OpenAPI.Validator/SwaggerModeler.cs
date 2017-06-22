@@ -11,11 +11,11 @@ using AutoRest.Core.Model;
 using AutoRest.Core.Logging;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Utilities.Collections;
-using AutoRest.Swagger.Model;
-using AutoRest.Swagger.Properties;
-using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
+using OpenAPI.Validator.Model;
+using OpenAPI.Validator.Properties;
+using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;
 using static AutoRest.Core.Utilities.DependencyInjection;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator.Core;
 
 namespace OpenAPI.Validator
 {

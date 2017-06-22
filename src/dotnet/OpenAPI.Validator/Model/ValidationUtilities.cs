@@ -6,7 +6,7 @@ using AutoRest.Core.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using AutoRest.Swagger.Validation;
+using OpenAPI.Validator;
 using System.Text;
 using System;
 
