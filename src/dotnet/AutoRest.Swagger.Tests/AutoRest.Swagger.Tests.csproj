@@ -14,7 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resource\Swagger\Validation\**\*.json" />
+    <Content Include="Resource\Swagger\**\*.json" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Swagger\**\*.yaml" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <ProjectReference Include="$(MSBuildProjectDirectory)\..\AutoRest.Core\AutoRest.Core.csproj" />
     <ProjectReference Include="$(MSBuildProjectDirectory)\..\AutoRest.Swagger\AutoRest.Swagger.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="1.1.0.0" />
