@@ -7,7 +7,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 using System.Text.RegularExpressions;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates the version of the swagger. API version must follow the date pattern

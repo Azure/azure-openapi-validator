@@ -11,7 +11,7 @@ using AutoRest.Swagger.Properties;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using System.Linq;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     /// <summary>
     /// The builder for building swagger schema into client model parameters, 

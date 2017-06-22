@@ -2,7 +2,7 @@
 using AutoRest.Swagger.Model;
 using System;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public static class SwaggerModelValidationExtensions
     {

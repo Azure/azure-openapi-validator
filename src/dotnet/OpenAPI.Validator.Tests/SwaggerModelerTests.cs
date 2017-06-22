@@ -14,7 +14,7 @@ using Xunit;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using System.Globalization;
 
-namespace AutoRest.Swagger.Tests
+namespace OpenAPI.Validator.Tests
 {
     [Collection("AutoRest Tests")]
     public class SwaggerModelerTests

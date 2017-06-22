@@ -6,7 +6,7 @@ using AutoRest.Core.Logging;
 using AutoRest.Core.Properties;
 using AutoRest.Swagger.Model;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class TrackedResourceListByImmediateParent : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {

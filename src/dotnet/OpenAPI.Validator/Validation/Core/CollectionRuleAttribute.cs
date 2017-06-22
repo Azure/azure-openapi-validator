@@ -3,7 +3,7 @@
 
 using System;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     /// <summary>
     /// A rule attribute that should be applied to all members of the collection that is annotated

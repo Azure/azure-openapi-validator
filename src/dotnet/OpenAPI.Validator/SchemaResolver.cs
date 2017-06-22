@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Linq;
 using AutoRest.Swagger.Model;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     /// <summary>
     /// Methods for normalizing and evaluating swagger schemas in their context in a swagger spec

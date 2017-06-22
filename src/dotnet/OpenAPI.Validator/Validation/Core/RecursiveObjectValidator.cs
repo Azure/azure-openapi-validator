@@ -12,7 +12,7 @@ using AutoRest.Core.Utilities;
 using AutoRest.Swagger.Model;
 using Newtonsoft.Json;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     /// <summary>
     ///     A validator that traverses an object graph, applies validation rules, and logs validation messages

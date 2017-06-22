@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Reflection;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     public static class PropertyNameResolver
     {

@@ -3,7 +3,7 @@
 
 using AutoRest.Core.Logging;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public abstract class MutabilityExtensionRule : ExtensionRule
     {

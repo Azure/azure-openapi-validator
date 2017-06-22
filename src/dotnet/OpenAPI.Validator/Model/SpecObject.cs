@@ -3,7 +3,7 @@
 
 using System;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     public abstract class SpecObject : SwaggerBase
     {

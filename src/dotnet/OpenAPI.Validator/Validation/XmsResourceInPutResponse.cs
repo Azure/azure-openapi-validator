@@ -11,7 +11,7 @@ using AutoRest.Swagger.Validation.Core;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class XmsResourceInPutResponse : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {

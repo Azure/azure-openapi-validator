@@ -9,7 +9,7 @@ using AutoRest.Swagger.Model.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class ParameterNotDefinedInGlobalParameters : TypedRule<Dictionary<string, SwaggerParameter>>
     {

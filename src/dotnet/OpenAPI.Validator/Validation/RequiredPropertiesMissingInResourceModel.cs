@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoRest.Swagger.Model;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates the structure of Resource Model that it must contain id,

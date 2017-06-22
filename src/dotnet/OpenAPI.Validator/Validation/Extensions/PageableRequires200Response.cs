@@ -5,7 +5,7 @@ using AutoRest.Core.Logging;
 using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class PageableRequires200Response : PageableExtensionRule
     {

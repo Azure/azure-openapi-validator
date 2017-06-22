@@ -6,7 +6,7 @@ using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model.Utilities;
 using Newtonsoft.Json.Linq;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class XmsPageableListByRGAndSubscriptions : TypedRule<Dictionary<string, Schema>>
     {

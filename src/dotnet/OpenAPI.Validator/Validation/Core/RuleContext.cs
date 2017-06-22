@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     /// <summary>
     /// Provides context for a rule, such as the ancestors in the validation tree, the root object

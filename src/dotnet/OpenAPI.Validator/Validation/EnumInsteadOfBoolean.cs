@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Flags properties of boolean type as they are not recommended, unless it's the only option.

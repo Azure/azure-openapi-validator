@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoRest.Swagger.Model.Utilities;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates if the Operations API has been implemented

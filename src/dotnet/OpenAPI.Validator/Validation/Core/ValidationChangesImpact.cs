@@ -3,7 +3,7 @@
 
 using System;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     [Flags]
     public enum ValidationChangesImpact

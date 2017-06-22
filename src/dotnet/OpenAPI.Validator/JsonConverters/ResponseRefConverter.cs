@@ -6,7 +6,7 @@ using AutoRest.Swagger.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace AutoRest.Swagger.JsonConverters
+namespace OpenAPI.Validator.JsonConverters
 {
     public class ResponseRefConverter : SwaggerJsonConverter
     {

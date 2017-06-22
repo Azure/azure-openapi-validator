@@ -6,7 +6,7 @@ using AutoRest.Core.Logging;
 using AutoRest.Swagger.Model;
 using System;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     /// <summary>
     /// Defines validation logic for an object

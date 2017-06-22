@@ -7,7 +7,7 @@ using AutoRest.Swagger.Validation.Core;
 using System.Collections.Generic;
 using AutoRest.Swagger.Model;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates if the resource definition has x-ms-azure-resource extension set to true.

@@ -7,7 +7,7 @@ using AutoRest.Core.Properties;
 using AutoRest.Swagger.Model;
 using AutoRest.Core.Logging;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class RequiredReadOnlyProperties : TypedRule<Schema>
     {

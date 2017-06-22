@@ -11,7 +11,7 @@ using AutoRest.Core.Properties;
 using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Xms")]
     public class XmsPathsMustOverloadPaths : TypedRule<Dictionary<string, Operation>>

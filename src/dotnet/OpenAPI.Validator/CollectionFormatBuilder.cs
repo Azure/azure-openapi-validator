@@ -10,7 +10,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Properties;
 using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     public static class CollectionFormatBuilder
     {

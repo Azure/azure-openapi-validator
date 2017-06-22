@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Net;
 using AutoRest.Core.Model;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     /// <summary>
     /// Provides useful extension methods to simplify common coding tasks.

@@ -9,7 +9,7 @@ using AutoRest.Swagger.Validation.Core;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Properties;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class LongRunningResponseStatusCode : ExtensionRule
     {

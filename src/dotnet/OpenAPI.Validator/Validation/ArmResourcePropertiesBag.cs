@@ -10,7 +10,7 @@ using AutoRest.Swagger.Model;
 using System.Text.RegularExpressions;
 using System.Linq;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class ArmResourcePropertiesBag : TypedRule<Dictionary<string, Schema>>
     {

@@ -9,7 +9,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class SecurityDefinitionsStructure : TypedRule<Dictionary<string, SecurityDefinition>>
     {

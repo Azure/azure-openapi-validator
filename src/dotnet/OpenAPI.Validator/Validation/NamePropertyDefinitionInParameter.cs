@@ -7,7 +7,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Core.Logging;
 using System;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class NamePropertyDefinitionInParameter : TypedRule<SwaggerParameter>
     {

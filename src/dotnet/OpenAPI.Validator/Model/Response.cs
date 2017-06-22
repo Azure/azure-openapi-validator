@@ -7,7 +7,7 @@ using AutoRest.Swagger.Validation.Core;
 using System;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Model
+OpenAPI.Validator.Model
 {
     /// <summary>
     /// Describes a single response from an API Operation.

@@ -4,7 +4,7 @@
 using AutoRest.Core.Utilities;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Security Scheme Object - https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#security-scheme-object-

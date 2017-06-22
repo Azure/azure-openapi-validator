@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using AutoRest.Swagger.Model;
 using AutoRest.Core.Utilities;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates if the name of property and x-ms-client-name(if exists) does not match.

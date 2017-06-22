@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using AutoRest.Core.Logging;
 
-namespace AutoRest.Swagger.JsonConverters
+namespace OpenAPI.Validator.JsonConverters
 {
     public class PathLevelParameterConverter : SwaggerJsonConverter
     {

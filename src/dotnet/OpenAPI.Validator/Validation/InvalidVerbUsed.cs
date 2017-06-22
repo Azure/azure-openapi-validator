@@ -8,7 +8,7 @@ using AutoRest.Swagger.Model;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates the HTTP verb. Allowed values for the HTTP Verb are

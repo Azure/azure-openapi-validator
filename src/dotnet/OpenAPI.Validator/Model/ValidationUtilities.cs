@@ -10,7 +10,7 @@ using AutoRest.Swagger.Validation;
 using System.Text;
 using System;
 
-namespace AutoRest.Swagger.Model.Utilities
+namespace OpenAPI.Validator.Model.Utilities
 {
     public static class ValidationUtilities
     {

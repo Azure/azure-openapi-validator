@@ -5,7 +5,7 @@ using System.Reflection;
 using AutoRest.Core.Utilities.Collections;
 using AutoRest.Core.Utilities;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     internal static class RulesExtensions
     {

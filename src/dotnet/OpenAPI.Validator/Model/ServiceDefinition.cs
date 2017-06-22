@@ -12,7 +12,7 @@ using AutoRest.Swagger.Validation;
 using System.Text.RegularExpressions;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Model
+OpenAPI.Validator.Model
 {
     /// <summary>
     /// Class that represents Swagger 2.0 schema

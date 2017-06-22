@@ -3,7 +3,7 @@
 
 using System;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// License information for the defined API.

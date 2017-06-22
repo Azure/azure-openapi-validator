@@ -17,7 +17,7 @@ using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     public class SwaggerModeler : Modeler
     {

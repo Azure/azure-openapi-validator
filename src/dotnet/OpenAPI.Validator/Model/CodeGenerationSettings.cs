@@ -3,7 +3,7 @@
 
 using System;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// The object provides metadata about the API. 

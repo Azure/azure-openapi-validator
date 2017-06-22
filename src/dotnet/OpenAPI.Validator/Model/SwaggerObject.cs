@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Model
+OpenAPI.Validator.Model
 {
     /// <summary>
     /// Describes a single operation determining with this object is mandatory.

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutoRest.Swagger.Properties {
+OpenAPI.Validator.Properties {
     using System;
     using System.Reflection;
     

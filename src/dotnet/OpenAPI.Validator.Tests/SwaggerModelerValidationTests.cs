@@ -13,7 +13,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
-namespace AutoRest.Swagger.Tests
+namespace OpenAPI.Validator.Tests
 {
     
     [Collection("Validation Tests")]

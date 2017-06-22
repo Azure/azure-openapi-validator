@@ -10,7 +10,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Model.Utilities;
 using System.Linq;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class ListInOperationName : TypedRule<Dictionary<string,Dictionary<string, Operation>>>
     {

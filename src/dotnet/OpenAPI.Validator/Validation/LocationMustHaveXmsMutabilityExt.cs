@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class LocationMustHaveXmsMutability : TypedRule<Dictionary<string, Schema>>
     {

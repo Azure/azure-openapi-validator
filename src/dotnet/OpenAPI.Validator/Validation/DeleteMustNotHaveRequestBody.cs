@@ -7,7 +7,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates if there is no request body for the delete operation.

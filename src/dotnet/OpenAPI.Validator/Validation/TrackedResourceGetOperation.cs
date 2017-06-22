@@ -9,7 +9,7 @@ using AutoRest.Swagger.Model;
 using System.Linq;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class TrackedResourceGetOperation : TypedRule<Dictionary<string, Schema>>
     {

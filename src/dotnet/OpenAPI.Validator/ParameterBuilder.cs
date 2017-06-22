@@ -8,7 +8,7 @@ using AutoRest.Swagger.Model;
 using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     /// <summary>
     /// The builder for building swagger parameters into client model parameters, 

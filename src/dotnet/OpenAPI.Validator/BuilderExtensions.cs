@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using AutoRest.Core.Model;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     public static class BuilderExtensions
     {

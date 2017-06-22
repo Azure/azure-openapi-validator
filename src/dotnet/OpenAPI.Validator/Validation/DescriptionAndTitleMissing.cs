@@ -7,7 +7,7 @@ using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model;
 using AutoRest.Core.Properties;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class DescriptionAndTitleMissing : DescriptionRequired<Dictionary<string, Schema>>
     {

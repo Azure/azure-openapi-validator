@@ -8,7 +8,7 @@ using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class AvoidNestedProperties : TypedRule<Schema>
     {

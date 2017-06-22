@@ -16,7 +16,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     public static class SwaggerParser
     {

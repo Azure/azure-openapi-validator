@@ -5,7 +5,7 @@ using AutoRest.Core.Logging;
 using AutoRest.Swagger.Validation.Core;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// A rule that validates extensions (e.g. x-ms-pageable)

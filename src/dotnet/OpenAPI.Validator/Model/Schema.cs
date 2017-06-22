@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
-namespace AutoRest.Swagger.Model
+OpenAPI.Validator.Model
 {
     /// <summary>
     /// Swagger schema object.

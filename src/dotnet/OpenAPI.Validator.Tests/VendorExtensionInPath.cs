@@ -6,7 +6,7 @@ using AutoRest.Core;
 using Xunit;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
-namespace AutoRest.Swagger.Tests
+namespace OpenAPI.Validator.Tests
 {
     [Collection("AutoRest Tests")]
     public class VendorExtensionInPath

@@ -9,7 +9,7 @@ using AutoRest.Core.Utilities;
 using Xunit;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
-namespace AutoRest.Swagger.Tests
+namespace OpenAPI.Validator.Tests
 {
     using Core.Extensibility;
 

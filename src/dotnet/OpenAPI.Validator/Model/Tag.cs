@@ -3,7 +3,7 @@
 
 using AutoRest.Core.Utilities;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Represents a Swagger Tag

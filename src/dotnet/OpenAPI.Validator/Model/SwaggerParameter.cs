@@ -8,7 +8,7 @@ using AutoRest.Swagger.Validation;
 using System.Collections.Generic;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Describes a single operation parameter.

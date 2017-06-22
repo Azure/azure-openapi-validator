@@ -6,7 +6,7 @@ using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 using System.Text.RegularExpressions;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public abstract class OperationNameValidation : TypedRule<string>
     {

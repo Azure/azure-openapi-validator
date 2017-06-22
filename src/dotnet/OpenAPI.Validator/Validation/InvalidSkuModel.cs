@@ -11,7 +11,7 @@ using System.Linq;
 using AutoRest.Swagger.Model.Utilities;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     /// <summary>
     /// Validates the SKU Model. A Sku model must have name property. 

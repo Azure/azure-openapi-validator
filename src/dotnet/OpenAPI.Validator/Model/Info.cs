@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using AutoRest.Swagger.Validation;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// The object provides metadata about the API. 

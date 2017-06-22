@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Validation
+namespace OpenAPI.Validator.Validation
 {
     public class LROStatusCodesReturnTypeSchema : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {

@@ -5,7 +5,7 @@ using AutoRest.Core.Utilities;
 using System;
 using System.Collections.Generic;
 
-namespace AutoRest.Swagger.Model
+OpenAPI.Validator.Model
 {
     /// <summary>
     /// Describes whether a service definition has already been processed and merged.

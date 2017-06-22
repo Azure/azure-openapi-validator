@@ -14,7 +14,7 @@ using AutoRest.Swagger.Model;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using Newtonsoft.Json.Linq;
 
-namespace AutoRest.Swagger
+namespace OpenAPI.Validator
 {
     /// <summary>
     /// The builder for building a generic swagger object into parameters, 

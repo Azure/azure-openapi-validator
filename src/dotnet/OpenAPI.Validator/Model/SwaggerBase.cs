@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using AutoRest.Swagger.Validation;
 using AutoRest.Swagger.Validation.Core;
 
-namespace AutoRest.Swagger.Model
+OpenAPI.Validator.Model
 {
     public abstract class SwaggerBase
     {

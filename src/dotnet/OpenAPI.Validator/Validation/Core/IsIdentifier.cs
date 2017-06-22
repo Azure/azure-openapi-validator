@@ -6,7 +6,7 @@ using System.Linq;
 using AutoRest.Core.Logging;
 using AutoRest.Swagger.Model;
 
-namespace AutoRest.Swagger.Validation.Core
+namespace OpenAPI.Validator.Validation.Core
 {
     /// <summary>
     ///     This validator should be applied to all elements in the model that
