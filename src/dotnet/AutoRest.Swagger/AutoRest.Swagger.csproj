@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  
+  <PropertyGroup>
+    <AssemblyName>AutoRest.Swagger</AssemblyName>
+    <PackageTags>Microsoft AutoRest Generator Extensions</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet;portable-net45+win8;netstandard1.3</PackageTargetFallback>
+    <TargetFramework>netstandard1.3</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildProjectDirectory)\**\*.cs" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(MSBuildProjectDirectory)\..\AutoRest.Core/AutoRest.Core.csproj" />
+  </ItemGroup>
+</Project>
