@@ -5,14 +5,14 @@ using System;
 using System.Linq;
 using System.Globalization;
 
-using AutoRest.Core.Model;
+
 using OpenAPI.Validator.Core;
 using OpenAPI.Validator;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
-OpenAPI.Validator.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Swagger schema object.

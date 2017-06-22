@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using AutoRest.Core.Utilities;
 using OpenAPI.Validator;
 using OpenAPI.Validator.Core;
 using System;
 
-OpenAPI.Validator.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Allows referencing an external resource for extended documentation.

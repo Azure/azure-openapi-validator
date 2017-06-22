@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-OpenAPI.Validator.Properties {
+namespace OpenAPI.Validator.Properties
+{
     using System;
     using System.Reflection;
     

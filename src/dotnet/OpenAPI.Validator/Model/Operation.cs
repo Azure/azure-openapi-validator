@@ -4,10 +4,9 @@ using System;
 using System.Linq;
 using OpenAPI.Validator;
 using System.Collections.Generic;
-using AutoRest.Core.Utilities;
 using OpenAPI.Validator.Core;
 
-OpenAPI.Validator.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Describes a single API operation on a path.

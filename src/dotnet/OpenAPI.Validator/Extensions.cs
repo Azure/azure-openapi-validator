@@ -4,7 +4,7 @@
 using System;
 using System.Globalization;
 using System.Net;
-using AutoRest.Core.Model;
+
 
 namespace OpenAPI.Validator
 {

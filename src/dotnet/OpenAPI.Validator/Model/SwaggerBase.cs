@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using OpenAPI.Validator;
 using OpenAPI.Validator.Core;
 
-OpenAPI.Validator.Model
+namespace OpenAPI.Validator.Model
 {
     public abstract class SwaggerBase
     {

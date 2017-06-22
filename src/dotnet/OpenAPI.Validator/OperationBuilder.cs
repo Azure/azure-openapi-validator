@@ -8,16 +8,14 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
-using AutoRest.Core.Model;
-using AutoRest.Core.Logging;
-using AutoRest.Core.Utilities;
+
+
+
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;
-
-using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace OpenAPI.Validator
 {

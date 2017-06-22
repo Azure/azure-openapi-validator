@@ -4,10 +4,6 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using AutoRest.Core;
-using AutoRest.Core.Logging;
-using AutoRest.Core.Parsing;
-using AutoRest.Core.Utilities;
 using OpenAPI.Validator.JsonConverters;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;

@@ -6,13 +6,13 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
-using AutoRest.Core.Logging;
-using AutoRest.Core.Utilities.Collections;
+
+
 using OpenAPI.Validator;
 using System.Text.RegularExpressions;
 using OpenAPI.Validator.Core;
 
-OpenAPI.Validator.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Class that represents Swagger 2.0 schema

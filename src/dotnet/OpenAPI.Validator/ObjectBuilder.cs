@@ -6,12 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using AutoRest.Core;
-using AutoRest.Core.Model;
-using AutoRest.Core.Utilities;
-using AutoRest.Core.Utilities.Collections;
 using OpenAPI.Validator.Model;
-using static AutoRest.Core.Utilities.DependencyInjection;
 using Newtonsoft.Json.Linq;
 
 namespace OpenAPI.Validator

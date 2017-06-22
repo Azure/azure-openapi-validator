@@ -6,7 +6,7 @@ using System.Linq;
 using OpenAPI.Validator.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using AutoRest.Core.Logging;
+
 
 namespace OpenAPI.Validator.JsonConverters
 {

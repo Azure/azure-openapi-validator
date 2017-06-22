@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
-using AutoRest.Core.Model;
+
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;

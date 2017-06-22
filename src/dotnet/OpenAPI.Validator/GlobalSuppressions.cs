@@ -19,12 +19,12 @@
     Justification = "This type is strictly a serialization model.")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", 
     MessageId = "1#", Scope = "member", 
-    Target = "AutoRest.Swagger.OperationBuilder.#BuildMethod(AutoRest.Core.Model.HttpMethod,System.String,System.String,System.String)", Justification = "May not parse as valid Uri")]
+    Target = "OpenAPI.Validator.OperationBuilder.#BuildMethod(AutoRest.Core.Model.HttpMethod,System.String,System.String,System.String)", Justification = "May not parse as valid Uri")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", 
     MessageId = "1#", Scope = "member", 
-    Target = "AutoRest.Swagger.SwaggerModeler.#BuildMethod(AutoRest.Core.Model.HttpMethod,System.String,System.String,OpenAPI.Validator.Model.Operation)", Justification = "May not parse as valid Uri")]
+    Target = "OpenAPI.Validator.SwaggerModeler.#BuildMethod(AutoRest.Core.Model.HttpMethod,System.String,System.String,OpenAPI.Validator.Model.Operation)", Justification = "May not parse as valid Uri")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings", 
-    Scope = "member", Target = "AutoRest.Swagger.SwaggerModeler.#BuildMethodBaseUrl(AutoRest.Core.Model.CodeModel,System.String)", Justification = "May not parse as valid Uri")]
+    Scope = "member", Target = "OpenAPI.Validator.SwaggerModeler.#BuildMethodBaseUrl(AutoRest.Core.Model.CodeModel,System.String)", Justification = "May not parse as valid Uri")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings", 
     Scope = "member", Target = "OpenAPI.Validator.Model.Contact.#Url", Justification = "May not parse as valid Uri")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings", 
@@ -35,21 +35,21 @@
     Scope = "member", Target = "OpenAPI.Validator.Model.SecurityDefinition.#AuthorizationUrl", Justification = "May not parse as valid Uri")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings", 
     Scope = "member", Target = "OpenAPI.Validator.Model.SecurityDefinition.#TokenUrl", Justification = "May not parse as valid Uri")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "AutoRest.Core.Logging.ErrorManager.CreateError(System.String,System.Object[])", Scope = "member", Target = "AutoRest.Swagger.SwaggerParser.#Parse(System.String)", Justification = "Generated Code")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "AutoRest.Core.Logging.ErrorManager.CreateError(System.String,System.Object[])", Scope = "member", Target = "OpenAPI.Validator.SwaggerParser.#Parse(System.String)", Justification = "Generated Code")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", 
-    Scope = "member", Target = "AutoRest.Swagger.Extensions.#ToHttpMethod(System.String)", Justification = "Serialization Type")]
+    Scope = "member", Target = "OpenAPI.Validator.Extensions.#ToHttpMethod(System.String)", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", 
-    Scope = "member", Target = "AutoRest.Swagger.SchemaResolver.#Dereference(System.String)", Justification = "Serialization Type")]
+    Scope = "member", Target = "OpenAPI.Validator.SchemaResolver.#Dereference(System.String)", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", 
-    Scope = "member", Target = "AutoRest.Swagger.SwaggerModeler.#InitializeClientModel()", Justification = "Serialization Type")]
+    Scope = "member", Target = "OpenAPI.Validator.SwaggerModeler.#InitializeClientModel()", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", 
-    Scope = "member", Target = "AutoRest.Swagger.OperationBuilder.#BuildMethod(AutoRest.Core.Model.HttpMethod,System.String,System.String,System.String)", Justification = "Serialization Type")]
+    Scope = "member", Target = "OpenAPI.Validator.OperationBuilder.#BuildMethod(AutoRest.Core.Model.HttpMethod,System.String,System.String,System.String)", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", 
     MessageId = "param", Scope = "member", 
-    Target = "AutoRest.Swagger.CollectionFormatBuilder.#OnBuildMethodParameter(AutoRest.Core.Model.Method,OpenAPI.Validator.Model.SwaggerParameter,System.Text.StringBuilder)", Justification = "Serialization Type")]
+    Target = "OpenAPI.Validator.CollectionFormatBuilder.#OnBuildMethodParameter(AutoRest.Core.Model.Method,OpenAPI.Validator.Model.SwaggerParameter,System.Text.StringBuilder)", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", 
     MessageId = "Param", Scope = "member", 
-    Target = "AutoRest.Swagger.CollectionFormatBuilder.#OnBuildMethodParameter(AutoRest.Core.Model.Method,OpenAPI.Validator.Model.SwaggerParameter,System.Text.StringBuilder)", Justification = "Serialization Type")]
+    Target = "OpenAPI.Validator.CollectionFormatBuilder.#OnBuildMethodParameter(AutoRest.Core.Model.Method,OpenAPI.Validator.Model.SwaggerParameter,System.Text.StringBuilder)", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", 
     MessageId = "OAuth", Scope = "type", Target = "OpenAPI.Validator.Model.OAuthFlow", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", 
@@ -69,19 +69,19 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces", 
     Scope = "type", Target = "OpenAPI.Validator.Model.Schema", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily", 
-    Scope = "member", Target = "OpenAPI.Validator.Model.SwaggerObject.#GetBuilder(AutoRest.Swagger.SwaggerModeler)")]
+    Scope = "member", Target = "OpenAPI.Validator.Model.SwaggerObject.#GetBuilder(OpenAPI.Validator.SwaggerModeler)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", 
     MessageId = "operation", Scope = "member", 
-    Target = "AutoRest.Swagger.OperationBuilder.#SwaggerOperationProducesJson(OpenAPI.Validator.Model.Operation)")]
+    Target = "OpenAPI.Validator.OperationBuilder.#SwaggerOperationProducesJson(OpenAPI.Validator.Model.Operation)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", 
     MessageId = "operation", Scope = "member", 
-    Target = "AutoRest.Swagger.OperationBuilder.#SwaggerOperationConsumesJson(OpenAPI.Validator.Model.Operation)")]
+    Target = "OpenAPI.Validator.OperationBuilder.#SwaggerOperationConsumesJson(OpenAPI.Validator.Model.Operation)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", 
     MessageId = "operation", Scope = "member", 
-    Target = "AutoRest.Swagger.OperationBuilder.#SwaggerOperationProducesOctetStream(OpenAPI.Validator.Model.Operation)")]
+    Target = "OpenAPI.Validator.OperationBuilder.#SwaggerOperationProducesOctetStream(OpenAPI.Validator.Model.Operation)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", 
     MessageId = "operation", Scope = "member", 
-    Target = "AutoRest.Swagger.OperationBuilder.#SwaggerOperationConsumesMultipartFormData(OpenAPI.Validator.Model.Operation)", Justification = "Serialization Type")]
+    Target = "OpenAPI.Validator.OperationBuilder.#SwaggerOperationConsumesMultipartFormData(OpenAPI.Validator.Model.Operation)", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", 
     "CA1703:ResourceStringsShouldBeSpelledCorrectly", MessageId = "multi", Scope = "resource", 
     Target = "OpenAPI.Validator.Properties.Resources.resources", Justification = "Serialization Type")]
@@ -145,5 +145,5 @@
     Scope = "member", Target = "OpenAPI.Validator.JsonConverters.SwaggerJsonConverter.#Document", Justification = "Serialization Type")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", 
     Scope = "member", Target = "OpenAPI.Validator.Model.ServiceDefinition.#CustomPaths", Justification = "Serialization Type")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Scope = "member", Target = "AutoRest.Swagger.SchemaBuilder.#BuildServiceType(System.String)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "AutoRest.Core.Logging.ErrorManager.CreateError(System.String,System.Object[])", Scope = "member", Target = "AutoRest.Swagger.SwaggerModeler.#Build()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Scope = "member", Target = "OpenAPI.Validator.SchemaBuilder.#BuildServiceType(System.String)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "AutoRest.Core.Logging.ErrorManager.CreateError(System.String,System.Object[])", Scope = "member", Target = "OpenAPI.Validator.SwaggerModeler.#Build()")]

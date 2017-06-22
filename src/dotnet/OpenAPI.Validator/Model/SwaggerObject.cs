@@ -7,15 +7,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Diagnostics.CodeAnalysis;
-using AutoRest.Core.Model;
-using AutoRest.Core.Utilities;
+
+
 using OpenAPI.Validator.Properties;
 using OpenAPI.Validator;
 using Newtonsoft.Json;
-using static AutoRest.Core.Utilities.DependencyInjection;
 using OpenAPI.Validator.Core;
 
-OpenAPI.Validator.Model
+namespace OpenAPI.Validator.Model
 {
     /// <summary>
     /// Describes a single operation determining with this object is mandatory.

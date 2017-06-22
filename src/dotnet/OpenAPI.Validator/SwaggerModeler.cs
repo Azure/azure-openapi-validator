@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using AutoRest.Core;
-using AutoRest.Core.Model;
-using AutoRest.Core.Logging;
-using AutoRest.Core.Utilities;
-using AutoRest.Core.Utilities.Collections;
+
+
+
+
+
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;
