@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using AutoRest.Core.Logging;
 using AutoRest.Core.Properties;
-using AutoRest.Core.Utilities;
+using AutoRest.Swagger.Utilities;
 
 namespace AutoRest.Core.Extensibility
 {
