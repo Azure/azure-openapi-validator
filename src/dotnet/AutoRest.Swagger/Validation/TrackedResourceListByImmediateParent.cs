@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
+using AutoRest.Swagger.Properties;
 using AutoRest.Swagger.Model;
 
 namespace AutoRest.Swagger.Validation

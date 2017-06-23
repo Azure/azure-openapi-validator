@@ -3,7 +3,7 @@
 
 using System.Text.RegularExpressions;
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
+using AutoRest.Swagger.Properties;
 using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Validation.Core;
 

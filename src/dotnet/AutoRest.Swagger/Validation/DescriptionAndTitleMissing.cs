@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using AutoRest.Core.Logging;
 using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model;
-using AutoRest.Core.Properties;
-
+using AutoRest.Swagger.Properties;
 namespace AutoRest.Swagger.Validation
 {
     public class DescriptionAndTitleMissing : DescriptionRequired<Dictionary<string, Schema>>

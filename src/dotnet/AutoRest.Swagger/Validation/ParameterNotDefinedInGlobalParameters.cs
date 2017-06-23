@@ -2,10 +2,9 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
+using AutoRest.Swagger.Properties;
 using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model;
-using AutoRest.Swagger.Model.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 

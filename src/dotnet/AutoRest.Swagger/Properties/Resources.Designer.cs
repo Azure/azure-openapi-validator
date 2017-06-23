@@ -141,15 +141,6 @@ namespace AutoRest.Swagger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully initialized modeler {0} v {1}..
-        /// </summary>
-        public static string ModelerInitialized {
-            get {
-                return ResourceManager.GetString("ModelerInitialized", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to For better generated code quality, remove all references to &quot;msdn.microsoft.com&quot;..
         /// </summary>
         public static string MsdnReferencesDiscouraged {
@@ -240,38 +231,11 @@ namespace AutoRest.Swagger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; is required..
-        /// </summary>
-        public static string ParameterValueIsMissing {
-            get {
-                return ResourceManager.GetString("ParameterValueIsMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; value is not valid. Expect &apos;{1}&apos;.
-        /// </summary>
-        public static string ParameterValueIsNotValid {
-            get {
-                return ResourceManager.GetString("ParameterValueIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &apos;PATCH&apos; operation &apos;{0}&apos; should use method name &apos;Update&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
         public static string PatchOperationNameNotValid {
             get {
                 return ResourceManager.GetString("PatchOperationNameNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to path cannot be null or an empty string or a string with white spaces while getting the parent directory.
-        /// </summary>
-        public static string PathCannotBeNullOrEmpty {
-            get {
-                return ResourceManager.GetString("PathCannotBeNullOrEmpty", resourceCulture);
             }
         }
         
@@ -698,16 +662,7 @@ namespace AutoRest.Swagger.Properties {
                 return ResourceManager.GetString("NoProduceOperationWithBody", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to OperationId is required for all operations. Please add it for &apos;{0}&apos; operation of &apos;{1}&apos; path. .
-        /// </summary>
-        public static string OperationIdMissing {
-            get {
-                return ResourceManager.GetString("OperationIdMissing", resourceCulture);
-            }
-        }
-        
+
         /// <summary>
         ///    Looks up a localized string similar to Options HTTP verb is not supported..
         /// </summary>

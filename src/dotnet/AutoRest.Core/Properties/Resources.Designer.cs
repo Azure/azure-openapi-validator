@@ -212,6 +212,42 @@ namespace AutoRest.Core.Properties {
                 return ResourceManager.GetString("TypeShouldBeAssemblyQualified", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to path cannot be null or an empty string or a string with white spaces while getting the parent directory.
+        /// </summary>
+        public static string PathCannotBeNullOrEmpty {
+            get {
+                return ResourceManager.GetString("PathCannotBeNullOrEmpty", resourceCulture);
+            }
+        }
+       
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully initialized modeler {0} v {1}..
+        /// </summary>
+        public static string ModelerInitialized {
+            get {
+                return ResourceManager.GetString("ModelerInitialized", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; value is not valid. Expect &apos;{1}&apos;.
+        /// </summary>
+        public static string ParameterValueIsNotValid {
+            get {
+                return ResourceManager.GetString("ParameterValueIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; is required..
+        /// </summary>
+        public static string ParameterValueIsMissing {
+            get {
+                return ResourceManager.GetString("ParameterValueIsMissing", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a known format..

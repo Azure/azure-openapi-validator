@@ -201,9 +201,6 @@
   <data name="UniqueResourcePaths" xml:space="preserve">
     <value>Multiple resource providers are not allowed in a single spec. More than one the resource paths were found: '{0}'.</value>
   </data>
-  <data name="PathCannotBeNullOrEmpty" xml:space="preserve">
-    <value>path cannot be null or an empty string or a string with white spaces while getting the parent directory</value>
-  </data>
   <data name="GuidUsageNotRecommended" xml:space="preserve">
     <value>Guid used in model definition '{1}' for property '{0}'. Usage of Guid is not recommanded. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.</value>
   </data>
@@ -294,11 +291,8 @@
   <data name="GeneratingClient" xml:space="preserve">
     <value>Generating client model from swagger model.</value>
   </data>
-  <data name="ParameterValueIsMissing" xml:space="preserve">
-    <value>Parameter '{0}' is required.</value>
-  </data>
-  <data name="ParameterValueIsNotValid" xml:space="preserve">
-    <value>Parameter '{0}' value is not valid. Expect '{1}'</value>
+  <data name="ModelerInitialized" xml:space="preserve">
+    <value>Successfully initialized modeler {0} v {1}.</value>
   </data>
   <data name="IncompatibleTypesInBaseSchema" xml:space="preserve">
     <value>Found incompatible property types {1}, {2} for property '{0}' in schema inheritance chain {3}</value>
@@ -329,9 +323,6 @@
   </data>
   <data name="NoProduceOperationWithBody" xml:space="preserve">
     <value>Method '{0}' does not declare any MIME type for the return body. Generated code will not deserialize the content.</value>
-  </data>
-  <data name="OperationIdMissing" xml:space="preserve">
-    <value>OperationId is required for all operations. Please add it for '{0}' operation of '{1}' path. </value>
   </data>
   <data name="OptionsNotSupported" xml:space="preserve">
     <value>Options HTTP verb is not supported.</value>

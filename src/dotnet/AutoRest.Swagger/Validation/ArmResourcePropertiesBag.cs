@@ -3,11 +3,9 @@
 
 using AutoRest.Core.Logging;
 using AutoRest.Swagger.Validation.Core;
-using AutoRest.Core.Properties;
-using AutoRest.Swagger.Model.Utilities;
+using AutoRest.Swagger.Properties;
 using System.Collections.Generic;
 using AutoRest.Swagger.Model;
-using System.Text.RegularExpressions;
 using System.Linq;
 
 namespace AutoRest.Swagger.Validation

@@ -1,6 +1,6 @@
 ﻿using AutoRest.Core.Logging;
 using AutoRest.Swagger.Model;
-using AutoRest.Core.Properties;
+using AutoRest.Swagger.Properties;
 using System.Collections.Generic;
 using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model.Utilities;

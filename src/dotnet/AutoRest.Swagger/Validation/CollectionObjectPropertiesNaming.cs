@@ -4,11 +4,11 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
 using AutoRest.Swagger.Validation.Core;
 using AutoRest.Swagger.Model;
 using AutoRest.Swagger.Model.Utilities;
 using System.Linq;
+using AutoRest.Swagger.Properties;
 
 namespace AutoRest.Swagger.Validation
 {
