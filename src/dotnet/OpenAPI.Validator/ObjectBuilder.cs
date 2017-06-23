@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using AutoRest.Core;
 using AutoRest.Core.Model;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Utilities.Collections;
+using OpenAPI.Validator.Validation;
 using OpenAPI.Validator.Model;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using Newtonsoft.Json.Linq;
@@ -54,7 +54,7 @@ namespace OpenAPI.Validator
             }
             type.XmlProperties = (SwaggerObject as Schema)?.Xml;
             type.Format = SwaggerObject.Format;
-            var xMsEnum = SwaggerObject.Extensions.GetValue<JToken>(Core.Model.XmsExtensions.Enum.Name);
+            var xMsEnum = SwaggerObject.Extensions.GetValue<JToken>(AutoRest.Core.Model.XmsExtensions.Enum.Name);
             if ((SwaggerObject.Enum != null || xMsEnum != null) && type.KnownPrimaryType == KnownPrimaryType.String && !(IsSwaggerObjectConstant(SwaggerObject)))
             {
                 var enumType = New<EnumType>();
@@ -93,7 +93,7 @@ namespace OpenAPI.Validator
                         throw new InvalidOperationException(
                             string.Format(CultureInfo.InvariantCulture,
                                 "{0} extension needs to specify an enum name.",
-                                Core.Model.XmsExtensions.Enum.Name));
+                                AutoRest.Core.Model.XmsExtensions.Enum.Name));
                     }
                     var existingEnum =
                         Modeler.CodeModel.EnumTypes.FirstOrDefault(
@@ -105,7 +105,7 @@ namespace OpenAPI.Validator
                             throw new InvalidOperationException(
                                 string.Format(CultureInfo.InvariantCulture,
                                     "Swagger document contains two or more {0} extensions with the same name '{1}' and different values.",
-                                    Core.Model.XmsExtensions.Enum.Name,
+                                    AutoRest.Core.Model.XmsExtensions.Enum.Name,
                                     enumType.Name));
                         }
                         // Use the existing one!

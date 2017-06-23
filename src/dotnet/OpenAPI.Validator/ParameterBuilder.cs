@@ -50,9 +50,9 @@ namespace OpenAPI.Validator
                 Name = unwrappedParameter.Name,
                 SerializedName = unwrappedParameter.Name,
                 ModelType = parameterType,
-                Location = (Core.Model.ParameterLocation)Enum.Parse(typeof(Core.Model.ParameterLocation), unwrappedParameter.In.ToString())
+                Location = (AutoRest.Core.Model.ParameterLocation)Enum.Parse(typeof(AutoRest.Core.Model.ParameterLocation), unwrappedParameter.In.ToString())
             });
-            parameter.IsRequired = parameter.IsRequired || parameter.Location == Core.Model.ParameterLocation.Path;
+            parameter.IsRequired = parameter.IsRequired || parameter.Location == AutoRest.Core.Model.ParameterLocation.Path;
             PopulateParameter(parameter, unwrappedParameter);
 
             if (_swaggerParameter.Reference != null)
