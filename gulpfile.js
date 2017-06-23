@@ -53,6 +53,10 @@ gulp.task('build', ['build/dotnet', 'build/typescript'], function () {
     console.log('Building code...');
 });
 
+gulp.task('clean', ['clean/typescript', 'clean/dotnet'], function () {
+    console.log('Cleaning artifacts...');
+});
+
 gulp.task('test', ['test/dotnet', 'test/typescript'], function () {
     console.log('Running the unit tests...');
 });
