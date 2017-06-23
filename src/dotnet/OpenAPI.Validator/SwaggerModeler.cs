@@ -13,7 +13,7 @@ using AutoRest.Core.Utilities;
 using AutoRest.Core.Utilities.Collections;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
-using ParameterLocation = AutoRest.Swagger.Model.ParameterLocation;
+using ParameterLocation = OpenAPI.Validator.Model.ParameterLocation;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using OpenAPI.Validator.Validation.Core;
 

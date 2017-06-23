@@ -8,7 +8,7 @@ using AutoRest.Core;
 using AutoRest.Core.Logging;
 using AutoRest.Core.Parsing;
 using AutoRest.Core.Utilities;
-using AutoRest.Swagger.JsonConverters;
+using OpenAPI.Validator.JsonConverters;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using Newtonsoft.Json;

@@ -1,7 +1,7 @@
 ﻿
 using AutoRest.Core.Logging;
 using OpenAPI.Validator.Model;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

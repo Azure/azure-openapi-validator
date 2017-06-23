@@ -7,7 +7,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using System.Collections.Generic;
 using System.Linq;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 
 namespace OpenAPI.Validator.Validation
 {

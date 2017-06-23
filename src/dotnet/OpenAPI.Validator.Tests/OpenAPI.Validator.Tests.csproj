@@ -21,7 +21,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <ProjectReference Include="$(MSBuildProjectDirectory)\..\AutoRest.Core\AutoRest.Core.csproj" />
-    <ProjectReference Include="..\AutoRest.Swagger\OpenAPI.Validator.csproj" />
+    <ProjectReference Include="..\OpenAPI.Validator\OpenAPI.Validator.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="1.1.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-preview-20161123-03" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0-beta4-build1194" />

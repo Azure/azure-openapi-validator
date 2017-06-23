@@ -8,7 +8,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using System.Text.RegularExpressions;
 using System.Linq;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using OpenAPI.Validator.Validation.Core;
 
 namespace OpenAPI.Validator.Validation

@@ -3,7 +3,7 @@
 
 using AutoRest.Core.Logging;
 using OpenAPI.Validator.Model;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using OpenAPI.Validator.Validation.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;

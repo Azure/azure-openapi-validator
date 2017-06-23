@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using AutoRest.Core.Logging;
 using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Model;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using OpenAPI.Validator.Properties;
 
 namespace OpenAPI.Validator.Validation

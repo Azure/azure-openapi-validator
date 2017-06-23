@@ -3,9 +3,9 @@
 
 using AutoRest.Core.Properties;
 using AutoRest.Core.Logging;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using System.Collections.Generic;
-using AutoRest.Swagger;
+using OpenAPI.Validator;
 using OpenAPI.Validator.Model;
 using System.Text.RegularExpressions;
 using System.Linq;

@@ -8,7 +8,7 @@
 // "In Suppression File".
 // You do not need to add suppressions to this file manually.
 
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "AutoRest.Swagger.Tests.SwaggerSpecHelper.#RunTests`1(System.String,System.String,System.String,AutoRest.Core.Settings)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "AutoRest.Swagger.Tests.SwaggerSpecHelper.#RunTests`1(AutoRest.Core.Settings,System.String)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Scope = "member", Target = "AutoRest.Swagger.Tests.SwaggerModelerTests.#TestDataTypes()")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "client", Scope = "member", Target = "AutoRest.Swagger.Tests.SwaggerModelerTests.#TestSettingsFromSwagger()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "OpenAPI.Validator.Tests.SwaggerSpecHelper.#RunTests`1(System.String,System.String,System.String,AutoRest.Core.Settings)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "OpenAPI.Validator.Tests.SwaggerSpecHelper.#RunTests`1(AutoRest.Core.Settings,System.String)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Scope = "member", Target = "OpenAPI.Validator.Tests.SwaggerModelerTests.#TestDataTypes()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "client", Scope = "member", Target = "OpenAPI.Validator.Tests.SwaggerModelerTests.#TestSettingsFromSwagger()")]

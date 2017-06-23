@@ -3,7 +3,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using System.Collections.Generic;
 using OpenAPI.Validator.Validation.Core;
-using AutoRest.Swagger.Model.Utilities;
+using OpenAPI.Validator.Model.Utilities;
 using Newtonsoft.Json.Linq;
 
 namespace OpenAPI.Validator.Validation

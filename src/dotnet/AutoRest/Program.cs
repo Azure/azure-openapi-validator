@@ -13,7 +13,7 @@ using System.IO;
 using AutoRest.Core.Parsing;
 using YamlDotNet.RepresentationModel;
 using System.Text.RegularExpressions;
-using AutoRest.Swagger.Logging.Core;
+using OpenAPI.Validator.Logging.Core;
 
 namespace AutoRest
 {
@@ -23,8 +23,9 @@ namespace AutoRest
         {
             int exitCode = (int)ExitCode.Error;
 
-            if(args != null && args.Length > 0 && args[0] == "--server") {
-              return new AutoRestAsAsService().Run().Result;
+            if (args != null && args.Length > 0 && args[0] == "--server")
+            {
+                return new AutoRestAsAsService().Run().Result;
             }
 
             try
@@ -59,8 +60,8 @@ namespace AutoRest
                             return 0;
                         }
 
-                        Settings.AutoRestFolder = Path.GetDirectoryName( typeof(Program).GetAssembly().Location);
-                        
+                        Settings.AutoRestFolder = Path.GetDirectoryName(typeof(Program).GetAssembly().Location);
+
                         // help requested?
                         string defCodeGen = (args.Where(arg => arg.ToLowerInvariant().Contains("codegenerator")).IsNullOrEmpty()) ? "" : settings.CodeGenerator;
                         if (settings.ShowHelp)
