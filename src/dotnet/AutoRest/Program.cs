@@ -8,7 +8,6 @@ using AutoRest.Core;
 using AutoRest.Core.Logging;
 using AutoRest.Core.Utilities;
 using AutoRest.Properties;
-using AutoRest.Simplify;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using System.IO;
 using AutoRest.Core.Parsing;
@@ -40,12 +39,6 @@ namespace AutoRest
                     {
                         settings = Settings.Create(args);
 
-                        // opt into client side validation by default
-                        if (!settings.CustomSettings.ContainsKey("ClientSideValidation"))
-                        {
-                            settings.CustomSettings.Add("ClientSideValidation", true);
-                        }
-
                         // set up logging
                         if (settings.JsonValidationMessages)
                         {
@@ -68,20 +61,7 @@ namespace AutoRest
                         }
 
                         Settings.AutoRestFolder = Path.GetDirectoryName( typeof(Program).GetAssembly().Location);
-
-                        // determine some reasonable default namespace
-                        if (settings.Namespace == null)
-                        {
-                            if (settings.Input != null)
-                            {
-                                settings.Namespace = Path.GetFileNameWithoutExtension(settings.Input);
-                            }
-                            else
-                            {
-                                settings.Namespace = "default";
-                            }
-                        }
-
+                        
                         // help requested?
                         string defCodeGen = (args.Where(arg => arg.ToLowerInvariant().Contains("codegenerator")).IsNullOrEmpty()) ? "" : settings.CodeGenerator;
                         if (settings.ShowHelp)
@@ -93,10 +73,6 @@ namespace AutoRest
 
                         // main pipeline
                         AutoRestController.Generate();
-                        if (!Settings.Instance.JsonValidationMessages && !Settings.Instance.DisableSimplifier && Settings.Instance.CodeGenerator.IndexOf("csharp", StringComparison.OrdinalIgnoreCase) > -1)
-                        {
-                            new Simplify.CSharpSimplifier().Run().ConfigureAwait(false).GetAwaiter().GetResult();
-                        }
                         if (!settings.JsonValidationMessages)
                         {
                             Settings.Instance.FileSystemOutput.CommitToDisk(Settings.Instance.OutputFileName == null
