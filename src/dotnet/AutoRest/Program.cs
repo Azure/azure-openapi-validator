@@ -12,7 +12,6 @@ using static AutoRest.Core.Utilities.DependencyInjection;
 using System.IO;
 using AutoRest.Core.Parsing;
 using YamlDotNet.RepresentationModel;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using AutoRest.Swagger.Logging.Core;
 
@@ -73,12 +72,6 @@ namespace AutoRest
 
                         // main pipeline
                         AutoRestController.Generate();
-                        if (!settings.JsonValidationMessages)
-                        {
-                            Settings.Instance.FileSystemOutput.CommitToDisk(Settings.Instance.OutputFileName == null
-                                ? Settings.Instance.OutputDirectory
-                                : Path.GetDirectoryName(Settings.Instance.OutputFileName));
-                        }
                     }
                     catch (Exception exception)
                     {
@@ -100,15 +93,6 @@ namespace AutoRest
                                     Logger.Instance.Log(Category.Error, "{0} {1}",
                                         typeof(Program).GetAssembly().ManifestModule.Name, string.Join(" ", args));
                                 }
-                            }
-                            else
-                            {
-                                if (!"None".EqualsIgnoreCase(settings.CodeGenerator))
-                                {
-                                    Logger.Instance.Log(Category.Info, Resources.GenerationComplete,
-                                        settings.CodeGenerator, settings.Input);
-                                }
-                                exitCode = (int)ExitCode.Success;
                             }
                         }
                     }

@@ -71,37 +71,7 @@ namespace AutoRest.Core
             {
                 return; // no code gen in Json validation mode
             }
-
-            var plugin = ExtensionsLoader.GetPlugin();
             
-            Console.ResetColor();
-            Console.WriteLine(plugin.CodeGenerator.UsageInstructions);
-
-            Settings.Instance.Validate();
-            try
-            {
-                var genericSerializer = new ModelSerializer<CodeModel>();
-                var modelAsJson = genericSerializer.ToJson(codeModel);
-
-                // ensure once we're doing language-specific work, that we're working
-                // in context provided by the language-specific transformer. 
-                using (plugin.Activate())
-                {
-                    // load model into language-specific code model
-                    codeModel = plugin.Serializer.Load(modelAsJson);
-
-                    // apply language-specific tranformation (more than just language-specific types)
-                    // used to be called "NormalizeClientModel" . 
-                    codeModel = plugin.Transformer.TransformCodeModel(codeModel);
-
-                    // Generate code from CodeModel.
-                    plugin.CodeGenerator.Generate(codeModel).GetAwaiter().GetResult();
-                }
-            }
-            catch (Exception exception)
-            {
-                throw ErrorManager.CreateError(Resources.ErrorSavingGeneratedCode, exception);
-            }
         }
     }
 }
