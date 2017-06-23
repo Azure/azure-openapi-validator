@@ -47,11 +47,7 @@ gulp.task('build/dotnet', ['restore/dotnet'], function () {
 
 gulp.task('test/dotnet', ['build/dotnet'], function () {
     console.log('Running the dotnet unit tests...');
-    gulp.src(['./src/dotnet/AutoRest.Swagger.Tests/AutoRest.Swagger.Tests.csproj'])
-        .pipe(run('dotnet test -v'))
-        .once('error', () => {
-            process.exit(1);
-        });
+    return run('dotnet test -v q', { cwd: './src/dotnet/AutoRest.Swagger.Tests' }).exec();
 });
 
 // Now the defaults
