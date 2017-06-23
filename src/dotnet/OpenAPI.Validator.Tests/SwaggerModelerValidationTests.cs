@@ -19,7 +19,7 @@ namespace OpenAPI.Validator.Tests
     [Collection("Validation Tests")]
     public partial class SwaggerModelerValidationTests
     {
-        private static readonly string PathToValidationResources = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "Swagger", "Validation");
+        private static readonly string PathToValidationResources = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation");
         private IEnumerable<ValidationMessage> ValidateSwagger(string input, ServiceDefinitionMetadata metadata)
         {
             // Most rules are to be applied for ARM documents
@@ -644,7 +644,7 @@ namespace OpenAPI.Validator.Tests
                 ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM,
                 MergeState = ServiceDefinitionDocumentState.Individual
             };
-            var messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "Swagger", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
+            var messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
             // composed state
@@ -653,7 +653,7 @@ namespace OpenAPI.Validator.Tests
                 ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM,
                 MergeState = ServiceDefinitionDocumentState.Composed
             };
-            messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "Swagger", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
+            messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
         }
@@ -767,7 +767,7 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void ValidResourceModels()
         {
-            var filePath = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "Swagger", "Validation", "positive", "valid-resource-model-definitions.json");
+            var filePath = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "valid-resource-model-definitions.json");
             var fileText = System.IO.File.ReadAllText(filePath);
             var servDef = SwaggerParser.Parse(filePath, fileText);
             Uri uriPath = null;

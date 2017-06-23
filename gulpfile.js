@@ -45,7 +45,7 @@ gulp.task('build/dotnet', ['restore/dotnet'], function () {
 
 gulp.task('test/dotnet', ['build/dotnet'], function () {
     console.log('Running the dotnet unit tests...');
-    return run('dotnet test -v q', { cwd: './src/dotnet/AutoRest.Swagger.Tests' }).exec();
+    return run('dotnet test -v q', { cwd: './src/dotnet/OpenAPI.Validator.Tests' }).exec();
 });
 
 // Now the defaults/commons

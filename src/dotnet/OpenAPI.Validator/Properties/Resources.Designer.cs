@@ -675,6 +675,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to When property is modeled as &quot;readOnly&quot;: true then x-ms-mutability extension can only have &quot;read&quot; value. When property is modeled as &quot;readOnly&quot;: false then applying x-ms-mutability extension with only &quot;read&quot; value is not allowed. Extension contains invalid values: &apos;{0}&apos;..
+        /// </summary>
+        public static string InvalidMutabilityValueForReadOnly
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidMutabilityValueForReadOnly", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///    Looks up a localized string similar to Reached Maximum reference depth when resolving reference &apos;{0}&apos;..
         /// </summary>
         public static string ExceededMaximumReferenceDepth
@@ -682,6 +693,17 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("ExceededMaximumReferenceDepth", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Value of &apos;x-ms-client-name&apos; cannot be the same as &apos;{0}&apos; Property/Model..
+        /// </summary>
+        public static string XmsClientNameInvalid
+        {
+            get
+            {
+                return ResourceManager.GetString("XmsClientNameInvalid", resourceCulture);
             }
         }
 

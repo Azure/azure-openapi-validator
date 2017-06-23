@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resource\Swagger\**\*.json">
+    <Content Include="Resource\OpenAPI\**\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resource\Swagger\**\*.yaml">
+    <Content Include="Resource\OpenAPI\**\*.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <ProjectReference Include="$(MSBuildProjectDirectory)\..\AutoRest.Core\AutoRest.Core.csproj" />

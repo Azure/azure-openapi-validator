@@ -3,7 +3,7 @@
 
 using System;
 using System.Linq;
-using AutoRest.Core.Properties;
+using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Model;
 using AutoRest.Core.Logging;
