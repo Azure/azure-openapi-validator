@@ -48,7 +48,11 @@ gulp.task('test/dotnet', ['build/dotnet'], function () {
     return run('dotnet test -v q', { cwd: './src/dotnet/AutoRest.Swagger.Tests' }).exec();
 });
 
-// Now the defaults
+// Now the defaults/commons
+gulp.task('build', ['build/dotnet', 'build/typescript'], function () {
+    console.log('Building code...');
+});
+
 gulp.task('test', ['test/dotnet', 'test/typescript'], function () {
     console.log('Running the unit tests...');
 });
