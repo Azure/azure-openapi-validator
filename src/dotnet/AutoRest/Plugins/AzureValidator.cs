@@ -7,11 +7,11 @@ using AutoRest.Core.Utilities;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
-using AutoRest.Swagger;
-using AutoRest.Swagger.Validation.Core;
+using OpenAPI.Validator;
+using OpenAPI.Validator.Validation.Core;
 using System.Threading.Tasks;
 using System;
-using AutoRest.Swagger.Model;
+using OpenAPI.Validator.Model;
 
 public class AzureValidator : NewPlugin
 {

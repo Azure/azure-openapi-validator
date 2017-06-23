@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(MSBuildProjectDirectory)/../AutoRest.Core/AutoRest.Core.csproj" />
-    <ProjectReference Include="..\AutoRest.Swagger\AutoRest.Swagger.csproj" />
+    <ProjectReference Include="..\AutoRest.Swagger\OpenAPI.Validator.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
