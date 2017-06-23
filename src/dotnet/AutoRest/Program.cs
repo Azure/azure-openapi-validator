@@ -66,7 +66,8 @@ namespace AutoRest
                         if (settings.ShowHelp)
                         {
                             settings.CodeGenerator = defCodeGen;
-                            Console.WriteLine(HelpGenerator.Generate(IsShowMarkdownHelpIncluded(args) ? Resources.HelpMarkdownTemplate : Resources.HelpTextTemplate, settings));
+                            //Console.WriteLine(HelpGenerator.Generate(IsShowMarkdownHelpIncluded(args) ? Resources.HelpMarkdownTemplate : Resources.HelpTextTemplate, settings));
+                            // print validator help here
                             return 0;
                         }
 

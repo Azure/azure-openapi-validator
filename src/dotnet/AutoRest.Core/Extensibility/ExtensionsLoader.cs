@@ -11,47 +11,11 @@ using System.Reflection;
 using AutoRest.Core.Logging;
 using AutoRest.Core.Properties;
 using AutoRest.Core.Utilities;
-using IAnyPlugin = AutoRest.Core.Extensibility.IPlugin<AutoRest.Core.Extensibility.IGeneratorSettings, AutoRest.Core.IModelSerializer<AutoRest.Core.Model.CodeModel>, AutoRest.Core.ITransformer<AutoRest.Core.Model.CodeModel>, AutoRest.Core.CodeGenerator, AutoRest.Core.CodeNamer, AutoRest.Core.Model.CodeModel>;
 
 namespace AutoRest.Core.Extensibility
 {
     public static class ExtensionsLoader
     {
-        public static IAnyPlugin GetPlugin(string pluginName = null)
-        {
-            if (pluginName == null)
-            {
-                pluginName = Settings.Instance.CodeGenerator;
-            }
-
-            Logger.Instance.Log(Category.Info, Resources.InitializingCodeGenerator);
-
-            if (string.IsNullOrEmpty(pluginName))
-            {
-                throw new ArgumentException(
-                    string.Format(CultureInfo.InvariantCulture,
-                        Resources.ParameterValueIsMissing, "CodeGenerator"));
-            }
-
-            IAnyPlugin plugin = null;
-
-            if (pluginName.EqualsIgnoreCase("None"))
-            {
-                plugin = new NoOpPlugin();
-            }
-            else
-            {
-                var config = AutoRestConfiguration.Get();
-                plugin = LoadTypeFromAssembly<IAnyPlugin>(config.Plugins, pluginName);
-                Settings.PopulateSettings(plugin.Settings, Settings.Instance.CustomSettings);
-            }
-            Logger.Instance.Log(Category.Info, Resources.GeneratorInitialized,
-                pluginName,
-                plugin.GetType().GetAssembly().GetName().Version);
-            return plugin;
-
-        }
-
         /// <summary>
         /// Gets the modeler specified in the provided Settings.
         /// </summary>

@@ -7,18 +7,6 @@ using AutoRest.Core.Extensibility;
 
 namespace AutoRest.Core
 {
-    
-    public class NoOpPlugin :
-        Plugin<NoOpPlugin.NoSettings, CodeModelTransformer<CodeModel>, NoOpCodeGenerator, CodeNamer, CodeModel>
-    {
-        public class NoSettings : IGeneratorSettings
-        {
-            public virtual string Name => "No op code generator";
-
-            public virtual string Description => "No op code generator";
-        }
-    }
-
     public class NoOpCodeGenerator: CodeGenerator
     {
         public NoOpCodeGenerator()
