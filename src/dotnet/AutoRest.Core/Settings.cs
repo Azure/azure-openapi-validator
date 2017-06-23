@@ -18,18 +18,20 @@ using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace AutoRest.Core
 {
-    public interface IHost {
+    public interface IHost
+    {
         Task<string> ReadFile(string filename);
         Task<T> GetValue<T>(string key);
         Task<string> GetValue(string key);
         Task<string[]> ListInputs();
     }
 
-    public class NullHost : IHost {
+    public class NullHost : IHost
+    {
         public Task<string> ReadFile(string filename) => string.Empty.AsResultTask();
-        public Task<T> GetValue<T>(string key)=> (default(T)).AsResultTask();
-        public Task<string> GetValue(string key)=> string.Empty.AsResultTask();
-        public Task<string[]> ListInputs()=> (new string[0]).AsResultTask();
+        public Task<T> GetValue<T>(string key) => (default(T)).AsResultTask();
+        public Task<string> GetValue(string key) => string.Empty.AsResultTask();
+        public Task<string[]> ListInputs() => (new string[0]).AsResultTask();
     }
     public class Settings : IsSingleton<Settings>
     {
@@ -77,17 +79,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
             // this instance of the settings object should be used for subsequent 
             // requests for settings.
             Singleton<Settings>.Instance = this;
-
-            FileSystemInput = new FileSystem();
-            FileSystemOutput = new MemoryFileSystem();
-            OutputDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Generated");
-            CustomSettings = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-            Header = string.Format(CultureInfo.InvariantCulture, DefaultCodeGenerationHeader, AutoRestController.Version);
-            CodeGenerator = "CSharp";
-            Modeler = "Swagger";
-            ValidationLevel = Category.Error;
-            ModelsName = "Models";
-            CodeGenerationMode = "rest-client";
         }
 
         /// <summary>
@@ -343,8 +334,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
                 }
                 if (key != null)
                 {
-                AddArgumentToDictionary(key, value, argsDictionary);
-            }
+                    AddArgumentToDictionary(key, value, argsDictionary);
+                }
             }
             return argsDictionary;
         }
