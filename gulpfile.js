@@ -35,14 +35,19 @@ gulp.task('clean/dotnet', function () {
 
 gulp.task('restore/dotnet', ['clean/dotnet'], function () {
     console.log('Running dotnet restore...');
-    return gulp.src('./src/dotnet/*.csproj')
-        .pipe(run('dotnet restore'));
+    return run('dotnet restore ./src/dotnet/OpenAPI.Validator.sln').exec();
+    //console.log(stream.read());
+
+    //return gulp.src('./src/dotnet/OpenAPI.Validator.sln')
+    //    .pipe(run('dotnet restore'));
 });
 
 gulp.task('build/dotnet', ['restore/dotnet'], function () {
     console.log('Running dotnet build...');
-    return gulp.src('./src/dotnet/*.csproj')
-        .pipe(run('dotnet build'));
+    return run('dotnet build', { cwd: './src/dotnet/' }).exec();
+
+    //return gulp.src('./src/dotnet/**/*.csproj')
+    //    .pipe(run('dotnet build'));
 });
 
 gulp.task('test/dotnet', ['build/dotnet'], function () {
