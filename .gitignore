@@ -11,3 +11,6 @@ src/dotnet/**/[Oo]bj/
 src/dotnet/**/*.deps.json
 src/dotnet/**/[Dd]ebug*/
 src/dotnet/**/[Rr]elease/
+
+# ignore vs
+**/.vs/

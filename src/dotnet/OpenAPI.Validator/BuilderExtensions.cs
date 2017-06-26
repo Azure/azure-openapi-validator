@@ -1,15 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System;
-using System.Globalization;
-using AutoRest.Core.Logging;
 using AutoRest.Core.Utilities;
-using OpenAPI.Validator.JsonConverters;
 using OpenAPI.Validator.Model;
-using OpenAPI.Validator.Properties;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using AutoRest.Core.Model;
 
 namespace OpenAPI.Validator

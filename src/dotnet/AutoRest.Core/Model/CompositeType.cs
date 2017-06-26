@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using AutoRest.Core.Utilities;
-using AutoRest.Core.Utilities.Collections;
 using Newtonsoft.Json;
 
 namespace AutoRest.Core.Model

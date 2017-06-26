@@ -5,15 +5,11 @@
 
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
-using AutoRest.Core;
-using AutoRest.Core.Model;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Utilities.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace AutoRest.Core.Model
 {

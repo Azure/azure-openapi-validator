@@ -3,13 +3,11 @@
 
 using System;
 using System.Globalization;
-using AutoRest.Core;
 using AutoRest.Core.Model;
 using AutoRest.Core.Utilities;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using static AutoRest.Core.Utilities.DependencyInjection;
-using System.Linq;
 
 namespace OpenAPI.Validator
 {

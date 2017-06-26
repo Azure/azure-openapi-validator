@@ -4,7 +4,6 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Globalization;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Utilities.Collections;
 using Newtonsoft.Json;

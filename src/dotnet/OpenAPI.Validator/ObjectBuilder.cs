@@ -9,7 +9,6 @@ using System.Linq;
 using AutoRest.Core.Model;
 using AutoRest.Core.Utilities;
 using AutoRest.Core.Utilities.Collections;
-using OpenAPI.Validator.Validation;
 using OpenAPI.Validator.Model;
 using static AutoRest.Core.Utilities.DependencyInjection;
 using Newtonsoft.Json.Linq;

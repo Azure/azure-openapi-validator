@@ -8,7 +8,6 @@ using Xunit;
 using System.Collections.Generic;
 using OpenAPI.Validator.Validation.Core;
 using AutoRest.Core.Logging;
-using AutoRest.Core;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation;
 using static AutoRest.Core.Utilities.DependencyInjection;
