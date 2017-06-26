@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var run = require('gulp-run')
 var mocha = require('gulp-mocha');
+var { restore, build, test, pack, publish } = require('gulp-dotnet-cli');
 
 // All the typescript tasks
 gulp.task('clean/typescript', function () {
@@ -29,23 +30,26 @@ gulp.task('test/typescript', ['build/typescript'], function () {
 // All the dotnet tasks
 gulp.task('clean/dotnet', function () {
     console.log('Cleaning build directories...');
-    return gulp.src('src/dotnet/**/bin', { read: false })
+    return gulp.src(['src/dotnet/**/bin', 'src/dotnet/**/obj'], { read: false })
         .pipe(clean({ force: true }));
 });
 
 gulp.task('restore/dotnet', ['clean/dotnet'], function () {
     console.log('Running dotnet restore...');
-    return run('dotnet restore ./src/dotnet/OpenAPI.Validator.sln').exec();
+    return gulp.src('src/dotnet/**/*.csproj')
+        .pipe(restore());
 });
 
 gulp.task('build/dotnet', ['restore/dotnet'], function () {
     console.log('Running dotnet build...');
-    return run('dotnet build', { cwd: './src/dotnet/' }).exec();
+    return gulp.src('src/dotnet/**/*.csproj')
+        .pipe(build({ verbosity: 'minimal' }));
 });
 
 gulp.task('test/dotnet', ['build/dotnet'], function () {
     console.log('Running the dotnet unit tests...');
-    return run('dotnet test -v q', { cwd: './src/dotnet/OpenAPI.Validator.Tests' }).exec();
+    return gulp.src('src/dotnet/OpenAPI.Validator.Tests/OpenAPI.Validator.Tests.csproj')
+        .pipe(test({ verbosity: 'minimal' }));
 });
 
 // Now the defaults/commons
