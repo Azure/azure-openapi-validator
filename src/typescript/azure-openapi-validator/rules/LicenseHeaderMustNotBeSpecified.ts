@@ -3,26 +3,19 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-export const LicenseMissing: string = "LicenseMissing";
+export const LicenseHeaderMustNotBeSpecified: string = "LicenseHeaderMustNotBeSpecified";
 
 rules.push({
   id: "R2065",
-  name: LicenseMissing,
-  severity: "error",
+  name: LicenseHeaderMustNotBeSpecified,
+  severity: "warning",
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..info",
+  appliesTo_JsonQuery: "$..info['x-ms-code-generation-settings']",
   run: function* (doc, node, path) {
-
-    const acceptableLicenseValue: string = 'MICROSOFT_MIT_NO_VERSION';
-    const msg: string = `Please provide correct licensing information here. Acceptable value: "name": "${acceptableLicenseValue}"`;
-    // check if a license is provided, if not raise hell!
-    if (node.license === undefined) {
-      yield { message: `${msg}`, location: path };
-    }
-    // check the name property of license object
-    else if (node.license.name !== acceptableLicenseValue) {
+    const msg: string = `License header must not be specified inside x-ms-code-generation settings. This is different for different sdks generated and is passed via command line/config file when generating the sdk.`;
+    if (node.header !== undefined) {
       yield { message: `${msg}`, location: path };
     }
   }
