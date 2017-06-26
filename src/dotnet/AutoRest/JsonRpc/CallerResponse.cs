@@ -19,7 +19,7 @@ namespace Microsoft.Perks.JsonRPC
 
     public class CallerResponse<T> : TaskCompletionSource<T>, ICallerResponse
     {
-        public string Id { get; private set; }
+        public string Id { get; }
         private Action<JObject> _setResult;
 
         public CallerResponse(string id, Action<JObject> setResult)

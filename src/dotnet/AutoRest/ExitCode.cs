@@ -6,7 +6,7 @@ namespace AutoRest
     /// <summary>
     /// Available exit codes.
     /// </summary>
-    public enum ExitCode : int
+    public enum ExitCode
     {
         Success = 0,
         Error = 1

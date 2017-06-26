@@ -107,20 +107,6 @@ namespace AutoRest
             return exitCode;
         }
 
-        /// <summary>
-        /// Returns true if show markdown flag is specified among the command line arguments.
-        /// </summary>
-        /// <param name="args">Command line arguments.</param>
-        /// <returns>True if markdown formatted help should be shown, otherwise false.</returns>
-        private static bool IsShowMarkdownHelpIncluded(string[] args)
-        {
-            if (args.Any(a => a == "-md" || "-markdown".EqualsIgnoreCase(a)))
-            {
-                return true;
-            }
-            return false;
-        }
-
         private static string InternalPreprocessor(string preSwagger)
         {
             var yaml = preSwagger.ParseYaml() as YamlMappingNode;

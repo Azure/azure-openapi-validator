@@ -240,7 +240,6 @@ namespace Microsoft.Perks.JsonRPC
                     if (IsAlive)
                     {
                         Log($"Error during Listen {e.GetType().Name}/{e.Message}/{e.StackTrace}");
-                        continue;
                     }
                 }
             }
