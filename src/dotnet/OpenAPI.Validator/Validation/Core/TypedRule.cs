@@ -3,7 +3,6 @@
 
 using AutoRest.Core.Logging;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace OpenAPI.Validator.Validation.Core
@@ -14,10 +13,6 @@ namespace OpenAPI.Validator.Validation.Core
     /// <typeparam name="T">The type of the object to validate</typeparam>
     public abstract class TypedRule<T> : Rule
     {
-        protected TypedRule()
-        {
-        }
-
         public sealed override IEnumerable<ValidationMessage> GetValidationMessages(object entity, RuleContext context) => entity is T ? GetValidationMessages((T)entity, context) : Enumerable.Empty<ValidationMessage>();
 
         /// <summary>

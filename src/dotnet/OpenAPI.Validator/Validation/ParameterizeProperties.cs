@@ -41,9 +41,6 @@ namespace OpenAPI.Validator.Validation
 
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Dictionary<string, Operation>> entity, RuleContext context)
         {
-            // get all operation objects that are either of get or post type
-            var serviceDefinition = (ServiceDefinition)context.Root;
-
             foreach (var pathObj in entity)
             {
                 var path = pathObj.Key.Trim('/');

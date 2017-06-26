@@ -4,7 +4,6 @@
 using AutoRest.Core.Logging;
 using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation.Core;
-using OpenAPI.Validator.Model;
 
 namespace OpenAPI.Validator.Validation
 {

@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using AutoRest.Core.Logging;
 using OpenAPI.Validator.Model;
-using System;
 
 namespace OpenAPI.Validator.Validation.Core
 {
@@ -13,10 +12,6 @@ namespace OpenAPI.Validator.Validation.Core
     /// </summary>
     public abstract class Rule
     {
-        protected Rule()
-        {
-        }
-
         /// <summary>
         /// Id of the Rule.
         /// </summary>

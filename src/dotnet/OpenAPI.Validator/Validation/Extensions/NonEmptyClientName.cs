@@ -6,7 +6,7 @@ using AutoRest.Core.Properties;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation.Core;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     public class NonEmptyClientName : ExtensionRule
     {

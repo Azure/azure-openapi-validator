@@ -3,7 +3,6 @@
 // 
 
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
 using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Model;
 using System.Collections.Generic;

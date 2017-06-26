@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using OpenAPI.Validator;
 using AutoRest.Core.Utilities;
+using OpenAPI.Validator.Validation.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using OpenAPI.Validator.Validation;
 using System.Text;
 using System;
 
@@ -508,7 +507,7 @@ namespace OpenAPI.Validator.Model.Utilities
         {
             Regex pathRegEx = new Regex("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/.*/" + nameInPath + "/{[^/]+}$", RegexOptions.IgnoreCase);
 
-            IEnumerable<KeyValuePair<string, Dictionary<string, Operation>>> matchingPaths = paths.Where((KeyValuePair<string, Dictionary<string, Operation>> pth) => pathRegEx.IsMatch(pth.Key));
+            IEnumerable<KeyValuePair<string, Dictionary<string, Operation>>> matchingPaths = paths.Where(pth => pathRegEx.IsMatch(pth.Key));
             if (!matchingPaths.Any()) return null;
             KeyValuePair<string, Dictionary<string, Operation>> path = matchingPaths.First();
 
@@ -639,7 +638,7 @@ namespace OpenAPI.Validator.Model.Utilities
         /// <returns>Gets the operation which matches with specified regex and returns the resource model.</returns>
         private static Operation GetListByOperation(Regex regEx, string resourceModel, Dictionary<string, Schema> definitions, ServiceDefinition serviceDefinition)
         {
-            IEnumerable<Operation> getOperations = ValidationUtilities.GetOperationsByRequestMethod("get", serviceDefinition);
+            IEnumerable<Operation> getOperations = GetOperationsByRequestMethod("get", serviceDefinition);
 
             IEnumerable<Operation> operations = getOperations.Where(operation => regEx.IsMatch(operation.OperationId) &&
                     IsXmsPageableResponseOperation(operation) &&
@@ -647,12 +646,8 @@ namespace OpenAPI.Validator.Model.Utilities
                            response => response.Key.Equals("200") &&
                            IsArrayOf(response.Value.Schema?.Reference, resourceModel, definitions)));
 
-            if (operations != null && operations.Count() != 0)
-            {
-                return operations.First();
-            }
-
-            return null;
+            return (operations?.Count() != 0)? operations.First() : null;
+            
         }
     }
 }

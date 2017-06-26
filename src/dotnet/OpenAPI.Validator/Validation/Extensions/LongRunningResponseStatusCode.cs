@@ -9,7 +9,7 @@ using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation.Core;
 using AutoRest.Core.Utilities;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     public class LongRunningResponseStatusCode : ExtensionRule
     {

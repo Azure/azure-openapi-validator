@@ -2,15 +2,12 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
-using System.Linq;
-using System.Globalization;
 
 using AutoRest.Core.Model;
-using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Validation;
+using OpenAPI.Validator.Validation.Core;
+using OpenAPI.Validator.Validation.Extensions;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
 
 namespace OpenAPI.Validator.Model
 {
@@ -80,7 +77,7 @@ namespace OpenAPI.Validator.Model
                 var parts = reference.Split('/');
                 if (parts.Length == 3 && parts[1].Equals("definitions"))
                 {
-                    Schema p = null;
+                    Schema p;
                     if (definitions.TryGetValue(parts[2], out p))
                     {
                         return p;

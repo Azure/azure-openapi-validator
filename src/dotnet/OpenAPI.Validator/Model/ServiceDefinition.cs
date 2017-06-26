@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using OpenAPI.Validator.Validation;
 using OpenAPI.Validator.Validation.Core;
+using OpenAPI.Validator.Validation.Extensions;
 
 namespace OpenAPI.Validator.Model
 {

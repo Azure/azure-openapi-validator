@@ -8,7 +8,6 @@ using OpenAPI.Validator.Validation.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace OpenAPI.Validator.Validation
 {
@@ -66,7 +65,6 @@ namespace OpenAPI.Validator.Validation
         /// <returns></returns>
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Schema> definitions, RuleContext context)
         {
-            var serviceDefinition = (ServiceDefinition)context.Root;
             var trackedResources = context.TrackedResourceModels;
             foreach (var resource in trackedResources)
             {

@@ -2,13 +2,9 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
-using AutoRest.Core.Utilities;
 using System.Collections.Generic;
 using OpenAPI.Validator.Model;
-using System.Text.RegularExpressions;
 using System.Linq;
-using OpenAPI.Validator.Model.Utilities;
 using OpenAPI.Validator.Validation.Core;
 
 namespace OpenAPI.Validator.Validation

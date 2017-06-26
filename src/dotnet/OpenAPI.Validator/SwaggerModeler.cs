@@ -21,8 +21,7 @@ namespace OpenAPI.Validator
 {
     public class SwaggerModeler : Modeler
     {
-        private const string BaseUriParameterName = "BaseUri";
-
+        
         internal Dictionary<string, string> ExtendedTypes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         internal Dictionary<string, CompositeType> GeneratedTypes = new Dictionary<string, CompositeType>();
         internal Dictionary<Schema, CompositeType> GeneratingTypes = new Dictionary<Schema, CompositeType>();

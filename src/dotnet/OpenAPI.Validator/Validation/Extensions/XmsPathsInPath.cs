@@ -9,7 +9,7 @@ using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation.Core;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Xms")]
     public class XmsPathsMustOverloadPaths : TypedRule<Dictionary<string, Operation>>

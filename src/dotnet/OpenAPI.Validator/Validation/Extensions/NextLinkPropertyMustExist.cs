@@ -6,7 +6,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation.Core;
 using Newtonsoft.Json.Linq;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     public class NextLinkPropertyMustExist : PageableExtensionRule
     {

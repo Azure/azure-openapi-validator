@@ -9,6 +9,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Model.Utilities;
 using System.Linq;
 using OpenAPI.Validator.Properties;
+using OpenAPI.Validator.Validation.Extensions;
 
 namespace OpenAPI.Validator.Validation
 {

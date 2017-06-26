@@ -5,6 +5,7 @@ using AutoRest.Core.Logging;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation.Core;
+using OpenAPI.Validator.Validation.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 

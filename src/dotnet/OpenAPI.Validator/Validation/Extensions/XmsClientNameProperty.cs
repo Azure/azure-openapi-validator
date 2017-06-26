@@ -7,7 +7,7 @@ using OpenAPI.Validator.Properties;
 using System.Collections.Generic;
 using OpenAPI.Validator.Model;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     /// <summary>
     /// Validates if the name of property and x-ms-client-name(if exists) does not match.

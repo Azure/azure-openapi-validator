@@ -8,7 +8,7 @@ using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Model;
 using AutoRest.Core.Logging;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     public class MutabilityWithReadOnly : MutabilityExtensionRule
     {

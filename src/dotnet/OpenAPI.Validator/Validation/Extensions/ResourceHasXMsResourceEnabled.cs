@@ -7,7 +7,7 @@ using OpenAPI.Validator.Validation.Core;
 using System.Collections.Generic;
 using OpenAPI.Validator.Model;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     /// <summary>
     /// Validates if the resource definition has x-ms-azure-resource extension set to true.

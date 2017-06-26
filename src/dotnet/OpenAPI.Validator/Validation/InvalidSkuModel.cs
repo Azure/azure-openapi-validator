@@ -19,7 +19,7 @@ namespace OpenAPI.Validator.Validation
     /// </summary>
     public class InvalidSkuModel : TypedRule<Dictionary<string, Schema>>
     {
-        private readonly Regex propertiesRegEx = new Regex(@"^(NAME|TIER|SIZE|FAMILY|CAPACITY)$", RegexOptions.IgnoreCase);
+        private static readonly Regex PropertiesRegEx = new Regex(@"^(NAME|TIER|SIZE|FAMILY|CAPACITY)$", RegexOptions.IgnoreCase);
 
         /// <summary>
         /// The template message for this Rule. 
@@ -73,7 +73,7 @@ namespace OpenAPI.Validator.Validation
             foreach (KeyValuePair<string, Schema> definition in modelsNamedSku)
             {
                 Schema schema = definition.Value;
-                if (schema.Properties?.All(property => propertiesRegEx.IsMatch(property.Key)) != true ||
+                if (schema.Properties?.All(property => PropertiesRegEx.IsMatch(property.Key)) != true ||
                     (schema.Properties?.Any(property => property.Key.EqualsIgnoreCase("name") &&
                                                         (property.Value.Type == Model.DataType.String ||
                                                             (property.Value.Type == null &&

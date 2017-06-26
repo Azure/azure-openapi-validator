@@ -14,9 +14,9 @@ namespace OpenAPI.Validator.Validation
 {
     public class ListInOperationName : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {
-        private readonly Regex ListRegex = new Regex(@".+_List([^_]*)$", RegexOptions.IgnoreCase);
-        private readonly string XmsPageableViolation = "x-ms-pageable";
-        private readonly string ArrayTypeViolation = "array";
+        private static readonly Regex ListRegex = new Regex(@".+_List([^_]*)$", RegexOptions.IgnoreCase);
+        private static readonly string XmsPageableViolation = "x-ms-pageable";
+        private static readonly string ArrayTypeViolation = "array";
         /// <summary>
         /// Id of the Rule.
         /// </summary>

@@ -3,13 +3,10 @@
 
 
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using AutoRest.Core.Logging;
-using AutoRest.Core.Properties;
 using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Model;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 using System.Linq;
 
 namespace OpenAPI.Validator.Validation

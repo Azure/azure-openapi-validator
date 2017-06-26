@@ -6,7 +6,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation.Core;
 using System.Collections.Generic;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     internal static class PageableExtensions
     {

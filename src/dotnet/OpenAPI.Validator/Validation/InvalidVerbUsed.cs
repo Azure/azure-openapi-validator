@@ -16,7 +16,7 @@ namespace OpenAPI.Validator.Validation
     /// </summary>
     public class InvalidVerbUsed : TypedRule<Dictionary<string, Operation>>
     {
-        private readonly Regex opRegExp = new Regex(@"^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE)$", RegexOptions.IgnoreCase);
+        private static readonly Regex OpRegExp = new Regex(@"^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE)$", RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Id of the Rule.
@@ -60,7 +60,7 @@ namespace OpenAPI.Validator.Validation
         {
             foreach (string httpVerb in operationDefinition.Keys)
             {
-                if (!opRegExp.IsMatch(httpVerb))
+                if (!OpRegExp.IsMatch(httpVerb))
                 {
                     return false;
                 }

@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
-using System.Globalization;
 using System.Linq;
 using AutoRest.Core;
 using AutoRest.Core.Logging;
@@ -14,7 +13,6 @@ using OpenAPI.Validator.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace OpenAPI.Validator
 {
@@ -35,14 +33,12 @@ namespace OpenAPI.Validator
 
         public static string ResolveExternalReferencesInJson(this string path, string swaggerDocument)
         {
-            string result = null;
             JObject swaggerObject = JObject.Parse(swaggerDocument);
             var externalFiles = new Dictionary<string, JObject>();
             externalFiles[path] = swaggerObject;
             HashSet<string> visitedEntities = new HashSet<string>();
             EnsureCompleteDefinitionIsPresent(visitedEntities, externalFiles, path);
-            result = swaggerObject.ToString();
-            return result;
+            return  swaggerObject.ToString();
         }
 
         public static void EnsureCompleteDefinitionIsPresent(HashSet<string> visitedEntities, Dictionary<string, JObject> externalFiles, string sourceFilePath, string currentFilePath = null, string entityType = null, string modelName = null)
@@ -166,7 +162,7 @@ namespace OpenAPI.Validator
 
                 // for parameterized host, will be made available via JsonRpc accessible state in the future
                 ServiceDefinition.Instance = swaggerService;
-                Uri filePath = null;
+                Uri filePath;
                 Uri.TryCreate(path, UriKind.RelativeOrAbsolute, out filePath);
                 swaggerService.FilePath = filePath;
                 if (swaggerService.Schemes == null || swaggerService.Schemes.Count != 1)

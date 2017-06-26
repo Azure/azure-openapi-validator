@@ -7,7 +7,7 @@ using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation.Core;
 using System.Collections.Generic;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     /// <summary>
     /// Validates if the name of parameter and x-ms-client-name(if exists) does not match.

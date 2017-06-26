@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 using System;
-using System.Linq;
 using OpenAPI.Validator.Validation;
 using System.Collections.Generic;
 using AutoRest.Core.Utilities;
@@ -106,34 +105,6 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         public IList<Dictionary<string, List<string>>> Security { get; set; }
 
-        private SwaggerParameter FindParameter(string name, IEnumerable<SwaggerParameter> operationParameters, IDictionary<string, SwaggerParameter> clientParameters)
-        {
-            if (Parameters != null)
-            {
-                foreach (var param in operationParameters)
-                {
-                    if (name.Equals(param.Name))
-                        return param;
-
-                    var pRef = FindReferencedParameter(param.Reference, clientParameters);
-
-                    if (pRef != null && name.Equals(pRef.Name))
-                    {
-                        return pRef;
-                    }
-                }
-            }
-            return null;
-        }
-
-        private OperationResponse FindResponse(string name, IDictionary<string, OperationResponse> responses)
-        {
-            OperationResponse response = null;
-            this.Responses.TryGetValue(name, out response);
-            return response;
-        }
-
-
         private static SwaggerParameter FindReferencedParameter(string reference, IDictionary<string, SwaggerParameter> parameters)
         {
             if (reference != null && reference.StartsWith("#", StringComparison.Ordinal))
@@ -141,7 +112,7 @@ namespace OpenAPI.Validator.Model
                 var parts = reference.Split('/');
                 if (parts.Length == 3 && parts[1].Equals("parameters"))
                 {
-                    SwaggerParameter p = null;
+                    SwaggerParameter p;
                     if (parameters.TryGetValue(parts[2], out p))
                     {
                         return p;
