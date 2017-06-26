@@ -105,22 +105,5 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         public IList<Dictionary<string, List<string>>> Security { get; set; }
 
-        private static SwaggerParameter FindReferencedParameter(string reference, IDictionary<string, SwaggerParameter> parameters)
-        {
-            if (reference != null && reference.StartsWith("#", StringComparison.Ordinal))
-            {
-                var parts = reference.Split('/');
-                if (parts.Length == 3 && parts[1].Equals("parameters"))
-                {
-                    SwaggerParameter p;
-                    if (parameters.TryGetValue(parts[2], out p))
-                    {
-                        return p;
-                    }
-                }
-            }
-
-            return null;
-        }
     }
 }

@@ -38,8 +38,6 @@ namespace AutoRest.Core
             }
             Logger.Instance.Log(Category.Info, Resources.AutoRestCore, Version);
             
-            CodeModel codeModel = null;
-            
             var modeler = ExtensionsLoader.GetModeler();
 
             try
@@ -50,7 +48,7 @@ namespace AutoRest.Core
                     Logger.Instance.AddListener(new SignalingLogListener(Settings.Instance.ValidationLevel, _ => validationErrorFound = true));
 
                     // generate model from swagger 
-                    codeModel = modeler.Build();
+                    modeler.Build();
 
                     if (validationErrorFound)
                     {
@@ -62,11 +60,6 @@ namespace AutoRest.Core
             catch (Exception exception)
             {
                 throw ErrorManager.CreateError(Resources.ErrorGeneratingClientModel, exception);
-            }
-
-            if (Settings.Instance.JsonValidationMessages)
-            {
-                return; // no code gen in Json validation mode
             }
             
         }

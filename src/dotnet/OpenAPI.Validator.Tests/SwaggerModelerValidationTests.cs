@@ -10,6 +10,7 @@ using OpenAPI.Validator.Validation.Core;
 using AutoRest.Core.Logging;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation;
+using OpenAPI.Validator.Validation.Extensions;
 using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace OpenAPI.Validator.Tests
@@ -771,7 +772,7 @@ namespace OpenAPI.Validator.Tests
             var servDef = SwaggerParser.Parse(filePath, fileText);
             Uri uriPath;
             Uri.TryCreate(filePath, UriKind.RelativeOrAbsolute, out uriPath);
-            var context = new RuleContext(servDef, uriPath, new ServiceDefinitionMetadata() { MergeState = ServiceDefinitionDocumentState.Composed, ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM });
+            var context = new RuleContext(servDef, uriPath);
             Assert.Equal(4, context.ResourceModels.Count());
             Assert.Equal(1, context.TrackedResourceModels.Count());
             Assert.Equal(3, context.ProxyResourceModels.Count());

@@ -12,7 +12,7 @@ using System.IO;
 using AutoRest.Core.Parsing;
 using YamlDotNet.RepresentationModel;
 using System.Text.RegularExpressions;
-using OpenAPI.Validator.Logging.Core;
+using OpenAPI.Validator.Validation.Core.Logging;
 
 namespace AutoRest
 {

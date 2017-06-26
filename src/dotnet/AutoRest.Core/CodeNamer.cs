@@ -64,10 +64,6 @@ namespace AutoRest.Core
             [(char) 126] = "Tilde"
         };
 
-        public CodeNamer()
-        {
-        }
-
         /// <summary>
         ///     Gets the current code namer instance (using the active context).
         ///     A subclass should set the singleton on creation of their context.
