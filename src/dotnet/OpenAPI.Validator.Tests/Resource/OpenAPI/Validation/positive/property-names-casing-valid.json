@@ -86,7 +86,7 @@
         },
         "startIP": {
           "type": "string",
-          "description": "Required. Indicates the start IP range.",
+          "description": "Required. Indicates the start IP range."
         },
         "location": {
           "type": "string",

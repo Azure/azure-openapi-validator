@@ -652,7 +652,7 @@ namespace OpenAPI.Validator.Tests
                 ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM,
                 MergeState = ServiceDefinitionDocumentState.Composed
             };
-            messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
+            messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest2md);
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
         }
@@ -767,9 +767,9 @@ namespace OpenAPI.Validator.Tests
         public void ValidResourceModels()
         {
             var filePath = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "valid-resource-model-definitions.json");
-            var fileText = System.IO.File.ReadAllText(filePath);
+            var fileText = File.ReadAllText(filePath);
             var servDef = SwaggerParser.Parse(filePath, fileText);
-            Uri uriPath = null;
+            Uri uriPath;
             Uri.TryCreate(filePath, UriKind.RelativeOrAbsolute, out uriPath);
             var context = new RuleContext(servDef, uriPath, new ServiceDefinitionMetadata() { MergeState = ServiceDefinitionDocumentState.Composed, ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM });
             Assert.Equal(4, context.ResourceModels.Count());
