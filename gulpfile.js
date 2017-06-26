@@ -61,6 +61,12 @@ gulp.task('test', ['test/dotnet', 'test/typescript'], function () {
     console.log('Running the unit tests...');
 });
 
+gulp.task('dotnet', ['test/dotnet'], function () {
+});
+
+gulp.task('typescript', ['test/typescript'], function () {
+});
+
 gulp.task('default', function () {
     return gulp.run('test');
 });
