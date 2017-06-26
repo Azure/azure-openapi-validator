@@ -58,7 +58,7 @@ gulp.task('clean', ['clean/typescript', 'clean/dotnet'], function () {
 });
 
 gulp.task('test', ['test/dotnet', 'test/typescript'], function () {
-    console.log('Running the unit tests...');
+    console.log('Successfully ran the tests...');
 });
 
 gulp.task('dotnet', ['test/dotnet'], function () {
@@ -67,6 +67,6 @@ gulp.task('dotnet', ['test/dotnet'], function () {
 gulp.task('typescript', ['test/typescript'], function () {
 });
 
-gulp.task('default', function () {
-    return gulp.run('test');
+gulp.task('default', ['dotnet', 'typescript'], function () {
+    console.log('Successfully built and tested the repo...');
 });
