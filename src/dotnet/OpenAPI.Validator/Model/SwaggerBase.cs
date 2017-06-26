@@ -11,7 +11,7 @@ namespace OpenAPI.Validator.Model
 {
     public abstract class SwaggerBase
     {
-        public SwaggerBase()
+        protected SwaggerBase()
         {
             Extensions = new Dictionary<string, object>();
         }

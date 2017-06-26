@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace OpenAPI.Validator.Logging.Core
+namespace OpenAPI.Validator.Validation.Core.Logging
 {
     public class JsonValidationLogListener : ILogListener
     {

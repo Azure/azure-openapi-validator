@@ -75,7 +75,7 @@ namespace OpenAPI.Validator.Validation.Core
         /// <summary>
         /// The root object in the graph that this rule is being applied to
         /// </summary>
-        public ServiceDefinition Root { get; private set; }
+        public ServiceDefinition Root { get; }
 
         /// <summary>
         /// The key value that the object is part of if it's in a dictionary
@@ -124,7 +124,7 @@ namespace OpenAPI.Validator.Validation.Core
                     ? (Index.Value == -1 ? Parent.Path : Parent.Path.AppendIndex(Index.Value))
                     : Parent.Path.AppendProperty(Key);
 
-        public Uri File { get; private set; }
+        public Uri File { get; }
 
         /// <summary>
         /// Populates list of resources, tracked resources and proxy resources

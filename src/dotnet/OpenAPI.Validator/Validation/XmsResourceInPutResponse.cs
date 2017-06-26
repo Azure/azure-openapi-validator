@@ -62,7 +62,7 @@ namespace OpenAPI.Validator.Validation
             var violatingModels = putRespModels.Where(respModel => !ValidationUtilities.EnumerateModelHierarchy(respModel, serviceDefinition.Definitions).Intersect(xmsResModels).Any());
             foreach (var model in violatingModels)
             {
-                var violatingOp = ops.Where(op => (op.Responses?.ContainsKey("200") == true) && op.Responses["200"]?.Schema?.Reference?.StripDefinitionPath() == model).First();
+                var violatingOp = ops.First(op => (op.Responses?.ContainsKey("200") == true) && op.Responses["200"]?.Schema?.Reference?.StripDefinitionPath() == model);
                 var violatingPath = ValidationUtilities.GetOperationIdPath(violatingOp.OperationId, paths);
                 var violatingOpVerb = ValidationUtilities.GetOperationIdVerb(violatingOp.OperationId, violatingPath);
                 yield return new ValidationMessage(new FileObjectPath(context.File, context.Path.AppendProperty(violatingPath.Key).AppendProperty(violatingOpVerb)), this, violatingOp.OperationId, model);

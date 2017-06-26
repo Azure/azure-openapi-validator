@@ -14,7 +14,7 @@ namespace OpenAPI.Validator.Validation
 {
     public class CollectionObjectPropertiesNaming : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {
-        private readonly Regex ListRegex = new Regex(@".+_List([^_]*)$", RegexOptions.IgnoreCase);
+        private static readonly Regex ListRegex = new Regex(@".+_List([^_]*)$", RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Id of the Rule.

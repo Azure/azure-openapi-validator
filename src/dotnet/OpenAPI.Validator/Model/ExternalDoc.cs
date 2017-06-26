@@ -27,7 +27,7 @@ namespace OpenAPI.Validator.Model
         public string Description
         {
             get { return _description; }
-            set { _description = value.StripControlCharacters(); ; }
+            set { _description = value.StripControlCharacters(); }
         }
     }
 }

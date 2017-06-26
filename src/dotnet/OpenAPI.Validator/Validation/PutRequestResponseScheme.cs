@@ -68,7 +68,7 @@ namespace OpenAPI.Validator.Validation
 
                 // look for the request body schema in the operation parameters section as well as the global parameters section
                 string reqBodySchema = null;
-                if (op.Parameters.Where(p => p.In == ParameterLocation.Body).Any())
+                if (op.Parameters.Any(p => p.In == ParameterLocation.Body))
                 {
                     reqBodySchema = op.Parameters.First(p => p.In == ParameterLocation.Body).Schema?.Reference?.StripDefinitionPath();
                 }

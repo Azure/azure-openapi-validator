@@ -21,8 +21,8 @@ namespace OpenAPI.Validator.Model.Utilities
         private static readonly Regex ResourceProviderPathPattern = new Regex(@"/providers/(?<resPath>[^{/]+)/", RegexOptions.IgnoreCase);
         private static readonly Regex PropNameRegEx = new Regex(@"^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)+$|^[a-z0-9\$-]+$|^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)*[A-Z]{1,3}$");
 
-        public static readonly Regex listBySidRegEx = new Regex(@".+_(List|ListBySubscriptionId|ListBySubscription|ListBySubscriptions)$", RegexOptions.IgnoreCase);
-        public static readonly Regex listByRgRegEx = new Regex(@".+_ListByResourceGroup$", RegexOptions.IgnoreCase);
+        public static readonly Regex ListBySidRegEx = new Regex(@".+_(List|ListBySubscriptionId|ListBySubscription|ListBySubscriptions)$", RegexOptions.IgnoreCase);
+        public static readonly Regex ListByRgRegEx = new Regex(@".+_ListByResourceGroup$", RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Populates a list of 'Resource' models found in the service definition
@@ -439,7 +439,7 @@ namespace OpenAPI.Validator.Model.Utilities
         /// <param name="paths">Dictionary of paths to look for</param>
         /// <returns>path object which contains the operationId</returns>
         public static KeyValuePair<string, Dictionary<string, Operation>> GetOperationIdPath(string operationId, Dictionary<string, Dictionary<string, Operation>> paths)
-            => paths.Where(pathObj => pathObj.Value.Values.Where(op => op.OperationId == operationId).Any()).First();
+            => paths.First(pathObj => pathObj.Value.Values.Any(op => op.OperationId == operationId));
 
         /// <summary>
         /// Given an operation Id, returns the corresponding verb for it
@@ -601,7 +601,7 @@ namespace OpenAPI.Validator.Model.Utilities
         /// <returns>Gets the operation which ends with ListByResourceGroup and returns the resource model.</returns>
         public static Operation GetListByResourceGroupOperation(string resourceModel, Dictionary<string, Schema> definitions, ServiceDefinition serviceDefinition)
         {
-            return GetListByXOperation(resourceModel, definitions, serviceDefinition, listByRgRegEx);
+            return GetListByXOperation(resourceModel, definitions, serviceDefinition, ListByRgRegEx);
         }
 
         /// <summary>
@@ -613,7 +613,7 @@ namespace OpenAPI.Validator.Model.Utilities
         /// <returns>Gets the operation which matches with ListBySubscription and returns the resource model.</returns>
         public static Operation GetListBySubscriptionOperation(string resourceModel, Dictionary<string, Schema> definitions, ServiceDefinition serviceDefinition)
         {
-            return GetListByXOperation(resourceModel, definitions, serviceDefinition, listBySidRegEx);
+            return GetListByXOperation(resourceModel, definitions, serviceDefinition, ListBySidRegEx);
         }
 
         /// <summary>

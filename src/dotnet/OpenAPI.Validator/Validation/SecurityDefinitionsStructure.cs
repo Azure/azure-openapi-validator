@@ -89,10 +89,10 @@ namespace OpenAPI.Validator.Validation
                 return false;
             }
 
-            return scopes.Where(scope =>
+            return scopes.Any(scope =>
                     scope.Key.Equals("user_impersonation", StringComparison.CurrentCultureIgnoreCase)
                 && !String.IsNullOrEmpty(scope.Value)
-            ).Any();
+            );
         }
     }
 }

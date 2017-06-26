@@ -11,7 +11,7 @@ namespace OpenAPI.Validator.Validation
 {
     internal static class DescriptiveDescriptionsExtensions
     {
-        private static IEnumerable<string> ImpermissibleDescriptions = new List<string>()
+        private static readonly IEnumerable<string> ImpermissibleDescriptions = new List<string>()
         {
             "description"
         };

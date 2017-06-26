@@ -151,7 +151,7 @@ namespace OpenAPI.Validator
                         });
                         headerType.Add(property);
                     }
-                };
+                }
             }
             else if (headerTypeReferences.Count == 1
                 && headerTypeReferences[0] is CompositeType singleType
@@ -388,9 +388,10 @@ namespace OpenAPI.Validator
             OperationResponse response, Method method, List<Stack<IModelType>> types, IModelType headerType)
         {
             bool handled = false;
-            IModelType serviceType;
+            
             if (SwaggerOperationProducesSomethingDeserializable())
             {
+                IModelType serviceType;
                 if (TryBuildResponseBody(methodName, response,
                     s => GenerateResponseObjectName(s, responseStatusCode), out serviceType))
                 {
@@ -436,9 +437,9 @@ namespace OpenAPI.Validator
 
         private void TryBuildDefaultResponse(string methodName, OperationResponse response, Method method, IModelType headerType)
         {
-            IModelType errorModel = null;
             if (SwaggerOperationProducesSomethingDeserializable())
             {
+                IModelType errorModel;
                 if (TryBuildResponseBody(methodName, response, s => GenerateErrorModelName(s), out errorModel))
                 {
                     method.DefaultResponse = new Response(errorModel, headerType);

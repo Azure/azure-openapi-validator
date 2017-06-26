@@ -10,7 +10,7 @@ namespace OpenAPI.Validator.Validation
 {
     public class AnonymousBodyParameter : TypedRule<SwaggerParameter>
     {
-        private static AvoidAnonymousTypes AnonymousTypesRule = new AvoidAnonymousTypes();
+        private static readonly AvoidAnonymousTypes AnonymousTypesRule = new AvoidAnonymousTypes();
 
         /// <summary>
         /// Id of the Rule.
