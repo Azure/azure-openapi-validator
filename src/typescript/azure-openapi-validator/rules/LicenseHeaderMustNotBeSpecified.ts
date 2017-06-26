@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..info['x-ms-code-generation-settings']",
   run: function* (doc, node, path) {
-    const msg: string = `License header must not be specified inside x-ms-code-generation settings. This is different for different sdks generated and is passed via command line/config file when generating the sdk.`;
+    const msg: string = `License header must not be specified inside x-ms-code-generation-settings. This is different for different sdks generated and is passed via command line/config file when generating the sdk.`;
     if (node.header !== undefined) {
       yield { message: `${msg}`, location: path };
     }
