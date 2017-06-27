@@ -19,7 +19,7 @@ namespace OpenAPI.Validator.Tests
     public partial class OpenAPIModelerValidationTests
     {
         private static readonly string PathToValidationResources = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation");
-        private IEnumerable<ValidationMessage> ValidateSwagger(string input, ServiceDefinitionMetadata metadata)
+        private IEnumerable<ValidationMessage> ValidateOpenAPISpec(string input, ServiceDefinitionMetadata metadata)
         {
             var validator = new RecursiveObjectValidator(PropertyNameResolver.JsonName);
             var serviceDefinition = SwaggerParser.Parse(input, File.ReadAllText(input));
@@ -28,10 +28,10 @@ namespace OpenAPI.Validator.Tests
 
         private static IEnumerable<ValidationMessage> GetValidationMessagesForCategory(IEnumerable<ValidationMessage> messages, Category category) => messages.Where(m => m.Severity == category);
 
-        private IEnumerable<ValidationMessage> GetValidationMessagesForRule<TRule>(string swaggerFileName) where TRule : Rule
+        private IEnumerable<ValidationMessage> GetValidationMessagesForRule<TRule>(string fileName) where TRule : Rule
         {
             var ruleInstance = Activator.CreateInstance<TRule>();
-            var messages = ValidateSwagger(Path.Combine(PathToValidationResources, swaggerFileName), GetMetadataForRuleTest(ruleInstance));
+            var messages = this.ValidateOpenAPISpec(Path.Combine(PathToValidationResources, fileName), GetMetadataForRuleTest(ruleInstance));
             return GetValidationMessagesForCategory(messages, ruleInstance.Severity).Where(message => message.Rule.GetType() == typeof(TRule));
         }
 
@@ -626,7 +626,7 @@ namespace OpenAPI.Validator.Tests
     public partial class OpenAPIModelerValidationTests
     {
         /// <summary>
-        /// Verifies that a clean Swagger file does not result in any validation errors
+        /// Verifies that a clean OpenAPI file does not result in any validation errors
         /// </summary>
         [Fact]
         public void CleanFileValidation()
@@ -637,7 +637,7 @@ namespace OpenAPI.Validator.Tests
                 ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM,
                 MergeState = ServiceDefinitionDocumentState.Individual
             };
-            var messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
+            var messages = this.ValidateOpenAPISpec(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
             // composed state
@@ -646,7 +646,7 @@ namespace OpenAPI.Validator.Tests
                 ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.ARM,
                 MergeState = ServiceDefinitionDocumentState.Composed
             };
-            messages = ValidateSwagger(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest2md);
+            messages = this.ValidateOpenAPISpec(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest2md);
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
         }
@@ -662,7 +662,7 @@ namespace OpenAPI.Validator.Tests
         }
 
         /// <summary>
-        /// Verifies that a clean Swagger file does not result in any validation errors
+        /// Verifies that a clean OpenAPI file does not result in any validation errors
         /// </summary>
         [Fact]
         public void PageableNextLinkDefinedAllOf()
