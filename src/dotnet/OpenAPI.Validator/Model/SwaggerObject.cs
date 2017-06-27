@@ -3,13 +3,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using AutoRest.Core.Model;
-using AutoRest.Core.Utilities;
-using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation;
 using Newtonsoft.Json;
-using static AutoRest.Core.Utilities.DependencyInjection;
 using OpenAPI.Validator.Validation.Core;
 
 namespace OpenAPI.Validator.Model
@@ -21,7 +17,6 @@ namespace OpenAPI.Validator.Model
     [Rule(typeof(DefaultMustBeInEnum))]
     public abstract class SwaggerObject : SwaggerBase
     {
-        private string _description;
         public virtual bool IsRequired { get; set; }
 
         /// <summary>
@@ -39,7 +34,9 @@ namespace OpenAPI.Validator.Model
         /// Returns the KnownFormat of the Format string (provided it matches a KnownFormat)
         /// Otherwise, returns KnownFormat.none
         /// </summary>
-        public KnownFormat KnownFormat => KnownFormatExtensions.Parse(Format);
+        public KnownFormat KnownFormat => string.IsNullOrWhiteSpace(Format)
+            ? KnownFormat.none
+            : System.Enum.TryParse(Format.Replace('-', '_'), true, out KnownFormat result) ? result : KnownFormat.unknown;
 
         /// <summary>
         /// Describes the type of items in the array.
@@ -56,11 +53,7 @@ namespace OpenAPI.Validator.Model
         public virtual Schema AdditionalProperties { get; set; }
 
         [Rule(typeof(DescriptiveDescriptionRequired))]
-        public virtual string Description
-        {
-            get { return _description; }
-            set { _description = value.StripControlCharacters(); }
-        }
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// Determines the format of the array if type array is used.
@@ -95,94 +88,5 @@ namespace OpenAPI.Validator.Model
         public virtual bool UniqueItems { get; set; }
 
         public virtual IList<string> Enum { get; set; }
-
-        public ObjectBuilder GetBuilder(SwaggerModeler swaggerSpecBuilder)
-        {
-            if (this is SwaggerParameter)
-            {
-                return new ParameterBuilder(this as SwaggerParameter, swaggerSpecBuilder);
-            }
-            if (this is Schema)
-            {
-                return new SchemaBuilder(this as Schema, swaggerSpecBuilder);
-            }
-            return new ObjectBuilder(this, swaggerSpecBuilder);
-        }
-
-        /// <summary>
-        /// Returns the PrimaryType that the SwaggerObject maps to, given the Type and the KnownFormat.
-        /// 
-        /// Note: Since a given language still may interpret the value of the Format after this, 
-        /// it is possible the final implemented type may not be the type given here. 
-        /// 
-        /// This allows languages to not have a specific PrimaryType decided by the Modeler.
-        /// 
-        /// For example, if the Type is DataType.String, and the KnownFormat is 'char' the C# generator 
-        /// will end up creating a char type in the generated code, but other languages will still 
-        /// use string.
-        /// </summary>
-        /// <returns>
-        /// The PrimaryType that best represents this object.
-        /// </returns>
-        public PrimaryType ToType()
-        {
-            switch (Type)
-            {
-                case DataType.String:
-                    switch (KnownFormat)
-                    {
-                        case KnownFormat.date:
-                            return New<PrimaryType>(KnownPrimaryType.Date);
-                        case KnownFormat.date_time:
-                            return New<PrimaryType>(KnownPrimaryType.DateTime);
-                        case KnownFormat.date_time_rfc1123:
-                            return New<PrimaryType>(KnownPrimaryType.DateTimeRfc1123);
-                        case KnownFormat.@byte:
-                            return New<PrimaryType>(KnownPrimaryType.ByteArray);
-                        case KnownFormat.duration:
-                            return New<PrimaryType>(KnownPrimaryType.TimeSpan);
-                        case KnownFormat.uuid:
-                            return New<PrimaryType>(KnownPrimaryType.Uuid);
-                        case KnownFormat.base64url:
-                            return New<PrimaryType>(KnownPrimaryType.Base64Url);
-                        default:
-                            return New<PrimaryType>(KnownPrimaryType.String);
-                    }
-
-                case DataType.Number:
-                    switch (KnownFormat)
-                    {
-                        case KnownFormat.@decimal:
-                            return New<PrimaryType>(KnownPrimaryType.Decimal);
-                        default:
-                            return New<PrimaryType>(KnownPrimaryType.Double);
-                    }
-
-                case DataType.Integer:
-                    switch (KnownFormat)
-                    {
-                        case KnownFormat.int64:
-                            return New<PrimaryType>(KnownPrimaryType.Long);
-                        case KnownFormat.unixtime:
-                            return New<PrimaryType>(KnownPrimaryType.UnixTime);
-                        default:
-                            return New<PrimaryType>(KnownPrimaryType.Int);
-                    }
-
-                case DataType.Boolean:
-                    return New<PrimaryType>(KnownPrimaryType.Boolean);
-                case DataType.Object:
-                case DataType.Array:
-                case null:
-                    return New<PrimaryType>(KnownPrimaryType.Object);
-                case DataType.File:
-                    return New<PrimaryType>(KnownPrimaryType.Stream);
-                default:
-                    throw new NotImplementedException(
-                        string.Format(CultureInfo.InvariantCulture,
-                           Resources.InvalidTypeInSwaggerSchema,
-                            Type));
-            }
-        }
     }
 }

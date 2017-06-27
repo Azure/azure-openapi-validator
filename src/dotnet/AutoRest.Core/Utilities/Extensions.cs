@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using AutoRest.Core.Model;
 using AutoRest.Core.Utilities.Collections;
 using Newtonsoft.Json;
+using AutoRest.Core.Logging;
 
 #pragma warning disable CS3024 // Constraint type is not CLS-compliant
 namespace AutoRest.Core.Utilities
@@ -24,30 +25,6 @@ namespace AutoRest.Core.Utilities
     /// </summary>
     public static class Extensions
     {
-        /// <summary>
-        /// Maps an action with side effects over a sequence.
-        /// </summary>
-        /// <param name='sequence'>The sequence to map over.</param>
-        /// <param name='action'>The action to map.</param>
-        /// <typeparam name='T'>Type of elements in the sequence.</typeparam>
-        public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
-        {
-            if (sequence == null)
-            {
-                throw new ArgumentNullException("sequence");
-            }
-
-            if (action == null)
-            {
-                throw new ArgumentNullException("action");
-            }
-
-            foreach (T element in sequence)
-            {
-                action(element);
-            }
-        }
-
         /// <summary>
         /// Returns a collection of the descendant elements for this collection.
         /// </summary>
@@ -78,49 +55,6 @@ namespace AutoRest.Core.Utilities
         /// </remarks>
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection) => collection == null || !collection.Any();
 
-        /// <summary>
-        /// Word wrap a string of text to a given width.
-        /// </summary>
-        /// <param name='text'>The text to word wrap.</param>
-        /// <param name='width'>Width available to wrap.</param>
-        /// <returns>Lines of word wrapped text.</returns>
-        public static IEnumerable<string> WordWrap(this string text, int width)
-        {
-            Debug.Assert(text != null, "text should not be null.");
-
-            var lines = text.Split(new [] {"\r\n", "\r", "\n"}, StringSplitOptions.None);
-            foreach (var line in lines)
-            {
-                var processedLine = line.Trim();
-
-                // yield empty lines as they are (probably) intensional
-                if (processedLine.Length == 0)
-                {
-                    yield return processedLine;
-                }
-
-                // feast on the line until it's gone
-                while (processedLine.Length > 0)
-                {
-                    // determine potential wrapping points
-                    var whitespacePositions = Enumerable
-                        .Range(0, processedLine.Length)
-                        .Where(i => char.IsWhiteSpace(processedLine[i]))
-                        .Concat(new [] { processedLine.Length })
-                        .Cast<int?>();
-                    var preWidthWrapAt = whitespacePositions.LastOrDefault(i => i <= width);
-                    var postWidthWrapAt = whitespacePositions.FirstOrDefault(i => i > width);
-
-                    // choose preferred wrapping point
-                    var wrapAt = preWidthWrapAt ?? postWidthWrapAt ?? processedLine.Length;
-
-                    // wrap
-                    yield return processedLine.Substring(0, wrapAt);
-                    processedLine = processedLine.Substring(wrapAt).Trim();
-                }
-            }
-        }
-
         public static bool IsMarked<T>(this PropertyInfo property)
             => property.GetCustomAttributes(typeof(T), true).Any();
 
@@ -140,7 +74,7 @@ namespace AutoRest.Core.Utilities
         {
             get
             {
-                dynamic a = typeof(Settings).GetAssembly();
+                dynamic a = typeof(ObjectPath).GetAssembly();
                 return Directory.GetParent(a.Location.ToString()).ToString();
             }
         }
@@ -193,15 +127,6 @@ namespace AutoRest.Core.Utilities
                 }
 
                 var destinationType = destinationProperty.PropertyType;
-
-
-                if (typeof(ICopyFrom).IsAssignableFrom(destinationType))
-                {
-                    if (true == (destinationProperty.GetValue(destination) as ICopyFrom)?.CopyFrom(sourceProperty.GetValue(source, null)))
-                    {
-                        continue;
-                    }
-                }
 
                 // if the property is an IDictionary, clear the destination, and copy the key/values across
                 if (typeof(IDictionary).IsAssignableFrom(destinationType))
@@ -338,104 +263,7 @@ namespace AutoRest.Core.Utilities
             }
 
             var pi = type.GetProperty(propertyName, AnyPropertyFlags);
-            if (typeof(ICopyFrom).IsAssignableFrom(pi?.PropertyType) || typeof(IDictionary).IsAssignableFrom(pi?.PropertyType) || typeof(IList).IsAssignableFrom(pi?.PropertyType))
-            {
-                return pi;
-            }
             return true == pi?.CanWrite ? pi : GetWriteableProperty(type.BaseType(), propertyName);
-        }
-
-        /// <summary>
-        /// Converts the specified string to a camel cased string.
-        /// </summary>
-        /// <param name="value">The string to convert.</param>
-        /// <returns>The camel case string.</returns>
-        public static string ToCamelCase(this string value) => CodeNamer.Instance.CamelCase(value);
-        public static string ToCamelCase(this Fixable<string> value) => CodeNamer.Instance.CamelCase(value.Value);
-
-        /// <summary>
-        /// Converts the specified string to a pascal cased string.
-        /// </summary>
-        /// <param name="value">The string to convert.</param>
-        /// <returns>The pascal case string.</returns>
-        public static string ToPascalCase(this string value) => CodeNamer.Instance.PascalCase(value);
-        public static string ToPascalCase(this Fixable<string> value) => CodeNamer.Instance.PascalCase(value.Value);
-
-        /// <summary>
-        /// Escape reserved characters in xml comments with their escaped representations
-        /// </summary>
-        /// <param name="comment">The xml comment to escape</param>
-        /// <returns>The text appropriately escaped for inclusing in an xml comment</returns>
-        public static string EscapeXmlComment(this string comment)
-        {
-            if (comment == null)
-            {
-                return null;
-            }
-
-            return new StringBuilder(comment)
-                .Replace("&", "&amp;")
-                .Replace("<", "&lt;")
-                .Replace(">", "&gt;").ToString();
-        }
-
-        public static string EscapeXmlComment(this Fixable<string> comment) => EscapeXmlComment(comment.Value);
-
-        /// <summary>
-        /// Returns true if the type is a PrimaryType with KnownPrimaryType matching typeToMatch.
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="typeToMatch"></param>
-        /// <returns></returns>
-        public static bool IsPrimaryType(this IModelType type, KnownPrimaryType typeToMatch) => typeToMatch == (type as PrimaryType)?.KnownPrimaryType;
-
-        /// <summary>
-        /// Returns true if the <paramref name="type"/> is a PrimaryType with KnownPrimaryType matching <paramref name="typeToMatch"/>
-        /// or a DictionaryType with ValueType matching <paramref name="typeToMatch"/> or a SequenceType matching <paramref name="typeToMatch"/>
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="typeToMatch"></param>
-        /// <returns></returns>
-        public static bool IsOrContainsPrimaryType(this IModelType type, KnownPrimaryType typeToMatch)
-        {
-            if (type == null)
-            {
-                return false;
-            }
-
-            if (type.IsPrimaryType(typeToMatch) ||
-                type.IsDictionaryContainingType(typeToMatch) ||
-                type.IsSequenceContainingType(typeToMatch))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Returns true if the <paramref name="type"/> is a DictionaryType with ValueType matching <paramref name="typeToMatch"/>
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="typeToMatch"></param>
-        /// <returns></returns>
-        public static bool IsDictionaryContainingType(this IModelType type, KnownPrimaryType typeToMatch)
-        {
-            DictionaryType dictionaryType = type as DictionaryType;
-            PrimaryType dictionaryPrimaryType = dictionaryType?.ValueType as PrimaryType;
-            return dictionaryPrimaryType != null && dictionaryPrimaryType.IsPrimaryType(typeToMatch);
-        }
-
-        /// <summary>
-        /// Returns true if the <paramref name="type"/>is a SequenceType matching <paramref name="typeToMatch"/>
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="typeToMatch"></param>
-        /// <returns></returns>
-        public static bool IsSequenceContainingType(this IModelType type, KnownPrimaryType typeToMatch)
-        {
-            SequenceType sequenceType = type as SequenceType;
-            PrimaryType sequencePrimaryType = sequenceType?.ElementType as PrimaryType;
-            return sequencePrimaryType != null && sequencePrimaryType.IsPrimaryType(typeToMatch);
         }
 
         public static string StripControlCharacters(this string input)
@@ -443,78 +271,6 @@ namespace AutoRest.Core.Utilities
             return string.IsNullOrWhiteSpace(input) ? input : Regex.Replace(input, @"[\ca-\cz-[\cj\cm\ci]]", string.Empty);
         }
 
-        public static string Capitalize(this string input)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                throw new ArgumentException("Input may not be null, empty, or whitespace.");
-            }
-
-            // if it's only one character
-            if (input.Length == 1)
-            {
-                return input.ToUpper();
-            }
-
-            //otherwise the first letter as uppercase, and the rest of the string unaltered.
-            return $"{char.ToUpper(input[0])}{input.Substring(1)}";
-        }
-
-        public static bool Equals(this Fixable<string> s1, string s2, StringComparison comparison) => ReferenceEquals(s1.Value, s2) || s1.Value.Equals(s2, comparison);
-        public static bool Equals(this string s1, Fixable<string> s2, StringComparison comparison) => ReferenceEquals(s1, s2.Value) || s1.Equals(s2.Value, comparison);
-        public static bool EqualsIgnoreCase(this Fixable<string> s1, string s2) => ReferenceEquals(s1.Value, s2) || true == s1.Value?.Equals(s2, StringComparison.OrdinalIgnoreCase);
-        public static bool EqualsIgnoreCase(this string s1, Fixable<string> s2) => ReferenceEquals(s1,s2.Value) || s1.Equals(s2.Value, StringComparison.OrdinalIgnoreCase);
-        public static bool EqualsIgnoreCase(this Fixable<string> s1, Fixable<string> s2) => ReferenceEquals(s1.Value, s2.Value) || s1.Value.Equals(s2.Value, StringComparison.OrdinalIgnoreCase);
-
-        public static char CharAt(this Fixable<string> str, int index) => str.Value[index];
-        public static string Substring(this Fixable<string> str, int startIndex) => str.Value.Substring(startIndex);
-
-        public static string ToLower(this Fixable<string> str) => str?.Value.ToLowerInvariant();
-        public static string ToLowerInvariant(this Fixable<string> str) => str?.Value.ToLowerInvariant();
-        public static bool IsNullOrEmpty(this Fixable<string> str) => string.IsNullOrWhiteSpace(str?.Value);
-        public static bool Contains( this Fixable<string> str, string contained) => true == str?.Value?.Contains(contained);
-        public static bool Contains(this Fixable<string> str, char chr) => true == str?.Value?.Contains(chr);
-        public static int IndexOf(this Fixable<string> str, string text) => str?.Value?.IndexOf(text,StringComparison.Ordinal) ?? -1;
-        public static int IndexOf(this Fixable<string> str, char chr) => str?.Value?.IndexOf(chr) ?? -1;
-        public static int IndexOfIgnoreCase(this Fixable<string> str, string text) => str?.Value?.IndexOf(text, StringComparison.OrdinalIgnoreCase) ?? -1;
-        public static bool StartsWith(this Fixable<string> str, string startsWith) => true == str?.Value?.StartsWith(startsWith, StringComparison.Ordinal);
-        public static bool StartsWithIgnoreCase(this Fixable<string> str, string startsWith) => true == str?.Value?.StartsWith(startsWith, StringComparison.OrdinalIgnoreCase);
-
-        public static string EnsureEndsWith(this string str, string suffix) => string.IsNullOrEmpty(str) ? str : (str.EndsWith(suffix) ? str : str + suffix);
-        public static string EnsureEndsWith(this Fixable<string> str, string suffix) => str.IsNullOrEmpty() ? str.Value : str.Value.EnsureEndsWith(suffix);
-
-        public static string Else(this string preferred, string fallback) => string.IsNullOrWhiteSpace(preferred) ? fallback : preferred;
-
-        public static string Else(this Fixable<string> preferred, string fallback) => string.IsNullOrWhiteSpace(preferred.Value) ? fallback : preferred.Value;
-        public static string Else(this string preferred, Fixable<string> fallback) => string.IsNullOrWhiteSpace(preferred) ? fallback.Value : preferred;
-        public static string Else(this Fixable<string> preferred, Fixable<string> fallback) => string.IsNullOrWhiteSpace(preferred.Value) ? fallback.Value : preferred.Value;
-        public static string GetUniqueName(this IChild scope, string desiredName)
-        {
-            // current hack: get the methods params and add them to the local list.
-            var names = new HashSet<string>((scope as Method)?.Parameters.Select(each => each.Name.Value) ?? Enumerable.Empty<string>());
-            names.AddRange(scope.LocallyUsedNames);
-
-            // get a unique name
-            var result = CodeNamer.Instance.GetUnique(desiredName, scope, scope.Parent.IdentifiersInScope,
-                scope.Parent.Children, names);
-
-            
-            // tell the child that they own that name now.
-            scope?.LocallyUsedNames?.Add(result);
-            return result;
-        }
-
-        public static string TrimStart(this Fixable<string> str, char ch) => str.Value.TrimStart(ch);
-        public static string TrimEnd(this Fixable<string> str, char ch) => str.Value.TrimEnd(ch);
-
-
-        public static void Disambiguate(this IEnumerable<IChild> children)
-        {
-            foreach (var child in children)
-            {
-                child.Disambiguate();
-            }
-        }
         public static Task<T> AsResultTask<T>(this T result)
         {
             var x = new TaskCompletionSource<T>(TaskCreationOptions.AttachedToParent);

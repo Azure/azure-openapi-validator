@@ -70,20 +70,13 @@ namespace OpenAPI.Validator.JsonConverters
 
             foreach (JProperty operation in jo.Children())
             {
-                try
+                if (operation.Name == null || operation.Name.StartsWith("x-"))
                 {
-                    if (operation.Name == null || operation.Name.StartsWith("x-"))
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    result[operation.Name] = JsonConvert.DeserializeObject<Operation>(operation.Value.ToString(),
-                        GetSettings(serializer));
-                }
-                catch (JsonException exception)
-                {
-                    Logger.Instance.Log(Category.Error, exception.Message);
-                }
+                result[operation.Name] = JsonConvert.DeserializeObject<Operation>(operation.Value.ToString(),
+                    GetSettings(serializer));
             }
 
             return result;

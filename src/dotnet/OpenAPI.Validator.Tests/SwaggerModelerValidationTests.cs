@@ -11,7 +11,6 @@ using AutoRest.Core.Logging;
 using OpenAPI.Validator.Model;
 using OpenAPI.Validator.Validation;
 using OpenAPI.Validator.Validation.Extensions;
-using static AutoRest.Core.Utilities.DependencyInjection;
 
 namespace OpenAPI.Validator.Tests
 {
@@ -22,15 +21,9 @@ namespace OpenAPI.Validator.Tests
         private static readonly string PathToValidationResources = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation");
         private IEnumerable<ValidationMessage> ValidateSwagger(string input, ServiceDefinitionMetadata metadata)
         {
-            // Most rules are to be applied for ARM documents
-            // Also, most rules need to be run over the composite document (i.e. AFTER merge state)
-            // hence the defaults
-            using (NewContext)
-            {
-                var validator = new RecursiveObjectValidator(PropertyNameResolver.JsonName);
-                var serviceDefinition = SwaggerParser.Parse(input, File.ReadAllText(input));
-                return validator.GetValidationExceptions(new Uri(input, UriKind.RelativeOrAbsolute), serviceDefinition, metadata).OfType<ValidationMessage>();
-            }
+            var validator = new RecursiveObjectValidator(PropertyNameResolver.JsonName);
+            var serviceDefinition = SwaggerParser.Parse(input, File.ReadAllText(input));
+            return validator.GetValidationExceptions(new Uri(input, UriKind.RelativeOrAbsolute), serviceDefinition, metadata).OfType<ValidationMessage>();
         }
 
         private static IEnumerable<ValidationMessage> GetValidationMessagesForCategory(IEnumerable<ValidationMessage> messages, Category category) => messages.Where(m => m.Severity == category);

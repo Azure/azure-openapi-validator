@@ -22,20 +22,6 @@ namespace OpenAPI.Validator
         /// Create a new schema resolver in the context of the given swagger spec
         /// </summary>
         /// <param name="modeler">The swagger spec modeler</param>
-        public SchemaResolver(SwaggerModeler modeler)
-        {
-            if (modeler == null)
-            {
-                throw new ArgumentNullException("modeler");
-            }
-
-            _serviceDefinition = modeler.ServiceDefinition;
-        }
-
-        /// <summary>
-        /// Create a new schema resolver in the context of the given swagger spec
-        /// </summary>
-        /// <param name="modeler">The swagger spec modeler</param>
         public SchemaResolver(ServiceDefinition definition)
         {
             _serviceDefinition = definition;

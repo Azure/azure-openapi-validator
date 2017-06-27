@@ -4,6 +4,7 @@
 using System;
 using System.Net;
 using AutoRest.Core.Model;
+using System.Linq;
 
 namespace OpenAPI.Validator
 {
@@ -12,6 +13,48 @@ namespace OpenAPI.Validator
     /// </summary>
     public static class Extensions
     {
+        private static string FormatCase(string name, bool toLower)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                if ((name.Length < 2) || ((name.Length == 2) && char.IsUpper(name[0]) && char.IsUpper(name[1])))
+                {
+                    name = toLower ? name.ToLowerInvariant() : name.ToUpperInvariant();
+                }
+                else
+                {
+                    name =
+                    (toLower
+                        ? char.ToLowerInvariant(name[0])
+                        : char.ToUpperInvariant(name[0])) + name.Substring(1, name.Length - 1);
+                }
+            }
+            return name;
+        }
+
+        public static string ToCamelCase(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            if (value[0] == '_')
+            // Preserve leading underscores.
+            {
+                return '_' + ToCamelCase(value.Substring(1));
+            }
+
+            return
+                value.Split('_', '-', ' ')
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .Select((s, i) => FormatCase(s, i == 0)) // Pass true/toLower for just the first element.
+                    .DefaultIfEmpty("")
+                    .Aggregate(string.Concat);
+        }
+
+        public static bool EqualsIgnoreCase(this string s1, string s2) => ReferenceEquals(s1, s2) || true == s1?.Equals(s2, StringComparison.OrdinalIgnoreCase);
+
         public static HttpStatusCode ToHttpStatusCode(this string statusCode)
         {
             return (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode);

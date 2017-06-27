@@ -17,9 +17,6 @@ namespace OpenAPI.Validator.Model
     /// </summary>
     public class ServiceDefinition : SpecObject
     {
-        // as long as AAAS does not provide that
-        public static ServiceDefinition Instance { get; set; }
-
         public ServiceDefinition()
         {
             Definitions = new Dictionary<string, Schema>();
@@ -167,10 +164,5 @@ namespace OpenAPI.Validator.Model
         /// Additional external documentation
         /// </summary>
         public ExternalDoc ExternalDocs { get; set; }
-
-        /// <summary>
-        /// Path to this Swagger.
-        /// </summary>
-        internal Uri FilePath { get; set; }
     }
 }
