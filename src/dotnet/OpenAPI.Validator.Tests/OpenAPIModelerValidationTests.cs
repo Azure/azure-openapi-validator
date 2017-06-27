@@ -16,7 +16,7 @@ namespace OpenAPI.Validator.Tests
 {
     
     [Collection("Validation Tests")]
-    public partial class SwaggerModelerValidationTests
+    public partial class OpenAPIModelerValidationTests
     {
         private static readonly string PathToValidationResources = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation");
         private IEnumerable<ValidationMessage> ValidateSwagger(string input, ServiceDefinitionMetadata metadata)
@@ -623,7 +623,7 @@ namespace OpenAPI.Validator.Tests
 
     #region Positive tests
 
-    public partial class SwaggerModelerValidationTests
+    public partial class OpenAPIModelerValidationTests
     {
         /// <summary>
         /// Verifies that a clean Swagger file does not result in any validation errors
