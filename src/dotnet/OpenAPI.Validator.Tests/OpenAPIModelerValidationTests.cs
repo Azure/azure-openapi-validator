@@ -299,72 +299,72 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void VersionFormatValidation()
         {
-            var messages = GetValidationMessagesForRule<APIVersionPattern>("swagger-version-validation.json");
+            var messages = GetValidationMessagesForRule<APIVersionPattern>("version-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void GuidUsageValidation()
         {
-            var messages = GetValidationMessagesForRule<GuidUsage>("swagger-guid-validation.json");
+            var messages = GetValidationMessagesForRule<GuidUsage>("guid-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void DeleteRequestBodyValidation()
         {
-            var messages = GetValidationMessagesForRule<DeleteMustNotHaveRequestBody>("swagger-delete-request-body-validation.json");
+            var messages = GetValidationMessagesForRule<DeleteMustNotHaveRequestBody>("delete-request-body-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void ResourceExtensionValidation()
         {
-            var messages = GetValidationMessagesForRule<ResourceHasXMsResourceEnabled>("swagger-ext-msresource-validation.json");
+            var messages = GetValidationMessagesForRule<ResourceHasXMsResourceEnabled>("ext-msresource-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void MsClientNameExtensionValidation()
         {
-            var messages = GetValidationMessagesForRule<XmsClientNameProperty>("swagger-ext-msclientname-validation.json");
+            var messages = GetValidationMessagesForRule<XmsClientNameProperty>("ext-msclientname-validation.json");
             Assert.Equal(messages.Count(), 1);
-            messages = GetValidationMessagesForRule<XmsClientNameParameter>("swagger-ext-msclientname-validation.json");
+            messages = GetValidationMessagesForRule<XmsClientNameParameter>("ext-msclientname-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void OperationsApiValidation()
         {
-            var messages = GetValidationMessagesForRule<OperationsAPIImplementation>("swagger-operations-api-validation.json");
+            var messages = GetValidationMessagesForRule<OperationsAPIImplementation>("operations-api-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void ResourceModelValidation()
         {
-            var messages = GetValidationMessagesForRule<RequiredPropertiesMissingInResourceModel>("swagger-ext-resource-validation.json");
+            var messages = GetValidationMessagesForRule<RequiredPropertiesMissingInResourceModel>("ext-resource-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void SkuModelValidation()
         {
-            var messages = GetValidationMessagesForRule<InvalidSkuModel>("swagger-skumodel-validation.json");
+            var messages = GetValidationMessagesForRule<InvalidSkuModel>("skumodel-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void TrackedResourceGetOperationValidation2()
         {
-            var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>("swagger-tracked-resource-1-validation.json");
+            var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>("tracked-resource-1-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void TrackedResourceListByResourceGroupValidation()
         {
-            var messages = GetValidationMessagesForRule<TrackedResourceListByResourceGroup>("swagger-tracked-resource-2-validation.json");
+            var messages = GetValidationMessagesForRule<TrackedResourceListByResourceGroup>("tracked-resource-2-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -385,28 +385,28 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void TrackedResourceListBySubscriptionValidation()
         {
-            var messages = GetValidationMessagesForRule<TrackedResourceListBySubscription>("swagger-tracked-resource-3-validation.json");
+            var messages = GetValidationMessagesForRule<TrackedResourceListBySubscription>("tracked-resource-3-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void TrackedResourceListByImmediateParentValidation()
         {
-            var messages = GetValidationMessagesForRule<TrackedResourceListByImmediateParent>("swagger-list-by-immediate-parent.json");
+            var messages = GetValidationMessagesForRule<TrackedResourceListByImmediateParent>("list-by-immediate-parent.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void TrackedResourceListByImmediateParentWithOperationValidation()
         {
-            var messages = GetValidationMessagesForRule<TrackedResourceListByImmediateParent>("swagger-list-by-immediate-parent-2.json");
+            var messages = GetValidationMessagesForRule<TrackedResourceListByImmediateParent>("list-by-immediate-parent-2.json");
             Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
         public void PutGetPatchResponseValidation()
         {
-            var messages = GetValidationMessagesForRule<PutGetPatchResponseSchema>("swagger-putgetpatch-response-validation.json");
+            var messages = GetValidationMessagesForRule<PutGetPatchResponseSchema>("putgetpatch-response-validation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -601,7 +601,7 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void SummaryDescriptionValidation()
         {
-            var messages = GetValidationMessagesForRule<SummaryAndDescriptionMustNotBeSame>("swagger-summary-description.json");
+            var messages = GetValidationMessagesForRule<SummaryAndDescriptionMustNotBeSame>("summary-description.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -777,7 +777,7 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void ValidSkuObjectStructure()
         {
-            var messages = GetValidationMessagesForRule<InvalidSkuModel>(Path.Combine("positive", "swagger-skumodel-validation-valid.json"));
+            var messages = GetValidationMessagesForRule<InvalidSkuModel>(Path.Combine("positive", "skumodel-validation-valid.json"));
             Assert.Empty(messages);
         }
 
