@@ -4,3 +4,13 @@ src/**/*.d.ts
 node_modules/
 pack/
 *.tgz
+
+# remove dotnet artifacts
+src/dotnet/**/[Bb]in/
+src/dotnet/**/[Oo]bj/
+src/dotnet/**/*.deps.json
+src/dotnet/**/[Dd]ebug*/
+src/dotnet/**/[Rr]elease/
+**/*.DotSettings.user
+# ignore vs
+**/.vs/

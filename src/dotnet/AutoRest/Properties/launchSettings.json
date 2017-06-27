@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AutoRest": {
+      "commandName": "Project",
+      "commandLineArgs": "--input-file=\"F:\\artemp\\SwaggerReview\\azure-rest-api-specs\\specification\\servicefabric\\data-plane\\Microsoft.ServiceFabric\\5.6\\servicefabric.json\" --azure-validator=true"
+    }
+  }
+}
