@@ -37,7 +37,7 @@ namespace OpenAPI.Validator.Validation.Core
         /// <param name="filePath">uri path to the servicedefinition document <paramref name="entity"/></param>
         /// <param name="entity">The object to validate</param><param name="entity">The object to validate</param>
         /// <param name="metaData">The metadata associated with serviceDefinition to which <paramref name="metaData"/> belongs to</param>
-        public IEnumerable<LogMessage> GetValidationExceptions(Uri filePath, ServiceDefinition entity, ServiceDefinitionMetadata metadata)
+        public IEnumerable<ValidationMessage> GetValidationExceptions(Uri filePath, ServiceDefinition entity, ServiceDefinitionMetadata metadata)
         {
             return RecursiveValidate(entity, ObjectPath.Empty, new RuleContext(entity, filePath), Enumerable.Empty<Rule>(), metadata);
         }
@@ -70,16 +70,16 @@ namespace OpenAPI.Validator.Validation.Core
         /// <param name="metaData">The metadata associated with serviceDefinition to which <paramref name="entity"/> belongs to</param>
         /// <param name="traverseProperties">Whether or not to traverse this <paramref name="entity"/>'s properties</param>
         /// <returns></returns>
-        private IEnumerable<LogMessage> RecursiveValidate(object entity, ObjectPath entityPath, RuleContext parentContext, IEnumerable<Rule> rules, ServiceDefinitionMetadata metaData, bool traverseProperties = true)
+        private IEnumerable<ValidationMessage> RecursiveValidate(object entity, ObjectPath entityPath, RuleContext parentContext, IEnumerable<Rule> rules, ServiceDefinitionMetadata metaData, bool traverseProperties = true)
         {
-            var messages = Enumerable.Empty<LogMessage>();
+            var messages = Enumerable.Empty<ValidationMessage>();
             if (entity == null)
             {
                 return messages;
             }
 
             // Ensure that the rules can be re-enumerated without re-evaluating the enumeration.
-            var collectionRules = rules.ReEnumerable();
+            var collectionRules = rules.ToList();
 
             var list = entity as IList;
             var dictionary = entity as IDictionary;
@@ -126,7 +126,7 @@ namespace OpenAPI.Validator.Validation.Core
         /// <param name="parentContext"></param>
         /// <param name="metaData">The metadata associated with corresponding serviceDefinition</param>
         /// <returns></returns>
-        private IEnumerable<LogMessage> ValidateObjectValue(object entity,
+        private IEnumerable<ValidationMessage> ValidateObjectValue(object entity,
             IEnumerable<Rule> collectionRules, RuleContext parentContext,
             ServiceDefinitionMetadata metaData)
         {
@@ -148,7 +148,7 @@ namespace OpenAPI.Validator.Validation.Core
         /// <param name="entityPath">Path to the property object in the serviceDefinition</param>
         /// <param name="metaData">The metadata associated with corresponding serviceDefinition</param>
         /// <returns></returns>
-        private IEnumerable<LogMessage> ValidateProperty(PropertyInfo prop, object value, ObjectPath entityPath, RuleContext parentContext, ServiceDefinitionMetadata metaData)
+        private IEnumerable<ValidationMessage> ValidateProperty(PropertyInfo prop, object value, ObjectPath entityPath, RuleContext parentContext, ServiceDefinitionMetadata metaData)
         {
             // Uses the property name resolver to get the name to use in the path of messages
             var propName = resolver(prop);

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using AutoRest.Core.Utilities.Collections;
 using AutoRest.Core.Utilities;
+using OpenAPI.Validator.Model;
+using AutoRest.Core.Model;
 
 namespace OpenAPI.Validator.Validation.Core
 {
@@ -46,12 +48,59 @@ namespace OpenAPI.Validator.Validation.Core
                    dictType.GenericTypeArguments[1] != typeof(object);
         }
 
-        public static IEnumerable<Rule> GetValidationRules(this PropertyInfo property) =>  property.GetCustomAttributes<RuleAttribute>(true).Select(each => each.Rule).ReEnumerable();
+        /// <summary>
+        /// A schema represents a simple primary type if it's a stream, or an object with no properties
+        /// </summary>
+        /// <param name="_schema"></param>
+        /// <returns></returns>
+        public static KnownPrimaryType GetSimplePrimaryType(this Schema _schema)
+        {
+            // If object with file format treat as stream
+            if (_schema.Type != null
+                && _schema.Type == DataType.Object
+                && "file".EqualsIgnoreCase(_schema.Format))
+            {
+                return KnownPrimaryType.Stream;
+            }
 
-        public static IEnumerable<Rule> GetValidationCollectionRules(this PropertyInfo property) => property.GetCustomAttributes<CollectionRuleAttribute>(true).Select(each => each.Rule).ReEnumerable();
+            // If the object does not have any properties, treat it as raw json (i.e. object)
+            if (_schema.Properties.IsNullOrEmpty() && string.IsNullOrEmpty(_schema.Extends) && _schema.AdditionalProperties == null)
+            {
+                return KnownPrimaryType.Object;
+            }
 
-        public static IEnumerable<Rule> GetValidationRules(this Type type)
-            => type.GetCustomAttributes<RuleAttribute>(true).Select(each => each.Rule).ReEnumerable();
+            // The schema doesn't match any KnownPrimaryType
+            return KnownPrimaryType.None;
+        }
+
+        /// <summary>
+        /// A schema represents a CompositeType if it's not a primitive type and it's not a simple primary type
+        /// </summary>
+        /// <param name="schema"></param>
+        /// <returns></returns>
+        public static bool RepresentsCompositeType(this Schema schema)
+        {
+            return !schema.IsPrimitiveType() && schema.GetSimplePrimaryType() == KnownPrimaryType.None;
+        }
+
+        /// <summary>
+        /// A schema represents a primitive type if it's not an object or it represents a dictionary
+        /// </summary>
+        /// <param name="_schema"></param>
+        /// <returns></returns>
+        public static bool IsPrimitiveType(this Schema _schema)
+        {
+            // Notes: 
+            //      'additionalProperties' on a type AND no defined 'properties', indicates that
+            //      this type is a Dictionary. (and is handled by ObjectBuilder)
+            return (_schema.Type != null && _schema.Type != DataType.Object || (_schema.AdditionalProperties != null && _schema.Properties.IsNullOrEmpty()));
+        }
+
+        public static IEnumerable<Rule> GetValidationRules(this PropertyInfo property) =>  property.GetCustomAttributes<RuleAttribute>(true).Select(each => each.Rule).ToList();
+
+        public static IEnumerable<Rule> GetValidationCollectionRules(this PropertyInfo property) => property.GetCustomAttributes<CollectionRuleAttribute>(true).Select(each => each.Rule).ToList();
+
+        public static IEnumerable<Rule> GetValidationRules(this Type type) => type.GetCustomAttributes<RuleAttribute>(true).Select(each => each.Rule).ToList();
 
     }
 }

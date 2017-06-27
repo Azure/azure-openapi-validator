@@ -34,14 +34,14 @@ public class AzureValidator : NewPlugin
 
         // create the raw message
         var rawMessageDetails = new Dictionary<string, string>() {
-        { "type", validationMessage.Severity.ToString() },
-        { "code", validationMessage.Rule.GetType().Name },
-        { "message", validationMessage.Message },
-        { "id", validationMessage.Rule.Id },
-        { "validationCategory", validationMessage.Rule.ValidationCategory.ToString() },
-        { "providerNamespace", pathComponentProviderNamespace.Success ? pathComponentProviderNamespace.Value : null },
-        { "resourceType", pathComponentResourceType.Success ? pathComponentResourceType.Value : null }
-    };
+            { "type", validationMessage.Severity.ToString() },
+            { "code", validationMessage.Rule.GetType().Name },
+            { "message", validationMessage.Message },
+            { "id", validationMessage.Rule.Id },
+            { "validationCategory", validationMessage.Rule.ValidationCategory.ToString() },
+            { "providerNamespace", pathComponentProviderNamespace.Success ? pathComponentProviderNamespace.Value : null },
+            { "resourceType", pathComponentResourceType.Success ? pathComponentResourceType.Value : null }
+        };
 
         // post it to the pipe
         Message(new Message
@@ -51,21 +51,21 @@ public class AzureValidator : NewPlugin
             Details = rawMessageDetails,
             Key = new string[]
             {
-            validationMessage.Rule.GetType().Name,
-            validationMessage.Rule.Id,
-            validationMessage.Rule.ValidationCategory.ToString()
+                validationMessage.Rule.GetType().Name,
+                validationMessage.Rule.Id,
+                validationMessage.Rule.ValidationCategory.ToString()
             },
             Source = new[]
             {
-            new SourceLocation
-            {
-                document = validationMessage.Path.FilePath.ToString(),
-                Position = new SmartPosition
+                new SourceLocation
                 {
-                    path = validationMessage.Path.ObjectPath.Path.Select(x => x.RawPath).ToArray()
+                    document = validationMessage.Path.FilePath.ToString(),
+                    Position = new SmartPosition
+                    {
+                        path = validationMessage.Path.ObjectPath.Path.Select(x => x.RawPath).ToArray()
+                    }
                 }
             }
-        }
         });
     }
 

@@ -4,7 +4,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Perks.JsonRPC;
-using static AutoRest.Core.Utilities.DependencyInjection;
 
 static class Channel
 {
@@ -36,10 +35,8 @@ public class Message
   public SourceLocation[] Source { get; set; }
 }
 
-public abstract class NewPlugin :  AutoRest.Core.IHost
+public abstract class NewPlugin
 {
-    private IDisposable Start => NewContext;
-
     public Task<string> ReadFile(string filename) => _connection.Request<string>("ReadFile", _sessionId, filename);
     public Task<T> GetValue<T>(string key) => _connection.Request<T>("GetValue", _sessionId, key);
     public Task<string> GetValue(string key) => GetValue<string>(key);
@@ -61,10 +58,7 @@ public abstract class NewPlugin :  AutoRest.Core.IHost
     {
         try
         {
-            using (Start)
-            {
-                return await ProcessInternal();
-            }
+            return await ProcessInternal();
         }
         catch (Exception e)
         {
