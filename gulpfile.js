@@ -43,7 +43,7 @@ gulp.task('restore/dotnet', ['clean/dotnet'], function () {
 gulp.task('build/dotnet', ['restore/dotnet'], function () {
     console.log('Running dotnet build...');
     return gulp.src('src/dotnet/**/*.csproj')
-        .pipe(build({ verbosity: 'minimal' }));
+        .pipe(build({ verbosity: 'diagnostic' }));
 });
 
 gulp.task('test/dotnet', ['build/dotnet'], function () {
