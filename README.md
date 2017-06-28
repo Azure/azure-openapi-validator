@@ -10,22 +10,40 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 ## Build scripts
 ### How to build
 The first step would be to run ```npm install``` so we have all the required modules installed.
-
+#### How to build the whole repo
 ```
 gulp build
 ```
-This transpiles the typescript scripts into javascript files under the js folder.
+#### How to build the typescript repo
+```
+gulp build/typescript
+```
+#### How to build the dotnet repo
+To restore the dotnet packages
+```
+gulp restore/dotnet
+```
+This builds the dotnet projects.
+```
+gulp build/dotnet
+```
 ### How to test
+To run all tests under the repo
 ```
 gulp test
 ```
-This runs the tests under tests directory.
-
-### How to write a new validation rule
+#### How to run the typescript tests
+```
+gulp test/typescript
+```
+#### How to run the dotnet tests
+```
+gulp test/dotnet
+```
+### How to write a new validation rule using typescript
 1. Add a typescript file under ```azure-openapi-validator``` directory named same as the name of the rule. Add the ```id```, ```name```, ```severity```, ```category```,  ```mergeState```,  ```openapiType```,  ```appliesTo_JsonQuery``` properties to the rule. ```appliesTo_JsonQuery``` is the node(s) to which the rule needs to be applied. This is evaluated using JsonPaths. Please refer [here](https://www.npmjs.com/package/jsonpath#jsonpath-syntax) for a brief tutorial about JsonPaths.
 2. Next, implement the ```run``` method under the rule that actually does the validation. Add a reference to this script file under ```src/typescript/azure-openapi-validator/index.ts```.
 3. Lastly add a test case for the validation rule, by adding a test json/yaml under ```src/typescript/azure-openapi-validator/tests/resources``` and a script under ```src/typescript/azure-openapi-validator/tests``` depending on the type of the validation rule.
 
-## Publishing the package
-Npm packages **MUST** be published from the `release` branch, `master` is promoted to release on a monthly cadence. All development **MUST** be done on the `master` branch. The package version of `master` branch **MUST** be incremented after every promotion to release.
+### How to publish
 
