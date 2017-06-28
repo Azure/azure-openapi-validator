@@ -69,6 +69,39 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Empty x-ms-client-name property..
+        /// </summary>
+        public static string EmptyClientName
+        {
+            get
+            {
+                return ResourceManager.GetString("EmptyClientName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The default value is not one of the values enumerated as valid for this element..
+        /// </summary>
+        public static string InvalidDefault
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDefault", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a known format..
+        /// </summary>
+        public static string UnknownFormat
+        {
+            get
+            {
+                return ResourceManager.GetString("UnknownFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity. Model definition &apos;{0}&apos; has extra properties [&apos;{1}&apos;]..
         /// </summary>
         public static string AllowedTopLevelProperties
