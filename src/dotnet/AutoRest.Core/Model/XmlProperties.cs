@@ -1,4 +1,7 @@
-﻿namespace AutoRest.Core.Model
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+namespace AutoRest.Core.Model
 {
     public class XmlProperties
     {

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,7 +99,7 @@ namespace OpenAPI.Validator.Validation.Core
             return (_schema.Type != null && _schema.Type != DataType.Object || (_schema.AdditionalProperties != null && _schema.Properties.IsNullOrEmpty()));
         }
 
-        public static IEnumerable<Rule> GetValidationRules(this PropertyInfo property) =>  property.GetCustomAttributes<RuleAttribute>(true).Select(each => each.Rule).ToList();
+        public static IEnumerable<Rule> GetValidationRules(this PropertyInfo property) => property.GetCustomAttributes<RuleAttribute>(true).Select(each => each.Rule).ToList();
 
         public static IEnumerable<Rule> GetValidationCollectionRules(this PropertyInfo property) => property.GetCustomAttributes<CollectionRuleAttribute>(true).Select(each => each.Rule).ToList();
 

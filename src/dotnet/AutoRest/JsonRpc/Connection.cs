@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using AutoRest.JsonRpc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -250,7 +253,8 @@ namespace Microsoft.Perks.JsonRPC
         {
             if (content is JObject)
             {
-                Task.Factory.StartNew(async () => {
+                Task.Factory.StartNew(async () =>
+                {
                     var jobject = content as JObject;
                     try
                     {
@@ -280,7 +284,7 @@ namespace Microsoft.Perks.JsonRPC
                             if (!string.IsNullOrEmpty(id))
                             {
                                 ICallerResponse f = null;
-                                lock( _tasks )
+                                lock (_tasks)
                                 {
                                     f = _tasks[id];
                                     _tasks.Remove(id);
@@ -337,7 +341,7 @@ namespace Microsoft.Perks.JsonRPC
         private async Task Send(string text)
         {
             _streamReady.WaitOne();
-            
+
             await _writer.WriteAsync($"Content-Length: {Encoding.UTF8.GetByteCount(text)}\r\n\r\n");
             await _writer.WriteAsync(text);
             _streamReady.Release();
@@ -361,7 +365,7 @@ namespace Microsoft.Perks.JsonRPC
         {
             var id = Interlocked.Decrement(ref _requestId).ToString();
             var response = new CallerResponse<T>(id);
-            lock( _tasks ) { _tasks.Add(id, response); }
+            lock (_tasks) { _tasks.Add(id, response); }
             await Send(ProtocolExtensions.Request(id, methodName, values)).ConfigureAwait(false);
             return await response.Task.ConfigureAwait(false);
         }
@@ -370,7 +374,7 @@ namespace Microsoft.Perks.JsonRPC
         {
             var id = Interlocked.Decrement(ref _requestId).ToString();
             var response = new CallerResponse<T>(id);
-            lock( _tasks ) { _tasks.Add(id, response); }
+            lock (_tasks) { _tasks.Add(id, response); }
             await Send(ProtocolExtensions.Request(id, methodName, parameter)).ConfigureAwait(false);
             return await response.Task.ConfigureAwait(false);
         }
