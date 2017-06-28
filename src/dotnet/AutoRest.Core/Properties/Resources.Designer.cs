@@ -8,12 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutoRest.Core.Properties
-{
+namespace AutoRest.Core.Properties {
     using System;
     using System.Reflection;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -24,277 +23,69 @@ namespace AutoRest.Core.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources
-    {
-
+    public class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AutoRest.Core.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
-
-        /// <summary>
-        ///   Looks up a localized string similar to AutoRest Core {0}.
-        /// </summary>
-        public static string AutoRestCore
-        {
-            get
-            {
-                return ResourceManager.GetString("AutoRestCore", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Plugins:
-        ///  CSharp:
-        ///    TypeName: PluginCs, AutoRest.CSharp
-        ///  JsonRpcClient:
-        ///    TypeName: PluginCs, AutoRest.CSharp.JsonRpcClient
-        ///  Azure.CSharp:
-        ///    TypeName: PluginCsa, AutoRest.CSharp.Azure
-        ///  Azure.CSharp.Fluent:
-        ///    TypeName: PluginCsaf, AutoRest.CSharp.Azure.Fluent
-        ///  Azure.JsonRpcClient:
-        ///    TypeName: PluginCsa, AutoRest.CSharp.Azure.JsonRpcClient
-        ///  Ruby:
-        ///    TypeName: PluginRb, AutoRest.Ruby
-        ///  Azure.Ruby:
-        ///    TypeName: PluginRba, AutoRest.Ruby.Azure
-        ///  NodeJS:
-        ///    TypeName: PluginJs, Au [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string ConfigurationKnownPlugins
-        {
-            get
-            {
-                return ResourceManager.GetString("ConfigurationKnownPlugins", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Empty x-ms-client-name property..
         /// </summary>
-        public static string EmptyClientName
-        {
-            get
-            {
+        public static string EmptyClientName {
+            get {
                 return ResourceManager.GetString("EmptyClientName", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Error generating client model: {0}.
-        /// </summary>
-        public static string ErrorGeneratingClientModel
-        {
-            get
-            {
-                return ResourceManager.GetString("ErrorGeneratingClientModel", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Error loading {0} assembly: {1}.
-        /// </summary>
-        public static string ErrorLoadingAssembly
-        {
-            get
-            {
-                return ResourceManager.GetString("ErrorLoadingAssembly", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Error saving generated code: {0}.
-        /// </summary>
-        public static string ErrorSavingGeneratedCode
-        {
-            get
-            {
-                return ResourceManager.GetString("ErrorSavingGeneratedCode", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Plugin {0} not found.
-        /// </summary>
-        public static string ExtensionNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("ExtensionNotFound", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Successfully initialized {0} Code Generator {1}.
-        /// </summary>
-        public static string GeneratorInitialized
-        {
-            get
-            {
-                return ResourceManager.GetString("GeneratorInitialized", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Initializing code generator..
-        /// </summary>
-        public static string InitializingCodeGenerator
-        {
-            get
-            {
-                return ResourceManager.GetString("InitializingCodeGenerator", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Initializing modeler..
-        /// </summary>
-        public static string InitializingModeler
-        {
-            get
-            {
-                return ResourceManager.GetString("InitializingModeler", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The default value is not one of the values enumerated as valid for this element..
         /// </summary>
-        public static string InvalidDefault
-        {
-            get
-            {
+        public static string InvalidDefault {
+            get {
                 return ResourceManager.GetString("InvalidDefault", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Property name {0} cannot be used as an Identifier, as it contains only invalid characters..
-        /// </summary>
-        public static string InvalidIdentifierName
-        {
-            get
-            {
-                return ResourceManager.GetString("InvalidIdentifierName", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; code generator does not support code generation to a single file..
-        /// </summary>
-        public static string LanguageDoesNotSupportSingleFileGeneration
-        {
-            get
-            {
-                return ResourceManager.GetString("LanguageDoesNotSupportSingleFileGeneration", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Type &apos;{0}&apos; name should be assembly qualified. For example &apos;ClassName, AssemblyName&apos;.
-        /// </summary>
-        public static string TypeShouldBeAssemblyQualified
-        {
-            get
-            {
-                return ResourceManager.GetString("TypeShouldBeAssemblyQualified", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to path cannot be null or an empty string or a string with white spaces while getting the parent directory.
-        /// </summary>
-        public static string PathCannotBeNullOrEmpty
-        {
-            get
-            {
-                return ResourceManager.GetString("PathCannotBeNullOrEmpty", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Successfully initialized modeler {0} v {1}..
-        /// </summary>
-        public static string ModelerInitialized
-        {
-            get
-            {
-                return ResourceManager.GetString("ModelerInitialized", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; value is not valid. Expect &apos;{1}&apos;.
-        /// </summary>
-        public static string ParameterValueIsNotValid
-        {
-            get
-            {
-                return ResourceManager.GetString("ParameterValueIsNotValid", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; is required..
-        /// </summary>
-        public static string ParameterValueIsMissing
-        {
-            get
-            {
-                return ResourceManager.GetString("ParameterValueIsMissing", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a known format..
         /// </summary>
-        public static string UnknownFormat
-        {
-            get
-            {
+        public static string UnknownFormat {
+            get {
                 return ResourceManager.GetString("UnknownFormat", resourceCulture);
             }
         }
-
     }
 }
