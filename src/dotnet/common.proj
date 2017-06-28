@@ -1,5 +1,4 @@
 <Project ToolsVersion="15.0">
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), common/common.proj ))/common/common.proj" />
   <PropertyGroup Condition="$(Common) == '*Undefined*' OR $(Common) == '' " >
     <Common>$(MsBuildThisFileDirectory)</Common>
     <GenerateFullPaths>true</GenerateFullPaths>

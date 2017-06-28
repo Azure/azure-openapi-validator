@@ -1,0 +1,31 @@
+{
+    "name": "@microsoft.azure/classic-openapi-validator",
+    "version": "1.0.0",
+    "description": "The classic OpenAPI validator plugin for AutoRest",
+    "engines": {
+        "dotnet": "~1.0.5"
+    },
+    "scripts": {
+        "start": "dotnet ./bin/netcoreapp1.0/AutoRest.dll --server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Azure/azure-openapi-validator"
+    },
+    "readme": "https://github.com/Azure/azure-openapi-validator/readme.md",
+    "keywords": [
+        "autorest",
+        "openapi-validator",
+        "azure-validator",
+        "azure-linter",
+        "swagger"
+    ],
+    "author": "Microsoft Corporation",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Azure/azure-openapi-validator/issues"
+    },
+    "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
+    "devDependencies": {},
+    "dependencies": {}
+}
