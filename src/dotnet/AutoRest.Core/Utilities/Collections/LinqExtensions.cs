@@ -10,8 +10,6 @@ namespace AutoRest.Core.Utilities.Collections
 {
     public static class LinqExtensions
     {
-        public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> enumerable) => enumerable?.Where(each => each != null) ?? Enumerable.Empty<T>();
-
         public static IEnumerable<TResult> SelectMany<TResult>(this IDictionary source, Func<object, object, IEnumerable<TResult>> selector)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));

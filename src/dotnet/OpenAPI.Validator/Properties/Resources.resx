@@ -120,6 +120,15 @@
   <data name="CircularBaseSchemaSet" xml:space="preserve">
     <value>Found a type set '{0}' which is circularly defined.</value>
   </data>
+  <data name="EmptyClientName" xml:space="preserve">
+    <value>Empty x-ms-client-name property.</value>
+  </data>
+  <data name="InvalidDefault" xml:space="preserve">
+    <value>The default value is not one of the values enumerated as valid for this element.</value>
+  </data>
+  <data name="UnknownFormat" xml:space="preserve">
+    <value>'{0}' is not a known format.</value>
+  </data>
   <data name="CircularReference" xml:space="preserve">
     <value>Circular reference detected: {0}</value>
   </data>
