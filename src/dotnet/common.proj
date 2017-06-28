@@ -1,0 +1,14 @@
+<Project ToolsVersion="15.0">
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), common/common.proj ))/common/common.proj" />
+  <PropertyGroup Condition="$(Common) == '*Undefined*' OR $(Common) == '' " >
+    <Common>$(MsBuildThisFileDirectory)</Common>
+    <GenerateFullPaths>true</GenerateFullPaths>
+    <BaseOutputPath>$(MSBuildProjectDirectory)/bin</BaseOutputPath>
+    <OutputPath>$(BaseOutputPath)</OutputPath>
+  </PropertyGroup>
+
+  <Target Name="Nuke" AfterTargets="clean" >
+    <Delete Files="$(BaseOutputPath)**;$(BaseIntermediateOutputPath)razor/**;$(BaseIntermediateOutputPath)Debug/**;$(BaseIntermediateOutputPath)Release/**" />
+    <RemoveDir Directories="$(BaseOutputPath);$(BaseIntermediateOutputPath)/Debug;$(BaseIntermediateOutputPath)/Release" />
+  </Target>
+</Project>

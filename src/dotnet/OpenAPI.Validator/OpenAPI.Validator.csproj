@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
-  
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), common/common.proj ))/common/common.proj" />
   <PropertyGroup>
     <AssemblyName>OpenAPI.Validator</AssemblyName>
     <PackageTags>Microsoft AutoRest Generator Extensions</PackageTags>
