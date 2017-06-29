@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AutoRest.Core.Utilities.Collections;
 using AutoRest.Core.Utilities;
 using OpenAPI.Validator.Model;
 using AutoRest.Core.Model;

@@ -2,13 +2,11 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
-using System.Linq;
 using AutoRest.Core.Parsing;
 using AutoRest.Core.Utilities;
 using OpenAPI.Validator.JsonConverters;
 using OpenAPI.Validator.Model;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace OpenAPI.Validator
 {

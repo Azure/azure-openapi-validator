@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
-
 using AutoRest.Core.Model;
 using OpenAPI.Validator.Validation;
 using OpenAPI.Validator.Validation.Core;
