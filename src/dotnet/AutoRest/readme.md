@@ -6,21 +6,19 @@ Classic Azure OpenAPI validator (CSharp)
 
 ``` yaml
 pipeline:
-  swagger-document/azure-validator:
-    input: swagger-document/identity
-    scope: azure-validator-composed
-  swagger-document/individual/azure-validator:
-    input: swagger-document/individual/identity
-    scope: azure-validator-individual
-  
-  # validator written in CSharp
   swagger-document/classic-openapi-validator:
-    input:
-       - swagger-document/identity
-       - azure-validator # artificial predecessor in order to ensure order of messages for CI purposes
+    input: swagger-document/identity
+    scope: openapi-validator-composed
   swagger-document/individual/classic-openapi-validator:
-    input: 
-       - swagger-document/identity
-       - azure-validator # artificial predecessor in order to ensure order of messages for CI purposes
+    input: swagger-document/individual/identity
+    scope: openapi-validator-individual
+  
+```
+
+``` yaml
+openapi-validator-composed:
+  merge-state: composed
+openapi-validator-individual:
+  merge-state: individual
 ```
 

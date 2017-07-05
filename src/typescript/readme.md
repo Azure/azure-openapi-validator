@@ -6,20 +6,18 @@ Azure OpenAPI validator (Typescript)
 
 ``` yaml
 pipeline:
-  swagger-document/azure-validator:
+  swagger-document/openapi-validator:
     input: swagger-document/identity
     scope: azure-validator-composed
-  swagger-document/individual/azure-validator:
+  swagger-document/individual/openapi-validator:
     input: swagger-document/individual/identity
     scope: azure-validator-individual
     
-  # validator written in TypeScript
-  swagger-document/azure-openapi-validator:
-     input:
-        - swagger-document/identity
-        - azure-validator # artificial predecessor in order to ensure order of messages for CI purposes
-  swagger-document/individual/azure-openapi-validator:
-     input: 
-        - swagger-document/identity
-        - azure-validator # artificial predecessor in order to ensure order of messages for CI purposes
+```
+
+``` yaml
+openapi-validator-composed:
+  merge-state: composed
+openapi-validator-individual:
+  merge-state: individual
 ```
