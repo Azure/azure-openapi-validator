@@ -2,8 +2,6 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-// polyfills for language support
-require("../utilities/polyfill.min.js");
 
 import { safeLoad } from "js-yaml";
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host";
