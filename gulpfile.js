@@ -12,7 +12,7 @@ var { restore, build, test, pack, publish } = require('gulp-dotnet-cli');
 // All the typescript tasks
 gulp.task('clean/typescript', function () {
     console.log('Cleaning build directories...');
-    return gulp.src('src/typescript/**/*.{js,d.ts}', { read: false })
+    return gulp.src(['src/typescript/azure-openapi-validator/*.{js,d.ts}', 'src/typescript/jsonrpc/*.{js,d.ts}'], { read: false })
         .pipe(clean({ force: true }));
 });
 
