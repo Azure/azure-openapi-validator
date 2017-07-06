@@ -1,0 +1,10 @@
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\bin\netstandard1.3\OpenAPI.Validator.deps.json
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\bin\netstandard1.3\OpenAPI.Validator.dll
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\bin\netstandard1.3\OpenAPI.Validator.pdb
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\bin\netstandard1.3\AutoRest.Core.dll
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\bin\netstandard1.3\AutoRest.Core.pdb
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\obj\Debug\netstandard1.3\OpenAPI.Validator.Properties.Resources.resources
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\obj\Debug\netstandard1.3\OpenAPI.Validator.csproj.GenerateResource.Cache
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\obj\Debug\netstandard1.3\OpenAPI.Validator.AssemblyInfo.cs
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\obj\Debug\netstandard1.3\OpenAPI.Validator.dll
+C:\repos\azure-openapi-validator\src\dotnet\OpenAPI.Validator\obj\Debug\netstandard1.3\OpenAPI.Validator.pdb

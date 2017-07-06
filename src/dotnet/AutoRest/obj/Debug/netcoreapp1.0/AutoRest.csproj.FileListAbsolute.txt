@@ -1,0 +1,12 @@
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.deps.json
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.runtimeconfig.json
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.runtimeconfig.dev.json
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.dll
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.pdb
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.Core.dll
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\OpenAPI.Validator.dll
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\AutoRest.Core.pdb
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\bin\netcoreapp1.0\OpenAPI.Validator.pdb
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\obj\Debug\netcoreapp1.0\AutoRest.AssemblyInfo.cs
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\obj\Debug\netcoreapp1.0\AutoRest.dll
+C:\repos\azure-openapi-validator\src\dotnet\AutoRest\obj\Debug\netcoreapp1.0\AutoRest.pdb
