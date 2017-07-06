@@ -19,7 +19,7 @@ const rule_1 = require("./azure-openapi-validator/rule");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const pluginHost = new plugin_host_1.AutoRestPluginHost();
-        pluginHost.Add("azure-openapi-validator", (initiator) => __awaiter(this, void 0, void 0, function* () {
+        pluginHost.Add("openapi-validator", (initiator) => __awaiter(this, void 0, void 0, function* () {
             const files = yield initiator.ListInputs();
             const mergeState = yield initiator.GetValue('merge-state');
             const openapiType = yield initiator.GetValue('openapi-type');

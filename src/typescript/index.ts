@@ -10,7 +10,7 @@ import { OpenApiTypes, MergeStates } from './azure-openapi-validator/rule';
 
 async function main() {
   const pluginHost = new AutoRestPluginHost();
-  pluginHost.Add("azure-openapi-validator", async initiator => {
+  pluginHost.Add("openapi-validator", async initiator => {
     const files = await initiator.ListInputs();
     const mergeState: string = await initiator.GetValue('merge-state');
     const openapiType: string = await initiator.GetValue('openapi-type');

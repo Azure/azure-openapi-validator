@@ -31,12 +31,12 @@ namespace AutoRest
 
     public async Task<IEnumerable<string>> GetPluginNames()
     {
-      return new[] { "azure-validator"};
+      return new[] { "classic-openapi-validator"};
     }
 
     public async Task<bool> Process(string plugin, string sessionId)
     {
-      if(plugin=="azure-validator")
+      if(plugin=="classic-openapi-validator")
       { 
           return await new AzureValidator(connection, sessionId).Process();
       }

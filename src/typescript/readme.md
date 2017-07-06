@@ -16,8 +16,8 @@ pipeline:
 ```
 
 ``` yaml
-openapi-validator-composed:
+azure-validator-composed:
   merge-state: composed
-openapi-validator-individual:
+azure-validator-individual:
   merge-state: individual
 ```
