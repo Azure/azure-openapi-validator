@@ -1,8 +1,0 @@
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\bin\netstandard1.3\AutoRest.Core.deps.json
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\bin\netstandard1.3\AutoRest.Core.dll
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\bin\netstandard1.3\AutoRest.Core.pdb
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\obj\Debug\netstandard1.3\AutoRest.Core.Properties.Resources.resources
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\obj\Debug\netstandard1.3\AutoRest.Core.csproj.GenerateResource.Cache
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\obj\Debug\netstandard1.3\AutoRest.Core.AssemblyInfo.cs
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\obj\Debug\netstandard1.3\AutoRest.Core.dll
-C:\repos\azure-openapi-validator\src\dotnet\AutoRest.Core\obj\Debug\netstandard1.3\AutoRest.Core.pdb
