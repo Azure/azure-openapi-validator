@@ -1,10 +1,9 @@
 # Ignore compiled files
 src/**/*.js
-!src/typescript/utilities/*.js
 src/**/*.d.ts
 node_modules/
 pack/
-*.tgz
+src/**/*.tgz
 
 # remove dotnet artifacts
 src/dotnet/**/[Bb]in/
