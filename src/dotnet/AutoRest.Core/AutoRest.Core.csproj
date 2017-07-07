@@ -20,6 +20,11 @@
     <Compile Include="$(MSBuildProjectDirectory)\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
