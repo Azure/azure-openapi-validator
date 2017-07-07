@@ -8,17 +8,17 @@ Classic Azure OpenAPI validator (CSharp)
 pipeline:
   swagger-document/classic-openapi-validator:
     input: swagger-document/identity
-    scope: openapi-validator-composed
+    scope: azure-validator-composed
   swagger-document/individual/classic-openapi-validator:
     input: swagger-document/individual/identity
-    scope: openapi-validator-individual
+    scope: azure-validator-individual
   
 ```
 
 ``` yaml
-openapi-validator-composed:
+azure-validator-composed:
   merge-state: composed
-openapi-validator-individual:
+azure-validator-individual:
   merge-state: individual
 ```
 
