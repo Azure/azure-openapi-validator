@@ -17,9 +17,6 @@
     <PackageReference Include="YamlDotNet.Signed" Version="3.8.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildProjectDirectory)\**\*.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="obj\**" />
     <EmbeddedResource Remove="obj\**" />
     <None Remove="obj\**" />
