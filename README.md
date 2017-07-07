@@ -45,5 +45,25 @@ gulp test/dotnet
 2. Next, implement the ```run``` method under the rule that actually does the validation. Add a reference to this script file under ```src/typescript/azure-openapi-validator/index.ts```.
 3. Lastly add a test case for the validation rule, by adding a test json/yaml under ```src/typescript/azure-openapi-validator/tests/resources``` and a script under ```src/typescript/azure-openapi-validator/tests``` depending on the type of the validation rule.
 
+## Changelog
+### What's New (07/07/2017)
+Resolved issues
+-   https://github.com/Azure/autorest/issues/2305 
+-   https://github.com/Azure/autorest/issues/2389 
+Enhancements
+-	New validation rule for Post operationIds 
+
+-	Ensuring validating items property must exist for an array type 
+
+-	Validation rules for verifying license headers 
+
+-	Fixing rule R2065 
+
+-	Better path reporting for R3010
+
+-	Filtering resource models returned only by post
+
+-	Adding rule categorizations (Merge state and document type) to validation rules
+
 ### How to publish
 
