@@ -13,6 +13,7 @@ namespace OpenAPI.Validator.Model
     /// </summary>
     [Rule(typeof(OperationDescriptionOrSummaryRequired))]
     [Rule(typeof(SummaryAndDescriptionMustNotBeSame))]
+    [Rule(typeof(LongRunningOperationsWithLongRunningExtension))]
     public class Operation : SwaggerBase
     {
         private string _description;

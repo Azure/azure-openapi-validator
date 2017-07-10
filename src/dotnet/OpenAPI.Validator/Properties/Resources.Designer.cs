@@ -157,6 +157,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to This operation returns 202 status code, which indicates a long running operation, please enable &quot;x-ms-long-running-operation..
+        /// </summary>
+        public static string LongRunningOperationsWithLongRunningExtension
+        {
+            get
+            {
+                return ResourceManager.GetString("LongRunningOperationsWithLongRunningExtension", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to A &apos;{0}&apos; operation &apos;{1}&apos; with x-ms-long-running-operation extension must have a valid terminal success status code {2}..
         /// </summary>
         public static string LongRunningResponseNotValid

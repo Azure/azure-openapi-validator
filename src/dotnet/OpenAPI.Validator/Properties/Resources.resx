@@ -354,4 +354,7 @@
   <data name="UnsupportedMimeTypeForResponseBody" xml:space="preserve">
     <value>The operation '{0}' has a response body in response '{1}', but did not have a supported MIME type ('application/json' or 'application/octet-stream') in its Produces property.</value>
   </data>
+  <data name="LongRunningOperationsWithLongRunningExtension" xml:space="preserve">
+    <value>This operation returns 202 status code, which indicates a long running operation, please enable "x-ms-long-running-operation.</value>
+  </data>
 </root>
