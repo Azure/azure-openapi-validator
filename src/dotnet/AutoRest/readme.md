@@ -4,7 +4,7 @@ Classic Azure OpenAPI validator (CSharp)
 
 ## Validation
 
-``` yaml
+``` yaml $(azure-validator)
 pipeline:
   swagger-document/classic-openapi-validator:
     input: swagger-document/identity
@@ -15,7 +15,7 @@ pipeline:
   
 ```
 
-``` yaml
+``` yaml $(azure-validator)
 azure-validator-composed:
   merge-state: composed
 azure-validator-individual:
