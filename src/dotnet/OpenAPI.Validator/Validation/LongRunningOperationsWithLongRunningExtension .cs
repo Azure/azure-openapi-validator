@@ -62,7 +62,7 @@ namespace OpenAPI.Validator.Validation
             if (operation.Responses?.Any(response => response.Key.Equals("202")) == true &&
               operation.Extensions?.Any(extension => extension.Key.Equals("x-ms-long-running-operation") && (bool)extension.Value) == false)
             {
-                yield return new ValidationMessage(new FileObjectPath(context.File, context.Path), this, new object[0]);
+                yield return new ValidationMessage(new FileObjectPath(context.File, context.Path), this, operation.OperationId);
             }
         }
     }

@@ -157,7 +157,7 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to This operation returns 202 status code, which indicates a long running operation, please enable &quot;x-ms-long-running-operation..
+        ///   Looks up a localized string similar to The operation &apos;{0}&apos; returns 202 status code, which indicates a long running operation, please enable &quot;x-ms-long-running-operation..
         /// </summary>
         public static string LongRunningOperationsWithLongRunningExtension
         {
