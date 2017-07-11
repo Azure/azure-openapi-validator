@@ -4,7 +4,7 @@ Azure OpenAPI validator (Typescript)
 
 ## Validation
 
-``` yaml
+``` yaml $(azure-validator)
 pipeline:
   swagger-document/openapi-validator:
     input: swagger-document/identity
@@ -15,7 +15,7 @@ pipeline:
     
 ```
 
-``` yaml
+``` yaml $(azure-validator)
 azure-validator-composed:
   merge-state: composed
 azure-validator-individual:
