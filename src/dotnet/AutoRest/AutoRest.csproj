@@ -18,6 +18,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(MSBuildProjectDirectory)/../AutoRest.Core/AutoRest.Core.csproj" />
-    <ProjectReference Include="..\OpenAPI.Validator\OpenAPI.Validator.csproj" />
   </ItemGroup>
 </Project>
