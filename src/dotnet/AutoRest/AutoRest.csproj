@@ -3,7 +3,6 @@
   <PropertyGroup>
     <RuntimeIdentifiers>win7-x64</RuntimeIdentifiers> 
     <OutputType>Exe</OutputType>
-    <!--<TargetFrameworks>netcoreapp1.0</TargetFrameworks>-->
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>AutoRest</AssemblyName>
     <PackageTags>Microsoft AutoRest Generator</PackageTags>
