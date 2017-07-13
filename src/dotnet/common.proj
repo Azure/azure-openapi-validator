@@ -6,6 +6,19 @@
     <OutputPath>$(BaseOutputPath)</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Copyright>Copyright (c) Microsoft Corporation</Copyright>
+
+    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-openapi-validator</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    
+    <DelaySign Condition="$(Configuration) == 'Release'">true</DelaySign>
+    <AssemblyOriginatorKeyFile Condition="$(Configuration) == 'Release'">$(MsBuildThisFileDirectory)/Tools/MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly Condition="$(Configuration) == 'Release'">true</SignAssembly>
+  </PropertyGroup>
+
   <Target Name="Nuke" AfterTargets="clean" >
     <Delete Files="$(BaseOutputPath)**;$(BaseIntermediateOutputPath)razor/**;$(BaseIntermediateOutputPath)Debug/**;$(BaseIntermediateOutputPath)Release/**" />
     <RemoveDir Directories="$(BaseOutputPath);$(BaseIntermediateOutputPath)/Debug;$(BaseIntermediateOutputPath)/Release" />
