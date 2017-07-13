@@ -80,7 +80,7 @@ gulp.task('default', ['dotnet', 'typescript'], function () {
     console.log('Successfully built and tested the repo...');
 });
 
-gulp.task('release', ['dotnet', 'typescript'], function () {
+gulp.task('dotnet/pack', ['dotnet', 'typescript'], function () {
     console.log('Kicking off the dotnet publish task...');
     return gulp.src('src/dotnet/AutoRest/AutoRest.csproj')
         .pipe(publish({ configuration: 'release' }));
