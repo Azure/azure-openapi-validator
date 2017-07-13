@@ -7,7 +7,6 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var run = require('gulp-run')
 var mocha = require('gulp-mocha');
-var exec = require('gulp-exec');
 var { restore, build, test, pack, publish } = require('gulp-dotnet-cli');
 
 // All the typescript tasks
@@ -81,18 +80,8 @@ gulp.task('default', ['dotnet', 'typescript'], function () {
     console.log('Successfully built and tested the repo...');
 });
 
-gulp.task('pack/dotnet', ['dotnet'], function () {
-    console.log('Packing the dotnet artifacts...');
-    return gulp.src('src/dotnet/AutoRest/package.json')
-        .pipe(exec('npm pack', { cwd: 'src/dotnet/AutoRest' }));
-});
-
-gulp.task('pack/typescript', ['typescript'], function () {
-    console.log('Packing the typescript artifacts...');
-    return gulp.src('src/typescript/package.json')
-        .pipe(exec('npm pack', { cwd: 'src/typescript' }));
-});
-
-gulp.task('pack', ['pack/dotnet', 'pack/typescript'], function () {
-    console.log('Packed the projects...');
+gulp.task('release', ['dotnet', 'typescript'], function () {
+    console.log('Kicking off the dotnet publish task...');
+    return gulp.src('src/dotnet/AutoRest/AutoRest.csproj')
+        .pipe(publish({ configuration: 'release' }));
 });
