@@ -4,7 +4,7 @@ src/**/*.d.ts
 node_modules/
 pack/
 src/**/*.tgz
-**/*.lock.json
+**/package-lock.json
 
 # remove dotnet artifacts
 src/dotnet/**/[Bb]in/
