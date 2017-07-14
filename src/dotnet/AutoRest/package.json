@@ -1,6 +1,6 @@
 {
     "name": "@microsoft.azure/classic-openapi-validator",
-    "version": "0.0.8-preview",
+    "version": "0.0.9-preview",
     "description": "The classic OpenAPI validator plugin for AutoRest",
     "engines": {
         "dotnet": "~1.0.5"
