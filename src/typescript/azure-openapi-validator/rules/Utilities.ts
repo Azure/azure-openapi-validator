@@ -2,8 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { suite, test } from "mocha-typescript";
 
-@suite class Hello {
-  @test "world"() { }
+export function trimDescription(description: string): string {
+  return description.trim().replace(/\W+$/g, '').toLowerCase();
 }

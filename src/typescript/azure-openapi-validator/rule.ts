@@ -7,7 +7,8 @@ import { JsonPath } from "../jsonrpc/types";
 export enum OpenApiTypes {
   "default" = 1 << 0,
   "arm" = 1 << 1,
-  "dataplane" = 1 << 2
+  "dataplane" = 1 << 2,
+  "doc" = 1 << 3,
 }
 
 export enum MergeStates {
@@ -23,14 +24,16 @@ interface ValidationMessage {
 export interface Rule {
   readonly id: string; // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string; // see same website as above
-  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation");
+  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation" | "DocViolation");
   readonly severity: "error" | "warning";
 
   readonly mergeState: MergeStates;
   readonly openapiType: OpenApiTypes;
 
   readonly appliesTo_JsonQuery?: string; // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
+
   run(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
+  readonly cleanup?: () => void;
 }
 
 export const rules: Rule[] = [];
