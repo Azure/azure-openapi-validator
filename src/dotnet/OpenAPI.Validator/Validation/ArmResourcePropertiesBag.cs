@@ -47,19 +47,54 @@ namespace OpenAPI.Validator.Validation
         public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Composed;
 
         private static readonly IEnumerable<string> ArmPropertiesBag = new List<string>()
-                                                                        { "name", "id", "type", "location", "tag" };
+                                                                        { "name", "id", "type", "location", "tags" };
 
         // Verifies whether ARM resource has the set of properties repeated in its property bag
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Schema> definitions, RuleContext context)
         {
-            var resModels = context.ResourceModels;
-            var violatingModels = resModels.Where(res => definitions[res].Properties?.ContainsKey("properties") == true
-                                                         && definitions[res].Properties["properties"]?.Properties?.Keys.Intersect(ArmPropertiesBag).Any() == true);
-            foreach (var violatingModel in violatingModels)
+            IEnumerable<string> resourceModelsWithPropertiesBag = context.ResourceModels.Where(resourceModel => definitions[resourceModel].Properties?.ContainsKey("properties") == true);
+            foreach(string resourceModelName in resourceModelsWithPropertiesBag)
             {
-                var violatingProperties = definitions[violatingModel].Properties.Keys.Union(definitions[violatingModel].Properties["properties"].Properties.Keys).Intersect(ArmPropertiesBag);
-                yield return new ValidationMessage(new FileObjectPath(context.File, context.Path.AppendProperty(violatingModel).AppendProperty("properties")), this, violatingModel,
-                                                   string.Join(", ", violatingProperties));
+                Dictionary<string, IEnumerable<string>> violations = new Dictionary<string, IEnumerable<string>>();             
+                CheckModelForViolation(definitions[resourceModelName], resourceModelName, definitions, context, violations);
+
+                foreach (string modelName in violations.Keys)
+                {
+                    yield return new ValidationMessage(new FileObjectPath(context.File,
+                    context.Path.AppendProperty(modelName).AppendProperty("properties")), this, modelName,
+                                                   string.Join(", ", violations[modelName]));
+                }
+            }
+        }
+
+        private string GetName(string reference)
+        {
+            return reference.Substring(reference.LastIndexOf("/") + 1);
+        }
+
+        private void CheckModelForViolation(Schema resourceModel, string resourceModelName, Dictionary<string, Schema> definitions, RuleContext context, Dictionary<string, IEnumerable<string>> violations)
+        {
+            if (resourceModel.Properties?.ContainsKey("properties") == true)
+            {
+                string referenceName = resourceModel.Properties["properties"].Reference;
+                if (referenceName != null)
+                {
+                    CheckModelForViolation(Schema.FindReferencedSchema(referenceName, definitions), GetName(referenceName), definitions, context, violations);
+                }
+
+                IEnumerable<string> violatingProperties = resourceModel.Properties["properties"].Properties?.Keys?.Intersect(ArmPropertiesBag);
+                if (violatingProperties?.Any() == true)
+                {
+                    violations[resourceModelName] = violatingProperties;
+                }
+            }
+
+            if (resourceModel.AllOf != null)
+            {
+                foreach (Schema schema in resourceModel.AllOf)
+                {
+                    CheckModelForViolation(Schema.FindReferencedSchema(schema.Reference, definitions), GetName(schema.Reference), definitions, context, violations);
+                }
             }
         }
     }
