@@ -241,7 +241,7 @@
     <value>Collection object '{0}' returned by list operation '{1}' with 'x-ms-pageable' extension, has no property named 'value'.</value>
   </data>
   <data name="TrackedResourcePatchOperationMissing" xml:space="preserve">
-    <value>Tracked resource '{0}' must have patch operation that at least supports the update of tags.</value>
+    <value>Tracked resource '{0}' must have patch operation that at least supports the update of tags. It's strongly recommended that the PATCH operation supports update of all mutable properties as well.</value>
   </data>
   <data name="BodyPropertyNameCamelCase" xml:space="preserve">
     <value>Property named: '{0}', must follow camelCase style. Example: '{1}'.</value>
