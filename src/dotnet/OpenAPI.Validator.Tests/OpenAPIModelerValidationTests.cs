@@ -200,6 +200,37 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
+        public void ArmResourcePropertiesBagMultipleViolationsValidation()
+        {
+            var messages = GetValidationMessagesForRule<ArmResourcePropertiesBag>("arm-resource-properties-bag-multiple-violations.json");
+            Assert.Equal(messages.Count(), 1);
+            Assert.Equal(messages.First().Message.Contains("[name, type]"), true);
+        }
+
+        [Fact]
+        public void ArmResourcePropertiesBagMultipleLevelViolationsValidation()
+        {
+            var messages = GetValidationMessagesForRule<ArmResourcePropertiesBag>("arm-resource-properties-bag-multiple-level-violations.json");
+            Assert.Equal(messages.Count(), 2);
+            Assert.Equal(messages.First().Message.Contains("[name, type]"), true);
+            Assert.Equal(messages.Last().Message.Contains("[location, id]"), true);
+        }
+
+        [Fact]
+        public void ArmResourcePropertiesBagWithReferenceValidation()
+        {
+            var messages = GetValidationMessagesForRule<ArmResourcePropertiesBag>("arm-resource-properties-bag-with-reference.json");
+            Assert.Equal(messages.Count(), 1);
+        }
+
+        [Fact]
+        public void ArmResourcePropertiesBagWithMultipleLevelReferenceValidation()
+        {
+            var messages = GetValidationMessagesForRule<ArmResourcePropertiesBag>("arm-resource-properties-bag-with-multiple-level-reference.json");
+            Assert.Equal(messages.Count(), 1);
+        }
+
+        [Fact]
         public void CollectionObjectsPropertiesNamingValidation()
         {
             var messages = GetValidationMessagesForRule<CollectionObjectPropertiesNaming>("collection-objects-naming.json");
