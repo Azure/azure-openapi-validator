@@ -95,7 +95,7 @@ namespace OpenAPI.Validator.Validation
                     else
                     {
                         IEnumerable<string> violatingProperties = resourceModel.Properties["properties"].Properties?.Keys?.Intersect(ArmPropertiesBag);
-                        if (violatingProperties.Any() == true)
+                        if (violatingProperties?.Any() == true)
                         {
                             violations[resourceModelName] = violatingProperties;
                         }
