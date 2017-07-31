@@ -83,28 +83,31 @@ namespace OpenAPI.Validator.Validation
         /// <param name="violations">violations table</param>
         private void CheckModelForViolation(Schema resourceModel, string resourceModelName, Dictionary<string, Schema> definitions, RuleContext context, Dictionary<string, IEnumerable<string>> violations)
         {
-            if (resourceModel.Properties?.ContainsKey("properties") == true)
+            if(resourceModel != null)
             {
-                string referenceName = resourceModel.Properties["properties"].Reference;
-                if (!string.IsNullOrWhiteSpace(referenceName))
+                if (resourceModel.Properties?.ContainsKey("properties") == true)
                 {
-                    CheckModelForViolation(Schema.FindReferencedSchema(referenceName, definitions), Validator.Extensions.StripDefinitionPath(referenceName), definitions, context, violations);
-                }
-                else
-                {
-                    IEnumerable<string> violatingProperties = resourceModel.Properties["properties"].Properties?.Keys?.Intersect(ArmPropertiesBag);
-                    if (violatingProperties?.Any() == true)
+                    string referenceName = resourceModel.Properties["properties"].Reference;
+                    if (!string.IsNullOrWhiteSpace(referenceName))
                     {
-                        violations[resourceModelName] = violatingProperties;
+                        CheckModelForViolation(Schema.FindReferencedSchema(referenceName, definitions), Validator.Extensions.StripDefinitionPath(referenceName), definitions, context, violations);
+                    }
+                    else
+                    {
+                        IEnumerable<string> violatingProperties = resourceModel.Properties["properties"].Properties?.Keys?.Intersect(ArmPropertiesBag);
+                        if (violatingProperties.Any() == true)
+                        {
+                            violations[resourceModelName] = violatingProperties;
+                        }
                     }
                 }
-            }
 
-            if (resourceModel.AllOf != null)
-            {
-                foreach (Schema schema in resourceModel.AllOf)
+                if (resourceModel.AllOf != null)
                 {
-                    CheckModelForViolation(Schema.FindReferencedSchema(schema.Reference, definitions), Validator.Extensions.StripDefinitionPath(schema.Reference), definitions, context, violations);
+                    foreach (Schema schema in resourceModel.AllOf)
+                    {
+                        CheckModelForViolation(Schema.FindReferencedSchema(schema.Reference, definitions), Validator.Extensions.StripDefinitionPath(schema.Reference), definitions, context, violations);
+                    }
                 }
             }
         }
