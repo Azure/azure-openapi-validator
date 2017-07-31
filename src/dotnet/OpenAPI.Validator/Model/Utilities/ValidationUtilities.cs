@@ -23,6 +23,36 @@ namespace OpenAPI.Validator.Model.Utilities
         public static readonly Regex ListBySidRegEx = new Regex(@".+_(List|ListBySubscriptionId|ListBySubscription|ListBySubscriptions)$", RegexOptions.IgnoreCase);
         public static readonly Regex ListByRgRegEx = new Regex(@".+_ListByResourceGroup$", RegexOptions.IgnoreCase);
 
+        public static IEnumerable<string> GetTenantResourceModels(IEnumerable<string> resourceModels, ServiceDefinition serviceDefinition)
+        {
+            List<string> tenantResourceModels = new List<string>();
+            if(serviceDefinition.Paths.Any())
+            {
+                foreach (KeyValuePair<string, Dictionary<string, Operation>> path in serviceDefinition.Paths)
+                {
+                    if (!path.Key.Contains("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/"))
+                    {
+                        // This path does not have the subscriptions and resourcegroups. So, any resource model that is returned
+                        // by a 200 operation could be tagged as a tenant level resource. 
+
+                        string pathValue = path.Key;
+                        Operation getOperation = path.Value.GetValueOrNull("get");
+                        if (getOperation != null && getOperation.Responses?.GetValueOrNull("200") != null)
+                        {
+                            OperationResponse response = getOperation.Responses.GetValueOrNull("200");
+                            string nameToCompare = response.Schema?.Reference?.Substring(response.Schema.Reference.LastIndexOf("/") + 1);
+                            if (!string.IsNullOrEmpty(nameToCompare) && resourceModels.Contains(nameToCompare))
+                            {
+                                tenantResourceModels.Add(nameToCompare);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return tenantResourceModels;
+        }
+
         /// <summary>
         /// Populates a list of 'Resource' models found in the service definition
         /// </summary>

@@ -43,6 +43,7 @@ namespace OpenAPI.Validator.Validation.Core
             this.ChildTrackedResourceModels = parent?.ChildTrackedResourceModels;
             this.ParentTrackedResourceModels = parent?.ParentTrackedResourceModels;
             this.ProxyResourceModels = parent?.ProxyResourceModels;
+            this.TenantResourceModels = parent?.TenantResourceModels;
         }
 
         /// <summary>
@@ -100,6 +101,11 @@ namespace OpenAPI.Validator.Validation.Core
         public IEnumerable<string> ResourceModels { get; private set; }
 
         /// <summary>
+        /// List of tenant resources in serviceDefinition
+        /// </summary>
+        public IEnumerable<string> TenantResourceModels { get; private set; }
+
+        /// <summary>
         /// List of tracked resources in serviceDefinition
         /// </summary>
         public IEnumerable<string> TrackedResourceModels { get; private set; }
@@ -138,6 +144,7 @@ namespace OpenAPI.Validator.Validation.Core
             this.ChildTrackedResourceModels = ValidationUtilities.GetChildTrackedResourcesWithImmediateParent(serviceDefinition).ToList();
             this.ParentTrackedResourceModels = ValidationUtilities.GetParentTrackedResources(this.TrackedResourceModels, this.ChildTrackedResourceModels).ToList();
             this.ProxyResourceModels = this.ResourceModels.Except(this.TrackedResourceModels).ToList();
+            this.TenantResourceModels = ValidationUtilities.GetTenantResourceModels(this.ResourceModels, serviceDefinition).ToList();
         }
 
     }
