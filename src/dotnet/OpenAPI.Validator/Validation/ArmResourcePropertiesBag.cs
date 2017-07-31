@@ -7,6 +7,7 @@ using OpenAPI.Validator.Properties;
 using System.Collections.Generic;
 using OpenAPI.Validator.Model;
 using System.Linq;
+using OpenAPI.Validator;
 
 namespace OpenAPI.Validator.Validation
 {
@@ -67,25 +68,35 @@ namespace OpenAPI.Validator.Validation
             }
         }
 
-        private string GetName(string reference)
-        {
-            return reference.Substring(reference.LastIndexOf("/") + 1);
-        }
-
+        /// <summary>
+        /// Method to check the model for violation of this rule.
+        /// This method checks if the model has propeties bag. If so and it
+        /// has reference then the reference is processed. Else, the individual
+        /// properties are checked for violation.
+        ///
+        /// Then, if the model has allOf's, they need to be processed individually.
+        /// </summary>
+        /// <param name="resourceModel">schema of the model</param>
+        /// <param name="resourceModelName">name of the model</param>
+        /// <param name="definitions">definitions</param>
+        /// <param name="context">context</param>
+        /// <param name="violations">violations table</param>
         private void CheckModelForViolation(Schema resourceModel, string resourceModelName, Dictionary<string, Schema> definitions, RuleContext context, Dictionary<string, IEnumerable<string>> violations)
         {
             if (resourceModel.Properties?.ContainsKey("properties") == true)
             {
                 string referenceName = resourceModel.Properties["properties"].Reference;
-                if (referenceName != null)
+                if (!string.IsNullOrWhiteSpace(referenceName))
                 {
-                    CheckModelForViolation(Schema.FindReferencedSchema(referenceName, definitions), GetName(referenceName), definitions, context, violations);
+                    CheckModelForViolation(Schema.FindReferencedSchema(referenceName, definitions), Validator.Extensions.StripDefinitionPath(referenceName), definitions, context, violations);
                 }
-
-                IEnumerable<string> violatingProperties = resourceModel.Properties["properties"].Properties?.Keys?.Intersect(ArmPropertiesBag);
-                if (violatingProperties?.Any() == true)
+                else
                 {
-                    violations[resourceModelName] = violatingProperties;
+                    IEnumerable<string> violatingProperties = resourceModel.Properties["properties"].Properties?.Keys?.Intersect(ArmPropertiesBag);
+                    if (violatingProperties?.Any() == true)
+                    {
+                        violations[resourceModelName] = violatingProperties;
+                    }
                 }
             }
 
@@ -93,7 +104,7 @@ namespace OpenAPI.Validator.Validation
             {
                 foreach (Schema schema in resourceModel.AllOf)
                 {
-                    CheckModelForViolation(Schema.FindReferencedSchema(schema.Reference, definitions), GetName(schema.Reference), definitions, context, violations);
+                    CheckModelForViolation(Schema.FindReferencedSchema(schema.Reference, definitions), Validator.Extensions.StripDefinitionPath(schema.Reference), definitions, context, violations);
                 }
             }
         }
