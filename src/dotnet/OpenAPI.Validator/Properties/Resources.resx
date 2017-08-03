@@ -196,7 +196,7 @@
     <value>Per the Noun_Verb convention for Operation Ids, the noun '{0}' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.</value>
   </data>
   <data name="NonAppJsonTypeNotSupported" xml:space="preserve">
-    <value>Please make sure that media types other than 'application/json' are supported by your service.</value>
+    <value>Only content-type 'application/json' is supported by ARM.</value>
   </data>
   <data name="SupportedSchemesWarningMessage" xml:space="preserve">
     <value>Azure Resource Management only supports HTTPS scheme.</value>

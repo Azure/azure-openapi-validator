@@ -20,7 +20,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.SDKViolation;
+        public override ValidationCategory ValidationCategory => ValidationCategory.RPCViolation;
 
         /// <summary>
         /// This rule passes if the entity contains application/json type
@@ -33,7 +33,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// What kind of change implementing this rule can cause.
         /// </summary>
-        public override ValidationChangesImpact ValidationChangesImpact => ValidationChangesImpact.None;
+        public override ValidationChangesImpact ValidationChangesImpact => ValidationChangesImpact.ServiceImpactingChanges;
 
         /// <summary>
         /// The template message for this Rule. 

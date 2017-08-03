@@ -129,14 +129,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void ProvidersPathValidate()
-        {
-            var messages = GetValidationMessagesForRule<ParameterizeProperties>("providers-path.json");
-            Assert.Equal(messages.Count(), 2);
-        }
-
-
-        [Fact]
         public void NonAppJsonTypeOperationForProduces()
         {
             var messages = GetValidationMessagesForRule<NonApplicationJsonType>("non-app-json-operation-produces.json");
@@ -754,15 +746,6 @@ namespace OpenAPI.Validator.Tests
         public void ListOperationsCorrectlyNamed()
         {
             var messages = GetValidationMessagesForRule<ListInOperationName>(Path.Combine("positive", "list-operations-valid-naming.json"));
-            Assert.Empty(messages);
-        }
-
-        /// Verifies that a providers path is of proper format
-        /// </summary>
-        [Fact]
-        public void ProvidersPathValidJson()
-        {
-            var messages = GetValidationMessagesForRule<ParameterizeProperties>(Path.Combine("positive", "providers-path-valid.json"));
             Assert.Empty(messages);
         }
 
