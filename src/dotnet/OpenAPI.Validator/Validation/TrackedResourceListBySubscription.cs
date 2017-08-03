@@ -2,11 +2,12 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using AutoRest.Core.Logging;
-using OpenAPI.Validator.Properties;
-using OpenAPI.Validator.Model.Utilities;
-using System.Collections.Generic;
 using OpenAPI.Validator.Model;
+using OpenAPI.Validator.Model.Utilities;
+using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation.Core;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenAPI.Validator.Validation
 {
@@ -55,8 +56,9 @@ namespace OpenAPI.Validator.Validation
         {
             // Retrieve the list of TrackedResources
             IEnumerable<string> parentTrackedResources = context.ParentTrackedResourceModels;
+            IEnumerable<string> parentTrackedResourceWithoutTenantResources = parentTrackedResources.Where(trackedResource => !context.TenantResourceModels.Contains(trackedResource));
 
-            foreach (string trackedResource in parentTrackedResources)
+            foreach (string trackedResource in parentTrackedResourceWithoutTenantResources)
             {
                 Operation operation = ValidationUtilities.GetListBySubscriptionOperation(trackedResource, definitions, context.Root);
 
