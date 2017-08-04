@@ -431,7 +431,7 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only content-type &apos;application/json&apos; is supported by ARM..
+        ///   Looks up a localized string similar to Only &apos;application/json&apos; content-type is supported by ARM..
         /// </summary>
         internal static string NonAppJsonTypeNotSupported {
             get {
