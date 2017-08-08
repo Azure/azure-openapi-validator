@@ -79,7 +79,7 @@
             "modelAsString": false
           }
         },
-        "location": {
+        "Location": {
           "type": "string",
           "description": "Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update the request will succeed."
         },
@@ -122,7 +122,7 @@
           "type": "string",
           "description": "Resource name"
         },
-        "type": {
+        "Type": {
           "readOnly": true,
           "type": "string",
           "description": "Resource type"

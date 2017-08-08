@@ -69,7 +69,7 @@ namespace OpenAPI.Validator.Validation
             foreach (string resourceModel in context.ResourceModels)
             {
                 IEnumerable<KeyValuePair<string, Schema>> topLevelProperties = ValidationUtilities.EnumerateProperties(resourceModel, definitions);
-                IEnumerable<KeyValuePair<string, Schema>> violatingProperties = topLevelProperties.Where(topLevelProperty => !AllowedTopLevelProperties.Contains(topLevelProperty.Key));
+                IEnumerable<KeyValuePair<string, Schema>> violatingProperties = topLevelProperties.Where(topLevelProperty => !AllowedTopLevelProperties.Contains(topLevelProperty.Key.ToLower()));
 
                 if (violatingProperties != null && violatingProperties.Any())
                 {
