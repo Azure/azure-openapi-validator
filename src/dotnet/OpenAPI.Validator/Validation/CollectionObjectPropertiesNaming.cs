@@ -51,7 +51,7 @@ namespace OpenAPI.Validator.Validation
             foreach (var opPair in listOperations)
             {
                 // if the operation id is not of type _list* or does not return an array type, skip
-                if (!ListRegex.IsMatch(opPair.Value.OperationId) || !ValidationUtilities.IsXmsPageableResponseOperation(opPair.Value))
+                if (opPair.Value.OperationId == null || !ListRegex.IsMatch(opPair.Value.OperationId) || !ValidationUtilities.IsXmsPageableResponseOperation(opPair.Value))
                 {
                     continue;
                 }

@@ -71,7 +71,7 @@ namespace OpenAPI.Validator.Validation
             {
                 var respModels = pathPair.Value.Where(opPair => OpList.Contains(opPair.Key.ToLower()))
                                                // exclude list operations here?
-                                               .Where(opPair => !opPair.Value.OperationId.ToLower().Contains("_list"))
+                                               .Where(opPair => !opPair.Value.OperationId?.ToLower().Contains("_list") == true)
                                                .Select(opPair => opPair.Value.Responses?.GetValueOrNull<OperationResponse>("200")?.Schema?.Reference)
                                                .Where(respModel => !string.IsNullOrWhiteSpace(respModel) && serviceDefinition.Definitions.ContainsKey(respModel.StripDefinitionPath()))
                                                .Distinct();

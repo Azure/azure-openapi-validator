@@ -20,6 +20,11 @@ namespace OpenAPI.Validator.Validation
         private static readonly Regex DELETE_VERB_PATTERN = new Regex(@"^(Delete)", RegexOptions.IgnoreCase);
 
         /// <summary>
+        /// No operationId is valid if it is null or empty
+        /// </summary>
+        private bool IsOperationIdValid(string operationId) => !string.IsNullOrEmpty(operationId);
+
+        /// <summary>
         /// Violation category of the Rule.
         /// </summary>
         public override ValidationCategory ValidationCategory => ValidationCategory.SDKViolation;
@@ -54,7 +59,7 @@ namespace OpenAPI.Validator.Validation
         /// </remarks>
         protected bool IsGetValid(string entity)
         {
-            return GET_NOUN_VERB_PATTERN.IsMatch(entity) || GET_VERB_PATTERN.IsMatch(entity);
+            return IsOperationIdValid(entity) && (GET_NOUN_VERB_PATTERN.IsMatch(entity) || GET_VERB_PATTERN.IsMatch(entity));
         }
 
         /// <summary>
@@ -68,7 +73,7 @@ namespace OpenAPI.Validator.Validation
         /// </remarks>
         protected bool IsPutValid(string entity)
         {
-            return PUT_NOUN_VERB_PATTERN.IsMatch(entity) || PUT_VERB_PATTERN.IsMatch(entity);
+            return IsOperationIdValid(entity) && (PUT_NOUN_VERB_PATTERN.IsMatch(entity) || PUT_VERB_PATTERN.IsMatch(entity));
         }
 
         /// <summary>
@@ -82,7 +87,7 @@ namespace OpenAPI.Validator.Validation
         /// </remarks>
         protected bool IsPatchValid(string entity)
         {
-            return PATCH_NOUN_VERB_PATTERN.IsMatch(entity) || PATCH_VERB_PATTERN.IsMatch(entity);
+            return IsOperationIdValid(entity) && (PATCH_NOUN_VERB_PATTERN.IsMatch(entity) || PATCH_VERB_PATTERN.IsMatch(entity));
         }
 
         /// <summary>
@@ -96,7 +101,7 @@ namespace OpenAPI.Validator.Validation
         /// </remarks>
         protected bool IsDeleteValid(string entity)
         {
-            return DELETE_NOUN_VERB_PATTERN.IsMatch(entity) || DELETE_VERB_PATTERN.IsMatch(entity);
+            return IsOperationIdValid(entity) && (DELETE_NOUN_VERB_PATTERN.IsMatch(entity) || DELETE_VERB_PATTERN.IsMatch(entity));
         }
     }
 }

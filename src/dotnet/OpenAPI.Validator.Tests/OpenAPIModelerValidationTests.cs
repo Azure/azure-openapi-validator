@@ -289,6 +289,9 @@ namespace OpenAPI.Validator.Tests
             Assert.Equal(messages.Count(), 1);
             messages = GetValidationMessagesForRule<DeleteInOperationName>("operation-name-not-valid.json");
             Assert.Equal(messages.Count(), 1);
+            // Just checking if we flag empty operation ids
+            messages = GetValidationMessagesForRule<DeleteInOperationName>("operation-name-not-valid.json");
+            Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
