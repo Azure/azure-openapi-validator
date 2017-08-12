@@ -82,7 +82,7 @@ namespace OpenAPI.Validator.Validation
                                                             => (opPair.Value.Extensions?.ContainsKey("x-ms-examples") != true
                                                                || string.IsNullOrWhiteSpace(opPair.Value.Extensions["x-ms-examples"].ToString())
                                                                || !IsValidJson(opPair.Value.Extensions["x-ms-examples"].ToString()))
-                                                               && !opPair.Value.OperationId.ToLower().Equals("operations_list")));
+                                                               && !opPair.Value.OperationId?.ToLower().Equals("operations_list") == true));
 
 
 

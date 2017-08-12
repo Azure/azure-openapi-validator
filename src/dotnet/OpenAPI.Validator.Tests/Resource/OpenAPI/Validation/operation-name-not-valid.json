@@ -64,6 +64,17 @@
           }
         }
       }
+    },
+    "/foo4": {
+      "get": {
+        "summary": "Foo3 path",
+        "description": "null operation test",
+        "responses": {
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
     }
   },
   "parameters": {

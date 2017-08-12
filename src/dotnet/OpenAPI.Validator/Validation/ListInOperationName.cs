@@ -46,7 +46,7 @@ namespace OpenAPI.Validator.Validation
             foreach (var opPair in listOperations)
             {
                 // if the operation id is already of the type _list we can skip this check
-                if (ListRegex.IsMatch(opPair.Value.OperationId))
+                if (opPair.Value.OperationId == null || ListRegex.IsMatch(opPair.Value.OperationId))
                 {
                     continue;
                 }

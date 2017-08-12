@@ -90,7 +90,7 @@ namespace OpenAPI.Validator.Validation.Extensions
             }
 
             formatParameters[0] = httpVerb.ToUpper();
-            formatParameters[1] = operation.OperationId;
+            formatParameters[1] = operation.OperationId ?? string.Empty;
             return isValid;
         }
     }
