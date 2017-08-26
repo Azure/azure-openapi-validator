@@ -48,7 +48,6 @@ namespace AutoRest.Core.Utilities
         /// </remarks>
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection) => collection == null || !collection.Any();
         public static bool IsEnum(this Type type) => type.GetTypeInfo().IsEnum;
-        public static IEnumerable<T> GetCustomAttributes<T>(this Type type, bool inherit) where T : Attribute => type.GetTypeInfo().GetCustomAttributes<T>(inherit);
         public static bool IsGenericType(this Type type) => type.GetTypeInfo().IsGenericType;
         public static IEnumerable<CustomAttributeData> CustomAttributes(this Type type) => type.GetTypeInfo().CustomAttributes;
         public static bool IsClass(this Type type) => type.GetTypeInfo().IsClass;
