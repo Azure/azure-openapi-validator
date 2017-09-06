@@ -34,7 +34,7 @@ namespace OpenAPI.Validator.Model.Utilities
                     if (!TenantResourceRegEx.IsMatch(path.Key))
                     {
                         // This path does not have the subscriptions and resourcegroups. So, any resource model that is returned
-                        // by a 200 operation could be tagged as a tenant level resource. 
+                        // by a 200 operation could be tagged as a tenant level resource.
 
                         string pathValue = path.Key;
                         Operation getOperation = path.Value.GetValueOrNull("get");
@@ -90,7 +90,7 @@ namespace OpenAPI.Validator.Model.Utilities
 
             var resourceCandidates = resourceModels.Union(modelsAllOfOnXmsAzureResources);
 
-            // Now filter all the resource models that are returned from a POST operation only 
+            // Now filter all the resource models that are returned from a POST operation only
             var postOpResourceModels = serviceDefinition.Paths.Values.SelectMany(pathObj => pathObj.Where(opObj => opObj.Key.EqualsIgnoreCase("post"))
                                                                         .SelectMany(opObj => opObj.Value.Responses?.Select(resp => resp.Value?.Schema?.Reference?.StripDefinitionPath()) ?? Enumerable.Empty<string>()))
                                                                      .Where(model => !string.IsNullOrWhiteSpace(model))
@@ -122,7 +122,7 @@ namespace OpenAPI.Validator.Model.Utilities
 
             IEnumerable<string> modelHierarchy = new List<string>() { modelName };
 
-            // If schema has no allOfs, return 
+            // If schema has no allOfs, return
             var modelSchema = definitions[modelName];
             if (modelSchema.AllOf?.Any() != true) return modelHierarchy;
 
@@ -223,7 +223,7 @@ namespace OpenAPI.Validator.Model.Utilities
 
         /// <summary>
         /// Gets response models returned by operations with given httpVerb
-        /// by default looks at the '200' response 
+        /// by default looks at the '200' response
         /// </summary>
         /// <param name="httpVerb">operation verb for which to determine the response model</param>
         /// <param name="serviceDefinition">service definition containing the operations</param>
@@ -250,7 +250,7 @@ namespace OpenAPI.Validator.Model.Utilities
 
 
         /// <summary>
-        /// For a given model, recursively traverses its allOfs and checks if any of them refer to 
+        /// For a given model, recursively traverses its allOfs and checks if any of them refer to
         /// the base resourceModels
         /// </summary>
         /// <param name="modelName">model for which to determine if it is allOfs on given model names</param>
@@ -261,7 +261,7 @@ namespace OpenAPI.Validator.Model.Utilities
         {
             // if the model being tested belongs to the allOfed list, return false
             // if model can't be found in definitions we can't verify
-            // if model does not have any allOfs, return early 
+            // if model does not have any allOfs, return early
             if (allOfedModels.Contains(modelName) || !definitions.ContainsKey(modelName) || definitions[modelName]?.AllOf?.Any() != true)
             {
                 return false;
@@ -372,7 +372,14 @@ namespace OpenAPI.Validator.Model.Utilities
         /// <param name="name">String to convert to camel case style</param>
         /// <returns>A string that conforms with camel case style based on the string passed as parameter.</returns>
         public static string GetCamelCasedSuggestion(string name)
-            => Regex.Replace(name, @"(?<=\p{Lu})\p{Lu}+(?=\p{Lu}|\z)", s => s.Value.ToLowerInvariant());
+            => Regex.Replace(
+                name,
+                @"(?x)
+                    (?<=\p{Lu}) # after any uppercase character,
+                    \p{Lu}+     # find a series of uppercase characters,
+                    (?=\p{Lu}|\z) # followed by an uppercase character or the end of the string
+                ",
+                s => s.Value.ToLowerInvariant()); // ... and replace the series with lowercase
 
         /// <summary>
         /// Returns whether a string follows camel case style, allowing for 2 consecutive upper case characters for acronyms.
@@ -561,12 +568,12 @@ namespace OpenAPI.Validator.Model.Utilities
          *
          * Case 1 does not have a child resource. So, this can be rejected.
          *
-         * Case 2 & Case 3 are special cases. Here, Case 3 does have a child resource - 'databases'. But, Case 2 does not have a child resource. The 'poweroff' is 
+         * Case 2 & Case 3 are special cases. Here, Case 3 does have a child resource - 'databases'. But, Case 2 does not have a child resource. The 'poweroff' is
          * an operation - not a child resource. But, it is difficult to determine, using regular expressions, whether the 'poweroff' is an operation or child resource.
          * We could filter both and determine based on the response whether it is a child resource. While this is valid, it seems to be complex. So, a decision has been
          * made to reject this pattern altogether and not look for child resource in this path pattern. Note: Case 5 is also rejected for the same reason.
          *
-         * Case 4 is a valid scenario which has a child resource. Also, in this pattern, there is no ambiguity about any operation. So, in order to find the path, with 
+         * Case 4 is a valid scenario which has a child resource. Also, in this pattern, there is no ambiguity about any operation. So, in order to find the path, with
          * child resources, we use only this pattern. i.e. the path must have atleast one parent resource similar to '/servers/{server1}' followed by any number of child
          * resources and end with the child resource pattern - similar to '/databases/{database1}'.
          *
@@ -579,7 +586,7 @@ namespace OpenAPI.Validator.Model.Utilities
          *
          *      3: /subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.Sql/servers/{server1}/databases/{database1}
          *
-         * then we will miss the child resource 'databases'. But, the possibility of such an occurence is extremely rare, if not impossible. It is quite possible that 
+         * then we will miss the child resource 'databases'. But, the possibility of such an occurence is extremely rare, if not impossible. It is quite possible that
          * 1 & 3 are present without 2 and 1-2-3 are present. So, it is fine to use this logic.
          *
          * Immediate Parent Resource Logic
@@ -659,7 +666,7 @@ namespace OpenAPI.Validator.Model.Utilities
                            IsArrayOf(response.Value.Schema?.Reference, resourceModel, definitions)));
 
             return (operations?.Count() != 0)? operations.First() : null;
-            
+
         }
     }
 }
