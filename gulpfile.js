@@ -3,11 +3,25 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+var path = require('path');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var run = require('gulp-run')
 var mocha = require('gulp-mocha');
 var { restore, build, test, pack, publish } = require('gulp-dotnet-cli');
+
+// add .bin to PATH
+function getPathVariableName() {
+    // windows calls it's path 'Path' usually, but this is not guaranteed.
+    if (process.platform === 'win32') {
+        for (const key of Object.keys(process.env))
+            if (key.match(/^PATH$/i))
+                return key;
+        return 'Path';
+    }
+    return "PATH";
+}
+process.env[getPathVariableName()] = path.join(__dirname, "src/dotnet/AutoRest/node_modules/.bin") + path.delimiter + process.env[getPathVariableName()];
 
 // All the typescript tasks
 gulp.task('clean/typescript', function () {
