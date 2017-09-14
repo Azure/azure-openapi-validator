@@ -97,5 +97,5 @@ gulp.task('default', ['dotnet', 'typescript'], function () {
 gulp.task('dotnet/pack', ['dotnet', 'typescript'], function () {
     console.log('Kicking off the dotnet publish task...');
     return gulp.src('src/dotnet/AutoRest/AutoRest.csproj')
-        .pipe(publish({ configuration: 'release', output: '/bin/netcoreapp2.0' }));
+        .pipe(run('dotnet publish src/dotnet/AutoRest/AutoRest.csproj --configuration release --output bin/netcoreapp2.0'));
 });
