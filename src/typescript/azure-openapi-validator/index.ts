@@ -5,19 +5,7 @@
 import { nodes } from "jsonpath";
 import { Message } from "../jsonrpc/types";
 import { rules, OpenApiTypes, MergeStates } from "./rule";
-
-// register rules
-let fs = require('fs');
-let path = require('path');
-
-for (const ruleFile of fs.readdirSync(path.join(__dirname, "rules"))) {
-  // Because path.join force-normalizes, in order to get the relative path,
-  // we have to force-relative it here.
-  var rulePath = path.join('rules', path.parse(ruleFile).name);
-  rulePath = '.' + path.sep + rulePath;
-  
-  require(rulePath);
-}
+import "./rules";
 
 export function run(document: string, openapiDefinition: any, sendMessage: (m: Message) => void, openapiType: OpenApiTypes, mergeState: MergeStates) {
   const rulesToRun = rules.filter(rule => rule.mergeState === mergeState && (rule.openapiType & openapiType));

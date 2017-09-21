@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-import { trimDescription } from './Utilities';
+import { trimDescription } from './utilities';
 
 export const DescriptionTooShort: string = "DescriptionTooShort";
 const minimumDescriptionLength = 20;

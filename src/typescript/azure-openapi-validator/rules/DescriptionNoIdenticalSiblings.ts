@@ -5,7 +5,7 @@
 
 import { MergeStates, OpenApiTypes, rules } from '../rule';
 import * as jp from 'jsonpath';
-import { trimDescription } from './Utilities';
+import { trimDescription } from './utilities';
 import { JsonPath } from '../../jsonrpc/types';
 
 export const DescriptionNoIdenticalSiblings: string = "DescriptionNoIdenticalSiblings";

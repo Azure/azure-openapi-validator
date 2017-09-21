@@ -5,7 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const LintDescriptionProse: string = "LintDescriptionProse";
 
-const jp = require('jsonpath');
+import * as jp from 'jsonpath';
 import { spawnSync } from 'child_process';
 
 var noLinterWarning = false;

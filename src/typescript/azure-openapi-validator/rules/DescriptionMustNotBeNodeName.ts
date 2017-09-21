@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-import { trimDescription } from './Utilities';
+import { trimDescription } from './utilities';
 
 export const DescriptionMustNotBeNodeName: string = "DescriptionMustNotBeNodeName";
 
