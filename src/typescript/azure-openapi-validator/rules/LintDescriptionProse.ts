@@ -10,13 +10,23 @@ import { spawnSync } from 'child_process';
 
 var noLinterWarning = false;
 
+/**
+ * RULE DESCRIPTION: This rule runs the external program `proselint`, if available.
+ * The full documentation for `proselint` can be read at:
+ *      https://github.com/amperser/proselint/
+ *
+ *  This rule should be disabled if proselint is generating excessive messages of dubious use
+ *  for any given description. Excessive messages should also be communicated to the DevEx
+ *  team under Robert Outlaw so that proselint rule configuration can be adjusted.
+ */
+
 rules.push({
-  id: "D4100",
+  id: "D450",
   name: LintDescriptionProse,
   severity: "warning",
-  category: "DocViolation",
+  category: "DocumentationViolation",
   mergeState: MergeStates.composed,
-  openapiType: OpenApiTypes.doc,
+  openapiType: OpenApiTypes.default,
   appliesTo_JsonQuery: "$..description",
   run: function* (doc, node, path) {
     const msg: string = "`proselint` generated warnings: ";

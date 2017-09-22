@@ -13,13 +13,28 @@ const minimumDescriptionLength = 20;
 
 var checkedPaths: string[] = [];
 
+/**
+ * RULE DESCRIPTION: This rule checks for identical descriptions in siblings, for the following situations:
+ * "parent": {
+ *      "key1": { description: 'X' },
+ *      "key2": { description: 'X' }
+ * }
+ *
+ * "parent": [
+ *      { description: 'X' },
+ *      { description: 'X' }
+ * ]
+ *
+ * This rule should never be disabled.
+ */
+
 rules.push({
-  id: "D4003",
+  id: "D403",
   name: DescriptionNoIdenticalSiblings,
   severity: "error",
-  category: "DocViolation",
+  category: "DocumentationViolation",
   mergeState: MergeStates.composed,
-  openapiType: OpenApiTypes.doc,
+  openapiType: OpenApiTypes.default,
   appliesTo_JsonQuery: "$..*[?(@.description)]",
   run: function* (doc, node, path) {
     // JSONPath does not have a parent operator, so we need to do some manipulation

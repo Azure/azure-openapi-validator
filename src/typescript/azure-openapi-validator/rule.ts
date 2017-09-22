@@ -7,8 +7,7 @@ import { JsonPath } from "../jsonrpc/types";
 export enum OpenApiTypes {
   "default" = 1 << 0,
   "arm" = 1 << 1,
-  "dataplane" = 1 << 2,
-  "doc" = 1 << 3,
+  "dataplane" = 1 << 2
 }
 
 export enum MergeStates {
@@ -22,9 +21,9 @@ interface ValidationMessage {
 }
 
 export interface Rule {
-  readonly id: string; // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
+  readonly id: string; // see Rxxx/Sxxx/Dxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string; // see same website as above
-  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation" | "DocViolation");
+  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation" | "DocumentationViolation");
   readonly severity: "error" | "warning";
 
   readonly mergeState: MergeStates;

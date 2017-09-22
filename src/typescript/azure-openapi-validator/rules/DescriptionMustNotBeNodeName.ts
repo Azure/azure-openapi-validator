@@ -7,13 +7,21 @@ import { trimDescription } from './utilities';
 
 export const DescriptionMustNotBeNodeName: string = "DescriptionMustNotBeNodeName";
 
+/**
+ * RULE DESCRIPTION: This rule avoids situations in which a node's description matches either the key it
+ * is associated with, or the `name` sibling in the same dictionary. It also prohibits the usage of
+ * `description` as a description.
+ * 
+ * This rule should never be disabled.
+ **/
+
 rules.push({
-  id: "D4001",
+  id: "D401",
   name: DescriptionMustNotBeNodeName,
   severity: "error",
-  category: "DocViolation",
+  category: "DocumentationViolation",
   mergeState: MergeStates.composed,
-  openapiType: OpenApiTypes.doc,
+  openapiType: OpenApiTypes.default,
 
   appliesTo_JsonQuery: "$..*[?(@.description)]",
   run: function* (doc, node, path) {

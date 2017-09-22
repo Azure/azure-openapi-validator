@@ -27,14 +27,14 @@ var messages: Message[];
 
 @suite class DocumentationTests {
   static async before() {
-    messages = await collectTestMessagesFromValidator(testFile, OpenApiTypes.doc, MergeStates.composed);
+    messages = await collectTestMessagesFromValidator(testFile, OpenApiTypes.default, MergeStates.composed);
   }
 
-  // R4002 ("Too short") requires its own input file as it would catch too many errors on the main documentation
+  // R4002 ("Too short") requires its own input file as it would catch too many errors on the main.defaultumentation
   // tests, which frequently use short descriptions for the purpose of easy maintenance.
   @test async "Description too short."() {
     const testFile: string = "ShortDescription.json";
-    const messages: Message[] = await collectTestMessagesFromValidator(testFile, OpenApiTypes.doc, MergeStates.composed);
+    const messages: Message[] = await collectTestMessagesFromValidator(testFile, OpenApiTypes.default, MergeStates.composed);
     const violations: Message[] = getMessagesForRule(messages, DescriptionTooShort);
     const nodes: string[] = getNodePaths(violations);
 
@@ -66,7 +66,7 @@ var messages: Message[];
   // at least one prose lint violation.
   @test async "Linting of description prose"() {
     const testFile: string = "ProseLintViolations.json";
-    const messages: Message[] = await collectTestMessagesFromValidator(testFile, OpenApiTypes.doc, MergeStates.composed);
+    const messages: Message[] = await collectTestMessagesFromValidator(testFile, OpenApiTypes.default, MergeStates.composed);
     const violations: Message[] = getMessagesForRule(messages, LintDescriptionProse);
     const nodes: string[] = getNodePaths(violations);
 

@@ -9,13 +9,23 @@ import { trimDescription } from './utilities';
 export const DescriptionTooShort: string = "DescriptionTooShort";
 const minimumDescriptionLength = 20;
 
+/**
+ * RULE DESCRIPTION: This rule checks for descriptions which are too short to be useful. The limit of
+ * 20 characters was established through the thought experiment of concocting an individual
+ * description which would be considered 'minimally useful' using Azure terminology:
+ *      "The ARG associated with a VM." - 27 chars
+ * This was reduced by a lenient amount (about the length of 'associated') to come up with the minimum length.
+ *
+ * This rule should never be disabled.
+ */
+
 rules.push({
-  id: "D4002",
+  id: "D402",
   name: DescriptionTooShort,
   severity: "error",
-  category: "DocViolation",
+  category: "DocumentationViolation",
   mergeState: MergeStates.composed,
-  openapiType: OpenApiTypes.doc,
+  openapiType: OpenApiTypes.default,
   appliesTo_JsonQuery: "$..description",
   run: function* (doc, node, path) {
     const msg: string = "Description length is too short.";
