@@ -19,7 +19,6 @@ import * as assert from 'assert';
 import { DescriptionTooShort } from "../rules/DescriptionTooShort";
 import { DescriptionAvoidsGerunds } from "../rules/DescriptionAvoidsGerunds";
 import { DescriptionMustNotBeNodeName } from "../rules/DescriptionMustNotBeNodeName"; 
-import { LintDescriptionProse } from "../rules/LintDescriptionProse";
 import { DescriptionNoIdenticalSiblings } from "../rules/DescriptionNoIdenticalSiblings";
 
 const testFile:string = 'DocumentationViolations.json';
@@ -60,18 +59,6 @@ var messages: Message[];
     assert.equal(violations.length, 1, "Wrong number of violations.");
     assert.notEqual(nodes.indexOf('$.paths["/D4004"].get.description'), -1, "Did not find gerund in paths./D4005.get.description");
     assert.equal(nodes.indexOf('$.paths["/D4004"].get.responses["200"].description'), -1, "Detected 'string' as a gerund");
-  }
-  
-  // Testing file may trigger innumerable prose lints, so use a minimalist swagger which is known to contain
-  // at least one prose lint violation.
-  @test async "Linting of description prose"() {
-    const testFile: string = "ProseLintViolations.json";
-    const messages: Message[] = await collectTestMessagesFromValidator(testFile, OpenApiTypes.default, MergeStates.composed);
-    const violations: Message[] = getMessagesForRule(messages, LintDescriptionProse);
-    const nodes: string[] = getNodePaths(violations);
-
-    assert.equal(violations.length, 1, "Wrong number of violations.");
-    assert.notEqual(nodes.indexOf('$.info.description'), -1, "Did not find violation in info.description");
   }
 
   @test "Indentical description in siblings"() {

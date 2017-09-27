@@ -9,7 +9,6 @@ import { trimDescription } from './utilities';
 import { JsonPath } from '../../jsonrpc/types';
 
 export const DescriptionNoIdenticalSiblings: string = "DescriptionNoIdenticalSiblings";
-const minimumDescriptionLength = 20;
 
 var checkedPaths: string[] = [];
 
@@ -56,7 +55,12 @@ rules.push({
     checkedPaths.push(parentString);
 
     const childExpression = `${parentString}.*.description`;
-    const children: any[] = jp.apply(doc, childExpression, description => trimDescription(description));
+    const children: any[] = jp.apply(doc, childExpression, (description) => {
+      if (typeof (description) === 'string') {
+        return trimDescription(description);
+      }
+      return description
+    });
 
     var duplicates: {[description:string]: JsonPath[]} = {};
     for (const child of children) {
