@@ -17,7 +17,8 @@ rules.push({
     // path array returned here will be of the form ['paths', 'some/path']
     // pick the last element to get hold of the actual path
     // get the url
-    const urlVerb = (<string>path[path.length - 1]).toLowerCase();
+    const pathNodes: string[] = (<string>path[path.length - 1]).toLowerCase().split('/');
+    const urlVerb: string = pathNodes[pathNodes.length - 1];
     // now get hold of the operation id
     const keys = Object.keys(node);
     const postKey = keys.find(key => {
@@ -29,7 +30,7 @@ rules.push({
     // check if we have an operation id without the verb at the end of the url
     // if not, this should be a violation
     if (operationId.toLowerCase().split('_').pop().indexOf(urlVerb) === -1) {
-      yield { message: `OperationId should contain the verb: '${urlVerb}' in:'${operationId}'. Consider updating the operationId`, location: path.concat(postKey).concat(operationId) };
+      yield { message: `OperationId should contain the verb: '${urlVerb}' in:'${operationId}'. Consider updating the operationId`, location: path.concat(postKey).concat('operationId') };
     }
   }
 });
