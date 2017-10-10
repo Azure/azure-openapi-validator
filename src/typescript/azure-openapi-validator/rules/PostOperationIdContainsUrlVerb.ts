@@ -2,7 +2,6 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
 import { MergeStates, OpenApiTypes, rules } from '../rule';
 export const PostOperationIdContainsUrlVerb: string = "PostOperationIdContainsUrlVerb";
 rules.push({
@@ -20,7 +19,6 @@ rules.push({
     // get the url
     const pathNodes: string[] = (<string>path[path.length - 1]).toLowerCase().split('/');
     const urlVerb: string = pathNodes[pathNodes.length - 1];
-
     // now get hold of the operation id
     const keys = Object.keys(node);
     const postKey = keys.find(key => {
