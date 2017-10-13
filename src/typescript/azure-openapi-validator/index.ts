@@ -5,20 +5,13 @@
 import { nodes } from "jsonpath";
 import { Message } from "../jsonrpc/types";
 import { rules, OpenApiTypes, MergeStates } from "./rule";
-
-// register rules
-require("./rules/DescriptionMustNotBeNodeName");
-require("./rules/ControlCharactersAreNotAllowed");
-require("./rules/ArraySchemaMustHaveItems");
-require("./rules/PostOperationIdContainsUrlVerb");
-require("./rules/LicenseHeaderMustNotBeSpecified");
+import "./rules";
 
 export function run(document: string, openapiDefinition: any, sendMessage: (m: Message) => void, openapiType: OpenApiTypes, mergeState: MergeStates) {
   const rulesToRun = rules.filter(rule => rule.mergeState === mergeState && (rule.openapiType & openapiType));
   for (const rule of rulesToRun) {
     for (const section of nodes(openapiDefinition, rule.appliesTo_JsonQuery || "$")) {
       for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1))) {
-
         const readableCategory = rule.category;
 
         // try to extract provider namespace and resource type
@@ -48,6 +41,9 @@ export function run(document: string, openapiDefinition: any, sendMessage: (m: M
           }
         });
       }
+    }
+    if (rule.cleanup) {
+      rule.cleanup();
     }
   }
 }

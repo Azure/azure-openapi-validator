@@ -21,16 +21,18 @@ interface ValidationMessage {
 }
 
 export interface Rule {
-  readonly id: string; // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
+  readonly id: string; // see Rxxx/Sxxx/Dxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string; // see same website as above
-  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation");
+  readonly category: ("RPCViolation" | "OneAPIViolation" | "SDKViolation" | "DocumentationViolation");
   readonly severity: "error" | "warning";
 
   readonly mergeState: MergeStates;
   readonly openapiType: OpenApiTypes;
 
   readonly appliesTo_JsonQuery?: string; // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
+
   run(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
+  readonly cleanup?: () => void;
 }
 
 export const rules: Rule[] = [];

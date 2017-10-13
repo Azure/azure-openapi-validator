@@ -13,5 +13,9 @@ src/dotnet/**/*.deps.json
 src/dotnet/**/[Dd]ebug*/
 src/dotnet/**/[Rr]elease/
 **/*.DotSettings.user
+
 # ignore vs
 **/.vs/
+
+# ignore swapfiles
+*.swp

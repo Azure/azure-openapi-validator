@@ -1,0 +1,30 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Short description violations",
+        "description": "This description should be long enough.",
+        "version": "1.0"
+    },
+    "host": "testing.example.com",
+    "basePath": "/test",
+    "schemes": ["https"],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/D4002": {
+            "get": {
+                "summary": "Summary",
+                "description": "Short desc.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

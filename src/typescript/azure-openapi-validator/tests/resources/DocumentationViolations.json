@@ -1,0 +1,121 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Documentation violations",
+        "description": "Documentation test input",
+        "version": "1.0"
+    },
+    "host": "testing.example.com",
+    "basePath": "/test",
+    "schemes": ["https"],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/D4001": {
+            "post": {
+                "summary": "Summary",
+                "description": "post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "duplicate_desc",
+                        "required": true,
+                        "type": "string",
+                        "description": "duplicate_desc"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "description"
+                    }
+                }
+            }
+        },
+        "/D4003_OK": {
+            "get": {
+                "summary": "Summary",
+                "description": "An OK description.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Summary",
+                "description": "And another one.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/D4003": {
+            "get": {
+                "summary": "Summary",
+                "description": "Child nodes with identical description",
+                "responses": {
+                    "200": {
+                        "description": "identical_desc"
+                    },
+                    "400": {
+                        "description": "identical_desc"
+                    },
+                    "500": {
+                        "description": "Not identical."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Summary",
+                "description": "Array siblings with identical description",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "dupe1",
+                        "required": true,
+                        "type": "string",
+                        "description": "duplicate_desc"
+                    },
+                    {
+                        "in": "body",
+                        "name": "dupe2",
+                        "required": true,
+                        "type": "string",
+                        "description": "duplicate_desc"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Nodupe",
+                        "required": true,
+                        "type": "string",
+                        "description": "Not a duplicate."
+                    },
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/D4004": {
+            "get": {
+                "summary": "Summary",
+                "description": "Using a gerund is bad, don't do it!!!",
+                "responses": {
+                    "200": {
+                        "description": "String is not a gerund!!!! It's OK!!!"
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -30,6 +30,7 @@ import * as assert from "assert";
     assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
 	assert(messages[0].Text === "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"); 
   }
+
   @test async "info section with x-ms-code-generation-settings must not contain a header"() {
     const fileName = 'InfoWithLicenseHeader.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
