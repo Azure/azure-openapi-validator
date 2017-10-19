@@ -17,6 +17,6 @@ import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeN
   @test async "description should not be property name"() {
     const fileName: string = 'DescriptionSameAsPropertyName.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
-    assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 1);
+    assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 2);
   }
 }

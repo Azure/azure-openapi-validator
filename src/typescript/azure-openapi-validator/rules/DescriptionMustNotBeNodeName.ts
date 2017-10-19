@@ -20,20 +20,16 @@ rules.push({
       return;
     }
     const nodeName = <any>path[path.length - 1];
+    const description = TrimDescription(node.description);
 
-    if (!isNaN(nodeName)) {
-      // if name is a property defined within the node, try and access it.
-      if (!('name' in node)) {
-        return;
-      }
-      if (node['name'].toLowerCase() === TrimDescription(node.description)) {
-        yield { message: `${msg} Node name:'${node.name}' Description:'${node.description}'`, location: path.concat(['description']) };
-      }
+    if ('name' in node && typeof (node.name) === 'string' && TrimDescription(node.name.toLowerCase()) === description) {
+      yield { message: `${msg} Node name:'${node.name}' Description:'${node.description}'`, location: path.concat(['description']) };
     }
-    else if (nodeName.toLowerCase() === TrimDescription(node.description)) {
-      yield { message: `${msg} Node name:'${nodeName}' Description: '${node.description}'`, location: path.concat(['description']) };
-    } else if (TrimDescription(node.description) === 'description') {
-      yield { message: "Description cannot be named as 'Description'.", location: path.concat(['description']) };
+    else if (typeof (nodeName) === 'string' && TrimDescription(nodeName.toLowerCase()) === description) {
+      yield { message: `${msg} Node name:'${nodeName}' Description:'${node.description}'`, location: path.concat(['description']) };
+    }
+    else if (description === 'description') {
+      yield { message: `${msg} Node name:'description' Description:'${node.description}'`, location: path.concat(['description']) }
     }
   }
 });
