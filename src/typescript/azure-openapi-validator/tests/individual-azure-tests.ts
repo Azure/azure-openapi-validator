@@ -15,6 +15,7 @@ import { MergeStates, OpenApiTypes } from '../rule';
 import { ControlCharactersAreNotAllowed } from '../rules/ControlCharactersAreNotAllowed';
 import { PostOperationIdContainsUrlVerb } from '../rules/PostOperationIdContainsUrlVerb';
 import { LicenseHeaderMustNotBeSpecified } from '../rules/LicenseHeaderMustNotBeSpecified';
+import { PathParametersMustNotBeEmpty } from '../rules/PathParameterMustNotBeEmpty';
 import * as assert from "assert";
 
 @suite class IndividualAzureTests {
@@ -28,12 +29,17 @@ import * as assert from "assert";
     const fileName = 'PostOperationIdWithoutUrlVerb.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
-	assert(messages[0].Text === "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"); 
+    assert(messages[0].Text === "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId");
   }
   @test async "info section with x-ms-code-generation-settings must not contain a header"() {
     const fileName = 'InfoWithLicenseHeader.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, LicenseHeaderMustNotBeSpecified, 1);
+  }
+  @test async "path parameters must have min length 1"() {
+    const fileName = 'PathParameterIsEmpty.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, PathParametersMustNotBeEmpty, 2);
   }
 
 }

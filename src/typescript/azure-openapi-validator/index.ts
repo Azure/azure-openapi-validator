@@ -10,6 +10,7 @@ import { rules, OpenApiTypes, MergeStates } from "./rule";
 require("./rules/DescriptionMustNotBeNodeName");
 require("./rules/ControlCharactersAreNotAllowed");
 require("./rules/ArraySchemaMustHaveItems");
+require("./rules/PathParameterMustNotBeEmpty");
 require("./rules/PostOperationIdContainsUrlVerb");
 require("./rules/LicenseHeaderMustNotBeSpecified");
 
@@ -20,7 +21,6 @@ export function run(document: string, openapiDefinition: any, sendMessage: (m: M
       for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1))) {
 
         const readableCategory = rule.category;
-
         // try to extract provider namespace and resource type
         const path = message.location[1] === "paths" && message.location[2];
         const pathComponents = typeof path === "string" && path.split("/");
