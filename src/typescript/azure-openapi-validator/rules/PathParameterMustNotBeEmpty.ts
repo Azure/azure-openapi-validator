@@ -8,7 +8,7 @@ export const PathParametersMustNotBeEmpty: string = "PathParametersMustNotBeEmpt
 rules.push({
   id: "R2067",
   name: PathParametersMustNotBeEmpty,
-  severity: "error",
+  severity: "warning",
   category: "RPCViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
