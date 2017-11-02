@@ -1,7 +1,7 @@
 ﻿{
   "swagger": "2.0",
   "info": {
-    "title": "Top level properties allowed for models allOf Resource in body parameters are name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity.",
+    "title": "Top level properties allowed for models allOf Resource in body parameters are name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones.",
     "description": "Some documentation.",
     "version": "2017-02-08"
   },
