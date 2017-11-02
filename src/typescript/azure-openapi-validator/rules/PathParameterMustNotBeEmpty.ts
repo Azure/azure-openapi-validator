@@ -15,11 +15,8 @@ rules.push({
 
   appliesTo_JsonQuery: "$.paths..parameters[?(@.in=='path')]",
   run: function* (doc, node, path) {
-
-    const pathNodes: string[] = (<string>path[1]).split('/');
-
-    if (!Object.keys(node).includes("minLength") || node.minLength < 1) {
-      yield { message: `Path parameters should should have the 'minLength' attribute with a value > 1: Parameter '${node.name}' in:'${path[1]}'. `, location: path };
+    if ((typeof node.minLength !== "number") || (node.minLength < 1)) {
+      yield { message: `Path parameters should should have the 'minLength' attribute with a value > 0: Parameter '${node.name}' in:'${path[1]}'. `, location: path };
     }
   }
 });

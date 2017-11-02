@@ -41,5 +41,4 @@ import * as assert from "assert";
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
     assertValidationRuleCount(messages, PathParametersMustNotBeEmpty, 2);
   }
-
 }
