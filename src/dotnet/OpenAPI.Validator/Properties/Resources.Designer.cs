@@ -62,7 +62,7 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity. Model definition &apos;{0}&apos; has extra properties [&apos;{1}&apos;]..
+        ///   Looks up a localized string similar to Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition &apos;{0}&apos; has extra properties [&apos;{1}&apos;]..
         /// </summary>
         internal static string AllowedTopLevelProperties {
             get {
