@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (11/08/2017)
+
+### Resolved issues/Bug fixes
+-	Correcting path retruned by PostOperationIdContainsUrlVerb rule
+-	Added zones as allowed top level properties
+
 ## What's New (09/12/2017)
 
 ### Resolved issues/Bug fixes
