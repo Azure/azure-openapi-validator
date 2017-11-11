@@ -23,6 +23,12 @@
             "program": "${workspaceRoot}/src/index.js",
             "cwd": "${workspaceRoot}",
             "preLaunchTask": "build"
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
         }
     ]
 }
