@@ -53,7 +53,7 @@ c/dotnet/AutoRest --azure-validator.composed-debugger
 ```
 For debugging individual merge state
 ```
-autorest input/file --validation --azure-validator --use=path/to/your/repo/sr
+autorest --input-file=path/to/swagger --validation --azure-validator --use=path/to/your/repo/sr
 c/dotnet/AutoRest --azure-validator.individual-debugger 
 ```
 

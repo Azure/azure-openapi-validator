@@ -78,24 +78,11 @@ public class AzureValidator : NewPlugin
             throw new Exception("Invalid Input for merge-state: " + docStateInput + ". Valid values are 'individual' and 'composed'.");
         }
 
-        if (await GetValue<bool>("azure-validator.debugger"))
+        if ((await GetValue<bool>("azure-validator.debugger")) ||
+            (docState == ServiceDefinitionDocumentState.Composed && await GetValue<bool>("azure-validator.composed-debugger")) ||
+            (docState == ServiceDefinitionDocumentState.Individual && await GetValue<bool>("azure-validator.individual-debugger")))
         {
             Debugger.Await();
-        }
-        switch (docState)
-        {
-            case ServiceDefinitionDocumentState.Composed:
-                if (await GetValue<bool>("azure-validator.composed-debugger"))
-                {
-                    Debugger.Await();
-                }
-                break;
-            case ServiceDefinitionDocumentState.Individual:
-                if (await GetValue<bool>("azure-validator.individual-debugger"))
-                {
-                    Debugger.Await();
-                }
-                break;
         }
 
         var files = await ListInputs();
