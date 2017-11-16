@@ -5,6 +5,8 @@ using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
+// Copied from https://github.com/Azure/autorest.common/blob/ab329b81f963405023b0282209b2f547c551c55a/src/JsonRpc/CallerResponse.cs#L39
+
 namespace Microsoft.Perks.JsonRPC
 {
     public interface ICallerResponse
@@ -16,7 +18,7 @@ namespace Microsoft.Perks.JsonRPC
 
     public class CallerResponse<T> : TaskCompletionSource<T>, ICallerResponse
     {
-        public string Id { get; }
+        public string Id { get; private set; }
         private Action<JObject> _setResult;
 
         public CallerResponse(string id, Action<JObject> setResult)
@@ -29,7 +31,6 @@ namespace Microsoft.Perks.JsonRPC
             Id = id;
         }
 
-        // Copied from https://github.com/Azure/autorest.common/blob/ab329b81f963405023b0282209b2f547c551c55a/src/JsonRpc/CallerResponse.cs#L39
         public bool SetCompleted(JToken result)
         {
             T value;
