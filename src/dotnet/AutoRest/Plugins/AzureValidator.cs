@@ -71,6 +71,20 @@ public class AzureValidator : NewPlugin
 
     protected override async Task<bool> ProcessInternal()
     {
+        var docStateInput = await GetValue<string>("merge-state");
+        ServiceDefinitionDocumentState docState;
+        if (!Enum.TryParse<ServiceDefinitionDocumentState>(docStateInput, true, out docState))
+        {
+            throw new Exception("Invalid Input for merge-state: " + docStateInput + ". Valid values are 'individual' and 'composed'.");
+        }
+
+        if ((await GetValue<bool>("azure-validator.debugger")) ||
+            (docState == ServiceDefinitionDocumentState.Composed && await GetValue<bool>("azure-validator.composed-debugger")) ||
+            (docState == ServiceDefinitionDocumentState.Individual && await GetValue<bool>("azure-validator.individual-debugger")))
+        {
+            Debugger.Await();
+        }
+
         var files = await ListInputs();
         foreach (var file in files)
         {
@@ -81,19 +95,12 @@ public class AzureValidator : NewPlugin
             var serviceDefinition = SwaggerParser.Load(file, fs);
             var validator = new RecursiveObjectValidator(PropertyNameResolver.JsonName);
             var docTypeInput = (await GetValue<string>("openapi-type"));
-            var docStateInput = (await GetValue<string>("merge-state"));
 
             ServiceDefinitionDocumentType docType;
             // Convert data-plane to dataplane
             if (!Enum.TryParse<ServiceDefinitionDocumentType>(docTypeInput.Replace("-", ""), true, out docType))
             {
                 throw new Exception("Invalid Input for openapi-type: " + docTypeInput + ". Valid values are 'arm', 'data-plane' or 'default'.");
-            }
-
-            ServiceDefinitionDocumentState docState;
-            if (!Enum.TryParse<ServiceDefinitionDocumentState>(docStateInput, true, out docState))
-            {
-                throw new Exception("Invalid Input for merge-state: " + docStateInput + ". Valid values are 'individual' and 'composed'.");
             }
 
             var metadata = new ServiceDefinitionMetadata
