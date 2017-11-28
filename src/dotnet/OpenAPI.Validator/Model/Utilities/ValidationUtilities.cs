@@ -366,8 +366,8 @@ namespace OpenAPI.Validator.Model.Utilities
         /// Returns a suggestion of camel case styled string based on the string passed as parameter.
         /// </summary>
         /// <example>
-        /// <code>URI</code> becomes <code>Uri</code>
-        /// <code>SomeURIThing</code> becomes <code>SomeUriThing</code>
+        /// <code>URI</code> becomes <code>uri</code>
+        /// <code>SomeURIThing</code> becomes <code>someUriThing</code>
         /// </example>
         /// <param name="name">String to convert to camel case style</param>
         /// <returns>A string that conforms with camel case style based on the string passed as parameter.</returns>
