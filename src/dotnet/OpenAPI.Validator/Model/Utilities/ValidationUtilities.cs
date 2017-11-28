@@ -27,7 +27,7 @@ namespace OpenAPI.Validator.Model.Utilities
         public static IEnumerable<string> GetTenantResourceModels(IEnumerable<string> resourceModels, ServiceDefinition serviceDefinition)
         {
             List<string> tenantResourceModels = new List<string>();
-            if(serviceDefinition.Paths.Any())
+            if (serviceDefinition.Paths.Any())
             {
                 foreach (KeyValuePair<string, Dictionary<string, Operation>> path in serviceDefinition.Paths)
                 {
@@ -41,7 +41,7 @@ namespace OpenAPI.Validator.Model.Utilities
                         if (getOperation != null && getOperation.Responses?.GetValueOrNull("200") != null)
                         {
                             OperationResponse response = getOperation.Responses.GetValueOrNull("200");
-                            string nameToCompare = (response.Schema?.Reference != null)? Extensions.StripDefinitionPath(response.Schema.Reference) : null;
+                            string nameToCompare = (response.Schema?.Reference != null) ? Extensions.StripDefinitionPath(response.Schema.Reference) : null;
                             if (!string.IsNullOrEmpty(nameToCompare) && resourceModels.Contains(nameToCompare))
                             {
                                 tenantResourceModels.Add(nameToCompare);
@@ -366,8 +366,8 @@ namespace OpenAPI.Validator.Model.Utilities
         /// Returns a suggestion of camel case styled string based on the string passed as parameter.
         /// </summary>
         /// <example>
-        /// <code>URI</code> becomes <code>Uri</code>
-        /// <code>SomeURIThing</code> becomes <code>SomeUriThing</code>
+        /// <code>URI</code> becomes <code>uri</code>
+        /// <code>SomeURIThing</code> becomes <code>someUriThing</code>
         /// </example>
         /// <param name="name">String to convert to camel case style</param>
         /// <returns>A string that conforms with camel case style based on the string passed as parameter.</returns>
@@ -375,9 +375,11 @@ namespace OpenAPI.Validator.Model.Utilities
             => Regex.Replace(
                 name,
                 @"(?x)
-                    (?<=\p{Lu}) # after any uppercase character,
+                    ((?<=\p{Lu}) # after any uppercase character,
                     \p{Lu}+     # find a series of uppercase characters,
-                    (?=\p{Lu}|\z) # followed by an uppercase character or the end of the string
+                    (?=\p{Lu}|\z)) # followed by an uppercase character or the end of the string
+                    |(\A[A-Z]) # or it happens to be the first character
+                    |((?<=[a-z]){1}[A-Z]\z) # or it is an uppercase at the end, next to a lowercase
                 ",
                 s => s.Value.ToLowerInvariant()); // ... and replace the series with lowercase
 
@@ -665,7 +667,7 @@ namespace OpenAPI.Validator.Model.Utilities
                            response => response.Key.Equals("200") &&
                            IsArrayOf(response.Value.Schema?.Reference, resourceModel, definitions)));
 
-            return (operations?.Count() != 0)? operations.First() : null;
+            return (operations?.Count() != 0) ? operations.First() : null;
 
         }
     }
