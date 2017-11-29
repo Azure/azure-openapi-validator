@@ -1,5 +1,12 @@
 # Changelog
 
+## What's New (11/28/2017)
+
+### Resolved issues/Bug fixes
+-	Fixed camel case suggestions, lowercasing the first character.
+-	Both dotnet and typescript sections can be debugged again.
+-   Fixed errors in the application of `NotNodeName` rule.
+
 ## What's New (11/08/2017)
 
 ### Resolved issues/Bug fixes
