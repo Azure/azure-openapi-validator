@@ -16,7 +16,7 @@ namespace OpenAPI.Validator.Validation
 
         private static readonly IEnumerable<string> AllowedTopLevelProperties = new List<string>()
         { "name", "type", "id", "location", "properties", "tags", "plan", "sku", "etag",
-            "managedBy", "identity", "kind", "zones"};
+            "managedby", "identity", "kind", "zones"};
 
         /// <summary>
         /// Id of the Rule.
