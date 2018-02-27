@@ -113,35 +113,6 @@ namespace OpenAPI.Validator.Tests
             Assert.Equal(messages.Count(), 1);
         }
 
-
-        [Fact]
-        public void NonAppJsonTypeOperationForConsumes()
-        {
-            var messages = GetValidationMessagesForRule<NonApplicationJsonType>("non-app-json-operation-consumes.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
-        public void NonAppJsonTypeOperationForProduces()
-        {
-            var messages = GetValidationMessagesForRule<NonApplicationJsonType>("non-app-json-operation-produces.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
-        public void NonAppJsonTypeServiceDefinitionForProduces()
-        {
-            var messages = GetValidationMessagesForRule<NonApplicationJsonType>("non-app-json-service-def-produces.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
-        public void NonAppJsonTypeServiceDefinitionForConsumes()
-        {
-            var messages = GetValidationMessagesForRule<NonApplicationJsonType>("non-app-json-service-def-consumes.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
         [Fact]
         public void NonHttpsServiceDefinitionForScheme()
         {

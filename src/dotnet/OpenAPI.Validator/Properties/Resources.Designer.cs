@@ -341,15 +341,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only &apos;application/json&apos; content-type is supported by ARM..
-        /// </summary>
-        internal static string NonAppJsonTypeNotSupported {
-            get {
-                return ResourceManager.GetString("NonAppJsonTypeNotSupported", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Method &apos;{0}&apos; does not declare any MIME type for the return body. Generated code will not deserialize the content..
         /// </summary>
         internal static string NoProduceOperationWithBody {
