@@ -539,15 +539,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tracked resource &apos;{0}&apos; must have a get operation..
-        /// </summary>
-        internal static string TrackedResourceGetOperationMissing {
-            get {
-                return ResourceManager.GetString("TrackedResourceGetOperationMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The child tracked resource, &apos;{0}&apos; with immediate parent &apos;{1}&apos;, must have a list by immediate parent operation..
         /// </summary>
         internal static string TrackedResourceListByImmediateParentOperationMissing {

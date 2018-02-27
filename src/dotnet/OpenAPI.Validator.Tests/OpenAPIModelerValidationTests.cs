@@ -242,13 +242,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void TrackedResourceGetOperationValidation2()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>("tracked-resource-1-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void TrackedResourceListByResourceGroupValidation()
         {
             var messages = GetValidationMessagesForRule<TrackedResourceListByResourceGroup>("tracked-resource-2-validation.json");
@@ -259,13 +252,6 @@ namespace OpenAPI.Validator.Tests
         public void TrackedResourcePatchOperationValidationValidation()
         {
             var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>("tracked-resource-patch-operation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
-        public void TrackedResourceGetOperationValidation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>("tracked-resource-get-operation.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -556,16 +542,6 @@ namespace OpenAPI.Validator.Tests
         public void ValidTrackedResourcePatchOperation()
         {
             var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>(Path.Combine("positive", "tracked-resource-patch-valid-operation.json"));
-            Assert.Empty(messages);
-        }
-
-        /// <summary>
-        /// Verifies that tracked resource has a get operation
-        /// </summary>
-        [Fact]
-        public void ValidTrackedResourceGetOperation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>(Path.Combine("positive", "tracked-resource-get-valid-operation.json"));
             Assert.Empty(messages);
         }
 
