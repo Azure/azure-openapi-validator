@@ -98,15 +98,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Collection object &apos;{0}&apos; returned by list operation &apos;{1}&apos; with &apos;x-ms-pageable&apos; extension, has no property named &apos;value&apos;..
-        /// </summary>
-        internal static string CollectionObjectPropertiesNamingMessage {
-            get {
-                return ResourceManager.GetString("CollectionObjectPropertiesNamingMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Reference specifies the definition {0} that does not exist..
         /// </summary>
         internal static string DefinitionDoesNotExist {

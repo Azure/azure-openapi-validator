@@ -185,13 +185,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void CollectionObjectsPropertiesNamingValidation()
-        {
-            var messages = GetValidationMessagesForRule<CollectionObjectPropertiesNaming>("collection-objects-naming.json");
-            Assert.Equal(messages.Count(), 2);
-        }
-
-        [Fact]
         public void PropertyNameCasingValidation()
         {
             var messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>("property-names-casing.json");
@@ -635,16 +628,6 @@ namespace OpenAPI.Validator.Tests
             messages = this.ValidateOpenAPISpec(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest2md);
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Fact]
-        public void ValidCollectionObjectsPropertiesName()
-        {
-            var messages = GetValidationMessagesForRule<CollectionObjectPropertiesNaming>(Path.Combine("positive", "collection-objects-naming-valid.json"));
-            Assert.Empty(messages);
         }
 
         /// <summary>

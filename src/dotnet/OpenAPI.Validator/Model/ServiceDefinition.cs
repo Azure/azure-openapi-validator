@@ -74,7 +74,6 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         [Rule(typeof(UniqueResourcePaths))]
         [Rule(typeof(ListInOperationName))]
-        [Rule(typeof(CollectionObjectPropertiesNaming))]
         [Rule(typeof(PutGetPatchResponseSchema))]
         [Rule(typeof(OperationsAPIImplementation))]
         [Rule(typeof(XmsResourceInPutResponse))]
@@ -91,7 +90,6 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         [JsonProperty("x-ms-paths")]
         [Rule(typeof(ListInOperationName))]
-        [Rule(typeof(CollectionObjectPropertiesNaming))]
         [CollectionRule(typeof(XmsPathsMustOverloadPaths))]
         [Rule(typeof(XmsExamplesRequired))]
         public Dictionary<string, Dictionary<string, Operation>> CustomPaths { get; set; }
