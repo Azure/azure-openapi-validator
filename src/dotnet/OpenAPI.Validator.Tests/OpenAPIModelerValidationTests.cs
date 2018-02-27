@@ -323,13 +323,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void VersionFormatValidation()
-        {
-            var messages = GetValidationMessagesForRule<APIVersionPattern>("version-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void GuidUsageValidation()
         {
             var messages = GetValidationMessagesForRule<GuidUsage>("guid-validation.json");
