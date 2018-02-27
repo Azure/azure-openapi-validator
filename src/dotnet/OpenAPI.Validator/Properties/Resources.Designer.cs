@@ -71,15 +71,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: {0}.
-        /// </summary>
-        internal static string BooleanPropertyNotRecommended {
-            get {
-                return ResourceManager.GetString("BooleanPropertyNotRecommended", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Found a type set &apos;{0}&apos; which is circularly defined..
         /// </summary>
         internal static string CircularBaseSchemaSet {

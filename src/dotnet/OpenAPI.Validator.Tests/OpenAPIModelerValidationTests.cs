@@ -57,13 +57,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void BooleanPropertiesValidation()
-        {
-            var messages = GetValidationMessagesForRule<EnumInsteadOfBoolean>("boolean-properties.json");
-            Assert.Equal(messages.Count(), 5);
-        }
-
-        [Fact]
         public void DefaultValueInEnumValidation()
         {
             var messages = GetValidationMessagesForRule<DefaultMustBeInEnum>("default-value-not-in-enum.json");
