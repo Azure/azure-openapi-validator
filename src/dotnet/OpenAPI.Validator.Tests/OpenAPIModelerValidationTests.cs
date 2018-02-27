@@ -242,13 +242,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void OperationsApiValidation()
-        {
-            var messages = GetValidationMessagesForRule<OperationsAPIImplementation>("operations-api-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void ResourceModelValidation()
         {
             var messages = GetValidationMessagesForRule<RequiredPropertiesMissingInResourceModel>("ext-resource-validation.json");

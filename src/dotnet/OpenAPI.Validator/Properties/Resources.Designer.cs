@@ -395,15 +395,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operations API must be implemented for &apos;{0}&apos;..
-        /// </summary>
-        internal static string OperationsAPINotImplemented {
-            get {
-                return ResourceManager.GetString("OperationsAPINotImplemented", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Options HTTP verb is not supported..
         /// </summary>
         internal static string OptionsNotSupported {
