@@ -185,13 +185,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void PropertyNameCasingValidation()
-        {
-            var messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>("property-names-casing.json");
-            Assert.Equal(messages.Count(), 2);
-        }
-
-        [Fact]
         public void NestedPropertiesValidation()
         {
             var messages = GetValidationMessagesForRule<AvoidNestedProperties>("nested-properties.json");
@@ -678,16 +671,6 @@ namespace OpenAPI.Validator.Tests
         public void ListOperationsCorrectlyNamed()
         {
             var messages = GetValidationMessagesForRule<ListInOperationName>(Path.Combine("positive", "list-operations-valid-naming.json"));
-            Assert.Empty(messages);
-        }
-
-        /// <summary>
-        /// Verifies that property names follow camelCase style
-        /// </summary>
-        [Fact]
-        public void ValidPropertyNameCasing()
-        {
-            var messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>(Path.Combine("positive", "property-names-casing-valid.json"));
             Assert.Empty(messages);
         }
 

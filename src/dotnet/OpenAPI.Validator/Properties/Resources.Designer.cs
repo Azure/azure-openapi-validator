@@ -107,15 +107,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Property named: &apos;{0}&apos;, for definition: &apos;{1}&apos; must follow camelCase style. Example: &apos;{2}&apos;..
-        /// </summary>
-        internal static string DefinitionsPropertiesNameCamelCase {
-            get {
-                return ResourceManager.GetString("DefinitionsPropertiesNameCamelCase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &apos;Delete&apos; operation &apos;{0}&apos; must not have a request body..
         /// </summary>
         internal static string DeleteMustNotHaveRequestBody {

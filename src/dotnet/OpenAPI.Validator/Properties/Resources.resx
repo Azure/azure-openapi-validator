@@ -234,9 +234,6 @@
   <data name="TrackedResourcePatchOperationMissing" xml:space="preserve">
     <value>Tracked resource '{0}' must have patch operation that at least supports the update of tags. It's strongly recommended that the PATCH operation supports update of all mutable properties as well.</value>
   </data>
-  <data name="DefinitionsPropertiesNameCamelCase" xml:space="preserve">
-    <value>Property named: '{0}', for definition: '{1}' must follow camelCase style. Example: '{2}'.</value>
-  </data>
   <data name="ListOperationsNamingWarningMessage" xml:space="preserve">
     <value>Since operation '{0}' response has model definition '{1}', it should be of the form "*_list*". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.</value>
   </data>

@@ -102,7 +102,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(ResourceHasXMsResourceEnabled))]
         [Rule(typeof(GuidUsage))]
         [Rule(typeof(InvalidSkuModel))]
-        [Rule(typeof(DefinitionsPropertiesNamesCamelCase))]
         [Rule(typeof(TrackedResourceGetOperation))]
         [Rule(typeof(TrackedResourceListByResourceGroup))]
         [Rule(typeof(TrackedResourceListBySubscription))]
