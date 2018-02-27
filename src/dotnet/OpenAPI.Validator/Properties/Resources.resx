@@ -255,9 +255,6 @@
   <data name="SummaryDescriptionVaidationError" xml:space="preserve">
     <value>The summary and description values should not be same.</value>
   </data>
-  <data name="DeleteMustNotHaveRequestBody" xml:space="preserve">
-    <value>'Delete' operation '{0}' must not have a request body.</value>
-  </data>
   <data name="SkuModelIsNotValid" xml:space="preserve">
     <value>Sku Model definition '{0}' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.</value>
   </data>

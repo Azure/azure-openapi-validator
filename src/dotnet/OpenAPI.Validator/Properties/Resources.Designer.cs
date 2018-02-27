@@ -107,15 +107,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Delete&apos; operation &apos;{0}&apos; must not have a request body..
-        /// </summary>
-        internal static string DeleteMustNotHaveRequestBody {
-            get {
-                return ResourceManager.GetString("DeleteMustNotHaveRequestBody", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &apos;DELETE&apos; operation &apos;{0}&apos; should use method name &apos;Delete&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
         internal static string DeleteOperationNameNotValid {
