@@ -431,15 +431,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response..
-        /// </summary>
-        internal static string PutGetPatchResponseInvalid {
-            get {
-                return ResourceManager.GetString("PutGetPatchResponseInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &apos;PUT&apos; operation &apos;{0}&apos; should use method name &apos;Create&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
         internal static string PutOperationNameNotValid {

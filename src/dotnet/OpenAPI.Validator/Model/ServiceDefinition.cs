@@ -72,7 +72,6 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         [Rule(typeof(UniqueResourcePaths))]
         [Rule(typeof(ListInOperationName))]
-        [Rule(typeof(PutGetPatchResponseSchema))]
         [Rule(typeof(XmsResourceInPutResponse))]
         [Rule(typeof(PutRequestResponseScheme))]
         [Rule(typeof(TrackedResourceListByImmediateParent))]

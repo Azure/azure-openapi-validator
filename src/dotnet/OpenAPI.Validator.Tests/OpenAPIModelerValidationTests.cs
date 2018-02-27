@@ -298,13 +298,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void PutGetPatchResponseValidation()
-        {
-            var messages = GetValidationMessagesForRule<PutGetPatchResponseSchema>("putgetpatch-response-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void SecurityDefinitionStructurePresenceValidation()
         {
             var messages = GetValidationMessagesForRule<SecurityDefinitionsStructure>("security-definitions-validations-1.json");

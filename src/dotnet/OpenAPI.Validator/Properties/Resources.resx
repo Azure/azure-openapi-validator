@@ -243,9 +243,6 @@
   <data name="SummaryDescriptionVaidationError" xml:space="preserve">
     <value>The summary and description values should not be same.</value>
   </data>
-  <data name="PutGetPatchResponseInvalid" xml:space="preserve">
-    <value>{0} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.</value>
-  </data>
   <data name="TrackedResourceListByImmediateParentOperationMissing" xml:space="preserve">
     <value>The child tracked resource, '{0}' with immediate parent '{1}', must have a list by immediate parent operation.</value>
   </data>
