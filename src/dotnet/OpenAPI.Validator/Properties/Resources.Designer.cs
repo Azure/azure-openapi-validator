@@ -170,15 +170,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permissible values for HTTP Verb are delete,get,put,patch,head,options,post. .
-        /// </summary>
-        internal static string HttpVerbIsNotValid {
-            get {
-                return ResourceManager.GetString("HttpVerbIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Found incompatible property types {1}, {2} for property &apos;{0}&apos; in schema inheritance chain {3}.
         /// </summary>
         internal static string IncompatibleTypesInBaseSchema {

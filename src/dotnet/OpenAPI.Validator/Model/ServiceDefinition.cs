@@ -77,7 +77,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(PutGetPatchResponseSchema))]
         [Rule(typeof(OperationsAPIImplementation))]
         [Rule(typeof(XmsResourceInPutResponse))]
-        [CollectionRule(typeof(InvalidVerbUsed))]
         [Rule(typeof(PutRequestResponseScheme))]
         [Rule(typeof(TrackedResourceListByImmediateParent))]
         [Rule(typeof(XmsExamplesRequired))]
