@@ -255,13 +255,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void GuidUsageValidation()
-        {
-            var messages = GetValidationMessagesForRule<GuidUsage>("guid-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void ResourceExtensionValidation()
         {
             var messages = GetValidationMessagesForRule<ResourceHasXMsResourceEnabled>("ext-msresource-validation.json");

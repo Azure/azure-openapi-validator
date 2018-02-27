@@ -98,7 +98,6 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         [Rule(typeof(RequiredPropertiesMissingInResourceModel))]
         [Rule(typeof(ResourceHasXMsResourceEnabled))]
-        [Rule(typeof(GuidUsage))]
         [Rule(typeof(InvalidSkuModel))]
         [Rule(typeof(TrackedResourceGetOperation))]
         [Rule(typeof(TrackedResourceListByResourceGroup))]

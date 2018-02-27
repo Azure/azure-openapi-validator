@@ -170,15 +170,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guid used in model definition &apos;{1}&apos; for property &apos;{0}&apos;. Usage of Guid is not recommanded. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board..
-        /// </summary>
-        internal static string GuidUsageNotRecommended {
-            get {
-                return ResourceManager.GetString("GuidUsageNotRecommended", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Permissible values for HTTP Verb are delete,get,put,patch,head,options,post. .
         /// </summary>
         internal static string HttpVerbIsNotValid {
