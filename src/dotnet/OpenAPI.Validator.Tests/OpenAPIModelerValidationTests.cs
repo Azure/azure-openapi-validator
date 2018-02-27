@@ -421,22 +421,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void DefaultValuedInPropertiesInPatchRequestValidation()
-        {
-            // This test validates if a definition has required properties which are marked as readonly true
-            var messages = GetValidationMessagesForRule<PatchBodyParametersSchema>("default-valued-properties-in-patch-request.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
-        public void RequiredPropertiesInPatchRequestValidation()
-        {
-            // This test validates if a definition has required properties which are marked as readonly true
-            var messages = GetValidationMessagesForRule<PatchBodyParametersSchema>("req-properties-in-patch-request.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void XmsEnumExtensionValidation()
         {
             var messages = GetValidationMessagesForRule<XmsEnumValidation>("x-ms-enum-absent.json");

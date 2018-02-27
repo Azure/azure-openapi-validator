@@ -99,7 +99,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(TrackedResourceListBySubscription))]
         [Rule(typeof(TrackedResourcePatchOperation))]
         [Rule(typeof(DescriptionAndTitleMissing))]
-        [Rule(typeof(PatchBodyParametersSchema))]
         [Rule(typeof(XmsEnumValidation))]
         [Rule(typeof(LocationMustHaveXmsMutability))]
         [CollectionRule(typeof(RequiredReadOnlyProperties))]
