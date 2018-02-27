@@ -242,13 +242,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void ResourceModelValidation()
-        {
-            var messages = GetValidationMessagesForRule<RequiredPropertiesMissingInResourceModel>("ext-resource-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void TrackedResourceGetOperationValidation2()
         {
             var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>("tracked-resource-1-validation.json");
@@ -616,16 +609,6 @@ namespace OpenAPI.Validator.Tests
             Assert.Equal(4, context.ResourceModels.Count());
             Assert.Equal(1, context.TrackedResourceModels.Count());
             Assert.Equal(3, context.ProxyResourceModels.Count());
-        }
-
-        /// <summary>
-        /// Verifies resource model readonly properties
-        /// </summary>
-        [Fact]
-        public void ValidResourceModelReadOnlyProperties()
-        {
-            var messages = GetValidationMessagesForRule<RequiredPropertiesMissingInResourceModel>(Path.Combine("positive", "valid-resource-model-readonly-props.json"));
-            Assert.Empty(messages);
         }
 
         /// <summary>

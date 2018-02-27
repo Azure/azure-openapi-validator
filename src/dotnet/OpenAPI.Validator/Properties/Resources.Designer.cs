@@ -494,15 +494,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Model definition &apos;{0}&apos; must have the properties &apos;name&apos;, &apos;id&apos; and &apos;type&apos; in its hierarchy and these properties must be marked as readonly..
-        /// </summary>
-        internal static string ResourceModelIsNotValid {
-            get {
-                return ResourceManager.GetString("ResourceModelIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Every swagger/configuration must have a security definitions section and it must adhere to the structure described in: https://github.com/Azure/autorest/tree/master/docs/developer/validation-rules/security-definitions-structure-validation.md.
         /// </summary>
         internal static string SecurityDefinitionsStructureValidation {
