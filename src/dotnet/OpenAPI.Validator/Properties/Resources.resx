@@ -249,9 +249,6 @@
   <data name="SummaryDescriptionVaidationError" xml:space="preserve">
     <value>The summary and description values should not be same.</value>
   </data>
-  <data name="SkuModelIsNotValid" xml:space="preserve">
-    <value>Sku Model definition '{0}' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.</value>
-  </data>
   <data name="PutGetPatchResponseInvalid" xml:space="preserve">
     <value>{0} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.</value>
   </data>

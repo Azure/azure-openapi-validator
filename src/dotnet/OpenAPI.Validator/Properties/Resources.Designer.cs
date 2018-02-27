@@ -557,15 +557,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sku Model definition &apos;{0}&apos; is not valid. A Sku model must have &apos;name&apos; property. It can also have &apos;tier&apos;, &apos;size&apos;, &apos;family&apos;, &apos;capacity&apos; as optional properties..
-        /// </summary>
-        internal static string SkuModelIsNotValid {
-            get {
-                return ResourceManager.GetString("SkuModelIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The summary and description values should not be same..
         /// </summary>
         internal static string SummaryDescriptionVaidationError {

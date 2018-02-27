@@ -285,13 +285,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void SkuModelValidation()
-        {
-            var messages = GetValidationMessagesForRule<InvalidSkuModel>("skumodel-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void TrackedResourceGetOperationValidation2()
         {
             var messages = GetValidationMessagesForRule<TrackedResourceGetOperation>("tracked-resource-1-validation.json");
@@ -682,16 +675,6 @@ namespace OpenAPI.Validator.Tests
             Assert.Equal(4, context.ResourceModels.Count());
             Assert.Equal(1, context.TrackedResourceModels.Count());
             Assert.Equal(3, context.ProxyResourceModels.Count());
-        }
-
-        /// <summary>
-        /// Verifies that sku object
-        /// </summary>
-        [Fact]
-        public void ValidSkuObjectStructure()
-        {
-            var messages = GetValidationMessagesForRule<InvalidSkuModel>(Path.Combine("positive", "skumodel-validation-valid.json"));
-            Assert.Empty(messages);
         }
 
         /// <summary>
