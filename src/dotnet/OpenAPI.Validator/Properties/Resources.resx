@@ -240,9 +240,6 @@
   <data name="TrackedResourcePatchOperationMissing" xml:space="preserve">
     <value>Tracked resource '{0}' must have patch operation that at least supports the update of tags. It's strongly recommended that the PATCH operation supports update of all mutable properties as well.</value>
   </data>
-  <data name="BodyPropertyNameCamelCase" xml:space="preserve">
-    <value>Property named: '{0}', must follow camelCase style. Example: '{1}'.</value>
-  </data>
   <data name="DefinitionsPropertiesNameCamelCase" xml:space="preserve">
     <value>Property named: '{0}', for definition: '{1}' must follow camelCase style. Example: '{2}'.</value>
   </data>

@@ -201,9 +201,7 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void PropertyNameCasingValidation()
         {
-            var messages = GetValidationMessagesForRule<BodyPropertiesNamesCamelCase>("property-names-casing.json");
-            Assert.Equal(messages.Count(), 1);
-            messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>("property-names-casing.json");
+            var messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>("property-names-casing.json");
             Assert.Equal(messages.Count(), 2);
         }
 
@@ -713,9 +711,7 @@ namespace OpenAPI.Validator.Tests
         [Fact]
         public void ValidPropertyNameCasing()
         {
-            var messages = GetValidationMessagesForRule<BodyPropertiesNamesCamelCase>(Path.Combine("positive", "property-names-casing-valid.json"));
-            Assert.Empty(messages);
-            messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>(Path.Combine("positive", "property-names-casing-valid.json"));
+            var messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>(Path.Combine("positive", "property-names-casing-valid.json"));
             Assert.Empty(messages);
         }
 

@@ -80,7 +80,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(XmsResourceInPutResponse))]
         [CollectionRule(typeof(InvalidVerbUsed))]
         [CollectionRule(typeof(DeleteMustNotHaveRequestBody))]
-        [CollectionRule(typeof(BodyPropertiesNamesCamelCase))]
         [Rule(typeof(PutRequestResponseScheme))]
         [Rule(typeof(TrackedResourceListByImmediateParent))]
         [Rule(typeof(XmsExamplesRequired))]
@@ -94,7 +93,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(ListInOperationName))]
         [Rule(typeof(CollectionObjectPropertiesNaming))]
         [CollectionRule(typeof(XmsPathsMustOverloadPaths))]
-        [CollectionRule(typeof(BodyPropertiesNamesCamelCase))]
         [Rule(typeof(XmsExamplesRequired))]
         public Dictionary<string, Dictionary<string, Operation>> CustomPaths { get; set; }
 

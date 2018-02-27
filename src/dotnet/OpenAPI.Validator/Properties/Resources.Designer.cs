@@ -80,15 +80,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Property named: &apos;{0}&apos;, must follow camelCase style. Example: &apos;{1}&apos;..
-        /// </summary>
-        internal static string BodyPropertyNameCamelCase {
-            get {
-                return ResourceManager.GetString("BodyPropertyNameCamelCase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: {0}.
         /// </summary>
         internal static string BooleanPropertyNotRecommended {
