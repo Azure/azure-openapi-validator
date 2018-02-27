@@ -111,7 +111,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(TrackedResourcePatchOperation))]
         [Rule(typeof(DescriptionAndTitleMissing))]
         [Rule(typeof(PatchBodyParametersSchema))]
-        [Rule(typeof(BodyTopLevelProperties))]
         [Rule(typeof(XmsEnumValidation))]
         [Rule(typeof(LocationMustHaveXmsMutability))]
         [CollectionRule(typeof(RequiredReadOnlyProperties))]

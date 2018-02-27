@@ -192,13 +192,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void BodyTopLevelPropertiesValidation()
-        {
-            var messages = GetValidationMessagesForRule<BodyTopLevelProperties>("body-top-level-properties.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void PropertyNameCasingValidation()
         {
             var messages = GetValidationMessagesForRule<DefinitionsPropertiesNamesCamelCase>("property-names-casing.json");
