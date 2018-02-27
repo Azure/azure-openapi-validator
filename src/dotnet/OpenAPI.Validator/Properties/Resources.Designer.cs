@@ -80,15 +80,6 @@ namespace OpenAPI.Validator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Top level property names should not be repeated inside the properties bag for ARM resource &apos;{0}&apos;. Properties [{1}] conflict with ARM top level properties. Please rename these..
-        /// </summary>
-        internal static string ArmPropertiesBagValidationMessage {
-            get {
-                return ResourceManager.GetString("ArmPropertiesBagValidationMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Property named: &apos;{0}&apos;, must follow camelCase style. Example: &apos;{1}&apos;..
         /// </summary>
         internal static string BodyPropertyNameCamelCase {
