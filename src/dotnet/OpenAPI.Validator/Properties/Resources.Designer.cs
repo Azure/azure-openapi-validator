@@ -654,17 +654,6 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by subscriptions operation..
-        /// </summary>
-        internal static string TrackedResourceListBySubscriptionsOperationMissing
-        {
-            get
-            {
-                return ResourceManager.GetString("TrackedResourceListBySubscriptionsOperationMissing", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Tracked resource &apos;{0}&apos; must have patch operation that at least supports the update of tags. It&apos;s strongly recommended that the PATCH operation supports update of all mutable properties as well..
         /// </summary>
         internal static string TrackedResourcePatchOperationMissing

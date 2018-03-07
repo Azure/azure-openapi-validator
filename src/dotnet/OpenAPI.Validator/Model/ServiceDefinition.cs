@@ -91,7 +91,6 @@ namespace OpenAPI.Validator.Model
         /// Key is the object serviceTypeName and the value is swagger definition.
         /// </summary>
         [Rule(typeof(ResourceHasXMsResourceEnabled))]
-        [Rule(typeof(TrackedResourceListBySubscription))]
         [Rule(typeof(TrackedResourcePatchOperation))]
         [Rule(typeof(DescriptionAndTitleMissing))]
         [Rule(typeof(XmsEnumValidation))]

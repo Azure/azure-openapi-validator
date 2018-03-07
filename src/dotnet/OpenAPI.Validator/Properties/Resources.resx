@@ -240,9 +240,6 @@
   <data name="XMSPagableListByRGAndSubscriptionsMismatch" xml:space="preserve">
     <value>For the tracked resource '{0}', the x-ms-pageable extension values must be same for list by resource group and subscriptions operations.</value>
   </data>
-  <data name="TrackedResourceListBySubscriptionsOperationMissing" xml:space="preserve">
-    <value>The tracked resource, '{0}', must have a list by subscriptions operation.</value>
-  </data>
   <data name="GeneratingClient" xml:space="preserve">
     <value>Generating client model from swagger model.</value>
   </data>

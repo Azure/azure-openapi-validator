@@ -249,13 +249,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void TrackedResourceListBySubscriptionValidation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceListBySubscription>("tracked-resource-3-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void SecurityDefinitionStructurePresenceValidation()
         {
             var messages = GetValidationMessagesForRule<SecurityDefinitionsStructure>("security-definitions-validations-1.json");
