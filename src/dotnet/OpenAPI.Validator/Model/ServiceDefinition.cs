@@ -71,7 +71,6 @@ namespace OpenAPI.Validator.Model
         /// Key is actual path and the value is serializationProperty of http operations and operation objects.
         /// </summary>
         [Rule(typeof(ListInOperationName))]
-        [Rule(typeof(XmsResourceInPutResponse))]
         [Rule(typeof(PutRequestResponseScheme))]
         [Rule(typeof(XmsExamplesRequired))]
         [Rule(typeof(LROStatusCodesReturnTypeSchema))]

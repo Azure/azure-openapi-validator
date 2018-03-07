@@ -544,17 +544,6 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy. Operation: &apos;{0}&apos; Model: &apos;{1}&apos;..
-        /// </summary>
-        internal static string PutOperationResourceResponseValidationMessage
-        {
-            get
-            {
-                return ResourceManager.GetString("PutOperationResourceResponseValidationMessage", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Property &apos;{0}&apos; in Model &apos;{1}&apos; is marked readOnly and is also required. This is not allowed..
         /// </summary>
         internal static string ReadOnlyNotRequired

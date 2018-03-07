@@ -365,13 +365,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void PutResponseResourceValidationTest()
-        {
-            var messages = GetValidationMessagesForRule<XmsResourceInPutResponse>("put-response-resource-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void LROStatusCodesValidationTest()
         {
             var messages = GetValidationMessagesForRule<LROStatusCodesReturnTypeSchema>("lro-status-codes-validation.json");
