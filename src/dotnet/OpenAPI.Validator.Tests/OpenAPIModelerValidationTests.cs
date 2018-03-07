@@ -71,13 +71,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void UniqueResourcePathsValidation()
-        {
-            var messages = GetValidationMessagesForRule<UniqueResourcePaths>("network-interfaces-api.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void AnonymousSchemasDiscouragedValidation()
         {
             var messages = GetValidationMessagesForRule<AvoidAnonymousTypes>("anonymous-response-type.json");
