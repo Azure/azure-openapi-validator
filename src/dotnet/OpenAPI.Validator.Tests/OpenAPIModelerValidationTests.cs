@@ -242,13 +242,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void TrackedResourcePatchOperationValidationValidation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>("tracked-resource-patch-operation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void SecurityDefinitionStructurePresenceValidation()
         {
             var messages = GetValidationMessagesForRule<SecurityDefinitionsStructure>("security-definitions-validations-1.json");
@@ -504,16 +497,6 @@ namespace OpenAPI.Validator.Tests
         public void LongRunningResponseDefined()
         {
             var messages = GetValidationMessagesForRule<LongRunningResponseStatusCode>(Path.Combine("positive", "long-running-valid-response.json"));
-            Assert.Empty(messages);
-        }
-
-        /// <summary>
-        /// Verifies that tracked resource has a patch operation
-        /// </summary>
-        [Fact]
-        public void ValidTrackedResourcePatchOperation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>(Path.Combine("positive", "tracked-resource-patch-valid-operation.json"));
             Assert.Empty(messages);
         }
 

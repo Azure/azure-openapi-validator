@@ -654,17 +654,6 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Tracked resource &apos;{0}&apos; must have patch operation that at least supports the update of tags. It&apos;s strongly recommended that the PATCH operation supports update of all mutable properties as well..
-        /// </summary>
-        internal static string TrackedResourcePatchOperationMissing
-        {
-            get
-            {
-                return ResourceManager.GetString("TrackedResourcePatchOperationMissing", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Multiple resource providers are not allowed in a single spec. More than one the resource paths were found: &apos;{0}&apos;..
         /// </summary>
         internal static string UniqueResourcePaths
