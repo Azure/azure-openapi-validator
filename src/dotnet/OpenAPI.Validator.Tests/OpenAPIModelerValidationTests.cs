@@ -14,7 +14,7 @@ using OpenAPI.Validator.Validation.Extensions;
 
 namespace OpenAPI.Validator.Tests
 {
-    
+
     [Collection("Validation Tests")]
     public partial class OpenAPIModelerValidationTests
     {
@@ -263,20 +263,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void TrackedResourceListByImmediateParentValidation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceListByImmediateParent>("list-by-immediate-parent.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
-        public void TrackedResourceListByImmediateParentWithOperationValidation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceListByImmediateParent>("list-by-immediate-parent-2.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void SecurityDefinitionStructurePresenceValidation()
         {
             var messages = GetValidationMessagesForRule<SecurityDefinitionsStructure>("security-definitions-validations-1.json");
@@ -462,7 +448,7 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<LocationMustHaveXmsMutability>("location-without-xms-mutability.json");
             Assert.Equal(messages.Count(), 1);
         }
-        
+
         [Fact]
         public void LocationPropertyWithIncorrectXmsMutability()
         {

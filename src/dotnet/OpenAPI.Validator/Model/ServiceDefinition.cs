@@ -74,7 +74,6 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(ListInOperationName))]
         [Rule(typeof(XmsResourceInPutResponse))]
         [Rule(typeof(PutRequestResponseScheme))]
-        [Rule(typeof(TrackedResourceListByImmediateParent))]
         [Rule(typeof(XmsExamplesRequired))]
         [Rule(typeof(LROStatusCodesReturnTypeSchema))]
         public Dictionary<string, Dictionary<string, Operation>> Paths { get; set; }

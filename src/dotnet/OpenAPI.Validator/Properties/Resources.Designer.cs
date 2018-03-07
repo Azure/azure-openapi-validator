@@ -8,11 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OpenAPI.Validator.Properties {
+namespace OpenAPI.Validator.Properties
+{
     using System;
     using System.Reflection;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,616 +24,741 @@ namespace OpenAPI.Validator.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    internal class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OpenAPI.Validator.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Inline/anonymous models must not be used, instead define a schema with a model name in the &quot;definitions&quot; section and refer to it. This allows operations to share the models..
         /// </summary>
-        internal static string AnonymousTypesDiscouraged {
-            get {
+        internal static string AnonymousTypesDiscouraged
+        {
+            get
+            {
                 return ResourceManager.GetString("AnonymousTypesDiscouraged", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Found a type set &apos;{0}&apos; which is circularly defined..
         /// </summary>
-        internal static string CircularBaseSchemaSet {
-            get {
+        internal static string CircularBaseSchemaSet
+        {
+            get
+            {
                 return ResourceManager.GetString("CircularBaseSchemaSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Circular reference detected: {0}.
         /// </summary>
-        internal static string CircularReference {
-            get {
+        internal static string CircularReference
+        {
+            get
+            {
                 return ResourceManager.GetString("CircularReference", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reference specifies the definition {0} that does not exist..
         /// </summary>
-        internal static string DefinitionDoesNotExist {
-            get {
+        internal static string DefinitionDoesNotExist
+        {
+            get
+            {
                 return ResourceManager.GetString("DefinitionDoesNotExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to &apos;DELETE&apos; operation &apos;{0}&apos; should use method name &apos;Delete&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string DeleteOperationNameNotValid {
-            get {
+        internal static string DeleteOperationNameNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("DeleteOperationNameNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation..
         /// </summary>
-        internal static string DescriptionNotDescriptive {
-            get {
+        internal static string DescriptionNotDescriptive
+        {
+            get
+            {
                 return ResourceManager.GetString("DescriptionNotDescriptive", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Found operation objects with duplicate operationId &apos;{0}&apos;. OperationId must be unique among all operations described in the API..
         /// </summary>
-        internal static string DuplicateOperationIdException {
-            get {
+        internal static string DuplicateOperationIdException
+        {
+            get
+            {
                 return ResourceManager.GetString("DuplicateOperationIdException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Empty x-ms-client-name property..
         /// </summary>
-        internal static string EmptyClientName {
-            get {
+        internal static string EmptyClientName
+        {
+            get
+            {
                 return ResourceManager.GetString("EmptyClientName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error parsing swagger file.
         /// </summary>
-        internal static string ErrorParsingSpec {
-            get {
+        internal static string ErrorParsingSpec
+        {
+            get
+            {
                 return ResourceManager.GetString("ErrorParsingSpec", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reached Maximum reference depth when resolving reference &apos;{0}&apos;..
         /// </summary>
-        internal static string ExceededMaximumReferenceDepth {
-            get {
+        internal static string ExceededMaximumReferenceDepth
+        {
+            get
+            {
                 return ResourceManager.GetString("ExceededMaximumReferenceDepth", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Generating client model from swagger model..
         /// </summary>
-        internal static string GeneratingClient {
-            get {
+        internal static string GeneratingClient
+        {
+            get
+            {
                 return ResourceManager.GetString("GeneratingClient", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to &apos;GET&apos; operation &apos;{0}&apos; should use method name &apos;Get&apos; or Method name start with &apos;List&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string GetOperationNameNotValid {
-            get {
+        internal static string GetOperationNameNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("GetOperationNameNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Found incompatible property types {1}, {2} for property &apos;{0}&apos; in schema inheritance chain {3}.
         /// </summary>
-        internal static string IncompatibleTypesInBaseSchema {
-            get {
+        internal static string IncompatibleTypesInBaseSchema
+        {
+            get
+            {
                 return ResourceManager.GetString("IncompatibleTypesInBaseSchema", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Found incompatible property types {1}, {2} for property &apos;{0}&apos; in schema {3}.
         /// </summary>
-        internal static string IncompatibleTypesInSchemaComposition {
-            get {
+        internal static string IncompatibleTypesInSchemaComposition
+        {
+            get
+            {
                 return ResourceManager.GetString("IncompatibleTypesInSchemaComposition", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Swagger specification is missing info section.
         /// </summary>
-        internal static string InfoSectionMissing {
-            get {
+        internal static string InfoSectionMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("InfoSectionMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Input parameter is required..
         /// </summary>
-        internal static string InputRequired {
-            get {
+        internal static string InputRequired
+        {
+            get
+            {
                 return ResourceManager.GetString("InputRequired", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The schema&apos;s &apos;{0}&apos; ancestors should have at lease one property.
         /// </summary>
-        internal static string InvalidAncestors {
-            get {
+        internal static string InvalidAncestors
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidAncestors", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Collection format &apos;{0}&apos; is not a valid collection format (in parameter &apos;{1}&apos;)..
         /// </summary>
-        internal static string InvalidCollectionFormat {
-            get {
+        internal static string InvalidCollectionFormat
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidCollectionFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The default value is not one of the values enumerated as valid for this element..
         /// </summary>
-        internal static string InvalidDefault {
-            get {
+        internal static string InvalidDefault
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidDefault", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to When property is modeled as &quot;readOnly&quot;: true then x-ms-mutability extension can only have &quot;read&quot; value. When property is modeled as &quot;readOnly&quot;: false then applying x-ms-mutability extension with only &quot;read&quot; value is not allowed. Extension contains invalid values: &apos;{0}&apos;..
         /// </summary>
-        internal static string InvalidMutabilityValueForReadOnly {
-            get {
+        internal static string InvalidMutabilityValueForReadOnly
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidMutabilityValueForReadOnly", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot use &apos;extend&apos; property with &apos;allOf&apos; property in schema {0}.
         /// </summary>
-        internal static string InvalidTypeExtendsWithAllOf {
-            get {
+        internal static string InvalidTypeExtendsWithAllOf
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidTypeExtendsWithAllOf", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not implemented in SwaggerSchema.ToType extension method..
         /// </summary>
-        internal static string InvalidTypeInSwaggerSchema {
-            get {
+        internal static string InvalidTypeInSwaggerSchema
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidTypeInSwaggerSchema", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Since operation &apos;{0}&apos; response has model definition &apos;{1}&apos;, it should be of the form &quot;*_list*&quot;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string ListOperationsNamingWarningMessage {
-            get {
+        internal static string ListOperationsNamingWarningMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("ListOperationsNamingWarningMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The operation &apos;{0}&apos; returns 202 status code, which indicates a long running operation, please enable &quot;x-ms-long-running-operation..
         /// </summary>
-        internal static string LongRunningOperationsWithLongRunningExtension {
-            get {
+        internal static string LongRunningOperationsWithLongRunningExtension
+        {
+            get
+            {
                 return ResourceManager.GetString("LongRunningOperationsWithLongRunningExtension", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A &apos;{0}&apos; operation &apos;{1}&apos; with x-ms-long-running-operation extension must have a valid terminal success status code {2}..
         /// </summary>
-        internal static string LongRunningResponseNotValid {
-            get {
+        internal static string LongRunningResponseNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("LongRunningResponseNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} lacks &apos;description&apos; property. Consider adding a &apos;description&apos; element. Accurate description is essential for maintaining reference documentation..
         /// </summary>
-        internal static string MissingDescription {
-            get {
+        internal static string MissingDescription
+        {
+            get
+            {
                 return ResourceManager.GetString("MissingDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} lacks &apos;description&apos; and &apos;summary&apos; property. Consider adding a &apos;description&apos;/&apos;summary&apos; element. Accurate description/summary is essential for maintaining reference documentation..
         /// </summary>
-        internal static string MissingSummaryDescription {
-            get {
+        internal static string MissingSummaryDescription
+        {
+            get
+            {
                 return ResourceManager.GetString("MissingSummaryDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} lacks &apos;description&apos; and &apos;title&apos; property. Consider adding a &apos;description&apos;/&apos;title&apos; element. Accurate description/title is essential for maintaining reference documentation..
         /// </summary>
-        internal static string MissingTitleDescription {
-            get {
+        internal static string MissingTitleDescription
+        {
+            get
+            {
                 return ResourceManager.GetString("MissingTitleDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Successfully initialized modeler {0} v {1}..
         /// </summary>
-        internal static string ModelerInitialized {
-            get {
+        internal static string ModelerInitialized
+        {
+            get
+            {
                 return ResourceManager.GetString("ModelerInitialized", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to For better generated code quality, remove all references to &quot;msdn.microsoft.com&quot;..
         /// </summary>
-        internal static string MsdnReferencesDiscouraged {
-            get {
+        internal static string MsdnReferencesDiscouraged
+        {
+            get
+            {
                 return ResourceManager.GetString("MsdnReferencesDiscouraged", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Collection format &quot;multi&quot; is only supported for Query parameters (parameter &apos;{0}&apos;)..
         /// </summary>
-        internal static string MultiCollectionFormatNotSupported {
-            get {
+        internal static string MultiCollectionFormatNotSupported
+        {
+            get
+            {
                 return ResourceManager.GetString("MultiCollectionFormatNotSupported", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Method &apos;{0}&apos; does not declare any MIME type for the return body. Generated code will not deserialize the content..
         /// </summary>
-        internal static string NoProduceOperationWithBody {
-            get {
+        internal static string NoProduceOperationWithBody
+        {
+            get
+            {
                 return ResourceManager.GetString("NoProduceOperationWithBody", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Only 1 underscore is permitted in the operation id, following Noun_Verb conventions..
         /// </summary>
-        internal static string OnlyOneUnderscoreAllowedInOperationId {
-            get {
+        internal static string OnlyOneUnderscoreAllowedInOperationId
+        {
+            get
+            {
                 return ResourceManager.GetString("OnlyOneUnderscoreAllowedInOperationId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to OperationId is required for all operations. Please add it for &apos;{0}&apos; operation of &apos;{1}&apos; path..
         /// </summary>
-        internal static string OperationIdMissing {
-            get {
+        internal static string OperationIdMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("OperationIdMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to &apos;{0}Model&apos;. Consider using the plural form of &apos;{1}&apos; to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string OperationIdNounConflictingModelNamesMessage {
-            get {
+        internal static string OperationIdNounConflictingModelNamesMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("OperationIdNounConflictingModelNamesMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Per the Noun_Verb convention for Operation Ids, the noun &apos;{0}&apos; should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string OperationIdNounInVerb {
-            get {
+        internal static string OperationIdNounInVerb
+        {
+            get
+            {
                 return ResourceManager.GetString("OperationIdNounInVerb", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Parameter &quot;subscriptionId&quot; is not allowed in the operations section, define it in the global parameters section instead.
         /// </summary>
-        internal static string OperationParametersNotAllowedMessage {
-            get {
+        internal static string OperationParametersNotAllowedMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("OperationParametersNotAllowedMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Options HTTP verb is not supported..
         /// </summary>
-        internal static string OptionsNotSupported {
-            get {
+        internal static string OptionsNotSupported
+        {
+            get
+            {
                 return ResourceManager.GetString("OptionsNotSupported", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Parameter Must have the &quot;name&quot; property defined with non-empty string as its value.
         /// </summary>
-        internal static string ParametersPropertiesValidation {
-            get {
+        internal static string ParametersPropertiesValidation
+        {
+            get
+            {
                 return ResourceManager.GetString("ParametersPropertiesValidation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Parsing swagger json file..
         /// </summary>
-        internal static string ParsingSwagger {
-            get {
+        internal static string ParsingSwagger
+        {
+            get
+            {
                 return ResourceManager.GetString("ParsingSwagger", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to &apos;PATCH&apos; operation &apos;{0}&apos; should use method name &apos;Update&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string PatchOperationNameNotValid {
-            get {
+        internal static string PatchOperationNameNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("PatchOperationNameNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to &apos;PUT&apos; operation &apos;{0}&apos; should use method name &apos;Create&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
-        internal static string PutOperationNameNotValid {
-            get {
+        internal static string PutOperationNameNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("PutOperationNameNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: &apos;{0}&apos; Request Model: &apos;{1}&apos; Response Model: &apos;{2}&apos;.
         /// </summary>
-        internal static string PutOperationRequestResponseSchemaMessage {
-            get {
+        internal static string PutOperationRequestResponseSchemaMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("PutOperationRequestResponseSchemaMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy. Operation: &apos;{0}&apos; Model: &apos;{1}&apos;..
         /// </summary>
-        internal static string PutOperationResourceResponseValidationMessage {
-            get {
+        internal static string PutOperationResourceResponseValidationMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("PutOperationResourceResponseValidationMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Property &apos;{0}&apos; in Model &apos;{1}&apos; is marked readOnly and is also required. This is not allowed..
         /// </summary>
-        internal static string ReadOnlyNotRequired {
-            get {
+        internal static string ReadOnlyNotRequired
+        {
+            get
+            {
                 return ResourceManager.GetString("ReadOnlyNotRequired", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reference path &apos;{0}&apos; does not exist in the definition section of the Swagger document..
         /// </summary>
-        internal static string ReferenceDoesNotExist {
-            get {
+        internal static string ReferenceDoesNotExist
+        {
+            get
+            {
                 return ResourceManager.GetString("ReferenceDoesNotExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Property &apos;{0}&apos; is a required property. It should not be marked as &apos;readonly&apos;..
         /// </summary>
-        internal static string RequiredReadOnlyPropertiesValidation {
-            get {
+        internal static string RequiredReadOnlyPropertiesValidation
+        {
+            get
+            {
                 return ResourceManager.GetString("RequiredReadOnlyPropertiesValidation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A &apos;Resource&apos; definition must have x-ms-azure-resource extension enabled and set to true..
         /// </summary>
-        internal static string ResourceIsMsResourceNotValid {
-            get {
+        internal static string ResourceIsMsResourceNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceIsMsResourceNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Every swagger/configuration must have a security definitions section and it must adhere to the structure described in: https://github.com/Azure/autorest/tree/master/docs/developer/validation-rules/security-definitions-structure-validation.md.
         /// </summary>
-        internal static string SecurityDefinitionsStructureValidation {
-            get {
+        internal static string SecurityDefinitionsStructureValidation
+        {
+            get
+            {
                 return ResourceManager.GetString("SecurityDefinitionsStructureValidation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Parameter &quot;{0}&quot; is referenced but not defined in the global parameters section of Service Definition.
         /// </summary>
-        internal static string ServiceDefinitionParametersMissingMessage {
-            get {
+        internal static string ServiceDefinitionParametersMissingMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("ServiceDefinitionParametersMissingMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The summary and description values should not be same..
         /// </summary>
-        internal static string SummaryDescriptionVaidationError {
-            get {
+        internal static string SummaryDescriptionVaidationError
+        {
+            get
+            {
                 return ResourceManager.GetString("SummaryDescriptionVaidationError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Azure Resource Management only supports HTTPS scheme..
         /// </summary>
-        internal static string SupportedSchemesWarningMessage {
-            get {
+        internal static string SupportedSchemesWarningMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("SupportedSchemesWarningMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Swagger specification is missing title in info section.
         /// </summary>
-        internal static string TitleMissing {
-            get {
+        internal static string TitleMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("TitleMissing", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The child tracked resource, &apos;{0}&apos; with immediate parent &apos;{1}&apos;, must have a list by immediate parent operation..
-        /// </summary>
-        internal static string TrackedResourceListByImmediateParentOperationMissing {
-            get {
-                return ResourceManager.GetString("TrackedResourceListByImmediateParentOperationMissing", resourceCulture);
-            }
-        }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by resource group operation.(This rule does not apply for tenant level resources.).
         /// </summary>
-        internal static string TrackedResourceListByResourceGroupOperationMissing {
-            get {
+        internal static string TrackedResourceListByResourceGroupOperationMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("TrackedResourceListByResourceGroupOperationMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by subscriptions operation..
         /// </summary>
-        internal static string TrackedResourceListBySubscriptionsOperationMissing {
-            get {
+        internal static string TrackedResourceListBySubscriptionsOperationMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("TrackedResourceListBySubscriptionsOperationMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tracked resource &apos;{0}&apos; must have patch operation that at least supports the update of tags. It&apos;s strongly recommended that the PATCH operation supports update of all mutable properties as well..
         /// </summary>
-        internal static string TrackedResourcePatchOperationMissing {
-            get {
+        internal static string TrackedResourcePatchOperationMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("TrackedResourcePatchOperationMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Multiple resource providers are not allowed in a single spec. More than one the resource paths were found: &apos;{0}&apos;..
         /// </summary>
-        internal static string UniqueResourcePaths {
-            get {
+        internal static string UniqueResourcePaths
+        {
+            get
+            {
                 return ResourceManager.GetString("UniqueResourcePaths", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a known format..
         /// </summary>
-        internal static string UnknownFormat {
-            get {
+        internal static string UnknownFormat
+        {
+            get
+            {
                 return ResourceManager.GetString("UnknownFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid swagger 2.0 specification. Missing version property. .
         /// </summary>
-        internal static string UnknownSwaggerVersion {
-            get {
+        internal static string UnknownSwaggerVersion
+        {
+            get
+            {
                 return ResourceManager.GetString("UnknownSwaggerVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The operation &apos;{0}&apos; has a response body in response &apos;{1}&apos;, but did not have a supported MIME type (&apos;application/json&apos; or &apos;application/octet-stream&apos;) in its Produces property..
         /// </summary>
-        internal static string UnsupportedMimeTypeForResponseBody {
-            get {
+        internal static string UnsupportedMimeTypeForResponseBody
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedMimeTypeForResponseBody", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Value of &apos;x-ms-client-name&apos; cannot be the same as &apos;{0}&apos; Property/Model..
         /// </summary>
-        internal static string XmsClientNameInvalid {
-            get {
+        internal static string XmsClientNameInvalid
+        {
+            get
+            {
                 return ResourceManager.GetString("XmsClientNameInvalid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to For the tracked resource &apos;{0}&apos;, the x-ms-pageable extension values must be same for list by resource group and subscriptions operations..
         /// </summary>
-        internal static string XMSPagableListByRGAndSubscriptionsMismatch {
-            get {
+        internal static string XMSPagableListByRGAndSubscriptionsMismatch
+        {
+            get
+            {
                 return ResourceManager.GetString("XMSPagableListByRGAndSubscriptionsMismatch", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Paths in x-ms-paths must overload a normal path in the paths section, i.e. a path in the x-ms-paths must either be same as a path in the paths section or a path in the paths sections followed by additional parameters..
         /// </summary>
-        internal static string XMSPathBaseNotInPaths {
-            get {
+        internal static string XMSPathBaseNotInPaths
+        {
+            get
+            {
                 return ResourceManager.GetString("XMSPathBaseNotInPaths", resourceCulture);
             }
         }
