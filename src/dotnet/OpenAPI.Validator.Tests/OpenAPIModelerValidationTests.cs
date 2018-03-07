@@ -242,13 +242,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void TrackedResourceListByResourceGroupValidation()
-        {
-            var messages = GetValidationMessagesForRule<TrackedResourceListByResourceGroup>("tracked-resource-2-validation.json");
-            Assert.Equal(messages.Count(), 1);
-        }
-
-        [Fact]
         public void TrackedResourcePatchOperationValidationValidation()
         {
             var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>("tracked-resource-patch-operation.json");

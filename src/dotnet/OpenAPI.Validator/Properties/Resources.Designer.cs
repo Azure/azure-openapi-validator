@@ -654,17 +654,6 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by resource group operation.(This rule does not apply for tenant level resources.).
-        /// </summary>
-        internal static string TrackedResourceListByResourceGroupOperationMissing
-        {
-            get
-            {
-                return ResourceManager.GetString("TrackedResourceListByResourceGroupOperationMissing", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by subscriptions operation..
         /// </summary>
         internal static string TrackedResourceListBySubscriptionsOperationMissing
