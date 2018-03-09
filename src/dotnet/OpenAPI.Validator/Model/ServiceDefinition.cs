@@ -127,6 +127,7 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         [Rule(typeof(ParameterNotDefinedInGlobalParameters))]
         [CollectionRule(typeof(AnonymousBodyParameter))]
+        [CollectionRule(typeof(XmsParameterLocation))]
         public Dictionary<string, SwaggerParameter> Parameters { get; set; }
 
         /// <summary>

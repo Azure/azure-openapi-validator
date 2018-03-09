@@ -36,9 +36,7 @@
         "description": "foo",
         "operationId": "Operations_List",
         "x-ms-examples": {
-          "Get operations": {
-
-          }
+          "Get operations": {}
         },
         "parameters": [
           {
@@ -75,9 +73,7 @@
           "pets"
         ],
         "x-ms-examples": {
-          "The pet we get": {
-
-          }
+          "The pet we get": {}
         },
         "parameters": [
           {
@@ -118,9 +114,7 @@
           "pets"
         ],
         "x-ms-examples": {
-          "The pet we post": {
-
-          }
+          "The pet we post": {}
         },
         "responses": {
           "201": {
@@ -144,9 +138,7 @@
           "pets"
         ],
         "x-ms-examples": {
-          "The pet we get": {
-
-          }
+          "The pet we get": {}
         },
         "parameters": [
           {
@@ -177,9 +169,7 @@
       "get": {
         "operationId": "Foos_Get",
         "x-ms-examples": {
-          "The foo we get": {
-
-          }
+          "The foo we get": {}
         },
         "description": "foo",
         "responses": {
@@ -192,9 +182,7 @@
         "operationId": "Foos_Post",
         "description": "foo",
         "x-ms-examples": {
-          "The foo we post": {
-
-          }
+          "The foo we post": {}
         },
         "parameters": [
           {
@@ -224,9 +212,7 @@
         "operationId": "Foos_PostOverload",
         "description": "foo",
         "x-ms-examples": {
-          "The foo we post": {
-
-          }
+          "The foo we post": {}
         },
         "parameters": [
           {
@@ -255,7 +241,8 @@
       "in": "query",
       "name": "FooQueryParam",
       "description": "Query parameter for Foo operation",
-      "type": "string"
+      "type": "string",
+      "x-ms-parameter-location": "method"
     },
     "SubscriptionIdParameter": {
       "name": "subscriptionId",
