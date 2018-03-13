@@ -13,7 +13,7 @@ namespace OpenAPI.Validator.Validation
     public class XmsParameterLocation : TypedRule<SwaggerParameter>
     {
         private static readonly IEnumerable<string> AllowedGlobalParameters = new List<string>()
-        { "subscriptionid", "api-version", "apiversion" };
+        { "subscriptionid", "api-version", "apiversion", "subscription-id" };
 
         /// <summary>
         /// Id of the Rule.
