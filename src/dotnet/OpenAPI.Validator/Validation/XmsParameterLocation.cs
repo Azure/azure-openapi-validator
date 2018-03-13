@@ -36,7 +36,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// The severity of this message (ie, debug/info/warning/error/fatal, etc)
         /// </summary>
-        public override Category Severity => Category.Warning;
+        public override Category Severity => Category.Error;
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
