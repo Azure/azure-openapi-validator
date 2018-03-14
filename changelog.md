@@ -1,5 +1,14 @@
 # Changelog
 
+## What's New (03/19/2018)
+
+### Resolved issues/Bug fixes
+- Fixed Typo in AllowedTopLevelProperties list in BodyTopLevelProperties rule.Refer [Issue #144](https://github.com/Azure/azure-openapi-validator/issues/144) and [PR #146](https://github.com/Azure/azure-openapi-validator/pull/146) for further details. 
+
+### New validation rules
+- XmsParameterLocation - Any global parameter (other than subscription Id and API Version) must have the "x-ms-parameter-location" extension applied. If the parameter should be a client parameter, then the extension must have the value "client". Else, it must have the have "method". Refer [Issue #84](https://github.com/Azure/azure-openapi-validator/issues/84) and [PR #2649](https://github.com/Azure/azure-rest-api-specs/pull/2649) for further details.
+
+
 ## What's New (11/28/2017)
 
 ### Resolved issues/Bug fixes
