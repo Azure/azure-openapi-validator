@@ -1,6 +1,6 @@
 # Changelog
 
-## What's New (03/19/2018)
+## What's New (03/14/2018)
 
 ### Resolved issues/Bug fixes
 - Fixed Typo in AllowedTopLevelProperties list in BodyTopLevelProperties rule.Refer [Issue #144](https://github.com/Azure/azure-openapi-validator/issues/144) and [PR #146](https://github.com/Azure/azure-openapi-validator/pull/146) for further details. 
