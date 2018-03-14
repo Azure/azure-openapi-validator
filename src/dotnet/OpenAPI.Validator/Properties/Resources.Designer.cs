@@ -951,7 +951,7 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; is defined in global parameters section without &apos;x-ms-parameter-location&apos; extension. This would add the parameter as the client property. Please ensure that this is exactly you want.
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; is defined in global parameters section without &apos;x-ms-parameter-location&apos; extension. This would add the parameter as the client property. Please ensure that this is exactly you want.  If so, apply the extension &quot;x-ms-parameter-location&quot;: &quot;client&quot;. Else, apply the extension &quot;x-ms-parameter-location&quot;: &quot;method&quot;.
         /// </summary>
         internal static string XmsParameterLocation
         {

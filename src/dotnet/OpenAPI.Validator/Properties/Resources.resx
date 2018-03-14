@@ -358,6 +358,6 @@
     <value>The operation '{0}' returns 202 status code, which indicates a long running operation, please enable "x-ms-long-running-operation.</value>
   </data>
   <data name="XmsParameterLocation" xml:space="preserve">
-    <value>The parameter '{0}' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want.</value>
+    <value>The parameter '{0}' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension "x-ms-parameter-location": "client". Else, apply the extension "x-ms-parameter-location": "method".</value>
   </data>
 </root>
