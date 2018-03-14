@@ -14,7 +14,7 @@ using OpenAPI.Validator.Validation.Extensions;
 
 namespace OpenAPI.Validator.Tests
 {
-    
+
     [Collection("Validation Tests")]
     public partial class OpenAPIModelerValidationTests
     {
@@ -95,6 +95,13 @@ namespace OpenAPI.Validator.Tests
         public void AnonymousParameterSchemaValidation()
         {
             var messages = GetValidationMessagesForRule<AnonymousBodyParameter>("anonymous-parameter-type.json");
+            Assert.Equal(messages.Count(), 1);
+        }
+
+        [Fact]
+        public void XmsParameterLocationValidation()
+        {
+            var messages = GetValidationMessagesForRule<XmsParameterLocation>("xms-parameter-location.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -638,7 +645,7 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<LocationMustHaveXmsMutability>("location-without-xms-mutability.json");
             Assert.Equal(messages.Count(), 1);
         }
-        
+
         [Fact]
         public void LocationPropertyWithIncorrectXmsMutability()
         {
