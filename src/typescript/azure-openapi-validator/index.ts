@@ -7,7 +7,6 @@ import { Message } from "../jsonrpc/types";
 import { rules, OpenApiTypes, MergeStates } from "./rule";
 
 // register rules
-require("./rules/DescriptionMustNotBeNodeName");
 require("./rules/ControlCharactersAreNotAllowed");
 require("./rules/ArraySchemaMustHaveItems");
 require("./rules/PostOperationIdContainsUrlVerb");

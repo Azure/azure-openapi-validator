@@ -65,13 +65,11 @@ namespace OpenAPI.Validator.Model
         /// <summary>
         /// A list of MIME types the operation can consume.
         /// </summary>
-        [CollectionRule(typeof(NonApplicationJsonType))]
         public IList<string> Consumes { get; set; }
 
         /// <summary>
         /// A list of MIME types the operation can produce. 
         /// </summary>
-        [CollectionRule(typeof(NonApplicationJsonType))]
         public IList<string> Produces { get; set; }
 
         /// <summary>
@@ -80,7 +78,6 @@ namespace OpenAPI.Validator.Model
         /// new definition will override it, but can never remove it.
         /// </summary>
         [CollectionRule(typeof(SubscriptionIdParameterInOperations))]
-        [CollectionRule(typeof(EnumInsteadOfBoolean))]
         [CollectionRule(typeof(AnonymousBodyParameter))]
         public IList<SwaggerParameter> Parameters { get; set; }
 

@@ -37,7 +37,6 @@ namespace OpenAPI.Validator.Model
 
         public License License { get; set; }
 
-        [Rule(typeof(APIVersionPattern))]
         public string Version { get; set; }
 
         [JsonProperty("x-ms-code-generation-settings")]

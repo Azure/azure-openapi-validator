@@ -23,7 +23,6 @@ namespace OpenAPI.Validator.Model
         }
 
         [Rule(typeof(AvoidAnonymousTypes))]
-        [Rule(typeof(EnumInsteadOfBoolean))]
         [Rule(typeof(RequiredReadOnlyProperties))]
         public Schema Schema { get; set; }
 

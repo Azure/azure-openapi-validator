@@ -60,29 +60,18 @@ namespace OpenAPI.Validator.Model
         /// <summary>
         /// A list of MIME types the service can consume.
         /// </summary>
-        [CollectionRule(typeof(NonApplicationJsonType))]
         public IList<string> Consumes { get; set; }
 
         /// <summary>
         /// A list of MIME types the APIs can produce.
         /// </summary>
-        [CollectionRule(typeof(NonApplicationJsonType))]
         public IList<string> Produces { get; set; }
 
         /// <summary>
         /// Key is actual path and the value is serializationProperty of http operations and operation objects.
         /// </summary>
-        [Rule(typeof(UniqueResourcePaths))]
         [Rule(typeof(ListInOperationName))]
-        [Rule(typeof(CollectionObjectPropertiesNaming))]
-        [Rule(typeof(PutGetPatchResponseSchema))]
-        [Rule(typeof(OperationsAPIImplementation))]
-        [Rule(typeof(XmsResourceInPutResponse))]
-        [CollectionRule(typeof(InvalidVerbUsed))]
-        [CollectionRule(typeof(DeleteMustNotHaveRequestBody))]
-        [CollectionRule(typeof(BodyPropertiesNamesCamelCase))]
         [Rule(typeof(PutRequestResponseScheme))]
-        [Rule(typeof(TrackedResourceListByImmediateParent))]
         [Rule(typeof(XmsExamplesRequired))]
         [Rule(typeof(LROStatusCodesReturnTypeSchema))]
         public Dictionary<string, Dictionary<string, Operation>> Paths { get; set; }
@@ -92,29 +81,15 @@ namespace OpenAPI.Validator.Model
         /// </summary>
         [JsonProperty("x-ms-paths")]
         [Rule(typeof(ListInOperationName))]
-        [Rule(typeof(CollectionObjectPropertiesNaming))]
         [CollectionRule(typeof(XmsPathsMustOverloadPaths))]
-        [CollectionRule(typeof(BodyPropertiesNamesCamelCase))]
         [Rule(typeof(XmsExamplesRequired))]
         public Dictionary<string, Dictionary<string, Operation>> CustomPaths { get; set; }
 
         /// <summary>
         /// Key is the object serviceTypeName and the value is swagger definition.
         /// </summary>
-        [Rule(typeof(ArmResourcePropertiesBag))]
-        [CollectionRule(typeof(EnumInsteadOfBoolean))]
-        [Rule(typeof(RequiredPropertiesMissingInResourceModel))]
         [Rule(typeof(ResourceHasXMsResourceEnabled))]
-        [Rule(typeof(GuidUsage))]
-        [Rule(typeof(InvalidSkuModel))]
-        [Rule(typeof(DefinitionsPropertiesNamesCamelCase))]
-        [Rule(typeof(TrackedResourceGetOperation))]
-        [Rule(typeof(TrackedResourceListByResourceGroup))]
-        [Rule(typeof(TrackedResourceListBySubscription))]
-        [Rule(typeof(TrackedResourcePatchOperation))]
         [Rule(typeof(DescriptionAndTitleMissing))]
-        [Rule(typeof(PatchBodyParametersSchema))]
-        [Rule(typeof(BodyTopLevelProperties))]
         [Rule(typeof(XmsEnumValidation))]
         [Rule(typeof(LocationMustHaveXmsMutability))]
         [CollectionRule(typeof(RequiredReadOnlyProperties))]
