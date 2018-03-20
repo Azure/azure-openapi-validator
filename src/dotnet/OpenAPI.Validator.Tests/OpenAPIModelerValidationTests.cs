@@ -85,6 +85,13 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
+        public void XmsParameterLocationValidation()
+        {
+            var messages = GetValidationMessagesForRule<XmsParameterLocation>("xms-parameter-location.json");
+            Assert.Equal(messages.Count(), 1);
+        }
+
+        [Fact]
         public void OperationParametersValidation()
         {
             // ignore ParameterNotDefinedInGlobalParameters validation rule since it overlaps with this
