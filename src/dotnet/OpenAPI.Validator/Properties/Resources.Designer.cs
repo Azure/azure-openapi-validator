@@ -71,6 +71,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition &apos;{0}&apos; has extra properties [&apos;{1}&apos;]..
+        /// </summary>
+        internal static string AllowedTopLevelProperties
+        {
+            get
+            {
+                return ResourceManager.GetString("AllowedTopLevelProperties", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Inline/anonymous models must not be used, instead define a schema with a model name in the &quot;definitions&quot; section and refer to it. This allows operations to share the models..
         /// </summary>
         internal static string AnonymousTypesDiscouraged
@@ -78,6 +89,50 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("AnonymousTypesDiscouraged", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to API Version must be in the format: yyyy-MM-dd, optionally followed by -preview, -alpha, -beta, -rc, -privatepreview..
+        /// </summary>
+        internal static string APIVersionFormatIsNotValid
+        {
+            get
+            {
+                return ResourceManager.GetString("APIVersionFormatIsNotValid", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Top level property names should not be repeated inside the properties bag for ARM resource &apos;{0}&apos;. Properties [{1}] conflict with ARM top level properties. Please rename these..
+        /// </summary>
+        internal static string ArmPropertiesBagValidationMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("ArmPropertiesBagValidationMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Property named: &apos;{0}&apos;, must follow camelCase style. Example: &apos;{1}&apos;..
+        /// </summary>
+        internal static string BodyPropertyNameCamelCase
+        {
+            get
+            {
+                return ResourceManager.GetString("BodyPropertyNameCamelCase", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: {0}.
+        /// </summary>
+        internal static string BooleanPropertyNotRecommended
+        {
+            get
+            {
+                return ResourceManager.GetString("BooleanPropertyNotRecommended", resourceCulture);
             }
         }
 
@@ -104,6 +159,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Collection object &apos;{0}&apos; returned by list operation &apos;{1}&apos; with &apos;x-ms-pageable&apos; extension, has no property named &apos;value&apos;..
+        /// </summary>
+        internal static string CollectionObjectPropertiesNamingMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("CollectionObjectPropertiesNamingMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Reference specifies the definition {0} that does not exist..
         /// </summary>
         internal static string DefinitionDoesNotExist
@@ -111,6 +177,28 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("DefinitionDoesNotExist", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Property named: &apos;{0}&apos;, for definition: &apos;{1}&apos; must follow camelCase style. Example: &apos;{2}&apos;..
+        /// </summary>
+        internal static string DefinitionsPropertiesNameCamelCase
+        {
+            get
+            {
+                return ResourceManager.GetString("DefinitionsPropertiesNameCamelCase", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Delete&apos; operation &apos;{0}&apos; must not have a request body..
+        /// </summary>
+        internal static string DeleteMustNotHaveRequestBody
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteMustNotHaveRequestBody", resourceCulture);
             }
         }
 
@@ -199,6 +287,28 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("GetOperationNameNotValid", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Guid used in model definition &apos;{1}&apos; for property &apos;{0}&apos;. Usage of Guid is not recommanded. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board..
+        /// </summary>
+        internal static string GuidUsageNotRecommended
+        {
+            get
+            {
+                return ResourceManager.GetString("GuidUsageNotRecommended", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Permissible values for HTTP Verb are delete,get,put,patch,head,options,post. .
+        /// </summary>
+        internal static string HttpVerbIsNotValid
+        {
+            get
+            {
+                return ResourceManager.GetString("HttpVerbIsNotValid", resourceCulture);
             }
         }
 
@@ -412,6 +522,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Only &apos;application/json&apos; content-type is supported by ARM..
+        /// </summary>
+        internal static string NonAppJsonTypeNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("NonAppJsonTypeNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Method &apos;{0}&apos; does not declare any MIME type for the return body. Generated code will not deserialize the content..
         /// </summary>
         internal static string NoProduceOperationWithBody
@@ -478,6 +599,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Operations API must be implemented for &apos;{0}&apos;..
+        /// </summary>
+        internal static string OperationsAPINotImplemented
+        {
+            get
+            {
+                return ResourceManager.GetString("OperationsAPINotImplemented", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Options HTTP verb is not supported..
         /// </summary>
         internal static string OptionsNotSupported
@@ -522,6 +654,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to {0} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response..
+        /// </summary>
+        internal static string PutGetPatchResponseInvalid
+        {
+            get
+            {
+                return ResourceManager.GetString("PutGetPatchResponseInvalid", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to &apos;PUT&apos; operation &apos;{0}&apos; should use method name &apos;Create&apos;. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change..
         /// </summary>
         internal static string PutOperationNameNotValid
@@ -540,6 +683,17 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("PutOperationRequestResponseSchemaMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy. Operation: &apos;{0}&apos; Model: &apos;{1}&apos;..
+        /// </summary>
+        internal static string PutOperationResourceResponseValidationMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("PutOperationResourceResponseValidationMessage", resourceCulture);
             }
         }
 
@@ -588,6 +742,17 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Model definition &apos;{0}&apos; must have the properties &apos;name&apos;, &apos;id&apos; and &apos;type&apos; in its hierarchy and these properties must be marked as readonly..
+        /// </summary>
+        internal static string ResourceModelIsNotValid
+        {
+            get
+            {
+                return ResourceManager.GetString("ResourceModelIsNotValid", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Every swagger/configuration must have a security definitions section and it must adhere to the structure described in: https://github.com/Azure/autorest/tree/master/docs/developer/validation-rules/security-definitions-structure-validation.md.
         /// </summary>
         internal static string SecurityDefinitionsStructureValidation
@@ -606,6 +771,17 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("ServiceDefinitionParametersMissingMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sku Model definition &apos;{0}&apos; is not valid. A Sku model must have &apos;name&apos; property. It can also have &apos;tier&apos;, &apos;size&apos;, &apos;family&apos;, &apos;capacity&apos; as optional properties..
+        /// </summary>
+        internal static string SkuModelIsNotValid
+        {
+            get
+            {
+                return ResourceManager.GetString("SkuModelIsNotValid", resourceCulture);
             }
         }
 
@@ -639,6 +815,72 @@ namespace OpenAPI.Validator.Properties
             get
             {
                 return ResourceManager.GetString("TitleMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tracked resource &apos;{0}&apos; must have a get operation..
+        /// </summary>
+        internal static string TrackedResourceGetOperationMissing
+        {
+            get
+            {
+                return ResourceManager.GetString("TrackedResourceGetOperationMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The child tracked resource, &apos;{0}&apos; with immediate parent &apos;{1}&apos;, must have a list by immediate parent operation..
+        /// </summary>
+        internal static string TrackedResourceListByImmediateParentOperationMissing
+        {
+            get
+            {
+                return ResourceManager.GetString("TrackedResourceListByImmediateParentOperationMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by resource group operation.(This rule does not apply for tenant level resources.).
+        /// </summary>
+        internal static string TrackedResourceListByResourceGroupOperationMissing
+        {
+            get
+            {
+                return ResourceManager.GetString("TrackedResourceListByResourceGroupOperationMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The tracked resource, &apos;{0}&apos;, must have a list by subscriptions operation..
+        /// </summary>
+        internal static string TrackedResourceListBySubscriptionsOperationMissing
+        {
+            get
+            {
+                return ResourceManager.GetString("TrackedResourceListBySubscriptionsOperationMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tracked resource &apos;{0}&apos; must have patch operation that at least supports the update of tags. It&apos;s strongly recommended that the PATCH operation supports update of all mutable properties as well..
+        /// </summary>
+        internal static string TrackedResourcePatchOperationMissing
+        {
+            get
+            {
+                return ResourceManager.GetString("TrackedResourcePatchOperationMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Multiple resource providers are not allowed in a single spec. More than one the resource paths were found: &apos;{0}&apos;..
+        /// </summary>
+        internal static string UniqueResourcePaths
+        {
+            get
+            {
+                return ResourceManager.GetString("UniqueResourcePaths", resourceCulture);
             }
         }
 
