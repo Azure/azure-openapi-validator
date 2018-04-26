@@ -11,6 +11,7 @@ namespace OpenAPI.Validator.Validation.Core
         None            = 0,
         RPCViolation    = 1 << 0,
         OneAPIViolation = 1 << 1,
-        SDKViolation    = 1 << 2
+        SDKViolation    = 1 << 2,
+        Documentation   = 1 << 3 
     }
 }
