@@ -583,13 +583,6 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void XmsExamplesProvidedValidation()
-        {
-            var messages = GetValidationMessagesForRule<XmsExamplesRequired>("xms-examples-absent.json");
-            Assert.Equal(messages.Count(), 2);
-        }
-
-        [Fact]
         public void PutResponseResourceValidationTest()
         {
             var messages = GetValidationMessagesForRule<XmsResourceInPutResponse>("put-response-resource-validation.json");

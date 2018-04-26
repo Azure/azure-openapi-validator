@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (04/26/2018)
+
+### Removed Rule
+- Removed the linter rule XmsExamplesRequired since the rule is related to documentation. Refer [Issue #189](https://github.com/Azure/azure_sdk_ci_tools/issues/189) for further details.
+
 ## What's New (03/14/2018)
 
 ### Resolved issues/Bug fixes
