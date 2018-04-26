@@ -48,7 +48,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.SDKViolation;
+        public override ValidationCategory ValidationCategory => ValidationCategory.Documentation;
 
         private bool IsValidJson(string jsonString)
         {
