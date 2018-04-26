@@ -18,7 +18,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Id of the Rule.
         /// </summary>
-        public override string Id => "R2022";
+        public override string Id => "D5001";
 
         private string OperationIdMessageSuffix => " Operation: '{0}'";
 
