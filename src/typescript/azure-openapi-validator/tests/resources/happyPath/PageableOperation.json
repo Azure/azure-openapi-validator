@@ -11,6 +11,9 @@
             "get": {
                 "description": "Get a list of plants.",
                 "operationId": "Plants_List",
+                "x-ms-pageable": {
+                    "nextLinkName": "nextLink"
+                },
                 "parameters": [],
                 "responses": {
                     "200": {
