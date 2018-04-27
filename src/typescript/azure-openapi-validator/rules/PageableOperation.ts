@@ -31,7 +31,7 @@ rules.push({
 
     if (valueKey != undefined) {
       if (schemaProperties[valueKey].type === 'array') {
-        yield { message: `Operation '${node[getKey].operationId}' might be pageable. Consider adding the x-ms-pageable swagger extension.`, location: path.concat(getKey) };
+        yield { message: `Based on the response model schema, operation '${node[getKey].operationId}' might be pageable. Consider adding the x-ms-pageable swagger extension.`, location: path.concat(getKey) };
 
       }
     }
