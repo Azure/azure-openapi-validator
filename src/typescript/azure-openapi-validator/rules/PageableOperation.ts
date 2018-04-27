@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-import { getResponseSchema } from './utilities/rules-helper';
+import { getSuccessfulResponseSchema } from './utilities/rules-helper';
 export const PageableOperation: string = "PageableOperation";
 
 const jp = require('jsonpath');
@@ -22,7 +22,7 @@ rules.push({
       return key.toLowerCase() === 'get';
     });
 
-    var schemaProperties = getResponseSchema(node[getKey], doc)
+    var schemaProperties = getSuccessfulResponseSchema(node[getKey], doc)
 
     function hasArrayProperty(schema) {
       let arrayPresent: boolean = false;
@@ -38,7 +38,7 @@ rules.push({
     // 1 - Array
     // 2 - NextLink
     // 3 - Count
-    if (Object.keys(schemaProperties).length <= 3) {
+    if (schemaProperties != undefined && schemaProperties != null && Object.keys(schemaProperties).length <= 3) {
       if (hasArrayProperty(schemaProperties) && !('x-ms-pageable' in node[getKey])) {
         yield { message: `Based on the response model schema, operation '${node[getKey].operationId}' might be pageable. Consider adding the x-ms-pageable extension.`, location: path.concat(getKey) };
       }
