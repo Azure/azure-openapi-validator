@@ -29,6 +29,9 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
 
 function getResponseSchema(response: Object, doc): any {
   const schema = response['schema'];
+  if (schema === undefined || schema === null) {
+    return;
+  }
   if ('$ref' in schema) {
     const schemaRef = response['schema']['$ref'];
     const schemaPath: string[] = (<string>schemaRef).split('/');
