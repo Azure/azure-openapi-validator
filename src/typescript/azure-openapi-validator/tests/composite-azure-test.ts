@@ -28,7 +28,7 @@ import { PageableOperation } from '../rules/PageableOperation';
   }
 
   @test async "operations returning a model including an array might be pageable (happy path)"() {
-    const fileName: string = 'happypath/PageableOperation.json';
+    const fileName: string = 'happyPath/PageableOperation.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
     assertValidationRuleCount(messages, PageableOperation, 0);
   }
