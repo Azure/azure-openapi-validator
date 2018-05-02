@@ -8,10 +8,10 @@ namespace OpenAPI.Validator.Validation.Core
     [Flags]
     public enum ValidationCategory
     {
-        None            = 0,
-        RPCViolation    = 1 << 0,
+        None = 0,
+        ARMViolation = 1 << 0,
         OneAPIViolation = 1 << 1,
-        SDKViolation    = 1 << 2,
-        Documentation   = 1 << 3 
+        SDKViolation = 1 << 2,
+        Documentation = 1 << 3
     }
 }

@@ -8,7 +8,7 @@ rules.push({
   id: "R3011",
   name: DescriptionMustNotBeNodeName,
   severity: "error",
-  category: "RPCViolation",
+  category: "ARMViolation",
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
 
