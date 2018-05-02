@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (05/02/2018)
+
+### Changed Category
+- Removed the Category ***RPCViolation*** and renamed it to ***ARMViolation*** in both dotnet and typescript linters.
+
 ## What's New (04/26/2018)	
 	
 ### Changed Rule	
