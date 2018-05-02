@@ -20,7 +20,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.RPCViolation;
+        public override ValidationCategory ValidationCategory => ValidationCategory.ARMViolation;
 
         /// <summary>
         /// This rule passes if the entity contains application/json type

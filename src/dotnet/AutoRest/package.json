@@ -1,6 +1,6 @@
 {
     "name": "@microsoft.azure/classic-openapi-validator",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "The classic OpenAPI validator plugin for AutoRest",
     "scripts": {
         "start": "dotnet ./bin/netcoreapp2.0/AutoRest.dll --server"

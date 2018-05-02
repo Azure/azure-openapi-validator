@@ -21,7 +21,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.RPCViolation;
+        public override ValidationCategory ValidationCategory => ValidationCategory.ARMViolation;
 
         /// <summary>
         /// The template message for this Rule. 
@@ -54,9 +54,9 @@ namespace OpenAPI.Validator.Validation
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Schema> definitions, RuleContext context)
         {
             IEnumerable<string> resourceModelsWithPropertiesBag = context.ResourceModels.Where(resourceModel => definitions[resourceModel].Properties?.ContainsKey("properties") == true);
-            foreach(string resourceModelName in resourceModelsWithPropertiesBag)
+            foreach (string resourceModelName in resourceModelsWithPropertiesBag)
             {
-                Dictionary<string, IEnumerable<string>> violations = new Dictionary<string, IEnumerable<string>>();             
+                Dictionary<string, IEnumerable<string>> violations = new Dictionary<string, IEnumerable<string>>();
                 CheckModelForViolation(definitions[resourceModelName], resourceModelName, definitions, context, violations);
 
                 foreach (string modelName in violations.Keys)
@@ -83,7 +83,7 @@ namespace OpenAPI.Validator.Validation
         /// <param name="violations">violations table</param>
         private void CheckModelForViolation(Schema resourceModel, string resourceModelName, Dictionary<string, Schema> definitions, RuleContext context, Dictionary<string, IEnumerable<string>> violations)
         {
-            if(resourceModel != null)
+            if (resourceModel != null)
             {
                 if (resourceModel.Properties?.ContainsKey("properties") == true)
                 {

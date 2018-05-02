@@ -21,7 +21,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.RPCViolation;
+        public override ValidationCategory ValidationCategory => ValidationCategory.ARMViolation;
 
         /// <summary>
         /// The template message for this Rule. 
