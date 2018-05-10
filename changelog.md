@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (05/09/2018)
+
+### New validation rules
+- PageableOperation rule - The rule will check if a get operation returns a schema (with 3 or less properties) with an array property. If it is so, the linter will suggest the operation might be pagebale. Refer [PR #161](https://github.com/Azure/azure-openapi-validator/pull/161) for further details.
+
 ## What's New (05/02/2018)
 
 ### Changed Category
