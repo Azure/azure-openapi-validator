@@ -12,11 +12,24 @@ import {
   collectTestMessagesFromValidator
 } from './utilities/tests-helper';
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
+import { PageableOperation } from '../rules/PageableOperation';
 
 @suite class CompositeAzureTests {
   @test async "description should not be property name"() {
     const fileName: string = 'DescriptionSameAsPropertyName.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
     assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 2);
+  }
+
+  @test async "operations returning a model including an array might be pageable (sad path)"() {
+    const fileName: string = 'PageableOperation.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
+    assertValidationRuleCount(messages, PageableOperation, 1);
+  }
+
+  @test async "operations returning a model including an array might be pageable (happy path)"() {
+    const fileName: string = 'happyPath/PageableOperation.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
+    assertValidationRuleCount(messages, PageableOperation, 0);
   }
 }
