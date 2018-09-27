@@ -960,5 +960,16 @@ namespace OpenAPI.Validator.Properties
                 return ResourceManager.GetString("XmsParameterLocation", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A LRO Post operation with return value must have &quot;x-ms-long-running-operation-options&quot; extension enabled.
+        /// </summary>
+        internal static string LongRunningOperationsOptionsValidatorMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("LongRunningOperationsOptionsValidatorMessage", resourceCulture);
+            }
+        }
     }
 }

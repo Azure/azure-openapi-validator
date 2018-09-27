@@ -666,6 +666,20 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<LongRunningOperationsWithLongRunningExtension>("long-running-operation-with-extension-false.json");
             Assert.Equal(messages.Count(), 1);
         }
+
+        [Fact]
+        public void ValidExtensionForLongRunningOperationOptionsMissing()
+        {
+            var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>("long-running-operations-options-missing.json");
+            Assert.Equal(messages.Count(), 1);
+        }
+
+        [Fact]
+        public void ValidExtensionForLongRunningOperationOptionsMissingMultipleResponses()
+        {
+            var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>("long-running-operations-options-missing-2.json");
+            Assert.Equal(messages.Count(), 1);
+        }
     }
 
     #region Positive tests
@@ -839,6 +853,33 @@ namespace OpenAPI.Validator.Tests
             Assert.Empty(messages);
         }
 
+        [Fact]
+        public void ValidExtensionForLongRunningOperationOptions()
+        {
+            var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>(Path.Combine("positive", "long-running-operations-options-positive.json"));
+            Assert.Empty(messages);
+        }
+
+        [Fact]
+        public void ValidExtensionForLongRunningOperationOptionsForNonLROPost()
+        {
+            var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>(Path.Combine("positive", "long-running-operations-options-positive-2.json"));
+            Assert.Empty(messages);
+        }
+
+        [Fact]
+        public void ValidExtensionForLongRunningOperationOptionsForLROGet()
+        {
+            var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>(Path.Combine("positive", "long-running-operations-options-positive-3.json"));
+            Assert.Empty(messages);
+        }
+
+        [Fact]
+        public void ValidExtensionForLongRunningOperationOptionsForLROPostWithNoResponse()
+        {
+            var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>(Path.Combine("positive", "long-running-operations-options-positive-4.json"));
+            Assert.Empty(messages);
+        }
     }
 
     #endregion

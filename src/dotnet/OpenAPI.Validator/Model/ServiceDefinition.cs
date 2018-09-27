@@ -85,6 +85,7 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(TrackedResourceListByImmediateParent))]
         [Rule(typeof(XmsExamplesRequired))]
         [Rule(typeof(LROStatusCodesReturnTypeSchema))]
+        [CollectionRule(typeof(LongRunningOperationsOptionsValidator))]
         public Dictionary<string, Dictionary<string, Operation>> Paths { get; set; }
 
         /// <summary>
@@ -96,6 +97,7 @@ namespace OpenAPI.Validator.Model
         [CollectionRule(typeof(XmsPathsMustOverloadPaths))]
         [CollectionRule(typeof(BodyPropertiesNamesCamelCase))]
         [Rule(typeof(XmsExamplesRequired))]
+        [CollectionRule(typeof(LongRunningOperationsOptionsValidator))]
         public Dictionary<string, Dictionary<string, Operation>> CustomPaths { get; set; }
 
         /// <summary>
