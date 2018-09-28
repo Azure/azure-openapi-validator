@@ -8,7 +8,7 @@ using OpenAPI.Validator.Validation.Core;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OpenAPI.Validator.Validation
+namespace OpenAPI.Validator.Validation.Extensions
 {
     public class LongRunningOperationsOptionsValidator : TypedRule<Dictionary<string, Operation>>
     {
@@ -54,7 +54,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Validates if a Post LRO Operation with return value has long running operation options extensions enabled.
         /// </summary>
-        /// <param name="operation"></param>
+        /// <param name="operationPaths"></param>
         /// <param name="context"></param>
         /// <returns>true if a Post LRO Operation with return value has long running operation options extensions enabled. false otherwise.</returns>
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Operation> operationPaths, RuleContext context)
