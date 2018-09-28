@@ -962,7 +962,7 @@ namespace OpenAPI.Validator.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to A LRO Post operation with return value must have &quot;x-ms-long-running-operation-options&quot; extension enabled.
+        ///   Looks up a localized string similar to A LRO Post operation with return schema must have &quot;x-ms-long-running-operation-options&quot; extension enabled.
         /// </summary>
         internal static string LongRunningOperationsOptionsValidatorMessage
         {

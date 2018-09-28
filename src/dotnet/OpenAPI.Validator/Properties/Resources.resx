@@ -361,6 +361,6 @@
     <value>The parameter '{0}' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension "x-ms-parameter-location": "client". Else, apply the extension "x-ms-parameter-location": "method".</value>
   </data>
   <data name="LongRunningOperationsOptionsValidatorMessage" xml:space="preserve">
-    <value>A LRO Post operation with return value must have "x-ms-long-running-operation-options" extension enabled.</value>
+    <value>A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.</value>
   </data>
 </root>
