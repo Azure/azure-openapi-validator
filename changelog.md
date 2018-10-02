@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (10/02/2018)
+
+### New validation rules
+
+- LongRunningOperationsOptionsValidator rule - The rule will check if a post LRO operation has "x-ms-long-running-operation-options" extension enabled. Refer [Issue #172](https://github.com/Azure/azure-openapi-validator/issues/172), [PR #179](https://github.com/Azure/azure-openapi-validator/pull/179) and [PR #4039](https://github.com/Azure/azure-rest-api-specs/pull/4039) for further details.
+
 ## What's New (05/09/2018)
 
 ### New validation rules
