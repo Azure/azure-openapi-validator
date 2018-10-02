@@ -1,0 +1,35 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Final State Via Values Validator Correct Values",
+    "description": "Dummy Documentation",
+    "version": "2018-09-01"
+  },
+  "host": "management.azure.com",
+  "schemes": ["https"],
+  "basePath": "/",
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {
+    "/foo": {
+      "post": {
+        "operationId": "Foo_Post",
+        "summary": "Foo path",
+        "description": "Foo operation",
+        "x-ms-long-running-operation": true,
+        "responses": {
+          "201": {
+            "description": "Accepted.",
+            "schema": {
+              "properties": {
+                "test": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
