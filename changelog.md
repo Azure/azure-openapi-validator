@@ -1,6 +1,6 @@
 # Changelog
 
-## What's New (10/02/2018)
+## What's New (10/05/2018)
 
 ### New validation rules
 
