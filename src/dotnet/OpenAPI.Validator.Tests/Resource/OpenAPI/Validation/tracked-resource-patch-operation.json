@@ -10,8 +10,12 @@
     "https"
   ],
   "basePath": "/",
-  "produces": [ "application/json" ],
-  "consumes": [ "application/json" ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}": {
       "get": {
@@ -20,8 +24,7 @@
         ],
         "operationId": "Redis_Get",
         "description": "gets a Redis cache.",
-        "parameters": [
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "the resource",
@@ -47,6 +50,12 @@
         "responses": {
           "200": {
             "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationsListResult"
+            }
+          },
+          "201": {
+            "description": "Created",
             "schema": {
               "$ref": "#/definitions/OperationsListResult"
             }
