@@ -756,7 +756,7 @@ namespace OpenAPI.Validator.Tests
         /// Verifies that tracked resource has a patch operation for 201
         /// </summary>
         [Fact]
-        public void ValidTrackedResourcePatchOperation()
+        public void ValidCreatedTrackedResourcePatchOperation()
         {
             var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>(Path.Combine("positive", "tracked-resource-patch-create-operation.json"));
             Assert.Empty(messages);
