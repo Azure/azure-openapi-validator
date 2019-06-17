@@ -12,6 +12,7 @@ import {
   collectTestMessagesFromValidator
 } from './utilities/tests-helper';
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
+import { DescriptionMustNotStartWithSpecialChar } from '../rules/DescriptionMustNotStartWithSpecialChar';
 import { PageableOperation } from '../rules/PageableOperation';
 
 @suite class CompositeAzureTests {
@@ -31,5 +32,11 @@ import { PageableOperation } from '../rules/PageableOperation';
     const fileName: string = 'happyPath/PageableOperation.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
     assertValidationRuleCount(messages, PageableOperation, 0);
+  }
+
+  @test async "description cannot start with special character"() {
+    const fileName: string = 'DescriptionStartWithSpecialChar.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
+    assertValidationRuleCount(messages, DescriptionMustNotStartWithSpecialChar, 2);
   }
 }
