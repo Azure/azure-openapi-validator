@@ -971,5 +971,16 @@ namespace OpenAPI.Validator.Properties
                 return ResourceManager.GetString("LongRunningOperationsOptionsValidatorMessage", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up Paths must not be empty.
+        /// </summary>
+        internal static string PathsMustNotBeEmpty
+        {
+            get
+            {
+                return ResourceManager.GetString("PathsMustNotBeEmpty", resourceCulture);
+            }
+        }
     }
 }

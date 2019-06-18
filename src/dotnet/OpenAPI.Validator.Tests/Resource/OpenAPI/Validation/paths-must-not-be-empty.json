@@ -1,0 +1,15 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Paths Must not be empty",
+    "description": "Some documentation.",
+    "version": "2017-02-08"
+  },
+  "host": "management.azure.com",
+  "schemes": ["https"],
+  "basePath": "/",
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {},
+  "definitions": {}
+}

@@ -680,6 +680,13 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>("long-running-operations-options-missing-2.json");
             Assert.Equal(messages.Count(), 1);
         }
+
+        [Fact]
+        public void PathsMustNotBeEmptyValidation()
+        {
+            var messages = GetValidationMessagesForRule<PathsMustNotBeEmpty>("paths-must-not-be-empty.json");
+            Assert.Equal(messages.Count(), 1);
+        }
     }
 
     #region Positive tests

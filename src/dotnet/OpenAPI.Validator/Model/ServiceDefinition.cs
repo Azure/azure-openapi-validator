@@ -86,6 +86,7 @@ namespace OpenAPI.Validator.Model
         [Rule(typeof(XmsExamplesRequired))]
         [Rule(typeof(LROStatusCodesReturnTypeSchema))]
         [CollectionRule(typeof(LongRunningOperationsOptionsValidator))]
+        [Rule(typeof(PathsMustNotBeEmpty))]
         public Dictionary<string, Dictionary<string, Operation>> Paths { get; set; }
 
         /// <summary>

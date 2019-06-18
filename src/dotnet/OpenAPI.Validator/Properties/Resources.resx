@@ -363,4 +363,7 @@
   <data name="LongRunningOperationsOptionsValidatorMessage" xml:space="preserve">
     <value>A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.</value>
   </data>
+  <data name="PathsMustNotBeEmpty" xml:space="preserve">
+    <value>Paths must not be empty.</value>
+  </data>
 </root>
