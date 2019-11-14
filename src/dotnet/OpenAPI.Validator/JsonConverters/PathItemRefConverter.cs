@@ -26,13 +26,13 @@ namespace OpenAPI.Validator.JsonConverters
             JsonSerializer serializer)
         {
             // is the leaf an vendor extension? "x-*..."
+            JObject jobject = JObject.Load(reader);
             if (reader == null || (reader.Path.LastIndexOf(".", StringComparison.Ordinal) > -1 && reader.Path.Substring(reader.Path.LastIndexOf(".", StringComparison.Ordinal) + 1).StartsWith("x-", StringComparison.CurrentCulture)))
             {
                 // skip x-* vendor extensions when used where the path would be.
                 return new Dictionary<string, Operation>();
             }
 
-            JObject jobject = JObject.Load(reader);
             if (jobject == null)
             {
                 return null;

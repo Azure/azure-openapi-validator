@@ -1,6 +1,6 @@
 {
     "name": "CommonDeps",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Common dev deps for repo",
     "readme": "https://github.com/Azure/azure-openapi-validator/readme.md",
     "devDependencies": {
