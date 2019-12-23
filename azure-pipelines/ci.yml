@@ -21,12 +21,6 @@ jobs:
         inputs:
           verbose: false
 
-      - script: 'gulp build'
-        displayName: 'gulp build'
-
-      - script: 'gulp test'
-        displayName: 'gulp test'
-
 
   - job: credentialScan
 
