@@ -17,7 +17,7 @@ jobs:
         displayName: 'Install Node.js $(NodeVersion)'
 
       - task: Npm@1
-        displayName: 'sudo apt-get install libunwind8 && npm install'
+        displayName: 'npm install'
         inputs:
           verbose: false
 
