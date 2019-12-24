@@ -21,7 +21,6 @@ interface ValidationMessage {
 }
 
 export interface Rule {
-  
   readonly id: string; // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string; // see same website as above
   readonly category: ("ARMViolation" | "OneAPIViolation" | "SDKViolation");
