@@ -21,9 +21,15 @@ jobs:
         inputs:
           verbose: false
 
+      - script: 'gulp build'
+        displayName: 'gulp build'
 
-  - job: credentialScan
+      - script: 'gulp test'
+        displayName: 'gulp test'
 
+
+  - job: Windows
+    displayName: credentialScan
     pool:
       vmImage: "windows-2019"
 
