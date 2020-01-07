@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (01/07/2020)
+
+### bug fix
+- when x-ms-path contains OData, it will fail the SwaggerParser.Parse. fix this bug, and add a test to it.
+
 ## What's New (10/05/2018)
 
 ### New validation rules
