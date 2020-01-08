@@ -890,6 +890,23 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>(Path.Combine("positive", "long-running-operations-options-positive-4.json"));
             Assert.Empty(messages);
         }
+        
+        [Fact]
+        public void ValidXMSPathWithOAata() 
+        {
+            var filePath = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "x-ms-paths-with-odata.json");
+            var fileText = File.ReadAllText(filePath);
+            var message = "";
+            try
+            {
+                var servDef = SwaggerParser.Parse(filePath, fileText);
+            }
+            catch (Exception e) 
+            {
+                message = "An Error occur while parse x-ms-paths with OData structure" + e.Message;
+            }
+            Assert.Empty(message);
+        }
     }
 
     #endregion
