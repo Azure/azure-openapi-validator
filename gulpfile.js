@@ -99,3 +99,16 @@ gulp.task('dotnet/pack', ['dotnet', 'typescript'], function () {
     return gulp.src('src/dotnet/AutoRest/AutoRest.csproj')
         .pipe(run('dotnet publish src/dotnet/AutoRest/AutoRest.csproj --configuration release --output bin/netcoreapp2.0'));
 });
+
+gulp.task('pack/typescript', [], function () {
+    return run('cd src/typescript && npm pack').exec();
+});
+
+gulp.task('pack/dotnet', [], function () {
+    return run('cd src/dotnet/AutoRest && npm pack').exec();
+});
+
+gulp.task('pack', ['pack/dotnet', 'pack/typescript'], function () {
+    gulp.src(['src/dotnet/AutoRest/*.tgz', 'src/typescript/*.tgz']).pipe(gulp.dest('dist/'));
+    console.log('Successfully Packed the repo...');
+});
