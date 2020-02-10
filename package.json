@@ -20,6 +20,7 @@
         "fs": "^0.0.1-security",
         "js-yaml": "^3.8.4",
         "jsonpath": "^0.2.11",
+        "ts-node": "^8.6.2",
         "vscode-jsonrpc": "^3.2.0"
     },
     "scripts": {

@@ -15,5 +15,6 @@
     "**/.hg": true,
     "**/.DS_Store": true
   },
-  "eslint.enable": false
+  "eslint.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
