@@ -108,6 +108,7 @@ gulp.task('pack/dotnet', [], function () {
     return run('cd src/dotnet/AutoRest && npm pack').exec();
 });
 
+// this task can be excuted only when `gulp test` has been excuted successfully
 gulp.task('pack', ['pack/dotnet', 'pack/typescript'], function () {
     gulp.src(['src/dotnet/AutoRest/*.tgz', 'src/typescript/*.tgz']).pipe(gulp.dest('dist/'));
     console.log('Successfully Packed the repo...');
