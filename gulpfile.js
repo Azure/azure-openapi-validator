@@ -104,7 +104,7 @@ gulp.task('pack/typescript', [], function () {
     return run('cd src/typescript && npm pack').exec();
 });
 
-gulp.task('pack/dotnet', [], function () {
+gulp.task('pack/dotnet', ['dotnet/pack'], function () {
     return run('cd src/dotnet/AutoRest && npm pack').exec();
 });
 
