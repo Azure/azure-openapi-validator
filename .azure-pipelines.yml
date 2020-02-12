@@ -26,7 +26,13 @@ jobs:
 
       - script: 'gulp test'
         displayName: 'gulp test'
+        
+      - script: 'gulp pack'
+        displayName: 'gulp pack'
 
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: $(Build.SourcesDirectory)/dist
 
   - job: Windows
     displayName: credentialScan
@@ -34,11 +40,11 @@ jobs:
       vmImage: "windows-2019"
 
     steps:
-      - task: CredScan@2
+      - task: ea576cd4-c61f-48f8-97e7-a3cb07b90a6f@2 # CredScan@2  
         inputs:
           toolMajorVersion: 'V2'
 
-      - task: PostAnalysis@1
+      - task: f5679091-e6da-4974-a8dc-0eec03a8ea63@1 # PostAnalysis@1
         inputs:
           AllTools: false
           APIScan: false
