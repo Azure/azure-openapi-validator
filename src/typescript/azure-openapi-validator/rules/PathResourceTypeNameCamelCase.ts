@@ -19,7 +19,7 @@ rules.push({
   run: function*(doc, node, path) {
     if (node.paths !== undefined) {
       const msg: string =
-        "Resource type naming must follow camel case. Eg: proactiveDetectionConfigs, not ProactiveDetectionConfigs";
+        "Resource type naming must follow camel case.";
       const paths: string[] = Object.keys(node.paths);
       for (const it of paths) {
         const allWords = getAllWordsFromPath(it);

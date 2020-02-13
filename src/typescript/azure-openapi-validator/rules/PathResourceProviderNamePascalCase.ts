@@ -16,7 +16,7 @@ rules.push({
   run: function*(doc, node, path) {
     if (node.paths !== undefined) {
       const msg: string =
-        "Resource provider naming must follow pascal case. Eg: Microsoft.Computer";
+        "Resource provider naming must follow the pascal case.";
       const paths: string[] = Object.keys(node.paths);
       for (const it of paths) {
         const resourceProviders = getAllResourceProvidersFromPath(it);
