@@ -453,6 +453,12 @@ namespace OpenAPI.Validator.Model.Utilities
             return resourceProviders;
         }
 
+        /// <summary>
+        /// Return namespace from swagger file path.
+        /// </summary>
+        /// <param name="path"> swagger file path</param>
+        /// <example><code>azure-rest-api-specs/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01</code> becomes <code>Microsoft.Network</code></example>
+        /// <returns>namespace</returns>
         public static string GetRPNamespaceFromFilePath(string path)
         {
             Match match = ResourceProviderNamespaceRegex.Match(path);
