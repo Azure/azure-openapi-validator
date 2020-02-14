@@ -54,8 +54,9 @@ namespace OpenAPI.Validator.Validation
         public override bool IsValid(Dictionary<string, Dictionary<string, Operation>> paths, RuleContext context, out object[] formatParameters)
         {
             IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProviders(paths);
+            string resourceProviderNamespace = ValidationUtilities.GetRPNamespaceFromFilePath(context.File.ToString());
             formatParameters = new[] { string.Join(", ", resourceProviders) };
-            return resourceProviders.ToList().Count <= 1;
+            return resourceProviders.Last() == resourceProviderNamespace;
         }
     }
 }
