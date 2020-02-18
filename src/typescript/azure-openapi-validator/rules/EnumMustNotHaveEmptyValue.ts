@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
   run: function*(doc, node, path) {
-    const msg: string = `Enum must not contain empty value.`;
+    const msg: string = `Enum value must not contain empty value.`;
     if (node.enum !== undefined) {
       const enumList: string[] = node.enum;
       if (enumList.some(value => value.trim().length === 0)) {
