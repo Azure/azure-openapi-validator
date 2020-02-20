@@ -14,8 +14,8 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
   run: function*(doc, node, path) {
-    const msg: string = `Enum must define its type. All values in an enum must adhere to the specified type`;
-    if (node.type === undefined) {
+    const msg: string = `Enum must define its type and "object" type is not allowed due to Autorest refuse to parse it.`;
+    if (node.type === undefined || node.type.toLowerCase() === "object") {
       yield { message: `${msg}`, location: path };
     }
   }

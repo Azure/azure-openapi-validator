@@ -75,7 +75,7 @@
                         "Failed",
                         "Canceled"
                     ],
-                    "type": "string",
+                    "type": "object",
                     "readOnly": true,
                     "x-ms-enum": {
                         "name": "ProvisioningState",

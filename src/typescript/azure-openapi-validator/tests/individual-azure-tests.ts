@@ -63,8 +63,8 @@ class IndividualAzureTests {
       OpenApiTypes.arm,
       MergeStates.individual
     );
-    assertValidationRuleCount(messages, EnumMustHaveType, 1);
-    assert.deepEqual(messages.length, 1);
+    assertValidationRuleCount(messages, EnumMustHaveType, 2);
+    assert.deepEqual(messages.length, 2);
   }
 
   @test async "Enum unique value"() {
