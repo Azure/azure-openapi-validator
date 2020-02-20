@@ -56,7 +56,8 @@ namespace OpenAPI.Validator.Validation
             IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProviders(paths);
             string resourceProviderNamespace = ValidationUtilities.GetRPNamespaceFromFilePath(context.File.ToString());
             formatParameters = new[] { string.Join(", ", resourceProviders) };
-            return resourceProviders.Last() == resourceProviderNamespace;
+            string lastResourceProvider = resourceProviders?.ToList().Count() > 0 ? resourceProviders.Last() : null;
+            return lastResourceProvider != null && lastResourceProvider == resourceProviderNamespace;
         }
     }
 }
