@@ -699,6 +699,7 @@ namespace OpenAPI.Validator.Tests
                 MergeState = ServiceDefinitionDocumentState.Individual
             };
             var messages = this.ValidateOpenAPISpec(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
+            
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
             // composed state
