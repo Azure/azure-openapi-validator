@@ -1,0 +1,78 @@
+trigger:
+- master
+
+variables:
+  NodeVersion: '10.x'
+
+jobs:
+  - job: 'Build'
+
+    pool:
+      vmImage: 'Ubuntu 16.04'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(NodeVersion)'
+        displayName: 'Install Node.js $(NodeVersion)'
+
+      - task: Npm@1
+        displayName: 'npm install'
+        inputs:
+          verbose: false
+
+      - script: 'gulp build'
+        displayName: 'gulp build'
+
+      - script: 'gulp test'
+        displayName: 'gulp test'
+        
+      - script: 'gulp dotnet/pack'
+        displayName: 'gulp dotnet/pack'
+        
+      - task: EsrpCodeSigning@1
+        inputs:
+          ConnectedServiceName: $(esrp-connection)
+          FolderPath: 'src/dotnet/AutoRest/bin/netcoreapp2.0'
+          Pattern: '*.dll,*.exe'
+          signConfigType: 'inlineSignParams'
+          inlineOperation: |
+            $(inline-operation-param)
+          SessionTimeout: '60'
+          MaxConcurrency: '50'
+          MaxRetryAttempts: '5'
+
+      - script: 'gulp pack'
+        displayName: 'gulp pack'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: $(Build.SourcesDirectory)/dist
+
+  - job: Windows
+    displayName: credentialScan
+    pool:
+      vmImage: "windows-2019"
+
+    steps:
+      - task: ea576cd4-c61f-48f8-97e7-a3cb07b90a6f@2 # CredScan@2  
+        inputs:
+          toolMajorVersion: 'V2'
+
+      - task: f5679091-e6da-4974-a8dc-0eec03a8ea63@1 # PostAnalysis@1
+        inputs:
+          AllTools: false
+          APIScan: false
+          BinSkim: false
+          CodesignValidation: false
+          CredScan: true
+          FortifySCA: false
+          FxCop: false
+          ModernCop: false
+          PoliCheck: false
+          RoslynAnalyzers: false
+          SDLNativeRules: false
+          Semmle: false
+          TSLint: false
+          ToolLogsNotFoundAction: 'Standard'
+
