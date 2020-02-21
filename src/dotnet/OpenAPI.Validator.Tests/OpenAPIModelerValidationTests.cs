@@ -32,6 +32,7 @@ namespace OpenAPI.Validator.Tests
         {
             var ruleInstance = Activator.CreateInstance<TRule>();
             var messages = this.ValidateOpenAPISpec(Path.Combine(PathToValidationResources, fileName), GetMetadataForRuleTest(ruleInstance));
+            messages.Where(message => { Console.WriteLine(message); return true; });
             return GetValidationMessagesForCategory(messages, ruleInstance.Severity).Where(message => message.Rule.GetType() == typeof(TRule));
         }
 
@@ -247,7 +248,7 @@ namespace OpenAPI.Validator.Tests
         public void BodyTopLevelPropertiesWithSystemDataValidation()
         {
             var messages = GetValidationMessagesForRule<BodyTopLevelProperties>("body-top-level-properties-with-system-data.json");
-            Assert.Equal(messages.Count(), 2);
+            Assert.Equal(messages.Count(), 1);
         }
 
         [Fact]
