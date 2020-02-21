@@ -13,6 +13,7 @@ require("./rules/ControlCharactersAreNotAllowed");
 require("./rules/ArraySchemaMustHaveItems");
 require("./rules/PostOperationIdContainsUrlVerb");
 require("./rules/LicenseHeaderMustNotBeSpecified");
+require("./rules/OperationIdRequired");
 
 export function run(document: string, openapiDefinition: any, sendMessage: (m: Message) => void, openapiType: OpenApiTypes, mergeState: MergeStates) {
   const rulesToRun = rules.filter(rule => rule.mergeState === mergeState && (rule.openapiType & openapiType));
