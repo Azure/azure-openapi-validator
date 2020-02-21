@@ -32,6 +32,7 @@ namespace OpenAPI.Validator.Tests
         {
             var ruleInstance = Activator.CreateInstance<TRule>();
             var messages = this.ValidateOpenAPISpec(Path.Combine(PathToValidationResources, fileName), GetMetadataForRuleTest(ruleInstance));
+            messages.Where(message => { Console.WriteLine(message); return true; });
             return GetValidationMessagesForCategory(messages, ruleInstance.Severity).Where(message => message.Rule.GetType() == typeof(TRule));
         }
 
@@ -240,6 +241,13 @@ namespace OpenAPI.Validator.Tests
         public void BodyTopLevelPropertiesValidation()
         {
             var messages = GetValidationMessagesForRule<BodyTopLevelProperties>("body-top-level-properties.json");
+            Assert.Equal(messages.Count(), 1);
+        }
+        
+        [Fact]
+        public void BodyTopLevelPropertiesWithSystemDataValidation()
+        {
+            var messages = GetValidationMessagesForRule<BodyTopLevelProperties>("body-top-level-properties-with-system-data.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -906,6 +914,13 @@ namespace OpenAPI.Validator.Tests
                 message = "An Error occur while parse x-ms-paths with OData structure" + e.Message;
             }
             Assert.Empty(message);
+        }
+
+        [Fact]
+        public void ValidRequiredDesciminatorPropertiesInPatchRequestValidation()
+        {
+            var messages = GetValidationMessagesForRule<PatchBodyParametersSchema>(Path.Combine("positive", "req-decriminator-properties-in-patch-request.json"));
+            Assert.Empty(messages);
         }
     }
 
