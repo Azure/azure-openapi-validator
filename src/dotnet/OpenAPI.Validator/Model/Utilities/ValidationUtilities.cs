@@ -170,6 +170,25 @@ namespace OpenAPI.Validator.Model.Utilities
         }
 
         /// <summary>
+        /// Returns the cumulative list of all discrimintor properties found in the entire model hierarchy
+        /// </summary>discrimintor
+        /// <param name="modelName">model for which to check the discrimintor properties</param>
+        /// <param name="definitions">dictionary of model definitions</param>
+        /// <param name="propertyList">List of required properties found in model hierarchy</param>
+        public static IEnumerable<string> EnumerateDiscrimintorProperties(string modelName, Dictionary<string, Schema> definitions)
+        {
+            var modelsToCheck = EnumerateModelHierarchy(modelName, definitions);
+            var propertiesList = new List<string>();
+            foreach (var modelRef in modelsToCheck)
+            {
+                if (!definitions.ContainsKey(modelRef) || definitions[modelRef].Discriminator?.Any() != true) continue;
+
+                propertiesList.Add(definitions[modelRef].Discriminator);
+            }
+            return propertiesList;
+        }
+
+        /// <summary>
         /// Returns the cumulative list of all read only properties found in the entire model hierarchy
         /// </summary>
         /// <param name="modelName">model for which to find the read only properties</param>
