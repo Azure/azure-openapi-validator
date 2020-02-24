@@ -18,10 +18,10 @@ rules.push({
     if (node !== undefined) {
       for (const pathKey in node)
         for (const op in node[pathKey]) {
-          if (false === IsValidOperation(op)) {
+          if (!IsValidOperation(op)) {
             continue;
           }
-          if (node[pathKey][op].operationId === undefined || node[pathKey][op].operationId === "") {
+          if (!node[pathKey][op].operationId || node[pathKey][op].operationId === "") {
             yield { message: `Missing operationId. path:'${pathKey}', operation:'${op}'`, location: path };
           }
         }
