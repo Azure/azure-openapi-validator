@@ -32,7 +32,6 @@ namespace OpenAPI.Validator.Tests
         {
             var ruleInstance = Activator.CreateInstance<TRule>();
             var messages = this.ValidateOpenAPISpec(Path.Combine(PathToValidationResources, fileName), GetMetadataForRuleTest(ruleInstance));
-            messages.Where(message => { Console.WriteLine(message); return true; });
             return GetValidationMessagesForCategory(messages, ruleInstance.Severity).Where(message => message.Rule.GetType() == typeof(TRule));
         }
 

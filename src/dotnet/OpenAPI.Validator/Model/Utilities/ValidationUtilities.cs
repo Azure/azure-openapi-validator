@@ -174,14 +174,15 @@ namespace OpenAPI.Validator.Model.Utilities
         /// </summary>discrimintor
         /// <param name="modelName">model for which to check the discrimintor properties</param>
         /// <param name="definitions">dictionary of model definitions</param>
-        /// <param name="propertyList">List of required properties found in model hierarchy</param>
         public static IEnumerable<string> EnumerateDiscrimintorProperties(string modelName, Dictionary<string, Schema> definitions)
         {
             var modelsToCheck = EnumerateModelHierarchy(modelName, definitions);
             var propertiesList = new List<string>();
             foreach (var modelRef in modelsToCheck)
             {
-                if (!definitions.ContainsKey(modelRef) || definitions[modelRef].Discriminator?.Any() != true) continue;
+                if (!definitions.ContainsKey(modelRef) || !definitions[modelRef].Discriminator?.Any()) {
+                    continue;
+                }
 
                 propertiesList.Add(definitions[modelRef].Discriminator);
             }
@@ -281,7 +282,7 @@ namespace OpenAPI.Validator.Model.Utilities
             // if the model being tested belongs to the allOfed list, return false
             // if model can't be found in definitions we can't verify
             // if model does not have any allOfs, return early
-            if (allOfedModels.Contains(modelName) || !definitions.ContainsKey(modelName) || definitions[modelName]?.AllOf?.Any() != true)
+            if (allOfedModels.Contains(modelName) || !definitions.ContainsKey(modelName) || !definitions[modelName]?.AllOf?.Any())
             {
                 return false;
             }
