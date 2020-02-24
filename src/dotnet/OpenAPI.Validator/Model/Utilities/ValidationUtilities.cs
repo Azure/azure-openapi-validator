@@ -180,7 +180,7 @@ namespace OpenAPI.Validator.Model.Utilities
             var propertiesList = new List<string>();
             foreach (var modelRef in modelsToCheck)
             {
-                if (!definitions.ContainsKey(modelRef) || !definitions[modelRef].Discriminator?.Any()) {
+                if (!definitions.ContainsKey(modelRef) || definitions[modelRef].Discriminator?.Any() != true) {
                     continue;
                 }
 
@@ -282,7 +282,7 @@ namespace OpenAPI.Validator.Model.Utilities
             // if the model being tested belongs to the allOfed list, return false
             // if model can't be found in definitions we can't verify
             // if model does not have any allOfs, return early
-            if (allOfedModels.Contains(modelName) || !definitions.ContainsKey(modelName) || !definitions[modelName]?.AllOf?.Any())
+            if (allOfedModels.Contains(modelName) || !definitions.ContainsKey(modelName) || definitions[modelName]?.AllOf?.Any() != true)
             {
                 return false;
             }
