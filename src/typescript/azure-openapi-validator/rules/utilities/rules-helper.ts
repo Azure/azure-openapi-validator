@@ -41,7 +41,7 @@ function getResponseSchema(response: Object, doc): any {
   return schema.properties;
 }
 
-export function IsValidOperation(operation: string): boolean {
+export function isValidOperation(operation: string): boolean {
   let validOperations = ["put", "get", "patch", "post", "head", "options", "delete"]
   return validOperations.indexOf(operation.toLowerCase()) !== -1;
 }

@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-import { IsValidOperation } from './utilities/rules-helper';
+import { isValidOperation } from './utilities/rules-helper';
 export const OperationIdRequired: string = "OperationIdRequired";
 
 rules.push({
@@ -18,11 +18,11 @@ rules.push({
     if (node !== undefined) {
       for (const pathKey in node)
         for (const op in node[pathKey]) {
-          if (!IsValidOperation(op)) {
+          if (!isValidOperation(op)) {
             continue;
           }
-          if (!node[pathKey][op].operationId || node[pathKey][op].operationId === "") {
-            yield { message: `Missing operationId. path:'${pathKey}', operation:'${op}'`, location: path };
+          if (!node[pathKey][op].operationId) {
+            yield { message: `Missing operationId in path:'${pathKey}', operation:'${op}', consider adding the operationId .`, location: path };
           }
         }
     }
