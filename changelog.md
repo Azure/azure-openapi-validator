@@ -1,5 +1,14 @@
 # Changelog
 
+## What's New (02/18/2020)
+
+### New validation rules
+- OperationIdRequired rule - The rule will check if every operation have a unique operationId.
+
+### Changed Rule
+- Changed the linter rule BodyTopLevelProperties -- Added systemdata as allowed top level properties
+- Changed the linter rule PatchBodyParametersSchema -- Allowed required property to be descrimintor
+
 ## What's New (01/07/2020)
 
 ### bug fix
