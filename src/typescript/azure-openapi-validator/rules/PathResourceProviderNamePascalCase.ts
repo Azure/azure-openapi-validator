@@ -1,6 +1,6 @@
 import { MergeStates, OpenApiTypes } from "./../rule";
 import { rules } from "../rule";
-import { getAllResourceProvidersFromPath } from "../rules/utilities/rules-helper";
+import { getAllResourceProvidersFromPath, resourceProviderMustPascalCase } from "../rules/utilities/rules-helper";
 
 export const PathResourceProviderNamePascalCase: string =
   "PathResourceProviderNamePascalCase";
@@ -31,11 +31,3 @@ rules.push({
     }
   }
 });
-
-function resourceProviderMustPascalCase(resourceProvider: string): boolean {
-  if (resourceProvider.length === 0) {
-    return false;
-  }
-  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z]+(?:\.[A-Z]+[a-z]+)*$`);
-  return pascalCase.test(resourceProvider);
-}

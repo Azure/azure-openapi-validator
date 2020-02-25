@@ -1,7 +1,9 @@
 import { suite, test } from "mocha-typescript";
 import {
   getAllResourceProvidersFromPath,
-  getAllWordsFromPath
+  getAllWordsFromPath,
+  resourceProviderMustPascalCase,
+  resourceTypeMustCamelCase
 } from "../rules/utilities/rules-helper";
 import * as assert from "assert";
 
@@ -37,5 +39,27 @@ class RuleHelperTests {
     path = "////&^*/@/";
     res = getAllWordsFromPath(path);
     assert.equal(res.length, 0);
+  }
+
+  @test "resource provider must pascal case"() {
+    assert.equal(resourceProviderMustPascalCase("Microsoft.Network"), true);
+    assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsight"), true);
+    assert.equal(resourceProviderMustPascalCase("Microsoft"), true);
+    assert.equal(resourceProviderMustPascalCase("Azure"), true);
+
+    assert.equal(resourceProviderMustPascalCase("Microsoft."), false);
+    assert.equal(resourceProviderMustPascalCase("Microsoft.cache"), false);
+    assert.equal(resourceProviderMustPascalCase("microsoft.Visual"), false);
+  }
+
+  @test "resource type must camel case"() {
+    assert.equal(resourceTypeMustCamelCase("cache"), true);
+    assert.equal(resourceTypeMustCamelCase("deepEqual"), true);
+    assert.equal(resourceTypeMustCamelCase("azureHDInsight"), true);
+
+    assert.equal(resourceTypeMustCamelCase("Cache"), false);
+    assert.equal(resourceTypeMustCamelCase(".ache"), false);
+    assert.equal(resourceTypeMustCamelCase("Cach e"), false);
+    assert.equal(resourceTypeMustCamelCase("Cach#e"), false);
   }
 }

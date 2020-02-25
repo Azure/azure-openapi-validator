@@ -52,3 +52,21 @@ export function getAllWordsFromPath(path: string): string[] {
   const wordRegex: RegExp = new RegExp(/([\w\.]+)/, "g");
   return Array.from(matchAll(path, wordRegex), m => m[1]);
 }
+
+export function resourceProviderMustPascalCase(
+  resourceProvider: string
+): boolean {
+  if (resourceProvider.length === 0) {
+    return false;
+  }
+  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z]+(?:\.[A-Z]+[a-z]+)*$`);
+  return pascalCase.test(resourceProvider);
+}
+
+export function resourceTypeMustCamelCase(resourceType: string): boolean {
+  if (resourceType.length === 0) {
+    return true;
+  }
+  const pascalCase: RegExp = new RegExp("^[a-z]+(?:[A-Z]+[a-z]+)*$");
+  return pascalCase.test(resourceType);
+}

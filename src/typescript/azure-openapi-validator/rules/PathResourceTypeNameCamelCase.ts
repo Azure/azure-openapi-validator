@@ -2,7 +2,8 @@ import { MergeStates, OpenApiTypes } from "./../rule";
 import { rules } from "../rule";
 import {
   getAllResourceProvidersFromPath,
-  getAllWordsFromPath
+  getAllWordsFromPath,
+  resourceTypeMustCamelCase
 } from "../rules/utilities/rules-helper";
 
 export const PathResourceTypeNameCamelCase: string =
@@ -18,8 +19,7 @@ rules.push({
 
   run: function*(doc, node, path) {
     if (node.paths !== undefined) {
-      const msg: string =
-        "Resource type naming must follow camel case.";
+      const msg: string = "Resource type naming must follow camel case.";
       const paths: string[] = Object.keys(node.paths);
       for (const it of paths) {
         const allWords = getAllWordsFromPath(it);
@@ -39,11 +39,3 @@ rules.push({
     }
   }
 });
-
-function resourceTypeMustCamelCase(resourceType: string): boolean {
-  if (resourceType.length === 0) {
-    return true;
-  }
-  const pascalCase: RegExp = new RegExp("^[a-z]+(?:[A-Z][a-z]+)*$");
-  return pascalCase.test(resourceType);
-}
