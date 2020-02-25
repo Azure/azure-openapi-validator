@@ -56,7 +56,13 @@
                     }
                 }
             }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}": {
+            "get": {
+
+            }
         }
+
     },
     "definitions": {
         "Resource": {

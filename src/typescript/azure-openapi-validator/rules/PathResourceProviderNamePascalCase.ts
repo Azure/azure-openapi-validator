@@ -36,6 +36,6 @@ function resourceProviderMustPascalCase(resourceProvider: string): boolean {
   if (resourceProvider.length === 0) {
     return false;
   }
-  const pascalCase: RegExp = new RegExp("^[A-Z][a-z]+(?:.[A-Z][a-z]+)*$");
+  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z]+(?:\.[A-Z]+[a-z]+)*$`);
   return pascalCase.test(resourceProvider);
 }

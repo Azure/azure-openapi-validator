@@ -65,6 +65,7 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1);
+    assert.deepEqual(messages.length, 1);
   }
 
   @test
@@ -76,5 +77,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1);
+    assert.deepEqual(messages.length, 1);
   }
 }
