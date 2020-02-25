@@ -7,7 +7,7 @@
 
 ### Changed Rule
 - Changed the linter rule BodyTopLevelProperties -- Added systemdata as allowed top level properties
-- Changed the linter rule PatchBodyParametersSchema -- Allowed required property which has been marked as descrimintor
+- Changed the linter rule PatchBodyParametersSchema -- Allowed required property to be descrimintor
 
 ## What's New (01/07/2020)
 
