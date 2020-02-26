@@ -22,7 +22,7 @@ rules.push({
             continue;
           }
           if (!node[pathKey][op].operationId) {
-            yield { message: `Missing operationId in path:'${pathKey}', operation:'${op}', consider adding the operationId .`, location: path };
+            yield { message: `Missing operationId in path:'${pathKey}', operation:'${op}', consider adding the operationId .`, location: path.concat([pathKey, op]) };
           }
         }
     }
