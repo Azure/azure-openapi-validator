@@ -180,7 +180,8 @@ namespace OpenAPI.Validator.Model.Utilities
             var propertiesList = new List<string>();
             foreach (var modelRef in modelsToCheck)
             {
-                if (!definitions.ContainsKey(modelRef) || definitions[modelRef].Discriminator?.Any() != true) {
+                if (!definitions.ContainsKey(modelRef) || string.IsNullOrEmpty(definitions[modelRef].Discriminator))
+                {
                     continue;
                 }
 
