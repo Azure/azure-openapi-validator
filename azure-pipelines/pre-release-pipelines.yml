@@ -31,7 +31,7 @@ jobs:
         displayName: 'gulp dotnet/pack'
 
       - script: 'cd src/dotnet && tar -czvf azure-classic-openapi-validator.tgz AutoRest'
-        displayName: 'gulp pack dotnet'
+        displayName: 'pack dir: AutoRest'
 
       - script: 'gulp pack/typescript'
         displayName: 'gulp pack typescript'
