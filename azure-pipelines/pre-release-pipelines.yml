@@ -37,7 +37,7 @@ jobs:
         displayName: 'gulp pack typescript'
 
       - task: CopyFiles@2
-        displayName: 'Copy Files to: dist
+        displayName: 'Copy Files to: dist'
         inputs:
           Contents: |
             src\\**\*.tgz
