@@ -29,21 +29,19 @@ jobs:
         
       - script: 'gulp dotnet/pack'
         displayName: 'gulp dotnet/pack'
-        
-      - task: EsrpCodeSigning@1
-        inputs:
-          ConnectedServiceName: $(esrp-connection)
-          FolderPath: 'src/dotnet/AutoRest/bin/netcoreapp2.0'
-          Pattern: '*.dll,*.exe'
-          signConfigType: 'inlineSignParams'
-          inlineOperation: |
-            $(inline-operation-param)
-          SessionTimeout: '60'
-          MaxConcurrency: '50'
-          MaxRetryAttempts: '5'
 
-      - script: 'gulp pack'
-        displayName: 'gulp pack'
+      - script: 'cd src/dotnet && tar -czvf azure-classic-openapi-validator.tgz AutoRest'
+        displayName: 'gulp pack dotnet'
+
+      - script: 'gulp pack/typescript'
+        displayName: 'gulp pack typescript'
+
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: dist
+        inputs:
+          Contents: |
+            src\\**\*.tgz
+          TargetFolder: '$(Build.SourcesDirectory)/dist'
 
       - task: PublishBuildArtifacts@1
         inputs:
