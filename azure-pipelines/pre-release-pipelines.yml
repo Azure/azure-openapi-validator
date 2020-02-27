@@ -40,7 +40,7 @@ jobs:
         displayName: 'Copy Files to: dist'
         inputs:
           Contents: |
-            src\\**\*.tgz
+            src/**/*.tgz
           TargetFolder: '$(Build.SourcesDirectory)/dist'
 
       - task: PublishBuildArtifacts@1
