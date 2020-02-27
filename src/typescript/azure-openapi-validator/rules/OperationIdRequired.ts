@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths",
   run: function* (doc, node, path) {
-    if (node !== undefined) {
+    if (node) {
       for (const pathKey in node)
         for (const op in node[pathKey]) {
           if (!isValidOperation(op)) {
