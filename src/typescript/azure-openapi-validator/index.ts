@@ -13,6 +13,7 @@ require("./rules/ControlCharactersAreNotAllowed");
 require("./rules/ArraySchemaMustHaveItems");
 require("./rules/PostOperationIdContainsUrlVerb");
 require("./rules/LicenseHeaderMustNotBeSpecified");
+require("./rules/OperationIdRequired");
 require("./rules/EnumMustHaveType");
 require("./rules/EnumUniqueValue");
 require("./rules/EnumMustNotHaveEmptyValue");

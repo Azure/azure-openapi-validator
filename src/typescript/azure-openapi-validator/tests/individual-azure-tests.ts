@@ -18,6 +18,7 @@ import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBe
 import { EnumMustHaveType } from "../rules/EnumMustHaveType";
 import { EnumUniqueValue } from "../rules/EnumUniqueValue";
 import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
+import { OperationIdRequired } from '../rules/OperationIdRequired';
 import * as assert from "assert";
 
 @suite
@@ -56,6 +57,12 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, LicenseHeaderMustNotBeSpecified, 1);
   }
 
+  @test async "OperationId Required"() {
+    const fileName = 'OperationIdMissed.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, OperationIdRequired, 2);
+  }
+
   @test async "Enum must have type"() {
     const fileName = "EnumMustHaveType.json";
     const messages: Message[] = await collectTestMessagesFromValidator(
@@ -89,3 +96,4 @@ class IndividualAzureTests {
     assert.deepEqual(messages.length, 1);
   }
 }
+
