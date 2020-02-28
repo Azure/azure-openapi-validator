@@ -32,7 +32,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Id of the Rule.
         /// </summary>
-        public override string Id => "S4002";
+        public override string Id => "R4002";
 
         /// <summary>
         /// Violation category of the Rule.
