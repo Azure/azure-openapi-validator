@@ -66,6 +66,10 @@ namespace OpenAPI.Validator.Validation
 
                     var modelHierarchy = ValidationUtilities.EnumerateModelHierarchy(reqModel, definitions);
 
+                    var discrimintorProps = ValidationUtilities.EnumerateDiscrimintorProperties(reqModel, definitions);
+
+                    reqProps = reqProps.Where(prop => !discrimintorProps.Contains(prop));
+
                     foreach (var reqProp in reqProps)
                     {
                         var modelContainingReqProp = modelHierarchy.First(model => definitions[model].Required?.Contains(reqProp) == true);

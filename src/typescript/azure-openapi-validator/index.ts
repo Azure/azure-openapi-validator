@@ -15,6 +15,10 @@ require("./rules/PostOperationIdContainsUrlVerb");
 require("./rules/LicenseHeaderMustNotBeSpecified");
 require("./rules/PathResourceProviderNamePascalCase");
 require("./rules/PathResourceTypeNameCamelCase");
+require("./rules/OperationIdRequired");
+require("./rules/EnumMustHaveType");
+require("./rules/EnumUniqueValue");
+require("./rules/EnumMustNotHaveEmptyValue");
 
 export function run(
   document: string,

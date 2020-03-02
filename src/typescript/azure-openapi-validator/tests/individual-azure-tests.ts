@@ -17,13 +17,17 @@ import { MergeStates, OpenApiTypes } from "../rule";
 import { ControlCharactersAreNotAllowed } from "../rules/ControlCharactersAreNotAllowed";
 import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContainsUrlVerb";
 import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBeSpecified";
+import { EnumMustHaveType } from "../rules/EnumMustHaveType";
+import { EnumUniqueValue } from "../rules/EnumUniqueValue";
+import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
+import { OperationIdRequired } from '../rules/OperationIdRequired';
+
 import * as assert from "assert";
 
 @suite
 class IndividualAzureTests {
   @test async "control characters not allowed test"() {
     const fileName: string = "ContainsControlCharacters.json";
-    console.log("Enter test");
     const messages: Message[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -56,27 +60,59 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, LicenseHeaderMustNotBeSpecified, 1);
   }
 
+
   @test
   async "path resource provider name use pascal case eg: Microsoft.Insight"() {
     const fileName = "PathResourceProviderNamePascalCase.json";
+    assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1);
+    assert.deepEqual(messages.length, 1);
+  }
+
+  @test async "OperationId Required"() {
+    const fileName = 'OperationIdMissed.json';
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    assertValidationRuleCount(messages, OperationIdRequired, 2);
+  }
+
+  @test async "Enum must have type"() {
+    const fileName = "EnumMustHaveType.json";
     const messages: Message[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
       MergeStates.individual
     );
-    assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1);
+    assertValidationRuleCount(messages, EnumMustHaveType, 2);
+    assert.deepEqual(messages.length, 2);
+  }
+
+  @test async "Enum unique value"() {
+    const fileName = "EnumUniqueValue.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, EnumUniqueValue, 1);
     assert.deepEqual(messages.length, 1);
   }
 
   @test
   async "path resource type name use camel case eg: proactiveDetectionConfigs"() {
     const fileName = "PathResourceTypeNameCamelCase.json";
+    assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1);
+    assert.deepEqual(messages.length, 1);
+  }
+}
+
+
+  @test async "Enum must not have empty value"() {
+    const fileName = "EnumMustNotHaveEmptyValue.json";
     const messages: Message[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
       MergeStates.individual
     );
-    assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1);
+    assertValidationRuleCount(messages, EnumMustNotHaveEmptyValue, 1);
     assert.deepEqual(messages.length, 1);
   }
 }

@@ -242,6 +242,13 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<BodyTopLevelProperties>("body-top-level-properties.json");
             Assert.Equal(messages.Count(), 1);
         }
+        
+        [Fact]
+        public void BodyTopLevelPropertiesWithSystemDataValidation()
+        {
+            var messages = GetValidationMessagesForRule<BodyTopLevelProperties>("body-top-level-properties-with-system-data.json");
+            Assert.Equal(messages.Count(), 1);
+        }
 
         [Fact]
         public void PropertyNameCasingValidation()
@@ -906,6 +913,13 @@ namespace OpenAPI.Validator.Tests
                 message = "An Error occur while parse x-ms-paths with OData structure" + e.Message;
             }
             Assert.Empty(message);
+        }
+
+        [Fact]
+        public void ValidRequiredDesciminatorPropertiesInPatchRequestValidation()
+        {
+            var messages = GetValidationMessagesForRule<PatchBodyParametersSchema>(Path.Combine("positive", "req-decriminator-properties-in-patch-request.json"));
+            Assert.Empty(messages);
         }
     }
 

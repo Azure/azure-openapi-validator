@@ -43,6 +43,7 @@ function getResponseSchema(response: Object, doc): any {
   return schema.properties;
 }
 
+
 export function getAllResourceProvidersFromPath(path: string): string[] {
   const resourceProviderRegex: RegExp = new RegExp(/providers\/([\w\.]+)/, "g");
   return Array.from(matchAll(path, resourceProviderRegex), m => m[1]);
@@ -70,3 +71,9 @@ export function resourceTypeMustCamelCase(resourceType: string): boolean {
   const pascalCase: RegExp = new RegExp("^[a-z]+(?:[A-Z]+[a-z]+)*$");
   return pascalCase.test(resourceType);
 }
+
+export function isValidOperation(operation: string): boolean {
+  let validOperations = ["put", "get", "patch", "post", "head", "options", "delete"]
+  return validOperations.indexOf(operation.toLowerCase()) !== -1;
+}
+

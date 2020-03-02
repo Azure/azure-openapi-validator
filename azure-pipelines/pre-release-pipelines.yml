@@ -1,0 +1,76 @@
+trigger:
+- master
+
+variables:
+  NodeVersion: '10.x'
+
+jobs:
+  - job: 'Build'
+
+    pool:
+      vmImage: 'Ubuntu 16.04'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(NodeVersion)'
+        displayName: 'Install Node.js $(NodeVersion)'
+
+      - task: Npm@1
+        displayName: 'npm install'
+        inputs:
+          verbose: false
+
+      - script: 'gulp build'
+        displayName: 'gulp build'
+
+      - script: 'gulp test'
+        displayName: 'gulp test'
+        
+      - script: 'gulp dotnet/pack'
+        displayName: 'gulp dotnet/pack'
+
+      - script: 'cd src/dotnet && tar -czvf azure-classic-openapi-validator.tgz AutoRest'
+        displayName: 'pack dir: AutoRest'
+
+      - script: 'gulp pack/typescript'
+        displayName: 'gulp pack typescript'
+
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: dist'
+        inputs:
+          Contents: |
+            src/**/*.tgz
+          TargetFolder: '$(Build.SourcesDirectory)/dist'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: $(Build.SourcesDirectory)/dist
+
+  - job: Windows
+    displayName: credentialScan
+    pool:
+      vmImage: "windows-2019"
+
+    steps:
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2 # CredScan@2  
+        inputs:
+          toolMajorVersion: 'V2'
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1 # PostAnalysis@1
+        inputs:
+          AllTools: false
+          APIScan: false
+          BinSkim: false
+          CodesignValidation: false
+          CredScan: true
+          FortifySCA: false
+          FxCop: false
+          ModernCop: false
+          PoliCheck: false
+          RoslynAnalyzers: false
+          SDLNativeRules: false
+          Semmle: false
+          TSLint: false
+          ToolLogsNotFoundAction: 'Standard'
+
