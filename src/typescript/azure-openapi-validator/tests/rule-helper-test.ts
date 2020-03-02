@@ -39,6 +39,20 @@ class RuleHelperTests {
     path = "////&^*/@/";
     res = getAllWordsFromPath(path);
     assert.equal(res.length, 0);
+
+    path =
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}";
+    res = getAllWordsFromPath(path);
+    assert.deepEqual(res, [
+      "subscriptions",
+      "subscriptionId",
+      "resourceGroups",
+      "resourceGroupName",
+      "providers",
+      "Microsoft.Network",
+      "virtualWans",
+      "VirtualWANName"
+    ]);
   }
 
   @test "resource provider must pascal case"() {
