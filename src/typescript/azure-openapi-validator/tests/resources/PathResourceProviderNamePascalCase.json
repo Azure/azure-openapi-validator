@@ -59,7 +59,7 @@
         },
         "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}": {
             "get": {
-
+                "operationId": "HDInsight_Get"
             }
         }
 

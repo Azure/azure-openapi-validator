@@ -1,5 +1,3 @@
-import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
-import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -20,7 +18,9 @@ import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBe
 import { EnumMustHaveType } from "../rules/EnumMustHaveType";
 import { EnumUniqueValue } from "../rules/EnumUniqueValue";
 import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
-import { OperationIdRequired } from '../rules/OperationIdRequired';
+import { OperationIdRequired } from "../rules/OperationIdRequired";
+import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
+import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
 
 import * as assert from "assert";
 
@@ -60,17 +60,25 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, LicenseHeaderMustNotBeSpecified, 1);
   }
 
-
   @test
   async "path resource provider name use pascal case eg: Microsoft.Insight"() {
     const fileName = "PathResourceProviderNamePascalCase.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
     assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1);
     assert.deepEqual(messages.length, 1);
   }
 
   @test async "OperationId Required"() {
-    const fileName = 'OperationIdMissed.json';
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual);
+    const fileName = "OperationIdMissed.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
     assertValidationRuleCount(messages, OperationIdRequired, 2);
   }
 
@@ -99,12 +107,14 @@ class IndividualAzureTests {
   @test
   async "path resource type name use camel case eg: proactiveDetectionConfigs"() {
     const fileName = "PathResourceTypeNameCamelCase.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
     assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1);
     assert.deepEqual(messages.length, 1);
   }
-}
-
-
   @test async "Enum must not have empty value"() {
     const fileName = "EnumMustNotHaveEmptyValue.json";
     const messages: Message[] = await collectTestMessagesFromValidator(
