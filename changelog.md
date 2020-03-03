@@ -10,11 +10,13 @@
 - EnumMustNotHaveEmptyValue: check Enum values must not have empty string.
 - PathResourceProviderNamePascalCase: resource provider naming in path follow pascal case
 - PathResourceTypeNameCamelCase: resource type naming in path follow camel case
+- PathResourceProviderMatchNamespace: check the last resource provider in path matches namespace
 
 ### Changed Rule
 
 - Changed the linter rule BodyTopLevelProperties -- Added systemdata as allowed top level properties
 - Changed the linter rule PatchBodyParametersSchema -- Allowed required property to be descrimintor
+- Remove linter rule UniqueResourcePaths R2059: reason is external resource provider in path is valid.
 
 ## What's New (01/07/2020)
 
