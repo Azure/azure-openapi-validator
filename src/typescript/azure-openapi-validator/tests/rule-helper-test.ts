@@ -58,10 +58,13 @@ class RuleHelperTests {
   @test "resource provider must pascal case"() {
     assert.equal(resourceProviderMustPascalCase("Microsoft.Network"), true);
     assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsight"), true);
-    assert.equal(resourceProviderMustPascalCase("Microsoft"), true);
-    assert.equal(resourceProviderMustPascalCase("Azure"), true);
+    assert.equal(resourceProviderMustPascalCase("Microsoft.Computer"), true);
+    assert.equal(resourceProviderMustPascalCase("Azure.Network101"), true);
+    assert.equal(resourceProviderMustPascalCase("Azure.Net1work"), true);
 
     assert.equal(resourceProviderMustPascalCase("Microsoft."), false);
+    assert.equal(resourceProviderMustPascalCase("Microsoft"), false);
+    assert.equal(resourceProviderMustPascalCase("Azure"), false);
     assert.equal(resourceProviderMustPascalCase("Microsoft.cache"), false);
     assert.equal(resourceProviderMustPascalCase("microsoft.Visual"), false);
   }
@@ -70,6 +73,8 @@ class RuleHelperTests {
     assert.equal(resourceTypeMustCamelCase("cache"), true);
     assert.equal(resourceTypeMustCamelCase("deepEqual"), true);
     assert.equal(resourceTypeMustCamelCase("azureHDInsight"), true);
+    assert.equal(resourceTypeMustCamelCase("azureHDInsight101"), true);
+    assert.equal(resourceTypeMustCamelCase("az101ureHDInsight"), true);
 
     assert.equal(resourceTypeMustCamelCase("Cache"), false);
     assert.equal(resourceTypeMustCamelCase(".ache"), false);

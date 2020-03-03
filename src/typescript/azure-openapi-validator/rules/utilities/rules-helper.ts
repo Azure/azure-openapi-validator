@@ -60,7 +60,7 @@ export function resourceProviderMustPascalCase(
   if (resourceProvider.length === 0) {
     return false;
   }
-  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z]+(?:\.[A-Z]+[a-z]+)*$`);
+  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z0-9]+\.([A-Z]+[a-z0-9]+)+$`);
   return pascalCase.test(resourceProvider);
 }
 
@@ -68,7 +68,7 @@ export function resourceTypeMustCamelCase(resourceType: string): boolean {
   if (resourceType.length === 0) {
     return true;
   }
-  const pascalCase: RegExp = new RegExp("^[a-z]+(?:[A-Z]+[a-z]+)*$");
+  const pascalCase: RegExp = new RegExp("^[a-z][a-z0-9]+([A-Z]+[a-z0-9]+)*$");
   return pascalCase.test(resourceType);
 }
 
