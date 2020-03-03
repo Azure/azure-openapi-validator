@@ -78,9 +78,13 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void UniqueResourcePathsValidation()
+        public void PathResourceProviderMatchNamespaceValidation()
         {
-            var messages = GetValidationMessagesForRule<UniqueResourcePaths>("network-interfaces-api.json");
+            var messages = GetValidationMessagesForRule<PathResourceProviderMatchNamespace>("network-interfaces-api.json");
+            Assert.Equal(messages.Count(), 1);
+
+            // resource provider in path doesn't match with namespace.
+            messages = GetValidationMessagesForRule<PathResourceProviderMatchNamespace>("resource-manager/Microsoft.Network/network-interface-invalid.json");
             Assert.Equal(messages.Count(), 1);
         }
 
@@ -706,6 +710,7 @@ namespace OpenAPI.Validator.Tests
                 MergeState = ServiceDefinitionDocumentState.Individual
             };
             var messages = this.ValidateOpenAPISpec(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "clean-complex-spec.json"), subtest1md);
+
             Assert.Empty(messages.Where(m => m.Severity >= Category.Warning));
 
             // composed state
@@ -897,9 +902,9 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<LongRunningOperationsOptionsValidator>(Path.Combine("positive", "long-running-operations-options-positive-4.json"));
             Assert.Empty(messages);
         }
-        
+
         [Fact]
-        public void ValidXMSPathWithOAata() 
+        public void ValidXMSPathWithOAata()
         {
             var filePath = Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "x-ms-paths-with-odata.json");
             var fileText = File.ReadAllText(filePath);
@@ -908,7 +913,7 @@ namespace OpenAPI.Validator.Tests
             {
                 var servDef = SwaggerParser.Parse(filePath, fileText);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 message = "An Error occur while parse x-ms-paths with OData structure" + e.Message;
             }

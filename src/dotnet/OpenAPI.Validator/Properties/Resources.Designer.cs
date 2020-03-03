@@ -876,11 +876,11 @@ namespace OpenAPI.Validator.Properties
         /// <summary>
         ///   Looks up a localized string similar to Multiple resource providers are not allowed in a single spec. More than one the resource paths were found: &apos;{0}&apos;..
         /// </summary>
-        internal static string UniqueResourcePaths
+        internal static string PathResourceProviderMatchNamespace
         {
             get
             {
-                return ResourceManager.GetString("UniqueResourcePaths", resourceCulture);
+                return ResourceManager.GetString("PathResourceProviderMatchNamespace", resourceCulture);
             }
         }
 

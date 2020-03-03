@@ -20,6 +20,8 @@ namespace OpenAPI.Validator.Model.Utilities
         private static readonly Regex ResourceProviderPathPattern = new Regex(@"/providers/(?<resPath>[^{/]+)/", RegexOptions.IgnoreCase);
         private static readonly Regex PropNameRegEx = new Regex(@"^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)+$|^[a-z0-9\$-]+$|^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)*[A-Z]{1,3}$");
 
+        private static readonly Regex ResourceProviderNamespaceRegex = new Regex(@"(resource-manager|data-plane)/(?<namespace>[\w\.]+)/");
+
         public static readonly Regex ListBySidRegEx = new Regex(@".+_(List|ListBySubscriptionId|ListBySubscription|ListBySubscriptions)$", RegexOptions.IgnoreCase);
         public static readonly Regex ListByRgRegEx = new Regex(@".+_ListByResourceGroup$", RegexOptions.IgnoreCase);
         public static readonly Regex TenantResourceRegEx = new Regex(@"/subscriptions/{.+}/resourceGroups/{.+}/", RegexOptions.IgnoreCase);
@@ -471,6 +473,24 @@ namespace OpenAPI.Validator.Model.Utilities
 
             return resourceProviders;
         }
+
+        /// <summary>
+        /// Return namespace from swagger file path.
+        /// </summary>
+        /// <param name="path"> swagger file path</param>
+        /// <example><code>azure-rest-api-specs/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01</code> becomes <code>Microsoft.Network</code></example>
+        /// <returns>namespace</returns>
+        public static string GetRPNamespaceFromFilePath(string path)
+        {
+            Match match = ResourceProviderNamespaceRegex.Match(path);
+            if (match.Success)
+            {
+                string key = match.Groups[2].Value;
+                return key;
+            }
+            return "";
+        }
+
 
 
         /// <summary>

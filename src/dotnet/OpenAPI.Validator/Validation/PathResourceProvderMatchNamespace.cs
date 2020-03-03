@@ -11,12 +11,12 @@ using System.Linq;
 
 namespace OpenAPI.Validator.Validation
 {
-    public class UniqueResourcePaths : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
+    public class PathResourceProviderMatchNamespace : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {
         /// <summary>
         /// Id of the Rule.
         /// </summary>
-        public override string Id => "R2059";
+        public override string Id => "R3030";
 
         /// <summary>
         /// Violation category of the Rule.
@@ -34,7 +34,7 @@ namespace OpenAPI.Validator.Validation
         /// <remarks>
         /// This may contain placeholders '{0}' for parameterized messages.
         /// </remarks>
-        public override string MessageTemplate => Resources.UniqueResourcePaths;
+        public override string MessageTemplate => Resources.PathResourceProviderMatchNamespace;
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
@@ -54,8 +54,10 @@ namespace OpenAPI.Validator.Validation
         public override bool IsValid(Dictionary<string, Dictionary<string, Operation>> paths, RuleContext context, out object[] formatParameters)
         {
             IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProviders(paths);
+            string resourceProviderNamespace = ValidationUtilities.GetRPNamespaceFromFilePath(context.File.ToString());
             formatParameters = new[] { string.Join(", ", resourceProviders) };
-            return resourceProviders.ToList().Count <= 1;
+            string lastResourceProvider = resourceProviders?.ToList().Count() > 0 ? resourceProviders.Last() : null;
+            return resourceProviders.ToList().Count <=1 || lastResourceProvider == resourceProviderNamespace;
         }
     }
 }
