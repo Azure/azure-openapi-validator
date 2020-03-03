@@ -41,6 +41,7 @@
         "fs": "^0.0.1-security",
         "js-yaml": "^3.8.4",
         "jsonpath": "^0.2.11",
+        "string.prototype.matchall": "^4.0.2",
         "vscode-jsonrpc": "^3.2.0"
     }
 }
