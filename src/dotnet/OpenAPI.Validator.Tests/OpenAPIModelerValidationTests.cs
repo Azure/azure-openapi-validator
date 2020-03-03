@@ -78,13 +78,13 @@ namespace OpenAPI.Validator.Tests
         }
 
         [Fact]
-        public void UniqueResourcePathsValidation()
+        public void PathResourceProviderMatchNamespaceValidation()
         {
-            var messages = GetValidationMessagesForRule<UniqueResourcePaths>("network-interfaces-api.json");
+            var messages = GetValidationMessagesForRule<PathResourceProviderMatchNamespace>("network-interfaces-api.json");
             Assert.Equal(messages.Count(), 1);
 
             // resource provider in path doesn't match with namespace.
-            messages = GetValidationMessagesForRule<UniqueResourcePaths>("resource-manager/Microsoft.Network/network-interface-invalid.json");
+            messages = GetValidationMessagesForRule<PathResourceProviderMatchNamespace>("resource-manager/Microsoft.Network/network-interface-invalid.json");
             Assert.Equal(messages.Count(), 1);
         }
 

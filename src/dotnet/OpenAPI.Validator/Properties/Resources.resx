@@ -207,7 +207,7 @@
   <data name="ServiceDefinitionParametersMissingMessage" xml:space="preserve">
     <value>Parameter "{0}" is referenced but not defined in the global parameters section of Service Definition</value>
   </data>
-  <data name="UniqueResourcePaths" xml:space="preserve">
+  <data name="PathResourceProviderMatchNamespace" xml:space="preserve">
     <value>The last resource provider '{0}' doesn't match the namespace.</value>
   </data>
   <data name="GuidUsageNotRecommended" xml:space="preserve">

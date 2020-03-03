@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace OpenAPI.Validator.Validation
 {
-    public class UniqueResourcePaths : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
+    public class PathResourceProviderMatchNamespace : TypedRule<Dictionary<string, Dictionary<string, Operation>>>
     {
         /// <summary>
         /// Id of the Rule.
@@ -34,7 +34,7 @@ namespace OpenAPI.Validator.Validation
         /// <remarks>
         /// This may contain placeholders '{0}' for parameterized messages.
         /// </remarks>
-        public override string MessageTemplate => Resources.UniqueResourcePaths;
+        public override string MessageTemplate => Resources.PathResourceProviderMatchNamespace;
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
