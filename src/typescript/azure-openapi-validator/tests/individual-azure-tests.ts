@@ -21,6 +21,7 @@ import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
 import { OperationIdRequired } from "../rules/OperationIdRequired";
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
+import { XmsEnumNameUnique } from "./../rules/XmsEnumNameUnique";
 
 import * as assert from "assert";
 
@@ -46,7 +47,7 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1);
     assert(
       messages[0].Text ===
-        "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
+      "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
     );
   }
   @test
@@ -123,6 +124,17 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumMustNotHaveEmptyValue, 1);
+    assert.deepEqual(messages.length, 1);
+  }
+
+  @test async "extensions x-ms-enum must not have duplicate name"() {
+    const fileName = "XmsEnumWithDuplicateNamejson";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, XmsEnumNameUnique, 1);
     assert.deepEqual(messages.length, 1);
   }
 }
