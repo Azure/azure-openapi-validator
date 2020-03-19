@@ -17,7 +17,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.definitions",
   run: function* (doc, node, path) {
-    const msg: string = `extension x-ms-enum name must not contain case-insensitive duplicated value and make sure every name of xms-enum unique.`;
+    const msg: string = `Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique.`;
     if (node) {
       let enumList: string[] = []
       for (const section of nodes(
