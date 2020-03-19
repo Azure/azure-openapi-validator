@@ -15,7 +15,7 @@ rules.push({
   appliesTo_JsonQuery: "$.info[\"x-ms-code-generation-settings\"]",
   run: function* (doc, node, path) {
     if (node) {
-      yield { message: `The extenison : x-ms-code-generation-settings was deprecated. Consider remove it from the swagger`, location: path };
+      yield { message: `The x-ms-code-generation-settings extenison was deprecated. Consider remove it from the swagger`, location: path };
     }
   }
 });
