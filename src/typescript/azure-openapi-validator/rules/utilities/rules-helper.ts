@@ -17,7 +17,7 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
     response = "200";
   } else {
     var twoHundreds = [];
-    responses.forEach(function(value) {
+    responses.forEach(function (value) {
       if (value.startsWith("2")) {
         twoHundreds.push(value);
       }
@@ -29,7 +29,7 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
   return response;
 }
 
-function getResponseSchema(response: Object, doc): any {
+export function getResponseSchema(response: Object, doc): any {
   const schema = response["schema"];
   if (schema === undefined || schema === null) {
     return;
