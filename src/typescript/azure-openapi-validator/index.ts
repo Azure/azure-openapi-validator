@@ -19,7 +19,7 @@ require("./rules/OperationIdRequired");
 require("./rules/EnumMustHaveType");
 require("./rules/EnumUniqueValue");
 require("./rules/EnumMustNotHaveEmptyValue");
-require("./rules/XmsCodeGenerationSettingDeprecated");
+require("./rules/DeprecatedXmsCodeGenerationSetting");
 
 export function run(
   document: string,

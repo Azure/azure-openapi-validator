@@ -21,7 +21,7 @@ import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
 import { OperationIdRequired } from "../rules/OperationIdRequired";
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
-import { XmsCodeGenerationSettingDeprecated } from "./../rules/XmsCodeGenerationSettingDeprecated";
+import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting";
 
 import * as assert from "assert";
 
@@ -134,7 +134,7 @@ class IndividualAzureTests {
       OpenApiTypes.arm,
       MergeStates.individual
     );
-    assertValidationRuleCount(messages, XmsCodeGenerationSettingDeprecated, 1);
+    assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1);
     assert.deepEqual(messages.length, 1);
   }
 }

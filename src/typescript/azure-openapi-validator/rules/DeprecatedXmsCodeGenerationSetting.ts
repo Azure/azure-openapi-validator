@@ -3,19 +3,19 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-export const XmsCodeGenerationSettingDeprecated: string = "XmsCodeGenerationSettingDeprecated";
+export const DeprecatedXmsCodeGenerationSetting: string = "DeprecatedXmsCodeGenerationSetting";
 rules.push({
   id: "R4006",
-  name: XmsCodeGenerationSettingDeprecated,
+  name: DeprecatedXmsCodeGenerationSetting,
   severity: "warning",
   category: "ARMViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.arm,
+  openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
 
   appliesTo_JsonQuery: "$.info[\"x-ms-code-generation-settings\"]",
   run: function* (doc, node, path) {
     if (node) {
-      yield { message: `The x-ms-code-generation-settings extenison was deprecated. Consider remove it from the swagger`, location: path };
+      yield { message: `The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.`, location: path };
     }
   }
 });
