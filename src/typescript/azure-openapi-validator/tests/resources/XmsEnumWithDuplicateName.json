@@ -8,7 +8,7 @@
     "host": "management.azure.com",
     "paths": {
         "/plants": {
-            "get": {
+            "put": {
                 "description": "Get a list of plants.",
                 "operationId": "Plants_List",
                 "x-ms-pageable": {

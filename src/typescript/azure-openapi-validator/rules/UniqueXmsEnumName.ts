@@ -3,17 +3,17 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule";
-export const XmsEnumNameUnique: string = "XmsEnumNameUnique";
+export const UniqueXmsEnumName: string = "UniqueXmsEnumName";
 import { nodes } from "jsonpath";
 
 var enumList: string[] = []
 
 rules.push({
   id: "R4005",
-  name: XmsEnumNameUnique,
-  severity: "warning",
-  category: "ARMViolation",
-  mergeState: MergeStates.individual,
+  name: UniqueXmsEnumName,
+  severity: "error",
+  category: "SDKViolation",
+  mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.definitions",
   run: function* (doc, node, path) {
@@ -32,7 +32,6 @@ rules.push({
       if (
         enumList.some(value => {
           if (caseInsensitiveSet.has(value.toLowerCase())) {
-            console.log("return true")
             return true;
           }
           caseInsensitiveSet.add(value.toLowerCase());

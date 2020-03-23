@@ -19,7 +19,7 @@ require("./rules/OperationIdRequired");
 require("./rules/EnumMustHaveType");
 require("./rules/EnumUniqueValue");
 require("./rules/EnumMustNotHaveEmptyValue");
-require("./rules/XmsEnumNameUnique");
+require("./rules/UniqueXmsEnumName");
 
 export function run(
   document: string,
