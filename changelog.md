@@ -4,6 +4,7 @@
 
 ### New validation rules
 - A new rule.
+- A new rule.
 
 ## What's New (02/18/2020)
 
