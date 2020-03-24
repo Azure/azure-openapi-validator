@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (02/19/2020)
+
+### New validation rules
+- A new rule.
+
 ## What's New (02/18/2020)
 
 ### New validation rules
