@@ -1,5 +1,16 @@
 # Changelog
 
+## What's New (03/27/2020)
+
+### Changed Rule
+
+- OperationIdRequired rule - change severity to error.
+- EnumUniqueValue rule: change category to SDKViolation , severity to error.
+- EnumMustHaveType rule: change category to SDKViolation , severity to error.
+- EnumMustNotHaveEmptyValue: change category to SDKViolation , severity to error.
+- PathResourceProviderNamePascalCase: change severity to error.
+- PathResourceTypeNameCamelCase: change severity to error.
+
 ## What's New (02/18/2020)
 
 ### New validation rules

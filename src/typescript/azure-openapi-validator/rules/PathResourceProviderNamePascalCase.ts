@@ -8,12 +8,12 @@ export const PathResourceProviderNamePascalCase: string =
 rules.push({
   id: "R3020",
   name: PathResourceProviderNamePascalCase,
-  severity: "warning",
+  severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
 
-  run: function*(doc, node, path) {
+  run: function* (doc, node, path) {
     if (node.paths !== undefined) {
       const msg: string =
         "Resource provider naming must follow the pascal case.";

@@ -8,12 +8,12 @@ export const EnumMustHaveType: string = "EnumMustHaveType";
 rules.push({
   id: "R3015",
   name: EnumMustHaveType,
-  severity: "warning",
-  category: "ARMViolation",
+  severity: "error",
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
-  run: function*(doc, node, path) {
+  run: function* (doc, node, path) {
     const msg: string = `Enum must define its type and "object" type is not allowed due to Autorest refuse to parse it.`;
     if (node.type === undefined || node.type.toLowerCase() === "object") {
       yield { message: `${msg}`, location: path };
