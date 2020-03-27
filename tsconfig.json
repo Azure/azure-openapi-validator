@@ -5,7 +5,10 @@
             "node"
         ],
         "target": "es2016",
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "lib": [
+            "esnext.asynciterable"
+        ]
     },
     "exclude": [
         "node_modules"

@@ -16,7 +16,7 @@ rules.push({
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths..responses",
-  run: function* (doc, node, path) {
+  asyncRun: async function* (doc, node, path) {
     const msg: string = "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content  ,consider fix it ";
     if (!node.default) {
       return
