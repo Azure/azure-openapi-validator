@@ -12,12 +12,12 @@ export const PathResourceTypeNameCamelCase: string =
 rules.push({
   id: "R3021",
   name: PathResourceTypeNameCamelCase,
-  severity: "warning",
+  severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
 
-  run: function*(doc, node, path) {
+  run: function* (doc, node, path) {
     if (node.paths !== undefined) {
       const msg: string = "Resource type naming must follow camel case.";
       const paths: string[] = Object.keys(node.paths);

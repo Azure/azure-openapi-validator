@@ -8,8 +8,8 @@ export const EnumMustNotHaveEmptyValue: string = "EnumMustNotHaveEmptyValue";
 rules.push({
   id: "R3029",
   name: EnumMustNotHaveEmptyValue,
-  severity: "warning",
-  category: "ARMViolation",
+  severity: "error",
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
