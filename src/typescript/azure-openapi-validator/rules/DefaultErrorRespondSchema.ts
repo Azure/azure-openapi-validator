@@ -3,14 +3,14 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from '../rule';
-import { getResponseSchema } from './utilities/rules-helper'
-export const ErrorRespondSchema: string = "ErrorRespondSchema";
+import { getResponseSchema, getResolvedResponseSchema } from './utilities/rules-helper'
+export const DefaultErrorRespondSchema: string = "DefaultErrorRespondSchema";
 
 const jp = require('jsonpath');
 
 rules.push({
   id: "R4007",
-  name: ErrorRespondSchema,
+  name: DefaultErrorRespondSchema,
   severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.individual,
@@ -21,8 +21,8 @@ rules.push({
     if (!node.default) {
       return
     }
-    let schema = getResponseSchema(node.default, doc)
-    let response = schema ? schema : node.default
+    let schema = await getResolvedResponseSchema(node.default, doc, path.concat(["default"]) as string[])
+    let response = schema ? schema : node.default.schema
     if (!response || !response.error || !response.error.code || !response.error.message) {
       yield { message: `${msg}`, location: path };
     }

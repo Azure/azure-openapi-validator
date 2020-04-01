@@ -38,6 +38,11 @@
         },
         "Error": {
             "properties": {
+                "code": {
+                    "type": "string",
+                    "readOnly": true,
+                    "description": "The error code."
+                },
                 "message": {
                     "type": "string",
                     "readOnly": true,

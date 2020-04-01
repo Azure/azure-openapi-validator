@@ -2,6 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+const jp = require('jsonpath');
+const $RefParser = require("@apidevtools/json-schema-ref-parser");
+import { resolveNestedSchema } from './resolveNestedSchema'
 
 const matchAll = require("string.prototype.matchall");
 
@@ -41,6 +44,22 @@ export function getResponseSchema(response: Object, doc): any {
     return schemaProperties;
   }
   return schema.properties;
+}
+
+export async function getResolvedResponseSchema(response: Object, doc: any, paths: string[]): Promise<any> {
+  const schema = response["schema"];
+  if (!schema) {
+    return;
+  }
+  try {
+    let resolvedDoc = await $RefParser.dereference(doc)
+    let pathExpression = jp.stringify(paths.concat(["schema"]));
+    let resolvedSchema = jp.nodes(resolvedDoc, pathExpression)[0].value
+    return resolveNestedSchema(resolvedSchema)
+  }
+  catch (err) {
+    console.error(err);
+  }
 }
 
 
