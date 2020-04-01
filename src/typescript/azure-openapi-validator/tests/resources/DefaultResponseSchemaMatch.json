@@ -28,13 +28,26 @@
     },
     "definitions": {
         "ErrorResponse": {
-            "properties": {
-                "error": {
-                    "readOnly": true,
-                    "$ref": "#/definitions/Error"
+            "allOf": [
+                {
+                    "properties": {
+                        "error": {
+                            "allOf": [
+                                {
+                                    "readOnly": true
+                                },
+                                {
+                                    "$ref": "#/definitions/Error"
+                                },
+                                {
+                                    "$ref": "#/definitions/Error1"
+                                }
+                            ]
+                        }
+                    },
+                    "description": "The key vault error exception."
                 }
-            },
-            "description": "The key vault error exception."
+            ]
         },
         "Error": {
             "properties": {
@@ -42,7 +55,11 @@
                     "type": "string",
                     "readOnly": true,
                     "description": "The error code."
-                },
+                }
+            }
+        },
+        "Error1": {
+            "properties": {
                 "message": {
                     "type": "string",
                     "readOnly": true,
@@ -51,7 +68,7 @@
                 "innererror": {
                     "x-ms-client-name": "innerError",
                     "readOnly": true,
-                    "$ref": "#/definitions/Error"
+                    "$ref": "#/definitions/Error1"
                 }
             }
         }

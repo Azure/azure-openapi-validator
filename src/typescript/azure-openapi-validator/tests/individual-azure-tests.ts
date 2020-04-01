@@ -21,12 +21,8 @@ import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
 import { OperationIdRequired } from "../rules/OperationIdRequired";
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
-<<<<<<< HEAD
 import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting";
-import { ErrorRespondSchema } from "./../rules/ErrorRespondSchema";
-=======
-import { DefaultErrorRespondSchema } from "../rules/DefaultErrorRespondSchema";
->>>>>>> add R4007
+import { DefaultErrorResponseSchema } from "../rules/DefaultErrorResponseSchema";
 
 import * as assert from "assert";
 
@@ -75,7 +71,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1);
-    assert.deepEqual(messages.length, 1);
   }
 
   @test async "OperationId Required"() {
@@ -96,7 +91,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumMustHaveType, 2);
-    assert.deepEqual(messages.length, 2);
   }
 
   @test async "Enum unique value"() {
@@ -107,7 +101,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumUniqueValue, 1);
-    assert.deepEqual(messages.length, 1);
   }
 
   @test
@@ -119,7 +112,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1);
-    assert.deepEqual(messages.length, 1);
   }
   @test async "Enum must not have empty value"() {
     const fileName = "EnumMustNotHaveEmptyValue.json";
@@ -129,7 +121,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumMustNotHaveEmptyValue, 1);
-    assert.deepEqual(messages.length, 1);
   }
 
   @test async "x-ms-code-generation-settings depreated"() {
@@ -150,8 +141,7 @@ class IndividualAzureTests {
       OpenApiTypes.arm,
       MergeStates.individual
     );
-    assertValidationRuleCount(messages, DefaultErrorRespondSchema, 0);
-    assert.deepEqual(messages.length, 0);
+    assertValidationRuleCount(messages, DefaultErrorResponseSchema, 0);
   }
 
   @test async "default response schema does not correspond to document"() {
@@ -161,11 +151,6 @@ class IndividualAzureTests {
       OpenApiTypes.arm,
       MergeStates.individual
     );
-<<<<<<< HEAD
-    assertValidationRuleCount(messages, ErrorRespondSchema, 1);
-=======
-    assertValidationRuleCount(messages, DefaultErrorRespondSchema, 1);
-    assert.deepEqual(messages.length, 1);
->>>>>>> add R4007
+    assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1);
   }
 }

@@ -46,16 +46,29 @@ export function getResponseSchema(response: Object, doc): any {
   return schema.properties;
 }
 
-export async function getResolvedResponseSchema(response: Object, doc: any, paths: string[]): Promise<any> {
-  const schema = response["schema"];
+export async function getResolvedJson(doc: any): Promise<any> {
+  try {
+    let parser = new $RefParser();
+    let docCopy = JSON.parse(JSON.stringify(doc))
+    return await parser.dereference(docCopy)
+  }
+  catch (err) {
+    console.error(err);
+  }
+
+}
+
+export async function getResolvedResponseSchema(schema: Object): Promise<any> {
   if (!schema) {
     return;
   }
   try {
-    let resolvedDoc = await $RefParser.dereference(doc)
-    let pathExpression = jp.stringify(paths.concat(["schema"]));
-    let resolvedSchema = jp.nodes(resolvedDoc, pathExpression)[0].value
-    return resolveNestedSchema(resolvedSchema)
+    //  let parser = new $RefParser();
+    //  let docCopy = JSON.parse(JSON.stringify(doc))
+    //  let resolvedDoc = await parser.dereference(docCopy)
+    //let pathExpression = jp.stringify(paths.concat(["schema"]));
+    //  let resolvedSchema = jp.nodes(resolvedDoc, pathExpression)[0].value
+    return resolveNestedSchema(schema)
   }
   catch (err) {
     console.error(err);

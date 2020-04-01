@@ -20,6 +20,7 @@ require("./rules/EnumMustHaveType");
 require("./rules/EnumUniqueValue");
 require("./rules/EnumMustNotHaveEmptyValue");
 require("./rules/DeprecatedXmsCodeGenerationSetting");
+require("./rules/DefaultErrorResponseSchema");
 
 
 export async function run(

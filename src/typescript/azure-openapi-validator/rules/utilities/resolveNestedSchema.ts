@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-
-const $RefParser = require("@apidevtools/json-schema-ref-parser");
 type DataType =
   | "integer"
   | "number"
@@ -32,9 +30,9 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
     let copySchema = copyObject(schema)
     for (let k in schema) {
       if (resoleveFuncs[k]) {
-        let copy = resoleveFuncs[k](schema[k])
+        let result = resoleveFuncs[k](schema[k])
         delete copySchema[k]
-        copyProperties(copy, copySchema)
+        copyProperties(result, copySchema)
       }
       else if (typeof schema[k] === "object") {
         let copy = resolveNestedSchemaObject(schema[k])
@@ -63,28 +61,21 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
     }
   }
 
-  const arrayMap = (schemas: SchemaObject[]) => {
-    let copyschema = copyObject(schemas);
-    schemas.forEach(function (v, k) {
-      let result = resolveNestedSchemaObject(schemas[k])
-      copyschema[k] = result;
-    })
-    return copyschema
-  }
-
   // a function to resolve nested schema objects
   const resolveNestedSchemaObject = (schemaObject: SchemaObject) => {
 
     if (typeof schemaObject !== "object") {
       return schemaObject
     }
+
+    // resolve circular reference
     if (seen.has(schemaObject)) {
       return schemaObject
     }
     seen.add(schemaObject)
 
     // ignore references
-    if (schemaObject.$ref !== undefined) {
+    if (schemaObject.$ref) {
       return schemaObject
     }
     // ignore primitive types
@@ -96,28 +87,28 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
       case "null":
         return schemaObject
     }
-
     return resolveSchemaObject(schemaObject)
   }
   // a function to resolve SchemaObject array
   const resolveOptionalSchemaObjectArray = (
     schemaObjectArray: SchemaObject[] | undefined
   ): SchemaObject[] | undefined => {
-    schemaObjectArray !== undefined
-      ? arrayMap(schemaObjectArray)
-      : undefined
+    if (schemaObjectArray) {
+      let copyschema = copyObject(schemaObjectArray);
+      schemaObjectArray.forEach(function (v, k) {
+        let result = resolveNestedSchemaObject(schemaObjectArray[k])
+        delete copyschema[k]
+        copyProperties(result, copyschema)
+      })
+      return copyschema
+    }
     return schemaObjectArray
   }
   // a function to resolve SchemaObject (top-level and nested)
   const resolveSchemaObject = (schemaObject: SchemaObject): SchemaObject => {
     const result = propertySetMap(schemaObject, {
-      properties: skipIfUndefined(properties =>
-        propertySetMap(properties, resolveNestedSchemaObject)
-      ),
-      additionalProperties: additionalProperties =>
-        additionalProperties === undefined || typeof additionalProperties !== "object"
-          ? additionalProperties
-          : resolveNestedSchemaObject(additionalProperties),
+      properties: skipIfUndefined(resolveNestedSchemaObject),
+      additionalProperties: skipIfUndefined(resolveNestedSchemaObject),
       items: skipIfUndefined(resolveNestedSchemaObject),
       allOf: resolveOptionalSchemaObjectArray,
       anyOf: resolveOptionalSchemaObjectArray,

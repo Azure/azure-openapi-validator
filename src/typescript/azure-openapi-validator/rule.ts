@@ -20,7 +20,7 @@ export interface ValidationMessage {
   location: JsonPath;
 }
 
-interface RuleBase {
+export interface Rule {
   readonly id: string; // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string; // see same website as above
   readonly category: ("ARMViolation" | "OneAPIViolation" | "SDKViolation");
@@ -30,11 +30,8 @@ interface RuleBase {
   readonly openapiType: OpenApiTypes;
 
   readonly appliesTo_JsonQuery?: string; // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
-}
-export interface Rule extends RuleBase {
   run?(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
   asyncRun?(openapiDocument: any, openapiSection: any, location: JsonPath): AsyncIterable<ValidationMessage>;
 }
-
 
 export const rules: Rule[] = [];
