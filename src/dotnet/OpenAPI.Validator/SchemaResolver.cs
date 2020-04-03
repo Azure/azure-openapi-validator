@@ -284,6 +284,10 @@ namespace OpenAPI.Validator
         public Schema FindProperty(Schema schema, string propertyName)
         {
             Schema returnedSchema = null;
+            if (schema == null)
+            {
+                return returnedSchema;
+            }
             ExpandAllOf(schema);
             if (schema.Properties != null &&
                 schema.Properties.ContainsKey(propertyName))
