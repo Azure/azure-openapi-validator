@@ -142,7 +142,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1);
-    assert.deepEqual(messages.length, 1);
   }
 
   @test async "default response schema correspond to document"() {
