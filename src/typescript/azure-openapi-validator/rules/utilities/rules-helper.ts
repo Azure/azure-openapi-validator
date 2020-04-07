@@ -2,6 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+const jp = require('jsonpath');
+const $RefParser = require("@apidevtools/json-schema-ref-parser");
+import { resolveNestedSchema } from './resolveNestedSchema'
 
 const matchAll = require("string.prototype.matchall");
 
@@ -17,7 +20,7 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
     response = "200";
   } else {
     var twoHundreds = [];
-    responses.forEach(function(value) {
+    responses.forEach(function (value) {
       if (value.startsWith("2")) {
         twoHundreds.push(value);
       }
@@ -29,7 +32,7 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
   return response;
 }
 
-function getResponseSchema(response: Object, doc): any {
+export function getResponseSchema(response: Object, doc): any {
   const schema = response["schema"];
   if (schema === undefined || schema === null) {
     return;
@@ -41,6 +44,35 @@ function getResponseSchema(response: Object, doc): any {
     return schemaProperties;
   }
   return schema.properties;
+}
+
+export async function getResolvedJson(doc: any): Promise<any> {
+  try {
+    let parser = new $RefParser();
+    let docCopy = JSON.parse(JSON.stringify(doc))
+    return await parser.dereference(docCopy)
+  }
+  catch (err) {
+    console.error(err);
+  }
+
+}
+
+export async function getResolvedResponseSchema(schema: Object): Promise<any> {
+  if (!schema) {
+    return;
+  }
+  try {
+    //  let parser = new $RefParser();
+    //  let docCopy = JSON.parse(JSON.stringify(doc))
+    //  let resolvedDoc = await parser.dereference(docCopy)
+    //let pathExpression = jp.stringify(paths.concat(["schema"]));
+    //  let resolvedSchema = jp.nodes(resolvedDoc, pathExpression)[0].value
+    return resolveNestedSchema(schema)
+  }
+  catch (err) {
+    console.error(err);
+  }
 }
 
 

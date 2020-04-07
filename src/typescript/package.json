@@ -35,13 +35,15 @@
         "gulp-dotnet-cli": "0.4.0",
         "mocha": "3.2.0",
         "mocha-typescript": "1.0.22",
-        "typescript": "2.3.3"
+        "typescript": "^3.3.3"
     },
     "dependencies": {
         "fs": "^0.0.1-security",
         "js-yaml": "^3.8.4",
         "jsonpath": "^0.2.11",
         "string.prototype.matchall": "^4.0.2",
-        "vscode-jsonrpc": "^3.2.0"
+        "vscode-jsonrpc": "^3.2.0",
+        "json-refs": "^0.3.1",
+        "@apidevtools/json-schema-ref-parser": "^8.0.0"
     }
 }

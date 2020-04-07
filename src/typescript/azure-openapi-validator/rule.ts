@@ -15,7 +15,7 @@ export enum MergeStates {
   "composed"
 }
 
-interface ValidationMessage {
+export interface ValidationMessage {
   message: string;
   location: JsonPath;
 }
@@ -30,7 +30,8 @@ export interface Rule {
   readonly openapiType: OpenApiTypes;
 
   readonly appliesTo_JsonQuery?: string; // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
-  run(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
+  run?(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>;
+  asyncRun?(openapiDocument: any, openapiSection: any, location: JsonPath): AsyncIterable<ValidationMessage>;
 }
 
 export const rules: Rule[] = [];

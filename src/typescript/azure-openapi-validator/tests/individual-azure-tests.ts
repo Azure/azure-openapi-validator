@@ -23,6 +23,7 @@ import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCa
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
 import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting";
 import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema";
+import { DefaultErrorResponseSchema } from "../rules/DefaultErrorResponseSchema";
 
 import * as assert from "assert";
 
@@ -142,5 +143,25 @@ class IndividualAzureTests {
     );
     assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1);
     assert.deepEqual(messages.length, 1);
+  }
+
+  @test async "default response schema correspond to document"() {
+    const fileName = "DefaultResponseSchemaMatch.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, DefaultErrorResponseSchema, 0);
+  }
+
+  @test async "default response schema does not correspond to document"() {
+    const fileName = "DefaultResponseSchemaDismatch.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1);
   }
 }
