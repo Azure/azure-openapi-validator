@@ -21,6 +21,7 @@ import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue";
 import { OperationIdRequired } from "../rules/OperationIdRequired";
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
+import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting";
 
 import * as assert from "assert";
 
@@ -126,4 +127,14 @@ class IndividualAzureTests {
     assert.deepEqual(messages.length, 1);
   }
 
+  @test async "x-ms-code-generation-settings depreated"() {
+    const fileName = "InfoWithxmsCodeGenerationSetting.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1);
+    assert.deepEqual(messages.length, 1);
+  }
 }

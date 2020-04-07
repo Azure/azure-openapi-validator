@@ -20,6 +20,7 @@ require("./rules/EnumMustHaveType");
 require("./rules/EnumUniqueValue");
 require("./rules/EnumMustNotHaveEmptyValue");
 require("./rules/UniqueXmsEnumName");
+require("./rules/DeprecatedXmsCodeGenerationSetting");
 
 export function run(
   document: string,

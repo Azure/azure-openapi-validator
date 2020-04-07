@@ -8,13 +8,13 @@ export const EnumUniqueValue: string = "EnumUniqueValue";
 rules.push({
   id: "R3024",
   name: EnumUniqueValue,
-  severity: "warning",
-  category: "ARMViolation",
+  severity: "error",
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
-  run: function*(doc, node, path) {
-    const msg: string = `Enum value must not contain case-insensitive duplicated value and make sure every value in enum unique.`;
+  run: function* (doc, node, path) {
+    const msg: string = `Enum must not contain duplicated value (case insentive).`;
     if (node.enum !== undefined) {
       const enumList: string[] = node.enum;
       const caseInsensitiveSet = new Set<string>();

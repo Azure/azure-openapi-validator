@@ -9,7 +9,7 @@ export const OperationIdRequired: string = "OperationIdRequired";
 rules.push({
   id: "R4004",
   name: OperationIdRequired,
-  severity: "warning",
+  severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
