@@ -63,11 +63,6 @@ export async function getResolvedResponseSchema(schema: Object): Promise<any> {
     return;
   }
   try {
-    //  let parser = new $RefParser();
-    //  let docCopy = JSON.parse(JSON.stringify(doc))
-    //  let resolvedDoc = await parser.dereference(docCopy)
-    //let pathExpression = jp.stringify(paths.concat(["schema"]));
-    //  let resolvedSchema = jp.nodes(resolvedDoc, pathExpression)[0].value
     return resolveNestedSchema(schema)
   }
   catch (err) {
