@@ -22,7 +22,8 @@
         "jsonpath": "^0.2.11",
         "string.prototype.matchall": "^4.0.2",
         "ts-node": "^8.6.2",
-        "vscode-jsonrpc": "^3.2.0"
+        "vscode-jsonrpc": "^3.2.0",
+        "@apidevtools/json-schema-ref-parser": "8.0.0"
     },
     "scripts": {
         "postinstall": "cd src/dotnet/AutoRest && npm install"
