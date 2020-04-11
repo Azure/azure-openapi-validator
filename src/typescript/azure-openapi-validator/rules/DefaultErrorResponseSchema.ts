@@ -19,7 +19,7 @@ rules.push({
   asyncRun: async function* (doc, node, path) {
     const msg: string = "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content."
 
-    let resovedDoc = await getResolvedJson(doc)
+    let resolvedDoc = await getResolvedJson(doc)
 
     for (const n of nodes(doc, "$.paths..responses")) {
       let response: any = n.value
@@ -28,7 +28,7 @@ rules.push({
         let paths = n.path.concat(["default"])
         let pathExpression = stringify(paths.concat(["schema"]))
 
-        let schema = await getResolvedResponseSchema(nodes(resovedDoc, pathExpression)[0].value)
+        let schema = await getResolvedResponseSchema(nodes(resolvedDoc, pathExpression)[0].value)
 
         if (!schema || !schema.error || !schema.error.code || !schema.error.message) {
           yield { message: `${msg}`, location: paths };

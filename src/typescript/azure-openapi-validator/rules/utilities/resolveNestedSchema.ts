@@ -24,13 +24,20 @@ type SchemaObject = {
 const skipIfUndefined = <T>(f: (v: T) => T): ((v: T | undefined) => T | undefined) => v =>
   v !== undefined ? f(v) : undefined
 
+
+/**
+ * @param schema 
+ * Per https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md
+ * the swagger schema object allows some json schema keywords: allOf,oneOf,anyOf,properties,additionalProperties,items
+ * this function will resolve this keywords , return a flatted schema object
+ */
 export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
   const seen = new WeakSet()
-  const propertySetMap = (schema: SchemaObject, resoleveFuncs: any): SchemaObject => {
+  const propertySetMap = (schema: SchemaObject, resolveFuncs: any): SchemaObject => {
     let copySchema = copyObject(schema)
     for (let k in schema) {
-      if (resoleveFuncs[k]) {
-        let result = resoleveFuncs[k](schema[k])
+      if (resolveFuncs[k]) {
+        let result = resolveFuncs[k](schema[k])
         delete copySchema[k]
         copyProperties(result, copySchema)
       }
