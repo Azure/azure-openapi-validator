@@ -12,13 +12,9 @@ type DataType =
 
 type SchemaObject = {
   type?: DataType
-  items?: SchemaObject
   properties?: Array<SchemaObject>
-  additionalProperties?: SchemaObject | boolean
-  oneOf?: ReadonlyArray<SchemaObject>
   $ref?: string
   allOf?: ReadonlyArray<SchemaObject>
-  anyOf?: ReadonlyArray<SchemaObject>
 }
 
 const skipIfUndefined = <T>(f: (v: T) => T): ((v: T | undefined) => T | undefined) => v =>
@@ -28,8 +24,8 @@ const skipIfUndefined = <T>(f: (v: T) => T): ((v: T | undefined) => T | undefine
 /**
  * @param schema 
  * Per https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md
- * the swagger schema object allows some json schema keywords: allOf,oneOf,anyOf,properties,additionalProperties,items
- * this function will resolve this keywords , return a flatted schema object
+ * the swagger schema object allows some json schema keywords: allOf,properties,additionalProperties,items
+ * this function will resolve the keywords : allOf properties , return a flatted schema object
  */
 export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
   const seen = new WeakSet()
@@ -60,10 +56,14 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
     }
     for (let k in source) {
       if (typeof source[k] !== "object") {
-        dest[k] = source[k]
+        if (!dest[k]) {
+          dest[k] = source[k]
+        }
       }
       else {
-        dest[k] = copyObject(source[k]);
+        if (!dest[k]) {
+          dest[k] = copyObject(source[k]);
+        }
       }
     }
   }
@@ -115,11 +115,7 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
   const resolveSchemaObject = (schemaObject: SchemaObject): SchemaObject => {
     const result = propertySetMap(schemaObject, {
       properties: skipIfUndefined(resolveNestedSchemaObject),
-      additionalProperties: skipIfUndefined(resolveNestedSchemaObject),
-      items: skipIfUndefined(resolveNestedSchemaObject),
-      allOf: resolveOptionalSchemaObjectArray,
-      anyOf: resolveOptionalSchemaObjectArray,
-      oneOf: resolveOptionalSchemaObjectArray
+      allOf: resolveOptionalSchemaObjectArray
     })
     return result
   }
