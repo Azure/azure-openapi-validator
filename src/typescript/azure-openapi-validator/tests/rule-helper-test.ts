@@ -3,7 +3,7 @@ import {
   getAllResourceProvidersFromPath,
   getAllWordsFromPath,
   resourceProviderMustPascalCase,
-  resourceTypeMustCamelCase
+  resourceTypeMustCamelCase,
 } from "../rules/utilities/rules-helper";
 import * as assert from "assert";
 
@@ -33,7 +33,7 @@ class RuleHelperTests {
       "providers",
       "Microsoft.cache",
       "redis",
-      "name"
+      "name",
     ]);
 
     path = "////&^*/@/";
@@ -51,7 +51,7 @@ class RuleHelperTests {
       "providers",
       "Microsoft.Network",
       "virtualWans",
-      "VirtualWANName"
+      "VirtualWANName",
     ]);
   }
 
@@ -75,6 +75,7 @@ class RuleHelperTests {
     assert.equal(resourceTypeMustCamelCase("azureHDInsight"), true);
     assert.equal(resourceTypeMustCamelCase("azureHDInsight101"), true);
     assert.equal(resourceTypeMustCamelCase("az101ureHDInsight"), true);
+    assert.equal(resourceTypeMustCamelCase("signalR"), true);
 
     assert.equal(resourceTypeMustCamelCase("Cache"), false);
     assert.equal(resourceTypeMustCamelCase(".ache"), false);

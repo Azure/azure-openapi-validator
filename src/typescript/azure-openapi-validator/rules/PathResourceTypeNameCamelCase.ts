@@ -3,11 +3,11 @@ import { rules } from "../rule";
 import {
   getAllResourceProvidersFromPath,
   getAllWordsFromPath,
-  resourceTypeMustCamelCase
+  resourceTypeMustCamelCase,
 } from "../rules/utilities/rules-helper";
 
 export const PathResourceTypeNameCamelCase: string =
-  "PathResrouceTypeNameCamelCase";
+  "PathResourceTypeNameCamelCase";
 
 rules.push({
   id: "R3021",
@@ -27,15 +27,15 @@ rules.push({
           getAllResourceProvidersFromPath(it)
         );
         const resourceTypes = allWords.filter(
-          subPath => !resourceProviders.has(subPath)
+          (subPath) => !resourceProviders.has(subPath)
         );
-        if (resourceTypes.some(it => !resourceTypeMustCamelCase(it))) {
+        if (resourceTypes.some((it) => !resourceTypeMustCamelCase(it))) {
           yield {
             message: `${msg} Path: '${it}'`,
-            location: path.concat(["paths"])
+            location: path.concat(["paths"]),
           };
         }
       }
     }
-  }
+  },
 });
