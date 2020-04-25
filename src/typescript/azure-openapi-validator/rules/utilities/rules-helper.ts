@@ -17,7 +17,7 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
     response = "200";
   } else {
     var twoHundreds = [];
-    responses.forEach(function(value) {
+    responses.forEach(function (value) {
       if (value.startsWith("2")) {
         twoHundreds.push(value);
       }
@@ -43,15 +43,14 @@ function getResponseSchema(response: Object, doc): any {
   return schema.properties;
 }
 
-
 export function getAllResourceProvidersFromPath(path: string): string[] {
   const resourceProviderRegex: RegExp = new RegExp(/providers\/([\w\.]+)/, "g");
-  return Array.from(matchAll(path, resourceProviderRegex), m => m[1]);
+  return Array.from(matchAll(path, resourceProviderRegex), (m) => m[1]);
 }
 
 export function getAllWordsFromPath(path: string): string[] {
   const wordRegex: RegExp = new RegExp(/([\w\.]+)/, "g");
-  return Array.from(matchAll(path, wordRegex), m => m[1]);
+  return Array.from(matchAll(path, wordRegex), (m) => m[1]);
 }
 
 export function resourceProviderMustPascalCase(
@@ -68,12 +67,19 @@ export function resourceTypeMustCamelCase(resourceType: string): boolean {
   if (resourceType.length === 0) {
     return true;
   }
-  const pascalCase: RegExp = new RegExp("^[a-z][a-z0-9]+([A-Z]+[a-z0-9]+)*$");
+  const pascalCase: RegExp = new RegExp("^[a-z][a-z0-9]+([A-Z]+[a-z0-9]*)*$");
   return pascalCase.test(resourceType);
 }
 
 export function isValidOperation(operation: string): boolean {
-  let validOperations = ["put", "get", "patch", "post", "head", "options", "delete"]
+  let validOperations = [
+    "put",
+    "get",
+    "patch",
+    "post",
+    "head",
+    "options",
+    "delete",
+  ];
   return validOperations.indexOf(operation.toLowerCase()) !== -1;
 }
-
