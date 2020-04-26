@@ -1,5 +1,18 @@
 # Changelog
 
+## What's New (04/26/2020)
+
+### New validation rules
+
+- XmsEnumNameUnique rule - The rule will check if every x-ms-enum name unique.
+- XmsCodeGenerationSettingDeprecated rule: The rule ensure x-ms-code-generation-settings extenison should not be used.
+- DefaultErrorResponseSchema rule - The rule will check if default error reponese is corresponding to the ARM specification.
+- AvoidEmptyResponseSchema - The rule ensure the response schema is not empty.
+
+### bug fix
+
+- PathResourceTypeNameCamelCase: Typo & fix regex bug.
+
 ## What's New (03/27/2020)
 
 ### Changed Rule
