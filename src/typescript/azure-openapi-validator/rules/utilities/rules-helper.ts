@@ -46,9 +46,12 @@ export function getResponseSchema(response: Object, doc): any {
   return schema.properties;
 }
 
-export async function getResolvedJson(doc: any): Promise<any> {
+/**
+ * return a dereferenced json, also will resolve the circular $refs
+ */
+export async function getResolvedJson(doc: any): Promise<Object | undefined> {
   try {
-    let parser = new $RefParser();
+    const parser = new $RefParser();
     let docCopy = JSON.parse(JSON.stringify(doc))
     return await parser.dereference(docCopy)
   }
@@ -58,7 +61,11 @@ export async function getResolvedJson(doc: any): Promise<any> {
 
 }
 
-export async function getResolvedResponseSchema(schema: Object): Promise<any> {
+/*
+ * resolve the `allOf` and `properties` keywords in the schema 
+ * return a flatted json 
+ */
+export async function getResolvedResponseSchema(schema: Object): Promise<Object | undefined> {
   if (!schema) {
     return;
   }

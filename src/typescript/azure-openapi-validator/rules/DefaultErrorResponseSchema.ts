@@ -25,11 +25,21 @@ rules.push({
       let response: any = n.value
       if (response.default && response.default.schema) {
 
-        let paths = n.path.concat(["default"])
-        let pathExpression = stringify(paths.concat(["schema"]))
+        const paths = n.path.concat(["default"])
+        const pathExpression = stringify(paths.concat(["schema"]))
 
-        let schema = await getResolvedResponseSchema(nodes(resolvedDoc, pathExpression)[0].value)
+        const schema: any = await getResolvedResponseSchema(nodes(resolvedDoc, pathExpression)[0].value)
 
+        /*
+        * the schema should match below structure:
+          {
+            "error":{
+              "code":"error code",
+              "message":"error message"
+              ...
+            }
+          }
+        */
         if (!schema || !schema.error || !schema.error.code || !schema.error.message) {
           yield { message: `${msg}`, location: paths };
         }
