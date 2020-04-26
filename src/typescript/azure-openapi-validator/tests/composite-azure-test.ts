@@ -13,6 +13,9 @@ import {
 } from './utilities/tests-helper';
 import { DescriptionMustNotBeNodeName } from '../rules/DescriptionMustNotBeNodeName';
 import { PageableOperation } from '../rules/PageableOperation';
+import { UniqueXmsEnumName } from "../rules/UniqueXmsEnumName";
+import * as assert from "assert";
+
 
 @suite class CompositeAzureTests {
   @test async "description should not be property name"() {
@@ -31,5 +34,16 @@ import { PageableOperation } from '../rules/PageableOperation';
     const fileName: string = 'happyPath/PageableOperation.json';
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed);
     assertValidationRuleCount(messages, PageableOperation, 0);
+  }
+
+  @test async "extensions x-ms-enum must not have duplicate name"() {
+    const fileName = "XmsEnumWithDuplicateName.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed
+    );
+    assertValidationRuleCount(messages, UniqueXmsEnumName, 1);
+    assert.deepEqual(messages.length, 1);
   }
 }
