@@ -4,8 +4,12 @@ import {
   getAllWordsFromPath,
   resourceProviderMustPascalCase,
   resourceTypeMustCamelCase,
+  getResolvedResponseSchema,
+  getResolvedJson
 } from "../rules/utilities/rules-helper";
+import { resolveNestedSchema } from "../rules/utilities/resolveNestedSchema"
 import * as assert from "assert";
+import { readFileSync } from "fs";
 
 @suite
 class RuleHelperTests {
@@ -81,5 +85,34 @@ class RuleHelperTests {
     assert.equal(resourceTypeMustCamelCase(".ache"), false);
     assert.equal(resourceTypeMustCamelCase("Cach e"), false);
     assert.equal(resourceTypeMustCamelCase("Cach#e"), false);
+  }
+
+  @test async "resolve nested schema object"() {
+    const jsoncontent: string = readFileSync("./src/typescript/azure-openapi-validator/tests/resources/NestedSchema.json", { encoding: "utf-8" })
+    const json = JSON.parse(jsoncontent)
+    const resolveReferenceJson: any = await getResolvedJson(json)
+
+    let resolvedResponse = await getResolvedResponseSchema(resolveReferenceJson.definitions.ErrorResponse)
+    const expectResponse = {
+      "error": {
+        "readOnly": true,
+        "code": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The error code."
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The error message."
+        }
+      },
+      "description": "The key vault error exception."
+    }
+    assert.deepEqual(resolvedResponse, expectResponse)
+
+    resolvedResponse = await resolveNestedSchema(resolveReferenceJson.definitions.Error1)
+    const expectErrorKeys = ["message", "innererror"]
+    assert.deepEqual(Object.keys(resolvedResponse), expectErrorKeys)
   }
 }

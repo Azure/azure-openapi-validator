@@ -22,6 +22,8 @@ import { OperationIdRequired } from "../rules/OperationIdRequired";
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase";
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase";
 import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting";
+import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema";
+import { DefaultErrorResponseSchema } from "../rules/DefaultErrorResponseSchema";
 
 import * as assert from "assert";
 
@@ -70,7 +72,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1);
-    assert.deepEqual(messages.length, 1);
   }
 
   @test async "OperationId Required"() {
@@ -91,7 +92,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumMustHaveType, 2);
-    assert.deepEqual(messages.length, 2);
   }
 
   @test async "Enum unique value"() {
@@ -102,7 +102,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumUniqueValue, 1);
-    assert.deepEqual(messages.length, 1);
   }
 
   @test
@@ -114,7 +113,6 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1);
-    assert.deepEqual(messages.length, 1);
   }
   @test async "Enum must not have empty value"() {
     const fileName = "EnumMustNotHaveEmptyValue.json";
@@ -124,7 +122,16 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, EnumMustNotHaveEmptyValue, 1);
-    assert.deepEqual(messages.length, 1);
+  }
+
+  @test async "Must not have empty response schema"() {
+    const fileName = "EmptyResponseSchema.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, AvoidEmptyResponseSchema, 1);
   }
 
   @test async "x-ms-code-generation-settings depreated"() {
@@ -135,6 +142,25 @@ class IndividualAzureTests {
       MergeStates.individual
     );
     assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1);
-    assert.deepEqual(messages.length, 1);
+  }
+
+  @test async "default response schema correspond to document"() {
+    const fileName = "DefaultResponseSchemaMatch.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, DefaultErrorResponseSchema, 0);
+  }
+
+  @test async "default response schema does not correspond to document"() {
+    const fileName = "DefaultResponseSchemaDismatch.json";
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual
+    );
+    assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1);
   }
 }

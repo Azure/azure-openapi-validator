@@ -2,6 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+const jp = require('jsonpath');
+const $RefParser = require("@apidevtools/json-schema-ref-parser");
+import { resolveNestedSchema } from './resolveNestedSchema'
 
 const matchAll = require("string.prototype.matchall");
 
@@ -29,7 +32,7 @@ function getMostSuccessfulResponseKey(responses: string[]): string {
   return response;
 }
 
-function getResponseSchema(response: Object, doc): any {
+export function getResponseSchema(response: Object, doc): any {
   const schema = response["schema"];
   if (schema === undefined || schema === null) {
     return;
@@ -41,6 +44,37 @@ function getResponseSchema(response: Object, doc): any {
     return schemaProperties;
   }
   return schema.properties;
+}
+
+/**
+ * return a dereferenced json, also will resolve the circular $refs
+ */
+export async function getResolvedJson(doc: any): Promise<Object | undefined> {
+  try {
+    const parser = new $RefParser();
+    let docCopy = JSON.parse(JSON.stringify(doc))
+    return await parser.dereference(docCopy)
+  }
+  catch (err) {
+    console.error(err);
+  }
+
+}
+
+/*
+ * resolve the `allOf` and `properties` keywords in the schema 
+ * return a flatted json 
+ */
+export async function getResolvedResponseSchema(schema: Object): Promise<Object | undefined> {
+  if (!schema) {
+    return;
+  }
+  try {
+    return resolveNestedSchema(schema)
+  }
+  catch (err) {
+    console.error(err);
+  }
 }
 
 export function getAllResourceProvidersFromPath(path: string): string[] {
