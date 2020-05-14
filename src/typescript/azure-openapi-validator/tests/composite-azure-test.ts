@@ -10,6 +10,7 @@ import { Message } from "../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { DescriptionMustNotBeNodeName } from "../rules/DescriptionMustNotBeNodeName"
 import { PageableOperation } from "../rules/PageableOperation"
+import { RequiredSystemDataInNewApiVersions } from "../rules/RequiredSystemDataInNewApiVersions"
 import { UniqueXmsEnumName } from "../rules/UniqueXmsEnumName"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 
@@ -44,5 +45,12 @@ class CompositeAzureTests {
     const fileName = "XmsEnumWithDuplicateNameAndSameEnties.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, UniqueXmsEnumName, 0)
+  }
+
+  @test public async "new apiVersion have operation without systemData"() {
+    const fileName = "NewApiVersionHaveOperationWithoutSystemData.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, RequiredSystemDataInNewApiVersions, 1)
+    assert.deepEqual(messages.length, 1)
   }
 }
