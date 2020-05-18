@@ -2,6 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import * as assert from "assert"
 import { safeLoad } from "js-yaml"
 import { only, skip, slow, suite, test, timeout } from "mocha-typescript"
 import { run } from "../../azure-openapi-validator"
@@ -18,12 +19,10 @@ import { EnumUniqueValue } from "../rules/EnumUniqueValue"
 import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBeSpecified"
 import { OperationIdRequired } from "../rules/OperationIdRequired"
 import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContainsUrlVerb"
+import { RequiredDefaultResponse } from "../rules/RequiredDefaultResponse"
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
-
-import * as assert from "assert"
-
 @suite
 class IndividualAzureTests {
   @test public async "control characters not allowed test"() {
@@ -106,5 +105,11 @@ class IndividualAzureTests {
     const fileName = "DefaultResponseSchemaDismatch.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1)
+  }
+
+  @test public async "default response required"() {
+    const fileName = "DefaultResponseMissed.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, RequiredDefaultResponse, 1)
   }
 }
