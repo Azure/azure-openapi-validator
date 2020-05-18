@@ -85,6 +85,23 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
       case "null":
         return schemaObject
     }
+    /**
+     * Since this object schemaObject is under the keyword: properties
+     * Its properties won't be a keyword again, so here we need to get its all properties then invoke resolveSchemaObject in a loop
+     * , not to invoke resolveSchemaObject directly because that will cause the `properties` property be considered
+     * as the keyword properties
+     * e.g.
+     * { --- root Object
+     *   properties : --- this is keyword
+     *   { --- schemaObject under keyword 
+     *     "properties":{  --- this is a property
+     *       type:"string"
+     *     },
+     *    "another propertie":{
+     *    }
+     *   }
+     * }
+     */
     const copySchema = copyObject(schemaObject)
     for (const prop in schemaObject) {
       if (typeof copySchema[prop] === "object") {
