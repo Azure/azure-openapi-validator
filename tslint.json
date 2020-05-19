@@ -1,0 +1,22 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "object-literal-sort-keys": false,
+    "interface-name": false,
+    "jsdoc-format": false,
+    "forin": false,
+    "member-ordering": false,
+    "no-unsafe-any": false,
+    "no-null-keyword": false,
+    "prettier": true,
+    "no-console": false,
+    "no-var-requires": false,
+    "no-bitwise": false,
+    "only-arrow-functions": false,
+    "no-shadowed-variable": false,
+    "no-namespace":false
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"]
+}

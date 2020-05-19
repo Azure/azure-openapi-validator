@@ -21,6 +21,9 @@ jobs:
         inputs:
           verbose: false
 
+      - script: 'npm run tslint'
+        displayName: 'tslint'
+
       - script: 'gulp build'
         displayName: 'gulp build'
 

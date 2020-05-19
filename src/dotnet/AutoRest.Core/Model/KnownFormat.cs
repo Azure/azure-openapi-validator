@@ -27,6 +27,7 @@ namespace AutoRest.Core.Model
         base64url,
         @decimal,
         unixtime,
-        file
+        file,
+        time
     }
 }

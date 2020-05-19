@@ -1,52 +1,43 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-type DataType =
-  | "integer"
-  | "number"
-  | "string"
-  | "boolean"
-  | "null"
-  | "object"
-  | "array"
+type DataType = "integer" | "number" | "string" | "boolean" | "null" | "object" | "array"
 
-type SchemaObject = {
+interface SchemaObject {
   type?: DataType
-  properties?: Array<SchemaObject>
+  properties?: ReadonlyArray<SchemaObject>
   $ref?: string
   allOf?: ReadonlyArray<SchemaObject>
 }
 
-const skipIfUndefined = <T>(f: (v: T) => T): ((v: T | undefined) => T | undefined) => v =>
-  v !== undefined ? f(v) : undefined
-
+const skipIfUndefined = <T>(f: (v: T) => T): ((v: T | undefined) => T | undefined) => v => (v !== undefined ? f(v) : undefined)
 
 /**
- * @param schema 
+ * @param schema
  * Per https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md
  * the swagger schema object allows some json schema keywords: allOf,properties,additionalProperties,items
  * this function will resolve the keywords : allOf properties , return a flatted schema object
  */
 export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
   const seen = new WeakSet()
-  const propertySetMap = (schema: SchemaObject, resolveFuncs: any): SchemaObject => {
-    let copySchema = copyObject(schema)
-    for (let k in schema) {
+  const propertySetMap = (schemaObject: SchemaObject, resolveFuncs: any): SchemaObject => {
+    const copySchema = copyObject(schemaObject)
+    for (const k in schemaObject) {
+      // schema keyword
       if (resolveFuncs[k]) {
-        let result = resolveFuncs[k](schema[k])
+        const result = resolveFuncs[k](schemaObject[k])
         delete copySchema[k]
         copyProperties(result, copySchema)
-      }
-      else if (typeof schema[k] === "object") {
-        let copy = resolveNestedSchemaObject(schema[k])
-        copySchema[k] = copy
+      } else if (typeof schemaObject[k] === "object") {
+        // normal schema object e.g. { type:string,minLength:1}
+        copySchema[k] = resolveSchemaObject(schemaObject[k])
       }
     }
     return copySchema
   }
 
   const copyObject = (source: any): any => {
-    let copy = Object.assign({}, source);
+    const copy = Object.assign({}, source)
     return copy
   }
 
@@ -54,23 +45,23 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
     if (!source || !dest) {
       return
     }
-    for (let k in source) {
+    for (const k in source) {
       if (typeof source[k] !== "object") {
         if (!dest[k]) {
           dest[k] = source[k]
         }
-      }
-      else {
+      } else {
         if (!dest[k]) {
-          dest[k] = copyObject(source[k]);
+          dest[k] = copyObject(source[k])
+        } else {
+          copyProperties(source[k], dest[k])
         }
       }
     }
   }
 
-  // a function to resolve nested schema objects
-  const resolveNestedSchemaObject = (schemaObject: SchemaObject) => {
-
+  // a function to resolve properties schema objects
+  const resolvePropertiesSchemaObject = (schemaObject: SchemaObject) => {
     if (typeof schemaObject !== "object") {
       return schemaObject
     }
@@ -94,16 +85,37 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
       case "null":
         return schemaObject
     }
-    return resolveSchemaObject(schemaObject)
+    /**
+     * Since this object schemaObject is under the keyword: properties
+     * Its properties won't be a keyword again, so here we need to get its all properties then invoke resolveSchemaObject in a loop
+     * , not to invoke resolveSchemaObject directly because that will cause the `properties` property be considered
+     * as the keyword properties
+     * e.g.
+     * { --- root Object
+     *   properties : --- this is keyword
+     *   { --- schemaObject under keyword 
+     *     "properties":{  --- this is a property
+     *       type:"string"
+     *     },
+     *    "another propertie":{
+     *    }
+     *   }
+     * }
+     */
+    const copySchema = copyObject(schemaObject)
+    for (const prop in schemaObject) {
+      if (typeof copySchema[prop] === "object") {
+        copySchema[prop] = resolveSchemaObject(schemaObject[prop])
+      }
+    }
+    return copySchema
   }
-  // a function to resolve SchemaObject array
-  const resolveOptionalSchemaObjectArray = (
-    schemaObjectArray: SchemaObject[] | undefined
-  ): SchemaObject[] | undefined => {
+  // a function to resolve allOf array
+  const resolveOptionalSchemaObjectArray = (schemaObjectArray: SchemaObject[] | undefined): SchemaObject[] | undefined => {
     if (schemaObjectArray) {
-      let copyschema = copyObject(schemaObjectArray);
-      schemaObjectArray.forEach(function (v, k) {
-        let result = resolveNestedSchemaObject(schemaObjectArray[k])
+      const copyschema = copyObject(schemaObjectArray)
+      schemaObjectArray.forEach(function(v, k) {
+        const result = resolveSchemaObject(schemaObjectArray[k])
         delete copyschema[k]
         copyProperties(result, copyschema)
       })
@@ -114,7 +126,7 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
   // a function to resolve SchemaObject (top-level and nested)
   const resolveSchemaObject = (schemaObject: SchemaObject): SchemaObject => {
     const result = propertySetMap(schemaObject, {
-      properties: skipIfUndefined(resolveNestedSchemaObject),
+      properties: skipIfUndefined(resolvePropertiesSchemaObject),
       allOf: resolveOptionalSchemaObjectArray
     })
     return result
