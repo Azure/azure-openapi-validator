@@ -39,4 +39,10 @@ class CompositeAzureTests {
     assertValidationRuleCount(messages, UniqueXmsEnumName, 1)
     assert.deepEqual(messages.length, 1)
   }
+
+  @test public async "extensions x-ms-enum can have duplicate name with same enties"() {
+    const fileName = "XmsEnumWithDuplicateNameAndSameEnties.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, UniqueXmsEnumName, 0)
+  }
 }
