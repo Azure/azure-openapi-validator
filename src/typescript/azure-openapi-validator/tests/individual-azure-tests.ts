@@ -12,6 +12,7 @@ import { MergeStates, OpenApiTypes } from "../rule"
 import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema"
 import { ControlCharactersAreNotAllowed } from "../rules/ControlCharactersAreNotAllowed"
 import { DefaultErrorResponseSchema } from "../rules/DefaultErrorResponseSchema"
+import { DeleteOperationResponses } from "../rules/DeleteOperationResponses"
 import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting"
 import { EnumMustHaveType } from "../rules/EnumMustHaveType"
 import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue"
@@ -111,5 +112,11 @@ class IndividualAzureTests {
     const fileName = "DefaultResponseMissed.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, RequiredDefaultResponse, 1)
+  }
+
+  @test public async "delete response required"() {
+    const fileName = "DeleteResponseMissed.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, DeleteOperationResponses, 1)
   }
 }

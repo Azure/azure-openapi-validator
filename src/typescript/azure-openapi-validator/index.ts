@@ -23,6 +23,7 @@ require("./rules/UniqueXmsEnumName")
 require("./rules/DeprecatedXmsCodeGenerationSetting")
 require("./rules/AvoidEmptyResponseSchema")
 require("./rules/DefaultErrorResponseSchema")
+require("./rules/DeleteOperationResponses")
 
 export async function run(
   document: string,
