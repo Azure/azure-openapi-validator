@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (05/20/2020)
+
+### Changed Rule
+
+- XmsEnumNameUnique rule -  the rule should passed if the two enums are defined with same enties.
+
 ## What's New (04/26/2020)
 
 ### New validation rules
