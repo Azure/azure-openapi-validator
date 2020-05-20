@@ -93,7 +93,7 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
      * e.g.
      * { --- root Object
      *   properties : --- this is keyword
-     *   { --- schemaObject under keyword 
+     *   { --- schemaObject under keyword
      *     "properties":{  --- this is a property
      *       type:"string"
      *     },

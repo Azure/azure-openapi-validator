@@ -27,6 +27,7 @@ require("./rules/DefaultErrorResponseSchema")
 require("./rules/DeleteOperationResponses")
 require("./rules/XmsPageableMustHaveCorrespondingResponse")
 require("./rules/RequiredSystemDataInNewApiVersions")
+require("./rules/RequiredDefaultResponse")
 
 export async function run(
   document: string,
