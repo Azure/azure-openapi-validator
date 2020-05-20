@@ -27,11 +27,14 @@ rules.push({
             /**
              * if existing , check if the two enums' enties is same.
              */
-            if (existingEnum.length !== curEnum.length || existingEnum.some(value => curEnum.indexOf(value) === -1)) {
+            if (
+              existingEnum.length !== curEnum.length ||
+              existingEnum.some((value, index) => curEnum[index].toLowerCase() !== value.toLowerCase())
+            ) {
               yield { message: `${msg} The duplicate x-ms-enum name is ${enumName}`, location: path.concat(section.path.slice(1)) }
             }
           } else {
-            enumMap.set(enumName, section.value.enum.sort())
+            enumMap.set(enumName, section.value.enum)
           }
         }
       }
