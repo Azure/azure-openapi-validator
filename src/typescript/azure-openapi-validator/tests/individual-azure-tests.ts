@@ -17,10 +17,12 @@ import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGe
 import { EnumMustHaveType } from "../rules/EnumMustHaveType"
 import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue"
 import { EnumUniqueValue } from "../rules/EnumUniqueValue"
+import { IntegerTypeMustHaveFormat } from "../rules/IntegerTypeMustHaveFormat"
 import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBeSpecified"
 import { OperationIdRequired } from "../rules/OperationIdRequired"
 import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContainsUrlVerb"
 import { RequiredDefaultResponse } from "../rules/RequiredDefaultResponse"
+import { XmsPageableMustHaveCorrespondingResponse } from "../rules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
@@ -118,5 +120,17 @@ class IndividualAzureTests {
     const fileName = "DeleteResponseMissed.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DeleteOperationResponses, 1)
+  }
+
+  @test public async "interger must have format"() {
+    const fileName = "IntegerWithoutFormat.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, IntegerTypeMustHaveFormat, 1)
+  }
+
+  @test public async "x-ms-pageable must have corresponding property"() {
+    const fileName = "PageableOperationWithoutCorrespondingProp.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 1)
   }
 }

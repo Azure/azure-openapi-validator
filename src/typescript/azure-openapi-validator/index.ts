@@ -19,11 +19,14 @@ require("./rules/OperationIdRequired")
 require("./rules/EnumMustHaveType")
 require("./rules/EnumUniqueValue")
 require("./rules/EnumMustNotHaveEmptyValue")
+require("./rules/IntegerTypeMustHaveFormat")
 require("./rules/UniqueXmsEnumName")
 require("./rules/DeprecatedXmsCodeGenerationSetting")
 require("./rules/AvoidEmptyResponseSchema")
 require("./rules/DefaultErrorResponseSchema")
 require("./rules/DeleteOperationResponses")
+require("./rules/XmsPageableMustHaveCorrespondingResponse")
+require("./rules/RequiredSystemDataInNewApiVersions")
 
 export async function run(
   document: string,
