@@ -42,7 +42,7 @@ export function resolveNestedSchema(schema: SchemaObject): SchemaObject {
   }
 
   const copyProperties = (source: any, dest: any) => {
-    if (!source || !dest) {
+    if (typeof source !== "object" || typeof dest !== "object") {
       return
     }
     for (const k in source) {

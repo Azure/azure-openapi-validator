@@ -59,7 +59,7 @@ export async function getResolvedJson(doc: any): Promise<object | undefined> {
   }
 }
 
-export async function getResponseSchemaFromPath(schemaPath: JsonPath, doc: any): Promise<object | undefined> {
+export async function getResolvedSchemaByPath(schemaPath: JsonPath, doc: any): Promise<object | undefined> {
   const resolvedJson = await getResolvedJson(doc)
   const pathExpression = stringify(schemaPath)
   const result = nodes(resolvedJson, pathExpression)

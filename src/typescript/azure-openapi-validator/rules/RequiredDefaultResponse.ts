@@ -14,11 +14,11 @@ rules.push({
   category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "$.paths..responses",
+  appliesTo_JsonQuery: "$.paths.*.*.responses",
   *run(doc, node, path) {
     if (!node.default) {
       yield {
-        message: `The response is defined but without a default error response implementing.Consider adding it.'`,
+        message: `The response is defined but without a default error response implementation.Consider adding it.'`,
         location: path
       }
     }

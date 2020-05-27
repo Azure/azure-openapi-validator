@@ -128,9 +128,21 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, IntegerTypeMustHaveFormat, 1)
   }
 
-  @test public async "x-ms-pageable must have corresponding property"() {
+  @test public async "x-ms-pageable doesn't have corresponding property"() {
     const fileName = "PageableOperationWithoutCorrespondingProp.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 1)
+  }
+
+  @test public async "x-ms-pageable have corresponding property"() {
+    const fileName = "PageableOperationWithCorrespondingProp.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
+  }
+
+  @test public async "x-ms-pageable have null nextlink "() {
+    const fileName = "PageableOperationWithNullNextLink.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   }
 }
