@@ -13,6 +13,7 @@
 ### Changed Rule
 
 - ValidFormats rule -  format:`time` is allowed. 
+- LongRunningOperationsWithLongRunningExtension rule - apply to dataplane.
 
 ## What's New (05/20/2020)
 
