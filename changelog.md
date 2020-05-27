@@ -1,5 +1,19 @@
 # Changelog
 
+## What's New (05/28/2020)
+
+### New validation Rule
+
+- RequiredSystemDataInNewApiVersion rule - the rule ensure the responses of GET, PUT and PATCH in new API versions contain the systemData object.
+- RequiredDefaultResponse rule - the rule ensure every operation have a default error response implementation.
+- DeleteOperationResponses rule - the rule ensure all DELETE methods have responses code implementation: 200, 204.   
+- XmsPageableMustHaveCorrespondingResponse rule - the rule ensure the corresponding nextlink property has been defined in the response schema when specifying a x-ms-pagable/nextLinkName.
+- IntergerTypeMustHaveFormat rule -  the rule ensure the type:integer have a required format.
+
+### Changed Rule
+
+- ValidFormats rule -  format:`time` is allowed. 
+
 ## What's New (05/20/2020)
 
 ### Changed Rule
