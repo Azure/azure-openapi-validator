@@ -13,7 +13,7 @@ rules.push({
   severity: "warning",
   category: "ARMViolation",
   mergeState: MergeStates.composed,
-  openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
+  openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "",
   async *asyncRun(doc, node, path) {
     if (doc.info) {
