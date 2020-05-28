@@ -5,8 +5,6 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const RequiredDefaultResponse: string = "RequiredDefaultResponse"
 
-const jp = require("jsonpath")
-
 rules.push({
   id: "R4010",
   name: RequiredDefaultResponse,

@@ -5,8 +5,6 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const DeleteOperationResponses: string = "DeleteOperationResponses"
 
-const jp = require("jsonpath")
-
 rules.push({
   id: "R4011",
   name: DeleteOperationResponses,

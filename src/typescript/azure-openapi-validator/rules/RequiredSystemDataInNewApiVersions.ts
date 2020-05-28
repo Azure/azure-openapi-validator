@@ -19,7 +19,7 @@ rules.push({
     if (doc.info) {
       const apiVersion = doc.info.version
       const matched = apiVersion.match(/\d{4}\-\d{2}\-\d{2}/g)
-      const apiVersionFormated = matched.length > 0 ? matched[0] : undefined
+      const apiVersionFormated = matched && matched.length > 0 ? matched[0] : undefined
       if (!apiVersionFormated || apiVersionFormated < "2020-05-01") {
         // not a new Api Version
         return
