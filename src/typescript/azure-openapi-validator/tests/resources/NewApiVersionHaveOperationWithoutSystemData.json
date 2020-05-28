@@ -1,0 +1,118 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "LinterTests",
+        "description": "Use this swagger to test the linter to detect response types with arrays as possible pageable operations",
+        "version": "2020-05-01"
+    },
+    "host": "management.azure.com",
+    "paths": {
+        "/plants": {
+            "get": {
+                "description": "Get a list of plants.",
+                "operationId": "Plants_List",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK.",
+                        "schema": {
+                            "$ref": "#/definitions/PlantsList"
+                        }
+                    }
+                },
+                "x-ms-pageable": {
+                    "nextLinkName": "nextLink"
+                }
+            },
+            "put": {
+                "description": "Create plants.",
+                "operationId": "Plants_Create",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK.",
+                        "schema": {
+                            "$ref": "#/definitions/Plant"
+                        }
+                    }
+                },
+                "x-ms-pageable": {
+                    "nextLinkName": "nextLink"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PlantsList": {
+            "type": "object",
+            "description": "Response to a Pageable operation. This one lists plants",
+            "readOnly": true,
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "description": "List of plants",
+                    "items": {
+                        "$ref": "#/definitions/Plant"
+                    },
+                    "readOnly": true
+                },
+                "systemData": {
+                    "$ref": "#/definitions/systemData"
+                }
+            }
+        },
+        "Plant": {
+            "type": "object",
+            "description": "A plant",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The plant's name"
+                },
+                "edible": {
+                    "type": "boolean",
+                    "description": "Is the plant edible?"
+                }
+            }
+        },
+        "systemData": {
+            "description": "Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources",
+            "type": "object",
+            "properties": {
+                "createdBy": {
+                    "description": "A string identifier for the identity that created the resource",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "createdByType": {
+                    "description": "The type of identity that created the resource: user, application, managedIdentity, key",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "createdAt": {
+                    "format": "date-time",
+                    "description": "The timestamp of resource creation (UTC)",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastModifiedBy": {
+                    "description": "A string identifier for the identity that last modified the resource",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastModifiedByType": {
+                    "description": "The type of identity that last modified the resource: user, application, managedIdentity, key",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastModifiedAt": {
+                    "format": "date-time",
+                    "description": "The timestamp of resource last modification (UTC)",
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        }
+    },
+    "parameters": {}
+}

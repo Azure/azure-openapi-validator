@@ -3,8 +3,9 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 const $RefParser = require("@apidevtools/json-schema-ref-parser")
+import { nodes, stringify } from "jsonpath"
+import { JsonPath } from "../../../jsonrpc/types"
 import { resolveNestedSchema } from "./resolveNestedSchema"
-
 const matchAll = require("string.prototype.matchall")
 
 export function getSuccessfulResponseSchema(node, doc): any {
@@ -13,7 +14,7 @@ export function getSuccessfulResponseSchema(node, doc): any {
   return getResponseSchema(node.responses[response], doc)
 }
 
-function getMostSuccessfulResponseKey(responses: string[]): string {
+export function getMostSuccessfulResponseKey(responses: string[]): string {
   let response: string = "default"
   if (responses.includes("200")) {
     response = "200"
@@ -56,6 +57,17 @@ export async function getResolvedJson(doc: any): Promise<object | undefined> {
   } catch (err) {
     console.error(err)
   }
+}
+
+export async function getResolvedSchemaByPath(schemaPath: JsonPath, doc: any): Promise<object | undefined> {
+  const resolvedJson = await getResolvedJson(doc)
+  const pathExpression = stringify(schemaPath)
+  const result = nodes(resolvedJson, pathExpression)
+  if (!result) {
+    return undefined
+  }
+  const schema = result[0].value
+  return getResolvedResponseSchema(schema)
 }
 
 /*

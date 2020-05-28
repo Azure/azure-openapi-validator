@@ -2,6 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import * as assert from "assert"
 import { safeLoad } from "js-yaml"
 import { only, skip, slow, suite, test, timeout } from "mocha-typescript"
 import { run } from "../../azure-openapi-validator"
@@ -11,19 +12,20 @@ import { MergeStates, OpenApiTypes } from "../rule"
 import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema"
 import { ControlCharactersAreNotAllowed } from "../rules/ControlCharactersAreNotAllowed"
 import { DefaultErrorResponseSchema } from "../rules/DefaultErrorResponseSchema"
+import { DeleteOperationResponses } from "../rules/DeleteOperationResponses"
 import { DeprecatedXmsCodeGenerationSetting } from "../rules/DeprecatedXmsCodeGenerationSetting"
 import { EnumMustHaveType } from "../rules/EnumMustHaveType"
 import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue"
 import { EnumUniqueValue } from "../rules/EnumUniqueValue"
+import { IntegerTypeMustHaveFormat } from "../rules/IntegerTypeMustHaveFormat"
 import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBeSpecified"
 import { OperationIdRequired } from "../rules/OperationIdRequired"
 import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContainsUrlVerb"
+import { RequiredDefaultResponse } from "../rules/RequiredDefaultResponse"
+import { XmsPageableMustHaveCorrespondingResponse } from "../rules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
-
-import * as assert from "assert"
-
 @suite
 class IndividualAzureTests {
   @test public async "control characters not allowed test"() {
@@ -106,5 +108,41 @@ class IndividualAzureTests {
     const fileName = "DefaultResponseSchemaDismatch.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1)
+  }
+
+  @test public async "default response required"() {
+    const fileName = "DefaultResponseMissed.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, RequiredDefaultResponse, 1)
+  }
+
+  @test public async "delete response required"() {
+    const fileName = "DeleteResponseMissed.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, DeleteOperationResponses, 1)
+  }
+
+  @test public async "interger must have format"() {
+    const fileName = "IntegerWithoutFormat.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, IntegerTypeMustHaveFormat, 1)
+  }
+
+  @test public async "x-ms-pageable doesn't have corresponding property"() {
+    const fileName = "PageableOperationWithoutCorrespondingProp.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 1)
+  }
+
+  @test public async "x-ms-pageable have corresponding property"() {
+    const fileName = "PageableOperationWithCorrespondingProp.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
+  }
+
+  @test public async "x-ms-pageable have null nextlink "() {
+    const fileName = "PageableOperationWithNullNextLink.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   }
 }

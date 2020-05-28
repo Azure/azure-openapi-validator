@@ -38,7 +38,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// What kind of open api document type this rule should be applied to
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM | ServiceDefinitionDocumentType.DataPlane;
 
         /// <summary>
         /// What kind of change implementing this rule can cause.
