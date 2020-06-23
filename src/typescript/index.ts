@@ -15,6 +15,7 @@ async function main() {
     const mergeState: string = await initiator.GetValue("merge-state")
     const openapiType: string = await initiator.GetValue("openapi-type")
     const subType: string = await initiator.GetValue("openapi-subtype")
+
     for (const file of files) {
       initiator.Message({
         Channel: "verbose",
@@ -28,7 +29,7 @@ async function main() {
           file,
           openapiDefinitionObject,
           initiator.Message.bind(initiator),
-          OpenApiTypes[openapiType] & OpenApiTypes[subType],
+          subType ? OpenApiTypes[subType] : OpenApiTypes[openapiType],
           MergeStates[mergeState]
         )
       } catch (e) {
