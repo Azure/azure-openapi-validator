@@ -14,6 +14,8 @@ async function main() {
     const files = await initiator.ListInputs()
     const mergeState: string = await initiator.GetValue("merge-state")
     const openapiType: string = await initiator.GetValue("openapi-type")
+    const subType: string = await initiator.GetValue("openapi-subtype")
+
     for (const file of files) {
       initiator.Message({
         Channel: "verbose",
@@ -23,7 +25,13 @@ async function main() {
       try {
         const openapiDefinitionDocument = await initiator.ReadFile(file)
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-        await run(file, openapiDefinitionObject, initiator.Message.bind(initiator), OpenApiTypes[openapiType], MergeStates[mergeState])
+        await run(
+          file,
+          openapiDefinitionObject,
+          initiator.Message.bind(initiator),
+          subType ? OpenApiTypes[subType] : OpenApiTypes[openapiType],
+          MergeStates[mergeState]
+        )
       } catch (e) {
         initiator.Message({
           Channel: "fatal",
