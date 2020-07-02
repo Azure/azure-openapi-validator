@@ -115,12 +115,11 @@ gulp.task(
 
 gulp.task(
   "dotnet/pack",
-  gulp.parallel(["dotnet", "typescript"], function (done) {
+  gulp.series(["dotnet", "typescript"], function() {
     console.log("Kicking off the dotnet publish task...")
-    gulp
+    return gulp
       .src("src/dotnet/AutoRest/AutoRest.csproj")
       .pipe(run("dotnet publish src/dotnet/AutoRest/AutoRest.csproj --configuration release --output bin/netcoreapp2.0"))
-    done()
   })
 )
 
@@ -135,8 +134,9 @@ gulp.task('pack/dotnet', function () {
 // this task can be excuted only when `gulp test` has been excuted successfully
 gulp.task(
   "pack",
-  gulp.parallel(["pack/dotnet", "pack/typescript"], function () {
+  gulp.series(["pack/dotnet", "pack/typescript"], function(done) {
     gulp.src(["src/dotnet/AutoRest/*.tgz", "src/typescript/*.tgz"]).pipe(gulp.dest("dist/"))
     console.log("Successfully Packed the repo...")
+    done()
   })
 )
