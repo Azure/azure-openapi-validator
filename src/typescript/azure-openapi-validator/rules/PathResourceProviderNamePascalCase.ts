@@ -22,7 +22,7 @@ rules.push({
         if (resourceProviders.some(rp => !resourceProviderMustPascalCase(rp))) {
           yield {
             message: `${msg} Path: '${it}'`,
-            location: path.concat(["paths"])
+            location: path.concat(["paths", it])
           }
         }
       }
