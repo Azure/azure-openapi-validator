@@ -26,6 +26,7 @@ import { XmsPageableMustHaveCorrespondingResponse } from "../rules/XmsPageableMu
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
+import { Rpaas_CreateOperationAsyncResponseValidation } from "../rules/Rpaas_CreateOperationAsyncResponseValidation"
 @suite
 class IndividualAzureTests {
   
@@ -145,5 +146,28 @@ class IndividualAzureTests {
     const fileName = "PageableOperationWithNullNextLink.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
+  }
+
+  // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
+  @test public async "Raas Put async operation doesn't support 202"() {
+    const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 1)
+  }
+
+  // Failure #1 : 'x-ms-long-running-operation' is missing
+  // Failure #2: 'x-ms-long-running-operation-options' is missing
+  @test public async "Raas Put async operation missing x-ms* async extensions"() {
+    const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
+  }
+
+  // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 201 (implies async)
+  // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
+  @test public async "Raas Put async operation is tracked using Auzre-AsyncOperation header"() {
+    const fileName = "RpaasPutAsyncOperationResponseFinalStateViaAzureAsync.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
   }
 }
