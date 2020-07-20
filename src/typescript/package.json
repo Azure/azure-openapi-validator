@@ -25,25 +25,24 @@
     },
     "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
     "devDependencies": {
-        "@types/js-yaml": "^3.5.30",
-        "@types/jsonpath": "^0.1.29",
-        "@types/node": "^7.0.18",
-        "gulp": "3.9.1",
+        "@types/js-yaml": "^3.12.4",
+        "@types/jsonpath": "^0.2.0",
+        "@types/node": "^14.0.13",
+        "gulp": "4.0.2",
         "gulp-run": "1.7.1",
-        "gulp-clean": "0.3.2",
-        "gulp-mocha": "4.3.1",
-        "gulp-dotnet-cli": "0.4.0",
-        "mocha": "3.2.0",
+        "gulp-clean": "0.4.0",
+        "gulp-mocha": "7.0.2",
+        "gulp-dotnet-cli": "1.1.0",
         "mocha-typescript": "1.0.22",
         "typescript": "3.5.3"
     },
     "dependencies": {
         "fs": "^0.0.1-security",
-        "js-yaml": "^3.8.4",
-        "jsonpath": "^0.2.11",
+        "js-yaml": "^3.14.0",
+        "jsonpath": "^1.0.2",
         "string.prototype.matchall": "^4.0.2",
         "vscode-jsonrpc": "^3.2.0",
-        "json-refs": "^0.3.1",
-        "@apidevtools/json-schema-ref-parser": "^8.0.0"
+        "json-refs": "^3.0.15",
+        "@apidevtools/json-schema-ref-parser": "^9.0.1"
     }
 }
