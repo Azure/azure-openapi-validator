@@ -8,9 +8,15 @@ import { run } from "../../azure-openapi-validator"
 import { AutoRestPluginHost } from "../../jsonrpc/plugin-host"
 import { Message } from "../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../rule"
+import { AllResourcesMustHaveGetOperation } from "../rules/AllResourcesMustHaveGetOperation"
 import { DescriptionMustNotBeNodeName } from "../rules/DescriptionMustNotBeNodeName"
+import { GetCollectionResponseSchema } from "../rules/GetCollectionResponseSchema"
+import { NestedResourcesMustHaveListOperation } from "../rules/NestedResourcesMustHaveListOperation"
+import { OperationsApiResponseSchema } from "../rules/OperationsApiResponseSchema"
 import { PageableOperation } from "../rules/PageableOperation"
 import { RequiredSystemDataInNewApiVersions } from "../rules/RequiredSystemDataInNewApiVersions"
+import { TopLevelResourcesListByResourceGroup } from "../rules/TopLevelResourcesListByResourceGroup"
+import { TopLevelResourcesListBySubscription } from "../rules/TopLevelResourcesListBySubscription"
 import { UniqueXmsEnumName } from "../rules/UniqueXmsEnumName"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 
@@ -38,7 +44,6 @@ class CompositeAzureTests {
     const fileName = "XmsEnumWithDuplicateName.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, UniqueXmsEnumName, 1)
-    assert.deepEqual(messages.length, 1)
   }
 
   @test public async "extensions x-ms-enum can have duplicate name with same enties"() {
@@ -51,6 +56,44 @@ class CompositeAzureTests {
     const fileName = "NewApiVersionHaveOperationWithoutSystemData.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, RequiredSystemDataInNewApiVersions, 1)
-    assert.deepEqual(messages.length, 1)
+  }
+
+  @test public async "all resources must have get operation 2 "() {
+    const fileName: string = "armResource/desktopvirtualization.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
+  }
+
+  @test public async "get collection response schema should match the ARM specification "() {
+    const fileName: string = "armResource/appconfiguration.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, GetCollectionResponseSchema, 0)
+  }
+
+  @test public async "all resources must have get operation "() {
+    const fileName: string = "armResource/firewallPolicy.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
+  }
+
+  @test public async "all nested resources must have collection operation "() {
+    const fileName: string = "armResource/compute.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, NestedResourcesMustHaveListOperation, 4)
+  }
+  @test public async "operations api response must have specific schema"() {
+    const fileName: string = "armResource/compute.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, OperationsApiResponseSchema, 0)
+  }
+  @test public async "top level resources must list by resource group"() {
+    const fileName: string = "armResource/compute.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 4)
+  }
+  @test public async "top level resources must list by subscription"() {
+    const fileName: string = "armResource/compute.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 4)
   }
 }

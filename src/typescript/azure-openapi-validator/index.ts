@@ -28,6 +28,12 @@ require("./rules/DeleteOperationResponses")
 require("./rules/XmsPageableMustHaveCorrespondingResponse")
 require("./rules/RequiredSystemDataInNewApiVersions")
 require("./rules/RequiredDefaultResponse")
+require("./rules/GetCollectionResponseSchema")
+require("./rules/AllResourcesMustHaveGetOperation")
+require("./rules/NestedResourcesMustHaveListOperation")
+require("./rules/TopLevelResourcesListByResourceGroup")
+require("./rules/TopLevelResourcesListBySubscription")
+require("./rules/OperationsApiResponseSchema")
 
 export async function run(
   document: string,

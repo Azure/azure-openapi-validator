@@ -1,0 +1,26 @@
+import * as assert from "assert"
+import { readFileSync } from "fs"
+import { suite, test } from "mocha-typescript"
+import { ResourceUtils } from "../rules/utilities/resourceUtils"
+import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
+
+@suite
+class ResourceUtilsTests {
+  @test public async "test resource utils"() {
+    const swagger = readObjectFromFile(getFilePath("armResource/compute.json"))
+    const util = new ResourceUtils(swagger)
+    const allNestedResource = util.getAllNestedResources()
+    const allTopLevelResource = util.getAllTopLevelResources()
+    const allOfResource = util.getAllOfResources()
+    const allCollectionModel = await util.getCollectionResources()
+    const allCollectionInfo = util.getCollectionApiInfo()
+    const allResource = util.getAllResources()
+
+    assert.equal(allNestedResource.size, 4)
+    assert.equal(allTopLevelResource.size, 4)
+    assert.equal(allOfResource.length, 17)
+    assert.equal(allCollectionInfo.length, 0)
+    assert.equal(allResource.length, 17)
+    assert.equal(allCollectionModel.size, 6)
+  }
+}
