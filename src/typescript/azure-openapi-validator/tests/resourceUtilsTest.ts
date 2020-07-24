@@ -6,6 +6,12 @@ import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 @suite
 class ResourceUtilsTests {
+  @test public async "test contain containsDiscriminator"() {
+    const swagger = readObjectFromFile(getFilePath("armResource/security.json"))
+    const util = new ResourceUtils(swagger)
+    assert.equal(util.containsDiscriminator("DataExportSettings"), true)
+  }
+
   @test public async "test resource utils"() {
     const swagger = readObjectFromFile(getFilePath("armResource/compute.json"))
     const util = new ResourceUtils(swagger)
@@ -19,7 +25,7 @@ class ResourceUtilsTests {
     assert.equal(allNestedResource.size, 4)
     assert.equal(allTopLevelResource.size, 4)
     assert.equal(allOfResource.length, 17)
-    assert.equal(allCollectionInfo.length, 0)
+    assert.equal(allCollectionInfo.length, 8)
     assert.equal(allResource.length, 17)
     assert.equal(allCollectionModel.size, 6)
   }

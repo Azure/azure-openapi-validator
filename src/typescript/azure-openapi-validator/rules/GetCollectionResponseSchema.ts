@@ -30,8 +30,8 @@ rules.push({
         hasMatched = utils.verifyCollectionModel(modelValue, collection.childModelName)
       }
       if (!hasMatched) {
-        const collectionOperationId = utils.getOperationIdFromPath(collection.collectionGetPath)
-        const specificOperationId = utils.getOperationIdFromPath(collection.specificGetPath)
+        const collectionOperationId = utils.getOperationIdFromPath(collection.collectionGetPath[0])
+        const specificOperationId = utils.getOperationIdFromPath(collection.specificGetPath[0])
         yield {
           message: msg.replace("{0}", collectionOperationId).replace("{1}", specificOperationId),
           location: ["$", "paths", collection.collectionGetPath] as JsonPath

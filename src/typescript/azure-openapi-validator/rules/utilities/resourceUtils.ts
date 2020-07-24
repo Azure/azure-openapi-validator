@@ -33,8 +33,8 @@ function exceptModels(source: Map<string, string[]>, toExcept: Map<string, strin
 export interface CollectionApiInfo {
   modelName: string
   childModelName: string
-  collectionGetPath: string
-  specificGetPath: string
+  collectionGetPath: string[]
+  specificGetPath: string[]
 }
 /**
  * this class only handle swagger without external refs, as the linter's input is a external-refs-resolved swagger
@@ -53,22 +53,14 @@ export class ResourceUtils {
   private TenantResourceRegEx = new RegExp("^/subscriptions/{.+}/resourceGroups/{.+}/", "gi")
   private ListBySubscriptionsResourceRegEx = new RegExp("^/subscriptions/{.+}/providers/", "gi")
 
-  private OperationApiRegEx = new RegExp("^/providers/{[^/]+}/operations$", "gi")
+  private OperationApiRegEx = new RegExp("^/providers/[^/]+/operations$", "gi")
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(/\\w+/{[^/}]+})+$", "gi")
 
   private XmsResources = new Set<string>()
-  private AllResources = new Set<string>()
 
   constructor(swagger: object) {
     this.innerDoc = swagger
     this.getXmsResources()
-  }
-
-  public stripDefinitionPath(reference: string) {
-    const refPrefix = "#/definitions/"
-    if (reference && reference.startsWith(refPrefix)) {
-      return reference.substr(refPrefix.length)
-    }
   }
 
   private addToMap(map: Map<string, string[]>, key: string, value: string) {
@@ -121,13 +113,17 @@ export class ResourceUtils {
   }
 
   private getResourceByName(modelName: string) {
-    for (const node of nodes(this.innerDoc, `$.definitions.${modelName}`)) {
-      return node.value
+    if (!modelName) {
+      return undefined
     }
+    return this.innerDoc.definitions[modelName]
   }
 
   private checkResource(modelName: string) {
     const model = this.getResourceByName(modelName)
+    if (!model) {
+      return false
+    }
     for (const refs of this.jsonPathIt(model, `$.allOf`)) {
       for (const ref of refs) {
         const refPoint = ref.$ref
@@ -149,6 +145,12 @@ export class ResourceUtils {
     return false
   }
 
+  public stripDefinitionPath(reference: string) {
+    const refPrefix = "#/definitions/"
+    if (reference && reference.startsWith(refPrefix)) {
+      return reference.substr(refPrefix.length)
+    }
+  }
   public getAllOfResources() {
     const keys = Object.keys(this.innerDoc.definitions as object)
     const AllOfResources = keys.reduce((pre, cur) => {
@@ -224,11 +226,12 @@ export class ResourceUtils {
    * return ["expressRouteCircuits","peerings"]
    */
   private getResourcesTypeHierarchy(path: string) {
-    const lastProvider = path.substr(path.lastIndexOf("/providers/"))
-    const result = []
-    if (!lastProvider) {
-      return result
+    const index = path.lastIndexOf("/providers/")
+    if (index === -1) {
+      return []
     }
+    const lastProvider = path.substr(index)
+    const result = []
     const matches = lastProvider.match(this.ResourcePathPattern)
     if (matches && matches.length) {
       let match = matches[0]
@@ -270,14 +273,16 @@ export class ResourceUtils {
     return hierarchy
   }
 
+  private dereference(ref: string) {
+    return this.getResourceByName(this.stripDefinitionPath(ref))
+  }
+
   public containsDiscriminator(modelName: string) {
-    const hierarchy = this.getResourcesTypeHierarchy(modelName)
-    if (hierarchy.length > 0) {
-      const resource = this.getResourceByName(hierarchy[0])
-      if (resource && typeof resource.discriminator === "string") {
-        return true
-      }
-    }
+    const hierarchy = this.getResourceHierarchy(modelName)
+    return hierarchy.some(h => {
+      const resource = this.getResourceByName(h)
+      return resource && resource.discriminator
+    })
   }
 
   /**
@@ -289,7 +294,7 @@ export class ResourceUtils {
       const path = pathNode.path[2] as string
       const matchResult = path.match(this.OperationApiRegEx)
       if (matchResult) {
-        return [path, this.stripDefinitionPath(pathNode.value?.get?.response["200"]?.schema?.$ref)]
+        return [path, this.stripDefinitionPath(pathNode.value?.get?.responses["200"]?.schema?.$ref)]
       }
     }
     return undefined
@@ -309,7 +314,7 @@ export class ResourceUtils {
     }
     const modelMapping = this.getAllOperationsModels()
     const collectionResources = this.getCollectionResources()
-    const getOperationResources = this.getOperationGetResponseModels()
+    const getOperationResources = this.getAllOperationGetResponseModels()
     const collectionApis: CollectionApiInfo[] = []
     for (const modelEntry of modelMapping.entries()) {
       if (!getOperationResources.has(modelEntry[0])) {
@@ -324,16 +329,18 @@ export class ResourceUtils {
             case 1 and case 2 should be the same, as the difference of parameter name does not have impact
           */
           const matchedPaths = allPathKeys.filter(
-            p => p.replace(/{[^\/]+}/gi, "{}") === possibleCollectionApiPath.replace(/{[^\/]+}/, "{}")
+            p => p.replace(/{[^\/]+}/gi, "{}") === possibleCollectionApiPath.replace(/{[^\/]+}/gi, "{}")
           )
           if (matchedPaths && matchedPaths.length >= 1) {
             matchedPaths.forEach(m =>
-              collectionApis.push({
-                specificGetPath: path,
-                collectionGetPath: possibleCollectionApiPath,
-                modelName: this.getModelFromPath(m),
-                childModelName: modelEntry[0]
-              })
+              this.getModelFromPath(m)
+                ? collectionApis.push({
+                    specificGetPath: [path],
+                    collectionGetPath: [possibleCollectionApiPath],
+                    modelName: this.getModelFromPath(m),
+                    childModelName: modelEntry[0]
+                  })
+                : false
             )
           }
         }
@@ -344,13 +351,19 @@ export class ResourceUtils {
      * we don't lost it
      */
     for (const resource of collectionResources) {
-      if (getOperationResources.has(resource[1]) && collectionApis.some(e => e.modelName !== resource[1])) {
-        collectionApis.push({
-          specificGetPath: getOperationResources[resource[0]],
-          collectionGetPath: getOperationResources[resource[1]],
+      if (getOperationResources.has(resource[1])) {
+        const index = collectionApis.findIndex(e => e.modelName === resource[1])
+        const collectionInfo = {
+          specificGetPath: getOperationResources.get(resource[0]),
+          collectionGetPath: getOperationResources.get(resource[1]),
           modelName: resource[1],
           childModelName: resource[0]
-        })
+        }
+        if (index === -1) {
+          collectionApis.push(collectionInfo)
+        } else {
+          collectionApis[index] = collectionInfo
+        }
       }
     }
 
@@ -367,12 +380,12 @@ export class ResourceUtils {
     const resourceCollectMap = new Map<string, string>()
     const doc = this.innerDoc
 
-    for (const resourceNode of this.jsonPathIt(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode, "$..[?(@.type == 'array')]")) {
+    for (const resourceNode of nodes(doc, "$.definitions.*")) {
+      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type == 'array')]")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
         if (items && resourceModel.has(this.stripDefinitionPath(items.$ref))) {
-          resourceCollectMap.set(this.stripDefinitionPath(items.$ref), arrayNode.path[1] as string)
+          resourceCollectMap.set(this.stripDefinitionPath(items.$ref), resourceNode.path[2] as string)
         }
       }
     }
@@ -405,10 +418,6 @@ export class ResourceUtils {
     if (pathObj && pathObj[code]) {
       return pathObj[code].operationId
     }
-  }
-
-  private dereference(ref: string) {
-    return this.getResourceByName(this.stripDefinitionPath(ref))
   }
 
   /**

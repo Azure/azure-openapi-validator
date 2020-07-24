@@ -25,7 +25,7 @@ rules.push({
     const allCollectionPath = utils.getCollectionApiInfo()
     for (const resource of topLevelResources) {
       const hasMatched = allCollectionPath.some(
-        collection => resource === collection.childModelName && utils.isPathBySubscription(collection.collectionGetPath)
+        collection => resource === collection.childModelName && collection.collectionGetPath.some(p => utils.isPathBySubscription(p))
       )
       if (!hasMatched) {
         yield {

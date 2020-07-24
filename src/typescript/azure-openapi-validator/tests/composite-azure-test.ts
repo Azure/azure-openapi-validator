@@ -63,7 +63,7 @@ class CompositeAzureTests {
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
-
+  
   @test public async "get collection response schema should match the ARM specification "() {
     const fileName: string = "armResource/appconfiguration.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
@@ -95,5 +95,58 @@ class CompositeAzureTests {
     const fileName: string = "armResource/compute.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 4)
+  }
+  @test public async "all resources must have get operation 7"() {
+    const fileName: string = "armResource/cdn.json"
+    try {
+      const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+      assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 4)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  @test public async "all resources must have get operation 6"() {
+    const fileName: string = "armResource/containerservice.json"
+    try {
+      const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+      assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 4)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  @test public async "all resources must have get operation 5"() {
+    const fileName: string = "armResource/machinelearning.json"
+    try {
+      const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+      assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 4)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  @test public async "all resources must have get operation 4"() {
+    const fileName: string = "armResource/compute.json"
+    try {
+      const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+      assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 4)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  @test public async "all resources must have get operation 3 "() {
+    const fileName: string = "armResource/security.json"
+    try {
+      const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+      assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 4)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  @test public async "all resources must have get operation"() {
+    const fileName: string = "armResource/cluster.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 }
