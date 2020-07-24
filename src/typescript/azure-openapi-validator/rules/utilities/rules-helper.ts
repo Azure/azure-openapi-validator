@@ -115,3 +115,17 @@ export function isValidOperation(operation: string): boolean {
   const validOperations = ["put", "get", "patch", "post", "head", "options", "delete"]
   return validOperations.indexOf(operation.toLowerCase()) !== -1
 }
+
+export function isValidEnum(node) {
+  if (!node || !node.type || typeof node.type !== "string") {
+    return false
+  }
+  return ["boolean", "integer", "number", "string"].indexOf(node.type) !== -1
+}
+
+export function transformEnum(type: string, enumEntries) {
+  if (type === "string") {
+    return enumEntries
+  }
+  return enumEntries.map(v => v.toString())
+}

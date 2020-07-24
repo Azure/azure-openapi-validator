@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const EnumMustNotHaveEmptyValue: string = "EnumMustNotHaveEmptyValue"
-
+import { transformEnum } from "./utilities/rules-helper"
+import { isValidEnum } from "./utilities/rules-helper"
 rules.push({
   id: "R3029",
   name: EnumMustNotHaveEmptyValue,
@@ -15,8 +16,8 @@ rules.push({
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
   *run(doc, node, path) {
     const msg: string = `Enum value must not contain empty value.`
-    if (node.enum !== undefined) {
-      const enumList: string[] = node.enum
+    if (path.indexOf("x-ms-examples") === -1 && isValidEnum(node)) {
+      const enumList = transformEnum(node.type, node.enum)
       if (enumList.some(value => value.trim().length === 0)) {
         yield { message: `${msg}`, location: path }
       }

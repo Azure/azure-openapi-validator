@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
+import { transformEnum, isValidEnum } from "./utilities/rules-helper"
 export const UniqueXmsEnumName: string = "UniqueXmsEnumName"
 import { nodes } from "jsonpath"
 
@@ -19,10 +20,10 @@ rules.push({
     if (node) {
       const enumMap = new Map<string, string[]>()
       for (const section of nodes(node, "$..*[?(@.enum)]")) {
-        if (section.value["x-ms-enum"]) {
+        if (section.value["x-ms-enum"] && isValidEnum(node.value)) {
           const enumName = section.value["x-ms-enum"].name.toLowerCase()
           if (enumMap.has(enumName)) {
-            const curEnum = section.value.enum
+            const curEnum = transformEnum(section.value.type, section.value.enum)
             const existingEnum = enumMap.get(enumName)
             /**
              * if existing , check if the two enums' enties is same.

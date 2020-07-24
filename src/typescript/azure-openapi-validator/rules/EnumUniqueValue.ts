@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
+import { isValidEnum, transformEnum } from "./utilities/rules-helper"
 export const EnumUniqueValue: string = "EnumUniqueValue"
 
 rules.push({
@@ -15,8 +16,8 @@ rules.push({
   appliesTo_JsonQuery: "$..*[?(@.enum)]",
   *run(doc, node, path) {
     const msg: string = `Enum must not contain duplicated value (case insentive).`
-    if (node.enum !== undefined) {
-      const enumList: string[] = node.enum
+    if (node.enum && path.indexOf("x-ms-examples") === -1 && isValidEnum(node)) {
+      const enumList = transformEnum(node.type, node.enum)
       const caseInsensitiveSet = new Set<string>()
       if (
         enumList.some(value => {
