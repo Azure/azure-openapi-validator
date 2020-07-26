@@ -3,22 +3,21 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-export const EnumMustNotHaveEmptyValue: string = "EnumMustNotHaveEmptyValue"
+export const RequiredDefaultResponse: string = "RequiredDefaultResponse"
 
 rules.push({
-  id: "R3029",
-  name: EnumMustNotHaveEmptyValue,
+  id: "R4010",
+  name: RequiredDefaultResponse,
   severity: "error",
-  category: "SDKViolation",
+  category: "ARMViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..*[?(@.enum)]",
+  openapiType: OpenApiTypes.arm,
+  appliesTo_JsonQuery: "$.paths.*.*.responses",
   *run(doc, node, path) {
-    const msg: string = `Enum value must not contain empty value.`
-    if (node.enum !== undefined) {
-      const enumList: string[] = node.enum
-      if (enumList.some(value => value.trim().length === 0)) {
-        yield { message: `${msg}`, location: path }
+    if (!node.default) {
+      yield {
+        message: `The response is defined but without a default error response implementation.Consider adding it.'`,
+        location: path
       }
     }
   }

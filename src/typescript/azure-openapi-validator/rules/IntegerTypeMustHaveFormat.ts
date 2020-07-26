@@ -3,23 +3,21 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-export const EnumMustNotHaveEmptyValue: string = "EnumMustNotHaveEmptyValue"
+export const IntegerTypeMustHaveFormat: string = "IntegerTypeMustHaveFormat"
 
 rules.push({
-  id: "R3029",
-  name: EnumMustNotHaveEmptyValue,
+  id: "R4013",
+  name: IntegerTypeMustHaveFormat,
   severity: "error",
-  category: "SDKViolation",
+  category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..*[?(@.enum)]",
+  appliesTo_JsonQuery: "$..*[?(@.type == 'integer')]",
   *run(doc, node, path) {
-    const msg: string = `Enum value must not contain empty value.`
-    if (node.enum !== undefined) {
-      const enumList: string[] = node.enum
-      if (enumList.some(value => value.trim().length === 0)) {
-        yield { message: `${msg}`, location: path }
-      }
+    const msg: string = `The integer type does not have a format, please add it.`
+    const formats = ["int32", "int64"]
+    if (!node.format || formats.indexOf(node.format) === -1) {
+      yield { message: `${msg}`, location: path }
     }
   }
 })

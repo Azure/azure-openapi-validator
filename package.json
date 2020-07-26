@@ -1,31 +1,40 @@
 {
-    "name": "CommonDeps",
-    "version": "0.0.0",
-    "description": "Common dev deps for repo",
-    "readme": "https://github.com/Azure/azure-openapi-validator/readme.md",
-    "devDependencies": {
-        "@types/js-yaml": "^3.5.30",
-        "@types/jsonpath": "^0.1.29",
-        "@types/node": "^7.0.18",
-        "gulp": "3.9.1",
-        "gulp-run": "1.7.1",
-        "gulp-clean": "0.3.2",
-        "gulp-mocha": "4.3.1",
-        "gulp-dotnet-cli": "0.4.0",
-        "mocha": "3.2.0",
-        "mocha-typescript": "1.0.22",
-        "typescript": "3.5.3"
-    },
-    "dependencies": {
-        "fs": "^0.0.1-security",
-        "js-yaml": "^3.8.4",
-        "jsonpath": "^0.2.11",
-        "string.prototype.matchall": "^4.0.2",
-        "ts-node": "^8.6.2",
-        "vscode-jsonrpc": "^3.2.0",
-        "@apidevtools/json-schema-ref-parser": "8.0.0"
-    },
-    "scripts": {
-        "postinstall": "cd src/dotnet/AutoRest && npm install"
-    }
+  "name": "CommonDeps",
+  "version": "0.0.0",
+  "description": "Common dev deps for repo",
+  "readme": "https://github.com/Azure/azure-openapi-validator/readme.md",
+  "devDependencies": {
+    "@types/node": "^14.0.13",
+    "@types/js-yaml": "^3.12.4",
+    "@types/jsonpath": "^0.2.0",
+    "gulp": "4.0.2",
+    "gulp-run": "1.7.1",
+    "gulp-clean": "0.4.0",
+    "gulp-mocha": "7.0.2",
+    "gulp-dotnet-cli": "1.1.0",
+    "mocha-typescript": "1.0.22",
+    "typescript": "3.5.3"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "ts-node": "^8.10.2",
+    "prettier": "^1.18.2",
+    "tslint": "~5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "vscode-jsonrpc": "^3.2.0",
+    "js-yaml": "3.14.0",
+    "jsonpath": "1.0.2",
+    "string.prototype.matchall": "^4.0.2",
+    "json-refs": "^3.0.15",
+    "@apidevtools/json-schema-ref-parser": "^9.0.1"
+  },
+  "scripts": {
+    "install-dotnet": "cd src/dotnet/AutoRest && npm install",
+    "install-typescript": "cd src/typescript && npm install",
+    "postinstall": "npm run install-dotnet && npm run install-typescript",
+    "tslint": "tslint --project tsconfig.json ./src/**/*.ts ",
+    "tslint-fix": "tslint --fix --project tsconfig.json ./src/**/*.ts",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+  }
 }

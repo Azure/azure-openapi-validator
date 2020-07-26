@@ -3,22 +3,21 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-export const EnumMustNotHaveEmptyValue: string = "EnumMustNotHaveEmptyValue"
+export const DeleteOperationResponses: string = "DeleteOperationResponses"
 
 rules.push({
-  id: "R3029",
-  name: EnumMustNotHaveEmptyValue,
+  id: "R4011",
+  name: DeleteOperationResponses,
   severity: "error",
-  category: "SDKViolation",
+  category: "ARMViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..*[?(@.enum)]",
+  openapiType: OpenApiTypes.arm,
+  appliesTo_JsonQuery: "$.paths.*.delete.responses",
   *run(doc, node, path) {
-    const msg: string = `Enum value must not contain empty value.`
-    if (node.enum !== undefined) {
-      const enumList: string[] = node.enum
-      if (enumList.some(value => value.trim().length === 0)) {
-        yield { message: `${msg}`, location: path }
+    if (!node["200"] || !node["204"] || !Object.keys(node["200"]) || !Object.keys(node["204"])) {
+      yield {
+        message: `The delete operation is defined without a 200 or 204 error response implementation,please add it.'`,
+        location: path
       }
     }
   }

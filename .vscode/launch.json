@@ -12,14 +12,35 @@
             "request": "launch",
             "name": "Run tests",
             "cwd": "${workspaceRoot}",
-            "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "args": [
                 "./src/typescript/azure-openapi-validator/tests/*.js",
                 "--colors"
             ],
             "outFiles": [],
             "protocol": "inspector",
-            "preLaunchTask": "build"
+            "preLaunchTask": "build/typescript"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run tests currently",
+            "cwd": "${workspaceRoot}",
+            "internalConsoleOptions": "openOnSessionStart",
+            "env": {
+                "TS_NODE_IGNORE": "false"
+            },
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "-r",
+                "ts-node/register",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${file}"
+            ],
+            "outFiles": [],
+            "protocol": "inspector"
         },
         {
             "type": "node",
