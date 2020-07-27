@@ -7,8 +7,10 @@ import {
   getAllWordsFromPath,
   getResolvedJson,
   getResolvedResponseSchema,
+  isValidEnum,
   resourceProviderMustPascalCase,
-  resourceTypeMustCamelCase
+  resourceTypeMustCamelCase,
+  transformEnum
 } from "../rules/utilities/rules-helper"
 
 @suite
@@ -148,5 +150,68 @@ class RuleHelperTests {
     resolvedResponse = await resolveNestedSchema(resolveReferenceJson.definitions.Error1)
     const expectErrorKeys = ["message", "innererror"]
     assert.deepEqual(Object.keys(resolvedResponse), expectErrorKeys)
+  }
+
+  @test public "test enum helper"() {
+    let enumA = `{
+        "description": "The provisioning state of the configuration store.",
+        "enum": [
+            "Creating",
+            "Updating",
+            "Canceled"
+        ],
+        "type": "object",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    assert.equal(isValidEnum(JSON.parse(enumA)), false)
+    enumA = `{
+        "description": "Test Enum",
+        "enum": [
+            "Creating",
+            "Updating",
+            "Canceled"
+        ],
+        "type": "integer",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    assert.equal(isValidEnum(JSON.parse(enumA)), true)
+    enumA = `{
+        "description": "Test Enum",
+        "enum": [
+            true,
+            false
+        ],
+        "type": "boolean",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    const enumObj = JSON.parse(enumA)
+    assert.deepEqual(transformEnum(enumObj.type, enumObj.enum), ["true", "false"])
+    enumA = `{
+        "description": "Test Enum",
+        "enum": [
+            1,
+            2
+        ],
+        "type": "integer",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    const enumObj1 = JSON.parse(enumA)
+    assert.deepEqual(transformEnum(enumObj1.type, enumObj1.enum), ["1", "2"])
   }
 }
