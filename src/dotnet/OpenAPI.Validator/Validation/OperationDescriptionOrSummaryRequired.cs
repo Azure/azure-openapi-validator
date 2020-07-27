@@ -11,6 +11,12 @@ namespace OpenAPI.Validator.Validation
 {
     public class OperationDescriptionOrSummaryRequired : DescriptionRequired<Operation>
     {
+
+        /// <summary>
+        /// Id of the Rule.
+        /// </summary>
+        public override string Id => "R4022";
+
         /// <summary>
         /// The template message for this Rule.
         /// </summary>

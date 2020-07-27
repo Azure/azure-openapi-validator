@@ -1,5 +1,19 @@
 # Changelog
 
+## What's New (07/27/2020)
+
+### Changed Rule
+
+- DescriptiveDescriptionRequired rule -  change ruleId to `R4020` 
+- DescriptionAndTitleMissing rule -  change ruleId to `R4021` 
+- OperationDescriptionOrSummaryRequired rule -  change ruleId to `R4022` 
+- EnumMustHaveType rule - fix false positive when `enum` is a property.
+- EnumMustNotHaveEmptyValue - fix false positive when `enum` is a property.
+- EnumUniqueValue - fix false positive when `enum` is a property.
+- IntegerTypeMustHaveFormat - fix false positive when `enum` is in `x-ms-examples`.
+- UniqueXmsEnumName - fix false positive when `enum` is in `x-ms-examples`.
+- OperationsAPIImplementation - fix false positive when exists multiple providers in path. 
+
 ## What's New (05/28/2020)
 
 ### New validation Rule
@@ -8,26 +22,26 @@
 - RequiredDefaultResponse rule - the rule ensure every operation have a default error response implementation.
 - DeleteOperationResponses rule - the rule ensure all DELETE methods have responses code implementation: 200, 204.   
 - XmsPageableMustHaveCorrespondingResponse rule - the rule ensure the corresponding nextlink property has been defined in the response schema when specifying a x-ms-pagable/nextLinkName.
-- IntergerTypeMustHaveFormat rule -  the rule ensure the type:integer have a required format.
+- IntegerTypeMustHaveFormat rule -  the rule ensure the type:integer have a required format.
 
 ### Changed Rule
 
 - ValidFormats rule -  format:`time` is allowed. 
-- LongRunningOperationsWithLongRunningExtension rule - apply to dataplane.
+- LongRunningOperationsWithLongRunningExtension rule - apply to data-plane.
 
 ## What's New (05/20/2020)
 
 ### Changed Rule
 
-- XmsEnumNameUnique rule -  the rule should passed if the two enums are defined with same enties.
+- XmsEnumNameUnique rule -  the rule should passed if the two enums are defined with same entries.
 
 ## What's New (04/26/2020)
 
 ### New validation rules
 
 - XmsEnumNameUnique rule - The rule will check if every x-ms-enum name unique.
-- XmsCodeGenerationSettingDeprecated rule: The rule ensure x-ms-code-generation-settings extenison should not be used.
-- DefaultErrorResponseSchema rule - The rule will check if default error reponese is corresponding to the ARM specification.
+- XmsCodeGenerationSettingDeprecated rule: The rule ensure x-ms-code-generation-settings extension should not be used.
+- DefaultErrorResponseSchema rule - The rule will check if default error response is corresponding to the ARM specification.
 - AvoidEmptyResponseSchema - The rule ensure the response schema is not empty.
 
 ### bug fix
@@ -60,7 +74,7 @@
 ### Changed Rule
 
 - Changed the linter rule BodyTopLevelProperties -- Added systemdata as allowed top level properties
-- Changed the linter rule PatchBodyParametersSchema -- Allowed required property to be descrimintor
+- Changed the linter rule PatchBodyParametersSchema -- Allowed required property to be discriminator
 - Remove linter rule UniqueResourcePaths R2059: reason is external resource provider in path is valid.
 
 ## What's New (01/07/2020)
@@ -79,7 +93,7 @@
 
 ### New validation rules
 
-- PageableOperation rule - The rule will check if a get operation returns a schema (with 3 or less properties) with an array property. If it is so, the linter will suggest the operation might be pagebale. Refer [PR #161](https://github.com/Azure/azure-openapi-validator/pull/161) for further details.
+- PageableOperation rule - The rule will check if a get operation returns a schema (with 3 or less properties) with an array property. If it is so, the linter will suggest the operation might be pageable. Refer [PR #161](https://github.com/Azure/azure-openapi-validator/pull/161) for further details.
 
 ## What's New (05/02/2018)
 
@@ -115,7 +129,7 @@
 
 ### Resolved issues/Bug fixes
 
-- Correcting path retruned by PostOperationIdContainsUrlVerb rule
+- Correcting path returned by PostOperationIdContainsUrlVerb rule
 - Added zones as allowed top level properties
 
 ## What's New (09/12/2017)
@@ -138,7 +152,7 @@
 ### Resolved issues/Bug fixes
 
 - Ensure Top level properties cannot be outside a fixed set. Linked [issue](https://github.com/Azure/autorest/issues/2305)
-- Add Message about tenant level resources to ListByResourceGroup and ListBySubcription. Linked [issue](https://github.com/Azure/autorest/issues/2389)
+- Add Message about tenant level resources to ListByResourceGroup and ListBySubscription. Linked [issue](https://github.com/Azure/autorest/issues/2389)
 - Ensuring validating items property must exist for an array type.
 
 - Better path reporting for R3010. Linked [issue](https://github.com/Azure/autorest/issues/2314)
