@@ -465,9 +465,10 @@ namespace OpenAPI.Validator.Model.Utilities
         /// <returns>Array of resource providers</returns>
         public static IEnumerable<string> GetResourceProviders(Dictionary<string, Dictionary<string, Operation>> paths)
         {
-            IEnumerable<string> resourceProviders = paths?.Keys.SelectMany(path => ResourceProviderPathPattern.Matches(path)
+            IEnumerable<string> resourceProviders = paths?.Keys.Select(path => ResourceProviderPathPattern.Matches(path)
                                                     .OfType<Match>()
-                                                    .Select(match => match.Groups["resPath"].Value.ToString()))
+                                                    .Select(match => match.Groups["resPath"].Value.ToString()).LastOrDefault())
+                                                    .OfType<String>().Where(res => res != null)
                                                     .Distinct()
                                                     .ToList();
 

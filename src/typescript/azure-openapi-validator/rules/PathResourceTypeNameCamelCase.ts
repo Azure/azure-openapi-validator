@@ -23,7 +23,7 @@ rules.push({
         if (resourceTypes.some(it => !resourceTypeMustCamelCase(it))) {
           yield {
             message: `${msg} Path: '${it}'`,
-            location: path.concat(["paths"])
+            location: path.concat(["paths", it])
           }
         }
       }

@@ -22,7 +22,7 @@ rules.push({
 
     const resolvedDoc = await getResolvedJson(doc)
 
-    for (const n of nodes(doc, "$.paths..responses")) {
+    for (const n of nodes(doc, "$.paths.*.*.responses")) {
       const response: any = n.value
       if (response.default && response.default.schema) {
         const paths = n.path.concat(["default"])

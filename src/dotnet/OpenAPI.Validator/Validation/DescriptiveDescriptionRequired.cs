@@ -26,6 +26,13 @@ namespace OpenAPI.Validator.Validation
 
     public class DescriptiveDescriptionRequired : DescriptionRequired<string>
     {
+
+
+        /// <summary>
+        /// Id of the Rule.
+        /// </summary>
+        public override string Id => "R4020";
+
         /// <summary>
         /// This test passes if the <paramref name="description"/> is not just empty or whitespace and not explictly blocked
         /// </summary>
