@@ -1,0 +1,1177 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "title": "ApiManagementClient",
+  "description": "Use these REST APIs for performing operations in Azure API Management deployment.",
+  "version": "2020-06-01-preview"
+ },
+ "host": "management.azure.com",
+ "schemes": [
+  "https"
+ ],
+ "consumes": [
+  "application/json"
+ ],
+ "produces": [
+  "application/json"
+ ],
+ "security": [
+  {
+   "azure_auth": [
+    "user_impersonation"
+   ]
+  }
+ ],
+ "securityDefinitions": {
+  "azure_auth": {
+   "type": "oauth2",
+   "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+   "flow": "implicit",
+   "description": "Azure Active Directory OAuth2 Flow.",
+   "scopes": {
+    "user_impersonation": "impersonate your user account"
+   }
+  }
+ },
+ "paths": {
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes": {
+   "get": {
+    "tags": [
+     "ContentType"
+    ],
+    "operationId": "ContentType_ListByService",
+    "description": "Returns list of content types",
+    "x-ms-examples": {
+     "ApiManagementListContentTypes": {
+      "parameters": {
+       "resourceGroupName": "rg1",
+       "serviceName": "apimService1",
+       "api-version": "2020-06-01-preview",
+       "subscriptionId": "subid"
+      },
+      "responses": {
+       "200": {
+        "body": {
+         "value": [
+          {
+           "id": "/contentTypes/page",
+           "type": "Microsoft.ApiManagement/service/contentTypes",
+           "name": "page",
+           "properties": {
+            "name": "Page",
+            "description": "A regular page",
+            "schema": {
+             "properties": {
+              "en_us": {
+               "$ref": "#/definitions/metadata"
+              }
+             },
+             "additionalProperties": false,
+             "definitions": {
+              "metadata": {
+               "type": "object",
+               "properties": {
+                "title": {
+                 "title": "Title",
+                 "description": "Page title. This property gets included in SEO attributes.",
+                 "type": "string",
+                 "indexed": true
+                },
+                "description": {
+                 "title": "Description",
+                 "description": "Page description. This property gets included in SEO attributes.",
+                 "type": "string",
+                 "indexed": true
+                },
+                "keywords": {
+                 "title": "Keywords",
+                 "description": "Page keywords. This property gets included in SEO attributes.",
+                 "type": "string",
+                 "indexed": true
+                },
+                "permalink": {
+                 "title": "Permalink",
+                 "description": "Page permalink, e.g. '/about'.",
+                 "type": "string",
+                 "indexed": true
+                },
+                "documentId": {
+                 "title": "Document ID",
+                 "description": "Reference to page content document.",
+                 "type": "string"
+                }
+               },
+               "additionalProperties": false,
+               "required": [
+                "title",
+                "permalink",
+                "documentId"
+               ]
+              }
+             }
+            },
+            "version": "1.0.0"
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    },
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Lists a collection of content type entities.",
+      "schema": {
+       "$ref": "#/definitions/ContentTypeCollection"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    },
+    "x-ms-pageable": {
+     "nextLinkName": "nextLink"
+    }
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}": {
+   "head": {
+    "tags": [
+     "ContentType"
+    ],
+    "operationId": "ContentType_GetEntityTag",
+    "description": "Returns content type metadata",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Specified content type entity exists and current entity state version is present in the ETag header.",
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "ContentType"
+    ],
+    "operationId": "ContentTypes_Get",
+    "description": "Gets API Management content type details",
+    "x-ms-examples": {
+     "ApiManagementGetContentType": {
+      "parameters": {
+       "serviceName": "apimService1",
+       "resourceGroupName": "rg1",
+       "api-version": "2020-06-01-preview",
+       "subscriptionId": "subid",
+       "contentTypeId": "page"
+      },
+      "responses": {
+       "200": {
+        "body": {
+         "id": "/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/contentTypes/page",
+         "type": "Microsoft.ApiManagement/service/contentTypes",
+         "name": "page",
+         "properties": {
+          "name": "Page",
+          "description": "A regular page",
+          "schema": {
+           "properties": {
+            "en_us": {
+             "$ref": "#/definitions/metadata"
+            }
+           },
+           "additionalProperties": false,
+           "definitions": {
+            "metadata": {
+             "type": "object",
+             "properties": {
+              "title": {
+               "title": "Title",
+               "description": "Page title. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "description": {
+               "title": "Description",
+               "description": "Page description. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "keywords": {
+               "title": "Keywords",
+               "description": "Page keywords. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "permalink": {
+               "title": "Permalink",
+               "description": "Page permalink, e.g. '/about'.",
+               "type": "string",
+               "indexed": true
+              },
+              "documentId": {
+               "title": "Document ID",
+               "description": "Reference to page content document.",
+               "type": "string"
+              }
+             },
+             "additionalProperties": false,
+             "required": [
+              "title",
+              "permalink",
+              "documentId"
+             ]
+            }
+           }
+          },
+          "version": "1.0.0"
+         }
+        }
+       }
+      }
+     }
+    },
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Get the details of the content type.",
+      "schema": {
+       "$ref": "#/definitions/ContentTypeContract"
+      },
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "ContentType"
+    ],
+    "operationId": "ContentType_CreateOrUpdate",
+    "description": "Creates new content type",
+    "x-ms-examples": {
+     "ApiManagementCreateContentType": {
+      "parameters": {
+       "serviceName": "apimService1",
+       "resourceGroupName": "rg1",
+       "api-version": "2020-06-01-preview",
+       "subscriptionId": "subid",
+       "contentTypeId": "page",
+       "parameters": {
+        "properties": {
+         "name": "Page",
+         "description": "A regular page",
+         "schema": {
+          "properties": {
+           "en_us": {
+            "$ref": "#/definitions/metadata"
+           }
+          },
+          "additionalProperties": false,
+          "definitions": {
+           "metadata": {
+            "type": "object",
+            "properties": {
+             "title": {
+              "title": "Title",
+              "description": "Page title. This property gets included in SEO attributes.",
+              "type": "string",
+              "indexed": true
+             },
+             "description": {
+              "title": "Description",
+              "description": "Page description. This property gets included in SEO attributes.",
+              "type": "string",
+              "indexed": true
+             },
+             "keywords": {
+              "title": "Keywords",
+              "description": "Page keywords. This property gets included in SEO attributes.",
+              "type": "string",
+              "indexed": true
+             },
+             "permalink": {
+              "title": "Permalink",
+              "description": "Page permalink, e.g. '/about'.",
+              "type": "string",
+              "indexed": true
+             },
+             "documentId": {
+              "title": "Document ID",
+              "description": "Reference to page content document.",
+              "type": "string"
+             }
+            },
+            "additionalProperties": false,
+            "required": [
+             "title",
+             "permalink",
+             "documentId"
+            ]
+           }
+          }
+         },
+         "version": "1.0.0"
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "body": {
+         "id": "/contentTypes/page",
+         "type": "Microsoft.ApiManagement/service/contentTypes",
+         "name": "page",
+         "properties": {
+          "name": "Page",
+          "description": "A regular page",
+          "schema": {
+           "properties": {
+            "en_us": {
+             "$ref": "#/definitions/metadata"
+            }
+           },
+           "additionalProperties": false,
+           "definitions": {
+            "metadata": {
+             "type": "object",
+             "properties": {
+              "title": {
+               "title": "Title",
+               "description": "Page title. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "description": {
+               "title": "Description",
+               "description": "Page description. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "keywords": {
+               "title": "Keywords",
+               "description": "Page keywords. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "permalink": {
+               "title": "Permalink",
+               "description": "Page permalink, e.g. '/about'.",
+               "type": "string",
+               "indexed": true
+              },
+              "documentId": {
+               "title": "Document ID",
+               "description": "Reference to page content document.",
+               "type": "string"
+              }
+             },
+             "additionalProperties": false,
+             "required": [
+              "title",
+              "permalink",
+              "documentId"
+             ]
+            }
+           }
+          },
+          "version": "1.0.0"
+         }
+        }
+       },
+       "201": {
+        "body": {
+         "id": "/contentTypes/page",
+         "type": "Microsoft.ApiManagement/service/contentTypes",
+         "name": "page",
+         "properties": {
+          "name": "Page",
+          "description": "A regular page",
+          "schema": {
+           "properties": {
+            "en_us": {
+             "$ref": "#/definitions/metadata"
+            }
+           },
+           "additionalProperties": false,
+           "definitions": {
+            "metadata": {
+             "type": "object",
+             "properties": {
+              "title": {
+               "title": "Title",
+               "description": "Page title. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "description": {
+               "title": "Description",
+               "description": "Page description. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "keywords": {
+               "title": "Keywords",
+               "description": "Page keywords. This property gets included in SEO attributes.",
+               "type": "string",
+               "indexed": true
+              },
+              "permalink": {
+               "title": "Permalink",
+               "description": "Page permalink, e.g. '/about'.",
+               "type": "string",
+               "indexed": true
+              },
+              "documentId": {
+               "title": "Document ID",
+               "description": "Reference to page content document.",
+               "type": "string"
+              }
+             },
+             "additionalProperties": false,
+             "required": [
+              "title",
+              "permalink",
+              "documentId"
+             ]
+            }
+           }
+          },
+          "version": "1.0.0"
+         }
+        }
+       }
+      }
+     }
+    },
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Content type was successfully created.",
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      },
+      "schema": {
+       "$ref": "#/definitions/ContentTypeContract"
+      }
+     },
+     "200": {
+      "description": "The existing content type was successfully updated.",
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      },
+      "schema": {
+       "$ref": "#/definitions/ContentTypeContract"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "ContentType"
+    ],
+    "operationId": "ContentType_Delete",
+    "description": "Removes specified content type.",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "The content type was successfully deleted."
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems": {
+   "get": {
+    "tags": [
+     "ContentItem"
+    ],
+    "operationId": "ContentItem_ListByService",
+    "description": "Returns list of content items",
+    "x-ms-examples": {
+     "ApiManagementListContentItems": {
+      "parameters": {
+       "resourceGroupName": "rg1",
+       "serviceName": "apimService1",
+       "api-version": "2020-06-01-preview",
+       "subscriptionId": "subid",
+       "contentTypeId": "page"
+      },
+      "responses": {
+       "200": {
+        "body": {
+         "value": [
+          {
+           "id": "/contentTypes/page/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+           "type": "Microsoft.ApiManagement/service/contentTypes/contentItems",
+           "name": "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+           "properties": {
+            "en_us": {
+             "title": "About",
+             "description": "Short story about the company.",
+             "keywords": "company, about",
+             "documentId": "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+             "permalink": "/about"
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    },
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Lists a collection of Content Type entities.",
+      "schema": {
+       "$ref": "#/definitions/ContentItemCollection"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    },
+    "x-ms-pageable": {
+     "nextLinkName": "nextLink"
+    }
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems/{contentItemId}": {
+   "head": {
+    "tags": [
+     "ContentItem"
+    ],
+    "operationId": "ContentItem_GetEntityTag",
+    "description": "Returns content item metadata",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentItemIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Specified content item entity exists and current entity state version is present in the ETag header.",
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "ContentItem"
+    ],
+    "operationId": "ContentItem_Get",
+    "description": "Returns content item details",
+    "x-ms-examples": {
+     "ApiManagementGetContentItem": {
+      "parameters": {
+       "serviceName": "apimService1",
+       "resourceGroupName": "rg1",
+       "api-version": "2020-06-01-preview",
+       "subscriptionId": "subid",
+       "contentTypeId": "page",
+       "contentItemId": "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8"
+      },
+      "responses": {
+       "200": {
+        "body": {
+         "id": "/contentTypes/page/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+         "type": "Microsoft.ApiManagement/service/contentTypes/contentItems",
+         "name": "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+         "properties": {
+          "en_us": {
+           "title": "About",
+           "description": "Short story about the company.",
+           "keywords": "company, about",
+           "documentId": "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+           "permalink": "/about"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentItemIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Get the details of the content item.",
+      "schema": {
+       "$ref": "#/definitions/ContentItemContract"
+      },
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "ContentItem"
+    ],
+    "operationId": "ContentItem_CreateOrUpdate",
+    "description": "Creates new content item",
+    "x-ms-examples": {
+     "ApiManagementCreateContentItem": {
+      "parameters": {
+       "serviceName": "apimService1",
+       "resourceGroupName": "rg1",
+       "api-version": "2020-06-01-preview",
+       "subscriptionId": "subid",
+       "contentTypeId": "page",
+       "contentItemId": "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+       "parameters": {
+        "properties": {
+         "en_us": {
+          "title": "About",
+          "description": "Short story about the company.",
+          "keywords": "company, about",
+          "documentId": "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+          "permalink": "/about"
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "body": {
+         "id": "/contentTypes/page/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+         "type": "Microsoft.ApiManagement/service/contentTypes/contentItems",
+         "name": "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+         "properties": {
+          "en_us": {
+           "title": "About",
+           "description": "Short story about the company.",
+           "keywords": "company, about",
+           "documentId": "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+           "permalink": "/about"
+          }
+         }
+        }
+       },
+       "201": {
+        "body": {
+         "id": "/contentTypes/page/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+         "type": "Microsoft.ApiManagement/service/contentTypes/contentItems",
+         "name": "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+         "properties": {
+          "en_us": {
+           "title": "About",
+           "description": "Short story about the company.",
+           "keywords": "company, about",
+           "documentId": "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+           "permalink": "/about"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentItemIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Content item was successfully created.",
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      },
+      "schema": {
+       "$ref": "#/definitions/ContentItemContract"
+      }
+     },
+     "200": {
+      "description": "The existing content item was successfully updated.",
+      "headers": {
+       "ETag": {
+        "description": "Current entity state version. Should be treated as opaque and used to make conditional HTTP requests.",
+        "type": "string"
+       }
+      },
+      "schema": {
+       "$ref": "#/definitions/ContentItemContract"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "ContentItem"
+    ],
+    "operationId": "ContentItem_Delete",
+    "description": "Removes specified content item.",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ServiceNameParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentTypeIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ContentItemIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "The content item was successfully deleted."
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    }
+   }
+  }
+ },
+ "definitions": {
+  "ErrorFieldContract": {
+   "properties": {
+    "code": {
+     "type": "string",
+     "description": "Property level error code."
+    },
+    "message": {
+     "type": "string",
+     "description": "Human-readable representation of property-level error."
+    },
+    "target": {
+     "type": "string",
+     "description": "Property name."
+    }
+   },
+   "description": "Error Field contract."
+  },
+  "ErrorResponseBody": {
+   "properties": {
+    "code": {
+     "type": "string",
+     "description": "Service-defined error code. This code serves as a sub-status for the HTTP error code specified in the response."
+    },
+    "message": {
+     "type": "string",
+     "description": "Human-readable representation of the error."
+    },
+    "details": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/ErrorFieldContract"
+     },
+     "description": "The list of invalid fields send in request, in case of validation error."
+    }
+   },
+   "description": "Error Body contract."
+  },
+  "ErrorResponse": {
+   "properties": {
+    "error": {
+     "x-ms-client-flatten": true,
+     "$ref": "#/definitions/ErrorResponseBody",
+     "description": "Properties of the Error Response."
+    }
+   },
+   "description": "Error Response."
+  },
+  "Resource": {
+   "description": "The Resource definition.",
+   "x-ms-azure-resource": true,
+   "properties": {
+    "id": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource ID."
+    },
+    "name": {
+     "type": "string",
+     "description": "Resource name.",
+     "readOnly": true
+    },
+    "type": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource type for API Management resource."
+    }
+   }
+  },
+  "ContentItemContractProperties": {
+   "properties": {},
+   "additionalProperties": {
+    "type": "object"
+   }
+  },
+  "ContentItemContract": {
+   "properties": {
+    "properties": {
+     "x-ms-client-flatten": true,
+     "$ref": "#/definitions/ContentItemContractProperties",
+     "description": "Properties of the content item."
+    }
+   },
+   "allOf": [
+    {
+     "$ref": "#/definitions/Resource"
+    }
+   ],
+   "description": "Content type contract details."
+  },
+  "ContentItemCollection": {
+   "properties": {
+    "value": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/ContentItemContract"
+     },
+     "description": "Collection of content items.",
+     "readOnly": true
+    },
+    "nextLink": {
+     "type": "string",
+     "description": "Next page link, if any.",
+     "readOnly": true
+    }
+   },
+   "description": "Paged list of content items."
+  },
+  "ContentTypeContractProperties": {
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "Content type identifier"
+    },
+    "name": {
+     "type": "string",
+     "description": "Content type name. Must be 1 to 250 characters long."
+    },
+    "description": {
+     "type": "string",
+     "description": "Content type description."
+    },
+    "schema": {
+     "type": "object",
+     "description": "Content type schema."
+    },
+    "version": {
+     "type": "string",
+     "description": "Content type version."
+    }
+   }
+  },
+  "ContentTypeContract": {
+   "properties": {
+    "properties": {
+     "x-ms-client-flatten": true,
+     "$ref": "#/definitions/ContentTypeContractProperties",
+     "description": "Properties of the content type."
+    }
+   },
+   "allOf": [
+    {
+     "$ref": "#/definitions/Resource"
+    }
+   ],
+   "description": "Content type contract details."
+  },
+  "ContentTypeCollection": {
+   "properties": {
+    "value": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/ContentTypeContract"
+     },
+     "description": "Collection of content types.",
+     "readOnly": true
+    },
+    "nextLink": {
+     "type": "string",
+     "description": "Next page link, if any.",
+     "readOnly": true
+    }
+   },
+   "description": "Paged list of content types."
+  }
+ },
+ "parameters": {
+  "SubscriptionIdParameter": {
+   "name": "subscriptionId",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+  },
+  "ApiVersionParameter": {
+   "name": "api-version",
+   "in": "query",
+   "required": true,
+   "type": "string",
+   "description": "Version of the API to be used with the client request."
+  },
+  "ContentItemIdParameter": {
+   "name": "contentItemId",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "Content item identifier.",
+   "minLength": 1,
+   "maxLength": 80,
+   "x-ms-parameter-location": "method"
+  },
+  "ContentTypeIdParameter": {
+   "name": "contentTypeId",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "Content type identifier.",
+   "minLength": 1,
+   "maxLength": 80,
+   "x-ms-parameter-location": "method"
+  },
+  "ServiceNameParameter": {
+   "name": "serviceName",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "The name of the API Management service.",
+   "minLength": 1,
+   "maxLength": 50,
+   "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$",
+   "x-ms-parameter-location": "method"
+  },
+  "ResourceGroupNameParameter": {
+   "name": "resourceGroupName",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "The name of the resource group.",
+   "x-ms-parameter-location": "method"
+  }
+ }
+}

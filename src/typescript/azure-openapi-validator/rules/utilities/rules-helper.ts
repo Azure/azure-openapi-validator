@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 const $RefParser = require("@apidevtools/json-schema-ref-parser")
-import { nodes, stringify } from "jsonpath"
+import { apply, nodes, stringify } from "jsonpath"
 import { JsonPath } from "../../../jsonrpc/types"
 import { resolveNestedSchema } from "./resolveNestedSchema"
 const matchAll = require("string.prototype.matchall")
@@ -53,14 +53,21 @@ export async function getResolvedJson(doc: any): Promise<object | undefined> {
   try {
     const parser = new $RefParser()
     const docCopy = JSON.parse(JSON.stringify(doc))
+    /*
+     * remove x-ms-examples
+     */
+    apply(docCopy, `$..['x-ms-examples']`, e => null)
     return await parser.dereference(docCopy)
   } catch (err) {
-    console.error(err)
+    return
   }
 }
 
 export async function getResolvedSchemaByPath(schemaPath: JsonPath, doc: any): Promise<object | undefined> {
   const resolvedJson = await getResolvedJson(doc)
+  if (!resolvedJson) {
+    return undefined
+  }
   const pathExpression = stringify(schemaPath)
   const result = nodes(resolvedJson, pathExpression)
   if (!result) {
@@ -81,7 +88,7 @@ export async function getResolvedResponseSchema(schema: object): Promise<object 
   try {
     return resolveNestedSchema(schema)
   } catch (err) {
-    console.error(err)
+    return
   }
 }
 
