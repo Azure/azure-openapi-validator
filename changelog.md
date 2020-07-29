@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (07/29/2020)
+
+### Bug fix
+
+- DefaultErrorResponseSchema - throw exception when the examples of operations contain $ref 
+
 ## What's New (07/27/2020)
 
 ### Changed Rule
