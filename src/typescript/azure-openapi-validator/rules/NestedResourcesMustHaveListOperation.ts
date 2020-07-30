@@ -17,9 +17,7 @@ rules.push({
     const msg: string = 'The nested resource "{0}" does not have list operation, please add it.'
     /**
      * 1 get all nested resources that have point get resource
-     * 2 travel all resources and find all the resources that have a collection get
-     *   - base on path pattern
-     * 3 check the schema with the
+     * 2 travel all resources by searching in all get/put operations and find all the resources that have a collection get
      */
     const utils = new ResourceUtils(doc)
     const nestedResource = utils.getAllNestedResources()

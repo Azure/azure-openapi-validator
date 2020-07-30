@@ -16,10 +16,9 @@ rules.push({
     const msg: string =
       'The response in the GET collection operation "{0}" is different than the response definition in the individual GET  operation "{1}" .'
     /**
-     * 1 get all resources that have point get resource
-     * 2 travel all resources and find all the resources that have a collection get
-     *   - base on path pattern
-     * 3 check the schema with the
+     * 1 travel all resources and find all the resources that have a collection get
+     *   - by searching all the models return by a get operation and verify the schema
+     * 2 check the collection model schema
      */
     const utils = new ResourceUtils(doc)
     const allCollectionPath = utils.getCollectionApiInfo()

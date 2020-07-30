@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "jsonpath"
+const pointer = require("json-pointer")
 
 function unionArray(left: string[], right: string[]) {
   return left.reduce((au, u) => (au.includes(u) ? au : [...au, u]), right)
@@ -41,19 +42,18 @@ export interface CollectionApiInfo {
  */
 export class ResourceUtils {
   private innerDoc: any
-  private BaseResourceModelNames = ["trackedresource", "proxyresource", "resource"]
-  private ResourceProviderPathPattern = new RegExp("/providers/(?<resPath>[^{/]+)/", "ig")
-
-  private ResourcePathPattern = new RegExp("(/\\w+/{\\w+})+$")
+  private BaseResourceModelNames = ["trackedresource", "proxyresource", "resource", "azureentityresource"]
 
   private OnlyTopLevelResourcePathPattern = new RegExp("/providers/\\w+/\\w+$", "ig")
 
-  private ListBySidRegEx = new RegExp(".+_(List|ListBySubscriptionId|ListBySubscription|ListBySubscriptions)$", "ig")
-  private ListByRgRegEx = new RegExp(".+_ListByResourceGroup$", "ig")
-  private TenantResourceRegEx = new RegExp("^/subscriptions/{.+}/resourceGroups/{.+}/", "gi")
-  private ListBySubscriptionsResourceRegEx = new RegExp("^/subscriptions/{.+}/providers/", "gi")
+  private ResourceGroupWideResourceRegEx = new RegExp("^/subscriptions/{.+}/resourceGroups/{.+}/", "gi")
+
+  private TenantWideResourceRegEx = new RegExp("^/providers/[^/]+/[^/]+", "gi")
+
+  private SubscriptionsWideResourceRegEx = new RegExp("^/subscriptions/{.+}/providers/", "gi")
 
   private OperationApiRegEx = new RegExp("^/providers/[^/]+/operations$", "gi")
+
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(/\\w+/{[^/}]+})+$", "gi")
 
   private XmsResources = new Set<string>()
@@ -172,13 +172,75 @@ export class ResourceUtils {
     return new Map(models)
   }
 
+  private getParameterProperty(propertyName: string, model) {
+    if (!model) {
+      return
+    }
+    if (model[propertyName]) {
+      return model[propertyName]
+    }
+    if (model.$ref && model.$ref.startsWith("#/")) {
+      const pointModel = pointer.get(this.innerDoc, model.$ref.substr(1))
+      return this.getParameterProperty(propertyName, pointModel)
+    }
+  }
+
+  private isTenantWideOperation(path: string) {
+    if (path) {
+      return !!path.match(this.TenantWideResourceRegEx)
+    }
+  }
+
+  private getParameterOnlyModels() {
+    const models: Set<string> = new Set<string>()
+    const getModel = node => {
+      if (node && node.value) {
+        const parameters = node.value as any[]
+        parameters.forEach(p => {
+          const schema = this.getParameterProperty("schema", p)
+          if (schema && schema.$ref) {
+            const modelName = this.stripDefinitionPath(schema.$ref)
+            if (modelName) {
+              models.add(modelName)
+            }
+          }
+        })
+      }
+    }
+    for (const node of nodes(this.innerDoc, `$.paths.*.*.parameters`)) {
+      getModel(node)
+    }
+    for (const node of nodes(this.innerDoc, `$['x-ms-paths'].*.*.parameters`)) {
+      getModel(node)
+    }
+    const allResourcesInResponse = this.getAllOperationsModels()
+    const allOfResources = this.getAllOfResources()
+    return [...models.values()].filter(m => allOfResources.indexOf(m) !== -1 && !allResourcesInResponse.has(m))
+  }
+
   private getAllOperationsModels() {
     const putOperationModels = unionModels(this.getSpecificOperationModels("put", "200"), this.getSpecificOperationModels("put", "201"))
     const getOperationModels = this.getOperationGetResponseModels()
     const operationModels = unionModels(putOperationModels, getOperationModels)
+    return operationModels
+  }
+
+  public getPostOnlyModels() {
+    const operationModels = this.getAllOperationsModels()
     const postOperationModels = this.getSpecificOperationModels("post", "*")
     const postOnlyModels = exceptModels(postOperationModels, operationModels)
-    return exceptModels(operationModels, postOnlyModels)
+    return postOnlyModels
+  }
+
+  public getTenantWideModels() {
+    const tenantWideModels = new Set<string>()
+    const operationModels = this.getAllOperationsModels()
+    operationModels.forEach((entry, key) => {
+      if (entry.length === 1 && this.isTenantWideOperation(entry[0])) {
+        tenantWideModels.add(key)
+      }
+    })
+    return tenantWideModels
   }
 
   public getAllNestedResources() {
@@ -186,13 +248,16 @@ export class ResourceUtils {
     const nestedModels = new Set<string>()
     for (const entry of fullModels.entries()) {
       const paths = entry[1]
-      paths.some(p => {
-        const hierarchy = this.getResourcesTypeHierarchy(p)
-        if (hierarchy.length > 1) {
-          nestedModels.add(entry[0])
-          return true
-        }
-      })
+      paths
+        /* some paths not begin with /subscriptions/, they should be ignored */
+        .filter(p => p.toLowerCase().startsWith("/subscriptions/"))
+        .some(p => {
+          const hierarchy = this.getResourcesTypeHierarchy(p)
+          if (hierarchy.length > 1) {
+            nestedModels.add(entry[0])
+            return true
+          }
+        })
     }
     return nestedModels
   }
@@ -201,19 +266,22 @@ export class ResourceUtils {
    * Check the following conditions , a model be considered as a top-level resource
    * 1 when a model existing in a get/put operation and 200/201 response, consider as a resource
    * 2 when the path match the pattern: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}
+   * 3 filter tenant wide resource
    */
   public getAllTopLevelResources() {
     const fullModels = this.getAllOperationsModels()
     const topLevelModels = new Set<string>()
     for (const entry of fullModels.entries()) {
       const paths = entry[1]
-      paths.some(p => {
-        const hierarchy = this.getResourcesTypeHierarchy(p)
-        if (hierarchy.length === 1) {
-          topLevelModels.add(entry[0])
-          return true
-        }
-      })
+      paths
+        .filter(p => p.toLowerCase().startsWith("/subscriptions/"))
+        .some(p => {
+          const hierarchy = this.getResourcesTypeHierarchy(p)
+          if (hierarchy.length === 1) {
+            topLevelModels.add(entry[0])
+            return true
+          }
+        })
     }
     return topLevelModels
   }
@@ -232,7 +300,7 @@ export class ResourceUtils {
     }
     const lastProvider = path.substr(index)
     const result = []
-    const matches = lastProvider.match(this.ResourcePathPattern)
+    const matches = lastProvider.match(this.SpecificResourcePathRegEx)
     if (matches && matches.length) {
       let match = matches[0]
       while (match.indexOf("/{") !== -1) {
@@ -313,7 +381,6 @@ export class ResourceUtils {
       allPathKeys = allPathKeys.concat(Object.keys(this.innerDoc["x-ms-paths"]))
     }
     const modelMapping = this.getAllOperationsModels()
-    const collectionResources = this.getCollectionResources()
     const getOperationResources = this.getAllOperationGetResponseModels()
     const collectionApis: CollectionApiInfo[] = []
     for (const modelEntry of modelMapping.entries()) {
@@ -324,7 +391,7 @@ export class ResourceUtils {
         if (path.match(this.SpecificResourcePathRegEx)) {
           const possibleCollectionApiPath = path.substr(0, path.lastIndexOf("/{"))
           /*
-          *  case 1:"providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines"
+          * case 1:"providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines"
             case 2: "providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines":
             case 1 and case 2 should be the same, as the difference of parameter name does not have impact
           */
@@ -350,6 +417,7 @@ export class ResourceUtils {
      * if a resource definition the match a collection resource schema, we can back-stepping the corresponding operation to make sure
      * we don't lost it
      */
+    const collectionResources = this.getCollectionResources()
     for (const resource of collectionResources) {
       if (getOperationResources.has(resource[1])) {
         const index = collectionApis.findIndex(e => e.modelName === resource[1])
@@ -379,7 +447,6 @@ export class ResourceUtils {
     const resourceModel = this.getOperationGetResponseModels()
     const resourceCollectMap = new Map<string, string>()
     const doc = this.innerDoc
-
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
       for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type == 'array')]")) {
         const arrayObj = arrayNode.value
@@ -392,12 +459,32 @@ export class ResourceUtils {
     return resourceCollectMap
   }
 
+  public getCollectionModels() {
+    const collectionModels = new Map<string,string>()
+    const doc = this.innerDoc
+    const allOfResources = this.getAllOfResources()
+
+    for (const resourceNode of nodes(doc, "$.definitions.*")) {
+      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type == 'array')]")) {
+        const arrayObj = arrayNode.value
+        const items = arrayObj?.items
+        if (items && items.$ref) {
+          const itemsModel = this.stripDefinitionPath(items.$ref)
+          if (allOfResources.indexOf(itemsModel) !== -1) {
+            collectionModels.set(resourceNode.path[2] as string, this.stripDefinitionPath(items.$ref))
+          }
+        }
+      }
+    }
+    return collectionModels
+  }
+
   public isPathBySubscription(path: string) {
-    return !!path.match(this.ListBySubscriptionsResourceRegEx)
+    return !!path.match(this.SubscriptionsWideResourceRegEx)
   }
 
   public isPathByResourceGroup(path: string) {
-    return !!path.match(this.TenantResourceRegEx)
+    return !!path.match(this.ResourceGroupWideResourceRegEx)
   }
 
   public getModelFromPath(path: string) {
@@ -498,8 +585,28 @@ export class ResourceUtils {
    * 2 get resource from allOffing x-ms-azure-resource
    */
   public getAllResources() {
+    const parametersModel = this.getParameterOnlyModels()
     return this.getAllOfResources()
       .reduce((au, u) => (au.includes(u) ? au : [...au, u]), [...this.getAllOperationsModels().keys()])
       .filter(e => this.BaseResourceModelNames.indexOf(e.toLowerCase()) === -1)
+      .filter(m => parametersModel.indexOf(m) === -1)
+  }
+
+  /**
+   *  return true, when the model related to a path having different  put , get response model
+   * @param modelName
+   */
+  public hasBrotherResource(modelName: string) {
+    const allOperationsModel = this.getAllOperationsModels()
+    const allGetOperationModels = this.getAllOperationGetResponseModels()
+    if (allOperationsModel.has(modelName)) {
+      const paths = allOperationsModel.get(modelName)
+      return paths.some(p => {
+        const model = this.getModelFromPath(p)
+        if (allGetOperationModels.has(model) && model !== modelName) {
+          return true
+        }
+      })
+    }
   }
 }
