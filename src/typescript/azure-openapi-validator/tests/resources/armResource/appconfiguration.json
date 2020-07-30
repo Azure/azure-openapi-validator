@@ -444,7 +444,7 @@
             }
           }
         },
-        "x-ms-examples": {},
+        "x-ms-examples": null,
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -494,8 +494,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        }
+        "x-ms-examples": null
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections": {
@@ -533,8 +532,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        },
+        "x-ms-examples": null,
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -582,8 +580,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        }
+        "x-ms-examples": null
       },
       "put": {
         "tags": [
@@ -641,8 +638,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        },
+        "x-ms-examples": null,
         "x-ms-long-running-operation": true
       },
       "delete": {
@@ -689,8 +685,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        },
+        "x-ms-examples": null,
         "x-ms-long-running-operation": true
       }
     },
@@ -729,8 +724,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        },
+        "x-ms-examples": null,
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -778,8 +772,7 @@
             }
           }
         },
-        "x-ms-examples": {
-        }
+        "x-ms-examples": null
       }
     }
   },

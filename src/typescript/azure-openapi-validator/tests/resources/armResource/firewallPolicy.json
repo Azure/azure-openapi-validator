@@ -64,21 +64,17 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
             "description": "Request successful. Resource with the specified name does not exist"
-          },
-          "200": {
-            "description": "Delete successful."
           }
         },
-        "x-ms-examples": {
-          "Delete Firewall Policy": {
-            "$ref": "./examples/FirewallPolicyDelete.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-long-running-operation": true,
         "x-ms-long-running-operation-options": {
           "final-state-via": "location"
@@ -127,22 +123,14 @@
             }
           }
         },
-        "x-ms-examples": {
-          "Get FirewallPolicy": {
-            "$ref": "./examples/FirewallPolicyGet.json"
-          }
-        }
+        "x-ms-examples": null
       },
       "patch": {
         "tags": [
           "FirewallPolicies"
         ],
         "operationId": "FirewallPolicies_UpdateTags",
-        "x-ms-examples": {
-          "Update FirewallPolicy": {
-            "$ref": "./examples/FirewallPolicyUpdateTags.json"
-          }
-        },
+        "x-ms-examples": null,
         "description": "Updates a Firewall Policy Tags.",
         "parameters": [
           {
@@ -228,24 +216,20 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Request received successfully. The operation returns the resulting FirewallPolicy resource.",
-            "schema": {
-              "$ref": "#/definitions/FirewallPolicy"
-            }
-          },
           "200": {
             "description": "Request successful. The operation returns the resulting FirewallPolicy resource.",
             "schema": {
               "$ref": "#/definitions/FirewallPolicy"
             }
+          },
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting FirewallPolicy resource.",
+            "schema": {
+              "$ref": "#/definitions/FirewallPolicy"
+            }
           }
         },
-        "x-ms-examples": {
-          "Create FirewallPolicy": {
-            "$ref": "./examples/FirewallPolicyPut.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-long-running-operation": true,
         "x-ms-long-running-operation-options": {
           "final-state-via": "azure-async-operation"
@@ -282,11 +266,7 @@
             }
           }
         },
-        "x-ms-examples": {
-          "List all Firewall Policies for a given resource group": {
-            "$ref": "./examples/FirewallPolicyListByResourceGroup.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -315,11 +295,7 @@
             }
           }
         },
-        "x-ms-examples": {
-          "List all Firewall Policies for a given subscription": {
-            "$ref": "./examples/FirewallPolicyListBySubscription.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -362,21 +338,17 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
             "description": "Request successful. Resource with the specified name does not exist"
-          },
-          "200": {
-            "description": "Delete successful."
           }
         },
-        "x-ms-examples": {
-          "Delete FirewallPolicyRuleGroup": {
-            "$ref": "./examples/FirewallPolicyRuleGroupDelete.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-long-running-operation": true,
         "x-ms-long-running-operation-options": {
           "final-state-via": "location"
@@ -425,11 +397,7 @@
             }
           }
         },
-        "x-ms-examples": {
-          "Get FirewallPolicyRuleGroup": {
-            "$ref": "./examples/FirewallPolicyRuleGroupGet.json"
-          }
-        }
+        "x-ms-examples": null
       },
       "put": {
         "tags": [
@@ -476,24 +444,20 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Request received successfully. The operation returns the resulting FirewallPolicyRuleGroup resource.",
-            "schema": {
-              "$ref": "#/definitions/FirewallPolicyRuleGroup"
-            }
-          },
           "200": {
             "description": "Request successful. The operation returns the resulting FirewallPolicyRuleGroup resource.",
             "schema": {
               "$ref": "#/definitions/FirewallPolicyRuleGroup"
             }
+          },
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting FirewallPolicyRuleGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/FirewallPolicyRuleGroup"
+            }
           }
         },
-        "x-ms-examples": {
-          "Create FirewallPolicyRuleGroup": {
-            "$ref": "./examples/FirewallPolicyRuleGroupPut.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-long-running-operation": true,
         "x-ms-long-running-operation-options": {
           "final-state-via": "azure-async-operation"
@@ -537,11 +501,7 @@
             }
           }
         },
-        "x-ms-examples": {
-          "List all FirewallPolicyRuleGroups for a given FirewallPolicy": {
-            "$ref": "./examples/FirewallPolicyRuleGroupList.json"
-          }
-        },
+        "x-ms-examples": null,
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }

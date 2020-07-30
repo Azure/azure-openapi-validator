@@ -33,11 +33,7 @@
         ],
         "operationId": "Operations_List",
         "description": "List all of the available operations the Desktop Virtualization resource provider supports.",
-        "x-ms-examples": {
-          "OperationDescription_List": {
-            "$ref": "./examples/OperationDescription_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -60,11 +56,7 @@
         ],
         "operationId": "Workspaces_Get",
         "description": "Get a workspace.",
-        "x-ms-examples": {
-          "Workspace_Get": {
-            "$ref": "./examples/Workspace_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -100,11 +92,7 @@
         ],
         "operationId": "Workspaces_CreateOrUpdate",
         "description": "Create or update a workspace.",
-        "x-ms-examples": {
-          "Workspace_Create": {
-            "$ref": "./examples/Workspace_Create.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -155,11 +143,7 @@
         ],
         "operationId": "Workspaces_Delete",
         "description": "Remove a workspace.",
-        "x-ms-examples": {
-          "Workspace_Delete": {
-            "$ref": "./examples/Workspace_Delete.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -195,11 +179,7 @@
         ],
         "operationId": "Workspaces_Update",
         "description": "Update a workspace.",
-        "x-ms-examples": {
-          "Workspace_Update": {
-            "$ref": "./examples/Workspace_Update.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -246,11 +226,7 @@
         ],
         "operationId": "Workspaces_ListByResourceGroup",
         "description": "List workspaces.",
-        "x-ms-examples": {
-          "Workspace_ListByResourceGroup": {
-            "$ref": "./examples/Workspace_ListByResourceGroup.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -288,11 +264,7 @@
         ],
         "operationId": "Workspaces_ListBySubscription",
         "description": "List workspaces in subscription.",
-        "x-ms-examples": {
-          "Workspace_ListBySubscription": {
-            "$ref": "./examples/Workspace_ListBySubscription.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -327,11 +299,7 @@
         ],
         "operationId": "ApplicationGroups_Get",
         "description": "Get an application group.",
-        "x-ms-examples": {
-          "ApplicationGroup_Get": {
-            "$ref": "./examples/ApplicationGroup_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -367,11 +335,7 @@
         ],
         "operationId": "ApplicationGroups_CreateOrUpdate",
         "description": "Create or update an applicationGroup.",
-        "x-ms-examples": {
-          "ApplicationGroup_Create": {
-            "$ref": "./examples/ApplicationGroup_Create.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -422,11 +386,7 @@
         ],
         "operationId": "ApplicationGroups_Delete",
         "description": "Remove an applicationGroup.",
-        "x-ms-examples": {
-          "ApplicationGroup_Delete": {
-            "$ref": "./examples/ApplicationGroup_Delete.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -462,11 +422,7 @@
         ],
         "operationId": "ApplicationGroups_Update",
         "description": "Update an applicationGroup.",
-        "x-ms-examples": {
-          "ApplicationGroups_Update": {
-            "$ref": "./examples/ApplicationGroup_Update.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -513,11 +469,7 @@
         ],
         "operationId": "ApplicationGroups_ListByResourceGroup",
         "description": "List applicationGroups.",
-        "x-ms-examples": {
-          "ApplicationGroup_ListByResourceGroup": {
-            "$ref": "./examples/ApplicationGroup_ListByResourceGroup.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -562,11 +514,7 @@
         ],
         "operationId": "ApplicationGroups_ListBySubscription",
         "description": "List applicationGroups in subscription.",
-        "x-ms-examples": {
-          "ApplicationGroup_List": {
-            "$ref": "./examples/ApplicationGroup_ListBySubscription.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -608,11 +556,7 @@
         ],
         "operationId": "StartMenuItems_List",
         "description": "List start menu items in the given application group.",
-        "x-ms-examples": {
-          "StartMenuItem_List": {
-            "$ref": "./examples/StartMenuItem_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -653,11 +597,7 @@
         ],
         "operationId": "Applications_Get",
         "description": "Get an application.",
-        "x-ms-examples": {
-          "Application_Get": {
-            "$ref": "./examples/Application_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -696,11 +636,7 @@
         ],
         "operationId": "Applications_CreateOrUpdate",
         "description": "Create or update an application.",
-        "x-ms-examples": {
-          "Application_Create": {
-            "$ref": "./examples/Application_Create.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -754,11 +690,7 @@
         ],
         "operationId": "Applications_Delete",
         "description": "Remove an application.",
-        "x-ms-examples": {
-          "Application_Delete": {
-            "$ref": "./examples/Application_Delete.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -797,11 +729,7 @@
         ],
         "operationId": "Applications_Update",
         "description": "Update an application.",
-        "x-ms-examples": {
-          "Application_Update": {
-            "$ref": "./examples/Application_Update.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -851,11 +779,7 @@
         ],
         "operationId": "Applications_List",
         "description": "List applications.",
-        "x-ms-examples": {
-          "Applications_List": {
-            "$ref": "./examples/Application_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -896,11 +820,7 @@
         ],
         "operationId": "Desktops_Get",
         "description": "Get a desktop.",
-        "x-ms-examples": {
-          "Desktop_Get": {
-            "$ref": "./examples/Desktop_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -939,11 +859,7 @@
         ],
         "operationId": "Desktops_Update",
         "description": "Update a desktop.",
-        "x-ms-examples": {
-          "Desktop_Update": {
-            "$ref": "./examples/Desktop_Update.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -993,11 +909,7 @@
         ],
         "operationId": "Desktops_List",
         "description": "List desktops.",
-        "x-ms-examples": {
-          "Desktop_List": {
-            "$ref": "./examples/Desktop_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1035,11 +947,7 @@
         ],
         "operationId": "HostPools_Get",
         "description": "Get a host pool.",
-        "x-ms-examples": {
-          "HostPool_Get": {
-            "$ref": "./examples/HostPool_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1075,11 +983,7 @@
         ],
         "operationId": "HostPools_CreateOrUpdate",
         "description": "Create or update a host pool.",
-        "x-ms-examples": {
-          "HostPool_Create": {
-            "$ref": "./examples/HostPool_Create.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1130,11 +1034,7 @@
         ],
         "operationId": "HostPools_Delete",
         "description": "Remove a host pool.",
-        "x-ms-examples": {
-          "HostPool_Delete": {
-            "$ref": "./examples/HostPool_Delete.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1177,11 +1077,7 @@
         ],
         "operationId": "HostPools_Update",
         "description": "Update a host pool.",
-        "x-ms-examples": {
-          "HostPool_Update": {
-            "$ref": "./examples/HostPool_Update.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1228,11 +1124,7 @@
         ],
         "operationId": "HostPools_ListByResourceGroup",
         "description": "List hostPools.",
-        "x-ms-examples": {
-          "HostPool_ListByResourceGroup": {
-            "$ref": "./examples/HostPool_ListByResourceGroup.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1270,11 +1162,7 @@
         ],
         "operationId": "HostPools_List",
         "description": "List hostPools in subscription.",
-        "x-ms-examples": {
-          "HostPool_List": {
-            "$ref": "./examples/HostPool_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1309,11 +1197,7 @@
         ],
         "operationId": "UserSessions_ListByHostPool",
         "description": "List userSessions.",
-        "x-ms-examples": {
-          "UserSession_ListByHostPool": {
-            "$ref": "./examples/UserSession_ListByHostPool.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1361,11 +1245,7 @@
         ],
         "operationId": "SessionHosts_Get",
         "description": "Get a session host.",
-        "x-ms-examples": {
-          "SessionHost_Get": {
-            "$ref": "./examples/SessionHost_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1404,11 +1284,7 @@
         ],
         "operationId": "SessionHosts_Delete",
         "description": "Remove a SessionHost.",
-        "x-ms-examples": {
-          "SessionHost_Delete": {
-            "$ref": "./examples/SessionHost_Delete.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1454,11 +1330,7 @@
         ],
         "operationId": "SessionHosts_Update",
         "description": "Update a session host.",
-        "x-ms-examples": {
-          "SessionHost_Update": {
-            "$ref": "./examples/SessionHost_Update.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1508,11 +1380,7 @@
         ],
         "operationId": "SessionHosts_List",
         "description": "List sessionHosts.",
-        "x-ms-examples": {
-          "SessionHost_List": {
-            "$ref": "./examples/SessionHost_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1553,11 +1421,7 @@
         ],
         "operationId": "UserSessions_Get",
         "description": "Get a userSession.",
-        "x-ms-examples": {
-          "UserSession_Get": {
-            "$ref": "./examples/UserSession_Get.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1599,11 +1463,7 @@
         ],
         "operationId": "UserSessions_Delete",
         "description": "Remove a userSession.",
-        "x-ms-examples": {
-          "UserSession_Delete": {
-            "$ref": "./examples/UserSession_Delete.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1654,11 +1514,7 @@
         ],
         "operationId": "UserSessions_List",
         "description": "List userSessions.",
-        "x-ms-examples": {
-          "UserSession_List": {
-            "$ref": "./examples/UserSession_List.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1702,11 +1558,7 @@
         ],
         "operationId": "UserSessions_Disconnect",
         "description": "Disconnect a userSession.",
-        "x-ms-examples": {
-          "UserSession_Disconnect_Post": {
-            "$ref": "./examples/UserSession_Disconnect_Post.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1747,11 +1599,7 @@
         ],
         "operationId": "UserSessions_SendMessage",
         "description": "Send a message to a user.",
-        "x-ms-examples": {
-          "UserSession_SendMessage_Post": {
-            "$ref": "./examples/UserSession_SendMessage_Post.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"

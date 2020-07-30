@@ -41,11 +41,7 @@
         ],
         "description": "Lists all of the available REST API operations of the Microsoft.ApiManagement provider.",
         "operationId": "ApiManagementOperations_List",
-        "x-ms-examples": {
-          "ApiManagementListOperations": {
-            "$ref": "./examples/ApiManagementListOperations.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
@@ -72,14 +68,7 @@
         "summary": "Gets available SKUs for API Management service",
         "description": "Gets all available SKU for a given API Management service",
         "operationId": "ApiManagementServiceSkus_ListAvailableServiceSkus",
-        "x-ms-examples": {
-          "ApiManagementListSKUs-Dedicated": {
-            "$ref": "./examples/ApiManagementListSKUs-Dedicated.json"
-          },
-          "ApiManagementListSKUs-Consumption": {
-            "$ref": "./examples/ApiManagementListSKUs-Consumption.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -120,11 +109,7 @@
         ],
         "operationId": "ApiManagementService_Restore",
         "description": "Restores a backup of an API Management service created using the ApiManagementService_Backup operation on the current service. This is a long running operation and could take several minutes to complete.",
-        "x-ms-examples": {
-          "ApiManagementRestoreService": {
-            "$ref": "./examples/ApiManagementRestoreService.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -178,11 +163,7 @@
         ],
         "operationId": "ApiManagementService_Backup",
         "description": "Creates a backup of the API Management service to the given Azure Storage Account. This is long running operation and could take several minutes to complete.",
-        "x-ms-examples": {
-          "ApiManagementCreateBackup": {
-            "$ref": "./examples/ApiManagementCreateBackup.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -236,23 +217,7 @@
         ],
         "operationId": "ApiManagementService_CreateOrUpdate",
         "description": "Creates or updates an API Management service. This is long running operation and could take several minutes to complete.",
-        "x-ms-examples": {
-          "ApiManagementCreateService": {
-            "$ref": "./examples/ApiManagementCreateService.json"
-          },
-          "ApiManagementCreateMultiRegionServiceWithCustomHostname": {
-            "$ref": "./examples/ApiManagementCreateMultiRegionServiceWithCustomHostname.json"
-          },
-          "ApiManagementCreateServiceHavingMsi": {
-            "$ref": "./examples/ApiManagementCreateServiceHavingMsi.json"
-          },
-          "ApiManagementCreateServiceWithSystemCertificates": {
-            "$ref": "./examples/ApiManagementCreateServiceWithSystemCertificates.json"
-          },
-          "ApiManagementCreateServiceWithUserAssignedIdentity": {
-            "$ref": "./examples/ApiManagementCreateServiceWithUserAssignedIdentity.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -307,14 +272,7 @@
         ],
         "operationId": "ApiManagementService_Update",
         "description": "Updates an existing API Management service.",
-        "x-ms-examples": {
-          "ApiManagementUpdateServiceDisableTls10": {
-            "$ref": "./examples/ApiManagementUpdateServiceDisableTls10.json"
-          },
-          "ApiManagementUpdateServicePublisherDetails": {
-            "$ref": "./examples/ApiManagementUpdateServicePublisherDetails.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -363,17 +321,7 @@
         ],
         "operationId": "ApiManagementService_Get",
         "description": "Gets an API Management service resource description.",
-        "x-ms-examples": {
-          "ApiManagementServiceGetService": {
-            "$ref": "./examples/ApiManagementServiceGetService.json"
-          },
-          "ApiManagementServiceGetServiceHavingMsi": {
-            "$ref": "./examples/ApiManagementServiceGetServiceHavingMsi.json"
-          },
-          "ApiManagementServiceGetMultiRegionInternalVnet": {
-            "$ref": "./examples/ApiManagementServiceGetMultiRegionInternalVnet.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -409,11 +357,7 @@
         ],
         "operationId": "ApiManagementService_Delete",
         "description": "Deletes an existing API Management service.",
-        "x-ms-examples": {
-          "ApiManagementServiceDeleteService": {
-            "$ref": "./examples/ApiManagementServiceDeleteService.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -458,11 +402,7 @@
         ],
         "operationId": "ApiManagementService_ListByResourceGroup",
         "description": "List all API Management services within a resource group.",
-        "x-ms-examples": {
-          "ApiManagementListServiceBySubscriptionAndResourceGroup": {
-            "$ref": "./examples/ApiManagementListServiceBySubscriptionAndResourceGroup.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -500,11 +440,7 @@
         ],
         "operationId": "ApiManagementService_List",
         "description": "Lists all API Management services within an Azure subscription.",
-        "x-ms-examples": {
-          "ApiManagementListServiceBySubscription": {
-            "$ref": "./examples/ApiManagementListServiceBySubscription.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
@@ -533,11 +469,7 @@
         ],
         "operationId": "ApiManagementService_GetSsoToken",
         "description": "Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.",
-        "x-ms-examples": {
-          "ApiManagementServiceGetSsoToken": {
-            "$ref": "./examples/ApiManagementServiceGetSsoToken.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -576,11 +508,7 @@
         ],
         "operationId": "ApiManagementService_CheckNameAvailability",
         "description": "Checks availability and correctness of a name for an API Management service.",
-        "x-ms-examples": {
-          "ApiManagementServiceCheckNameAvailability": {
-            "$ref": "./examples/ApiManagementServiceCheckNameAvailability.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "name": "parameters",
@@ -621,11 +549,7 @@
         ],
         "operationId": "ApiManagementService_ApplyNetworkConfigurationUpdates",
         "description": "Updates the Microsoft.ApiManagement resource running in the Virtual network to pick the updated network settings.",
-        "x-ms-examples": {
-          "ApiManagementApplyNetworkConfigurationUpdates": {
-            "$ref": "./examples/ApiManagementApplyNetworkConfigurationUpdates.json"
-          }
-        },
+        "x-ms-examples": null,
         "parameters": [
           {
             "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
@@ -650,14 +574,14 @@
           }
         ],
         "responses": {
-          "202": {
-            "description": "Accepted: Location header contains the URL where the status of the long running operation can be checked."
-          },
           "200": {
             "description": "Network configuration updates were successfully applied on the Api Management service.",
             "schema": {
               "$ref": "#/definitions/ApiManagementServiceResource"
             }
+          },
+          "202": {
+            "description": "Accepted: Location header contains the URL where the status of the long running operation can be checked."
           },
           "default": {
             "description": "Error response describing why the operation failed.",

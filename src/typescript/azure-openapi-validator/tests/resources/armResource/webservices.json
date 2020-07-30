@@ -86,39 +86,7 @@
             "$ref": "#/parameters/WorkspaceNameParameter"
           }
         ],
-        "x-ms-examples": {
-          "WorkspaceGet": {
-            "parameters": {
-              "api-version": "2016-04-01",
-              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-              "resourceGroupName": "myResourceGroup",
-              "workspaceName": "testworkspace"
-            },
-            "responses": {
-              "200": {
-                "body": {
-                  "tags": {
-                    "tagKey1": "TagValue1"
-                  },
-                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace",
-                  "name": "testworkspace",
-                  "type": "Microsoft.MachineLearning/workspaces",
-                  "location": "East US",
-                  "properties": {
-                    "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage",
-                    "ownerEmail": "abc@microsoft.com",
-                    "workspaceType": "PaidStandard",
-                    "workspaceState": "Enabled",
-                    "workspaceId": "00000000-1111-2222-3333-444444444444",
-                    "studioEndpoint": "https://studioapi.azureml.net",
-                    "creationTime": "2017-03-01T23:14:37.0707808Z",
-                    "keyVaultIdentifierId": "kvid"
-                  }
-                }
-              }
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly.",
@@ -169,49 +137,7 @@
             }
           }
         ],
-        "x-ms-examples": {
-          "WorkspaceCreate": {
-            "parameters": {
-              "api-version": "2016-04-01",
-              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-              "resourceGroupName": "myResourceGroup",
-              "workspaceName": "testworkspace",
-              "parameters": {
-                "tags": {
-                  "tagKey1": "TagValue1"
-                },
-                "location": "West Europe",
-                "properties": {
-                  "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage",
-                  "ownerEmail": "abc@microsoft.com"
-                }
-              }
-            },
-            "responses": {
-              "200": {
-                "body": {
-                  "tags": {
-                    "tagKey1": "TagValue1"
-                  },
-                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace",
-                  "name": "testworkspace",
-                  "type": "Microsoft.MachineLearning/workspaces",
-                  "location": "East US",
-                  "properties": {
-                    "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage",
-                    "ownerEmail": "abc@microsoft.com",
-                    "workspaceType": "PaidStandard",
-                    "workspaceState": "Enabled",
-                    "workspaceId": "00000000-1111-2222-3333-444444444444",
-                    "studioEndpoint": "https://studioapi.azureml.net",
-                    "creationTime": "2017-03-01T23:14:37.0707808Z",
-                    "keyVaultIdentifierId": "kvid"
-                  }
-                }
-              }
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the resource already exists and was updated.",
@@ -253,20 +179,7 @@
             "$ref": "#/parameters/WorkspaceNameParameter"
           }
         ],
-        "x-ms-examples": {
-          "WorkspaceDelete": {
-            "parameters": {
-              "api-version": "2016-04-01",
-              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-              "resourceGroupName": "myResourceGroup",
-              "workspaceName": "testworkspace"
-            },
-            "responses": {
-              "200": {},
-              "204": {}
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly."
@@ -317,47 +230,7 @@
             }
           }
         ],
-        "x-ms-examples": {
-          "WorkspaceUpdate": {
-            "parameters": {
-              "api-version": "2016-04-01",
-              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-              "resourceGroupName": "myResourceGroup",
-              "workspaceName": "testworkspace",
-              "parameters": {
-                "tags": {
-                  "tagKey1": "TagValue1"
-                },
-                "properties": {
-                  "keyVaultIdentifierId": "kvidnew"
-                }
-              }
-            },
-            "responses": {
-              "200": {
-                "body": {
-                  "tags": {
-                    "tagKey1": "TagValue1"
-                  },
-                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace",
-                  "name": "testworkspace",
-                  "type": "Microsoft.MachineLearning/workspaces",
-                  "location": "East US",
-                  "properties": {
-                    "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage",
-                    "ownerEmail": "abc@microsoft.com",
-                    "workspaceType": "PaidStandard",
-                    "workspaceState": "Enabled",
-                    "workspaceId": "00000000-1111-2222-3333-444444444444",
-                    "studioEndpoint": "https://studioapi.azureml.net",
-                    "creationTime": "2017-03-01T23:14:37.0707808Z",
-                    "keyVaultIdentifierId": "kvidnew"
-                  }
-                }
-              }
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly.",
@@ -401,19 +274,7 @@
             "$ref": "#/parameters/ResourceGroupParameter"
           }
         ],
-        "x-ms-examples": {
-          "ResyncStorageKeys": {
-            "parameters": {
-              "api-version": "2016-04-01",
-              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-              "resourceGroupName": "myResourceGroup",
-              "workspaceName": "testworkspace"
-            },
-            "responses": {
-              "200": {}
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly."
@@ -454,24 +315,7 @@
             "$ref": "#/parameters/ResourceGroupParameter"
           }
         ],
-        "x-ms-examples": {
-          "ListWorkspaceKeys": {
-            "parameters": {
-              "api-version": "2016-04-01",
-              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-              "resourceGroupName": "myResourceGroup",
-              "workspaceName": "testworkspace"
-            },
-            "responses": {
-              "200": {
-                "body": {
-                  "primaryToken": "cZdmqKBYLEPcPo7dsfdfefeSlKpnxybJ86KSQGLarmLik2MYMxHijwsDIZ+d1mGtYJz3mlI5AEnxu8QqHcUjSA==",
-                  "secondaryToken": "NPtbk8ksmLvsasasonFeTjw/k7QLz/SEdKN8+SyzKRcPzOVTQcR6C0O1fwmlELnCsYLjs+13yzdJ+4+Lxo3LtZ2g=="
-                }
-              }
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly.",
@@ -512,55 +356,7 @@
             "$ref": "#/parameters/ResourceGroupParameter"
           }
         ],
-        "x-ms-examples": {
-          "WorkspaceListResourceGroup": {
-            "parameters": {
-              "subscriptionId": "00000000-1111-2222-3333-444444444444",
-              "resourceGroupName": "myResourceGroup",
-              "api-version": "2016-04-01"
-            },
-            "responses": {
-              "200": {
-                "body": {
-                  "value": [
-                    {
-                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace",
-                      "name": "testworkspace",
-                      "type": "Microsoft.MachineLearning/workspaces",
-                      "location": "East US",
-                      "properties": {
-                        "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage1",
-                        "ownerEmail": "abc@microsoft.com",
-                        "workspaceType": "PaidStandard",
-                        "workspaceState": "Enabled",
-                        "workspaceId": "00000000-1111-2222-3333-444444444444",
-                        "studioEndpoint": "https://studioapi.azureml.net",
-                        "creationTime": "2017-03-01T23:14:37.0707808Z",
-                        "keyVaultIdentifierId": "kvid"
-                      }
-                    },
-                    {
-                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace1",
-                      "name": "testworkspace1",
-                      "type": "Microsoft.MachineLearning/workspaces",
-                      "location": "East US",
-                      "properties": {
-                        "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage1",
-                        "ownerEmail": "abc@microsoft.com",
-                        "workspaceType": "PaidStandard",
-                        "workspaceState": "Enabled",
-                        "workspaceId": "00000000-1111-2222-3333-444444444444",
-                        "studioEndpoint": "https://studioapi.azureml.net",
-                        "creationTime": "2017-03-01T23:16:37.0707808Z",
-                        "keyVaultIdentifierId": "kvid"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly.",
@@ -601,54 +397,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
-        "x-ms-examples": {
-          "WorkspaceGetBySubscription": {
-            "parameters": {
-              "subscriptionId": "00000000-1111-2222-3333-444444444444",
-              "api-version": "2016-04-01"
-            },
-            "responses": {
-              "200": {
-                "body": {
-                  "value": [
-                    {
-                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace",
-                      "name": "testworkspace",
-                      "type": "Microsoft.MachineLearning/workspaces",
-                      "location": "East US",
-                      "properties": {
-                        "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage1",
-                        "ownerEmail": "abc@microsoft.com",
-                        "workspaceType": "PaidStandard",
-                        "workspaceState": "Enabled",
-                        "workspaceId": "00000000-1111-2222-3333-444444444444",
-                        "studioEndpoint": "https://studioapi.azureml.net",
-                        "creationTime": "2017-03-01T23:14:37.0707808Z",
-                        "keyVaultIdentifierId": "kvid"
-                      }
-                    },
-                    {
-                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.MachineLearning/workspaces/testworkspace1",
-                      "name": "testworkspace1",
-                      "type": "Microsoft.MachineLearning/workspaces",
-                      "location": "East US",
-                      "properties": {
-                        "userStorageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage1",
-                        "ownerEmail": "abc@microsoft.com",
-                        "workspaceType": "PaidStandard",
-                        "workspaceState": "Enabled",
-                        "workspaceId": "00000000-1111-2222-3333-444444444444",
-                        "studioEndpoint": "https://studioapi.azureml.net",
-                        "creationTime": "2017-03-01T23:16:37.0707808Z",
-                        "keyVaultIdentifierId": "kvid"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
+        "x-ms-examples": null,
         "responses": {
           "200": {
             "description": "The request was successful; the request was well-formed and received properly.",
