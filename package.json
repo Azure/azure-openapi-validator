@@ -27,6 +27,7 @@
     "jsonpath": "1.0.2",
     "string.prototype.matchall": "^4.0.2",
     "json-refs": "^3.0.15",
+    "json-pointer": "^0.6.0",
     "@apidevtools/json-schema-ref-parser": "^9.0.1"
   },
   "scripts": {

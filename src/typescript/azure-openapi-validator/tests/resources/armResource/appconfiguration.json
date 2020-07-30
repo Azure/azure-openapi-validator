@@ -51,11 +51,6 @@
             }
           }
         },
-        "x-ms-examples": {
-          "ConfigurationStores_List": {
-            "$ref": "./examples/ConfigurationStoresList.json"
-          }
-        },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -100,11 +95,6 @@
             }
           }
         },
-        "x-ms-examples": {
-          "ConfigurationStores_ListByResourceGroup": {
-            "$ref": "./examples/ConfigurationStoresListByResourceGroup.json"
-          }
-        },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         }
@@ -143,11 +133,6 @@
             "schema": {
               "$ref": "#/definitions/Error"
             }
-          }
-        },
-        "x-ms-examples": {
-          "ConfigurationStores_Get": {
-            "$ref": "./examples/ConfigurationStoresGet.json"
           }
         }
       },
@@ -200,14 +185,6 @@
             }
           }
         },
-        "x-ms-examples": {
-          "ConfigurationStores_Create": {
-            "$ref": "./examples/ConfigurationStoresCreate.json"
-          },
-          "ConfigurationStores_Create_WithIdentity": {
-            "$ref": "./examples/ConfigurationStoresCreateWithIdentity.json"
-          }
-        },
         "x-ms-long-running-operation": true
       },
       "delete": {
@@ -245,11 +222,6 @@
             "schema": {
               "$ref": "#/definitions/Error"
             }
-          }
-        },
-        "x-ms-examples": {
-          "ConfigurationStores_Delete": {
-            "$ref": "./examples/ConfigurationStoresDelete.json"
           }
         },
         "x-ms-long-running-operation": true
@@ -303,14 +275,6 @@
             }
           }
         },
-        "x-ms-examples": {
-          "ConfigurationStores_Update": {
-            "$ref": "./examples/ConfigurationStoresUpdate.json"
-          },
-          "ConfigurationStores_Update_WithIdentity": {
-            "$ref": "./examples/ConfigurationStoresUpdateWithIdentity.json"
-          }
-        },
         "x-ms-long-running-operation": true
       }
     },
@@ -350,14 +314,6 @@
             "schema": {
               "$ref": "#/definitions/Error"
             }
-          }
-        },
-        "x-ms-examples": {
-          "ConfigurationStores_CheckNameAvailable": {
-            "$ref": "./examples/CheckNameAvailable.json"
-          },
-          "ConfigurationStores_CheckNameNotAvailable": {
-            "$ref": "./examples/CheckNameNotAvailable.json"
           }
         }
       }
@@ -402,11 +358,6 @@
             "schema": {
               "$ref": "#/definitions/Error"
             }
-          }
-        },
-        "x-ms-examples": {
-          "ConfigurationStores_ListKeys": {
-            "$ref": "./examples/ConfigurationStoresListKeys.json"
           }
         },
         "x-ms-pageable": {
@@ -456,11 +407,6 @@
             "schema": {
               "$ref": "#/definitions/Error"
             }
-          }
-        },
-        "x-ms-examples": {
-          "ConfigurationStores_RegenerateKey": {
-            "$ref": "./examples/ConfigurationStoresRegenerateKey.json"
           }
         }
       }
@@ -549,9 +495,6 @@
           }
         },
         "x-ms-examples": {
-          "ConfigurationStores_ListKeyValue": {
-            "$ref": "./examples/ConfigurationStoresListKeyValue.json"
-          }
         }
       }
     },
@@ -591,9 +534,6 @@
           }
         },
         "x-ms-examples": {
-          "PrivateEndpointConnection_List": {
-            "$ref": "./examples/ConfigurationStoresListPrivateEndpointConnections.json"
-          }
         },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
@@ -643,9 +583,6 @@
           }
         },
         "x-ms-examples": {
-          "PrivateEndpointConnection_GetConnection": {
-            "$ref": "./examples/ConfigurationStoresGetPrivateEndpointConnection.json"
-          }
         }
       },
       "put": {
@@ -705,9 +642,6 @@
           }
         },
         "x-ms-examples": {
-          "PrivateEndpointConnection_CreateOrUpdate": {
-            "$ref": "./examples/ConfigurationStoresCreatePrivateEndpointConnection.json"
-          }
         },
         "x-ms-long-running-operation": true
       },
@@ -756,9 +690,6 @@
           }
         },
         "x-ms-examples": {
-          "PrivateEndpointConnections_Delete": {
-            "$ref": "./examples/ConfigurationStoresDeletePrivateEndpointConnection.json"
-          }
         },
         "x-ms-long-running-operation": true
       }
@@ -799,9 +730,6 @@
           }
         },
         "x-ms-examples": {
-          "PrivateLinkResources_ListGroupIds": {
-            "$ref": "./examples/PrivateLinkResourcesListByConfigurationStore.json"
-          }
         },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
@@ -851,9 +779,6 @@
           }
         },
         "x-ms-examples": {
-          "PrivateLinkResources_Get": {
-            "$ref": "./examples/PrivateLinkResourceGet.json"
-          }
         }
       }
     }

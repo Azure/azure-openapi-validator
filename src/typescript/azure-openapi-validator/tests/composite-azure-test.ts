@@ -9,7 +9,6 @@ import { AutoRestPluginHost } from "../../jsonrpc/plugin-host"
 import { Message } from "../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { AllResourcesMustHaveGetOperation } from "../rules/AllResourcesMustHaveGetOperation"
-import { AllResourcesMustHaveGetOperationV2 } from "../rules/AllResourcesMustHaveGetOperationV2"
 import { DescriptionMustNotBeNodeName } from "../rules/DescriptionMustNotBeNodeName"
 import { GetCollectionResponseSchema } from "../rules/GetCollectionResponseSchema"
 import { NestedResourcesMustHaveListOperation } from "../rules/NestedResourcesMustHaveListOperation"
@@ -117,7 +116,6 @@ class CompositeAzureTests {
     const fileName: string = "armResource/compute.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 10)
-     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperationV2, 10)
   }
 
   @test public async "all resources must have get operation 7 "() {
