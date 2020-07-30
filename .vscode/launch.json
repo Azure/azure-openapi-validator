@@ -30,7 +30,7 @@
             "env": {
                 "TS_NODE_IGNORE": "false"
             },
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
             "args": [
                 "-r",
                 "ts-node/register",

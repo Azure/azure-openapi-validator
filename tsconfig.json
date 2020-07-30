@@ -8,7 +8,8 @@
         "experimentalDecorators": true,
         "lib": [
             "esnext.asynciterable"
-        ]
+        ],
+        "sourceMap": true
     },
     "exclude": [
         "node_modules"
