@@ -21,6 +21,9 @@ rules.push({
       "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content."
 
     const resolvedDoc = await getResolvedJson(doc)
+    if (!resolvedDoc) {
+      return
+    }
 
     for (const n of nodes(doc, "$.paths.*.*.responses")) {
       const response: any = n.value
