@@ -42,7 +42,6 @@
         "js-yaml": "^3.14.0",
         "jsonpath": "^1.0.2",
         "json-refs": "^0.3.1",
-        "json-pointer": "^0.6.0",
         "@apidevtools/json-schema-ref-parser": "^8.0.0",
         "string.prototype.matchall": "^4.0.2",
         "vscode-jsonrpc": "^3.2.0"

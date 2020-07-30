@@ -115,13 +115,13 @@ class CompositeAzureTests {
   @test public async "all resources must have get operation 6"() {
     const fileName: string = "armResource/compute.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 10)
+    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 
   @test public async "all resources must have get operation 7 "() {
     const fileName: string = "armResource/security.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 4)
+    assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 3)
   }
 
   @test public async "all resources must have get operation 8"() {
