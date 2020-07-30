@@ -4,7 +4,7 @@
     "description": "Azure OpenAPI Validator",
     "main": "src/index.js",
     "scripts": {
-        "start": "node --inspect-brk ./index.js"
+        "start": "node ./index.js"
     },
     "repository": {
         "type": "git",
