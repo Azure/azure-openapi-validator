@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "jsonpath"
-const pointer = require("json-pointer")
 
 function unionArray(left: string[], right: string[]) {
   return left.reduce((au, u) => (au.includes(u) ? au : [...au, u]), right)
@@ -22,15 +21,6 @@ function unionModels(left: Map<string, string[]>, right: Map<string, string[]>) 
   return result
 }
 
-function exceptModels(source: Map<string, string[]>, toExcept: Map<string, string[]>) {
-  const result = new Map<string, string[]>()
-  for (const entry of source.entries()) {
-    if (!toExcept.has(entry[0])) {
-      result.set(entry[0], entry[1])
-    }
-  }
-  return result
-}
 export interface CollectionApiInfo {
   modelName: string
   childModelName: string
