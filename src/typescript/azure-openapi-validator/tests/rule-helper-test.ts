@@ -214,4 +214,13 @@ class RuleHelperTests {
     const enumObj1 = JSON.parse(enumA)
     assert.deepEqual(transformEnum(enumObj1.type, enumObj1.enum), ["1", "2"])
   }
+
+  @test public async "resolve json"() {
+    const jsoncontent: string = readFileSync("./src/typescript/azure-openapi-validator/tests/resources/utilities/exception.json", {
+      encoding: "utf-8"
+    })
+    const json = JSON.parse(jsoncontent)
+    const resolveReferenceJson: any = await getResolvedJson(json)
+    assert.equal(!!resolveReferenceJson, true)
+  }
 }
