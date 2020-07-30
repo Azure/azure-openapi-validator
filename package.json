@@ -14,21 +14,21 @@
     "gulp-dotnet-cli": "0.4.0",
     "mocha-typescript": "~1.0.22",
     "mocha": "^7.0.1",
-    "typescript": "3.7.5"
-  },
-  "dependencies": {
-    "fs": "^0.0.1-security",
+    "typescript": "3.7.5",
     "ts-node": "^8.6.2",
-    "prettier": "^1.18.2",
     "tslint": "~5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
     "vscode-jsonrpc": "^3.2.0",
     "js-yaml": "3.14.0",
     "jsonpath": "1.0.2",
-    "string.prototype.matchall": "^4.0.2",
     "json-refs": "^3.0.15",
     "json-pointer": "^0.6.0",
+    "string.prototype.matchall": "^4.0.2",
     "@apidevtools/json-schema-ref-parser": "^8.0.0"
   },
   "scripts": {

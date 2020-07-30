@@ -28,16 +28,7 @@ import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCa
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 @suite
 class IndividualAzureTests {
-  @test public async "all resources must have get operation 7"() {
-    const fileName: string = "armResource/containerservice.json"
-    try {
-      const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-      assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 4)
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
+  
   @test public async "control characters not allowed test"() {
     const fileName: string = "ContainsControlCharacters.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
