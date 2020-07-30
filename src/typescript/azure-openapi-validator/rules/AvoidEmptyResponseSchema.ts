@@ -14,7 +14,7 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "$.paths..responses..schema",
+  appliesTo_JsonQuery: "$.paths.*.*.responses.*.schema",
   *run(doc, node, path) {
     const msg: string = "Response schema must not be empty"
     if (!Object.keys(node).length) {
