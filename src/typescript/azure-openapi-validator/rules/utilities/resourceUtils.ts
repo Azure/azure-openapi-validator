@@ -110,6 +110,9 @@ export class ResourceUtils {
     if (!model) {
       return false
     }
+    if (this.XmsResources.has(modelName)) {
+      return true
+    }
     for (const refs of this.jsonPathIt(model, `$.allOf`)) {
       for (const ref of refs) {
         const refPoint = ref.$ref
@@ -169,7 +172,7 @@ export class ResourceUtils {
   }
 
   public getAllNestedResources() {
-    const fullModels = this.getAllOperationsModels()
+    const fullModels = this.getOperationGetResponseResources()
     const nestedModels = new Set<string>()
     for (const entry of fullModels.entries()) {
       const paths = entry[1]
