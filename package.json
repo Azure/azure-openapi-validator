@@ -9,15 +9,16 @@
     "@types/jsonpath": "^0.2.0",
     "gulp": "4.0.2",
     "gulp-run": "1.7.1",
-    "gulp-clean": "0.4.0",
-    "gulp-mocha": "7.0.2",
-    "gulp-dotnet-cli": "1.1.0",
-    "mocha-typescript": "1.0.22",
-    "typescript": "3.5.3"
+    "gulp-clean": "0.3.2",
+    "gulp-mocha": "4.3.1",
+    "gulp-dotnet-cli": "0.4.0",
+    "mocha-typescript": "~1.0.22",
+    "mocha": "^7.0.1",
+    "typescript": "3.7.5"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
-    "ts-node": "^8.10.2",
+    "ts-node": "^8.6.2",
     "prettier": "^1.18.2",
     "tslint": "~5.17.0",
     "tslint-config-prettier": "^1.18.0",
@@ -28,7 +29,7 @@
     "string.prototype.matchall": "^4.0.2",
     "json-refs": "^3.0.15",
     "json-pointer": "^0.6.0",
-    "@apidevtools/json-schema-ref-parser": "^9.0.1"
+    "@apidevtools/json-schema-ref-parser": "^8.0.0"
   },
   "scripts": {
     "install-dotnet": "cd src/dotnet/AutoRest && npm install",
