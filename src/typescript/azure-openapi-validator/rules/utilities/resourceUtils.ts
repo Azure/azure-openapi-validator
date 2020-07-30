@@ -34,11 +34,7 @@ export class ResourceUtils {
   private innerDoc: any
   private BaseResourceModelNames = ["trackedresource", "proxyresource", "resource", "azureentityresource"]
 
-  private OnlyTopLevelResourcePathPattern = new RegExp("/providers/\\w+/\\w+$", "ig")
-
   private ResourceGroupWideResourceRegEx = new RegExp("^/subscriptions/{.+}/resourceGroups/{.+}/", "gi")
-
-  private TenantWideResourceRegEx = new RegExp("^/providers/[^/]+/[^/]+", "gi")
 
   private SubscriptionsWideResourceRegEx = new RegExp("^/subscriptions/{.+}/providers/", "gi")
 
@@ -239,12 +235,6 @@ export class ResourceUtils {
         } else {
           match = ""
         }
-      }
-    } else {
-      const matches = lastProvider.match(this.OnlyTopLevelResourcePathPattern)
-      if (matches) {
-        const match = matches[0]
-        result.push(match.substr(match.lastIndexOf("/") + 1))
       }
     }
     return result
