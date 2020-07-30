@@ -21,7 +21,7 @@ rules.push({
       const hasMatched = allCollectionPath.some(
         collection => resource === collection.childModelName && collection.collectionGetPath.some(p => utils.isPathByResourceGroup(p))
       )
-      if (!hasMatched && !utils.hasBrotherResource(resource)) {
+      if (!hasMatched) {
         yield {
           message: msg.replace("{0}", resource),
           location: ["$", "definitions", resource] as JsonPath

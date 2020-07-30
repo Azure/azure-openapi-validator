@@ -20,13 +20,11 @@ class ResourceUtilsTests {
     const allOfResource = util.getAllOfResources()
     const allCollectionModel = await util.getCollectionResources()
     const allCollectionInfo = util.getCollectionApiInfo()
-    const allResource = util.getAllResources()
 
     assert.equal(allNestedResource.size, 8)
     assert.equal(allTopLevelResource.size, 13)
     assert.equal(allOfResource.length, 41)
     assert.equal(allCollectionInfo.length, 24)
-    assert.equal(allResource.length, 35)
     assert.equal(allCollectionModel.size, 21)
   }
 }

@@ -24,7 +24,7 @@ rules.push({
       /**
        * here is a exception: if get operation return model1, but put return model2, the model1 and model2 consider as brothers models
        */
-      if (!hasMatched && !utils.hasBrotherResource(resource)) {
+      if (!hasMatched) {
         yield {
           message: msg.replace("{0}", resource),
           location: ["$", "definitions", resource] as JsonPath

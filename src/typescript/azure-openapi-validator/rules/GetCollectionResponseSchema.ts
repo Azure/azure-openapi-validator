@@ -14,7 +14,7 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
     const msg: string =
-      'The response in the GET collection operation "{0}" is different than the response definition in the individual GET  operation "{1}" .'
+      'The response in the GET collection operation "{0}" does not match the response definition in the individual GET  operation "{1}" .'
     /**
      * 1 travel all resources and find all the resources that have a collection get
      *   - by searching all the models return by a get operation and verify the schema

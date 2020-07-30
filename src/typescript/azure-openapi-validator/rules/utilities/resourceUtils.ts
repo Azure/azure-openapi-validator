@@ -167,80 +167,19 @@ export class ResourceUtils {
     return this.getSpecificOperationModels("get", "200")
   }
 
-  private getOperationGetResponseModels() {
+  private getOperationGetResponseResources() {
     const models = [...this.getAllOperationGetResponseModels().entries()].filter(m => this.checkResource(m[0]))
     return new Map(models)
   }
 
-  private getParameterProperty(propertyName: string, model) {
-    if (!model) {
-      return
-    }
-    if (model[propertyName]) {
-      return model[propertyName]
-    }
-    if (model.$ref && model.$ref.startsWith("#/")) {
-      const pointModel = pointer.get(this.innerDoc, model.$ref.substr(1))
-      return this.getParameterProperty(propertyName, pointModel)
-    }
-  }
-
-  private isTenantWideOperation(path: string) {
-    if (path) {
-      return !!path.match(this.TenantWideResourceRegEx)
-    }
-  }
-
-  private getParameterOnlyModels() {
-    const models: Set<string> = new Set<string>()
-    const getModel = node => {
-      if (node && node.value) {
-        const parameters = node.value as any[]
-        parameters.forEach(p => {
-          const schema = this.getParameterProperty("schema", p)
-          if (schema && schema.$ref) {
-            const modelName = this.stripDefinitionPath(schema.$ref)
-            if (modelName) {
-              models.add(modelName)
-            }
-          }
-        })
-      }
-    }
-    for (const node of nodes(this.innerDoc, `$.paths.*.*.parameters`)) {
-      getModel(node)
-    }
-    for (const node of nodes(this.innerDoc, `$['x-ms-paths'].*.*.parameters`)) {
-      getModel(node)
-    }
-    const allResourcesInResponse = this.getAllOperationsModels()
-    const allOfResources = this.getAllOfResources()
-    return [...models.values()].filter(m => allOfResources.indexOf(m) !== -1 && !allResourcesInResponse.has(m))
-  }
-
+  /**
+   * the result contains `put` resources
+   */
   private getAllOperationsModels() {
     const putOperationModels = unionModels(this.getSpecificOperationModels("put", "200"), this.getSpecificOperationModels("put", "201"))
-    const getOperationModels = this.getOperationGetResponseModels()
+    const getOperationModels = this.getOperationGetResponseResources()
     const operationModels = unionModels(putOperationModels, getOperationModels)
     return operationModels
-  }
-
-  public getPostOnlyModels() {
-    const operationModels = this.getAllOperationsModels()
-    const postOperationModels = this.getSpecificOperationModels("post", "*")
-    const postOnlyModels = exceptModels(postOperationModels, operationModels)
-    return postOnlyModels
-  }
-
-  public getTenantWideModels() {
-    const tenantWideModels = new Set<string>()
-    const operationModels = this.getAllOperationsModels()
-    operationModels.forEach((entry, key) => {
-      if (entry.length === 1 && this.isTenantWideOperation(entry[0])) {
-        tenantWideModels.add(key)
-      }
-    })
-    return tenantWideModels
   }
 
   public getAllNestedResources() {
@@ -269,7 +208,7 @@ export class ResourceUtils {
    * 3 filter tenant wide resource
    */
   public getAllTopLevelResources() {
-    const fullModels = this.getAllOperationsModels()
+    const fullModels = this.getOperationGetResponseResources()
     const topLevelModels = new Set<string>()
     for (const entry of fullModels.entries()) {
       const paths = entry[1]
@@ -380,11 +319,11 @@ export class ResourceUtils {
     if (this.innerDoc["x-ms-paths"]) {
       allPathKeys = allPathKeys.concat(Object.keys(this.innerDoc["x-ms-paths"]))
     }
-    const modelMapping = this.getAllOperationsModels()
-    const getOperationResources = this.getAllOperationGetResponseModels()
+    const modelMapping = this.getOperationGetResponseResources()
+    const getOperationModels = this.getAllOperationGetResponseModels()
     const collectionApis: CollectionApiInfo[] = []
     for (const modelEntry of modelMapping.entries()) {
-      if (!getOperationResources.has(modelEntry[0])) {
+      if (!getOperationModels.has(modelEntry[0])) {
         continue
       }
       modelEntry[1].forEach(path => {
@@ -396,7 +335,10 @@ export class ResourceUtils {
             case 1 and case 2 should be the same, as the difference of parameter name does not have impact
           */
           const matchedPaths = allPathKeys.filter(
-            p => p.replace(/{[^\/]+}/gi, "{}") === possibleCollectionApiPath.replace(/{[^\/]+}/gi, "{}")
+            /**
+             * path may end with "/", so here we remove it
+             */
+            p => p.replace(/{[^\/]+}/gi, "{}").replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^\/]+}/gi, "{}")
           )
           if (matchedPaths && matchedPaths.length >= 1) {
             matchedPaths.forEach(m =>
@@ -419,11 +361,11 @@ export class ResourceUtils {
      */
     const collectionResources = this.getCollectionResources()
     for (const resource of collectionResources) {
-      if (getOperationResources.has(resource[1])) {
+      if (getOperationModels.has(resource[1])) {
         const index = collectionApis.findIndex(e => e.modelName === resource[1])
         const collectionInfo = {
-          specificGetPath: getOperationResources.get(resource[0]),
-          collectionGetPath: getOperationResources.get(resource[1]),
+          specificGetPath: getOperationModels.get(resource[0]),
+          collectionGetPath: getOperationModels.get(resource[1]),
           modelName: resource[1],
           childModelName: resource[0]
         }
@@ -444,7 +386,7 @@ export class ResourceUtils {
    * 2 its items refers one of resources definition
    */
   public getCollectionResources() {
-    const resourceModel = this.getOperationGetResponseModels()
+    const resourceModel = this.getOperationGetResponseResources()
     const resourceCollectMap = new Map<string, string>()
     const doc = this.innerDoc
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
@@ -460,7 +402,7 @@ export class ResourceUtils {
   }
 
   public getCollectionModels() {
-    const collectionModels = new Map<string,string>()
+    const collectionModels = new Map<string, string>()
     const doc = this.innerDoc
     const allOfResources = this.getAllOfResources()
 
@@ -577,36 +519,6 @@ export class ResourceUtils {
           return true
         }
       }
-    }
-  }
-
-  /**
-   * 1 get resource from operation responses
-   * 2 get resource from allOffing x-ms-azure-resource
-   */
-  public getAllResources() {
-    const parametersModel = this.getParameterOnlyModels()
-    return this.getAllOfResources()
-      .reduce((au, u) => (au.includes(u) ? au : [...au, u]), [...this.getAllOperationsModels().keys()])
-      .filter(e => this.BaseResourceModelNames.indexOf(e.toLowerCase()) === -1)
-      .filter(m => parametersModel.indexOf(m) === -1)
-  }
-
-  /**
-   *  return true, when the model related to a path having different  put , get response model
-   * @param modelName
-   */
-  public hasBrotherResource(modelName: string) {
-    const allOperationsModel = this.getAllOperationsModels()
-    const allGetOperationModels = this.getAllOperationGetResponseModels()
-    if (allOperationsModel.has(modelName)) {
-      const paths = allOperationsModel.get(modelName)
-      return paths.some(p => {
-        const model = this.getModelFromPath(p)
-        if (allGetOperationModels.has(model) && model !== modelName) {
-          return true
-        }
-      })
     }
   }
 }
