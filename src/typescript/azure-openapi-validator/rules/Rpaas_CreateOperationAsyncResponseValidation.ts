@@ -6,12 +6,12 @@ import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const Rpaas_CreateOperationAsyncResponseValidation: string = "Rpaas_CreateOperationAsyncResponseValidation"
 
 rules.push({
-  id: "R4011",
+  id: "R4014",
   name: Rpaas_CreateOperationAsyncResponseValidation,
   severity: "error",
-  category: "ARMViolation",
+  category: "RPaaSViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.arm,
+  openapiType: OpenApiTypes.arm | OpenApiTypes.rpass,
   appliesTo_JsonQuery: "$.paths.*.put",
   *run(doc, node, path) {
     if (node.responses["202"]) {

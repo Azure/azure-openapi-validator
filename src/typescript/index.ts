@@ -25,11 +25,15 @@ async function main() {
       try {
         const openapiDefinitionDocument = await initiator.ReadFile(file)
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
+        const openApiTypes = subType != undefined
+          ? OpenApiTypes[openapiType] | OpenApiTypes[subType]
+          : OpenApiTypes[openapiType];
+
         await run(
           file,
           openapiDefinitionObject,
           initiator.Message.bind(initiator),
-          subType ? OpenApiTypes[subType] : OpenApiTypes[openapiType],
+          openApiTypes,
           MergeStates[mergeState]
         )
       } catch (e) {
