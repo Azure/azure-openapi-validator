@@ -19,6 +19,7 @@ rules.push({
     /**
      * 1 get the operations API and schema
      * 2 verify the schema
+     * per ARM spec:https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/proxy-api-reference.md#exposing-available-operations
      */
     const utils = new ResourceUtils(doc)
     const operationsApi = utils.getOperationApi()

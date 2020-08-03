@@ -15,10 +15,9 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = 'The resource "{0}" does not have get operation, please add it.'
     /**
-    * 1 get all collection models
-    * 2 travel all resources and find all the resources that have a collection get
-    *   - base on path pattern
-    */
+     * 1 get all collection models
+     * 2 travel all resources and paths to find all the resources that have a collection get
+     */
     const utils = new ResourceUtils(doc)
     const allCollectionModels = utils.getCollectionModels()
     const allCollectionApiInfo = utils.getCollectionApiInfo()
@@ -27,6 +26,11 @@ rules.push({
       if (
         allResourcesHavingGetOperation.has(resource[0]) &&
         !allResourcesHavingGetOperation.has(resource[1]) &&
+        /**
+         * This condition is used to identify this exception:
+         * the resource of a collection Api has specific get operation, but the resource does not match the item of the collection model.
+         * this exception can be detect by Rule: GetCollectionResponseSchema
+         */
         !allCollectionApiInfo.some(info => info.modelName === resource[0])
       ) {
         yield {

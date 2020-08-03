@@ -21,9 +21,6 @@ rules.push({
       const hasMatched = allCollectionPath.some(
         collection => resource === collection.childModelName && collection.collectionGetPath.some(p => utils.isPathBySubscription(p))
       )
-      /**
-       * here is a exception: if get operation return model1, but put return model2, the model1 and model2 consider as brothers models
-       */
       if (!hasMatched) {
         yield {
           message: msg.replace("{0}", resource),
