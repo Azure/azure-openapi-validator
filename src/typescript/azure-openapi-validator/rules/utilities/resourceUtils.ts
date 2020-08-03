@@ -27,6 +27,23 @@ export interface CollectionApiInfo {
   collectionGetPath: string[]
   specificGetPath: string[]
 }
+
+function* jsonPathIt(doc, jsonPath: string): Iterable<any> {
+  if (doc) {
+    for (const node of nodes(doc, jsonPath)) {
+      yield node.value
+    }
+  }
+}
+
+function addToMap(map: Map<string, string[]>, key: string, value: string) {
+  if (map.has(key)) {
+    map.set(key, map.get(key).concat(value))
+  } else {
+    map.set(key, [value])
+  }
+}
+
 /**
  * this class only handle swagger without external refs, as the linter's input is a external-refs-resolved swagger
  */
@@ -49,15 +66,7 @@ export class ResourceUtils {
     this.getXmsResources()
   }
 
-  private addToMap(map: Map<string, string[]>, key: string, value: string) {
-    if (map.has(key)) {
-      map.set(key, map.get(key).concat(value))
-    } else {
-      map.set(key, [value])
-    }
-  }
-
-  private getSpecificOperationModels(httpVerb, code) {
+  private getSpecificOperationModels(httpMethod, code) {
     const models: Map<string, string[]> = new Map<string, string[]>()
     const getModel = node => {
       if (node && node.value) {
@@ -65,32 +74,24 @@ export class ResourceUtils {
         if (response.schema && response.schema.$ref) {
           const modelName = this.stripDefinitionPath(response.schema.$ref)
           if (modelName) {
-            this.addToMap(models, modelName, node.path[2] as string)
+            addToMap(models, modelName, node.path[2] as string)
           }
         }
       }
     }
-    for (const node of nodes(this.innerDoc, `$.paths.*.${httpVerb}.responses.${code}`)) {
+    for (const node of nodes(this.innerDoc, `$.paths.*.${httpMethod}.responses.${code}`)) {
       getModel(node)
     }
-    for (const node of nodes(this.innerDoc, `$['x-ms-paths'].*.${httpVerb}.responses.${code}`)) {
+    for (const node of nodes(this.innerDoc, `$['x-ms-paths'].*.${httpMethod}.responses.${code}`)) {
       getModel(node)
     }
     return models
   }
 
-  private *jsonPathIt(doc, jsonPath: string): Iterable<any> {
-    if (doc) {
-      for (const node of nodes(doc, jsonPath)) {
-        yield node.value
-      }
-    }
-  }
-
   private getXmsResources() {
     for (const node of nodes(this.innerDoc, `$.definitions.*`)) {
       const model = node.value
-      for (const extension of this.jsonPathIt(model, `$..['x-ms-azure-resource']`)) {
+      for (const extension of jsonPathIt(model, `$..['x-ms-azure-resource']`)) {
         if (extension === true) {
           this.XmsResources.add(node.path[2] as string)
         }
@@ -105,6 +106,13 @@ export class ResourceUtils {
     return this.innerDoc.definitions[modelName]
   }
 
+  /**
+   * @param modelName
+   *  instructions:
+   *  1 if it's a x-ms-resource
+   *  2 if it's allOfing a x-ms-azure-resource or base resource
+   *  3 if it contains allOf, check the allOf resource recursively
+   */
   private checkResource(modelName: string) {
     const model = this.getResourceByName(modelName)
     if (!model) {
@@ -113,7 +121,7 @@ export class ResourceUtils {
     if (this.XmsResources.has(modelName)) {
       return true
     }
-    for (const refs of this.jsonPathIt(model, `$.allOf`)) {
+    for (const refs of jsonPathIt(model, `$.allOf`)) {
       for (const ref of refs) {
         const refPoint = ref.$ref
         const subModel = this.stripDefinitionPath(refPoint)
@@ -140,6 +148,7 @@ export class ResourceUtils {
       return reference.substr(refPrefix.length)
     }
   }
+
   public getAllOfResources() {
     const keys = Object.keys(this.innerDoc.definitions as object)
     const AllOfResources = keys.reduce((pre, cur) => {
@@ -159,16 +168,6 @@ export class ResourceUtils {
   private getOperationGetResponseResources() {
     const models = [...this.getAllOperationGetResponseModels().entries()].filter(m => this.checkResource(m[0]))
     return new Map(models)
-  }
-
-  /**
-   * the result contains `put` resources
-   */
-  private getAllOperationsModels() {
-    const putOperationModels = unionModels(this.getSpecificOperationModels("put", "200"), this.getSpecificOperationModels("put", "201"))
-    const getOperationModels = this.getOperationGetResponseResources()
-    const operationModels = unionModels(putOperationModels, getOperationModels)
-    return operationModels
   }
 
   public getAllNestedResources() {
@@ -220,6 +219,10 @@ export class ResourceUtils {
    * return ["applicationGateways"]
    * case 2: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
    * return ["expressRouteCircuits","peerings"]
+   * instructions:
+   *  1  expressRouteCircuits/{circuitName}/peerings/{peeringName} -> get first resource type :expressRouteCircuits
+   *  2  substr :/peerings/{peeringName}
+   *  3  /peerings/{peeringName} -> get second resource
    */
   private getResourcesTypeHierarchy(path: string) {
     const index = path.lastIndexOf("/providers/")
@@ -253,7 +256,7 @@ export class ResourceUtils {
     if (!model) {
       return hierarchy
     }
-    for (const refs of this.jsonPathIt(model, `$.allOf`)) {
+    for (const refs of jsonPathIt(model, `$.allOf`)) {
       refs.forEach(ref => {
         const allOfModel = this.stripDefinitionPath(ref.$ref)
         hierarchy.push(allOfModel)
