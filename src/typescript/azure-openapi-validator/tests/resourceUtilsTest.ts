@@ -23,7 +23,7 @@ class ResourceUtilsTests {
     assert.equal(allNestedResource.size, 8)
     assert.equal(allTopLevelResource.size, 13)
     assert.equal(allOfResource.length, 41)
-    assert.equal(allCollectionInfo.length, 23)
+    assert.equal(allCollectionInfo.length, 22)
     assert.equal(allCollectionModel.size, 21)
   }
 }
