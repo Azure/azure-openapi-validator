@@ -151,7 +151,7 @@ class IndividualAzureTests {
   // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
   @test public async "Raas Put async operation doesn't support 202"() {
     const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpass, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 1)
   }
 
@@ -159,7 +159,7 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas Put async operation missing x-ms* async extensions"() {
     const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpass, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
   }
 
@@ -167,7 +167,7 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas Put async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasPutAsyncOperationResponseFinalStateViaAzureAsync.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpass, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
   }
 }
