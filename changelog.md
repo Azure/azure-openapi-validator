@@ -1,5 +1,16 @@
 # Changelog
 
+## What's New (07/30/2020)
+
+### New validation Rule
+
+- AllResourcesMustHaveGetOperation rule - the rule ensure all the ARM resources have a get operation.
+- NestedResourcesMustHaveListOperation rule - the rule ensure all nested resources have a list operation which return a resource collection. 
+- TopLevelResourcesListByResourceGroup rule - the rule ensure all top level resources have a list operation by resource group  which return a resource collection.
+- TopLevelResourcesListBySubscription rule - the rule ensure all top level resources have a list operation by subscriptions  which return a resource collection.
+- OperationsApiResponseSchema rule - the rule ensure all the operations API have the correct schema.
+- GetCollectionResponseSchema rule - the rule ensure the collection schema is an array whose item is exactly the schema of the specific resource.   
+
 ## What's New (07/29/2020)
 
 ### Bug fix

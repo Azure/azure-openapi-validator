@@ -12,21 +12,21 @@
     "gulp-clean": "0.4.0",
     "gulp-mocha": "7.0.2",
     "gulp-dotnet-cli": "1.1.0",
-    "mocha-typescript": "1.0.22",
-    "typescript": "3.5.3"
-  },
-  "dependencies": {
-    "fs": "^0.0.1-security",
+    "mocha-typescript": "~1.0.22",
+    "mocha": "^7.0.1",
+    "typescript": "3.7.5",
     "ts-node": "^8.10.2",
-    "prettier": "^1.18.2",
     "tslint": "~5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
     "vscode-jsonrpc": "^3.2.0",
     "js-yaml": "3.14.0",
     "jsonpath": "1.0.2",
-    "string.prototype.matchall": "^4.0.2",
     "json-refs": "^3.0.15",
+    "string.prototype.matchall": "^4.0.2",
     "@apidevtools/json-schema-ref-parser": "^9.0.1"
   },
   "scripts": {

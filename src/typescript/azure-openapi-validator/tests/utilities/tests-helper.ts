@@ -56,10 +56,10 @@ export function getMessagesOfType(messages: Message[], validationRule: string): 
 }
 
 // read the open api doc in a usable object
-function readObjectFromFile(filePath: string): any {
+export function readObjectFromFile(filePath: string): any {
   return safeLoad(readFileAsString(filePath))
 }
 
-function getFilePath(fileName: string): string {
+export function getFilePath(fileName: string): string {
   return path.resolve(path.join(__dirname, pathToTestResources, fileName))
 }
