@@ -1,5 +1,4 @@
 import * as assert from "assert"
-import { readFileSync } from "fs"
 import { suite, test } from "mocha-typescript"
 import { ResourceUtils } from "../rules/utilities/resourceUtils"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
@@ -24,7 +23,7 @@ class ResourceUtilsTests {
     assert.equal(allNestedResource.size, 8)
     assert.equal(allTopLevelResource.size, 13)
     assert.equal(allOfResource.length, 41)
-    assert.equal(allCollectionInfo.length, 24)
+    assert.equal(allCollectionInfo.length, 23)
     assert.equal(allCollectionModel.size, 21)
   }
 }

@@ -2850,7 +2850,7 @@
           "type": "array",
           "readOnly": true,
           "items": {
-            "$ref": "#/definitions/Profile"
+            "$ref": "#/definitions/ProfileUpdateParameters"
           },
           "description": "List of CDN profiles within a resource group."
         },

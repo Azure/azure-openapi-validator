@@ -3665,54 +3665,6 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines": {
-      "get": {
-        "tags": [
-          "VirtualMachines"
-        ],
-        "operationId": "VirtualMachines_List",
-        "description": "Lists all of the virtual machines in the specified resource group. Use the nextLink property in the response to get the next page of virtual machines.",
-        "parameters": [
-          {
-            "name": "resourceGroupName",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the resource group."
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "description": "Client Api Version.",
-            "enum": [
-              "2020-06-01"
-            ]
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/VirtualMachineListResult"
-            }
-          }
-        },
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
-        },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
-      }
-    },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines": {
       "get": {
         "tags": [
@@ -8287,48 +8239,6 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks": {
-      "get": {
-        "tags": [
-          "Disks"
-        ],
-        "operationId": "Disks_List",
-        "description": "Lists all the disks under a subscription.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "description": "Client Api Version.",
-            "enum": [
-              "2020-05-01"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/DiskList"
-            }
-          }
-        },
-        "x-ms-examples": null,
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
-        },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
-      }
-    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess": {
       "post": {
         "tags": [
@@ -11198,64 +11108,6 @@
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/GalleryImageVersionList"
-            }
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
-        "x-ms-examples": null,
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
-        },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications": {
-      "get": {
-        "tags": [
-          "GalleryApplications"
-        ],
-        "operationId": "GalleryApplications_ListByGallery",
-        "description": "List gallery Application Definitions in a gallery.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "name": "galleryName",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the Shared Application Gallery from which Application Definitions are to be listed."
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "description": "Client Api Version.",
-            "enum": [
-              "2019-12-01"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/GalleryApplicationList"
             }
           },
           "default": {

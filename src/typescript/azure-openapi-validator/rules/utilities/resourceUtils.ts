@@ -34,9 +34,9 @@ export class ResourceUtils {
   private innerDoc: any
   private BaseResourceModelNames = ["trackedresource", "proxyresource", "resource", "azureentityresource"]
 
-  private ResourceGroupWideResourceRegEx = new RegExp("^/subscriptions/{.+}/resourceGroups/{.+}/", "gi")
+  private ResourceGroupWideResourceRegEx = new RegExp("^/subscriptions/{[^/]+}/resourceGroups/{[^/]+}/", "gi")
 
-  private SubscriptionsWideResourceRegEx = new RegExp("^/subscriptions/{.+}/providers/", "gi")
+  private SubscriptionsWideResourceRegEx = new RegExp("^/subscriptions/{[^/]+}/providers/", "gi")
 
   private OperationApiRegEx = new RegExp("^/providers/[^/]+/operations$", "gi")
 
@@ -362,7 +362,13 @@ export class ResourceUtils {
       for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type == 'array')]")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
-        if (items && resourceModel.has(this.stripDefinitionPath(items.$ref))) {
+        if (
+          items &&
+          resourceModel.has(this.stripDefinitionPath(items.$ref)) &&
+          arrayNode.path.length === 3 &&
+          arrayNode.path[1] === "properties" &&
+          arrayNode.path[2] === "value"
+        ) {
           resourceCollectMap.set(this.stripDefinitionPath(items.$ref), resourceNode.path[2] as string)
         }
       }
