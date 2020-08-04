@@ -4,23 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "jsonpath"
 
-function unionArray(left: string[], right: string[]) {
-  return left.reduce((au, u) => (au.includes(u) ? au : [...au, u]), right)
-}
-
-function unionModels(left: Map<string, string[]>, right: Map<string, string[]>) {
-  const result = new Map<string, string[]>(right)
-  for (const entry of left.entries()) {
-    if (!right.has(entry[0])) {
-      result.set(entry[0], entry[1])
-    } else {
-      const rightValue = right.get(entry[0])
-      result.set(entry[0], unionArray(left.get(entry[0]), rightValue))
-    }
-  }
-  return result
-}
-
 export interface CollectionApiInfo {
   modelName: string
   childModelName: string
@@ -103,7 +86,7 @@ export class ResourceUtils {
     if (!modelName) {
       return undefined
     }
-    return this.innerDoc.definitions[modelName]
+    return this.innerDoc?.definitions[modelName]
   }
 
   /**
@@ -190,7 +173,7 @@ export class ResourceUtils {
   }
 
   /**
-   * Check the following conditions , a model be considered as a top-level resource
+   * Check the following conditions , to decide if a model can be considered as a top-level resource
    * 1 when a model existing in a get/put operation and 200/201 response, consider as a resource
    * 2 when the path match the pattern: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}
    * 3 filter tenant wide resource
@@ -220,9 +203,9 @@ export class ResourceUtils {
    * case 2: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
    * return ["expressRouteCircuits","peerings"]
    * instructions:
-   *  1  expressRouteCircuits/{circuitName}/peerings/{peeringName} -> get first resource type :expressRouteCircuits
-   *  2  substr :/peerings/{peeringName}
-   *  3  /peerings/{peeringName} -> get second resource
+   *  1  regex match -> 'expressRouteCircuits/{circuitName}/peerings/{peeringName}' -> get first resource type :expressRouteCircuits
+   *  2  substr -> '/peerings/{peeringName}' -> get second resource
+   *  3  loop in step 2 until break condition
    */
   private getResourcesTypeHierarchy(path: string) {
     const index = path.lastIndexOf("/providers/")
@@ -367,7 +350,7 @@ export class ResourceUtils {
   }
 
   /**
-   * get collection resource from definition by finding the model which match the conditions:
+   * get collection resource from definition by finding the models which satisfy the conditions:
    * 1 type == array
    * 2 its items refers one of resources definition
    */
