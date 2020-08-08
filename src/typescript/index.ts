@@ -25,7 +25,6 @@ async function main() {
       try {
         const openapiDefinitionDocument = await initiator.ReadFile(file)
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-
         await run(
           file,
           openapiDefinitionObject,

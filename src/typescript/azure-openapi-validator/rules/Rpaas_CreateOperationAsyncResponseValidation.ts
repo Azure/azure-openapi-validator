@@ -6,7 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const Rpaas_CreateOperationAsyncResponseValidation: string = "Rpaas_CreateOperationAsyncResponseValidation"
 
 rules.push({
-  id: "R4014",
+  id: "R4023",
   name: Rpaas_CreateOperationAsyncResponseValidation,
   severity: "error",
   category: "RPaaSViolation",
