@@ -29,7 +29,7 @@ async function main() {
           file,
           openapiDefinitionObject,
           initiator.Message.bind(initiator),
-          subType ? OpenApiTypes[subType] : OpenApiTypes[openapiType],
+          subType === "rpaas" ? OpenApiTypes[subType] : OpenApiTypes[openapiType],
           MergeStates[mergeState]
         )
       } catch (e) {
