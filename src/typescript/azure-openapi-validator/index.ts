@@ -34,6 +34,7 @@ require("./rules/NestedResourcesMustHaveListOperation")
 require("./rules/TopLevelResourcesListByResourceGroup")
 require("./rules/TopLevelResourcesListBySubscription")
 require("./rules/OperationsApiResponseSchema")
+require("./rules/Rpaas_CreateOperationAsyncResponseValidation")
 
 export async function run(
   document: string,
