@@ -33,7 +33,7 @@ rules.push({
         }
       }
 
-      if (!node.responses["x-ms-long-running-operation"] || node.responses["x-ms-long-running-operation"] != true) {
+      if (!node.responses["x-ms-long-running-operation"] || node.responses["x-ms-long-running-operation"] !== true) {
         yield {
           message: `[RPaaS] An async PUT operation must set '"x-ms-long-running-operation" : true''.`,
           location: path
