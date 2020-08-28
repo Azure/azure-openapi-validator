@@ -170,4 +170,11 @@ class IndividualAzureTests {
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpass, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
   }
+
+  // Valid 201 response for RPaaS
+  @test public async "Raas Put async operation is defined correctly"() {
+    const fileName = "RpaasValidPutAsyncOperationResponse.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpass, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 0)
+  }
 }

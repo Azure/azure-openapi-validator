@@ -17,7 +17,7 @@ rules.push({
     if (node.responses["202"]) {
       yield {
         message: `[RPaaS] Only 201 is the supported response code for PUT async response.`,
-        location: path
+        location: path.concat(["responses", "202"])
       }
     }
 
@@ -29,27 +29,27 @@ rules.push({
       if (!node.responses["201"]) {
         yield {
           message: `[RPaaS] An async PUT operation must return 201.`,
-          location: path
+          location: path.concat(["responses"])
         }
       }
 
-      if (!node.responses["x-ms-long-running-operation"] || node.responses["x-ms-long-running-operation"] !== true) {
+      if (!node["x-ms-long-running-operation"] || node["x-ms-long-running-operation"] !== true) {
         yield {
           message: `[RPaaS] An async PUT operation must set '"x-ms-long-running-operation" : true''.`,
           location: path
         }
       }
 
-      if (!node.responses["x-ms-long-running-operation-options"]) {
+      if (!node["x-ms-long-running-operation-options"]) {
         yield {
           message: `[RPaaS] An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'`,
           location: path
         }
       }
 
-      if (node.responses["x-ms-long-running-operation-options"] &&
-        (!node.responses["x-ms-long-running-operation-options"]["final-state-via"]
-        || node.responses["x-ms-long-running-operation-options"]["final-state-via"] != "azure-async-operation")) {
+      if (node["x-ms-long-running-operation-options"] &&
+        (!node["x-ms-long-running-operation-options"]["final-state-via"]
+        || node["x-ms-long-running-operation-options"]["final-state-via"] != "azure-async-operation")) {
         yield {
           message: `[RPaaS] An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'`,
           location: path
