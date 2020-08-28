@@ -6,6 +6,10 @@
 
 - New validation rule for validating long running operations for RPs hosted in RP-as-a-Service platform. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4023)
 
+### Changed Rule
+
+- AllowedTopLevelProperties  rule -  allow new top-level property:"extendedlocation" 
+
 ## What's New (07/30/2020)
 
 ### New validation Rule
