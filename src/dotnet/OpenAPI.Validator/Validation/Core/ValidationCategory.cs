@@ -12,6 +12,7 @@ namespace OpenAPI.Validator.Validation.Core
         ARMViolation = 1 << 0,
         OneAPIViolation = 1 << 1,
         SDKViolation = 1 << 2,
-        Documentation = 1 << 3
+        Documentation = 1 << 3,
+        RPaaSViolation = 1 << 4
     }
 }
