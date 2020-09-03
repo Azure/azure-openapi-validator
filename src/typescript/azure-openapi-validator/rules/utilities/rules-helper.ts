@@ -106,7 +106,8 @@ export function resourceProviderMustPascalCase(resourceProvider: string): boolea
   if (resourceProvider.length === 0) {
     return false
   }
-  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z0-9]+\.([A-Z]+[a-z0-9]+)+$`)
+  // refer https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/141e06ef(v=vs.71)?redirectedfrom=MSDN
+  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z0-9]+(\.([A-Z]{1,3}[a-z0-9]+)+[A-Z]{0,2})+$`)
   return pascalCase.test(resourceProvider)
 }
 
