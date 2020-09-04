@@ -4,6 +4,6 @@ There are a number of rules that can be validated with AutoRest. The current set
 
 ## Running linter
 Run
-`autorest -CodeGenerator None -Input <path-to-spec>`
+`autorest --validation --azure-validator --input-file=<path-to-spec>`
 if you'd like the output to be in Json format please use the following flag:
-`-JsonValidationMessages true`
+`--message-format=json`
