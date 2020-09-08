@@ -21,9 +21,10 @@ rules.push({
       }
     }
 
-    const isAsyncOperation = node.responses["201"]
-      || (node["x-ms-long-running-operation"] && node["x-ms-long-running-operation"] == true)
-      || node["x-ms-long-running-operation-options"];
+    const isAsyncOperation =
+      node.responses["201"] ||
+      (node["x-ms-long-running-operation"] && node["x-ms-long-running-operation"] === true) ||
+      node["x-ms-long-running-operation-options"]
 
     if (isAsyncOperation) {
       if (!node.responses["201"]) {
@@ -47,9 +48,11 @@ rules.push({
         }
       }
 
-      if (node["x-ms-long-running-operation-options"] &&
-        (!node["x-ms-long-running-operation-options"]["final-state-via"]
-        || node["x-ms-long-running-operation-options"]["final-state-via"] != "azure-async-operation")) {
+      if (
+        node["x-ms-long-running-operation-options"] &&
+        (!node["x-ms-long-running-operation-options"]["final-state-via"] ||
+          node["x-ms-long-running-operation-options"]["final-state-via"] != "azure-async-operation")
+      ) {
         yield {
           message: `[RPaaS] An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'`,
           location: path
