@@ -64,12 +64,17 @@ class RuleHelperTests {
     assert.equal(resourceProviderMustPascalCase("Microsoft.Computer"), true)
     assert.equal(resourceProviderMustPascalCase("Azure.Network101"), true)
     assert.equal(resourceProviderMustPascalCase("Azure.Net1work"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsightDB.Admin"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.DBForMariaDB"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.CosmosDB"), true)
 
     assert.equal(resourceProviderMustPascalCase("Microsoft."), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft"), false)
     assert.equal(resourceProviderMustPascalCase("Azure"), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft.cache"), false)
     assert.equal(resourceProviderMustPascalCase("microsoft.Visual"), false)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.HDDInsightDB"), false)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.SQL"), false)
   }
 
   @test public "resource type must camel case"() {
