@@ -4,7 +4,7 @@
 
 ### New validation rules
 
-- PreviewVersionOverOneYear rule - validate if any preview version over one year. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4024)
+- PreviewVersionOverOneYear rule - validate if there is any preview version over one year. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4024)
 
 ## What's New (08/27/2020)
 
