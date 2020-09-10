@@ -35,6 +35,7 @@ require("./rules/TopLevelResourcesListByResourceGroup")
 require("./rules/TopLevelResourcesListBySubscription")
 require("./rules/OperationsApiResponseSchema")
 require("./rules/Rpaas_CreateOperationAsyncResponseValidation")
+require("./rules/PreviewVersionOverOneYear")
 
 export async function run(
   document: string,

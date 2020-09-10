@@ -6,7 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const PreviewVersionOverOneYear: string = "PreviewVersionOverOneYear"
 
 rules.push({
-  id: "R4005",
+  id: "R4024",
   name: PreviewVersionOverOneYear,
   severity: "warning",
   category: "SDKViolation",
@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.info",
   *run(doc, node, path) {
-    const msg: string = `The swagger version:{0} has being published over one year , a preview version should GA in no more than one year.`
+    const msg: string = `The API version:{0} having been in a preview state over one year , please move it to GA or retire.`
     if (node) {
       if (node.version && node.version.includes("preview")) {
         const apiVersion = node.version
