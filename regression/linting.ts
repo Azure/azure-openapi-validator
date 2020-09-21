@@ -1,9 +1,5 @@
 // import * as autorest from "autorest"
-import { exec, execSync, fork, spawnSync } from "child_process"
-import * as lodash from "lodash"
-import md5File = require("md5-file")
-import path = require("path")
-import { LinterIssue, LinterIssueSeverity } from "./lintTypes"
+import { exec } from "child_process"
 
 function genLintingCmd(readme: string): string {
   const cwd = process.cwd()
@@ -27,79 +23,6 @@ export async function runLinter(readme: string) {
     expect(e).toMatchSnapshot("thrown exception")
   }
 }
-
-/*
-
-function configPathUri(configPath: string): string | undefined {
-  if (!configPath) {
-    return undefined
-  }
-  const cwd = process.cwd()
-  return `file:///${cwd}/${configPath}`.replace(/\\/g, "/")
-}
-
-
-export async function warmAutoRest() {
-  const corePath = path.dirname(require.resolve("@microsoft.azure/autorest-core/package.json"))
-  await autorest.initialize(corePath)
-}
-
-export const runLinterLib = async (readme: string) => {
-  const cwd = process.cwd()
-  const configPath: string | undefined = configPathUri(readme)
-  const autorestExecutor: autorest.AutoRest = await autorest.create(undefined, configPath)
-  autorestExecutor.AddConfiguration({
-    "azure-validator": true,
-    NoOaiConverter: true,
-    "use-extension": {
-      "@microsoft.azure/openapi-validator": `${cwd}/src/typescript`,
-      "@microsoft.azure/classic-openapi-validator": `${cwd}/src/dotnet/AutoRest`
-    }
-  })
-  return await executeLint(autorestExecutor, readme)
-}
-*/
-
-/*
-const isExceptionError = (message: autorest.Message) => {
-  const isConfigError =
-    (message.Source && message.Source.some(filePath => filePath.document.toLowerCase().endsWith("readme.md"))) || !message.Details
-  const isSchemaError = message.Plugin === "schema-validator"
-
-  return isConfigError || isSchemaError
-}
-const executeLint = async (autorestExecutor: autorest.AutoRest, modelPath?: string) => {
-  const linterIssues: LinterIssue[] = []
-  autorestExecutor.Message.Subscribe((sender, message) => {
-    if (message.Channel === autorest.Channel.Error || message.Channel === autorest.Channel.Warning) {
-      console.log(message)
-      if (isExceptionError(message)) {
-        console.log(message)
-      } else {
-        const li: LinterIssue = {
-          id: message.Details.id,
-          code: message.Details.code,
-          message: message.Details.message,
-          validationCategory: message.Details.validationCategory!,
-          source: message.Details.source,
-          severity: message.Channel.toString().toLowerCase() as LinterIssueSeverity,
-          issueType: "LinterIssue"
-        }
-        linterIssues.push(li)
-      }
-    }
-  })
-
-  const result = await autorestExecutor.Process().finish
-  if (result === true) {
-    return linterIssues
-  } else if (result === false) {
-    // we get here on invalid syntax in the readme config so it is "expected" exception
-    // don't emit a metric
-  } else {
-    return undefined
-  }
-} */
 
 // runs the command on a given swagger spec.
 async function runCmd(cmd) {
