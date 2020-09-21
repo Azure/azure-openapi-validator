@@ -10,6 +10,10 @@ pr:
       - "*"
 
 steps:
+  - script: git submodule update --init
+    displayName: Init submodule
+    condition: always()
+
   - task: Npm@1
     displayName: "npm install"
     inputs:
