@@ -19,6 +19,9 @@ steps:
     inputs:
       verbose: false
 
+  - script: 'gulp build'
+    displayName: 'gulp build'
+
   - task: Npm@1
     displayName: "npm run regression-test"
     inputs:
