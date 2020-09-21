@@ -18,7 +18,7 @@ export async function runLinter(readme: string) {
     if (linterErrors.indexOf('{\n  "type": "') !== -1) {
       linterErrors = cleanUpContent(linterErrors)
       const errorJsonStr = "[" + linterErrors + "]"
-      const errorJson = JSON.parse(errorJsonStr)
+      const errorJson = JSON.parse(errorJsonStr).sort()
       expect(errorJson).toMatchSnapshot("returned results")
     } else {
       expect(linterErrors).toMatchSnapshot("returned results")
