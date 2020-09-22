@@ -5,7 +5,7 @@ function genLintingCmd(readme: string): string {
   const cwd = process.cwd()
   const linterCmd = `npx autorest ${readme} --azure-validator=true --validation --message-format=json --use=${cwd}/src/typescript --use=${cwd}/src/dotnet/AutoRest`
   return linterCmd
-}
+} 
 
 export async function runLinter(readme: string) {
   const linterCmd = genLintingCmd(readme)
@@ -14,7 +14,16 @@ export async function runLinter(readme: string) {
     if (linterErrors.indexOf('{\n  "type": "') !== -1) {
       linterErrors = cleanUpContent(linterErrors)
       const errorJsonStr = "[" + linterErrors + "]"
-      const errorJson = JSON.parse(errorJsonStr).sort()
+      const errorJson = JSON.parse(errorJsonStr).sort( (a,b) => {
+        let isLess = 0;
+        ["id","jsonref","message"].some(key => {
+          if (a[key] !== b[key]) {
+            isLess = a[key] < b[key] ? -1 : 1
+            return true
+          }
+        })
+        return isLess
+      })
       expect(errorJson).toMatchSnapshot("returned results")
     } else {
       expect(linterErrors).toMatchSnapshot("returned results")
