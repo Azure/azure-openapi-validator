@@ -73,5 +73,15 @@ The typescript repo can be debugged with VS Code or Chrome.
 2. Next, implement the ```run``` method under the rule that actually does the validation. Add a reference to this script file under ```src/typescript/azure-openapi-validator/index.ts```.
 3. Lastly add a test case for the validation rule, by adding a test json/yaml under ```src/typescript/azure-openapi-validator/tests/resources``` and a script under ```src/typescript/azure-openapi-validator/tests``` depending on the type of the validation rule.
 
+### How to run regression test
+1. Init sub module.
+```
+git update submodule --init
+```
+2. npm run 
+```
+npm run regression-test
+```
+
 ### How to publish
 

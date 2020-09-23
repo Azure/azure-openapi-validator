@@ -14,9 +14,9 @@ export async function runLinter(readme: string) {
     if (linterErrors.indexOf('{\n  "type": "') !== -1) {
       linterErrors = cleanUpContent(linterErrors)
       const errorJsonStr = "[" + linterErrors + "]"
-      const errorJson = JSON.parse(errorJsonStr).sort( (a,b) => {
-        let isLess = 0;
-        ["id","jsonref","message"].some(key => {
+      const errorJson = JSON.parse(errorJsonStr).sort((a, b) => {
+        let isLess: number = 0
+        ;["id", "jsonref", "message"].some(key => {
           if (a[key] !== b[key]) {
             isLess = a[key] < b[key] ? -1 : 1
             return true
@@ -75,6 +75,9 @@ function cleanUpContent(s) {
   return resultString
 }
 
+/**
+ * reverse a string.
+ */
 function reverse(s) {
   return s
     .split("")
