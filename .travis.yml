@@ -1,6 +1,8 @@
 language: node
 dist: trusty
 language: node_js
+git:
+  submodules: false
 node_js:
   - "10.20.1"
 install:
