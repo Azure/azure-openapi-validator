@@ -2,6 +2,10 @@
 
 ## What's New (09/10/2020)
 
+### Changed Rule
+
+- PathResourceProviderNamePascalCase - allow acronyms that consist of only two characters. 
+
 ### New validation rules
 
 - PreviewVersionOverOneYear rule - validate if there is any preview version over one year. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4024)
