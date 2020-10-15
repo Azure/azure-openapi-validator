@@ -3,7 +3,7 @@ import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
 
-export const NestedResourcesMustHaveListOperation: string = "NestedResourcesMustHaveListOperation "
+export const NestedResourcesMustHaveListOperation: string = "NestedResourcesMustHaveListOperation"
 
 rules.push({
   id: "R4015",

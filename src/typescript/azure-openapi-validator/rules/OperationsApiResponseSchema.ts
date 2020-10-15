@@ -4,7 +4,7 @@ import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
 
-export const OperationsApiResponseSchema: string = "OperationsApiResponseSchema "
+export const OperationsApiResponseSchema: string = "OperationsApiResponseSchema"
 
 rules.push({
   id: "R4018",
