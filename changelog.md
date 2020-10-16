@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (10/16/2020)
+
+### Changed Rule
+
+- RequiredSystemDataInNewApiVersion - if the response is an array of model , then only check the items of the array in the response . 
+
 ## What's New (09/10/2020)
 
 ### Changed Rule
