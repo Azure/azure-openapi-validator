@@ -55,7 +55,7 @@ class CompositeAzureTests {
   @test public async "new apiVersion have operation without systemData"() {
     const fileName = "NewApiVersionHaveOperationWithoutSystemData.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, RequiredSystemDataInNewApiVersions, 1)
+    assertValidationRuleCount(messages, RequiredSystemDataInNewApiVersions, 2)
   }
 
   @test public async "all nested resources must have collection operation "() {
