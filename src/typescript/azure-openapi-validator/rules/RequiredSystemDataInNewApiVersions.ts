@@ -39,7 +39,16 @@ rules.push({
             // check code 200,201,202,203...
             if (key.startsWith("20")) {
               const response = responses.value[key]
-              const resolvedSchema = await getResolvedResponseSchema(response.schema)
+              let toValidateSchema = response.schema
+              if (
+                response.schema &&
+                response.schema.properties &&
+                response.schema.properties.value &&
+                response.schema.properties.value.type === "array"
+              ) {
+                toValidateSchema = response.schema.properties.value.items
+              }
+              const resolvedSchema = await getResolvedResponseSchema(toValidateSchema)
               if (!resolvedSchema) {
                 continue
               }
