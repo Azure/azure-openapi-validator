@@ -8,6 +8,7 @@ using OpenAPI.Validator.Properties;
 using System.Collections.Generic;
 using System.Linq;
 using OpenAPI.Validator.Model.Utilities;
+using System;
 
 namespace OpenAPI.Validator.Validation
 {
@@ -62,7 +63,7 @@ namespace OpenAPI.Validator.Validation
         public override bool IsValid(Dictionary<string, Dictionary<string, Operation>> paths, RuleContext context, out object[] formatParameters)
         {
             string[] operationPathsEndingWithOperations = paths.Keys.Where(x => x.Trim().ToLower().EndsWith("/operations")).ToArray();
-            IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProviders(paths);
+            IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProviders(paths).Distinct(StringComparer.CurrentCultureIgnoreCase);
 
             // We'll check for only one RP in the swagger as other rules can validate having many RPs in one swagger
             string resourceProvider = resourceProviders?.ToList().Count > 0 ? resourceProviders.First() : null;
@@ -71,7 +72,7 @@ namespace OpenAPI.Validator.Validation
             formatParameters = new object[] { };
             foreach (string operationPath in operationPathsEndingWithOperations)
             {
-                if (operationPath.EndsWith(operationApiPath))
+                if (operationPath.ToLower().EndsWith(operationApiPath.ToLower()))
                 {
                     return true;
                 }
