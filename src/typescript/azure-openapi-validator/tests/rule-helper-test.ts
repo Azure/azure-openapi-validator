@@ -7,8 +7,10 @@ import {
   getAllWordsFromPath,
   getResolvedJson,
   getResolvedResponseSchema,
+  isValidEnum,
   resourceProviderMustPascalCase,
-  resourceTypeMustCamelCase
+  resourceTypeMustCamelCase,
+  transformEnum
 } from "../rules/utilities/rules-helper"
 
 @suite
@@ -62,12 +64,17 @@ class RuleHelperTests {
     assert.equal(resourceProviderMustPascalCase("Microsoft.Computer"), true)
     assert.equal(resourceProviderMustPascalCase("Azure.Network101"), true)
     assert.equal(resourceProviderMustPascalCase("Azure.Net1work"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsightDB.Admin"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.DBForMariaDB"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.CosmosDB"), true)
 
     assert.equal(resourceProviderMustPascalCase("Microsoft."), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft"), false)
     assert.equal(resourceProviderMustPascalCase("Azure"), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft.cache"), false)
     assert.equal(resourceProviderMustPascalCase("microsoft.Visual"), false)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.HDDInsightDB"), false)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.SQL"), false)
   }
 
   @test public "resource type must camel case"() {
@@ -148,5 +155,77 @@ class RuleHelperTests {
     resolvedResponse = await resolveNestedSchema(resolveReferenceJson.definitions.Error1)
     const expectErrorKeys = ["message", "innererror"]
     assert.deepEqual(Object.keys(resolvedResponse), expectErrorKeys)
+  }
+
+  @test public "test enum helper"() {
+    let enumA = `{
+        "description": "The provisioning state of the configuration store.",
+        "enum": [
+            "Creating",
+            "Updating",
+            "Canceled"
+        ],
+        "type": "object",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    assert.equal(isValidEnum(JSON.parse(enumA)), false)
+    enumA = `{
+        "description": "Test Enum",
+        "enum": [
+            "Creating",
+            "Updating",
+            "Canceled"
+        ],
+        "type": "integer",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    assert.equal(isValidEnum(JSON.parse(enumA)), true)
+    enumA = `{
+        "description": "Test Enum",
+        "enum": [
+            true,
+            false
+        ],
+        "type": "boolean",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    const enumObj = JSON.parse(enumA)
+    assert.deepEqual(transformEnum(enumObj.type, enumObj.enum), ["true", "false"])
+    enumA = `{
+        "description": "Test Enum",
+        "enum": [
+            1,
+            2
+        ],
+        "type": "integer",
+        "readOnly": true,
+        "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": true
+        }
+    }`
+    const enumObj1 = JSON.parse(enumA)
+    assert.deepEqual(transformEnum(enumObj1.type, enumObj1.enum), ["1", "2"])
+  }
+
+  @test public async "resolve json"() {
+    const jsoncontent: string = readFileSync("./src/typescript/azure-openapi-validator/tests/resources/utilities/exception.json", {
+      encoding: "utf-8"
+    })
+    const json = JSON.parse(jsoncontent)
+    const resolveReferenceJson: any = await getResolvedJson(json)
+    assert.equal(!!resolveReferenceJson, true)
   }
 }

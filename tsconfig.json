@@ -2,19 +2,20 @@
     "compilerOptions": {
         "module": "commonjs",
         "types": [
-            "node"
+            "node","jest"
         ],
         "target": "es2016",
         "experimentalDecorators": true,
         "lib": [
             "esnext.asynciterable"
-        ]
+        ],
+        "sourceMap": true
     },
     "exclude": [
         "node_modules"
     ],
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts","regression/*.ts"
     ],
     "sourcemap": true
 }

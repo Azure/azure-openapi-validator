@@ -1,5 +1,6 @@
 # Ignore compiled files
 src/**/*.js
+src/**/*.map
 src/**/*.d.ts
 node_modules/
 pack/

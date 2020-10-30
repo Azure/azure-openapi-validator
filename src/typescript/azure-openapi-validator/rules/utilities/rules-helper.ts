@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 const $RefParser = require("@apidevtools/json-schema-ref-parser")
-import { nodes, stringify } from "jsonpath"
+import { apply, nodes, stringify } from "jsonpath"
 import { JsonPath } from "../../../jsonrpc/types"
 import { resolveNestedSchema } from "./resolveNestedSchema"
 const matchAll = require("string.prototype.matchall")
@@ -53,14 +53,21 @@ export async function getResolvedJson(doc: any): Promise<object | undefined> {
   try {
     const parser = new $RefParser()
     const docCopy = JSON.parse(JSON.stringify(doc))
+    /*
+     * remove x-ms-examples
+     */
+    apply(docCopy, `$..['x-ms-examples']`, e => null)
     return await parser.dereference(docCopy)
   } catch (err) {
-    console.error(err)
+    return
   }
 }
 
 export async function getResolvedSchemaByPath(schemaPath: JsonPath, doc: any): Promise<object | undefined> {
   const resolvedJson = await getResolvedJson(doc)
+  if (!resolvedJson) {
+    return undefined
+  }
   const pathExpression = stringify(schemaPath)
   const result = nodes(resolvedJson, pathExpression)
   if (!result) {
@@ -81,7 +88,7 @@ export async function getResolvedResponseSchema(schema: object): Promise<object 
   try {
     return resolveNestedSchema(schema)
   } catch (err) {
-    console.error(err)
+    return
   }
 }
 
@@ -99,7 +106,8 @@ export function resourceProviderMustPascalCase(resourceProvider: string): boolea
   if (resourceProvider.length === 0) {
     return false
   }
-  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z0-9]+\.([A-Z]+[a-z0-9]+)+$`)
+  // refer https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/141e06ef(v=vs.71)?redirectedfrom=MSDN
+  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z0-9]+(\.([A-Z]{1,3}[a-z0-9]+)+[A-Z]{0,2})+$`)
   return pascalCase.test(resourceProvider)
 }
 
@@ -114,4 +122,18 @@ export function resourceTypeMustCamelCase(resourceType: string): boolean {
 export function isValidOperation(operation: string): boolean {
   const validOperations = ["put", "get", "patch", "post", "head", "options", "delete"]
   return validOperations.indexOf(operation.toLowerCase()) !== -1
+}
+
+export function isValidEnum(node) {
+  if (!node || !node.type || typeof node.type !== "string") {
+    return false
+  }
+  return ["boolean", "integer", "number", "string"].indexOf(node.type) !== -1
+}
+
+export function transformEnum(type: string, enumEntries) {
+  if (type === "string") {
+    return enumEntries
+  }
+  return enumEntries.map(v => v.toString())
 }

@@ -12,22 +12,22 @@ var { restore, build, test } = require('gulp-dotnet-cli');
 
 // add .bin to PATH
 function getPathVariableName() {
-    // windows calls it's path 'Path' usually, but this is not guaranteed.
-    if (process.platform === 'win32') {
-        for (const key of Object.keys(process.env))
-            if (key.match(/^PATH$/i))
-                return key;
-        return 'Path';
-    }
-    return "PATH";
+  // windows calls it's path 'Path' usually, but this is not guaranteed.
+  if (process.platform === 'win32') {
+    for (const key of Object.keys(process.env))
+      if (key.match(/^PATH$/i))
+        return key;
+    return 'Path';
+  }
+  return "PATH";
 }
 process.env[getPathVariableName()] = path.join(__dirname, "src/dotnet/AutoRest/node_modules/.bin") + path.delimiter + process.env[getPathVariableName()];
 
 // All the typescript tasks
 gulp.task('clean/typescript', function () {
-    console.log('Cleaning build directories...');
-    return gulp.src(['src/typescript/azure-openapi-validator/*.{js,d.ts}', 'src/typescript/jsonrpc/*.{js,d.ts}'], { read: false })
-        .pipe(clean({ force: true }));
+  console.log('Cleaning build directories...');
+  return gulp.src(['src/typescript/azure-openapi-validator/*.{js,d.ts}', 'src/typescript/jsonrpc/*.{js,d.ts}'], { read: false })
+    .pipe(clean({ force: true }));
 });
 
 gulp.task("build/typescript", gulp.series(["clean/typescript"], function () {
@@ -36,46 +36,51 @@ gulp.task("build/typescript", gulp.series(["clean/typescript"], function () {
 }))
 
 gulp.task('test/typescript', gulp.series(['build/typescript'], function (done) {
-    console.log('Running the unit tests...');
-    gulp.src(['src/typescript/azure-openapi-validator/tests/*.js'])
-        .pipe(mocha({
-            timeout: 120000
-        }))
-        .once('error', () => {
-            process.exit(1);
-        });
-    done()
+  console.log('Running the unit tests...');
+  gulp.src(['src/typescript/azure-openapi-validator/tests/*.js'])
+    .pipe(mocha({
+      timeout: 120000
+    }))
+    .once('error', () => {
+      process.exit(1);
+    });
+  done()
 }));
 
 // All the dotnet tasks
 gulp.task('clean/dotnet', function () {
-    console.log('Cleaning build directories...');
-    return gulp.src(['src/dotnet/**/bin', 'src/dotnet/**/obj'], { read: false })
-        .pipe(clean({ force: true }));
+  console.log('Cleaning build directories...');
+  return gulp.src(['src/dotnet/**/bin', 'src/dotnet/**/obj'], { read: false })
+    .pipe(clean({ force: true }));
 });
 
 gulp.task('restore/dotnet', gulp.series(['clean/dotnet'], function () {
-    console.log('Running dotnet restore...');
-    return gulp.src('src/dotnet/**/*.csproj')
-        .pipe(restore());
+  console.log('Running dotnet restore...');
+  return gulp.src('src/dotnet/**/*.csproj')
+    .pipe(restore());
 }))
 
 gulp.task('build/dotnet', gulp.series(['restore/dotnet'], function () {
-    console.log('Running dotnet build...');
-    return gulp.src('src/dotnet/**/*.csproj')
-        .pipe(build());
+  console.log('Running dotnet build...');
+  return gulp.src('src/dotnet/**/*.csproj')
+    .pipe(build());
+}))
+
+gulp.task('build/regressionTest', gulp.series([], function () {
+  console.log('Running regression test build...');
+  return gulp.src("./").pipe(run("tsc --project tsconfig.json"))
 }))
 
 gulp.task('test/dotnet', gulp.series(['build/dotnet'], function () {
-    console.log('Running the dotnet unit tests...');
-    return gulp.src('src/dotnet/OpenAPI.Validator.Tests/OpenAPI.Validator.Tests.csproj')
-        .pipe(test({ verbosity: 'minimal' }));
+  console.log('Running the dotnet unit tests...');
+  return gulp.src('src/dotnet/OpenAPI.Validator.Tests/OpenAPI.Validator.Tests.csproj')
+    .pipe(test({ verbosity: 'minimal' }));
 }))
 
 // Now the defaults/commons
 gulp.task(
   "build",
-  gulp.parallel(["build/dotnet", "build/typescript"], function (done) {
+  gulp.parallel(["build/dotnet", "build/typescript", "build/regressionTest"], function (done) {
     console.log("Building code...")
     done()
   })
@@ -98,11 +103,11 @@ gulp.task(
 )
 
 gulp.task('dotnet', gulp.series(['test/dotnet'], function (done) {
-    done()
+  done()
 }))
 
 gulp.task('typescript', gulp.series(['test/typescript'], function (done) {
-    done()
+  done()
 }))
 
 gulp.task(
@@ -115,7 +120,7 @@ gulp.task(
 
 gulp.task(
   "dotnet/pack",
-  gulp.series(["dotnet", "typescript"], function() {
+  gulp.series(["dotnet", "typescript"], function () {
     console.log("Kicking off the dotnet publish task...")
     return gulp
       .src("src/dotnet/AutoRest/AutoRest.csproj")
@@ -123,18 +128,18 @@ gulp.task(
   })
 )
 
-gulp.task('pack/typescript',function () {
-    return run('cd src/typescript && npm pack').exec();
+gulp.task('pack/typescript', function () {
+  return run('cd src/typescript && npm pack').exec();
 })
 
 gulp.task('pack/dotnet', function () {
-    return run('cd src/dotnet/AutoRest && npm pack').exec();
+  return run('cd src/dotnet/AutoRest && npm pack').exec();
 })
 
 // this task can be excuted only when `gulp test` has been excuted successfully
 gulp.task(
   "pack",
-  gulp.series(["pack/dotnet", "pack/typescript"], function(done) {
+  gulp.series(["pack/dotnet", "pack/typescript"], function (done) {
     gulp.src(["src/dotnet/AutoRest/*.tgz", "src/typescript/*.tgz"]).pipe(gulp.dest("dist/"))
     console.log("Successfully Packed the repo...")
     done()

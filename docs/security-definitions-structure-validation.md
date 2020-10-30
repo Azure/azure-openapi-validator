@@ -2,7 +2,7 @@
 ## Description
 Every swagger/configuration must have a security definitions section and it must adhere to the following structure:
 
-```
+```json
 "securityDefinitions": {
     "azure_auth": {
         "type": "oauth2",

@@ -4,29 +4,36 @@
   "description": "Common dev deps for repo",
   "readme": "https://github.com/Azure/azure-openapi-validator/readme.md",
   "devDependencies": {
-    "@types/node": "^14.0.13",
+    "@types/jest": "^24.9.1",
     "@types/js-yaml": "^3.12.4",
     "@types/jsonpath": "^0.2.0",
+    "@types/node": "^14.0.13",
     "gulp": "4.0.2",
-    "gulp-run": "1.7.1",
     "gulp-clean": "0.4.0",
-    "gulp-mocha": "7.0.2",
     "gulp-dotnet-cli": "1.1.0",
-    "mocha-typescript": "1.0.22",
-    "typescript": "3.5.3"
-  },
-  "dependencies": {
-    "fs": "^0.0.1-security",
-    "ts-node": "^8.10.2",
+    "gulp-mocha": "7.0.2",
+    "gulp-run": "1.7.1",
+    "jest": "^24.9.0",
+    "jest-junit": "^6.3.0",
+    "mocha": "^7.0.1",
+    "mocha-typescript": "~1.0.22",
     "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "md5-file": "^4.0.0",
+    "ts-node": "^8.10.2",
     "tslint": "~5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "3.7.5",
+    "autorest": "2.0.4413",
+    "@microsoft.azure/autorest-core": "2.0.4417"
+  },
+  "dependencies": {
     "vscode-jsonrpc": "^3.2.0",
     "js-yaml": "3.14.0",
     "jsonpath": "1.0.2",
-    "string.prototype.matchall": "^4.0.2",
     "json-refs": "^3.0.15",
+    "string.prototype.matchall": "^4.0.2",
     "@apidevtools/json-schema-ref-parser": "^9.0.1"
   },
   "scripts": {
@@ -35,6 +42,9 @@
     "postinstall": "npm run install-dotnet && npm run install-typescript",
     "tslint": "tslint --project tsconfig.json ./src/**/*.ts ",
     "tslint-fix": "tslint --fix --project tsconfig.json ./src/**/*.ts",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "tslint-fix-regression": "tslint --fix --project tsconfig.json ./regression/*.ts",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "regression-test": "jest -u --max-old-space-size=10192 --ci --reporters=default --reporters=jest-junit --config ./regression/jest.regression.config.js ",
+    "jest": "jest"
   }
 }

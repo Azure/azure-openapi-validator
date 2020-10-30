@@ -14,10 +14,12 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@.type == 'integer')]",
   *run(doc, node, path) {
-    const msg: string = `The integer type does not have a format, please add it.`
-    const formats = ["int32", "int64"]
-    if (!node.format || formats.indexOf(node.format) === -1) {
-      yield { message: `${msg}`, location: path }
+    if (path.indexOf("x-ms-examples") === -1) {
+      const msg: string = `The integer type does not have a format, please add it.`
+      const formats = ["int32", "int64"]
+      if (!node.format || formats.indexOf(node.format) === -1) {
+        yield { message: `${msg}`, location: path }
+      }
     }
   }
 })

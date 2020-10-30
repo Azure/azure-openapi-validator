@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "node",
             "request": "attach",
@@ -30,7 +31,7 @@
             "env": {
                 "TS_NODE_IGNORE": "false"
             },
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
             "args": [
                 "-r",
                 "ts-node/register",
@@ -56,6 +57,23 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Current File",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "--runTestsByPath",
+                "${relativeFile}",
+                "false"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+            }
         }
     ]
 }

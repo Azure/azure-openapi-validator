@@ -10,6 +10,7 @@ import { nodes } from "jsonpath";
 var enumList: string[] = [];
 =======
 import { MergeStates, OpenApiTypes, rules } from "../rule"
+import { isValidEnum, transformEnum } from "./utilities/rules-helper"
 export const UniqueXmsEnumName: string = "UniqueXmsEnumName"
 import { nodes } from "jsonpath"
 >>>>>>> d46f9ed84c2ab461bfaa84eeab4879a9d82b5133
@@ -55,10 +56,10 @@ rules.push({
     if (node) {
       const enumMap = new Map<string, string[]>()
       for (const section of nodes(node, "$..*[?(@.enum)]")) {
-        if (section.value["x-ms-enum"]) {
+        if (section.value["x-ms-enum"] && isValidEnum(section.value)) {
           const enumName = section.value["x-ms-enum"].name.toLowerCase()
           if (enumMap.has(enumName)) {
-            const curEnum = section.value.enum
+            const curEnum = transformEnum(section.value.type, section.value.enum)
             const existingEnum = enumMap.get(enumName)
             /**
              * if existing , check if the two enums' enties is same.

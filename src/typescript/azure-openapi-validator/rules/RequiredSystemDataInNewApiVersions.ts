@@ -16,7 +16,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "",
   async *asyncRun(doc, node, path) {
-    if (doc.info) {
+    if (doc.info && doc.info.version) {
       const apiVersion = doc.info.version
       const matched = apiVersion.match(/\d{4}\-\d{2}\-\d{2}/g)
       const apiVersionFormated = matched && matched.length > 0 ? matched[0] : undefined

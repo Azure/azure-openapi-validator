@@ -3,10 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
-import { safeLoad } from "js-yaml"
-import { only, skip, slow, suite, test, timeout } from "mocha-typescript"
-import { run } from "../../azure-openapi-validator"
-import { AutoRestPluginHost } from "../../jsonrpc/plugin-host"
+import { suite, test } from "mocha-typescript"
 import { Message } from "../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema"
@@ -21,7 +18,9 @@ import { IntegerTypeMustHaveFormat } from "../rules/IntegerTypeMustHaveFormat"
 import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBeSpecified"
 import { OperationIdRequired } from "../rules/OperationIdRequired"
 import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContainsUrlVerb"
+import { PreviewVersionOverOneYear } from "../rules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../rules/RequiredDefaultResponse"
+import { Rpaas_CreateOperationAsyncResponseValidation } from "../rules/Rpaas_CreateOperationAsyncResponseValidation"
 import { XmsPageableMustHaveCorrespondingResponse } from "../rules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
@@ -144,5 +143,41 @@ class IndividualAzureTests {
     const fileName = "PageableOperationWithNullNextLink.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
+  }
+
+  // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
+  @test public async "Raas Put async operation doesn't support 202"() {
+    const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 1)
+  }
+
+  // Failure #1 : 'x-ms-long-running-operation' is missing
+  // Failure #2: 'x-ms-long-running-operation-options' is missing
+  @test public async "Raas Put async operation missing x-ms* async extensions"() {
+    const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
+  }
+
+  // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 201 (implies async)
+  // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
+  @test public async "Raas Put async operation is tracked using Auzre-AsyncOperation header"() {
+    const fileName = "RpaasPutAsyncOperationResponseFinalStateViaAzureAsync.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
+  }
+
+  // Valid 201 response for RPaaS
+  @test public async "Raas Put async operation is defined correctly"() {
+    const fileName = "RpaasValidPutAsyncOperationResponse.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 0)
+  }
+
+  @test public async "Preview version over a year"() {
+    const fileName = "PreviewVersionOverOneYear.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, PreviewVersionOverOneYear, 1)
   }
 }

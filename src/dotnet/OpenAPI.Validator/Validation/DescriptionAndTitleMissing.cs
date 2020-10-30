@@ -12,6 +12,8 @@ namespace OpenAPI.Validator.Validation
     {
         private static readonly string ModelTypeFormatter = "'{0}' model/property";
 
+        public override string Id => "R4021";
+
         /// <summary>
         /// The template message for this Rule.
         /// </summary>
