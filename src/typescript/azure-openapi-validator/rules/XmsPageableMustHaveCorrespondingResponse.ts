@@ -31,11 +31,9 @@ rules.push({
         path.slice(0, path.length - 1).concat(["responses", mostSuccesskey, "schema"]),
         doc
       )
-      if (!resolvedSchema || !resolvedSchema[nextLinkValue]) {
+      if (resolvedSchema || !resolvedSchema[nextLinkValue]) {
         yield { message: `${msg}`, location: path }
       }
-    } else {
-      yield { message: `${msg}`, location: path }
     }
   }
 })

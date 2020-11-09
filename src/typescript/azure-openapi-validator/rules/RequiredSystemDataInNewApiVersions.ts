@@ -10,7 +10,7 @@ export const RequiredSystemDataInNewApiVersions: string = "RequiredSystemDataInN
 rules.push({
   id: "R4009",
   name: RequiredSystemDataInNewApiVersions,
-  severity: "warning",
+  severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
