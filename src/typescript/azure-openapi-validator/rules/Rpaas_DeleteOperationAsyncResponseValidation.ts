@@ -3,11 +3,11 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-export const Rpaas_DeleteOperationValidation: string = "Rpaas_DeleteOperationValidation"
+export const Rpaas_DeleteOperationAsyncResponseValidation: string = "Rpaas_DeleteOperationAsyncResponseValidation"
 
 rules.push({
   id: "R4025",
-  name: Rpaas_DeleteOperationValidation,
+  name: Rpaas_DeleteOperationAsyncResponseValidation,
   severity: "error",
   category: "RPaaSViolation",
   mergeState: MergeStates.individual,
@@ -18,20 +18,6 @@ rules.push({
       yield {
         message: `[RPaaS] Only 202 is the supported response code for DELETE async response.`,
         location: path.concat(["responses", "201"])
-      }
-    }
-
-    if (!node.responses["200"]) {
-      yield {
-        message: `[RPaaS] DELETE operation responses must include 200 as supported status code to indicate resource exists and deleted successfully.`,
-        location: path.concat(["responses", "202"])
-      }
-    }
-
-    if (!node.responses["204"]) {
-      yield {
-        message: `[RPaaS] DELETE operation responses must include 204 as supported status code to indicate resource does 'not' exist and the operation is successful.`,
-        location: path.concat(["responses", "202"])
       }
     }
 
