@@ -1,5 +1,12 @@
 # Changelog
 
+## What's New (11/12/2020)
+
+### New validation rules
+
+- New validation rule for long running DELETE operation, for RPs hosted in RP-as-a-Service platform. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4025)
+- New validation rule for long running POST operation, for RPs hosted in RP-as-a-Service platform. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4026)
+
 ## What's New (09/10/2020)
 
 ### Changed Rule
@@ -14,7 +21,7 @@
 
 ### New validation rules
 
-- New validation rule for validating long running operations for RPs hosted in RP-as-a-Service platform. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4023)
+- New validation rule for long running PUT operation, for RPs hosted in RP-as-a-Service platform. Documentation [link](https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md#R4023)
 
 ### Changed Rule
 
