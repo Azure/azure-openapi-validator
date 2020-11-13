@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "delete async response must contain 204",
+      "description": "Some documentation.",
+      "version": "2014-04-01-preview"
+    },
+    "host": "management.azure.com",
+    "schemes": [
+      "https"
+    ],
+    "basePath": "/",
+    "produces": [
+      "application/json"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "paths": {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}": {
+        "delete": {
+          "operationId": "",
+          "summary": "Foo path",
+          "description": "Foo operation",
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "location"
+          },
+          "responses": {
+            "202": {
+              "description": "Deleting"
+            },
+            "200": {
+              "description": "Deleted"
+            },
+            "default": {
+              "description": "Unexpected error"
+            }
+          }        
+        }
+      }
+    },
+    "parameters": {
+      "SubscriptionIdParameter": {
+        "name": "subscriptionId",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "test subscription id"
+      },
+      "ApiVersion": {
+        "name": "api-version",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "test api version"
+      }
+    }
+  }
