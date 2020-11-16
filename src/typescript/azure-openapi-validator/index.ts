@@ -36,7 +36,7 @@ require("./rules/TopLevelResourcesListBySubscription")
 require("./rules/OperationsApiResponseSchema")
 require("./rules/Rpaas_CreateOperationAsyncResponseValidation")
 require("./rules/PreviewVersionOverOneYear")
-
+require("./rules/OnlyDefaultErrorResponses")
 export async function run(
   document: string,
   openapiDefinition: any,
