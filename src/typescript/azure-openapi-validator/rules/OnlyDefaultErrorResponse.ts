@@ -17,11 +17,9 @@ rules.push({
   appliesTo_JsonQuery: "$.paths.*.*.responses",
   async *asyncRun(doc, node, path) {
     const msg: string = "Only has the default error response ."
-    for (const n of nodes(doc, "$.paths.*.*.responses")) {
-      const response: any = n.value
-      if (response.default && Object.keys(response).length === 1) {
-        yield { message: `${msg}`, location: path }
-      }
+    const response: any = node
+    if (response.default && Object.keys(response).length === 1) {
+      yield { message: `${msg}`, location: path }
     }
   }
 })
