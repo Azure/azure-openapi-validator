@@ -1,3 +1,4 @@
+import { UniqueXmsExample } from "./../rules/UniqueXmsExample"
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -241,5 +242,12 @@ class IndividualAzureTests {
     const fileName = "RpaasValidPostAsyncOperationResponse.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 0)
+  }
+
+  @test public async "Unique x-ms-examples"() {
+    const fileName: string = "UniqueXmsExample.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    console.log(messages)
+    assertValidationRuleCount(messages, UniqueXmsExample, 1)
   }
 }
