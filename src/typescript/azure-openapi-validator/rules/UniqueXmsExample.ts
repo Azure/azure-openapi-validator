@@ -15,11 +15,13 @@ rules.push({
     const msg: string = `Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique.`
     const examples = new Set<string>()
     for (const it of nodes(node, '$..["x-ms-examples"]')) {
-      for (const exampleName of Object.keys(it.value)) {
-        if (examples.has(exampleName)) {
-          yield { message: msg, location: path.concat(it.path.slice(1)) }
+      if (it.value !== null) {
+        for (const exampleName of Object.keys(it.value)) {
+          if (examples.has(exampleName)) {
+            yield { message: msg, location: path.concat(it.path.slice(1)) }
+          }
+          examples.add(exampleName)
         }
-        examples.add(exampleName)
       }
     }
   }
