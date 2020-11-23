@@ -5,24 +5,24 @@
 import { nodes } from "jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 
-export const OnlyDefaultErrorResponse: string = "OnlyDefaultErrorResponse"
+export const ValidResponseCodeRequired: string = "ValidResponseCodeRequired"
 
 rules.push({
   id: "R4028",
-  name: OnlyDefaultErrorResponse,
+  name: ValidResponseCodeRequired,
   severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.*.responses",
   async *asyncRun(doc, node, path) {
-    const msg: string = "Only has the default error response ."
+    const msg: string = "There is no declared valid status code."
     const response: any = node
     if (response.default && Object.keys(response).length === 1) {
       yield { message: `${msg}`, location: path }
     } else {
       if (!Object.keys(response).some(v => v.startsWith("20"))) {
-        yield { message: `Not succeeded response code found.`, location: path }
+        yield { message: `${msg}`, location: path }
       }
     }
   }

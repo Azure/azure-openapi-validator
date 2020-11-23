@@ -16,12 +16,12 @@ import { EnumMustNotHaveEmptyValue } from "../rules/EnumMustNotHaveEmptyValue"
 import { EnumUniqueValue } from "../rules/EnumUniqueValue"
 import { IntegerTypeMustHaveFormat } from "../rules/IntegerTypeMustHaveFormat"
 import { LicenseHeaderMustNotBeSpecified } from "../rules/LicenseHeaderMustNotBeSpecified"
-import { OnlyDefaultErrorResponse } from "../rules/OnlyDefaultErrorResponse"
 import { OperationIdRequired } from "../rules/OperationIdRequired"
 import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContainsUrlVerb"
 import { PreviewVersionOverOneYear } from "../rules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../rules/RequiredDefaultResponse"
 import { Rpaas_CreateOperationAsyncResponseValidation } from "../rules/Rpaas_CreateOperationAsyncResponseValidation"
+import { ValidResponseCodeRequired } from "../rules/ValidResponseCodeRequired"
 import { XmsPageableMustHaveCorrespondingResponse } from "../rules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
@@ -247,12 +247,12 @@ class IndividualAzureTests {
   @test public async "only has default response"() {
     const fileName = "OnlyDefaultResponseSchema.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
-    assertValidationRuleCount(messages, OnlyDefaultErrorResponse, 1)
+    assertValidationRuleCount(messages, ValidResponseCodeRequired, 1)
   }
 
   @test public async "not only has default response"() {
     const fileName = "NotOnlyDefaultResponseSchema.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
-    assertValidationRuleCount(messages, OnlyDefaultErrorResponse, 0)
+    assertValidationRuleCount(messages, ValidResponseCodeRequired, 0)
   }
 }
