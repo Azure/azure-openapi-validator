@@ -28,6 +28,16 @@ namespace AutoRest.Core.Model
         @decimal,
         unixtime,
         file,
-        time
+        time,
+        uri,
+        uri_reference,
+        uri_template,
+        email,
+        hostname,
+        ipv4,
+        ipv6,
+        regex,
+        json_pointer,
+        relative_json_pointer
     }
 }

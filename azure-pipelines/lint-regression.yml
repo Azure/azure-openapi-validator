@@ -8,7 +8,9 @@ pr:
   branches:
     include:
       - "*"
-
+variables:
+  NODE_OPTIONS: '--max-old-space-size=8192'
+  
 steps:
   - script: git submodule update --init
     displayName: Init submodule
