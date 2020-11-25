@@ -42,7 +42,6 @@ rules.push({
                 continue
               }
               const toValidateModelName = utils.stripDefinitionPath(toValidateSchema.$ref)
-
               // Needs to check if it's a resource first.
               if (allNestedResources.has(toValidateModelName) || allTopLevelResources.has(toValidateModelName)) {
                 const systemData = utils.getPropertyOfModelName(toValidateModelName, "systemData")
