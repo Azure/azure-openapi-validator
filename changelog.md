@@ -4,7 +4,8 @@
 
 ### Changed Rule
 
-- RequiredSystemDataInNewApiVersion - if the response is an array of model , then only check the items of the array in the response . 
+- RequiredSystemDataInNewApiVersion - Only check the operations which return a ARM resource in the response.
+- ValidFormats - Allow formats defined in https://github.com/ajv-validator/ajv-formats#formats .
 
 ## What's New (11/12/2020)
 
