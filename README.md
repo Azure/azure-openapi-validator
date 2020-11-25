@@ -83,5 +83,23 @@ git update submodule --init
 npm run regression-test
 ```
 
+### How to run locally
+1. use default lint version:
+```
+autorest --validation --azure-validator --input-file=<path-to-spec>
+or 
+autorest --validation --azure-validator <path-to-readme> [--tag=<readme tag>]
+```
+2. use specified lint version:
+```
+autorest --validation --azure-validator --input-file=<path-to-spec> --use=@microsoft.azure/classic-openapi-validator@1.1.4 --use=@microsoft.azure/openapi-validator@1.4.0
+autorest --validation --azure-validator --use=@microsoft.azure/classic-openapi-validator@1.1.4 --use=@microsoft.azure/openapi-validator@1.4.0 [--tag=<readme tag>] <path-to-readme>
+```
+3. use latest lint version:
+```
+autorest --validation --azure-validator --input-file=<path-to-spec> --use=@microsoft.azure/classic-openapi-validator@latest --use=@microsoft.azure/openapi-validator@latest
+autorest --validation --azure-validator --use=@microsoft.azure/classic-openapi-validator@latest --use=@microsoft.azure/openapi-validator@latest [--tag=<readme tag>] <path-to-readme>
+```
+
 ### How to publish
 
