@@ -1,5 +1,12 @@
 # Changelog
 
+## What's New (11/23/2020)
+
+### Changed Rule
+
+- RequiredSystemDataInNewApiVersion - Only check the operations which return a ARM resource in the response.
+- ValidFormats - Allow formats defined in https://github.com/ajv-validator/ajv-formats#formats .
+
 ## What's New (11/12/2020)
 
 ### New validation rules

@@ -7,7 +7,7 @@
     },
     "host": "management.azure.com",
     "paths": {
-        "/plants": {
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyRP/plants": {
             "get": {
                 "description": "Get a list of plants.",
                 "operationId": "Plants_List",
@@ -17,6 +17,24 @@
                         "description": "OK.",
                         "schema": {
                             "$ref": "#/definitions/PlantsList"
+                        }
+                    }
+                },
+                "x-ms-pageable": {
+                    "nextLinkName": "nextLink"
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyRP/plants/{name}": {
+            "get": {
+                "description": "Get a list of plants.",
+                "operationId": "Plants_Get",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK.",
+                        "schema": {
+                            "$ref": "#/definitions/Plant"
                         }
                     }
                 },
@@ -55,9 +73,6 @@
                         "$ref": "#/definitions/Plant"
                     },
                     "readOnly": true
-                },
-                "systemData": {
-                    "$ref": "#/definitions/systemData"
                 }
             }
         },
@@ -73,7 +88,8 @@
                     "type": "boolean",
                     "description": "Is the plant edible?"
                 }
-            }
+            },
+            "x-ms-azure-resource":true
         },
         "systemData": {
             "description": "Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources",
