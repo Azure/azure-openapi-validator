@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes, stringify } from "jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { getResolvedJson, getResolvedResponseSchema, getResponseSchema } from "./utilities/rules-helper"
+import { ResourceUtils } from "./utilities/resourceUtils"
 export const RequiredSystemDataInNewApiVersions: string = "RequiredSystemDataInNewApiVersions"
 
 rules.push({
@@ -24,43 +24,38 @@ rules.push({
         // not a new Api Version
         return
       }
-      const resolvedDoc = await getResolvedJson(doc)
-      // have some swagger problem , just return
-      if (!resolvedDoc) {
-        return
-      }
+      const utils = new ResourceUtils(doc)
+      const allNestedResources = utils.getAllNestedResources()
+      const allTopLevelResources = utils.getAllTopLevelResources()
       /*
        * need to check get, put and patch actions
        */
       for (const value of ["get", "put", "patch"]) {
-        for (const responses of nodes(resolvedDoc, `$.paths.*.${value}.responses`)) {
-          let hasSystemData = false
+        for (const responses of nodes(doc, `$.paths.*.${value}.responses`)) {
+          let hasSystemData = true
           for (const key of Object.keys(responses.value)) {
             // check code 200,201,202,203...
             if (key.startsWith("20")) {
               const response = responses.value[key]
-              let toValidateSchema = response.schema
-              if (
-                response.schema &&
-                response.schema.properties &&
-                response.schema.properties.value &&
-                response.schema.properties.value.type === "array"
-              ) {
-                toValidateSchema = response.schema.properties.value.items
-              }
-              const resolvedSchema = await getResolvedResponseSchema(toValidateSchema)
-              if (!resolvedSchema) {
+              const toValidateSchema = response.schema
+              if (!toValidateSchema || !toValidateSchema.$ref) {
                 continue
               }
-              const systemData = (resolvedSchema as any).systemData
-              if (systemData && Object.keys(systemData)) {
-                hasSystemData = true
+              const toValidateModelName = utils.stripDefinitionPath(toValidateSchema.$ref)
+
+              // Needs to check if it's a resource first.
+              if (allNestedResources.has(toValidateModelName) || allTopLevelResources.has(toValidateModelName)) {
+                const systemData = utils.getPropertyOfModelName(toValidateModelName, "systemData")
+                if (!systemData) {
+                  hasSystemData = false
+                  break
+                }
               }
             }
           }
           if (!hasSystemData) {
             // operationId is located in the parent object of responses
-            const operationId = nodes(resolvedDoc, stringify(responses.path.slice(0, -1)))[0].value.operationId
+            const operationId = nodes(doc, stringify(responses.path.slice(0, -1)))[0].value.operationId
             yield {
               message: `The response of operation:'${operationId}' is defined without 'systemData'. Consider adding the systemData to the response.`,
               location: responses.path.slice(0, -1)
