@@ -247,6 +247,7 @@ class IndividualAzureTests {
   @test public async "Unique x-ms-examples"() {
     const fileName: string = "UniqueXmsExample.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    console.log(messages)
     assertValidationRuleCount(messages, UniqueXmsExample, 1)
   }
 }

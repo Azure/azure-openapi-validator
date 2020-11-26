@@ -58,7 +58,6 @@
           "default": {
             "description": "Key Vault error response describing why the operation failed.",
             "schema": {
-              "$ref": "common.json#/definitions/KeyVaultError"
             }
           }
         },
@@ -77,6 +76,12 @@
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter1"
           }
         ],
         "operationId": "HSMSecurityDomain_TransferKey",
@@ -91,7 +96,6 @@
           "default": {
             "description": "Key Vault error response describing why the operation failed.",
             "schema": {
-              "$ref": "common.json#/definitions/KeyVaultError"
             }
           }
         },
@@ -121,16 +125,7 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/SecurityDomainObject"
-            }},
-            {
-              "in": "body",
-              "name": "security_domain",
-              "description": "security domain",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/SecurityDomainObject"
-              }
-            }
+            }}
         ],
         "responses": {
           "202": {
@@ -152,13 +147,11 @@
           "default": {
             "description": "Key Vault error response describing why the operation failed.",
             "schema": {
-              "$ref": "common.json#/definitions/KeyVaultError"
             }
           }
         },
         "x-ms-examples": {
           "Example2": {
-            "$ref": "./examples/securitydomainuploadoperation-example.json"
           }
         }
       }
@@ -180,13 +173,11 @@
           "default": {
             "description": "Key Vault error response describing why the operation failed.",
             "schema": {
-              "$ref": "common.json#/definitions/KeyVaultError"
             }
           }
         },
         "x-ms-examples": {
           "Find security domain upload operation status": {
-            "$ref": "./examples/securitydomainoperationstatus-example.json"
           }
         }
       }
@@ -333,6 +324,16 @@
       "required": true,
       "type": "string",
       "description": "Client API version."
+    },
+    "subscriptionIdParameter":{
+      "name": "subscriptionId",
+      "in": "path",
+      "required": true
+    },
+    "subscriptionIdParameter1":{
+      "name": "subscriptionId",
+      "in": "path",
+      "required": true
     }
   }
 }
