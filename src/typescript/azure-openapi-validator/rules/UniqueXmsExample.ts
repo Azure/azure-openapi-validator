@@ -14,7 +14,7 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = `Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique.`
     const examples = new Set<string>()
-    for (const it of nodes(node, '$..["x-ms-examples"]')) {
+    for (const it of nodes(node, '$.paths.*.*.["x-ms-examples"]')) {
       if (it.value !== null) {
         for (const exampleName of Object.keys(it.value)) {
           if (examples.has(exampleName)) {
