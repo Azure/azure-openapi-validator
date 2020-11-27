@@ -22,10 +22,18 @@ rules.push({
 
         const getRefModel = (refValue: string) => {
           const refPath = refValue.replace("#", "$").replace(/\//g, ".")
-          return nodes(doc, refPath)
+          try {
+            return nodes(doc, refPath)
+          } catch (err) {
+            return undefined
+          }
         }
 
-        const refModel = getRefModel(ref)[0].value
+        const refModels = getRefModel(ref)
+        if (refModels === undefined) {
+          return true
+        }
+        const refModel = refModels[0].value
         const parameterName = (refModel as any).name
         const xMsParameterLocation = (refModel as any)["x-ms-parameter-location"]
         const parameterIn = (refModel as any).in

@@ -132,7 +132,6 @@ class CompositeAzureTests {
   @test public async "unique client parameter"() {
     const filename: string = "UniqueClientParameters.json"
     const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
-    console.log(messages)
     assertValidationRuleCount(messages, UniqueClientParameterName, 1)
   }
 }
