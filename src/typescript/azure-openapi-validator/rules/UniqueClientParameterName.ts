@@ -49,13 +49,13 @@ rules.push({
       return true
     }
 
-    const msg: string = `Do not have duplicate name of client parameter name, make sure every client parameter name unique. Duplicate client parameter name: `
+    const msg: string = `Do not have duplicate name of client parameter name, make sure every client parameter name unique.`
     for (const it of nodes(doc, "$.paths.*.*.parameters")) {
       for (const parameter of Object.values(it.value)) {
         if (!checkParameterNameUnique(parameter)) {
           yield {
             location: path.concat(it.path.slice(1)),
-            message: msg + (parameter as any).$ref
+            message: msg
           }
         }
       }
@@ -66,7 +66,7 @@ rules.push({
         if (!checkParameterNameUnique(parameter)) {
           yield {
             location: path.concat(it.path.slice(1)),
-            message: msg + (parameter as any).$ref
+            message: msg
           }
         }
       }
