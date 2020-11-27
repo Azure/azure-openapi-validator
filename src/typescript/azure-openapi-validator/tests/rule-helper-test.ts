@@ -67,6 +67,7 @@ class RuleHelperTests {
     assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsightDB.Admin"), true)
     assert.equal(resourceProviderMustPascalCase("Microsoft.DBForMariaDB"), true)
     assert.equal(resourceProviderMustPascalCase("Microsoft.CosmosDB"), true)
+    assert.equal(resourceProviderMustPascalCase("Microsoft.WindowsIoT"), true)
 
     assert.equal(resourceProviderMustPascalCase("Microsoft."), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft"), false)
