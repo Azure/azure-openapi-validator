@@ -22,6 +22,7 @@ import { PostOperationIdContainsUrlVerb } from "../rules/PostOperationIdContains
 import { PreviewVersionOverOneYear } from "../rules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../rules/RequiredDefaultResponse"
 import { Rpaas_CreateOperationAsyncResponseValidation } from "../rules/Rpaas_CreateOperationAsyncResponseValidation"
+import { ValidResponseCodeRequired } from "../rules/ValidResponseCodeRequired"
 import { XmsPageableMustHaveCorrespondingResponse } from "../rules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../rules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCamelCase"
@@ -244,9 +245,22 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 0)
   }
 
+
   @test public async "Unique x-ms-examples"() {
     const fileName: string = "UniqueXmsExample.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, UniqueXmsExample, 1)
+  }
+
+  @test public async "only has default response"() {
+    const fileName = "OnlyDefaultResponseSchema.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, ValidResponseCodeRequired, 1)
+  }
+
+  @test public async "not only has default response"() {
+    const fileName = "NotOnlyDefaultResponseSchema.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, ValidResponseCodeRequired, 0)
   }
 }
