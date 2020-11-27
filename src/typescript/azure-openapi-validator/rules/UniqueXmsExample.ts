@@ -4,7 +4,7 @@ import { MergeStates, OpenApiTypes, rules } from "./../rule"
 export const UniqueXmsExample: string = "UniqueXmsExample"
 
 rules.push({
-  id: "R4025",
+  id: "R4030",
   name: UniqueXmsExample,
   severity: "warning",
   category: "SDKViolation",
