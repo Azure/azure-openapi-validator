@@ -11,7 +11,7 @@ rules.push({
   id: "R4028",
   name: ValidResponseCodeRequired,
   severity: "error",
-  category: "ARMViolation",
+  category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.*.responses",
