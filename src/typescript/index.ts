@@ -29,6 +29,7 @@ async function main() {
           file,
           openapiDefinitionObject,
           initiator.Message.bind(initiator),
+          // tslint:disable-next-line: no-bitwise
           subType === "rpaas" ? OpenApiTypes[subType] | OpenApiTypes[openapiType] : OpenApiTypes[openapiType],
           MergeStates[mergeState]
         )

@@ -17,7 +17,9 @@ import { PageableOperation } from "../rules/PageableOperation"
 import { RequiredSystemDataInNewApiVersions } from "../rules/RequiredSystemDataInNewApiVersions"
 import { TopLevelResourcesListByResourceGroup } from "../rules/TopLevelResourcesListByResourceGroup"
 import { TopLevelResourcesListBySubscription } from "../rules/TopLevelResourcesListBySubscription"
+import { UniqueClientParameterName } from "../rules/UniqueClientParameterName"
 import { UniqueXmsEnumName } from "../rules/UniqueXmsEnumName"
+import { UniqueXmsExample } from "./../rules/UniqueXmsExample"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 
 @suite
@@ -125,5 +127,11 @@ class CompositeAzureTests {
     const fileName: string = "happyPath/cluster.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
+  }
+
+  @test public async "unique client parameter"() {
+    const filename: string = "UniqueClientParameters.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, UniqueClientParameterName, 1)
   }
 }
