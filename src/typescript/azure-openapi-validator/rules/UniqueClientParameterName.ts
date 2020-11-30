@@ -13,20 +13,19 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
     const clientParameterName = new Map<string, string>()
+    const getRefModel = (refValue: string) => {
+      const refPath = refValue.replace("#", "$").replace(/\//g, ".")
+      try {
+        return nodes(doc, refPath)
+      } catch (err) {
+        return undefined
+      }
+    }
     const checkParameterNameUnique = parameter => {
       if (parameter) {
         const ref = (parameter as any).$ref
         if (ref === undefined) {
           return true
-        }
-
-        const getRefModel = (refValue: string) => {
-          const refPath = refValue.replace("#", "$").replace(/\//g, ".")
-          try {
-            return nodes(doc, refPath)
-          } catch (err) {
-            return undefined
-          }
         }
 
         const refModels = getRefModel(ref)
@@ -49,13 +48,17 @@ rules.push({
       return true
     }
 
-    const msg: string = `Do not have duplicate name of client parameter name, make sure every client parameter name unique. Duplicate client parameter: `
+    const msg: string = `Do not have duplicate name of client parameter name, make sure every client parameter name unique. `
     for (const it of nodes(doc, "$.paths.*.*.parameters")) {
       for (const parameter of Object.values(it.value)) {
         if (!checkParameterNameUnique(parameter)) {
+          const ref = (parameter as any).$ref as string
+          const conflictMsg = `Client parameter ${(parameter as any).$ref} conflicted with ${clientParameterName.get(
+            getRefModel(ref)[0].value.name
+          )}.`
           yield {
             location: path.concat(it.path.slice(1)),
-            message: msg + (parameter as any).$ref
+            message: msg + conflictMsg
           }
         }
       }
@@ -64,9 +67,13 @@ rules.push({
     for (const it of nodes(doc, "$.paths.*.parameters")) {
       for (const parameter of Object.values(it.value)) {
         if (!checkParameterNameUnique(parameter)) {
+          const ref = (parameter as any).$ref as string
+          const conflictMsg = `Client parameter ${(parameter as any).$ref} conflicted with ${clientParameterName.get(
+            getRefModel(ref)[0].value.name
+          )}.`
           yield {
             location: path.concat(it.path.slice(1)),
-            message: msg + (parameter as any).$ref
+            message: msg + conflictMsg
           }
         }
       }
