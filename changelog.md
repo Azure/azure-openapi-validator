@@ -2,10 +2,16 @@
 
 ## What's New (11/23/2020)
 
+### New validation rules
+- ValidResponseCodeRequired - Validate if a operation contains valid status code.
+- UniqueClientParameterName - Ensure the client parameter name unique in same API version.
+- UniqueXmsExample - Ensure the x-ms-examples name unique in same API version.
+
 ### Changed Rule
 
-- RequiredSystemDataInNewApiVersion - Only check the operations which return a ARM resource in the response.
-- ValidFormats - Allow formats defined in https://github.com/ajv-validator/ajv-formats#formats .
+- RequiredSystemDataInNewApiVersion - Change severity to "error" and only check the operations which return a ARM resource in the response.
+- ValidFormats - Allowed formats defined in https://github.com/ajv-validator/ajv-formats#formats .
+- LongRunningResponseStatusCode - Allowed code "202" in post operation.
 
 ## What's New (11/12/2020)
 

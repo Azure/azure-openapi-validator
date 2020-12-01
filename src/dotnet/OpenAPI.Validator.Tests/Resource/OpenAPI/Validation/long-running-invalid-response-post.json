@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "LongRunningResponseForPostValidation",
-    "description": "The 200, 201 or 204 response code is not modeled for a long running post operation",
+    "description": "The 200, 201 , 202, or 204 response code is not modeled for a long running post operation",
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
@@ -24,7 +24,7 @@
         "description": "Foo operation",
         "x-ms-long-running-operation": true,
         "responses": {
-          "202": {
+          "default": {
             "description": "Accepted."
           }
         }
