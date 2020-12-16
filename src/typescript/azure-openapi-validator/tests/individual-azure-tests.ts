@@ -246,11 +246,16 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 0)
   }
 
-    // Valid 202 response for POST operation in RPaaS
   @test public async "Raas resource is defined with empty properties"() {
-    const fileName = "RpaasResourceShouldHaveProvisionState.json"
+    const fileName = "RpaasResourceWithEmptyPropertiesBag.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 1)
+  }
+
+  @test public async "Raas resource is defined with non-empty properties"() {
+    const fileName = "RpaasResourceWithNonEmptyPropertiesBag.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 0)
   }
 
   @test public async "Unique x-ms-examples"() {

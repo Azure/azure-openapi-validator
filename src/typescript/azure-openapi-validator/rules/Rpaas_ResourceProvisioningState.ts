@@ -22,8 +22,11 @@ rules.push({
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)
       const properties = utils.getPropertyOfModel(model,"properties")
-      if (properties && (!properties.type || properties.type == "object")) {
-        if (!properties.additionalProperties && !properties.allOf && (!properties.properties || Object.keys(properties.properties).length === 0)) {
+      if (properties && (!properties.type || properties.type === "object")) {
+        /**
+         *  If the user specify the 'additionalProperties' explicitly, we should not report error. 
+         */
+        if (properties.additionalProperties === undefined && !properties.allOf && (!properties.properties || Object.keys(properties.properties).length === 0)) {
           yield {  message: msg.replace("{0}", resource),
           location: ["$", "definitions", resource] as JsonPath}
         }

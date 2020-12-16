@@ -22,10 +22,14 @@
         "operationId": "getTestResource",
         "summary": "Foo path",
         "description": "Foo operation",
-        "x-ms-long-running-operation": true,
-        "x-ms-long-running-operation-options": {
-          "final-state-via": "azure-async-operation"
-        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersion"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Created",
@@ -72,17 +76,6 @@
             "readOnly": true,
             "type": "string",
             "description": "Resource type."
-          },
-          "location": {
-            "type": "string",
-            "description": "Resource location."
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Resource tags."
           }
         },
         "description": "Common resource representation.",
@@ -94,13 +87,14 @@
           {"$ref": "#/definitions/Resource"}
         ],
         "properties": {
-          "test":{
-            "type":"string",
-            "description": "test"
-          },
           "properties":{
             "type":"object",
-            "description": "properties"
+            "description": "properties",
+            "properties": {
+              "test":{
+                "type":"string"
+              }
+            }
           }
         }
       }
