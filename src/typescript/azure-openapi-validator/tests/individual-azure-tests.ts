@@ -29,6 +29,7 @@ import { PathResourceTypeNameCamelCase } from "./../rules/PathResourceTypeNameCa
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 import { Rpaas_DeleteOperationAsyncResponseValidation } from "../rules/Rpaas_DeleteOperationAsyncResponseValidation"
 import { Rpaas_PostOperationAsyncResponseValidation } from "../rules/Rpaas_PostOperationAsyncResponseValidation"
+import { Rpaas_ResourceProvisioningState } from "../rules/Rpaas_ResourceProvisioningState"
 @suite
 class IndividualAzureTests {
   @test public async "control characters not allowed test"() {
@@ -245,6 +246,12 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 0)
   }
 
+    // Valid 202 response for POST operation in RPaaS
+  @test public async "Raas resource is defined with empty properties"() {
+    const fileName = "RpaasResourceShouldHaveProvisionState.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 1)
+  }
 
   @test public async "Unique x-ms-examples"() {
     const fileName: string = "UniqueXmsExample.json"

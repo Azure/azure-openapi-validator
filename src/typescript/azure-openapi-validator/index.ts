@@ -39,6 +39,7 @@ require("./rules/PreviewVersionOverOneYear")
 require("./rules/UniqueXmsExample")
 require("./rules/UniqueClientParameterName")
 require("./rules/ValidResponseCodeRequired")
+require("./rules/Rpaas_ResourceProvisioningState")
 export async function run(
   document: string,
   openapiDefinition: any,
