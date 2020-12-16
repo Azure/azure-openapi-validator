@@ -4,12 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
-import { only, skip, slow, suite, test, timeout } from "mocha-typescript"
 import { run } from "../../../azure-openapi-validator"
-import { AutoRestPluginHost } from "../../../jsonrpc/plugin-host"
 import { Message } from "../../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../../rule"
-
 const fs = require("fs")
 const path = require("path")
 const pathToTestResources: string = "../../tests/resources/"
