@@ -22,7 +22,7 @@ rules.push({
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)
       const properties = utils.getPropertyOfModel(model,"properties")
-      if (!properties.type || properties.type == "object") {
+      if (properties && (!properties.type || properties.type == "object")) {
         if (!properties.additionalProperties && !properties.allOf && (!properties.properties || Object.keys(properties.properties).length === 0)) {
           yield {  message: msg.replace("{0}", resource),
           location: ["$", "definitions", resource] as JsonPath}
