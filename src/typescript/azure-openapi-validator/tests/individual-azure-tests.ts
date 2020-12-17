@@ -252,8 +252,8 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 1)
   }
 
-  @test public async "Raas resource is defined with non-empty properties"() {
-    const fileName = "RpaasResourceWithNonEmptyPropertiesBag.json"
+  @test public async "Raas resource is defined with provisioning properties"() {
+    const fileName = "RpaasResourceWithProvisioningState.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 0)
   }

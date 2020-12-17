@@ -91,7 +91,7 @@
             "type":"object",
             "description": "properties",
             "properties": {
-              "test":{
+              "provisioningState":{
                 "type":"string"
               }
             }

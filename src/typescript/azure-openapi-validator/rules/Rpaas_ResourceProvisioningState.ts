@@ -16,20 +16,22 @@ rules.push({
   openapiType: OpenApiTypes.rpaas,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg = `The resource {0} is defined with empty property bag, consider adding the provisioningState for it.`
+    const msg = `The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
     const utils = new ResourceUtils(doc)
     const allResources = utils.getAllResource()
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)
       const properties = utils.getPropertyOfModel(model,"properties")
+      let hasProvisioningState = false
       if (properties && (!properties.type || properties.type === "object")) {
-        /**
-         *  If the user specify the 'additionalProperties' explicitly, we should not report error. 
-         */
-        if (properties.additionalProperties === undefined && !properties.allOf && (!properties.properties || Object.keys(properties.properties).length === 0)) {
-          yield {  message: msg.replace("{0}", resource),
-          location: ["$", "definitions", resource] as JsonPath}
+        if (utils.getPropertyOfModel(properties,"provisioningState")) {
+          hasProvisioningState = true
         }
+        
+      }
+      if (!hasProvisioningState) {
+        yield {  message: msg.replace("{0}", resource),
+        location: ["$", "definitions", resource] as JsonPath}
       }
     }
   }
