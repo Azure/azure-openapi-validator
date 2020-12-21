@@ -503,10 +503,8 @@ export class ResourceUtils {
     if (!model) {
       return undefined
     }
-    if (model.properties) {
-      if (model.properties[propertyName]) {
-       return this.getUnwrappedModel(model.properties[propertyName])
-      }
+    if (model.properties && model.properties[propertyName]) {
+      return this.getUnwrappedModel(model.properties[propertyName])
     }
     if (model.allOf) {
       for (const element of model.allOf) {
@@ -517,10 +515,7 @@ export class ResourceUtils {
           }
         }
         else {
-          const property = this.getPropertyOfModel(element,propertyName)
-          if (property) {
-            return property
-          }
+          return this.getPropertyOfModel(element,propertyName)
         }
       }
     }
