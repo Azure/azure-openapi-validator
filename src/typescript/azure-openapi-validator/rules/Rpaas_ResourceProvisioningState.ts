@@ -16,7 +16,7 @@ rules.push({
   openapiType: OpenApiTypes.rpaas,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg = `The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
+    const msg = `[RPaaS] The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
     const utils = new ResourceUtils(doc)
     const allResources = utils.getAllResource()
     for (const resource of allResources) {

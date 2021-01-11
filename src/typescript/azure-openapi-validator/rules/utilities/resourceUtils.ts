@@ -382,7 +382,7 @@ export class ResourceUtils {
       })
     }
     /**
-     * if a resource definition the match a collection resource schema, we can back-stepping the corresponding operation to make sure
+     * if a resource definition does match a collection resource schema, we can back-stepping the corresponding operation to make sure
      * we don't lost it
      */
     const collectionResources = this.getCollectionResources()
