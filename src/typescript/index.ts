@@ -42,6 +42,36 @@ async function main() {
     }
   })
 
+   pluginHost.Add("modulerfour-consumer", async initiator => {
+     const files = await initiator.ListInputs()
+     const mergeState: string = await initiator.GetValue("merge-state")
+     const openapiType: string = await initiator.GetValue("openapi-type")
+     const subType: string = await initiator.GetValue("openapi-subtype")
+
+     for (const file of files) {
+       initiator.Message({
+         Channel: "verbose",
+         Text: `Validating '${file}'`
+       })
+
+       try {
+         const openapiDefinitionDocument = await initiator.ReadFile(file)
+         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
+         if (openapiDefinitionObject) {
+            initiator.Message({
+              Channel: "debug",
+              Text:"Success get modelerfour output"
+            })
+         }
+       } catch (e) {
+         initiator.Message({
+           Channel: "fatal",
+           Text: `Failed validating: '${file}', error encountered: ` + e
+         })
+       }
+     }
+   })
+
   await pluginHost.Run()
 }
 
