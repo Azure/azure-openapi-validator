@@ -1,5 +1,14 @@
 # Changelog
 
+## What's New (12/18/2020)
+
+### New validation rules
+- Rpaas_ResourceProvisioningState - Validate if 'provisioningState' is defined in a resource definition.
+
+### Changed Rule
+
+- TopLevelResourcesListByResourceGroup - Only resource group level resources apply to this rule.
+
 ## What's New (11/23/2020)
 
 ### New validation rules
