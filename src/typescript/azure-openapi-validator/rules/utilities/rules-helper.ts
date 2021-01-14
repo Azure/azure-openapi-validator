@@ -128,7 +128,7 @@ export function isValidEnum(node) {
   if (!node || !node.type || typeof node.type !== "string") {
     return false
   }
-  return ["boolean", "integer", "number", "string"].indexOf(node.type) !== -1
+  return ["boolean", "integer", "number", "string"].indexOf(node.type) !== -1 && Array.isArray(node.enum)
 }
 
 export function transformEnum(type: string, enumEntries) {

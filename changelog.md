@@ -8,6 +8,7 @@
 ### Changed Rule
 
 - TopLevelResourcesListByResourceGroup - Only resource group level resources apply to this rule.
+- UniqueXmsEnumName - Compare enum type and modelAsString too, optimize message.
 
 ## What's New (11/23/2020)
 

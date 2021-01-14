@@ -5,7 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { isValidEnum, transformEnum } from "./utilities/rules-helper"
 export const UniqueXmsEnumName: string = "UniqueXmsEnumName"
-import { nodes } from "jsonpath"
+import { nodes,stringify } from "jsonpath"
 
 rules.push({
   id: "R4005",
@@ -18,24 +18,27 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = `Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique.`
     if (node) {
-      const enumMap = new Map<string, string[]>()
+      const enumMap = new Map<string, any>()
       for (const section of nodes(node, "$..*[?(@.enum)]")) {
         if (section.value["x-ms-enum"] && isValidEnum(section.value)) {
           const enumName = section.value["x-ms-enum"].name.toLowerCase()
           if (enumMap.has(enumName)) {
-            const curEnum = transformEnum(section.value.type, section.value.enum)
-            const existingEnum = enumMap.get(enumName)
+            const curEnum =  section.value.enum
+            const existingNode = enumMap.get(enumName)
+            const existingEnum = existingNode.value.enum
             /**
-             * if existing , check if the two enums' enties is same.
+             * if existing , check if the two enums' entries are same.
              */
             if (
+              section.value.type !== existingNode.value.type ||
+              section.value["x-ms-enum"].modelAsString !== existingNode.value["x-ms-enum"].modelAsString ||
               existingEnum.length !== curEnum.length ||
-              existingEnum.some((value, index) => curEnum[index].toLowerCase() !== value.toLowerCase())
+              existingEnum.some((value, index) => curEnum[index] !== value)
             ) {
-              yield { message: `${msg} The duplicate x-ms-enum name is ${enumName}`, location: path.concat(section.path.slice(1)) }
+              yield { message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path)}`, location: path.concat(section.path.slice(1)) }
             }
           } else {
-            enumMap.set(enumName, section.value.enum)
+            enumMap.set(enumName, section)
           }
         }
       }
