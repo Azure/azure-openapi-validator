@@ -26,12 +26,14 @@ rules.push({
             const curEnum =  section.value.enum
             const existingNode = enumMap.get(enumName)
             const existingEnum = existingNode.value.enum
+            const existingEnumModelAsString = existingNode.value["x-ms-enum"].modelAsString || false
+            const currentEnumModelAsString = section.value["x-ms-enum"].modelAsString || false
             /**
              * if existing , check if the two enums' entries are same.
              */
             if (
               section.value.type !== existingNode.value.type ||
-              section.value["x-ms-enum"].modelAsString !== existingNode.value["x-ms-enum"].modelAsString ||
+              currentEnumModelAsString  !==  existingEnumModelAsString ||
               existingEnum.length !== curEnum.length ||
               existingEnum.some((value, index) => curEnum[index] !== value)
             ) {
