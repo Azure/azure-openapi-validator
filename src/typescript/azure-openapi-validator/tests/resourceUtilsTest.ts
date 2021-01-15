@@ -26,4 +26,24 @@ class ResourceUtilsTests {
     assert.equal(allCollectionInfo.length, 22)
     assert.equal(allCollectionModel.size, 21)
   }
+
+  @test public "test get properties"() {
+     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
+     const util = new ResourceUtils(swagger)
+     const bar = util.getResourceByName("A")
+     assert.deepEqual(
+       {
+         type: "string",
+         description: "p1"
+       },
+       util.getPropertyOfModel(bar, "p1")
+     )
+     const foo = util.getResourceByName("B")
+     assert.deepEqual(
+       {
+         description: "a ref"
+       },
+       util.getPropertyOfModel(foo, "display")
+     )
+  }
 }

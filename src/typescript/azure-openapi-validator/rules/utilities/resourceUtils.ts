@@ -82,7 +82,7 @@ export class ResourceUtils {
     }
   }
 
-  private getResourceByName(modelName: string) {
+  public getResourceByName(modelName: string) {
     if (!modelName) {
       return undefined
     }
@@ -132,6 +132,10 @@ export class ResourceUtils {
     }
   }
 
+
+  /**
+   *  Get all resources which allOf a x-ms-resource
+   */
   public getAllOfResources() {
     const keys = Object.keys(this.innerDoc.definitions as object)
     const AllOfResources = keys.reduce((pre, cur) => {
@@ -195,6 +199,42 @@ export class ResourceUtils {
     }
     return topLevelModels
   }
+
+  public getTopLevelResourcesByRG() {
+    const fullModels = this.getOperationGetResponseResources()
+    const topLevelModels = new Set<string>()
+    for (const entry of fullModels.entries()) {
+      const paths = entry[1]
+      paths
+        .filter(p => this.isPathByResourceGroup(p))
+        .some(p => {
+          const hierarchy = this.getResourcesTypeHierarchy(p)
+          if (hierarchy.length === 1) {
+            topLevelModels.add(entry[0])
+            return true
+          }
+        })
+    }
+    return topLevelModels
+  }
+
+  public getAllResource() {
+    const fullModels = this.getOperationGetResponseResources()
+    const resources = new Set<string>()
+    for (const entry of fullModels.entries()) {
+      const paths = entry[1]
+      paths
+        .some(p => {
+          const hierarchy = this.getResourcesTypeHierarchy(p)
+          if (hierarchy.length > 0) {
+            resources.add(entry[0])
+            return true
+          }
+        })
+    }
+    return resources.values()
+  }
+
   /**
    *
    * @param path
@@ -249,8 +289,25 @@ export class ResourceUtils {
     return hierarchy
   }
 
-  private dereference(ref: string) {
-    return this.getResourceByName(this.stripDefinitionPath(ref))
+  private dereference(ref: string, visited:Set<string>) {
+    if (visited.has(ref)) {
+      return undefined
+    }
+    visited.add(ref)
+    const model = this.getResourceByName(this.stripDefinitionPath(ref))
+    if (model && model.$ref) {
+      return this.dereference(model.$ref, visited)
+    }
+    else {
+      return model
+    }
+  }
+
+  private getUnwrappedModel(property:any) {
+    if (property) {
+      const ref = property.$ref
+      return ref ? this.dereference(ref, new Set<string>()) : property
+    }
   }
 
   public containsDiscriminator(modelName: string) {
@@ -325,7 +382,7 @@ export class ResourceUtils {
       })
     }
     /**
-     * if a resource definition the match a collection resource schema, we can back-stepping the corresponding operation to make sure
+     * if a resource definition does match a collection resource schema, we can back-stepping the corresponding operation to make sure
      * we don't lost it
      */
     const collectionResources = this.getCollectionResources()
@@ -432,21 +489,7 @@ export class ResourceUtils {
     if (!model) {
       return undefined
     }
-    if (model.properties) {
-      if (model.properties[propertyName]) {
-        const ref = model.properties[propertyName].$ref
-        return ref ? this.dereference(ref) : model.properties[propertyName]
-      }
-    }
-    if (model.allOf) {
-      for (const element of model.allOf) {
-        const property = this.getPropertyOfModelName(this.stripDefinitionPath(element.$ref), propertyName)
-        if (property) {
-          const ref = property.$ref
-          return ref ? this.dereference(ref) : property
-        }
-      }
-    }
+    return this.getPropertyOfModel(model,propertyName)
   }
 
   public getPropertyOfModel(sourceModel, propertyName: string) {
@@ -455,20 +498,24 @@ export class ResourceUtils {
     }
     let model = sourceModel
     if (sourceModel.$ref) {
-      model = this.getResourceByName(this.stripDefinitionPath(sourceModel))
+      model = this.getUnwrappedModel(sourceModel.$ref)
     }
-    if (model.properties) {
-      if (model.properties[propertyName]) {
-        const ref = model.properties[propertyName].$ref
-        return ref ? this.dereference(ref) : model.properties[propertyName]
-      }
+    if (!model) {
+      return undefined
+    }
+    if (model.properties && model.properties[propertyName]) {
+      return this.getUnwrappedModel(model.properties[propertyName])
     }
     if (model.allOf) {
       for (const element of model.allOf) {
-        const property = this.getPropertyOfModelName(this.stripDefinitionPath(element.$ref), propertyName)
-        if (property) {
-          const ref = property.$ref
-          return ref ? this.dereference(ref) : property
+        if (element.$ref) {
+          const property = this.getPropertyOfModelName(this.stripDefinitionPath(element.$ref), propertyName)
+          if (property) {
+            return this.getUnwrappedModel(property)
+          }
+        }
+        else {
+          return this.getPropertyOfModel(element,propertyName)
         }
       }
     }

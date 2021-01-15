@@ -16,9 +16,9 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.*.responses.*.schema",
   *run(doc, node, path) {
-    const msg: string = "Response schema must not be empty"
+    const msg: string = "Response schema must not be empty."
     if (!Object.keys(node).length) {
-      yield { message: `${msg}'`, location: path }
+      yield { message: `${msg}`, location: path }
     }
   }
 })

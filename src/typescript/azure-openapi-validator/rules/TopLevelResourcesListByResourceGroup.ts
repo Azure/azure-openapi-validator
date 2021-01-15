@@ -15,7 +15,7 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = 'The top-level resource "{0}" does not have list by resource group operation, please add it.'
     const utils = new ResourceUtils(doc)
-    const topLevelResources = utils.getAllTopLevelResources()
+    const topLevelResources = utils.getTopLevelResourcesByRG()
     const allCollectionPath = utils.getCollectionApiInfo()
     for (const resource of topLevelResources) {
       const hasMatched = allCollectionPath.some(
