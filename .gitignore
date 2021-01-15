@@ -1,6 +1,7 @@
 # Ignore compiled files
 src/**/*.js
 regression/**/*.js
+regression/**/*.js.map
 src/**/*.map
 src/**/*.d.ts
 node_modules/
