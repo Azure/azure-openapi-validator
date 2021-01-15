@@ -35,7 +35,8 @@ rules.push({
               section.value.type !== existingNode.value.type ||
               currentEnumModelAsString  !==  existingEnumModelAsString ||
               existingEnum.length !== curEnum.length ||
-              existingEnum.some((value, index) => curEnum[index] !== value)
+              // if modelAsString is true , the order is insensitive or the order of the value is sensitive.
+              currentEnumModelAsString ? existingEnum.some(value=> !curEnum.includes(value)) : existingEnum.some((value, index) => curEnum[index] !== value)
             ) {
               yield { message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path)}`, location: path.concat(section.path.slice(1)) }
             }
