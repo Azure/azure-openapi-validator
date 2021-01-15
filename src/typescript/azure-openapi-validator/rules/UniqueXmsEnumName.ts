@@ -29,13 +29,13 @@ rules.push({
             const existingEnumModelAsString = existingNode.value["x-ms-enum"].modelAsString || false
             const currentEnumModelAsString = section.value["x-ms-enum"].modelAsString || false
             /**
-             * if existing , check if the two enums' entries are same.
+             * if existing , check if the two enums are same.
              */
             if (
               section.value.type !== existingNode.value.type ||
               currentEnumModelAsString  !==  existingEnumModelAsString ||
               existingEnum.length !== curEnum.length ||
-              // if modelAsString is true , the order is insensitive or the order of the value is sensitive.
+              // if modelAsString is true , the order of the values is insensitive , otherwise the order is sensitive.
               currentEnumModelAsString ? existingEnum.some(value=> !curEnum.includes(value)) : existingEnum.some((value, index) => curEnum[index] !== value)
             ) {
               yield { message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path)}`, location: path.concat(section.path.slice(1)) }
