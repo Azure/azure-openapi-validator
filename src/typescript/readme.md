@@ -20,7 +20,7 @@ use-extension:
   "@autorest/modelerfour": "~4.15.375"
 
 pipeline:
-  swagger-document/modulerfour-consumer:
+  swagger-document/modelerfour-consumer:
     input: modelerfour
     scope: azure-validator-composed
   modelerfour:
