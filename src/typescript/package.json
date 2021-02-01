@@ -1,6 +1,6 @@
 {
     "name": "@microsoft.azure/openapi-validator",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "Azure OpenAPI Validator",
     "main": "src/index.js",
     "scripts": {

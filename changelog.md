@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (02/01/2021 openapi-validator v1.8.0)
+
+### Added plugin
+- Added modeler4 consumer plugin to run modeler4 check.
+
 ## What's New (12/18/2020)
 
 ### New validation rules

@@ -11,13 +11,12 @@ pipeline:
     scope: azure-validator-composed
   swagger-document/individual/openapi-validator:
     input: swagger-document/individual/identity
-    scope: azure-validator-individual
-    
+    scope: azure-validator-individual  
 ```
 
 ``` yaml $(azure-validator) && $(v3)
 use-extension:
-  "@autorest/modelerfour": "~4.15.375"
+  "@autorest/modelerfour": "4.15.378"
 
 pipeline:
   swagger-document/modelerfour-consumer:
