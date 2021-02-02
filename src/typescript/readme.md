@@ -16,7 +16,7 @@ pipeline:
 
 ``` yaml $(azure-validator) && $(v3)
 use-extension:
-  "@autorest/modelerfour": "4.15.378"
+  "@autorest/modelerfour": "4.15.456"
 
 pipeline:
   swagger-document/modelerfour-consumer:
