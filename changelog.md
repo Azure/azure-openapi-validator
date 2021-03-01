@@ -1,5 +1,19 @@
 # Changelog
 
+## What's New (02/24/2021)
+
+### New validation rules
+- MissingXmsErrorResponse - Validate if error code 4xx or 5xx defined with x-ms-error-response.
+- UniqueModelName - Validate if model name is unique case insensitive.
+- AzureResourceTagsSchemaValidation - Validate if tags definition is same with the common types.
+- PrivateEndpointResourceSchemaValidation - Validate if private link APIs fully defined.
+- ImplementPrivateEndpointAPIs - Validate if private link resources defined correctly.
+
+### Changed Rule
+
+- R4009 - Change rule name from RequiredSystemDataInNewApiVersion to RequiredSystemData and check if it's readonly.
+- AvoidAnonymousTypes - Apply to additionalProperties and allOf schema.
+
 ## What's New (02/01/2021 openapi-validator v1.8.0)
 
 ### Added plugin

@@ -62,6 +62,7 @@ namespace OpenAPI.Validator.Model
         /// <summary>
         /// Defines the set of schemas this shema is composed of
         /// </summary>
+        [CollectionRule(typeof(AvoidAnonymousTypes))]
         public IList<Schema> AllOf { get; set; }
 
         /// <summary>

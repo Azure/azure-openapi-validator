@@ -49,7 +49,7 @@ namespace OpenAPI.Validator.Validation
         /// <param name="entity">The entity to validate</param>
         /// <returns></returns>
         public override bool IsValid(SwaggerObject entity) => (entity?.GetType() == typeof(Schema) &&
-            ((((Schema)entity).Properties == null) || ((Schema)entity).Properties?.Count == 0));
+            ((((Schema)entity).Properties == null) || ((Schema)entity).Properties?.Count == 0) && ((Schema)entity).AllOf == null && ((Schema)entity).AdditionalProperties == null);
 
     }
 }

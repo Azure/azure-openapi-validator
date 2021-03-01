@@ -40,6 +40,12 @@ require("./rules/UniqueXmsExample")
 require("./rules/UniqueClientParameterName")
 require("./rules/ValidResponseCodeRequired")
 require("./rules/Rpaas_ResourceProvisioningState")
+require("./rules/AzureResourceTagsSchema")
+require("./rules/UniqueModelName")
+require("./rules/MissingXmsErrorResponse")
+require("./rules/PrivateConnectionResponseSchema")
+require("./rules/PrivateLinkApiPaths")
+
 export async function run(
   document: string,
   openapiDefinition: any,

@@ -5,11 +5,11 @@
 import { nodes, stringify } from "jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
-export const RequiredSystemDataInNewApiVersions: string = "RequiredSystemDataInNewApiVersions"
+export const RequiredSystemData: string = "RequiredSystemData"
 
 rules.push({
   id: "R4009",
-  name: RequiredSystemDataInNewApiVersions,
+  name: RequiredSystemData,
   severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.composed,
@@ -25,14 +25,14 @@ rules.push({
         return
       }
       const utils = new ResourceUtils(doc)
-      const allNestedResources = utils.getAllNestedResources()
-      const allTopLevelResources = utils.getAllTopLevelResources()
+      const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions
        */
       for (const value of ["get", "put", "patch"]) {
         for (const responses of nodes(doc, `$.paths.*.${value}.responses`)) {
           let hasSystemData = true
+          let isReadOnly = true
           for (const key of Object.keys(responses.value)) {
             // check code 200,201,202,203...
             if (key.startsWith("20")) {
@@ -43,10 +43,14 @@ rules.push({
               }
               const toValidateModelName = utils.stripDefinitionPath(toValidateSchema.$ref)
               // Needs to check if it's a resource first.
-              if (allNestedResources.has(toValidateModelName) || allTopLevelResources.has(toValidateModelName)) {
+              if (allResources.includes(toValidateModelName)) {
                 const systemData = utils.getPropertyOfModelName(toValidateModelName, "systemData")
                 if (!systemData) {
                   hasSystemData = false
+                  break
+                }
+                if (!systemData.readOnly) {
+                  isReadOnly = false
                   break
                 }
               }
@@ -57,6 +61,13 @@ rules.push({
             const operationId = nodes(doc, stringify(responses.path.slice(0, -1)))[0].value.operationId
             yield {
               message: `The response of operation:'${operationId}' is defined without 'systemData'. Consider adding the systemData to the response.`,
+              location: responses.path.slice(0, -1)
+            }
+          }
+          if (!isReadOnly) {
+            const operationId = nodes(doc, stringify(responses.path.slice(0, -1)))[0].value.operationId
+            yield {
+              message: `The property systemData in the response of operation:'${operationId}' is not read only. Please add the readonly for the systemData.`,
               location: responses.path.slice(0, -1)
             }
           }
