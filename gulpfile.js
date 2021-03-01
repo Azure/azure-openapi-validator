@@ -47,6 +47,19 @@ gulp.task('test/typescript', gulp.series(['build/typescript'], function (done) {
   done()
 }));
 
+gulp.task(
+  "generate/doc",
+  gulp.series(["build/typescript"], function(done) {
+    console.log("Generating the doc...")
+    gulp
+      .src("src/typescript/azure-openapi-validator/generateDoc.js")
+      .once("error", () => {
+        process.exit(1)
+      })
+    done()
+  })
+)
+
 // All the dotnet tasks
 gulp.task('clean/dotnet', function () {
   console.log('Cleaning build directories...');
