@@ -11,7 +11,7 @@
 
 ### Changed Rule
 
-- R4009 - Change rule name from RequiredSystemDataInNewApiVersion to RequiredSystemData and check if it's readonly.
+- R4009 - Change rule name from RequiredSystemDataInNewApiVersion to RequiredReadOnlySystemData and check if it's readonly.
 - AvoidAnonymousTypes - Apply to additionalProperties and allOf schema.
 
 ## What's New (02/01/2021 openapi-validator v1.8.0)
