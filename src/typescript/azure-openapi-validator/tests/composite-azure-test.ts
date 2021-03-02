@@ -14,7 +14,7 @@ import { GetCollectionResponseSchema } from "../rules/GetCollectionResponseSchem
 import { NestedResourcesMustHaveListOperation } from "../rules/NestedResourcesMustHaveListOperation"
 import { OperationsApiResponseSchema } from "../rules/OperationsApiResponseSchema"
 import { PageableOperation } from "../rules/PageableOperation"
-import { RequiredSystemData } from "../rules/RequiredSystemData"
+import { RequiredReadOnlySystemData } from "../rules/RequiredReadOnlySystemData"
 import { TopLevelResourcesListByResourceGroup } from "../rules/TopLevelResourcesListByResourceGroup"
 import { TopLevelResourcesListBySubscription } from "../rules/TopLevelResourcesListBySubscription"
 import { UniqueXmsEnumName } from "../rules/UniqueXmsEnumName"
@@ -58,7 +58,7 @@ class CompositeAzureTests {
   @test public async "new apiVersion have operation without systemData"() {
     const fileName = "NewApiVersionHaveOperationWithoutSystemData.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, RequiredSystemData, 2)
+    assertValidationRuleCount(messages, RequiredReadOnlySystemData, 2)
   }
 
   @test public async "all nested resources must have collection operation "() {

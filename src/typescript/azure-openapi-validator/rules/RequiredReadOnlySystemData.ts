@@ -5,11 +5,11 @@
 import { nodes, stringify } from "jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
-export const RequiredSystemData: string = "RequiredSystemData"
+export const RequiredReadOnlySystemData: string = "RequiredReadOnlySystemData"
 
 rules.push({
   id: "R4009",
-  name: RequiredSystemData,
+  name: RequiredReadOnlySystemData,
   severity: "error",
   category: "ARMViolation",
   mergeState: MergeStates.composed,
