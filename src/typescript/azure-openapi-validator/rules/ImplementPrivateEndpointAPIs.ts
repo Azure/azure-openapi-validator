@@ -70,19 +70,19 @@ rules.push({
     for( const [key,value] of supportedResources.entries()) {
       if (!value.PathForPrivateConnection) {
         yield {
-           message: msg.replace("{0}",key + "/" + pathPostfix[1]),
+           message: msg.replace("{0}",key + pathPostfix[1]),
            location: path
         }
       }
       if (!value.pathForListPrivateConnections) {
         yield {
-           message: msg.replace("{0}", key + "/" + pathPostfix[1]),
+           message: msg.replace("{0}", key + pathPostfix[1]),
            location: path
         }
       }
        if (!value.pathForListResources) {
         yield {
-           message: msg.replace("{0}", key + "/" + pathPostfix[2]),
+           message: msg.replace("{0}", key + pathPostfix[2]),
            location: path
         }
       }
