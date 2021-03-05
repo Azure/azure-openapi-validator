@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*",
   *run(doc, node, path) {
-    const msg: string = 'The private endpoint model "{0}" schema is different with the common type definition.'
+    const msg: string = 'The private endpoint model "{0}" schema does not conform to the common type definition.'
     /**
      * 1 get all collection models
      * 2 travel all resources and paths to find all the resources that have a collection get

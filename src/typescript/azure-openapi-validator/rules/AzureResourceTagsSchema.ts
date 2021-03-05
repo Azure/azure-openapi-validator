@@ -13,9 +13,10 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg: string = 'The resource "{0}" tag schema does not meet the common type definition.'
+    const msg: string = 'The property tags in the resource "{0}" does not conform to the common type definition.'
     /**
-     * 1 get all resources
+     * 1. get all resources
+     * 2. for each resource, check the property tags schema.  
      */
     const utils = new ResourceUtils(doc)
     const allResources = utils.getAllResourceNames()
