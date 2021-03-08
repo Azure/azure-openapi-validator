@@ -236,10 +236,6 @@
         },
         "PrivateEndpointConnectionProperties": {
             "properties": {
-                "privateEndpoint": {
-                    "$ref": "#/definitions/PrivateEndpoint",
-                    "description": "The resource of private end point."
-                },
                 "privateLinkServiceConnectionState": {
                     "$ref": "#/definitions/PrivateLinkServiceConnectionState",
                     "description": "A collection of information about the state of the connection between service consumer and provider."

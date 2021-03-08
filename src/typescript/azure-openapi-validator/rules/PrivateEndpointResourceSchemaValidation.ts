@@ -18,7 +18,7 @@ rules.push({
      * 1 get all collection models
      * 2 travel all resources and paths to find all the resources that have a collection get
      */
-    const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{.*\})*$/
+    const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^\/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
     const utils = new ResourceUtils(doc)
     const apiPath = path[path.length - 1] as string
@@ -28,7 +28,7 @@ rules.push({
       if (!properties) {
         return false
       }
-      const requiredProperties = ["privateEndpoint", "privateLinkServiceConnectionState", "provisioningState"]
+      const requiredProperties = ["privateEndpoint", "privateLinkServiceConnectionState"]
       if (requiredProperties.some(p => !utils.getPropertyOfModel(properties, p))) {
         return false
       }

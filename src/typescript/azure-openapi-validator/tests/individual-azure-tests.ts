@@ -32,7 +32,6 @@ import { Rpaas_PostOperationAsyncResponseValidation } from "../rules/Rpaas_PostO
 import { Rpaas_ResourceProvisioningState } from "../rules/Rpaas_ResourceProvisioningState"
 import { MissingXmsErrorResponse } from "../rules/MissingXmsErrorResponse"
 import { AzureResourceTagsSchema } from "../rules/AzureResourceTagsSchema"
-import { RequiredLongRunningOperationHeader } from "../rules/RequiredLongRunningOperationHeader"
 
 @suite
 class IndividualAzureTests {

@@ -13,9 +13,9 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths",
   *run(doc, node, path) {
-    const msg: string = "The private endpoint API: {apiPath} is missing." 
+    const msg: string = "The private endpoint API: {0} is missing." 
     
-    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{.*\}){1}$/
+    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/
     const privateLinkResourcesPattern = /.*\/privateLinkResources$/
     type privateEndpointPaths = {
