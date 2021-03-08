@@ -26,7 +26,7 @@ require("./rules/AvoidEmptyResponseSchema")
 require("./rules/DefaultErrorResponseSchema")
 require("./rules/DeleteOperationResponses")
 require("./rules/XmsPageableMustHaveCorrespondingResponse")
-require("./rules/RequiredSystemDataInNewApiVersions")
+require("./rules/RequiredReadOnlySystemData")
 require("./rules/RequiredDefaultResponse")
 require("./rules/GetCollectionResponseSchema")
 require("./rules/AllResourcesMustHaveGetOperation")
@@ -40,6 +40,12 @@ require("./rules/UniqueXmsExample")
 require("./rules/UniqueClientParameterName")
 require("./rules/ValidResponseCodeRequired")
 require("./rules/Rpaas_ResourceProvisioningState")
+require("./rules/AzureResourceTagsSchema")
+require("./rules/UniqueModelName")
+require("./rules/MissingXmsErrorResponse")
+require("./rules/PrivateEndpointResourceSchemaValidation")
+require("./rules/ImplementPrivateEndpointAPIs")
+
 export async function run(
   document: string,
   openapiDefinition: any,

@@ -14,12 +14,13 @@ import { GetCollectionResponseSchema } from "../rules/GetCollectionResponseSchem
 import { NestedResourcesMustHaveListOperation } from "../rules/NestedResourcesMustHaveListOperation"
 import { OperationsApiResponseSchema } from "../rules/OperationsApiResponseSchema"
 import { PageableOperation } from "../rules/PageableOperation"
-import { RequiredSystemDataInNewApiVersions } from "../rules/RequiredSystemDataInNewApiVersions"
+import { RequiredReadOnlySystemData } from "../rules/RequiredReadOnlySystemData"
 import { TopLevelResourcesListByResourceGroup } from "../rules/TopLevelResourcesListByResourceGroup"
 import { TopLevelResourcesListBySubscription } from "../rules/TopLevelResourcesListBySubscription"
-import { UniqueClientParameterName } from "../rules/UniqueClientParameterName"
 import { UniqueXmsEnumName } from "../rules/UniqueXmsEnumName"
-import { UniqueXmsExample } from "./../rules/UniqueXmsExample"
+import { UniqueModelName  } from "../rules/UniqueModelName"
+import { PrivateEndpointResourceSchemaValidation } from "../rules/PrivateEndpointResourceSchemaValidation"
+import { ImplementPrivateEndpointAPIs } from "../rules/ImplementPrivateEndpointAPIs"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 
 @suite
@@ -57,7 +58,7 @@ class CompositeAzureTests {
   @test public async "new apiVersion have operation without systemData"() {
     const fileName = "NewApiVersionHaveOperationWithoutSystemData.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, RequiredSystemDataInNewApiVersions, 2)
+    assertValidationRuleCount(messages, RequiredReadOnlySystemData, 2)
   }
 
   @test public async "all nested resources must have collection operation "() {
@@ -129,9 +130,21 @@ class CompositeAzureTests {
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 
-  @test public async "unique client parameter"() {
-    const filename: string = "UniqueClientParameters.json"
+  @test public async "unique model name"() {
+    const filename: string = "UniqueModelName.json"
     const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, UniqueClientParameterName, 1)
+    assertValidationRuleCount(messages, UniqueModelName, 1)
+  }
+
+  @test public async "private link apis missing"() {
+    const filename: string = "PrivateLinkAPIsMissing.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, ImplementPrivateEndpointAPIs, 1)
+  }
+
+  @test public async "private link resource schema unmatch"() {
+    const filename: string = "PrivateLinkResourceUnMatch.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
+    assertValidationRuleCount(messages, PrivateEndpointResourceSchemaValidation, 2)
   }
 }

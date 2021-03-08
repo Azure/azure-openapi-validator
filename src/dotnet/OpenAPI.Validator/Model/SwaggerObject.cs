@@ -49,6 +49,8 @@ namespace OpenAPI.Validator.Model
         /// <summary>
         /// Describes the type of additional properties in the data type.
         /// </summary>
+        
+        [Rule(typeof(AvoidAnonymousTypes))]
         public virtual Schema AdditionalProperties { get; set; }
 
         [Rule(typeof(DescriptiveDescriptionRequired))]

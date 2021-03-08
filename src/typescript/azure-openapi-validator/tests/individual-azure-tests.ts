@@ -30,6 +30,9 @@ import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./u
 import { Rpaas_DeleteOperationAsyncResponseValidation } from "../rules/Rpaas_DeleteOperationAsyncResponseValidation"
 import { Rpaas_PostOperationAsyncResponseValidation } from "../rules/Rpaas_PostOperationAsyncResponseValidation"
 import { Rpaas_ResourceProvisioningState } from "../rules/Rpaas_ResourceProvisioningState"
+import { MissingXmsErrorResponse } from "../rules/MissingXmsErrorResponse"
+import { AzureResourceTagsSchema } from "../rules/AzureResourceTagsSchema"
+
 @suite
 class IndividualAzureTests {
   @test public async "control characters not allowed test"() {
@@ -274,5 +277,17 @@ class IndividualAzureTests {
     const fileName = "NotOnlyDefaultResponseSchema.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, ValidResponseCodeRequired, 0)
+  }
+
+  @test public async "resource tag meet common type"() {
+    const filename: string = "ResourceWithTag.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, AzureResourceTagsSchema, 1)
+  }
+
+  @test public async "missing x-ms-error-response"() {
+    const fileName = "ErrorResponseMissing.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, MissingXmsErrorResponse, 2)
   }
 }

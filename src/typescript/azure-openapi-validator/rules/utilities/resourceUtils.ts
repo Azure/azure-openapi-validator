@@ -157,6 +157,11 @@ export class ResourceUtils {
     return new Map(models)
   }
 
+  public getAllResourceNames() {
+    const modelNames = [...this.getSpecificOperationModels("get", "200").keys(),...this.getSpecificOperationModels("put", "200").keys(), ...this.getSpecificOperationModels("put", "201").keys()]
+    return modelNames.filter(m => this.checkResource(m))
+  }
+
   public getAllNestedResources() {
     const fullModels = this.getOperationGetResponseResources()
     const nestedModels = new Set<string>()
@@ -498,7 +503,7 @@ export class ResourceUtils {
     }
     let model = sourceModel
     if (sourceModel.$ref) {
-      model = this.getUnwrappedModel(sourceModel.$ref)
+      model = this.getUnwrappedModel(sourceModel)
     }
     if (!model) {
       return undefined
@@ -515,7 +520,10 @@ export class ResourceUtils {
           }
         }
         else {
-          return this.getPropertyOfModel(element,propertyName)
+          const property = this.getPropertyOfModel(element,propertyName)
+          if (property) {
+            return property
+          }
         }
       }
     }
