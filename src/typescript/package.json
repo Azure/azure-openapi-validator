@@ -1,10 +1,10 @@
 {
     "name": "@microsoft.azure/openapi-validator",
-    "version": "1.9.0",
+    "version": "1.9.1",
     "description": "Azure OpenAPI Validator",
     "main": "src/index.js",
     "scripts": {
-        "start": "node --inspect-brk ./index.js"
+        "start": "node ./index.js"
     },
     "repository": {
         "type": "git",
