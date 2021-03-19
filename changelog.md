@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (03/19/2021)
+
+### Bug fix
+
+- ImplementPrivateEndpointAPIs - fix inconsistent message.
+
 ## What's New (02/24/2021)
 
 ### New validation rules
