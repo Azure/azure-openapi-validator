@@ -23,15 +23,14 @@ rules.push({
       pathForListPrivateConnections ?:string,
       pathForListResources?:string
     }
-    const supportedResources = new Map< string,
-      privateEndpointPaths> ()
-      const setMap =  (key:string,paths:privateEndpointPaths)=> {
-         const result = supportedResources.get(key) || {} as privateEndpointPaths
-         for (const prop of Object.keys(paths)) {
-           result[prop] = paths[prop]
-         }
-         supportedResources.set(key,result)
+    const supportedResources = new Map<string,privateEndpointPaths> ()
+    const setMap =  (key:string,paths:privateEndpointPaths)=> {
+      const result = supportedResources.get(key) || {} as privateEndpointPaths
+      for (const prop of Object.keys(paths)) {
+        result[prop] = paths[prop]
       }
+      supportedResources.set(key,result)
+    }
 
     for (const apiPath of Object.keys(node)) {
        if (privateEndpointConnectionPattern.test(apiPath)) {
@@ -74,13 +73,13 @@ rules.push({
            location: path
         }
       }
-      if (!value.pathForListPrivateConnections) {
+      if (!value.pathForListResources) {
         yield {
            message: msg.replace("{0}", key + pathPostfix[1]),
            location: path
         }
       }
-       if (!value.pathForListResources) {
+      if (!value.pathForListPrivateConnections) {
         yield {
            message: msg.replace("{0}", key + pathPostfix[2]),
            location: path
