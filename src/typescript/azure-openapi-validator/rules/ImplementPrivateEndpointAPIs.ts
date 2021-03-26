@@ -15,9 +15,9 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = "The private endpoint API: {0} is missing." 
     
-    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/
-    const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/
-    const privateLinkResourcesPattern = /.*\/privateLinkResources$/
+    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/i
+    const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
+    const privateLinkResourcesPattern = /.*\/privateLinkResources$/i
     type privateEndpointPaths = {
       PathForPrivateConnection ?:string,
       pathForListPrivateConnections ?:string,
