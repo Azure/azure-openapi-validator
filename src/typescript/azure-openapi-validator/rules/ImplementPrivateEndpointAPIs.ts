@@ -69,7 +69,7 @@ rules.push({
     for( const [key,value] of supportedResources.entries()) {
       if (!value.PathForPrivateConnection) {
         yield {
-           message: msg.replace("{0}",key + pathPostfix[1]),
+           message: msg.replace("{0}",key + pathPostfix[0]),
            location: path
         }
       }
@@ -85,6 +85,8 @@ rules.push({
            location: path
         }
       }
+     
+     
     }
   }
 })
