@@ -229,4 +229,11 @@ class RuleHelperTests {
     const resolveReferenceJson: any = await getResolvedJson(json)
     assert.equal(!!resolveReferenceJson, true)
   }
+
+
+  @test public "regex test"() {
+    const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
+    assert.equal(privateEndpointConnectionsPattern.test('Microsoft.InformationRuntime/privateEndPointConnections'),true)
+    assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndpointconnections"), true)
+  }
 }

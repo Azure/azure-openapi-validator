@@ -15,23 +15,22 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = "The private endpoint API: {0} is missing." 
     
-    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/
-    const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/
-    const privateLinkResourcesPattern = /.*\/privateLinkResources$/
+    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/i
+    const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
+    const privateLinkResourcesPattern = /.*\/privateLinkResources$/i
     type privateEndpointPaths = {
       PathForPrivateConnection ?:string,
       pathForListPrivateConnections ?:string,
       pathForListResources?:string
     }
-    const supportedResources = new Map< string,
-      privateEndpointPaths> ()
-      const setMap =  (key:string,paths:privateEndpointPaths)=> {
-         const result = supportedResources.get(key) || {} as privateEndpointPaths
-         for (const prop of Object.keys(paths)) {
-           result[prop] = paths[prop]
-         }
-         supportedResources.set(key,result)
+    const supportedResources = new Map<string,privateEndpointPaths> ()
+    const setMap =  (key:string,paths:privateEndpointPaths)=> {
+      const result = supportedResources.get(key) || {} as privateEndpointPaths
+      for (const prop of Object.keys(paths)) {
+        result[prop] = paths[prop]
       }
+      supportedResources.set(key,result)
+    }
 
     for (const apiPath of Object.keys(node)) {
        if (privateEndpointConnectionPattern.test(apiPath)) {
@@ -70,22 +69,24 @@ rules.push({
     for( const [key,value] of supportedResources.entries()) {
       if (!value.PathForPrivateConnection) {
         yield {
-           message: msg.replace("{0}",key + pathPostfix[1]),
+           message: msg.replace("{0}",key + pathPostfix[0]),
            location: path
         }
       }
-      if (!value.pathForListPrivateConnections) {
+      if (!value.pathForListResources) {
         yield {
            message: msg.replace("{0}", key + pathPostfix[1]),
            location: path
         }
       }
-       if (!value.pathForListResources) {
+      if (!value.pathForListPrivateConnections) {
         yield {
            message: msg.replace("{0}", key + pathPostfix[2]),
            location: path
         }
       }
+     
+     
     }
   }
 })

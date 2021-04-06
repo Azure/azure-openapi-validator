@@ -14,8 +14,8 @@ async function main() {
     const files = await initiator.ListInputs()
     const mergeState: string = await initiator.GetValue("merge-state")
     const openapiType: string = await initiator.GetValue("openapi-type")
-    const subType: string = await initiator.GetValue("openapi-subtype")
-
+    let subType: string = await initiator.GetValue("openapi-subtype") 
+    subType = subType === "providerHub" ? "rpaas" : subType
     for (const file of files) {
       initiator.Message({
         Channel: "verbose",
