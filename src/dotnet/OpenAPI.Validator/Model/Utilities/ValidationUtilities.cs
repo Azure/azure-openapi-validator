@@ -538,10 +538,13 @@ namespace OpenAPI.Validator.Model.Utilities
             KeyValuePair<string, string> result = new KeyValuePair<string, string>();
             if (match.Success)
             {
-                string childResourceName = match.Groups["childresource"].Value;
-                string immediateParentResourceNameInPath = GetImmediateParentResourceName(path);
-                string immediateParentResourceNameActual = GetActualParentResourceName(immediateParentResourceNameInPath, paths, definitions);
-                result = new KeyValuePair<string, string>(childResourceName, immediateParentResourceNameActual);
+                string actualChildResourceName = GetActualResourceName(path, paths, definitions);
+                if (actualChildResourceName != null)
+                {
+                    string immediateParentResourceNameInPath = GetImmediateParentResourceName(path);
+                    string immediateParentResourceNameActual = GetActualParentResourceName(immediateParentResourceNameInPath, paths, definitions);
+                    result = new KeyValuePair<string, string>(actualChildResourceName, immediateParentResourceNameActual);
+                }
             }
 
             return result;
@@ -558,6 +561,31 @@ namespace OpenAPI.Validator.Model.Utilities
             pathToEvaluate = pathToEvaluate.Substring(0, pathToEvaluate.LastIndexOf("/{"));
             return pathToEvaluate.Substring(pathToEvaluate.LastIndexOf("/") + 1);
         }
+
+        /// <summary>
+        /// Gets the actual resource name. For example, the name in Path could be 'servers'. The actual parent name is 'server'.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="paths"></param>
+        /// <param name="definitions"></param>
+        /// <returns></returns>
+        private static string GetActualResourceName(string path, Dictionary<string, Dictionary<string, Operation>> paths, Dictionary<string, Schema> definitions)
+        {
+            IEnumerable<KeyValuePair<string, Dictionary<string, Operation>>> matchingPaths = paths.Where(pth => pth.Key.Equals(path));
+            if (!matchingPaths.Any()) return null;
+            KeyValuePair<string, Dictionary<string, Operation>> pathObj = matchingPaths.First();
+
+            IEnumerable<KeyValuePair<string, Operation>> operations = pathObj.Value.Where(op => op.Key.Equals("get", StringComparison.CurrentCultureIgnoreCase));
+            if (!operations.Any()) return null;
+            KeyValuePair<string, Operation> operation = operations.First();
+
+            IEnumerable<KeyValuePair<string, OperationResponse>> responses = operation.Value.Responses.Where(resp => resp.Key.Equals("200"));
+            if (!responses.Any()) return null;
+            KeyValuePair<string, OperationResponse> response = responses.First();
+
+            return GetReferencedModel(response.Value.Schema.Reference, definitions);
+        }
+
 
         /// <summary>
         /// Gets the actual parent resource name. For example, the name in Path could be 'servers'. The actual parent name is 'server'.
