@@ -54,9 +54,9 @@ namespace OpenAPI.Validator.Validation
         /// <returns></returns>
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Dictionary<string, Operation>> paths, RuleContext context)
         {
-            foreach (KeyValuePair<string, string> childResourceMapping in context.ChildTrackedResourceModels)
+            foreach (KeyValuePair<KeyValuePair<string, string>, string> childResourceMapping in context.ChildTrackedResourceModels)
             {
-                string operationIdToFind = childResourceMapping.Key + "_ListBy" + childResourceMapping.Value;
+                string operationIdToFind = childResourceMapping.Key.Key + "_ListBy" + childResourceMapping.Value;
                 bool listByImmediateParent = paths.Any(filteredPath =>
                     filteredPath.Value.Any(operationKeyValuePair => operationKeyValuePair.Value.OperationId.Equals(operationIdToFind, StringComparison.CurrentCultureIgnoreCase))
                 );
@@ -66,7 +66,7 @@ namespace OpenAPI.Validator.Validation
                     formatParameters[0] = childResourceMapping.Key;
                     formatParameters[1] = childResourceMapping.Value;
 
-                    yield return new ValidationMessage(new FileObjectPath(context.File, context.Parent.Path.AppendProperty("definitions").AppendProperty(childResourceMapping.Key)), this, formatParameters);
+                    yield return new ValidationMessage(new FileObjectPath(context.File, context.Parent.Path.AppendProperty("definitions").AppendProperty(childResourceMapping.Key.Key)), this, formatParameters);
                 }
             }
         }
