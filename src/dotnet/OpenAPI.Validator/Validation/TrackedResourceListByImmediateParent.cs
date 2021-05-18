@@ -63,10 +63,10 @@ namespace OpenAPI.Validator.Validation
                 if (!listByImmediateParent)
                 {
                     object[] formatParameters = new object[2];
-                    formatParameters[0] = childResourceMapping.Key;
+                    formatParameters[0] = childResourceMapping.Key.Key;
                     formatParameters[1] = childResourceMapping.Value;
 
-                    yield return new ValidationMessage(new FileObjectPath(context.File, context.Parent.Path.AppendProperty("definitions").AppendProperty(childResourceMapping.Key.Key)), this, formatParameters);
+                    yield return new ValidationMessage(new FileObjectPath(context.File, context.Parent.Path.AppendProperty("definitions").AppendProperty(childResourceMapping.Key.Value)), this, formatParameters);
                 }
             }
         }
