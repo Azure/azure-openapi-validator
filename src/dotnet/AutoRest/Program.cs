@@ -11,6 +11,7 @@ namespace AutoRest
         {
             if (args != null && args?.Length > 0 && args[0] == "--server")
             {
+                System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                 return new AutoRestAsAsService().Run().Result;
             }
 
