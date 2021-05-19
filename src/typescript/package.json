@@ -1,49 +1,49 @@
 {
-    "name": "@microsoft.azure/openapi-validator",
-    "version": "1.9.2",
-    "description": "Azure OpenAPI Validator",
-    "main": "src/index.js",
-    "scripts": {
-        "start": "node ./index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Azure/azure-openapi-validator.git"
-    },
-    "keywords": [
-        "azure",
-        "openapi",
-        "swagger",
-        "validation",
-        "validator",
-        "linter"
-    ],
-    "author": "Microsoft Corporation",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Azure/azure-openapi-validator/issues"
-    },
-    "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
-    "devDependencies": {
-        "@types/js-yaml": "^3.12.4",
-        "@types/jsonpath": "^0.2.0",
-        "@types/node": "^14.0.13",
-        "gulp": "4.0.2",
-        "gulp-run": "1.7.1",
-        "gulp-clean": "0.4.0",
-        "gulp-mocha": "7.0.2",
-        "gulp-dotnet-cli": "1.1.0",
-        "mocha-typescript": "~1.0.22",
-        "mocha": "^7.0.1",
-        "typescript": "3.7.5"
-    },
-    "dependencies": {
-        "fs": "^0.0.1-security",
-        "js-yaml": "^3.14.0",
-        "jsonpath": "^1.0.2",
-        "json-refs": "^3.0.15",
-        "@apidevtools/json-schema-ref-parser": "^9.0.1",
-        "string.prototype.matchall": "^4.0.2",
-        "vscode-jsonrpc": "^3.2.0"
-    }
+  "name": "@microsoft.azure/openapi-validator",
+  "version": "1.10.0",
+  "description": "Azure OpenAPI Validator",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azure/azure-openapi-validator.git"
+  },
+  "keywords": [
+    "azure",
+    "openapi",
+    "swagger",
+    "validation",
+    "validator",
+    "linter"
+  ],
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Azure/azure-openapi-validator/issues"
+  },
+  "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
+  "devDependencies": {
+    "@types/js-yaml": "^3.12.4",
+    "@types/jsonpath": "^0.2.0",
+    "@types/node": "^14.0.13",
+    "gulp": "4.0.2",
+    "gulp-run": "1.7.1",
+    "gulp-clean": "0.4.0",
+    "gulp-mocha": "7.0.2",
+    "gulp-dotnet-cli": "1.1.0",
+    "mocha-typescript": "~1.0.22",
+    "mocha": "^7.0.1",
+    "typescript": "3.7.5"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "js-yaml": "^3.14.0",
+    "jsonpath": "^1.0.2",
+    "json-refs": "^3.0.15",
+    "@apidevtools/json-schema-ref-parser": "^9.0.1",
+    "string.prototype.matchall": "^4.0.2",
+    "vscode-jsonrpc": "^3.2.0"
+  }
 }

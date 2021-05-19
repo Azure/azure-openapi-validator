@@ -32,6 +32,7 @@ import { Rpaas_PostOperationAsyncResponseValidation } from "../rules/Rpaas_PostO
 import { Rpaas_ResourceProvisioningState } from "../rules/Rpaas_ResourceProvisioningState"
 import { MissingXmsErrorResponse } from "../rules/MissingXmsErrorResponse"
 import { AzureResourceTagsSchema } from "../rules/AzureResourceTagsSchema"
+import { MissingTypeObject } from "../rules/MissingTypeObject"
 
 @suite
 class IndividualAzureTests {
@@ -289,5 +290,12 @@ class IndividualAzureTests {
     const fileName = "ErrorResponseMissing.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, MissingXmsErrorResponse, 2)
+  }
+
+  @test public async "missing type:object"() {
+    const fileName = "missingTypeObject.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    console.log(messages)
+    assertValidationRuleCount(messages, MissingTypeObject, 2)
   }
 }

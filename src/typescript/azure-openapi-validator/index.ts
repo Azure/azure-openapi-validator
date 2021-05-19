@@ -43,6 +43,7 @@ require("./rules/Rpaas_ResourceProvisioningState")
 require("./rules/AzureResourceTagsSchema")
 require("./rules/UniqueModelName")
 require("./rules/MissingXmsErrorResponse")
+require("./rules/MissingTypeObject")
 require("./rules/PrivateEndpointResourceSchemaValidation")
 require("./rules/ImplementPrivateEndpointAPIs")
 
