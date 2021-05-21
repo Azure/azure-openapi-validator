@@ -581,6 +581,8 @@ namespace OpenAPI.Validator.Model.Utilities
             if (!responses.Any()) return null;
             KeyValuePair<string, OperationResponse> response = responses.First();
 
+            if (response.Value.Schema == null) return null;
+
             return GetReferencedModel(response.Value.Schema.Reference, definitions);
         }
 
@@ -608,6 +610,7 @@ namespace OpenAPI.Validator.Model.Utilities
             if (!responses.Any()) return null;
             KeyValuePair<string, OperationResponse> response = responses.First();
 
+            if (response.Value.Schema == null) return null;
             return GetReferencedModel(response.Value.Schema.Reference, definitions);
         }
 
