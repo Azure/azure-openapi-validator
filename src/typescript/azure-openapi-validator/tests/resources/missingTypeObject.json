@@ -90,15 +90,78 @@
       "description": "test",
       "additionalProperties": {
         "properties": {
-          "type": "object",
-          "description": "properties",
-          "properties": {
-            "provisioningState": {
-              "type": "string"
+          "test": {
+            "type": "object",
+            "description": "properties",
+            "properties": {
+              "provisioningState": {
+                "type": "string"
+              }
             }
           }
         }
       }
+    },
+    "TestResource1": {
+      "description": "test",
+      "type": "object",
+      "additionalProperties": {
+        "properties": {
+          "test": {
+            "description": "properties",
+            "properties": {
+              "provisioningState": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "TestResource2": {
+      "description": "test",
+      "type": "object",
+      "additionalProperties": {
+        "properties": {
+          "test": {
+            "description": "properties",
+            "type": "array",
+            "items": {
+              "properties": {
+                "provisioningState": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "TestResource3": {
+      "description": "test",
+      "type": "object",
+      "allOf": [
+        {
+          "properties": {
+            "test": {
+              "description": "properties",
+              "type": "array",
+              "items": {
+                "properties": {
+                  "provisioningState": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TestResource4": {
+      "description": "test",
+      "type": "object",
+      "additionalProperties": false
     }
   }
 }

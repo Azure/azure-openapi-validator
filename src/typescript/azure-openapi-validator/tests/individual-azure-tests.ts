@@ -295,7 +295,6 @@ class IndividualAzureTests {
   @test public async "missing type:object"() {
     const fileName = "missingTypeObject.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
-    console.log(messages)
-    assertValidationRuleCount(messages, MissingTypeObject, 2)
+    assertValidationRuleCount(messages, MissingTypeObject, 9)
   }
 }
