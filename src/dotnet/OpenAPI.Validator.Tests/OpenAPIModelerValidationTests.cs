@@ -28,13 +28,17 @@ namespace OpenAPI.Validator.Tests
 
         private static IEnumerable<ValidationMessage> GetValidationMessagesForCategory(IEnumerable<ValidationMessage> messages, Category category) => messages.Where(m => m.Severity == category);
 
-        private IEnumerable<ValidationMessage> GetValidationMessagesForRule<TRule>(string fileName) where TRule : Rule
+        private IEnumerable<ValidationMessage> GetValidationMessagesForRule<TRule>(string fileName, ServiceDefinitionDocumentType type = ServiceDefinitionDocumentType.Default) where TRule : Rule
         {
             var ruleInstance = Activator.CreateInstance<TRule>();
-            var messages = this.ValidateOpenAPISpec(Path.Combine(PathToValidationResources, fileName), GetMetadataForRuleTest(ruleInstance));
+            var meta = GetMetadataForRuleTest(ruleInstance);
+            if (type != ServiceDefinitionDocumentType.Default)
+            {
+                meta.ServiceDefinitionDocumentType = type;
+            }
+            var messages = this.ValidateOpenAPISpec(Path.Combine(PathToValidationResources, fileName), meta);
             return GetValidationMessagesForCategory(messages, ruleInstance.Severity).Where(message => message.Rule.GetType() == typeof(TRule));
         }
-
         private ServiceDefinitionMetadata GetMetadataForRuleTest(Rule rule) =>
              new ServiceDefinitionMetadata
              {
@@ -317,6 +321,8 @@ namespace OpenAPI.Validator.Tests
         {
             var messages = GetValidationMessagesForRule<LongRunningResponseStatusCode>("long-running-invalid-response-put.json");
             Assert.Equal(messages.Count(), 1);
+            messages = GetValidationMessagesForRule<LongRunningResponseStatusCode>("long-running-invalid-response-put.json", ServiceDefinitionDocumentType.DataPlane);
+            Assert.Equal(messages.Count(), 0);
         }
 
         [Fact]
@@ -331,6 +337,8 @@ namespace OpenAPI.Validator.Tests
         {
             var messages = GetValidationMessagesForRule<LongRunningResponseStatusCode>("long-running-invalid-response-delete.json");
             Assert.Equal(messages.Count(), 1);
+            messages = GetValidationMessagesForRule<LongRunningResponseStatusCode>("long-running-invalid-response-delete.json", ServiceDefinitionDocumentType.DataPlane);
+            Assert.Equal(messages.Count(), 0);
         }
 
         [Fact]
@@ -839,7 +847,11 @@ namespace OpenAPI.Validator.Tests
             var servDef = SwaggerParser.Parse(filePath, fileText);
             Uri uriPath;
             Uri.TryCreate(filePath, UriKind.RelativeOrAbsolute, out uriPath);
-            var context = new RuleContext(servDef, uriPath);
+            var context = new RuleContext(servDef, uriPath, new ServiceDefinitionMetadata
+            {
+                ServiceDefinitionDocumentType = ServiceDefinitionDocumentType.Default,
+                MergeState = ServiceDefinitionDocumentState.Individual
+            });
             Assert.Equal(4, context.ResourceModels.Count());
             Assert.Equal(1, context.TrackedResourceModels.Count());
             Assert.Equal(3, context.ProxyResourceModels.Count());

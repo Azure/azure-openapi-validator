@@ -20,6 +20,9 @@
         "responses": {
           "201": {
             "description": "Accepted."
+          },
+          "202": {
+            "description": "Accepted."
           }
         }
       }
