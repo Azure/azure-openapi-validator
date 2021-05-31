@@ -115,7 +115,7 @@ namespace OpenAPI.Validator.Validation.Core
         /// <summary>
         /// List of child tracked resources in serviceDefinition
         /// </summary>
-        public IEnumerable<KeyValuePair<string, string>> ChildTrackedResourceModels { get; private set; }
+        public IEnumerable<KeyValuePair<KeyValuePair<string, string>, string>> ChildTrackedResourceModels { get; private set; }
 
         /// <summary>
         /// List of parent tracked resources in serviceDefinition
