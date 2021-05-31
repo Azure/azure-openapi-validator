@@ -13,8 +13,10 @@ namespace OpenAPI.Validator.Validation.Extensions
     public class LongRunningResponseStatusCode : ExtensionRule
     {
         private static readonly IEnumerable<string> DeleteAllowedCodes = new List<string>() { "200", "204" };
+        private static readonly IEnumerable<string> DeleteAllowedCodesOfDataPlane = new List<string>() { "200", "204","202" };
         private static readonly IEnumerable<string> PostAllowedCodes = new List<string>() { "200", "201", "202", "204" };
-        private static readonly IEnumerable<string> PutPatchAllowedCodes = new List<string>() { "200", "201" };
+        private static readonly IEnumerable<string> PutPatchAllowedCodes = new List<string>() { "200", "201"};
+        private static readonly IEnumerable<string> PutPatchAllowedCodesOfDataPlane = new List<string>() { "200", "201","202" };
 
         protected override string ExtensionName => "x-ms-long-running-operation";
 
@@ -75,8 +77,17 @@ namespace OpenAPI.Validator.Validation.Extensions
 
             if ("delete".EqualsIgnoreCase(httpVerb))
             {
-                isValid = AreValidResponseCodes(context, DeleteAllowedCodes);
-                formatParameters[2] = string.Join(" or ", DeleteAllowedCodes);
+                if (context.Meta.ServiceDefinitionDocumentType == ServiceDefinitionDocumentType.DataPlane)
+                {
+                    isValid = AreValidResponseCodes(context, DeleteAllowedCodesOfDataPlane);
+                    formatParameters[2] = string.Join(" or ", DeleteAllowedCodesOfDataPlane);
+                }
+                else
+                {
+                    isValid = AreValidResponseCodes(context, DeleteAllowedCodes);
+                    formatParameters[2] = string.Join(" or ", DeleteAllowedCodes);
+                }
+               
             }
             else if ("post".EqualsIgnoreCase(httpVerb))
             {
@@ -85,8 +96,16 @@ namespace OpenAPI.Validator.Validation.Extensions
             }
             else if ("put".EqualsIgnoreCase(httpVerb) || "patch".EqualsIgnoreCase(httpVerb))
             {
-                isValid = AreValidResponseCodes(context, PutPatchAllowedCodes);
-                formatParameters[2] = string.Join(" or ", PutPatchAllowedCodes);
+                if (context.Meta.ServiceDefinitionDocumentType == ServiceDefinitionDocumentType.DataPlane)
+                {
+                    isValid = AreValidResponseCodes(context, PutPatchAllowedCodesOfDataPlane);
+                    formatParameters[2] = string.Join(" or ", PutPatchAllowedCodesOfDataPlane);
+                }
+                else
+                {
+                    isValid = AreValidResponseCodes(context, PutPatchAllowedCodes);
+                    formatParameters[2] = string.Join(" or ", PutPatchAllowedCodes);
+                }
             }
 
             formatParameters[0] = httpVerb.ToUpper();

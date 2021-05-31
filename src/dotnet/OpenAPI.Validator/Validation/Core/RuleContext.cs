@@ -21,12 +21,13 @@ namespace OpenAPI.Validator.Validation.Core
         /// Initializes a top level context for rules
         /// </summary>
         /// <param name="root"></param>
-        public RuleContext(ServiceDefinition root, Uri file) : this(null)
+        public RuleContext(ServiceDefinition root, Uri file, ServiceDefinitionMetadata meta) : this(null)
         {
             this.Root = root;
             this.Value = root;
             this.File = file;
             PopulateResourceTypes(root);
+            this.Meta = meta;
         }
 
         /// <summary>
@@ -44,6 +45,7 @@ namespace OpenAPI.Validator.Validation.Core
             this.ParentTrackedResourceModels = parent?.ParentTrackedResourceModels;
             this.ProxyResourceModels = parent?.ProxyResourceModels;
             this.TenantResourceModels = parent?.TenantResourceModels;
+            this.Meta = parent?.Meta;
         }
 
         /// <summary>
@@ -133,6 +135,8 @@ namespace OpenAPI.Validator.Validation.Core
                     : Parent.Path.AppendProperty(Key);
 
         public Uri File { get; }
+
+        public ServiceDefinitionMetadata Meta  { set; get; }
 
         /// <summary>
         /// Populates list of resources, tracked resources and proxy resources
