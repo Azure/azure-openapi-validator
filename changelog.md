@@ -1,5 +1,14 @@
 # Changelog
 
+## What's New (05/31/2021)
+
+### New validation rules
+- MissingTypeObject - To ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object. 
+
+### Changed Rule
+
+- LongRunningResponseStatusCode - For data plane spec, the '202' is considered a valid terminal status code for delete or put/patch operation.
+
 ## What's New (03/19/2021)
 
 ### Bug fix

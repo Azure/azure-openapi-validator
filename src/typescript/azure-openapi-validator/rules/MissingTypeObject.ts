@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.definitions.*",
   *run(doc, node, path) {
-    const msg: string = `The model '{0}' is considered an object , but without a 'type:object', it will confuse the code generator, please add the missing 'type:object'.`
+    const msg: string = `The schema '{0}' is considered an object but without a 'type:object', please add the missing 'type:object'.`
     const isMissingTypeObject = (node: any) => {
       return node && (node.properties || node.additionalProperties) && !node.type
     }
