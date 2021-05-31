@@ -517,31 +517,32 @@ namespace OpenAPI.Validator.Model.Utilities
         /// </summary>
         /// <param name="serviceDefinition">Service Definition</param>
         /// <returns>list of child tracked resources</returns>
-        public static IEnumerable<KeyValuePair<string, string>> GetChildTrackedResourcesWithImmediateParent(ServiceDefinition serviceDefinition)
+        public static IEnumerable<KeyValuePair<KeyValuePair<string, string>, string>> GetChildTrackedResourcesWithImmediateParent(ServiceDefinition serviceDefinition)
         {
-            LinkedList<KeyValuePair<string, string>> result = new LinkedList<KeyValuePair<string, string>>();
+            LinkedList<KeyValuePair<KeyValuePair<string, string>, string>> result = new LinkedList<KeyValuePair<KeyValuePair<string, string>, string>>();
             foreach (KeyValuePair<string, Dictionary<string, Operation>> pathDefinition in serviceDefinition.Paths)
             {
-                KeyValuePair<string, string> childResourceMapping = GetChildAndImmediateParentResource(pathDefinition.Key, serviceDefinition.Paths, serviceDefinition.Definitions);
-                if (childResourceMapping.Key != null && childResourceMapping.Value != null)
+                KeyValuePair<KeyValuePair<string, string>, string> childResourceMapping = GetChildAndImmediateParentResource(pathDefinition.Key, serviceDefinition.Paths, serviceDefinition.Definitions);
+                if (childResourceMapping.Key.Key != null && childResourceMapping.Key.Value != null  && childResourceMapping.Value != null)
                 {
-                    result.AddLast(new LinkedListNode<KeyValuePair<string, string>>(new KeyValuePair<string, string>(childResourceMapping.Key, childResourceMapping.Value)));
+                    result.AddLast(new LinkedListNode<KeyValuePair<KeyValuePair<string, string>, string>>(childResourceMapping));
                 }
             }
 
             return result;
         }
 
-        private static KeyValuePair<string, string> GetChildAndImmediateParentResource(string path, Dictionary<string, Dictionary<string, Operation>> paths, Dictionary<string, Schema> definitions)
+        private static KeyValuePair<KeyValuePair<string, string>, string> GetChildAndImmediateParentResource(string path, Dictionary<string, Dictionary<string, Operation>> paths, Dictionary<string, Schema> definitions)
         {
             Match match = resourcePathPattern.Match(path);
-            KeyValuePair<string, string> result = new KeyValuePair<string, string>();
+            KeyValuePair<KeyValuePair<string,string>, string> result = new KeyValuePair<KeyValuePair<string, string>, string>();
             if (match.Success)
             {
-                string childResourceName = match.Groups["childresource"].Value;
+                string childResourceNameInPath = match.Groups["childresource"].Value;
+                string childActualResourceName = GetActualResourceName(path,paths,definitions);
                 string immediateParentResourceNameInPath = GetImmediateParentResourceName(path);
                 string immediateParentResourceNameActual = GetActualParentResourceName(immediateParentResourceNameInPath, paths, definitions);
-                result = new KeyValuePair<string, string>(childResourceName, immediateParentResourceNameActual);
+                result = new KeyValuePair<KeyValuePair<string, string>, string>(new KeyValuePair<string,string>(childResourceNameInPath,childActualResourceName), immediateParentResourceNameActual);
             }
 
             return result;
@@ -558,6 +559,33 @@ namespace OpenAPI.Validator.Model.Utilities
             pathToEvaluate = pathToEvaluate.Substring(0, pathToEvaluate.LastIndexOf("/{"));
             return pathToEvaluate.Substring(pathToEvaluate.LastIndexOf("/") + 1);
         }
+
+        /// <summary>
+        /// Gets the actual resource name. For example, the name in Path could be 'servers'. The actual parent name is 'server'.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="paths"></param>
+        /// <param name="definitions"></param>
+        /// <returns></returns>
+        private static string GetActualResourceName(string path, Dictionary<string, Dictionary<string, Operation>> paths, Dictionary<string, Schema> definitions)
+        {
+            IEnumerable<KeyValuePair<string, Dictionary<string, Operation>>> matchingPaths = paths.Where(pth => pth.Key.Equals(path));
+            if (!matchingPaths.Any()) return null;
+            KeyValuePair<string, Dictionary<string, Operation>> pathObj = matchingPaths.First();
+
+            IEnumerable<KeyValuePair<string, Operation>> operations = pathObj.Value.Where(op => op.Key.Equals("get", StringComparison.CurrentCultureIgnoreCase));
+            if (!operations.Any()) return null;
+            KeyValuePair<string, Operation> operation = operations.First();
+
+            IEnumerable<KeyValuePair<string, OperationResponse>> responses = operation.Value.Responses.Where(resp => resp.Key.Equals("200"));
+            if (!responses.Any()) return null;
+            KeyValuePair<string, OperationResponse> response = responses.First();
+
+            if (response.Value.Schema == null) return null;
+
+            return GetReferencedModel(response.Value.Schema.Reference, definitions);
+        }
+
 
         /// <summary>
         /// Gets the actual parent resource name. For example, the name in Path could be 'servers'. The actual parent name is 'server'.
@@ -582,6 +610,7 @@ namespace OpenAPI.Validator.Model.Utilities
             if (!responses.Any()) return null;
             KeyValuePair<string, OperationResponse> response = responses.First();
 
+            if (response.Value.Schema == null) return null;
             return GetReferencedModel(response.Value.Schema.Reference, definitions);
         }
 
@@ -651,8 +680,8 @@ namespace OpenAPI.Validator.Model.Utilities
          */
         private static readonly Regex resourcePathPattern = new Regex("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/[^/]+/[^/]+/{[^/]+}.*/(?<childresource>\\w+)/{[^/]+}$", RegexOptions.IgnoreCase);
 
-        public static IEnumerable<string> GetParentTrackedResources(IEnumerable<string> trackedResourceModels, IEnumerable<KeyValuePair<string, string>> childTrackedResourceModels)
-            => trackedResourceModels.Where(resourceModel => !childTrackedResourceModels.Any(childModel => childModel.Key.Equals(resourceModel)));
+        public static IEnumerable<string> GetParentTrackedResources(IEnumerable<string> trackedResourceModels, IEnumerable<KeyValuePair<KeyValuePair<string, string>, string>> childTrackedResourceModels)
+            => trackedResourceModels.Where(resourceModel => !childTrackedResourceModels.Any(childModel => childModel.Key.Value.Equals(resourceModel)));
 
         /// <summary>
         /// For the provided resource model, it gets the operation which ends with ListByResourceGroup and returns the resource model.
