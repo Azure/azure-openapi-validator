@@ -10,6 +10,9 @@ namespace OpenAPI.Validator.Validation
 {
     public class AvoidAnonymousTypes : TypedRule<SwaggerObject>
     {
+
+        private static readonly string ClientNameExtensionName = "x-ms-client-name";
+
         /// <summary>
         /// Id of the Rule.
         /// </summary>
@@ -48,8 +51,14 @@ namespace OpenAPI.Validator.Validation
         /// </summary>
         /// <param name="entity">The entity to validate</param>
         /// <returns></returns>
-        public override bool IsValid(SwaggerObject entity) => (entity?.GetType() == typeof(Schema) &&
-            ((((Schema)entity).Properties == null) || ((Schema)entity).Properties?.Count == 0) && ((Schema)entity).AllOf == null && ((Schema)entity).AdditionalProperties == null);
+        public override bool IsValid(SwaggerObject entity) {
+
+            if (entity?.GetType() == typeof(Schema) && !(entity.Extensions.ContainsKey(ClientNameExtensionName)))
+            {
+                return  ((((Schema)entity).Properties == null) || ((Schema)entity).Properties?.Count == 0) && ((Schema)entity).AllOf == null && ((Schema)entity).AdditionalProperties == null;
+            }
+            return true;
+        }
 
     }
 }
