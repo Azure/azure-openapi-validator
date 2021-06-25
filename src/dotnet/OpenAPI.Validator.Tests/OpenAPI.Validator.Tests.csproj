@@ -16,6 +16,7 @@
     <Content Include="Resource\OpenAPI\**\*.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="Resource\OpenAPI\Validation\positive\anonymous-response-type.json" />
     <ProjectReference Include="$(MSBuildProjectDirectory)\..\AutoRest.Core\AutoRest.Core.csproj" />
     <ProjectReference Include="..\OpenAPI.Validator\OpenAPI.Validator.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="1.1.0.0" />

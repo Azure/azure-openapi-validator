@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (06/22/2021)
+
+### Changed validation rules
+- AvoidAnonymousTypes  - add exception: anonymous types with 'x-ms-client-name'   
+
 ## What's New (05/31/2021)
 
 ### New validation rules

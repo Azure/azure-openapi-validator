@@ -938,6 +938,14 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<PatchBodyParametersSchema>(Path.Combine("positive", "req-decriminator-properties-in-patch-request.json"));
             Assert.Empty(messages);
         }
+
+
+        [Fact]
+        public void AnonymousSchemasWithXmsClientNameValidation()
+        {
+            var messages = GetValidationMessagesForRule<AvoidAnonymousTypes>(Path.Combine("positive", "anonymous-response-type.json"));
+            Assert.Empty(messages);
+        }
     }
 
     #endregion
