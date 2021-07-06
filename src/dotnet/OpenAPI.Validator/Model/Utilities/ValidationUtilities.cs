@@ -476,6 +476,23 @@ namespace OpenAPI.Validator.Model.Utilities
         }
 
         /// <summary>
+        /// Returns array of resource providers
+        /// </summary>
+        /// <param name="path"> path to look for</param>
+        /// <returns>Array of resource providers</returns>
+        public static IEnumerable<string> GetResourceProvidersByPath(string path)
+        {
+            IEnumerable<string> resourceProviders =  ResourceProviderPathPattern.Matches(path)
+                                                    .OfType<Match>()
+                                                    .Select(match => match.Groups["resPath"].Value.ToString()).LastOrDefault()
+                                                    .OfType<String>().Where(res => res != null)
+                                                    .Distinct()
+                                                    .ToList();
+
+            return resourceProviders;
+        }
+
+        /// <summary>
         /// Return namespace from swagger file path.
         /// </summary>
         /// <param name="path"> swagger file path</param>
