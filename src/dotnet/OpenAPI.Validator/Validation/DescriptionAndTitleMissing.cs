@@ -43,7 +43,7 @@ namespace OpenAPI.Validator.Validation
         {
             foreach (KeyValuePair<string, Schema> definition in definitions)
             {
-                if (string.IsNullOrWhiteSpace(definition.Value.Description) && string.IsNullOrWhiteSpace(definition.Value.Title))
+                if (string.IsNullOrWhiteSpace(definition.Value.Reference) && string.IsNullOrWhiteSpace(definition.Value.Description) && string.IsNullOrWhiteSpace(definition.Value.Title))
                 {
                     yield return new ValidationMessage(new FileObjectPath(context.File, context.Path.AppendProperty(definition.Key)), this, string.Format(ModelTypeFormatter, definition.Key));
                 }
