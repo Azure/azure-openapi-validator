@@ -58,7 +58,7 @@ namespace OpenAPI.Validator.Validation
                 IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProvidersByPath(pair.Key);
                 var formatParameters = new[] { string.Join(", ", resourceProviders) };
                 string lastResourceProvider = resourceProviders?.ToList().Count() > 0 ? resourceProviders.Last() : null;
-                if (resourceProviders.ToList().Count > 1 && lastResourceProvider != resourceProviderNamespace)
+                if (resourceProviderNamespace != "" && resourceProviders.ToList().Count > 0 && lastResourceProvider != resourceProviderNamespace)
                 {
                     yield return new ValidationMessage(new FileObjectPath(context.File, context.Path.AppendProperty(pair.Key)), this, formatParameters);
                 }

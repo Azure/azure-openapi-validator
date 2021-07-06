@@ -484,8 +484,8 @@ namespace OpenAPI.Validator.Model.Utilities
         {
             IEnumerable<string> resourceProviders =  ResourceProviderPathPattern.Matches(path)
                                                     .OfType<Match>()
-                                                    .Select(match => match.Groups["resPath"].Value.ToString()).LastOrDefault()
-                                                    .OfType<String>().Where(res => res != null)
+                                                    .Select(match => match.Groups["resPath"].Value.ToString())
+                                                    .Where(res => res != null)
                                                     .Distinct()
                                                     .ToList();
 
