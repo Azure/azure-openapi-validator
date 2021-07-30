@@ -1,5 +1,11 @@
 # Changelog
 
+## What's New (07//2021)
+
+### Changed validation rules
+- DescriptionAndTitleMissing  - description & title are not required for reference properties. 
+- PathResourceProviderMatchNamespace  - fix the false alarm when the provider namespace in swagger file path is null.
+- TopLevelResourcesListBySubscription - fix false positive caused by unused model.
 ## What's New (06/22/2021)
 
 ### Changed validation rules
