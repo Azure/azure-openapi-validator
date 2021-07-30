@@ -132,7 +132,6 @@ export class ResourceUtils {
     }
   }
 
-
   /**
    *  Get all resources which allOf a x-ms-resource
    */
@@ -158,7 +157,11 @@ export class ResourceUtils {
   }
 
   public getAllResourceNames() {
-    const modelNames = [...this.getSpecificOperationModels("get", "200").keys(),...this.getSpecificOperationModels("put", "200").keys(), ...this.getSpecificOperationModels("put", "201").keys()]
+    const modelNames = [
+      ...this.getSpecificOperationModels("get", "200").keys(),
+      ...this.getSpecificOperationModels("put", "200").keys(),
+      ...this.getSpecificOperationModels("put", "201").keys()
+    ]
     return modelNames.filter(m => this.checkResource(m))
   }
 
@@ -228,14 +231,13 @@ export class ResourceUtils {
     const resources = new Set<string>()
     for (const entry of fullModels.entries()) {
       const paths = entry[1]
-      paths
-        .some(p => {
-          const hierarchy = this.getResourcesTypeHierarchy(p)
-          if (hierarchy.length > 0) {
-            resources.add(entry[0])
-            return true
-          }
-        })
+      paths.some(p => {
+        const hierarchy = this.getResourcesTypeHierarchy(p)
+        if (hierarchy.length > 0) {
+          resources.add(entry[0])
+          return true
+        }
+      })
     }
     return resources.values()
   }
@@ -294,7 +296,7 @@ export class ResourceUtils {
     return hierarchy
   }
 
-  private dereference(ref: string, visited:Set<string>) {
+  private dereference(ref: string, visited: Set<string>) {
     if (visited.has(ref)) {
       return undefined
     }
@@ -302,13 +304,12 @@ export class ResourceUtils {
     const model = this.getResourceByName(this.stripDefinitionPath(ref))
     if (model && model.$ref) {
       return this.dereference(model.$ref, visited)
-    }
-    else {
+    } else {
       return model
     }
   }
 
-  private getUnwrappedModel(property:any) {
+  private getUnwrappedModel(property: any) {
     if (property) {
       const ref = property.$ref
       return ref ? this.dereference(ref, new Set<string>()) : property
@@ -359,7 +360,9 @@ export class ResourceUtils {
       }
       modelEntry[1].forEach(path => {
         if (path.match(this.SpecificResourcePathRegEx)) {
-          const possibleCollectionApiPath = path.substr(0, path.lastIndexOf("/{"))
+          const firstProviderIndex = path.lastIndexOf("/providers")
+          const lastIndex = path.lastIndexOf("/{")
+          const possibleCollectionApiPath = path.substr(firstProviderIndex, lastIndex - firstProviderIndex)
           /*
           * case 1:"providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines"
             case 2: "providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines":
@@ -369,19 +372,19 @@ export class ResourceUtils {
             /**
              * path may end with "/", so here we remove it
              */
-            p => p.replace(/{[^\/]+}/gi, "{}").replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^\/]+}/gi, "{}")
+            p =>
+              p
+                .substr(p.lastIndexOf("/providers"))
+                .replace(/{[^\/]+}/gi, "{}")
+                .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^\/]+}/gi, "{}")
           )
           if (matchedPaths && matchedPaths.length >= 1) {
-            matchedPaths.forEach(m =>
-              this.getModelFromPath(m)
-                ? collectionApis.push({
-                    specificGetPath: [path],
-                    collectionGetPath: [possibleCollectionApiPath],
-                    modelName: this.getModelFromPath(m),
-                    childModelName: modelEntry[0]
-                  })
-                : false
-            )
+            collectionApis.push({
+              specificGetPath: [path],
+              collectionGetPath: matchedPaths,
+              modelName: this.getModelFromPath(matchedPaths[0]),
+              childModelName: modelEntry[0]
+            })
           }
         }
       })
@@ -402,8 +405,6 @@ export class ResourceUtils {
         }
         if (index === -1) {
           collectionApis.push(collectionInfo)
-        } else {
-          collectionApis[index] = collectionInfo
         }
       }
     }
@@ -494,7 +495,7 @@ export class ResourceUtils {
     if (!model) {
       return undefined
     }
-    return this.getPropertyOfModel(model,propertyName)
+    return this.getPropertyOfModel(model, propertyName)
   }
 
   public getPropertyOfModel(sourceModel, propertyName: string) {
@@ -518,9 +519,8 @@ export class ResourceUtils {
           if (property) {
             return this.getUnwrappedModel(property)
           }
-        }
-        else {
-          const property = this.getPropertyOfModel(element,propertyName)
+        } else {
+          const property = this.getPropertyOfModel(element, propertyName)
           if (property) {
             return property
           }

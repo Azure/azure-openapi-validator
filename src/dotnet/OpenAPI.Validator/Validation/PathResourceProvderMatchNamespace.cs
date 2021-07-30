@@ -51,13 +51,19 @@ namespace OpenAPI.Validator.Validation
         /// </summary>
         /// <param name="paths"></param>
         /// <returns></returns>
-        public override bool IsValid(Dictionary<string, Dictionary<string, Operation>> paths, RuleContext context, out object[] formatParameters)
+        public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Dictionary<string, Operation>> paths, RuleContext context)
         {
-            IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProviders(paths);
             string resourceProviderNamespace = ValidationUtilities.GetRPNamespaceFromFilePath(context.File.ToString());
-            formatParameters = new[] { string.Join(", ", resourceProviders) };
-            string lastResourceProvider = resourceProviders?.ToList().Count() > 0 ? resourceProviders.Last() : null;
-            return resourceProviders.ToList().Count <=1 || lastResourceProvider == resourceProviderNamespace;
+            foreach (var pair in paths) {
+                IEnumerable<string> resourceProviders = ValidationUtilities.GetResourceProvidersByPath(pair.Key);
+                var formatParameters = new[] { string.Join(", ", resourceProviders) };
+                string lastResourceProvider = resourceProviders?.ToList().Count() > 0 ? resourceProviders.Last() : null;
+                if (resourceProviderNamespace != "" && resourceProviders.ToList().Count > 0 && lastResourceProvider != resourceProviderNamespace)
+                {
+                    yield return new ValidationMessage(new FileObjectPath(context.File, context.Path.AppendProperty(pair.Key)), this, formatParameters);
+                }
+            }
+            
         }
     }
 }

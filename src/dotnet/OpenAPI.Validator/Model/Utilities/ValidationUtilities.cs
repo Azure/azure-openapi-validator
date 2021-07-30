@@ -20,7 +20,7 @@ namespace OpenAPI.Validator.Model.Utilities
         private static readonly Regex ResourceProviderPathPattern = new Regex(@"/providers/(?<resPath>[^{/]+)/", RegexOptions.IgnoreCase);
         private static readonly Regex PropNameRegEx = new Regex(@"^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)+$|^[a-z0-9\$-]+$|^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)*[A-Z]{1,3}$");
 
-        private static readonly Regex ResourceProviderNamespaceRegex = new Regex(@"(resource-manager|data-plane)/(?<namespace>[\w\.]+)/");
+        private static readonly Regex ResourceProviderNamespaceRegex = new Regex(@"(resource-manager|data-plane)/(?<namespace>[\w\.]+)/(?<potentialNamespace>[\w\.]+)");
 
         public static readonly Regex ListBySidRegEx = new Regex(@".+_(List|ListBySubscriptionId|ListBySubscription|ListBySubscriptions)$", RegexOptions.IgnoreCase);
         public static readonly Regex ListByRgRegEx = new Regex(@".+_ListByResourceGroup$", RegexOptions.IgnoreCase);
@@ -476,6 +476,23 @@ namespace OpenAPI.Validator.Model.Utilities
         }
 
         /// <summary>
+        /// Returns array of resource providers
+        /// </summary>
+        /// <param name="path"> path to look for</param>
+        /// <returns>Array of resource providers</returns>
+        public static IEnumerable<string> GetResourceProvidersByPath(string path)
+        {
+            IEnumerable<string> resourceProviders =  ResourceProviderPathPattern.Matches(path)
+                                                    .OfType<Match>()
+                                                    .Select(match => match.Groups["resPath"].Value.ToString())
+                                                    .Where(res => res != null)
+                                                    .Distinct()
+                                                    .ToList();
+
+            return resourceProviders;
+        }
+
+        /// <summary>
         /// Return namespace from swagger file path.
         /// </summary>
         /// <param name="path"> swagger file path</param>
@@ -487,7 +504,17 @@ namespace OpenAPI.Validator.Model.Utilities
             if (match.Success)
             {
                 string key = match.Groups[2].Value;
-                return key;
+                // match , if path like resource-manager/Microsoft.Fabric/preview/2016-05-01/
+                if (key.StartsWith("Microsoft.",StringComparison.OrdinalIgnoreCase))
+                {
+                    return key;
+                }
+                // match , if path like resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/
+                key = match.Groups[3].Value;
+                if (key.StartsWith("Microsoft.", StringComparison.OrdinalIgnoreCase))
+                {
+                    return key;
+                }
             }
             return "";
         }
