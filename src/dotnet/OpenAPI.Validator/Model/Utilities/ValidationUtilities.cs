@@ -455,6 +455,10 @@ namespace OpenAPI.Validator.Model.Utilities
                 return false;
 
             Schema schema = Schema.FindReferencedSchema(reference, definitions);
+            if (schema?.Properties == null)
+            {
+                return false;
+            }
             return schema.Properties.Any(property => property.Value.Type == DataType.Array && property.Value.Items?.Reference?.EndsWith("/" + referenceToMatch) == true);
         }
 
