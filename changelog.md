@@ -1,6 +1,12 @@
 # Changelog
 
-## What's New (07//2021)
+## What's New (08/17/2021)
+
+### Bug fix
+
+- TrackedResourceListBySubscription - throw exception when list result model's properties is null.
+
+## What's New (07/30/2021)
 
 ### Changed validation rules
 - DescriptionAndTitleMissing  - description & title are not required for reference properties. 
