@@ -15,7 +15,7 @@ namespace OpenAPI.Validator.Validation.Extensions
         private static readonly IEnumerable<string> DeleteAllowedCodes = new List<string>() { "200", "204" };
         private static readonly IEnumerable<string> DeleteAllowedCodesOfDataPlane = new List<string>() { "200", "204","202" };
         private static readonly IEnumerable<string> PostAllowedCodes = new List<string>() { "200", "201", "202", "204" };
-        private static readonly IEnumerable<string> PutPatchAllowedCodes = new List<string>() { "200", "201"};
+        private static readonly IEnumerable<string> PutPatchAllowedCodes = new List<string>() { "200", "201", "202"};
         private static readonly IEnumerable<string> PutPatchAllowedCodesOfDataPlane = new List<string>() { "200", "201","202" };
 
         protected override string ExtensionName => "x-ms-long-running-operation";

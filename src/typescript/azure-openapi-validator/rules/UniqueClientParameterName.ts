@@ -1,4 +1,4 @@
-import { nodes } from "jsonpath"
+import { nodes, stringify } from "jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "./../rule"
 
 export const UniqueClientParameterName: string = "UniqueClientParameterName"
@@ -14,9 +14,10 @@ rules.push({
   *run(doc, node, path) {
     const clientParameterName = new Map<string, string>()
     const getRefModel = (refValue: string) => {
-      const refPath = refValue.replace("#", "$").replace(/\//g, ".")
+      const pathExpression = refValue.replace(/^#\//, "").split("/")
       try {
-        return nodes(doc, refPath)
+        const result = nodes(doc, stringify(pathExpression))
+        return result.length !== 0 ? result[0] : undefined
       } catch (err) {
         return undefined
       }
@@ -32,7 +33,7 @@ rules.push({
         if (refModels === undefined) {
           return true
         }
-        const refModel = refModels[0].value
+        const refModel = refModels.value
         const parameterName = (refModel as any).name
         const xMsParameterLocation = (refModel as any)["x-ms-parameter-location"]
         const parameterIn = (refModel as any).in
@@ -54,7 +55,7 @@ rules.push({
         if (!checkParameterNameUnique(parameter)) {
           const ref = (parameter as any).$ref as string
           const conflictMsg = `Client parameter ${(parameter as any).$ref} conflicted with ${clientParameterName.get(
-            getRefModel(ref)[0].value.name
+            getRefModel(ref).value.name
           )}.`
           yield {
             location: path.concat(it.path.slice(1)),
@@ -69,7 +70,7 @@ rules.push({
         if (!checkParameterNameUnique(parameter)) {
           const ref = (parameter as any).$ref as string
           const conflictMsg = `Client parameter ${(parameter as any).$ref} conflicted with ${clientParameterName.get(
-            getRefModel(ref)[0].value.name
+            getRefModel(ref).value.name
           )}.`
           yield {
             location: path.concat(it.path.slice(1)),

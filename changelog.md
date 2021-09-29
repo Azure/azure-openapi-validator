@@ -1,5 +1,12 @@
 # Changelog
 
+## What's New (09/29/2021)
+
+### Bug fix
+
+- UniqueClientParameterName - throw exception when reference contains '.'.
+### Changed validation rules
+- LongRunningResponseStatusCode  - support response code '202' in patch operation. 
 ## What's New (08/17/2021)
 
 ### Bug fix
