@@ -28,7 +28,7 @@ rules.push({
             return typeof value !== node.type
           })
         ) {
-          yield { message: `${msg}`, location: path }
+          yield { message: `${msg}`, location: result.path }
         }
       }
     }
