@@ -22,8 +22,8 @@ rules.push({
       if (node.enum && isValidEnum(node)) {
         if (
           node.enum.some(value => {
-            if (node.type === "integer" && !Number.isInteger(value)) {
-              return true
+            if (node.type === "integer") {
+              return !Number.isInteger(value)
             }
             return typeof value !== node.type
           })
