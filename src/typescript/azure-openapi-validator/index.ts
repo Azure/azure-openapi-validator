@@ -46,14 +46,17 @@ require("./rules/MissingXmsErrorResponse")
 require("./rules/MissingTypeObject")
 require("./rules/PrivateEndpointResourceSchemaValidation")
 require("./rules/ImplementPrivateEndpointAPIs")
+require("./rules/ParametersOrder")
+require("./rules/ExtensionResourcePathPattern")
 
-export async function run(
+export const runRules = async (
   document: string,
   openapiDefinition: any,
   sendMessage: (m: Message) => void,
   openapiType: OpenApiTypes,
-  mergeState: MergeStates
-) {
+  mergeState: MergeStates,
+  rules: Rule[]
+) => {
   const rulesToRun = rules.filter(rule => rule.mergeState === mergeState && rule.openapiType & openapiType)
   for (const rule of rulesToRun) {
     for (const section of nodes(openapiDefinition, rule.appliesTo_JsonQuery || "$")) {
@@ -102,4 +105,14 @@ export async function run(
       }
     })
   }
+}
+
+export async function run(
+  document: string,
+  openapiDefinition: any,
+  sendMessage: (m: Message) => void,
+  openapiType: OpenApiTypes,
+  mergeState: MergeStates
+) {
+  await runRules(document, openapiDefinition, sendMessage, openapiType, mergeState, rules)
 }

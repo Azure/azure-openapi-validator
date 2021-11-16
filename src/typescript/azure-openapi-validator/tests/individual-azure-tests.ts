@@ -33,6 +33,8 @@ import { Rpaas_ResourceProvisioningState } from "../rules/Rpaas_ResourceProvisio
 import { MissingXmsErrorResponse } from "../rules/MissingXmsErrorResponse"
 import { AzureResourceTagsSchema } from "../rules/AzureResourceTagsSchema"
 import { MissingTypeObject } from "../rules/MissingTypeObject"
+import { ParametersOrder } from "../rules/ParametersOrder"
+import { ExtensionResourcePathPattern } from "../rules/ExtensionResourcePathPattern"
 
 @suite
 class IndividualAzureTests {
@@ -296,5 +298,17 @@ class IndividualAzureTests {
     const fileName = "missingTypeObject.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, MissingTypeObject, 9)
+  }
+
+  @test public async "parameter order not match"() {
+    const fileName = "ParameterOrderNotMatchPath.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, ParametersOrder, 1)
+  }
+
+  @test public async "rpaas extension resource "() {
+    const fileName = "RPaaSExtensionResource.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    assertValidationRuleCount(messages, ExtensionResourcePathPattern, 1)
   }
 }

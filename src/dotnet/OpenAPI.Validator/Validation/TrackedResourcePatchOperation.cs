@@ -66,7 +66,7 @@ namespace OpenAPI.Validator.Validation
 
             // enumerate all the models returned by all PATCH operations (200/201 responses)
             var respModels = patchOperations.Select(op => op.Responses.GetValueOrNull("200")?.Schema?.Reference?.StripDefinitionPath());
-            respModels.Union(patchOperations.Select(op => op.Responses.GetValueOrNull("201")?.Schema?.Reference?.StripDefinitionPath())).Where(modelName => !string.IsNullOrEmpty(modelName));
+            respModels = respModels.Union(patchOperations.Select(op => op.Responses.GetValueOrNull("201")?.Schema?.Reference?.StripDefinitionPath())).Where(modelName => !string.IsNullOrEmpty(modelName));
 
             // find models that are not being returned by any of the PATCH operations
             var violatingModels = context.TrackedResourceModels.Except(respModels);
