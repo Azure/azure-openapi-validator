@@ -15,7 +15,7 @@ rules.push({
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   *run(doc, _, path) {
-    const msg: string = `Enum values should respect the type specifier.`
+    const msg: string = `Enum values should respect the type.`
     const results = [...nodes(doc, `$.definitions..[?(@.enum)]`), ...nodes(doc, `$.parameters..[?(@.enum)]`)]
     for (const result of results) {
       const node = result.value
