@@ -33,6 +33,7 @@ import { Rpaas_ResourceProvisioningState } from "../rules/Rpaas_ResourceProvisio
 import { MissingXmsErrorResponse } from "../rules/MissingXmsErrorResponse"
 import { AzureResourceTagsSchema } from "../rules/AzureResourceTagsSchema"
 import { MissingTypeObject } from "../rules/MissingTypeObject"
+import { EnumMustRespectType } from "../rules/EnumMustRespectType"
 
 @suite
 class IndividualAzureTests {
@@ -80,6 +81,12 @@ class IndividualAzureTests {
     const fileName = "EnumUniqueValue.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, EnumUniqueValue, 1)
+  }
+
+  @test public async "Enum must respect type"() {
+    const fileName = "EnumMustRespectType.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, EnumMustRespectType, 4)
   }
 
   @test
