@@ -132,10 +132,12 @@ export function isValidEnum(node) {
 }
 
 export function transformEnum(type: string, enumEntries) {
-  if (type === "string") {
-    return enumEntries
-  }
-  return enumEntries.map(v => v.toString())
+  return enumEntries.map(v => {
+    if (v === null) {
+      return ""
+    }
+    return v.toString()
+  })
 }
 
 export function deReference(doc: any, schema: any) {
