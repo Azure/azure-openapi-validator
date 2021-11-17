@@ -29,16 +29,6 @@ pipeline:
     group-parameters: true
 ```
 
-``` yaml $(azure-validator) && $(v3) && $(staging)
-pipeline:
-  swagger-document/new-openapi-validator:
-    input: swagger-document/identity
-    scope: azure-validator-composed
-  swagger-document/individual/new-openapi-validator:
-    input: swagger-document/individual/identity
-    scope: azure-validator-individual  
-```
-
 
 ``` yaml $(azure-validator)
 azure-validator-composed:
