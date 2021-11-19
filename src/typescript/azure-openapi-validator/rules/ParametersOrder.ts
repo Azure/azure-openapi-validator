@@ -19,7 +19,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths",
   *run(doc, node, path) {
-    const msg: string = `The parameters should be arranged as the order in the apiPath.`
+    const msg: string = `The parameters should be kept in the same order as they present in the path.`
     for (const apiPath of Object.keys(node)) {
       const parametersInPath = getParametersFromPath(apiPath)
       const commonParameters = node[apiPath].parameters || []

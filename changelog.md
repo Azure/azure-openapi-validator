@@ -1,5 +1,12 @@
 # Changelog
 
+## What's New (11/19/2021)
+
+### New validation rules
+- ExtensionResourcePathPattern - To ensure extension resource path pattern conform to rpaas contract.
+- ParametersOrder - To ensure the parameters in the same order as they are ranked in the path.
+- EnumMustRespectType - To ensure the enum values conform to the type.
+
 ## What's New (09/29/2021)
 
 ### Bug fix
