@@ -21,14 +21,15 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = `The parameters should be kept in the same order as they present in the path.`
     for (const apiPath of Object.keys(node)) {
-      const parametersInPath = getParametersFromPath(apiPath)
+      const exceptions = ["subscriptionId", "resourceGroupName"]
+      const parametersInPath = getParametersFromPath(apiPath).filter(p => exceptions.every(e => e != p))
       const commonParameters = node[apiPath].parameters || []
       const httpMethods = Object.keys(node[apiPath]).filter(k => k.toLowerCase() !== "parameters")
       for (const method of httpMethods) {
         const resolvedPathParameters = (node[apiPath][method].parameters || [])
           .concat(commonParameters)
           .map(x => deReference(doc, x))
-          .filter(x => x && x.in === "path")
+          .filter(x => x && x.in === "path" && exceptions.every(e => e != x.name))
           .map(x => x.name)
         if (parametersInPath.some((value, index) => index < resolvedPathParameters.length && resolvedPathParameters[index] !== value)) {
           yield { message: msg, location: path.concat(apiPath, method) }

@@ -11,17 +11,31 @@
   "produces": ["application/json"],
   "consumes": ["application/json"],
   "paths": {
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}": {
       "get": {
         "operationId": "getTestResource",
         "summary": "Foo path",
         "description": "Foo operation",
         "parameters": [
           {
-            "$ref": "#/parameters/ApplicationGatewayName"
+            "name": "authorizationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the authorization."
+          },
+          {
+            "name": "circuitName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the express route circuit."
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupName"
           },
           {
             "$ref": "#/parameters/ApiVersion"
@@ -54,7 +68,18 @@
             "$ref": "#/parameters/ResourceGroupName"
           },
           {
-            "$ref": "#/parameters/ApplicationGatewayName"
+            "name": "circuitName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the express route circuit."
+          },
+          {
+            "name": "authorizationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the authorization."
           }
         ],
         "responses": {
@@ -82,13 +107,6 @@
     "ApiVersion": {
       "name": "api-version",
       "in": "query",
-      "required": true,
-      "type": "string",
-      "description": "test api version"
-    },
-    "ApplicationGatewayName": {
-      "name": "applicationGatewayName",
-      "in": "path",
       "required": true,
       "type": "string",
       "description": "test api version"
