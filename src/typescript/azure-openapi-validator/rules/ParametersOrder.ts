@@ -19,7 +19,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths",
   *run(doc, node, path) {
-    const msg: string = `The parameters should be kept in the same order as they present in the path.`
+    const msg: string = `The parameters:{0} should be kept in the same order as they present in the path.`
     for (const apiPath of Object.keys(node)) {
       const exceptions = ["subscriptionId", "resourceGroupName"]
       const parametersInPath = getParametersFromPath(apiPath).filter(p => exceptions.every(e => e != p))
@@ -32,7 +32,7 @@ rules.push({
           .filter(x => x && x.in === "path" && exceptions.every(e => e != x.name))
           .map(x => x.name)
         if (parametersInPath.some((value, index) => index < resolvedPathParameters.length && resolvedPathParameters[index] !== value)) {
-          yield { message: msg, location: path.concat(apiPath, method) }
+          yield { message: msg.replace("{0}", parametersInPath.join(",")), location: path.concat(apiPath, method) }
         }
       }
     }
