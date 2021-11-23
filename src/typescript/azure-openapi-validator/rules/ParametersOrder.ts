@@ -10,6 +10,17 @@ function getParametersFromPath(apiapiPath: string) {
   return parameters
 }
 
+function isMethodParameter(schema: any, doc: any) {
+  if (!schema.$ref && schema.in === "path") {
+    return true
+  }
+  const resolvedParameter = deReference(doc, schema)
+  if (resolvedParameter && resolvedParameter.in === "path" && resolvedParameter["x-ms-parameter-location"] === "method") {
+    return true
+  }
+  return false
+}
+
 rules.push({
   id: "R4039",
   name: ParametersOrder,
@@ -21,18 +32,16 @@ rules.push({
   *run(doc, node, path) {
     const msg: string = `The parameters:{0} should be kept in the same order as they present in the path.`
     for (const apiPath of Object.keys(node)) {
-      const exceptions = ["subscriptionId", "resourceGroupName"]
-      const parametersInPath = getParametersFromPath(apiPath).filter(p => exceptions.every(e => e != p))
       const commonParameters = node[apiPath].parameters || []
       const httpMethods = Object.keys(node[apiPath]).filter(k => k.toLowerCase() !== "parameters")
       for (const method of httpMethods) {
-        const resolvedPathParameters = (node[apiPath][method].parameters || [])
-          .concat(commonParameters)
-          .map(x => deReference(doc, x))
-          .filter(x => x && x.in === "path" && exceptions.every(e => e != x.name))
-          .map(x => x.name)
+        const resolvedPathParameters = commonParameters
+          .concat(node[apiPath][method].parameters || [])
+          .filter(x => isMethodParameter(x, doc))
+          .map(x => deReference(doc, x).name)
+        const parametersInPath = getParametersFromPath(apiPath).filter(p => resolvedPathParameters.includes(p))
         if (parametersInPath.some((value, index) => index < resolvedPathParameters.length && resolvedPathParameters[index] !== value)) {
-          yield { message: msg.replace("{0}", parametersInPath.join(",")), location: path.concat(apiPath, method) }
+          yield { message: msg.replace("{0}", resolvedPathParameters.join(",")), location: path.concat(apiPath, method) }
         }
       }
     }
