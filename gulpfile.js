@@ -9,6 +9,7 @@ var clean = require('gulp-clean');
 var run = require('gulp-run')
 var mocha = require('gulp-mocha');
 var { restore, build, test } = require('gulp-dotnet-cli');
+var shell = require('gulp-shell');
 
 // add .bin to PATH
 function getPathVariableName() {
@@ -158,3 +159,7 @@ gulp.task(
     done()
   })
 )
+
+gulp.task('coverage/ts', shell.task([
+  'npx nyc mocha ./src/typescript/azure-openapi-validator/tests/**/*.js',
+]));

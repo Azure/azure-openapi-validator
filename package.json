@@ -29,12 +29,14 @@
     "@microsoft.azure/autorest-core": "2.0.4417"
   },
   "dependencies": {
-    "vscode-jsonrpc": "^3.2.0",
+    "@apidevtools/json-schema-ref-parser": "^9.0.1",
+    "gulp-shell": "^0.8.0",
     "js-yaml": "3.14.0",
-    "jsonpath": "1.0.2",
     "json-refs": "^3.0.15",
+    "jsonpath": "1.0.2",
+    "nyc": "^15.1.0",
     "string.prototype.matchall": "^4.0.2",
-    "@apidevtools/json-schema-ref-parser": "^9.0.1"
+    "vscode-jsonrpc": "^3.2.0"
   },
   "scripts": {
     "install-dotnet": "cd src/dotnet/AutoRest && npm install",
