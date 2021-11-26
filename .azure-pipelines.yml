@@ -19,7 +19,7 @@ jobs:
       - task: UseDotNet@2
         inputs:
           packageType: 'sdk'
-          version: '3.x'
+          version: '2.x'
       - task: Npm@1
         displayName: 'npm install'
         inputs:
