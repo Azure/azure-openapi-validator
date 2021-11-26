@@ -139,3 +139,26 @@ export function transformEnum(type: string, enumEntries) {
     return v.toString()
   })
 }
+
+export function deReference(doc: any, schema: any) {
+  const getRefModel = (refValue: string, visited: string[]) => {
+    if (visited.includes(refValue)) {
+      throw new Error("Found circle reference: " + visited.join("->"))
+    }
+    visited.push(refValue)
+    const pathExpression = refValue.replace(/^#\//, "").split("/")
+    try {
+      const result = nodes(doc, stringify(pathExpression))
+      return result.length !== 0 ? result[0].value : undefined
+    } catch (err) {
+      throw err
+    }
+  }
+  if (schema && doc) {
+    if (schema.$ref) {
+      return getRefModel(schema.$ref, [])
+    }
+    return schema
+  }
+  return undefined
+}

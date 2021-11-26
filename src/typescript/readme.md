@@ -16,7 +16,7 @@ pipeline:
 
 ``` yaml $(azure-validator) && $(v3)
 use-extension:
-  "@autorest/modelerfour": "4.15.456"
+  "@autorest/modelerfour": "4.21.4"
 
 pipeline:
   swagger-document/modelerfour-consumer:
@@ -28,6 +28,7 @@ pipeline:
     flatten-payloads: true
     group-parameters: true
 ```
+
 
 ``` yaml $(azure-validator)
 azure-validator-composed:

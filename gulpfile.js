@@ -3,25 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-var path = require('path');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-var run = require('gulp-run')
+var run = require('gulp-shell')
 var mocha = require('gulp-mocha');
-var { restore, build, test } = require('gulp-dotnet-cli');
-
-// add .bin to PATH
-function getPathVariableName() {
-  // windows calls it's path 'Path' usually, but this is not guaranteed.
-  if (process.platform === 'win32') {
-    for (const key of Object.keys(process.env))
-      if (key.match(/^PATH$/i))
-        return key;
-    return 'Path';
-  }
-  return "PATH";
-}
-process.env[getPathVariableName()] = path.join(__dirname, "src/dotnet/AutoRest/node_modules/.bin") + path.delimiter + process.env[getPathVariableName()];
 
 // All the typescript tasks
 gulp.task('clean/typescript', function () {
@@ -63,20 +48,17 @@ gulp.task(
 // All the dotnet tasks
 gulp.task('clean/dotnet', function () {
   console.log('Cleaning build directories...');
-  return gulp.src(['src/dotnet/**/bin', 'src/dotnet/**/obj'], { read: false })
-    .pipe(clean({ force: true }));
+  return gulp.src("./").pipe(run ("dotnet clean src/dotnet/OpenAPI.Validator.sln"));
 });
 
 gulp.task('restore/dotnet', gulp.series(['clean/dotnet'], function () {
   console.log('Running dotnet restore...');
-  return gulp.src('src/dotnet/**/*.csproj')
-    .pipe(restore());
+  return gulp.src("./").pipe(run ("dotnet restore src/dotnet/OpenAPI.Validator.sln"));
 }))
 
 gulp.task('build/dotnet', gulp.series(['restore/dotnet'], function () {
   console.log('Running dotnet build...');
-  return gulp.src('src/dotnet/**/*.csproj')
-    .pipe(build());
+  return gulp.src("./").pipe(run ("dotnet build src/dotnet/OpenAPI.Validator.sln"));
 }))
 
 gulp.task('build/regressionTest', gulp.series([], function () {
@@ -84,16 +66,15 @@ gulp.task('build/regressionTest', gulp.series([], function () {
   return gulp.src("./").pipe(run("tsc --project tsconfig.json"))
 }))
 
-gulp.task('test/dotnet', gulp.series(['build/dotnet'], function () {
+gulp.task('test/dotnet', gulp.series(['clean/dotnet'], function () {
   console.log('Running the dotnet unit tests...');
-  return gulp.src('src/dotnet/OpenAPI.Validator.Tests/OpenAPI.Validator.Tests.csproj')
-    .pipe(test({ verbosity: 'minimal' }));
+  return gulp.src("./").pipe(run("dotnet test src/dotnet/OpenAPI.Validator.sln"));
 }))
 
 // Now the defaults/commons
 gulp.task(
   "build",
-  gulp.parallel(["build/dotnet", "build/typescript", "build/regressionTest"], function (done) {
+  gulp.parallel(["build/dotnet", "build/typescript", "build/regressionTest"], async function (done) {
     console.log("Building code...")
     done()
   })
@@ -135,18 +116,16 @@ gulp.task(
   "dotnet/pack",
   gulp.series(["dotnet", "typescript"], function () {
     console.log("Kicking off the dotnet publish task...")
-    return gulp
-      .src("src/dotnet/AutoRest/AutoRest.csproj")
-      .pipe(run("dotnet publish src/dotnet/AutoRest/AutoRest.csproj --configuration release --output bin/netcoreapp2.0"))
+    return gulp.src("./").pipe(run("dotnet publish src/dotnet/AutoRest/AutoRest.csproj --configuration release --output bin/netcoreapp2.0"));
   })
 )
 
 gulp.task('pack/typescript', function () {
-  return run('cd src/typescript && npm pack').exec();
+  return gulp.src("./").pipe(run('cd src/typescript && npm pack'));
 })
 
 gulp.task('pack/dotnet', function () {
-  return run('cd src/dotnet/AutoRest && npm pack').exec();
+  return gulp.src("./").pipe(run('cd src/dotnet/AutoRest && npm pack'));
 })
 
 // this task can be excuted only when `gulp test` has been excuted successfully
@@ -158,3 +137,8 @@ gulp.task(
     done()
   })
 )
+
+gulp.task('coverage/ts', function() {
+   return gulp.src("./").pipe(run('nyc mocha ./src/typescript/azure-openapi-validator/tests/**/*.js'))
+  }
+);

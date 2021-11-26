@@ -12,7 +12,7 @@ rules.push({
   name: ArraySchemaMustHaveItems,
   severity: "error",
   category: "SDKViolation",
-  mergeState: MergeStates.composed,
+  mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.default,
   appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type==='array')]",
   *run(doc, node, path) {

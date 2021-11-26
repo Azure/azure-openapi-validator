@@ -14,7 +14,7 @@ async function main() {
     const files = await initiator.ListInputs()
     const mergeState: string = await initiator.GetValue("merge-state")
     const openapiType: string = await initiator.GetValue("openapi-type")
-    let subType: string = await initiator.GetValue("openapi-subtype") 
+    let subType: string = await initiator.GetValue("openapi-subtype")
     subType = subType === "providerHub" ? "rpaas" : subType
     for (const file of files) {
       initiator.Message({
@@ -42,24 +42,24 @@ async function main() {
     }
   })
 
-   pluginHost.Add("modelerfour-consumer", async initiator => {
-     const files = await initiator.ListInputs()
-     for (const file of files) {
-       initiator.Message({
-         Channel: "verbose",
-         Text: `Validating '${file}'`
-       })
-       try {
+  pluginHost.Add("modelerfour-consumer", async initiator => {
+    const files = await initiator.ListInputs()
+    for (const file of files) {
+      initiator.Message({
+        Channel: "verbose",
+        Text: `Validating '${file}'`
+      })
+      try {
         // just read the output of model4.
         await initiator.ReadFile(file)
-       } catch (e) {
-         initiator.Message({
-           Channel: "fatal",
-           Text: `Failure for get modeler4 output, error encountered: ` + e
-         })
-       }
-     }
-   })
+      } catch (e) {
+        initiator.Message({
+          Channel: "fatal",
+          Text: `Failure for get modeler4 output, error encountered: ` + e
+        })
+      }
+    }
+  })
 
   await pluginHost.Run()
 }

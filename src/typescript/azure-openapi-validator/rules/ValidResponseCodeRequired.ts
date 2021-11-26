@@ -13,7 +13,7 @@ rules.push({
   severity: "error",
   category: "SDKViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.arm,
+  openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.paths.*.*.responses",
   async *asyncRun(doc, node, path) {
     const msg: string = "There is no declared valid status code."

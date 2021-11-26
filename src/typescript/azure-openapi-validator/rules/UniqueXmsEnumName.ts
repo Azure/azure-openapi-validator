@@ -5,7 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { isValidEnum, transformEnum } from "./utilities/rules-helper"
 export const UniqueXmsEnumName: string = "UniqueXmsEnumName"
-import { nodes,stringify } from "jsonpath"
+import { nodes, stringify } from "jsonpath"
 
 rules.push({
   id: "R4005",
@@ -23,7 +23,7 @@ rules.push({
         if (section.value["x-ms-enum"] && isValidEnum(section.value)) {
           const enumName = section.value["x-ms-enum"].name.toLowerCase()
           if (enumMap.has(enumName)) {
-            const curEnum =  section.value.enum
+            const curEnum = section.value.enum
             const existingNode = enumMap.get(enumName)
             const existingEnum = existingNode.value.enum
             const existingEnumModelAsString = existingNode.value["x-ms-enum"].modelAsString || false
@@ -33,12 +33,17 @@ rules.push({
              */
             if (
               section.value.type !== existingNode.value.type ||
-              currentEnumModelAsString  !==  existingEnumModelAsString ||
+              currentEnumModelAsString !== existingEnumModelAsString ||
               existingEnum.length !== curEnum.length ||
               // if modelAsString is true , the order of the values is insensitive , otherwise the order is sensitive.
-              currentEnumModelAsString ? existingEnum.some(value=> !curEnum.includes(value)) : existingEnum.some((value, index) => curEnum[index] !== value)
+              currentEnumModelAsString
+                ? existingEnum.some(value => !curEnum.includes(value))
+                : existingEnum.some((value, index) => curEnum[index] !== value)
             ) {
-              yield { message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path)}`, location: path.concat(section.path.slice(1)) }
+              yield {
+                message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path)}`,
+                location: path.concat(section.path.slice(1))
+              }
             }
           } else {
             enumMap.set(enumName, section)
