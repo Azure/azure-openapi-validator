@@ -15,6 +15,10 @@ jobs:
         inputs:
           versionSpec: '$(NodeVersion)'
         displayName: 'Install Node.js $(NodeVersion)'
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'sdk'
+          version: '2.x'
 
       - task: Npm@1
         displayName: 'npm install'
