@@ -16,7 +16,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   *run(doc, _, path) {
     const msg: string = `The enum types should have x-ms-enum type extension set with appropriate options.`
-    const results = [...nodes(doc, `$.definitions..[?(@.enum)]`), ...nodes(doc, `$.parameters..[?(@.enum)]`)]
+    const results = [...nodes(doc, `$.definitions..[?(@.enum)]`), ...nodes(doc, `$..parameters..[?(@.enum)]`)]
     for (const result of results) {
       const node = result.value
       if (node.enum && isValidEnum(node)) {

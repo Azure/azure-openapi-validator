@@ -49,6 +49,7 @@ require("./rules/PrivateEndpointResourceSchemaValidation")
 require("./rules/ImplementPrivateEndpointAPIs")
 require("./rules/ParametersOrder")
 require("./rules/ExtensionResourcePathPattern")
+require("./rules/XmsEnumValidation")
 
 export const runRules = async (
   document: string,
