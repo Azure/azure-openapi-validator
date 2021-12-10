@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (12/10/2021)
+
+### Changed Rule
+- XmsEnumValidation - Extends to check the enum in parameters & move to typescript validator.
+
 ## What's New (11/19/2021)
 
 ### New validation rules

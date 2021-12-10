@@ -30,7 +30,7 @@ export interface Rule {
   readonly mergeState: MergeStates
   readonly openapiType: OpenApiTypes
 
-  readonly appliesTo_JsonQuery?: string // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
+  readonly appliesTo_JsonQuery?: string | string[] // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
   run?(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>
   asyncRun?(openapiDocument: any, openapiSection: any, location: JsonPath): AsyncIterable<ValidationMessage>
 }

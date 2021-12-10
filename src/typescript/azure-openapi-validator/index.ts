@@ -49,6 +49,7 @@ require("./rules/PrivateEndpointResourceSchemaValidation")
 require("./rules/ImplementPrivateEndpointAPIs")
 require("./rules/ParametersOrder")
 require("./rules/ExtensionResourcePathPattern")
+require("./rules/XmsEnumValidation")
 
 export const runRules = async (
   document: string,
@@ -60,14 +61,20 @@ export const runRules = async (
 ) => {
   const rulesToRun = rules.filter(rule => rule.mergeState === mergeState && rule.openapiType & openapiType)
   for (const rule of rulesToRun) {
-    for (const section of nodes(openapiDefinition, rule.appliesTo_JsonQuery || "$")) {
-      if (rule.run) {
-        for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1))) {
-          handle(rule, message)
-        }
-      } else {
-        for await (const message of rule.asyncRun(openapiDefinition, section.value, section.path.slice(1))) {
-          handle(rule, message)
+    let appliesTo_JsonQueries = rule.appliesTo_JsonQuery || "$"
+    if (!Array.isArray(appliesTo_JsonQueries)) {
+      appliesTo_JsonQueries = [appliesTo_JsonQueries]
+    }
+    for (const appliesTo_JsonQuery of appliesTo_JsonQueries) {
+      for (const section of nodes(openapiDefinition, appliesTo_JsonQuery)) {
+        if (rule.run) {
+          for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1))) {
+            handle(rule, message)
+          }
+        } else {
+          for await (const message of rule.asyncRun(openapiDefinition, section.value, section.path.slice(1))) {
+            handle(rule, message)
+          }
         }
       }
     }

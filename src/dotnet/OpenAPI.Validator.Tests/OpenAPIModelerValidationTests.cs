@@ -594,12 +594,6 @@ namespace OpenAPI.Validator.Tests
             Assert.Equal(messages.Count(), 1);
         }
 
-        [Fact]
-        public void XmsEnumExtensionValidation()
-        {
-            var messages = GetValidationMessagesForRule<XmsEnumValidation>("x-ms-enum-absent.json");
-            Assert.Equal(messages.Count(), 1);
-        }
 
         [Fact]
         public void XmsExamplesProvidedValidation()

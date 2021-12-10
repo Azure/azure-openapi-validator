@@ -36,7 +36,7 @@ import { MissingTypeObject } from "../rules/MissingTypeObject"
 import { ParametersOrder } from "../rules/ParametersOrder"
 import { ExtensionResourcePathPattern } from "../rules/ExtensionResourcePathPattern"
 import { EnumMustRespectType } from "../rules/EnumMustRespectType"
-
+import { XmsEnumValidation } from "../rules/XmsEnumValidation"
 
 @suite
 class IndividualAzureTests {
@@ -318,5 +318,11 @@ class IndividualAzureTests {
     const fileName = "RPaaSExtensionResource.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
     assertValidationRuleCount(messages, ExtensionResourcePathPattern, 1)
+  }
+
+  @test public async "x-ms-enum absent "() {
+    const fileName = "XmsEnumAbsent.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsEnumValidation, 2)
   }
 }
