@@ -37,6 +37,7 @@ import { ParametersOrder } from "../rules/ParametersOrder"
 import { ExtensionResourcePathPattern } from "../rules/ExtensionResourcePathPattern"
 import { EnumMustRespectType } from "../rules/EnumMustRespectType"
 import { XmsEnumValidation } from "../rules/XmsEnumValidation"
+import { XmsIdentifierValidation } from "../rules/XmsIdentifierValidation"
 
 @suite
 class IndividualAzureTests {
@@ -324,5 +325,11 @@ class IndividualAzureTests {
     const fileName = "XmsEnumAbsent.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, XmsEnumValidation, 2)
+  }
+
+  @test public async "x-ms-identifiers missing"() {
+    const fileName = "XmsIdentifiers.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    assertValidationRuleCount(messages, XmsIdentifierValidation, 2)
   }
 }
