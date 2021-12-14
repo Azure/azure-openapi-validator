@@ -17,7 +17,7 @@ rules.push({
   appliesTo_JsonQuery: ["$.definitions..[?(@.items)]", "$.parameters..[?(@.items)]"],
   *run(doc, node, path) {
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
-    const utils = new ResourceUtils(doc)
+    const utils = new ResourceUtils(doc, false)
     const items = deReference(doc, node.items)
     if (items.type && items.type !== "object") {
       return
