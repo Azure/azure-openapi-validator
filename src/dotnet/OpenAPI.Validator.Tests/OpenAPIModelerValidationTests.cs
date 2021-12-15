@@ -726,6 +726,13 @@ namespace OpenAPI.Validator.Tests
 
         }
 
+        [Fact]
+        public void ValidGuidUsageInCommonTypes()
+        {
+            var messages = GetValidationMessagesForRule<GuidUsage>(Path.Combine(AutoRest.Core.Utilities.Extensions.CodeBaseDirectory, "Resource", "OpenAPI", "Validation", "positive", "common-types\\resource-management\\v3\\managedidentity.json"));
+            Assert.Empty(messages);
+        }
+
         /// <summary>
         /// 
         /// </summary>
