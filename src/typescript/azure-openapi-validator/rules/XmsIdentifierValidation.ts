@@ -16,6 +16,10 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: ["$.definitions..[?(@.items)]", "$.parameters..[?(@.items)]"],
   *run(doc, node, path) {
+    if (node.type !== "array") {
+      return
+    }
+    
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
     const utils = new ResourceUtils(doc, false)
     const items = deReference(doc, node.items)
