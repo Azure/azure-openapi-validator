@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { JsonPath } from "../jsonrpc/types"
+import { DocumentDependencyGraph } from "./depsGraph"
 
 export enum OpenApiTypes {
   "default" = 1 << 0,
@@ -31,7 +32,7 @@ export interface Rule {
   readonly openapiType: OpenApiTypes
 
   readonly appliesTo_JsonQuery?: string | string[] // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
-  run?(openapiDocument: any, openapiSection: any, location: JsonPath): Iterable<ValidationMessage>
+  run?(openapiDocument: any, openapiSection: any, location: JsonPath, graph?: DocumentDependencyGraph): Iterable<ValidationMessage>
   asyncRun?(openapiDocument: any, openapiSection: any, location: JsonPath): AsyncIterable<ValidationMessage>
 }
 

@@ -3,7 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "jsonpath"
+import { dirname, join } from "path"
 import { Message } from "../jsonrpc/types"
+import { DocumentDependencyGraph } from "./depsGraph"
+import { sendMessage } from "./message"
 import { MergeStates, OpenApiTypes, Rule, rules, ValidationMessage } from "./rule"
 
 // register rules
@@ -57,7 +60,8 @@ export const runRules = async (
   sendMessage: (m: Message) => void,
   openapiType: OpenApiTypes,
   mergeState: MergeStates,
-  rules: Rule[]
+  rules: Rule[],
+  graph?: DocumentDependencyGraph
 ) => {
   const rulesToRun = rules.filter(rule => rule.mergeState === mergeState && rule.openapiType & openapiType)
   for (const rule of rulesToRun) {
@@ -68,7 +72,7 @@ export const runRules = async (
     for (const appliesTo_JsonQuery of appliesTo_JsonQueries) {
       for (const section of nodes(openapiDefinition, appliesTo_JsonQuery)) {
         if (rule.run) {
-          for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1))) {
+          for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1), graph)) {
             handle(rule, message)
           }
         } else {
@@ -120,7 +124,22 @@ export async function run(
   openapiDefinition: any,
   sendMessage: (m: Message) => void,
   openapiType: OpenApiTypes,
-  mergeState: MergeStates
+  mergeState: MergeStates,
+  graph?: DocumentDependencyGraph
 ) {
-  await runRules(document, openapiDefinition, sendMessage, openapiType, mergeState, rules)
+  await runRules(document, openapiDefinition, sendMessage, openapiType, mergeState, rules, graph)
+}
+
+export type LintOptions = {
+  rpFolder?: string
+  openapiType: OpenApiTypes
+  mergeState: MergeStates
+}
+
+export async function runCli(swaggerPath: string, options: LintOptions) {
+  const graph = new DocumentDependencyGraph()
+  const rpFolder = options.rpFolder || join(dirname(swaggerPath), "../../..")
+  await graph.generateDiagramGraph(rpFolder)
+  const documentInstance = (await graph.getDocument(swaggerPath)).getObj()
+  await run(swaggerPath, documentInstance, sendMessage, options.openapiType, options.mergeState)
 }

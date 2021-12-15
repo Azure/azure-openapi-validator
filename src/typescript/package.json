@@ -34,16 +34,18 @@
     "gulp-mocha": "7.0.2",
     "gulp-dotnet-cli": "1.1.0",
     "mocha-typescript": "~1.0.22",
-    "mocha": "^7.0.1",
-    "typescript": "3.7.5"
+    "typescript": "3.7.5",
+    "mocha": "^7.0.1"
   },
   "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.1",
+    "dependency-graph": "^0.11.0",
     "fs": "^0.0.1-security",
     "js-yaml": "^3.14.0",
-    "jsonpath": "^1.0.2",
     "json-refs": "^3.0.15",
-    "@apidevtools/json-schema-ref-parser": "^9.0.1",
+    "jsonpath": "^1.0.2",
     "string.prototype.matchall": "^4.0.2",
-    "vscode-jsonrpc": "^3.2.0"
+    "vscode-jsonrpc": "^3.2.0",
+    "yargs": "^17.3.0"
   }
 }
