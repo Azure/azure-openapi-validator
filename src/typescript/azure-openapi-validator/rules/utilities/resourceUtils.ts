@@ -44,9 +44,11 @@ export class ResourceUtils {
 
   private XmsResources = new Set<string>()
 
-  constructor(swagger: object) {
+  constructor(swagger: object, scanXmsResources: boolean = true) {
     this.innerDoc = swagger
-    this.getXmsResources()
+    if (scanXmsResources) {
+      this.getXmsResources()
+    }
   }
 
   private getSpecificOperationModels(httpMethod, code) {

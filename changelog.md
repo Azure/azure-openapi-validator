@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (12/15/2021)
+
+### New validation rules
+- XmsIdentifierValidation - Check the identifying properties of objects in the array.
+
 ## What's New (12/10/2021)
 
 ### Changed Rule
