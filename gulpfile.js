@@ -113,20 +113,18 @@ gulp.task(
 )
 
 gulp.task(
-  "dotnet/pack",
-  gulp.series(["dotnet", "typescript"], function () {
+  "dotnet/pack", function () {
     console.log("Kicking off the dotnet publish task...")
     return gulp.src("./").pipe(run("dotnet publish src/dotnet/AutoRest/AutoRest.csproj --configuration release --output bin/netcoreapp2.0"));
   })
-)
 
 gulp.task('pack/typescript', function () {
   return gulp.src("./").pipe(run('cd src/typescript && npm pack'));
 })
 
-gulp.task('pack/dotnet', function () {
+gulp.task('pack/dotnet',gulp.series(["clean/dotnet","dotnet/pack"], function () {
   return gulp.src("./").pipe(run('cd src/dotnet/AutoRest && npm pack'));
-})
+}))
 
 // this task can be excuted only when `gulp test` has been excuted successfully
 gulp.task(
