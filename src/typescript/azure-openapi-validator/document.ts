@@ -19,9 +19,13 @@ export class OpenapiDocument {
     return this._doc
   }
 
-  getReference() {
-    return this.resolver.getReference()
+  getReferences() {
+    return this.resolver.getReferences()
   }
   getDocumentPath() {}
   getPositionFromJsonPath(jsonPath: string[]) {}
+}
+
+export const normalizeDocPath = (path: string) => {
+  return path.split(/\\|\//).join("/")
 }

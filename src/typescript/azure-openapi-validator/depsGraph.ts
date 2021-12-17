@@ -45,8 +45,8 @@ export class DocumentDependencyGraph {
   getSimplyPath(fullPath: string) {
     return fullPath
       .split(/\\|\//)
-      .slice(-4)
       .join("/")
+      .split("#")[0]
   }
 
   getApiVersion(fullPath: string) {
@@ -61,7 +61,7 @@ export class DocumentDependencyGraph {
 
   private async getReferences(specPath: string): Promise<string[]> {
     const document = await this.cacheDocument(specPath)
-    return document.getReference()
+    return document.getReferences()
     /*
     await this.parser.resolve(specPath)
     const refs = _.uniq(
@@ -74,10 +74,11 @@ export class DocumentDependencyGraph {
   }
 
   async getDocument(specPath: string) {
-    if (this.referenceCache.has(specPath)) {
-      return this.referenceCache.get(specPath)
+    const simplePath = this.getSimplyPath(specPath)
+    if (this.referenceCache.has(simplePath)) {
+      return this.referenceCache.get(simplePath)
     }
-    return await this.cacheDocument(specPath)
+    return await this.cacheDocument(simplePath)
   }
 
   async cacheDocument(specPath: string) {

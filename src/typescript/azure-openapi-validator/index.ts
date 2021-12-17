@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "jsonpath"
-import { dirname, join } from "path"
+import { dirname, isAbsolute, join, normalize } from "path"
 import { Message } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
 import { sendMessage } from "./message"
@@ -132,14 +132,29 @@ export async function run(
 
 export type LintOptions = {
   rpFolder?: string
-  openapiType: OpenApiTypes
-  mergeState: MergeStates
+  openapiType: string
 }
 
 export async function runCli(swaggerPath: string, options: LintOptions) {
   const graph = new DocumentDependencyGraph()
+  if (!isAbsolute(swaggerPath)) {
+    swaggerPath = normalize(swaggerPath)
+  }
   const rpFolder = options.rpFolder || join(dirname(swaggerPath), "../../..")
   await graph.generateDiagramGraph(rpFolder)
   const documentInstance = (await graph.getDocument(swaggerPath)).getObj()
-  await run(swaggerPath, documentInstance, sendMessage, options.openapiType, options.mergeState)
+  await run(swaggerPath, documentInstance, sendMessage, getOpenapiTypes(options.openapiType), MergeStates.composed, graph)
+}
+
+function getOpenapiTypes(type: string) {
+  switch (type) {
+    case "arm": {
+      return OpenApiTypes.arm
+    }
+    case "data-plane": {
+      return OpenApiTypes.dataplane
+    }
+    default:
+      return OpenApiTypes.default
+  }
 }

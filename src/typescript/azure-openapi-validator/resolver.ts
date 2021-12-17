@@ -11,26 +11,26 @@ export class Resolver {
 
   // return resolved doc
   resolve() {
-    this.walk(this.innerDoc, ["/"], new Set<any>(), this.updateFileRefs)
+    this.walk(this.innerDoc, ["/"], new Set<any>(), this, this.updateFileRefs)
   }
 
-  updateFileRefs(node: any, path: string[]) {
+  updateFileRefs(node: any, path: string[], ctx: any) {
     if (typeof node === "object" && typeof node.$ref === "string") {
       const slices = node.$ref.split("#") as string[]
-      if (slices.length === 2 && slices[0] && !isAbsolute(slices[0])) {
-        node.$ref =
-          join(dirname(this.currentFile), slices[0])
-            .split(/\\|\//)
-            .join("/") + `#${slices[1]}`
+      if (slices.length === 2 && !isAbsolute(slices[0])) {
+        const referenceFile = join(dirname(ctx.currentFile), slices[0])
+          .split(/\\|\//)
+          .join("/")
+        node.$ref = referenceFile + `#${slices[1]}`
 
-        if (!node.$ref.includes("examples")) this.references.add(node.$ref)
+        if (!referenceFile.includes("examples")) ctx.references.add(referenceFile)
       }
       return false
     }
     return true
   }
 
-  walk(obj: unknown, path: string[], visited: Set<any>, visitor: (obj, path) => boolean) {
+  walk(obj: unknown, path: string[], visited: Set<any>, context: any, visitor: (obj, path, context) => boolean) {
     if (!obj) {
       return undefined
     }
@@ -39,17 +39,17 @@ export class Resolver {
     }
     visited.add(obj)
 
-    if (visitor(obj, path) === false) {
+    if (visitor(obj, path, context) === false) {
       return
     }
 
     if (Array.isArray(obj)) {
       for (const [index, item] of obj.entries()) {
-        this.walk(item, [...path, index.toString()], visited, visitor)
+        this.walk(item, [...path, index.toString()], visited, context, visitor)
       }
     } else if (typeof obj === "object") {
       for (const [key, item] of Object.entries(obj!)) {
-        this.walk(item, [...path, key], visited, visitor)
+        this.walk(item, [...path, key], visited, context, visitor)
       }
     }
   }
