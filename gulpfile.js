@@ -124,9 +124,9 @@ gulp.task('pack/typescript', function () {
   return gulp.src("./").pipe(run('cd src/typescript && npm pack'));
 })
 
-gulp.task('pack/dotnet', function () {
+gulp.task('pack/dotnet',gulp.series(["build/dotnet"], function () {
   return gulp.src("./").pipe(run('cd src/dotnet/AutoRest && npm pack'));
-})
+}))
 
 // this task can be excuted only when `gulp test` has been excuted successfully
 gulp.task(
