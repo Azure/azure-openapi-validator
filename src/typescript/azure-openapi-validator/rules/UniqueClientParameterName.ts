@@ -1,4 +1,4 @@
-import { nodes, stringify } from "jsonpath"
+import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "./../rule"
 
 export const UniqueClientParameterName: string = "UniqueClientParameterName"

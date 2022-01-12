@@ -2,7 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { nodes } from "jsonpath"
+import { nodes } from "../../jsonpath"
+import { DocumentDependencyGraph } from "../../depsGraph"
+import { deReference } from "./rules-helper"
 
 export interface CollectionApiInfo {
   modelName: string
@@ -43,10 +45,14 @@ export class ResourceUtils {
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(/\\w+/{[^/}]+})+$", "gi")
 
   private XmsResources = new Set<string>()
+  private graph: DocumentDependencyGraph | undefined
+  private specPath: string | undefined
 
-  constructor(swagger: object) {
+  constructor(swagger: object, specPath?: string, graph?: DocumentDependencyGraph) {
     this.innerDoc = swagger
     this.getXmsResources()
+    this.graph = graph
+    this.specPath = specPath
   }
 
   private getSpecificOperationModels(httpMethod, code) {
@@ -127,24 +133,25 @@ export class ResourceUtils {
 
   public stripDefinitionPath(reference: string) {
     const refPrefix = "#/definitions/"
-    if (reference && reference.startsWith(refPrefix)) {
-      return reference.substr(refPrefix.length)
+    const index = reference.indexOf(refPrefix)
+    if (reference && index !== -1) {
+      return reference.substr(index + refPrefix.length)
     }
   }
 
   /**
    *  Get all resources which allOf a x-ms-resource
    */
-  public getAllOfResources() {
+  public getAllResourcesFromDefinitions() {
     const keys = Object.keys(this.innerDoc.definitions as object)
-    const AllOfResources = keys.reduce((pre, cur) => {
-      if (this.getResourceHierarchy(cur).some(model => this.XmsResources.has(model))) {
+    const AllResources = keys.reduce((pre, cur) => {
+      if (this.getResourceHierarchy(cur).some(model => this.checkResource(model))) {
         return [...pre, cur]
       } else {
         return pre
       }
     }, [])
-    return AllOfResources
+    return AllResources
   }
 
   public getAllOperationGetResponseModels() {
@@ -156,6 +163,7 @@ export class ResourceUtils {
     return new Map(models)
   }
 
+  // from paths
   public getAllResourceNames() {
     const modelNames = [
       ...this.getSpecificOperationModels("get", "200").keys(),
@@ -287,32 +295,20 @@ export class ResourceUtils {
       return hierarchy
     }
     for (const refs of jsonPathIt(model, `$.allOf`)) {
-      refs.forEach(ref => {
-        const allOfModel = this.stripDefinitionPath(ref.$ref)
-        hierarchy.push(allOfModel)
-        hierarchy = hierarchy.concat(this.getResourceHierarchy(allOfModel))
-      })
+      refs
+        .filter(ref => !!ref.$ref)
+        .forEach(ref => {
+          const allOfModel = this.stripDefinitionPath(ref.$ref)
+          hierarchy.push(allOfModel)
+          hierarchy = hierarchy.concat(this.getResourceHierarchy(allOfModel))
+        })
     }
     return hierarchy
   }
 
-  private dereference(ref: string, visited: Set<string>) {
-    if (visited.has(ref)) {
-      return undefined
-    }
-    visited.add(ref)
-    const model = this.getResourceByName(this.stripDefinitionPath(ref))
-    if (model && model.$ref) {
-      return this.dereference(model.$ref, visited)
-    } else {
-      return model
-    }
-  }
-
   private getUnwrappedModel(property: any) {
     if (property) {
-      const ref = property.$ref
-      return ref ? this.dereference(ref, new Set<string>()) : property
+      return deReference(this.innerDoc, property, this.graph)
     }
   }
 
@@ -422,7 +418,7 @@ export class ResourceUtils {
     const resourceCollectMap = new Map<string, string>()
     const doc = this.innerDoc
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type == 'array')]")) {
+      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type === 'array')]")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
         if (
@@ -442,15 +438,15 @@ export class ResourceUtils {
   public getCollectionModels() {
     const collectionModels = new Map<string, string>()
     const doc = this.innerDoc
-    const allOfResources = this.getAllOfResources()
+    const allResources = this.getAllResourcesFromDefinitions()
 
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type == 'array')]")) {
+      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type === 'array')]")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
         if (items && items.$ref) {
           const itemsModel = this.stripDefinitionPath(items.$ref)
-          if (allOfResources.indexOf(itemsModel) !== -1) {
+          if (allResources.indexOf(itemsModel) !== -1) {
             collectionModels.set(resourceNode.path[2] as string, this.stripDefinitionPath(items.$ref))
           }
         }
@@ -514,16 +510,9 @@ export class ResourceUtils {
     }
     if (model.allOf) {
       for (const element of model.allOf) {
-        if (element.$ref) {
-          const property = this.getPropertyOfModelName(this.stripDefinitionPath(element.$ref), propertyName)
-          if (property) {
-            return this.getUnwrappedModel(property)
-          }
-        } else {
-          const property = this.getPropertyOfModel(element, propertyName)
-          if (property) {
-            return property
-          }
+        const property = this.getPropertyOfModel(element, propertyName)
+        if (property) {
+          return property
         }
       }
     }

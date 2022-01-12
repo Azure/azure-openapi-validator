@@ -5,8 +5,6 @@ import { resolveNestedSchema } from "../rules/utilities/resolveNestedSchema"
 import {
   getAllResourceProvidersFromPath,
   getAllWordsFromPath,
-  getResolvedJson,
-  getResolvedResponseSchema,
   isValidEnum,
   resourceProviderMustPascalCase,
   resourceTypeMustCamelCase,
@@ -92,72 +90,6 @@ class RuleHelperTests {
     assert.equal(resourceTypeMustCamelCase("Cach#e"), false)
   }
 
-  @test public async "resolve nested schema object"() {
-    const jsoncontent: string = readFileSync("./src/typescript/azure-openapi-validator/tests/resources/NestedSchema.json", {
-      encoding: "utf-8"
-    })
-    const json = JSON.parse(jsoncontent)
-    const resolveReferenceJson: any = await getResolvedJson(json)
-
-    let resolvedResponse = await getResolvedResponseSchema(resolveReferenceJson.definitions.ErrorResponse)
-    const expectResponse = {
-      error: {
-        readOnly: true,
-        code: {
-          type: "string",
-          readOnly: true,
-          description: "The error code."
-        },
-        message: {
-          type: "string",
-          readOnly: true,
-          description: "The error message."
-        }
-      },
-      description: "The key vault error exception."
-    }
-    assert.deepEqual(resolvedResponse, expectResponse)
-
-    resolvedResponse = await resolveNestedSchema(resolveReferenceJson.definitions.Error1)
-    const expectErrorKeys = ["message", "innererror"]
-    assert.deepEqual(Object.keys(resolvedResponse), expectErrorKeys)
-  }
-
-  @test public async "resolve nested schema object with properties property"() {
-    const jsoncontent: string = readFileSync("./src/typescript/azure-openapi-validator/tests/resources/NestedSchema1.json", {
-      encoding: "utf-8"
-    })
-    const json = JSON.parse(jsoncontent)
-    const resolveReferenceJson: any = await getResolvedJson(json)
-
-    let resolvedResponse = await getResolvedResponseSchema(resolveReferenceJson.definitions.ErrorResponse)
-    const expectResponse = {
-      code: {
-        type: "string",
-        readOnly: true,
-        description: "The error code."
-      },
-      message: {
-        type: "string",
-        readOnly: true,
-        description: "The error message."
-      },
-      properties: {
-        details: {
-          type: "string",
-          readOnly: true,
-          description: "The error code."
-        }
-      },
-      description: "ErrorRespone"
-    }
-    assert.deepEqual(resolvedResponse, expectResponse)
-
-    resolvedResponse = await resolveNestedSchema(resolveReferenceJson.definitions.Error1)
-    const expectErrorKeys = ["message", "innererror"]
-    assert.deepEqual(Object.keys(resolvedResponse), expectErrorKeys)
-  }
-
   @test public "test enum helper"() {
     let enumA = `{
         "description": "The provisioning state of the configuration store.",
@@ -221,19 +153,9 @@ class RuleHelperTests {
     assert.deepEqual(transformEnum(enumObj1.type, enumObj1.enum), ["1", "2"])
   }
 
-  @test public async "resolve json"() {
-    const jsoncontent: string = readFileSync("./src/typescript/azure-openapi-validator/tests/resources/utilities/exception.json", {
-      encoding: "utf-8"
-    })
-    const json = JSON.parse(jsoncontent)
-    const resolveReferenceJson: any = await getResolvedJson(json)
-    assert.equal(!!resolveReferenceJson, true)
-  }
-
-
   @test public "regex test"() {
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
-    assert.equal(privateEndpointConnectionsPattern.test('Microsoft.InformationRuntime/privateEndPointConnections'),true)
+    assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndPointConnections"), true)
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndpointconnections"), true)
   }
 }

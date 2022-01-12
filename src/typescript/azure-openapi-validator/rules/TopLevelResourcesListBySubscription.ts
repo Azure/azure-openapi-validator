@@ -12,13 +12,13 @@ rules.push({
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
-  *run(doc, node, path) {
+  *run(doc, node, path, ctx) {
     const msg: string = 'The top-level resource "{0}" does not have list by subscription operation, please add it.'
-    const utils = new ResourceUtils(doc)
+    const utils = new ResourceUtils(doc, ctx.specPath, ctx.graph)
     const topLevelResources = utils.getAllTopLevelResources()
-    const allCollectionPath = utils.getCollectionApiInfo()
+    const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of topLevelResources) {
-      const hasMatched = allCollectionPath.some(
+      const hasMatched = allCollectionApis.some(
         collection => resource === collection.childModelName && collection.collectionGetPath.some(p => utils.isPathBySubscription(p))
       )
       if (!hasMatched) {

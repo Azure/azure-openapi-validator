@@ -43,7 +43,8 @@
     "fs": "^0.0.1-security",
     "js-yaml": "^3.14.0",
     "json-refs": "^3.0.15",
-    "jsonpath": "^1.0.2",
+    "jsonpath-plus": "^6.0.1",
+    "jsonc-parser": "3.0.0",
     "string.prototype.matchall": "^4.0.2",
     "vscode-jsonrpc": "^3.2.0",
     "yargs": "^17.3.0"

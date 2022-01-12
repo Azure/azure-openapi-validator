@@ -17,7 +17,7 @@ export class Resolver {
   updateFileRefs(node: any, path: string[], ctx: any) {
     if (typeof node === "object" && typeof node.$ref === "string") {
       const slices = node.$ref.split("#") as string[]
-      if (slices.length === 2 && !isAbsolute(slices[0])) {
+      if (slices.length === 2 && slices[0] && !isAbsolute(slices[0])) {
         const referenceFile = join(dirname(ctx.currentFile), slices[0])
           .split(/\\|\//)
           .join("/")

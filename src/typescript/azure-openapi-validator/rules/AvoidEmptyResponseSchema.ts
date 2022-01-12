@@ -5,8 +5,6 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const AvoidEmptyResponseSchema: string = "AvoidEmptyResponseSchema"
 
-const jp = require("jsonpath")
-
 rules.push({
   id: "R4008",
   name: AvoidEmptyResponseSchema,

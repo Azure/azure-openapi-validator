@@ -21,9 +21,9 @@ rules.push({
      */
     const utils = new ResourceUtils(doc)
     const nestedResource = utils.getAllNestedResources()
-    const allCollectionPath = utils.getCollectionApiInfo()
+    const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of nestedResource) {
-      const hasMatched = allCollectionPath.some(collection => resource === collection.childModelName)
+      const hasMatched = allCollectionApis.some(collection => resource === collection.childModelName)
       if (!hasMatched) {
         yield {
           message: msg.replace("{0}", resource),

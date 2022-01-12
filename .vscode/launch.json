@@ -53,6 +53,17 @@
             "preLaunchTask": "build"
         },
         {
+            "type": "node",
+            "protocol": "inspector",
+            "request": "launch",
+            "name": "run cli",
+            "program": "${workspaceRoot}/src/typescript/commands/cli.js",
+            "args": [
+                "D:/codes/azure-rest-api-specs/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2020-01-01-preview/managedcluster.json","--openapiType","arm"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",

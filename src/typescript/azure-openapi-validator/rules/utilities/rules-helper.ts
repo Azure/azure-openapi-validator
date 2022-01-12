@@ -2,11 +2,10 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-const $RefParser = require("@apidevtools/json-schema-ref-parser")
-import { apply, nodes, stringify } from "jsonpath"
-import { JsonPath } from "../../../jsonrpc/types"
-import { resolveNestedSchema } from "./resolveNestedSchema"
 const matchAll = require("string.prototype.matchall")
+import { DocumentDependencyGraph } from "../../depsGraph"
+import { parseJsonRef } from "../../document"
+import { stringify, nodes } from "../../jsonpath"
 
 export function getSuccessfulResponseSchema(node, doc): any {
   const responses = Object.keys(node.responses)
@@ -33,63 +32,14 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
 }
 
 export function getResponseSchema(response: object, doc): any {
-  const schema = (response as any).schema
+  let schema = (response as any).schema
   if (schema === undefined || schema === null) {
     return
   }
   if ("$ref" in schema) {
-    const schemaRef = schema.$ref
-    const schemaPath: string[] = (schemaRef as string).split("/")
-    const schemaProperties = doc.definitions[schemaPath[2]].properties
-    return schemaProperties
+    schema = deReference(doc, schema)
   }
   return schema.properties
-}
-
-/**
- * return a dereferenced json, also will resolve the circular $refs
- */
-export async function getResolvedJson(doc: any): Promise<object | undefined> {
-  try {
-    const parser = new $RefParser()
-    const docCopy = JSON.parse(JSON.stringify(doc))
-    /*
-     * remove x-ms-examples
-     */
-    apply(docCopy, `$..['x-ms-examples']`, e => null)
-    return await parser.dereference(docCopy)
-  } catch (err) {
-    return
-  }
-}
-
-export async function getResolvedSchemaByPath(schemaPath: JsonPath, doc: any): Promise<object | undefined> {
-  const resolvedJson = await getResolvedJson(doc)
-  if (!resolvedJson) {
-    return undefined
-  }
-  const pathExpression = stringify(schemaPath)
-  const result = nodes(resolvedJson, pathExpression)
-  if (!result) {
-    return undefined
-  }
-  const schema = result[0].value
-  return getResolvedResponseSchema(schema)
-}
-
-/*
- * resolve the `allOf` and `properties` keywords in the schema
- * return a flatted json
- */
-export async function getResolvedResponseSchema(schema: object): Promise<object | undefined> {
-  if (!schema) {
-    return
-  }
-  try {
-    return resolveNestedSchema(schema)
-  } catch (err) {
-    return
-  }
 }
 
 export function getAllResourceProvidersFromPath(path: string): string[] {
@@ -140,25 +90,39 @@ export function transformEnum(type: string, enumEntries) {
   })
 }
 
-export function deReference(doc: any, schema: any) {
+export function deReference(doc: any, schema: any, graph?: DocumentDependencyGraph) {
   const getRefModel = (refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
     }
     visited.push(refValue)
-    const pathExpression = refValue.replace(/^#\//, "").split("/")
+    const refSlices = parseJsonRef(refValue)
+    const pathExpression = refSlices[1].split("/").slice(1)
     try {
-      const result = nodes(doc, stringify(pathExpression))
+      const result = nodes(doc, stringify(["$", ...pathExpression]))
       return result.length !== 0 ? result[0].value : undefined
     } catch (err) {
       throw err
     }
   }
+
   if (schema && doc) {
     if (schema.$ref) {
-      return getRefModel(schema.$ref, [])
+      const refSlices = parseJsonRef(schema.$ref)
+      if (graph && refSlices[0]) {
+        doc = graph.getDocument(refSlices[0])
+      }
+      schema = getRefModel(`#${refSlices[1]}`, [])
+      return deReference(doc, schema, graph)
     }
     return schema
   }
   return undefined
+}
+
+export function getResolvedSchemaByPath(doc: any, path: string[], graph: DocumentDependencyGraph) {
+  const result = nodes(doc, stringify(path))
+  if (result) {
+    return deReference(doc, result.value, graph)
+  }
 }

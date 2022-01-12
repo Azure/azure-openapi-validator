@@ -15,23 +15,21 @@ rules.push({
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.rpaas,
   appliesTo_JsonQuery: "$",
-  *run(doc, node, path) {
+  *run(doc, node, path, ctx) {
     const msg = `[RPaaS] The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
-    const utils = new ResourceUtils(doc)
+    const utils = new ResourceUtils(doc, ctx.specPath, ctx.graph)
     const allResources = utils.getAllResource()
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)
-      const properties = utils.getPropertyOfModel(model,"properties")
+      const properties = utils.getPropertyOfModel(model, "properties")
       let hasProvisioningState = false
       if (properties && (!properties.type || properties.type === "object")) {
-        if (utils.getPropertyOfModel(properties,"provisioningState")) {
+        if (utils.getPropertyOfModel(properties, "provisioningState")) {
           hasProvisioningState = true
         }
-        
       }
       if (!hasProvisioningState) {
-        yield {  message: msg.replace("{0}", resource),
-        location: ["$", "definitions", resource] as JsonPath}
+        yield { message: msg.replace("{0}", resource), location: ["$", "definitions", resource] as JsonPath }
       }
     }
   }

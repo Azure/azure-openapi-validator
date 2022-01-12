@@ -1,10 +1,10 @@
 import * as _ from "lodash"
 import * as path from "path"
-import { dirname, isAbsolute } from "path"
 const DepGraph = require("dependency-graph").DepGraph
 import $RefParser = require("@apidevtools/json-schema-ref-parser")
 import glob = require("glob")
 import { OpenapiDocument } from "./document"
+import { JsonParser } from "./jsonParser"
 
 export class DocumentDependencyGraph {
   private graph = new DepGraph()
@@ -54,7 +54,7 @@ export class DocumentDependencyGraph {
     return segments[segments.length - 2]
   }
 
-  public async generateDiagramGraph(folderPath: string) {
+  public async generateGraph(folderPath: string) {
     const options = { ignoreCommonType: false, outputReadmeGraph: true }
     await this.scanFolder(folderPath, options)
   }
@@ -62,18 +62,9 @@ export class DocumentDependencyGraph {
   private async getReferences(specPath: string): Promise<string[]> {
     const document = await this.cacheDocument(specPath)
     return document.getReferences()
-    /*
-    await this.parser.resolve(specPath)
-    const refs = _.uniq(
-      this.parser.$refs
-        .paths()
-        .filter(f => f.indexOf("examples") === -1)
-        .map(f => (isAbsolute(f) ? f : path.join(dirname(specPath), f)))
-    ) as string[]
-    return refs */
   }
 
-  async getDocument(specPath: string) {
+  async loadDocument(specPath: string) {
     const simplePath = this.getSimplyPath(specPath)
     if (this.referenceCache.has(simplePath)) {
       return this.referenceCache.get(simplePath)
@@ -81,8 +72,17 @@ export class DocumentDependencyGraph {
     return await this.cacheDocument(simplePath)
   }
 
+  getDocument(specPath: string) {
+    const simplePath = this.getSimplyPath(specPath)
+    if (this.referenceCache.has(simplePath)) {
+      return this.referenceCache.get(simplePath)
+    }
+    throw new Error(`No cached file:${specPath}`)
+  }
+
   async cacheDocument(specPath: string) {
-    const document = new OpenapiDocument(specPath)
+    const parser = new JsonParser()
+    const document = new OpenapiDocument(specPath, parser)
     await document.resolve()
     this.referenceCache.set(specPath, document)
     return document
@@ -90,5 +90,17 @@ export class DocumentDependencyGraph {
 
   public dependantsOf(specPath: string) {
     return this.graph.dependantsOf(this.getSimplyPath(specPath))
+  }
+
+  public dependenciesOf(specPath: string) {
+    return this.graph.dependenciesOf(this.getSimplyPath(specPath))
+  }
+
+  public getDocFromJsonRef(ref: string) {
+    const simplePath = this.getSimplyPath(ref)
+    if (this.referenceCache.has(simplePath)) {
+      return this.referenceCache.get(simplePath)
+    }
+    return undefined
   }
 }

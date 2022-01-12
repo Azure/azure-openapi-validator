@@ -2,11 +2,10 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { nodes } from "jsonpath"
 import { dirname, isAbsolute, join, normalize } from "path"
-import { Message } from "../jsonrpc/types"
+import { Message, Position } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
-import { sendMessage } from "./message"
+import { nodes } from "./jsonpath"
 import { MergeStates, OpenApiTypes, Rule, rules, ValidationMessage } from "./rule"
 
 // register rules
@@ -72,11 +71,14 @@ export const runRules = async (
     for (const appliesTo_JsonQuery of appliesTo_JsonQueries) {
       for (const section of nodes(openapiDefinition, appliesTo_JsonQuery)) {
         if (rule.run) {
-          for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1), graph)) {
+          for (const message of rule.run(openapiDefinition, section.value, section.path.slice(1), { specPath: document, graph })) {
             handle(rule, message)
           }
         } else {
-          for await (const message of rule.asyncRun(openapiDefinition, section.value, section.path.slice(1))) {
+          for await (const message of rule.asyncRun(openapiDefinition, section.value, section.path.slice(1), {
+            specPath: document,
+            graph
+          })) {
             handle(rule, message)
           }
         }
@@ -141,8 +143,22 @@ export async function runCli(swaggerPath: string, options: LintOptions) {
     swaggerPath = normalize(swaggerPath)
   }
   const rpFolder = options.rpFolder || join(dirname(swaggerPath), "../../..")
-  await graph.generateDiagramGraph(rpFolder)
-  const documentInstance = (await graph.getDocument(swaggerPath)).getObj()
+  await graph.generateGraph(rpFolder)
+  const documentInstance = (await graph.loadDocument(swaggerPath)).getObj()
+
+  const sendMessage = (msg: Message) => {
+    const document = graph.getDocument(msg.Source[0].document)
+    const pos = document.getPositionFromJsonPath((msg.Source[0].Position as any).path)
+    const jsonMsg = {
+      sources: msg.Source[0].document + `:${pos.line}:${pos.column}`,
+      code: msg.Key[1],
+      jsonpath: msg.Source[0].Position,
+      message: msg.Details,
+      severity: msg.Channel
+    }
+    console.log(JSON.stringify(jsonMsg, null, 2))
+  }
+
   await run(swaggerPath, documentInstance, sendMessage, getOpenapiTypes(options.openapiType), MergeStates.composed, graph)
 }
 

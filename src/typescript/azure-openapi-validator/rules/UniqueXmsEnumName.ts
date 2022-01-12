@@ -3,9 +3,9 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { isValidEnum, transformEnum } from "./utilities/rules-helper"
+import { isValidEnum } from "./utilities/rules-helper"
 export const UniqueXmsEnumName: string = "UniqueXmsEnumName"
-import { nodes, stringify } from "jsonpath"
+import { nodes, stringify } from "../jsonpath"
 
 rules.push({
   id: "R4005",

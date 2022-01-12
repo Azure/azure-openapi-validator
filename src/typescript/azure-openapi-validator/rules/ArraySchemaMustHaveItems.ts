@@ -5,8 +5,6 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 export const ArraySchemaMustHaveItems: string = "ArraySchemaMustHaveItems"
 
-const jp = require("jsonpath")
-
 rules.push({
   id: "R2009",
   name: ArraySchemaMustHaveItems,

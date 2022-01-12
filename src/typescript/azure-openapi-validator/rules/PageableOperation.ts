@@ -6,8 +6,6 @@ import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { getSuccessfulResponseSchema } from "./utilities/rules-helper"
 export const PageableOperation: string = "PageableOperation"
 
-const jp = require("jsonpath")
-
 rules.push({
   id: "R2029",
   name: PageableOperation,
