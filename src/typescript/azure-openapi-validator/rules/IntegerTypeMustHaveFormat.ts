@@ -12,7 +12,7 @@ rules.push({
   category: "ARMViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..*[?(@.type == 'integer')]",
+  appliesTo_JsonQuery: "$..*[?(@property === 'type' && @ === 'integer')]^",
   *run(doc, node, path) {
     if (path.indexOf("x-ms-examples") === -1) {
       const msg: string = `The integer type does not have a format, please add it.`

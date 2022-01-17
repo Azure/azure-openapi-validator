@@ -133,8 +133,11 @@ export class ResourceUtils {
 
   public stripDefinitionPath(reference: string) {
     const refPrefix = "#/definitions/"
+    if (!reference) {
+      return undefined
+    }
     const index = reference.indexOf(refPrefix)
-    if (reference && index !== -1) {
+    if (index !== -1) {
       return reference.substr(index + refPrefix.length)
     }
   }
@@ -418,11 +421,12 @@ export class ResourceUtils {
     const resourceCollectMap = new Map<string, string>()
     const doc = this.innerDoc
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type === 'array')]")) {
+      for (const arrayNode of nodes(resourceNode.value, "$..[?(@property === 'type' && @ === 'array')]^")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
         if (
           items &&
+          items.$ref &&
           resourceModel.has(this.stripDefinitionPath(items.$ref)) &&
           arrayNode.path.length === 3 &&
           arrayNode.path[1] === "properties" &&
@@ -441,7 +445,7 @@ export class ResourceUtils {
     const allResources = this.getAllResourcesFromDefinitions()
 
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode.value, "$..[?(@.type === 'array')]")) {
+      for (const arrayNode of nodes(resourceNode.value, "$..[?(@property === 'type' && @ === 'array')]^")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
         if (items && items.$ref) {
@@ -463,6 +467,11 @@ export class ResourceUtils {
     return !!path.match(this.ResourceGroupWideResourceRegEx)
   }
 
+  /**
+   *
+   * @param path
+   * @returns model definitions name or undefined if the model is anonymous
+   */
   public getModelFromPath(path: string) {
     let pathObj = this.innerDoc.paths[path]
     if (!pathObj && this.innerDoc["x-ms-paths"]) {

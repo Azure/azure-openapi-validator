@@ -13,7 +13,7 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..*[?(@.enum)]",
+  appliesTo_JsonQuery: "$..*[?(@property==='enum')]^",
   *run(doc, node, path) {
     const msg: string = `Enum must define its type and "object" type is not allowed due to Autorest refuse to parse it.`
 

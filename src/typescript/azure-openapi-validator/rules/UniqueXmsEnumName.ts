@@ -19,7 +19,7 @@ rules.push({
     const msg: string = `Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique.`
     if (node) {
       const enumMap = new Map<string, any>()
-      for (const section of nodes(node, "$..*[?(@.enum)]")) {
+      for (const section of nodes(node, "$..*[?(@property === 'enum')]^")) {
         if (section.value["x-ms-enum"] && isValidEnum(section.value)) {
           const enumName = section.value["x-ms-enum"].name.toLowerCase()
           if (enumMap.has(enumName)) {

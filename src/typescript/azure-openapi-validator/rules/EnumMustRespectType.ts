@@ -13,7 +13,7 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: ["$.parameters..[?(@.enum)]", "$.definitions..[?(@.enum)]"],
+  appliesTo_JsonQuery: ['$.parameters..[?(@property === "enum")]^', '$.definitions..[?(@property === "enum")]^'],
   *run(doc, node, path) {
     const msg: string = `Enum values should respect the type.`
     if (node.enum && isValidEnum(node)) {

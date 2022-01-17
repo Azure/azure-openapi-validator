@@ -2,10 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import * as assert from "assert"
 import { only, skip, slow, suite, test, timeout } from "mocha-typescript"
-import { run } from "../../azure-openapi-validator"
-import { AutoRestPluginHost } from "../../jsonrpc/plugin-host"
 import { Message } from "../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { AllResourcesMustHaveGetOperation } from "../rules/AllResourcesMustHaveGetOperation"

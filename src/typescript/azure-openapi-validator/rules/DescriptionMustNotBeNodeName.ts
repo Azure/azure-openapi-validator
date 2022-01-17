@@ -12,7 +12,7 @@ rules.push({
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
 
-  appliesTo_JsonQuery: "$..*[?(@.description)]",
+  appliesTo_JsonQuery: "$..*[?(@property === 'description')]^",
   *run(doc, node, path) {
     const msg: string = "Description must not match the name of the node it is supposed to describe."
     // description can be of any type (including an object, so check for a string type)

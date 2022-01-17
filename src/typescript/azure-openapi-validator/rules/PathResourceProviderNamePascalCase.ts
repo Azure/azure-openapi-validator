@@ -1,6 +1,6 @@
 import { rules } from "../rule"
 import { getAllResourceProvidersFromPath, resourceProviderMustPascalCase } from "../rules/utilities/rules-helper"
-import { MergeStates, OpenApiTypes } from "./../rule"
+import { MergeStates, OpenApiTypes } from "../rule"
 
 export const PathResourceProviderNamePascalCase: string = "PathResourceProviderNamePascalCase"
 

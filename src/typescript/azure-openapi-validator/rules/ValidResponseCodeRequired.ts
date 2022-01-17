@@ -14,7 +14,7 @@ rules.push({
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.paths.*.*.responses",
-  async *asyncRun(doc, node, path) {
+  *run(doc, node, path) {
     const msg: string = "There is no declared valid status code."
     const response: any = node
     if (response.default && Object.keys(response).length === 1) {

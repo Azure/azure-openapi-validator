@@ -1,5 +1,5 @@
 import { MessageReader } from "vscode-jsonrpc"
-import { JsonPath } from "../../jsonrpc/types"
+import { JsonPath } from "../typeDeclaration"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"

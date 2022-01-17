@@ -14,8 +14,7 @@ rules.push({
   category: "ARMViolation",
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "",
-  async *asyncRun(doc, node, path, ctx) {
+  async *run(doc, node, path, ctx) {
     if (doc.info && doc.info.version) {
       const apiVersion = doc.info.version
       const matched = apiVersion.match(/\d{4}\-\d{2}\-\d{2}/g)

@@ -1,5 +1,5 @@
 import { nodes } from "../jsonpath"
-import { MergeStates, OpenApiTypes, rules } from "./../rule"
+import { MergeStates, OpenApiTypes, rules } from "../rule"
 
 export const UniqueXmsExample: string = "UniqueXmsExample"
 

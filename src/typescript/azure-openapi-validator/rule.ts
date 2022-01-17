@@ -2,7 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { JsonPath } from "../jsonrpc/types"
+import { JsonPath } from "./typeDeclaration"
 import { DocumentDependencyGraph } from "./depsGraph"
 
 export enum OpenApiTypes {
@@ -26,19 +26,21 @@ export interface RuleContext {
   graph?: DocumentDependencyGraph
   specPath: string
 }
-
+export type IRuleRun = (
+  openapiDocument: any,
+  openapiSection: any,
+  location: JsonPath,
+  ctx?: RuleContext
+) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 export interface Rule {
   readonly id: string // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string // see same website as above
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
   readonly severity: "error" | "warning"
-
   readonly mergeState: MergeStates
   readonly openapiType: OpenApiTypes
-
   readonly appliesTo_JsonQuery?: string | string[] // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
-  run?(openapiDocument: any, openapiSection: any, location: JsonPath, ctx?: RuleContext): Iterable<ValidationMessage>
-  asyncRun?(openapiDocument: any, openapiSection: any, location: JsonPath, ctx?: RuleContext): AsyncIterable<ValidationMessage>
+  run: IRuleRun
 }
 
 export const rules: Rule[] = []

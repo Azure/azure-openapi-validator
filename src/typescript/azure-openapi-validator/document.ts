@@ -1,5 +1,5 @@
 import { readFileSync } from "fs"
-import { JsonPath } from "../jsonrpc/types"
+import { JsonPath } from "./typeDeclaration"
 import { JsonInstance, JsonParser } from "./jsonParser"
 import { Resolver } from "./resolver"
 

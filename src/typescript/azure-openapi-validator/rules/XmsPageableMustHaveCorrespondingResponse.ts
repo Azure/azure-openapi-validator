@@ -14,8 +14,8 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "$.paths..['x-ms-pageable']",
-  async *asyncRun(doc, node, path) {
+  appliesTo_JsonQuery: "$.paths..[?(@property ==='x-ms-pageable')]^",
+  async *run(doc, node, path) {
     const nextLinkValue = node.nextLinkName
     // null is allowed
     if (!nextLinkValue) {

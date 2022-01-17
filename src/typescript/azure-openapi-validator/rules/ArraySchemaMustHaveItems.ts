@@ -12,7 +12,7 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.default,
-  appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type==='array')]",
+  appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type==='array')]^",
   *run(doc, node, path) {
     const msg: string = "Please provide an 'items' property for array type: "
     if (!node.hasOwnProperty("items")) {

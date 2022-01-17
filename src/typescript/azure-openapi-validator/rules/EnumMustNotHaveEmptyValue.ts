@@ -13,7 +13,7 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$..*[?(@.enum)]",
+  appliesTo_JsonQuery: "$..*[?(@property === 'enum')]^",
   *run(doc, node, path) {
     const msg: string = `Enum value must not contain empty value.`
     if (path.indexOf("x-ms-examples") === -1 && isValidEnum(node)) {
