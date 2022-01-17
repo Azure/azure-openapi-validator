@@ -26,12 +26,13 @@ export interface RuleContext {
   graph?: DocumentDependencyGraph
   specPath: string
 }
-export type IRuleRun = (
+export type IRuleFunction = (
   openapiDocument: any,
   openapiSection: any,
   location: JsonPath,
   ctx?: RuleContext
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
+
 export interface Rule {
   readonly id: string // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly name: string // see same website as above
@@ -40,7 +41,7 @@ export interface Rule {
   readonly mergeState: MergeStates
   readonly openapiType: OpenApiTypes
   readonly appliesTo_JsonQuery?: string | string[] // see https://www.npmjs.com/package/jsonpath#jsonpath-syntax for syntax and samples
-  run: IRuleRun
+  run: IRuleFunction
 }
 
 export const rules: Rule[] = []

@@ -5,7 +5,7 @@ import { UniqueXmsExample } from "./../rules/UniqueXmsExample"
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { suite, test } from "mocha-typescript"
-import { Message } from "../typeDeclaration"
+import { Message } from "../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema"
 import { ControlCharactersAreNotAllowed } from "../rules/ControlCharactersAreNotAllowed"

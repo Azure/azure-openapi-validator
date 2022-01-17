@@ -27,7 +27,7 @@ export const runRules = async (
     }
     for (const appliesTo_JsonQuery of appliesTo_JsonQueries) {
       for (const section of nodes(openapiDefinition, appliesTo_JsonQuery)) {
-        for await (const message of rule.run(openapiDefinition, section.value, section.path.slice(1), {
+        for await (const message of rule.then.function(openapiDefinition, section.value, section.path.slice(1), {
           specPath: document,
           graph
         })) {

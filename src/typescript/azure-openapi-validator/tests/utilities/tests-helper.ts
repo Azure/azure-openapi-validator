@@ -5,7 +5,7 @@
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
 import { run } from "../../../azure-openapi-validator"
-import { Message } from "../../typeDeclaration"
+import { Message } from "../../../jsonrpc/types"
 import { MergeStates, OpenApiTypes } from "../../rule"
 import ruleSet from "../../ruleSet"
 const fs = require("fs")

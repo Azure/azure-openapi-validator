@@ -1,5 +1,5 @@
 import { pattern } from "./functions/pattern"
-import { rules } from "./rule"
+import { MergeStates, OpenApiTypes, rules } from "./rule"
 import { IRuleSet, RulesObject } from "./typeDeclaration"
 // register rules
 require("./rules/PageableOperation")
@@ -51,7 +51,7 @@ export { ruleSet as default }
 function createFromLegacyRules() {
   const legacyRules: RulesObject = {}
   for (const rule of rules) {
-    legacyRules[rule.name] = rule
+    legacyRules[rule.name] = { ...rule, then: { function: rule.run, options: {} } }
   }
   return legacyRules
 }
@@ -60,5 +60,20 @@ export const legacyRules = createFromLegacyRules()
 
 export const ruleSet: IRuleSet = {
   documentationUrl: "",
-  rules: { ...legacyRules, test: { id: "R4014", category: "ARMViolation", severity: "error", appliesTo_JsonQuery: "", run: pattern } }
+  rules: {
+    ...legacyRules,
+    test: {
+      id: "R4014",
+      category: "ARMViolation",
+      severity: "error",
+      appliesTo_JsonQuery: "",
+      mergeState: MergeStates.individual,
+      openapiType: OpenApiTypes.arm,
+      then: {
+        field: "",
+        options: {},
+        function: pattern
+      }
+    }
+  }
 }
