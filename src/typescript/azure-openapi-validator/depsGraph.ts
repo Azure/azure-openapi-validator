@@ -5,6 +5,7 @@ import $RefParser = require("@apidevtools/json-schema-ref-parser")
 import glob = require("glob")
 import { OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
+import { isAbsolute, normalize } from "path"
 
 export class DocumentDependencyGraph {
   private graph = new DepGraph()
@@ -65,6 +66,9 @@ export class DocumentDependencyGraph {
   }
 
   async loadDocument(specPath: string) {
+    if (!isAbsolute(specPath)) {
+      specPath = normalize(specPath)
+    }
     const simplePath = this.getSimplyPath(specPath)
     if (this.referenceCache.has(simplePath)) {
       return this.referenceCache.get(simplePath)

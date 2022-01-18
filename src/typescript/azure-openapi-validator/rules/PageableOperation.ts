@@ -13,7 +13,7 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: "$.paths[?(@property==='get')]^",
+  appliesTo_JsonQuery: "$.paths.*[?(@property==='get')]^",
   *run(doc, node, path) {
     const operations = Object.keys(node)
     const getKey = operations.find(key => {

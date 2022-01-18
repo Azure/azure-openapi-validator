@@ -2,8 +2,8 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
+import { SwaggerUtils } from "../swaggerUtils"
 import { getResolvedSchemaByPath } from "./utilities/rules-helper"
 
 export const DefaultErrorResponseSchema: string = "DefaultErrorResponseSchema"
@@ -24,21 +24,20 @@ rules.push({
     if (response.default && response.default.schema) {
       const paths = path.concat(["default", "schema"])
 
-      const schema: any = getResolvedSchemaByPath(doc, path.concat("schema") as string[], ctx.graph)
+      const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx.graph)
 
-      /*
-        * the schema should match below structure:
-          {
-            "error":{
-              "code":"error code",
-              "message":"error message"
-              ...
-            }
+      const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
+      if (schema) {
+        const errorDefinition = utils.getPropertyOfModel(schema, "error")
+        if (errorDefinition) {
+          const code = utils.getPropertyOfModel(errorDefinition, "code")
+          const message = utils.getPropertyOfModel(errorDefinition, "message")
+          if (code && message) {
+            return
           }
-        */
-      if (!schema || !schema.error || !schema.error.code || !schema.error.message) {
-        yield { message: `${msg}`, location: paths }
+        }
       }
+      yield { message: `${msg}`, location: paths }
     }
   }
 })

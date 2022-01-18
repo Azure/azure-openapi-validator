@@ -15,7 +15,7 @@ rules.push({
   appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type==='array')]^",
   *run(doc, node, path) {
     const msg: string = "Please provide an 'items' property for array type: "
-    if (!node.hasOwnProperty("items")) {
+    if (!("items" in node)) {
       yield { message: `${msg} '${path[path.length - 2]}'`, location: path.slice(0, path.length - 2) }
     }
   }

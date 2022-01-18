@@ -6,8 +6,8 @@ import { dirname, isAbsolute, join, normalize } from "path"
 import { Message } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes, stringify } from "./jsonpath"
-import { MergeStates, OpenApiTypes, Rule, ValidationMessage } from "./rule"
-import ruleSet from "./ruleSet"
+import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
+import ruleSet from "./rulesets/ruleSet"
 import { IRule, IRuleSet } from "./typeDeclaration"
 
 export const runRules = async (
@@ -21,16 +21,22 @@ export const runRules = async (
 ) => {
   const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].mergeState === mergeState && rule[1].openapiType & openapiType)
   for (const [ruleName, rule] of rulesToRun) {
-    let appliesTo_JsonQueries = rule.appliesTo_JsonQuery || "$"
-    if (!Array.isArray(appliesTo_JsonQueries)) {
-      appliesTo_JsonQueries = [appliesTo_JsonQueries]
+    let givens = rule.given || "$"
+    if (!Array.isArray(givens)) {
+      givens = [givens]
     }
-    for (const appliesTo_JsonQuery of appliesTo_JsonQueries) {
-      for (const section of nodes(openapiDefinition, appliesTo_JsonQuery)) {
-        for await (const message of rule.then.function(openapiDefinition, section.value, section.path.slice(1), {
-          specPath: document,
-          graph
-        })) {
+    for (const given of givens) {
+      for (const section of nodes(openapiDefinition, given)) {
+        for await (const message of rule.then.function(
+          openapiDefinition,
+          rule.then.appliesToKey ? section.property : section.value,
+          section.path.slice(1),
+          {
+            specPath: document,
+            graph
+          },
+          rule.then.options
+        )) {
           calcResult(ruleName, rule, message)
         }
       }
@@ -90,9 +96,6 @@ export type LintOptions = {
 
 export async function runCli(swaggerPath: string, options: LintOptions) {
   const graph = new DocumentDependencyGraph()
-  if (!isAbsolute(swaggerPath)) {
-    swaggerPath = normalize(swaggerPath)
-  }
   const rpFolder = options.rpFolder || join(dirname(swaggerPath), "../../..")
   await graph.generateGraph(rpFolder)
   const documentInstance = (await graph.loadDocument(swaggerPath)).getObj()

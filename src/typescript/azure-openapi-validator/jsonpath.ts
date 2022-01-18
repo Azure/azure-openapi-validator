@@ -6,5 +6,6 @@ export function nodes(obj: any, pathExpression: string) {
 }
 
 export function stringify(path: string[]) {
-  return JSONPath.JSONPath.toPathString(path)
+  const pathWithRoot = ["$", ...path]
+  return JSONPath.JSONPath.toPathString(pathWithRoot)
 }

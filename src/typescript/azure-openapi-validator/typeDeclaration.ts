@@ -5,8 +5,8 @@
 import { IRuleFunction, MergeStates, OpenApiTypes } from "./rule"
 
 export type RuleThen = {
-  options: {}
-  field?: string
+  options: any
+  appliesToKey?: boolean
   function: IRuleFunction
 }
 
@@ -17,7 +17,7 @@ export interface IRule {
   readonly severity: "error" | "warning"
   readonly mergeState: MergeStates
   readonly openapiType: OpenApiTypes
-  readonly appliesTo_JsonQuery?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples
+  readonly given?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples
   then: RuleThen
 }
 

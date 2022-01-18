@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "../../jsonpath"
 import { DocumentDependencyGraph } from "../../depsGraph"
-import { deReference } from "./rules-helper"
+import { deReference } from "../../swaggerUtils"
 
 export interface CollectionApiInfo {
   modelName: string

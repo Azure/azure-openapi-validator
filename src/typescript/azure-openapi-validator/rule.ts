@@ -30,7 +30,8 @@ export type IRuleFunction = (
   openapiDocument: any,
   openapiSection: any,
   location: JsonPath,
-  ctx?: RuleContext
+  ctx?: RuleContext,
+  opt?: any
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface Rule {

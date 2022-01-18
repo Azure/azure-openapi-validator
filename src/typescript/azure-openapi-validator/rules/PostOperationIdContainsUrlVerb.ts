@@ -12,7 +12,7 @@ rules.push({
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
 
-  appliesTo_JsonQuery: "$.paths[?(@property==='post')]^",
+  appliesTo_JsonQuery: "$.paths.*[?(@property==='post')]^",
   *run(doc, node, path) {
     // path array returned here will be of the form ['paths', 'some/path']
     // pick the last element to get hold of the actual path

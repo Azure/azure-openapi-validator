@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { getMostSuccessfulResponseKey } from "./utilities/rules-helper"
+import { SwaggerUtils } from "../swaggerUtils"
+import { getMostSuccessfulResponseKey, getResolvedSchemaByPath } from "./utilities/rules-helper"
 export const XmsPageableMustHaveCorrespondingResponse: string = "XmsPageableMustHaveCorrespondingResponse"
 
 rules.push({
@@ -14,24 +15,22 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: "$.paths..[?(@property ==='x-ms-pageable')]^",
-  async *run(doc, node, path) {
-    const nextLinkValue = node.nextLinkName
+  appliesTo_JsonQuery: "$.paths..[?(@property==='x-ms-pageable')]^",
+  async *run(doc, node, path, ctx) {
+    const nextLinkValue = node["x-ms-pageable"].nextLinkName
     // null is allowed
     if (!nextLinkValue) {
       return
     }
-    const parentNode = nodes(doc, stringify(path.slice(0, path.length - 1) as string[]))[0].value
-    const mostSuccesskey = getMostSuccessfulResponseKey(Object.keys(parentNode.responses))
+    const mostSuccesskey = getMostSuccessfulResponseKey(Object.keys(node.responses))
 
-    const msg: string = `The operation: '${parentNode.operationId}' is defined with x-ms-pageable enabled,but can not find the corresponding nextLink property in the response, please add it.`
+    const msg: string = `The operation: '${node.operationId}' is defined with x-ms-pageable enabled,but can not find the corresponding nextLink property in the response, please add it.`
 
-    if (parentNode.responses && parentNode.responses[mostSuccesskey]) {
-      const resolvedSchema = nodes(
-        doc,
-        stringify(path.slice(0, path.length - 1).concat(["responses", mostSuccesskey, "schema"]) as string[])
-      )
-      if (resolvedSchema && !resolvedSchema[nextLinkValue]) {
+    if (node.responses && node.responses[mostSuccesskey]) {
+      const schemaPath = path.concat(["responses", mostSuccesskey, "schema"]) as string[]
+      const resolvedSchema = getResolvedSchemaByPath(doc, schemaPath as string[], ctx.graph)
+      const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
+      if (resolvedSchema && !utils.getPropertyOfModel(resolvedSchema, nextLinkValue)) {
         yield { message: `${msg}`, location: path }
       }
     }

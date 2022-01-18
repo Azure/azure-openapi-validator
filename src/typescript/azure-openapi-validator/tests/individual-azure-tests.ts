@@ -48,8 +48,13 @@ class IndividualAzureTests {
 
   @test public async "post operation id must contain Url verb"() {
     const fileName = "PostOperationIdWithoutUrlVerb.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
-    assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual,
+      PostOperationIdContainsUrlVerb
+    )
+    assert.strictEqual(messages.length, 1)
     assert(
       messages[0].Text === "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
     )
@@ -82,7 +87,7 @@ class IndividualAzureTests {
 
   @test public async "Enum unique value"() {
     const fileName = "EnumUniqueValue.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual, EnumUniqueValue)
     assertValidationRuleCount(messages, EnumUniqueValue, 1)
   }
 
@@ -118,7 +123,12 @@ class IndividualAzureTests {
 
   @test public async "default response schema correspond to document"() {
     const fileName = "DefaultResponseSchemaMatch.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.individual,
+      DefaultErrorResponseSchema
+    )
     assertValidationRuleCount(messages, DefaultErrorResponseSchema, 0)
   }
 
@@ -203,7 +213,12 @@ class IndividualAzureTests {
   // Failure #1 : RPaaS DELETE async response supports 202 only. 201 is not supported.
   @test public async "Raas DELETE async operation doesn't support 201"() {
     const fileName = "RpaasDeleteAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_DeleteOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 1)
   }
 
@@ -211,7 +226,12 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas DELETE async operation missing x-ms* async extensions"() {
     const fileName = "RpaasDeleteAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_DeleteOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 2)
   }
 
@@ -219,21 +239,36 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas DELETE async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasDeleteAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_DeleteOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 2)
   }
 
   // Valid 202 response for DELETE operation in RPaaS
   @test public async "Raas DELETE async operation is defined correctly"() {
     const fileName = "RpaasValidDeleteAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_DeleteOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 0)
   }
 
   // Failure #1 : RPaaS POST async response supports 202 only. 201 is not supported.
   @test public async "Raas POST async operation doesn't support 201"() {
     const fileName = "RpaasPostAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_PostOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 1)
   }
 
@@ -241,7 +276,12 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas POST async operation missing x-ms* async extensions"() {
     const fileName = "RpaasPostAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_PostOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 2)
   }
 
@@ -249,7 +289,12 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas POST async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasPostAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      MergeStates.individual,
+      Rpaas_PostOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 2)
   }
 

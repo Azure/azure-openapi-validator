@@ -30,7 +30,7 @@ class CompositeAzureTests {
 
   @test public async "operations returning a model including an array might be pageable (sad path)"() {
     const fileName: string = "PageableOperation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed, PageableOperation)
     assertValidationRuleCount(messages, PageableOperation, 1)
   }
 

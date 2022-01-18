@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 const matchAll = require("string.prototype.matchall")
 import { DocumentDependencyGraph } from "../../depsGraph"
-import { parseJsonRef } from "../../document"
 import { stringify, nodes } from "../../jsonpath"
+import { deReference } from "../../swaggerUtils"
 
 export function getSuccessfulResponseSchema(node, doc): any {
   const responses = Object.keys(node.responses)
@@ -90,39 +90,9 @@ export function transformEnum(type: string, enumEntries) {
   })
 }
 
-export function deReference(doc: any, schema: any, graph?: DocumentDependencyGraph) {
-  const getRefModel = (refValue: string, visited: string[]) => {
-    if (visited.includes(refValue)) {
-      throw new Error("Found circle reference: " + visited.join("->"))
-    }
-    visited.push(refValue)
-    const refSlices = parseJsonRef(refValue)
-    const pathExpression = refSlices[1].split("/").slice(1)
-    try {
-      const result = nodes(doc, stringify(["$", ...pathExpression]))
-      return result.length !== 0 ? result[0].value : undefined
-    } catch (err) {
-      throw err
-    }
-  }
-
-  if (schema && doc) {
-    if (schema.$ref) {
-      const refSlices = parseJsonRef(schema.$ref)
-      if (graph && refSlices[0]) {
-        doc = graph.getDocument(refSlices[0])
-      }
-      schema = getRefModel(`#${refSlices[1]}`, [])
-      return deReference(doc, schema, graph)
-    }
-    return schema
-  }
-  return undefined
-}
-
 export function getResolvedSchemaByPath(doc: any, path: string[], graph: DocumentDependencyGraph) {
   const result = nodes(doc, stringify(path))
-  if (result) {
-    return deReference(doc, result.value, graph)
+  if (result && result.length) {
+    return deReference(doc, result[0].value, graph)
   }
 }

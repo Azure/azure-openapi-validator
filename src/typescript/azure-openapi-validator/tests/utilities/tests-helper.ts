@@ -4,10 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
-import { run } from "../../../azure-openapi-validator"
+import { run, runRules } from "../../../azure-openapi-validator"
 import { Message } from "../../../jsonrpc/types"
-import { MergeStates, OpenApiTypes } from "../../rule"
-import ruleSet from "../../ruleSet"
+import { DocumentDependencyGraph } from "../../depsGraph"
+import { MergeStates, OpenApiTypes, rules } from "../../rule"
+import ruleSet from "../../rulesets/ruleSet"
+import { IRuleSet, RulesObject } from "../../typeDeclaration"
 const fs = require("fs")
 const path = require("path")
 const pathToTestResources: string = "../../tests/resources/"
@@ -16,15 +18,24 @@ const pathToTestResources: string = "../../tests/resources/"
 export async function collectTestMessagesFromValidator(
   fileName: string,
   openapiType: OpenApiTypes,
-  mergeState: MergeStates
+  mergeState: MergeStates,
+  ruleName?: string
 ): Promise<Message[]> {
   const messages: Message[] = []
   const getMessages = function(m: Message) {
     messages.push(m)
   }
   const filePath = getFilePath(fileName)
-  const openapiDefinitionObject = readObjectFromFile(filePath)
-  await run(filePath, openapiDefinitionObject, getMessages, openapiType, mergeState)
+  const graph = new DocumentDependencyGraph()
+  const openapiDefinitionObject = (await graph.loadDocument(filePath)).getObj()
+  if (ruleName) {
+    const rules: RulesObject = {}
+    rules[ruleName] = ruleSet.rules[ruleName]
+    const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
+    await runRules(filePath, openapiDefinitionObject, getMessages, openapiType, mergeState, singleRuleSet)
+  } else {
+    await run(filePath, openapiDefinitionObject, getMessages, openapiType, mergeState)
+  }
   return messages
 }
 

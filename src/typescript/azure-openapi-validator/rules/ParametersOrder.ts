@@ -1,5 +1,5 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { deReference } from "../rules/utilities/rules-helper"
+import { deReference } from "../swaggerUtils"
 export const ParametersOrder: string = "ParametersOrder"
 
 function getParametersFromPath(apiapiPath: string) {
