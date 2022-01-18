@@ -73,7 +73,14 @@ export class DocumentDependencyGraph {
     if (this.referenceCache.has(simplePath)) {
       return this.referenceCache.get(simplePath)
     }
-    return await this.cacheDocument(simplePath)
+    const cache = await this.cacheDocument(simplePath)
+    const references = cache.getReferences()
+    const promises = []
+    for (const ref of references) {
+      promises.push(this.cacheDocument(ref))
+    }
+    await Promise.all(promises)
+    return cache
   }
 
   getDocument(specPath: string) {

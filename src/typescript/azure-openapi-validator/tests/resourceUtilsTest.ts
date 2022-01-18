@@ -1,5 +1,4 @@
 import * as assert from "assert"
-import { group } from "console"
 import { suite, test } from "mocha-typescript"
 import { ResourceUtils } from "../rules/utilities/resourceUtils"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"

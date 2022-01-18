@@ -19,12 +19,18 @@ import { UniqueModelName } from "../rules/UniqueModelName"
 import { PrivateEndpointResourceSchemaValidation } from "../rules/PrivateEndpointResourceSchemaValidation"
 import { ImplementPrivateEndpointAPIs } from "../rules/ImplementPrivateEndpointAPIs"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
+import { UniqueXmsExample } from "../rules/UniqueXmsExample"
 
 @suite
 class CompositeAzureTests {
   @test public async "description should not be property name"() {
     const fileName: string = "DescriptionSameAsPropertyName.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      DescriptionMustNotBeNodeName
+    )
     assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 2)
   }
 
@@ -36,112 +42,193 @@ class CompositeAzureTests {
 
   @test public async "operations returning a model including an array might be pageable (happy path)"() {
     const fileName: string = "happyPath/PageableOperation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed, PageableOperation)
     assertValidationRuleCount(messages, PageableOperation, 0)
   }
 
   @test public async "extensions x-ms-enum must not have duplicate name"() {
     const fileName = "XmsEnumWithDuplicateName.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed, UniqueXmsEnumName)
     assertValidationRuleCount(messages, UniqueXmsEnumName, 1)
   }
 
   @test public async "extensions x-ms-enum can have duplicate name with same enties (happy path)"() {
     const fileName = "happyPath/XmsEnumWithDuplicateNameAndSameEnties.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed, UniqueXmsEnumName)
     assertValidationRuleCount(messages, UniqueXmsEnumName, 0)
   }
 
   @test public async "new apiVersion have operation without systemData"() {
     const fileName = "NewApiVersionHaveOperationWithoutSystemData.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      RequiredReadOnlySystemData
+    )
     assertValidationRuleCount(messages, RequiredReadOnlySystemData, 2)
   }
 
   @test public async "all nested resources must have collection operation "() {
     const fileName: string = "armResource/compute.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      NestedResourcesMustHaveListOperation
+    )
     assertValidationRuleCount(messages, NestedResourcesMustHaveListOperation, 1)
   }
 
   @test public async "operations api response must have specific schema"() {
     const fileName: string = "armResource/compute.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      OperationsApiResponseSchema
+    )
     assertValidationRuleCount(messages, OperationsApiResponseSchema, 1)
   }
   @test public async "top level resources must list by resource group"() {
     const fileName: string = "armResource/compute.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      TopLevelResourcesListByResourceGroup
+    )
     assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 1)
   }
   @test public async "top level resources must list by subscription"() {
     const fileName: string = "armResource/compute.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      TopLevelResourcesListBySubscription
+    )
     assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 1)
   }
 
   @test public async "get collection response schema should match the ARM specification "() {
     const fileName: string = "armResource/cdn.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      GetCollectionResponseSchema
+    )
     assertValidationRuleCount(messages, GetCollectionResponseSchema, 1)
   }
 
   @test public async "all resources must have get operation"() {
     const fileName: string = "armResource/cdn.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 2)
   }
 
   @test public async "all resources must have get operation 2"() {
     const fileName: string = "armResource/security.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 3)
   }
 
   @test public async "all resources must have get operation positive 1"() {
     const fileName: string = "armResource/firewallPolicy.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 
   @test public async "all resources must have get operation positive 2"() {
     const fileName: string = "armResource/containerservice.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
   @test public async "all resources must have get operation positive 3"() {
     const fileName: string = "armResource/machinelearning.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 
   @test public async "all resources must have get operation positive 4"() {
     const fileName: string = "armResource/compute.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 
   @test public async "all resources must have get operation positive 5"() {
     const fileName: string = "happyPath/cluster.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      AllResourcesMustHaveGetOperation
+    )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
 
   @test public async "unique model name"() {
-    const filename: string = "UniqueModelName.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
+    const fileName: string = "UniqueModelName.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed, UniqueModelName)
     assertValidationRuleCount(messages, UniqueModelName, 1)
   }
 
   @test public async "private link apis missing"() {
-    const filename: string = "PrivateLinkAPIsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
+    const fileName: string = "PrivateLinkAPIsMissing.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      ImplementPrivateEndpointAPIs
+    )
     assertValidationRuleCount(messages, ImplementPrivateEndpointAPIs, 1)
   }
 
   @test public async "private link resource schema unmatch"() {
-    const filename: string = "PrivateLinkResourceUnMatch.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, MergeStates.composed)
+    const fileName: string = "PrivateLinkResourceUnMatch.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      MergeStates.composed,
+      PrivateEndpointResourceSchemaValidation
+    )
     assertValidationRuleCount(messages, PrivateEndpointResourceSchemaValidation, 2)
+  }
+
+  @test public async "Unique x-ms-examples"() {
+    const fileName: string = "UniqueXmsExample.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed, UniqueXmsExample)
+    assertValidationRuleCount(messages, UniqueXmsExample, 1)
   }
 }

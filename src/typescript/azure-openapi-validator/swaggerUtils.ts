@@ -90,7 +90,7 @@ export function deReference(doc: any, schema: any, graph?: DocumentDependencyGra
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
       if (graph && refSlices[0]) {
-        doc = graph.getDocument(refSlices[0])
+        doc = graph.getDocument(refSlices[0]).getObj()
       }
       schema = getRefModel(`#${refSlices[1]}`, [])
       return deReference(doc, schema, graph)

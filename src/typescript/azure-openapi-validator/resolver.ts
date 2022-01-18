@@ -55,6 +55,6 @@ export class Resolver {
   }
 
   getReferences() {
-    return this.references
+    return Array.from(this.references.values())
   }
 }

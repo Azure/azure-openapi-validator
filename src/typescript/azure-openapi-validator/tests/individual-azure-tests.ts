@@ -317,12 +317,6 @@ class IndividualAzureTests {
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 0)
   }
 
-  @test public async "Unique x-ms-examples"() {
-    const fileName: string = "UniqueXmsExample.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.composed)
-    assertValidationRuleCount(messages, UniqueXmsExample, 1)
-  }
-
   @test public async "only has default response"() {
     const fileName = "OnlyDefaultResponseSchema.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
