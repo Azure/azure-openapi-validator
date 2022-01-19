@@ -1,6 +1,6 @@
 import { pattern } from "../functions/pattern"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { IRuleSet, RulesObject } from "../typeDeclaration"
+import { IRuleSet, RulesObject } from "../types"
 // register rules
 require("../rules/PageableOperation")
 require("../rules/DescriptionMustNotBeNodeName")
@@ -69,7 +69,6 @@ export const defaultRuleSet: IRuleSet = {
       category: "ARMViolation",
       severity: "error",
       given: "",
-      mergeState: MergeStates.individual,
       openapiType: OpenApiTypes.arm,
       then: {
         appliesToKey: false,

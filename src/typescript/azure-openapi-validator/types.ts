@@ -14,11 +14,11 @@ export interface IRule {
   readonly id: string // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
   readonly description?: string
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
-  readonly severity: "error" | "warning"
-  readonly mergeState: MergeStates
   readonly openapiType: OpenApiTypes
+  readonly mergeState?: MergeStates
+  readonly severity: "error" | "warning"
   readonly given?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples
-  then: RuleThen
+  then: RuleThen // the rule procession steps
 }
 
 export type RulesObject = { [key: string]: IRule }

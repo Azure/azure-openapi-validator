@@ -1,7 +1,12 @@
 import { readFileSync } from "fs"
 import yargs = require("yargs")
-import { runCli } from "../azure-openapi-validator"
-import { join } from "path"
+import { LintOptions, runCli } from "../azure-openapi-validator"
+import { dirname, join, normalize } from "path"
+import { parseMarkdown } from "@azure-tools/openapi-tools-common"
+import * as amd from "@azure/openapi-markdown"
+import { parse } from "@ts-common/commonmark-to-markdown"
+import path = require("path")
+import { safeLoad } from "js-yaml"
 
 async function main() {
   console.log(`azure openapi linter v0.1`)
@@ -16,14 +21,17 @@ async function main() {
       default: false
     })
     .command(
-      "$0 <path>",
+      "$0 [specs..]",
       "lint for swagger ",
       cmd => {
         return cmd
-          .positional("path", {
-            description: "The path to the swagger file.",
-            type: "string",
-            demandOption: true
+          .positional("specs", {
+            description: "The paths to the swagger specs.",
+            coerce(values) {
+              if (Array.isArray(values) && values.length > 0) {
+                return values as unknown[]
+              }
+            }
           })
           .option("option", {
             type: "array",
@@ -36,9 +44,25 @@ async function main() {
             string: true,
             describe: "the openapi type"
           })
+          .option("readme", {
+            type: "string",
+            string: true,
+            describe: "the readme.md file path."
+          })
+          .option("tag", {
+            type: "string",
+            string: true,
+            describe: "the readme.md file tag."
+          })
       },
       async args => {
-        await runCli(args.path, { openapiType: args.openapiType })
+        let specs = args.specs
+        const option = { openapiType: args.openapiType }
+        if (args.readme) {
+          lintReadme(args.readme, option, args.tag)
+        } else {
+          lintSwaggers(specs as string[], option)
+        }
       }
     )
     .version(getVersion())
@@ -49,4 +73,67 @@ function getVersion(): string {
   const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"))
   return packageJson.version
 }
+function getReadmeTags(readme: string) {
+  const readMeContent = readFileSync(readme).toString()
+  const normalizedReadme = normalize(readme)
+  const cmd = parseMarkdown(readMeContent)
+  const defaultTag = getDefaultTag(cmd.markDown)
+  const allTags = new amd.ReadMeManipulator({ error: (msg: string) => {} }, new amd.ReadMeBuilder()).getAllTags(cmd)
+  const tagInputFiles = new Map<string, string[]>()
+  for (const tag of allTags) {
+    const inputs = getInputFiles(readMeContent, tag).map(f => path.join(dirname(normalizedReadme), f))
+    tagInputFiles.set(tag, [...inputs])
+  }
+  return {
+    tags: tagInputFiles,
+    defaultTag
+  }
+}
+
+function getDefaultTag(markDown): string {
+  const startNode = markDown
+  const codeBlockMap = amd.getCodeBlocksAndHeadings(startNode)
+
+  const latestHeader = "Basic Information"
+
+  const lh = codeBlockMap[latestHeader]
+  if (lh) {
+    const latestDefinition = safeLoad(lh.literal!) as undefined | { tag: string }
+    if (latestDefinition) {
+      return latestDefinition.tag
+    }
+  } else {
+    for (let idx of Object.keys(codeBlockMap)) {
+      const lh = codeBlockMap[idx]
+      if (!lh.info || lh.info.trim().toLocaleLowerCase() !== "yaml") {
+        continue
+      }
+      const latestDefinition = safeLoad(lh.literal!) as undefined | { tag: string }
+
+      if (latestDefinition) {
+        return latestDefinition.tag
+      }
+    }
+  }
+  return ""
+}
+
+function getInputFiles(readMeContent: string, tag: string) {
+  const cmd = parseMarkdown(readMeContent)
+  return amd.getInputFilesForTag(cmd.markDown, tag)
+}
+
+export async function lintSwaggers(specs: string[], options: LintOptions) {
+  return runCli(specs, options)
+}
+
+export async function lintReadme(readme: string, options: LintOptions, tag?: string) {
+  const readmeTag = getReadmeTags(readme)
+  const usedTag = tag || readmeTag.defaultTag
+  if (usedTag) {
+    const specs = readmeTag.tags.get(usedTag)
+    return runCli(specs, options)
+  }
+}
+
 main()

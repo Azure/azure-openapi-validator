@@ -92,7 +92,11 @@ export class ResourceUtils {
     if (!modelName) {
       return undefined
     }
-    return this.innerDoc?.definitions[modelName]
+    /*if (!this.innerDoc?.definitions || this.innerDoc.definitions[modelName]) {
+      const doc = this.graph.getDocument(this.specPath)
+      doc.getReferences()
+    }*/
+    return this.innerDoc?.definitions?.[modelName]
   }
 
   /**
@@ -146,6 +150,9 @@ export class ResourceUtils {
    *  Get all resources which allOf a x-ms-resource
    */
   public getAllResourcesFromDefinitions() {
+    if (!this.innerDoc.definitions) {
+      return []
+    }
     const keys = Object.keys(this.innerDoc.definitions as object)
     const AllResources = keys.reduce((pre, cur) => {
       if (this.getResourceHierarchy(cur).some(model => this.checkResource(model))) {

@@ -41,7 +41,7 @@ export class SwaggerUtils {
     return this.getPropertyOfModel(model, propertyName)
   }
 
-  public getPropertyOfModel(sourceModel, propertyName: string) {
+  public getPropertyOfModel(sourceModel: any, propertyName: string) {
     if (!sourceModel) {
       return undefined
     }

@@ -14,13 +14,13 @@ rules.push({
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.paths.*[?(@property==='get')]^",
-  *run(doc, node, path) {
+  *run(doc, node, path, ctx) {
     const operations = Object.keys(node)
     const getKey = operations.find(key => {
       return key.toLowerCase() === "get"
     })
 
-    const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc)
+    const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc, ctx.graph)
 
     function hasArrayProperty(schema) {
       let arrayPresent: boolean = false

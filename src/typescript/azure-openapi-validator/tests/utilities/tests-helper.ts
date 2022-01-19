@@ -9,7 +9,7 @@ import { Message } from "../../../jsonrpc/types"
 import { DocumentDependencyGraph } from "../../depsGraph"
 import { MergeStates, OpenApiTypes, rules } from "../../rule"
 import ruleSet from "../../rulesets/ruleSet"
-import { IRuleSet, RulesObject } from "../../typeDeclaration"
+import { IRuleSet, RulesObject } from "../../types"
 const fs = require("fs")
 const path = require("path")
 const pathToTestResources: string = "../../tests/resources/"

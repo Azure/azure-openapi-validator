@@ -18,6 +18,9 @@ class SwaggerUtilsTests {
     )
     const resolvedSchema = deReference(swagger, schema, graph)
     assert.strictEqual(!!resolvedSchema.properties, true)
+
+    const errorObject = util.getPropertyOfModel(resolvedSchema,"error")
+    assert.strictEqual(!!errorObject,true)
   }
 
   @test public "test get properties"() {

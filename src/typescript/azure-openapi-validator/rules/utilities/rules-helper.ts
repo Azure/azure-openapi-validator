@@ -7,10 +7,10 @@ import { DocumentDependencyGraph } from "../../depsGraph"
 import { stringify, nodes } from "../../jsonpath"
 import { deReference } from "../../swaggerUtils"
 
-export function getSuccessfulResponseSchema(node, doc): any {
+export function getSuccessfulResponseSchema(node, doc, graph: DocumentDependencyGraph): any {
   const responses = Object.keys(node.responses)
   const response = getMostSuccessfulResponseKey(responses)
-  return getResponseSchema(node.responses[response], doc)
+  return getResponseSchema(node.responses[response], doc, graph)
 }
 
 export function getMostSuccessfulResponseKey(responses: string[]): string {
@@ -31,13 +31,13 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
   return response
 }
 
-export function getResponseSchema(response: object, doc): any {
+export function getResponseSchema(response: object, doc, graph: DocumentDependencyGraph): any {
   let schema = (response as any).schema
   if (schema === undefined || schema === null) {
     return
   }
   if ("$ref" in schema) {
-    schema = deReference(doc, schema)
+    schema = deReference(doc, schema, graph)
   }
   return schema.properties
 }

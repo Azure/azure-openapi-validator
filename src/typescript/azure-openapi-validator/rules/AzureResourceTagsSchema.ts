@@ -1,4 +1,4 @@
-import { JsonPath } from "../typeDeclaration"
+import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"

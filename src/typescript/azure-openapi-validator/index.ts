@@ -2,13 +2,14 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { dirname, isAbsolute, join, normalize } from "path"
 import { Message } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
+import { OpenapiDocument } from "./document"
 import { nodes, stringify } from "./jsonpath"
 import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
 import ruleSet from "./rulesets/ruleSet"
-import { IRule, IRuleSet } from "./typeDeclaration"
+import { IRule, IRuleSet } from "./types"
+import _ from "lodash"
 
 export const runRules = async (
   document: string,
@@ -37,13 +38,13 @@ export const runRules = async (
           },
           rule.then.options
         )) {
-          calcResult(ruleName, rule, message)
+          emitResult(ruleName, rule, message)
         }
       }
     }
   }
 
-  function calcResult(ruleName: string, rule: IRule, message: ValidationMessage) {
+  function emitResult(ruleName: string, rule: IRule, message: ValidationMessage) {
     const readableCategory = rule.category
 
     // try to extract provider namespace and resource type
@@ -94,28 +95,44 @@ export type LintOptions = {
   openapiType: string
 }
 
-export async function runCli(swaggerPath: string, options: LintOptions) {
+export async function runCli(swaggerPaths: string[], options: LintOptions) {
   const graph = new DocumentDependencyGraph()
-  const rpFolder = options.rpFolder || join(dirname(swaggerPath), "../../..")
-  await graph.generateGraph(rpFolder)
-  const documentInstance = (await graph.loadDocument(swaggerPath)).getObj()
-
+  const rpFolder = options.rpFolder
+  if (rpFolder) {
+    await graph.generateGraph(rpFolder)
+  }
+  const specsPromises = []
+  for (const spec of swaggerPaths) {
+    specsPromises.push(graph.loadDocument(spec))
+  }
+  const documents = (await Promise.all(specsPromises)) as OpenapiDocument[]
+  const messages = new Set<string>()
   const sendMessage = (msg: Message) => {
     const document = graph.getDocument(msg.Source[0].document)
-    const path = (msg.Source[0].Position as any).path
+    let path = (msg.Source[0].Position as any).path
+    if (path[0] === "$") {
+      path = path.slice(1)
+    }
     const pos = document.getPositionFromJsonPath(path)
 
     const jsonMsg = {
       sources: [msg.Source[0].document + `:${pos.line}:${pos.column}`],
-      code: msg.Key[1],
-      jsonpath: stringify(path),
-      message: msg.Details,
+      "json-path": stringify(path),
+      ..._.omit(msg.Details, "type"),
       severity: msg.Channel
     }
-    console.log(JSON.stringify(jsonMsg, null, 2))
+    const serializedJson = JSON.stringify(jsonMsg, null, 2)
+    if (!messages.has(serializedJson)) {
+      console.log(serializedJson)
+      messages.add(serializedJson)
+    }
   }
-
-  await run(swaggerPath, documentInstance, sendMessage, getOpenapiTypes(options.openapiType), MergeStates.composed, graph)
+  const runPromises = []
+  for (const doc of documents) {
+    const promise = run(doc.getDocumentPath(), doc.getObj(), sendMessage, getOpenapiTypes(options.openapiType), MergeStates.composed, graph)
+    runPromises.push(promise)
+  }
+  await Promise.all(runPromises)
 }
 
 function getOpenapiTypes(type: string) {

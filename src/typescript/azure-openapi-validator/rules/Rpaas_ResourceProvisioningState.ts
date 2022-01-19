@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
-import { JsonPath } from "../typeDeclaration"
+import { JsonPath } from "../types"
 export const Rpaas_ResourceProvisioningState: string = "Rpaas_ResourceProvisioningState"
 
 rules.push({

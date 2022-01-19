@@ -9,6 +9,7 @@
         "lib": [
             "esnext.asynciterable"
         ],
+        "esModuleInterop": true,
         "sourceMap": true
     },
     "exclude": [

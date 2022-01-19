@@ -1,4 +1,4 @@
-import { JsonPath } from "../typeDeclaration"
+import { JsonPath } from "../types"
 import { RuleContext, ValidationMessage } from "../rule"
 
 export function* pattern(openapiDocument: any, openapiSection: any, location: JsonPath, ctx?: RuleContext) {

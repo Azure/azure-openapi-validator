@@ -2,7 +2,6 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
 import { SwaggerUtils } from "../swaggerUtils"
 import { getMostSuccessfulResponseKey, getResolvedSchemaByPath } from "./utilities/rules-helper"

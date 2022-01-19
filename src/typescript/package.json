@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/js-yaml": "^3.12.4",
     "@types/jsonpath": "^0.2.0",
+    "@types/lodash": "~4.14.178",
     "@types/node": "^14.0.13",
     "gulp": "4.0.2",
     "gulp-run": "1.7.1",
@@ -40,6 +41,8 @@
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
     "dependency-graph": "^0.11.0",
+    "@azure-tools/openapi-tools-common": "^1.2.2",
+    "@azure/openapi-markdown": "^0.9.4",
     "fs": "^0.0.1-security",
     "js-yaml": "^3.14.0",
     "json-refs": "^3.0.15",
@@ -47,6 +50,7 @@
     "jsonc-parser": "3.0.0",
     "string.prototype.matchall": "^4.0.2",
     "vscode-jsonrpc": "^3.2.0",
-    "yargs": "^17.3.0"
+    "yargs": "^17.3.0",
+    "lodash": "~4.17.21"
   }
 }
