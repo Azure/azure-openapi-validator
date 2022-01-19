@@ -59,7 +59,7 @@
             "name": "run cli",
             "program": "${workspaceRoot}/src/typescript/commands/cli.js",
             "args": [
-                "D:/codes/azure-rest-api-specs/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2020-01-01-preview/managedcluster.json","--openapiType","arm"
+                "D:/codes/forks/azure-openapi-validator/src/typescript/azure-openapi-validator/tests/resources/armResource/cdn.json","--openapiType","arm"
             ],
             "cwd": "${workspaceRoot}"
         },
