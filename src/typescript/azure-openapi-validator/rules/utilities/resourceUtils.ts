@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "../../jsonpath"
 import { DocumentDependencyGraph } from "../../depsGraph"
-import { deReference } from "../../swaggerUtils"
+import { deReference, SwaggerUtils } from "../../swaggerUtils"
 
 export interface CollectionApiInfo {
   modelName: string
@@ -33,7 +33,6 @@ function addToMap(map: Map<string, string[]>, key: string, value: string) {
  * this class only handle swagger without external refs, as the linter's input is a external-refs-resolved swagger
  */
 export class ResourceUtils {
-  private innerDoc: any
   private BaseResourceModelNames = ["trackedresource", "proxyresource", "resource", "azureentityresource"]
 
   private ResourceGroupWideResourceRegEx = new RegExp("^/subscriptions/{[^/]+}/resourceGroups/{[^/]+}/", "gi")
@@ -45,14 +44,11 @@ export class ResourceUtils {
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(/\\w+/{[^/}]+})+$", "gi")
 
   private XmsResources = new Set<string>()
-  private graph: DocumentDependencyGraph | undefined
-  private specPath: string | undefined
+  private swaggerUtil
 
-  constructor(swagger: object, specPath?: string, graph?: DocumentDependencyGraph) {
-    this.innerDoc = swagger
+  constructor(private innerDoc: any, private specPath?: string, private graph?: DocumentDependencyGraph) {
     this.getXmsResources()
-    this.graph = graph
-    this.specPath = specPath
+    this.swaggerUtil = new SwaggerUtils(this.innerDoc, this.specPath, this.graph)
   }
 
   private getSpecificOperationModels(httpMethod, code) {
@@ -316,12 +312,6 @@ export class ResourceUtils {
     return hierarchy
   }
 
-  private getUnwrappedModel(property: any) {
-    if (property) {
-      return deReference(this.innerDoc, property, this.graph)
-    }
-  }
-
   public containsDiscriminator(modelName: string) {
     const hierarchy = this.getResourceHierarchy(modelName)
     return hierarchy.some(h => {
@@ -496,41 +486,6 @@ export class ResourceUtils {
     }
     if (pathObj && pathObj[code]) {
       return pathObj[code].operationId
-    }
-  }
-
-  /**
-   * get property of model recursively, if not found return undefined
-   */
-  public getPropertyOfModelName(modelName: string, propertyName: string) {
-    const model = this.getResourceByName(modelName)
-    if (!model) {
-      return undefined
-    }
-    return this.getPropertyOfModel(model, propertyName)
-  }
-
-  public getPropertyOfModel(sourceModel, propertyName: string) {
-    if (!sourceModel) {
-      return undefined
-    }
-    let model = sourceModel
-    if (sourceModel.$ref) {
-      model = this.getUnwrappedModel(sourceModel)
-    }
-    if (!model) {
-      return undefined
-    }
-    if (model.properties && model.properties[propertyName]) {
-      return this.getUnwrappedModel(model.properties[propertyName])
-    }
-    if (model.allOf) {
-      for (const element of model.allOf) {
-        const property = this.getPropertyOfModel(element, propertyName)
-        if (property) {
-          return property
-        }
-      }
     }
   }
 

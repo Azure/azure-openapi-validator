@@ -1,13 +1,8 @@
 import { dirname, isAbsolute, join } from "path"
 
 export class Resolver {
-  private innerDoc: any
-  private currentFile: string
   private references = new Set<string>()
-  constructor(documentDefinition: any, currentFile: string) {
-    this.innerDoc = documentDefinition
-    this.currentFile = currentFile
-  }
+  constructor(private innerDoc: any, private currentFile: string) {}
 
   // return resolved doc
   resolve() {

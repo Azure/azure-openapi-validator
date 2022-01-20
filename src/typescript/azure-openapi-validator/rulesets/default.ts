@@ -53,7 +53,7 @@ export { defaultRuleSet as default }
 function createFromLegacyRules() {
   const legacyRules: RulesObject = {}
   for (const rule of rules) {
-    legacyRules[rule.name] = { ...rule, given: rule.appliesTo_JsonQuery, then: { function: rule.run, options: {} } }
+    legacyRules[rule.name] = { ...rule, given: rule.appliesTo_JsonQuery, then: { execute: rule.run, options: {} } }
   }
   return legacyRules
 }
@@ -61,19 +61,21 @@ function createFromLegacyRules() {
 export const legacyRules = createFromLegacyRules()
 
 export const defaultRuleSet: IRuleSet = {
-  documentationUrl: "",
+  documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
   rules: {
     ...legacyRules,
-    test: {
-      id: "R4014",
+    noPassword: {
+      id: "R4033",
       category: "ARMViolation",
-      severity: "error",
-      given: "",
       openapiType: OpenApiTypes.arm,
+      severity: "error",
+      given: "$.definitions.*",
       then: {
-        appliesToKey: false,
-        options: {},
-        function: pattern
+        subPath: "$..properties.*~",
+        options: {
+          match: ".*Password.*"
+        },
+        execute: pattern
       }
     }
   }

@@ -37,6 +37,7 @@ import { ParametersOrder } from "../rules/ParametersOrder"
 import { ExtensionResourcePathPattern } from "../rules/ExtensionResourcePathPattern"
 import { EnumMustRespectType } from "../rules/EnumMustRespectType"
 import { XmsEnumValidation } from "../rules/XmsEnumValidation"
+import defaultRuleSet from "../rulesets/default"
 
 @suite
 class IndividualAzureTests {
@@ -364,5 +365,12 @@ class IndividualAzureTests {
     const fileName = "XmsEnumAbsent.json"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, XmsEnumValidation, 2)
+  }
+
+  @test public async "no password in model/property name"() {
+    const fileName = "HasPassword.json"
+    const ruleName = "noPassword"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
   }
 }

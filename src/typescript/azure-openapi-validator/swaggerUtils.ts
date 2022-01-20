@@ -3,15 +3,7 @@ import { parseJsonRef } from "./document"
 import { nodes, stringify } from "./jsonpath"
 
 export class SwaggerUtils {
-  private innerDoc: any
-  private graph: DocumentDependencyGraph | undefined
-  private specPath: string | undefined
-
-  constructor(swagger: object, specPath?: string, graph?: DocumentDependencyGraph) {
-    this.innerDoc = swagger
-    this.graph = graph
-    this.specPath = specPath
-  }
+  constructor(private innerDoc?: any, private specPath?: string, private graph?: DocumentDependencyGraph) {}
 
   public getOperationIdFromPath(path: string, code = "get") {
     let pathObj = this.innerDoc.paths[path]

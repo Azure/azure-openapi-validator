@@ -7,7 +7,7 @@ import { DocumentDependencyGraph } from "./depsGraph"
 import { OpenapiDocument } from "./document"
 import { nodes, stringify } from "./jsonpath"
 import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
-import ruleSet from "./rulesets/ruleSet"
+import ruleSet from "./rulesets/default"
 import { IRule, IRuleSet } from "./types"
 import _ from "lodash"
 
@@ -20,7 +20,9 @@ export const runRules = async (
   ruleset: IRuleSet,
   graph?: DocumentDependencyGraph
 ) => {
-  const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].mergeState === mergeState && rule[1].openapiType & openapiType)
+  const rulesToRun = Object.entries(ruleset.rules).filter(
+    rule => (!rule[1].mergeState || rule[1].mergeState === mergeState) && rule[1].openapiType & openapiType
+  )
   for (const [ruleName, rule] of rulesToRun) {
     let givens = rule.given || "$"
     if (!Array.isArray(givens)) {
@@ -28,17 +30,35 @@ export const runRules = async (
     }
     for (const given of givens) {
       for (const section of nodes(openapiDefinition, given)) {
-        for await (const message of rule.then.function(
-          openapiDefinition,
-          rule.then.appliesToKey ? section.property : section.value,
-          section.path.slice(1),
-          {
-            specPath: document,
-            graph
-          },
-          rule.then.options
-        )) {
-          emitResult(ruleName, rule, message)
+        const subPath = rule.then.subPath
+        if (subPath) {
+          for (const subSection of nodes(section.value, subPath)) {
+            for await (const message of rule.then.execute(
+              openapiDefinition,
+              subSection.value,
+              section.path.slice(1).concat(subSection.path.slice(1)),
+              {
+                specPath: document,
+                graph
+              },
+              rule.then.options
+            )) {
+              emitResult(ruleName, rule, message)
+            }
+          }
+        } else {
+          for await (const message of rule.then.execute(
+            openapiDefinition,
+            rule.then.subPath ? section.property : section.value,
+            section.path.slice(1),
+            {
+              specPath: document,
+              graph
+            },
+            rule.then.options
+          )) {
+            emitResult(ruleName, rule, message)
+          }
         }
       }
     }
@@ -116,10 +136,9 @@ export async function runCli(swaggerPaths: string[], options: LintOptions) {
     const pos = document.getPositionFromJsonPath(path)
 
     const jsonMsg = {
+      ...msg.Details,
       sources: [msg.Source[0].document + `:${pos.line}:${pos.column}`],
-      "json-path": stringify(path),
-      ..._.omit(msg.Details, "type"),
-      severity: msg.Channel
+      "json-path": stringify(path)
     }
     const serializedJson = JSON.stringify(jsonMsg, null, 2)
     if (!messages.has(serializedJson)) {
