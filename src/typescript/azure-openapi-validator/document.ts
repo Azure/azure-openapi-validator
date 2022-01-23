@@ -24,6 +24,9 @@ export class OpenapiDocument {
   getObj() {
     return this._doc
   }
+  getContent() {
+    return this._content
+  }
 
   getReferences() {
     return this.resolver.getReferences()
