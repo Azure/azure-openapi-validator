@@ -1,4 +1,5 @@
 import { findNodeAtLocation, getNodeValue, JSONPath, Node, parseTree } from "jsonc-parser"
+import { isNumber } from "util"
 
 type Location = {
   line: number
@@ -23,7 +24,8 @@ export class JsonParser implements IJsonParser {
     }
     return {
       getLocation: (path: JSONPath) => {
-        // JSONPath does not include the root '$'.
+        // JSONPath does not include the root '$', replace number string to number
+        path = path.map(v => Number.isNaN(+v)?v: Number.parseInt(v as string) )
         const root = findNodeAtLocation(rootNode, path)
         return getLocation(text, root)
       },
@@ -36,6 +38,9 @@ export class JsonParser implements IJsonParser {
 function getLocation(text: string, node: Node) {
   let line = 1
   let column = 0
+  if (!node) {
+    return undefined
+  }
   for (let i = 0; i < node.offset; i++) {
     if (text[i] === "\n") {
       line++
