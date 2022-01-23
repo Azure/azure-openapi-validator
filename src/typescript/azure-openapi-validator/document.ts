@@ -2,6 +2,7 @@ import { readFileSync } from "fs"
 import { JsonPath } from "./typeDeclaration"
 import { JsonInstance, JsonParser } from "./jsonParser"
 import { Resolver } from "./resolver"
+import { fileURLToPath, pathToFileURL, URL } from "url"
 
 export class OpenapiDocument {
   private _specPath = undefined
@@ -39,8 +40,12 @@ export class OpenapiDocument {
   }
 }
 
-export const normalizeDocPath = (path: string) => {
-  return path.split(/\\|\//).join("/")
+export const normalizePath = (path: string) => {
+  let urlPath = fileURLToPath(pathToFileURL(path)).replace(/\\/g,"/")
+  if (urlPath.slice(1,3) === ":/") { // for windows
+    return urlPath.charAt(0).toUpperCase() + urlPath.slice(1)
+  }
+  return urlPath
 }
 
 export const parseJsonRef = (ref: string): string[] => {

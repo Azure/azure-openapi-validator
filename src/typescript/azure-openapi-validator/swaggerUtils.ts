@@ -86,12 +86,12 @@ export class SwaggerUtils {
         file :{
           canRead:true,
           read(file:FileInfo){
-            return graph.getDocument(file.url).getContent()
+            return graph.getDocument(file.url).getObj()
           }
         }
       }
     }
-   const resolvedSchema = await $RefParser.dereference(schema);
+   const resolvedSchema = await $RefParser.dereference(schema,resolveOption);
    return resolvedSchema
 
   }
