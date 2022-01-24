@@ -2,7 +2,7 @@ import { MessageReader } from "vscode-jsonrpc"
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 
 export const OperationsApiResponseSchema: string = "OperationsApiResponseSchema"
 
@@ -21,7 +21,7 @@ rules.push({
      * 2 verify the schema
      * per ARM spec:https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/proxy-api-reference.md#exposing-available-operations
      */
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const operationsApi = utils.getOperationApi()
     if (operationsApi && operationsApi[1]) {
       let isValid = true

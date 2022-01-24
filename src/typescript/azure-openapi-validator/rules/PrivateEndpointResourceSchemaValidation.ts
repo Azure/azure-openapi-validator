@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 import { SwaggerUtils } from "../swaggerUtils"
 export const PrivateEndpointResourceSchemaValidation: string = "PrivateEndpointResourceSchemaValidation"
 
@@ -21,7 +21,7 @@ rules.push({
      */
     const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^\/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const swaggerUtil = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
     const apiPath = path[path.length - 1] as string
 

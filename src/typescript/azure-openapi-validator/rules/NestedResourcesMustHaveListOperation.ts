@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 
 export const NestedResourcesMustHaveListOperation: string = "NestedResourcesMustHaveListOperation"
 
@@ -19,7 +19,7 @@ rules.push({
      * 1 get all nested resources that have point get resource
      * 2 travel all resources by searching in all get/put operations and find all the resources that have a collection get
      */
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const nestedResource = utils.getAllNestedResources()
     const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of nestedResource) {

@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 export const TopLevelResourcesListByResourceGroup: string = "TopLevelResourcesListByResourceGroup"
 
 rules.push({
@@ -14,7 +14,7 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
     const msg: string = 'The top-level resource "{0}" does not have list by resource group operation, please add it.'
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const topLevelResources = utils.getTopLevelResourcesByRG()
     const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of topLevelResources) {

@@ -32,7 +32,7 @@ function addToMap(map: Map<string, string[]>, key: string, value: string) {
 /**
  * this class only handle swagger without external refs, as the linter's input is a external-refs-resolved swagger
  */
-export class ResourceUtils {
+export class ArmUtils {
   private BaseResourceModelNames = ["trackedresource", "proxyresource", "resource", "azureentityresource"]
 
   private ResourceGroupWideResourceRegEx = new RegExp("^/subscriptions/{[^/]+}/resourceGroups/{[^/]+}/", "gi")

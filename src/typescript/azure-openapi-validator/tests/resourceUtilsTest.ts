@@ -1,20 +1,20 @@
 import * as assert from "assert"
 import { suite, test } from "mocha-typescript"
-import { ResourceUtils } from "../rules/utilities/resourceUtils"
+import { ArmUtils } from "../rules/utilities/ArmUtils"
 import { SwaggerUtils } from "../swaggerUtils"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 @suite
-class ResourceUtilsTests {
+class ArmUtilsTests {
   @test public async "test contain containsDiscriminator"() {
     const swagger = readObjectFromFile(getFilePath("armResource/security.json"))
-    const util = new ResourceUtils(swagger, null)
+    const util = new ArmUtils(swagger, null)
     assert.equal(util.containsDiscriminator("DataExportSettings"), true)
   }
 
   @test public async "test resource utils"() {
     const swagger = readObjectFromFile(getFilePath("armResource/compute.json"))
-    const util = new ResourceUtils(swagger, null)
+    const util = new ArmUtils(swagger, null)
     const allNestedResource = util.getAllNestedResources()
     const allTopLevelResource = util.getAllTopLevelResources()
     const allOfResource = util.getAllResourcesFromDefinitions()

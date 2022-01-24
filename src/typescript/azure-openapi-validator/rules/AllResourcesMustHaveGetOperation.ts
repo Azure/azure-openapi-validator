@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 export const AllResourcesMustHaveGetOperation: string = "AllResourcesMustHaveGetOperation"
 
 rules.push({
@@ -18,7 +18,7 @@ rules.push({
      * 1 get all collection models
      * 2 travel all resources and paths to find all the resources that have a collection get
      */
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const allCollectionModels = utils.getCollectionModels()
     const allCollectionApiInfo = utils.getCollectionApiInfo()
     const allResourcesHavingGetOperation = utils.getAllOperationGetResponseModels()

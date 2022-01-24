@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 export const AzureResourceTagsSchema: string = "AzureResourceTagsSchema"
 
 rules.push({
@@ -18,7 +18,7 @@ rules.push({
      * 1. get all resources
      * 2. for each resource, check the property tags schema.
      */
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const allResources = utils.getAllResourceNames()
     for (const resourceName of allResources) {
       const tagSchema = utils.getPropertyOfModelName(resourceName, "tags")

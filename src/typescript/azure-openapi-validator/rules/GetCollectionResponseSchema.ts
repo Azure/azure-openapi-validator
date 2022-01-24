@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
+import { ArmUtils } from "./utilities/ArmUtils"
 export const GetCollectionResponseSchema: string = "GetCollectionResponseSchema"
 
 rules.push({
@@ -20,7 +20,7 @@ rules.push({
      *   - by searching all the models return by a get operation and verify the schema
      * 2 check the collection model schema
      */
-    const utils = new ResourceUtils(doc)
+    const utils = new ArmUtils(doc)
     const allCollectionPath = utils.getCollectionApiInfo()
     for (const collection of allCollectionPath) {
       let hasMatched = false
