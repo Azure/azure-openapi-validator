@@ -16,7 +16,12 @@ export class Resolver {
       const slices = node.$ref.split("#") as string[]
       if (slices.length === 2 && slices[0] && !isAbsolute(slices[0])) {
         const currentPath = normalizePath(ctx.currentFile)
-        const referenceFile = currentPath.split(/\\|\//).slice(0,-1).concat(slices[0]).join("/")
+        const referenceFile = join(
+          ...currentPath
+            .split(/\\|\//)
+            .slice(0, -1)
+            .concat(slices[0])
+        ).replace(/\\/g, "/")
         node.$ref = referenceFile + `#${slices[1]}`
 
         if (!referenceFile.includes("examples")) ctx.references.add(referenceFile)

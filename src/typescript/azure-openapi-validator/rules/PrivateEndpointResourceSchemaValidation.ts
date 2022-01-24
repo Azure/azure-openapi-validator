@@ -2,6 +2,7 @@ import { JsonPath } from "../types"
 import { rules } from "../rule"
 import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
+import { SwaggerUtils } from "../swaggerUtils"
 export const PrivateEndpointResourceSchemaValidation: string = "PrivateEndpointResourceSchemaValidation"
 
 rules.push({
@@ -12,7 +13,7 @@ rules.push({
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*",
-  *run(doc, node, path) {
+  *run(doc, node, path, ctx) {
     const msg: string = 'The private endpoint model "{0}" schema does not conform to the common type definition.'
     /**
      * 1 get all collection models
@@ -21,26 +22,27 @@ rules.push({
     const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^\/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
     const utils = new ResourceUtils(doc)
+    const swaggerUtil = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
     const apiPath = path[path.length - 1] as string
 
     const checkPrivateEndpoint = (model: any) => {
-      const properties = utils.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil.getPropertyOfModel(model, "properties")
       if (!properties) {
         return false
       }
       const requiredProperties = ["privateEndpoint", "privateLinkServiceConnectionState"]
-      if (requiredProperties.some(p => !utils.getPropertyOfModel(properties, p))) {
+      if (requiredProperties.some(p => !swaggerUtil.getPropertyOfModel(properties, p))) {
         return false
       }
       return true
     }
     const checkPrivateResources = (model: any) => {
-      const properties = utils.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil.getPropertyOfModel(model, "properties")
       if (!properties) {
         return false
       }
       const requiredProperties = ["groupId", "requiredMembers", "requiredZoneNames"]
-      if (requiredProperties.some(p => !utils.getPropertyOfModel(properties, p))) {
+      if (requiredProperties.some(p => !swaggerUtil.getPropertyOfModel(properties, p))) {
         return false
       }
       return true
@@ -51,7 +53,7 @@ rules.push({
       if (modelName) {
         const model = utils.getResourceByName(modelName)
         if (apiPath.endsWith("privateEndpointConnections")) {
-          const privateEndpoint = utils.getPropertyOfModel(model, "value")
+          const privateEndpoint = swaggerUtil.getPropertyOfModel(model, "value")
           if (!privateEndpoint || !privateEndpoint.items) {
             yield {
               message: msg.replace("{0}", modelName),

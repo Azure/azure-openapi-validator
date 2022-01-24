@@ -6,18 +6,11 @@
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "paths": {
-  },
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {},
   "parameters": {
     "SubscriptionIdParameter": {
       "name": "subscriptionId",
@@ -32,6 +25,15 @@
       "required": true,
       "type": "string",
       "description": "test api version"
+    }
+  },
+  "definitions": {
+    "a": {
+      "allOf": [
+        {
+          "type": "string"
+        }
+      ]
     }
   }
 }

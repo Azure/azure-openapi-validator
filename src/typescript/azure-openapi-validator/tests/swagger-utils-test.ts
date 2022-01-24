@@ -21,7 +21,7 @@ class SwaggerUtilsTests {
     assert.strictEqual(!!resolvedSchema.properties, true)
 
     const errorObject = util.getPropertyOfModel(resolvedSchema, "error")
-    assert.strictEqual(!!errorObject, true)
+    assert.strictEqual(!!errorObject, false)
   }
 
   @test public "test get properties"() {

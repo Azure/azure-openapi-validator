@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
+import { SwaggerUtils } from "../swaggerUtils"
 import { ResourceUtils } from "./utilities/resourceUtils"
 export const RequiredReadOnlySystemData: string = "RequiredReadOnlySystemData"
 
@@ -24,6 +25,7 @@ rules.push({
         return
       }
       const utils = new ResourceUtils(doc, ctx.specPath, ctx.graph)
+      const swaggerUtil = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
       const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions
@@ -43,7 +45,7 @@ rules.push({
               const toValidateModelName = utils.stripDefinitionPath(toValidateSchema.$ref)
               // Needs to check if it's a resource first.
               if (allResources.includes(toValidateModelName)) {
-                const systemData = utils.getPropertyOfModelName(toValidateModelName, "systemData")
+                const systemData = swaggerUtil.getPropertyOfModelName(toValidateModelName, "systemData")
                 if (!systemData) {
                   hasSystemData = false
                   break

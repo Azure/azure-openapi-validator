@@ -6,20 +6,12 @@
     "version": "2019-06-01"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ],
   "securityDefinitions": {
@@ -36,9 +28,7 @@
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}": {
       "delete": {
-        "tags": [
-          "FirewallPolicies"
-        ],
+        "tags": ["FirewallPolicies"],
         "operationId": "FirewallPolicies_Delete",
         "description": "Deletes the specified Firewall Policy.",
         "parameters": [
@@ -57,10 +47,10 @@
             "description": "The name of the Firewall Policy."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -81,9 +71,7 @@
         }
       },
       "get": {
-        "tags": [
-          "FirewallPolicies"
-        ],
+        "tags": ["FirewallPolicies"],
         "operationId": "FirewallPolicies_Get",
         "description": "Gets the specified Firewall Policy.",
         "parameters": [
@@ -102,10 +90,10 @@
             "description": "The name of the Firewall Policy."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
             "name": "$expand",
@@ -126,15 +114,13 @@
         "x-ms-examples": null
       },
       "patch": {
-        "tags": [
-          "FirewallPolicies"
-        ],
+        "tags": ["FirewallPolicies"],
         "operationId": "FirewallPolicies_UpdateTags",
         "x-ms-examples": null,
         "description": "Updates a Firewall Policy Tags.",
         "parameters": [
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
             "name": "resourceGroupName",
@@ -151,16 +137,7 @@
             "description": "The name of the Firewall Policy being updated."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
-          },
-          {
-            "name": "firewallPolicyParameters",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "./network.json#/definitions/TagsObject"
-            },
-            "description": "Parameters supplied to Update Firewall Policy tags."
+            "$ref": "#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
@@ -172,16 +149,12 @@
           },
           "default": {
             "description": "Error.",
-            "schema": {
-              "$ref": "./network.json#/definitions/Error"
-            }
+            "schema": {}
           }
         }
       },
       "put": {
-        "tags": [
-          "FirewallPolicies"
-        ],
+        "tags": ["FirewallPolicies"],
         "operationId": "FirewallPolicies_CreateOrUpdate",
         "description": "Creates or updates the specified Firewall Policy.",
         "parameters": [
@@ -209,10 +182,10 @@
             "description": "Parameters supplied to the create or update Firewall Policy operation."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -238,9 +211,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies": {
       "get": {
-        "tags": [
-          "FirewallPolicies"
-        ],
+        "tags": ["FirewallPolicies"],
         "operationId": "FirewallPolicies_List",
         "description": "Lists all Firewall Policies in a resource group.",
         "parameters": [
@@ -252,10 +223,10 @@
             "description": "The name of the resource group."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -274,17 +245,15 @@
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Network/firewallPolicies": {
       "get": {
-        "tags": [
-          "FirewallPolicies"
-        ],
+        "tags": ["FirewallPolicies"],
         "operationId": "FirewallPolicies_ListAll",
         "description": "Gets all the Firewall Policies in a subscription.",
         "parameters": [
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -303,9 +272,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleGroups/{ruleGroupName}": {
       "delete": {
-        "tags": [
-          "FirewallPolicyRuleGroups"
-        ],
+        "tags": ["FirewallPolicyRuleGroups"],
         "operationId": "FirewallPolicyRuleGroups_Delete",
         "description": "Deletes the specified FirewallPolicyRuleGroup.",
         "parameters": [
@@ -331,10 +298,10 @@
             "description": "The name of the FirewallPolicyRuleGroup."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -355,9 +322,7 @@
         }
       },
       "get": {
-        "tags": [
-          "FirewallPolicyRuleGroups"
-        ],
+        "tags": ["FirewallPolicyRuleGroups"],
         "operationId": "FirewallPolicyRuleGroups_Get",
         "description": "Gets the specified FirewallPolicyRuleGroup.",
         "parameters": [
@@ -383,10 +348,10 @@
             "description": "The name of the FirewallPolicyRuleGroup."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -400,9 +365,7 @@
         "x-ms-examples": null
       },
       "put": {
-        "tags": [
-          "FirewallPolicyRuleGroups"
-        ],
+        "tags": ["FirewallPolicyRuleGroups"],
         "operationId": "FirewallPolicyRuleGroups_CreateOrUpdate",
         "description": "Creates or updates the specified FirewallPolicyRuleGroup.",
         "parameters": [
@@ -437,10 +400,10 @@
             "description": "Parameters supplied to the create or update FirewallPolicyRuleGroup operation."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -466,9 +429,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleGroups": {
       "get": {
-        "tags": [
-          "FirewallPolicyRuleGroups"
-        ],
+        "tags": ["FirewallPolicyRuleGroups"],
         "operationId": "FirewallPolicyRuleGroups_List",
         "description": "Lists all FirewallPolicyRuleGroups in a FirewallPolicy resource.",
         "parameters": [
@@ -487,10 +448,10 @@
             "description": "The name of the Firewall Policy."
           },
           {
-            "$ref": "./network.json#/parameters/ApiVersionParameter"
+            "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+            "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -509,6 +470,49 @@
     }
   },
   "definitions": {
+    "Resource": {
+      "description": "An Azure resource.",
+      "required": ["location"],
+      "properties": {
+        "id": {
+          "description": "The resource ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "The name of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "The type of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "description": "The location of the resource. This cannot be changed after the resource is created.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "The tags of the resource.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "SubResource": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        }
+      },
+      "description": "Reference to another subresource.",
+      "x-ms-azure-resource": true
+    },
     "FirewallPolicy": {
       "properties": {
         "properties": {
@@ -524,7 +528,7 @@
       },
       "allOf": [
         {
-          "$ref": "./network.json#/definitions/Resource"
+          "$ref": "#/definitions/Resource"
         }
       ],
       "description": "FirewallPolicy Resource."
@@ -536,16 +540,12 @@
           "readOnly": true,
           "description": "List of references to FirewallPolicyRuleGroups",
           "items": {
-            "$ref": "./network.json#/definitions/SubResource"
+            "$ref": "#/definitions/SubResource"
           }
-        },
-        "provisioningState": {
-          "description": "The provisioning state of the resource.",
-          "$ref": "./network.json#/definitions/ProvisioningState"
         },
         "basePolicy": {
           "readOnly": false,
-          "$ref": "./network.json#/definitions/SubResource",
+          "$ref": "#/definitions/SubResource",
           "description": "The parent firewall policy from which rules are inherited."
         },
         "firewalls": {
@@ -553,7 +553,7 @@
           "readOnly": true,
           "description": "List of references to Azure Firewalls that this Firewall Policy is associated with",
           "items": {
-            "$ref": "./network.json#/definitions/SubResource"
+            "$ref": "#/definitions/SubResource"
           }
         },
         "childPolicies": {
@@ -561,12 +561,8 @@
           "readOnly": true,
           "description": "List of references to Child Firewall Policies",
           "items": {
-            "$ref": "./network.json#/definitions/SubResource"
+            "$ref": "#/definitions/SubResource"
           }
-        },
-        "threatIntelMode": {
-          "description": "The operation mode for Threat Intelligence.",
-          "$ref": "./azureFirewall.json#/definitions/AzureFirewallThreatIntelMode"
         }
       },
       "description": "Firewall Policy definition"
@@ -595,7 +591,7 @@
       },
       "allOf": [
         {
-          "$ref": "./network.json#/definitions/SubResource"
+          "$ref": "#/definitions/SubResource"
         }
       ],
       "description": "Rule Group resource"
@@ -617,10 +613,6 @@
             "$ref": "#/definitions/FirewallPolicyRule"
           },
           "description": "Group of Firewall Policy rules."
-        },
-        "provisioningState": {
-          "description": "The provisioning state of the resource.",
-          "$ref": "./network.json#/definitions/ProvisioningState"
         }
       },
       "description": "Properties of the rule group."
@@ -628,17 +620,12 @@
     "FirewallPolicyRule": {
       "description": "Properties of the rule.",
       "discriminator": "ruleType",
-      "required": [
-        "ruleType"
-      ],
+      "required": ["ruleType"],
       "properties": {
         "ruleType": {
           "type": "string",
           "description": " The type of the rule",
-          "enum": [
-            "FirewallPolicyNatRule",
-            "FirewallPolicyFilterRule"
-          ],
+          "enum": ["FirewallPolicyNatRule", "FirewallPolicyFilterRule"],
           "x-ms-enum": {
             "name": "FirewallPolicyRuleType",
             "modelAsString": true
@@ -711,9 +698,7 @@
     "FirewallPolicyRuleCondition": {
       "description": "Properties of a rule.",
       "discriminator": "ruleConditionType",
-      "required": [
-        "ruleConditionType"
-      ],
+      "required": ["ruleConditionType"],
       "properties": {
         "name": {
           "type": "string",
@@ -726,10 +711,7 @@
         "ruleConditionType": {
           "type": "string",
           "description": "Rule Condition Type",
-          "enum": [
-            "ApplicationRuleCondition",
-            "NetworkRuleCondition"
-          ],
+          "enum": ["ApplicationRuleCondition", "NetworkRuleCondition"],
           "x-ms-enum": {
             "name": "FirewallPolicyRuleConditionType",
             "modelAsString": true
@@ -843,10 +825,7 @@
     "FirewallPolicyRuleConditionApplicationProtocolType": {
       "type": "string",
       "description": "The application protocol type of a Rule condition.",
-      "enum": [
-        "Http",
-        "Https"
-      ],
+      "enum": ["Http", "Https"],
       "x-ms-enum": {
         "name": "FirewallPolicyRuleConditionApplicationProtocolType",
         "modelAsString": true
@@ -855,10 +834,7 @@
     "FirewallPolicyNatRuleActionType": {
       "type": "string",
       "description": "The action type of a rule",
-      "enum": [
-        "DNAT",
-        "SNAT"
-      ],
+      "enum": ["DNAT", "SNAT"],
       "x-ms-enum": {
         "name": "FirewallPolicyNatRuleActionType",
         "modelAsString": true
@@ -876,11 +852,7 @@
     "FirewallPolicyFilterRuleActionType": {
       "type": "string",
       "description": "The action type of a rule",
-      "enum": [
-        "Allow",
-        "Deny",
-        "Alert "
-      ],
+      "enum": ["Allow", "Deny", "Alert "],
       "x-ms-enum": {
         "name": "FirewallPolicyFilterRuleActionType",
         "modelAsString": true
@@ -898,12 +870,7 @@
     "FirewallPolicyRuleConditionNetworkProtocol": {
       "type": "string",
       "description": "The Network protocol of a Rule condition",
-      "enum": [
-        "TCP",
-        "UDP",
-        "Any",
-        "ICMP"
-      ],
+      "enum": ["TCP", "UDP", "Any", "ICMP"],
       "x-ms-enum": {
         "name": "FirewallPolicyRuleConditionNetworkProtocol",
         "modelAsString": true
@@ -940,6 +907,22 @@
         }
       },
       "description": "Response for ListFirewallPolicyRuleGroups API service call."
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "The Microsoft Azure subscription ID.",
+      "required": true,
+      "type": "string"
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "description": "The client API version.",
+      "required": true,
+      "type": "string"
     }
   }
 }

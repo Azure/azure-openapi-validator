@@ -44,7 +44,7 @@ export class ResourceUtils {
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(/\\w+/{[^/}]+})+$", "gi")
 
   private XmsResources = new Set<string>()
-  private swaggerUtil
+  private swaggerUtil: SwaggerUtils
 
   constructor(private innerDoc: any, private specPath?: string, private graph?: DocumentDependencyGraph) {
     this.getXmsResources()
@@ -510,5 +510,13 @@ export class ResourceUtils {
         }
       }
     }
+  }
+
+  public getPropertyOfModel(schema: any, property: string) {
+    return this.swaggerUtil.getPropertyOfModel(schema, property)
+  }
+
+  public getPropertyOfModelName(modelName: string, propertyName: string) {
+    return this.swaggerUtil.getPropertyOfModelName(modelName, propertyName)
   }
 }
