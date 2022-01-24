@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes } from "../../jsonpath"
 import { DocumentDependencyGraph } from "../../depsGraph"
-import { deReference, SwaggerUtils } from "../../swaggerUtils"
+import { SwaggerUtils } from "../../swaggerUtils"
 
 export interface CollectionApiInfo {
   modelName: string

@@ -3,10 +3,10 @@ import * as path from "path"
 const DepGraph = require("dependency-graph").DepGraph
 import $RefParser = require("@apidevtools/json-schema-ref-parser")
 import glob = require("glob")
-import { normalizePath, OpenapiDocument } from "./document"
+import { OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
 import { isAbsolute, normalize } from "path"
-import url from "url"
+import { normalizePath } from "./swaggerUtils"
 
 export class DocumentDependencyGraph {
   private graph = new DepGraph()

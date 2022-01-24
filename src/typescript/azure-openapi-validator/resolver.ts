@@ -1,6 +1,6 @@
 import { dirname, isAbsolute, join } from "path"
 import { fileURLToPath, URL } from "url"
-import { normalizePath } from "./document"
+import { normalizePath } from "./swaggerUtils"
 
 export class Resolver {
   private references = new Set<string>()

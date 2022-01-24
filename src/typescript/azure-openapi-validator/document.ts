@@ -40,14 +40,3 @@ export class OpenapiDocument {
   }
 }
 
-export const normalizePath = (path: string) => {
-  let urlPath = fileURLToPath(pathToFileURL(path)).replace(/\\/g,"/")
-  if (urlPath.slice(1,3) === ":/") { // for windows
-    return urlPath.charAt(0).toUpperCase() + urlPath.slice(1)
-  }
-  return urlPath
-}
-
-export const parseJsonRef = (ref: string): string[] => {
-  return ref.split("#")
-}

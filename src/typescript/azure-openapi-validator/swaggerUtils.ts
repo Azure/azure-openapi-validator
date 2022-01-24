@@ -1,7 +1,7 @@
 import { DocumentDependencyGraph } from "./depsGraph"
-import { parseJsonRef } from "./document"
 import { nodes, stringify } from "./jsonpath"
-import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser";
+import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
+import { fileURLToPath, pathToFileURL } from "url"
 
 export class SwaggerUtils {
   constructor(private innerDoc?: any, private specPath?: string, private graph?: DocumentDependencyGraph) {}
@@ -63,31 +63,38 @@ export class SwaggerUtils {
     }
   }
 
-  public async getResolvedSchema(schema:any|string) {
+  public async getResolvedSchema(schema: any | string) {
     if (!schema) {
       return schema
     }
     if (typeof schema === "string") {
       schema = {
-        $ref:schema
+        $ref: schema
       }
     }
     const graph = this.graph
-    const resolveOption:$RefParser.Options = {
-      resolve:{
-        file :{
-          canRead:true,
-          read(file:FileInfo){
+    const resolveOption: $RefParser.Options = {
+      resolve: {
+        file: {
+          canRead: true,
+          read(file: FileInfo) {
             return graph.getDocument(file.url).getObj()
           }
         }
       }
     }
-   const resolvedSchema = await $RefParser.dereference(schema,resolveOption);
-   return resolvedSchema
-
+    const resolvedSchema = await $RefParser.dereference(schema, resolveOption)
+    return resolvedSchema
   }
 }
+
+/**
+ *
+ * @param doc
+ * @param schema
+ * @param graph
+ * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
+ */
 export function deReference(doc: any, schema: any, graph?: DocumentDependencyGraph) {
   const getRefModel = (refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
@@ -116,4 +123,17 @@ export function deReference(doc: any, schema: any, graph?: DocumentDependencyGra
     return schema
   }
   return undefined
+}
+
+export const normalizePath = (path: string) => {
+  let urlPath = fileURLToPath(pathToFileURL(path)).replace(/\\/g, "/")
+  if (urlPath.slice(1, 3) === ":/") {
+    // for windows
+    return urlPath.charAt(0).toUpperCase() + urlPath.slice(1)
+  }
+  return urlPath
+}
+
+export const parseJsonRef = (ref: string): string[] => {
+  return ref.split("#")
 }
