@@ -1,6 +1,7 @@
 import { DocumentDependencyGraph } from "./depsGraph"
 import { parseJsonRef } from "./document"
 import { nodes, stringify } from "./jsonpath"
+import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser";
 
 export class SwaggerUtils {
   constructor(private innerDoc?: any, private specPath?: string, private graph?: DocumentDependencyGraph) {}
@@ -60,6 +61,31 @@ export class SwaggerUtils {
     if (property) {
       return deReference(this.innerDoc, property, this.graph)
     }
+  }
+
+  public async getResolvedSchema(schema:any|string) {
+    if (!schema) {
+      return schema
+    }
+    if (typeof schema === "string") {
+      schema = {
+        $ref:schema
+      }
+    }
+    const graph = this.graph
+    const resolveOption:$RefParser.Options = {
+      resolve:{
+        file :{
+          canRead:true,
+          read(file:FileInfo){
+            return graph.getDocument(file.url).getObj()
+          }
+        }
+      }
+    }
+   const resolvedSchema = await $RefParser.dereference(schema,resolveOption);
+   return resolvedSchema
+
   }
 }
 export function deReference(doc: any, schema: any, graph?: DocumentDependencyGraph) {

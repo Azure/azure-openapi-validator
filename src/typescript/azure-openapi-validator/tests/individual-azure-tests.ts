@@ -56,9 +56,8 @@ class IndividualAzureTests {
       PostOperationIdContainsUrlVerb
     )
     assert.strictEqual(messages.length, 1)
-    assert.strictEqual(
-      messages[0].Text,
-      "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
+    assert.ok(
+      messages[0].Text === "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
     )
   }
   @test

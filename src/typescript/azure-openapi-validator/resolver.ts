@@ -1,4 +1,6 @@
 import { dirname, isAbsolute, join } from "path"
+import { fileURLToPath, URL } from "url"
+import { normalizePath } from "./document"
 
 export class Resolver {
   private references = new Set<string>()
@@ -13,9 +15,8 @@ export class Resolver {
     if (typeof node === "object" && typeof node.$ref === "string") {
       const slices = node.$ref.split("#") as string[]
       if (slices.length === 2 && slices[0] && !isAbsolute(slices[0])) {
-        const referenceFile = join(dirname(ctx.currentFile), slices[0])
-          .split(/\\|\//)
-          .join("/")
+        const currentPath = normalizePath(ctx.currentFile)
+        const referenceFile = currentPath.split(/\\|\//).slice(0,-1).concat(slices[0]).join("/")
         node.$ref = referenceFile + `#${slices[1]}`
 
         if (!referenceFile.includes("examples")) ctx.references.add(referenceFile)

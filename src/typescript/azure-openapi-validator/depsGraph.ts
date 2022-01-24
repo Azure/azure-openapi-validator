@@ -3,9 +3,10 @@ import * as path from "path"
 const DepGraph = require("dependency-graph").DepGraph
 import $RefParser = require("@apidevtools/json-schema-ref-parser")
 import glob = require("glob")
-import { OpenapiDocument } from "./document"
+import { normalizePath, OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
 import { isAbsolute, normalize } from "path"
+import url from "url"
 
 export class DocumentDependencyGraph {
   private graph = new DepGraph()
@@ -18,7 +19,7 @@ export class DocumentDependencyGraph {
       ignore: ["**/examples/**/*.json"]
     })
     for (const spec of specPaths) {
-      const simpleSpec = this.getSimplyPath(spec)
+      const simpleSpec = normalizePath(spec)
       this.createIfNotExists(simpleSpec)
 
       const refs = await this.getReferences(spec)
@@ -26,7 +27,7 @@ export class DocumentDependencyGraph {
         if (options.ignoreCommonType && ref.match(/.*common-types[\\|\/]resource\-management[\\|\/]v\d[\\|\/].+\.json$/)) {
           continue
         }
-        const simpleRef = this.getSimplyPath(ref)
+        const simpleRef = normalizePath(ref)
         this.createIfNotExists(simpleRef)
 
         if (simpleRef !== simpleSpec) {
@@ -43,13 +44,6 @@ export class DocumentDependencyGraph {
     }
   }
 
-  getSimplyPath(fullPath: string) {
-    return fullPath
-      .split(/\\|\//)
-      .join("/")
-      .split("#")[0]
-  }
-
   getApiVersion(fullPath: string) {
     const segments = fullPath.split(/\\|\//)
     return segments[segments.length - 2]
@@ -61,7 +55,7 @@ export class DocumentDependencyGraph {
   }
 
   private async getReferences(specPath: string): Promise<string[]> {
-    const document = await this.cacheDocument(specPath)
+    const document = await this.cacheDocument(normalizePath(specPath))
     return document.getReferences()
   }
 
@@ -69,11 +63,11 @@ export class DocumentDependencyGraph {
     if (!isAbsolute(specPath)) {
       specPath = normalize(specPath)
     }
-    const simplePath = this.getSimplyPath(specPath)
-    if (this.referenceCache.has(simplePath)) {
-      return this.referenceCache.get(simplePath)
+    const urlPath = normalizePath(specPath)
+    if (this.referenceCache.has(urlPath)) {
+      return this.referenceCache.get(urlPath)
     }
-    const cache = await this.cacheDocument(simplePath)
+    const cache = await this.cacheDocument(urlPath)
     const references = cache.getReferences()
     const promises = []
     for (const ref of references) {
@@ -84,9 +78,9 @@ export class DocumentDependencyGraph {
   }
 
   getDocument(specPath: string) {
-    const simplePath = this.getSimplyPath(specPath)
-    if (this.referenceCache.has(simplePath)) {
-      return this.referenceCache.get(simplePath)
+    const urlPath = normalizePath(specPath)
+    if (this.referenceCache.has(urlPath)) {
+      return this.referenceCache.get(urlPath)
     }
     throw new Error(`No cached file:${specPath}`)
   }
@@ -100,17 +94,17 @@ export class DocumentDependencyGraph {
   }
 
   public dependantsOf(specPath: string) {
-    return this.graph.dependantsOf(this.getSimplyPath(specPath))
+    return this.graph.dependantsOf(normalizePath(specPath))
   }
 
   public dependenciesOf(specPath: string) {
-    return this.graph.dependenciesOf(this.getSimplyPath(specPath))
+    return this.graph.dependenciesOf(normalizePath(specPath))
   }
 
   public getDocFromJsonRef(ref: string) {
-    const simplePath = this.getSimplyPath(ref)
-    if (this.referenceCache.has(simplePath)) {
-      return this.referenceCache.get(simplePath)
+    const urlPath = normalizePath(ref)
+    if (this.referenceCache.has(urlPath)) {
+      return this.referenceCache.get(urlPath)
     }
     return undefined
   }
