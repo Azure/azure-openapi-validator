@@ -343,7 +343,7 @@ export class ArmUtils {
    */
 
   public getCollectionApiInfo() {
-    let allPathKeys = Object.keys(this.innerDoc.paths)
+    let allPathKeys = this.innerDoc.paths ? Object.keys(this.innerDoc.paths) : []
     if (this.innerDoc["x-ms-paths"]) {
       allPathKeys = allPathKeys.concat(Object.keys(this.innerDoc["x-ms-paths"]))
     }

@@ -8,6 +8,9 @@ import { stringify, nodes } from "../../jsonpath"
 import { deReference } from "../../swaggerUtils"
 
 export function getSuccessfulResponseSchema(node, doc, graph: DocumentDependencyGraph): any {
+  if (!node.responses) {
+    return undefined
+  }
   const responses = Object.keys(node.responses)
   const response = getMostSuccessfulResponseKey(responses)
   return getResponseSchema(node.responses[response], doc, graph)

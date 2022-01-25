@@ -7,35 +7,35 @@ import { safeLoad } from "js-yaml"
 import { run, runRules } from "../../../azure-openapi-validator"
 import { Message } from "../../../jsonrpc/types"
 import { DocumentDependencyGraph } from "../../depsGraph"
+import { IFormatter, JsonFormatter } from "../../formatter"
 import { MergeStates, OpenApiTypes, rules } from "../../rule"
+import { RuleLoader } from "../../ruleLoader"
 import ruleSet from "../../rulesets/default"
+import { getOpenapiTypes, LintRunner } from "../../runner"
 import { IRuleSet, RulesObject } from "../../types"
 const fs = require("fs")
 const path = require("path")
 const pathToTestResources: string = "../../tests/resources/"
 
 // run the validator and gather all the messages generated
-export async function collectTestMessagesFromValidator(
-  fileName: string,
-  openapiType: OpenApiTypes,
-  mergeState: MergeStates,
-  ruleName?: string
-): Promise<Message[]> {
-  const messages: Message[] = []
-  const getMessages = function(m: Message) {
-    messages.push(m)
-  }
+export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes, ruleName?: string): Promise<Message[]> {
   const filePath = getFilePath(fileName)
   const graph = new DocumentDependencyGraph()
-  const openapiDefinitionObject = (await graph.loadDocument(filePath)).getObj()
+  let ruleLoader: RuleLoader
   if (ruleName) {
     const rules: RulesObject = {}
     rules[ruleName] = ruleSet.rules[ruleName]
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
-    await runRules(filePath, openapiDefinitionObject, getMessages, openapiType, mergeState, singleRuleSet)
+    ruleLoader = { getRuleSet: () => singleRuleSet }
   } else {
-    await run(filePath, openapiDefinitionObject, getMessages, openapiType, mergeState)
+    ruleLoader = new RuleLoader()
   }
+  const runner = new LintRunner(ruleLoader, graph, {
+    format: msg => {
+      return msg
+    }
+  } as IFormatter<Message>)
+  const messages = await runner.execute([filePath], { openapiType })
   return messages
 }
 
@@ -46,7 +46,7 @@ function readFileAsString(file: string): string {
 
 // assert whether we have the expected number of validation rules of given type
 export function assertValidationRuleCount(messages: Message[], validationRule: string, count: number): void {
-  assert.equal(messages.filter(msg => msg.Details.code === validationRule).length, count)
+  assert.equal(messages.filter(msg => msg?.Details?.code === validationRule).length, count)
 }
 
 // get all the warning messages generated

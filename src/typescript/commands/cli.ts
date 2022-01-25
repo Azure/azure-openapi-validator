@@ -7,6 +7,7 @@ import * as amd from "@azure/openapi-markdown"
 import { parse } from "@ts-common/commonmark-to-markdown"
 import path = require("path")
 import { safeLoad } from "js-yaml"
+import { getOpenapiTypes } from "../azure-openapi-validator/runner"
 
 async function main() {
   console.log(`azure openapi linter v0.1`)
@@ -57,7 +58,7 @@ async function main() {
       },
       async args => {
         let specs = args.specs
-        const option = { openapiType: args.openapiType }
+        const option = { openapiType: getOpenapiTypes(args.openapiType) }
         if (args.readme) {
           lintReadme(args.readme, option, args.tag)
         } else {

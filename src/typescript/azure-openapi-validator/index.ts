@@ -10,6 +10,9 @@ import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
 import ruleSet from "./rulesets/default"
 import { IRule, IRuleSet } from "./types"
 import _ from "lodash"
+import { LintRunner } from "./runner"
+import { RuleLoader } from "./ruleLoader"
+import { JsonFormatter } from "./formatter"
 
 export const runRules = async (
   document: string,
@@ -112,7 +115,7 @@ export async function run(
 
 export type LintOptions = {
   rpFolder?: string
-  openapiType: string
+  openapiType: OpenApiTypes
 }
 
 export async function runCli(swaggerPaths: string[], options: LintOptions) {
@@ -121,48 +124,12 @@ export async function runCli(swaggerPaths: string[], options: LintOptions) {
   if (rpFolder) {
     await graph.generateGraph(rpFolder)
   }
-  const specsPromises = []
-  for (const spec of swaggerPaths) {
-    specsPromises.push(graph.loadDocument(spec))
-  }
-  const documents = (await Promise.all(specsPromises)) as OpenapiDocument[]
-  const messages = new Set<string>()
-  const sendMessage = (msg: Message) => {
-    const document = graph.getDocument(msg.Source[0].document)
-    let path = (msg.Source[0].Position as any).path
-    if (path[0] === "$") {
-      path = path.slice(1)
-    }
-    const pos = document.getPositionFromJsonPath(path)
+  const loader = new RuleLoader()
+  const formatter = new JsonFormatter(graph)
+  const runner = new LintRunner(loader, graph, formatter)
+  const msgs = await runner.execute(swaggerPaths, options)
 
-    const jsonMsg = {
-      ...msg.Details,
-      sources: [msg.Source[0].document + `:${pos.line}:${pos.column}`],
-      "json-path": stringify(path)
-    }
-    const serializedJson = JSON.stringify(jsonMsg, null, 2)
-    if (!messages.has(serializedJson)) {
-      console.log(serializedJson)
-      messages.add(serializedJson)
-    }
-  }
-  const runPromises = []
-  for (const doc of documents) {
-    const promise = run(doc.getDocumentPath(), doc.getObj(), sendMessage, getOpenapiTypes(options.openapiType), MergeStates.composed, graph)
-    runPromises.push(promise)
-  }
-  await Promise.all(runPromises)
-}
-
-function getOpenapiTypes(type: string) {
-  switch (type) {
-    case "arm": {
-      return OpenApiTypes.arm
-    }
-    case "data-plane": {
-      return OpenApiTypes.dataplane
-    }
-    default:
-      return OpenApiTypes.default
+  for (const msg of msgs) {
+    console.log(msg)
   }
 }

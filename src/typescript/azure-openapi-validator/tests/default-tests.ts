@@ -14,7 +14,7 @@ import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./u
 class DefaultTests {
   @test public async "array schema must have items test"() {
     const fileName = "ArraySchemaWithoutItems.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.default, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.default)
     assertValidationRuleCount(messages, ArraySchemaMustHaveItems, 1)
   }
 }
