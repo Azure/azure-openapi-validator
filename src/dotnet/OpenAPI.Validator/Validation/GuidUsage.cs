@@ -6,6 +6,7 @@ using OpenAPI.Validator.Properties;
 using OpenAPI.Validator.Validation.Core;
 using OpenAPI.Validator.Model;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace OpenAPI.Validator.Validation
 {
@@ -15,6 +16,9 @@ namespace OpenAPI.Validator.Validation
     /// </summary>
     public class GuidUsage : TypedRule<Dictionary<string, Schema>>
     {
+
+        private static readonly Regex CommonTypeRegExp = new Regex(@"^.+common-types.+resource-management.+v\d.+\.json$", RegexOptions.IgnoreCase);
+
         /// <summary>
         /// Id of the Rule.
         /// </summary>
@@ -58,14 +62,16 @@ namespace OpenAPI.Validator.Validation
         /// <returns>list of validation messages</returns>
         public override IEnumerable<ValidationMessage> GetValidationMessages(Dictionary<string, Schema> definitions, RuleContext context)
         {
-            foreach (KeyValuePair<string, Schema> definition in definitions)
-            {
-                object[] formatParameters;
-                if (!this.HandleSchema((Schema)definition.Value, definitions, out formatParameters, definition.Key))
+            if (!CommonTypeRegExp.IsMatch(context.File.ToString())) {
+                foreach (KeyValuePair<string, Schema> definition in definitions)
                 {
-                    formatParameters[1] = definition.Key;
-                    yield return new ValidationMessage(new FileObjectPath(context.File,
-                                context.Path.AppendProperty(definition.Key).AppendProperty("properties").AppendProperty((string)formatParameters[0])), this, formatParameters);
+                    object[] formatParameters;
+                    if (!this.HandleSchema((Schema)definition.Value, definitions, out formatParameters, definition.Key))
+                    {
+                        formatParameters[1] = definition.Key;
+                        yield return new ValidationMessage(new FileObjectPath(context.File,
+                                    context.Path.AppendProperty(definition.Key).AppendProperty("properties").AppendProperty((string)formatParameters[0])), this, formatParameters);
+                    }
                 }
             }
         }

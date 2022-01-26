@@ -37,7 +37,7 @@ import { ParametersOrder } from "../rules/ParametersOrder"
 import { ExtensionResourcePathPattern } from "../rules/ExtensionResourcePathPattern"
 import { EnumMustRespectType } from "../rules/EnumMustRespectType"
 import { XmsEnumValidation } from "../rules/XmsEnumValidation"
-import defaultRuleSet from "../rulesets/default"
+import { XmsIdentifierValidation } from "../rules/XmsIdentifierValidation"
 
 @suite
 class IndividualAzureTests {
@@ -354,5 +354,10 @@ class IndividualAzureTests {
     const ruleName = "noPasswordInPropertyName"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
+  }
+  @test public async "x-ms-identifiers missing"() {
+    const fileName = "XmsIdentifiers.json"
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    assertValidationRuleCount(messages, XmsIdentifierValidation, 2)
   }
 }

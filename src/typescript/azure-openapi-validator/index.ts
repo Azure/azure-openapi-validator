@@ -4,8 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { Message } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
-import { OpenapiDocument } from "./document"
-import { nodes, stringify } from "./jsonpath"
+import { nodes } from "./jsonpath"
 import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
 import ruleSet from "./rulesets/default"
 import { IRule, IRuleSet } from "./types"
