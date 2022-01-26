@@ -67,8 +67,13 @@ Options:
                           multiple times to add more options.            [array]
 ```
 
-## Open questions
-### suppression
+## suppression
 
 1  suppression in readme.
 2  other places.
+
+## TBD
+- support suppression ?
+- rewrite all C# rules . Total ~61, 23 ARM rules,38 SDK rules
+- apply to tooling service , unified pipeline 
+- update relevant documentations

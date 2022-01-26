@@ -1,4 +1,3 @@
-import { isArrayBuffer } from "lodash"
 import { Message } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
 import { stringify } from "./jsonpath"
