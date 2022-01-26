@@ -6,12 +6,12 @@ import { IRuleFunction, MergeStates, OpenApiTypes } from "./rule"
 
 export type RuleThen = {
   options: any
-  subPath?: string
+  fieldSelector?: string
   execute: IRuleFunction
 }
 
 export interface IRule {
-  readonly id: string // see Rxxx/Sxxx codes on https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
+  readonly id: string // see rule ID
   readonly description?: string
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
   readonly openapiType: OpenApiTypes

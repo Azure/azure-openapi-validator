@@ -64,14 +64,14 @@ export const defaultRuleSet: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
   rules: {
     ...legacyRules,
-    noPassword: {
+    noPasswordInPropertyName: {
       id: "R4033",
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
       given: "$.definitions.*",
       then: {
-        subPath: "$..properties.*~",
+        fieldSelector: "$..properties.*~",
         options: {
           match: ".*Password.*"
         },

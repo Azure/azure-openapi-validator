@@ -11,7 +11,7 @@ import { IFormatter, JsonFormatter } from "../../formatter"
 import { MergeStates, OpenApiTypes, rules } from "../../rule"
 import { RuleLoader } from "../../ruleLoader"
 import ruleSet from "../../rulesets/default"
-import { getOpenapiTypes, LintRunner } from "../../runner"
+import { LintRunner } from "../../runner"
 import { IRuleSet, RulesObject } from "../../types"
 const fs = require("fs")
 const path = require("path")
@@ -24,6 +24,9 @@ export async function collectTestMessagesFromValidator(fileName: string, openapi
   let ruleLoader: RuleLoader
   if (ruleName) {
     const rules: RulesObject = {}
+    if (ruleSet.rules[ruleName]) {
+      throw new Error(`Rule ${ruleName} was not found.`)
+    }
     rules[ruleName] = ruleSet.rules[ruleName]
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
     ruleLoader = { getRuleSet: () => singleRuleSet }

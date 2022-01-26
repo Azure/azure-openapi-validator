@@ -351,7 +351,7 @@ class IndividualAzureTests {
 
   @test public async "no password in model/property name"() {
     const fileName = "HasPassword.json"
-    const ruleName = "noPassword"
+    const ruleName = "noPasswordInPropertyName"
     const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   }

@@ -28,9 +28,9 @@ export class LintRunner<T> {
       }
       for (const given of givens) {
         for (const section of nodes(openapiDefinition, given)) {
-          const subPath = rule.then.subPath
-          if (subPath) {
-            for (const subSection of nodes(section.value, subPath)) {
+          const fieldSelector = rule.then.fieldSelector
+          if (fieldSelector) {
+            for (const subSection of nodes(section.value, fieldSelector)) {
               for await (const message of rule.then.execute(
                 openapiDefinition,
                 subSection.value,
@@ -47,7 +47,7 @@ export class LintRunner<T> {
           } else {
             for await (const message of rule.then.execute(
               openapiDefinition,
-              rule.then.subPath ? section.property : section.value,
+              section.value,
               section.path.slice(1),
               {
                 specPath: document,

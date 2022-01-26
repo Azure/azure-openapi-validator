@@ -34,11 +34,10 @@ async function main() {
               }
             }
           })
-          .option("option", {
-            type: "array",
+          .option("resourceProverFolder", {
+            type: "string",
             string: true,
-            describe:
-              "Key/value pairs that can be passed to linter.  The format is 'key=value'.  This parameter can be used multiple times to add more options."
+            describe: "the folder that includes all the swagger belongs to the RP."
           })
           .option("openapiType", {
             type: "string",
@@ -55,10 +54,16 @@ async function main() {
             string: true,
             describe: "the readme.md file tag."
           })
+          .option("option", {
+            type: "array",
+            string: true,
+            describe:
+              "Key/value pairs that can be passed to linter.  The format is 'key=value'.  This parameter can be used multiple times to add more options."
+          })
       },
       async args => {
         let specs = args.specs
-        const option = { openapiType: getOpenapiTypes(args.openapiType) }
+        const option = { openapiType: getOpenapiTypes(args.openapiType), rpFolder: args.resourceProverFolder }
         if (args.readme) {
           lintReadme(args.readme, option, args.tag)
         } else {
