@@ -2,9 +2,8 @@
 
 ## Overview
 ![image](./overview.jpg)
-
-- dependency graph
-when lint swagger , firstly we will construct the dependency graph which contains the relationship of which swaggers reference the current swagger , and which swaggers are referenced by current swagger  
+- dependency graph:
+   Constructing the dependency graph which contains the relationship of which swaggers reference the current swagger , and which swaggers are referenced by current swagger .  We can use it implement some rules that across multiple swagger precisely. For example, if one resource's operations distributed in multiple swagger ,we just traverse its denpendants to check if this ARM implement all APIs required by ARM.
 
 ## Adding new rules
 1 add new shared functions or use existing functions.
@@ -17,7 +16,7 @@ export type IRuleFunction = (
   openapiSection: any,
   location: JsonPath,
   ctx?: RuleContext,
-  opt?: any
+  opt?: any  // pass by rule configuration
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 ```
 ### Rule configuration
