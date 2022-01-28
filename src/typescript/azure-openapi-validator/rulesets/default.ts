@@ -47,6 +47,7 @@ require("../rules/ImplementPrivateEndpointAPIs")
 require("../rules/ParametersOrder")
 require("../rules/ExtensionResourcePathPattern")
 require("../rules/XmsEnumValidation")
+require("../rules/XmsIdentifierValidation")
 
 export { defaultRuleSet as default }
 

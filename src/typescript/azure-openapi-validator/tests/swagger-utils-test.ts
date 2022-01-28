@@ -49,14 +49,17 @@ class SwaggerUtilsTests {
     const openapiDefinitionObject = (await graph.loadDocument(filePath)).getObj()
     const comonFilePath = getFilePath("references/common.json")
     const commonDoc = await graph.loadDocument(comonFilePath)
-    const swggerUtils = new SwaggerUtils(openapiDefinitionObject, filePath, graph)
-    let resolvedSchema = (await swggerUtils.getResolvedSchema(
+    const swaggerUtils = new SwaggerUtils(openapiDefinitionObject, filePath, graph)
+    let resolvedSchema = (await swaggerUtils.getResolvedSchema(
       openapiDefinitionObject.paths[
         "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/listKeys"
-      ].post.parameters[0]
+      ].post
     )) as any
-    assert.strictEqual(resolvedSchema.name, "subscriptionId")
-    resolvedSchema = await swggerUtils.getResolvedSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
+    assert.strictEqual(resolvedSchema.parameters[0].name, "subscriptionId")
+    resolvedSchema = await swaggerUtils.getResolvedSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
+
+    resolvedSchema = await swaggerUtils.getResolvedSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
+
     assert.strictEqual(resolvedSchema.name, "api-version")
 
     const position = commonDoc.getPositionFromJsonPath(["definitions", "a", "allOf", "0"])

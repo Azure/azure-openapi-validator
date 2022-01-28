@@ -89,31 +89,31 @@ class IndividualAzureTests {
 
   @test public async "Enum must respect type"() {
     const fileName = "EnumMustRespectType.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumMustRespectType)
     assertValidationRuleCount(messages, EnumMustRespectType, 4)
   }
 
   @test
   public async "path resource type name use camel case eg: proactiveDetectionConfigs"() {
     const fileName = "PathResourceTypeNameCamelCase.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PathResourceTypeNameCamelCase)
     assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1)
   }
   @test public async "Enum must not have empty value"() {
     const fileName = "EnumMustNotHaveEmptyValue.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumMustNotHaveEmptyValue)
     assertValidationRuleCount(messages, EnumMustNotHaveEmptyValue, 1)
   }
 
   @test public async "Must not have empty response schema"() {
     const fileName = "EmptyResponseSchema.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, AvoidEmptyResponseSchema)
     assertValidationRuleCount(messages, AvoidEmptyResponseSchema, 1)
   }
 
   @test public async "x-ms-code-generation-settings depreated"() {
     const fileName = "InfoWithxmsCodeGenerationSetting.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DeprecatedXmsCodeGenerationSetting)
     assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1)
   }
 
@@ -125,50 +125,54 @@ class IndividualAzureTests {
 
   @test public async "default response schema does not correspond to document"() {
     const fileName = "DefaultResponseSchemaDismatch.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DefaultErrorResponseSchema)
     assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1)
   }
 
   @test public async "default response required"() {
     const fileName = "DefaultResponseMissed.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, RequiredDefaultResponse)
     assertValidationRuleCount(messages, RequiredDefaultResponse, 1)
   }
 
   @test public async "delete response required"() {
     const fileName = "DeleteResponseMissed.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DeleteOperationResponses)
     assertValidationRuleCount(messages, DeleteOperationResponses, 1)
   }
 
   @test public async "interger must have format"() {
     const fileName = "IntegerWithoutFormat.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, IntegerTypeMustHaveFormat)
     assertValidationRuleCount(messages, IntegerTypeMustHaveFormat, 1)
   }
 
   @test public async "x-ms-pageable doesn't have corresponding property"() {
     const fileName = "PageableOperationWithoutCorrespondingProp.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsPageableMustHaveCorrespondingResponse)
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 1)
   }
 
   @test public async "x-ms-pageable have corresponding property"() {
     const fileName = "PageableOperationWithCorrespondingProp.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsPageableMustHaveCorrespondingResponse)
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   }
 
   @test public async "x-ms-pageable have null nextlink "() {
     const fileName = "PageableOperationWithNullNextLink.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsPageableMustHaveCorrespondingResponse)
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   }
 
   // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
   @test public async "Raas Put async operation doesn't support 202"() {
     const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_CreateOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 1)
   }
 
@@ -176,7 +180,11 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas Put async operation missing x-ms* async extensions"() {
     const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_CreateOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
   }
 
@@ -184,20 +192,28 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas Put async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasPutAsyncOperationResponseFinalStateViaAzureAsync.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_CreateOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
   }
 
   // Valid 201 response for RPaaS
   @test public async "Raas Put async operation is defined correctly"() {
     const fileName = "RpaasValidPutAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_CreateOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 0)
   }
 
   @test public async "Preview version over a year"() {
     const fileName = "PreviewVersionOverOneYear.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PreviewVersionOverOneYear)
     assertValidationRuleCount(messages, PreviewVersionOverOneYear, 1)
   }
 
@@ -285,67 +301,71 @@ class IndividualAzureTests {
   // Valid 202 response for POST operation in RPaaS
   @test public async "Raas POST async operation is defined correctly"() {
     const fileName = "RpaasValidPostAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_PostOperationAsyncResponseValidation
+    )
     assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 0)
   }
 
   @test public async "Raas resource is defined with empty properties"() {
     const fileName = "RpaasResourceWithEmptyPropertiesBag.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, Rpaas_ResourceProvisioningState)
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 1)
   }
 
   @test public async "Raas resource is defined with provisioning properties"() {
     const fileName = "RpaasResourceWithProvisioningState.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, Rpaas_ResourceProvisioningState)
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 0)
   }
 
   @test public async "only has default response"() {
     const fileName = "OnlyDefaultResponseSchema.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ValidResponseCodeRequired)
     assertValidationRuleCount(messages, ValidResponseCodeRequired, 1)
   }
 
   @test public async "not only has default response"() {
     const fileName = "NotOnlyDefaultResponseSchema.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ValidResponseCodeRequired)
     assertValidationRuleCount(messages, ValidResponseCodeRequired, 0)
   }
 
   @test public async "resource tag meet common type"() {
     const filename: string = "ResourceWithTag.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, AzureResourceTagsSchema)
     assertValidationRuleCount(messages, AzureResourceTagsSchema, 1)
   }
 
   @test public async "missing x-ms-error-response"() {
     const fileName = "ErrorResponseMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MissingXmsErrorResponse)
     assertValidationRuleCount(messages, MissingXmsErrorResponse, 2)
   }
 
   @test public async "missing type:object"() {
     const fileName = "missingTypeObject.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MissingTypeObject)
     assertValidationRuleCount(messages, MissingTypeObject, 9)
   }
 
   @test public async "parameter order not match"() {
     const fileName = "ParameterOrderNotMatchPath.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ParametersOrder)
     assertValidationRuleCount(messages, ParametersOrder, 1)
   }
 
   @test public async "rpaas extension resource "() {
     const fileName = "RPaaSExtensionResource.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, ExtensionResourcePathPattern)
     assertValidationRuleCount(messages, ExtensionResourcePathPattern, 1)
   }
 
   @test public async "x-ms-enum absent "() {
     const fileName = "XmsEnumAbsent.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsEnumValidation)
     assertValidationRuleCount(messages, XmsEnumValidation, 2)
   }
 
@@ -357,7 +377,7 @@ class IndividualAzureTests {
   }
   @test public async "x-ms-identifiers missing"() {
     const fileName = "XmsIdentifiers.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
-    assertValidationRuleCount(messages, XmsIdentifierValidation, 2)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsIdentifierValidation)
+    assertValidationRuleCount(messages, XmsIdentifierValidation, 3)
   }
 }

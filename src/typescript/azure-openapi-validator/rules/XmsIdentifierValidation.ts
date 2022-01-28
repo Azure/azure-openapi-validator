@@ -3,8 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { ResourceUtils } from "./utilities/resourceUtils"
-import { deReference } from "./utilities/rules-helper"
+import { SwaggerUtils } from "../swaggerUtils"
 export const XmsIdentifierValidation: string = "XmsIdentifierValidation"
 
 rules.push({
@@ -15,14 +14,13 @@ rules.push({
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: ["$.definitions..[?(@.items)]", "$.parameters..[?(@.items)]"],
-  *run(doc, node, path) {
+  async *run(doc, node, path, ctx) {
     if (node.type !== "array") {
       return
     }
-
+    const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
-    const utils = new ResourceUtils(doc, false)
-    const items = deReference(doc, node.items)
+    const items = await utils.getResolvedSchema(node.items)
     if (items.type && items.type !== "object") {
       return
     }

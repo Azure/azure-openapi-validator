@@ -2,8 +2,12 @@ import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes, stringify } from "./jsonpath"
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
 import { fileURLToPath, pathToFileURL } from "url"
+import _, { unset } from "lodash"
+import { traverse } from "./resolver"
+import { resolve } from "path"
 
 export class SwaggerUtils {
+  private schemaCaches = new Map<string, any>()
   constructor(private innerDoc?: any, private specPath?: string, private graph?: DocumentDependencyGraph) {}
 
   public getOperationIdFromPath(path: string, code = "get") {
@@ -57,12 +61,15 @@ export class SwaggerUtils {
       }
     }
   }
+
   private getUnwrappedModel(property: any) {
     if (property) {
       return deReference(this.innerDoc, property, this.graph)
     }
   }
-
+  private getResolvedRef(ref: string) {
+    return this.schemaCaches.get(ref)
+  }
   public async getResolvedSchema(schema: any | string) {
     if (!schema) {
       return schema
@@ -71,6 +78,8 @@ export class SwaggerUtils {
       schema = {
         $ref: schema
       }
+    } else {
+      schema = _.cloneDeep(schema)
     }
     const graph = this.graph
     const resolveOption: $RefParser.Options = {
@@ -83,8 +92,58 @@ export class SwaggerUtils {
         }
       }
     }
-    const resolvedSchema = await $RefParser.dereference(schema, resolveOption)
-    return resolvedSchema
+
+    const isExternalRef = (schema: any) => {
+      return schema.$ref && !schema.$ref.startsWith("#/")
+    }
+
+    const resolveExternalRef = async (ref: string) => {
+      if (ref && this.schemaCaches.has(ref)) {
+        return this.schemaCaches.get(ref)
+      }
+      const resolved = await $RefParser.dereference({ $ref: ref }, resolveOption)
+      this.schemaCaches.set(ref, resolved)
+    }
+    const replace = (to: any, from: any) => {
+      if (!to || !from) {
+        return
+      }
+      delete to.$ref
+      Object.entries(from).forEach(v => {
+        to[v[0]] = v[1]
+      })
+    }
+
+    if (isExternalRef(schema)) {
+      return $RefParser.dereference(schema, resolveOption)
+    }
+
+    const collectRefs = (schema: any) => {
+      const refs = new Set<string>()
+      traverse(schema, ["/"], new Set<string>(), {}, (current, path, ctx) => {
+        if (isExternalRef(current)) {
+          refs.add(current.$ref)
+          return false
+        }
+        return true
+      })
+      return Array.from(refs.values())
+    }
+
+    const promises = []
+    for (const ref of collectRefs(schema)) {
+      promises.push(resolveExternalRef(ref))
+    }
+    await Promise.all(promises)
+    traverse(schema, ["/"], new Set<string>(), this, (current, path, ctx) => {
+      if (isExternalRef(current)) {
+        const resolved = ctx.getResolvedRef(current.$ref)
+        replace(current, resolved)
+        return false
+      }
+      return true
+    })
+    return schema
   }
 }
 

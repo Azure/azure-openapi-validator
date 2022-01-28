@@ -24,7 +24,7 @@ export async function collectTestMessagesFromValidator(fileName: string, openapi
   let ruleLoader: RuleLoader
   if (ruleName) {
     const rules: RulesObject = {}
-    if (ruleSet.rules[ruleName]) {
+    if (!ruleSet.rules[ruleName]) {
       throw new Error(`Rule ${ruleName} was not found.`)
     }
     rules[ruleName] = ruleSet.rules[ruleName]
