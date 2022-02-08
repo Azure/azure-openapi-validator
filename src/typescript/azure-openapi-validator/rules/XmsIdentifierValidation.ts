@@ -20,7 +20,7 @@ rules.push({
     }
     const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
-    const items = await utils.getResolvedSchema(node.items)
+    const items = await utils.resolveSchema(node.items)
     if (items.type && items.type !== "object") {
       return
     }

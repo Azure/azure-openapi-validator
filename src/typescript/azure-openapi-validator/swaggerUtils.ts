@@ -67,19 +67,10 @@ export class SwaggerUtils {
       return deReference(this.innerDoc, property, this.graph)
     }
   }
-  private getResolvedRef(ref: string) {
-    return this.schemaCaches.get(ref)
-  }
-  public async getResolvedSchema(schema: any | string) {
-    if (!schema) {
-      return schema
-    }
-    if (typeof schema === "string") {
-      schema = {
-        $ref: schema
-      }
-    } else {
-      schema = _.cloneDeep(schema)
+
+  private resolveExternalRef = async (ref: string) => {
+    if (ref && this.schemaCaches.has(ref)) {
+      return this.schemaCaches.get(ref)
     }
     const graph = this.graph
     const resolveOption: $RefParser.Options = {
@@ -92,18 +83,36 @@ export class SwaggerUtils {
         }
       }
     }
+    const resolvedSchema = await $RefParser.dereference({ $ref: ref }, resolveOption)
+    this.schemaCaches.set(ref, resolvedSchema)
+    return resolvedSchema
+  }
 
-    const isExternalRef = (schema: any) => {
-      return schema.$ref && !schema.$ref.startsWith("#/")
+  static isExternalRef(schema: any) {
+    return schema.$ref && !schema.$ref.startsWith("#/")
+  }
+
+  public getResolvedRef(ref: string) {
+    return this.schemaCaches.get(ref)
+  }
+
+  public async resolveSchema(schema: any | string) {
+    if (!schema) {
+      return schema
     }
 
-    const resolveExternalRef = async (ref: string) => {
-      if (ref && this.schemaCaches.has(ref)) {
-        return this.schemaCaches.get(ref)
+    if (SwaggerUtils.isExternalRef(schema)) {
+      return await this.resolveExternalRef(schema.$ref)
+    }
+
+    if (typeof schema === "string") {
+      schema = {
+        $ref: schema
       }
-      const resolved = await $RefParser.dereference({ $ref: ref }, resolveOption)
-      this.schemaCaches.set(ref, resolved)
+    } else {
+      schema = _.cloneDeep(schema)
     }
+
     const replace = (to: any, from: any) => {
       if (!to || !from) {
         return
@@ -114,14 +123,10 @@ export class SwaggerUtils {
       })
     }
 
-    if (isExternalRef(schema)) {
-      return $RefParser.dereference(schema, resolveOption)
-    }
-
     const collectRefs = (schema: any) => {
       const refs = new Set<string>()
       traverse(schema, ["/"], new Set<string>(), {}, (current, path, ctx) => {
-        if (isExternalRef(current)) {
+        if (SwaggerUtils.isExternalRef(current)) {
           refs.add(current.$ref)
           return false
         }
@@ -132,11 +137,12 @@ export class SwaggerUtils {
 
     const promises = []
     for (const ref of collectRefs(schema)) {
-      promises.push(resolveExternalRef(ref))
+      promises.push(this.resolveExternalRef(ref))
     }
     await Promise.all(promises)
+
     traverse(schema, ["/"], new Set<string>(), this, (current, path, ctx) => {
-      if (isExternalRef(current)) {
+      if (SwaggerUtils.isExternalRef(current)) {
         const resolved = ctx.getResolvedRef(current.$ref)
         replace(current, resolved)
         return false
