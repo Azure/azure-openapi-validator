@@ -1,7 +1,15 @@
 # swagger linter validation
 
-## Overview
+ linting azure swagger/openapi specs. 
+
+- **cross specs rules**
+- **azure specialized functions**
+- **custom ruleset**
+
+## Architect
 ![image](./overview.jpg)
+
+Notes:
 - dependency graph:
    Constructing the dependency graph which contains the relationship of which swaggers reference the current swagger , and which swaggers are referenced by current swagger .  We can use it implement some rules that across multiple swagger precisely. For example, if one resource's operations distributed in multiple swagger ,we just traverse its denpendants to check if this ARM implement all APIs required by ARM.
 
@@ -72,7 +80,6 @@ Options:
 2  other places.
 
 ## TBD
-- support suppression ?
-- rewrite all C# rules . Total ~61, 23 ARM rules,38 SDK rules
-- apply to tooling service , unified pipeline 
-- update relevant documentations
+- support suppression 
+- support rules plugin
+- integrate with ajv schema validator
