@@ -74,11 +74,6 @@ Options:
                           multiple times to add more options.            [array]
 ```
 
-## suppression
-
-1  suppression in readme.
-2  other places.
-
 ## TBD
 - support suppression 
 - support rules plugin
