@@ -16,6 +16,7 @@ export interface IRule {
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
   readonly openapiType: OpenApiTypes
   readonly mergeState?: MergeStates
+  readonly resolved?: boolean
   readonly severity: "error" | "warning"
   readonly given?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples , the strings to query data via jsonpath-plus.
   readonly then: RuleThen // the rule procession steps

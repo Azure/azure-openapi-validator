@@ -2,7 +2,7 @@ import { Message } from "../jsonrpc/types"
 import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes } from "./jsonpath"
 import { IRuleLoader } from "./ruleLoader"
-import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
+import { MergeStates, OpenApiTypes, rules, ValidationMessage } from "./rule"
 import { IRule, IRuleSet } from "./types"
 import { IFormatter } from "./formatter"
 import { LintOptions } from "."
@@ -23,18 +23,23 @@ export class LintRunner<T> {
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
     const swaggerUtils = new SwaggerUtils(openapiDefinition, document, graph)
+    let resolvedSwagger
+    if (rulesToRun.some(rule => rule[1].resolved)) {
+      resolvedSwagger = await swaggerUtils.resolveSchema(openapiDefinition)
+    }
     for (const [ruleName, rule] of rulesToRun) {
       let givens = rule.given || "$"
       if (!Array.isArray(givens)) {
         givens = [givens]
       }
+      let targetDefinition = rule.resolved ? resolvedSwagger : openapiDefinition
       for (const given of givens) {
-        for (const section of nodes(openapiDefinition, given)) {
+        for (const section of nodes(targetDefinition, given)) {
           const fieldSelector = rule.then.fieldSelector
           if (fieldSelector) {
             for (const subSection of nodes(section.value, fieldSelector)) {
               for await (const message of rule.then.execute(
-                openapiDefinition,
+                targetDefinition,
                 subSection.value,
                 section.path.slice(1).concat(subSection.path.slice(1)),
                 {
@@ -49,7 +54,7 @@ export class LintRunner<T> {
             }
           } else {
             for await (const message of rule.then.execute(
-              openapiDefinition,
+              targetDefinition,
               section.value,
               section.path.slice(1),
               {

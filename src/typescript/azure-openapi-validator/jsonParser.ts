@@ -25,9 +25,16 @@ export class JsonParser implements IJsonParser {
     return {
       getLocation: (path: JSONPath) => {
         // JSONPath does not include the root '$', replace number string to number
-        path = path.map(v => Number.isNaN(+v)?v: Number.parseInt(v as string) )
-        const root = findNodeAtLocation(rootNode, path)
-        return getLocation(text, root)
+        let targetPath = [...path]
+        while (targetPath.length > 0) {
+          const correctedPath = targetPath.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
+          const root = findNodeAtLocation(rootNode, correctedPath)
+          if (root) {
+            return getLocation(text, root)
+          }
+          targetPath.pop()
+        }
+        throw new Error("Invalid Path")
       },
       getValue: () => {
         return Object.assign({}, getNodeValue(rootNode))

@@ -70,6 +70,7 @@ export const defaultRuleSet: IRuleSet = {
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
+      resolved: true,
       given: "$.definitions.*",
       then: {
         fieldSelector: "$..properties.*~",
