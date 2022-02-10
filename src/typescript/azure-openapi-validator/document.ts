@@ -2,7 +2,6 @@ import { readFileSync } from "fs"
 import { JsonPath } from "./types"
 import { JsonInstance, JsonParser } from "./jsonParser"
 import { Resolver } from "./resolver"
-import { fileURLToPath, pathToFileURL, URL } from "url"
 
 export class OpenapiDocument {
   private _specPath = undefined
@@ -39,4 +38,3 @@ export class OpenapiDocument {
     return this.jsonInstance.getLocation(jsonPath)
   }
 }
-

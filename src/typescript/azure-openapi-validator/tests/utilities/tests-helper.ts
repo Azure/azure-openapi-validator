@@ -9,7 +9,7 @@ import { Message } from "../../../jsonrpc/types"
 import { DocumentDependencyGraph } from "../../depsGraph"
 import { IFormatter, JsonFormatter } from "../../formatter"
 import { MergeStates, OpenApiTypes, rules } from "../../rule"
-import { RuleLoader } from "../../ruleLoader"
+import { IRuleLoader, BuiltInRuleLoader } from "../../ruleLoader"
 import ruleSet from "../../rulesets/default"
 import { LintRunner } from "../../runner"
 import { IRuleSet, RulesObject } from "../../types"
@@ -21,7 +21,7 @@ const pathToTestResources: string = "../../tests/resources/"
 export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes, ruleName?: string): Promise<Message[]> {
   const filePath = getFilePath(fileName)
   const graph = new DocumentDependencyGraph()
-  let ruleLoader: RuleLoader
+  let ruleLoader: IRuleLoader
   if (ruleName) {
     const rules: RulesObject = {}
     if (!ruleSet.rules[ruleName]) {
@@ -31,7 +31,7 @@ export async function collectTestMessagesFromValidator(fileName: string, openapi
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
     ruleLoader = { getRuleSet: () => singleRuleSet }
   } else {
-    ruleLoader = new RuleLoader()
+    ruleLoader = new BuiltInRuleLoader()
   }
   const runner = new LintRunner(ruleLoader, graph, {
     format: msg => {

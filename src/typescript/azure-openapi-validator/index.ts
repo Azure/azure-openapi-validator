@@ -10,7 +10,7 @@ import ruleSet from "./rulesets/default"
 import { IRule, IRuleSet } from "./types"
 import _ from "lodash"
 import { LintRunner } from "./runner"
-import { RuleLoader } from "./ruleLoader"
+import { BuiltInRuleLoader } from "./ruleLoader"
 import { JsonFormatter } from "./formatter"
 
 export const runRules = async (
@@ -123,7 +123,7 @@ export async function runCli(swaggerPaths: string[], options: LintOptions) {
   if (rpFolder) {
     await graph.generateGraph(rpFolder)
   }
-  const loader = new RuleLoader()
+  const loader = new BuiltInRuleLoader()
   const formatter = new JsonFormatter(graph)
   const runner = new LintRunner(loader, graph, formatter)
   const msgs = await runner.execute(swaggerPaths, options)

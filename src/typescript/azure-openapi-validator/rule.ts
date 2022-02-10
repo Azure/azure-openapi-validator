@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { JsonPath } from "./types"
 import { DocumentDependencyGraph } from "./depsGraph"
+import { SwaggerUtils } from "./swaggerUtils"
 
 export enum OpenApiTypes {
   "default" = 1 << 0,
@@ -25,6 +26,7 @@ export interface ValidationMessage {
 export interface RuleContext {
   graph?: DocumentDependencyGraph
   specPath: string
+  utils?: SwaggerUtils
 }
 export type IRuleFunction = (
   openapiDocument: any,

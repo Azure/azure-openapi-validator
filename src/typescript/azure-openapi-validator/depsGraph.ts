@@ -1,7 +1,6 @@
 import * as _ from "lodash"
 import * as path from "path"
 const DepGraph = require("dependency-graph").DepGraph
-import $RefParser = require("@apidevtools/json-schema-ref-parser")
 import glob = require("glob")
 import { OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
@@ -10,9 +9,7 @@ import { normalizePath } from "./swaggerUtils"
 
 export class DocumentDependencyGraph {
   private graph = new DepGraph()
-  parser = new $RefParser()
   private referenceCache = new Map<string, OpenapiDocument>()
-  private referenceSet = new Set<string>()
 
   public async scanFolder(folderPath: string, options: any) {
     const specPaths: string[] = glob.sync(path.join(folderPath, "**/*.json"), {
@@ -24,7 +21,7 @@ export class DocumentDependencyGraph {
 
       const refs = await this.getReferences(spec)
       for (const ref of refs) {
-        if (options.ignoreCommonType && ref.match(/.*common-types[\\|\/]resource\-management[\\|\/]v\d[\\|\/].+\.json$/)) {
+        if (options.ignoreCommonType && this.isCommonTypes(ref)) {
           continue
         }
         const simpleRef = normalizePath(ref)
@@ -37,10 +34,13 @@ export class DocumentDependencyGraph {
     }
   }
 
+  isCommonTypes(specPath: string) {
+    return specPath.match(/.*common-types[\\|\/]resource\-management[\\|\/]v\d[\\|\/].+\.json$/)
+  }
+
   createIfNotExists(node: string) {
     if (!this.graph.hasNode(node)) {
       this.graph.addNode(node)
-      this.referenceSet.add(node)
     }
   }
 

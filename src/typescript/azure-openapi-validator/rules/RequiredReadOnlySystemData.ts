@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { SwaggerUtils } from "../swaggerUtils"
 import { ArmUtils } from "./utilities/ArmUtils"
 export const RequiredReadOnlySystemData: string = "RequiredReadOnlySystemData"
 
@@ -25,7 +24,7 @@ rules.push({
         return
       }
       const utils = new ArmUtils(doc, ctx.specPath, ctx.graph)
-      const swaggerUtil = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
+      const swaggerUtil = ctx.utils
       const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions

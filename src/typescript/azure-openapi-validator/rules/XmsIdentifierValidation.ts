@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { SwaggerUtils } from "../swaggerUtils"
 export const XmsIdentifierValidation: string = "XmsIdentifierValidation"
 
 rules.push({
@@ -18,7 +17,7 @@ rules.push({
     if (node.type !== "array") {
       return
     }
-    const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
+    const utils = ctx.utils
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
     const items = await utils.resolveSchema(node.items)
     if (items.type && items.type !== "object") {

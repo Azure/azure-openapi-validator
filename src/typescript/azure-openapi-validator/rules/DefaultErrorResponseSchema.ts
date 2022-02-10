@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { SwaggerUtils } from "../swaggerUtils"
 import { getResolvedSchemaByPath } from "./utilities/rules-helper"
 
 export const DefaultErrorResponseSchema: string = "DefaultErrorResponseSchema"
@@ -26,7 +25,7 @@ rules.push({
 
       const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx.graph)
 
-      const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
+      const utils = ctx.utils
       if (schema) {
         const errorDefinition = utils.getPropertyOfModel(schema, "error")
         if (errorDefinition) {

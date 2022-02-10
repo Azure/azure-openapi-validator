@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { SwaggerUtils } from "../swaggerUtils"
 import { getMostSuccessfulResponseKey, getResolvedSchemaByPath } from "./utilities/rules-helper"
 export const XmsPageableMustHaveCorrespondingResponse: string = "XmsPageableMustHaveCorrespondingResponse"
 
@@ -28,7 +27,7 @@ rules.push({
     if (node.responses && node.responses[mostSuccesskey]) {
       const schemaPath = path.concat(["responses", mostSuccesskey, "schema"]) as string[]
       const resolvedSchema = getResolvedSchemaByPath(doc, schemaPath as string[], ctx.graph)
-      const utils = new SwaggerUtils(doc, ctx.specPath, ctx.graph)
+      const utils = ctx.utils
       if (resolvedSchema && !utils.getPropertyOfModel(resolvedSchema, nextLinkValue)) {
         yield { message: `${msg}`, location: path }
       }

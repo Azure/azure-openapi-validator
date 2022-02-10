@@ -7,6 +7,7 @@ import { IRule, IRuleSet } from "./types"
 import { IFormatter } from "./formatter"
 import { LintOptions } from "."
 import { OpenapiDocument } from "./document"
+import { SwaggerUtils } from "./swaggerUtils"
 
 export class LintRunner<T> {
   constructor(private loader: IRuleLoader, private graph: DocumentDependencyGraph, private formatter: IFormatter<T>) {}
@@ -21,6 +22,7 @@ export class LintRunner<T> {
     graph?: DocumentDependencyGraph
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
+    const swaggerUtils = new SwaggerUtils(openapiDefinition, document, graph)
     for (const [ruleName, rule] of rulesToRun) {
       let givens = rule.given || "$"
       if (!Array.isArray(givens)) {
@@ -37,7 +39,8 @@ export class LintRunner<T> {
                 section.path.slice(1).concat(subSection.path.slice(1)),
                 {
                   specPath: document,
-                  graph
+                  graph,
+                  utils: swaggerUtils
                 },
                 rule.then.options
               )) {
@@ -51,7 +54,8 @@ export class LintRunner<T> {
               section.path.slice(1),
               {
                 specPath: document,
-                graph
+                graph,
+                utils: swaggerUtils
               },
               rule.then.options
             )) {

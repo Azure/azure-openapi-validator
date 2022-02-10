@@ -2,9 +2,8 @@ import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes, stringify } from "./jsonpath"
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
 import { fileURLToPath, pathToFileURL } from "url"
-import _, { unset } from "lodash"
+import _ from "lodash"
 import { traverse } from "./resolver"
-import { resolve } from "path"
 
 export class SwaggerUtils {
   private schemaCaches = new Map<string, any>()
