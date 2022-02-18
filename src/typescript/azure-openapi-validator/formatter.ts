@@ -21,10 +21,11 @@ export class JsonFormatter implements IFormatter<string> {
 
       const jsonMsg = {
         ...msg.Details,
-        sources: [msg.Source[0].document + `:${pos.line}:${pos.column}`],
-        "json-path": stringify(path)
+        sources: [msg.Source[0].document + `:${pos.start.line}:${pos.start.column}`],
+        "json-path": stringify(path),
+        location: pos
       }
-      outputs.push(JSON.stringify(jsonMsg, null, 2))
+      outputs.push(jsonMsg)
     }
     return outputs
   }

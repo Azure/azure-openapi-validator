@@ -1,13 +1,16 @@
 import { findNodeAtLocation, getNodeValue, JSONPath, Node, parseTree } from "jsonc-parser"
-import { isNumber } from "util"
 
 type Location = {
   line: number
   column: number
 }
 
+type Range = {
+  start: Location
+  end: Location
+}
 export interface JsonInstance {
-  getLocation(path: JSONPath): Location
+  getLocation(path: JSONPath): Range
   getValue(): any
 }
 
@@ -30,7 +33,7 @@ export class JsonParser implements IJsonParser {
           const correctedPath = targetPath.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
           const root = findNodeAtLocation(rootNode, correctedPath)
           if (root) {
-            return getLocation(text, root)
+            return getRange(text, root)
           }
           targetPath.pop()
         }
@@ -42,13 +45,11 @@ export class JsonParser implements IJsonParser {
     }
   }
 }
-function getLocation(text: string, node: Node) {
+function getLocation(text: string, offset: number) {
   let line = 1
   let column = 0
-  if (!node) {
-    return undefined
-  }
-  for (let i = 0; i < node.offset; i++) {
+
+  for (let i = 0; i < offset; i++) {
     if (text[i] === "\n") {
       line++
       column = 0
@@ -58,5 +59,12 @@ function getLocation(text: string, node: Node) {
   return {
     line,
     column
+  }
+}
+
+function getRange(text: string, node: Node) {
+  return {
+    start: getLocation(text, node.offset),
+    end: getLocation(text, node.offset + node.length)
   }
 }

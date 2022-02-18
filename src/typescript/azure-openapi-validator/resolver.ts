@@ -1,5 +1,5 @@
-import { dirname, isAbsolute, join } from "path"
-import { normalizePath } from "./swaggerUtils"
+import { isAbsolute, join } from "path"
+import { isExample, normalizePath, traverse } from "./utils"
 
 export class Resolver {
   private references = new Set<string>()
@@ -23,7 +23,7 @@ export class Resolver {
         ).replace(/\\/g, "/")
         node.$ref = referenceFile + `#${slices[1]}`
 
-        if (!referenceFile.includes("examples")) ctx.references.add(referenceFile)
+        if (!isExample(referenceFile)) ctx.references.add(referenceFile)
       }
       return false
     }
@@ -32,28 +32,5 @@ export class Resolver {
 
   getReferences() {
     return Array.from(this.references.values())
-  }
-}
-export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj, path, context) => boolean) {
-  if (!obj) {
-    return undefined
-  }
-  if (visited.has(obj)) {
-    return
-  }
-  visited.add(obj)
-
-  if (visitor(obj, path, options) === false) {
-    return
-  }
-
-  if (Array.isArray(obj)) {
-    for (const [index, item] of obj.entries()) {
-      traverse(item, [...path, index.toString()], visited, options, visitor)
-    }
-  } else if (typeof obj === "object") {
-    for (const [key, item] of Object.entries(obj!)) {
-      traverse(item, [...path, key], visited, options, visitor)
-    }
   }
 }

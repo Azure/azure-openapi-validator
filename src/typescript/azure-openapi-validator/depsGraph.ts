@@ -5,7 +5,7 @@ import glob = require("glob")
 import { OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
 import { isAbsolute, normalize } from "path"
-import { normalizePath } from "./swaggerUtils"
+import { normalizePath } from "./utils"
 
 export class DocumentDependencyGraph {
   private graph = new DepGraph()

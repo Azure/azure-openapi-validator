@@ -1,5 +1,5 @@
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-import { deReference } from "../swaggerUtils"
+import { followReference } from "../utils"
 export const ParametersOrder: string = "ParametersOrder"
 
 function getParametersFromPath(apiapiPath: string) {
@@ -14,7 +14,7 @@ function isMethodParameter(schema: any, doc: any) {
   if (!schema.$ref && schema.in === "path") {
     return true
   }
-  const resolvedParameter = deReference(doc, schema)
+  const resolvedParameter = followReference(doc, schema)
   if (resolvedParameter && resolvedParameter.in === "path" && resolvedParameter["x-ms-parameter-location"] === "method") {
     return true
   }
@@ -38,7 +38,7 @@ rules.push({
         const resolvedPathParameters = commonParameters
           .concat(node[apiPath][method].parameters || [])
           .filter(x => isMethodParameter(x, doc))
-          .map(x => deReference(doc, x).name)
+          .map(x => followReference(doc, x).name)
         const parametersInPath = getParametersFromPath(apiPath).filter(p => resolvedPathParameters.includes(p))
         if (parametersInPath.some((value, index) => index < resolvedPathParameters.length && resolvedPathParameters[index] !== value)) {
           yield { message: msg.replace("{0}", resolvedPathParameters.join(",")), location: path.concat(apiPath, method) }

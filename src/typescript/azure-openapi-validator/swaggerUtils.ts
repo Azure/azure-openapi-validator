@@ -1,9 +1,7 @@
 import { DocumentDependencyGraph } from "./depsGraph"
-import { nodes, stringify } from "./jsonpath"
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
-import { fileURLToPath, pathToFileURL } from "url"
 import _ from "lodash"
-import { traverse } from "./resolver"
+import { followReference, isExample, traverse } from "./utils"
 
 export class SwaggerUtils {
   private schemaCaches = new Map<string, any>()
@@ -63,7 +61,7 @@ export class SwaggerUtils {
 
   private getUnwrappedModel(property: any) {
     if (property) {
-      return deReference(this.innerDoc, property, this.graph)
+      return followReference(this.innerDoc, property, this.graph)
     }
   }
 
@@ -77,6 +75,9 @@ export class SwaggerUtils {
         file: {
           canRead: true,
           read(file: FileInfo) {
+            if (isExample(file.url)) {
+              return ""
+            }
             return graph.getDocument(file.url).getObj()
           }
         }
@@ -150,54 +151,4 @@ export class SwaggerUtils {
     })
     return schema
   }
-}
-
-/**
- *
- * @param doc
- * @param schema
- * @param graph
- * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
- */
-export function deReference(doc: any, schema: any, graph?: DocumentDependencyGraph) {
-  const getRefModel = (refValue: string, visited: string[]) => {
-    if (visited.includes(refValue)) {
-      throw new Error("Found circle reference: " + visited.join("->"))
-    }
-    visited.push(refValue)
-    const refSlices = parseJsonRef(refValue)
-    const pathExpression = refSlices[1].split("/").slice(1)
-    try {
-      const result = nodes(doc, stringify(["$", ...pathExpression]))
-      return result.length !== 0 ? result[0].value : undefined
-    } catch (err) {
-      throw err
-    }
-  }
-
-  if (schema && doc) {
-    if (schema.$ref) {
-      const refSlices = parseJsonRef(schema.$ref)
-      if (graph && refSlices[0]) {
-        doc = graph.getDocument(refSlices[0]).getObj()
-      }
-      schema = getRefModel(`#${refSlices[1]}`, [])
-      return deReference(doc, schema, graph)
-    }
-    return schema
-  }
-  return undefined
-}
-
-export const normalizePath = (path: string) => {
-  let urlPath = fileURLToPath(pathToFileURL(path)).replace(/\\/g, "/")
-  if (urlPath.slice(1, 3) === ":/") {
-    // for windows
-    return urlPath.charAt(0).toUpperCase() + urlPath.slice(1)
-  }
-  return urlPath
-}
-
-export const parseJsonRef = (ref: string): string[] => {
-  return ref.split("#")
 }

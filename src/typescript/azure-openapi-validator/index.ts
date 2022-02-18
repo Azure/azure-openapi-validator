@@ -118,6 +118,13 @@ export type LintOptions = {
 }
 
 export async function runCli(swaggerPaths: string[], options: LintOptions) {
+  const msgs = await lint(swaggerPaths, options)
+  for (const msg of msgs) {
+    console.log(JSON.stringify(msg, null, 2))
+  }
+}
+
+export async function lint(swaggerPaths: string[], options: LintOptions) {
   const graph = new DocumentDependencyGraph()
   const rpFolder = options.rpFolder
   if (rpFolder) {
@@ -127,8 +134,5 @@ export async function runCli(swaggerPaths: string[], options: LintOptions) {
   const formatter = new JsonFormatter(graph)
   const runner = new LintRunner(loader, graph, formatter)
   const msgs = await runner.execute(swaggerPaths, options)
-
-  for (const msg of msgs) {
-    console.log(msg)
-  }
+  return msgs
 }

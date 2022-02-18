@@ -1,7 +1,8 @@
 import * as assert from "assert"
 import { getResolvedSchemaByPath } from "../rules/utilities/rules-helper"
-import { deReference, SwaggerUtils } from "../swaggerUtils"
+import { SwaggerUtils } from "../swaggerUtils"
 import { suite, test } from "mocha-typescript"
+import { followReference } from "../utils"
 import { DocumentDependencyGraph } from "../depsGraph"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 import { dirname } from "path"
@@ -17,7 +18,7 @@ class SwaggerUtilsTests {
       ["paths", "/providers/Microsoft.MachineLearning/operations", "get", "responses", "default", "schema"],
       graph
     )
-    const resolvedSchema = deReference(swagger, schema, graph)
+    const resolvedSchema = followReference(swagger, schema, graph)
     assert.strictEqual(!!resolvedSchema.properties, true)
 
     const errorObject = util.getPropertyOfModel(resolvedSchema, "error")
@@ -64,6 +65,6 @@ class SwaggerUtilsTests {
 
     const position = commonDoc.getPositionFromJsonPath(["definitions", "a", "allOf", "0"])
 
-    assert.ok(!!position.line)
+    assert.ok(!!position.start.line)
   }
 }

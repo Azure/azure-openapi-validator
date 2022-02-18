@@ -8,6 +8,8 @@ import { run } from "./azure-openapi-validator"
 import { MergeStates, OpenApiTypes } from "./azure-openapi-validator/rule"
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
 
+export { lint } from "./azure-openapi-validator/index"
+
 async function main() {
   const pluginHost = new AutoRestPluginHost()
   pluginHost.Add("openapi-validator", async initiator => {

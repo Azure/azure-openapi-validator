@@ -5,7 +5,7 @@
 const matchAll = require("string.prototype.matchall")
 import { DocumentDependencyGraph } from "../../depsGraph"
 import { stringify, nodes } from "../../jsonpath"
-import { deReference } from "../../swaggerUtils"
+import { followReference } from "../../utils"
 
 export function getSuccessfulResponseSchema(node, doc, graph: DocumentDependencyGraph): any {
   if (!node.responses) {
@@ -40,7 +40,7 @@ export function getResponseSchema(response: object, doc, graph: DocumentDependen
     return
   }
   if ("$ref" in schema) {
-    schema = deReference(doc, schema, graph)
+    schema = followReference(doc, schema, graph)
   }
   return schema.properties
 }
@@ -96,6 +96,6 @@ export function transformEnum(type: string, enumEntries) {
 export function getResolvedSchemaByPath(doc: any, path: string[], graph: DocumentDependencyGraph) {
   const result = nodes(doc, stringify(path))
   if (result && result.length) {
-    return deReference(doc, result[0].value, graph)
+    return followReference(doc, result[0].value, graph)
   }
 }
