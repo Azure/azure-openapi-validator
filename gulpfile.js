@@ -17,12 +17,12 @@ gulp.task('clean/typescript', function () {
 
 gulp.task("build/typescript", gulp.series(["clean/typescript"], function () {
   console.log("Running the typescript transpiler...")
-  return gulp.src("./src/typescript/").pipe(run("tsc --project tsconfig.json"))
+  return gulp.src("./src/typescript/azure-openapi-validator/core").pipe(run("tsc --project tsconfig.json"))
 }))
 
 gulp.task('test/typescript', gulp.series(['build/typescript'], function (done) {
   console.log('Running the unit tests...');
-  gulp.src(['src/typescript/azure-openapi-validator/tests/*.js'])
+  gulp.src(['src/typescript/azure-openapi-validator/core/tests/*.js'])
     .pipe(mocha({
       timeout: 120000
     }))

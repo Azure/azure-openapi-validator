@@ -26,5 +26,8 @@
     "**/.DS_Store": true
   },
   "eslint.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "Linter"
+  ]
 }

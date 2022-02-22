@@ -1,0 +1,45 @@
+{
+  "name": "@microsoft.azure/openapi-validator-cli",
+  "version": "1.0.0",
+  "description": "Azure OpenAPI Validator",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azure/azure-openapi-validator.git"
+  },
+  "keywords": [
+    "azure",
+    "openapi",
+    "swagger",
+    "validation",
+    "validator",
+    "linter"
+  ],
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Azure/azure-openapi-validator/issues"
+  },
+  "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
+  "devDependencies": {
+    "@types/js-yaml": "^3.12.4",
+    "@types/jsonpath": "^0.2.0",
+    "@types/lodash": "~4.14.178",
+    "@types/node": "^14.0.13",
+    "mocha-typescript": "~1.0.22",
+    "typescript": "3.7.5",
+    "mocha": "^7.0.1"
+  },
+  "dependencies": {
+    "@ts-common/iterator": "1.1.1",
+    "@microsoft.azure/openapi-validator-core": "^1.0.0",
+    "@azure-tools/openapi-tools-common": "^1.2.2",
+    "@azure/openapi-markdown": "^0.9.4",
+    "fs": "^0.0.1-security",
+    "yargs": "^17.3.1"
+  }
+}

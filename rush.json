@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.62.1",
+  "pnpmVersion": "5.18.10",
+  "ensureConsistentVersions": true,
+  "pnpmOptions": {
+    "strictPeerDependencies": true
+  },
+  "nodeSupportedVersionRange": ">=14.0.0",
+  "suppressNodeLtsWarning": true,
+  "projectFolderMinDepth": 1,
+  "projectFolderMaxDepth": 5,
+  "gitPolicy": {},
+  "repository": {
+    "defaultBranch": "main",
+    "url": "https://github.com/Azure/azure-openapi-validator.git"
+  },
+  "projects": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-core",
+      "projectFolder": "src/typescript/azure-openapi-validator/core"
+    },
+    {
+      "packageName": "@microsoft.azure/openapi-validator-functions",
+      "projectFolder": "src/typescript/azure-openapi-validator/functions"
+    },
+    {
+      "packageName": "@microsoft.azure/openapi-validator-cli",
+      "projectFolder": "src/typescript/azure-openapi-validator/commands"
+    }
+  ]
+}
