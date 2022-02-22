@@ -5,7 +5,7 @@ export type PatternOption = {
 
 export function* pattern(openapiSection: any, ctx?: any) {
   if (typeof openapiSection === "string") {
-    const option = ctx.option as PatternOption
+    const option = ctx.options as PatternOption
     if (option?.match && matchPattern(option.match, openapiSection)) {
       yield {
         location: ctx.location,
