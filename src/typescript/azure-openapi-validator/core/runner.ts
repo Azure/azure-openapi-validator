@@ -2,12 +2,14 @@ import { Message } from "./types"
 import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes } from "./jsonpath"
 import { IRuleLoader } from "./ruleLoader"
-import { MergeStates, OpenApiTypes, ValidationMessage } from "./types"
+import { OpenApiTypes, ValidationMessage } from "./types"
 import { IRule, IRuleSet } from "./types"
 import { IFormatter } from "./formatter"
 import { LintOptions } from "."
 import { OpenapiDocument } from "./document"
 import { SwaggerUtils } from "./swaggerUtils"
+const { Spectral } = require("@stoplight/spectral-core")
+import { getSpectralRuleSet } from "./rulesets/api-style"
 
 const isLegacyRule = (rule: IRule) => {
   return rule.then.execute.length > 2
@@ -22,7 +24,6 @@ export class LintRunner<T> {
     sendMessage: (m: Message) => void,
     openapiType: OpenApiTypes,
     ruleset: IRuleSet,
-    mergeState?: MergeStates,
     graph?: DocumentDependencyGraph
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
@@ -125,6 +126,18 @@ export class LintRunner<T> {
     })
   }
 
+  async runSpectral(swaggerPaths: string[], options: LintOptions) {
+    const linter = new Spectral()
+    const rules = await getSpectralRuleSet()
+    linter.setRuleSet(rules)
+    const mergedResults = []
+    for (const spec of swaggerPaths) {
+      const results = await linter.run(spec)
+      mergedResults.push(results.map(result => ({ code: result.code, ...result })))
+    }
+    return mergedResults
+  }
+
   async execute(swaggerPaths: string[], options: LintOptions) {
     const specsPromises = []
     for (const spec of swaggerPaths) {
@@ -143,13 +156,13 @@ export class LintRunner<T> {
         sendMessage,
         options.openapiType,
         this.loader.getRuleSet(),
-        undefined,
         this.graph
       )
       runPromises.push(promise)
     }
     await Promise.all(runPromises)
-    return this.formatter.format(msgs)
+    const spectralResult = await this.runSpectral(swaggerPaths, options)
+    return this.formatter.format(msgs).concat(spectralResult)
   }
 }
 

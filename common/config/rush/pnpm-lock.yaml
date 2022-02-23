@@ -5,6 +5,10 @@ dependencies:
   '@rush-temp/openapi-validator-cli': file:projects/openapi-validator-cli.tgz
   '@rush-temp/openapi-validator-core': file:projects/openapi-validator-core.tgz
   '@rush-temp/openapi-validator-functions': file:projects/openapi-validator-functions.tgz
+  '@stoplight/spectral-core': 1.8.1
+  '@stoplight/spectral-formats': 1.0.2
+  '@stoplight/spectral-ruleset-migrator': 1.7.2
+  '@stoplight/spectral-rulesets': 1.4.3
   '@ts-common/iterator': 1.1.1
   '@types/js-yaml': 3.12.7
   '@types/jsonpath': 0.2.0
@@ -63,6 +67,277 @@ packages:
     dev: false
     resolution:
       integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==
+  /@jsep-plugin/regex/1.0.1_jsep@1.2.0:
+    dependencies:
+      jsep: 1.2.0
+    dev: false
+    engines:
+      node: '>= 10.16.0'
+    peerDependencies:
+      jsep: ^0.4.0||^1.0.0
+    resolution:
+      integrity: sha512-GroTtexnEfdVOvvALjW/JfV+wgRMadZKEA/lf9gE09zJejHhcBl+cqJxk2px9ub8k3gUrPe1j81Z1V4RDaSy8A==
+  /@jsep-plugin/ternary/1.0.2_jsep@1.2.0:
+    dependencies:
+      jsep: 1.2.0
+    dev: false
+    engines:
+      node: '>= 10.16.0'
+    peerDependencies:
+      jsep: ^0.4.0||^1.0.0
+    resolution:
+      integrity: sha512-hoCxJW/uVT1z9LGsZr1t2m7XNmE5k8w2P+5hfegVOuy9bQFrFESRe/XSd+KZ4eAbGnTkyHqOPct2LTa9qFUrMQ==
+  /@stoplight/better-ajv-errors/1.0.1_ajv@8.10.0:
+    dependencies:
+      ajv: 8.10.0
+      jsonpointer: 5.0.0
+      leven: 3.1.0
+    dev: false
+    engines:
+      node: ^12.20 || >= 14.13
+    peerDependencies:
+      ajv: '>=8'
+    resolution:
+      integrity: sha512-rgxT+ZMeZbYRiOLNk6Oy6e/Ig1iQKo0IL8v/Y9E/0FewzgtkGs/p5dMeUpIFZXWj3RZaEPmfL9yh0oUEmNXZjg==
+  /@stoplight/json-ref-readers/1.2.2:
+    dependencies:
+      node-fetch: 2.6.7
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>=8.3.0'
+    resolution:
+      integrity: sha512-nty0tHUq2f1IKuFYsLM4CXLZGHdMn+X/IwEUIpeSOXt0QjMUbL0Em57iJUDzz+2MkWG83smIigNZ3fauGjqgdQ==
+  /@stoplight/json-ref-resolver/3.1.3:
+    dependencies:
+      '@stoplight/json': 3.17.2
+      '@stoplight/path': 1.3.2
+      '@stoplight/types': 12.3.0
+      '@types/urijs': 1.19.18
+      dependency-graph: 0.11.0
+      fast-memoize: 2.5.2
+      immer: 9.0.12
+      lodash.get: 4.4.2
+      lodash.set: 4.3.2
+      tslib: 2.3.1
+      urijs: 1.19.8
+    dev: false
+    engines:
+      node: '>=8.3.0'
+    resolution:
+      integrity: sha512-SgoKXwVnlpIZUyAFX4W79eeuTWvXmNlMfICZixL16GZXnkjcW+uZnfmAU0ZIjcnaTgaI4mjfxn8LAP2KR6Cr0A==
+  /@stoplight/json/3.17.0:
+    dependencies:
+      '@stoplight/ordered-object-literal': 1.0.2
+      '@stoplight/types': 12.3.0
+      jsonc-parser: 2.2.1
+      lodash: 4.17.21
+      safe-stable-stringify: 1.1.1
+    dev: false
+    engines:
+      node: '>=8.3.0'
+    resolution:
+      integrity: sha512-WW0z2bb0D4t8FTl+zNTCu46J8lEOsrUhBPgwEYQ3Ri2Y0MiRE4U1/9ZV8Ki+pIJznZgY9i42bbFwOBxyZn5/6w==
+  /@stoplight/json/3.17.2:
+    dependencies:
+      '@stoplight/ordered-object-literal': 1.0.2
+      '@stoplight/types': 12.5.0
+      jsonc-parser: 2.2.1
+      lodash: 4.17.21
+      safe-stable-stringify: 1.1.1
+    dev: false
+    engines:
+      node: '>=8.3.0'
+    resolution:
+      integrity: sha512-NwIVzanXRUy291J5BMkncCZRMG1Lx+aq+VidGQgfkJjgo8vh1Y/PSAz7fSU8gVGSZBCcqmOkMI7R4zw7DlfTwA==
+  /@stoplight/lifecycle/2.3.2:
+    dependencies:
+      wolfy87-eventemitter: 5.2.9
+    dev: false
+    engines:
+      node: '>=8.3.0'
+    resolution:
+      integrity: sha512-v0u8p27FA/eg04b4z6QXw4s0NeeFcRzyvseBW0+k/q4jtpg7EhVCqy42EbbbU43NTNDpIeQ81OcvkFz+6CYshw==
+  /@stoplight/ordered-object-literal/1.0.2:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-0ZMS/9sNU3kVo/6RF3eAv7MK9DY8WLjiVJB/tVyfF2lhr2R4kqh534jZ0PlrFB9CRXrdndzn1DbX6ihKZXft2w==
+  /@stoplight/path/1.3.2:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-lyIc6JUlUA8Ve5ELywPC8I2Sdnh1zc1zmbYgVarhXIp9YeAB0ReeqmGEOWNtlHkbP2DAA1AL65Wfn2ncjK/jtQ==
+  /@stoplight/spectral-core/1.8.1:
+    dependencies:
+      '@stoplight/better-ajv-errors': 1.0.1_ajv@8.10.0
+      '@stoplight/json': 3.17.2
+      '@stoplight/lifecycle': 2.3.2
+      '@stoplight/path': 1.3.2
+      '@stoplight/spectral-parsers': 1.0.1
+      '@stoplight/spectral-ref-resolver': 1.0.1
+      '@stoplight/spectral-runtime': 1.1.2
+      '@stoplight/types': 12.3.0
+      ajv: 8.10.0
+      ajv-errors: 3.0.0_ajv@8.10.0
+      ajv-formats: 2.1.1
+      blueimp-md5: 2.18.0
+      json-schema: 0.4.0
+      jsonpath-plus: 6.0.1
+      lodash: 4.17.21
+      lodash.topath: 4.5.2
+      minimatch: 3.0.4
+      nimma: 0.1.7
+      simple-eval: 1.0.0
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: ^12.20 || >= 14.13
+    resolution:
+      integrity: sha512-HYrQZhJ8H/ZWpnWL+E1kez4ezQOVaNlZCeUTSsS8ul597wDSLp4xFO9vat9cpY+oJUoAL/vgwJN4iwwxiDClLQ==
+  /@stoplight/spectral-formats/1.0.2:
+    dependencies:
+      '@stoplight/json': 3.17.2
+      '@stoplight/spectral-core': 1.8.1
+      '@types/json-schema': 7.0.9
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-jMIlMTSCJzFKq3kXnHv+YC0TTnwli/DuZY4JxObyaBwdiG1LnSAJLL7R857PpJpQ1uoiZULov8clxudSMeKL+Q==
+  /@stoplight/spectral-functions/1.5.1:
+    dependencies:
+      '@stoplight/better-ajv-errors': 1.0.1_ajv@8.10.0
+      '@stoplight/json': 3.17.2
+      '@stoplight/spectral-core': 1.8.1
+      '@stoplight/spectral-formats': 1.0.2
+      '@stoplight/spectral-runtime': 1.1.2
+      '@stoplight/types': 12.3.0
+      ajv: 8.10.0
+      ajv-draft-04: 1.0.0_ajv@8.10.0
+      ajv-errors: 3.0.0_ajv@8.10.0
+      ajv-formats: 2.1.1
+      lodash: 4.17.21
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-KHMprX4OwjgVtzUulVPfqkZTNCAP4JbZqTQ5/UTCfrQ1nO4vcr+3CJgU74ggSP6rH3UuJIIFVZN+9wU7HP1bEA==
+  /@stoplight/spectral-parsers/1.0.1:
+    dependencies:
+      '@stoplight/json': 3.17.0
+      '@stoplight/types': 12.3.0
+      '@stoplight/yaml': 4.2.2
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-JGKlrTxhjUzIGo2FOCf8Qp0WKTWXedoRNPovqYPE8pAp08epqU8DzHwl/i46BGH5yfTmouKMZgBN/PV2+Cr5jw==
+  /@stoplight/spectral-ref-resolver/1.0.1:
+    dependencies:
+      '@stoplight/json-ref-readers': 1.2.2
+      '@stoplight/json-ref-resolver': 3.1.3
+      '@stoplight/spectral-runtime': 1.1.2
+      dependency-graph: 0.11.0
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-0tY7nTOccvTsa3c4QbSWfJ8wGfPO1RXvmKnmBjuyLfoTMNuhkHPII9gKhCjygsshzsBLxs2IyRHZYhWYVnEbCA==
+  /@stoplight/spectral-ruleset-migrator/1.7.2:
+    dependencies:
+      '@stoplight/json': 3.17.2
+      '@stoplight/ordered-object-literal': 1.0.2
+      '@stoplight/path': 1.3.2
+      '@stoplight/spectral-functions': 1.5.1
+      '@stoplight/spectral-runtime': 1.1.2
+      '@stoplight/types': 12.5.0
+      '@stoplight/yaml': 4.2.2
+      '@types/node': 14.18.12
+      ajv: 8.10.0
+      ast-types: 0.14.2
+      astring: 1.8.1
+      reserved: 0.1.2
+      tslib: 2.3.1
+      validate-npm-package-name: 3.0.0
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-PM+6/pHfgtwBAUVjKYOJlstE++chqo/5n2MwGs1NtDUmFkxK2gji8VaB9MqRQIHf5pS1KIT1DpPz3u1/pxaZYQ==
+  /@stoplight/spectral-rulesets/1.4.3:
+    dependencies:
+      '@stoplight/better-ajv-errors': 1.0.1_ajv@8.10.0
+      '@stoplight/json': 3.17.2
+      '@stoplight/spectral-core': 1.8.1
+      '@stoplight/spectral-formats': 1.0.2
+      '@stoplight/spectral-functions': 1.5.1
+      '@stoplight/spectral-runtime': 1.1.2
+      '@stoplight/types': 12.5.0
+      '@types/json-schema': 7.0.9
+      ajv: 8.10.0
+      ajv-formats: 2.1.1
+      json-schema-traverse: 1.0.0
+      lodash: 4.17.21
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-kiUKcPvvvgg0U9p1KtsaRglW4xKCqXwTu2lL6Ci6elwsqK7P7CQAxJbcbhl30tqJ+m2oXTLTWJhZFa/xGk01FA==
+  /@stoplight/spectral-runtime/1.1.2:
+    dependencies:
+      '@stoplight/json': 3.17.2
+      '@stoplight/path': 1.3.2
+      '@stoplight/types': 12.5.0
+      abort-controller: 3.0.0
+      lodash: 4.17.21
+      node-fetch: 2.6.7
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-fr5zRceXI+hrl82yAVoME+4GvJie8v3wmOe9tU+ZLRRNonizthy8qDi0Z/z4olE+vGreSDcuDOZ7JjRxFW5kTw==
+  /@stoplight/types/12.3.0:
+    dependencies:
+      '@types/json-schema': 7.0.9
+      utility-types: 3.10.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-hgzUR1z5BlYvIzUeFK5pjs5JXSvEutA9Pww31+dVicBlunsG1iXopDx/cvfBY7rHOrgtZDuvyeK4seqkwAZ6Cg==
+  /@stoplight/types/12.5.0:
+    dependencies:
+      '@types/json-schema': 7.0.9
+      utility-types: 3.10.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-dwqYcDrGmEyUv5TWrDam5TGOxU72ufyQ7hnOIIDdmW5ezOwZaBFoR5XQ9AsH49w7wgvOqB2Bmo799pJPWnpCbg==
+  /@stoplight/yaml-ast-parser/0.0.48:
+    dev: false
+    resolution:
+      integrity: sha512-sV+51I7WYnLJnKPn2EMWgS4EUfoP4iWEbrWwbXsj0MZCB/xOK8j6+C9fntIdOM50kpx45ZLC3s6kwKivWuqvyg==
+  /@stoplight/yaml/4.2.2:
+    dependencies:
+      '@stoplight/ordered-object-literal': 1.0.2
+      '@stoplight/types': 12.5.0
+      '@stoplight/yaml-ast-parser': 0.0.48
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=10.8'
+    resolution:
+      integrity: sha512-N086FU8pmSpjc5TvMBjmlTniZVh3OXzmEh6SYljSLiuv6aMxgjyjf13YrAlUqgu0b4b6pQ5zmkjrfo9i0SiLsw==
   /@ts-common/async-iterator/0.2.3:
     dependencies:
       '@ts-common/iterator': 0.3.6
@@ -169,6 +444,55 @@ packages:
     dev: false
     resolution:
       integrity: sha512-xoDlM2S4ortawSWORYqsdU+2rxdh4LRW9ytc3zmT37RIKQh6IHyKwwtKhKis9ah8ol07DCkZxPt8BBvPjC6v4g==
+  /@types/urijs/1.19.18:
+    dev: false
+    resolution:
+      integrity: sha512-tjftsOLuIWFLJxcpgFeehNnMhpMIv0ELJl0/i31jiV3au1GQpnd3/pTTDQg2zO5cSGJxtrDzMgebOH7+cqh3Vg==
+  /abort-controller/3.0.0:
+    dependencies:
+      event-target-shim: 5.0.1
+    dev: false
+    engines:
+      node: '>=6.5'
+    resolution:
+      integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
+  /ajv-draft-04/1.0.0_ajv@8.10.0:
+    dependencies:
+      ajv: 8.10.0
+    dev: false
+    peerDependencies:
+      ajv: ^8.5.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    resolution:
+      integrity: sha512-mv00Te6nmYbRp5DCwclxtt7yV/joXJPGS7nM+97GdxvuttCOfgI3K4U25zboyeX0O+myI8ERluxQe5wljMmVIw==
+  /ajv-errors/3.0.0_ajv@8.10.0:
+    dependencies:
+      ajv: 8.10.0
+    dev: false
+    peerDependencies:
+      ajv: ^8.0.1
+    resolution:
+      integrity: sha512-V3wD15YHfHz6y0KdhYFjyy9vWtEVALT9UrxfN3zqlI6dMioHnJrqOYfyPKol3oqrnCM9uwkcdCwkJ0WUcbLMTQ==
+  /ajv-formats/2.1.1:
+    dependencies:
+      ajv: 8.10.0
+    dev: false
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    resolution:
+      integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==
+  /ajv/8.10.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+      uri-js: 4.4.1
+    dev: false
+    resolution:
+      integrity: sha512-bzqAEZOjkrUMl2afH8dknrq5KEk2SrwdBROR+vH1EKVQTqaUbJVPdc/gEdggTMM0Se+s+Ja4ju4TlNcStKl2Hw==
   /ansi-colors/3.2.3:
     dev: false
     engines:
@@ -240,6 +564,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
+  /ast-types/0.14.2:
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-O0yuUDnZeQDL+ncNGlJ78BiO4jnYI3bvMsD5prT0/nsgijG/LpNBIr63gTjVTNsiGkgQhiyCShTgxt8oXOrklA==
+  /astring/1.8.1:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-Aj3mbwVzj7Vve4I/v2JYOPFkCGM2YS7OqQTNSxmUR+LECRpokuPgAYghePgr6SALDo5bD5DlfbSaYjOzGJZOLQ==
   /async-retry/1.3.3:
     dependencies:
       retry: 0.13.1
@@ -260,6 +597,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
+  /blueimp-md5/2.18.0:
+    dev: false
+    resolution:
+      integrity: sha512-vE52okJvzsVWhcgUHOv+69OG3Mdg151xyn41aVQN/5W5S+S43qZhxECtYLAEHMSFWX6Mv5IZrzj3T5+JqXfj5Q==
   /brace-expansion/1.1.11:
     dependencies:
       balanced-match: 1.0.2
@@ -279,6 +620,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-qhAVI1+Av2X7qelOfAIYwXONood6XlZE/fXaBSmW/T5SzLAmCgzi+eiWE7fUvbHaeNBQH13UftjpXxsfLkMpgw==
+  /builtins/1.0.3:
+    dev: false
+    resolution:
+      integrity: sha1-y5T662HIaWRR2zZTThQi+U8K7og=
   /call-bind/1.0.2:
     dependencies:
       function-bind: 1.1.1
@@ -527,6 +872,20 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
+  /event-target-shim/5.0.1:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
+  /fast-deep-equal/3.1.3:
+    dev: false
+    resolution:
+      integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
+  /fast-memoize/2.5.2:
+    dev: false
+    resolution:
+      integrity: sha512-Ue0LwpDYErFbmNnZSF0UH6eImUwDmogUO1jyE+JbN2gsQz/jICm1Ve7t9QT0rNSsfJt+Hs4/S3GnsDVjL4HVrw==
   /fill-range/7.0.1:
     dependencies:
       to-regex-range: 5.0.1
@@ -713,6 +1072,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
+  /immer/9.0.12:
+    dev: false
+    resolution:
+      integrity: sha512-lk7UNmSbAukB5B6dh9fnh5D0bJTOFKxVg2cyJWTYrWRfhLrLMBquONcUs3aFq507hNoIZEDDh8lb8UtOizSMhA==
   /inflight/1.0.6:
     dependencies:
       once: 1.4.0
@@ -913,6 +1276,24 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  /jsep/1.2.0:
+    dev: false
+    engines:
+      node: '>= 10.16.0'
+    resolution:
+      integrity: sha512-ex4YB352GD74qLjjAtjYm33LcHDBAwhY01BgZbXU56eLWOM1JvKYX4lz4PYkqw0OVfAQYl7CRt0JBRuAUt7mqA==
+  /json-schema-traverse/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==
+  /json-schema/0.4.0:
+    dev: false
+    resolution:
+      integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==
+  /jsonc-parser/2.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-o6/yDBYccGvTz1+QFevz6l6OBZ2+fMVu2JZ9CIhzsYRX4mjaK5IyX9eldUdCmga16zlgQxyrj5pt9kzuj2C02w==
   /jsonc-parser/3.0.0:
     dev: false
     resolution:
@@ -923,6 +1304,12 @@ packages:
       node: '>=10.0.0'
     resolution:
       integrity: sha512-EvGovdvau6FyLexFH2OeXfIITlgIbgZoAZe3usiySeaIDm5QS+A10DKNpaPBBqqRSZr2HN6HVNXxtwUAr2apEw==
+  /jsonpointer/5.0.0:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==
   /lcid/1.0.0:
     dependencies:
       invert-kv: 1.0.0
@@ -931,6 +1318,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-MIrMr6C8SDo4Z7S28rlQYlHRuDU=
+  /leven/3.1.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
   /load-json-file/1.1.0:
     dependencies:
       graceful-fs: 4.2.9
@@ -952,6 +1345,18 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A==
+  /lodash.get/4.4.2:
+    dev: false
+    resolution:
+      integrity: sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+  /lodash.set/4.3.2:
+    dev: false
+    resolution:
+      integrity: sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
+  /lodash.topath/4.5.2:
+    dev: false
+    resolution:
+      integrity: sha1-NhY1Hzu6YZlKCTGYlmC9AyVP0Ak=
   /lodash/4.17.21:
     dev: false
     resolution:
@@ -1050,6 +1455,20 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+  /nimma/0.1.7:
+    dependencies:
+      '@jsep-plugin/regex': 1.0.1_jsep@1.2.0
+      '@jsep-plugin/ternary': 1.0.2_jsep@1.2.0
+      astring: 1.8.1
+      jsep: 1.2.0
+    dev: false
+    engines:
+      node: ^12.20 || >=14.13
+    optionalDependencies:
+      jsonpath-plus: 6.0.1
+      lodash.topath: 4.5.2
+    resolution:
+      integrity: sha512-0FIra4ogMHhOjn4fd2UiBuuaxM1nHzwhCEPvaFmCbwsR6qzHyJUG3dLW3tAIQji42wIij8OA/HB0+Gldg3OX4A==
   /node-environment-flags/1.0.6:
     dependencies:
       object.getownpropertydescriptors: 2.1.3
@@ -1237,6 +1656,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
+  /punycode/2.1.1:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
   /read-pkg-up/1.0.1:
     dependencies:
       find-up: 1.1.2
@@ -1279,6 +1704,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
+  /require-from-string/2.0.2:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
   /require-main-filename/1.0.1:
     dev: false
     resolution:
@@ -1287,6 +1718,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
+  /reserved/0.1.2:
+    dev: false
+    engines:
+      node: '>=0.8'
+    resolution:
+      integrity: sha1-cHsSRqMmn3Vdp8/Pmvb0mDvvEFw=
   /resolve/1.22.0:
     dependencies:
       is-core-module: 2.8.1
@@ -1302,6 +1739,10 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==
+  /safe-stable-stringify/1.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-ERq4hUjKDbJfE4+XtZLFPCDi8Vb1JqaxAPTxWFLBx8XcAlf9Bda/ZJdVezs/NAfsMQScyIlUMx+Yeu7P7rx5jw==
   /semver/5.7.1:
     dev: false
     hasBin: true
@@ -1319,6 +1760,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==
+  /simple-eval/1.0.0:
+    dependencies:
+      jsep: 1.2.0
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-kpKJR+bqTscgC0xuAl2xHN6bB12lHjC2DCUfqjAx19bQyO3R2EVLOurm3H9AUltv/uFVcSCVNc6faegR+8NYLw==
   /spdx-correct/3.1.1:
     dependencies:
       spdx-expression-parse: 3.0.1
@@ -1525,6 +1974,22 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw==
+  /uri-js/4.4.1:
+    dependencies:
+      punycode: 2.1.1
+    dev: false
+    resolution:
+      integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
+  /urijs/1.19.8:
+    dev: false
+    resolution:
+      integrity: sha512-iIXHrjomQ0ZCuDRy44wRbyTZVnfVNLVo3Ksz1yxNyE5wV1IDZW2S5Jszy45DTlw/UdsnRT7DyDhIz7Gy+vJumw==
+  /utility-types/3.10.0:
+    dev: false
+    engines:
+      node: '>= 4'
+    resolution:
+      integrity: sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
   /validate-npm-package-license/3.0.4:
     dependencies:
       spdx-correct: 3.1.1
@@ -1532,6 +1997,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==
+  /validate-npm-package-name/3.0.0:
+    dependencies:
+      builtins: 1.0.3
+    dev: false
+    resolution:
+      integrity: sha1-X6kS2B630MdK/BQN5zF/DKffQ34=
   /vscode-jsonrpc/3.6.2:
     dev: false
     engines:
@@ -1580,6 +2051,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-QGkOQc8XL6Bt5PwnsExKBPuMKBxnGxWWW3fU55Xt4feHozMUhdUMaBCk290qpm/wG5u/RSKzwdAC4i51YigihA==
+  /wolfy87-eventemitter/5.2.9:
+    dev: false
+    resolution:
+      integrity: sha512-P+6vtWyuDw+MB01X7UeF8TaHBvbCovf4HPEMF/SV7BdDc1SMTiBy13SRD71lQh4ExFTG1d/WNzDGDCyOKSMblw==
   /wrap-ansi/2.1.0:
     dependencies:
       string-width: 1.0.2
@@ -1726,6 +2201,10 @@ packages:
   file:projects/openapi-validator-core.tgz:
     dependencies:
       '@apidevtools/json-schema-ref-parser': 9.0.9
+      '@stoplight/spectral-core': 1.8.1
+      '@stoplight/spectral-formats': 1.0.2
+      '@stoplight/spectral-ruleset-migrator': 1.7.2
+      '@stoplight/spectral-rulesets': 1.4.3
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
       '@types/lodash': 4.14.178
@@ -1746,7 +2225,7 @@ packages:
     dev: false
     name: '@rush-temp/openapi-validator-core'
     resolution:
-      integrity: sha512-pOeStvAXDCfOWoOJ2PI2Z5Xfixc8WT/mANiy5QTqH4pQl2TpH2qq/3VU+yICeHGQuZz5qvdfMRYyZDxVWdviFw==
+      integrity: sha512-6LHNBF2wGh4lAlzFA7hqFmN+DsFRhDN9y6hEhvYabz7bdiXaVuxmmLIg3DPGbsYqWL+DDBqWeUVL72pfme4U1Q==
       tarball: file:projects/openapi-validator-core.tgz
     version: 0.0.0
   file:projects/openapi-validator-functions.tgz:
@@ -1771,7 +2250,7 @@ packages:
     dev: false
     name: '@rush-temp/openapi-validator-functions'
     resolution:
-      integrity: sha512-eW4yuw/+gk628rirTK1bX0h7HcH/PfhN9a+x+Zg5Tej6Ntmv6hvWwl68+u7WTdQ7pd5uLjznwZzQ8Igm+NSjYA==
+      integrity: sha512-gM3rbz2MPC+azhaaKUIH6X2AQUNxdo3hH1oDlv86NcEREcY/wqVmrQpp/CrMV1aP6DzXasU2MLC16NNUpriU/w==
       tarball: file:projects/openapi-validator-functions.tgz
     version: 0.0.0
 specifiers:
@@ -1781,6 +2260,10 @@ specifiers:
   '@rush-temp/openapi-validator-cli': file:./projects/openapi-validator-cli.tgz
   '@rush-temp/openapi-validator-core': file:./projects/openapi-validator-core.tgz
   '@rush-temp/openapi-validator-functions': file:./projects/openapi-validator-functions.tgz
+  '@stoplight/spectral-core': 1.8.1
+  '@stoplight/spectral-formats': 1.0.2
+  '@stoplight/spectral-ruleset-migrator': ^1.7.1
+  '@stoplight/spectral-rulesets': ^1.3.1
   '@ts-common/iterator': 1.1.1
   '@types/js-yaml': ^3.12.4
   '@types/jsonpath': ^0.2.0

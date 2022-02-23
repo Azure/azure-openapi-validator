@@ -15,7 +15,7 @@ export function* pattern(openapiSection: any, ctx?: any) {
     if (option?.notMatch && !matchPattern(option.notMatch, openapiSection)) {
       yield {
         location: ctx.location,
-        message: "Not matched the pattern " + option?.match
+        message: "Not matched the pattern " + option?.notMatch
       }
     }
   }
