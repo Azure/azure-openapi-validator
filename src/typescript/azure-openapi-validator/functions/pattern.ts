@@ -1,21 +1,21 @@
+import { RuleContext } from "@microsoft.azure/openapi-validator-core"
 export type PatternOption = {
   match?: string
   notMatch?: string
 }
 
-export function* pattern(openapiSection: any, ctx?: any) {
+export function* pattern(openapiSection: any, options: PatternOption, ctx?: RuleContext) {
   if (typeof openapiSection === "string") {
-    const option = ctx.options as PatternOption
-    if (option?.match && matchPattern(option.match, openapiSection)) {
+    if (options?.match && matchPattern(options.match, openapiSection)) {
       yield {
         location: ctx.location,
-        message: "Matched the pattern " + option?.match
+        message: "Matched the pattern " + options?.match
       }
     }
-    if (option?.notMatch && !matchPattern(option.notMatch, openapiSection)) {
+    if (options?.notMatch && !matchPattern(options.notMatch, openapiSection)) {
       yield {
         location: ctx.location,
-        message: "Not matched the pattern " + option?.notMatch
+        message: "Not matched the pattern " + options?.notMatch
       }
     }
   }

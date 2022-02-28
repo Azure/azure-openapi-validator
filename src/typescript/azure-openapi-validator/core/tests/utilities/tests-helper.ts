@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
-import { Message } from "../../types"
+import { LinterResultMessage } from "../../types"
 import { DocumentDependencyGraph } from "../../depsGraph"
-import { IFormatter } from "../../formatter"
+import { JsonFormatter } from "../../formatter"
 import { OpenApiTypes } from "../../types"
 import { IRuleLoader, BuiltInRuleLoader } from "../../ruleLoader"
-import ruleSet from "../../rulesets/default"
+import ruleSet from "../../rulesets/legacy"
 import { LintRunner } from "../../runner"
 import { IRuleSet, RulesObject } from "../../types"
 const fs = require("fs")
@@ -17,7 +17,11 @@ const path = require("path")
 const pathToTestResources: string = "../../tests/resources/"
 
 // run the validator and gather all the messages generated
-export async function collectTestMessagesFromValidator(fileName: string, openapiType: OpenApiTypes, ruleName?: string): Promise<Message[]> {
+export async function collectTestMessagesFromValidator(
+  fileName: string,
+  openapiType: OpenApiTypes,
+  ruleName?: string
+): Promise<LinterResultMessage[]> {
   const filePath = getFilePath(fileName)
   const graph = new DocumentDependencyGraph()
   let ruleLoader: IRuleLoader
@@ -32,11 +36,7 @@ export async function collectTestMessagesFromValidator(fileName: string, openapi
   } else {
     ruleLoader = new BuiltInRuleLoader()
   }
-  const runner = new LintRunner(ruleLoader, graph, {
-    format: msg => {
-      return msg
-    }
-  } as IFormatter<Message>)
+  const runner = new LintRunner(ruleLoader, graph, new JsonFormatter(graph))
   const messages = await runner.execute([filePath], { openapiType })
   return messages
 }
@@ -47,23 +47,23 @@ function readFileAsString(file: string): string {
 }
 
 // assert whether we have the expected number of validation rules of given type
-export function assertValidationRuleCount(messages: Message[], validationRule: string, count: number): void {
-  assert.equal(messages.filter(msg => msg?.Details?.code === validationRule).length, count)
+export function assertValidationRuleCount(messages: LinterResultMessage[], validationRule: string, count: number): void {
+  assert.equal(messages.filter(msg => msg?.code === validationRule).length, count)
 }
 
 // get all the warning messages generated
-export function getWarningMessages(messages: Message[]): Message[] {
-  return messages.filter(msg => msg.Channel === "warning")
+export function getWarningMessages(messages: LinterResultMessage[]): LinterResultMessage[] {
+  return messages.filter(msg => msg.type === "warning")
 }
 
 // get all the error messages generated
-export function getErrorMessages(messages: Message[]): Message[] {
-  return messages.filter(msg => msg.Channel === "error")
+export function getErrorMessages(messages: LinterResultMessage[]): LinterResultMessage[] {
+  return messages.filter(msg => msg.type === "error")
 }
 
 // get all the messages of a certain type of rule
-export function getMessagesOfType(messages: Message[], validationRule: string): Message[] {
-  return messages.filter(msg => msg.Details.name === validationRule)
+export function getMessagesOfType(messages: LinterResultMessage[], validationRule: string): LinterResultMessage[] {
+  return messages.filter(msg => msg.code === validationRule)
 }
 
 // read the open api doc in a usable object

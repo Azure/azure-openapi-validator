@@ -20,11 +20,8 @@ Notes:
 ### Shared rule functions
 ```
 export type IRuleFunction = (
-  openapiDocument: any,
   openapiSection: any,
-  location: JsonPath,
   ctx?: RuleContext,
-  opt?: any  // pass by rule configuration
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 ```
 ### Rule configuration
@@ -48,7 +45,6 @@ export type RuleThen = {
   execute: IRuleFunction
 }
 ```
-
 
 ## CLI usage
 ```

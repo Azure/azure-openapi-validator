@@ -5,10 +5,17 @@ dependencies:
   '@rush-temp/openapi-validator-cli': file:projects/openapi-validator-cli.tgz
   '@rush-temp/openapi-validator-core': file:projects/openapi-validator-core.tgz
   '@rush-temp/openapi-validator-functions': file:projects/openapi-validator-functions.tgz
+  '@stoplight/json': 3.17.0
+  '@stoplight/ordered-object-literal': 1.0.2
+  '@stoplight/path': 1.3.2
   '@stoplight/spectral-core': 1.8.1
   '@stoplight/spectral-formats': 1.0.2
+  '@stoplight/spectral-functions': 1.5.1
   '@stoplight/spectral-ruleset-migrator': 1.7.2
   '@stoplight/spectral-rulesets': 1.4.3
+  '@stoplight/spectral-runtime': 1.1.2
+  '@stoplight/types': 12.3.0
+  '@stoplight/yaml': 4.2.2
   '@ts-common/iterator': 1.1.1
   '@types/js-yaml': 3.12.7
   '@types/jsonpath': 0.2.0
@@ -129,7 +136,7 @@ packages:
   /@stoplight/json/3.17.0:
     dependencies:
       '@stoplight/ordered-object-literal': 1.0.2
-      '@stoplight/types': 12.3.0
+      '@stoplight/types': 12.5.0
       jsonc-parser: 2.2.1
       lodash: 4.17.21
       safe-stable-stringify: 1.1.1
@@ -2201,10 +2208,17 @@ packages:
   file:projects/openapi-validator-core.tgz:
     dependencies:
       '@apidevtools/json-schema-ref-parser': 9.0.9
+      '@stoplight/json': 3.17.0
+      '@stoplight/ordered-object-literal': 1.0.2
+      '@stoplight/path': 1.3.2
       '@stoplight/spectral-core': 1.8.1
       '@stoplight/spectral-formats': 1.0.2
+      '@stoplight/spectral-functions': 1.5.1
       '@stoplight/spectral-ruleset-migrator': 1.7.2
       '@stoplight/spectral-rulesets': 1.4.3
+      '@stoplight/spectral-runtime': 1.1.2
+      '@stoplight/types': 12.3.0
+      '@stoplight/yaml': 4.2.2
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
       '@types/lodash': 4.14.178
@@ -2225,7 +2239,7 @@ packages:
     dev: false
     name: '@rush-temp/openapi-validator-core'
     resolution:
-      integrity: sha512-6LHNBF2wGh4lAlzFA7hqFmN+DsFRhDN9y6hEhvYabz7bdiXaVuxmmLIg3DPGbsYqWL+DDBqWeUVL72pfme4U1Q==
+      integrity: sha512-HHEh0NjM7lDACrw0CHbllEjFpCxZQLsx9AzgCZicTmrZ3vSFI5/rE2C2ueDnlUrAFaViWtk5DA7jkeb1F7x58A==
       tarball: file:projects/openapi-validator-core.tgz
     version: 0.0.0
   file:projects/openapi-validator-functions.tgz:
@@ -2260,10 +2274,17 @@ specifiers:
   '@rush-temp/openapi-validator-cli': file:./projects/openapi-validator-cli.tgz
   '@rush-temp/openapi-validator-core': file:./projects/openapi-validator-core.tgz
   '@rush-temp/openapi-validator-functions': file:./projects/openapi-validator-functions.tgz
+  '@stoplight/json': 3.17.0
+  '@stoplight/ordered-object-literal': 1.0.2
+  '@stoplight/path': 1.3.2
   '@stoplight/spectral-core': 1.8.1
   '@stoplight/spectral-formats': 1.0.2
+  '@stoplight/spectral-functions': ^1.0.0
   '@stoplight/spectral-ruleset-migrator': ^1.7.1
   '@stoplight/spectral-rulesets': ^1.3.1
+  '@stoplight/spectral-runtime': ^1.1.0
+  '@stoplight/types': 12.3.0
+  '@stoplight/yaml': 4.2.2
   '@ts-common/iterator': 1.1.1
   '@types/js-yaml': ^3.12.4
   '@types/jsonpath': ^0.2.0

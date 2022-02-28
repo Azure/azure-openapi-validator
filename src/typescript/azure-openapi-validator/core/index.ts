@@ -5,7 +5,7 @@
 import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes } from "./jsonpath"
 import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
-import ruleSet from "./rulesets/default"
+import ruleSet from "./rulesets/legacy"
 import { IRule, IRuleSet, Message } from "./types"
 import _ from "lodash"
 import { LintRunner } from "./runner"

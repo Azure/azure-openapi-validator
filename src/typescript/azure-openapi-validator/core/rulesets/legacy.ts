@@ -49,7 +49,7 @@ require("../rules/ExtensionResourcePathPattern")
 require("../rules/XmsEnumValidation")
 require("../rules/XmsIdentifierValidation")
 
-export { defaultRuleSet as default }
+export { ruleSet as default }
 
 function createFromLegacyRules() {
   const legacyRules: RulesObject = {}
@@ -61,7 +61,7 @@ function createFromLegacyRules() {
 
 export const legacyRules = createFromLegacyRules()
 
-export const defaultRuleSet: IRuleSet = {
+export const ruleSet: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
   rules: {
     ...legacyRules,

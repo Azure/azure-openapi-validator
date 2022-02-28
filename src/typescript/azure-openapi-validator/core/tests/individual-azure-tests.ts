@@ -5,8 +5,8 @@ import { UniqueXmsExample } from "./../rules/UniqueXmsExample"
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { suite, test } from "mocha-typescript"
-import { Message } from "../types"
-import { MergeStates, OpenApiTypes } from "../types"
+import { LinterResultMessage } from "../types"
+import { OpenApiTypes } from "../types"
 import { AvoidEmptyResponseSchema } from "../rules/AvoidEmptyResponseSchema"
 import { ControlCharactersAreNotAllowed } from "../rules/ControlCharactersAreNotAllowed"
 import { DefaultErrorResponseSchema } from "../rules/DefaultErrorResponseSchema"
@@ -43,132 +43,157 @@ import { XmsIdentifierValidation } from "../rules/XmsIdentifierValidation"
 class IndividualAzureTests {
   @test public async "control characters not allowed test"() {
     const fileName: string = "ContainsControlCharacters.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2)
   }
 
   @test public async "post operation id must contain Url verb"() {
     const fileName = "PostOperationIdWithoutUrlVerb.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PostOperationIdContainsUrlVerb)
-    assert.strictEqual(messages.length, 1)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      PostOperationIdContainsUrlVerb
+    )
+    assertValidationRuleCount(messages, PostOperationIdContainsUrlVerb, 1)
     assert.ok(
-      messages[0].Text === "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
+      messages[0].message ===
+        "OperationId should contain the verb: 'invoke' in:'simpleManualTrigger_call'. Consider updating the operationId"
     )
   }
   @test
   public async "info section with x-ms-code-generation-settings must not contain a header"() {
     const fileName = "InfoWithLicenseHeader.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
     assertValidationRuleCount(messages, LicenseHeaderMustNotBeSpecified, 1)
   }
 
   @test
   public async "path resource provider name use pascal case eg: Microsoft.Insight"() {
     const fileName = "PathResourceProviderNamePascalCase.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
     assertValidationRuleCount(messages, PathResourceProviderNamePascalCase, 1)
   }
 
   @test public async "OperationId Required"() {
     const fileName = "OperationIdMissed.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
     assertValidationRuleCount(messages, OperationIdRequired, 2)
   }
 
   @test public async "Enum must have type"() {
     const fileName = "EnumMustHaveType.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm)
     assertValidationRuleCount(messages, EnumMustHaveType, 2)
   }
 
   @test public async "Enum unique value"() {
     const fileName = "EnumUniqueValue.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumUniqueValue)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumUniqueValue)
     assertValidationRuleCount(messages, EnumUniqueValue, 1)
   }
 
   @test public async "Enum must respect type"() {
     const fileName = "EnumMustRespectType.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumMustRespectType)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumMustRespectType)
     assertValidationRuleCount(messages, EnumMustRespectType, 4)
   }
 
   @test
   public async "path resource type name use camel case eg: proactiveDetectionConfigs"() {
     const fileName = "PathResourceTypeNameCamelCase.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PathResourceTypeNameCamelCase)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      PathResourceTypeNameCamelCase
+    )
     assertValidationRuleCount(messages, PathResourceTypeNameCamelCase, 1)
   }
   @test public async "Enum must not have empty value"() {
     const fileName = "EnumMustNotHaveEmptyValue.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumMustNotHaveEmptyValue)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, EnumMustNotHaveEmptyValue)
     assertValidationRuleCount(messages, EnumMustNotHaveEmptyValue, 1)
   }
 
   @test public async "Must not have empty response schema"() {
     const fileName = "EmptyResponseSchema.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, AvoidEmptyResponseSchema)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, AvoidEmptyResponseSchema)
     assertValidationRuleCount(messages, AvoidEmptyResponseSchema, 1)
   }
 
   @test public async "x-ms-code-generation-settings depreated"() {
     const fileName = "InfoWithxmsCodeGenerationSetting.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DeprecatedXmsCodeGenerationSetting)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      DeprecatedXmsCodeGenerationSetting
+    )
     assertValidationRuleCount(messages, DeprecatedXmsCodeGenerationSetting, 1)
   }
 
   @test public async "default response schema correspond to document"() {
     const fileName = "DefaultResponseSchemaMatch.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DefaultErrorResponseSchema)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DefaultErrorResponseSchema)
     assertValidationRuleCount(messages, DefaultErrorResponseSchema, 0)
   }
 
   @test public async "default response schema does not correspond to document"() {
     const fileName = "DefaultResponseSchemaDismatch.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DefaultErrorResponseSchema)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DefaultErrorResponseSchema)
     assertValidationRuleCount(messages, DefaultErrorResponseSchema, 1)
   }
 
   @test public async "default response required"() {
     const fileName = "DefaultResponseMissed.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, RequiredDefaultResponse)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, RequiredDefaultResponse)
     assertValidationRuleCount(messages, RequiredDefaultResponse, 1)
   }
 
   @test public async "delete response required"() {
     const fileName = "DeleteResponseMissed.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DeleteOperationResponses)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DeleteOperationResponses)
     assertValidationRuleCount(messages, DeleteOperationResponses, 1)
   }
 
   @test public async "interger must have format"() {
     const fileName = "IntegerWithoutFormat.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, IntegerTypeMustHaveFormat)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, IntegerTypeMustHaveFormat)
     assertValidationRuleCount(messages, IntegerTypeMustHaveFormat, 1)
   }
 
   @test public async "x-ms-pageable doesn't have corresponding property"() {
     const fileName = "PageableOperationWithoutCorrespondingProp.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsPageableMustHaveCorrespondingResponse)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      XmsPageableMustHaveCorrespondingResponse
+    )
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 1)
   }
 
   @test public async "x-ms-pageable have corresponding property"() {
     const fileName = "PageableOperationWithCorrespondingProp.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsPageableMustHaveCorrespondingResponse)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      XmsPageableMustHaveCorrespondingResponse
+    )
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   }
 
   @test public async "x-ms-pageable have null nextlink "() {
     const fileName = "PageableOperationWithNullNextLink.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsPageableMustHaveCorrespondingResponse)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      XmsPageableMustHaveCorrespondingResponse
+    )
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   }
 
   // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
   @test public async "Raas Put async operation doesn't support 202"() {
     const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_CreateOperationAsyncResponseValidation
@@ -180,7 +205,7 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas Put async operation missing x-ms* async extensions"() {
     const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_CreateOperationAsyncResponseValidation
@@ -192,7 +217,7 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas Put async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasPutAsyncOperationResponseFinalStateViaAzureAsync.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_CreateOperationAsyncResponseValidation
@@ -203,7 +228,7 @@ class IndividualAzureTests {
   // Valid 201 response for RPaaS
   @test public async "Raas Put async operation is defined correctly"() {
     const fileName = "RpaasValidPutAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_CreateOperationAsyncResponseValidation
@@ -213,14 +238,14 @@ class IndividualAzureTests {
 
   @test public async "Preview version over a year"() {
     const fileName = "PreviewVersionOverOneYear.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PreviewVersionOverOneYear)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PreviewVersionOverOneYear)
     assertValidationRuleCount(messages, PreviewVersionOverOneYear, 1)
   }
 
   // Failure #1 : RPaaS DELETE async response supports 202 only. 201 is not supported.
   @test public async "Raas DELETE async operation doesn't support 201"() {
     const fileName = "RpaasDeleteAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_DeleteOperationAsyncResponseValidation
@@ -232,7 +257,7 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas DELETE async operation missing x-ms* async extensions"() {
     const fileName = "RpaasDeleteAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_DeleteOperationAsyncResponseValidation
@@ -244,7 +269,7 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas DELETE async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasDeleteAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_DeleteOperationAsyncResponseValidation
@@ -255,7 +280,7 @@ class IndividualAzureTests {
   // Valid 202 response for DELETE operation in RPaaS
   @test public async "Raas DELETE async operation is defined correctly"() {
     const fileName = "RpaasValidDeleteAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_DeleteOperationAsyncResponseValidation
@@ -266,7 +291,7 @@ class IndividualAzureTests {
   // Failure #1 : RPaaS POST async response supports 202 only. 201 is not supported.
   @test public async "Raas POST async operation doesn't support 201"() {
     const fileName = "RpaasPostAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_PostOperationAsyncResponseValidation
@@ -278,7 +303,7 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "Raas POST async operation missing x-ms* async extensions"() {
     const fileName = "RpaasPostAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_PostOperationAsyncResponseValidation
@@ -290,7 +315,7 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "Raas POST async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasPostAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_PostOperationAsyncResponseValidation
@@ -301,7 +326,7 @@ class IndividualAzureTests {
   // Valid 202 response for POST operation in RPaaS
   @test public async "Raas POST async operation is defined correctly"() {
     const fileName = "RpaasValidPostAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
       Rpaas_PostOperationAsyncResponseValidation
@@ -311,73 +336,85 @@ class IndividualAzureTests {
 
   @test public async "Raas resource is defined with empty properties"() {
     const fileName = "RpaasResourceWithEmptyPropertiesBag.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, Rpaas_ResourceProvisioningState)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_ResourceProvisioningState
+    )
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 1)
   }
 
   @test public async "Raas resource is defined with provisioning properties"() {
     const fileName = "RpaasResourceWithProvisioningState.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, Rpaas_ResourceProvisioningState)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      Rpaas_ResourceProvisioningState
+    )
     assertValidationRuleCount(messages, Rpaas_ResourceProvisioningState, 0)
   }
 
   @test public async "only has default response"() {
     const fileName = "OnlyDefaultResponseSchema.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ValidResponseCodeRequired)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ValidResponseCodeRequired)
     assertValidationRuleCount(messages, ValidResponseCodeRequired, 1)
   }
 
   @test public async "not only has default response"() {
     const fileName = "NotOnlyDefaultResponseSchema.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ValidResponseCodeRequired)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ValidResponseCodeRequired)
     assertValidationRuleCount(messages, ValidResponseCodeRequired, 0)
   }
 
   @test public async "resource tag meet common type"() {
     const filename: string = "ResourceWithTag.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, AzureResourceTagsSchema)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, AzureResourceTagsSchema)
     assertValidationRuleCount(messages, AzureResourceTagsSchema, 1)
   }
 
   @test public async "missing x-ms-error-response"() {
     const fileName = "ErrorResponseMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MissingXmsErrorResponse)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MissingXmsErrorResponse)
     assertValidationRuleCount(messages, MissingXmsErrorResponse, 2)
   }
 
   @test public async "missing type:object"() {
     const fileName = "missingTypeObject.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MissingTypeObject)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MissingTypeObject)
     assertValidationRuleCount(messages, MissingTypeObject, 9)
   }
 
   @test public async "parameter order not match"() {
     const fileName = "ParameterOrderNotMatchPath.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ParametersOrder)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ParametersOrder)
     assertValidationRuleCount(messages, ParametersOrder, 1)
   }
 
   @test public async "rpaas extension resource "() {
     const fileName = "RPaaSExtensionResource.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, ExtensionResourcePathPattern)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.rpaas,
+      ExtensionResourcePathPattern
+    )
     assertValidationRuleCount(messages, ExtensionResourcePathPattern, 1)
   }
 
   @test public async "x-ms-enum absent "() {
     const fileName = "XmsEnumAbsent.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsEnumValidation)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsEnumValidation)
     assertValidationRuleCount(messages, XmsEnumValidation, 2)
   }
 
   @test public async "no password in model/property name"() {
     const fileName = "HasPassword.json"
     const ruleName = "noPasswordInPropertyName"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   }
   @test public async "x-ms-identifiers missing"() {
     const fileName = "XmsIdentifiers.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsIdentifierValidation)
+    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsIdentifierValidation)
     assertValidationRuleCount(messages, XmsIdentifierValidation, 3)
   }
 }

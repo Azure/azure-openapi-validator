@@ -1,14 +1,6 @@
 import { findNodeAtLocation, getNodeValue, JSONPath, Node, parseTree } from "jsonc-parser"
+import { Range } from "./types"
 
-type Location = {
-  line: number
-  column: number
-}
-
-type Range = {
-  start: Location
-  end: Location
-}
 export interface JsonInstance {
   getLocation(path: JSONPath): Range
   getValue(): any

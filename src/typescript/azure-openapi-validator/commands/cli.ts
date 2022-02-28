@@ -81,7 +81,7 @@ export async function runCli(swaggerPaths: string[], options: LintOptions) {
 }
 
 function getVersion(): string {
-  const packageJsonPath = join(__dirname, "../package.json")
+  const packageJsonPath = join(__dirname, "./package.json")
   const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"))
   return packageJson.version
 }

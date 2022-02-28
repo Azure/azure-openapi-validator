@@ -1,18 +1,18 @@
-import { Message } from "./types"
+import { Message, IRuleFunctionLegacy } from "./types"
 import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes } from "./jsonpath"
-import { IRuleLoader } from "./ruleLoader"
+import { IRuleLoader, SpectralRuleLoader } from "./ruleLoader"
 import { OpenApiTypes, ValidationMessage } from "./types"
 import { IRule, IRuleSet } from "./types"
 import { IFormatter } from "./formatter"
 import { LintOptions } from "."
 import { OpenapiDocument } from "./document"
 import { SwaggerUtils } from "./swaggerUtils"
+import { stringify } from "querystring"
 const { Spectral } = require("@stoplight/spectral-core")
-import { getSpectralRuleSet } from "./rulesets/api-style"
 
-const isLegacyRule = (rule: IRule) => {
-  return rule.then.execute.length > 2
+const isLegacyRule = (rule: IRule<any>) => {
+  return rule.then.execute.name === "run"
 }
 
 export class LintRunner<T> {
@@ -32,6 +32,24 @@ export class LintRunner<T> {
     if (rulesToRun.some(rule => rule[1].resolved)) {
       resolvedSwagger = await swaggerUtils.resolveSchema(openapiDefinition)
     }
+
+    const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
+      if (isLegacyRule(rule)) {
+        return [doc, section, location, { specPath: document, graph, utils: swaggerUtils }]
+      } else {
+        return [
+          section,
+          rule.then.options,
+          {
+            document: doc,
+            location,
+            specPath: document,
+            graph,
+            utils: swaggerUtils
+          }
+        ]
+      }
+    }
     for (const [ruleName, rule] of rulesToRun) {
       let givens = rule.given || "$"
       if (!Array.isArray(givens)) {
@@ -44,39 +62,14 @@ export class LintRunner<T> {
           if (fieldSelector) {
             for (const subSection of nodes(section.value, fieldSelector)) {
               const location = section.path.slice(1).concat(subSection.path.slice(1))
-              const args = isLegacyRule(rule)
-                ? [targetDefinition, section.value, location, { specPath: document, graph, utils: swaggerUtils }]
-                : [
-                    section.value,
-
-                    {
-                      document: targetDefinition,
-                      location,
-                      specPath: document,
-                      graph,
-                      utils: swaggerUtils,
-                      options: rule.then.options
-                    }
-                  ]
+              const args = getArgs(rule, subSection.value, targetDefinition, location)
               for await (const message of (rule.then.execute as any)(...args)) {
                 emitResult(ruleName, rule, message)
               }
             }
           } else {
             const location = section.path.slice(1)
-            const args = isLegacyRule(rule)
-              ? [targetDefinition, section.value, location, { specPath: document, graph, utils: swaggerUtils }]
-              : [
-                  section.value,
-                  {
-                    document: targetDefinition,
-                    location,
-                    specPath: document,
-                    graph,
-                    utils: swaggerUtils,
-                    options: rule.then.options
-                  }
-                ]
+            const args = getArgs(rule, section.value, targetDefinition, location)
             for await (const message of (rule.then.execute as any)(...args)) {
               emitResult(ruleName, rule, message)
             }
@@ -85,7 +78,7 @@ export class LintRunner<T> {
       }
     }
 
-    function emitResult(ruleName: string, rule: IRule, message: ValidationMessage) {
+    function emitResult(ruleName: string, rule: IRule<any>, message: ValidationMessage) {
       const readableCategory = rule.category
 
       // try to extract provider namespace and resource type
@@ -104,7 +97,7 @@ export class LintRunner<T> {
         Source: [
           {
             document,
-            Position: { path: message.location }
+            jsonPath: message.location
           }
         ],
         Details: {
@@ -128,12 +121,51 @@ export class LintRunner<T> {
 
   async runSpectral(swaggerPaths: string[], options: LintOptions) {
     const linter = new Spectral()
-    const rules = await getSpectralRuleSet()
-    linter.setRuleSet(rules)
+    const rules = await new SpectralRuleLoader().getRuleSet()
+    linter.setRuleset(rules)
     const mergedResults = []
+    const convertSeverity = (severity: number) => {
+      switch (severity) {
+        case 0:
+          return "error"
+        case 1:
+          return "warning"
+        case 2:
+          return "info"
+        default:
+          return "info"
+      }
+    }
+    const convertRange = (range: any) => {
+      return {
+        start: {
+          line: range.start.line + 1,
+          column: range.start.character
+        },
+        end: {
+          line: range.end.line + 1,
+          column: range.end.character
+        }
+      }
+    }
+
+    const format = (result, spec) => {
+      return {
+        code: result.code,
+        message: result.message,
+        type: convertSeverity(result.severity),
+        "json-path": stringify(result.path),
+        range: convertRange(result.range),
+        sources: [`${spec}:${result.range.start.line}:${result.range.start.character}`],
+        location: {
+          line: result.range.start.line + 1,
+          column: result.range.start.character
+        }
+      }
+    }
     for (const spec of swaggerPaths) {
       const results = await linter.run(spec)
-      mergedResults.push(results.map(result => ({ code: result.code, ...result })))
+      mergedResults.push(...results.map(result => format(result, spec)))
     }
     return mergedResults
   }
@@ -155,7 +187,7 @@ export class LintRunner<T> {
         doc.getObj(),
         sendMessage,
         options.openapiType,
-        this.loader.getRuleSet(),
+        await this.loader.getRuleSet(),
         this.graph
       )
       runPromises.push(promise)

@@ -35,13 +35,13 @@ export interface Rule {
 
 export const rules: Rule[] = []
 
-export type RuleThen = {
-  options: any
+export type RuleThen<T> = {
+  execute: IRuleFunction<T>
+  readonly options?: T
   fieldSelector?: string
-  execute: IRuleFunction
 }
 
-export interface IRule {
+export interface IRule<T> {
   readonly id: string // see rule ID
   readonly description?: string
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
@@ -50,10 +50,10 @@ export interface IRule {
   readonly resolved?: boolean
   readonly severity: "error" | "warning"
   readonly given?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples , the strings to query data via jsonpath-plus.
-  readonly then: RuleThen // the rule procession steps
+  readonly then: RuleThen<T> // the rule procession steps
 }
 
-export type RulesObject = { [key: string]: IRule }
+export type RulesObject = Record<string, IRule<unknown>>
 
 export interface RuleContextLegacy {
   specPath: string
@@ -67,7 +67,6 @@ export interface RuleContext {
   specPath: string
   utils?: SwaggerUtils
   graph?: DocumentDependencyGraph
-  options?: any
 }
 
 export type IRuleFunctionLegacy = (
@@ -77,7 +76,11 @@ export type IRuleFunctionLegacy = (
   ctx?: RuleContextLegacy
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
-export type IRuleFunction = (openapiSection: any, ctx?: RuleContext) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
+export type IRuleFunction<T> = (
+  openapiSection: any,
+  options?: T,
+  ctx?: RuleContext
+) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface IRuleSet {
   documentationUrl: string
@@ -87,16 +90,13 @@ export interface IRuleSet {
 export type JsonPath = Array<string | number>
 
 /* line: 1-based, column: 0-based */
-export type Position =
-  | {
-      line: number // 1-based
-      column: number // 0-based
-    }
-  | { path?: JsonPath }
-
+export type Position = {
+  line: number // 1-based
+  column: number // 0-based
+}
 export interface SourceLocation {
   document: string
-  Position: Position
+  jsonPath: JsonPath
 }
 
 export interface Message {
@@ -105,4 +105,18 @@ export interface Message {
   Details?: any
   Text: string
   Source?: SourceLocation[]
+}
+
+export interface Range {
+  start: Position
+  end: Position
+}
+
+export interface LinterResultMessage {
+  type: "information" | "warning" | "error" | "debug" | "verbose" | "fatal"
+  code: string
+  message: string
+  sources?: string[]
+  location?: Position
+  range?: Range
 }
