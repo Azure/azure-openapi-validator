@@ -4,7 +4,7 @@
   "pnpmVersion": "5.18.10",
   "ensureConsistentVersions": true,
   "pnpmOptions": {
-    "strictPeerDependencies": true
+    "strictPeerDependencies": false
   },
   "nodeSupportedVersionRange": ">=14.0.0",
   "suppressNodeLtsWarning": true,
@@ -22,8 +22,7 @@
     },
     {
       "packageName": "@microsoft.azure/openapi-validator-functions",
-      "projectFolder": "src/typescript/azure-openapi-validator/functions",
-      "cyclicDependencyProjects": ["@microsoft.azure/openapi-validator-core"]
+      "projectFolder": "src/typescript/azure-openapi-validator/functions"
     },
     {
       "packageName": "@microsoft.azure/openapi-validator-cli",
