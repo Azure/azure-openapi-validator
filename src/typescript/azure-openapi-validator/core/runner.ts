@@ -193,8 +193,8 @@ export class LintRunner<T> {
       runPromises.push(promise)
     }
     await Promise.all(runPromises)
-    const spectralResult = await this.runSpectral(swaggerPaths, options)
-    return this.formatter.format(msgs).concat(spectralResult)
+  //  const spectralResult = await this.runSpectral(swaggerPaths, options)
+    return this.formatter.format(msgs)
   }
 }
 

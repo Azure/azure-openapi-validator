@@ -7348,6 +7348,7 @@ packages:
       '@types/jsonpath': 0.2.0
       '@types/node': 14.18.12
       autorest: 2.0.4413
+      glob: 7.2.0
       glob-parent: 6.0.2
       gulp: 4.0.2
       gulp-clean: 0.4.0
@@ -7358,6 +7359,7 @@ packages:
       js-yaml: 3.14.1
       json-refs: 3.0.15
       jsonpath: 1.1.1
+      lodash: 4.17.21
       md5-file: 4.0.0
       mocha: 7.2.0
       nyc: 15.1.0
@@ -7373,7 +7375,7 @@ packages:
     dev: false
     name: '@rush-temp/CommonDeps'
     resolution:
-      integrity: sha512-TOXCfapwjDO8XkfHxz4iBX+8hR8YrR2PQJ9V8E566a0rl/VeKfGYLO3EkcQmbcG+4mwCnbUxjltA9a/xFWa64g==
+      integrity: sha512-bHuqf1w5cESRKsknbd0YczP3KL61y5Oh1bBzfWDJQiHiKafPRXBevWq4CpOl+mOcJ2aWDaK+ZHil0EeOFwQPiA==
       tarball: file:projects/CommonDeps.tgz
     version: 0.0.0
   file:projects/openapi-validator-cli.tgz:
