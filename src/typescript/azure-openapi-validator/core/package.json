@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
-    "@microsoft.azure/openapi-validator-functions": "^1.0.0",
     "@stoplight/spectral-core": "1.8.1",
     "@stoplight/spectral-formats": "1.0.2",
     "@stoplight/spectral-ruleset-migrator": "^1.7.1",
