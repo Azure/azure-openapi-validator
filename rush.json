@@ -21,10 +21,6 @@
       "projectFolder": "src/typescript/azure-openapi-validator/core"
     },
     {
-      "packageName": "@microsoft.azure/openapi-validator-functions",
-      "projectFolder": "src/typescript/azure-openapi-validator/functions"
-    },
-    {
       "packageName": "@microsoft.azure/openapi-validator-cli",
       "projectFolder": "src/typescript/azure-openapi-validator/commands"
     }

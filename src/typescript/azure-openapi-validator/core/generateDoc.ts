@@ -1,5 +1,5 @@
 require("./index")
-import { OpenApiTypes, rules } from "./rule"
+import { OpenApiTypes, rules } from "./types"
 import { writeFileSync } from "fs";
 
 const generateDoc = () => {

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { DocumentDependencyGraph } from "./depsGraph"
 import { nodes } from "./jsonpath"
-import { MergeStates, OpenApiTypes, ValidationMessage } from "./rule"
+import { MergeStates, OpenApiTypes, ValidationMessage } from "./types"
 import ruleSet from "./rulesets/legacy"
 import { IRule, IRuleSet, Message } from "./types"
 import _ from "lodash"
@@ -13,10 +13,8 @@ import { BuiltInRuleLoader } from "./ruleLoader"
 import { JsonFormatter } from "./formatter"
 
 export * from "./types"
-export * from "./rule"
 export * from "./depsGraph"
 export * from "./jsonpath"
-export * from "./rule"
 export * from "./runner"
 
 export type LintOptions = {
