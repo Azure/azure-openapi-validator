@@ -2,7 +2,6 @@
     "compilerOptions": {
         "module": "commonjs",
         "types": [
-            "node","jest"
         ],
         "target": "es2016",
         "experimentalDecorators": true,
@@ -16,7 +15,7 @@
         "node_modules"
     ],
     "include": [
-        "regression/*.ts"
+        "./**/*.ts"
     ],
     "sourcemap": true
 }

@@ -1,4 +1,4 @@
-import { pattern } from "@microsoft.azure/openapi-validator-functions"
+import { pattern } from "../functions/pattern"
 import { OpenApiTypes, rules } from "../types"
 import { IRuleSet, RulesObject } from "../types"
 // register rules

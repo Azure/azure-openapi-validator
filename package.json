@@ -27,14 +27,16 @@
     "@microsoft.azure/autorest-core": "2.0.4417"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.0.1",
+    "@apidevtools/json-schema-ref-parser": "^9.0.9",
     "glob-parent": "^6.0.2",
-    "js-yaml": "3.14.0",
+    "js-yaml": "^3.14.0",
     "json-refs": "^3.0.15",
     "jsonpath": "^1.1.1",
     "nyc": "^15.1.0",
     "string.prototype.matchall": "^4.0.2",
-    "vscode-jsonrpc": "^3.2.0"
+    "vscode-jsonrpc": "^3.2.0",
+    "glob": "^7.2.0",
+    "lodash": "~4.17.21"
   },
   "scripts": {
     "install-dotnet": "cd src/dotnet/AutoRest && npm install",
@@ -45,6 +47,7 @@
     "tslint-fix-regression": "tslint --fix --project tsconfig.json ./regression/*.ts",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "regression-test": "jest -u --max-old-space-size=10192 --ci --reporters=default --reporters=jest-junit --config ./regression/jest.regression.config.js ",
-    "jest": "jest"
+    "jest": "jest",
+    "build": "tsc"
   }
 }
