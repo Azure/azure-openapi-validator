@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Operations schemes has non-http/https type",
+        "description": "Some documentation.",
+        "version": "2014-04-01-preview"
+    },
+    "host": "management.azure.com",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "basePath": "/",
+    "paths": {
+        "/foo": {
+            "post": {
+                "operationId": "Models_list",
+                "summary": "Foo path",
+                "description": "Foo operation",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models"
+                        }
+                    }
+                },
+                "x-ms-pageable": {
+                    "nextLinkName": null
+                }
+            }
+        }
+    },
+    "parameters": {
+        "SubscriptionIdParameter": {
+            "name": "subscriptionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "test subscription id"
+        },
+        "ApiVersion": {
+            "name": "api-version",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "test api version"
+        }
+    },
+    "definitions": {
+        "Models": {
+            "description": "the models to return",
+            "properties": {
+                "mymodels": {
+                    "type": "array"
+                }
+            }
+        },
+        "Model": {
+            "description": "the model returned",
+            "properties": {
+                "prop0": {
+                    "description": "some property",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

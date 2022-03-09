@@ -1,5 +1,7 @@
 # Ignore compiled files
 src/**/*.js
+packages/**/*.js
+packages/**/*.js.map
 regression/**/*.js
 regression/**/*.js.map
 src/**/*.map

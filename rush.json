@@ -23,6 +23,10 @@
     {
       "packageName": "@microsoft.azure/openapi-validator-cli",
       "projectFolder": "src/typescript/azure-openapi-validator/commands"
+    },
+    {
+      "packageName": "CommonDeps",
+      "projectFolder": "./"
     }
   ]
 }

@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Network interfaces have unallowed types",
+    "description": "Some documentation.",
+    "version": "2014-04-01-preview"
+  },
+  "host": "management.azure.com",
+  "schemes": ["https"],
+  "basePath": "/",
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}": {
+      "get": {
+        "tags": ["GetTestResource"],
+        "operationId": "getTestResource",
+        "summary": "Foo path",
+        "description": "Foo operation",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersion"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/TestResource"
+            }
+          },
+          "500": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/TestResource"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "test subscription id"
+    },
+    "ApiVersion": {
+      "name": "api-version",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "test api version"
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type."
+        },
+        "tag": {
+          "type": "object",
+          "description": "Resource tag."
+        }
+      },
+      "description": "Common resource representation.",
+      "x-ms-azure-resource": true
+    },
+    "TestResource": {
+      "description": "test",
+      "additionalProperties": {
+        "properties": {
+          "test": {
+            "type": "object",
+            "description": "properties",
+            "properties": {
+              "provisioningState": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "TestResource1": {
+      "description": "test",
+      "type": "object",
+      "additionalProperties": {
+        "properties": {
+          "test": {
+            "description": "properties",
+            "properties": {
+              "provisioningState": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "TestResource2": {
+      "description": "test",
+      "type": "object",
+      "additionalProperties": {
+        "properties": {
+          "test": {
+            "description": "properties",
+            "type": "array",
+            "items": {
+              "properties": {
+                "provisioningState": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "TestResource3": {
+      "description": "test",
+      "type": "object",
+      "allOf": [
+        {
+          "properties": {
+            "test": {
+              "description": "properties",
+              "type": "array",
+              "items": {
+                "properties": {
+                  "provisioningState": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TestResource4": {
+      "description": "test",
+      "type": "object",
+      "additionalProperties": false
+    }
+  }
+}
