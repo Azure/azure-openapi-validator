@@ -1,24 +1,24 @@
 import * as assert from "assert"
-import { getResolvedSchemaByPath } from "../rules/utilities/rules-helper"
-import { SwaggerUtils } from "../swaggerUtils"
+import { getResolvedSchemaByPath } from "../utilities/rules-helper"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
 import { suite, test } from "mocha-typescript"
-import { followReference } from "../utils"
-import { DocumentDependencyGraph } from "../depsGraph"
+import { followReference } from "../utilities/ref-helper"
+import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 import { dirname } from "path"
 
 @suite
-class SwaggerUtilsTests {
+class SwaggerHelperTests {
   @test public async "external reference"() {
-    const graph = new DocumentDependencyGraph()
-    const swagger = await (await graph.loadDocument(getFilePath("armResource/externalRef.json"))).getObj()
-    const util = new SwaggerUtils(swagger, null, graph)
+    const inventory = new SwaggerInventory()
+    const swagger = await (await inventory.loadDocument(getFilePath("armResource/externalRef.json"))).getObj()
+    const util = new SwaggerHelper(swagger, null, inventory)
     const schema = getResolvedSchemaByPath(
       swagger,
       ["paths", "/providers/Microsoft.MachineLearning/operations", "get", "responses", "default", "schema"],
-      graph
+      inventory
     )
-    const resolvedSchema = followReference(swagger, schema, graph)
+    const resolvedSchema = followReference(swagger, schema, inventory)
     assert.strictEqual(!!resolvedSchema.properties, true)
 
     const errorObject = util.getPropertyOfModel(resolvedSchema, "error")
@@ -27,7 +27,7 @@ class SwaggerUtilsTests {
 
   @test public "test get properties"() {
     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
-    const util = new SwaggerUtils(swagger, null, null)
+    const util = new SwaggerHelper(swagger, null, null)
     const bar = util.getDefinitionByName("A")
     assert.deepEqual(
       {
@@ -46,20 +46,20 @@ class SwaggerUtilsTests {
   }
   @test public async "resolve partial schema"() {
     const filePath = getFilePath("references/external.json")
-    const graph = new DocumentDependencyGraph()
-    const openapiDefinitionObject = (await graph.loadDocument(filePath)).getObj()
+    const inventory = new SwaggerInventory()
+    const openapiDefinitionObject = (await inventory.loadDocument(filePath)).getObj()
     const comonFilePath = getFilePath("references/common.json")
-    const commonDoc = await graph.loadDocument(comonFilePath)
-    const swaggerUtils = new SwaggerUtils(openapiDefinitionObject, filePath, graph)
-    let resolvedSchema = (await swaggerUtils.resolveSchema(
+    const commonDoc = await inventory.loadDocument(comonFilePath)
+    const swaggerHelper = new SwaggerHelper(openapiDefinitionObject, filePath, inventory)
+    let resolvedSchema = (await swaggerHelper.resolveSchema(
       openapiDefinitionObject.paths[
         "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/listKeys"
       ].post
     )) as any
     assert.strictEqual(resolvedSchema.parameters[0].name, "subscriptionId")
-    resolvedSchema = await swaggerUtils.resolveSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
+    resolvedSchema = await swaggerHelper.resolveSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
 
-    resolvedSchema = await swaggerUtils.resolveSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
+    resolvedSchema = await swaggerHelper.resolveSchema(dirname(filePath) + "/common.json#/parameters/ApiVersion")
 
     assert.strictEqual(resolvedSchema.name, "api-version")
 

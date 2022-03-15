@@ -18,15 +18,19 @@
   "projects": [
     {
       "packageName": "@microsoft.azure/openapi-validator-core",
-      "projectFolder": "src/typescript/azure-openapi-validator/core"
+      "projectFolder": "packages/azure-openapi-validator/core"
     },
     {
-      "packageName": "@microsoft.azure/openapi-validator-cli",
-      "projectFolder": "src/typescript/azure-openapi-validator/commands"
+      "packageName": "@microsoft.azure/openapi-validator",
+      "projectFolder": "packages/azure-openapi-validator/autorest-plugin"
     },
     {
-      "packageName": "CommonDeps",
-      "projectFolder": "./"
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "projectFolder": "packages/rulesets"
+    },
+    {
+      "packageName": "openapi-validator-regression",
+      "projectFolder": "./regression"
     }
   ]
 }

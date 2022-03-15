@@ -8701,7 +8701,7 @@
         "query": {
           "type": "string",
           "x-nullable": true,
-          "description": "Azure Resource Graph query which represents the security solution's user defined resources. Required to start with \"where type != \"Microsoft.Devices/IotHubs\"\""
+          "description": "Azure Resource inventory query which represents the security solution's user defined resources. Required to start with \"where type != \"Microsoft.Devices/IotHubs\"\""
         },
         "querySubscriptions": {
           "type": "array",

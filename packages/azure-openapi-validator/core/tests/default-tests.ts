@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { only, skip, slow, suite, test, timeout } from "mocha-typescript"
-import { LinterResultMessage } from "../types"
+import { LintResultMessage } from "../types"
 import { MergeStates, OpenApiTypes } from "../types"
 import { ArraySchemaMustHaveItems } from "../rules/ArraySchemaMustHaveItems"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
@@ -12,7 +12,7 @@ import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./u
 class DefaultTests {
   @test public async "array schema must have items test"() {
     const fileName = "ArraySchemaWithoutItems.json"
-    const messages: LinterResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.default)
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.default)
     assertValidationRuleCount(messages, ArraySchemaMustHaveItems, 1)
   }
 }

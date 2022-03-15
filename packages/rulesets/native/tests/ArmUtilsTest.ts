@@ -1,20 +1,20 @@
 import * as assert from "assert"
 import { suite, test } from "mocha-typescript"
-import { ArmUtils } from "../rules/utilities/ArmUtils"
-import { SwaggerUtils } from "../swaggerUtils"
+import { ArmHelper } from "../utilities/ArmHelper"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 @suite
-class ArmUtilsTests {
+class ArmHelperTests {
   @test public async "test contain containsDiscriminator"() {
     const swagger = readObjectFromFile(getFilePath("armResource/security.json"))
-    const util = new ArmUtils(swagger, null)
+    const util = new ArmHelper(swagger, null)
     assert.equal(util.containsDiscriminator("DataExportSettings"), true)
   }
 
   @test public async "test resource utils"() {
     const swagger = readObjectFromFile(getFilePath("armResource/compute.json"))
-    const util = new ArmUtils(swagger, null)
+    const util = new ArmHelper(swagger, null)
     const allNestedResource = util.getAllNestedResources()
     const allTopLevelResource = util.getAllTopLevelResources()
     const allOfResource = util.getAllResourcesFromDefinitions()
@@ -30,7 +30,7 @@ class ArmUtilsTests {
 
   @test public "test get properties"() {
     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
-    const util = new SwaggerUtils(swagger, null)
+    const util = new SwaggerHelper(swagger, null)
     const bar = util.getDefinitionByName("A")
     assert.deepEqual(
       {

@@ -1795,7 +1795,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextensi@microsoft.azure/openapi-validator-core/{type}/versions/{version}": {
       "get": {
         "tags": [
           "VirtualMachineExtensionImages"
@@ -1858,7 +1858,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextensi@microsoft.azure/openapi-validator-core": {
       "get": {
         "tags": [
           "VirtualMachineExtensionImages"
@@ -1912,7 +1912,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextensi@microsoft.azure/openapi-validator-core/{type}/versions": {
       "get": {
         "tags": [
           "VirtualMachineExtensionImages"

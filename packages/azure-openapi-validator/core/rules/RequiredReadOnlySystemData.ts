@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes, stringify } from "../jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "../types"
-import { ArmUtils } from "./utilities/ArmUtils"
+import { ArmUtils } from "./utilities/armHelper"
 export const RequiredReadOnlySystemData: string = "RequiredReadOnlySystemData"
 
 rules.push({
@@ -23,7 +23,7 @@ rules.push({
         // not a new Api Version
         return
       }
-      const utils = new ArmUtils(doc, ctx.specPath, ctx.graph)
+      const utils = new ArmUtils(doc, ctx.specPath, ctx.inventory)
       const swaggerUtil = ctx.utils
       const allResources = utils.getAllResourceNames()
       /*

@@ -1,19 +1,19 @@
 import { Message } from "./types"
-import { DocumentDependencyGraph } from "./depsGraph"
+import { SwaggerInventory } from "./swaggerInventory"
 import { stringify } from "./jsonpath"
-import { LinterResultMessage } from "."
+import { LintResultMessage } from "."
 
 export interface IFormatter<T> {
   format: (msg: Message | Message[]) => T[]
 }
 
-export class JsonFormatter implements IFormatter<LinterResultMessage> {
-  constructor(private graph: DocumentDependencyGraph) {}
+export class JsonFormatter implements IFormatter<LintResultMessage> {
+  constructor(private inventory: SwaggerInventory) {}
   format(message: Message | Message[]) {
     const outputs = []
     const msgs = Array.isArray(message) ? message : [message]
     for (const msg of msgs) {
-      const document = this.graph.getDocument(msg.Source[0].document)
+      const document = this.inventory.getDocument(msg.Source[0].document)
       let path = msg.Source[0].jsonPath
       if (path[0] === "$") {
         path = path.slice(1)

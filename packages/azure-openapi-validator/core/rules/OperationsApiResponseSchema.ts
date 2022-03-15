@@ -2,7 +2,7 @@ import { MessageReader } from "vscode-jsonrpc"
 import { JsonPath } from "../types"
 import { rules } from "../types"
 import { MergeStates, OpenApiTypes } from "../types"
-import { ArmUtils } from "./utilities/ArmUtils"
+import { ArmUtils } from "./utilities/armHelper"
 
 export const OperationsApiResponseSchema: string = "OperationsApiResponseSchema"
 

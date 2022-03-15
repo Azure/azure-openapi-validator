@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
-import { LinterResultMessage } from "../../types"
-import { DocumentDependencyGraph } from "../../depsGraph"
+import { LintResultMessage } from "../../types"
+import { SwaggerInventory } from "../../swaggerInventory"
 import { JsonFormatter } from "../../formatter"
 import { OpenApiTypes } from "../../types"
 import { IRuleLoader, BuiltInRuleLoader } from "../../ruleLoader"
@@ -21,9 +21,9 @@ export async function collectTestMessagesFromValidator(
   fileName: string,
   openapiType: OpenApiTypes,
   ruleName?: string
-): Promise<LinterResultMessage[]> {
+): Promise<LintResultMessage[]> {
   const filePath = getFilePath(fileName)
-  const graph = new DocumentDependencyGraph()
+  const inventory = new SwaggerInventory()
   let ruleLoader: IRuleLoader
   if (ruleName) {
     const rules: RulesObject = {}
@@ -36,7 +36,7 @@ export async function collectTestMessagesFromValidator(
   } else {
     ruleLoader = new BuiltInRuleLoader()
   }
-  const runner = new LintRunner(ruleLoader, graph, new JsonFormatter(graph))
+  const runner = new LintRunner(ruleLoader, inventory, new JsonFormatter(inventory))
   const messages = await runner.execute([filePath], { openapiType })
   return messages
 }
@@ -47,22 +47,22 @@ function readFileAsString(file: string): string {
 }
 
 // assert whether we have the expected number of validation rules of given type
-export function assertValidationRuleCount(messages: LinterResultMessage[], validationRule: string, count: number): void {
+export function assertValidationRuleCount(messages: LintResultMessage[], validationRule: string, count: number): void {
   assert.equal(messages.filter(msg => msg?.code === validationRule).length, count)
 }
 
 // get all the warning messages generated
-export function getWarningMessages(messages: LinterResultMessage[]): LinterResultMessage[] {
+export function getWarningMessages(messages: LintResultMessage[]): LintResultMessage[] {
   return messages.filter(msg => msg.type === "warning")
 }
 
 // get all the error messages generated
-export function getErrorMessages(messages: LinterResultMessage[]): LinterResultMessage[] {
+export function getErrorMessages(messages: LintResultMessage[]): LintResultMessage[] {
   return messages.filter(msg => msg.type === "error")
 }
 
 // get all the messages of a certain type of rule
-export function getMessagesOfType(messages: LinterResultMessage[], validationRule: string): LinterResultMessage[] {
+export function getMessagesOfType(messages: LintResultMessage[], validationRule: string): LintResultMessage[] {
   return messages.filter(msg => msg.code === validationRule)
 }
 

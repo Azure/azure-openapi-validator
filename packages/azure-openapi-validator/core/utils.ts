@@ -1,15 +1,16 @@
 import { fileURLToPath, pathToFileURL } from "url"
-import { IDocumentDependencyGraph } from "./types"
+import { ISwaggerInventory, OpenApiTypes } from "./types"
 import { nodes, stringify } from "./jsonpath"
 import _ from "lodash"
+import { readdirSync } from "fs"
 /**
  *
  * @param doc
  * @param schema
- * @param graph
+ * @param inventory
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
-export function followReference(doc: any, schema: any, graph?: IDocumentDependencyGraph) {
+export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory) {
   const getRefModel = (refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
@@ -28,11 +29,11 @@ export function followReference(doc: any, schema: any, graph?: IDocumentDependen
   if (schema && doc) {
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
-      if (graph && refSlices[0]) {
-        doc = graph.getDocument(refSlices[0]).getObj()
+      if (inventory && refSlices[0]) {
+        doc = inventory.getDocument(refSlices[0]).getObj()
       }
       schema = getRefModel(`#${refSlices[1]}`, [])
-      return followReference(doc, schema, graph)
+      return followReference(doc, schema, inventory)
     }
     return schema
   }
@@ -78,4 +79,23 @@ export function traverse(obj: unknown, path: string[], visited: Set<any>, option
 
 export function isExample(path: string) {
   return path.split(/\\|\//g).includes("examples")
+}
+
+export function getOpenapiType(type: string) {
+  switch (type) {
+    case "arm": {
+      return OpenApiTypes.arm
+    }
+    case "data-plane": {
+      return OpenApiTypes.dataplane
+    }
+    default:
+      return OpenApiTypes.default
+  }
+}
+
+export const defaultFileSystem = {
+  read:(uri)=>{
+      return readdirSync(uri).toString()
+    }
 }

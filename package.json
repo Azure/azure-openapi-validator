@@ -44,7 +44,6 @@
     "tslint-fix-regression": "tslint --fix --project tsconfig.json ./regression/*.ts",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "regression-test": "jest -u --max-old-space-size=10192 --ci --reporters=default --reporters=jest-junit --config ./regression/jest.regression.config.js ",
-    "jest": "jest",
-    "build":"tsc"
+    "jest": "jest"
   }
 }

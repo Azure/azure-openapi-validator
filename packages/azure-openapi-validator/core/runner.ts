@@ -1,20 +1,20 @@
 import { Message, IRuleFunctionLegacy } from "./types"
-import { DocumentDependencyGraph } from "./depsGraph"
+import { SwaggerInventory } from "./swaggerInventory"
 import { nodes } from "./jsonpath"
 import { IRuleLoader} from "./ruleLoader"
 import { OpenApiTypes, ValidationMessage } from "./types"
 import { IRule, IRuleSet } from "./types"
 import { IFormatter } from "./formatter"
-import { LintOptions } from "."
+import { LintCallBack, LintOptions, LintResultMessage } from "."
 import { OpenapiDocument } from "./document"
-import { SwaggerUtils } from "./swaggerUtils"
+import { SwaggerHelper } from "./swaggerHelper"
 
 const isLegacyRule = (rule: IRule<any>) => {
   return rule.then.execute.name === "run"
 }
 
 export class LintRunner<T> {
-  constructor(private loader: IRuleLoader, private graph: DocumentDependencyGraph, private formatter: IFormatter<T>) {}
+  constructor(private loader: IRuleLoader, private inventory: SwaggerInventory, private formatter: IFormatter<T>) {}
 
   runRules = async (
     document: string,
@@ -22,18 +22,18 @@ export class LintRunner<T> {
     sendMessage: (m: Message) => void,
     openapiType: OpenApiTypes,
     ruleset: IRuleSet,
-    graph?: DocumentDependencyGraph
+    inventory?: SwaggerInventory
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
-    const swaggerUtils = new SwaggerUtils(openapiDefinition, document, graph)
+    const swaggerHelper = new SwaggerHelper(openapiDefinition, document, inventory)
     let resolvedSwagger
     if (rulesToRun.some(rule => rule[1].resolved)) {
-      resolvedSwagger = await swaggerUtils.resolveSchema(openapiDefinition)
+      resolvedSwagger = await swaggerHelper.resolveSchema(openapiDefinition)
     }
 
     const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
       if (isLegacyRule(rule)) {
-        return [doc, section, location, { specPath: document, graph, utils: swaggerUtils }]
+        return [doc, section, location, { specPath: document, inventory, utils: swaggerHelper }]
       } else {
         return [
           section,
@@ -42,8 +42,7 @@ export class LintRunner<T> {
             document: doc,
             location,
             specPath: document,
-            graph,
-            utils: swaggerUtils
+            inventory
           }
         ]
       }
@@ -117,15 +116,18 @@ export class LintRunner<T> {
     })
   }
 
-  async execute(swaggerPaths: string[], options: LintOptions) {
+  async execute(swaggerPaths: string[], options: LintOptions,cb?:LintCallBack) {
     const specsPromises = []
     for (const spec of swaggerPaths) {
-      specsPromises.push(this.graph.loadDocument(spec))
+      specsPromises.push(this.inventory.loadDocument(spec))
     }
     const documents = (await Promise.all(specsPromises)) as OpenapiDocument[]
     const msgs = []
     const sendMessage = (msg: Message) => {
       msgs.push(msg)
+      if (cb){
+        cb(this.formatter.format(msg)[0] as unknown as LintResultMessage)
+      }
     }
     const runPromises = []
     for (const doc of documents) {
@@ -135,7 +137,7 @@ export class LintRunner<T> {
         sendMessage,
         options.openapiType,
         await this.loader.getRuleSet(),
-        this.graph
+        this.inventory
       )
       runPromises.push(promise)
     }
@@ -144,15 +146,4 @@ export class LintRunner<T> {
   }
 }
 
-export function getOpenapiTypes(type: string) {
-  switch (type) {
-    case "arm": {
-      return OpenApiTypes.arm
-    }
-    case "data-plane": {
-      return OpenApiTypes.dataplane
-    }
-    default:
-      return OpenApiTypes.default
-  }
-}
+

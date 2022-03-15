@@ -23,7 +23,7 @@ rules.push({
     if (response.default && response.default.schema) {
       const paths = path.concat(["default", "schema"])
 
-      const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx.graph)
+      const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx.inventory)
 
       const utils = ctx.utils
       if (schema) {

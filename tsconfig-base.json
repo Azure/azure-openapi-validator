@@ -1,0 +1,21 @@
+{
+    
+    "compilerOptions": {
+        "module": "commonjs",
+        "types": [
+            "node"
+        ],
+        "target": "es2016",
+        "experimentalDecorators": true,
+        "lib": [
+            "esnext.asynciterable",
+            "ES2016"
+        ],
+        "sourceMap": true,
+        "esModuleInterop":true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "sourcemap": true
+}

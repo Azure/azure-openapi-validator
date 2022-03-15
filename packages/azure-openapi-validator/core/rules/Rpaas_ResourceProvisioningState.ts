@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../types"
-import { ArmUtils } from "./utilities/ArmUtils"
+import { ArmUtils } from "./utilities/armHelper"
 import { JsonPath } from "../types"
 export const Rpaas_ResourceProvisioningState: string = "Rpaas_ResourceProvisioningState"
 
@@ -17,7 +17,7 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path, ctx) {
     const msg = `[RPaaS] The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
-    const utils = new ArmUtils(doc, ctx.specPath, ctx.graph)
+    const utils = new ArmUtils(doc, ctx.specPath, ctx.inventory)
     const swaggerUtil = ctx.utils
     const allResources = utils.getAllResource()
     for (const resource of allResources) {

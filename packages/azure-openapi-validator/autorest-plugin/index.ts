@@ -8,11 +8,13 @@ import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
 import { stringify} from "jsonpath"
 import {getRuleSet} from "./loader"
 import { Message } from "./jsonrpc/types"
-import { dirname, join } from "path"
 const { Spectral } = require("@stoplight/spectral-core")
 const { Resolver } = require("@stoplight/spectral-ref-resolver");
+import {IRuleSet, lint, getOpenapiType, LintResultMessage} from "@microsoft.azure/openapi-validator-core"
+import {rulesets} from "@microsoft.azure/openapi-validator-rulesets"
 
-async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) => void, linter:any) {
+
+async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) => void, inventory:any) {
 
   const mergedResults = []
   const convertSeverity = (severity: number) => {
@@ -54,7 +56,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
       }
     }
   }
-  const results = await linter.run(doc)
+  const results = await inventory.run(doc)
   mergedResults.push(...results.map(result => format(result, filePath)))
  for (const message of mergedResults) {
   sendMessage({
@@ -79,6 +81,22 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
   
 
   return mergedResults
+}
+
+
+const mergeRulesets = (rulesets:IRuleSet[]):IRuleSet=> {
+  let rules = {}
+  rulesets.forEach((set)=> {
+    rules = {
+      ...rules,
+      ...set.rules
+    }
+  })
+  const mergedRuleSet: IRuleSet = {
+    documentationUrl: "",
+    rules
+  } 
+  return mergedRuleSet
 }
 
 async function main() {
@@ -110,9 +128,9 @@ async function main() {
       return file
     }
 
-    const linter = new Spectral({resolver})
+    const inventory = new Spectral({resolver})
     const rules = await getRuleSet()
-    linter.setRuleset(rules)
+    inventory.setRuleset(rules)
     subType = subType === "providerHub" ? "rpaas" : subType
     for (const file of files) {
       initiator.Message({
@@ -123,7 +141,7 @@ async function main() {
       try {
         const openapiDefinitionDocument = await readFile(file)
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-        runSpectral(openapiDefinitionObject,file, initiator.Message.bind(initiator),linter)
+        runSpectral(openapiDefinitionObject,file, initiator.Message.bind(initiator),inventory)
    
       } catch (e) {
         initiator.Message({
@@ -136,20 +154,32 @@ async function main() {
 
   pluginHost.Add("openapi-validator", async initiator => {
     const files = await initiator.ListInputs()
-    const mergeState: string = await initiator.GetValue("merge-state")
-    const openapiType: string = await initiator.GetValue("openapi-type")
+    let openapiType: string = await initiator.GetValue("openapi-type")
     let subType: string = await initiator.GetValue("openapi-subtype")
-
-    const resolver = new Resolver({
-      resolvers: {
-        file: {
-          async resolve(uri) {
-            let ref = uri.href();
-            return await readFile(ref);
-          },
-        },
-      },
-    });
+    subType = subType === "providerHub" ? "rpaas" : subType
+    if (subType === "rpaas") {
+      openapiType = "rpaas"
+    }
+    const convertMessage = (msg:LintResultMessage)=> {
+        initiator.Message({
+        Channel: msg.type,
+        Text: msg.message,
+        Key: [msg.code, msg.category],
+        Source: [
+          {
+            document:msg.sources[0] ,
+            Position: msg.location
+          }
+        ],
+        Details: {
+          type: msg.type,
+          code: msg.code,
+          message: msg.message,
+          id: msg.id,
+          validationCategory: msg.category,
+        }
+      })
+    }
 
     const cachedFiles = new Map<string,any>()
     const readFile = async (fileUri:string) => {
@@ -161,27 +191,21 @@ async function main() {
       return file
     }
 
-    const linter = new Spectral({resolver})
-    const rules = await getRuleSet()
-    linter.setRuleset(rules)
-    subType = subType === "providerHub" ? "rpaas" : subType
-    for (const file of files) {
+    const defaultFleSystem = {
+       read: readFile
+    }
+    initiator.Message({
+      Channel: "verbose",
+      Text: `Validating '${files.join("\n")}'`
+    })
+    try {
+      const mergedRuleset = mergeRulesets(Object.values(rulesets.native))
+      await lint(files,{ruleSet:mergedRuleset, fileSystem:defaultFleSystem,openapiType:getOpenapiType(openapiType)},convertMessage)
+    } catch (e) {
       initiator.Message({
-        Channel: "verbose",
-        Text: `Validating '${file}'`
+        Channel: "fatal",
+        Text: `Failed validating:` + e
       })
-
-      try {
-        const openapiDefinitionDocument = await readFile(file)
-        const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-        runSpectral(openapiDefinitionObject,file, initiator.Message.bind(initiator),linter)
-   
-      } catch (e) {
-        initiator.Message({
-          Channel: "fatal",
-          Text: `Failed validating: '${file}', error encountered: ` + e
-        })
-      }
     }
   })
 

@@ -20,7 +20,7 @@ rules.push({
       return key.toLowerCase() === "get"
     })
 
-    const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc, ctx.graph)
+    const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc, ctx.inventory)
 
     function hasArrayProperty(schema) {
       let arrayPresent: boolean = false

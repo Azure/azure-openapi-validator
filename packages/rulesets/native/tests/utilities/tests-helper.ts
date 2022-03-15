@@ -4,14 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
-import { LinterResultMessage } from "../../types"
-import { DocumentDependencyGraph } from "../../depsGraph"
-import { JsonFormatter } from "../../formatter"
-import { OpenApiTypes } from "../../types"
-import { IRuleLoader, BuiltInRuleLoader } from "../../ruleLoader"
+import { LintResultMessage,OpenApiTypes, LintTester} from "@microsoft.azure/openapi-validator-core"
 import ruleSet from "../../rulesets/legacy"
-import { LintRunner } from "../../runner"
-import { IRuleSet, RulesObject } from "../../types"
+import { IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
 const fs = require("fs")
 const path = require("path")
 const pathToTestResources: string = "../../tests/resources/"
@@ -20,11 +15,9 @@ const pathToTestResources: string = "../../tests/resources/"
 export async function collectTestMessagesFromValidator(
   fileName: string,
   openapiType: OpenApiTypes,
-  ruleName?: string
-): Promise<LinterResultMessage[]> {
+  ruleName: string
+): Promise<LintResultMessage[]> {
   const filePath = getFilePath(fileName)
-  const graph = new DocumentDependencyGraph()
-  let ruleLoader: IRuleLoader
   if (ruleName) {
     const rules: RulesObject = {}
     if (!ruleSet.rules[ruleName]) {
@@ -32,13 +25,9 @@ export async function collectTestMessagesFromValidator(
     }
     rules[ruleName] = ruleSet.rules[ruleName]
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
-    ruleLoader = { getRuleSet: () => singleRuleSet }
-  } else {
-    ruleLoader = new BuiltInRuleLoader()
-  }
-  const runner = new LintRunner(ruleLoader, graph, new JsonFormatter(graph))
-  const messages = await runner.execute([filePath], { openapiType })
-  return messages
+    return LintTester(filePath,singleRuleSet,ruleName)
+  } 
+  return []
 }
 
 // read the whole file into a string
@@ -47,22 +36,22 @@ function readFileAsString(file: string): string {
 }
 
 // assert whether we have the expected number of validation rules of given type
-export function assertValidationRuleCount(messages: LinterResultMessage[], validationRule: string, count: number): void {
+export function assertValidationRuleCount(messages: LintResultMessage[], validationRule: string, count: number): void {
   assert.equal(messages.filter(msg => msg?.code === validationRule).length, count)
 }
 
 // get all the warning messages generated
-export function getWarningMessages(messages: LinterResultMessage[]): LinterResultMessage[] {
+export function getWarningMessages(messages: LintResultMessage[]): LintResultMessage[] {
   return messages.filter(msg => msg.type === "warning")
 }
 
 // get all the error messages generated
-export function getErrorMessages(messages: LinterResultMessage[]): LinterResultMessage[] {
+export function getErrorMessages(messages: LintResultMessage[]): LintResultMessage[] {
   return messages.filter(msg => msg.type === "error")
 }
 
 // get all the messages of a certain type of rule
-export function getMessagesOfType(messages: LinterResultMessage[], validationRule: string): LinterResultMessage[] {
+export function getMessagesOfType(messages: LintResultMessage[], validationRule: string): LintResultMessage[] {
   return messages.filter(msg => msg.code === validationRule)
 }
 

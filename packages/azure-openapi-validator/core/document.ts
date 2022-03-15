@@ -1,21 +1,18 @@
 import { readFileSync } from "fs"
-import { JsonPath } from "./types"
+import { JsonPath,IFileSystem } from "./types"
 import { JsonInstance, JsonParser } from "./jsonParser"
 import { Resolver } from "./resolver"
+import {  } from "."
 
 export class OpenapiDocument {
-  private _specPath = undefined
   private _content = undefined
   private _doc = undefined
   private jsonInstance: JsonInstance
   private resolver
-  private parser: JsonParser
-  constructor(specPath: string, parser: JsonParser) {
-    this.parser = parser
-    this._specPath = specPath
+  constructor(private _specPath: string, private parser: JsonParser,private fileSystem:IFileSystem) {
   }
   async resolve() {
-    this._content = readFileSync(this._specPath).toString()
+    this._content = await this.fileSystem.read(this._specPath)
     this.jsonInstance = this.parser.parse(this._content)
     this._doc = this.jsonInstance.getValue()
     this.resolver = new Resolver(this._doc, this._specPath)

@@ -1,21 +1,6 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "types": [
-        ],
-        "target": "es2016",
-        "experimentalDecorators": true,
-        "lib": [
-            "esnext.asynciterable"
-        ],
-        "sourceMap": true,
-        "esModuleInterop":true
-    },
-    "exclude": [
-        "node_modules"
-    ],
+    "extends": "../../../tsconfig-base.json",
     "include": [
-        "*.ts"
+        "./**/*.ts"
     ],
-    "sourcemap": true
 }

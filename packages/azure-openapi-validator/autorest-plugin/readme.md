@@ -4,21 +4,21 @@ Azure OpenAPI validator (Typescript)
 
 ## Validation
 
-``` yaml $(azure-validator) && (v3)
+``` yaml $(azure-validator) && $(v3)
 pipeline:
   swagger-document/openapi-validator:
     input: swagger-document/identity
-    scope: azure-validator-composed 
+    scope: azure-validator-individual 
 ```
 
-``` yaml $(spectral) && (v3)
+``` yaml $(spectral) && $(v3)
 pipeline:
   swagger-document/spectral:
     input: swagger-document/identity
-    scope: azure-validator-composed 
+    scope: azure-validator-individual 
 ```
 
-``` yaml $(azure-validator) || $(spectral)
+``` yaml $(azure-validator) || $(spectral) || $(v3)
 azure-validator-composed:
   merge-state: composed
 azure-validator-individual:

@@ -1,5 +1,4 @@
 import * as assert from "assert"
-import { readFileSync } from "fs"
 import { suite, test } from "mocha-typescript"
 import {
   getAllResourceProvidersFromPath,

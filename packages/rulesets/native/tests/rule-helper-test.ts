@@ -8,7 +8,7 @@ import {
   resourceProviderMustPascalCase,
   resourceTypeMustCamelCase,
   transformEnum
-} from "../rules/utilities/rules-helper"
+} from "../utilities/rules-helper"
 
 @suite
 class RuleHelperTests {

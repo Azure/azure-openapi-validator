@@ -1,7 +1,7 @@
 import * as assert from "assert"
 import { suite, test } from "mocha-typescript"
-import { ArmUtils } from "../rules/utilities/ArmUtils"
-import { SwaggerUtils } from "../swaggerUtils"
+import { ArmUtils } from "../rules/utilities/armHelper"
+import { SwaggerHelper } from "../swaggerHelper"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 @suite
@@ -30,7 +30,7 @@ class ArmUtilsTests {
 
   @test public "test get properties"() {
     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
-    const util = new SwaggerUtils(swagger, null)
+    const util = new SwaggerHelper(swagger, null)
     const bar = util.getDefinitionByName("A")
     assert.deepEqual(
       {

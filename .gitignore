@@ -23,3 +23,4 @@ src/dotnet/**/[Rr]elease/
 **/.history/
 **/common/temp/**
 **/.rush/**
+**/*.build.log

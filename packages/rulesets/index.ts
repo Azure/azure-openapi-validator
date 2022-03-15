@@ -1,7 +1,6 @@
-
-export const ruleset = {
-    configs:{
-
+import { ruleSet as nativeArm } from "./native/rulesets/legacy" 
+export const rulesets = {
+    spectral:{
         "arm": {
             extends: "#common",
             rules:
@@ -16,18 +15,7 @@ export const ruleset = {
 
         }
     },
-    rules: {
-        "az-additional-properties-and-properties":{
-            description: "Don't specify additionalProperties as a sibling of properties",
-            severity: "warn",
-            engineType: "spectral",
-            formats: ['oas2', 'oas3'],
-            given: "$..[?(@object() && @.type === 'object' && @.properties)]",
-            then:{
-                field: "additionalProperties",
-                function: falsy
-            }
-        }
-
+    native: {
+       "arm": nativeArm
     }
 }

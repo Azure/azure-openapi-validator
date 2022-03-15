@@ -3,17 +3,17 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 const matchAll = require("string.prototype.matchall")
-import { IDocumentDependencyGraph } from "../../types"
+import { ISwaggerInventory } from "../../types"
 import { stringify, nodes } from "../../jsonpath"
 import { followReference } from "../../utils"
 
-export function getSuccessfulResponseSchema(node, doc, graph: IDocumentDependencyGraph): any {
+export function getSuccessfulResponseSchema(node, doc, inventory: ISwaggerInventory): any {
   if (!node.responses) {
     return undefined
   }
   const responses = Object.keys(node.responses)
   const response = getMostSuccessfulResponseKey(responses)
-  return getResponseSchema(node.responses[response], doc, graph)
+  return getResponseSchema(node.responses[response], doc, inventory)
 }
 
 export function getMostSuccessfulResponseKey(responses: string[]): string {
@@ -34,13 +34,13 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
   return response
 }
 
-export function getResponseSchema(response: object, doc, graph: IDocumentDependencyGraph): any {
+export function getResponseSchema(response: object, doc, inventory: ISwaggerInventory): any {
   let schema = (response as any).schema
   if (schema === undefined || schema === null) {
     return
   }
   if ("$ref" in schema) {
-    schema = followReference(doc, schema, graph)
+    schema = followReference(doc, schema, inventory)
   }
   return schema.properties
 }
@@ -93,9 +93,9 @@ export function transformEnum(type: string, enumEntries) {
   })
 }
 
-export function getResolvedSchemaByPath(doc: any, path: string[], graph: IDocumentDependencyGraph) {
+export function getResolvedSchemaByPath(doc: any, path: string[], inventory: ISwaggerInventory) {
   const result = nodes(doc, stringify(path))
   if (result && result.length) {
-    return followReference(doc, result[0].value, graph)
+    return followReference(doc, result[0].value, inventory)
   }
 }

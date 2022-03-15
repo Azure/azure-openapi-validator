@@ -2,8 +2,8 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { DocumentDependencyGraph } from "./depsGraph"
-import { SwaggerUtils } from "./swaggerUtils"
+import { SwaggerInventory } from "./swaggerInventory"
+import { SwaggerHelper } from "./swaggerHelper"
 
 export enum OpenApiTypes {
   "default" = 1 << 0,
@@ -57,16 +57,15 @@ export type RulesObject = Record<string, IRule<unknown>>
 
 export interface RuleContextLegacy {
   specPath: string
-  utils?: SwaggerUtils
-  graph?: IDocumentDependencyGraph,
+  utils?: SwaggerHelper
+  inventory?: ISwaggerInventory,
 }
 
 export interface RuleContext {
   document: any
   location: JsonPath
   specPath: string
-  utils?: SwaggerUtils
-  graph?: IDocumentDependencyGraph
+  inventory?: ISwaggerInventory
 }
 
 export type IRuleFunctionLegacy = (
@@ -82,11 +81,12 @@ export type IRuleFunction<T> = (
   ctx?: RuleContext
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
-export interface IDocumentDependencyGraph {
+export interface ISwaggerInventory {
   dependantsOf(specPath: string):string[],
   dependenciesOf(specPath: string):string[],
   getDocFromJsonRef(ref: string):any,
   getDocument(specPath: string):any
+  getAllDocuments(): Map<string,any>
 }
 
 export interface ISwaggerHelper {
@@ -128,11 +128,17 @@ export interface Range {
   end: Position
 }
 
-export interface LinterResultMessage {
+export interface LintResultMessage {
   type: "information" | "warning" | "error" | "debug" | "verbose" | "fatal"
+  id: string
   code: string
   message: string
+  category: string
   sources?: string[]
   location?: Position
   range?: Range
+}
+
+export interface IFileSystem {
+  read(uri:string):string | Promise<string>
 }

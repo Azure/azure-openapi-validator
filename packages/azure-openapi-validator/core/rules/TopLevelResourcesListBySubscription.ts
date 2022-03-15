@@ -1,7 +1,7 @@
 import { JsonPath } from "../types"
 import { rules } from "../types"
 import { MergeStates, OpenApiTypes } from "../types"
-import { ArmUtils } from "./utilities/ArmUtils"
+import { ArmUtils } from "./utilities/armHelper"
 export const TopLevelResourcesListBySubscription: string = "TopLevelResourcesListBySubscription"
 
 rules.push({
@@ -14,7 +14,7 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path, ctx) {
     const msg: string = 'The top-level resource "{0}" does not have list by subscription operation, please add it.'
-    const utils = new ArmUtils(doc, ctx.specPath, ctx.graph)
+    const utils = new ArmUtils(doc, ctx.specPath, ctx.inventory)
     const topLevelResources = utils.getAllTopLevelResources()
     const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of topLevelResources) {
