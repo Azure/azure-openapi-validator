@@ -2,7 +2,7 @@ import { rules } from "@microsoft.azure/openapi-validator-core"
 import { getAllResourceProvidersFromPath, getAllWordsFromPath, resourceTypeMustCamelCase } from "../utilities/rules-helper"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 
-export const PathResourceTypeNameCamelCase: string = "PathResourceTypeNameCamelCase"
+export const PathResourceTypeNameCamelCase = "PathResourceTypeNameCamelCase"
 
 rules.push({
   id: "R3021",
@@ -14,7 +14,7 @@ rules.push({
 
   *run(doc, node, path) {
     if (node.paths !== undefined) {
-      const msg: string = "Resource type naming must follow camel case."
+      const msg = "Resource type naming must follow camel case."
       const paths: string[] = Object.keys(node.paths)
       for (const it of paths) {
         const allWords = getAllWordsFromPath(it)

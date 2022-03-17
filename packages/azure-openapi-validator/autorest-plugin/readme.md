@@ -7,7 +7,7 @@ Azure OpenAPI validator (Typescript)
 ``` yaml $(azure-validator) && $(v3)
 pipeline:
   swagger-document/openapi-validator:
-    input: swagger-document/identity
+    input: swagger-document/loader-swagger
     scope: azure-validator-individual 
 ```
 

@@ -3,18 +3,21 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+// @ts-nocheck
 import { safeLoad } from "js-yaml"
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
-import { stringify} from "jsonpath"
+const jp = require("jsonpath")
 import {getRuleSet} from "./loader"
 import { Message } from "./jsonrpc/types"
 const { Spectral } = require("@stoplight/spectral-core")
 const { Resolver } = require("@stoplight/spectral-ref-resolver");
-import {IRuleSet, lint, getOpenapiType, LintResultMessage} from "@microsoft.azure/openapi-validator-core"
-import {rulesets} from "@microsoft.azure/openapi-validator-rulesets"
+import {lint, getOpenapiType, LintResultMessage} from "@microsoft.azure/openapi-validator-core"
+import {rulesets,spectralArmFile} from "@microsoft.azure/openapi-validator-rulesets"
+import {mergeRulesets} from "./loader"
+import { fileURLToPath } from 'url';
 
 
-async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) => void, inventory:any) {
+async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) => void, spectral:any) {
 
   const mergedResults = []
   const convertSeverity = (severity: number) => {
@@ -47,7 +50,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
       code: result.code,
       message: result.message,
       type: convertSeverity(result.severity),
-      "jsonpath": stringify(result.path),
+      jsonpath: result.path && result.path.length ? jp.stringify(result.path) : "$",
       range: convertRange(result.range),
       sources: [`${spec}:${result.range.start.line}:${result.range.start.character}`],
       location: {
@@ -56,7 +59,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
       }
     }
   }
-  const results = await inventory.run(doc)
+  const results = await spectral.run(doc)
   mergedResults.push(...results.map(result => format(result, filePath)))
  for (const message of mergedResults) {
   sendMessage({
@@ -78,26 +81,12 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
   })
 
  }
-  
 
   return mergedResults
 }
 
 
-const mergeRulesets = (rulesets:IRuleSet[]):IRuleSet=> {
-  let rules = {}
-  rulesets.forEach((set)=> {
-    rules = {
-      ...rules,
-      ...set.rules
-    }
-  })
-  const mergedRuleSet: IRuleSet = {
-    documentationUrl: "",
-    rules
-  } 
-  return mergedRuleSet
-}
+
 
 async function main() {
   const pluginHost = new AutoRestPluginHost()
@@ -106,15 +95,22 @@ async function main() {
     const mergeState: string = await initiator.GetValue("merge-state")
     const openapiType: string = await initiator.GetValue("openapi-type")
     let subType: string = await initiator.GetValue("openapi-subtype")
-
+    const resolveFile = (uri:any) =>{
+            const ref = uri.href();
+            const content = readFile(ref);
+            return content
+          }
     const resolver = new Resolver({
       resolvers: {
         file: {
-          async resolve(uri) {
-            let ref = uri.href();
-            return await readFile(ref);
-          },
+          resolve: resolveFile
         },
+        http: {
+          resolve: resolveFile
+        },
+        https:{
+           resolve: resolveFile
+        }
       },
     });
 
@@ -128,9 +124,11 @@ async function main() {
       return file
     }
 
-    const inventory = new Spectral({resolver})
-    const rules = await getRuleSet()
-    inventory.setRuleset(rules)
+
+
+    const spectral = new Spectral({resolver})
+    const rules = await getRuleSet(spectralArmFile())
+    spectral.setRuleset(rules)
     subType = subType === "providerHub" ? "rpaas" : subType
     for (const file of files) {
       initiator.Message({
@@ -141,7 +139,8 @@ async function main() {
       try {
         const openapiDefinitionDocument = await readFile(file)
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-        runSpectral(openapiDefinitionObject,file, initiator.Message.bind(initiator),inventory)
+        const normolizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
+        await runSpectral(openapiDefinitionObject,normolizedFile, initiator.Message.bind(initiator),spectral)
    
       } catch (e) {
         initiator.Message({
@@ -199,7 +198,7 @@ async function main() {
       Text: `Validating '${files.join("\n")}'`
     })
     try {
-      const mergedRuleset = mergeRulesets(Object.values(rulesets.native))
+      const mergedRuleset = mergeRulesets(Object.values(rulesets))
       await lint(files,{ruleSet:mergedRuleset, fileSystem:defaultFleSystem,openapiType:getOpenapiType(openapiType)},convertMessage)
     } catch (e) {
       initiator.Message({

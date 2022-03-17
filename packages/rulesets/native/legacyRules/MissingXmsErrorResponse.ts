@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const MissingXmsErrorResponse: string = "MissingXmsErrorResponse"
+export const MissingXmsErrorResponse = "MissingXmsErrorResponse"
 
 rules.push({
   id: "R4032",
@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.*.responses.*",
   *run(doc, node, path) {
-    const msg: string = "Response code {0} is defined without a x-ms-error-response."
+    const msg = "Response code {0} is defined without a x-ms-error-response."
     const httpMethod = path[path.length - 3].toString()
     const errorCode = path[path.length - 1].toString()
     if (httpMethod === "head" && errorCode === "404") {

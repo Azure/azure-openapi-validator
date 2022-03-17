@@ -40,7 +40,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
 }
 
 export const normalizePath = (path: string) => {
-  let urlPath = fileURLToPath(pathToFileURL(path)).replace(/\\/g, "/")
+  const urlPath = fileURLToPath(pathToFileURL(path)).replace(/\\/g, "/")
   if (urlPath.slice(1, 3) === ":/") {
     // for windows
     return urlPath.charAt(0).toUpperCase() + urlPath.slice(1)

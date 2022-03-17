@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const AvoidEmptyResponseSchema: string = "AvoidEmptyResponseSchema"
+export const AvoidEmptyResponseSchema = "AvoidEmptyResponseSchema"
 
 rules.push({
   id: "R4008",
@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.*.responses.*.schema",
   *run(doc, node, path) {
-    const msg: string = "Response schema must not be empty."
+    const msg = "Response schema must not be empty."
     if (!Object.keys(node).length) {
       yield { message: `${msg}`, location: path }
     }

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { isValidOperation } from "../utilities/rules-helper"
-export const OperationIdRequired: string = "OperationIdRequired"
+export const OperationIdRequired = "OperationIdRequired"
 
 rules.push({
   id: "R4004",

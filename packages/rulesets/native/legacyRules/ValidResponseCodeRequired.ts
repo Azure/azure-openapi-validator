@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 
-export const ValidResponseCodeRequired: string = "ValidResponseCodeRequired"
+export const ValidResponseCodeRequired = "ValidResponseCodeRequired"
 
 rules.push({
   id: "R4028",
@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.paths.*.*.responses",
   *run(doc, node, path) {
-    const msg: string = "There is no declared valid status code."
+    const msg = "There is no declared valid status code."
     const response: any = node
     if (response.default && Object.keys(response).length === 1) {
       yield { message: `${msg}`, location: path }

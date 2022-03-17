@@ -1,7 +1,7 @@
 import { nodes } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 
-export const UniqueXmsExample: string = "UniqueXmsExample"
+export const UniqueXmsExample = "UniqueXmsExample"
 
 rules.push({
   id: "R4030",
@@ -12,7 +12,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg: string = `Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: `
+    const msg = `Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: `
     const examples = new Set<string>()
     for (const it of nodes(node, '$.paths.*.*["x-ms-examples"]')) {
       if (it.value !== null) {

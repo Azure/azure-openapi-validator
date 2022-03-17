@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { getSuccessfulResponseSchema } from "../utilities/rules-helper"
-export const PageableOperation: string = "PageableOperation"
+export const PageableOperation = "PageableOperation"
 
 rules.push({
   id: "R2029",
@@ -23,7 +23,7 @@ rules.push({
     const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc, ctx.inventory)
 
     function hasArrayProperty(schema) {
-      let arrayPresent: boolean = false
+      let arrayPresent = false
       Object.keys(schema).forEach(function(key) {
         if (schema[key].type === "array") {
           arrayPresent = true

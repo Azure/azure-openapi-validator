@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const DeprecatedXmsCodeGenerationSetting: string = "DeprecatedXmsCodeGenerationSetting"
+export const DeprecatedXmsCodeGenerationSetting = "DeprecatedXmsCodeGenerationSetting"
 rules.push({
   id: "R4006",
   name: DeprecatedXmsCodeGenerationSetting,

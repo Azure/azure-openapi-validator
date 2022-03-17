@@ -1,5 +1,5 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const ExtensionResourcePathPattern: string = "ExtensionResourcePathPattern"
+export const ExtensionResourcePathPattern = "ExtensionResourcePathPattern"
 
 rules.push({
   id: "R4038",
@@ -10,7 +10,7 @@ rules.push({
   openapiType: OpenApiTypes.rpaas,
   appliesTo_JsonQuery: "$.paths",
   *run(doc, node, path) {
-    const msg: string = `The path which is for extension routing resource type, shouldn't include the parent scope.`
+    const msg = `The path which is for extension routing resource type, shouldn't include the parent scope.`
     for (const apiPath of Object.keys(node)) {
       if (apiPath.indexOf("/providers/") !== apiPath.lastIndexOf("/providers/")) yield { message: msg, location: path.concat(apiPath) }
     }

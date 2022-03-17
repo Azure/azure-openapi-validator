@@ -2,7 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const ImplementPrivateEndpointAPIs: string = "ImplementPrivateEndpointAPIs"
+export const ImplementPrivateEndpointAPIs = "ImplementPrivateEndpointAPIs"
 
 rules.push({
   id: "R4036",
@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths",
   *run(doc, node, path) {
-    const msg: string = "The private endpoint API: {0} is missing."
+    const msg = "The private endpoint API: {0} is missing."
 
     const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/i
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i

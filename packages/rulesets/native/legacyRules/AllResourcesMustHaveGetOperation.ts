@@ -2,7 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const AllResourcesMustHaveGetOperation: string = "AllResourcesMustHaveGetOperation"
+export const AllResourcesMustHaveGetOperation = "AllResourcesMustHaveGetOperation"
 
 rules.push({
   id: "R4014",
@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg: string = 'The resource "{0}" does not have get operation, please add it.'
+    const msg = 'The resource "{0}" does not have get operation, please add it.'
     /**
      * 1 get all collection models
      * 2 travel all resources and paths to find all the resources that have a collection get

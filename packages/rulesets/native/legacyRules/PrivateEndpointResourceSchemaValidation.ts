@@ -2,7 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const PrivateEndpointResourceSchemaValidation: string = "PrivateEndpointResourceSchemaValidation"
+export const PrivateEndpointResourceSchemaValidation = "PrivateEndpointResourceSchemaValidation"
 
 rules.push({
   id: "R4035",
@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*",
   *run(doc, node, path, ctx) {
-    const msg: string = 'The private endpoint model "{0}" schema does not conform to the common type definition.'
+    const msg = 'The private endpoint model "{0}" schema does not conform to the common type definition.'
     /**
      * 1 get all collection models
      * 2 travel all resources and paths to find all the resources that have a collection get

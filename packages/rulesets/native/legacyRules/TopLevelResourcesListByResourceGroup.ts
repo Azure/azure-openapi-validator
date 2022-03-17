@@ -2,7 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const TopLevelResourcesListByResourceGroup: string = "TopLevelResourcesListByResourceGroup"
+export const TopLevelResourcesListByResourceGroup = "TopLevelResourcesListByResourceGroup"
 
 rules.push({
   id: "R4016",
@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg: string = 'The top-level resource "{0}" does not have list by resource group operation, please add it.'
+    const msg = 'The top-level resource "{0}" does not have list by resource group operation, please add it.'
     const utils = new ArmHelper(doc)
     const topLevelResources = utils.getTopLevelResourcesByRG()
     const allCollectionApis = utils.getCollectionApiInfo()

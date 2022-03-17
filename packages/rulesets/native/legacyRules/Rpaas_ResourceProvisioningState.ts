@@ -5,7 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
 import { JsonPath } from "@microsoft.azure/openapi-validator-core"
-export const Rpaas_ResourceProvisioningState: string = "Rpaas_ResourceProvisioningState"
+export const Rpaas_ResourceProvisioningState = "Rpaas_ResourceProvisioningState"
 
 rules.push({
   id: "R4031",

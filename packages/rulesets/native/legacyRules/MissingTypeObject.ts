@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const MissingTypeObject: string = "MissingTypeObject"
+export const MissingTypeObject = "MissingTypeObject"
 
 rules.push({
   id: "R4037",
@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.definitions.*",
   *run(doc, node, path) {
-    const msg: string = `The schema '{0}' is considered an object but without a 'type:object', please add the missing 'type:object'.`
+    const msg = `The schema '{0}' is considered an object but without a 'type:object', please add the missing 'type:object'.`
     const isMissingTypeObject = (node: any) => {
       return node && (node.properties || node.additionalProperties) && !node.type
     }

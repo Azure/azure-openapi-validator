@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { isValidEnum, transformEnum } from "../utilities/rules-helper"
-export const EnumUniqueValue: string = "EnumUniqueValue"
+export const EnumUniqueValue = "EnumUniqueValue"
 
 rules.push({
   id: "R3024",
@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@property === 'enum')]^",
   *run(doc, node, path) {
-    const msg: string = `Enum must not contain duplicated value (case insentive).`
+    const msg = `Enum must not contain duplicated value (case insentive).`
     if (node.enum && path.indexOf("x-ms-examples") === -1 && isValidEnum(node)) {
       const enumList = transformEnum(node.type, node.enum)
       const caseInsensitiveSet = new Set<string>()

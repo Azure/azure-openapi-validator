@@ -1,6 +1,6 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { followReference } from "../utilities/ref-helper"
-export const ParametersOrder: string = "ParametersOrder"
+export const ParametersOrder = "ParametersOrder"
 
 function getParametersFromPath(apiapiPath: string) {
   const parameters = apiapiPath
@@ -30,7 +30,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths",
   *run(doc, node, path) {
-    const msg: string = `The parameters:{0} should be kept in the same order as they present in the path.`
+    const msg = `The parameters:{0} should be kept in the same order as they present in the path.`
     for (const apiPath of Object.keys(node)) {
       const commonParameters = node[apiPath].parameters || []
       const httpMethods = Object.keys(node[apiPath]).filter(k => k.toLowerCase() !== "parameters")

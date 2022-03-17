@@ -2,7 +2,7 @@ import { rules } from "@microsoft.azure/openapi-validator-core"
 import { getAllResourceProvidersFromPath, resourceProviderMustPascalCase } from "../utilities/rules-helper"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 
-export const PathResourceProviderNamePascalCase: string = "PathResourceProviderNamePascalCase"
+export const PathResourceProviderNamePascalCase = "PathResourceProviderNamePascalCase"
 
 rules.push({
   id: "R3020",
@@ -14,7 +14,7 @@ rules.push({
 
   *run(doc, node, path) {
     if (node.paths !== undefined) {
-      const msg: string = "Resource provider naming must follow the pascal case."
+      const msg = "Resource provider naming must follow the pascal case."
       const paths: string[] = Object.keys(node.paths)
       for (const it of paths) {
         const resourceProviders = getAllResourceProvidersFromPath(it)

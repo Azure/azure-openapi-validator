@@ -20,12 +20,30 @@
     "src/**/*.js": true,
     "src/**/*.js.map": true,
     "src/**/*.d.ts": true,
+    "packages/**/*.js": true,
+    "packages/**/*.js.map": true,
+    "packages/**/*.d.ts": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true
   },
-  "eslint.enable": false,
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "search.exclude": {
+    "**/dist/**": true,
+    "**/dist-dev/**": true,
+    "**/CHANGELOG.json": true,
+    "**/CHANGELOG.md": true,
+    "docs/spec.html": true,
+    "common/config/rush/pnpm-lock.yaml": true
+  },
+  "eslint.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
     "Linter"

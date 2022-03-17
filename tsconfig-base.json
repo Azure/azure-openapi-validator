@@ -1,18 +1,38 @@
 {
     
     "compilerOptions": {
-        "module": "commonjs",
+        "baseUrl": ".",
         "types": [
             "node"
         ],
-        "target": "es2016",
+        "moduleResolution": "node",
+        "target": "ES2019",
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "lib": ["es2021"],
+        "strict": false,
+        "pretty": true,
         "experimentalDecorators": true,
-        "lib": [
-            "esnext.asynciterable",
-            "ES2016"
-        ],
+        "emitDecoratorMetadata": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "diagnostics": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
         "sourceMap": true,
-        "esModuleInterop":true
+        "declaration": true,
+        "removeComments": true,
+        "skipLibCheck": false,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "skipDefaultLibCheck": true,
+        "allowJs": false,
     },
     "exclude": [
         "node_modules"

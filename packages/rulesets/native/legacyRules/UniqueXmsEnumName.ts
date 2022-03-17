@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { isValidEnum } from "../utilities/rules-helper"
-export const UniqueXmsEnumName: string = "UniqueXmsEnumName"
+export const UniqueXmsEnumName = "UniqueXmsEnumName"
 import { nodes, stringify } from "../utilities/jsonpath"
 
 rules.push({
@@ -16,7 +16,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$.definitions",
   *run(doc, node, path) {
-    const msg: string = `Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique.`
+    const msg = `Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique.`
     if (node) {
       const enumMap = new Map<string, any>()
       for (const section of nodes(node, "$..*[?(@property === 'enum')]^")) {

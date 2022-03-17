@@ -3,7 +3,7 @@ import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
 
-export const NestedResourcesMustHaveListOperation: string = "NestedResourcesMustHaveListOperation"
+export const NestedResourcesMustHaveListOperation = "NestedResourcesMustHaveListOperation"
 
 rules.push({
   id: "R4015",
@@ -14,7 +14,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
 
   *run(doc, node, path) {
-    const msg: string = 'The nested resource "{0}" does not have list operation, please add it.'
+    const msg = 'The nested resource "{0}" does not have list operation, please add it.'
     /**
      * 1 get all nested resources that have point get resource
      * 2 travel all resources by searching in all get/put operations and find all the resources that have a collection get

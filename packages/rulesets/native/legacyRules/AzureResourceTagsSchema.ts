@@ -2,7 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const AzureResourceTagsSchema: string = "AzureResourceTagsSchema"
+export const AzureResourceTagsSchema = "AzureResourceTagsSchema"
 
 rules.push({
   id: "R4034",
@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg: string = 'The property tags in the resource "{0}" does not conform to the common type definition.'
+    const msg = 'The property tags in the resource "{0}" does not conform to the common type definition.'
     /**
      * 1. get all resources
      * 2. for each resource, check the property tags schema.

@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const Rpaas_CreateOperationAsyncResponseValidation: string = "Rpaas_CreateOperationAsyncResponseValidation"
+export const Rpaas_CreateOperationAsyncResponseValidation = "Rpaas_CreateOperationAsyncResponseValidation"
 
 rules.push({
   id: "R4023",

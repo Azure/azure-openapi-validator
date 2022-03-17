@@ -18,7 +18,7 @@ export function getSuccessfulResponseSchema(node, doc, inventory: ISwaggerInvent
 }
 
 export function getMostSuccessfulResponseKey(responses: string[]): string {
-  let response: string = "default"
+  let response = "default"
   if (responses.includes("200")) {
     response = "200"
   } else {
@@ -47,12 +47,12 @@ export function getResponseSchema(response: object, doc, inventory: ISwaggerInve
 }
 
 export function getAllResourceProvidersFromPath(path: string): string[] {
-  const resourceProviderRegex: RegExp = new RegExp(/providers\/([\w\.]+)/, "g")
+  const resourceProviderRegex = new RegExp(/providers\/([\w\.]+)/, "g")
   return Array.from(matchAll(path, resourceProviderRegex), m => m[1])
 }
 
 export function getAllWordsFromPath(path: string): string[] {
-  const wordRegex: RegExp = new RegExp(/([\w\.]+)/, "g")
+  const wordRegex = new RegExp(/([\w\.]+)/, "g")
   return Array.from(matchAll(path, wordRegex), m => m[1])
 }
 
@@ -61,7 +61,7 @@ export function resourceProviderMustPascalCase(resourceProvider: string): boolea
     return false
   }
   // refer https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/141e06ef(v=vs.71)?redirectedfrom=MSDN
-  const pascalCase: RegExp = new RegExp(`^[A-Z][a-z0-9]+(\.([A-Z]{1,3}[a-z0-9]+)+[A-Z]{0,2})+$`)
+  const pascalCase = new RegExp(`^[A-Z][a-z0-9]+(\.([A-Z]{1,3}[a-z0-9]+)+[A-Z]{0,2})+$`)
   return pascalCase.test(resourceProvider)
 }
 
@@ -69,7 +69,7 @@ export function resourceTypeMustCamelCase(resourceType: string): boolean {
   if (resourceType.length === 0) {
     return true
   }
-  const pascalCase: RegExp = new RegExp("^[a-z][a-z0-9]+([A-Z]+[a-z0-9]*)*$")
+  const pascalCase = new RegExp("^[a-z][a-z0-9]+([A-Z]+[a-z0-9]*)*$")
   return pascalCase.test(resourceType)
 }
 

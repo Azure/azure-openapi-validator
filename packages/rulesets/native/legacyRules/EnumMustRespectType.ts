@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { isValidEnum } from "../utilities/rules-helper"
-export const EnumMustRespectType: string = "EnumMustRespectType"
+export const EnumMustRespectType = "EnumMustRespectType"
 
 rules.push({
   id: "R4040",
@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: ['$.parameters..[?(@property === "enum")]^', '$.definitions..[?(@property === "enum")]^'],
   *run(doc, node, path) {
-    const msg: string = `Enum values should respect the type.`
+    const msg = `Enum values should respect the type.`
     if (node.enum && isValidEnum(node)) {
       if (
         node.enum.some(value => {

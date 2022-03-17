@@ -2,7 +2,6 @@
 import { exec } from "child_process"
 
 function genLintingCmd(readme: string): string {
-  const cwd = process.cwd()
   const linterCmd = `node.exe ./src/typescript/commands/cli.js --openapiType=arm --readme=${readme}`
   return linterCmd
 }
@@ -18,7 +17,7 @@ export async function runLinter(readme: string) {
       linterErrors = cleanUpContent(linterErrors)
       const errorJsonStr = "[" + linterErrors + "]"
       const errorJson = JSON.parse(errorJsonStr)
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           let isLess: number = 0
           ;["id", "json-path", "message"].some(key => {
             if (a[key] !== b[key]) {

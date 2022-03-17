@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { getMostSuccessfulResponseKey, getResolvedSchemaByPath } from "../utilities/rules-helper"
-export const XmsPageableMustHaveCorrespondingResponse: string = "XmsPageableMustHaveCorrespondingResponse"
+export const XmsPageableMustHaveCorrespondingResponse = "XmsPageableMustHaveCorrespondingResponse"
 
 rules.push({
   id: "R4012",
@@ -22,7 +22,7 @@ rules.push({
     }
     const mostSuccesskey = getMostSuccessfulResponseKey(Object.keys(node.responses))
 
-    const msg: string = `The operation: '${node.operationId}' is defined with x-ms-pageable enabled,but can not find the corresponding nextLink property in the response, please add it.`
+    const msg = `The operation: '${node.operationId}' is defined with x-ms-pageable enabled,but can not find the corresponding nextLink property in the response, please add it.`
 
     if (node.responses && node.responses[mostSuccesskey]) {
       const schemaPath = path.concat(["responses", mostSuccesskey, "schema"]) as string[]

@@ -22,7 +22,7 @@
     "tslint": "~5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "3.7.5",
+    "typescript": "4.6.2",
     "autorest": "2.0.4413",
     "@microsoft.azure/autorest-core": "2.0.4417"
   },

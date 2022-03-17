@@ -24,19 +24,19 @@ import { UniqueXmsExample } from "../legacyRules/UniqueXmsExample"
 @suite
 class CompositeAzureTests {
   @test public async "description should not be property name"() {
-    const fileName: string = "DescriptionSameAsPropertyName.json"
+    const fileName = "DescriptionSameAsPropertyName.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, DescriptionMustNotBeNodeName)
     assertValidationRuleCount(messages, DescriptionMustNotBeNodeName, 2)
   }
 
   @test public async "operations returning a model including an array might be pageable (sad path)"() {
-    const fileName: string = "PageableOperation.json"
+    const fileName = "PageableOperation.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PageableOperation)
     assertValidationRuleCount(messages, PageableOperation, 1)
   }
 
   @test public async "operations returning a model including an array might be pageable (happy path)"() {
-    const fileName: string = "happyPath/PageableOperation.json"
+    const fileName = "happyPath/PageableOperation.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PageableOperation)
     assertValidationRuleCount(messages, PageableOperation, 0)
   }
@@ -60,7 +60,7 @@ class CompositeAzureTests {
   }
 
   @test public async "all nested resources must have collection operation "() {
-    const fileName: string = "armResource/compute.json"
+    const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -70,12 +70,12 @@ class CompositeAzureTests {
   }
 
   @test public async "operations api response must have specific schema"() {
-    const fileName: string = "armResource/compute.json"
+    const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, OperationsApiResponseSchema)
     assertValidationRuleCount(messages, OperationsApiResponseSchema, 1)
   }
   @test public async "top level resources must list by resource group"() {
-    const fileName: string = "armResource/compute.json"
+    const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -84,7 +84,7 @@ class CompositeAzureTests {
     assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 1)
   }
   @test public async "top level resources must list by subscription"() {
-    const fileName: string = "armResource/compute.json"
+    const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -94,13 +94,13 @@ class CompositeAzureTests {
   }
 
   @test public async "get collection response schema should match the ARM specification "() {
-    const fileName: string = "armResource/cdn.json"
+    const fileName = "armResource/cdn.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, GetCollectionResponseSchema)
     assertValidationRuleCount(messages, GetCollectionResponseSchema, 1)
   }
 
   @test public async "all resources must have get operation"() {
-    const fileName: string = "armResource/cdn.json"
+    const fileName = "armResource/cdn.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -110,7 +110,7 @@ class CompositeAzureTests {
   }
 
   @test public async "all resources must have get operation 2"() {
-    const fileName: string = "armResource/security.json"
+    const fileName = "armResource/security.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -120,7 +120,7 @@ class CompositeAzureTests {
   }
 
   @test public async "all resources must have get operation positive 1"() {
-    const fileName: string = "armResource/firewallPolicy.json"
+    const fileName = "armResource/firewallPolicy.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -130,7 +130,7 @@ class CompositeAzureTests {
   }
 
   @test public async "all resources must have get operation positive 2"() {
-    const fileName: string = "armResource/containerservice.json"
+    const fileName = "armResource/containerservice.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -139,7 +139,7 @@ class CompositeAzureTests {
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   }
   @test public async "all resources must have get operation positive 3"() {
-    const fileName: string = "armResource/machinelearning.json"
+    const fileName = "armResource/machinelearning.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -149,7 +149,7 @@ class CompositeAzureTests {
   }
 
   @test public async "all resources must have get operation positive 4"() {
-    const fileName: string = "armResource/compute.json"
+    const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -159,7 +159,7 @@ class CompositeAzureTests {
   }
 
   @test public async "all resources must have get operation positive 5"() {
-    const fileName: string = "happyPath/cluster.json"
+    const fileName = "happyPath/cluster.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -169,19 +169,19 @@ class CompositeAzureTests {
   }
 
   @test public async "unique model name"() {
-    const fileName: string = "UniqueModelName.json"
+    const fileName = "UniqueModelName.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, UniqueModelName)
     assertValidationRuleCount(messages, UniqueModelName, 1)
   }
 
   @test public async "private link apis missing"() {
-    const fileName: string = "PrivateLinkAPIsMissing.json"
+    const fileName = "PrivateLinkAPIsMissing.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ImplementPrivateEndpointAPIs)
     assertValidationRuleCount(messages, ImplementPrivateEndpointAPIs, 1)
   }
 
   @test public async "private link resource schema unmatch"() {
-    const fileName: string = "PrivateLinkResourceUnMatch.json"
+    const fileName = "PrivateLinkResourceUnMatch.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
@@ -191,7 +191,7 @@ class CompositeAzureTests {
   }
 
   @test public async "Unique x-ms-examples"() {
-    const fileName: string = "UniqueXmsExample.json"
+    const fileName = "UniqueXmsExample.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, UniqueXmsExample)
     assertValidationRuleCount(messages, UniqueXmsExample, 1)
   }

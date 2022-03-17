@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const DescriptionMustNotBeNodeName: string = "DescriptionMustNotBeNodeName"
+export const DescriptionMustNotBeNodeName = "DescriptionMustNotBeNodeName"
 rules.push({
   id: "R3011",
   name: DescriptionMustNotBeNodeName,
@@ -14,7 +14,7 @@ rules.push({
 
   appliesTo_JsonQuery: "$..*[?(@property === 'description')]^",
   *run(doc, node, path) {
-    const msg: string = "Description must not match the name of the node it is supposed to describe."
+    const msg = "Description must not match the name of the node it is supposed to describe."
     // description can be of any type (including an object, so check for a string type)
     if (typeof node.description !== "string") {
       return

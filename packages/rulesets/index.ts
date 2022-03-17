@@ -1,21 +1,10 @@
-import { ruleSet as nativeArm } from "./native/rulesets/legacy" 
-export const rulesets = {
-    spectral:{
-        "arm": {
-            extends: "#common",
-            rules:
-                {
-                "az-additional-properties-and-properties" : "warn"
-                }
-        },
-        "dataplane":{
-            extends: "#common",
-        },
-        common:{
+import { join } from "path"
+function getRuleSetFile(filename:string) {
+  return  join (__dirname ,"output", filename +'.js')
+}
+export const spectralCommonFile = ()=> getRuleSetFile("common")
+export const spectralArmFile = ()=> getRuleSetFile("arm")
 
-        }
-    },
-    native: {
-       "arm": nativeArm
-    }
+export const rulesets = {
+
 }

@@ -5,7 +5,7 @@
 import { nodes, stringify } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const RequiredReadOnlySystemData: string = "RequiredReadOnlySystemData"
+export const RequiredReadOnlySystemData = "RequiredReadOnlySystemData"
 
 rules.push({
   id: "R4009",

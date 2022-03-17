@@ -5,7 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { getResolvedSchemaByPath } from "../utilities/rules-helper"
 
-export const DefaultErrorResponseSchema: string = "DefaultErrorResponseSchema"
+export const DefaultErrorResponseSchema = "DefaultErrorResponseSchema"
 
 rules.push({
   id: "R4007",
@@ -16,16 +16,16 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.*.responses",
   async *run(doc, node, path, ctx) {
-    const msg: string =
+    const msg =
       "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content."
 
     const response: any = node
     if (response.default && response.default.schema) {
       const paths = path.concat(["default", "schema"])
 
-      const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx.inventory)
+      const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx?.inventory)
 
-      const utils = ctx.utils
+      const utils = ctx?.utils
       if (schema) {
         const errorDefinition = utils.getPropertyOfModel(schema, "error")
         if (errorDefinition) {

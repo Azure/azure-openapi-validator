@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { isValidEnum } from "../utilities/rules-helper"
-export const EnumMustHaveType: string = "EnumMustHaveType"
+export const EnumMustHaveType = "EnumMustHaveType"
 
 rules.push({
   id: "R3015",
@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@property==='enum')]^",
   *run(doc, node, path) {
-    const msg: string = `Enum must define its type and "object" type is not allowed due to Autorest refuse to parse it.`
+    const msg = `Enum must define its type and "object" type is not allowed due to Autorest refuse to parse it.`
 
     /**
      * a bad example: enum might be a property

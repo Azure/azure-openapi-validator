@@ -1,10 +1,8 @@
-import { MessageReader } from "vscode-jsonrpc"
-import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
 
-export const OperationsApiResponseSchema: string = "OperationsApiResponseSchema"
+export const OperationsApiResponseSchema = "OperationsApiResponseSchema"
 
 rules.push({
   id: "R4018",
@@ -15,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
 
   *run(doc, node, path) {
-    const msg: string = 'The response schema of operations API "{0}" does not match the ARM specification. Please standardize the schema.'
+    const msg = 'The response schema of operations API "{0}" does not match the ARM specification. Please standardize the schema.'
     /**
      * 1 get the operations API and schema
      * 2 verify the schema

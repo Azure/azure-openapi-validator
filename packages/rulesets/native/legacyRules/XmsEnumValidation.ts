@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { isValidEnum } from "../utilities/rules-helper"
-export const XmsEnumValidation: string = "XmsEnumValidation"
+export const XmsEnumValidation = "XmsEnumValidation"
 
 rules.push({
   id: "R2018",
@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: ["$.definitions..[?(@property==='enum')]^", "$..parameters..[?(@property==='enum')]^"],
   *run(doc, node, path) {
-    const msg: string = `The enum types should have x-ms-enum type extension set with appropriate options.`
+    const msg = `The enum types should have x-ms-enum type extension set with appropriate options.`
     if (node.enum && isValidEnum(node)) {
       if (!node["x-ms-enum"]) {
         yield { message: `${msg}`, location: path }

@@ -4,7 +4,7 @@
   "description": "Azure OpenAPI Validator",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
+    "start": "node --inspect-brk ./index.js",
     "build": "tsc"
   },
   "repository": {
@@ -36,29 +36,35 @@
     "gulp-dotnet-cli": "1.1.0",
     "mocha-typescript": "~1.0.22",
     "mocha": "^7.0.1",
-    "typescript": "3.7.5"
+    "typescript": "4.6.2"
   },
   "dependencies": {
-    "@stoplight/spectral-core": "1.8.1",
-    "@stoplight/spectral-formats": "1.0.2",
+    "@stoplight/spectral-core": "~1.11.1",
+    "@stoplight/spectral-formats": "~1.1.0",
+    "@stoplight/spectral-functions": "~1.6.1",
     "@stoplight/spectral-ruleset-migrator": "^1.7.1",
-    "@stoplight/spectral-rulesets": "^1.3.1",
-    "@stoplight/json": "3.17.0",
-    "@stoplight/ordered-object-literal": "1.0.2",
-    "@stoplight/path": "1.3.2",
-    "@stoplight/spectral-functions": "^1.0.0",
+    "@stoplight/spectral-ruleset-bundler": "^1.2.1",
+    "@stoplight/spectral-rulesets": "~1.6.0",
     "@stoplight/spectral-runtime": "^1.1.0",
+    "@stoplight/json-ref-resolver": "3.1.3",
+    "@stoplight/better-ajv-errors": "1.0.1",
+    "@stoplight/json": "~3.17.1",
+    "@stoplight/lifecycle": "2.3.2",
+    "@stoplight/path": "1.3.2",
+    "@stoplight/spectral-parsers": "^1.0.0",
+    "@stoplight/spectral-ref-resolver": "^1.0.0",
     "@stoplight/types": "12.3.0",
-    "@stoplight/yaml": "4.2.2",
     "dependency-graph": "^0.11.0",
     "@microsoft.azure/openapi-validator-core":"^1.0.0",
     "@microsoft.azure/openapi-validator-rulesets":"^1.0.0",
+    "@azure-tools/openapi":"^3.3.0",
     "fs": "^0.0.1-security",
     "js-yaml": "^3.14.0",
     "jsonpath": "^1.1.1",
     "json-refs": "^3.0.15",
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
     "string.prototype.matchall": "^4.0.2",
-    "vscode-jsonrpc": "^3.2.0"
+    "vscode-jsonrpc": "^3.2.0",
+    "node-fetch": "^3.2.3"
   }
 }

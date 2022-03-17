@@ -2,7 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
-export const GetCollectionResponseSchema: string = "GetCollectionResponseSchema"
+export const GetCollectionResponseSchema = "GetCollectionResponseSchema"
 
 rules.push({
   id: "R4019",
@@ -13,7 +13,7 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$",
   *run(doc, node, path) {
-    const msg: string =
+    const msg =
       'The response in the GET collection operation "{0}" does not match the response definition in the individual GET  operation "{1}" .'
     /**
      * 1 travel all resources and find all the resources that have a collection get

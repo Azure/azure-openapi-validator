@@ -42,7 +42,7 @@ import { XmsIdentifierValidation } from "../legacyRules/XmsIdentifierValidation"
 @suite
 class IndividualAzureTests {
   @test public async "control characters not allowed test"() {
-    const fileName: string = "ContainsControlCharacters.json"
+    const fileName = "ContainsControlCharacters.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm,ControlCharactersAreNotAllowed)
     assertValidationRuleCount(messages, ControlCharactersAreNotAllowed, 2)
   }
@@ -367,7 +367,7 @@ class IndividualAzureTests {
   }
 
   @test public async "resource tag meet common type"() {
-    const filename: string = "ResourceWithTag.json"
+    const filename = "ResourceWithTag.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(filename, OpenApiTypes.arm, AzureResourceTagsSchema)
     assertValidationRuleCount(messages, AzureResourceTagsSchema, 1)
   }

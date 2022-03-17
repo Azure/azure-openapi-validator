@@ -2,6 +2,7 @@
 src/**/*.js
 packages/**/*.js
 packages/**/*.js.map
+packages/**/*.d.ts
 regression/**/*.js
 regression/**/*.js.map
 src/**/*.map

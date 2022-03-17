@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-export const Rpaas_DeleteOperationAsyncResponseValidation: string = "Rpaas_DeleteOperationAsyncResponseValidation"
+export const Rpaas_DeleteOperationAsyncResponseValidation = "Rpaas_DeleteOperationAsyncResponseValidation"
 
 rules.push({
   id: "R4025",

@@ -5,11 +5,23 @@
 import * as assert from "assert"
 import { safeLoad } from "js-yaml"
 import { LintResultMessage,OpenApiTypes, LintTester} from "@microsoft.azure/openapi-validator-core"
-import ruleSet from "../../rulesets/legacy"
+import {ruleSet as legacy} from "../../rulesets/legacy"
+import {ruleSet as arm} from "../../rulesets/arm"
 import { IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
 const fs = require("fs")
 const path = require("path")
-const pathToTestResources: string = "../../tests/resources/"
+const pathToTestResources = "../../tests/resources/"
+
+function getRule(name:string) {
+  let rule = undefined;
+  [arm, legacy].forEach(ruleset => {
+    if (Object.keys(ruleset.rules).includes(name)) {
+      rule = ruleset.rules[name]
+      return false
+    }
+  })
+  return rule
+}
 
 // run the validator and gather all the messages generated
 export async function collectTestMessagesFromValidator(
@@ -20,10 +32,11 @@ export async function collectTestMessagesFromValidator(
   const filePath = getFilePath(fileName)
   if (ruleName) {
     const rules: RulesObject = {}
-    if (!ruleSet.rules[ruleName]) {
+    const rule = getRule(ruleName)
+    if (!rule) {
       throw new Error(`Rule ${ruleName} was not found.`)
     }
-    rules[ruleName] = ruleSet.rules[ruleName]
+    rules[ruleName] = rule
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
     return LintTester(filePath,singleRuleSet,ruleName)
   } 
