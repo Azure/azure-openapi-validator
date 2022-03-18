@@ -27,7 +27,7 @@ export class SwaggerInventory implements ISwaggerInventory {
     throw new Error(`No cached file:${specPath}`)
   }
 
-  public dependantsOf(specPath: string) {
+  public referencesOf(specPath: string): string[]{
     return this.inventory.dependantsOf(normalizePath(specPath))
   }
 
@@ -95,9 +95,6 @@ export class SwaggerInventory implements ISwaggerInventory {
   }
 
   async loadDocument(specPath: string) {
-    if (!isAbsolute(specPath)) {
-      specPath = normalize(specPath)
-    }
     const urlPath = normalizePath(specPath)
     if (this.referenceCache.has(urlPath)) {
       return this.referenceCache.get(urlPath)

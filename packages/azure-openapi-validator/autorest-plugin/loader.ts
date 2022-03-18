@@ -1,40 +1,19 @@
-// @ts-nocheck
-import { IRuleSet } from "@microsoft.azure/openapi-validator-core"
-import { rulesets } from "@microsoft.azure/openapi-validator-rulesets"
-import { Ruleset, RulesetDefinition } from "@stoplight/spectral-core"
-import { createRequire } from "module"
-import { isObject } from "util"
-import { fetch } from '@stoplight/spectral-runtime';
-import { bundleRuleset } from '@stoplight/spectral-ruleset-bundler';
-import { node } from '@stoplight/spectral-ruleset-bundler/presets/node';
-import { builtins } from '@stoplight/spectral-ruleset-bundler/plugins/builtins';
-import commonjs from '@rollup/plugin-commonjs';
-import {dirname} from "path"
-const fs = require("fs")
+import { IRuleSet, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
+import { Ruleset } from "@stoplight/spectral-core"
 
-function load(source: string, uri: string): RulesetDefinition {
-  const actualUri = uri;
-  // we could use plain `require`, but this approach has a number of benefits:
-  // - it is bundler-friendly
-  // - ESM compliant
-  // - and we have no warning raised by pkg.
-  const req = createRequire(actualUri);
-  const m: { exports?: RulesetDefinition } = {};
-  const paths = [dirname(uri), __dirname];
-
-  const _require = (id: string): unknown => req(req.resolve(id, { paths }));
-
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
-  Function('module, require', source)(m, _require);
-
-  if (!isObject(m.exports)) {
-    throw new Error('No valid export found');
+export async function getRuleSet(openapiType:OpenApiTypes) {
+  let rulesetFile 
+  switch(openapiType) {
+    case OpenApiTypes.arm :{
+      rulesetFile = spectralRulesets.spectralArmFile()
+      break;
+    }
+    default: {
+      rulesetFile = spectralRulesets.spectralCommonFile()
+    }
   }
 
-  return m.exports;
-}
-
-export async function getRuleSet(rulesetFile:string) {
  const ruleset = require(rulesetFile)
  return new Ruleset(ruleset,{severity:"recommended",source:rulesetFile})
  /*const ruleset = await bundleRuleset(rulesetFile, {
@@ -61,8 +40,4 @@ export const mergeRulesets = (rulesets:IRuleSet[]):IRuleSet=> {
     rules
   } 
   return mergedRuleSet
-}
-
-export function getNativeRuleSet() {
-  const mergedRuleset = mergeRulesets(Object.values(rulesets.native))
 }

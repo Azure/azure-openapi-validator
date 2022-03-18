@@ -81,9 +81,7 @@ export type IRuleFunction<T> = (
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface ISwaggerInventory {
-  dependantsOf(specPath: string):string[],
-  dependenciesOf(specPath: string):string[],
-  getDocFromJsonRef(ref: string):any,
+  referencesOf(specPath: string): string[],
   getDocument(specPath: string):any
   getAllDocuments(): Map<string,any>
 }
@@ -114,8 +112,10 @@ export interface SourceLocation {
   jsonPath: JsonPath
 }
 
+export type MessageSeverity = "information" | "warning" | "error" | "debug" | "verbose" | "fatal"
+
 export interface Message {
-  Channel: "information" | "warning" | "error" | "debug" | "verbose" | "fatal"
+  Channel: MessageSeverity
   Key?: Iterable<string>
   Details?: any
   Text: string
@@ -128,11 +128,12 @@ export interface Range {
 }
 
 export interface LintResultMessage {
-  type: "information" | "warning" | "error" | "debug" | "verbose" | "fatal"
+  type: MessageSeverity
   id: string
   code: string
   message: string
-  category: string
+  category: string,
+  jsonpath:string,
   sources?: string[]
   location?: Position
   range?: Range

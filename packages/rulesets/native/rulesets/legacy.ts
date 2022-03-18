@@ -1,5 +1,4 @@
-import { pattern } from "../functions/pattern"
-import { OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
+import { rules } from "@microsoft.azure/openapi-validator-core"
 import { IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
 // register rules
 require("../legacyRules/PageableOperation")

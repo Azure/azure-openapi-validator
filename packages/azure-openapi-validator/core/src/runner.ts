@@ -143,7 +143,7 @@ export class LintRunner<T> {
       runPromises.push(promise)
     }
     await Promise.all(runPromises)
-    return this.formatter.format(msgs).concat()
+    return this.formatter.format(msgs)
   }
 }
 

@@ -23,8 +23,8 @@ export class JsonFormatter implements IFormatter<LintResultMessage> {
 
       const jsonMsg = {
         ...msg.Details,
-        sources: [msg.Source[0].document + `:${range.start.line}:${range.start.column}`],
-        "json-path": stringify(path as string[]),
+        sources: [msg.Source[0].document],
+        jsonpath: stringify(path as string[]),
         location: range.start,
         range
       }

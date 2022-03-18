@@ -1,12 +1,18 @@
-// @ts-nocheck
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
 import _ from "lodash"
 import { followReference, isExample, traverse } from "./utils"
 import { ISwaggerInventory, ISwaggerHelper } from "./types"
+//import {createOpenAPIWorkspace,OpenAPIWorkspace} from "@azure-tools/openapi"
+//import {OpenAPI2Document} from "@azure-tools/openapi/v2"
 
 export class SwaggerHelper implements ISwaggerHelper {
   private schemaCaches = new Map<string, any>()
-  constructor(private innerDoc?: any, private specPath?: string, private inventory?: ISwaggerInventory) {}
+  //private workSpace: OpenAPIWorkspace<OpenAPI2Document>|undefined
+  constructor(private innerDoc: any, private specPath: string, private inventory?: ISwaggerInventory) {
+    if (inventory) {
+      //this.workSpace = createOpenAPIWorkspace({specs:inventory?.getAllDocuments()} as any)
+    }
+  }
 
   public getOperationIdFromPath(path: string, code = "get") {
     let pathObj = this.innerDoc.paths[path]
@@ -52,12 +58,13 @@ export class SwaggerHelper implements ISwaggerHelper {
     }
     if (model.allOf) {
       for (const element of model.allOf) {
-        const property = this.getPropertyOfModel(element, propertyName)
+        const property:any = this.getPropertyOfModel(element, propertyName)
         if (property) {
           return property
         }
       }
     }
+    return undefined
   }
 
   private getUnwrappedModel(property: any) {
@@ -79,12 +86,15 @@ export class SwaggerHelper implements ISwaggerHelper {
             if (isExample(file.url)) {
               return ""
             }
-            return inventory.getDocument(file.url).getObj()
+            return inventory?.getDocument(file.url).getObj()
           }
         }
       }
     }
+
+
     const resolvedSchema = await $RefParser.dereference({ $ref: ref }, resolveOption)
+   // const resolvedSchema = this.workSpace?.resolveReference()
     this.schemaCaches.set(ref, resolvedSchema)
     return resolvedSchema
   }
@@ -151,5 +161,9 @@ export class SwaggerHelper implements ISwaggerHelper {
       return true
     })
     return schema
+  }
+
+  getSpecPath() {
+    return this.specPath
   }
 }

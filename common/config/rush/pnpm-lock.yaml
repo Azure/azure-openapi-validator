@@ -1,6 +1,7 @@
 dependencies:
   '@apidevtools/json-schema-ref-parser': 9.0.9
   '@azure-tools/openapi': 3.3.0
+  '@azure-tools/uri': 3.1.1
   '@rollup/plugin-commonjs': 21.0.2
   '@rush-temp/openapi-validator': file:projects/openapi-validator.tgz
   '@rush-temp/openapi-validator-core': file:projects/openapi-validator-core.tgz
@@ -24,16 +25,12 @@ dependencies:
   '@types/js-yaml': 3.12.7
   '@types/jsonpath': 0.2.0
   '@types/lodash': 4.14.178
+  '@types/mocha': 7.0.2
   '@types/node': 14.18.12
   dependency-graph: 0.11.0
   eslint: 8.11.0
   fs: 0.0.1-security
   glob: 7.2.0
-  gulp: 4.0.2
-  gulp-clean: 0.4.0
-  gulp-dotnet-cli: 1.1.0
-  gulp-mocha: 7.0.2_gulp@4.0.2
-  gulp-run: 1.7.1
   js-yaml: 3.14.1
   json-refs: 3.0.15
   jsonc-parser: 3.0.0
@@ -62,6 +59,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Hl44ml5/yDtBnOlk0A7RWl+Xy8JcWRni/2QVT1tkmQmwg6ylW+nfIXn2Zzi9Hww+oCkgyrqMXe45rlcJVhKlDQ==
+  /@azure-tools/async-io/3.0.254:
+    dependencies:
+      '@azure-tools/tasks': 3.0.255
+      proper-lockfile: 2.0.1
+    dev: false
+    engines:
+      node: '>=10.12.0'
+    resolution:
+      integrity: sha512-X1C7XdyCuo50ch9FzKtTvmK18FgDxxf1Bbt3cSoknQqeDaRegHSSCO+zByq2YA4NvUzKXeZ1engh29IDxZXgpQ==
   /@azure-tools/json/1.2.1:
     dev: false
     engines:
@@ -83,6 +89,23 @@ packages:
       node: '>=12.0.0'
     resolution:
       integrity: sha512-m+Dua3AZtwCEYQukyg8CTvvFierPzduyIjNrhvKQSo9nIZhHL46LgRlkGdUwUXXvPYn1VOPippUEpgVRv/0/Qw==
+  /@azure-tools/tasks/3.0.255:
+    dev: false
+    engines:
+      node: '>=10.12.0'
+    resolution:
+      integrity: sha512-GjALNLz7kWMEdRVbaN5g0cJHNAr3XVTbP0611Mv2UzMgGL6FOhNZJK+oPHJKLDR8EEDZNnkwPlyi7B+INXUSQA==
+  /@azure-tools/uri/3.1.1:
+    dependencies:
+      '@azure-tools/async-io': 3.0.254
+      file-url: 3.0.0
+      get-uri: 3.0.2
+      urijs: 1.19.8
+    dev: false
+    engines:
+      node: '>=10.12.0'
+    resolution:
+      integrity: sha512-UgPgD+qVtm4ASYqoTDazjowimrmMGGEQqPnNk9K/8CZdi2oSLtGqX9S1++2+NDaHlq74VyxbcNMKoxgO+2CCUQ==
   /@discoveryjs/json-ext/0.5.7:
     dev: false
     engines:
@@ -581,6 +604,12 @@ packages:
       node: '>=10.8'
     resolution:
       integrity: sha512-N086FU8pmSpjc5TvMBjmlTniZVh3OXzmEh6SYljSLiuv6aMxgjyjf13YrAlUqgu0b4b6pQ5zmkjrfo9i0SiLsw==
+  /@tootallnate/once/1.1.2:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
   /@ts-common/iterator/1.1.1:
     dev: false
     peerDependencies:
@@ -625,6 +654,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==
+  /@types/mocha/7.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-ZvO2tAcjmMi8V/5Z3JsyofMe3hasRcaw88cto5etSVMwVQfeivGAlEYmaQgceUSVYFofVjT+ioHsATjdWcFt1w==
   /@types/node/14.18.12:
     dev: false
     resolution:
@@ -1654,6 +1687,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==
+  /data-uri-to-buffer/3.0.1:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
   /data-uri-to-buffer/4.0.0:
     dev: false
     engines:
@@ -2275,6 +2314,18 @@ packages:
     optional: true
     resolution:
       integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
+  /file-uri-to-path/2.0.0:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-hjPFI8oE/2iQPVe4gbrJ73Pp+Xfub2+WI2LlXDbsaJBwT5wuMh35WNWVYYTpnz895shtwfyutMFLFywpQAFdLg==
+  /file-url/3.0.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-g872QGsHexznxkIAdK8UiZRe7SkE6kvylShU4Nsj8NvfvZag7S0QuQ4IgvPDkk75HxgjIVDwycFTDAgIiO4nDA==
   /fill-range/4.0.0:
     dependencies:
       extend-shallow: 2.0.1
@@ -2432,6 +2483,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-QpD60n8T6Jvn8zeZxrxaCr//DRk=
+  /fs-extra/8.1.0:
+    dependencies:
+      graceful-fs: 4.2.9
+      jsonfile: 4.0.0
+      universalify: 0.1.2
+    dev: false
+    engines:
+      node: '>=6 <7 || >=8'
+    resolution:
+      integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
   /fs-mkdirp-stream/1.0.0:
     dependencies:
       graceful-fs: 4.2.9
@@ -2482,6 +2543,15 @@ packages:
       - darwin
     resolution:
       integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+  /ftp/0.3.10:
+    dependencies:
+      readable-stream: 1.1.14
+      xregexp: 2.0.0
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-kZfYYa2BQvPmPVqDv+TFn3MwiF0=
   /function-bind/1.1.1:
     dev: false
     resolution:
@@ -2531,6 +2601,19 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-2EmdH1YvIQiZpltCNgkuiUnyukzxM/R6NDJX31Ke3BG1Nq5b0S2PhX59UKi9vZpPDQVdqn+1IcaAwnzTT5vCjw==
+  /get-uri/3.0.2:
+    dependencies:
+      '@tootallnate/once': 1.1.2
+      data-uri-to-buffer: 3.0.1
+      debug: 4.3.3
+      file-uri-to-path: 2.0.0
+      fs-extra: 8.1.0
+      ftp: 0.3.10
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-+5s0SJbGoyiJTZZ2JTpFPLMPSch72KEqGOTvQsBqg0RBWvwhWUSYZFAtz3TPW0GXJuLBJPts1E241iHg+VRfhg==
   /get-value/2.0.6:
     dev: false
     engines:
@@ -3405,6 +3488,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
+  /jsonfile/4.0.0:
+    dev: false
+    optionalDependencies:
+      graceful-fs: 4.2.9
+    resolution:
+      integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   /jsonpath-plus/6.0.1:
     dev: false
     engines:
@@ -4542,6 +4631,15 @@ packages:
     dev: false
     resolution:
       integrity: sha1-36lpQ+qcEh/KTem1hoyznTRy4Fc=
+  /proper-lockfile/2.0.1:
+    dependencies:
+      graceful-fs: 4.2.9
+      retry: 0.10.1
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha1-FZ+wYZPTIAP0s2kd0uwaY0qoDR0=
   /pseudomap/1.0.2:
     dev: false
     resolution:
@@ -4836,6 +4934,10 @@ packages:
       node: '>=0.12'
     resolution:
       integrity: sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
+  /retry/0.10.1:
+    dev: false
+    resolution:
+      integrity: sha1-52OI0heZLCUnUCQdPTlW/tmNj/Q=
   /rimraf/2.7.1:
     dependencies:
       glob: 7.2.0
@@ -5588,6 +5690,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-2nY4TnBE70yoxHkDli7DMazpWiP7xMdCYqU2nBRO0UB+ZpEkGsSija7MvmvnZFUeC+mrgiUfcHSr3LmRFIg4+A==
+  /universalify/0.1.2:
+    dev: false
+    engines:
+      node: '>= 4.0.0'
+    resolution:
+      integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
   /unset-value/1.0.0:
     dependencies:
       has-value: 0.3.1
@@ -5943,6 +6051,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
+  /xregexp/2.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-UqY+VsoLhKfzpfPWGHLxJq16WUM=
   /xtend/4.0.2:
     dev: false
     engines:
@@ -6075,6 +6187,8 @@ packages:
   file:projects/openapi-validator-core.tgz:
     dependencies:
       '@apidevtools/json-schema-ref-parser': 9.0.9
+      '@azure-tools/openapi': 3.3.0
+      '@azure-tools/uri': 3.1.1
       '@stoplight/json': 3.17.0
       '@stoplight/ordered-object-literal': 1.0.2
       '@stoplight/path': 1.3.2
@@ -6089,6 +6203,7 @@ packages:
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
       '@types/lodash': 4.14.178
+      '@types/mocha': 7.0.2
       '@types/node': 14.18.12
       dependency-graph: 0.11.0
       fs: 0.0.1-security
@@ -6106,7 +6221,7 @@ packages:
     dev: false
     name: '@rush-temp/openapi-validator-core'
     resolution:
-      integrity: sha512-khLYvj6fWeT/Pr9Hh+rM4h1HFFo4K/lDAZufTxFlV+PLoUq9j59S2MhRZZQcokvU+u4n1TInFt98HviTW7aREg==
+      integrity: sha512-uf8stm92yC6EIHOAHpTVFwPxjmlSevN7CJ4gSipxJ0A/uNeP3UIK6WBYoMUtOG5FA69jWTK2wdHfirMAaJ5LbA==
       tarball: file:projects/openapi-validator-core.tgz
     version: 0.0.0
   file:projects/openapi-validator-rulesets.tgz:
@@ -6122,6 +6237,7 @@ packages:
       '@stoplight/spectral-runtime': 1.1.2
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
+      '@types/mocha': 7.0.2
       '@types/node': 14.18.12
       eslint: 8.11.0
       gulp: 4.0.2
@@ -6139,7 +6255,7 @@ packages:
     dev: false
     name: '@rush-temp/openapi-validator-rulesets'
     resolution:
-      integrity: sha512-+oQV4ouPkAUhy0G59tIxZW3t9OXa0ESohX4WEyuAHAcH9+oxXGFeJc1yWL24sSq2pI83sQqCCiyvgkDRquITXg==
+      integrity: sha512-b0hMYktJkBNardlte5z+oCyEgATrgmHg8i9+ClJxpOql136k17Q9kz9TuwfSOTQ083liWXQ9Kr+vJdVzMvGVyg==
       tarball: file:projects/openapi-validator-rulesets.tgz
     version: 0.0.0
   file:projects/openapi-validator.tgz:
@@ -6166,6 +6282,7 @@ packages:
       '@stoplight/yaml': 4.2.2
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
+      '@types/mocha': 7.0.2
       '@types/node': 14.18.12
       dependency-graph: 0.11.0
       fs: 0.0.1-security
@@ -6186,12 +6303,13 @@ packages:
     dev: false
     name: '@rush-temp/openapi-validator'
     resolution:
-      integrity: sha512-S63HJPdMzUEB709EwD6X5ZcrCPPu60oDVGJu4b3Ws7u7Kz3JvtDmgT68F5sIAG5DOkIS9n9TlIe3LRnta6jilQ==
+      integrity: sha512-tszmfPED0YUMTFpUlgT5IwG5jCReekapAmK3cpnFnp5QM5sJ2bhKO1MwMt2sJKq+GbNl3cWE1i6PQtT//jYVbw==
       tarball: file:projects/openapi-validator.tgz
     version: 0.0.0
 specifiers:
   '@apidevtools/json-schema-ref-parser': ^9.0.9
   '@azure-tools/openapi': ^3.3.0
+  '@azure-tools/uri': 3.1.1
   '@rollup/plugin-commonjs': ^21.0.2
   '@rush-temp/openapi-validator': file:./projects/openapi-validator.tgz
   '@rush-temp/openapi-validator-core': file:./projects/openapi-validator-core.tgz
@@ -6215,16 +6333,12 @@ specifiers:
   '@types/js-yaml': ^3.12.4
   '@types/jsonpath': ^0.2.0
   '@types/lodash': ~4.14.178
+  '@types/mocha': ^7.0.1
   '@types/node': ^14.0.13
   dependency-graph: ^0.11.0
   eslint: ^8.11.0
   fs: ^0.0.1-security
   glob: ^7.2.0
-  gulp: 4.0.2
-  gulp-clean: 0.4.0
-  gulp-dotnet-cli: 1.1.0
-  gulp-mocha: 7.0.2
-  gulp-run: 1.7.1
   js-yaml: ^3.14.0
   json-refs: ^3.0.15
   jsonc-parser: 3.0.0

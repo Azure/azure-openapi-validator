@@ -14,7 +14,7 @@ pipeline:
 ``` yaml $(spectral) && $(v3)
 pipeline:
   swagger-document/spectral:
-    input: swagger-document/identity
+    input: swagger-document/loader-swagger
     scope: azure-validator-individual 
 ```
 

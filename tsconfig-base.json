@@ -3,7 +3,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "types": [
-            "node"
+            "node","mocha"
         ],
         "moduleResolution": "node",
         "target": "ES2019",

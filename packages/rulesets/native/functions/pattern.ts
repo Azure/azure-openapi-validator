@@ -8,13 +8,13 @@ export function* pattern(openapiSection: any, options: PatternOption, ctx?: Rule
   if (typeof openapiSection === "string") {
     if (options?.match && matchPattern(options.match, openapiSection)) {
       yield {
-        location: ctx?.location,
+        location: ctx?.location || [],
         message: "Matched the pattern " + options?.match
       }
     }
     if (options?.notMatch && !matchPattern(options.notMatch, openapiSection)) {
       yield {
-        location: ctx?.location,
+        location: ctx?.location || [],
         message: "Not matched the pattern " + options?.notMatch
       }
     }

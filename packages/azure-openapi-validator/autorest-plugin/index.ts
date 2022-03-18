@@ -3,16 +3,14 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-// @ts-nocheck
 import { safeLoad } from "js-yaml"
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
 const jp = require("jsonpath")
 import {getRuleSet} from "./loader"
 import { Message } from "./jsonrpc/types"
 const { Spectral } = require("@stoplight/spectral-core")
-const { Resolver } = require("@stoplight/spectral-ref-resolver");
 import {lint, getOpenapiType, LintResultMessage} from "@microsoft.azure/openapi-validator-core"
-import {rulesets,spectralArmFile} from "@microsoft.azure/openapi-validator-rulesets"
+import {nativeRulesets} from "@microsoft.azure/openapi-validator-rulesets"
 import {mergeRulesets} from "./loader"
 import { fileURLToPath } from 'url';
 
@@ -45,7 +43,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
     }
   }
 
-  const format = (result, spec) => {
+  const format = (result:any, spec:string) => {
     return {
       code: result.code,
       message: result.message,
@@ -60,7 +58,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
     }
   }
   const results = await spectral.run(doc)
-  mergedResults.push(...results.map(result => format(result, filePath)))
+  mergedResults.push(...results.map((result:any) => format(result, filePath)))
  for (const message of mergedResults) {
   sendMessage({
     Channel: message.type,
@@ -85,21 +83,25 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
   return mergedResults
 }
 
-
+function isCommonTypes(filePath:string) {
+  const regex = new RegExp(/.*common\-types\/resource\-management\/v.*.json/)
+  return regex.test(filePath)
+}
 
 
 async function main() {
   const pluginHost = new AutoRestPluginHost()
   pluginHost.Add("spectral", async initiator => {
-    const files = await initiator.ListInputs()
-    const mergeState: string = await initiator.GetValue("merge-state")
+    const files = (await initiator.ListInputs()).filter(f => !isCommonTypes(f))
     const openapiType: string = await initiator.GetValue("openapi-type")
     let subType: string = await initiator.GetValue("openapi-subtype")
+    
+    /*
     const resolveFile = (uri:any) =>{
-            const ref = uri.href();
-            const content = readFile(ref);
-            return content
-          }
+      const ref = uri.href();
+      const content = readFile(ref);
+      return content
+    }
     const resolver = new Resolver({
       resolvers: {
         file: {
@@ -112,25 +114,29 @@ async function main() {
            resolve: resolveFile
         }
       },
-    });
+    }); */
 
     const cachedFiles = new Map<string,any>()
     const readFile = async (fileUri:string) => {
       let file = cachedFiles.get(fileUri)
       if (!file) {
         file = await initiator.ReadFile(fileUri)
+        if (!file) {
+          throw new Error(`Could not read file: ${fileUri} .`)
+        }
         cachedFiles.set(fileUri,file)
       }
       return file
     }
 
-
-
-    const spectral = new Spectral({resolver})
-    const rules = await getRuleSet(spectralArmFile())
+    const spectral = new Spectral()
+    const rules = await getRuleSet(getOpenapiType(openapiType))
     spectral.setRuleset(rules)
     subType = subType === "providerHub" ? "rpaas" : subType
     for (const file of files) {
+      if (file.includes("common-types/resource-management")) {
+        continue
+      }
       initiator.Message({
         Channel: "verbose",
         Text: `Validating '${file}'`
@@ -152,7 +158,7 @@ async function main() {
   })
 
   pluginHost.Add("openapi-validator", async initiator => {
-    const files = await initiator.ListInputs()
+    const files = await (await initiator.ListInputs()).filter(f => !isCommonTypes(f))
     let openapiType: string = await initiator.GetValue("openapi-type")
     let subType: string = await initiator.GetValue("openapi-subtype")
     subType = subType === "providerHub" ? "rpaas" : subType
@@ -166,15 +172,15 @@ async function main() {
         Key: [msg.code, msg.category],
         Source: [
           {
-            document:msg.sources[0] ,
-            Position: msg.location
+            document: msg?.sources ? msg.sources[0] : "",
+            Position: msg?.location ? msg.location : {}
           }
         ],
         Details: {
           type: msg.type,
           code: msg.code,
           message: msg.message,
-          id: msg.id,
+          "json-path": msg.jsonpath,
           validationCategory: msg.category,
         }
       })
@@ -198,7 +204,7 @@ async function main() {
       Text: `Validating '${files.join("\n")}'`
     })
     try {
-      const mergedRuleset = mergeRulesets(Object.values(rulesets))
+      const mergedRuleset = mergeRulesets(Object.values(nativeRulesets))
       await lint(files,{ruleSet:mergedRuleset, fileSystem:defaultFleSystem,openapiType:getOpenapiType(openapiType)},convertMessage)
     } catch (e) {
       initiator.Message({

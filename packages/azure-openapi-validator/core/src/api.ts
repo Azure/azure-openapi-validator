@@ -25,7 +25,7 @@ export async function lint( swaggerPaths: string[],options: LintOptions,cb?:Lint
   const ruleLoader = { getRuleSet: () => options.ruleSet }
   const formatter = new JsonFormatter(inventory)
   const runner = new LintRunner(ruleLoader, inventory, formatter)
-  const msgs = await runner.execute(swaggerPaths, options)
+  const msgs = await runner.execute(swaggerPaths, options,cb)
   return msgs
 }
 
