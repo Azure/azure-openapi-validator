@@ -12,6 +12,10 @@ packages/rulesets/**/test/*.js.map
 packages/rulesets/coverage/**/*
 packages/rulesets/**/native/**/*.js
 packages/rulesets/**/native/**/*.js.map
+packages/rulesets/**/native/**/*.js
+packages/rulesets/spectral/**/*.js
+packages/rulesets/spectral/**/*.js.map
+packages/rulesets/spectral/**/*.d.ts
 
 regression/**/*.js
 regression/**/*.js.map

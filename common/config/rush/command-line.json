@@ -1,0 +1,21 @@
+/**
+ * This configuration file defines custom commands for the "rush" command-line.
+ * For full documentation, please see https://rushjs.io
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  /**
+   * Custom "commands" introduce new verbs for the command-line.  To see the help for these
+   * example commands, try "rush --help", "rush my-bulk-command --help", or
+   * "rush my-global-command --help".
+   */
+  "commands": [
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "test",
+      "summary": "(CUSTOM) Runs test on all projects.",
+      "shellCommand": "node eng/scripts/test.js"
+    }
+  ]
+}
