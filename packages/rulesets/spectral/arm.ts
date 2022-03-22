@@ -1,5 +1,4 @@
 import common from "./common"
-export { ruleset as default };
 const ruleset:any = {
   extends:[
     common
@@ -7,3 +6,5 @@ const ruleset:any = {
   rules: {
   }
 };
+
+export = ruleset

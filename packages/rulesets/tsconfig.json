@@ -4,4 +4,7 @@
         "./spectral/**/*.ts",
         "index.ts"
     ],
+    "compilerOptions": {
+        "outDir": "dist"
+    }
 }

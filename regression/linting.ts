@@ -2,41 +2,48 @@
 import { exec } from "child_process"
 
 function genLintingCmd(readme: string): string {
-  const linterCmd = `autorest --azure-validator --spectral --openapiType=arm ${readme}`
+  const linterCmd = `npx autorest --v3 --azure-validator --spectral --openapiType=arm --use=../packages/azure-openapi-validator/autorest ${readme}`
   return linterCmd
 }
-function getRelativePath(issuePath: string) {
-  return issuePath.substring(issuePath.indexOf("specification/"))
+function getRelativePath(issueSource: any) {
+  if (issueSource.document) {
+    issueSource.document = issueSource.document.substring(issueSource.document.indexOf("specification/"))
+  }
+  return issueSource
 }
 
 export async function runLinter(readme: string) {
   const linterCmd = genLintingCmd(readme)
   try {
     let linterErrors = await runCmd(linterCmd)
-    if (linterErrors.indexOf('{\n  "type": "') !== -1) {
-      linterErrors = cleanUpContent(linterErrors)
-      const errorJsonStr = "[" + linterErrors + "]"
-      const errorJson = JSON.parse(errorJsonStr)
-        .sort((a:any, b:any) => {
-          let isLess: number = 0
-          ;["code","message",].some(key => {
+    if (linterErrors) {
+      const errors:any[] = []
+      linterErrors.split('\n').forEach((line:string) => {
+        if (line.indexOf('"extensionName":"@microsoft.azure/openapi-validator"') !== -1) {
+          errors.push(JSON.parse(line.trim()))
+        }
+      })
+      errors.sort((a:any, b:any) => {
+          let isLess: number = 0;
+          ["code","message",].some( (key:string) => {
             if (a[key] !== b[key]) {
               isLess = a[key] < b[key] ? -1 : 1
               return true
             }
+            return false
           })
           return isLess
         })
         .map((issue:any) => {
           if (issue.sources) {
-            issue.sources = issue.sources.map(s => getRelativePath(s))
+            issue.source = issue.source.map((s:any) => getRelativePath(s))
           }
           if (issue["json-path"]) {
             issue["json-path"] = getRelativePath(issue["json-path"])
           }
           return issue
         })
-      expect(errorJson).toMatchSnapshot("returned results")
+      expect(errors).toMatchSnapshot("returned results")
     } else {
       expect(linterErrors).toMatchSnapshot("returned results")
     }
@@ -46,53 +53,22 @@ export async function runLinter(readme: string) {
 }
 
 // runs the command on a given swagger spec.
-async function runCmd(cmd) {
+async function runCmd(cmd:string) {
   const { err, stdout, stderr } = await new Promise(res =>
-    exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err, stdout, stderr) => res({ err, stdout, stderr }))
+    exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err:any, stdout:any, stderr:any) => res({ err, stdout, stderr }))
   )
-  let resultString = ""
-  if (stdout.indexOf('{\n  "type": "') !== -1) {
-    resultString = stripCharsBeforeAfterJson(stdout)
+  if (err) {
+    console.log(JSON.stringify(err))
   }
-  if (stderr.indexOf('{\n  "type": "') !== -1) {
+  let resultString = ""
+  if (stdout.indexOf('"extensionName":"@microsoft.azure/openapi-validator"') !== -1) {
+    resultString = stdout
+  }
+  if (stderr.indexOf('"extensionName":"@microsoft.azure/openapi-validator"') !== -1) {
     if (resultString !== "") {
       resultString += ","
     }
-    resultString += stripCharsBeforeAfterJson(stderr)
+    resultString += stderr
   }
   return resultString
-}
-
-function stripCharsBeforeAfterJson(s) {
-  let resultString = ""
-  resultString = s
-    .substring(s.indexOf("{"))
-    .trim()
-    .replace(/\}\n\{/g, "},\n{")
-  let reverseString1 = reverse(resultString)
-  // reverse the string and trim the other side.
-  if (reverseString1.indexOf("}") !== -1) {
-    reverseString1 = reverseString1.substring(reverseString1.indexOf("}")).trim()
-    resultString = reverse(reverseString1)
-  }
-  return resultString
-}
-
-function cleanUpContent(s) {
-  let resultString = s.replace(/}\nProcessing batch task - {\"package-(.*).\n{/g, "},{")
-  resultString = resultString.replace(/{"package-(.*)} .\n/, "")
-  resultString = resultString.replace(/\nProcessing batch task(.*)./g, "")
-  resultString = resultString.replace(/}{/, "},{")
-  resultString = resultString.replace(/}\n{/, "},{")
-  return resultString
-}
-
-/**
- * reverse a string.
- */
-function reverse(s) {
-  return s
-    .split("")
-    .reverse()
-    .join("")
 }

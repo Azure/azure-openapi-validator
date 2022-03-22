@@ -5,7 +5,7 @@ import {default as spectralArmRuleset} from "./spectral/arm"
 import {default as spectralCommonRuleset} from "./spectral/common"
 
 function getRuleSetFile(filename:string) {
-  return  join (__dirname ,"spectral", filename +'.js')
+  return  join (__dirname ,"dist","spectral", filename +'.js')
 }
 export const spectralCommonRulesetFile = ()=> getRuleSetFile("common")
 export const spectralArmRulesetFile = ()=> getRuleSetFile("arm")

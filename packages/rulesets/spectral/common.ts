@@ -14,7 +14,7 @@ import patchcontenttype from "./functions/patch-content-type";
 import pathparamnames from "./functions/path-param-names";
 import pathparamschema from "./functions/path-param-schema";
 import versionpolicy from "./functions/version-policy";
-export { ruleset as default };
+export = ruleset
 const ruleset : any = {
   extends:[
     oas

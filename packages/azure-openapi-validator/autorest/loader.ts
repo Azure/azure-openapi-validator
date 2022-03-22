@@ -14,7 +14,7 @@ export async function getRuleSet(openapiType:OpenApiTypes) {
     }
   }
 
- const ruleset = require(rulesetFile).default
+ const ruleset = require(rulesetFile)
  return new Ruleset(ruleset,{severity:"recommended",source:rulesetFile})
  /*const ruleset = await bundleRuleset(rulesetFile, {
         target: 'node',

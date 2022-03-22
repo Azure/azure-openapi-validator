@@ -27,6 +27,10 @@
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
       "projectFolder": "packages/rulesets"
+    },
+    {
+      "packageName": "openapi-validator-regression",
+      "projectFolder": "regression"
     }
   ]
 }
