@@ -6,15 +6,15 @@ export async function getRuleSet(openapiType:OpenApiTypes) {
   let rulesetFile 
   switch(openapiType) {
     case OpenApiTypes.arm :{
-      rulesetFile = spectralRulesets.spectralArmFile()
+      rulesetFile = spectralRulesets.spectralArmRulesetFile()
       break;
     }
     default: {
-      rulesetFile = spectralRulesets.spectralCommonFile()
+      rulesetFile = spectralRulesets.spectralCommonRulesetFile()
     }
   }
 
- const ruleset = require(rulesetFile)
+ const ruleset = require(rulesetFile).default
  return new Ruleset(ruleset,{severity:"recommended",source:rulesetFile})
  /*const ruleset = await bundleRuleset(rulesetFile, {
         target: 'node',

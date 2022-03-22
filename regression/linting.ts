@@ -2,7 +2,7 @@
 import { exec } from "child_process"
 
 function genLintingCmd(readme: string): string {
-  const linterCmd = `node.exe ./src/typescript/commands/cli.js --openapiType=arm --readme=${readme}`
+  const linterCmd = `autorest --azure-validator --spectral --openapiType=arm ${readme}`
   return linterCmd
 }
 function getRelativePath(issuePath: string) {
@@ -19,7 +19,7 @@ export async function runLinter(readme: string) {
       const errorJson = JSON.parse(errorJsonStr)
         .sort((a:any, b:any) => {
           let isLess: number = 0
-          ;["id", "json-path", "message"].some(key => {
+          ;["code","message",].some(key => {
             if (a[key] !== b[key]) {
               isLess = a[key] < b[key] ? -1 : 1
               return true
@@ -27,7 +27,7 @@ export async function runLinter(readme: string) {
           })
           return isLess
         })
-        .map(issue => {
+        .map((issue:any) => {
           if (issue.sources) {
             issue.sources = issue.sources.map(s => getRelativePath(s))
           }

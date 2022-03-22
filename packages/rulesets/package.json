@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node --inspect-brk ./index.js",
-    "build": "tsc",
-    "rollup":"rollup -c rollup.config.js",
-    "test":"mocha native/tests/*.js"
+    "build": "tsc && npm run rollup-spectral",
+    "rollup-spectral": "rollup -c ./rollup.config.js",
+    "test-native": "mocha native/tests/*.js",
+    "test-spectral": "jest  -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,7 @@
     "swagger",
     "validation",
     "validator",
-    "inventory"
+    "linter"
   ],
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -32,10 +33,9 @@
     "@types/js-yaml": "^3.12.4",
     "@types/jsonpath": "^0.2.0",
     "@types/node": "^14.0.13",
-    "@types/mocha": "^7.0.1",
+    "@types/jest": "^27.0.6",
     "eslint": "^8.11.0",
-    "mocha": "^7.0.1",
-    "mocha-typescript": "~1.0.22",
+    "rollup": "^2.70.1",
     "typescript": "4.6.2",
     "@microsoft.azure/openapi-validator-core": "^1.0.0",
     "@stoplight/spectral-core": "~1.11.1",
@@ -44,10 +44,33 @@
     "@stoplight/spectral-ruleset-migrator": "^1.7.1",
     "@stoplight/spectral-ruleset-bundler": "^1.2.1",
     "@stoplight/spectral-rulesets": "~1.6.0",
-    "@stoplight/spectral-runtime": "^1.1.0"
+    "@stoplight/spectral-runtime": "^1.1.0",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.1.3",
+    "ajv": "^8.10.0",
+    "nimma": "~0.2.0"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
-    "jsonpath-plus": "^6.0.1"
+    "jsonpath-plus": "^6.0.1",
+    "tslib": "^2.3.1",
+    "string.prototype.matchall": "^4.0.2",
+    "lodash": "~4.17.21"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "functions/*.js"
+    ],
+    "coverageThreshold": {
+      "./functions/*.js": {
+        "statements": 80
+      }
+    },
+    "moduleNameMapper": {
+      "^nimma/legacy$": "<rootDir>/node_modules/nimma/dist/legacy/cjs/index.js",
+      "^nimma/(.*)": "<rootDir>/node_modules/nimma/dist/cjs/$1",
+      "^@stoplight/spectral-ruleset-bundler/(.*)$": "<rootDir>/node_modules/@stoplight/spectral-ruleset-bundler/dist/$1"
+    }
   }
 }

@@ -7,9 +7,7 @@ import { OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
 import { isAbsolute, normalize } from "path"
 import { defaultFileSystem, normalizePath } from "./utils"
-import { ISwaggerInventory } from "./types"
-import { IFileSystem } from "."
-
+import { ISwaggerInventory,IFileSystem } from "./types"
 export class SwaggerInventory implements ISwaggerInventory {
   private inventory = new DepGraph()
   private referenceCache = new Map<string, OpenapiDocument>()

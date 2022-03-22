@@ -17,9 +17,7 @@
    * After modifying this field, it's recommended to run "rush update --full" so that the package manager
    * will recalculate all version selections.
    */
-  "preferredVersions": {
-    "@ts-common/iterator": "1.1.1"
-  },
+  "preferredVersions": {},
   /**
    * When set to true, for all projects in the repo, all dependencies will be automatically added as preferredVersions,
    * except in cases where different projects specify different version ranges for a given dependency.  For older

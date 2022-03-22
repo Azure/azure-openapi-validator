@@ -1,4 +1,5 @@
 import { pattern } from "../functions/pattern"
+import {operationApis } from "../functions/operationsApi"
 import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { IRuleSet } from "@microsoft.azure/openapi-validator-core"
 
@@ -20,6 +21,19 @@ export const ruleSet: IRuleSet = {
           match: ".*Password.*"
         },
         execute: pattern
+      }
+    },
+    operationsApi: {
+      id: "R4034",
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "error",
+      resolved: true,
+      given: ["$.paths"],
+      then: {
+        options: {
+        },
+        execute: operationApis
       }
     }
   }

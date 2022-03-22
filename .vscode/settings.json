@@ -13,20 +13,20 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "svipas.prettier-plus"
   },
   "files.exclude": {
     "node_modules/**": true,
     "src/**/*.js": true,
     "src/**/*.js.map": true,
     "src/**/*.d.ts": true,
-    "packages/**/*.js": true,
     "packages/**/*.js.map": true,
     "packages/**/*.d.ts": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "packages/rulesets/spectral/functions/*.js":false,
   },
   "[markdown]": {
     "editor.formatOnSave": true,
@@ -45,7 +45,4 @@
   },
   "eslint.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": [
-    "Linter"
-  ]
 }

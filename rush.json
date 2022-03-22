@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
   "rushVersion": "5.62.1",
-  "pnpmVersion": "5.18.10",
+  "pnpmVersion": "6.22.1",
   "ensureConsistentVersions": true,
   "pnpmOptions": {
-    "strictPeerDependencies": false
+    "strictPeerDependencies": true
   },
-  "nodeSupportedVersionRange": ">=14.0.0",
+  "nodeSupportedVersionRange": ">=12.0.0",
   "suppressNodeLtsWarning": true,
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 5,
@@ -22,7 +22,7 @@
     },
     {
       "packageName": "@microsoft.azure/openapi-validator",
-      "projectFolder": "packages/azure-openapi-validator/autorest-plugin"
+      "projectFolder": "packages/azure-openapi-validator/autorest"
     },
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",

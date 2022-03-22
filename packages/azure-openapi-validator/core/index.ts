@@ -8,7 +8,6 @@ export * from "./src/jsonpath"
 export * from "./src/runner"
 export * from "./src/ruleLoader"
 export * from "./src/api"
-export * from "./src/formatter"
 export * from "./src/utils"
 
 

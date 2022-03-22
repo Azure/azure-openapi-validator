@@ -109,7 +109,7 @@ export type Position = {
 }
 export interface SourceLocation {
   document: string
-  jsonPath: JsonPath
+  Position: Position
 }
 
 export type MessageSeverity = "information" | "warning" | "error" | "debug" | "verbose" | "fatal"
@@ -133,9 +133,8 @@ export interface LintResultMessage {
   code: string
   message: string
   category: string,
-  jsonpath:string,
+  jsonpath: JsonPath,
   sources?: string[]
-  location?: Position
   range?: Range
 }
 

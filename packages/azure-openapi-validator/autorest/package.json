@@ -4,7 +4,7 @@
   "description": "Azure OpenAPI Validator",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
+    "start": "node --inspect-brk ./index.js",
     "build": "tsc"
   },
   "repository": {
@@ -16,8 +16,7 @@
     "openapi",
     "swagger",
     "validation",
-    "validator",
-    "inventory"
+    "validator"
   ],
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -29,9 +28,10 @@
     "@types/js-yaml": "^3.12.4",
     "@types/jsonpath": "^0.2.0",
     "@types/node": "^14.0.13",
-    "@types/mocha": "^7.0.1",
-    "mocha": "^7.0.1",
-    "typescript": "4.6.2"
+    "@types/jest": "^27.0.6",
+    "typescript": "4.6.2",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.1.3"
   },
   "dependencies": {
     "@stoplight/spectral-core": "~1.11.1",
@@ -43,6 +43,7 @@
     "@stoplight/spectral-runtime": "^1.1.0",
     "@stoplight/json-ref-resolver": "3.1.3",
     "@stoplight/better-ajv-errors": "1.0.1",
+    "ajv": "^8.10.0",
     "@stoplight/json": "~3.17.1",
     "@stoplight/lifecycle": "2.3.2",
     "@stoplight/path": "1.3.2",
@@ -50,9 +51,9 @@
     "@stoplight/spectral-ref-resolver": "^1.0.0",
     "@stoplight/types": "12.3.0",
     "dependency-graph": "^0.11.0",
-    "@microsoft.azure/openapi-validator-core":"^1.0.0",
-    "@microsoft.azure/openapi-validator-rulesets":"^1.0.0",
-    "@azure-tools/openapi":"^3.3.0",
+    "@microsoft.azure/openapi-validator-core": "^1.0.0",
+    "@microsoft.azure/openapi-validator-rulesets": "^1.0.0",
+    "@azure-tools/openapi": "^3.3.0",
     "fs": "^0.0.1-security",
     "js-yaml": "^3.14.0",
     "jsonpath": "^1.1.1",
@@ -60,6 +61,8 @@
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
     "string.prototype.matchall": "^4.0.2",
     "vscode-jsonrpc": "^3.2.0",
-    "node-fetch": "^3.2.3"
+    "node-fetch": "^3.2.3",
+    "@azure-tools/uri": "3.1.1",
+    "tslib": "^2.3.1"
   }
 }

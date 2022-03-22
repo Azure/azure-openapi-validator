@@ -1,20 +1,19 @@
-// @ts-nocheck
 import {oas2, oas3} from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions";
 import {oas} from "@stoplight/spectral-rulesets"
-import {default as consistentresponsebody } from "./functions/consistent-response-body";
-import {default as delete204response } from "./functions/delete-204-response";
-import {default as errorresponse } from "./functions/error-response";
-import {default as hasheader } from "./functions/has-header";
-import {default as operationid } from "./functions/operation-id";
-import {default as paginationresponse } from "./functions/pagination-response";
-import {default as paramnamesunique } from "./functions/param-names-unique";
-import {default as paramnames } from "./functions/param-names";
-import {default as paramorder } from "./functions/param-order";
-import {default as patchcontenttype } from "./functions/patch-content-type";
-import {default as pathparamnames } from "./functions/path-param-names";
-import {default as pathparamschema } from "./functions/path-param-schema";
-import {default as versionpolicy } from "./functions/version-policy";
+import consistentresponsebody from "./functions/consistent-response-body";
+import delete204response from "./functions/delete-204-response";
+import errorresponse from "./functions/error-response";
+import hasheader from "./functions/has-header";
+import operationid from "./functions/operation-id";
+import paginationresponse from "./functions/pagination-response";
+import paramnamesunique from "./functions/param-names-unique";
+import paramnames from "./functions/param-names";
+import paramorder from "./functions/param-order";
+import patchcontenttype from "./functions/patch-content-type";
+import pathparamnames from "./functions/path-param-names";
+import pathparamschema from "./functions/path-param-schema";
+import versionpolicy from "./functions/version-policy";
 export { ruleset as default };
 const ruleset : any = {
   extends:[

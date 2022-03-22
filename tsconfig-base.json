@@ -3,7 +3,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "types": [
-            "node","mocha"
+            "node","jest"
         ],
         "moduleResolution": "node",
         "target": "ES2019",
@@ -20,7 +20,6 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noImplicitAny": true,
-        "diagnostics": true,
         "strictNullChecks": true,
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,

@@ -1,29 +1,27 @@
-// @ts-nocheck
-import { Message } from "./types"
 import { SwaggerInventory } from "./swaggerInventory"
 import { nodes } from "./jsonpath"
 import { IRuleLoader} from "./ruleLoader"
-import { OpenApiTypes, ValidationMessage } from "./types"
+import { OpenApiTypes, ValidationMessage,LintResultMessage } from "./types"
 import { IRule, IRuleSet } from "./types"
-import { IFormatter } from "./formatter"
-import { LintCallBack, LintOptions, LintResultMessage } from "."
+import { LintCallBack, LintOptions,  } from "./api"
 import { OpenapiDocument } from "./document"
 import { SwaggerHelper } from "./swaggerHelper"
+import {getRange,convertJsonPath} from "./utils"
 
 const isLegacyRule = (rule: IRule<any>) => {
   return rule.then.execute.name === "run"
 }
 
 export class LintRunner<T> {
-  constructor(private loader: IRuleLoader, private inventory: SwaggerInventory, private formatter: IFormatter<T>) {}
+  constructor(private loader: IRuleLoader, private inventory: SwaggerInventory) {}
 
   runRules = async (
     document: string,
     openapiDefinition: any,
-    sendMessage: (m: Message) => void,
+    sendMessage: (m: LintResultMessage) => void,
     openapiType: OpenApiTypes,
     ruleset: IRuleSet,
-    inventory?: SwaggerInventory
+    inventory: SwaggerInventory
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
     const swaggerHelper = new SwaggerHelper(openapiDefinition, document, inventory)
@@ -78,36 +76,18 @@ export class LintRunner<T> {
 
     function emitResult(ruleName: string, rule: IRule<any>, message: ValidationMessage) {
       const readableCategory = rule.category
-
-      // try to extract provider namespace and resource type
-      const path = message.location[1] === "paths" && message.location[2]
-      const pathComponents = typeof path === "string" && path.split("/")
-      const pathComponentsProviderIndex = pathComponents && pathComponents.indexOf("providers")
-      const pathComponentsTail =
-        pathComponentsProviderIndex && pathComponentsProviderIndex >= 0 && pathComponents.slice(pathComponentsProviderIndex + 1)
-      const pathComponentProviderNamespace = pathComponentsTail && pathComponentsTail[0]
-      const pathComponentResourceType = pathComponentsTail && pathComponentsTail[1]
-
-      sendMessage({
-        Channel: rule.severity,
-        Text: message.message,
-        Key: [ruleName, rule.id, readableCategory],
-        Source: [
-          {
-            document,
-            jsonPath: message.location
-          }
-        ],
-        Details: {
-          type: rule.severity,
-          code: ruleName,
-          message: message.message,
-          id: rule.id,
-          validationCategory: readableCategory,
-          providerNamespace: pathComponentProviderNamespace,
-          resourceType: pathComponentResourceType
-        }
-      })
+      const range = getRange(inventory,document,message.location)
+      const msg:LintResultMessage = {
+        id: rule.id,
+        type: rule.severity,
+        category: readableCategory,
+        message: message.message,
+        code: ruleName,
+        sources: [document],
+        jsonpath: convertJsonPath(message.location as string[]),
+        range
+      }
+      sendMessage(msg)
     }
   }
 
@@ -123,11 +103,11 @@ export class LintRunner<T> {
       specsPromises.push(this.inventory.loadDocument(spec))
     }
     const documents = (await Promise.all(specsPromises)) as OpenapiDocument[]
-    const msgs = []
-    const sendMessage = (msg: Message) => {
+    const msgs: LintResultMessage[] = []
+    const sendMessage = (msg: LintResultMessage) => {
       msgs.push(msg)
       if (cb){
-        cb(this.formatter.format(msg)[0] as unknown as LintResultMessage)
+        cb(msg)
       }
     }
     const runPromises = []
@@ -143,7 +123,7 @@ export class LintRunner<T> {
       runPromises.push(promise)
     }
     await Promise.all(runPromises)
-    return this.formatter.format(msgs)
+    return msgs
   }
 }
 

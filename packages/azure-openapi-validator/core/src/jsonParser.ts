@@ -1,6 +1,6 @@
-// @ts-nocheck
 import { findNodeAtLocation, getNodeValue, JSONPath, Node, parseTree } from "jsonc-parser"
 import { Range } from "./types"
+import {convertJsonPath} from "./utils"
 
 export interface JsonInstance {
   getLocation(path: JSONPath): Range
@@ -13,17 +13,17 @@ export interface IJsonParser {
 
 export class JsonParser implements IJsonParser {
   parse(text: string) {
-    const errors = []
+    const errors :any[] = []
     const rootNode = parseTree(text, errors, { disallowComments: true })
     if (errors.length || rootNode == undefined) {
       throw new Error("Parser failed with errors:" + JSON.stringify(errors))
     }
     return {
-      getLocation: (path: JSONPath) => {
+      getLocation: (path: string[]) => {
         // JSONPath does not include the root '$', replace number string to number
         const targetPath = [...path]
         while (targetPath.length > 0) {
-          const correctedPath = targetPath.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
+          const correctedPath = convertJsonPath(targetPath)
           const root = findNodeAtLocation(rootNode, correctedPath)
           if (root) {
             return getRange(text, root)

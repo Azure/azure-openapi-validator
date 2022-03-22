@@ -1,4 +1,4 @@
-import { ISwaggerInventory, OpenApiTypes } from "./types"
+import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
 import { nodes, stringify } from "./jsonpath"
 import _ from "lodash"
 import { readFileSync } from "fs"
@@ -89,6 +89,12 @@ export function getOpenapiType(type: string) {
     case "data-plane": {
       return OpenApiTypes.dataplane
     }
+    case "rpaas": {
+      return OpenApiTypes.rpaas
+    }
+    case "providerHub": {
+      return OpenApiTypes.rpaas
+    }
     default:
       return OpenApiTypes.default
   }
@@ -98,4 +104,16 @@ export const defaultFileSystem = {
   read:(uri:string)=>{
       return readFileSync(uri).toString()
     }
+}
+
+export function getRange(inventory:ISwaggerInventory,specPath:string,path:JsonPath) {
+  const document = inventory.getDocument(specPath)
+  if (path && path[0] === "$") {
+    path = path.slice(1)
+  }
+  return document.getPositionFromJsonPath(path)
+}
+
+export function convertJsonPath(path:string[]) {
+  return path.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
 }

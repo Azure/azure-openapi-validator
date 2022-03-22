@@ -3,10 +3,9 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { SwaggerInventory } from "./swaggerInventory"
-import {IRuleSet, LintResultMessage, OpenApiTypes, RulesObject, IFileSystem } from "./types"
+import {IRuleSet, LintResultMessage, OpenApiTypes, RulesObject, IFileSystem} from "./types"
 import _ from "lodash"
 import { LintRunner } from "./runner"
-import { JsonFormatter } from "./formatter"
 
 export type LintOptions = {
   ruleSet:IRuleSet,
@@ -23,8 +22,7 @@ export async function lint( swaggerPaths: string[],options: LintOptions,cb?:Lint
     await inventory.generateGraph(rpFolder)
   }
   const ruleLoader = { getRuleSet: () => options.ruleSet }
-  const formatter = new JsonFormatter(inventory)
-  const runner = new LintRunner(ruleLoader, inventory, formatter)
+  const runner = new LintRunner(ruleLoader, inventory)
   const msgs = await runner.execute(swaggerPaths, options,cb)
   return msgs
 }
@@ -36,6 +34,7 @@ export async function LintTester(
   fileSystem?:IFileSystem
 ): Promise<LintResultMessage[]> {
   let openapiType = OpenApiTypes.arm | OpenApiTypes.dataplane | OpenApiTypes.rpaas
+  let msgs:LintResultMessage[]
   if (ruleName) {
     const rules: RulesObject = {}
     if (!ruleSet.rules[ruleName]) {
@@ -43,8 +42,11 @@ export async function LintTester(
     }
     rules[ruleName] = ruleSet.rules[ruleName]
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
-    return await lint([sampleFilePath],{ruleSet:singleRuleSet,openapiType,fileSystem})
+    msgs = await lint([sampleFilePath],{ruleSet:singleRuleSet,openapiType,fileSystem})
   }
-  return await lint([sampleFilePath],{ruleSet,openapiType,fileSystem})
+  else {
+    msgs = await lint([sampleFilePath],{ruleSet,openapiType,fileSystem})
+  }
+  return msgs
 }
 
