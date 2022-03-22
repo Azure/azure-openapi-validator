@@ -1,16 +1,14 @@
 'use strict';
 
-var require$$0 = require('tslib');
-var require$$1 = require('@stoplight/spectral-formats');
-var require$$2 = require('@stoplight/spectral-functions');
-var require$$3 = require('@stoplight/spectral-rulesets');
+var require$$0 = require('@stoplight/spectral-formats');
+var require$$1 = require('@stoplight/spectral-functions');
+var require$$2 = require('@stoplight/spectral-rulesets');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
 var require$$1__default = /*#__PURE__*/_interopDefaultLegacy(require$$1);
 var require$$2__default = /*#__PURE__*/_interopDefaultLegacy(require$$2);
-var require$$3__default = /*#__PURE__*/_interopDefaultLegacy(require$$3);
 
 var consistentResponseBody = {};
 
@@ -772,23 +770,22 @@ exports.default = exports.versionPolicy;
 
 }(versionPolicy));
 
-const tslib_1$1 = require$$0__default["default"];
-const spectral_formats_1 = require$$1__default["default"];
-const spectral_functions_1 = require$$2__default["default"];
-const spectral_rulesets_1 = require$$3__default["default"];
-const consistent_response_body_1 = tslib_1$1.__importDefault(consistentResponseBody);
-const delete_204_response_1 = tslib_1$1.__importDefault(delete204Response$1);
-const error_response_1 = tslib_1$1.__importDefault(errorResponse$1);
-const has_header_1 = tslib_1$1.__importDefault(hasHeader$1);
-const operation_id_1 = tslib_1$1.__importDefault(operationId$1);
-const pagination_response_1 = tslib_1$1.__importDefault(paginationResponse$1);
-const param_names_unique_1 = tslib_1$1.__importDefault(paramNamesUnique$1);
-const param_names_1 = tslib_1$1.__importDefault(paramNames);
-const param_order_1 = tslib_1$1.__importDefault(paramOrder);
-const patch_content_type_1 = tslib_1$1.__importDefault(patchContentType);
-const path_param_names_1 = tslib_1$1.__importDefault(pathParamNames);
-const path_param_schema_1 = tslib_1$1.__importDefault(pathParamSchema);
-const version_policy_1 = tslib_1$1.__importDefault(versionPolicy);
+const spectral_formats_1 = require$$0__default["default"];
+const spectral_functions_1 = require$$1__default["default"];
+const spectral_rulesets_1 = require$$2__default["default"];
+const consistent_response_body_1 = __importDefault(consistentResponseBody);
+const delete_204_response_1 = __importDefault(delete204Response$1);
+const error_response_1 = __importDefault(errorResponse$1);
+const has_header_1 = __importDefault(hasHeader$1);
+const operation_id_1 = __importDefault(operationId$1);
+const pagination_response_1 = __importDefault(paginationResponse$1);
+const param_names_unique_1 = __importDefault(paramNamesUnique$1);
+const param_names_1 = __importDefault(paramNames);
+const param_order_1 = __importDefault(paramOrder);
+const patch_content_type_1 = __importDefault(patchContentType);
+const path_param_names_1 = __importDefault(pathParamNames);
+const path_param_schema_1 = __importDefault(pathParamSchema);
+const version_policy_1 = __importDefault(versionPolicy);
 const ruleset$1 = {
     extends: [
         spectral_rulesets_1.oas
@@ -1204,8 +1201,7 @@ const ruleset$1 = {
 };
 var common = ruleset$1;
 
-const tslib_1 = require$$0__default["default"];
-const common_1 = tslib_1.__importDefault(common);
+const common_1 = __importDefault(common);
 const ruleset = {
     extends: [
         common_1.default

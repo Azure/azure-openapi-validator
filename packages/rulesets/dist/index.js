@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nativeRulesets = exports.spectralRulesets = exports.spectralArmRulesetFile = exports.spectralCommonRulesetFile = void 0;
-const tslib_1 = require("tslib");
 const path_1 = require("path");
-const arm_1 = tslib_1.__importDefault(require("./native/rulesets/arm"));
-const legacy_1 = tslib_1.__importDefault(require("./native/rulesets/legacy"));
-const arm_2 = tslib_1.__importDefault(require("./spectral/arm"));
-const common_1 = tslib_1.__importDefault(require("./spectral/common"));
+const arm_1 = __importDefault(require("./native/rulesets/arm"));
+const legacy_1 = __importDefault(require("./native/rulesets/legacy"));
+const arm_2 = __importDefault(require("./spectral/arm"));
+const common_1 = __importDefault(require("./spectral/common"));
 function getRuleSetFile(filename) {
     return (0, path_1.join)(__dirname, "dist", "spectral", filename + '.js');
 }
