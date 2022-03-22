@@ -1,9 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs';
 
 export default {
-  input: ['spectral/common.js','spectral/arm.js'],
+  input: ['dist/spectral/common.js','dist/spectral/arm.js'],
   output: {
-    dir: 'spectral/js-ruleset',
+    dir: 'dist/spectral',
     format: 'cjs',
     manualChunks: () => 'function/chunk'
   },

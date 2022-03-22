@@ -1,11 +1,11 @@
-"use strict";
-const tslib_1 = require("tslib");
-const common_js_1 = tslib_1.__importDefault(require("./common.js"));
-const ruleset = {
-    extends: [
-        common_js_1.default
-    ],
-    rules: {}
-};
-module.exports = ruleset;
-//# sourceMappingURL=arm.js.map
+'use strict';
+
+require('tslib');
+var function_chunk = require('./function/chunk-e145139b.js');
+require('@stoplight/spectral-formats');
+require('@stoplight/spectral-functions');
+require('@stoplight/spectral-rulesets');
+
+
+
+module.exports = function_chunk.arm;
