@@ -1,8 +1,18 @@
 # Ignore compiled files
 src/**/*.js
-packages/**/*.js
-packages/**/*.js.map
-packages/**/*.d.ts
+packages/azure-openapi-validator/**/*.js
+packages/azure-openapi-validator/**/*.js.map
+packages/azure-openapi-validator/**/*.d.ts
+packages/rulesets/**/*.d.ts
+packages/rulesets/native/**/*.js
+packages/rulesets/native/*.d.ts
+packages/rulesets/**/*.js.map
+packages/rulesets/**/test/*.js
+packages/rulesets/**/test/*.js.map
+packages/rulesets/coverage/**/*
+packages/rulesets/**/native/**/*.js
+packages/rulesets/**/native/**/*.js.map
+
 regression/**/*.js
 regression/**/*.js.map
 src/**/*.map
@@ -24,5 +34,5 @@ src/dotnet/**/[Rr]elease/
 **/.history/
 **/common/temp/**
 **/.rush/**
-packages/**/*.log
+**/*.log
 **/*.html

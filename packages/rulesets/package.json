@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --inspect-brk ./index.js",
-    "build": "tsc && npm run rollup-spectral",
+    "build": "tsc",
     "rollup-spectral": "rollup -c ./rollup.config.js",
     "test-native": "mocha native/tests/*.js",
     "test-spectral": "jest  -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js"
