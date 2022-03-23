@@ -37,8 +37,8 @@ rules.push({
       for (const method of httpMethods) {
         const resolvedPathParameters = commonParameters
           .concat(node[apiPath][method].parameters || [])
-          .filter(x => isMethodParameter(x, doc))
-          .map(x => followReference(doc, x).name)
+          .filter((x:any) => isMethodParameter(x, doc))
+          .map((x:any) => followReference(doc, x)?.name)
         const parametersInPath = getParametersFromPath(apiPath).filter(p => resolvedPathParameters.includes(p))
         if (parametersInPath.some((value, index) => index < resolvedPathParameters.length && resolvedPathParameters[index] !== value)) {
           yield { message: msg.replace("{0}", resolvedPathParameters.join(",")), location: path.concat(apiPath, method) }

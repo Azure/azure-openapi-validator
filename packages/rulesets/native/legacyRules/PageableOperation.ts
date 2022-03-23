@@ -19,10 +19,13 @@ rules.push({
     const getKey = operations.find(key => {
       return key.toLowerCase() === "get"
     })
+    if (!getKey) {
+      return
+    }
 
-    const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc, ctx.inventory)
+    const schemaProperties = getSuccessfulResponseSchema(node[getKey], doc, ctx?.inventory)
 
-    function hasArrayProperty(schema) {
+    function hasArrayProperty(schema:any) {
       let arrayPresent = false
       Object.keys(schema).forEach(function(key) {
         if (schema[key].type === "array") {

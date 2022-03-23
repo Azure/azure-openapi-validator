@@ -1,9 +1,10 @@
 'use strict';
 
+require('tslib');
 require('@stoplight/spectral-formats');
 require('@stoplight/spectral-functions');
 require('@stoplight/spectral-rulesets');
-var chunk = require('./chunk-bc02a291.js');
+var chunk = require('./chunk-c9b12448.js');
 
 
 

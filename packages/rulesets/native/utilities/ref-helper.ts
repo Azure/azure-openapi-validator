@@ -9,7 +9,7 @@ import _ from "lodash"
  * @param inventory
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
-export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory) {
+export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
   const getRefModel = (refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
@@ -29,7 +29,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
       if (inventory && refSlices[0]) {
-        doc = inventory.getDocument(refSlices[0])
+        doc = inventory.getSingleDocument(refSlices[0])
       }
       schema = getRefModel(`#${refSlices[1]}`, [])
       return followReference(doc, schema, inventory)
@@ -52,9 +52,9 @@ export const parseJsonRef = (ref: string): string[] => {
   return ref.split("#")
 }
 
-export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj, path, context) => boolean) {
+export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj:any, path:string[], context:any) => boolean) :void{
   if (!obj) {
-    return undefined
+    return
   }
   if (visited.has(obj)) {
     return

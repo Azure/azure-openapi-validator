@@ -78,7 +78,7 @@ rules.push({
       const modelName = utils.getModelFromPath(apiPath)
       if (modelName) {
         const model = utils.getResourceByName(modelName)
-        const privateResources = utils.getPropertyOfModel(model, "value")
+        const privateResources = utils?.getPropertyOfModel(model, "value")
         if (!privateResources) {
           yield {
             message: msg.replace("{0}", modelName),

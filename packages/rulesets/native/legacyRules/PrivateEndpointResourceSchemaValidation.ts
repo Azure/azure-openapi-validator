@@ -21,27 +21,27 @@ rules.push({
     const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^\/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
     const utils = new ArmHelper(doc)
-    const swaggerUtil = ctx.utils
+    const swaggerUtil = ctx?.utils
     const apiPath = path[path.length - 1] as string
 
     const checkPrivateEndpoint = (model: any) => {
-      const properties = swaggerUtil.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil?.getPropertyOfModel(model, "properties")
       if (!properties) {
         return false
       }
       const requiredProperties = ["privateEndpoint", "privateLinkServiceConnectionState"]
-      if (requiredProperties.some(p => !swaggerUtil.getPropertyOfModel(properties, p))) {
+      if (requiredProperties.some(p => !swaggerUtil?.getPropertyOfModel(properties, p))) {
         return false
       }
       return true
     }
     const checkPrivateResources = (model: any) => {
-      const properties = swaggerUtil.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil?.getPropertyOfModel(model, "properties")
       if (!properties) {
         return false
       }
       const requiredProperties = ["groupId", "requiredMembers", "requiredZoneNames"]
-      if (requiredProperties.some(p => !swaggerUtil.getPropertyOfModel(properties, p))) {
+      if (requiredProperties.some(p => !swaggerUtil?.getPropertyOfModel(properties, p))) {
         return false
       }
       return true
@@ -52,7 +52,7 @@ rules.push({
       if (modelName) {
         const model = utils.getResourceByName(modelName)
         if (apiPath.endsWith("privateEndpointConnections")) {
-          const privateEndpoint = swaggerUtil.getPropertyOfModel(model, "value")
+          const privateEndpoint = swaggerUtil?.getPropertyOfModel(model, "value")
           if (!privateEndpoint || !privateEndpoint.items) {
             yield {
               message: msg.replace("{0}", modelName),
@@ -78,7 +78,7 @@ rules.push({
       const modelName = utils.getModelFromPath(apiPath)
       if (modelName) {
         const model = utils.getResourceByName(modelName)
-        const privateResources = utils.getPropertyOfModel(model, "value")
+        const privateResources = utils?.getPropertyOfModel(model, "value")
         if (!privateResources) {
           yield {
             message: msg.replace("{0}", modelName),

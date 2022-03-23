@@ -2,14 +2,13 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "version": "1.0.0",
   "description": "Azure OpenAPI Validator",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node --inspect-brk ./index.js",
-    "build": "tsc && npm run rollup-spectral",
+    "build": "tsc",
     "rollup-spectral": "rollup -c ./rollup.config.js",
     "test": "npm run test-spectral",
-    "test-native": "mocha native/tests/*.js",
-    "test-spectral": "jest  -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js"
+    "test-native": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.native.config.js",
+    "test-spectral": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +34,7 @@
     "@types/jsonpath": "^0.2.0",
     "@types/node": "^14.0.13",
     "@types/jest": "^27.0.6",
+    "@types/lodash": "~4.14.178",
     "eslint": "^8.11.0",
     "rollup": "^2.70.1",
     "typescript": "4.6.2",

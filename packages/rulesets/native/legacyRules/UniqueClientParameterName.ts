@@ -22,7 +22,7 @@ rules.push({
         return undefined
       }
     }
-    const checkParameterNameUnique = parameter => {
+    const checkParameterNameUnique = (parameter:any) => {
       if (parameter) {
         const ref = (parameter as any).$ref
         if (ref === undefined) {

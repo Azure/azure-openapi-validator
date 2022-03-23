@@ -27,25 +27,18 @@ module.exports = {
     },
   },
   testMatch: [
-    '**/test/*.test.ts',
-    '!**/test/**/*.d.ts',
+    '**/native/tests/*-test.ts',
+    '!**/native/tests/**/*.d.ts',
   ],
   verbose: true,
   preset: 'ts-jest', 
   collectCoverageFrom: [
-    "spectral/*.ts",
-    "spectral/functions/*.ts",
-    "!spectral/*.d.ts",
-    "!spectral/functions/*.d.ts",
   ],
   coverageThreshold: {
-    "./spectral/functions/*.ts": {
+    "native/functions/*.ts": {
       "statements": 80
     }
   },
   moduleNameMapper: {
-    "^nimma/legacy$": "<rootDir>/node_modules/nimma/dist/legacy/cjs/index.js",
-    "^nimma/(.*)": "<rootDir>/node_modules/nimma/dist/cjs/$1",
-    "^@stoplight/spectral-ruleset-bundler/(.*)$": "<rootDir>/node_modules/@stoplight/spectral-ruleset-bundler/dist/$1"
-  },
+  }
 }

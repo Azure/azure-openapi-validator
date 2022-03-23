@@ -12,9 +12,15 @@ export class SwaggerInventory implements ISwaggerInventory {
   private inventory = new DepGraph()
   private referenceCache = new Map<string, OpenapiDocument>()
   private allDocs = new Map<string, any>()
-
   constructor(private fileSystem:IFileSystem = defaultFileSystem){
+  }
 
+  public getSingleDocument(specPath: string) {
+    return this.getDocument(specPath)?.getObj()
+  }
+
+  public getDocumentContent(specPath: string) {
+    return this.getDocument(specPath)?.getContent()
   }
 
   public getDocument(specPath: string) {
@@ -29,62 +35,18 @@ export class SwaggerInventory implements ISwaggerInventory {
     return this.inventory.dependantsOf(normalizePath(specPath))
   }
 
-  public dependenciesOf(specPath: string) {
-    return this.inventory.dependenciesOf(normalizePath(specPath))
-  }
-
-  public getDocFromJsonRef(ref: string) {
-    const urlPath = normalizePath(ref)
-    if (this.referenceCache.has(urlPath)) {
-      return this.referenceCache.get(urlPath)
-    }
-    return undefined
-  }
   public getAllDocuments(): Map<string, any> {
       return this.allDocs
   }
 
-  public async scanFolder(folderPath: string, options: any) {
-    const specPaths: string[] = glob.sync(path.join(folderPath, "**/*.json"), {
-      ignore: ["**/examples/**/*.json"]
-    })
-    for (const spec of specPaths) {
-      const simpleSpec = normalizePath(spec)
-      this.createIfNotExists(simpleSpec)
-
-      const refs = await this.getReferences(spec)
-      for (const ref of refs) {
-        if (options.ignoreCommonType && this.isCommonTypes(ref)) {
-          continue
-        }
-        const simpleRef = normalizePath(ref)
-        this.createIfNotExists(simpleRef)
-
-        if (simpleRef !== simpleSpec) {
-          this.inventory.addDependency(simpleSpec, simpleRef)
-        }
-      }
-    }
+  private dependenciesOf(specPath: string) {
+    return this.inventory.dependenciesOf(normalizePath(specPath))
   }
 
-  isCommonTypes(specPath: string) {
-    return specPath.match(/.*common-types[\\|\/]resource\-management[\\|\/]v\d[\\|\/].+\.json$/)
-  }
-
-  createIfNotExists(node: string) {
+  private createIfNotExists(node: string) {
     if (!this.inventory.hasNode(node)) {
       this.inventory.addNode(node)
     }
-  }
-
-  getApiVersion(fullPath: string) {
-    const segments = fullPath.split(/\\|\//)
-    return segments[segments.length - 2]
-  }
-
-  public async generateGraph(folderPath: string) {
-    const options = { ignoreCommonType: false, outputReadmeGraph: true }
-    await this.scanFolder(folderPath, options)
   }
 
   private async getReferences(specPath: string): Promise<string[]> {
@@ -94,10 +56,11 @@ export class SwaggerInventory implements ISwaggerInventory {
 
   async loadDocument(specPath: string) {
     const urlPath = normalizePath(specPath)
-    if (this.referenceCache.has(urlPath)) {
-      return this.referenceCache.get(urlPath)
+    let cache = this.referenceCache.get(urlPath)
+    if (cache) {
+      return cache
     }
-    const cache = await this.cacheDocument(urlPath)
+    cache = await this.cacheDocument(urlPath)
     const references = cache.getReferences()
     const promises = []
     for (const ref of references) {

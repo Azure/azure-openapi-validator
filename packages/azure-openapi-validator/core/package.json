@@ -2,9 +2,8 @@
   "name": "@microsoft.azure/openapi-validator-core",
   "version": "1.0.0",
   "description": "Azure OpenAPI Validator",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node ./index.js",
     "build": "tsc",
     "test": "npm run build && jest"
   },
@@ -51,10 +50,5 @@
     "@azure-tools/openapi": "^3.3.0",
     "@azure-tools/uri": "3.1.1",
     "tslib": "^2.3.1"
-  },
-  "jest": {
-    "testMatch": [
-      "**/tests/*.test.js"
-    ]
   }
 }

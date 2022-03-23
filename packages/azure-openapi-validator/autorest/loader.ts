@@ -6,11 +6,11 @@ export async function getRuleSet(openapiType:OpenApiTypes) {
   let rulesetFile 
   switch(openapiType) {
     case OpenApiTypes.arm :{
-      rulesetFile = spectralRulesets.spectralArmRulesetFile()
+      rulesetFile = spectralRulesets.spectralArmRulesetFile
       break;
     }
     default: {
-      rulesetFile = spectralRulesets.spectralCommonRulesetFile()
+      rulesetFile = spectralRulesets.spectralCommonRulesetFile
     }
   }
 

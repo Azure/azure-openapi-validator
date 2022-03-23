@@ -23,23 +23,24 @@ rules.push({
     const operationsApi = utils.getOperationApi()
     if (operationsApi && operationsApi[1]) {
       let isValid = true
-      const value = utils.getPropertyOfModelName(operationsApi[1], "value")
-      if (value && value.items && value.items.$ref) {
-        const operationsItems = utils.stripDefinitionPath(value.items.$ref)
-        const name = utils.getPropertyOfModelName(operationsItems, "name")
-        const display = utils.getPropertyOfModelName(operationsItems, "display")
-        const isDataAction = utils.getPropertyOfModelName(operationsItems, "isDataAction")
+      const value = utils?.getPropertyOfModelName(operationsApi[1], "value")
+      const operationsItems = utils.stripDefinitionPath(value?.items?.$ref)
+      if (value && value.items && value.items.$ref && operationsItems) {
+        const name = utils?.getPropertyOfModelName(operationsItems, "name")
+        const display = utils?.getPropertyOfModelName(operationsItems, "display")
+        const isDataAction = utils?.getPropertyOfModelName(operationsItems, "isDataAction")
         if (!name || !isDataAction || !display) {
           isValid = false
         } else {
-          if (["description", "provider", "operation", "resource"].some(e => !utils.getPropertyOfModel(display, e))) {
+          if (["description", "provider", "operation", "resource"].some(e => !utils?.getPropertyOfModel(display, e))) {
             isValid = false
           }
         }
+        
       } else {
         isValid = false
       }
-      if (!isValid) {
+      if (!isValid && operationsApi[0]) {
         yield {
           message: msg.replace("{0}", operationsApi[0]),
           location: ["$", "paths", operationsApi[0]]

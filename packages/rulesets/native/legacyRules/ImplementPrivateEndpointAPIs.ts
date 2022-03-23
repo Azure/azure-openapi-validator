@@ -1,7 +1,5 @@
-import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
-import { ArmHelper } from "../utilities/armHelper"
 export const ImplementPrivateEndpointAPIs = "ImplementPrivateEndpointAPIs"
 
 rules.push({

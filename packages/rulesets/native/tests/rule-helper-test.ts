@@ -1,5 +1,4 @@
 import * as assert from "assert"
-import { suite, test } from "mocha-typescript"
 import {
   getAllResourceProvidersFromPath,
   getAllWordsFromPath,
@@ -9,9 +8,8 @@ import {
   transformEnum
 } from "../utilities/rules-helper"
 
-@suite
-class RuleHelperTests {
-  @test public "get all resource providers from path"() {
+describe("RuleHelperTests" ,()=> {
+ test("get all resource providers from path",()=>{
     let path = "/providers/Microsoft.Cache/xxxx/abc/providers/Microsoft.Computer"
     let res = getAllResourceProvidersFromPath(path)
     assert.deepEqual(res, ["Microsoft.Cache", "Microsoft.Computer"])
@@ -19,9 +17,9 @@ class RuleHelperTests {
     path = "/abc/def"
     res = getAllResourceProvidersFromPath(path)
     assert.equal(res.length, 0)
-  }
+  })
 
-  @test public "get all words from path"() {
+ test("get all words from path",()=>{
     let path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.cache/redis/{name}"
 
     let res = getAllWordsFromPath(path)
@@ -52,9 +50,9 @@ class RuleHelperTests {
       "virtualWans",
       "VirtualWANName"
     ])
-  }
+  })
 
-  @test public "resource provider must pascal case"() {
+ test("resource provider must pascal case",()=>{
     assert.equal(resourceProviderMustPascalCase("Microsoft.Network"), true)
     assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsight"), true)
     assert.equal(resourceProviderMustPascalCase("Microsoft.Computer"), true)
@@ -72,9 +70,9 @@ class RuleHelperTests {
     assert.equal(resourceProviderMustPascalCase("microsoft.Visual"), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft.HDDInsightDB"), false)
     assert.equal(resourceProviderMustPascalCase("Microsoft.SQL"), false)
-  }
+  })
 
-  @test public "resource type must camel case"() {
+ test("resource type must camel case",()=>{
     assert.equal(resourceTypeMustCamelCase("cache"), true)
     assert.equal(resourceTypeMustCamelCase("deepEqual"), true)
     assert.equal(resourceTypeMustCamelCase("azureHDInsight"), true)
@@ -86,9 +84,9 @@ class RuleHelperTests {
     assert.equal(resourceTypeMustCamelCase(".ache"), false)
     assert.equal(resourceTypeMustCamelCase("Cach e"), false)
     assert.equal(resourceTypeMustCamelCase("Cach#e"), false)
-  }
+  })
 
-  @test public "test enum helper"() {
+ test("test enum helper",()=>{
     let enumA = `{
         "description": "The provisioning state of the configuration store.",
         "enum": [
@@ -149,11 +147,11 @@ class RuleHelperTests {
     }`
     const enumObj1 = JSON.parse(enumA)
     assert.deepEqual(transformEnum(enumObj1.type, enumObj1.enum), ["1", "2"])
-  }
+  })
 
-  @test public "regex test"() {
+ test("regex test",()=>{
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndPointConnections"), true)
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndpointconnections"), true)
-  }
-}
+  })
+})

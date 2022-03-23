@@ -29,6 +29,7 @@
         "removeComments": true,
         "skipLibCheck": false,
         "noEmitHelpers": true,
+        "importHelpers": true,
         "skipDefaultLibCheck": true,
         "allowJs": false,
     },

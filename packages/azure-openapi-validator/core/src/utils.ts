@@ -1,8 +1,8 @@
 import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
+import { SwaggerInventory } from "./swaggerInventory";
 import { nodes, stringify } from "./jsonpath"
 import _ from "lodash"
-import { readFileSync } from "fs"
-import { resolveUri } from "@azure-tools/uri";
+import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
 /**
  *
  * @param doc
@@ -30,7 +30,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
       if (inventory && refSlices[0]) {
-        doc = inventory.getDocument(refSlices[0]).getObj()
+        doc = inventory.getSingleDocument(refSlices[0])
       }
       schema = getRefModel(`#${refSlices[1]}`, [])
       return followReference(doc, schema, inventory)
@@ -45,7 +45,10 @@ export function isUriAbsolute(url:string) {
 }
 
 export const normalizePath = (path: string) => {
-   return resolveUri(path,"")
+  if (isUriAbsolute(path)) {
+    return path
+  }
+  return createFileOrFolderUri(path)
 }
 
 export const parseJsonRef = (ref: string): string[] => {
@@ -101,17 +104,17 @@ export function getOpenapiType(type: string) {
 }
 
 export const defaultFileSystem = {
-  read:(uri:string)=>{
-      return readFileSync(uri).toString()
+  read:async (uri:string)=>{
+      return await readUri(uri)
     }
 }
 
-export function getRange(inventory:ISwaggerInventory,specPath:string,path:JsonPath) {
+export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPath) {
   const document = inventory.getDocument(specPath)
   if (path && path[0] === "$") {
     path = path.slice(1)
   }
-  return document.getPositionFromJsonPath(path)
+  return document?.getPositionFromJsonPath(path)
 }
 
 export function convertJsonPath(path:string[]) {

@@ -24,7 +24,7 @@ rules.push({
     const allCollectionPath = utils.getCollectionApiInfo()
     for (const collection of allCollectionPath) {
       let hasMatched = false
-      const modelValue = utils.getPropertyOfModelName(collection.modelName, "value")
+      const modelValue = utils?.getPropertyOfModelName(collection.modelName, "value")
       if (modelValue) {
         hasMatched = utils.verifyCollectionModel(modelValue, collection.childModelName)
       }

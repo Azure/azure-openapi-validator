@@ -26,8 +26,11 @@ rules.push({
     const keys: NodePath[] = []
     keys.push({ node, path })
 
-    while (keys.length) {
+    while (true) {
       const tail = keys.pop()
+      if (!tail) {
+        break
+      }
       const node = tail.node
       const path = tail.path
 
@@ -47,7 +50,7 @@ rules.push({
         keys.push({ node: node.items, path: path.concat(["items"]) })
       }
       if (node.allOf && Array.isArray(node.allOf)) {
-        node.allOf.forEach((element, index) => {
+        node.allOf.forEach((element:any, index:number) => {
           keys.push({ node: element, path: path.concat(["allOf", index]) })
         })
       }

@@ -82,7 +82,7 @@ export type IRuleFunction<T> = (
 
 export interface ISwaggerInventory {
   referencesOf(specPath: string): string[],
-  getDocument(specPath: string):any
+  getSingleDocument(specPath: string):any
   getAllDocuments(): Map<string,any>
 }
 

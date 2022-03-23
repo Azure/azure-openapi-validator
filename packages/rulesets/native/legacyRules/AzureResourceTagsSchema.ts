@@ -21,7 +21,7 @@ rules.push({
     const utils = new ArmHelper(doc)
     const allResources = utils.getAllResourceNames()
     for (const resourceName of allResources) {
-      const tagSchema = utils.getPropertyOfModelName(resourceName, "tags")
+      const tagSchema = utils?.getPropertyOfModelName(resourceName, "tags")
       if (tagSchema && (!tagSchema.additionalProperties || tagSchema.additionalProperties.type !== "string")) {
         yield {
           message: msg.replace("{0}", resourceName),

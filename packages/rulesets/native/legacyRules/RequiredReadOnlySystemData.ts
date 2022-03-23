@@ -23,8 +23,8 @@ rules.push({
         // not a new Api Version
         return
       }
-      const utils = new ArmHelper(doc, ctx.specPath, ctx.inventory)
-      const swaggerUtil = ctx.utils
+      const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
+      const swaggerUtil = ctx?.utils
       const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions
@@ -43,8 +43,8 @@ rules.push({
               }
               const toValidateModelName = utils.stripDefinitionPath(toValidateSchema.$ref)
               // Needs to check if it's a resource first.
-              if (allResources.includes(toValidateModelName)) {
-                const systemData = swaggerUtil.getPropertyOfModelName(toValidateModelName, "systemData")
+              if (toValidateModelName && allResources.includes(toValidateModelName)) {
+                const systemData = swaggerUtil?.getPropertyOfModelName(toValidateModelName, "systemData")
                 if (!systemData) {
                   hasSystemData = false
                   break

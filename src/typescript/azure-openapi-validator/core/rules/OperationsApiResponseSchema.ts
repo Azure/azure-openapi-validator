@@ -25,16 +25,16 @@ rules.push({
     const operationsApi = utils.getOperationApi()
     if (operationsApi && operationsApi[1]) {
       let isValid = true
-      const value = utils.getPropertyOfModelName(operationsApi[1], "value")
+      const value = utils?.getPropertyOfModelName(operationsApi[1], "value")
       if (value && value.items && value.items.$ref) {
         const operationsItems = utils.stripDefinitionPath(value.items.$ref)
-        const name = utils.getPropertyOfModelName(operationsItems, "name")
-        const display = utils.getPropertyOfModelName(operationsItems, "display")
-        const isDataAction = utils.getPropertyOfModelName(operationsItems, "isDataAction")
+        const name = utils?.getPropertyOfModelName(operationsItems, "name")
+        const display = utils?.getPropertyOfModelName(operationsItems, "display")
+        const isDataAction = utils?.getPropertyOfModelName(operationsItems, "isDataAction")
         if (!name || !isDataAction || !display) {
           isValid = false
         } else {
-          if (["description", "provider", "operation", "resource"].some(e => !utils.getPropertyOfModel(display, e))) {
+          if (["description", "provider", "operation", "resource"].some(e => !utils?.getPropertyOfModel(display, e))) {
             isValid = false
           }
         }

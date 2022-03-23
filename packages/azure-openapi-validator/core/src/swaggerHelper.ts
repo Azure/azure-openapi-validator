@@ -86,7 +86,7 @@ export class SwaggerHelper implements ISwaggerHelper {
             if (isExample(file.url)) {
               return ""
             }
-            return inventory?.getDocument(file.url).getObj()
+            return inventory?.getSingleDocument(file.url)
           }
         }
       }

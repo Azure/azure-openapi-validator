@@ -1,18 +1,16 @@
 import * as assert from "assert"
-import { suite, test } from "mocha-typescript"
 import { ArmHelper } from "../utilities/armHelper"
 import { SwaggerHelper } from "../utilities/swaggerHelper"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
-@suite
-class ArmHelperTests {
-  @test public async "test contain containsDiscriminator"() {
+describe("ArmHelperTests",()=> {
+  test("test contain containsDiscriminator",async ()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/security.json"))
     const util = new ArmHelper(swagger)
     assert.equal(util.containsDiscriminator("DataExportSettings"), true)
-  }
+  })
 
-  @test public async "test resource utils"() {
+  test("test resource utils",async ()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/compute.json"))
     const util = new ArmHelper(swagger)
     const allNestedResource = util.getAllNestedResources()
@@ -26,11 +24,11 @@ class ArmHelperTests {
     assert.equal(allOfResource.length, 41)
     assert.equal(allCollectionInfo.length, 22)
     assert.equal(allCollectionModel.size, 21)
-  }
+  })
 
-  @test public "test get properties"() {
+ test("test get properties",async ()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
-    const util = new SwaggerHelper(swagger, null)
+    const util = new SwaggerHelper(swagger, undefined)
     const bar = util.getDefinitionByName("A")
     assert.deepEqual(
       {
@@ -46,5 +44,5 @@ class ArmHelperTests {
       },
       util.getPropertyOfModel(foo, "display")
     )
-  }
-}
+  })
+})

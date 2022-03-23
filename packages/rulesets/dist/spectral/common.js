@@ -1,20 +1,21 @@
 "use strict";
+const tslib_1 = require("tslib");
 const spectral_formats_1 = require("@stoplight/spectral-formats");
 const spectral_functions_1 = require("@stoplight/spectral-functions");
 const spectral_rulesets_1 = require("@stoplight/spectral-rulesets");
-const consistent_response_body_1 = __importDefault(require("./functions/consistent-response-body"));
-const delete_204_response_1 = __importDefault(require("./functions/delete-204-response"));
-const error_response_1 = __importDefault(require("./functions/error-response"));
-const has_header_1 = __importDefault(require("./functions/has-header"));
-const operation_id_1 = __importDefault(require("./functions/operation-id"));
-const pagination_response_1 = __importDefault(require("./functions/pagination-response"));
-const param_names_unique_1 = __importDefault(require("./functions/param-names-unique"));
-const param_names_1 = __importDefault(require("./functions/param-names"));
-const param_order_1 = __importDefault(require("./functions/param-order"));
-const patch_content_type_1 = __importDefault(require("./functions/patch-content-type"));
-const path_param_names_1 = __importDefault(require("./functions/path-param-names"));
-const path_param_schema_1 = __importDefault(require("./functions/path-param-schema"));
-const version_policy_1 = __importDefault(require("./functions/version-policy"));
+const consistent_response_body_1 = tslib_1.__importDefault(require("./functions/consistent-response-body"));
+const delete_204_response_1 = tslib_1.__importDefault(require("./functions/delete-204-response"));
+const error_response_1 = tslib_1.__importDefault(require("./functions/error-response"));
+const has_header_1 = tslib_1.__importDefault(require("./functions/has-header"));
+const operation_id_1 = tslib_1.__importDefault(require("./functions/operation-id"));
+const pagination_response_1 = tslib_1.__importDefault(require("./functions/pagination-response"));
+const param_names_unique_1 = tslib_1.__importDefault(require("./functions/param-names-unique"));
+const param_names_1 = tslib_1.__importDefault(require("./functions/param-names"));
+const param_order_1 = tslib_1.__importDefault(require("./functions/param-order"));
+const patch_content_type_1 = tslib_1.__importDefault(require("./functions/patch-content-type"));
+const path_param_names_1 = tslib_1.__importDefault(require("./functions/path-param-names"));
+const path_param_schema_1 = tslib_1.__importDefault(require("./functions/path-param-schema"));
+const version_policy_1 = tslib_1.__importDefault(require("./functions/version-policy"));
 const ruleset = {
     extends: [
         spectral_rulesets_1.oas

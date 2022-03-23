@@ -13,7 +13,7 @@ export interface CollectionApiInfo {
   specificGetPath: string[]
 }
 
-function* jsonPathIt(doc, jsonPath: string): Iterable<any> {
+function* jsonPathIt(doc:any, jsonPath: string): Iterable<any> {
   if (doc) {
     for (const node of nodes(doc, jsonPath)) {
       yield node.value
@@ -22,8 +22,9 @@ function* jsonPathIt(doc, jsonPath: string): Iterable<any> {
 }
 
 function addToMap(map: Map<string, string[]>, key: string, value: string) {
-  if (map.has(key)) {
-    map.set(key, map.get(key).concat(value))
+  const pre = map.get(key)
+  if (pre) {
+    map.set(key, pre.concat(value))
   } else {
     map.set(key, [value])
   }
@@ -51,9 +52,9 @@ export class ArmHelper {
     this.swaggerUtil = new SwaggerHelper(this.innerDoc, this.specPath, this.inventory)
   }
 
-  private getSpecificOperationModels(httpMethod, code) {
+  private getSpecificOperationModels(httpMethod:string, code:string) {
     const models: Map<string, string[]> = new Map<string, string[]>()
-    const getModel = node => {
+    const getModel = (node:any) => {
       if (node && node.value) {
         const response = node.value
         if (response.schema && response.schema.$ref) {
@@ -127,7 +128,7 @@ export class ArmHelper {
     return false
   }
 
-  public stripDefinitionPath(reference: string) {
+  public stripDefinitionPath(reference: string | undefined) {
     const refPrefix = "#/definitions/"
     if (!reference) {
       return undefined
@@ -136,6 +137,7 @@ export class ArmHelper {
     if (index !== -1) {
       return reference.substr(index + refPrefix.length)
     }
+    return undefined
   }
 
   /**
@@ -189,6 +191,7 @@ export class ArmHelper {
             nestedModels.add(entry[0])
             return true
           }
+          return false
         })
     }
     return nestedModels
@@ -213,6 +216,7 @@ export class ArmHelper {
             topLevelModels.add(entry[0])
             return true
           }
+          return false
         })
     }
     return topLevelModels
@@ -224,13 +228,14 @@ export class ArmHelper {
     for (const entry of fullModels.entries()) {
       const paths = entry[1]
       paths
-        .filter(p => this.isPathByResourceGroup(p))
-        .some(p => {
+        .filter((p:string) => this.isPathByResourceGroup(p))
+        .some((p:string) => {
           const hierarchy = this.getResourcesTypeHierarchy(p)
           if (hierarchy.length === 1) {
             topLevelModels.add(entry[0])
             return true
           }
+          return false
         })
     }
     return topLevelModels
@@ -247,6 +252,7 @@ export class ArmHelper {
           resources.add(entry[0])
           return true
         }
+        return false
       })
     }
     return resources.values()
@@ -291,18 +297,20 @@ export class ArmHelper {
    * @param modelName
    */
   private getResourceHierarchy(modelName: string) {
-    let hierarchy = []
+    let hierarchy :string[]= []
     const model = this.getResourceByName(modelName)
     if (!model) {
       return hierarchy
     }
     for (const refs of jsonPathIt(model, `$.allOf`)) {
       refs
-        .filter(ref => !!ref.$ref)
-        .forEach(ref => {
+        .filter((ref:any) => !!ref.$ref)
+        .forEach((ref:any) => {
           const allOfModel = this.stripDefinitionPath(ref.$ref)
-          hierarchy.push(allOfModel)
-          hierarchy = hierarchy.concat(this.getResourceHierarchy(allOfModel))
+          if (allOfModel) {
+            hierarchy.push(allOfModel)
+            hierarchy = hierarchy.concat(this.getResourceHierarchy(allOfModel))
+          }
         })
     }
     return hierarchy
@@ -390,8 +398,8 @@ export class ArmHelper {
       if (getOperationModels.has(resource[1])) {
         const index = collectionApis.findIndex(e => e.modelName === resource[1])
         const collectionInfo = {
-          specificGetPath: getOperationModels.get(resource[0]),
-          collectionGetPath: getOperationModels.get(resource[1]),
+          specificGetPath: getOperationModels.get(resource[0]) || [],
+          collectionGetPath: getOperationModels.get(resource[1])|| [],
           modelName: resource[1],
           childModelName: resource[0]
         }
@@ -417,15 +425,15 @@ export class ArmHelper {
       for (const arrayNode of nodes(resourceNode.value, "$..[?(@property === 'type' && @ === 'array')]^")) {
         const arrayObj = arrayNode.value
         const items = arrayObj?.items
+        const res = this.stripDefinitionPath(items?.$ref)
         if (
-          items &&
-          items.$ref &&
-          resourceModel.has(this.stripDefinitionPath(items.$ref)) &&
+          res &&
+          resourceModel.has(res) &&
           arrayNode.path.length === 3 &&
           arrayNode.path[1] === "properties" &&
           arrayNode.path[2] === "value"
         ) {
-          resourceCollectMap.set(this.stripDefinitionPath(items.$ref), resourceNode.path[2] as string)
+          resourceCollectMap.set(res, resourceNode.path[2] as string)
         }
       }
     }
@@ -443,8 +451,8 @@ export class ArmHelper {
         const items = arrayObj?.items
         if (items && items.$ref) {
           const itemsModel = this.stripDefinitionPath(items.$ref)
-          if (allResources.indexOf(itemsModel) !== -1) {
-            collectionModels.set(resourceNode.path[2] as string, this.stripDefinitionPath(items.$ref))
+          if (itemsModel && allResources.indexOf(itemsModel) !== -1) {
+            collectionModels.set(resourceNode.path[2] as string, itemsModel)
           }
         }
       }
@@ -471,8 +479,9 @@ export class ArmHelper {
       pathObj = this.innerDoc["x-ms-paths"][path]
     }
     if (pathObj && pathObj.get && pathObj.get.responses["200"]) {
-      return this.stripDefinitionPath(pathObj.get.responses["200"]?.schema?.$ref)
+      return this.stripDefinitionPath(pathObj.get.responses["200"]?.schema?.$ref) || ""
     }
+    return ""
   }
 
   public getOperationIdFromPath(path: string, code = "get") {
@@ -497,7 +506,7 @@ export class ArmHelper {
    *  }
    * }
    */
-  public verifyCollectionModel(collectionModel, childModelName: string) {
+  public verifyCollectionModel(collectionModel:any, childModelName: string) {
     if (collectionModel) {
       if (collectionModel.type === "array" && collectionModel.items) {
         const itemsRef = collectionModel.items.$ref
@@ -506,6 +515,7 @@ export class ArmHelper {
         }
       }
     }
+    return false
   }
 
   public getPropertyOfModel(schema: any, property: string) {

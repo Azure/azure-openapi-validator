@@ -6827,7 +6827,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-MY/q94Q5x3vFvCCN2SYjYr5ZYdE3xupQpiHCgljkgOcVXKb6Hk69nPSEGGhK6ptxOg/+GeQpjJXiJ7+zBW2SVA==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-BX4L0VbnjgnWmTCo6An320IdY/B5tvTVoL29VVyDZlMBVoOtHpIOMj8vAEnJf3qqJNfDZvnga/G9YYJ82gdyfA==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -6843,6 +6843,7 @@ packages:
       '@types/jest': 27.4.1
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
+      '@types/lodash': 4.14.180
       '@types/node': 14.18.12
       ajv: 8.10.0
       eslint: 8.11.0

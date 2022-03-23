@@ -24,22 +24,24 @@ rules.push({
     const postKey = keys.find(key => {
       return key.toLowerCase() === "post"
     })
-    const operationId = node[postKey].operationId
-    // operationIds are of the form Noun_Verb, get hold of the verb so we can perform
-    // the check
-    // check if we have an operation id without the verb at the end of the url
-    // if not, this should be a violation
-    if (
-      operationId &&
-      operationId
-        .toLowerCase()
-        .split("_")
-        .pop()
-        .indexOf(urlVerb) === -1
-    ) {
-      yield {
-        message: `OperationId should contain the verb: '${urlVerb}' in:'${operationId}'. Consider updating the operationId`,
-        location: path.concat(postKey).concat("operationId")
+    if (postKey) {
+      const operationId = node[postKey].operationId
+      // operationIds are of the form Noun_Verb, get hold of the verb so we can perform
+      // the check
+      // check if we have an operation id without the verb at the end of the url
+      // if not, this should be a violation
+      if (
+        operationId &&
+        operationId
+          .toLowerCase()
+          .split("_")
+          .pop()
+          .indexOf(urlVerb) === -1
+      ) {
+        yield {
+          message: `OperationId should contain the verb: '${urlVerb}' in:'${operationId}'. Consider updating the operationId`,
+          location: path.concat(postKey).concat("operationId")
+        }
       }
     }
   }

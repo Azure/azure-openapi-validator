@@ -13,8 +13,9 @@ rules.push({
     const msg = `The model name {0} is duplicated with {1} .`
     const models = new Map<string, string>()
     for (const key of Object.keys(node)) {
-      if (models.has(key.toLowerCase())) {
-        yield { message: msg.replace("{0}", key).replace("{1}", models.get(key.toLowerCase())), location: path.concat(key) }
+      const model = models.get(key.toLowerCase())
+      if (model) {
+        yield { message: msg.replace("{0}", key).replace("{1}",model), location: path.concat(key) }
       } else {
         models.set(key.toLowerCase(), key)
       }

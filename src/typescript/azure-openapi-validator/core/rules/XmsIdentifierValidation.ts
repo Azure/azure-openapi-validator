@@ -28,7 +28,7 @@ rules.push({
       const pathExpression = identifier.replace(/^\//, "").split("/")
       let item = items
       for (const key of pathExpression) {
-        item = utils.getPropertyOfModel(item, key)
+        item = utils?.getPropertyOfModel(item, key)
         if (item === undefined) {
           yield { message: `Missing identifier ${identifier} in array item property`, location: path }
           break

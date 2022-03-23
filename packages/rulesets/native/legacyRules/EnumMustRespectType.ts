@@ -18,7 +18,7 @@ rules.push({
     const msg = `Enum values should respect the type.`
     if (node.enum && isValidEnum(node)) {
       if (
-        node.enum.some(value => {
+        node.enum.some((value:any) => {
           if (node.type === "integer") {
             return !Number.isInteger(value)
           }

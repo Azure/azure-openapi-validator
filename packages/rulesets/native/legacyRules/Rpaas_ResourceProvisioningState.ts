@@ -17,15 +17,15 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path, ctx) {
     const msg = `[RPaaS] The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
-    const utils = new ArmHelper(doc, ctx.specPath, ctx.inventory)
-    const swaggerUtil = ctx.utils
+    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
+    const swaggerUtil = ctx?.utils
     const allResources = utils.getAllResource()
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)
-      const properties = swaggerUtil.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil?.getPropertyOfModel(model, "properties")
       let hasProvisioningState = false
       if (properties && (!properties.type || properties.type === "object")) {
-        if (swaggerUtil.getPropertyOfModel(properties, "provisioningState")) {
+        if (swaggerUtil?.getPropertyOfModel(properties, "provisioningState")) {
           hasProvisioningState = true
         }
       }

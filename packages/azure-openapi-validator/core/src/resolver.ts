@@ -23,7 +23,6 @@ const updateFileRefs = (node: any, path: string[], ctx: any) =>{
     if (slices.length === 2 && slices[0] && !isUriAbsolute(slices[0])) {
       const referenceFile = resolveUri(ctx.currentFile,slices[0])
       node.$ref = referenceFile + `#${slices[1]}`
-
       if (!isExample(referenceFile)) ctx.references.add(referenceFile)
     }
     return false

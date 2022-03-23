@@ -17,10 +17,10 @@ rules.push({
     if (node.type !== "array") {
       return
     }
-    const utils = ctx.utils
+    const utils = ctx?.utils
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
-    const items = await utils.resolveSchema(node.items)
-    if (items.type && items.type !== "object") {
+    const items = await utils?.resolveSchema(node.items)
+    if (items && items.type && items.type !== "object") {
       return
     }
 
@@ -28,7 +28,7 @@ rules.push({
       const pathExpression = identifier.replace(/^\//, "").split("/")
       let item = items
       for (const key of pathExpression) {
-        item = utils.getPropertyOfModel(item, key)
+        item = utils?.getPropertyOfModel(item, key)
         if (item === undefined) {
           yield { message: `Missing identifier ${identifier} in array item property`, location: path }
           break

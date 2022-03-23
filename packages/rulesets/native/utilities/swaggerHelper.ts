@@ -17,6 +17,10 @@ export class SwaggerHelper {
     }
   }
 
+  public getSpecPath() {
+    return this.specPath
+  }
+
   public getDefinitionByName(modelName: string) {
     if (!modelName) {
       return undefined
@@ -35,7 +39,7 @@ export class SwaggerHelper {
     return this.getPropertyOfModel(model, propertyName)
   }
 
-  public getPropertyOfModel(sourceModel: any, propertyName: string) {
+  public getPropertyOfModel(sourceModel: any, propertyName: string):any {
     if (!sourceModel) {
       return undefined
     }
@@ -51,7 +55,7 @@ export class SwaggerHelper {
     }
     if (model.allOf) {
       for (const element of model.allOf) {
-        const property = this.getPropertyOfModel(element, propertyName)
+        const property:any = this.getPropertyOfModel(element, propertyName)
         if (property) {
           return property
         }
@@ -78,7 +82,7 @@ export class SwaggerHelper {
             if (isExample(file.url)) {
               return ""
             }
-            return inventory.getDocument(file.url)
+            return inventory?.getSingleDocument(file.url)
           }
         }
       }

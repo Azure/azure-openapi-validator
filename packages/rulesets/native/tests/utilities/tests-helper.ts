@@ -19,6 +19,7 @@ function getRule(name:string) {
       rule = ruleset.rules[name]
       return false
     }
+    return true
   })
   return rule
 }

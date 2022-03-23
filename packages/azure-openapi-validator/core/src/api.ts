@@ -10,17 +10,12 @@ import { LintRunner } from "./runner"
 export type LintOptions = {
   ruleSet:IRuleSet,
   openapiType: OpenApiTypes
-  rpFolder?: string
   fileSystem?:IFileSystem
 }
 export type LintCallBack = (msg:LintResultMessage)=>void
 
 export async function lint( swaggerPaths: string[],options: LintOptions,cb?:LintCallBack):Promise<LintResultMessage[]> {
   const inventory = new SwaggerInventory(options?.fileSystem)
-  const rpFolder = options?.rpFolder
-  if (rpFolder) {
-    await inventory.generateGraph(rpFolder)
-  }
   const ruleLoader = { getRuleSet: () => options.ruleSet }
   const runner = new LintRunner(ruleLoader, inventory)
   const msgs = await runner.execute(swaggerPaths, options,cb)

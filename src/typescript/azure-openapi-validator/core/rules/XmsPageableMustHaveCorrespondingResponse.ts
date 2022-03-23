@@ -28,7 +28,7 @@ rules.push({
       const schemaPath = path.concat(["responses", mostSuccesskey, "schema"]) as string[]
       const resolvedSchema = getResolvedSchemaByPath(doc, schemaPath as string[], ctx.graph)
       const utils = ctx.utils
-      if (resolvedSchema && !utils.getPropertyOfModel(resolvedSchema, nextLinkValue)) {
+      if (resolvedSchema && !utils?.getPropertyOfModel(resolvedSchema, nextLinkValue)) {
         yield { message: `${msg}`, location: path }
       }
     }

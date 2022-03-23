@@ -2,7 +2,7 @@ import * as JSONPath from "jsonpath-plus"
 
 export function nodes(obj: any, pathExpression: string) {
   const result = JSONPath.JSONPath({ json: obj, path: pathExpression, resultType: "all" })
-  return result.map(v => ({ path: JSONPath.JSONPath.toPathArray(v.path), value: v.value, parent: v.parent }))
+  return result.map((v:any) => ({ path: JSONPath.JSONPath.toPathArray(v.path), value: v.value, parent: v.parent }))
 }
 
 export function stringify(path: string[]) {

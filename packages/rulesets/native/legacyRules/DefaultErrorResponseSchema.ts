@@ -27,10 +27,10 @@ rules.push({
 
       const utils = ctx?.utils
       if (schema) {
-        const errorDefinition = utils.getPropertyOfModel(schema, "error")
+        const errorDefinition = utils?.getPropertyOfModel(schema, "error")
         if (errorDefinition) {
-          const code = utils.getPropertyOfModel(errorDefinition, "code")
-          const message = utils.getPropertyOfModel(errorDefinition, "message")
+          const code = utils?.getPropertyOfModel(errorDefinition, "code")
+          const message = utils?.getPropertyOfModel(errorDefinition, "message")
           if (code && message) {
             return
           }

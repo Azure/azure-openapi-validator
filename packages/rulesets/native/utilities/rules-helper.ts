@@ -8,7 +8,7 @@ import * as JSONPath from "jsonpath-plus"
 
 import { followReference } from "./ref-helper"
 
-export function getSuccessfulResponseSchema(node, doc, inventory: ISwaggerInventory): any {
+export function getSuccessfulResponseSchema(node:any, doc:any, inventory?: ISwaggerInventory): any {
   if (!node.responses) {
     return undefined
   }
@@ -22,7 +22,7 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
   if (responses.includes("200")) {
     response = "200"
   } else {
-    const twoHundreds = []
+    const twoHundreds :string[] = []
     responses.forEach(function(value) {
       if (value.startsWith("2")) {
         twoHundreds.push(value)
@@ -35,7 +35,7 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
   return response
 }
 
-export function getResponseSchema(response: object, doc, inventory: ISwaggerInventory): any {
+export function getResponseSchema(response: object, doc:any, inventory?: ISwaggerInventory): any {
   let schema = (response as any).schema
   if (schema === undefined || schema === null) {
     return
@@ -48,12 +48,12 @@ export function getResponseSchema(response: object, doc, inventory: ISwaggerInve
 
 export function getAllResourceProvidersFromPath(path: string): string[] {
   const resourceProviderRegex = new RegExp(/providers\/([\w\.]+)/, "g")
-  return Array.from(matchAll(path, resourceProviderRegex), m => m[1])
+  return Array.from(matchAll(path, resourceProviderRegex), (m:any) => m[1])
 }
 
 export function getAllWordsFromPath(path: string): string[] {
   const wordRegex = new RegExp(/([\w\.]+)/, "g")
-  return Array.from(matchAll(path, wordRegex), m => m[1])
+  return Array.from(matchAll(path, wordRegex), (m:any) => m[1])
 }
 
 export function resourceProviderMustPascalCase(resourceProvider: string): boolean {
@@ -78,15 +78,15 @@ export function isValidOperation(operation: string): boolean {
   return validOperations.indexOf(operation.toLowerCase()) !== -1
 }
 
-export function isValidEnum(node) {
+export function isValidEnum(node:any) {
   if (!node || !node.type || typeof node.type !== "string") {
     return false
   }
   return ["boolean", "integer", "number", "string"].indexOf(node.type) !== -1 && Array.isArray(node.enum)
 }
 
-export function transformEnum(type: string, enumEntries) {
-  return enumEntries.map(v => {
+export function transformEnum(type: string, enumEntries:any) {
+  return enumEntries.map((v:any) => {
     if (v === null) {
       return ""
     }
@@ -94,7 +94,7 @@ export function transformEnum(type: string, enumEntries) {
   })
 }
 
-export function getResolvedSchemaByPath(doc: any, path: string[], inventory: ISwaggerInventory) {
+export function getResolvedSchemaByPath(doc: any, path: string[], inventory?: ISwaggerInventory) {
   const result = nodes(doc, stringify(path))
   if (result && result.length) {
     return followReference(doc, result[0].value, inventory)
@@ -104,7 +104,7 @@ export function getResolvedSchemaByPath(doc: any, path: string[], inventory: ISw
 
 export function nodes(obj: any, pathExpression: string) {
   const result = JSONPath.JSONPath({ json: obj, path: pathExpression, resultType: "all" })
-  return result.map(v => ({ path: JSONPath.JSONPath.toPathArray(v.path), value: v.value, parent: v.parent }))
+  return result.map((v:any) => ({ path: JSONPath.JSONPath.toPathArray(v.path), value: v.value, parent: v.parent }))
 }
 
 export function stringify(path: string[]) {
