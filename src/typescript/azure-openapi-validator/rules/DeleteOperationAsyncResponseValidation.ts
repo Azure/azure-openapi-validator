@@ -3,11 +3,11 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "../rule"
-export const Rpaas_DeleteOperationAsyncResponseValidation: string = "Rpaas_DeleteOperationAsyncResponseValidation"
+export const DeleteOperationAsyncResponseValidation: string = "DeleteOperationAsyncResponseValidation"
 
 rules.push({
   id: "R4025",
-  name: Rpaas_DeleteOperationAsyncResponseValidation,
+  name: DeleteOperationAsyncResponseValidation,
   severity: "error",
   category: "RPaaSViolation",
   mergeState: MergeStates.individual,
@@ -16,7 +16,7 @@ rules.push({
   *run(doc, node, path) {
     if (node.responses["201"]) {
       yield {
-        message: `[RPaaS] Only 202 is the supported response code for DELETE async response.`,
+        message: `Only 202 is the supported response code for DELETE async response.`,
         location: path.concat(["responses", "201"])
       }
     }
@@ -29,21 +29,21 @@ rules.push({
     if (isAsyncOperation) {
       if (!node.responses["202"]) {
         yield {
-          message: `[RPaaS] An async DELETE operation must return 202.`,
+          message: `An async DELETE operation must return 202.`,
           location: path.concat(["responses"])
         }
       }
 
       if (!node["x-ms-long-running-operation"] || node["x-ms-long-running-operation"] !== true) {
         yield {
-          message: `[RPaaS] An async DELETE operation must set '"x-ms-long-running-operation" : true''.`,
+          message: `An async DELETE operation must set '"x-ms-long-running-operation" : true''.`,
           location: path
         }
       }
 
       if (!node["x-ms-long-running-operation-options"]) {
         yield {
-          message: `[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'`,
+          message: `An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'`,
           location: path
         }
       }
@@ -54,7 +54,7 @@ rules.push({
           node["x-ms-long-running-operation-options"]["final-state-via"] != "location")
       ) {
         yield {
-          message: `[RPaaS] An async DELETE operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'`,
+          message: `An async DELETE operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'`,
           location: path
         }
       }

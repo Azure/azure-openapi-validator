@@ -14,6 +14,11 @@ rules.push({
   openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.delete.responses",
   *run(doc, node, path) {
+    // async delete is not in the scope
+    if (node["202"] || node["x-ms-long-running-operation"]) {
+      return
+    }
+
     if (!node["200"] || !node["204"] || !Object.keys(node["200"]) || !Object.keys(node["204"])) {
       yield {
         message: `The delete operation is defined without a 200 or 204 error response implementation,please add it.'`,
