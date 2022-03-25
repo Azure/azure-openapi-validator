@@ -204,7 +204,7 @@ class IndividualAzureTests {
   // Failure #1 : DELETE async response supports 202 only. 201 is not supported.
   @test public async "DELETE async operation doesn't support 201"() {
     const fileName = "RpaasDeleteAsyncOperationResponseCodeValidation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 1)
   }
 
@@ -212,7 +212,7 @@ class IndividualAzureTests {
   // Failure #2: 'x-ms-long-running-operation-options' is missing
   @test public async "DELETE async operation missing x-ms* async extensions"() {
     const fileName = "RpaasDeleteAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 2)
   }
 
@@ -227,7 +227,7 @@ class IndividualAzureTests {
   // Valid 202 response for DELETE operation in RPaaS
   @test public async "Raas DELETE async operation is defined correctly"() {
     const fileName = "RpaasValidDeleteAsyncOperationResponse.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 0)
   }
 
