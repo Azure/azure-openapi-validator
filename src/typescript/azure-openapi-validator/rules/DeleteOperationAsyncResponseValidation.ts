@@ -11,7 +11,7 @@ rules.push({
   severity: "error",
   category: "RPaaSViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.rpaas,
+  openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.delete",
   *run(doc, node, path) {
     if (node.responses["201"]) {

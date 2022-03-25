@@ -220,7 +220,7 @@ class IndividualAzureTests {
   // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
   @test public async "DELETE async operation is tracked using Auzre-AsyncOperation header"() {
     const fileName = "RpaasDeleteAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.rpaas, MergeStates.individual)
+    const messages: Message[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, MergeStates.individual)
     assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 2)
   }
 
