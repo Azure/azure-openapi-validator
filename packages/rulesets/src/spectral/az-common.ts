@@ -14,6 +14,8 @@ import patchcontenttype from "./functions/patch-content-type";
 import pathparamnames from "./functions/path-param-names";
 import pathparamschema from "./functions/path-param-schema";
 import versionpolicy from "./functions/version-policy";
+import defaultInEnum from "./functions/default-in-enum";
+import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean";
 const ruleset : any = {
   extends:[
     oas
@@ -423,6 +425,26 @@ const ruleset : any = {
       "given": "$",
       "then": {
         "function": versionpolicy
+      }
+    },
+    "az-default-in-enum": {
+      "description": "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
+      "message": "{{message}}",
+      "severity": "error",
+      "formats": [oas2],
+      "given": "$..[?(@.enum)]",
+      "then": {
+        "function": defaultInEnum
+      }
+    },
+    "az-enum-insteadOf-boolean": {
+      "description": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+      "message": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+      "severity": "warn",
+      "formats": [oas2],
+      "given": "$..[?(@.type === 'boolean')]",
+      "then": {
+        "function": enumInsteadOfBoolean
       }
     }
   }
