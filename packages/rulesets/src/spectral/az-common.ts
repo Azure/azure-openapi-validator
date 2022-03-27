@@ -16,6 +16,7 @@ import pathparamschema from "./functions/path-param-schema";
 import versionpolicy from "./functions/version-policy";
 import defaultInEnum from "./functions/default-in-enum";
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean";
+import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter";
 const ruleset : any = {
   extends:[
     oas
@@ -445,6 +446,16 @@ const ruleset : any = {
       "given": "$..[?(@.type === 'boolean')]",
       "then": {
         "function": enumInsteadOfBoolean
+      }
+    },
+    "az-avoid-anonymous-parameter": {
+      "description": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+      "message": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+      "severity": "error",
+      "formats": [oas2],
+      "given": "$.parameters.*",
+      "then": {
+        "function": avoidAnonymousParameter
       }
     }
   }
