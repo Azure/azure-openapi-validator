@@ -3,19 +3,22 @@ import { spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { Ruleset } from "@stoplight/spectral-core"
 
 export async function getRuleSet(openapiType:OpenApiTypes) {
-  let rulesetFile 
+  let ruleset 
   switch(openapiType) {
     case OpenApiTypes.arm :{
-      rulesetFile = spectralRulesets.spectralArmRulesetFile
+      ruleset = spectralRulesets.azARM
+      break;
+    }
+    case OpenApiTypes.dataplane:{
+      ruleset = spectralRulesets.azDataplane
       break;
     }
     default: {
-      rulesetFile = spectralRulesets.spectralCommonRulesetFile
+      ruleset = spectralRulesets.azCommon
     }
   }
 
- const ruleset = require(rulesetFile)
- return new Ruleset(ruleset,{severity:"recommended",source:rulesetFile})
+ return new Ruleset(ruleset,{severity:"recommended"})
  /*const ruleset = await bundleRuleset(rulesetFile, {
         target: 'node',
         format: 'commonjs',

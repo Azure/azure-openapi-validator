@@ -39,9 +39,9 @@ and follow below steps to add a rule for azure.
 
 - add a custom function in 'packages\rulesets\spectral\functions'
 - add a rule config to the proper ruleset configuaration , current we have 3 ruleset configurations:
-  1. common.ts : for rule that apply to all azure spec.
-  1. arm.ts: for rules that only apply to ARM spec.
-  1. dataplane.ts: for rules that only apply to dataplane spec.
+  1. az-common.ts : for rule that apply to all azure spec.
+  1. az-arm.ts: for rules that only apply to ARM spec.
+  1. az-dataplane.ts: for rules that only apply to dataplane spec.
 
 - add a test for it, usually one custom function should have one test, the testing files is in 'packages\rulesets\spectral\test'
 #### native rule
@@ -71,11 +71,11 @@ Follow below steps to add a native rule:
 1. add a custom function (optional) in 'packages\rulesets\native\functions'
 
 2. add a rule  to the ruleset configuration
-   the ruleset configuration is in 'packages\rulesets\native\rulesets' folder, each `.ts` is a kind of ruleset. Just like there are still 3 kinds:
+   the ruleset configuration is in 'packages\rulesets\native\rulesets' folder, each `.ts` is a kind of ruleset. Just like there are still 2 kinds:
    1. arm
    1. dataplane
-   1. common
-
+   1. default
+    
 3. add a test for the custom function (optional)
 
 

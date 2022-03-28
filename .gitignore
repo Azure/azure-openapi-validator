@@ -5,18 +5,15 @@ packages/azure-openapi-validator/**/*.js.map
 packages/azure-openapi-validator/**/*.d.ts
 packages/rulesets/**/*.d.ts
 packages/rulesets/**/*.js.map
-packages/rulesets/native/**/*.js
-packages/rulesets/native/*.d.ts
-packages/rulesets/**/test/*.js
-packages/rulesets/**/test/*.js.map
-packages/rulesets/coverage/**/*
-packages/rulesets/**/native/**/*.js
-packages/rulesets/**/native/**/*.js.map
-packages/rulesets/**/native/**/*.js
-packages/rulesets/spectral/**/*.js
-packages/rulesets/spectral/**/*.js.map
-packages/rulesets/spectral/**/*.d.ts
-packages/rulesets/spectral/dist/*.js
+packages/rulesets/dist/**/*.js
+packages/rulesets/dist/**/*.d.ts
+packages/rulesets/dist/**/*.js.map
+packages/rulesets/esm/**/*.js
+packages/rulesets/esm/**/*.d.ts
+packages/rulesets/esm/**/*.js.map
+
+**/coverage/
+
 
 regression/**/*.js
 regression/**/*.js.map
