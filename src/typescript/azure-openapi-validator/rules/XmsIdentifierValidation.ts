@@ -23,7 +23,7 @@ rules.push({
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
     const utils = new ResourceUtils(doc, false)
     const items = deReference(doc, node.items)
-    if (items.type && items.type !== "object") {
+    if (items && items.type && items.type !== "object") {
       return
     }
 
