@@ -13,7 +13,7 @@ export const armRuleset: IRuleSet = {
       resolved: true,
       given: "$.definitions.*",
       then: {
-        fieldSelector: "$..properties.*~",
+        fieldMatch: "$..properties.*~",
         options: {
           match: ".*Password.*"
         },

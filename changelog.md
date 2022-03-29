@@ -1,5 +1,10 @@
 # Changelog
 
+## What's New (02/07/2022)
+
+### Changed Rule
+- TrackedResourcePatchOperation - Fix false positive for long running patch operation. 
+
 ## What's New (12/15/2021)
 
 ### New validation rules

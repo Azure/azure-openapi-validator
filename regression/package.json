@@ -25,7 +25,11 @@
     "lodash": "~4.17.21"
   },
   "scripts": {
+<<<<<<< HEAD
     "regression-test": "jest -u --max-old-space-size=10192 --ci --config ./jest.config.js ",
+=======
+    "test": "jest -u --max-old-space-size=10192 --ci --config ./jest.config.js ",
+>>>>>>> up-dev
     "jest": "jest",
     "build": "tsc"
   }
