@@ -54,9 +54,9 @@ export class LintRunner<T> {
       const targetDefinition = rule.resolved ? resolvedSwagger : openapiDefinition
       for (const given of givens) {
         for (const section of nodes(targetDefinition, given)) {
-          const fieldSelector = rule.then.fieldSelector
-          if (fieldSelector) {
-            for (const subSection of nodes(section.value, fieldSelector)) {
+          const fiieldMatch = rule.then.fieldMatch
+          if (fiieldMatch) {
+            for (const subSection of nodes(section.value, fiieldMatch)) {
               const location = section.path.slice(1).concat(subSection.path.slice(1))
               const args = getArgs(rule, subSection.value, targetDefinition, location)
               for await (const message of (rule.then.execute as any)(...args)) {

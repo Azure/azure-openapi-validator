@@ -7,7 +7,7 @@
     "build": "tsc && npm run build-esm && npm run rollup-spectral",
     "build-esm": "tsc -p ./tsconfig.spectral.esm.json",
     "rollup-spectral": "rollup -c ./rollup.config.js",
-    "test": "npm run test-spectral",
+    "test": "npm run test-spectral && npm run test-native",
     "test-native": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.native.config.js",
     "test-spectral": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js"
   },

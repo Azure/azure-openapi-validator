@@ -41,7 +41,7 @@ rush test
 
 ### spectral rule
 please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
-and follow below steps to add a rule for azure.
+and follow below steps to add a rule for azure rest api specs.
 
 - add a custom function in 'packages\rulesets\spectral\functions'
 - add a rule config to the proper ruleset configuaration , current we have 3 ruleset configurations:
@@ -49,14 +49,24 @@ and follow below steps to add a rule for azure.
   1. az-arm.ts: for rules that only apply to ARM spec.
   1. az-dataplane.ts: for rules that only apply to dataplane spec.
 
-- add a test for it, usually one custom function should have one test, the testing files is in 'packages\rulesets\spectral\test'
+- add a test case, usually one custom function should have one test, the corresponding testing files is in 'packages\rulesets\spectral\test'
 
 ### native rule
-the native ruleset is for complicated rules which need to visit multiple swaggers.
-The difference towards spectral rule is that a swagger inventory will be peresent in the rule context to visit other swaggers different with current one.
+Since the spectral rule can only process one swagger in its rule fucntion, the native ruleset is for complicated rules which need to visit multiple swaggers. For example, if you want to have a rule to ensure two swaggers that does not have duplicated model.
+
+Differetiating with spectral rule,  there is a swagger inventory (see below defintions) will be peresent in the rule context to visit other swaggers different with current one.
+
+``` ts
+export interface ISwaggerInventory {
+  referencesOf(specPath: string): string[],
+  getSingleDocument(specPath: string):any
+  getAllDocuments(): Map<string,any>
+}
+```
 
 a sample rule config is like :
-```
+
+``` ts
   rules: {
     my-ruleName: {
       category: "SDKViolation",
@@ -65,26 +75,35 @@ a sample rule config is like :
       resolved: true,
       given: "$.definitions.*",
       then: {
-        fieldSelector: "$..properties.*~",
+        fieldMatch: "$..properties.*~",
         options: {
           match: "^[0-9]+$"
         },
         execute: pattern
       }
-    },
+    }
 ```
 
 Follow below steps to add a native rule:
 1. add a custom function (optional) in 'packages\rulesets\native\functions'
 
 2. add a rule  to the ruleset configuration
-   the ruleset configuration is in 'packages\rulesets\native\rulesets' folder, each `.ts` is a kind of ruleset. Just like there are still 2 kinds:
-   1. arm
-   1. dataplane
-   1. default
-    
-3. add a test for the custom function (optional)
+   the ruleset configuration is in 'packages\rulesets\native\rulesets' folder, each `.ts` is a ruleset. there are  2 kinds:
+   1. arm: for arm spec
+   1. common: for all spec
 
+3. add a test for the custom function
+
+### rule properties
+
+- category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
+- OpenapiType:  indicate which kinds of azure spec it applies to.
+- severity:  "error" | "warning" | "info"
+- resolved:  whether or not resolve the "ref" in the swagger.
+- given:  the jsonpath to match for the current swagger.
+- then: the action to invoke for the matched 'given'.
+  1. fieldMatch: the jsonpath to match the given json object.
+  1. options:  the options to pass to the rule function.
 
 ## How to run regression test
 
@@ -92,23 +111,23 @@ Follow below steps to add a native rule:
 ```
 git update submodule --init
 ```
-2. npm run 
+2. run test
 ```
-cd regression
-npm run regression-test
+rush regression-test
 ```
 
 ## How to run locally
+
+Run the linter via autorest:
 
 1. use local lint version:
 ```
 autorest --v3 --spectral --azure-validator --input-file=<path-to-spec>  --use=packages/azure-openapi-valdiator/autorest
 autorest --v3 --spectral --azure-validator  --use=--use=packages/azure-openapi-valdiator/autorest
 ```
-2. use latest lint version:
+2. use latest published lint version:
 ```
 autorest --v3 --spectral --azure-validator --input-file=<path-to-spec>  --use=@microsoft.azure/openapi-validator@latest
 autorest --v3 --spectral --azure-validator  --use=@microsoft.azure/openapi-validator@latest [--tag=<readme tag>] <path-to-readme>
 ```
 
-## How to publish
