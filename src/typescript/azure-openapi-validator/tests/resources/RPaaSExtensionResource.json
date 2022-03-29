@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Network interfaces have unallowed types",
+    "description": "Some documentation.",
+    "version": "2014-04-01-preview"
+  },
+  "host": "management.azure.com",
+  "schemes": ["https"],
+  "basePath": "/",
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}": {
+      "get": {
+        "operationId": "getTestResource",
+        "summary": "Foo path",
+        "description": "Foo operation",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApplicationGatewayName"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersion"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/TestResource"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "test subscription id"
+    },
+    "ApiVersion": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "test api version"
+    },
+    "ApplicationGatewayName": {
+      "name": "applicationGatewayName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "test api version"
+    },
+    "ResourceGroupName": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "resource group name"
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type."
+        }
+      },
+      "description": "Common resource representation.",
+      "x-ms-azure-resource": true
+    },
+    "TestResource": {
+      "description": "test",
+      "allOf": [{ "$ref": "#/definitions/Resource" }],
+      "properties": {
+        "properties": {
+          "type": "object",
+          "description": "properties",
+          "properties": {
+            "provisioningState": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
