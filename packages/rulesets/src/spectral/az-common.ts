@@ -452,8 +452,9 @@ const ruleset : any = {
       "description": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
       "message": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
       "severity": "error",
+      "resolved": false,
       "formats": [oas2],
-      "given": "$.parameters.*",
+      "given": ["$..parameters.*", "$.paths[*].parameters", "$.paths.*[get,put,post,patch,delete,options,head].parameters"],
       "then": {
         "function": avoidAnonymousParameter
       }

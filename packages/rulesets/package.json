@@ -2,7 +2,7 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "version": "1.0.0",
   "description": "Azure OpenAPI Validator",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc && npm run build-esm && npm run rollup-spectral",
     "build-esm": "tsc -p ./tsconfig.spectral.esm.json",

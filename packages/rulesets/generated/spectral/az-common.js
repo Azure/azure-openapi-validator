@@ -682,6 +682,50 @@ const versionPolicy = (targetVal) => {
     return errors;
 };
 
+const defaultInEnum = (swaggerObj, _opts, paths) => {
+    const defaultValue = swaggerObj.default;
+    const enumValue = swaggerObj.enum;
+    if (swaggerObj === null || typeof swaggerObj !== 'object') {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    if (enumValue && !enumValue.includes(defaultValue)) {
+        return [{
+                message: 'Default value should appear in the enum constraint for a schema.',
+                path,
+            }];
+    }
+    return [];
+};
+
+const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    return [{
+            message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
+            path,
+        }];
+};
+
+const avoidAnonymousParameter = (parameters, _opts, paths) => {
+    if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    const properties = parameters.schema.properties;
+    if ((properties === undefined || Object.keys(properties).length === 0) &&
+        parameters.additionalProperties === undefined &&
+        parameters.allOf === undefined) {
+        return [];
+    }
+    return [{
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            path,
+        }];
+};
+
 const ruleset = {
     extends: [
         spectralRulesets.oas
@@ -1091,6 +1135,37 @@ const ruleset = {
             "given": "$",
             "then": {
                 "function": versionPolicy
+            }
+        },
+        "az-default-in-enum": {
+            "description": "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
+            "message": "{{message}}",
+            "severity": "error",
+            "formats": [spectralFormats.oas2],
+            "given": "$..[?(@.enum)]",
+            "then": {
+                "function": defaultInEnum
+            }
+        },
+        "az-enum-insteadOf-boolean": {
+            "description": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+            "message": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+            "severity": "warn",
+            "formats": [spectralFormats.oas2],
+            "given": "$..[?(@.type === 'boolean')]",
+            "then": {
+                "function": enumInsteadOfBoolean
+            }
+        },
+        "az-avoid-anonymous-parameter": {
+            "description": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+            "message": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+            "severity": "error",
+            "resolved": false,
+            "formats": [spectralFormats.oas2],
+            "given": ["$..parameters.*", "$.paths[*].parameters", "$.paths.*[get,put,post,patch,delete,options,head].parameters"],
+            "then": {
+                "function": avoidAnonymousParameter
             }
         }
     }
