@@ -20,7 +20,7 @@ rules.push({
     const utils = ctx.utils
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
     const items = await utils.resolveSchema(node.items)
-    if (items.type && items.type !== "object") {
+    if (items && items.type && items.type !== "object") {
       return
     }
 
