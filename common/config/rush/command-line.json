@@ -16,6 +16,20 @@
       "name": "test",
       "summary": "(CUSTOM) Runs test on all projects.",
       "shellCommand": "node eng/scripts/test.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "pack",
+      "summary": "(CUSTOM) Runs pack on all projects.",
+      "shellCommand": "node eng/scripts/pack.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "regression-test",
+      "summary": "(CUSTOM) Runs regression test",
+      "shellCommand": "node eng/scripts/regression-test.js"
     }
   ]
 }

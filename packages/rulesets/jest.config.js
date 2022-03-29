@@ -33,12 +33,12 @@ module.exports = {
   verbose: true,
   preset: 'ts-jest', 
   collectCoverageFrom: [
-    "src/spectral/functions/*.ts",
+    "src/spectrpreset: 'ts-jest', al/functions/*.ts",
     "!spectral/*.d.ts",
     "!spectral/functions/*.d.ts",
   ],
   coverageThreshold: {
-    "./spectral/functions/*.ts": {
+    "src/spectral/functions/*.ts": {
       "statements": 80
     }
   },

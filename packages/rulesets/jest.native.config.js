@@ -35,7 +35,7 @@ module.exports = {
   collectCoverageFrom: [
   ],
   coverageThreshold: {
-    "native/functions/*.ts": {
+    "src/native/functions/*.ts": {
       "statements": 80
     }
   },

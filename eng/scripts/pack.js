@@ -6,8 +6,9 @@ function main () {
     try {
         if (!packageName.includes("regression")) {
             process.chdir(projectFolder)
-            run("npm",["run","test"])
+            run("npm",["pack"])
         }
+   
     }
     catch(e) {
         errorCnt++

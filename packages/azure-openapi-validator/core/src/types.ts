@@ -37,7 +37,7 @@ export const rules: Rule[] = []
 export type RuleThen<T> = {
   execute: IRuleFunction<T>
   readonly options?: T
-  fieldSelector?: string
+  fieldMatch?: string
 }
 
 export interface IRule<T> {

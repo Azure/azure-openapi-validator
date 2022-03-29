@@ -50,5 +50,24 @@
     "@azure-tools/openapi": "^3.3.0",
     "@azure-tools/uri": "3.1.1",
     "tslib": "^2.3.1"
+  },
+  "jest": {
+    "testMatch": [
+      "**/tests/*.test.ts",
+      "!**/*.test.d.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "node",
+      "ts"
+    ],
+    "preset": "ts-jest"
   }
 }

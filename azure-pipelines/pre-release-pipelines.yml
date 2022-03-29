@@ -15,30 +15,20 @@ jobs:
         inputs:
           versionSpec: '$(NodeVersion)'
         displayName: 'Install Node.js $(NodeVersion)'
-      - task: UseDotNet@2
-        inputs:
-          packageType: 'sdk'
-          version: '2.x'
 
-      - task: Npm@1
-        displayName: 'npm install'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
         inputs:
           verbose: false
 
-      - script: 'gulp build'
-        displayName: 'gulp build'
+      - script: 'rush update'
+        displayName: 'rush update'
 
-      - script: 'gulp test'
-        displayName: 'gulp test'
+      - script: 'rush build'
+        displayName: 'rush build'
         
-      - script: 'gulp dotnet/pack'
-        displayName: 'gulp dotnet/pack'
-
-      - script: 'cd src/dotnet && tar -czvf azure-classic-openapi-validator.tgz AutoRest'
-        displayName: 'pack dir: AutoRest'
-
-      - script: 'gulp pack/typescript'
-        displayName: 'gulp pack typescript'
+      - script: 'rush pack'
+        displayName: 'rush pack'
 
       - task: CopyFiles@2
         displayName: 'Copy Files to: dist'
