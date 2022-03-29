@@ -372,6 +372,43 @@ namespace OpenAPI.Validator.Model.Utilities
         }
 
 
+        /// <summary>
+        /// Returns the long running operation response model from its corresponding put operation 
+        /// </summary>
+        /// <param name="id">operation id to check for</param>
+        /// <param name="serviceDefinition">service definition in which to find the operations</param>
+        /// <param name="includeCustomPaths">whether to include the x-ms-paths</param>
+        /// <returns>list if operations that match the httpverb</returns>
+        public static String GetLongRunningResponseModelByOperationId(string id, ServiceDefinition serviceDefinition, bool includeCustomPaths = true)
+        {
+            var operationPaths = GetOperationIdPath(id, serviceDefinition.Paths);
+            if (operationPaths.Key == null  && includeCustomPaths)
+            {
+                operationPaths = GetOperationIdPath(id, serviceDefinition.CustomPaths);
+            }
+            var putOperation = operationPaths.Value.Where(entity => entity.Key.ToLower().Equals("put")).FirstOrDefault().Value;
+            if (putOperation != null)
+            {
+                return GetOperationResponseModel(putOperation);
+            }
+            var getOperation = operationPaths.Value.Where(entity => entity.Key.ToLower().Equals("get")).FirstOrDefault().Value;
+            if (getOperation != null)
+            {
+                return GetOperationResponseModel(getOperation);
+            }
+            return null;
+        }
+
+        public static String GetOperationResponseModel(Operation operation) {
+            var responseModel = operation.Responses.GetValueOrNull("200")?.Schema?.Reference?.StripDefinitionPath();
+            if (responseModel == null)
+            {
+                return operation.Responses.GetValueOrNull("201")?.Schema?.Reference?.StripDefinitionPath();
+            }
+            return responseModel;
+        }
+
+
         public static bool IsXmsPageableOrArrayTypeResponseOperation(Operation op, ServiceDefinition entity) =>
             (IsXmsPageableResponseOperation(op) || IsArrayTypeResponseOperation(op, entity));
 
