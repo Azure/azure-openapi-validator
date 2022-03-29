@@ -16,17 +16,19 @@ jobs:
           versionSpec: '$(NodeVersion)'
         displayName: 'Install Node.js $(NodeVersion)'
 
-      - task: Npm@1
-        displayName: 'npm install'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
         inputs:
           verbose: false
 
-      - script: 'gulp build'
-        displayName: 'gulp build'
+      - script: 'rush update'
+        displayName: 'rush update'
 
-      - script: 'gulp test'
-        displayName: 'gulp test'
+      - script: 'rush build'
+        displayName: 'rush build'
 
+      - script: 'rush test'
+        displayName: 'rush test'
 
   - job: Windows
     displayName: credentialScan

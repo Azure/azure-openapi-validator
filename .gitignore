@@ -11,6 +11,7 @@ packages/rulesets/dist/**/*.js.map
 packages/rulesets/esm/**/*.js
 packages/rulesets/esm/**/*.d.ts
 packages/rulesets/esm/**/*.js.map
+packages/**/*.tgz
 
 **/coverage/
 
