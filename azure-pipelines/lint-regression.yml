@@ -18,8 +18,6 @@ steps:
 
   - script: 'node common/scripts/install-run-rush.js install'
     displayName: 'rush install'
-    inputs:
-      verbose: false
 
   - script: 'rush update'
     displayName: 'rush update'
