@@ -1,5 +1,12 @@
 # Changelog
 
+
+## What's New (03/24/2022)
+
+### Changed Rule
+- deleteOperationResponse - For LRO delete, 200 is no longer required.
+- validFormats - Support 'arm-id' format. 
+
 ## What's New (02/07/2022)
 
 ### Changed Rule
