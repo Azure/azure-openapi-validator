@@ -16,26 +16,23 @@ jobs:
         inputs:
           versionSpec: '$(NodeVersion)'
         displayName: 'Install Node.js $(NodeVersion)'
-      - task: UseDotNet@2
-        inputs:
-          packageType: 'sdk'
-          version: '2.x'
-      - task: Npm@1
-        displayName: 'npm install'
+
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
         inputs:
           verbose: false
 
-      - script: 'npm run tslint'
-        displayName: 'tslint'
+      - script: 'rush update'
+        displayName: 'rush update'
 
-      - script: 'gulp build'
-        displayName: 'gulp build'
+      - script: 'rush build'
+        displayName: 'rush build'
 
-      - script: 'gulp test'
-        displayName: 'gulp test'
-        
-      - script: 'gulp pack'
-        displayName: 'gulp pack'
+      - script: 'rush test'
+        displayName: 'rush test'
+
+      - script: 'rush pack'
+        displayName: 'rush pack'
 
       - task: PublishBuildArtifacts@1
         inputs:
