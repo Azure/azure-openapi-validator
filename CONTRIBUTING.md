@@ -127,6 +127,6 @@ autorest --v3 --spectral --azure-validator  --use=--use=packages/azure-openapi-v
 ```
 2. use latest published lint version:
 ```
-autorest --v3 --spectral --azure-validator --input-file=<path-to-spec>  --use=@microsoft.azure/openapi-validator@latest
+autorest --v3 --spectral --azure-validator   --use=@microsoft.azure/openapi-validator@latest --input-file=<path-to-spec>
 autorest --v3 --spectral --azure-validator  --use=@microsoft.azure/openapi-validator@latest [--tag=<readme tag>] <path-to-readme>
 ```
