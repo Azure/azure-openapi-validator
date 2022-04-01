@@ -45,7 +45,7 @@ namespace OpenAPI.Validator.Validation
         /// The rule could be violated by a model referenced by many jsons belonging to the same
         /// composed state, to reduce duplicate messages, run validation rule in composed state
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Individual;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Composed;
 
         private static readonly IEnumerable<string> ArmPropertiesBag = new List<string>()
                                                                         { "name", "id", "type", "location", "tags" };
