@@ -20,16 +20,13 @@ jobs:
       - script: 'node common/scripts/install-run-rush.js install'
         displayName: 'rush install'
 
-      - script: 'rush update'
-        displayName: 'rush update'
+      - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
+        displayName: 'npx rush build'
 
-      - script: 'rush build'
-        displayName: 'rush build'
-
-      - script: 'rush test'
+      - script: 'node common/scripts/install-run-rush.js test'
         displayName: 'rush test'
 
-      - script: 'rush pack'
+      - script: 'node common/scripts/install-run-rush.js pack'
         displayName: 'rush pack'
 
       - task: PublishBuildArtifacts@1
