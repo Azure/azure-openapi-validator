@@ -19,14 +19,6 @@
       "allowWarningsInSuccessfulBuild": true
     },
     {
-      "name": "rebuild",
-      "commandKind": "bulk",
-      "summary": "Rebuild all projects",
-      "incremental": false,
-      "enableParallelism": true,
-      "allowWarningsInSuccessfulBuild": true
-    },
-    {
       "commandKind": "global",
       "safeForSimultaneousRushProcesses": true,
       "name": "test",
