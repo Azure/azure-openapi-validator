@@ -4,7 +4,9 @@ import { SwaggerHelper } from "../utilities/swaggerHelper"
 import { followReference } from "../utilities/ref-helper"
 import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
-
+const fileUrl = (absPath: string) => {
+  return "file:///" + absPath.replace(/^\//, "").split("\\").join("/")
+}
 describe("SwaggerHelperTests",()=> {
    test("resolve partial schema",async ()=>{
     const filePath = getFilePath("references/external.json")
@@ -19,7 +21,7 @@ describe("SwaggerHelperTests",()=> {
       ].post
     )) as any
     assert.strictEqual(resolvedSchema.parameters[0].name, "subscriptionId")
-    resolvedSchema = await swaggerHelper.resolveSchema("file:///" + comonFilePath + "#/parameters/ApiVersion")
+    resolvedSchema = await swaggerHelper.resolveSchema(fileUrl(comonFilePath) + "#/parameters/ApiVersion")
     assert.strictEqual(resolvedSchema.name, "api-version")
     const position = commonDoc.getPositionFromJsonPath(["definitions", "a", "allOf", "0"])
 
