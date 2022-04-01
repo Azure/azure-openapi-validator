@@ -2,7 +2,7 @@ trigger:
 - master
 
 variables:
-  NodeVersion: '10.x'
+  NodeVersion: '12.x'
 
 jobs:
   - job: 'Build'
@@ -21,13 +21,16 @@ jobs:
         inputs:
           verbose: false
 
-      - script: 'rush update'
-        displayName: 'rush update'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
 
-      - script: 'rush build'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
+
+      - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
         displayName: 'rush build'
         
-      - script: 'rush pack'
+      - script: 'node common/scripts/install-run-rush.js pack'
         displayName: 'rush pack'
 
       - task: CopyFiles@2

@@ -10,8 +10,13 @@ pr:
       - "*"
 variables:
   NODE_OPTIONS: '--max-old-space-size=8192'
-  
+  NodeVersion: '12.x'
 steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '$(NodeVersion)'
+    displayName: 'Install Node.js $(NodeVersion)'
+    
   - script: git submodule update --init
     displayName: Init submodule
     condition: always()
@@ -23,7 +28,7 @@ steps:
     displayName: 'rush install'
 
   - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
-    displayName: 'npx rush build'
+    displayName: 'rush build'
 
   - script: 'node common/scripts/install-run-rush.js regression-test'
     displayName: 'regression test'

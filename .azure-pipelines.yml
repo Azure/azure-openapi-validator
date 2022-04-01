@@ -21,7 +21,7 @@ jobs:
         displayName: 'rush install'
 
       - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
-        displayName: 'npx rush build'
+        displayName: 'rush build'
 
       - script: 'node common/scripts/install-run-rush.js test'
         displayName: 'rush test'
