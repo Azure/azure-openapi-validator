@@ -6,6 +6,7 @@ export default [
   output: {
     dir: 'generated/spectral',
     format: 'cjs',
+    exports: 'default'
   },
   plugins: [commonjs(),json()],
   external:["@stoplight/spectral-functions","@stoplight/spectral-formats","@stoplight/spectral-rulesets"]
@@ -15,6 +16,7 @@ export default [
   output: {
     dir: 'generated/spectral',
     format: 'cjs',
+    exports: 'default'
   },
   plugins: [commonjs(),json()],
   external:["@stoplight/spectral-functions","@stoplight/spectral-formats","@stoplight/spectral-rulesets"]
@@ -24,6 +26,7 @@ export default [
   output: {
     dir: 'generated/spectral',
     format: 'cjs',
+    exports: 'default'
   },
   plugins: [commonjs(),json()],
   external:["@stoplight/spectral-functions","@stoplight/spectral-formats","@stoplight/spectral-rulesets"]
