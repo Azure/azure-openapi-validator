@@ -2,10 +2,7 @@
     "extends": "../../../tsconfig-base.json",
     "include": [
         "./src/*.ts",
-<<<<<<< HEAD
-=======
         "./tests/*.ts",
->>>>>>> up-dev
         "index.ts"
     ],
     "compilerOptions": {

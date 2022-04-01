@@ -19,13 +19,13 @@ steps:
   - script: 'node common/scripts/install-run-rush.js install'
     displayName: 'rush install'
 
-  - script: 'rush update'
-    displayName: 'rush update'
+  - script: 'node common/scripts/install-run-rush.js install'
+    displayName: 'rush install'
 
-  - script: 'rush build'
-    displayName: 'rush build'
+  - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
+    displayName: 'npx rush build'
 
-  - script: 'cd regression && npm run regression-test'
+  - script: 'node common/scripts/install-run-rush.js regression-test'
     displayName: 'regression test'
 
   # this command will return non zero if git repo has changes ie if the snapshots have been updated
