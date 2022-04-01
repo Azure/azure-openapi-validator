@@ -26,13 +26,6 @@ jobs:
       - script: 'node common/scripts/install-run-rush.js test'
         displayName: 'rush test'
 
-      - script: 'node common/scripts/install-run-rush.js pack'
-        displayName: 'rush pack'
-
-      - task: PublishBuildArtifacts@1
-        inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist
-
   - job: Windows
     displayName: credentialScan
     pool:
