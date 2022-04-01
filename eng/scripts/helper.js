@@ -50,7 +50,7 @@ export class CommandFailedError extends Error {
 }
 
 export function run(command, args, options) {
-  if (!options?.silent) {
+  if (!options || !options.silent) {
     console.log();
     console.log(`> ${command} ${args.join(" ")}`);
   }
