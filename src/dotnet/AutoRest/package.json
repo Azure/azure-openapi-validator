@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "description": "The classic OpenAPI validator plugin for AutoRest",
   "scripts": {
-    "start": "dotnet ./bin/netcoreapp2.0/AutoRest.dll --server"
+    "start": "dotnet ./bin/netcoreapp3.1/AutoRest.dll --server"
   },
   "repository": {
     "type": "git",

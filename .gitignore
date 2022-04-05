@@ -19,3 +19,4 @@ src/dotnet/**/[Rr]elease/
 # ignore vs
 **/.vs/
 **/.history/
+bin/*
