@@ -20,6 +20,10 @@ steps:
     displayName: "npm install"
     inputs:
       verbose: false
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '3.x'
 
   - script: 'gulp build'
     displayName: 'gulp build'
