@@ -6,7 +6,7 @@
 import { safeLoad } from "js-yaml"
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
 import {getRuleSet} from "./loader"
-import { Message } from "./jsonrpc/types"
+import { JsonPath, Message } from "./jsonrpc/types"
 const { Spectral } = require("@stoplight/spectral-core")
 import {lint, getOpenapiType, LintResultMessage, isUriAbsolute} from "@microsoft.azure/openapi-validator-core"
 import {nativeRulesets} from "@microsoft.azure/openapi-validator-rulesets"
@@ -78,12 +78,21 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
     }
   }
 
+  const removeXmsExampleFromPath = (paths:JsonPath) => {
+    const index = paths.findIndex(item => item === "x-ms-examples")
+    if (index !== -1 && paths.length > index+2) {
+      return paths.slice(0,index+2)
+    }
+    return paths
+  }
+
   const format = (result:any, spec:string) => {
+
     return {
       code: result.code,
       message: result.message,
       type: convertSeverity(result.severity),
-      jsonpath: result.path && result.path.length ? result.path : [],
+      jsonpath: result.path && result.path.length ? removeXmsExampleFromPath(result.path) : [],
       range: convertRange(result.range),
       sources: [`${spec}`],
       location: {

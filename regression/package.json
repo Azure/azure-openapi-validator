@@ -27,8 +27,14 @@
     "jsonpath": "^1.1.1"
   },
   "scripts": {
-    "test": "jest -u --max-old-space-size=10192 --ci --config ./jest.config.js ",
+    "test": "jest -u --runInBand --max-old-space-size=10192 --ci --config ./jest.config.js ",
     "jest": "jest",
+    "npm-install-previous": "npm run npm-install-dotnet && npm run npm-install-ts",
+    "npm-install-dotnet": "cd src/dotnet/AutoRest && npm install",
+    "npm-install-ts": "cd src/typescript && npm install",
+    "build-previous-dotnet": "cd ../src/dotnet && dotnet build",
+    "build-previous-ts": "cd ../src/typescript && npm run build",
+    "build-previous": "npm-install-previous && npm run build-previous-dotnet && npm run build-previous-ts",
     "build": "tsc"
   }
 }

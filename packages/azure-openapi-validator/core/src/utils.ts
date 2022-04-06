@@ -118,5 +118,9 @@ export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPat
 }
 
 export function convertJsonPath(path:string[]) {
-  return path.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
+  if (path ) {
+    path = path[0] === "$" ? path.slice(1) : path
+    return path.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
+  }
+  return []
 }

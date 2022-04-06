@@ -1,6 +1,5 @@
 import {oas2, oas3} from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions";
-import {oas} from "@stoplight/spectral-rulesets"
 import consistentresponsebody from "./functions/consistent-response-body";
 import delete204response from "./functions/delete-204-response";
 import errorresponse from "./functions/error-response";
@@ -16,11 +15,8 @@ import pathparamschema from "./functions/path-param-schema";
 import versionpolicy from "./functions/version-policy";
 const ruleset : any = {
   extends:[
-    oas
   ],
   rules: {
-    "info-contact": "off",
-    "no-$ref-siblings": "off",
     "az-additional-properties-and-properties": {
       "description": "Don't specify additionalProperties as a sibling of properties.",
       "severity": "warn",
