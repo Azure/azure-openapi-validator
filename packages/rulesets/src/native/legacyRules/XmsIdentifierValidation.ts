@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
 export const XmsIdentifierValidation = "XmsIdentifierValidation"
 
 rules.push({
@@ -17,7 +18,7 @@ rules.push({
     if (node.type !== "array") {
       return
     }
-    const utils = ctx?.utils
+    const utils = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
     const items = await utils?.resolveSchema(node.items)
     if (items && items.type && items.type !== "object") {

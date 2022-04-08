@@ -14,5 +14,6 @@ module.exports = {
     }
   },
   testMatch: ["**/*.test.ts", "!*test.d.ts"],
-  verbose: true
+  verbose: true,
+  testSequencer: './test-sequence.js'
 }

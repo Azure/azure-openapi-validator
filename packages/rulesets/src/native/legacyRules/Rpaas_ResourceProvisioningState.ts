@@ -5,6 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
 import { JsonPath } from "@microsoft.azure/openapi-validator-core"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
 export const Rpaas_ResourceProvisioningState = "Rpaas_ResourceProvisioningState"
 
 rules.push({
@@ -18,7 +19,7 @@ rules.push({
   *run(doc, node, path, ctx) {
     const msg = `[RPaaS] The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
     const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
-    const swaggerUtil = ctx?.utils
+    const swaggerUtil = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
     const allResources = utils.getAllResource()
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)

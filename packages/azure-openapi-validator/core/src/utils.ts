@@ -3,6 +3,7 @@ import { SwaggerInventory } from "./swaggerInventory";
 import { nodes, stringify } from "./jsonpath"
 import _ from "lodash"
 import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
+import { type } from "os";
 /**
  *
  * @param doc
@@ -11,7 +12,7 @@ import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
 export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
-  const getRefModel = (refValue: string, visited: string[]) => {
+  const getRefModel = (docToSearch:any,refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
     }
@@ -19,7 +20,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     const refSlices = parseJsonRef(refValue)
     const pathExpression = refSlices[1].split("/").slice(1)
     try {
-      const result = nodes(doc, stringify(["$", ...pathExpression]))
+      const result = nodes(docToSearch, stringify(pathExpression))
       return result.length !== 0 ? result[0].value : undefined
     } catch (err) {
       throw err
@@ -32,7 +33,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
       if (inventory && refSlices[0]) {
         doc = inventory.getSingleDocument(refSlices[0])
       }
-      schema = getRefModel(`#${refSlices[1]}`, [])
+      schema = getRefModel(doc,`#${refSlices[1]}`, [])
       return followReference(doc, schema, inventory)
     }
     return schema
@@ -117,10 +118,18 @@ export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPat
   return document?.getPositionFromJsonPath(path)
 }
 
-export function convertJsonPath(path:string[]) {
-  if (path ) {
-    path = path[0] === "$" ? path.slice(1) : path
-    return path.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
+export function convertJsonPath(doc:any, paths:string[]) {
+  if (paths && doc) {
+    const convertedPaths:JsonPath = []
+    paths = paths[0] === "$" ? paths.slice(1) : paths
+    for (const path of paths) {
+      if (!doc || typeof doc !== "object") {
+        return convertedPaths
+      }
+      convertedPaths.push(Array.isArray(doc) ? Number.parseInt(path):path)
+      doc = doc[path]
+    }
+    return convertedPaths
   }
   return []
 }

@@ -87,12 +87,7 @@ export interface ISwaggerInventory {
 }
 
 export interface ISwaggerHelper {
-  getOperationIdFromPath(path: string, code:string):any,
-   getDefinitionByName(modelName: string):any,
-   getPropertyOfModelName(modelName: string, propertyName: string):any,
-   getPropertyOfModel(sourceModel: any, propertyName: string):any,
-   resolveSchema(schema: any | string):Promise<any>,
-   getResolvedRef(ref: string):any
+  resolveSchema(schema: any | string):Promise<any>,
 }
 
 export interface IRuleSet {

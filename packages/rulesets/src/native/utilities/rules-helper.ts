@@ -36,14 +36,17 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
 }
 
 export function getResponseSchema(response: object, doc:any, inventory?: ISwaggerInventory): any {
-  let schema = (response as any).schema
+  let schema = (response as any)?.schema
   if (schema === undefined || schema === null) {
     return
   }
   if ("$ref" in schema) {
     schema = followReference(doc, schema, inventory)
+    if (!schema) {
+      return 
+    }
   }
-  return schema.properties
+  return schema?.properties
 }
 
 export function getAllResourceProvidersFromPath(path: string): string[] {

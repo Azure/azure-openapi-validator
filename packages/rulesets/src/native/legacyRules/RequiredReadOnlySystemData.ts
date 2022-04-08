@@ -5,6 +5,8 @@
 import { nodes, stringify } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
+
 export const RequiredReadOnlySystemData = "RequiredReadOnlySystemData"
 
 rules.push({
@@ -24,7 +26,7 @@ rules.push({
         return
       }
       const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
-      const swaggerUtil = ctx?.utils
+      const swaggerUtil = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
       const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions

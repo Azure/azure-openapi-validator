@@ -32,19 +32,6 @@ function normalizeLintIssues(issues:any[]) {
       issue.jsonpath = ""
     }
     return _.pick(issue,["code","message","jsonpath","source"])
-  }).sort((a:any, b:any) => {
-    let isLess: number = 0;
-    ["code","message","jsonpath","source"].some( (key:string) => {
-      if (a[key] !== b[key]) {
-        isLess = a[key] < b[key] ? -1 : 1
-        return true
-      }
-      return false
-    })
-    if (isLess === 0) {
-      isLess = a?.source?.document < b?.source?.document ? -1 : 1
-    }
-    return isLess
   })
 }
 

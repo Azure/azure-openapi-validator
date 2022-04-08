@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { getResolvedSchemaByPath } from "../utilities/rules-helper"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
 
 export const DefaultErrorResponseSchema = "DefaultErrorResponseSchema"
 
@@ -25,7 +26,7 @@ rules.push({
 
       const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx?.inventory)
 
-      const utils = ctx?.utils
+      const utils = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
       if (schema) {
         const errorDefinition = utils?.getPropertyOfModel(schema, "error")
         if (errorDefinition) {

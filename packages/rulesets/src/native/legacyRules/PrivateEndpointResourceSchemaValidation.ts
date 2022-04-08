@@ -2,6 +2,7 @@ import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { rules } from "@microsoft.azure/openapi-validator-core"
 import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/armHelper"
+import { SwaggerHelper } from "../utilities/swaggerHelper"
 export const PrivateEndpointResourceSchemaValidation = "PrivateEndpointResourceSchemaValidation"
 
 rules.push({
@@ -21,7 +22,7 @@ rules.push({
     const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^\/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
     const utils = new ArmHelper(doc)
-    const swaggerUtil = ctx?.utils
+    const swaggerUtil = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
     const apiPath = path[path.length - 1] as string
 
     const checkPrivateEndpoint = (model: any) => {

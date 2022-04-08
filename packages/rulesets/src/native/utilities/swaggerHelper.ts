@@ -25,7 +25,7 @@ export class SwaggerHelper {
     if (!modelName) {
       return undefined
     }
-    return this.innerDoc?.definitions[modelName]
+    return this.innerDoc?.definitions?.[modelName]
   }
 
   /**

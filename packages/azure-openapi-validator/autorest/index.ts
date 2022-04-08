@@ -78,6 +78,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
     }
   }
 
+  // this function is added temporarily , should be remove after the autorest fix this issues.
   const removeXmsExampleFromPath = (paths:JsonPath) => {
     const index = paths.findIndex(item => item === "x-ms-examples")
     if (index !== -1 && paths.length > index+2) {
