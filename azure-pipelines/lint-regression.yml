@@ -1,17 +1,17 @@
 
+trigger:
+  - master
+
+pr:
+  branches:
+    include:
+      - "*"
 jobs:
 - job: regression-test
   timeoutInMinutes: 0
   pool:
     vmImage: "Ubuntu 18.04"
 
-  trigger:
-    - master
-
-  pr:
-    branches:
-      include:
-        - "*"
   variables:
     NODE_OPTIONS: '--max-old-space-size=8192'
     NodeVersion: '12.x'
