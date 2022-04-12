@@ -13,6 +13,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'aborthnsonmigration' in:'StorageAccounts_AbortHierarchicalNamespaceMigration'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration\"].post.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:838:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'acknowledgenotification' in:'PrivateStore_AcknowledgeOfferNotification'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/offers/{offerId}/acknowledgeNotification\"].post.operationId",
     "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1162:8"
@@ -103,6 +109,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'bootstrap' in:'BootstrapAction_Product'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/bootstrap\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:108:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'calculateexchange' in:'CalculateExchange_Post'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/providers/Microsoft.Capacity/calculateExchange\"].post.operationId",
     "source": "specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json:659:8"
@@ -157,6 +169,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checkhealth' in:'Updates_HealthCheck'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{updateName}/checkHealth\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Updates.json:166:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'checknameavailability' in:'CheckNameAvailability_Execute'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMariaDB/checkNameAvailability\"].post.operationId",
     "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/mariadb.json:1381:8"
@@ -175,9 +193,33 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checknameavailability' in:'Services_CheckChildrenNameAvailability'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability\"].post.operationId",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:545:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'checknamespaceavailability' in:'Namespaces_CheckAvailability'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/checkNamespaceAvailability\"].post.operationId",
     "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:83:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checkpolicyrestrictions' in:'PolicyRestrictions_CheckAtManagementGroupScope'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:122:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checkpolicyrestrictions' in:'PolicyRestrictions_CheckAtResourceGroupScope'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:77:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checkpolicyrestrictions' in:'PolicyRestrictions_CheckAtSubscriptionScope'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:35:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -190,6 +232,18 @@
     "message": "OperationId should contain the verb: 'checkprincipalassignmentnameavailability' in:'DatabasePrincipalAssignments_CheckNameAvailability'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkPrincipalAssignmentNameAvailability\"].post.operationId",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:1387:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checkprincipalassignmentnameavailability' in:'KustoPoolDatabasePrincipalAssignments_CheckNameAvailability'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/databases/{databaseName}/checkPrincipalAssignmentNameAvailability\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:2031:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'checkprincipalassignmentnameavailability' in:'KustoPoolPrincipalAssignments_CheckNameAvailability'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/checkPrincipalAssignmentNameAvailability\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:1769:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -265,6 +319,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'createnotifications' in:'ActionGroups_PostTestNotifications'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/createNotifications\"].post.operationId",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:220:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'createuserinvitation' in:'StaticSites_CreateUserRolesInvitationLink'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/createUserInvitation\"].post.operationId",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:1443:8"
@@ -280,6 +340,12 @@
     "message": "OperationId should contain the verb: 'deletedataflowdebugsession' in:'DataFlowDebugSession_Delete'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/deleteDataFlowDebugSession\"].post.operationId",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:3657:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'deploy' in:'DeployAction_Product'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/deploy\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:151:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -322,6 +388,12 @@
     "message": "OperationId should contain the verb: 'executedataflowdebugcommand' in:'DataFlowDebugSession_ExecuteCommand'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/executeDataFlowDebugCommand\"].post.operationId",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:3705:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'executerunner' in:'ExecuteRunnerAction_Product'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/executeRunner\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:277:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -421,9 +493,9 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'getbackendhealthondemand' in:'ApplicationGateways_BackendHealthOnDemand'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:528:8"
+    "message": "OperationId should contain the verb: 'getconnectioninfo' in:'IntegrationRuntimeConnectionInfos_Get'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getConnectionInfo\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:729:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -457,9 +529,21 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'getobjectmetadata' in:'IntegrationRuntimeObjectMetadata_List'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:385:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'getprivatednszonesuffix' in:'GetPrivateDnsZoneSuffix_Execute'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/providers/Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix\"].post.operationId",
     "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/PrivateDnsZone.json:42:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'getstatus' in:'IntegrationRuntimeStatus_Get'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getStatus\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:1118:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -472,6 +556,30 @@
     "message": "OperationId should contain the verb: 'gettimeline' in:'EntitiesGetTimeline_list'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityId}/getTimeline\"].post.operationId",
     "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/Entities.json:243:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'hnsonmigration' in:'StorageAccounts_HierarchicalNamespaceMigration'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration\"].post.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:785:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'import' in:'ProductSecrets_Set'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}/import\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:120:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'ipaddress' in:'IntegrationRuntimeNodeIpAddress_Get'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:275:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'kustopoolchecknameavailability' in:'KustoPools_CheckNameAvailability'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/locations/{location}/kustoPoolCheckNameAvailability\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:95:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -526,6 +634,12 @@
     "message": "OperationId should contain the verb: 'listappsettings' in:'StaticSites_ListStaticSiteBuildAppSettings'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/listAppSettings\"].post.operationId",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:901:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'listauthkeys' in:'IntegrationRuntimeAuthKeys_List'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:901:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -763,6 +877,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'listtenantconfigurationviolations' in:'ListTenantConfigurationViolations_List'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/listTenantConfigurationViolations\"].post.operationId",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:192:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'listusers' in:'StaticSites_ListStaticSiteUsers'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/listUsers\"].post.operationId",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:375:8"
@@ -784,6 +904,12 @@
     "message": "OperationId should contain the verb: 'managedprivateendpointschecknameavailability' in:'ManagedPrivateEndpoints_CheckNameAvailability'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpointsCheckNameAvailability\"].post.operationId",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:1009:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'migrate' in:'BlobContainers_ObjectLevelWorm'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate\"].post.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:839:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -907,9 +1033,21 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'monitoringdata' in:'IntegrationRuntimeMonitoringData_List'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/monitoringData\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:954:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'move' in:'Databases_Rename'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/move\"].post.operationId",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:494:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'move' in:'SqlPools_Rename'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/move\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:464:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -1033,6 +1171,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'refreshobjectmetadata' in:'IntegrationRuntimeObjectMetadata_Refresh'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:1061:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'refreshschema' in:'SyncMembers_RefreshMemberSchema'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/refreshSchema\"].post.operationId",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:417:8"
@@ -1045,6 +1189,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'regenerateauthkey' in:'IntegrationRuntimeAuthKeys_Regenerate'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/regenerateAuthKey\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:839:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'regeneratekeys' in:'BatchAccount_RegenerateKey'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/regenerateKeys\"].post.operationId",
     "source": "specification/batch/resource-manager/Microsoft.Batch/stable/2022-01-01/BatchManagement.json:400:8"
@@ -1054,6 +1204,12 @@
     "message": "OperationId should contain the verb: 'regeneratesharedkey' in:'SharedKeys_Regenerate'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey\"].post.operationId",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/SharedKeys.json:83:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'remove' in:'RemoveAction_Product'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/remove\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:194:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -1090,6 +1246,12 @@
     "message": "OperationId should contain the verb: 'removedefaultaccount' in:'DefaultAccounts_Remove'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/providers/Microsoft.Purview/removeDefaultAccount\"].post.operationId",
     "source": "specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/purview.json:524:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'replaceallipfirewallrules' in:'IpFirewallRules_ReplaceAll'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/replaceAllIpFirewallRules\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/firewallRule.json:255:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -1135,6 +1297,12 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'restorepoints' in:'SqlPoolRestorePoints_Create'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1048:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'retrieveemailhistory' in:'AppServiceCertificateOrders_RetrieveCertificateEmailHistory'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveEmailHistory\"].post.operationId",
     "source": "specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2021-03-01/AppServiceCertificateOrders.json:901:8"
@@ -1144,6 +1312,12 @@
     "message": "OperationId should contain the verb: 'revokeinstantitemrecovery' in:'ItemLevelRecoveryConnections_Revoke'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery\"].post.operationId",
     "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:3653:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'rotatesecrets' in:'RotateSecretsAction_Product'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/rotateSecrets\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:237:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -1243,9 +1417,21 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'subscribe' in:'ActionGroups_EnableReceiver'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/subscribe\"].post.operationId",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:373:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'syncautostoragekeys' in:'BatchAccount_SynchronizeAutoStorageKeys'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/syncAutoStorageKeys\"].post.operationId",
     "source": "specification/batch/resource-manager/Microsoft.Batch/stable/2022-01-01/BatchManagement.json:361:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'synccredentials' in:'IntegrationRuntimeCredentials_Sync'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/syncCredentials\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:628:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -1258,6 +1444,18 @@
     "message": "OperationId should contain the verb: 'tdecertificates' in:'TdeCertificates_Create'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/tdeCertificates\"].post.operationId",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TdeCertificates.json:25:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'triggerevaluation' in:'PolicyStates_TriggerResourceGroupEvaluation'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:583:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'triggerevaluation' in:'PolicyStates_TriggerSubscriptionEvaluation'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:546:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",

@@ -32,6 +32,12 @@
   {
     "code": "MissingXmsErrorResponse",
     "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/tenantConfigurations/{configurationName}\"].get.responses[\"404\"]",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:87:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Addons/supportProviders/canonical/listSupportPlanInfo\"].post.responses[\"404\"]",
     "source": "specification/addons/resource-manager/Microsoft.Addons/preview/2018-03-01/addons-swagger.json:227:10"
   },
@@ -370,6 +376,30 @@
     "message": "Response code 404 is defined without a x-ms-error-response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}\"].delete.responses[\"404\"]",
     "source": "specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/search.json:1054:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationStatuses/{operationId}\"].get.responses[\"404\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json:163:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}\"].put.responses[\"404\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:191:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/metadataSync/config\"].get.responses[\"404\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:550:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/metadataSync/config\"].put.responses[\"404\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:615:10"
   },
   {
     "code": "MissingXmsErrorResponse",

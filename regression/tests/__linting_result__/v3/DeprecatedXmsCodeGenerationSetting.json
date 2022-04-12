@@ -213,6 +213,12 @@
     "code": "DeprecatedXmsCodeGenerationSetting",
     "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
     "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:7:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
     "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:6:4"
   },
   {
@@ -273,7 +279,115 @@
     "code": "DeprecatedXmsCodeGenerationSetting",
     "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
     "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:6:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:7:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:7:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:7:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/activityLogs_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/eventCategories_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/tenantActivityLogs_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:6:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2019-03-01/metricBaselines_API.json:5:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:7:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:5:4"
   },
   {
     "code": "DeprecatedXmsCodeGenerationSetting",
@@ -286,6 +400,12 @@
     "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
     "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
     "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/portal.json:7:4"
+  },
+  {
+    "code": "DeprecatedXmsCodeGenerationSetting",
+    "message": "The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.",
+    "jsonpath": "$.info[\"x-ms-code-generation-settings\"]",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:7:4"
   },
   {
     "code": "DeprecatedXmsCodeGenerationSetting",

@@ -25,6 +25,18 @@
   },
   {
     "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"DataMaskingPolicy\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.DataMaskingPolicy",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:7252:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"DataWarehouseUserActivities\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.DataWarehouseUserActivities",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5703:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
     "message": "The nested resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list operation, please add it.",
     "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:301:4"
@@ -61,6 +73,12 @@
   },
   {
     "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"ManagementPolicy\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.ManagementPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
     "message": "The nested resource \"PrivateEndpointConnectionResource\" does not have list operation, please add it.",
     "jsonpath": "$.definitions.PrivateEndpointConnectionResource",
     "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4661:4"
@@ -76,6 +94,18 @@
     "message": "The nested resource \"ServiceRunner\" does not have list operation, please add it.",
     "jsonpath": "$.definitions.ServiceRunner",
     "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:11891:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"SqlPoolConnectionPolicy\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.SqlPoolConnectionPolicy",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:6642:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"SqlPoolVulnerabilityAssessmentRuleBaseline\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.SqlPoolVulnerabilityAssessmentRuleBaseline",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:7006:4"
   },
   {
     "code": "NestedResourcesMustHaveListOperation",

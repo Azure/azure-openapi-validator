@@ -1,9 +1,75 @@
 [
   {
     "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"backendPoolName\" and \"backendAddressPoolName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1385:4"
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:486:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:875:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:948:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:413:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:748:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:821:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:340:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:621:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:694:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:559:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1002:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1078:4"
   },
   {
     "code": "az-path-parameter-names",
@@ -106,24 +172,6 @@
     "message": "Inconsistent path parameter names \"galleryApplicationVersionName\" and \"galleryImageVersionName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"]",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1087:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"groupName\" and \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1385:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"hubName\" and \"virtualHubName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4857:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"hubName\" and \"virtualHubName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4796:4"
   },
   {
     "code": "az-path-parameter-names",
@@ -457,12 +505,6 @@
   },
   {
     "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"p2sVpnGatewayName\" and \"gatewayName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3941:4"
-  },
-  {
-    "code": "az-path-parameter-names",
     "message": "Inconsistent path parameter names \"policySetName\" and \"name\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies\"]",
     "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:2241:4"
@@ -472,6 +514,54 @@
     "message": "Inconsistent path parameter names \"policySetName\" and \"name\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}\"]",
     "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:2323:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:103:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:236:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:948:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:821:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:694:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:357:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1078:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:496:4"
   },
   {
     "code": "az-path-parameter-names",
@@ -751,6 +841,24 @@
   },
   {
     "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"targetSubscriptionId\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:325:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"targetSubscriptionId\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:19:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"targetSubscriptionId\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:61:4"
+  },
+  {
+    "code": "az-path-parameter-names",
     "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions\"]",
     "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4194:4"
@@ -943,44 +1051,8 @@
   },
   {
     "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3644:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:799:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:739:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3590:4"
-  },
-  {
-    "code": "az-path-parameter-names",
     "message": "Inconsistent path parameter names \"vmssExtensionName\" and \"vmExtensionName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"]",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6789:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"vpnConnectionName\" and \"connectionName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/startpacketcapture\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2554:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"vpnConnectionName\" and \"connectionName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/stoppacketcapture\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2627:4"
   }
 ]

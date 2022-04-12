@@ -319,6 +319,12 @@
   },
   {
     "code": "ParametersOrder",
+    "message": "The parameters:deletedAccountName,location should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:399:6"
+  },
+  {
+    "code": "ParametersOrder",
     "message": "The parameters:deviceName,backupName,backupElementName,resourceGroupName,managerName should be kept in the same order as they present in the path.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{deviceName}/backups/{backupName}/elements/{backupElementName}/clone\"].post",
     "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:1948:6"
@@ -1555,12 +1561,6 @@
   },
   {
     "code": "ParametersOrder",
-    "message": "The parameters:location,resourceGroupName should be kept in the same order as they present in the path.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableDelegations\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableDelegations.json:81:6"
-  },
-  {
-    "code": "ParametersOrder",
     "message": "The parameters:name,location should be kept in the same order as they present in the path.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedManagedHSMs/{name}\"].get",
     "source": "specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/managedHsm.json:441:6"
@@ -1606,6 +1606,150 @@
     "message": "The parameters:pcName,regionId should be kept in the same order as they present in the path.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates\"].get",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:647:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,managementGroupsNamespace,managementGroupName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:34:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,resourceId should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:256:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,subscriptionId should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:104:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,subscriptionId,authorizationNamespace,policyAssignmentName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:487:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,subscriptionId,authorizationNamespace,policyDefinitionName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:414:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,subscriptionId,authorizationNamespace,policySetDefinitionName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:341:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,subscriptionId,resourceGroupName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:186:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyEventsResource,subscriptionId,resourceGroupName,authorizationNamespace,policyAssignmentName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:560:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,managementGroupsNamespace,managementGroupName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:34:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,resourceId should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:409:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,subscriptionId should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:155:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,subscriptionId,authorizationNamespace,policyAssignmentName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:876:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,subscriptionId,authorizationNamespace,policyDefinitionName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:749:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,subscriptionId,authorizationNamespace,policySetDefinitionName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:622:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,subscriptionId,resourceGroupName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:288:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesResource,subscriptionId,resourceGroupName,authorizationNamespace,policyAssignmentName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1003:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,managementGroupsNamespace,managementGroupName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:104:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,resourceId should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:497:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,subscriptionId should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:237:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,subscriptionId,authorizationNamespace,policyAssignmentName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:949:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,subscriptionId,authorizationNamespace,policyDefinitionName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:822:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,subscriptionId,authorizationNamespace,policySetDefinitionName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:695:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,subscriptionId,resourceGroupName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:358:6"
+  },
+  {
+    "code": "ParametersOrder",
+    "message": "The parameters:policyStatesSummaryResource,subscriptionId,resourceGroupName,authorizationNamespace,policyAssignmentName should be kept in the same order as they present in the path.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1079:6"
   },
   {
     "code": "ParametersOrder",

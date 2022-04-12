@@ -1304,6 +1304,18 @@
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.ComponentEventDetails.additionalProperties",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:878:6"
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.ComponentStateDetails.additionalProperties",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1438:6"
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.CompressionReadSettings.additionalProperties",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/Pipeline.json:1063:6"
   },
@@ -4076,6 +4088,54 @@
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyEvent.additionalProperties",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:840:6"
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyEvent.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyEventsQueryResults.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyEventsQueryResults.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyState.additionalProperties",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1389:6"
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyState.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyStatesQueryResults.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.definitions.PolicyStatesQueryResults.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.PolybaseSettings.additionalProperties",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/Pipeline.json:4438:6"
   },
@@ -5582,6 +5642,30 @@
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances\"].get.responses[\"200\"].schema.properties.value.items.properties.properties.properties.k8sRaw.additionalProperties",
     "source": ""
   },
@@ -5655,6 +5739,30 @@
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningCompute/operationalizationClusters\"].get.responses[\"200\"].schema.properties.value.items.properties.properties.properties.globalServiceConfiguration.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
     "source": ""
   },
   {
@@ -5979,6 +6087,78 @@
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Security/tasks\"].get.responses[\"200\"].schema.properties.value.items.properties.properties.properties.securityTaskParameters.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
     "source": ""
   },
   {
@@ -6728,6 +6908,30 @@
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards\"].get.responses[\"200\"].schema.properties.value.items.properties.properties.properties.lenses.items.properties.parts.items.properties.metadata.additionalProperties",
     "source": ""
   },
@@ -6873,6 +7077,78 @@
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}\"].put.responses[\"200\"].schema.properties.properties.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$[\"x-ms-paths\"][\"{nextLink}?Next paging op for policy events\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$[\"x-ms-paths\"][\"{nextLink}?Next paging op for policy events\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$[\"x-ms-paths\"][\"{nextLink}?Next paging op for policy states\"].post.responses[\"200\"].schema.properties.value.items.additionalProperties",
+    "source": ""
+  },
+  {
+    "code": "az-additional-properties-and-properties",
+    "message": "Don't specify additionalProperties as a sibling of properties.",
+    "jsonpath": "$[\"x-ms-paths\"][\"{nextLink}?Next paging op for policy states\"].post.responses[\"200\"].schema.properties.value.items.properties.components.items.additionalProperties",
     "source": ""
   }
 ]

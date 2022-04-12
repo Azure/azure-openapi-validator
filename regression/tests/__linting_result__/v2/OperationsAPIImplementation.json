@@ -21,12 +21,6 @@
     "code": "OperationsAPIImplementation",
     "message": "Operations API must be implemented for '/providers/Microsoft.Network/operations'.",
     "jsonpath": "$.paths",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:29:2"
-  },
-  {
-    "code": "OperationsAPIImplementation",
-    "message": "Operations API must be implemented for '/providers/Microsoft.Network/operations'.",
-    "jsonpath": "$.paths",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:36:2"
   },
   {

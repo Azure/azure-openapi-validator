@@ -1814,6 +1814,18 @@
   {
     "code": "az-property-names-convention",
     "message": "Property name should be camel case.",
+    "jsonpath": "$.definitions.GitRepositoryDefinition.properties.httpsCACert",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json:462:8"
+  },
+  {
+    "code": "az-property-names-convention",
+    "message": "Property name should be camel case.",
+    "jsonpath": "$.definitions.GitRepositoryPatchDefinition.properties.httpsCACert",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json:510:8"
+  },
+  {
+    "code": "az-property-names-convention",
+    "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.H265VideoLayer.properties.adaptiveBFrame",
     "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/Encoding.json:177:8"
   },
@@ -3170,14 +3182,32 @@
   {
     "code": "az-property-names-convention",
     "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.Preset.properties[\"@odata.type\"]",
-    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/Encoding.json:33:8"
+    "jsonpath": "$.definitions.PolicyEvent.properties[\"@odata.context\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:715:8"
   },
   {
     "code": "az-property-names-convention",
     "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.PrivateEndpointIPConfigurationProperties.properties.privateIPAddress",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:1030:8"
+    "jsonpath": "$.definitions.PolicyEvent.properties[\"@odata.id\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:711:8"
+  },
+  {
+    "code": "az-property-names-convention",
+    "message": "Property name should be camel case.",
+    "jsonpath": "$.definitions.PolicyState.properties[\"@odata.context\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1245:8"
+  },
+  {
+    "code": "az-property-names-convention",
+    "message": "Property name should be camel case.",
+    "jsonpath": "$.definitions.PolicyState.properties[\"@odata.id\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1241:8"
+  },
+  {
+    "code": "az-property-names-convention",
+    "message": "Property name should be camel case.",
+    "jsonpath": "$.definitions.Preset.properties[\"@odata.type\"]",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/Encoding.json:33:8"
   },
   {
     "code": "az-property-names-convention",

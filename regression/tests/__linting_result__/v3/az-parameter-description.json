@@ -1256,18 +1256,6 @@
   {
     "code": "az-parameter-description",
     "message": "Parameter should have a description.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsFilterOptions\"].post.parameters[\"0\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:774:10"
-  },
-  {
-    "code": "az-parameter-description",
-    "message": "Parameter should have a description.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsSignatures\"].post.parameters[\"3\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:593:10"
-  },
-  {
-    "code": "az-parameter-description",
-    "message": "Parameter should have a description.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.parameters[\"1\"]",
     "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:419:10"
   },
@@ -1912,6 +1900,12 @@
     "message": "Parameter should have a description.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover\"].post.parameters[\"3\"]",
     "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:453:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore\"].post.parameters[\"3\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:502:10"
   },
   {
     "code": "az-parameter-description",

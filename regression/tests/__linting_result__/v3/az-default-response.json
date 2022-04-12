@@ -584,6 +584,12 @@
   {
     "code": "az-default-response",
     "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Deployment.Admin/operations\"].get.responses",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/Deployment.json:36:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
     "jsonpath": "$.paths[\"/providers/Microsoft.DevSpaces/operations\"].get.responses",
     "source": "specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/devspaces.json:89:8"
   },
@@ -706,6 +712,12 @@
     "message": "Operation is missing a default response.",
     "jsonpath": "$.paths[\"/providers/Microsoft.StorSimple/operations\"].get.responses",
     "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:36:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Storage/operations\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:36:8"
   },
   {
     "code": "az-default-response",
@@ -884,6 +896,18 @@
   {
     "code": "az-default-response",
     "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers\"].get.responses",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json:39:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers/{fileContainerId}\"].put.responses",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json:115:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts\"].get.responses",
     "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:250:8"
   },
@@ -1036,6 +1060,30 @@
     "message": "Operation is missing a default response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorSimple/managers\"].get.responses",
     "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:76:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:111:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:637:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:69:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:464:8"
   },
   {
     "code": "az-default-response",
@@ -5518,6 +5566,210 @@
     "message": "Operation is missing a default response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/storageAccountCredentials/{storageAccountCredentialName}\"].put.responses",
     "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:4816:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:500:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:227:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:285:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].patch.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:349:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:189:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:685:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:730:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:45:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:204:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:391:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:354:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].patch.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:313:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:261:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:490:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:768:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:708:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:656:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:603:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:550:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:824:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:442:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:139:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:102:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2172:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:766:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:552:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1061:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:963:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1024:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1288:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1467:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:600:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:914:8"
+  },
+  {
+    "code": "az-default-response",
+    "message": "Operation is missing a default response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1703:8"
   },
   {
     "code": "az-default-response",

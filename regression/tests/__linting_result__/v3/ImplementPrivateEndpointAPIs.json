@@ -175,6 +175,42 @@
   },
   {
     "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json:23:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName} is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json:23:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privatelinkhub.json:23:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json:23:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName} is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json:23:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateEndpointConnections.json:23:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
     "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections is missing.",
     "jsonpath": "$.paths",
     "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkResources.json:36:2"

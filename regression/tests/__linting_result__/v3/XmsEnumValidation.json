@@ -8,6 +8,12 @@
   {
     "code": "XmsEnumValidation",
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.ActiveDirectoryProperties.properties.accountType",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2926:8"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.AdaptiveApplicationControlIssue",
     "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/applicationWhitelistings.json:362:4"
   },
@@ -52,6 +58,18 @@
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.ApplicationProperties.properties.platform",
     "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1883:8"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.AsyncOperationState",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.AzureKeyVaultSecretReference.properties.store.properties.type",
+    "source": ""
   },
   {
     "code": "XmsEnumValidation",
@@ -134,6 +152,18 @@
   {
     "code": "XmsEnumValidation",
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.CorsRule.properties.allowedMethods.items",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.CorsRules.properties.corsRules.items.properties.allowedMethods.items",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.CustomizationHostName.properties.type",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:2287:8"
   },
@@ -183,6 +213,12 @@
     "code": "XmsEnumValidation",
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.DataFlowSink.properties.schemaLinkedService.properties.type",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.DataFlowStagingInfo.properties.linkedService.properties.type",
     "source": ""
   },
   {
@@ -422,6 +458,12 @@
   {
     "code": "XmsEnumValidation",
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.LeaseContainerRequest.properties.action",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1469:8"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.LinkedService.properties.connectVia.properties.type",
     "source": ""
   },
@@ -506,6 +548,18 @@
   {
     "code": "XmsEnumValidation",
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.ManagedIdentitySqlControlSettingsModel.properties.properties.properties.grantSqlControlToManagedIdentity.properties.actualState",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:1418:16"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.ManagedIdentitySqlControlSettingsModel.properties.properties.properties.grantSqlControlToManagedIdentity.properties.desiredState",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:1410:16"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.ManagedInstanceProperties.properties.provisioningState",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:587:8"
   },
@@ -544,6 +598,48 @@
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.MigrateProjectProperties.properties.registeredTools.items",
     "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:2654:10"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbCollectionProgress.allOf[0].properties.resultType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbDatabaseProgress.allOf[0].properties.resultType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbDatabaseProgress.properties.collections.additionalProperties.allOf[0].properties.resultType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbMigrationProgress.allOf[0].properties.resultType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbMigrationProgress.properties.databases.additionalProperties.allOf[0].properties.resultType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbMigrationProgress.properties.databases.additionalProperties.properties.collections.additionalProperties.allOf[0].properties.resultType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.MongoDbProgress.properties.resultType",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MongoDbTasks.json:393:8"
   },
   {
     "code": "XmsEnumValidation",
@@ -878,6 +974,18 @@
   {
     "code": "XmsEnumValidation",
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.SystemData.properties.createdByType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.SystemData.properties.lastModifiedByType",
+    "source": ""
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.TopicTypeProperties.properties.supportedScopesForSource.items",
     "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:12011:10"
   },
@@ -898,6 +1006,12 @@
     "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
     "jsonpath": "$.definitions.TransformationNode.properties.kind",
     "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:1917:8"
+  },
+  {
+    "code": "XmsEnumValidation",
+    "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+    "jsonpath": "$.definitions.TriggerPipelineReference.properties.pipelineReference.properties.type",
+    "source": ""
   },
   {
     "code": "XmsEnumValidation",

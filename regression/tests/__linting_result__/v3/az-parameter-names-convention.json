@@ -2,6 +2,102 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$apply\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Consumption/charges\"].get.parameters[\"5\"].name",
     "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:564:12"
   },
@@ -218,12 +314,6 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories/{name}\"].get.parameters[\"3\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureWebCategory.json:59:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses\"].get.parameters[\"3\"].name",
     "source": ""
   },
@@ -326,18 +416,6 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}\"].get.parameters[\"6\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:193:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.parameters[\"8\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:212:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].get.parameters[\"5\"].name",
     "source": ""
   },
@@ -388,12 +466,6 @@
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines\"].get.parameters[\"4\"].name",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9048:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.parameters[\"8\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:212:12"
   },
   {
     "code": "az-parameter-names-convention",
@@ -758,150 +830,6 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendhealth\"].post.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:493:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand\"].post.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:557:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:66:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}\"].get.parameters[\"5\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:898:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].get.parameters[\"5\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:337:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:126:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].get.parameters[\"5\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:483:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes\"].get.parameters[\"2\"].name",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:1956:12"
   },
@@ -1016,26 +944,38 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].get.parameters[\"4\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:270:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"].get.parameters[\"6\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:208:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].get.parameters[\"5\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:393:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].put.parameters[\"4\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:272:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys\"].post.parameters[\"4\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:539:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}\"].get.parameters[\"3\"].name",
     "source": ""
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"].get.parameters[\"6\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:193:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"].get.parameters[\"6\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:264:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"].get.parameters[\"7\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:345:12"
   },
   {
     "code": "az-parameter-names-convention",
@@ -1084,6 +1024,18 @@
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resources\"].get.parameters[\"1\"].name",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2948:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -1496,6 +1448,36 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/recommendations\"].get.parameters[\"2\"].name",
     "source": "specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json:422:12"
   },
@@ -1784,6 +1766,42 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses\"].get.parameters[\"1\"].name",
     "source": ""
   },
@@ -1833,6 +1851,12 @@
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageAccounts\"].get.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions\"].get.parameters[\"2\"].name",
     "source": ""
   },
   {
@@ -1888,6 +1912,60 @@
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations\"].get.parameters[\"3\"].name",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/Recommendations.json:40:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"8\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -3242,6 +3320,42 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations\"].get.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances\"].get.parameters[\"4\"].name",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:233:12"
   },
@@ -3620,6 +3734,24 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"].get.parameters[\"5\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:184:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"].get.parameters[\"5\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:202:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues\"].get.parameters[\"5\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:382:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels\"].get.parameters[\"5\"].name",
     "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1906:12"
   },
@@ -3794,6 +3926,24 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resources\"].get.parameters[\"0\"].name",
     "source": "specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/keyvault.json:633:12"
   },
@@ -3802,6 +3952,42 @@
     "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resources\"].get.parameters[\"0\"].name",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2941:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/attestations\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$filter\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"2\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -3913,6 +4099,162 @@
   },
   {
     "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$from\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$include\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"].get.parameters[\"6\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:190:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$include\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].delete.parameters[\"6\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:457:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
     "message": "Parameter name \"$inlineCount\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network.Admin/adminLoadBalancers\"].get.parameters[\"6\"].name",
     "source": ""
@@ -3973,6 +4315,24 @@
   },
   {
     "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$maxpagesize\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"].get.parameters[\"4\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:178:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$maxpagesize\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"].get.parameters[\"4\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:196:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$maxpagesize\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues\"].get.parameters[\"4\"].name",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:376:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
     "message": "Parameter name \"$orderBy\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network.Admin/adminLoadBalancers\"].get.parameters[\"3\"].name",
     "source": ""
@@ -4016,6 +4376,18 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions\"].get.parameters[\"7\"].name",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2780:12"
   },
@@ -4054,6 +4426,54 @@
     "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/schedules\"].get.parameters[\"4\"].name",
     "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:203:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -4381,6 +4801,42 @@
   },
   {
     "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$orderby\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
     "message": "Parameter name \"$recordsetnamesuffix\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/all\"].get.parameters[\"3\"].name",
     "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:729:12"
@@ -4526,6 +4982,18 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/accounts\"].get.parameters[\"4\"].name",
     "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:74:12"
   },
@@ -4539,6 +5007,54 @@
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/eventtypes/management/values\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
     "source": ""
   },
   {
@@ -4592,6 +5108,18 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions\"].get.parameters[\"0\"].name",
     "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/functions.json:305:12"
   },
@@ -4606,6 +5134,30 @@
     "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs\"].get.parameters[\"0\"].name",
     "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/outputs.json:386:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$select\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -5714,6 +6266,18 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods\"].get.parameters[\"3\"].name",
     "source": "specification/billing/resource-manager/Microsoft.Billing/preview/2018-03-01-preview/billingV2.json:125:12"
   },
@@ -5750,6 +6314,54 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"12\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningCompute/operationalizationClusters\"].get.parameters[\"3\"].name",
     "source": "specification/machinelearningcompute/resource-manager/Microsoft.MachineLearningCompute/preview/2017-08-01-preview/machineLearningCompute.json:372:12"
   },
@@ -5780,6 +6392,18 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/columns\"].get.parameters[\"7\"].name",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:77:12"
   },
@@ -5800,6 +6424,30 @@
     "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources\"].get.parameters[\"3\"].name",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/DataSources.json:204:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"13\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"13\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$skiptoken\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"11\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -5848,6 +6496,150 @@
     "message": "Parameter name \"$take\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems\"].get.parameters[\"7\"].name",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:2578:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"9\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"10\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"8\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"7\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$to\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -5942,6 +6734,12 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PolicyInsights/policyMetadata\"].get.parameters[\"1\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/\"].get.parameters[\"1\"].name",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:721:12"
   },
@@ -5950,6 +6748,42 @@
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}/operations\"].get.parameters[\"1\"].name",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3979:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -6200,6 +7034,48 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations\"].get.parameters[\"1\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"1\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"1\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/\"].get.parameters[\"1\"].name",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1494:12"
   },
@@ -6238,6 +7114,60 @@
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/virtualMachines\"].get.parameters[\"3\"].name",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:953:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"5\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"5\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -7280,6 +8210,48 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs\"].get.parameters[\"4\"].name",
     "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:609:12"
   },
@@ -7424,6 +8396,24 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"6\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resources\"].get.parameters[\"1\"].name",
     "source": "specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/keyvault.json:647:12"
   },
@@ -7432,6 +8422,48 @@
     "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resources\"].get.parameters[\"2\"].name",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2955:12"
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/attestations\"].get.parameters[\"1\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post.parameters[\"3\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.parameters[\"2\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/remediations\"].get.parameters[\"1\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"$top\" should not begin with '$' or '@'.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.parameters[\"2\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -7483,6 +8515,18 @@
   },
   {
     "code": "az-parameter-names-convention",
+    "message": "Parameter name \"BlobServicesName\" should be camel case.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].get.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
+    "message": "Parameter name \"BlobServicesName\" should be camel case.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.parameters[\"4\"].name",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-names-convention",
     "message": "Parameter name \"ConfigurationId\" should be camel case.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/ProactiveDetectionConfigs/{ConfigurationId}\"].get.parameters[\"4\"].name",
     "source": ""
@@ -7495,27 +8539,15 @@
   },
   {
     "code": "az-parameter-names-convention",
-    "message": "Parameter name \"VirtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].delete.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:224:12"
+    "message": "Parameter name \"FileServicesName\" should be camel case.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].get.parameters[\"4\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
-    "message": "Parameter name \"VirtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].get.parameters[\"1\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:55:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"VirtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].patch.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:170:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"VirtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].put.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:103:12"
+    "message": "Parameter name \"FileServicesName\" should be camel case.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].put.parameters[\"4\"].name",
+    "source": ""
   },
   {
     "code": "az-parameter-names-convention",
@@ -7711,12 +8743,6 @@
   },
   {
     "code": "az-parameter-names-convention",
-    "message": "Parameter name \"frontendIPConfigurationName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations/{frontendIPConfigurationName}\"].get.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:713:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
     "message": "Parameter name \"hyperVCollectorName\" should be camel case.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hyperVCollectorName}\"].delete.parameters[\"3\"].name",
     "source": ""
@@ -7816,30 +8842,6 @@
     "message": "Parameter name \"use-cache\" should be camel case.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores\"].parameters[\"1\"].name",
     "source": ""
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"virtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"].post.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3665:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"virtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:820:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"virtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration\"].post.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:760:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"virtualWANName\" should be camel case.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations\"].post.parameters[\"2\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3611:12"
   },
   {
     "code": "az-parameter-names-convention",

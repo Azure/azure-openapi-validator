@@ -446,12 +446,6 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for get method should contain \"Get\" or \"list\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability\"].get.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/checkDnsAvailability.json:39:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId for get method should contain \"Get\" or \"list\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}\"].get.operationId",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3102:8"
   },
@@ -514,18 +508,6 @@
     "message": "OperationId for get method should contain \"Get\" or \"list\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus\"].get.operationId",
     "source": "specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-10-01/netapp.json:1220:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId for get method should contain \"Get\" or \"list\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"].get.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1163:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId for get method should contain \"Get\" or \"list\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:801:8"
   },
   {
     "code": "az-operation-id",
@@ -644,12 +626,6 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for patch method should contain \"Update\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:625:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId for patch method should contain \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}\"].patch.operationId",
     "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:182:8"
   },
@@ -676,6 +652,12 @@
     "message": "OperationId for patch method should contain \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{deviceName}\"].patch.operationId",
     "source": "specification/storSimple1200Series/resource-manager/Microsoft.StorSimple/stable/2016-10-01/StorSimple.json:1021:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for patch method should contain \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].patch.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2054:8"
   },
   {
     "code": "az-operation-id",
@@ -1214,12 +1196,6 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for put method should contain \"Create\" or \"Update\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].put.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:677:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId for put method should contain \"Create\" or \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}\"].put.operationId",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/QueryPackQueries.json:191:8"
   },
@@ -1252,6 +1228,36 @@
     "message": "OperationId for put method should contain \"Create\" or \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/certificates/{certificateName}\"].put.operationId",
     "source": "specification/storSimple1200Series/resource-manager/Microsoft.StorSimple/stable/2016-10-01/StorSimple.json:726:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain \"Create\" or \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:63:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain \"Create\" or \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:66:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain \"Create\" or \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1349:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain \"Create\" or \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/{queueServiceName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:66:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain \"Create\" or \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/{tableServiceName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:66:8"
   },
   {
     "code": "az-operation-id",
@@ -1340,6 +1346,12 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/tenantConfigurations/{configurationName}\"].put.operationId",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:107:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/providers/Microsoft.Subscription/aliases/{aliasName}\"].put.operationId",
     "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:157:8"
   },
@@ -1354,6 +1366,12 @@
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/platformImage/publishers/{publisher}/offers/{offer}/skus/{sku}/versions/{version}\"].put.operationId",
     "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/preview/2015-12-01-preview/PlatformImages.json:120:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"].put.operationId",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:152:8"
   },
   {
     "code": "az-operation-id",
@@ -1396,6 +1414,12 @@
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}\"].put.operationId",
     "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2834:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}\"].put.operationId",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:161:8"
   },
   {
     "code": "az-operation-id",
@@ -2108,12 +2132,6 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey\"].put.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1469:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OpenEnergyPlatform/energyServices/{resourceName}\"].put.operationId",
     "source": "specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/oep.json:175:8"
   },
@@ -2216,6 +2234,24 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:222:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1993:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].put.operationId",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:239:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}\"].put.operationId",
     "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/azureADOnlyAuthentication.json:75:8"
   },
@@ -2260,6 +2296,12 @@
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsESU/multipleActivationKeys/{multipleActivationKeyName}\"].put.operationId",
     "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:202:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}\"].put.operationId",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json:44:8"
   },
   {
     "code": "az-operation-id",
@@ -2732,12 +2774,6 @@
   {
     "code": "az-operation-id",
     "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability\"].get.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/checkDnsAvailability.json:39:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Peering/checkServiceProviderAvailability\"].post.operationId",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:71:8"
   },
@@ -2980,48 +3016,6 @@
     "message": "OperationId should be of the form \"Noun_Verb\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions\"].post.operationId",
     "source": "specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2021-12-10-preview/HybridCompute.json:625:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:328:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:384:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:534:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:482:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:434:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"].post.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3646:8"
-  },
-  {
-    "code": "az-operation-id",
-    "message": "OperationId should be of the form \"Noun_Verb\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get.operationId",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:801:8"
   },
   {
     "code": "az-operation-id",

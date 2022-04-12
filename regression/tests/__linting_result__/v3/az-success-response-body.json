@@ -224,6 +224,12 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/tenantConfigurations/{configurationName}\"].delete.responses[\"200\"]",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:167:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Portal/userSettings/{userSettingsName}\"].delete.responses[\"200\"]",
     "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:459:10"
   },
@@ -350,6 +356,60 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers/{fileContainerId}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json:158:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/bootstrap\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:124:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/deploy\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:167:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/executeRunner\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:293:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/remove\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:207:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/rotateSecrets\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:250:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductPackage.json:163:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}/import\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:139:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}/validate\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:188:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrderPartner/locations/{location}/productFamilies/{familyIdentifier}/inventories/{serialNumber}/manageInventoryMetadata\"].post.responses[\"200\"]",
     "source": "specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/edgeorderpartner.json:100:10"
   },
@@ -434,12 +494,6 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1361:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Peering/initializeConnectionMonitor\"].post.responses[\"200\"]",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:2351:10"
   },
@@ -448,6 +502,18 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}\"].delete.responses[\"200\"]",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:420:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}\"].delete.responses[\"200\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/attestations.json:181:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation\"].post.responses[\"200\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:557:10"
   },
   {
     "code": "az-success-response-body",
@@ -574,6 +640,24 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageAccounts/{accountId}/undelete\"].post.responses[\"200\"]",
     "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/storageaccounts.json:139:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:432:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:134:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/updateEncryption\"].post.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:73:10"
   },
   {
     "code": "az-success-response-body",
@@ -742,6 +826,12 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}\"].delete.responses[\"200\"]",
     "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2973:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}\"].delete.responses[\"200\"]",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:254:10"
   },
   {
     "code": "az-success-response-body",
@@ -5756,26 +5846,8 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:277:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:149:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}\"].delete.responses[\"200\"]",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:203:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:73:10"
   },
   {
     "code": "az-success-response-body",
@@ -5794,72 +5866,6 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].delete.responses[\"200\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:78:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:697:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:386:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/stop\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:440:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:65:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:404:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1373:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:73:10"
   },
   {
     "code": "az-success-response-body",
@@ -5912,66 +5918,6 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:140:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:963:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:77:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:320:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:573:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:380:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4297:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4490:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:344:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps\"].post.responses[\"200\"]",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-05-01/frontdoor.json:589:10"
   },
@@ -5990,114 +5936,6 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:246:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:616:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:843:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2087:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:675:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:70:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:404:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:67:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:395:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/start\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1891:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1830:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:831:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3243:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3980:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}\"].delete.responses[\"200\"]",
     "source": "specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/privatedns.json:220:10"
   },
@@ -6112,246 +5950,6 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}\"].delete.responses[\"200\"]",
     "source": "specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/privatedns.json:1055:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:449:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:470:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:75:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:403:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:70:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:401:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:70:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:404:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1343:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4724:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5433:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5314:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1554:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5080:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3869:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5614:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:188:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2311:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2497:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:466:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:67:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:422:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:637:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:704:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:926:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:344:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:235:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration\"].post.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:780:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1883:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2966:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2403:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1044:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:534:10"
   },
   {
     "code": "az-success-response-body",
@@ -6580,6 +6178,18 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}\"].delete.responses[\"200\"]",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:954:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}\"].delete.responses[\"200\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/attestations.json:358:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation\"].post.responses[\"200\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:597:10"
   },
   {
     "code": "az-success-response-body",
@@ -7784,6 +7394,78 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:228:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:392:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate\"].post.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:864:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover\"].post.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:767:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:465:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore\"].post.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:518:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1202:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1883:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1062:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1656:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1426:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys\"].post.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1704:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}\"].delete.responses[\"200\"]",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:292:10"
   },
@@ -7906,6 +7588,18 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}\"].delete.responses[\"200\"]",
     "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/privateEndpoints.json:173:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Offer.json:216:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Plan.json:222:10"
   },
   {
     "code": "az-success-response-body",
@@ -8810,6 +8504,24 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}\"].delete.responses[\"200\"]",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json:199:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}\"].delete.responses[\"200\"]",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json:265:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}\"].delete.responses[\"200\"]",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json:186:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}\"].delete.responses[\"200\"]",
     "source": "specification/chaos/resource-manager/Microsoft.Chaos/preview/2021-09-15-preview/targets.json:171:10"
   },
@@ -9020,6 +8732,18 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration\"].post.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:860:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration\"].post.responses[\"200\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:814:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].delete.responses[\"200\"]",
     "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:370:10"
   },
@@ -9128,6 +8852,18 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/DirectoryTenant.json:134:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}\"].delete.responses[\"200\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/OfferDelegation.json:195:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}\"].delete.responses[\"200\"]",
     "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkForAzureAD.json:211:10"
   },
@@ -9178,6 +8914,12 @@
     "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/{resourceId}\"].delete.responses[\"200\"]",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3462:10"
+  },
+  {
+    "code": "az-success-response-body",
+    "message": "All success responses except 202 & 204 should define a response body.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}\"].delete.responses[\"200\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/attestations.json:523:10"
   },
   {
     "code": "az-success-response-body",

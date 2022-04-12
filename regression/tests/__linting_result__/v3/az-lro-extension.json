@@ -62,6 +62,12 @@
   {
     "code": "az-lro-extension",
     "message": "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/operationsStatus/{operationsStatusName}\"].get",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Location.json:138:6"
+  },
+  {
+    "code": "az-lro-extension",
+    "message": "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/operationResults/{operationId}\"].get",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:266:6"
   },
@@ -482,6 +488,12 @@
   {
     "code": "az-lro-extension",
     "message": "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{updateName}/updateRuns/{runName}/rerun\"].post",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateRuns.json:206:6"
+  },
+  {
+    "code": "az-lro-extension",
+    "message": "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}\"].delete[\"x-ms-long-running-operation\"]",
     "source": ""
   },
@@ -604,6 +616,12 @@
     "message": "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Security/serverVulnerabilityAssessments/{serverVulnerabilityAssessment}\"].put",
     "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/serverVulnerabilityAssessments.json:170:6"
+  },
+  {
+    "code": "az-lro-extension",
+    "message": "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}\"].delete",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintAssignment.json:133:6"
   },
   {
     "code": "az-lro-extension",

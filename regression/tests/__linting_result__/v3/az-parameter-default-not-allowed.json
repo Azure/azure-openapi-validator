@@ -62,6 +62,12 @@
   {
     "code": "az-parameter-default-not-allowed",
     "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Deployment.Admin/operations\"].get.parameters[\"0\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
     "jsonpath": "$.paths[\"/providers/Microsoft.DevTestLab/operations\"].get.parameters[\"0\"].default",
     "source": ""
   },
@@ -122,6 +128,12 @@
   {
     "code": "az-parameter-default-not-allowed",
     "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscriptions.Admin/operations\"].get.parameters[\"0\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
     "jsonpath": "$.paths[\"/subscriptions\"].get.parameters[\"0\"].default",
     "source": ""
   },
@@ -171,6 +183,180 @@
     "code": "az-parameter-default-not-allowed",
     "message": "A required parameter should not specify a default value.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans/{planId}\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans/{planId}/operations\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans/{planId}/operations/{operationId}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers/{fileContainerId}\"].delete.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers/{fileContainerId}\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers/{fileContainerId}\"].put.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/bootstrap\"].post.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/deploy\"].post.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/executeRunner\"].post.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/remove\"].post.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/rotateSecrets\"].post.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}\"].delete.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}\"].put.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}/import\"].post.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}/validate\"].post.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/actionplans/{planId}/operations/{operationId}/attempts\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/actionplans/{planId}/operations/{operationId}/attempts\"].get.parameters[\"4\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/operationresults/{operationResultId}\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/operationresults/{operationResultId}\"].get.parameters[\"2\"].default",
     "source": ""
   },
   {
@@ -309,6 +495,174 @@
     "code": "az-parameter-default-not-allowed",
     "message": "A required parameter should not specify a default value.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabricMesh/volumes\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/checkIdentityHealth\"].post.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/checkNameAvailability\"].post.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers/{offer}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}\"].put.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/operationsStatus/{operationsStatusName}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas/{quota}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/manifests\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/manifests/{manifestName}\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/moveSubscriptions\"].post.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/offers\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/plans\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/restoreData\"].post.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}\"].delete.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}\"].put.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"].delete.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"].put.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/updateEncryption\"].post.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/validateMoveSubscriptions\"].post.parameters[\"1\"].default",
     "source": ""
   },
   {
@@ -1976,6 +2330,78 @@
   {
     "code": "az-parameter-default-not-allowed",
     "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}\"].delete.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}\"].put.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/link\"].post.parameters[\"4\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/metricDefinitions\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/metrics\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/unlink\"].post.parameters[\"4\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}\"].delete.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}\"].put.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/linkedSubscriptions\"].get.parameters[\"2\"].default",
     "source": ""
   },
@@ -2103,6 +2529,66 @@
     "code": "az-parameter-default-not-allowed",
     "message": "A required parameter should not specify a default value.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters\"].get.parameters[\"1\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants\"].get.parameters[\"2\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}\"].delete.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}\"].put.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}\"].delete.parameters[\"4\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}\"].get.parameters[\"4\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}\"].put.parameters[\"4\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/metricDefinitions\"].get.parameters[\"3\"].default",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-default-not-allowed",
+    "message": "A required parameter should not specify a default value.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/metrics\"].get.parameters[\"3\"].default",
     "source": ""
   }
 ]

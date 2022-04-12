@@ -1,6 +1,24 @@
 [
   {
     "code": "XmsIdentifierValidation",
+    "message": "Missing identifier /error/code in array item property",
+    "jsonpath": "$.definitions.AmlComputeProperties.properties.errors",
+    "source": "specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/machineLearningServices.json:3467:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier /error/code in array item property",
+    "jsonpath": "$.definitions.Compute.properties.provisioningErrors",
+    "source": "specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/machineLearningServices.json:3201:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier /error/code in array item property",
+    "jsonpath": "$.definitions.ComputeInstanceProperties.properties.errors",
+    "source": "specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/machineLearningServices.json:3578:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.A2AAddDisksInput.properties.vmDisks",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:7977:8"
@@ -368,6 +386,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.AssignmentDeploymentJob.properties.history",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/assignmentOperation.json:220:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.AssignmentOperationProperties.properties.deployments",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/assignmentOperation.json:187:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.AssignmentReport.properties.resources",
     "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:1079:8"
   },
@@ -458,6 +488,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.AvailableClustersList.properties.value",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/AvailableClusterRegions-preview.json:78:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.AvailableOperations.properties.value",
     "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:8923:8"
   },
@@ -518,6 +554,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.BackupSetInfo.properties.listOfBackupFiles",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:572:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.BasicInformation.properties.imageInformation",
     "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:1484:8"
   },
@@ -542,8 +584,8 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.BgpServiceCommunityPropertiesFormat.properties.bgpCommunities",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceCommunity.json:116:8"
+    "jsonpath": "$.definitions.BigDataPoolResourceProperties.properties.customLibraries",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/bigDataPool.json:446:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -622,6 +664,18 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.BillingRoleDefinitionProperties.properties.permissions",
     "source": "specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/billing.json:6221:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.BlobInventoryPolicySchema.properties.rules",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5169:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.BlobRestoreParameters.properties.blobRanges",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4137:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -788,6 +842,36 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CheckOCIDriverTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ServiceFeatureOCITask.json:77:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CheckOCIDriverTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ServiceTasks.json:28:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CheckRestrictionsRequest.properties.pendingFields",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:174:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CheckRestrictionsResult.properties.contentEvaluationResult.properties.policyEvaluations",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:257:12"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CheckRestrictionsResult.properties.fieldRestrictions",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:246:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.CheckSkuAvailabilityParameter.properties.skus",
     "source": "specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2022-03-01/cognitiveservices.json:2109:8"
   },
@@ -885,6 +969,12 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.CloudErrorBody.properties.details",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:1009:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CloudErrorBody.properties.details",
     "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:845:8"
   },
   {
@@ -898,12 +988,6 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.CloudErrorBody.properties.details",
     "source": "specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2021-09-30-preview/ManagedIdentity.json:659:8"
-  },
-  {
-    "code": "XmsIdentifierValidation",
-    "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.CloudErrorBody.properties.details",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:108:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -1196,6 +1280,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CommandProperties.properties.errors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Commands.json:39:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.CommonProperties.properties.filterableProperties",
     "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:1532:8"
   },
@@ -1268,6 +1358,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConfigDiagnostics.properties.validatorResults",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:921:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ConfigServerGitProperty.properties.repositories",
     "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:7614:8"
   },
@@ -1324,6 +1420,96 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ConfigurationsRequest.properties.configurationFilters",
     "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:1627:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToMongoDbTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:169:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToSourceNonSqlTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:900:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToSourceOracleSyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:55:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToSourceOracleSyncTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:293:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToSourcePostgreSqlSyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToSourcePostgreSqlSyncTask.json:60:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToSourceSqlServerTaskOutputAgentJobLevel.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToSourceSqlServerTask.json:256:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToSourceSqlServerTaskOutputTaskLevel.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToSourceSqlServerTask.json:132:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForMySqlTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToTargetAzureDbForMySqlTask.json:70:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToTargetAzureDbForPostgreSqlSyncTask.json:65:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutput.properties.databaseSchemaMap",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:108:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:100:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:393:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetSqlMISyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToTargetSqlMiSyncTask.json:52:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetSqlMISyncTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:565:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ConnectToTargetSqlMITaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ConnectToTargetSqlMITask.json:83:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -1468,6 +1654,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.CorrelationSchemeList",
     "source": "specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/stable/2022-01-01/managedapplication.json:1507:4"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.CorsRules.properties.corsRules",
+    "source": ""
   },
   {
     "code": "XmsIdentifierValidation",
@@ -1640,6 +1832,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.DataConnectionValidationListResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:3039:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.DataConnectorConnectBody.properties.requestConfigUserInputValues",
     "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/dataConnectors.json:2254:8"
   },
@@ -1648,6 +1846,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.DataFreshnessDetails.properties.value",
     "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:4716:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.DataMigrationProjectMetadata.properties.selectedMigrationTables",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:318:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -1756,12 +1960,6 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.DataboxJobSecrets.properties.podSecrets",
     "source": "specification/databox/resource-manager/Microsoft.DataBox/stable/2021-12-01/databox.json:2930:8"
-  },
-  {
-    "code": "XmsIdentifierValidation",
-    "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.DdosCustomPolicyPropertiesFormat.properties.protocolCustomSettings",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:308:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -1904,6 +2102,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.DomainServiceProperties.properties.replicaSets",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:461:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.DraDetails.properties.healthErrors",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:10845:8"
   },
@@ -1960,6 +2164,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.EnabledResourceTypeProperties.properties.typesMetadata",
     "source": "specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json:461:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.Encryption.properties.keyVaultProperties",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/namespaces-preview.json:794:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -2085,12 +2295,6 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.Error.properties.details",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:69:8"
-  },
-  {
-    "code": "XmsIdentifierValidation",
-    "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.Error.properties.details",
     "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaults.json:1726:8"
   },
   {
@@ -2122,6 +2326,18 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ErrorDefinition.properties.details",
     "source": "specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/managedservices.json:1216:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ErrorDetail.properties.additionalInfo",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ErrorDetail.properties.details",
+    "source": ""
   },
   {
     "code": "XmsIdentifierValidation",
@@ -2312,6 +2528,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.FieldRestrictions.properties.restrictions",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:277:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.FlaggedEnrolledAppProperties.properties.errors",
     "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:2468:8"
   },
@@ -2320,6 +2542,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.FollowerDatabaseListResult.properties.value",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:5389:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.FollowerDatabaseListResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:3410:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -2404,6 +2632,108 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.GetInsightsResultsMetadata.properties.errors",
     "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/Entities.json:1186:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetTdeCertificatesSqlTaskInput.properties.selectedCertificates",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetTdeCertificatesSqlTask.json:32:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetTdeCertificatesSqlTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetTdeCertificatesSqlTask.json:61:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetTdeCertificatesSqlTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:997:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesMySqlTaskOutput.properties.databasesToTables.additionalProperties",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesMySqlTask.json:53:10"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesMySqlTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesMySqlTask.json:61:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesOracleTaskOutput.properties.tables",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:158:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesOracleTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:166:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesOracleTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:469:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesPostgreSqlTaskOutput.properties.tables",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:206:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesPostgreSqlTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:214:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesPostgreSqlTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:493:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskOutput.properties.databasesToSourceTables.additionalProperties",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesSqlSyncTask.json:61:10"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskOutput.properties.databasesToTargetTables.additionalProperties",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesSqlSyncTask.json:72:10"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesSqlSyncTask.json:91:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:445:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesSqlTaskOutput.properties.databasesToTables.additionalProperties",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesSqlTask.json:57:10"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.GetUserTablesSqlTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/GetUserTablesSqlTask.json:65:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -2626,6 +2956,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ImageTemplateProperties.properties.distribute",
     "source": "specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2021-10-01/imagebuilder.json:1110:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ImmutabilityPolicyProperties.properties.updateHistory",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1078:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -2876,6 +3212,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.InstallOCIDriverTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ServiceFeatureOCITask.json:130:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.InstallOCIDriverTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ServiceTasks.json:74:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.InstanceFailoverGroupProperties.properties.managedInstancePairs",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:390:8"
   },
@@ -2908,6 +3256,42 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.InstructionSteps.properties.instructions",
     "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/dataConnectors.json:2651:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1905:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:2532:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint.properties.endpoints",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:3014:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.IntegrationRuntimeOutboundNetworkDependenciesEndpoint.properties.endpointDetails",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:3031:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:2997:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.IntegrationRuntimeSsisProperties.properties.expressCustomSetupProperties",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:1575:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3308,8 +3692,20 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.LanguageExtensionsList.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:3469:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.LatencyScorecardProperties.properties.latencyMetrics",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:1178:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.LegalHoldProperties.properties.tags",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1195:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3362,8 +3758,20 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ListResourceSkusResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:3859:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.LoadedCertificateCollection",
     "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:7940:4"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.LocalUserProperties.properties.permissionScopes",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4992:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3434,8 +3842,20 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MaintenanceWindowOptionsProperties.properties.maintenanceWindowCycles",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5932:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MaintenanceWindowsProperties.properties.timeRanges",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:134:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MaintenanceWindowsProperties.properties.timeRanges",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5985:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3590,6 +4010,24 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ManagedIntegrationRuntimeNode.properties.errors",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:2086:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ManagedIntegrationRuntimeStatusTypeProperties.properties.nodes",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:1997:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ManagedIntegrationRuntimeStatusTypeProperties.properties.otherErrors",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:2005:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ManagedRuleGroupDefinition.properties.rules",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:783:8"
   },
@@ -3634,6 +4072,18 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ManagedRuleSetList.properties.managedRuleSets",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:608:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ManagementPolicyFilter.properties.blobIndexMatch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4591:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ManagementPolicySchema.properties.rules",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4513:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3722,6 +4172,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MetricDefinition.properties.supportedAggregationTypes",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/metricDefinitions_API.json:211:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MetricDefinitionListResult.properties.value",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json:416:8"
   },
@@ -3765,12 +4221,6 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MetricSpecification.properties.availabilities",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:192:8"
-  },
-  {
-    "code": "XmsIdentifierValidation",
-    "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.MetricSpecification.properties.availabilities",
     "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1453:8"
   },
   {
@@ -3795,13 +4245,13 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MetricSpecification.properties.dimensions",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:211:8"
+    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:3028:8"
   },
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MetricSpecification.properties.dimensions",
-    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:3028:8"
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2280:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3842,8 +4292,170 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMISyncCompleteCommandOutput.properties.errors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Commands.json:169:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMongoDbTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:612:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlOfflineTaskInput.properties.selectedDatabases",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevel.properties.exceptionsAndWarnings",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevel.properties.exceptionsAndWarnings",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlSyncTaskInput.properties.selectedDatabases",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateMySqlAzureDbForMySqlSyncTask.json:32:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseError.properties.events",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateMySqlAzureDbForMySqlSyncTask.json:313:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateOracleAzureDbPostgreSqlSyncTaskInput.properties.selectedDatabases",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:242:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseError.properties.events",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:534:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput.properties.selectedTables",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigratePostgreSqlAzureDbForPostgreSqlSyncTask.json:402:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput.properties.selectedDatabases.items.properties.selectedTables",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseError.properties.events",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigratePostgreSqlAzureDbForPostgreSqlSyncTask.json:352:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputError.properties.events",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigratePostgreSqlAzureDbForPostgreSqlSyncTask.json:330:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbSyncTaskOutputDatabaseError.properties.events",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlDbSyncTask.json:320:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbTaskOutputDatabaseLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlDbTask.json:239:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbTaskOutputMigrationLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlDbTask.json:155:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMISyncTaskOutputDatabaseLevel.properties.activeBackupSets",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMiSyncTask.json:160:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMISyncTaskOutputDatabaseLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMiSyncTask.json:183:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskOutputAgentJobLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMITask.json:300:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskOutputDatabaseLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMITask.json:249:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskOutputLoginLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMITask.json:351:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskOutputMigrationLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMITask.json:192:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskOutputMigrationLevel.properties.orphanedUsersInfo",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMITask.json:156:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSsisTaskOutputMigrationLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSsisTask.json:103:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSsisTaskOutputProjectLevel.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSsisTask.json:164:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrateSyncCompleteCommandOutput.properties.errors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Commands.json:121:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MigrationItemProperties.properties.healthErrors",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:18038:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MigrationStatusDetails.properties.activeBackupSets",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1176:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3856,6 +4468,72 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.MongoDBCollectionResource.properties.indexes",
     "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:8616:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbClusterInfo.properties.databases",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MongoDbTasks.json:40:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbClusterInfo.properties.databases.items.properties.collections",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbClusterInfo.properties.databases.items.properties.collections.items.properties.shardKey.properties.fields",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbCollectionInfo.properties.shardKey.properties.fields",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbCollectionSettings.properties.shardKey.properties.fields",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbDatabaseInfo.properties.collections",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MongoDbTasks.json:164:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbDatabaseInfo.properties.collections.items.properties.shardKey.properties.fields",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbDatabaseSettings.properties.collections.additionalProperties.properties.shardKey.properties.fields",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbMigrationSettings.properties.databases.additionalProperties.properties.collections.additionalProperties.properties.shardKey.properties.fields",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbShardKeyInfo.properties.fields",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MongoDbTasks.json:549:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.MongoDbShardKeySetting.properties.fields",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MongoDbTasks.json:570:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3944,6 +4622,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.NetworkRuleSet.properties.ipRules",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2830:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.NetworkRuleSet.properties.properties.properties.ipRules",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/networkrulessets-preview.json:245:12"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.NetworkRuleSet.properties.properties.properties.ipRules",
     "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/networksets.json:256:12"
   },
@@ -3951,7 +4641,19 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.NetworkRuleSet.properties.properties.properties.virtualNetworkRules",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/networkrulessets-preview.json:238:12"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.NetworkRuleSet.properties.properties.properties.virtualNetworkRules",
     "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/networksets.json:249:12"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.NetworkRuleSet.properties.resourceAccessRules",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2814:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -3998,6 +4700,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.NonSqlDataMigrationTableResult.properties.errors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:702:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.NonSqlMigrationTaskInput.properties.selectedTables",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:576:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.Notification.properties.notificationTargets",
     "source": "specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/cluster.json:1503:8"
   },
@@ -4010,8 +4724,20 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ODataError.properties.details",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:87:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OSOptionPropertyList.properties.osOptionPropertyList",
     "source": "specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-02-01/managedClusters.json:5388:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ObjectReplicationPolicyProperties.properties.rules",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4902:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4030,6 +4756,18 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationEntityListResult.properties.value",
     "source": "specification/botservice/resource-manager/Microsoft.BotService/preview/2021-05-01-preview/botservice.json:2952:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationEntityListResult.properties.value",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:1023:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationEntityListResult.properties.value",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:480:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4143,6 +4881,12 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationListResult.properties.value",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1601:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationListResult.properties.value",
     "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:2229:8"
   },
   {
@@ -4156,6 +4900,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationListResult.properties.value",
     "source": "specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2021-06-30-preview/digitaltwins.json:1391:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationListResult.properties.value",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/operations.json:78:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4204,12 +4954,6 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationListResult.properties.value",
     "source": "specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-10-01/netapp.json:3492:8"
-  },
-  {
-    "code": "XmsIdentifierValidation",
-    "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.OperationListResult.properties.value",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:75:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4275,7 +5019,19 @@
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationListResult.properties.value",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2190:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationListResult.properties.value",
     "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:590:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationListResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:2309:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4310,6 +5066,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationMetaMetricSpecification.properties.dimensions",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json:297:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationMetaServiceSpecification.properties.logSpecifications",
     "source": "specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/DataShare.json:5309:8"
   },
@@ -4318,6 +5080,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OperationMetaServiceSpecification.properties.logSpecifications",
     "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/operations.json:192:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OperationMetaServiceSpecification.properties.logSpecifications",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json:252:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4334,14 +5102,8 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.OperationPropertiesFormat.properties.serviceSpecification.properties.logSpecifications",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:141:12"
-  },
-  {
-    "code": "XmsIdentifierValidation",
-    "message": "Missing identifier id in array item property",
-    "jsonpath": "$.definitions.OperationPropertiesFormat.properties.serviceSpecification.properties.metricSpecifications",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:134:12"
+    "jsonpath": "$.definitions.OperationMetaServiceSpecification.properties.metricSpecifications",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json:245:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4390,6 +5152,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.OsProfile.properties.linuxOperatingSystemProfile.properties.sshProfile.properties.publicKeys",
     "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.OuContainerProperties.properties.accounts",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:434:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4534,6 +5302,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.PagedLabServicesSkus.properties.value",
     "source": "specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-11-15-preview/Skus.json:156:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ParameterDefinition.properties.allowedValues",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:1250:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -4694,6 +5468,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.PrivateLinkServiceProxy.allOf[1].properties.groupConnectivityInformation",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.PrivateLinkServiceProxyForPrivateLinkHub.allOf[1].properties.groupConnectivityInformation",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ProcessServer.properties.healthErrors",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:18733:8"
   },
@@ -4778,6 +5564,36 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.Project.properties.properties.properties.databasesInfo",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ProjectList.properties.value.items.properties.properties.properties.databasesInfo",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ProjectProperties.properties.databasesInfo",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Projects.json:93:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ProjectTaskProperties.properties.commands",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:99:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ProjectTaskProperties.properties.errors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:72:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.PropertyDefinition.properties.dataSourcePrecedenceRules",
     "source": "specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/customer-insights.json:3838:8"
   },
@@ -4808,6 +5624,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.QueryInterval.properties.metrics",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5630:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.QueryMetricInterval.properties.metrics",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:261:8"
   },
@@ -4828,6 +5650,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.QueryResponse.properties.facets",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:330:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.QueryStatistic.properties.intervals",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5605:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5114,6 +5942,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.RemotePrivateEndpointBase.properties.manualPrivateLinkServiceConnections",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.RemotePrivateEndpointBase.properties.privateLinkServiceConnections",
+    "source": ""
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ReplicationAgentDetails.properties.healthErrors",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:20784:8"
   },
@@ -5222,8 +6062,20 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ResourceForestSettings.properties.settings",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:744:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ResourceHealthSummary.properties.issues",
     "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:21381:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ResourceProviderOperationList.properties.value",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:864:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5240,6 +6092,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ResourceSku.properties.capabilities",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ResourceSkus.json:81:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ResourceSku.properties.costs",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ResourceSkus.json:73:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ResourceSku.properties.locationInfo",
     "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:9173:8"
   },
@@ -5248,6 +6112,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ResourceSku.properties.restrictions",
     "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:9181:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ResourceSku.properties.restrictions",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ResourceSkus.json:89:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5308,6 +6178,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ResourceSkuZoneDetails.properties.name",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1256:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ResourceSkusResult.properties.value",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ResourceSkus.json:213:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5594,8 +6470,32 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SecretDescriptor.properties.alternativeDnsNames",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:290:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SecretDescriptor.properties.alternativeIpAddresses",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:331:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.SecurityConnectorProperties.properties.offerings",
     "source": "specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/securityConnectors.json:358:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SelfHostedIntegrationRuntimeStatusTypeProperties.properties.links",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:2240:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SelfHostedIntegrationRuntimeStatusTypeProperties.properties.nodes",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:2190:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5626,6 +6526,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ServerUsageListResult.properties.value",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/usages_legacy.json:105:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ServerUsageListResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlServer.json:1895:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5756,6 +6662,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ServiceOperationList.properties.value",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Services.json:246:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ServicePlacementPoliciesList",
     "source": "specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/application.json:1775:4"
   },
@@ -5806,6 +6718,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ServiceReplicaProperties.properties.networkRefs",
     "source": "specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/servicefabricmesh.json:3606:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ServiceSkuList.properties.value",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Services.json:289:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5872,6 +6790,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ServiceSpecification.properties.metricSpecifications",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:2981:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ServiceSpecification.properties.metricSpecifications",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2252:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -5966,6 +6890,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SkuDescription.properties.locationInfo",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:2420:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.SkuDescription.properties.restrictions",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:3929:8"
   },
@@ -5978,6 +6908,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SkuDescription.properties.restrictions",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:2428:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.SkuDescriptionList.properties.value",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:3884:8"
   },
@@ -5986,6 +6922,24 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.SkuDescriptionList.properties.value",
     "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:1132:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SkuDescriptionList.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:2383:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SkuInformation.properties.capabilities",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2465:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SkuInformation.properties.restrictions",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2473:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -6016,6 +6970,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.SourceShareSynchronizationSettingList.properties.value",
     "source": "specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/DataShare.json:6196:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SqlBackupSetInfo.properties.listOfBackupFiles",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1338:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -6062,8 +7022,26 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SqlPoolUsageListResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:6348:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SqlPoolVulnerabilityAssessmentRuleBaselineProperties.properties.baselineResults",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:6981:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.SqlRoleDefinitionResource.properties.permissions",
     "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/rbac.json:426:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.SshAuthorizedKeys",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5073:4"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -6086,6 +7064,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.StartMigrationScenarioServerRoleResult.properties.exceptionsAndWarnings",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:1027:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.StaticSite.properties.privateEndpointConnections",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:2846:8"
   },
@@ -6104,6 +7088,12 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.StorageAccountListKeysResult.properties.keys",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:3921:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.StoragePoolOperationListResult.properties.value",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1047:8"
   },
@@ -6112,6 +7102,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.StorageProfile.properties.storageaccounts",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1196:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.StorageSkuListResult.properties.value",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2389:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -6296,8 +7292,20 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.TopQueries.properties.queries",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5587:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.TopQueriesListResult.properties.value",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:1044:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.TopQueriesListResult.properties.value",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5678:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -6374,6 +7382,18 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.UploadOCIDriverTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ServiceFeatureOCITask.json:106:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.UploadOCIDriverTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ServiceTasks.json:51:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.UrlFileExtensionMatchConditionParameters.properties.transforms",
     "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json:3741:8"
   },
@@ -6388,6 +7408,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.UrlPathMatchConditionParameters.properties.transforms",
     "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json:3688:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.UsageListResult.properties.value",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4224:8"
   },
   {
     "code": "XmsIdentifierValidation",
@@ -6488,6 +7514,66 @@
   {
     "code": "XmsIdentifierValidation",
     "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMISyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateMigrationInputSqlServerSqlMiSyncTask.json:43:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.backupFolderErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateMigrationInputSqlServerSqlMITask.json:88:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.backupShareCredentialsErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateMigrationInputSqlServerSqlMITask.json:96:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.backupStorageAccountErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateMigrationInputSqlServerSqlMITask.json:104:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.existingBackupErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateMigrationInputSqlServerSqlMITask.json:112:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.restoreDatabaseNameErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateMigrationInputSqlServerSqlMITask.json:80:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateMongoDbTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:950:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateOracleAzureDbForPostgreSqlSyncTaskProperties.properties.output",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Tasks.json:973:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateOracleAzureDbPostgreSqlSyncTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/OracleAzureDbPostgreSqlSyncTask.json:228:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.ValidateSyncMigrationInputSqlServerTaskOutput.properties.validationErrors",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/ValidateSyncMigrationInputSqlServerTask.json:60:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.ValidationRequest.properties.individualRequestDetails",
     "source": "specification/databox/resource-manager/Microsoft.DataBox/stable/2021-12-01/databox.json:6298:8"
   },
@@ -6574,6 +7660,12 @@
     "message": "Missing identifier id in array item property",
     "jsonpath": "$.definitions.VulnerabilityAssessmentScanRecordProperties.properties.errors",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentScans.json:391:8"
+  },
+  {
+    "code": "XmsIdentifierValidation",
+    "message": "Missing identifier id in array item property",
+    "jsonpath": "$.definitions.VulnerabilityAssessmentScanRecordProperties.properties.errors",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:6843:8"
   },
   {
     "code": "XmsIdentifierValidation",

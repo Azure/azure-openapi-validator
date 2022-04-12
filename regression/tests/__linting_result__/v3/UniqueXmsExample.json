@@ -85,6 +85,30 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Assignment at management group scope",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments\"].get[\"x-ms-examples\"]",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintAssignment.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Assignment at management group scope",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations/{assignmentOperationName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/assignmentOperation.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Assignment at subscription scope",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments\"].get[\"x-ms-examples\"]",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintAssignment.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Assignment at subscription scope",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations/{assignmentOperationName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/assignmentOperation.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Backups_Delete",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}\"].delete[\"x-ms-examples\"]",
     "source": "specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-10-01/netapp.json:1:0"
@@ -154,12 +178,6 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Check SKU Availability",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability\"].post[\"x-ms-examples\"]",
     "source": "specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2022-03-01/cognitiveservices.json:1:0"
-  },
-  {
-    "code": "UniqueXmsExample",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Check private link service visibility",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility\"].post[\"x-ms-examples\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -313,6 +331,12 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create an IP firewall rule",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/firewallRule.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create an account resource",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"].patch[\"x-ms-examples\"]",
     "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:1:0"
@@ -325,6 +349,18 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create or Update Database Migration resource with Maximum parameters.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}\"].put[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create or Update Database Migration resource with Minimum parameters.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}\"].put[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create or Update a Machine Extension",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}\"].patch[\"x-ms-examples\"]",
     "source": "specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2021-12-10-preview/HybridCompute.json:1:0"
@@ -334,6 +370,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create or update guest configuration assignment",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}\"].put[\"x-ms-examples\"]",
     "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create or update workspace active directory admin",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory\"].put[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -352,6 +394,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Creates specific policy",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}\"].patch[\"x-ms-examples\"]",
     "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdnwebapplicationfirewall.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Cutover online migration operation for the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover\"].post[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -400,6 +448,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Delete the long term retention backup.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete[\"x-ms-examples\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Delete workspace active directory admin",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory\"].delete[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -490,6 +544,24 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: FavoriteList",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/favorites/{favoriteId}\"].delete[\"x-ms-examples\"]",
     "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/favorites_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Files_List",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Files_List",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}/read\"].post[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Files_List",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}/readwrite\"].post[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -715,6 +787,12 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get Sql pool geo backup policy",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get a guest configuration assignment",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}\"].get[\"x-ms-examples\"]",
     "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:1:0"
@@ -736,6 +814,24 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get a private endpoint connection for a site.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}\"].get[\"x-ms-examples\"]",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get a privateLinkHub",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privatelinkhub.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get a privateLinkHub",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privatelinkhub.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get a security alert of a SQL Analytics pool",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -772,6 +868,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the server.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionBackups\"].get[\"x-ms-examples\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get an alert rule status",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}/status/{statusName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -853,21 +955,27 @@
   },
   {
     "code": "UniqueXmsExample",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get list of private link service id that can be linked to a private end point with auto approved",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\"].get[\"x-ms-examples\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:1:0"
-  },
-  {
-    "code": "UniqueXmsExample",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get list of service tags",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails\"].get[\"x-ms-examples\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:1:0"
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get list of transparent data encryption configurations of a SQL Analytics pool",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get pricings on subscription",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Security/pricings/{pricingName}\"].get[\"x-ms-examples\"]",
     "source": "specification/security/resource-manager/Microsoft.Security/stable/2022-03-01/pricings.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get private link resources for private link hub",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources/{privateLinkResourceName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get private link resources for workspace",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources/{privateLinkResourceName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -973,9 +1081,9 @@
   },
   {
     "code": "UniqueXmsExample",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get virtual machine scale set network interface",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"].get[\"x-ms-examples\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:1:0"
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get workspace active directory admin",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1088,6 +1196,18 @@
   {
     "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets private endpoint connection.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets private endpoint connection.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets private endpoint connection.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateLinkResources/{privateLinkResourceName}\"].get[\"x-ms-examples\"]",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:1:0"
   },
@@ -1102,6 +1222,18 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets private endpoint connection.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerPlatform/enterprisePolicies/{enterprisePolicyName}/privateLinkResources/{groupName}\"].get[\"x-ms-examples\"]",
     "source": "specification/powerplatform/resource-manager/Microsoft.PowerPlatform/preview/2020-10-30-preview/privateLinkResources.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets the diagnostic setting",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets the diagnostic setting",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1162,6 +1294,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Invoice",
     "jsonpath": "$.paths[\"/providers/Microsoft.Billing/billingAccounts/default/invoices/{invoiceName}\"].get[\"x-ms-examples\"]",
     "source": "specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/billing.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Invokes rotate secrets action on the product deployment",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/executeRunner\"].post[\"x-ms-examples\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1234,6 +1372,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List Container Apps by resource group",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/containerApps\"].get[\"x-ms-examples\"]",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/ContainerApps.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List Domain Service",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices\"].get[\"x-ms-examples\"]",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1321,6 +1465,24 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List action groups",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/actionGroups\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List action groups",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List alert rules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/alertrules\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List all Media Services accounts",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Media/mediaservices\"].get[\"x-ms-examples\"]",
     "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Accounts.json:1:0"
@@ -1354,6 +1516,12 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List automation accounts by resource group",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts\"].get[\"x-ms-examples\"]",
     "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/account.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List autoscale settings",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/autoscalesettings\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1411,15 +1579,21 @@
   },
   {
     "code": "UniqueXmsExample",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List private endpoints in resource group",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups\"].get[\"x-ms-examples\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:1:0"
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List metric alert rules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List private link service in resource group",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections\"].get[\"x-ms-examples\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:1:0"
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List of OuContainers",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List rules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1438,6 +1612,18 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List vaults in the specified subscription",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resources\"].get[\"x-ms-examples\"]",
     "source": "specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/keyvault.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: ListAuthorizationRules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules\"].get[\"x-ms-examples\"]",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/AuthorizationRules.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Lists a Sql Analytic pool's replication links",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks/{linkId}\"].get[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1537,9 +1723,21 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: NameSpaceAuthorizationRuleGet",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/AuthorizationRules.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: NameSpaceAuthorizationRuleListAll",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules\"].get[\"x-ms-examples\"]",
     "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: NameSpaceAuthorizationRuleListKey",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}/listKeys\"].post[\"x-ms-examples\"]",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/AuthorizationRules.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1747,6 +1945,12 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Return product secrets list.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets/{secretName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Returns a list of all linked subscriptions.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/linkedSubscriptions\"].get[\"x-ms-examples\"]",
     "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/LinkedSubscription.json:1:0"
@@ -1780,6 +1984,24 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Returns the specified product.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog\"].post[\"x-ms-examples\"]",
     "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/Product.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Services_CreateOrUpdate",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}\"].delete[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Services_CreateOrUpdate",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Services_CreateOrUpdate",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -1891,6 +2113,30 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Stop integration runtime",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery\"].post[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Stop integration runtime",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery\"].post[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Stop ongoing migration for the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel\"].post[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: StorageAccountGetBlobInventoryPolicy",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies\"].get[\"x-ms-examples\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Sub-ARMTemplateArtifact",
     "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/artifacts/{artifactName}\"].delete[\"x-ms-examples\"]",
     "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:1:0"
@@ -1981,6 +2227,18 @@
   },
   {
     "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Summarize at policy assignment scope",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post[\"x-ms-examples\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: TableOperationPutOrPatchAcls",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: TablesGet",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}\"].delete[\"x-ms-examples\"]",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Tables.json:1:0"
@@ -1996,6 +2254,36 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: TablesUpsert",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}\"].patch[\"x-ms-examples\"]",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Tables.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Tasks_Cancel",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel\"].post[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Tasks_CreateOrUpdate",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}\"].put[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Tasks_Delete",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}\"].delete[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Tasks_Get",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Tasks_Update",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1:0"
   },
   {
     "code": "UniqueXmsExample",
@@ -2200,5 +2488,11 @@
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: WorkspacesSubscriptionList",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/deletedWorkspaces\"].get[\"x-ms-examples\"]",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Workspaces.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: kustoPoolsStop",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/start\"].post[\"x-ms-examples\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:1:0"
   }
 ]

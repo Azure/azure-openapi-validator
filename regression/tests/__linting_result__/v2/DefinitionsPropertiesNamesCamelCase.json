@@ -1,24 +1,6 @@
 [
   {
     "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'AAAARecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'aaaaRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.AAAARecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1353:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'ARecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'aRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.ARecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1346:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'CNAMERecord', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'cnameRecord'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.CNAMERecord",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1401:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
     "message": "Property named: 'Credit', for definition: 'MonetaryCredit' must follow camelCase style. Example: 'credit'.",
     "jsonpath": "$.definitions.MonetaryCredit.properties.Credit",
     "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:412:8"
@@ -85,12 +67,6 @@
   },
   {
     "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'MXRecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'mxRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.MXRecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1361:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
     "message": "Property named: 'MeterCategory', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterCategory'.",
     "jsonpath": "$.definitions.MeterInfo.properties.MeterCategory",
     "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:333:8"
@@ -139,12 +115,6 @@
   },
   {
     "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'NSRecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'nsRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.NSRecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1369:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
     "message": "Property named: 'Name', for definition: 'OfferTermInfo' must follow camelCase style. Example: 'name'.",
     "jsonpath": "$.definitions.OfferTermInfo.properties.Name",
     "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:383:8"
@@ -169,18 +139,6 @@
   },
   {
     "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'PTRRecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'ptrRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.PTRRecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1377:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'RecordSet', for definition: 'RecordSetUpdateParameters' must follow camelCase style. Example: 'recordSet'.",
-    "jsonpath": "$.definitions.RecordSetUpdateParameters.properties.RecordSet",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1454:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
     "message": "Property named: 'RecurringCharge', for definition: 'RecurringCharge' must follow camelCase style. Example: 'recurringCharge'.",
     "jsonpath": "$.definitions.RecurringCharge.properties.RecurringCharge",
     "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:463:8"
@@ -190,30 +148,6 @@
     "message": "Property named: 'RegionInfo', for definition: 'RateCardQueryParameters' must follow camelCase style. Example: 'regionInfo'.",
     "jsonpath": "$.definitions.RateCardQueryParameters.properties.RegionInfo",
     "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:278:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'SOARecord', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'soaRecord'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.SOARecord",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1406:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'SRVRecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'srvRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.SRVRecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1385:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'TTL', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'ttl'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.TTL",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1327:8"
-  },
-  {
-    "code": "DefinitionsPropertiesNamesCamelCase",
-    "message": "Property named: 'TXTRecords', for definition: 'RecordSetProperties' must follow camelCase style. Example: 'txtRecords'.",
-    "jsonpath": "$.definitions.RecordSetProperties.properties.TXTRecords",
-    "source": "specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/dns.json:1393:8"
   },
   {
     "code": "DefinitionsPropertiesNamesCamelCase",

@@ -638,6 +638,12 @@
   {
     "code": "RequiredDefaultResponse",
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Insights/operations\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json:56:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/providers/Microsoft.KeyVault.Admin/operations\"].get.responses",
     "source": "specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/KeyVault.json:36:8"
   },
@@ -706,6 +712,12 @@
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/providers/Microsoft.StorSimple/operations\"].get.responses",
     "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:36:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Storage/operations\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:36:8"
   },
   {
     "code": "RequiredDefaultResponse",
@@ -854,6 +866,18 @@
   {
     "code": "RequiredDefaultResponse",
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers\"].get.responses",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json:39:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers/{fileContainerId}\"].put.responses",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json:115:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts\"].get.responses",
     "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:250:8"
   },
@@ -862,6 +886,24 @@
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HybridData/dataManagers\"].get.responses",
     "source": "specification/hybriddatamanager/resource-manager/Microsoft.HybridData/stable/2019-06-01/hybriddata.json:75:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/logprofiles\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:204:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/logprofiles/{logProfileName}\"].delete.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:57:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/logprofiles/{logProfileName}\"].put.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:131:8"
   },
   {
     "code": "RequiredDefaultResponse",
@@ -992,6 +1034,30 @@
   {
     "code": "RequiredDefaultResponse",
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:111:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:637:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:69:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:464:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/checkNameAvailability\"].post.responses",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:109:8"
   },
@@ -1018,6 +1084,12 @@
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems/{galleryItemName}\"].get.responses",
     "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:124:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:52:8"
   },
   {
     "code": "RequiredDefaultResponse",
@@ -3380,6 +3452,66 @@
   {
     "code": "RequiredDefaultResponse",
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:540:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:500:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:406:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:455:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:324:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:363:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:726:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].delete.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:686:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:586:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].put.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:635:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/webtests\"].get.responses",
     "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/webTests_API.json:52:8"
   },
@@ -5306,6 +5438,210 @@
   {
     "code": "RequiredDefaultResponse",
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:500:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:227:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:285:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].patch.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:349:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:189:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:685:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:730:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:45:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:204:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:391:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:354:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].patch.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:313:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:261:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:490:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:768:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:708:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:656:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:603:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:550:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:824:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:442:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:139:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:102:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2172:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:766:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:552:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1061:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:963:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1024:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1288:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources\"].get.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1467:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:600:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:914:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys\"].post.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1703:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources\"].get.responses",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:549:8"
   },
@@ -5344,6 +5680,42 @@
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/{scopePath}/item\"].put.responses",
     "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/analyticsItems_API.json:158:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:290:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:85:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].delete.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:121:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:156:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].patch.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:245:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].put.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:196:8"
   },
   {
     "code": "RequiredDefaultResponse",
@@ -5548,6 +5920,12 @@
     "message": "The response is defined but without a default error response implementation.Consider adding it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages\"].get.responses",
     "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/Usages.json:63:8"
+  },
+  {
+    "code": "RequiredDefaultResponse",
+    "message": "The response is defined but without a default error response implementation.Consider adding it.'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents\"].get.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:109:8"
   },
   {
     "code": "RequiredDefaultResponse",

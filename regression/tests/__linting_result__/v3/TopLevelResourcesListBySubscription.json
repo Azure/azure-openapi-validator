@@ -49,9 +49,21 @@
   },
   {
     "code": "TopLevelResourcesListBySubscription",
-    "message": "The top-level resource \"DdosCustomPolicy\" does not have list by subscription operation, please add it.",
-    "jsonpath": "$.definitions.DdosCustomPolicy",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
+    "message": "The top-level resource \"DatabaseMigrationSqlMi\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseMigrationSqlMi",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1527:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseMigrationSqlVm\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseMigrationSqlVm",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1548:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DirectoryTenant\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DirectoryTenant",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/DirectoryTenant.json:194:4"
   },
   {
     "code": "TopLevelResourcesListBySubscription",
@@ -61,9 +73,21 @@
   },
   {
     "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Extension\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Extension",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json:471:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
     "message": "The top-level resource \"FabricLocation\" does not have list by subscription operation, please add it.",
     "jsonpath": "$.definitions.FabricLocation",
     "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FabricLocation.json:100:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FluxConfiguration\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FluxConfiguration",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json:898:4"
   },
   {
     "code": "TopLevelResourcesListBySubscription",
@@ -109,9 +133,21 @@
   },
   {
     "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SourceControlConfiguration\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SourceControlConfiguration",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json:353:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
     "message": "The top-level resource \"StepResource\" does not have list by subscription operation, please add it.",
     "jsonpath": "$.definitions.StepResource",
     "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:1957:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"UpdateLocation\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.UpdateLocation",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateLocations.json:105:4"
   },
   {
     "code": "TopLevelResourcesListBySubscription",

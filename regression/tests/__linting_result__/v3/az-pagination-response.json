@@ -260,6 +260,12 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PolicyInsights/operations\"].get",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1136:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/providers/Microsoft.PowerBI/operations\"].get",
     "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:485:6"
   },
@@ -290,8 +296,26 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscriptions.Admin/operations\"].get",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:20:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/providers/microsoft.visualstudio/operations\"].get",
     "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:38:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:121:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:104:6"
   },
   {
     "code": "az-pagination-response",
@@ -422,18 +446,6 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:1001:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteGateways\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4005:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.OperationsManagement/ManagementAssociations\"].get",
     "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:299:6"
   },
@@ -448,6 +460,18 @@
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.OperationsManagement/solutions\"].get",
     "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:262:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:34:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:237:6"
   },
   {
     "code": "az-pagination-response",
@@ -554,6 +578,12 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/restoreData\"].post",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:86:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.TimeSeriesInsights/environments\"].get",
     "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:314:6"
   },
@@ -578,6 +608,24 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:949:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:822:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:695:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2089:6"
   },
@@ -592,12 +640,6 @@
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/command\"].post",
     "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:1104:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1386:6"
   },
   {
     "code": "az-pagination-response",
@@ -1430,192 +1472,6 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendhealth\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:460:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:93:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1160:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTables/{devicePath}\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1231:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTablesSummary/{devicePath}\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1302:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/arpTables/{devicePath}\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:537:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTables/{devicePath}\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:679:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTablesSummary/{devicePath}\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:608:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4041:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4513:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsFilterOptions\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:770:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsSignatures\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:572:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:822:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:419:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:362:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/availableProvidersList\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1392:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/azureReachabilityReport\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1323:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/query\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1916:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/networkConfigurationDiagnostic\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1461:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:542:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4858:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4797:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:851:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:680:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:794:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2216:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1162:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:729:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ServiceAssociationLinks\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:783:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:800:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations\"].post",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3591:6"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post",
     "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:399:6"
   },
@@ -1678,6 +1534,18 @@
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts\"].post",
     "source": "specification/orbital/resource-manager/Microsoft.Orbital/preview/2021-04-04-preview/orbital.json:551:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:76:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:358:6"
   },
   {
     "code": "az-pagination-response",
@@ -1796,8 +1664,74 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold\"].post",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:453:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold\"].post",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:402:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:20:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys\"].post",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:514:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys\"].post",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1899:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1442:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:20:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey\"].post",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:563:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:20:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources\"].get",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:524:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/metricDefinitions\"].get",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Offer.json:274:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/metrics\"].get",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Offer.json:232:6"
   },
   {
     "code": "az-pagination-response",
@@ -1940,6 +1874,18 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/metricDefinitions\"].get",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Plan.json:274:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/metrics\"].get",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Plan.json:232:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account\"].get",
     "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:104:6"
   },
@@ -1952,8 +1898,20 @@
   {
     "code": "az-pagination-response",
     "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1079:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts\"].get",
     "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialport.json:38:6"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Operation might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"].post",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:497:6"
   },
   {
     "code": "az-pagination-response",
@@ -2324,6 +2282,12 @@
   {
     "code": "az-pagination-response",
     "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Storage/operations\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
     "jsonpath": "$.paths[\"/providers/Microsoft.Support/operations\"].get.responses[\"200\"].schema.properties",
     "source": ""
   },
@@ -2606,12 +2570,6 @@
   {
     "code": "az-pagination-response",
     "message": "Response body schema of pageable response should contain top-level property `nextLink`",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers\"].get.responses[\"200\"].schema.properties",
-    "source": ""
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles\"].get.responses[\"200\"].schema.properties",
     "source": ""
   },
@@ -2649,6 +2607,18 @@
     "code": "az-pagination-response",
     "message": "Response body schema of pageable response should contain top-level property `nextLink`",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorSimple/managers\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus\"].get.responses[\"200\"].schema.properties",
     "source": ""
   },
   {
@@ -3542,24 +3512,6 @@
   {
     "code": "az-pagination-response",
     "message": "Response body schema of pageable response should contain top-level property `nextLink`",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers\"].get.responses[\"200\"].schema.properties",
-    "source": ""
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors\"].get.responses[\"200\"].schema.properties",
-    "source": ""
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures\"].get.responses[\"200\"].schema.properties",
-    "source": ""
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles\"].get.responses[\"200\"].schema.properties",
     "source": ""
   },
@@ -3944,6 +3896,36 @@
   {
     "code": "az-pagination-response",
     "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections\"].get.responses[\"200\"].schema.properties",
+    "source": ""
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "Response body schema of pageable response should contain top-level property `nextLink`",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices\"].get.responses[\"200\"].schema.properties",
     "source": ""
   },
@@ -4226,6 +4208,12 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AAD/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:45:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/addsservices\"].get.responses[\"200\"].schema",
     "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:67:12"
   },
@@ -4456,6 +4444,12 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.AVS/operations\"].get.responses[\"200\"].schema",
     "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:310:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Aad/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:51:12"
   },
   {
     "code": "az-pagination-response",
@@ -5132,6 +5126,12 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Deployment.Admin/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/Deployment.json:39:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.DesktopVirtualization/operations\"].get.responses[\"200\"].schema",
     "source": "specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2022-02-10-preview/desktopvirtualization.json:49:12"
   },
@@ -5384,6 +5384,12 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.KubernetesConfiguration/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/operations.json:108:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.Kusto/operations\"].get.responses[\"200\"].schema",
     "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:3376:12"
   },
@@ -5588,12 +5594,6 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Network/operations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:49:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.Notebooks/operations\"].get.responses[\"200\"].schema",
     "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:52:12"
   },
@@ -5630,8 +5630,26 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PolicyInsights/policyMetadata\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyMetadata.json:81:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/listTenantConfigurationViolations\"].post.responses[\"200\"].schema",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:202:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.Portal/operations\"].get.responses[\"200\"].schema",
     "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/portal.json:63:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/tenantConfigurations\"].get.responses[\"200\"].schema",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:44:12"
   },
   {
     "code": "az-pagination-response",
@@ -5822,6 +5840,12 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Storage/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:39:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.StorageCache/operations\"].get.responses[\"200\"].schema",
     "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:51:12"
   },
@@ -5888,6 +5912,12 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Update.Admin/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Update.json:39:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/providers/Microsoft.VMwareCloudSimple/operations\"].get.responses[\"200\"].schema",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:62:12"
   },
@@ -5930,6 +5960,36 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:141:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:57:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:78:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:78:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/preview/2018-07-01-preview/policyTrackedResources.json:60:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions\"].get.responses[\"200\"].schema",
     "source": "specification/azsadmin/resource-manager/user-subscriptions/Microsoft.Subscriptions/preview/2015-11-01/Subscriptions.json:39:12"
   },
@@ -5950,6 +6010,12 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers\"].get.responses[\"200\"].schema",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2203:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices\"].get.responses[\"200\"].schema",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:85:12"
   },
   {
     "code": "az-pagination-response",
@@ -6562,6 +6628,48 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/monitors\"].get.responses[\"200\"].schema",
     "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:469:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/Locations.json:78:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ActionPlan.json:42:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans/{planId}/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ActionPlanOperation.json:45:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/fileContainers\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json:42:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json:42:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductPackage.json:42:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productPackages/{packageId}/secrets\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:39:12"
   },
   {
     "code": "az-pagination-response",
@@ -7394,32 +7502,8 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:106:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePorts\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:415:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:55:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets\"].get.responses[\"200\"].schema",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:239:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:291:12"
   },
   {
     "code": "az-pagination-response",
@@ -7430,68 +7514,8 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ServiceEndpointPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:294:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:1098:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGateways\"].get.responses[\"200\"].schema",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:335:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:284:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewallFqdnTags\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewallFqdnTag.json:55:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewalls\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:366:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureWebCategory.json:105:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:259:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceCommunity.json:60:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:291:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:284:12"
   },
   {
     "code": "az-pagination-response",
@@ -7514,140 +7538,8 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/dscpConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:273:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCircuits\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1543:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCrossConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:55:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteServiceProviders\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1582:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/firewallPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:280:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoors\"].get.responses[\"200\"].schema",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-05-01/frontdoor.json:142:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ipGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:337:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:318:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:694:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableDelegations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableDelegations.json:59:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:335:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableServiceAliases\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableServiceAliases.json:59:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:113:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/usage.json:63:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/virtualNetworkAvailableEndpointServices\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/endpointService.json:59:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/natGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:294:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:294:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkProfiles\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:291:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:294:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:622:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualAppliances\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:337:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:323:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/p2svpnGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3328:12"
   },
   {
     "code": "az-pagination-response",
@@ -7658,98 +7550,8 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateEndpoints\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:292:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateLinkServices\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:280:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPAddresses\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:297:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPPrefixes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:294:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:342:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:340:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:330:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles\"].get.responses[\"200\"].schema",
     "source": "specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json:458:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualHubs\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1428:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkTaps\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:284:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworks\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:318:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualRouters\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:280:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualWans\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:320:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2225:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnServerConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1129:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnSites\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:723:12"
   },
   {
     "code": "az-pagination-response",
@@ -7858,6 +7660,42 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerings\"].get.responses[\"200\"].schema",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:1315:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/attestations.json:54:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:145:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:196:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/preview/2018-07-01-preview/policyTrackedResources.json:108:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:395:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:317:12"
   },
   {
     "code": "az-pagination-response",
@@ -8414,6 +8252,30 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:382:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:640:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:72:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:467:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/caches\"].get.responses[\"200\"].schema",
     "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:279:12"
   },
@@ -8464,6 +8326,60 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/streamingjobs\"].get.responses[\"200\"].schema",
     "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/streamingjobs.json:409:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/DelegatedProvider.json:48:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/DelegatedProviderOffer.json:51:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Location.json:48:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Quota.json:51:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/manifests\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Manifest.json:42:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/offers\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Offer.json:42:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/plans\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Plan.json:48:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:269:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:51:12"
   },
   {
     "code": "az-pagination-response",
@@ -8606,6 +8522,42 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:534:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:923:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:461:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:796:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:388:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:669:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services\"].get.responses[\"200\"].schema",
     "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:616:12"
   },
@@ -8638,6 +8590,12 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus\"].get.responses[\"200\"].schema",
     "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/datamigration.json:419:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices\"].get.responses[\"200\"].schema",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:128:12"
   },
   {
     "code": "az-pagination-response",
@@ -8770,6 +8728,12 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups\"].get.responses[\"200\"].schema",
     "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2771:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer\"].get.responses[\"200\"].schema",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:97:12"
   },
   {
     "code": "az-pagination-response",
@@ -10028,30 +9992,6 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:129:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:66:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:76:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:137:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections\"].get.responses[\"200\"].schema",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1620:12"
   },
@@ -10060,18 +10000,6 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections\"].get.responses[\"200\"].schema",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4601:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/publicipaddresses\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:66:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:137:12"
   },
   {
     "code": "az-pagination-response",
@@ -13166,30 +13094,6 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:67:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:376:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:525:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:337:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles\"].get.responses[\"200\"].schema",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:121:12"
   },
@@ -13210,78 +13114,6 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways\"].get.responses[\"200\"].schema",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:296:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:876:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateLinkResources\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:633:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:330:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:327:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:301:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\"].post.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:350:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions\"].post.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:556:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions\"].post.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:501:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:456:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1606:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:337:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:330:12"
   },
   {
     "code": "az-pagination-response",
@@ -13346,66 +13178,6 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:234:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1504:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:262:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:508:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:782:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:906:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:101:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:322:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:241:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:544:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies\"].get.responses[\"200\"].schema",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:58:12"
   },
@@ -13426,186 +13198,6 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines\"].get.responses[\"200\"].schema",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-05-01/frontdoor.json:683:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:298:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:364:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:417:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:669:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:779:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1032:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1252:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1142:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1308:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2194:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:747:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableDelegations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableDelegations.json:109:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:385:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableServiceAliases\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableServiceAliases.json:109:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:340:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:340:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:507:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:617:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:863:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:337:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:340:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:639:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:586:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:298:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:583:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:284:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2014:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2321:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:954:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3292:12"
   },
   {
     "code": "az-pagination-response",
@@ -13634,158 +13226,8 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:253:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:631:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:241:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:523:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:343:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:340:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:303:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:588:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:301:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:586:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:291:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:340:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:586:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles\"].get.responses[\"200\"].schema",
     "source": "specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json:419:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1392:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4780:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5370:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1662:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5136:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3925:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5670:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:298:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/connections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:351:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2553:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:330:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:364:12"
   },
   {
     "code": "az-pagination-response",
@@ -13798,84 +13240,6 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolvers\"].post.responses[\"200\"].schema",
     "source": "specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json:1719:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:868:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/usages\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1244:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1137:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:241:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:526:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:284:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2189:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3022:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2731:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2788:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1093:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:583:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}/vpnSiteLinks\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:687:12"
   },
   {
     "code": "az-pagination-response",
@@ -14050,6 +13414,42 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes\"].get.responses[\"200\"].schema",
     "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:1006:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/attestations.json:225:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:230:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:332:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/preview/2018-07-01-preview/policyTrackedResources.json:159:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:652:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:568:12"
   },
   {
     "code": "az-pagination-response",
@@ -15668,6 +15068,72 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:503:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:48:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:207:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2175:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:218:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1246:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1739:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1506:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1291:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:391:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables\"].get.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:382:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices\"].get.responses[\"200\"].schema",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:448:12"
   },
@@ -15724,6 +15190,18 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints\"].get.responses[\"200\"].schema",
     "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/privateEndpoints.json:221:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Offer.json:84:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Plan.json:90:12"
   },
   {
     "code": "az-pagination-response",
@@ -16076,6 +15554,30 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Update.Admin/updateLocations/\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateLocations.json:45:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updateRuns\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateRuns.json:144:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Updates.json:48:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{updateName}/updateRuns\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateRuns.json:51:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes\"].get.responses[\"200\"].schema",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:1034:12"
   },
@@ -16124,24 +15626,6 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:129:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:76:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"].get.responses[\"200\"].schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:274:12"
-  },
-  {
-    "code": "az-pagination-response",
-    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd\"].get.responses[\"200\"].schema",
     "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkForAzureAD.json:294:12"
   },
@@ -16156,6 +15640,30 @@
     "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources\"].get.responses[\"200\"].schema",
     "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkResources.json:64:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions\"].get.responses[\"200\"].schema",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json:320:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations\"].get.responses[\"200\"].schema",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json:323:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations\"].get.responses[\"200\"].schema",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/operations.json:72:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations\"].get.responses[\"200\"].schema",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json:237:12"
   },
   {
     "code": "az-pagination-response",
@@ -16442,8 +15950,32 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/DirectoryTenant.json:51:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations\"].get.responses[\"200\"].schema",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/OfferDelegation.json:54:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents\"].get.responses[\"200\"].schema",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:112:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:610:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1053:12"
   },
   {
     "code": "az-pagination-response",
@@ -16508,8 +16040,80 @@
   {
     "code": "az-pagination-response",
     "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/attestations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/attestations.json:399:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:300:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:453:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyTrackedResources/{policyTrackedResourcesResource}/queryResults\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/preview/2018-07-01-preview/policyTrackedResources.json:207:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/remediations\"].get.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:906:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments\"].post.responses[\"200\"].schema",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:828:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
     "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.Security/deviceSecurityGroups\"].get.responses[\"200\"].schema",
     "source": "specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/deviceSecurityGroups.json:60:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments\"].get.responses[\"200\"].schema",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintAssignment.json:263:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations\"].get.responses[\"200\"].schema",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/assignmentOperation.json:66:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprints\"].get.responses[\"200\"].schema",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:200:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/artifacts\"].get.responses[\"200\"].schema",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:424:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions\"].get.responses[\"200\"].schema",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:612:12"
+  },
+  {
+    "code": "az-pagination-response",
+    "message": "`value` property in pageable response should be required",
+    "jsonpath": "$.paths[\"/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions/{versionId}/artifacts\"].get.responses[\"200\"].schema",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:720:12"
   },
   {
     "code": "az-pagination-response",

@@ -332,60 +332,6 @@
   {
     "code": "az-api-version-enum",
     "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces\"].get.parameters[\"2\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\"].get.parameters[\"2\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"].get.parameters[\"3\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}\"].get.parameters[\"4\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.parameters[\"5\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.parameters[\"6\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/publicipaddresses\"].get.parameters[\"2\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.parameters[\"5\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.parameters[\"6\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations\"].get.parameters[\"0\"].enum",
     "source": ""
   },
@@ -1089,36 +1035,6 @@
     "code": "az-api-version-enum",
     "message": "The api-version parameter should not be an enum.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/volumes/{volumeResourceName}\"].put.parameters[\"1\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"].get.parameters[\"2\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"].get.parameters[\"3\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"].get.parameters[\"4\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"].get.parameters[\"4\"].enum",
-    "source": ""
-  },
-  {
-    "code": "az-api-version-enum",
-    "message": "The api-version parameter should not be an enum.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"].get.parameters[\"5\"].enum",
     "source": ""
   },
   {

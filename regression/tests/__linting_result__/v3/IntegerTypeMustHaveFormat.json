@@ -188,6 +188,24 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.AvailableServiceSku.properties.capacity.properties.default",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Services.json:62:12"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.AvailableServiceSku.properties.capacity.properties.maximum",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Services.json:58:12"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.AvailableServiceSku.properties.capacity.properties.minimum",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Services.json:54:12"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.AverageLoadScalingTrigger.properties.scaleIntervalInSeconds",
     "source": "specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/servicefabricmesh.json:3679:8"
   },
@@ -226,6 +244,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.BackendPoolsSettings.properties.sendRecvTimeoutSeconds",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-05-01/frontdoor.json:1871:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.BackupFileInfo.properties.familySequenceNumber",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:625:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -272,8 +296,128 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.CheckOCIDriverTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.ComplianceProperties.properties.resourceCount",
     "source": "specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/compliances.json:163:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToSourceMySqlTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToSourceOracleSyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToSourcePostgreSqlSyncTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToSourcePostgreSqlSyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToSourceSqlServerTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForMySqlTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForMySqlTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForMySqlTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForPostgreSqlSyncTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForPostgreSqlSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetSqlDbTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetSqlMISyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetSqlMITaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetSqlMITaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetSqlSqlDbSyncTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ConnectToTargetSqlSqlDbSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -328,6 +472,24 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.ContainerInstanceView.properties.restartCount",
     "source": "specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/servicefabricmesh.json:3349:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ContainerProperties.properties.remainingRetentionDays",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:903:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.CorsRule.properties.maxAgeInSeconds",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.CorsRules.properties.corsRules.items.properties.maxAgeInSeconds",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -398,6 +560,18 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.DataMigrationService.properties.sku.properties.capacity",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.DataMigrationServiceList.properties.value.items.properties.sku.properties.capacity",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.DataSource.properties.id",
     "source": "specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/customer-insights.json:5271:8"
   },
@@ -406,6 +580,30 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.DataSourcePrecedence.properties.precedence",
     "source": "specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/customer-insights.json:5290:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.Database.properties.serverCoreCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:76:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.Database.properties.serverVisibleOnlineCoreCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:80:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.DatabaseBackupInfo.properties.familyCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:1206:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.DatabaseBackupInfo.properties.position",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:1191:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -424,6 +622,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.DeleteActivityTypeProperties.properties.maxConcurrentConnections",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/Pipeline.json:6114:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.DeleteRetentionPolicy.properties.days",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -554,6 +758,18 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.FileShareProperties.properties.remainingRetentionDays",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:822:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.FileShareProperties.properties.shareQuota",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:771:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.FlaggedUserProperties.properties.errorCount",
     "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:2407:8"
   },
@@ -592,6 +808,78 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.FrontendEndpointUpdateParameters.properties.sessionAffinityTtlSeconds",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-05-01/frontdoor.json:1821:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetTdeCertificatesSqlTaskInput.properties.connectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetTdeCertificatesSqlTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesMySqlTaskInput.properties.connectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesMySqlTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesOracleTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesPostgreSqlTaskInput.properties.connectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesPostgreSqlTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesSqlSyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesSqlTaskInput.properties.connectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.GetUserTablesSqlTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -710,6 +998,12 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.IfNotExistsEvaluationDetails.properties.totalResources",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1485:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.ImageTemplatePowerShellCustomizer.properties.validExitCodes.items",
     "source": "specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2021-10-01/imagebuilder.json:797:10"
   },
@@ -730,6 +1024,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.ImageTemplateWindowsUpdateCustomizer.properties.updateLimit",
     "source": "specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2021-10-01/imagebuilder.json:751:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ImmutabilityPolicyProperty.properties.immutabilityPeriodSinceCreationInDays",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1038:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -776,6 +1076,12 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.InstallOCIDriverTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.IntegrationRuntimeComputeProperties.properties.maxParallelExecutionsPerNode",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/IntegrationRuntime.json:117:8"
   },
@@ -796,36 +1102,6 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.IntegrationRuntimeDataFlowProperties.properties.timeToLive",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/IntegrationRuntime.json:156:8"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes.items.properties.availableMemoryInMB",
-    "source": ""
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes.items.properties.concurrentJobsLimit",
-    "source": ""
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes.items.properties.concurrentJobsRunning",
-    "source": ""
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes.items.properties.cpuUtilization",
-    "source": ""
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.IntegrationRuntimeMonitoringData.properties.nodes.items.properties.maxConcurrentJobs",
-    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -856,12 +1132,6 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.IntegrationRuntimeNodeMonitoringData.properties.maxConcurrentJobs",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/IntegrationRuntime.json:1345:8"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.IpAllocationPropertiesFormat.properties.prefixLength",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:380:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -974,6 +1244,18 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.LeaseContainerRequest.properties.breakPeriod",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1484:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.LeaseContainerRequest.properties.leaseDuration",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1488:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.LoadBalancingSettingsUpdateParameters.properties.additionalLatencyMilliseconds",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-05-01/frontdoor.json:1395:8"
   },
@@ -1046,8 +1328,140 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlOfflineTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlOfflineTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlSyncTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateMySqlAzureDbForMySqlSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateOracleAzureDbPostgreSqlSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbSyncTaskInput.allOf[0].properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbSyncTaskInput.allOf[0].properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbSyncTaskOutputMigrationLevel.properties.databaseCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlDbSyncTask.json:100:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbTaskInput.allOf[0].properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlDbTaskInput.allOf[0].properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMISyncTaskInput.allOf[0].properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMISyncTaskOutputMigrationLevel.properties.databaseCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMiSyncTask.json:58:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMISyncTaskOutputMigrationLevel.properties.databaseErrorCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/MigrateSqlServerSqlMiSyncTask.json:110:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskInput.allOf[0].properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSqlServerSqlMITaskInput.allOf[0].properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSsisTaskInput.allOf[0].properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MigrateSsisTaskInput.allOf[0].properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.MongoDBCollectionResource.properties.analyticalStorageTtl",
     "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:8623:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MongoDbConnectionInfo.properties.port",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:276:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MongoDbMigrationSettings.properties.source.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MongoDbMigrationSettings.properties.target.properties.port",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1102,6 +1516,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.MonitoringSummary.properties.unsupportedProviderCount",
     "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/replicationusages.json:108:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.MySqlConnectionInfo.properties.port",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:374:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1172,6 +1592,12 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.PolicyEvaluationDetails.properties.ifNotExistsDetails.properties.totalResources",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.PolicySettings.properties.customBlockResponseStatusCode",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:415:8"
   },
@@ -1186,6 +1612,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.PortNumber",
     "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/jitNetworkAccessPolicies.json:725:4"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.PostgreSqlConnectionInfo.properties.port",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:438:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1292,6 +1724,12 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.QueueProperties.properties.approximateMessageCount",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:466:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.RecurringCharge.properties.RecurringCharge",
     "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:463:8"
   },
@@ -1376,6 +1814,24 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.RemediationDeploymentSummary.properties.failedDeployments",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:1283:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.RemediationDeploymentSummary.properties.successfulDeployments",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:1278:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.RemediationDeploymentSummary.properties.totalDeployments",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/remediations.json:1273:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.ReplicationDetailsList.properties.totalCount",
     "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:6186:8"
   },
@@ -1424,8 +1880,20 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ReportableException.properties.hResult",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:171:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.RerunTumblingWindowTrigger.properties.typeProperties.properties.rerunConcurrency",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/Trigger.json:641:12"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.RestorePolicyProperties.properties.days",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1408:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1484,6 +1952,18 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.SecretDescriptor.properties.keyLength",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:286:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.SecretDescriptor.properties.passwordLength",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json:315:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.SelfHostedIntegrationRuntimeNode.properties.concurrentJobsLimit",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/entityTypes/IntegrationRuntime.json:1210:8"
   },
@@ -1528,6 +2008,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.ServerEndpointUpdateProperties.properties.volumeFreeSpacePercent",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:4403:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ServerProperties.properties.serverDatabaseCount",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/TasksCommon.json:939:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1598,6 +2084,30 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ServiceSku.properties.capacity",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Services.json:279:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ServiceSkuList.properties.value.items.properties.capacity.properties.default",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ServiceSkuList.properties.value.items.properties.capacity.properties.maximum",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ServiceSkuList.properties.value.items.properties.capacity.properties.minimum",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.Services.properties.totalCount",
     "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:6596:8"
   },
@@ -1618,6 +2128,12 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.SkuAvailability.properties.limit",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:3137:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.SqlConnectionInfo.properties.port",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/definitions/Common.json:307:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1742,8 +2258,20 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.UpdateHistoryProperty.properties.immutabilityPeriodSinceCreationInDays",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1151:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.UpdateIntegrationRuntimeNodeRequest.properties.concurrentJobsLimit",
     "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:4684:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.UploadOCIDriverTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1756,6 +2284,96 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.Usage.properties.limit",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:3211:8"
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMISyncTaskInput.allOf[0].properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMISyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.backupFolderErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.backupShareCredentialsErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.backupStorageAccountErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.databaseBackupInfo.properties.familyCount",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.databaseBackupInfo.properties.position",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.existingBackupErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateMigrationInputSqlServerSqlMITaskOutput.properties.restoreDatabaseNameErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateOracleAzureDbPostgreSqlSyncTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateSyncMigrationInputSqlServerTaskInput.properties.sourceConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateSyncMigrationInputSqlServerTaskInput.properties.targetConnectionInfo.properties.port",
+    "source": ""
+  },
+  {
+    "code": "IntegerTypeMustHaveFormat",
+    "message": "The integer type does not have a format, please add it.",
+    "jsonpath": "$.definitions.ValidateSyncMigrationInputSqlServerTaskOutput.properties.validationErrors.items.properties.hResult",
+    "source": ""
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -1786,12 +2404,6 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.VirtualMachineTemplateProperties.properties.numberOfCores",
     "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:3660:8"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.VirtualNetworkTapPropertiesFormat.properties.destinationPort",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:403:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",

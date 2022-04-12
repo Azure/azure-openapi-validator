@@ -182,6 +182,12 @@
   {
     "code": "az-patch-content-type",
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}\"].patch",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:296:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}\"].patch",
     "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:604:6"
   },
@@ -232,6 +238,12 @@
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}\"].patch",
     "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2892:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}\"].patch",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/oucontainer.json:271:6"
   },
   {
     "code": "az-patch-content-type",
@@ -2342,18 +2354,6 @@
   {
     "code": "az-patch-content-type",
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:293:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:215:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}\"].patch",
     "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:251:6"
   },
@@ -2368,48 +2368,6 @@
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].patch",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:237:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:184:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1399:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:215:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:208:6"
   },
   {
     "code": "az-patch-content-type",
@@ -2462,102 +2420,6 @@
   {
     "code": "az-patch-content-type",
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1101:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:232:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4151:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:624:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:160:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:242:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2110:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:215:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:148:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:201:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1728:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2110:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3148:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}\"].patch",
     "source": "specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/privatedns.json:114:6"
   },
@@ -2576,42 +2438,6 @@
   {
     "code": "az-patch-content-type",
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:221:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:215:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}\"].patch",
     "source": "specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json:660:6"
   },
@@ -2620,54 +2446,6 @@
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}\"].patch",
     "source": "specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json:19:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1255:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:242:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:147:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1788:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:956:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:446:6"
   },
   {
     "code": "az-patch-content-type",
@@ -3254,6 +3032,42 @@
   {
     "code": "az-patch-content-type",
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].patch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:294:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].patch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:276:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].patch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2050:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].patch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:306:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].patch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:214:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:214:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}\"].patch",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:221:6"
   },
@@ -3616,6 +3430,18 @@
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}\"].patch",
     "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:733:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}\"].patch",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json:220:6"
+  },
+  {
+    "code": "az-patch-content-type",
+    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}\"].patch",
+    "source": "specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json:160:6"
   },
   {
     "code": "az-patch-content-type",

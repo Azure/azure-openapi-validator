@@ -362,6 +362,12 @@
   {
     "code": "az-delete-204-response",
     "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:656:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}\"].delete.responses",
     "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServicePlans.json:1325:8"
   },
