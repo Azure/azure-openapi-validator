@@ -430,7 +430,7 @@ const ruleset : any = {
     },
     "az-default-in-enum": {
       "description": "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
-      "message": "{{message}}",
+      "message": "Default value should appear in the enum constraint for a schema",
       "severity": "error",
       "formats": [oas2],
       "given": "$..[?(@.enum)]",
