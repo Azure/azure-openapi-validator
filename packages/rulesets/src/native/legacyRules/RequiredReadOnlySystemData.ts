@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { nodes, stringify } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-import { ArmHelper } from "../utilities/armHelper"
-import { SwaggerHelper } from "../utilities/swaggerHelper"
+import { ArmHelper } from "../utilities/arm-helper"
+import { SwaggerHelper } from "../utilities/swagger-helper"
 
 export const RequiredReadOnlySystemData = "RequiredReadOnlySystemData"
 

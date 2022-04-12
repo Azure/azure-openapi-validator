@@ -1,0 +1,8 @@
+[
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ArmErrorResponse' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ArmErrorResponse",
+    "source": "specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json:914:4"
+  }
+]

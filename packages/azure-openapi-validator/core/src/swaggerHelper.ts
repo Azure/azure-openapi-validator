@@ -20,9 +20,12 @@ export class SwaggerHelper implements ISwaggerHelper {
             if (isExample(file.url)) {
               return ""
             }
-            return inventory?.getSingleDocument(file.url)
+            return inventory?.getDocuments(file.url)
           }
         }
+      },
+      dereference:{
+        circular: "ignore"
       }
     }
 

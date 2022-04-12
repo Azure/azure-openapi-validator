@@ -1,0 +1,164 @@
+[
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Accounts_List\" does not match the response definition in the individual GET  operation \"Accounts_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/accounts\"]",
+    "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:37:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Accounts_List\" does not match the response definition in the individual GET  operation \"Accounts_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts\"]",
+    "source": "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/2016-11-01/account.json:40:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ArtifactSources_List\" does not match the response definition in the individual GET  operation \"ArtifactSources_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/artifactSources\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:1169:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"CloudManifestFile_List\" does not match the response definition in the individual GET  operation \"CloudManifestFile_Get\" .",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AzureStack/cloudManifestFiles\"]",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/AzureStack.json:54:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseAdvisors_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseAdvisors_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseRecommendedActions_ListByDatabaseAdvisor\" does not match the response definition in the individual GET  operation \"DatabaseRecommendedActions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DiskMigrationJobs_List\" does not match the response definition in the individual GET  operation \"DiskMigrationJobs_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs\"]",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/stable/2021-09-01/DiskMigrationJobs.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Disks_List\" does not match the response definition in the individual GET  operation \"Disks_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/disks\"]",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/stable/2021-09-01/Disks.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Features_List\" does not match the response definition in the individual GET  operation \"Features_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/features\"]",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/stable/2020-11-01/Features.json:61:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"IotDpsResource_ListPrivateEndpointConnections\" does not match the response definition in the individual GET  operation \"IotDpsResource_GetPrivateEndpointConnection\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1399:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Job_ListByAutomationAccount\" does not match the response definition in the individual GET  operation \"Job_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/job.json:376:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagementGroups_List\" does not match the response definition in the individual GET  operation \"ManagementGroups_Get\" .",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups\"]",
+    "source": "specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/management.json:51:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Partners_Get\" does not match the response definition in the individual GET  operation \"Partner_Get\" .",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ManagementPartner/partners\"]",
+    "source": "specification/managementpartner/resource-manager/Microsoft.ManagementPartner/preview/2018-02-01/ManagementPartner.json:206:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpointConnections_List\" does not match the response definition in the individual GET  operation \"PrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1822:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ProactiveDetectionConfigurations_List\" does not match the response definition in the individual GET  operation \"ProactiveDetectionConfigurations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/ProactiveDetectionConfigs\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentProactiveDetection_API.json:37:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Quotas_List\" does not match the response definition in the individual GET  operation \"Quotas_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/quotas\"]",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/stable/2021-01-01/Quotas.json:155:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Rollouts_List\" does not match the response definition in the individual GET  operation \"Rollouts_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/rollouts\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:996:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerAdvisors_ListByServer\" does not match the response definition in the individual GET  operation \"ServerAdvisors_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServiceTopologies_List\" does not match the response definition in the individual GET  operation \"ServiceTopologies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/serviceTopologies\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:161:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServiceUnits_List\" does not match the response definition in the individual GET  operation \"ServiceUnits_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/serviceTopologies/{serviceTopologyName}/services/{serviceName}/serviceUnits\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:543:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Services_List\" does not match the response definition in the individual GET  operation \"Services_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/serviceTopologies/{serviceTopologyName}/services\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:341:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"SoftwareUpdateConfigurations_List\" does not match the response definition in the individual GET  operation \"SoftwareUpdateConfigurations_GetByName\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/softwareUpdateConfiguration.json:220:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Steps_List\" does not match the response definition in the individual GET  operation \"Steps_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/steps\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:722:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"StorageServices_ListRG\" does not match the response definition in the individual GET  operation \"StorageServices_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Storage.Admin/storageServices\"]",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/storage.json:94:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Subscriptions_List\" does not match the response definition in the individual GET  operation \"Subscriptions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:243:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"WebApps_ListPremierAddOns\" does not match the response definition in the individual GET  operation \"WebApps_GetPremierAddOn\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:6872:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"WebApps_ListPremierAddOnsSlot\" does not match the response definition in the individual GET  operation \"WebApps_GetPremierAddOnSlot\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:15995:4"
+  }
+]

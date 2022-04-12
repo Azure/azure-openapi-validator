@@ -1,0 +1,740 @@
+[
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupPreValidateProtection'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupPreValidateProtection\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:164:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:209:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:254:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:299:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:460:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:517:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:21:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/registeredidentities.json:21:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/registeredidentities.json:80:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/replicationusages.json:21:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages'",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaultusages.json:21:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps\"]",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:1667:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}\"]",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:3375:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/providers/Microsoft.Intune/locations/{hostName}/AndroidPolicies/{policyName}/apps'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/AndroidPolicies/{policyName}/apps\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:692:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Cache/CheckNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Cache/CheckNameAvailability\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:68:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/RateCard'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/RateCard\"]",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:103:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/UsageAggregates'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/UsageAggregates\"]",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:20:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/VMExtension'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/VMExtension\"]",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/preview/2015-12-01-preview/VMExtensions.json:179:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/VMExtension/publishers/{publisher}/types/{type}/versions/{version}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/artifactTypes/VMExtension/publishers/{publisher}/types/{type}/versions/{version}\"]",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/preview/2015-12-01-preview/VMExtensions.json:12:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Devices/IotHubs'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Devices/IotHubs\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:302:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.EngagementFabric/Accounts'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EngagementFabric/Accounts\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:199:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:83:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePorts'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePorts\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:397:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:76:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:221:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:273:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:55:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/ServiceEndpointPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ServiceEndpointPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:276:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/checkDnsAvailability.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.OperationsManagement/ManagementAssociations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.OperationsManagement/ManagementAssociations\"]",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:298:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.OperationsManagement/ManagementConfigurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.OperationsManagement/ManagementConfigurations\"]",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:493:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.Security/locations/{ascLocation}/ExternalSecuritySolutions'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Security/locations/{ascLocation}/ExternalSecuritySolutions\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/externalSecuritySolutions.json:76:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/CheckNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/CheckNameAvailability\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/CheckNameAvailability.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:343:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1664:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:999:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testnew'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testnew\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1066:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:853:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:76:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1180:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:387:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1337:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1381:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/generateVerificationCode'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/generateVerificationCode\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1547:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/verify'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/verify\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1601:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:478:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:532:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1231:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1284:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:708:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:755:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1133:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:806:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:431:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:238:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:19:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/Channels'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/Channels\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:562:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/Channels/{channelName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/Channels/{channelName}\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:418:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/listChannelTypes'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/listChannelTypes\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:376:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/listKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/listKeys\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:280:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/regenerateKey'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EngagementFabric/Accounts/{accountName}/regenerateKey\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:325:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/PowerOff'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/PowerOff\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json:19:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/PowerOn'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/PowerOn\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json:59:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/Reboot'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/Reboot\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json:139:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/Shutdown'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}/Shutdown\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json:99:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{infraRole}/Restart'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{infraRole}/Restart\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRole.json:107:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/PowerOff'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/PowerOff\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:59:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/PowerOn'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/PowerOn\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:99:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/Repair'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/Repair\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:219:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/Shutdown'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/Shutdown\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:19:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/StartMaintenanceMode'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/StartMaintenanceMode\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:139:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/StopMaintenanceMode'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}/StopMaintenanceMode\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:179:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/webServices/{webServiceName}/CreateRegionalBlob'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/webServices/{webServiceName}/CreateRegionalBlob\"]",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2017-01-01/webservices.json:213:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:122:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:351:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:119:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:493:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links/{linkName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links/{linkName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:436:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:79:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:312:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:97:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:142:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:404:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:452:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/LatencyScorecard'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/LatencyScorecard\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:678:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/Timeseries'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/Timeseries\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:756:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/PreconfiguredEndpoints'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/PreconfiguredEndpoints\"]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json:356:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/ALL'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/ALL\"]",
+    "source": "specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/privatedns.json:1301:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1161:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:594:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:728:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ServiceAssociationLinks'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ServiceAssociationLinks\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:782:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:661:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3644:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:547:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:316:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:594:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:645:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1263:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1037:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}/listKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}/listKeys\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1317:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1375:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/ExternalSecuritySolutions/{externalSecuritySolutionsName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/ExternalSecuritySolutions/{externalSecuritySolutionsName}\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/externalSecuritySolutions.json:118:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:85:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:234:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:282:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/CheckNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/CheckNameAvailability\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/CheckNameAvailability.json:82:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}/ListKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}/ListKeys\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:545:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}/ListKeys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}/ListKeys\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/AuthorizationRules.json:865:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/secrets/{secretResourceName}/values/{secretValueResourceName}/list_value'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/secrets/{secretResourceName}/values/{secretValueResourceName}/list_value\"]",
+    "source": "specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/servicefabricmesh.json:497:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:650:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:695:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:58:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:61:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable\"]",
+    "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/IntelligencePacks.json:37:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable\"]",
+    "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/IntelligencePacks.json:78:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/ManagementConfigurations/{managementConfigurationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/ManagementConfigurations/{managementConfigurationName}\"]",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:530:4"
+  },
+  {
+    "code": "PathResourceTypeNameCamelCase",
+    "message": "Resource type naming must follow camel case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.OperationsManagement/ManagementAssociations/{managementAssociationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.OperationsManagement/ManagementAssociations/{managementAssociationName}\"]",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:335:4"
+  }
+]

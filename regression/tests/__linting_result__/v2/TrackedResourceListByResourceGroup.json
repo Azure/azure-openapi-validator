@@ -1,0 +1,164 @@
+[
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'AddressResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.AddressResource",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:1288:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'AvailabilitySet', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.AvailabilitySet",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10227:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'CdnWebApplicationFirewallPolicy', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.CdnWebApplicationFirewallPolicy",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdnwebapplicationfirewall.json:338:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'CloudService', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.CloudService",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2312:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'CommitmentPlan', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.CommitmentPlan",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/preview/2016-05-01-preview/commitmentPlans.json:775:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'ContactProfile', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.ContactProfile",
+    "source": "specification/orbital/resource-manager/Microsoft.Orbital/preview/2021-04-04-preview/orbital.json:1422:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'DataControllerResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.DataControllerResource",
+    "source": "specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/dataControllers.json:10:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'EnvironmentResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.EnvironmentResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1832:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'EventHubEventSourceResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.EventHubEventSourceResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:2423:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'Gen1EnvironmentResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.Gen1EnvironmentResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1860:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'Gen2EnvironmentResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.Gen2EnvironmentResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1878:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'IoTHubEventSourceResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.IoTHubEventSourceResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:2441:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'ManagedResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.ManagedResource",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/AlertProcessingRules.json:445:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'MediaService', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.MediaService",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Accounts.json:480:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'NamespaceCreateOrUpdateParameters', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.NamespaceCreateOrUpdateParameters",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1697:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'OrderItemResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.OrderItemResource",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:2522:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'Registration', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.Registration",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/Registration.json:353:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'RestorePointCollection', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.RestorePointCollection",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9740:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'RollingUpgradeStatusInfo', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.RollingUpgradeStatusInfo",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16282:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'SapMonitor', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.SapMonitor",
+    "source": "specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json:610:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'Spacecraft', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.Spacecraft",
+    "source": "specification/orbital/resource-manager/Microsoft.Orbital/preview/2021-04-04-preview/orbital.json:1098:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'StaticSiteARMResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.StaticSiteARMResource",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:2912:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'VirtualMachine', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.VirtualMachine",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13880:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'VirtualMachineImageResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.VirtualMachineImageResource",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11107:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'VirtualMachineScaleSet', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.VirtualMachineScaleSet",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15517:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'experiment', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.experiment",
+    "source": "specification/chaos/resource-manager/Microsoft.Chaos/preview/2021-09-15-preview/types/experiments.json:47:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'netAppAccount', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.netAppAccount",
+    "source": "specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-10-01/netapp.json:3861:4"
+  }
+]

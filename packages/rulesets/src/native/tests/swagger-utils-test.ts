@@ -1,7 +1,7 @@
 import * as assert from "assert"
 import { getResolvedSchemaByPath } from "../utilities/rules-helper"
-import { SwaggerHelper } from "../utilities/swaggerHelper"
-import { followReference } from "../utilities/ref-helper"
+import { SwaggerHelper } from "../utilities/swagger-helper"
+import { crwalReference } from "../utilities/ref-helper"
 import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 const fileUrl = (absPath: string) => {
@@ -17,7 +17,7 @@ describe("SwaggerHelperTests",()=> {
     const swaggerHelper = new SwaggerHelper(openapiDefinitionObject, filePath, inventory)
     let resolvedSchema = (await swaggerHelper.resolveSchema(
       openapiDefinitionObject.paths[
-        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/listKeys"
+        "/foo"
       ].post
     )) as any
     assert.strictEqual(resolvedSchema.parameters[0].name, "subscriptionId")
@@ -37,11 +37,19 @@ describe("SwaggerHelperTests",()=> {
       ["paths", "/providers/Microsoft.MachineLearning/operations", "get", "responses", "default", "schema"],
       inventory
     )
-    const resolvedSchema = followReference(swagger, schema, inventory)
+    const resolvedSchema = crwalReference(swagger, schema, inventory)
     assert.strictEqual(!!resolvedSchema.properties, true)
 
     const errorObject = util.getPropertyOfModel(resolvedSchema, "error")
     assert.strictEqual(!!errorObject, false)
+  })
+
+   test("circular reference",async ()=>{
+    const inventory = new SwaggerInventory()
+    const swagger = await (await inventory.loadDocument(getFilePath("references/external.json"))).getObj()
+    const util = new SwaggerHelper(swagger, undefined, inventory)
+    const resolved = await util.resolveSchema(swagger)
+    assert.strictEqual(!!resolved.paths["/foo"].post.responses.default.schema.$ref, true)
   })
 
   test("test get properties",()=>{

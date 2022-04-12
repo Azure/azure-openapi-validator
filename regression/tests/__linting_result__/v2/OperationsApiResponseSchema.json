@@ -1,0 +1,596 @@
+[
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.AAD/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AAD/operations\"]",
+    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:30:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ADHybridHealthService/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/operations\"]",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:1551:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Addons/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Addons/operations\"]",
+    "source": "specification/addons/resource-manager/Microsoft.Addons/preview/2018-03-01/addons-swagger.json:30:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Advisor/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Advisor/operations\"]",
+    "source": "specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json:469:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.AlertsManagement/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AlertsManagement/operations\"]",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/AlertsManagement.json:30:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.AnalysisServices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AnalysisServices/operations\"]",
+    "source": "specification/analysisservices/resource-manager/Microsoft.AnalysisServices/stable/2017-08-01/analysisservices.json:788:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ApiManagement/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ApiManagement/operations\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimdeployment.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Attestation/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Attestation/operations\"]",
+    "source": "specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/attestation.json:30:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Automation/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Automation/operations\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/operations.json:39:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.AzureData/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AzureData/operations\"]",
+    "source": "specification/azuredata/resource-manager/Microsoft.AzureData/preview/2019-07-24-preview/azuredata.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.AzureStack/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AzureStack/operations\"]",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/AzureStack.json:18:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Backup.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Backup.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/backup/Microsoft.Backup.Admin/stable/2018-09-01/Backup.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.BotService/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.BotService/operations\"]",
+    "source": "specification/botservice/resource-manager/Microsoft.BotService/preview/2021-05-01-preview/botservice.json:742:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Cache/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Cache/operations\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ChangeAnalysis/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ChangeAnalysis/operations\"]",
+    "source": "specification/changeanalysis/resource-manager/Microsoft.ChangeAnalysis/stable/2021-04-01/changeanalysis.json:18:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Compute/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Compute/operations\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Consumption/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Consumption/operations\"]",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:1421:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ContainerInstance/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ContainerInstance/operations\"]",
+    "source": "specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-10-01/containerInstance.json:415:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ContainerService/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ContainerService/operations\"]",
+    "source": "specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-02-01/managedClusters.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.CustomProviders/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.CustomProviders/operations\"]",
+    "source": "specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/customproviders.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.CustomerInsights/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.CustomerInsights/operations\"]",
+    "source": "specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/customer-insights.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DBforMariaDB/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DBforMariaDB/operations\"]",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/mariadb.json:1421:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DataCatalog/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DataCatalog/operations\"]",
+    "source": "specification/datacatalog/resource-manager/Microsoft.DataCatalog/stable/2016-03-30/datacatalog.json:30:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DataFactory/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DataFactory/operations\"]",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:36:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DataLakeAnalytics/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DataLakeAnalytics/operations\"]",
+    "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:1620:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DataLakeStore/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DataLakeStore/operations\"]",
+    "source": "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/2016-11-01/account.json:1085:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DataShare/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DataShare/operations\"]",
+    "source": "specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/DataShare.json:1346:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Databricks/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Databricks/operations\"]",
+    "source": "specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/databricks.json:328:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Deployment.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Deployment.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/Deployment.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DeploymentManager/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DeploymentManager/operations\"]",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:1208:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DevSpaces/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DevSpaces/operations\"]",
+    "source": "specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/devspaces.json:76:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DevTestLab/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DevTestLab/operations\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Devices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Devices/operations\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Devices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Devices/operations\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.DocumentDB/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DocumentDB/operations\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:597:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.EngagementFabric/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.EngagementFabric/operations\"]",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:655:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.EnterpriseKnowledgeGraph/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.EnterpriseKnowledgeGraph/operations\"]",
+    "source": "specification/EnterpriseKnowledgeGraph/resource-manager/Microsoft.EnterpriseKnowledgeGraph/preview/2018-12-03/EnterpriseKnowledgeGraphSwagger.json:304:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Fabric.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Fabric.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/Fabric.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Gallery.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Gallery.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/Gallery.json:13:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.GuestConfiguration/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.GuestConfiguration/operations\"]",
+    "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:811:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.HDInsight/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.HDInsight/operations\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.HanaOnAzure/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.HanaOnAzure/operations\"]",
+    "source": "specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json:30:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.HybridCompute/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.HybridCompute/operations\"]",
+    "source": "specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2021-12-10-preview/HybridCompute.json:676:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.HybridData/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.HybridData/operations\"]",
+    "source": "specification/hybriddatamanager/resource-manager/Microsoft.HybridData/stable/2019-06-01/hybriddata.json:18:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ImportExport/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ImportExport/operations\"]",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:511:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.InfrastructureInsights.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.InfrastructureInsights.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/infrastructureinsights/Microsoft.InfrastructureInsights.Admin/preview/2016-05-01/InfrastructureInsights.json:13:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Insights/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Insights/operations\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/aiOperations_API.json:31:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Insights/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Insights/operations\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json:39:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.KeyVault.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.KeyVault.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/KeyVault.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Kubernetes/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Kubernetes/operations\"]",
+    "source": "specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/connectedClusters.json:382:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Kusto/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Kusto/operations\"]",
+    "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:3356:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Logic/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Logic/operations\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:6370:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MachineLearning/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MachineLearning/operations\"]",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/preview/2016-05-01-preview/commitmentPlans.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MachineLearning/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MachineLearning/operations\"]",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2016-04-01/workspaces.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MachineLearning/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MachineLearning/operations\"]",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2017-01-01/webservices.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MachineLearningCompute/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MachineLearningCompute/operations\"]",
+    "source": "specification/machinelearningcompute/resource-manager/Microsoft.MachineLearningCompute/preview/2017-08-01-preview/machineLearningCompute.json:428:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MachineLearningExperimentation/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MachineLearningExperimentation/operations\"]",
+    "source": "specification/machinelearningexperimentation/resource-manager/Microsoft.MachineLearningExperimentation/preview/2017-05-01-preview/machineLearningExperimentation.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MachineLearningServices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MachineLearningServices/operations\"]",
+    "source": "specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/machineLearningServices.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ManagedIdentity/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ManagedIdentity/operations\"]",
+    "source": "specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2021-09-30-preview/ManagedIdentity.json:70:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ManagedNetwork/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ManagedNetwork/operations\"]",
+    "source": "specification/managednetwork/resource-manager/Microsoft.ManagedNetwork/preview/2019-06-01-preview/managedNetwork.json:942:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ManagedServices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ManagedServices/operations\"]",
+    "source": "specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/managedservices.json:557:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Management/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/operations\"]",
+    "source": "specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/management.json:693:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ManagementPartner/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ManagementPartner/operations\"]",
+    "source": "specification/managementpartner/resource-manager/Microsoft.ManagementPartner/preview/2018-02-01/ManagementPartner.json:169:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.MarketplaceOrdering/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MarketplaceOrdering/operations\"]",
+    "source": "specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/Agreements.json:134:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Migrate/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"]",
+    "source": "specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json:4858:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Migrate/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"]",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:1085:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.NetApp/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.NetApp/operations\"]",
+    "source": "specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-10-01/netapp.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Network.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Network.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/network/Microsoft.Network.Admin/preview/2015-06-15/Network.json:49:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Network/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Network/operations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.NotificationHubs/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.NotificationHubs/operations\"]",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.OperationalInsights/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.OperationalInsights/operations\"]",
+    "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Operations.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.OperationsManagement/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.OperationsManagement/operations\"]",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:661:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.PolicyInsights/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PolicyInsights/operations\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1135:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.PowerBI/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PowerBI/operations\"]",
+    "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:484:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.PowerBIDedicated/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PowerBIDedicated/operations\"]",
+    "source": "specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/powerbidedicated.json:532:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.RecoveryServices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.RecoveryServices/operations\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaults.json:231:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.RecoveryServices/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.RecoveryServices/operations\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:577:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.RedHatOpenShift/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.RedHatOpenShift/operations\"]",
+    "source": "specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/stable/2020-04-30/redhatopenshift.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Relay/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Relay/operations\"]",
+    "source": "specification/relay/resource-manager/Microsoft.Relay/stable/2017-04-01/relay.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ResourceGraph/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ResourceGraph/operations\"]",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:113:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ResourceHealth/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ResourceHealth/operations\"]",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:127:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Resources/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/operations\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Search/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Search/operations\"]",
+    "source": "specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/search.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Security/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Security/operations\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/operations.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.SerialConsole/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.SerialConsole/operations\"]",
+    "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialconsole.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.ServiceFabricMesh/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ServiceFabricMesh/operations\"]",
+    "source": "specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/servicefabricmesh.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Sql/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Sql/operations\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Operations.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.SqlVirtualMachine/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.SqlVirtualMachine/operations\"]",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:238:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.StorSimple/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.StorSimple/operations\"]",
+    "source": "specification/storSimple1200Series/resource-manager/Microsoft.StorSimple/stable/2016-10-01/StorSimple.json:64:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.StorSimple/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.StorSimple/operations\"]",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:18:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Storage.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Storage.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/storage.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Storage/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Storage/operations\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.StorageSync/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.StorageSync/operations\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:22:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Support/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Support/operations\"]",
+    "source": "specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/support.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.TimeSeriesInsights/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.TimeSeriesInsights/operations\"]",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Update.Admin/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Update.Admin/operations\"]",
+    "source": "specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Update.json:19:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.WindowsESU/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.WindowsESU/operations\"]",
+    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:40:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.WorkloadMonitor/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.WorkloadMonitor/operations\"]",
+    "source": "specification/workloadmonitor/resource-manager/Microsoft.WorkloadMonitor/preview/2020-01-13-preview/Microsoft.WorkloadMonitor.json:16:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/microsoft.visualstudio/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/microsoft.visualstudio/operations\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:37:4"
+  }
+]

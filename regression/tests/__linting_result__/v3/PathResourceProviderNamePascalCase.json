@@ -1,0 +1,860 @@
+[
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/providers/Microsoft.AVS/operations'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AVS/operations\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:292:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/providers/Microsoft.DBforMySQL/operations'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DBforMySQL/operations\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1608:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/providers/Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/PrivateDnsZone.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/providers/Microsoft.DBforPostgreSQL/operations'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.DBforPostgreSQL/operations\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:1001:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/providers/microsoft.visualstudio/operations'",
+    "jsonpath": "$.paths[\"/providers/microsoft.visualstudio/operations\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkQuotaAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkQuotaAvailability\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:371:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkTrialAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkTrialAvailability\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:328:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:459:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/checkNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/checkNameAvailability\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1563:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/performanceTiers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/performanceTiers\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1521:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/recommendedActionSessionsAzureAsyncOperation/{operationId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/recommendedActionSessionsAzureAsyncOperation/{operationId}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:253:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/recommendedActionSessionsOperationResults/{operationId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/recommendedActionSessionsOperationResults/{operationId}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:289:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/servers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/servers\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:286:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:866:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:286:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:911:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:953:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.aadiam/privateLinkForAzureAd'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.aadiam/privateLinkForAzureAd\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkForAzureAD.json:226:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems\"]",
+    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:13:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems/{galleryItemName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems/{galleryItemName}\"]",
+    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:95:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.visualstudio/checkNameAvailability'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.visualstudio/checkNameAvailability\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:63:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:414:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:501:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3986:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4031:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1498:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1543:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3786:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3831:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:794:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:839:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1053:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1101:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4350:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4398:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4198:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4246:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4294:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1698:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1743:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1303:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1348:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/listAdminCredentials'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/listAdminCredentials\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1261:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateNsxtPassword'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateNsxtPassword\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:751:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateVcenterPassword'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateVcenterPassword\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:708:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4806:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4851:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}/getExecutionLogs'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}/getExecutionLogs\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:5006:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4620:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4665:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4710:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets/{scriptCmdletName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets/{scriptCmdletName}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:4758:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2150:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2195:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3086:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3131:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3338:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3383:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2402:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways/{gatewayId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways/{gatewayId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2447:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2492:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles/{portMirroringId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles/{portMirroringId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2537:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3590:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3635:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1898:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:1943:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2996:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines/{virtualMachineId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines/{virtualMachineId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:3041:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2744:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}\"]",
+    "source": "specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json:2789:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:244:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1389:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators/activeDirectory'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators/activeDirectory\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1247:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:76:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}/createRecommendedActionSession'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}/createRecommendedActionSession\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:115:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}/recommendedActions'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}/recommendedActions\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:204:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json:162:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1099:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations/{configurationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations/{configurationName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:998:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:953:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:799:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:567:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules/{firewallRuleName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:413:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/DataEncryptionKeys.json:19:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/DataEncryptionKeys.json:64:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/logFiles'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/logFiles\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1202:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/performanceTiers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/performanceTiers\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1476:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json:251:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateLinkResources'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateLinkResources\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateLinkResources/{groupName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateLinkResources/{groupName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json:82:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/queryTexts'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/queryTexts\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:82:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/queryTexts/{queryId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/queryTexts/{queryId}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/recoverableServers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/recoverableServers\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1434:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/replicas'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/replicas\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:368:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/resetQueryPerformanceInsightData'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/resetQueryPerformanceInsightData\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:336:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/restart'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/restart\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:325:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/securityAlertPolicies'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/securityAlertPolicies\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json:139:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json:19:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/start'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/start\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/Servers.json:19:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/stop'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/stop\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/Servers.json:62:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/topQueryStatistics'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/topQueryStatistics\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:183:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/topQueryStatistics/{queryStatisticId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/topQueryStatistics/{queryStatisticId}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:138:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/updateConfigurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/updateConfigurations\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1144:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/upgrade'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/upgrade\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/Servers.json:105:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:757:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:612:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/waitStatistics'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/waitStatistics\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:282:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/waitStatistics/{waitStatisticsId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/waitStatistics/{waitStatisticsId}\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:237:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:244:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:664:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:709:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/Databases.json:191:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/Databases.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:619:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:465:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/restart'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/restart\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:325:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/start'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/start\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:379:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/stop'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/stop\"]",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:422:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:97:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:150:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:221:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:295:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkForAzureAD.json:265:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateEndpointConnections.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateEndpointConnections.json:82:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkResources.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources/{groupName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources/{groupName}\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkResources.json:76:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/linkedStorageAccounts/{storageType}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/linkedStorageAccounts/{storageType}\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/{scopePath}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/{scopePath}\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/analyticsItems_API.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/{scopePath}/item'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/{scopePath}/item\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/analyticsItems_API.json:85:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:573:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:615:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}/subContainers/{subContainerName}/status'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}/subContainers/{subContainerName}/status\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:790:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkForAzureAD.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:103:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:140:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension/{extensionResourceName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension/{extensionResourceName}\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:184:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:391:4"
+  }
+]

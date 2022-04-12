@@ -1,0 +1,668 @@
+[
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:21:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default\"]",
+    "source": "specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/billing.json:2380:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/policies/default\"]",
+    "source": "specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/billing.json:2468:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/settings/default\"]",
+    "source": "specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/management.json:552:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.SaaS/saasresources\"]",
+    "source": "specification/saas/resource-manager/Microsoft.SaaS/preview/2018-03-01-beta/saas.json:268:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscription/policies/default\"]",
+    "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:377:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Web/publishingUsers/web\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/ResourceProvider.json:18:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleSettings/default\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:1007:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements/default\"]",
+    "source": "specification/confluent/resource-manager/Microsoft.Confluent/stable/2021-12-01/confluent.json:78:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements/default\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:71:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.IoTSecurity/defenderSettings/default\"]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/defenderSettings.json:73:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current\"]",
+    "source": "specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/Agreements.json:37:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default\"]",
+    "source": "specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json:851:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:725:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/settings\"]",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/settings.json:19:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalsettings/delegation\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimportalsettings.json:463:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalsettings/signin\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimportalsettings.json:79:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalsettings/signup\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimportalsettings.json:271:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default\"]",
+    "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:511:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default\"]",
+    "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:2423:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json:39:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json:780:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators/activeDirectory\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json:1247:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticProactiveLogCollectionSettings/default\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:829:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:932:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:1471:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:2194:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:4468:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:4127:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/views/{viewName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:5578:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:5150:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:4809:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3457:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3110:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:2229:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:1760:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3798:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/transferOut\"]",
+    "source": "specification/web/resource-manager/Microsoft.DomainRegistration/stable/2021-03-01/Domains.json:712:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4646:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default\"]",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/networkrulessets-preview.json:37:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:179:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:37:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/Annotations\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentAnnotations_API.json:37:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/currentbillingfeatures\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentFeaturesAndPricing_API.json:37:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1464:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:623:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:757:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:608:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaults.json:547:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets/default\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/networksets.json:37:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/sqlAgent/current\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:19:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:19:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:171:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{deviceName}/alertSettings/default\"]",
+    "source": "specification/storSimple1200Series/resource-manager/Microsoft.StorSimple/stable/2016-10-01/StorSimple.json:1084:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{deviceName}/alertSettings/default\"]",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:1152:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{deviceName}/timeSettings/default\"]",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:3000:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/extendedInformation/vaultExtendedInfo\"]",
+    "source": "specification/storSimple1200Series/resource-manager/Microsoft.StorSimple/stable/2016-10-01/StorSimple.json:4824:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/extendedInformation/vaultExtendedInfo\"]",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:4099:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:352:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:682:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:517:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1232:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/metadataSync/config\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:519:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/networking\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServiceEnvironments.json:451:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServiceEnvironments.json:730:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:766:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:866:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1011:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1104:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1197:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1330:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1423:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1750:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/logs\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1843:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1934:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:2070:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/slotConfigNames\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:2163:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:2254:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:3425:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:3567:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:5193:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:5914:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:6067:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:7119:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9370:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9482:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9646:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9753:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9860:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10013:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10120:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10492:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/logs\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10599:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10704:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10861:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10968:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:12307:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:14224:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:15085:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16277:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:18141:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:19932:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/config/appsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:711:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/config/functionappsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:774:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/config/appsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:1324:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/config/functionappsettings\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:1380:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/{scopePath}/item\"]",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/analyticsItems_API.json:85:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:275:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:358:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.IoTSecurity/sites/default\"]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/sites.json:73:4"
+  },
+  {
+    "code": "az-put-path",
+    "message": "The path for a put should have a final path parameter.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4329:4"
+  }
+]

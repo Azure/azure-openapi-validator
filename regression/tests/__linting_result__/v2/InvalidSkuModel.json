@@ -1,0 +1,38 @@
+[
+  {
+    "code": "InvalidSkuModel",
+    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
+    "jsonpath": "$.definitions.Sku",
+    "source": "specification/databox/resource-manager/Microsoft.DataBox/stable/2021-12-01/databox.json:5330:4"
+  },
+  {
+    "code": "InvalidSkuModel",
+    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
+    "jsonpath": "$.definitions.Sku",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:7311:4"
+  },
+  {
+    "code": "InvalidSkuModel",
+    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
+    "jsonpath": "$.definitions.Sku",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5548:4"
+  },
+  {
+    "code": "InvalidSkuModel",
+    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
+    "jsonpath": "$.definitions.Sku",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/Settings.json:402:4"
+  },
+  {
+    "code": "InvalidSkuModel",
+    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
+    "jsonpath": "$.definitions.Sku",
+    "source": "specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/managedapplications.json:1359:4"
+  },
+  {
+    "code": "InvalidSkuModel",
+    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
+    "jsonpath": "$.definitions.Sku",
+    "source": "specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/vmwarecloudsimple.json:3087:4"
+  }
+]

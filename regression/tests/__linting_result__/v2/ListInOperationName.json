@@ -1,0 +1,800 @@
+[
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'AccountsGetStatus' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/status\"].post.operationId",
+    "source": "specification/recommendationsservice/resource-manager/Microsoft.RecommendationsService/stable/2022-02-01/recommendationsservice.json:354:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'AlertsGetAll' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/alerts\"].get.operationId",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/AlertsManagement.json:99:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'AndroidGetAppForMAMPolicy' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/AndroidPolicies/{policyName}/apps\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:695:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'AndroidGetGroupsForMAMPolicy' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyName}/groups\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1016:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'AndroidGetMAMPolicies' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:196:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'AssetsGetEncryptionKey' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/getEncryptionKey\"].post.operationId",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/AssetsAndAssetFilters.json:1053:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'BackupVaultsGetInResourceGroup' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:289:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'BackupVaultsGetInSubscription' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/backupVaults\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:27:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'CheckSkuAvailability' response has model definition 'array', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability\"].post.operationId",
+    "source": "specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2022-03-01/cognitiveservices.json:757:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ClustersDiagnoseVirtualNetwork' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/diagnoseVirtualNetwork\"].post.operationId",
+    "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:694:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ConfigServersValidate' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate\"].post.operationId",
+    "source": "specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-03-01-preview/appplatform.json:677:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DataConnectionsdataConnectionValidation' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnectionValidation\"].post.operationId",
+    "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:2934:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DataFlowDebugSessionQueryByFactory' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryDataFlowDebugSessions\"].post.operationId",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:3561:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DatabaseInstancesEnumerateDatabaseInstances' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:145:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DatabasesEnumerateDatabases' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:234:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DimensionsByExternalCloudProviderType' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions\"].get.operationId",
+    "source": "specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json:876:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DisconnectActiveSessions' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:534:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DiskAccessesGetPrivateLinkResources' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateLinkResources\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1414:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DomainEventSubscriptionsGetDeliveryAttributes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"].post.operationId",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4556:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DomainTopicEventSubscriptionsGetDeliveryAttributes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"].post.operationId",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4431:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'EntitiesGetInsights' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityId}/getInsights\"].post.operationId",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/Entities.json:339:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'EntitiesQueries' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityId}/queries\"].get.operationId",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/Entities.json:291:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'EventSubscriptionsGetDeliveryAttributes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"].post.operationId",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4263:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'EventsEnumerateEvents' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:323:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ExportsGetExecutionHistory' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory\"].get.operationId",
+    "source": "specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.exports.json:342:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ExposureControlQueryFeatureValuesByFactory' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryFeaturesValue\"].post.operationId",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:263:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GallerySharingProfileUpdate' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/share\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1670:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetActiveSessions' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:482:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetApps' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/apps\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:78:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetBastionShareableLink' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:434:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetLocations' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:22:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetMAMFlaggedUsers' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/flaggedUsers\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1539:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetMAMStatuses' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/statuses/default\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1501:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetMAMUserDevices' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/users/{userName}/devices\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1271:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetMAMUserFlaggedEnrolledApps' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/flaggedUsers/{userName}/flaggedEnrolledApps\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1647:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetOperationResults' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/operationResults\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1442:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GuestConfigurationAssignmentsRGList' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments\"].get.operationId",
+    "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:256:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GuestConfigurationAssignmentsSubscriptionList' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments\"].get.operationId",
+    "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:208:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IntegrationRuntimeObjectMetadataGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata\"].post.operationId",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:1521:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'InteractionsSuggestRelationshipLinks' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}/suggestRelationshipLinks\"].post.operationId",
+    "source": "specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/customer-insights.json:822:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IosGetAppForMAMPolicy' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyName}/apps\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:629:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IosGetGroupsForMAMPolicy' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyName}/groups\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:971:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IosGetMAMPolicies' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies\"].get.operationId",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:137:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IotHubResourceGetEndpointHealth' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth\"].get.operationId",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:858:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IotHubResourceGetQuotaMetrics' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics\"].get.operationId",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:813:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IotHubResourceGetValidSkus' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus\"].get.operationId",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:438:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'IotHubResourceTestAllRoutes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall\"].post.operationId",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1004:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'KustoPoolDataConnectionsdataConnectionValidation' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/databases/{databaseName}/dataConnectionValidation\"].post.operationId",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json:1420:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListAddressesAtResourceGroupLevel' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:424:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListAddressesAtSubscriptionLevel' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:66:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListConfigurations' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listConfigurations\"].post.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:193:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOperations' response has model definition 'array', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.SerialConsole/operations\"].get.operationId",
+    "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialconsole.json:42:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOperations' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Dynamics365FraudProtection/operations\"].get.operationId",
+    "source": "specification/dfp/resource-manager/Microsoft.Dynamics365Fraudprotection/preview/2021-02-01-preview/dfp.json:277:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOperations' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.EdgeOrder/operations\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:24:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOperations' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Solutions/operations\"].get.operationId",
+    "source": "specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/managedapplications.json:42:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOperationsPartner' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.EdgeOrderPartner/operations\"].get.operationId",
+    "source": "specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/edgeorderpartner.json:24:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOrderAtResourceGroupLevel' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orders\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:709:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOrderAtSubscriptionLevel' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orders\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:306:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOrderItemsAtResourceGroupLevel' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:815:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListOrderItemsAtSubscriptionLevel' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orderItems\"].get.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:358:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListProductFamilies' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listProductFamilies\"].post.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:125:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ListProductFamiliesMetadata' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/productFamiliesMetadata\"].post.operationId",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:254:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'LocationBasedCapabilitiesExecute' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities\"].get.operationId",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:916:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'LocationsGetUsage' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/usages\"].get.operationId",
+    "source": "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/2016-11-01/account.json:1157:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'LogAnalyticsGetLogAnalyticsLocations' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsLocations\"].get.operationId",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3570:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'LogAnalyticsGetLogAnalyticsResources' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsResources\"].get.operationId",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3616:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'MachinesEnumerateMachines' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:445:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions\"].get.operationId",
+    "source": "specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/management.json:479:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ManagementGroupsGetDescendants' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/descendants\"].get.operationId",
+    "source": "specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/management.json:312:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'MsixImagesExpand' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage\"].post.operationId",
+    "source": "specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2022-02-10-preview/desktopvirtualization.json:2125:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'NodeCountInformationGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}\"].get.operationId",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNodeCounts.json:44:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'NotificationGetOperations' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MarketplaceNotifications/operations\"].get.operationId",
+    "source": "specification/marketplacenotifications/resource-manager/Microsoft.MarketplaceNotifications/stable/2021-03-03/MarketplaceNotifications.json:106:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'OperationsDiscoveryGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get.operationId",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:885:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'OperationsGet' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Kubernetes/operations\"].get.operationId",
+    "source": "specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/connectedClusters.json:385:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PartnerTopicEventSubscriptionsGetDeliveryAttributes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"].post.operationId",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4372:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PolicyRestrictionsCheckAtManagementGroupScope' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:122:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PolicyRestrictionsCheckAtResourceGroupScope' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:77:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PolicyRestrictionsCheckAtSubscriptionScope' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions\"].post.operationId",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/checkPolicyRestrictions.json:35:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PolicySetsEvaluatePolicies' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{name}/evaluatePolicies\"].post.operationId",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:2185:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateLinkResourcesAutomation' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources\"].get.operationId",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateLinkResources.json:42:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateLinkResourcesGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateLinkResources\"].get.operationId",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/namespaces-preview.json:536:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateLinkResourcesGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateLinkResources\"].get.operationId",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/namespace-preview.json:552:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateStoreAdminRequestApprovalsList' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals\"].get.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1001:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateStoreBillingAccounts' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/billingAccounts\"].post.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:210:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateStoreBulkCollectionsAction' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/bulkCollectionsAction\"].post.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:578:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateStoreCollectionTransferOffers' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/transferOffers\"].post.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:485:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateStoreGetApprovalRequestsList' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals\"].get.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:833:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PrivateStoreQueryOffers' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryOffers\"].post.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:172:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ProductsGetProducts' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/getProducts\"].post.operationId",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/Product.json:164:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ProjectsAssessmentOptionsList' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions\"].get.operationId",
+    "source": "specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json:2858:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ProvidersProviderPermissions' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.operationId",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PutBastionShareableLink' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:328:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'QueriesSearch' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/search\"].post.operationId",
+    "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/QueryPackQueries.json:91:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'QuotasUpdate' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/updateQuotas\"].post.operationId",
+    "source": "specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/machineLearningServices.json:546:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'RegistriesGenerateCredentials' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/generateCredentials\"].post.operationId",
+    "source": "specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2021-12-01-preview/containerregistry.json:2400:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'RegistriesRegenerateCredential' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/regenerateCredential\"].post.operationId",
+    "source": "specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2021-12-01-preview/containerregistry.json:1617:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ReservationOrderChangeDirectory' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory\"].post.operationId",
+    "source": "specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json:852:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardProxiesGet' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies\"].get.operationId",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4270:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetBackupSecurityPINRequestsObjects' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2826:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetDeleteProtectedItemRequestsObjects' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2878:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetDeleteResourceGuardProxyRequestsObjects' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2774:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetDisableSoftDeleteRequestsObjects' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2722:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetResourcesInResourceGroup' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2466:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetResourcesInSubscription' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/resourceGuards\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2424:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetUpdateProtectedItemRequestsObjects' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2982:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceGuardsGetUpdateProtectionPolicyRequestsObjects' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests\"].get.operationId",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2930:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ResourceProviderCommonGetSubscriptionQuota' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Devices/usages\"].get.operationId",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:964:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SchemaGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema\"].post.operationId",
+    "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/Schema.json:47:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SearchInventories' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrderPartner/searchInventories\"].post.operationId",
+    "source": "specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/edgeorderpartner.json:190:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SmartGroupsGetAll' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/smartGroups\"].get.operationId",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/SmartGroups.json:32:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SolutionsEnumerateSolutions' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:977:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SqlVulnerabilityAssessmentBaselineRulesAdd' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.Security/sqlVulnerabilityAssessments/default/baselineRules\"].post.operationId",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2020-07-01-preview/sqlVulnerabilityAssessmentsBaselineRuleOperations.json:247:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'StreamingEndpointsSkus' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{accountName}/streamingEndpoints/{streamingEndpointName}/skus\"].get.operationId",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/streamingservice.json:971:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SubscriptionsRestoreData' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/restoreData\"].post.operationId",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:96:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'SystemTopicEventSubscriptionsGetDeliveryAttributes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"].post.operationId",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4313:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'ThreatIntelligenceIndicatorQueryIndicators' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/queryIndicators\"].post.operationId",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/ThreatIntelligence.json:296:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'TopicEventSubscriptionsGetDeliveryAttributes' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"].post.operationId",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4497:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'TriggersQueryByFactory' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/querytriggers\"].post.operationId",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:2717:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'UnresolvedDependenciesGet' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies\"].get.operationId",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:575:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualMachineScaleSetVMsRunCommand' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:190:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualMachineScaleSetsGetOSUpgradeHistory' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osUpgradeHistory\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7225:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualMachinesRunCommand' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:130:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualNetworkSubnetUsageExecute' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage\"].post.operationId",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:958:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'addsServicegetMetrics' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:678:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'addsServicesUserPreferenceget' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:522:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'addsServicesgetMetricMetadataForGroup' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:943:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'getAvailableOperations' response has model definition 'array', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.PowerBI/operations\"].get.operationId",
+    "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:489:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'listIPAddressAggregatesByService' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:3550:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'privateLinkResourcesGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateLinkResources\"].get.operationId",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:4332:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'serviceMembersgetConnectorMetadata' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:3501:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'serviceMembersgetMetrics' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:3266:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'servicegetMetrics' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:2279:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'servicesgetMetricMetadataForGroup' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}\"].get.operationId",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:2544:8"
+  }
+]

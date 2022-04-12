@@ -140,6 +140,9 @@ async function main() {
       let file = cachedFiles.get(fileUri)
       if (!file) {
         file = await initiator.ReadFile(fileUri)
+        if (!file) {
+          throw new Error(`Could not read file: ${fileUri} .`)
+        }
         cachedFiles.set(fileUri,file)
       }
       return file

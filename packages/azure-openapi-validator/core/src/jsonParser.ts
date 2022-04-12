@@ -28,7 +28,7 @@ export class JsonParser implements IJsonParser {
           }
           targetPath.pop()
         }
-        throw new Error("Invalid Path")
+        throw new Error("Invalid JSONPath:" + path.join("."))
       },
       getValue: () => {
         return Object.assign({}, getNodeValue(rootNode))

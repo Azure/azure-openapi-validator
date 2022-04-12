@@ -1,6 +1,6 @@
 import * as assert from "assert"
-import { ArmHelper } from "../utilities/armHelper"
-import { SwaggerHelper } from "../utilities/swaggerHelper"
+import { ArmHelper } from "../utilities/arm-helper"
+import { SwaggerHelper } from "../utilities/swagger-helper"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 describe("ArmHelperTests",()=> {

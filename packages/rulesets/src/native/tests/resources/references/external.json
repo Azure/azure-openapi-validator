@@ -6,18 +6,12 @@
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
   "paths": {
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/listKeys": {
+    "/foo": {
       "post": {
         "parameters": [
           {
@@ -35,13 +29,15 @@
             "description": "201 is not supported"
           },
           "default": {
-            "description": "Unexpected error"
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "./circular-ref.json#/definitions/ErrorResponse"
+            }
           }
         },
         "x-ms-long-running-operation": false
       }
     }
   },
-  "parameters": {
-  }
+  "parameters": {}
 }

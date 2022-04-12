@@ -1,0 +1,8 @@
+[
+  {
+    "code": "AvoidEmptyResponseSchema",
+    "message": "Response schema must not be empty.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].delete.responses[\"200\"].schema",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2020-03-01/storagecache.json:336:12"
+  }
+]

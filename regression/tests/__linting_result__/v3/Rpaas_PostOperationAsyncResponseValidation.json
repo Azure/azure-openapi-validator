@@ -1,0 +1,62 @@
+[
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/createArcIdentity\"].post",
+    "source": "specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-03-01/arcSettings.json:263:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/createClusterIdentity\"].post",
+    "source": "specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-03-01/clusters.json:351:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/uploadCertificate\"].post",
+    "source": "specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-03-01/clusters.json:299:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TestBase/testBaseAccounts/{testBaseAccountName}/offboard\"].post",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:410:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TestBase/testBaseAccounts/{testBaseAccountName}/packages/{packageName}/hardDelete\"].post",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:1206:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker\"].post",
+    "source": "specification/servicelinker/resource-manager/Microsoft.ServiceLinker/preview/2022-01-01-preview/servicelinker.json:270:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineName}/restart\"].post",
+    "source": "specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2020-10-01-preview/connectedvmware.json:2059:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineName}/start\"].post",
+    "source": "specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2020-10-01-preview/connectedvmware.json:2011:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineName}/stop\"].post",
+    "source": "specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2020-10-01-preview/connectedvmware.json:1952:6"
+  },
+  {
+    "code": "Rpaas_PostOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async POST operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions\"].post",
+    "source": "specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/managedapplications.json:891:6"
+  }
+]

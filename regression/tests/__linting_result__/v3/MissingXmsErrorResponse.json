@@ -1,0 +1,428 @@
+[
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 400 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"400\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:976:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 400 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"400\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:597:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 400 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"400\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1364:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 400 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"400\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1821:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 400 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"400\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:292:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Addons/supportProviders/canonical/listSupportPlanInfo\"].post.responses[\"404\"]",
+    "source": "specification/addons/resource-manager/Microsoft.Addons/preview/2018-03-01/addons-swagger.json:227:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Addons/supportProviders/{providerName}/supportPlanTypes/{planTypeName}\"].get.responses[\"404\"]",
+    "source": "specification/addons/resource-manager/Microsoft.Addons/preview/2018-03-01/addons-swagger.json:96:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Addons/supportProviders/{providerName}/supportPlanTypes/{planTypeName}\"].put.responses[\"404\"]",
+    "source": "specification/addons/resource-manager/Microsoft.Addons/preview/2018-03-01/addons-swagger.json:146:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/locations/{location}/capability\"].get.responses[\"404\"]",
+    "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:1682:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/capability\"].get.responses[\"404\"]",
+    "source": "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/2016-11-01/account.json:1141:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}\"].get.responses[\"404\"]",
+    "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialconsole.json:96:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}/disableConsole\"].post.responses[\"404\"]",
+    "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialconsole.json:136:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}/enableConsole\"].post.responses[\"404\"]",
+    "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialconsole.json:176:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems/{galleryItemName}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:131:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}\"].delete.responses[\"404\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:286:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}\"].delete.responses[\"404\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:593:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{fabricLocation}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FabricLocation.json:52:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/applicationOperationResults/{operation}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/ApplicationOperationResults.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGatewayPools\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGatewayPool.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGatewayPools/{edgeGatewayPool}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGatewayPool.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGateways\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGateway.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/edgeGateways/{edgeGateway}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGateway.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/fileShares\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json:106:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/fileShares/{fileShare}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json:257:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoleInstances/{infraRoleInstance}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json:215:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRole.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{infraRole}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRole.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/ipPools\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/IpPool.json:144:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/ipPools/{ipPool}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/IpPool.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalNetwork.json:100:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks/{logicalNetwork}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalNetwork.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks/{logicalNetwork}/logicalSubnets\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalSubnet.json:103:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/logicalNetworks/{logicalNetwork}/logicalSubnets/{logicalSubnet}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalSubnet.json:58:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/macAddressPools\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/MacAddressPool.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/macAddressPools/{macAddressPool}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/MacAddressPool.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/networkOperationResults\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/NetworkOperationResults.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/networkOperationResults/{operation}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/NetworkOperationResults.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:340:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnitNode.json:298:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits\"].get.responses[\"404\"]",
+    "source": ""
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnit.json:232:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}\"].get.responses[\"404\"]",
+    "source": ""
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2020-10-01/ScaleUnit.json:190:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2018-10-01/StorageSubSystem.json:109:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems/{storageSubSystem}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2018-10-01/StorageSubSystem.json:58:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems/{storageSubSystem}/drives\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Drive.json:115:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems/{storageSubSystem}/drives/{drive}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Drive.json:61:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems/{storageSubSystem}/volumes\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Volume.json:115:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnits/{scaleUnit}/storageSubSystems/{storageSubSystem}/volumes/{volume}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Volume.json:61:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/slbMuxInstances\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/SlbMuxInstance.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/slbMuxInstances/{slbMuxInstance}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/SlbMuxInstance.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageOperationResults\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StorageOperationResults.json:97:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/storageOperationResults/{operation}\"].get.responses[\"404\"]",
+    "source": "specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StorageOperationResults.json:55:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}\"].patch.responses[\"404\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:257:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.responses[\"404\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:459:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}\"].get.responses[\"404\"]",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/portal.json:216:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}\"].patch.responses[\"404\"]",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/portal.json:274:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}\"].delete.responses[\"404\"]",
+    "source": "specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/search.json:571:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/deleteQueryKey/{key}\"].delete.responses[\"404\"]",
+    "source": "specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/search.json:331:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.responses[\"404\"]",
+    "source": "specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/search.json:831:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}\"].delete.responses[\"404\"]",
+    "source": "specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/search.json:1054:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}\"].put.responses[\"404\"]",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:129:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}\"].get.responses[\"404\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:723:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}\"].delete.responses[\"404\"]",
+    "source": "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/DataExports.json:231:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension/{extensionResourceName}\"].get.responses[\"404\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:325:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"].get.responses[\"404\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:511:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"].patch.responses[\"404\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:562:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 404 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"].put.responses[\"404\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:433:10"
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 409 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}\"].put.responses[\"409\"]",
+    "source": ""
+  },
+  {
+    "code": "MissingXmsErrorResponse",
+    "message": "Response code 409 is defined without a x-ms-error-response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}\"].put.responses[\"409\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/schedule.json:97:10"
+  }
+]

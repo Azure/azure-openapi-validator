@@ -1,0 +1,14 @@
+[
+  {
+    "code": "EnumMustHaveType",
+    "message": "Enum must define its type and \"object\" type is not allowed due to Autorest refuse to parse it.",
+    "jsonpath": "$.definitions.AccountResourceRequest.properties.operationType",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:923:8"
+  },
+  {
+    "code": "EnumMustHaveType",
+    "message": "Enum must define its type and \"object\" type is not allowed due to Autorest refuse to parse it.",
+    "jsonpath": "$.definitions.ColumnSpecification.properties",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2017-01-01/webservices.json:828:6"
+  }
+]

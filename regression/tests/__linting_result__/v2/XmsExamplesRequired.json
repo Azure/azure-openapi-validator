@@ -1,0 +1,32 @@
+[
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:18:2"
+  },
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/preview/2016-05-01-preview/commitmentPlans.json:18:2"
+  },
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths",
+    "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:18:2"
+  },
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths",
+    "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:19:2"
+  },
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations. Operation: 'UsageAggregates_List'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/UsageAggregates\"].get",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:21:6"
+  }
+]

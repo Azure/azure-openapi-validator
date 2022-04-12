@@ -81,9 +81,8 @@ export type IRuleFunction<T> = (
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface ISwaggerInventory {
-  referencesOf(specPath: string): string[],
-  getSingleDocument(specPath: string):any
-  getAllDocuments(): Map<string,any>
+  referencesOf(specPath: string): Record<string,any>,
+  getDocuments(docPath?:string): Record<string,any> | any
 }
 
 export interface ISwaggerHelper {

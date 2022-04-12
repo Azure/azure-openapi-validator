@@ -1,0 +1,80 @@
+[
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'AddressResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.AddressResource",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:1288:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'DataControllerResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.DataControllerResource",
+    "source": "specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/dataControllers.json:10:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'EnvironmentResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.EnvironmentResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1832:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'EventHubEventSourceResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.EventHubEventSourceResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:2423:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'Gen1EnvironmentResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.Gen1EnvironmentResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1860:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'Gen2EnvironmentResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.Gen2EnvironmentResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:1878:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'IoTHubEventSourceResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.IoTHubEventSourceResource",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:2441:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'ManagedResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.ManagedResource",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/AlertProcessingRules.json:445:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'NamespaceCreateOrUpdateParameters', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.NamespaceCreateOrUpdateParameters",
+    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1697:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'OrderItemResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.OrderItemResource",
+    "source": "specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json:2522:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'RollingUpgradeStatusInfo', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.RollingUpgradeStatusInfo",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16282:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'VirtualMachineImageResource', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.VirtualMachineImageResource",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11107:4"
+  },
+  {
+    "code": "TrackedResourceListBySubscription",
+    "message": "The tracked resource, 'WorkbookTemplate', must have a list by subscriptions operation.",
+    "jsonpath": "$.definitions.WorkbookTemplate",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-11-20/workbookTemplates_API.json:303:4"
+  }
+]

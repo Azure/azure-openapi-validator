@@ -1,0 +1,14 @@
+[
+  {
+    "code": "az-ms-paths",
+    "message": "Don't use x-ms-paths except where necessary to support legacy APIs.",
+    "jsonpath": "$[\"x-ms-paths\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimapis.json:4411:2"
+  },
+  {
+    "code": "az-ms-paths",
+    "message": "Don't use x-ms-paths except where necessary to support legacy APIs.",
+    "jsonpath": "$[\"x-ms-paths\"]",
+    "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:3584:2"
+  }
+]

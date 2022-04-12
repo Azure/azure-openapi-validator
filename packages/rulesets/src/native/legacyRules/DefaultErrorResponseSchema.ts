@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { getResolvedSchemaByPath } from "../utilities/rules-helper"
-import { SwaggerHelper } from "../utilities/swaggerHelper"
+import { SwaggerHelper } from "../utilities/swagger-helper"
 
 export const DefaultErrorResponseSchema = "DefaultErrorResponseSchema"
 

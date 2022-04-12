@@ -1,0 +1,8 @@
+[
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'Identifier'. Properties [id] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.Identifier.properties",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/CommonDefinitions.json:1107:6"
+  }
+]

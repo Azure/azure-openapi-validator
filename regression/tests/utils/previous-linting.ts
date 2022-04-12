@@ -37,16 +37,6 @@ export async function runLinter(readme: string) {
             issue["jsonpath"] = getJsonPathFromRef(getRelativePath(issue["json-path"]))
           }
           return _.pick(issue,["code","message","jsonpath","source"])
-        }).sort((a:any, b:any) => {
-          let isLess: number = 0
-          ;["id", "message", "jsonpath","source"].some((key:string) => {
-            if (a[key] !== b[key]) {
-              isLess = a[key] < b[key] ? -1 : 1
-              return true
-            }
-            return false
-          })
-          return isLess
         })
       toMatchSnapshotForEachCode(errorJson)
     } else {

@@ -3,7 +3,6 @@ import { SwaggerInventory } from "./swaggerInventory";
 import { nodes, stringify } from "./jsonpath"
 import _ from "lodash"
 import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
-import { type } from "os";
 /**
  *
  * @param doc
@@ -31,7 +30,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
       if (inventory && refSlices[0]) {
-        doc = inventory.getSingleDocument(refSlices[0])
+        doc = inventory.getDocuments(refSlices[0])
       }
       schema = getRefModel(doc,`#${refSlices[1]}`, [])
       return followReference(doc, schema, inventory)
@@ -111,7 +110,7 @@ export const defaultFileSystem = {
 }
 
 export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPath) {
-  const document = inventory.getDocument(specPath)
+  const document = inventory.getInternalDocument(specPath)
   if (path && path[0] === "$") {
     path = path.slice(1)
   }

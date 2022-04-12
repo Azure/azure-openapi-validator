@@ -1,0 +1,8 @@
+[
+  {
+    "code": "DescriptionMustNotBeNodeName",
+    "message": "Description must not match the name of the node it is supposed to describe. Node name:'properties' Description:'Properties'",
+    "jsonpath": "$.definitions.WorkspaceCollection.properties.properties.description",
+    "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:808:10"
+  }
+]
