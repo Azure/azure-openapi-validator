@@ -2,7 +2,6 @@
 
 var spectralFormats = require('@stoplight/spectral-formats');
 var spectralFunctions = require('@stoplight/spectral-functions');
-var spectralRulesets = require('@stoplight/spectral-rulesets');
 
 const consistentresponsebody = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== 'object') {
@@ -683,12 +682,8 @@ const versionPolicy = (targetVal) => {
 };
 
 const ruleset = {
-    extends: [
-        spectralRulesets.oas
-    ],
+    extends: [],
     rules: {
-        "info-contact": "off",
-        "no-$ref-siblings": "off",
         "az-additional-properties-and-properties": {
             "description": "Don't specify additionalProperties as a sibling of properties.",
             "severity": "warn",

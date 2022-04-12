@@ -1,0 +1,38 @@
+[
+  {
+    "code": "TopLevelResourcesListByResourceGroup",
+    "message": "The top-level resource \"DatabaseMigrationSqlMi\" does not have list by resource group operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseMigrationSqlMi",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1527:4"
+  },
+  {
+    "code": "TopLevelResourcesListByResourceGroup",
+    "message": "The top-level resource \"DatabaseMigrationSqlVm\" does not have list by resource group operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseMigrationSqlVm",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:1548:4"
+  },
+  {
+    "code": "TopLevelResourcesListByResourceGroup",
+    "message": "The top-level resource \"ManagementAssociation\" does not have list by resource group operation, please add it.",
+    "jsonpath": "$.definitions.ManagementAssociation",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:929:4"
+  },
+  {
+    "code": "TopLevelResourcesListByResourceGroup",
+    "message": "The top-level resource \"ManagementConfiguration\" does not have list by resource group operation, please add it.",
+    "jsonpath": "$.definitions.ManagementConfiguration",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:958:4"
+  },
+  {
+    "code": "TopLevelResourcesListByResourceGroup",
+    "message": "The top-level resource \"MigrateProject\" does not have list by resource group operation, please add it.",
+    "jsonpath": "$.definitions.MigrateProject",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:2604:4"
+  },
+  {
+    "code": "TopLevelResourcesListByResourceGroup",
+    "message": "The top-level resource \"SapMonitor\" does not have list by resource group operation, please add it.",
+    "jsonpath": "$.definitions.SapMonitor",
+    "source": "specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json:610:4"
+  }
+]

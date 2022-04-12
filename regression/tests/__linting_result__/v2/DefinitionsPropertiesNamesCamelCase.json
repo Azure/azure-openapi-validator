@@ -1,0 +1,164 @@
+[
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Credit', for definition: 'MonetaryCredit' must follow camelCase style. Example: 'credit'.",
+    "jsonpath": "$.definitions.MonetaryCredit.properties.Credit",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:412:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Currency', for definition: 'RateCardQueryParameters' must follow camelCase style. Example: 'currency'.",
+    "jsonpath": "$.definitions.RateCardQueryParameters.properties.Currency",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:270:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Currency', for definition: 'ResourceRateCardInfo' must follow camelCase style. Example: 'currency'.",
+    "jsonpath": "$.definitions.ResourceRateCardInfo.properties.Currency",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:287:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'EffectiveDate', for definition: 'MeterInfo' must follow camelCase style. Example: 'effectiveDate'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.EffectiveDate",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:364:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'EffectiveDate', for definition: 'OfferTermInfo' must follow camelCase style. Example: 'effectiveDate'.",
+    "jsonpath": "$.definitions.OfferTermInfo.properties.EffectiveDate",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:396:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'ExcludedMeterIds', for definition: 'MonetaryCommitment' must follow camelCase style. Example: 'excludedMeterIds'.",
+    "jsonpath": "$.definitions.MonetaryCommitment.properties.ExcludedMeterIds",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:444:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'ExcludedMeterIds', for definition: 'MonetaryCredit' must follow camelCase style. Example: 'excludedMeterIds'.",
+    "jsonpath": "$.definitions.MonetaryCredit.properties.ExcludedMeterIds",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:417:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'IncludedQuantity', for definition: 'MeterInfo' must follow camelCase style. Example: 'includedQuantity'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.IncludedQuantity",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:369:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'IsTaxIncluded', for definition: 'ResourceRateCardInfo' must follow camelCase style. Example: 'isTaxIncluded'.",
+    "jsonpath": "$.definitions.ResourceRateCardInfo.properties.IsTaxIncluded",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:295:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Locale', for definition: 'RateCardQueryParameters' must follow camelCase style. Example: 'locale'.",
+    "jsonpath": "$.definitions.RateCardQueryParameters.properties.Locale",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:274:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Locale', for definition: 'ResourceRateCardInfo' must follow camelCase style. Example: 'locale'.",
+    "jsonpath": "$.definitions.ResourceRateCardInfo.properties.Locale",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:291:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterCategory', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterCategory'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterCategory",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:333:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterId', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterId'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterId",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:324:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterName', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterName'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterName",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:329:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterRates', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterRates'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterRates",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:356:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterRegion', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterRegion'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterRegion",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:352:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterSubCategory', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterSubCategory'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterSubCategory",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:337:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'MeterTags', for definition: 'MeterInfo' must follow camelCase style. Example: 'meterTags'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.MeterTags",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:345:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Meters', for definition: 'ResourceRateCardInfo' must follow camelCase style. Example: 'meters'.",
+    "jsonpath": "$.definitions.ResourceRateCardInfo.properties.Meters",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:309:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Name', for definition: 'OfferTermInfo' must follow camelCase style. Example: 'name'.",
+    "jsonpath": "$.definitions.OfferTermInfo.properties.Name",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:383:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Occurrence', for definition: 'JobRecurrenceScheduleMonthlyOccurrence' must follow camelCase style. Example: 'occurrence'.",
+    "jsonpath": "$.definitions.JobRecurrenceScheduleMonthlyOccurrence.properties.Occurrence",
+    "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:1531:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'OfferDurableId', for definition: 'RateCardQueryParameters' must follow camelCase style. Example: 'offerDurableId'.",
+    "jsonpath": "$.definitions.RateCardQueryParameters.properties.OfferDurableId",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:265:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'OfferTerms', for definition: 'ResourceRateCardInfo' must follow camelCase style. Example: 'offerTerms'.",
+    "jsonpath": "$.definitions.ResourceRateCardInfo.properties.OfferTerms",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:299:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'RecurringCharge', for definition: 'RecurringCharge' must follow camelCase style. Example: 'recurringCharge'.",
+    "jsonpath": "$.definitions.RecurringCharge.properties.RecurringCharge",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:463:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'RegionInfo', for definition: 'RateCardQueryParameters' must follow camelCase style. Example: 'regionInfo'.",
+    "jsonpath": "$.definitions.RateCardQueryParameters.properties.RegionInfo",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:278:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'TieredDiscount', for definition: 'MonetaryCommitment' must follow camelCase style. Example: 'tieredDiscount'.",
+    "jsonpath": "$.definitions.MonetaryCommitment.properties.TieredDiscount",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:436:8"
+  },
+  {
+    "code": "DefinitionsPropertiesNamesCamelCase",
+    "message": "Property named: 'Unit', for definition: 'MeterInfo' must follow camelCase style. Example: 'unit'.",
+    "jsonpath": "$.definitions.MeterInfo.properties.Unit",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:341:8"
+  }
+]

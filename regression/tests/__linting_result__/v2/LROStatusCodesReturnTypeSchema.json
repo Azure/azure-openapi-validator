@@ -1,0 +1,140 @@
+[
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Android_AddAppForMAMPolicy', Response code: '200'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyName}/apps/{appName}\"].put.responses[\"200\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:906:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Android_AddGroupForMAMPolicy', Response code: '200'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyName}/groups/{groupId}\"].put.responses[\"200\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1206:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'BackupResourceEncryptionConfigs_Update', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig\"].put.responses[\"200\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:834:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'CloudServicesUpdateDomain_WalkUpdateDomain', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put.responses[\"200\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1337:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'DataLakeStoreAccounts_Add', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts/{dataLakeStoreAccountName}\"].put.responses[\"200\"]",
+    "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:545:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'DisasterRecoveryConfigs_CreateOrUpdate', Response code: '201'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}\"].put.responses[\"201\"]",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/disasterRecoveryConfigs.json:178:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'DisasterRecoveryConfigs_CreateOrUpdate', Response code: '201'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}\"].put.responses[\"201\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/DisasterRecoveryConfig.json:127:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'DscNodeConfiguration_CreateOrUpdate', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}\"].put.responses[\"200\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNodeConfiguration.json:183:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Extensions_Create', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put.responses[\"200\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:366:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Extensions_EnableAzureMonitor', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put.responses[\"200\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:221:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Extensions_EnableMonitoring', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put.responses[\"200\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:79:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Ios_AddAppForMAMPolicy', Response code: '200'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyName}/apps/{appName}\"].put.responses[\"200\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:801:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Ios_AddGroupForMAMPolicy', Response code: '200'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyName}/groups/{groupId}\"].put.responses[\"200\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1101:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Ledger_Create', Response code: '201'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}\"].put.responses[\"201\"]",
+    "source": "specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json:247:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'MaintenanceWindows_CreateOrUpdate', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].put.responses[\"200\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:114:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'MigrationConfigs_CreateAndStartMigration', Response code: '201'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}\"].put.responses[\"201\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/migrationconfigs.json:127:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'PrivateStore_CreateOrUpdate', Response code: '200'",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}\"].put.responses[\"200\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:114:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'ProviderRegistrations_CreateOrUpdate', Response code: '201'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}\"].put.responses[\"201\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:941:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'RunbookDraft_ReplaceContent', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content\"].put.responses[\"200\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json:142:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'SqlPoolMaintenanceWindows_CreateOrUpdate', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current\"].put.responses[\"200\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1337:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'StorageAccounts_Add', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}\"].put.responses[\"200\"]",
+    "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:786:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'WebApps_CreateOneDeployOperation', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy\"].put.responses[\"200\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:3634:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'WorkspaceManagedIdentitySqlControlSettings_CreateOrUpdate', Response code: '201'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default\"].put.responses[\"201\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json:756:10"
+  }
+]

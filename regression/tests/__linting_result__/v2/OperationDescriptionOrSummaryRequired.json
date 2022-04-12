@@ -1,0 +1,74 @@
+[
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "BackupVaultOperationResults_Get lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationResults/{operationId}\"].get",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:544:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "EnergyServices_Update lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OpenEnergyPlatform/energyServices/{resourceName}\"].patch",
+    "source": "specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/oep.json:230:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "Notification_Get lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotification/{notification}\"].get",
+    "source": "specification/marketplacenotifications/resource-manager/Microsoft.MarketplaceNotifications/stable/2021-03-03/MarketplaceNotifications.json:61:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "Notification_GetOperations lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.MarketplaceNotifications/operations\"].get",
+    "source": "specification/marketplacenotifications/resource-manager/Microsoft.MarketplaceNotifications/stable/2021-03-03/MarketplaceNotifications.json:102:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "Notifications_List lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotifications\"].get",
+    "source": "specification/marketplacenotifications/resource-manager/Microsoft.MarketplaceNotifications/stable/2021-03-03/MarketplaceNotifications.json:20:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "OperationsDiscovery_Get lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:881:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "PostPrivateLinkIdNotebookResource lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:399:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "RemovePrivateLinkIdNotebookResource lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/removePrivateLinkId/{privateLinkId}\"].post",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:472:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "RestorableTimeRanges_Find lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges\"].post",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2192:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "SchemaRegistry_CreateOrUpdate lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}\"].put",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/SchemaRegistry.json:89:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "SchemaRegistry_Delete lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}\"].delete",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/SchemaRegistry.json:141:6"
+  },
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "SchemaRegistry_Get lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}\"].get",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/SchemaRegistry.json:184:6"
+  }
+]

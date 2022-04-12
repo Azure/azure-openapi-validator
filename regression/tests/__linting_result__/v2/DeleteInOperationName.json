@@ -1,0 +1,86 @@
+[
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'CommitmentPlans_Remove' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/commitmentPlans/{commitmentPlanName}\"].delete.operationId",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/preview/2016-05-01-preview/commitmentPlans.json:238:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'Extensions_DisableAzureMonitor' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].delete.operationId",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:283:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'Extensions_DisableMonitoring' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].delete.operationId",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:141:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'ProtectionContainers_Unregister' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}\"].delete.operationId",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:3153:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'ReplicationFabrics_Purge' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}\"].delete.operationId",
+    "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:609:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'ReplicationProtectedItems_Purge' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}\"].delete.operationId",
+    "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:2870:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'ReplicationProtectionContainerMappings_Purge' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}\"].delete.operationId",
+    "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:4584:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'ReplicationRecoveryServicesProviders_Purge' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}\"].delete.operationId",
+    "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:5029:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'StaticSites_DetachUserProvidedFunctionAppFromStaticSite' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}\"].delete.operationId",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:2585:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'StaticSites_DetachUserProvidedFunctionAppFromStaticSiteBuild' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}\"].delete.operationId",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:1206:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'Tag_DetachFromApi' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tags/{tagId}\"].delete.operationId",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimapis.json:4298:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'Tag_DetachFromOperation' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags/{tagId}\"].delete.operationId",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimapis.json:1749:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'Tag_DetachFromProduct' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/tags/{tagId}\"].delete.operationId",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimproducts.json:1362:8"
+  },
+  {
+    "code": "DeleteInOperationName",
+    "message": "'DELETE' operation 'WebServices_Remove' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/webServices/{webServiceName}\"].delete.operationId",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2017-01-01/webservices.json:181:8"
+  }
+]

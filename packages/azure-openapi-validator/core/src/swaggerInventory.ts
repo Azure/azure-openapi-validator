@@ -12,18 +12,19 @@ export class SwaggerInventory implements ISwaggerInventory {
   private inventory = new DepGraph()
   private referenceCache = new Map<string, OpenapiDocument>()
   private allDocs = new Map<string, any>()
+  private docRecords:Record<string,any> = undefined
   constructor(private fileSystem:IFileSystem = defaultFileSystem){
   }
 
   public getSingleDocument(specPath: string) {
-    return this.getDocument(specPath)?.getObj()
+    return this.getInternalDocument(specPath)?.getObj()
   }
 
   public getDocumentContent(specPath: string) {
-    return this.getDocument(specPath)?.getContent()
+    return this.getInternalDocument(specPath)?.getContent()
   }
 
-  public getDocument(specPath: string) {
+  public getInternalDocument(specPath: string) {
     const urlPath = normalizePath(specPath)
     if (this.referenceCache.has(urlPath)) {
       return this.referenceCache.get(urlPath)
@@ -32,11 +33,26 @@ export class SwaggerInventory implements ISwaggerInventory {
   }
 
   public referencesOf(specPath: string): string[]{
-    return this.inventory.dependantsOf(normalizePath(specPath))
+    const result :Record<string,any> = []
+    const references = this.inventory.dependantsOf(normalizePath(specPath))
+    for (const ref of references) {
+      result[ref] = this.allDocs.get(ref)
+    }
+    return result
   }
 
-  public getAllDocuments(): Map<string, any> {
-      return this.allDocs
+  public getDocuments(docPath?:string): Record<string, any> | any {
+    if (docPath) {
+      return this.getSingleDocument(docPath)
+    }
+    if (!this.docRecords) {
+      this.docRecords = {}
+      for (cosnt [key,value] of this.allDocs.entries()) {
+        docs.key = value
+      }
+    }
+    return this.docRecords
+   
   }
 
   private dependenciesOf(specPath: string) {
@@ -54,28 +70,32 @@ export class SwaggerInventory implements ISwaggerInventory {
     return document.getReferences()
   }
 
-  async loadDocument(specPath: string) {
+  async loadDocument(specPath: string): Promise<any> {
     const urlPath = normalizePath(specPath)
     let cache = this.referenceCache.get(urlPath)
     if (cache) {
       return cache
     }
     cache = await this.cacheDocument(urlPath)
-    const references = cache.getReferences()
-    const promises = []
-    for (const ref of references) {
-      promises.push(this.cacheDocument(ref))
-    }
-    await Promise.all(promises)
     return cache
   }
 
   async cacheDocument(specPath: string) {
+    let cache = this.allDocs.get(specPath)
+    if (cache) {
+      return cache
+    }
     const parser = new JsonParser()
     const document = new OpenapiDocument(specPath, parser,this.fileSystem)
     await document.resolve()
     this.referenceCache.set(specPath, document)
     this.allDocs.set(specPath,document.getContent())
+    const references = document.getReferences()
+    for (const ref of references) {
+      if (!this.allDocs.has(ref)) {
+        await this.cacheDocument(ref)
+      }
+    }
     return document
   }
 

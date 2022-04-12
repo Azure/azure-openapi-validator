@@ -1,0 +1,8 @@
+[
+  {
+    "code": "UniqueClientParameterName",
+    "message": "Do not have duplicate name of client parameter name, make sure every client parameter name unique. Client parameter #/parameters/subscriptionId conflicted with #/parameters/SubscriptionIdParameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AzureData/sqlManagedInstances\"].get.parameters",
+    "source": "specification/azuredata/resource-manager/Microsoft.AzureData/preview/2019-07-24-preview/azuredata.json:578:8"
+  }
+]

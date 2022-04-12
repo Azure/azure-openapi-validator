@@ -1,0 +1,122 @@
+[
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceRoleProperties.description",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1933:6"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.DataConnectorConnectBody.properties.requestConfigUserInputValues.description",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/dataConnectors.json:2256:10"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ListClusterUserCredentialProperties.description",
+    "source": "specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/connectedClusters.json:751:6"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SchemaGroup.properties.properties.description",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/SchemaRegistry.json:288:10"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SchemaGroup.properties.properties.properties.schemaCompatibility.description",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/SchemaRegistry.json:264:14"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SchemaGroup.properties.properties.properties.schemaType.description",
+    "source": "specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/SchemaRegistry.json:277:14"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2895:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests/{requestName}\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3216:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2791:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests/{requestName}\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3106:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2739:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3051:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2843:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3161:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2999:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests/{requestName}\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3326:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2947:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests/{requestName}\"].get.parameters[3].description",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3271:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}\"].put.parameters[5].description",
+    "source": "specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/signalr.json:581:12"
+  },
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}\"].put.parameters[5].description",
+    "source": "specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/signalr.json:798:12"
+  }
+]

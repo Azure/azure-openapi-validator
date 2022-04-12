@@ -1,0 +1,116 @@
+[
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'CloudService'",
+    "jsonpath": "$.definitions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'DFPInstance'",
+    "jsonpath": "$.definitions",
+    "source": "specification/dfp/resource-manager/Microsoft.Dynamics365Fraudprotection/preview/2021-02-01-preview/dfp.json:442:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'DatadogMonitorResource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:1126:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'EnergyService'",
+    "jsonpath": "$.definitions",
+    "source": "specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/oep.json:351:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'LogzMonitorResource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1723:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1607:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:2030:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/preview/2016-05-01-preview/commitmentPlans.json:442:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2016-04-01/workspaces.json:411:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/stable/2017-01-01/webservices.json:412:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/machinelearningexperimentation/resource-manager/Microsoft.MachineLearningExperimentation/preview/2017-05-01-preview/machineLearningExperimentation.json:837:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/storSimple1200Series/resource-manager/Microsoft.StorSimple/stable/2016-10-01/StorSimple.json:5822:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:4887:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:21339:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'ResourceGroup'",
+    "jsonpath": "$.definitions",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4479:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'TrackedResource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdnwebapplicationfirewall.json:320:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'TrackedResource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaultusages.json:65:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'VirtualMachineImageResource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"
+  }
+]

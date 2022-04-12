@@ -1,0 +1,62 @@
+[
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource AnalysisResultSingletonResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.AnalysisResultSingletonResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:3866:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource AvailableOSResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.AvailableOSResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:2810:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource CustomerEventResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.CustomerEventResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:4409:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource EmailEventResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.EmailEventResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:4356:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource FavoriteProcessResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.FavoriteProcessResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:3818:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource FlightingRingResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.FlightingRingResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:2875:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource OSUpdateResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.OSUpdateResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:3740:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource TestResultResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.TestResultResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:3585:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource TestSummaryResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.TestSummaryResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:3376:4"
+  },
+  {
+    "code": "Rpaas_ResourceProvisioningState",
+    "message": "[RPaaS] The resource TestTypeResource is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.",
+    "jsonpath": "$.definitions.TestTypeResource",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:2920:4"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'DELETE' operation 'WorkspaceCollections_delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}\"].delete[\"x-ms-long-running-operation\"]",
+    "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:186:8"
+  }
+]

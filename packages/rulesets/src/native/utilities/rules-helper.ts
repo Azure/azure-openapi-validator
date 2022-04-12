@@ -6,7 +6,7 @@ const matchAll = require("string.prototype.matchall")
 import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import {JSONPath} from "jsonpath-plus"
 
-import { followReference } from "./ref-helper"
+import { crwalReference } from "./ref-helper"
 
 export function getSuccessfulResponseSchema(node:any, doc:any, inventory?: ISwaggerInventory): any {
   if (!node.responses) {
@@ -36,14 +36,17 @@ export function getMostSuccessfulResponseKey(responses: string[]): string {
 }
 
 export function getResponseSchema(response: object, doc:any, inventory?: ISwaggerInventory): any {
-  let schema = (response as any).schema
+  let schema = (response as any)?.schema
   if (schema === undefined || schema === null) {
     return
   }
   if ("$ref" in schema) {
-    schema = followReference(doc, schema, inventory)
+    schema = crwalReference(doc, schema, inventory)
+    if (!schema) {
+      return 
+    }
   }
-  return schema.properties
+  return schema?.properties
 }
 
 export function getAllResourceProvidersFromPath(path: string): string[] {
@@ -97,7 +100,7 @@ export function transformEnum(type: string, enumEntries:any) {
 export function getResolvedSchemaByPath(doc: any, path: string[], inventory?: ISwaggerInventory) {
   const result = nodes(doc, stringify(path))
   if (result && result.length) {
-    return followReference(doc, result[0].value, inventory)
+    return crwalReference(doc, result[0].value, inventory)
   }
 }
 

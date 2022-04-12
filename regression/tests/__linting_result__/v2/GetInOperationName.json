@@ -1,0 +1,158 @@
+[
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Alerts_MetaData' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.AlertsManagement/alertsMetaData\"].get.operationId",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/AlertsManagement.json:63:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'CassandraClusters_Status' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status\"].get.operationId",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/managedCassandra.json:741:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'DatabaseInstances_EnumerateDatabaseInstances' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:145:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Databases_EnumerateDatabases' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:234:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Dimensions_ByExternalCloudProviderType' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions\"].get.operationId",
+    "source": "specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json:876:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Entities_Queries' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityId}/queries\"].get.operationId",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/Entities.json:291:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Events_EnumerateEvents' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:323:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'GuestConfigurationAssignments_RGList' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments\"].get.operationId",
+    "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:256:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'GuestConfigurationAssignments_SubscriptionList' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments\"].get.operationId",
+    "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:208:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'LocationBasedCapabilities_Execute' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities\"].get.operationId",
+    "source": "specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json:916:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'LocationOperationStatus' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}\"].get.operationId",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3102:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Machines_EnumerateMachines' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:445:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'PrivateLinkResources_Automation' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources\"].get.operationId",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateLinkResources.json:42:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'PrivateStore_AdminRequestApprovalsList' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals\"].get.operationId",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1001:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Projects_AssessmentOptions' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions/{assessmentOptionsName}\"].get.operationId",
+    "source": "specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json:2809:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Projects_AssessmentOptionsList' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions\"].get.operationId",
+    "source": "specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json:2858:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Providers_ProviderPermissions' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.operationId",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Solutions_EnumerateSolutions' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions\"].get.operationId",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:977:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'StreamingEndpoints_Skus' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{accountName}/streamingEndpoints/{streamingEndpointName}/skus\"].get.operationId",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/streamingservice.json:971:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Subscription_AcceptOwnershipStatus' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus\"].get.operationId",
+    "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:347:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'VirtualMachines_InstanceView' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4001:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Volumes_ReplicationStatus' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus\"].get.operationId",
+    "source": "specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-10-01/netapp.json:1220:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'WebApps_AnalyzeCustomHostname' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/analyzeCustomHostname\"].get.operationId",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:317:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'WebApps_AnalyzeCustomHostnameSlot' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/analyzeCustomHostname\"].get.operationId",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:8859:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Workbooks_RevisionGet' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions/{revisionId}\"].get.operationId",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2021-08-01/workbooks_API.json:379:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Workbooks_RevisionsList' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions\"].get.operationId",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2021-08-01/workbooks_API.json:337:8"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "code": "UniqueXmsEnumName",
+    "message": "Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique. The duplicate x-ms-enum name: routingsource, path: $.RouteProperties.properties.source",
+    "jsonpath": "$.definitions.FallbackRouteProperties.properties.source",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:3210:8"
+  }
+]

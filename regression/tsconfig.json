@@ -3,9 +3,10 @@
     "compilerOptions": {
         "types": [
             "jest","node"
-        ]
+        ],
+        "outDir": "dist"
     },
     "include": [
-        "./*.ts"
-    ],
+        "./tests/**/*.ts"
+    ]
 }

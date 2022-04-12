@@ -1,0 +1,32 @@
+[
+  {
+    "code": "az-request-body-not-allowed",
+    "message": "A get or delete operation must not accept a body parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.SaaS/saasresources/{resourceId}\"].delete.parameters[\"2\"].in",
+    "source": "specification/saas/resource-manager/Microsoft.SaaS/preview/2018-03-01-beta/saas.json:137:12"
+  },
+  {
+    "code": "az-request-body-not-allowed",
+    "message": "A get or delete operation must not accept a body parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/topQueryStatistics\"].get.parameters[\"4\"].in",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/QueryPerformanceInsights.json:210:12"
+  },
+  {
+    "code": "az-request-body-not-allowed",
+    "message": "A get or delete operation must not accept a body parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/waitStatistics\"].get.parameters[\"4\"].in",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/QueryPerformanceInsights.json:309:12"
+  },
+  {
+    "code": "az-request-body-not-allowed",
+    "message": "A get or delete operation must not accept a body parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/topQueryStatistics\"].get.parameters[\"4\"].in",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:210:12"
+  },
+  {
+    "code": "az-request-body-not-allowed",
+    "message": "A get or delete operation must not accept a body parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/waitStatistics\"].get.parameters[\"4\"].in",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json:309:12"
+  }
+]

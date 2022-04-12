@@ -1,0 +1,20 @@
+[
+  {
+    "code": "AzureResourceTagsSchema",
+    "message": "The property tags in the resource \"JobResponse\" does not conform to the common type definition.",
+    "jsonpath": "$.definitions.JobResponse",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:830:4"
+  },
+  {
+    "code": "AzureResourceTagsSchema",
+    "message": "The property tags in the resource \"MigrateProject\" does not conform to the common type definition.",
+    "jsonpath": "$.definitions.MigrateProject",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:2604:4"
+  },
+  {
+    "code": "AzureResourceTagsSchema",
+    "message": "The property tags in the resource \"Project\" does not conform to the common type definition.",
+    "jsonpath": "$.definitions.Project",
+    "source": "specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json:164:4"
+  }
+]

@@ -1,0 +1,1058 @@
+[
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:486:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:875:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:948:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:413:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:748:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:821:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:340:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:621:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:694:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyEvents.json:559:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1002:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"authorizationNamespace\" and \"managementGroupsNamespace\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1078:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"cacheName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:773:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"cacheName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:827:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"cacheName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/patchSchedules\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:1012:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"cacheName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:1508:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"cacheName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:1561:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"cacheName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateLinkResources\"]",
+    "source": "specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/redis.json:1726:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"collectionName\" and \"collectionRid\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3330:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"collectionName\" and \"collectionRid\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3457:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"collectionName\" and \"collectionRid\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToAutoscale\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3546:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"collectionName\" and \"collectionRid\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToManualThroughput\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/cosmos-db.json:3595:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"configurationName\" and \"accessName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/deploy\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimtenant.json:531:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"configurationName\" and \"accessName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/save\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimtenant.json:596:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"configurationName\" and \"accessName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/syncState\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimtenant.json:722:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"configurationName\" and \"accessName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/validate\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimtenant.json:661:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"containerAppName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/listCustomHostNameAnalysis\"]",
+    "source": "specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ContainerApps.json:311:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"dataMaskingRuleName\" and \"ruleId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:4078:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"galleryApplicationVersionName\" and \"galleryImageVersionName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1087:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:1171:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/acceptRecommendations\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:1218:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/contactedReviewers\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:1315:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/decisions\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:1262:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/decisions/{decisionId}\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:1365:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:603:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/applyDecisions\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:804:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/contactedReviewers\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:954:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/decisions\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:898:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/resetDecisions\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:757:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/sendReminders\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:851:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"id\" and \"instanceId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/accessReviewScheduleDefinitions/{scheduleDefinitionId}/instances/{id}/stop\"]",
+    "source": "specification/authorization/resource-manager/Microsoft.Authorization/preview/2021-11-16-preview/authorization-AccessReviewCalls.json:710:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8739:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8678:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8483:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8196:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/instanceView\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8954:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8547:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8617:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:858:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:571:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/simulateEviction\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9468:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"iotHubName\" and \"resourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1664:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"iotHubName\" and \"resourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:999:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"iotHubName\" and \"resourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testnew\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1066:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"iotHubName\" and \"resourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:853:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"jobId\" and \"compilationJobName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/compilationjobs/{jobId}/streams\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json:207:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"jobId\" and \"compilationJobName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/compilationjobs/{jobId}/streams/{jobStreamId}\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json:260:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"managedEnvironmentName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}/certificates\"]",
+    "source": "specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ManagedEnvironments.json:310:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"managedEnvironmentName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}/certificates/{name}\"]",
+    "source": "specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ManagedEnvironments.json:360:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"managedEnvironmentName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}/checkNameAvailability\"]",
+    "source": "specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ManagedEnvironments.json:588:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"artifactSourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:745:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"certificateOrderName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveCertificateActions\"]",
+    "source": "specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2021-03-01/AppServiceCertificateOrders.json:849:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"certificateOrderName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveEmailHistory\"]",
+    "source": "specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2021-03-01/AppServiceCertificateOrders.json:894:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7440:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/claimAnyVm\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7653:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/createEnvironment\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7700:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/exportResourceUsage\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7756:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/generateUploadUri\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7812:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/importVirtualMachine\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7867:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"labName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/listVhds\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7923:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"virtualMachineName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{name}/extensions\"]",
+    "source": "specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2020-10-01-preview/connectedvmware.json:3554:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"name\" and \"virtualMachineName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{name}/extensions/{extensionName}\"]",
+    "source": "specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2020-10-01-preview/connectedvmware.json:3309:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeFirst\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:2082:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeFirst\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1753:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeFirst\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:2028:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeFirst\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1586:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeFirst\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1977:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeFirst\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1428:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeSecond\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:2082:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeSecond\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1753:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeSecond\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:2028:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeSecond\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1586:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeThird\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:2082:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"nestedResourceTypeThird\" and \"resourceType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}\"]",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:1753:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policySetName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:2241:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policySetName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:2323:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:103:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:236:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:948:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:821:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:694:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:357:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:1078:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"policyStatesSummaryResource\" and \"policyStatesResource\".",
+    "jsonpath": "$.paths[\"/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize\"]",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json:496:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"privateLinkScopeId\" and \"scopeName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/privateLinkScopes/{privateLinkScopeId}\"]",
+    "source": "specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2021-12-10-preview/privateLinkScopes.json:590:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"replicationProtectedItemName\" and \"replicatedProtectedItemName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicationProtectedItemName}/updateMobilityService\"]",
+    "source": "specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/service.json:4309:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:5649:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:5703:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/health/network\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:6023:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:6073:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:6126:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}/apiOperations\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:6310:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/restart\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:5976:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceGroup\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/skus\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:5923:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceName\" and \"accountResourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:391:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceName\" and \"provisioningServiceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1399:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceName\" and \"provisioningServiceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1443:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceName\" and \"provisioningServiceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1308:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceName\" and \"provisioningServiceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources/{groupId}\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1352:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceType\" and \"resourceParentType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:358:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceType\" and \"resourceParentType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:199:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceType\" and \"resourceParentType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:1035:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceType\" and \"resourceParentType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:709:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"resourceType\" and \"resourceParentType\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates\"]",
+    "source": "specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/Maintenance.json:1704:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"revisionName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/replicas\"]",
+    "source": "specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ContainerAppsRevisions.json:288:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"revisionName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/replicas/{name}\"]",
+    "source": "specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ContainerAppsRevisions.json:228:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"roleName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:1889:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"roleName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:1945:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"roleName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:2138:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"roleName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default\"]",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:2194:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"rootResourceName\" and \"accountResourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:573:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"rootResourceName\" and \"accountResourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:615:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"rootResourceName\" and \"accountResourceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}/subContainers/{subContainerName}/status\"]",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:790:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"runCommandName\" and \"commandId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:571:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"runCommandName\" and \"commandId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:252:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"serviceFabricName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5216:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"serviceFabricName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5305:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"serviceFabricName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}/execute\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5597:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sid\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimsubscriptions.json:96:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sid\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/listSecrets\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimsubscriptions.json:469:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sid\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/regeneratePrimaryKey\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimsubscriptions.json:385:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sid\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/regenerateSecondaryKey\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimsubscriptions.json:427:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sid\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/subscriptions/{sid}\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimusers.json:573:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sourceDeviceName\" and \"deviceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{sourceDeviceName}/failover\"]",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:3932:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sourceDeviceName\" and \"deviceName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorSimple/managers/{managerName}/devices/{sourceDeviceName}/listFailoverTargets\"]",
+    "source": "specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/storsimple.json:3993:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sourceResourceGroupName\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2828:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"sourceResourceGroupName\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2880:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"subscriptionName\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/subscriptions.json:94:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"subscriptionName\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/Rules.json:37:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"subscriptionName\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}\"]",
+    "source": "specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/Rules.json:94:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"targetSubscriptionId\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:325:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"targetSubscriptionId\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:19:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"targetSubscriptionId\" and \"subscriptionId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}\"]",
+    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/AcquiredPlan.json:61:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4194:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:1656:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4424:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:3297:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/providers/Microsoft.EventGrid/eventSubscriptions\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4126:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:7482:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4016:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:1948:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:4490:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:3363:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/listKeys\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:7816:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"topicName\" and \"domainTopicName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/regenerateKey\"]",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:7868:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:3494:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:3576:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/attach\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:3845:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/detach\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:3915:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:3985:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:4067:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:4336:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:4418:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:4683:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:4765:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/listApplicableSchedules\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5034:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/start\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5094:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/stop\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5155:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5216:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5305:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"userName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}/execute\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:5597:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualMachineName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:6717:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualMachineName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:6799:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualMachineName\" and \"name\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}/execute\"]",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:7063:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualMachineScaleSetName\" and \"vmScaleSetName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9011:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"vmssExtensionName\" and \"vmExtensionName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6789:4"
+  }
+]

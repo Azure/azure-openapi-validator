@@ -1,0 +1,56 @@
+[
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"ManagedInstancePrivateLinkListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:41:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateEndpointConnectionsList\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections\"].get.responses[\"200\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:1850:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateEndpointConnectionsList\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections\"].get.responses[\"200\"]",
+    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:1427:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateLinkResources.json:61:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/PrivateLinkResources.json:59:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json:59:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:325:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkResources.json:62:10"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourcesListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources\"].get.responses[\"200\"]",
+    "source": "specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-02-01/managedClusters.json:1725:10"
+  }
+]

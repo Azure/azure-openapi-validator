@@ -58,9 +58,8 @@ Differetiating with spectral rule,  there is a swagger inventory (see below defi
 
 ``` ts
 export interface ISwaggerInventory {
-  referencesOf(specPath: string): string[],
-  getSingleDocument(specPath: string):any
-  getAllDocuments(): Map<string,any>
+  referencesOf(specPath: string): Record<string,any>,
+  getDocuments(): Record<string,any>
 }
 ```
 

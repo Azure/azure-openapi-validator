@@ -1,0 +1,38 @@
+[
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for '/providers//operations'.",
+    "jsonpath": "$.paths",
+    "source": "specification/iotspaces/resource-manager/Microsoft.IoTSpaces/preview/2017-10-01-preview/iotspaces.json:39:2"
+  },
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for '/providers/Microsoft.Commerce/operations'.",
+    "jsonpath": "$.paths",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:19:2"
+  },
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for '/providers/Microsoft.Intune/operations'.",
+    "jsonpath": "$.paths",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:18:2"
+  },
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for '/providers/Microsoft.Network/operations'.",
+    "jsonpath": "$.paths",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/webapplicationfirewall.json:36:2"
+  },
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for '/providers/Microsoft.Portal/operations'.",
+    "jsonpath": "$.paths",
+    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:35:2"
+  },
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for '/providers/Microsoft.Scheduler/operations'.",
+    "jsonpath": "$.paths",
+    "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:19:2"
+  }
+]

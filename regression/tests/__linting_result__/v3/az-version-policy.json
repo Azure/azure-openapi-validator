@@ -1,0 +1,236 @@
+[
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration\"].get.parameters",
+    "source": "specification/adhybridhealthservice/resource-manager/Microsoft.ADHybridHealthService/stable/2014-01-01/ADHybridHealthService.json:301:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
+    "source": "specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/migrate.json:4859:6"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:1086:6"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/consoles/{consoleName}/keepAlive\"].post.parameters",
+    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:638:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}/keepAlive\"].post.parameters",
+    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:329:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ProviderHub/operations\"].get",
+    "source": "specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json:692:6"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Synapse/operations\"].get",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json:25:6"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/providers/microsoft.visualstudio/operations\"].get",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:38:6"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.CustomerLockbox/requests\"].get.parameters",
+    "source": "specification/customerlockbox/resource-manager/Microsoft.CustomerLockbox/preview/2018-02-28-preview/customerlockbox.json:253:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Notebooks/notebookProxies\"].get.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:330:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.OpenEnergyPlatform/checkNameAvailability\"].post.parameters",
+    "source": "specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/oep.json:16:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/serialPorts\"].get.parameters",
+    "source": "specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/serialport.json:262:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies\"].get.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:286:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}\"].delete.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:186:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}\"].get.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:85:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}\"].patch.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:230:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}\"].put.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:129:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/listCredentials\"].post.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:371:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:415:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/removePrivateLinkId/{privateLinkId}\"].post.parameters",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:488:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OpenEnergyPlatform/energyServices/{resourceName}\"].put.parameters",
+    "source": "specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/oep.json:180:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Operation does not define an \"api-version\" query parameter.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/enableRemoteManagement\"].post.parameters",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/Registration.json:327:8"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"ipv6FirewallRules\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:19:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"ipv6FirewallRules\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:61:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSql/serverGroupsv2\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:37:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:76:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:118:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/configurations\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:472:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/configurations/{configurationName}\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:517:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/firewallRules\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:772:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/firewallRules/{firewallRuleName}\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:618:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/restart\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:973:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/roles\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:928:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/roles/{roleName}\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:817:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/servers\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:334:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/servers/{serverName}\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:379:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/servers/{serverName}/configurations\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:424:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/start\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:1016:4"
+  },
+  {
+    "code": "az-version-policy",
+    "message": "Version segment \"serverGroupsv2\" in path violates Azure versioning policy.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/serverGroupsv2/{serverGroupName}/stop\"]",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:1059:4"
+  }
+]

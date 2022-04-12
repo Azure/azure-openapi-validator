@@ -1,0 +1,2168 @@
+[
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Billing/validateAddress\"].post.parameters[\"1\"]",
+    "source": "specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/billing.json:234:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes\"].post.parameters[\"3\"]",
+    "source": "specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json:51:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/AndroidPolicies/{policyName}/apps\"].get.parameters[\"4\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:724:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies\"].get.parameters[\"3\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:218:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/apps\"].get.parameters[\"3\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:100:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/flaggedUsers\"].get.parameters[\"3\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1561:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/flaggedUsers/{userName}/flaggedEnrolledApps\"].get.parameters[\"4\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1676:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies\"].get.parameters[\"3\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:159:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyName}/apps\"].get.parameters[\"4\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:658:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/operationResults\"].get.parameters[\"3\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1464:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Intune/locations/{hostName}/users/{userName}/devices\"].get.parameters[\"4\"]",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1300:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}\"].put.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:102:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}\"].put.parameters[\"2\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1085:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/bulkCollectionsAction\"].post.parameters[\"1\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:584:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}\"].post.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:443:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}\"].put.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:368:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}\"].post.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:788:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}\"].put.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:707:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/transferOffers\"].post.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:488:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collectionsToSubscriptionsMapping\"].post.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:251:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listStopSellOffersPlansNotifications\"].post.parameters[\"1\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1337:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/offers/{offerId}/acknowledgeNotification\"].post.parameters[\"2\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1171:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryApprovedPlans\"].post.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:536:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}\"].put.parameters[\"0\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:908:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/query\"].post.parameters[\"2\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:962:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/withdrawPlan\"].post.parameters[\"2\"]",
+    "source": "specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/Marketplace.json:1216:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscription/aliases/{aliasName}\"].put.parameters[\"1\"]",
+    "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:188:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscription/policies/default\"].put.parameters[\"0\"]",
+    "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:401:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnership\"].post.parameters[\"1\"]",
+    "source": "specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json:330:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Web/availableStacks\"].get.parameters[\"0\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/Provider.json:27:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/checkNameAvailability\"].post.parameters[\"2\"]",
+    "source": "specification/cpim/resource-manager/Microsoft.AzureActiveDirectory/stable/2021-04-01/externalIdentities.json:59:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1858:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1913:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions\"].get.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1919:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions\"].get.parameters[\"4\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1932:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions\"].get.parameters[\"5\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1939:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1794:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}\"].get.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1800:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}\"].get.parameters[\"3\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1806:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions\"].get.parameters[\"5\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2425:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions\"].get.parameters[\"6\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2432:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/checkFeatureSupport\"].post.parameters[\"2\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:686:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationResults/{operationId}\"].get.parameters[\"2\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:80:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationResults/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:86:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationStatus/{operationId}\"].get.parameters[\"2\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:150:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationStatus/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:156:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements/default\"].put.parameters[\"2\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:91:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/checkNameAvailability\"].post.parameters[\"3\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:218:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/validateCreateRequest\"].post.parameters[\"3\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:265:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Security/locations/{ascLocation}/applicationWhitelistings/{groupName}\"].put.parameters[\"4\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/applicationWhitelistings.json:153:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones\"].get.parameters[\"0\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TimeZones.json:27:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones/{timeZoneId}\"].get.parameters[\"0\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TimeZones.json:69:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones/{timeZoneId}\"].get.parameters[\"1\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TimeZones.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Web/availableStacks\"].get.parameters[\"0\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/Provider.json:314:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites\"].get.parameters[\"0\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/DeletedWebApps.json:62:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites/{deletedSiteId}\"].get.parameters[\"0\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/DeletedWebApps.json:108:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}\"].patch.parameters[\"3\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:285:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}\"].put.parameters[\"3\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:213:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/apis/{apiId}\"].put.parameters[\"6\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:956:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/certificateAuthorities/{certificateId}\"].put.parameters[\"5\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:1224:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/generateToken\"].post.parameters[\"3\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:494:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/hostnameConfigurations/{hcId}\"].put.parameters[\"5\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:716:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/regenerateKey\"].post.parameters[\"3\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimgateways.json:444:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}\"].patch.parameters[\"3\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimportalrevisions.json:276:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}\"].put.parameters[\"3\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimportalrevisions.json:212:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"5\"]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimprivatelink.json:161:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"5\"]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateEndpointConnection.json:135:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}\"].patch.parameters[\"4\"]",
+    "source": "specification/cpim/resource-manager/Microsoft.AzureActiveDirectory/stable/2021-04-01/externalIdentities.json:293:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}\"].put.parameters[\"4\"]",
+    "source": "specification/cpim/resource-manager/Microsoft.AzureActiveDirectory/stable/2021-04-01/externalIdentities.json:229:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"10\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3398:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"11\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3408:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"12\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3418:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"4\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3316:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"5\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3338:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"6\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3345:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"7\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3352:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"8\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3367:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics\"].get.parameters[\"9\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3388:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings\"].get.parameters[\"4\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3474:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings\"].get.parameters[\"5\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3495:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings\"].get.parameters[\"6\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3517:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings\"].get.parameters[\"7\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3524:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings\"].get.parameters[\"8\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3531:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings\"].get.parameters[\"9\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3538:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"10\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3770:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"4\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3686:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"5\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3703:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"6\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3710:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"7\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3717:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"8\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3732:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics\"].get.parameters[\"9\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3752:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"10\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3917:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"4\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3835:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"5\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3852:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"6\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3859:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"7\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3866:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"8\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3873:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings\"].get.parameters[\"9\"]",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json:3897:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances\"].get.parameters[\"0\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:202:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:208:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].delete.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:28:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].delete.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:34:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:85:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].get.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:91:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/instanceView\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:154:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/instanceView\"].get.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:160:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/rebuild\"].post.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:386:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/rebuild\"].post.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:392:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage\"].post.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:330:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage\"].post.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:336:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:445:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile\"].get.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:451:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/restart\"].post.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:274:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/restart\"].post.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:280:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles\"].get.parameters[\"0\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:544:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:550:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles/{roleName}\"].get.parameters[\"1\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:496:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles/{roleName}\"].get.parameters[\"2\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:502:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/PrivateEndpointConnections.json:156:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].patch.parameters[\"4\"]",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/PrivateEndpointConnections.json:213:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/PrivateEndpointConnections.json:98:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/PrivateEndpointConnections.json:104:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json:156:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].patch.parameters[\"4\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json:213:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json:98:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json:104:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}\"].patch.parameters[\"4\"]",
+    "source": "specification/dashboard/resource-manager/Microsoft.Dashboard/preview/2021-09-01-preview/grafana.json:268:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}\"].put.parameters[\"4\"]",
+    "source": "specification/dashboard/resource-manager/Microsoft.Dashboard/preview/2021-09-01-preview/grafana.json:204:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"6\"]",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:4208:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/operationResults/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1389:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/operationResults/{operationId}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1395:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}\"].get.parameters[\"5\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1529:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/rehydrate\"].post.parameters[\"5\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1583:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeBackups\"].post.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1739:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeProtection\"].post.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1806:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/stopProtection\"].post.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1873:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/suspendBackups\"].post.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:1940:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/sync\"].post.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:2007:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}\"].delete.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:940:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:831:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationResults/{operationId}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:565:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationStatus/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:204:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/operationStatus/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:255:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests/{requestName}\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests/{requestName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3220:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests/{requestName}\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests/{requestName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3110:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3055:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3165:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests/{requestName}\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests/{requestName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3330:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests/{requestName}\"].get.parameters[\"3\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests/{requestName}\"].get.parameters[\"4\"]",
+    "source": "specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-02-01-preview/dataprotection.json:3275:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}\"].patch.parameters[\"4\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:667:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}\"].put.parameters[\"4\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:604:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/setDefaultKey\"].post.parameters[\"4\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:239:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}\"].put.parameters[\"5\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:1036:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}\"].put.parameters[\"5\"]",
+    "source": "specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json:876:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/locations/{location}/checkContainerHostMapping\"].post.parameters[\"1\"]",
+    "source": "specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/devspaces.json:30:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth\"].get.parameters[\"1\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:874:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth\"].get.parameters[\"2\"]",
+    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:880:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/dataTransferJobs/{jobName}\"].put.parameters[\"5\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/dataTransferService.json:62:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"5\"]",
+    "source": "specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2021-11-15-preview/privateEndpointConnection.json:136:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"5\"]",
+    "source": "specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2021-12-10-preview/privateLinkScopes.json:460:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"5\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:446:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].put.parameters[\"5\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:626:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"5\"]",
+    "source": "specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json:2411:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}/listContentCallbackUrl\"].post.parameters[\"5\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:5083:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}/listContentCallbackUrl\"].post.parameters[\"5\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:4451:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}/listContentCallbackUrl\"].post.parameters[\"5\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:4767:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}/listContentCallbackUrl\"].post.parameters[\"5\"]",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:4132:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}\"].patch.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:332:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}\"].put.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:273:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}\"].patch.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1049:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}\"].put.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:882:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}/tagRules/{ruleSetName}\"].delete.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1269:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}/tagRules/{ruleSetName}\"].get.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1217:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}/tagRules/{ruleSetName}\"].put.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1158:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}/tagRules/{ruleSetName}\"].put.parameters[\"5\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1164:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/listUserRoles\"].post.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:1690:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}\"].get.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:773:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}\"].put.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:711:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}\"].put.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:717:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/tagRules/{ruleSetName}\"].delete.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:596:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/tagRules/{ruleSetName}\"].get.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:547:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/tagRules/{ruleSetName}\"].put.parameters[\"3\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:491:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/tagRules/{ruleSetName}\"].put.parameters[\"4\"]",
+    "source": "specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/logz.json:497:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{accountName}/privateEndpointConnections/{name}\"].delete.parameters[\"3\"]",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Accounts.json:1452:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{accountName}/privateEndpointConnections/{name}\"].get.parameters[\"3\"]",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Accounts.json:1347:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{accountName}/privateEndpointConnections/{name}\"].put.parameters[\"3\"]",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Accounts.json:1395:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{accountName}/privateLinkResources/{name}\"].get.parameters[\"3\"]",
+    "source": "specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Accounts.json:1253:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}\"].patch.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:101:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}\"].put.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:42:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove\"].post.parameters[\"1\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:666:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove\"].post.parameters[\"2\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:672:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove\"].post.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:681:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit\"].post.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:371:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard\"].post.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:430:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove\"].post.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:312:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}\"].put.parameters[\"5\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:746:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare\"].post.parameters[\"4\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:253:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.parameters[\"1\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:419:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.parameters[\"2\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:425:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.parameters[\"3\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:431:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.parameters[\"4\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:437:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/removePrivateLinkId/{privateLinkId}\"].post.parameters[\"1\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:492:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/removePrivateLinkId/{privateLinkId}\"].post.parameters[\"2\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:498:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/removePrivateLinkId/{privateLinkId}\"].post.parameters[\"3\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:504:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/removePrivateLinkId/{privateLinkId}\"].post.parameters[\"4\"]",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:510:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OpenEnergyPlatform/energyServices/{resourceName}\"].patch.parameters[\"4\"]",
+    "source": "specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/oep.json:249:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentIdentifier}/runPlaybook\"].post.parameters[\"4\"]",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/AutomationRules.json:249:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentIdentifier}/runPlaybook\"].post.parameters[\"5\"]",
+    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/AutomationRules.json:255:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers\"].get.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:2982:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move\"].post.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4136:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move\"].post.parameters[\"5\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4142:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move\"].post.parameters[\"6\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4148:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move\"].post.parameters[\"7\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4154:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove\"].post.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4212:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove\"].post.parameters[\"5\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4218:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove\"].post.parameters[\"6\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4224:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}\"].delete.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4433:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}\"].get.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4335:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}\"].put.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4384:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete\"].post.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4484:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationResults/{operationId}\"].get.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:1211:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}\"].get.parameters[\"4\"]",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:1105:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationResults/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaults.json:776:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationStatus/{operationId}\"].get.parameters[\"3\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaults.json:725:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources/{privateLinkResourceName}\"].get.parameters[\"4\"]",
+    "source": "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/vaults.json:94:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/jitNetworkAccessPolicies/{jitNetworkAccessPolicyName}\"].put.parameters[\"5\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/jitNetworkAccessPolicies.json:279:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/jitNetworkAccessPolicies/{jitNetworkAccessPolicyName}/{jitNetworkAccessPolicyInitiateType}\"].post.parameters[\"6\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/jitNetworkAccessPolicies.json:373:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}\"].put.parameters[\"5\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}\"].put.parameters[\"5\"].description",
+    "source": ""
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].delete.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:197:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:125:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/columns\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/columns\"].get.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:46:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/columns\"].get.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:56:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/columns\"].get.parameters[\"6\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:66:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/currentSensitivityLabels\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/currentSensitivityLabels\"].get.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:42:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/currentSensitivityLabels\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:99:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/queries/{queryId}\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/queries/{queryId}/statistics\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:84:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/recommendedSensitivityLabels\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:146:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/recommendedSensitivityLabels\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:210:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/disable\"].post.parameters[\"6\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:534:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/enable\"].post.parameters[\"6\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:611:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].delete.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:179:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:118:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:124:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}/acquire\"].post.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:228:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}/acquire\"].post.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:234:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations/{operationId}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations/{operationId}/cancel\"].post.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:121:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:132:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:77:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:83:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}\"].get.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:30:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}\"].put.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:91:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel\"].post.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:155:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover\"].post.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:210:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/recoverableDatabases/{recoverableDatabaseName}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RecoverableManagedDatabases.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:232:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:33:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:160:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:90:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/sqlAgent/current\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:70:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:33:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/columns\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseColumns.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/columns\"].get.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseColumns.json:46:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/columns\"].get.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseColumns.json:56:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/columns\"].get.parameters[\"6\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseColumns.json:66:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/currentSensitivityLabels\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/currentSensitivityLabels\"].get.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:42:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/currentSensitivityLabels\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:99:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:79:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:36:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:89:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:102:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}/disable\"].post.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:201:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].put.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:98:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/recommendedSensitivityLabels\"].get.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:146:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/recommendedSensitivityLabels\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:210:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}\"].delete.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:128:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/disable\"].post.parameters[\"6\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:518:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/enable\"].post.parameters[\"6\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:591:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}/acquire\"].post.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:250:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/operations\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ElasticPoolOperations.json:83:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/operations/{operationId}/cancel\"].post.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ElasticPoolOperations.json:33:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:225:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].delete.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:137:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:33:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:76:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:82:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:132:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:77:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:83:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}\"].get.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedDatabases.json:75:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}\"].get.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:265:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}\"].put.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:326:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel\"].post.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:390:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel\"].post.parameters[\"3\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:399:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover\"].post.parameters[\"1\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:444:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover\"].post.parameters[\"3\"]",
+    "source": "specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-01-30-preview/sqlmigration.json:453:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore\"].post.parameters[\"3\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:502:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels\"].patch.parameters[\"5\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1967:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/recommendedSensitivityLabels\"].patch.parameters[\"5\"]",
+    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:2092:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/containerApps/{name}\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/ContainerApps.json:166:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/disable\"].post.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/Recommendations.json:266:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/reset\"].post.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/Recommendations.json:311:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/{name}/disable\"].post.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/Recommendations.json:424:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/networking\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServiceEnvironments.json:510:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServiceEnvironments.json:1337:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServiceEnvironments.json:1276:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/AppServiceEnvironments.json:1282:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:830:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:930:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/connectionstrings/{connectionStringKey}\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:1721:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:5159:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:7392:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:7326:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:7332:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9333:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9389:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9440:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp\"].put.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9448:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9501:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9552:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm\"].put.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:9560:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/appsettings\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10290:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/appsettings/{appSettingKey}\"].get.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10353:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10406:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings/{connectionStringKey}\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10457:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings/{connectionStringKey}\"].get.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:10463:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:14183:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16584:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16590:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16512:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16518:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.parameters[\"4\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16526:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateLinkResources\"].get.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:16656:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web\"].delete.parameters[\"3\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:18295:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web\"].delete.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:20065:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/createUserInvitation\"].post.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:1455:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/resetapikey\"].post.parameters[\"2\"]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/StaticSites.json:2369:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Security/adaptiveNetworkHardenings/{adaptiveNetworkHardeningResourceName}/{adaptiveNetworkHardeningEnforceAction}\"].post.parameters[\"8\"]",
+    "source": "specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/adaptiveNetworkHardenings.json:213:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].patch.parameters[\"2\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4390:10"
+  },
+  {
+    "code": "az-parameter-description",
+    "message": "Parameter should have a description.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].put.parameters[\"2\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4344:10"
+  }
+]

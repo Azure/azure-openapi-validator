@@ -1,0 +1,260 @@
+[
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ApiOperation\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ApiOperation",
+    "source": "specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/logic.json:8176:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"Application\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.Application",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1860:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"CdnPeeringPrefix\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.CdnPeeringPrefix",
+    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:2387:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ChargeSummary\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ChargeSummary",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:4640:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ClientGroupMember\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ClientGroupMember",
+    "source": "specification/service-map/resource-manager/Microsoft.OperationalInsights/preview/2015-11-01-preview/arm-service-map.json:2021:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ConfigData\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ConfigData",
+    "source": "specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json:896:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"Connection\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.Connection",
+    "source": "specification/service-map/resource-manager/Microsoft.OperationalInsights/preview/2015-11-01-preview/arm-service-map.json:2155:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ConsumerSourceDataSet\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ConsumerSourceDataSet",
+    "source": "specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/DataShare.json:4473:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"Dimension\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.Dimension",
+    "source": "specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json:1853:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"EdgeNode\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.EdgeNode",
+    "source": "specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json:6142:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"EventSummary\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.EventSummary",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:4969:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"EventType\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.EventType",
+    "source": "specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2021-10-15-preview/EventGrid.json:11307:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ExportExecution\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ExportExecution",
+    "source": "specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.exports.json:779:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"FlaggedEnrolledApp\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.FlaggedEnrolledApp",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:2436:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"GalleryImage\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.GalleryImage",
+    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:9786:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"GenericResourceExpanded\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.GenericResourceExpanded",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5496:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"GroupItem\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.GroupItem",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:1817:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"LotSummary\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.LotSummary",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:5136:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"MHSMPrivateLinkResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.MHSMPrivateLinkResource",
+    "source": "specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/managedHsm.json:1353:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"Marketplace\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.Marketplace",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:2633:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ModernReservationTransaction\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ModernReservationTransaction",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:3835:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"Node\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.Node",
+    "source": "specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/databoxedge.json:7602:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"OperationResult\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.OperationResult",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:2256:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PeeringLocation\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PeeringLocation",
+    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:3176:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PeeringServiceCountry\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PeeringServiceCountry",
+    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:3678:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PeeringServiceLocation\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PeeringServiceLocation",
+    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:3705:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PeeringServiceProvider\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PeeringServiceProvider",
+    "source": "specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/peering.json:3895:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PrivateLinkResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PrivateLinkResource",
+    "source": "specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json:7003:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PrivateLinkResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PrivateLinkResource",
+    "source": "specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/keyvault.json:1940:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PrivateLinkResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PrivateLinkResource",
+    "source": "specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/signalr.json:2109:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"PrivateLinkResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.PrivateLinkResource",
+    "source": "specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/webpubsub.json:1770:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ProtectableContainerResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ProtectableContainerResource",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:11991:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ReservationDetail\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ReservationDetail",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:3089:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ReservationRecommendation\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ReservationRecommendation",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:3422:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ReservationSummary\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ReservationSummary",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:2964:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ReservationTransaction\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ReservationTransaction",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:4000:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"RoleResourceFormat\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.RoleResourceFormat",
+    "source": "specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/customer-insights.json:5885:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"SubscriptionQuota\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.SubscriptionQuota",
+    "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/subscriptions.json:95:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"Transaction\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.Transaction",
+    "source": "specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/billing.json:5745:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"UsageAggregate\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.UsageAggregate",
+    "source": "specification/azsadmin/resource-manager/commerce/Microsoft.Commerce.Admin/preview/2015-06-01-preview/Commerce.json:179:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"UsageDetail\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.UsageDetail",
+    "source": "specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/consumption.json:1902:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"WorkloadItemResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.WorkloadItemResource",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:12220:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"WorkloadProtectableItemResource\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.WorkloadProtectableItemResource",
+    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:12293:4"
+  }
+]

@@ -1,6 +1,5 @@
 import { findNodeAtLocation, getNodeValue, JSONPath, Node, parseTree } from "jsonc-parser"
-import { Range } from "./types"
-import {convertJsonPath} from "./utils"
+import { JsonPath, Range } from "./types"
 
 export interface JsonInstance {
   getLocation(path: JSONPath): Range
@@ -19,18 +18,17 @@ export class JsonParser implements IJsonParser {
       throw new Error("Parser failed with errors:" + JSON.stringify(errors))
     }
     return {
-      getLocation: (path: string[]) => {
+      getLocation: (path: JsonPath) => {
         // JSONPath does not include the root '$', replace number string to number
         const targetPath = [...path]
         while (targetPath.length > 0) {
-          const correctedPath = convertJsonPath(targetPath)
-          const root = findNodeAtLocation(rootNode, correctedPath)
+          const root = findNodeAtLocation(rootNode, targetPath)
           if (root) {
             return getRange(text, root)
           }
           targetPath.pop()
         }
-        throw new Error("Invalid Path")
+        throw new Error("Invalid JSONPath:" + path.join("."))
       },
       getValue: () => {
         return Object.assign({}, getNodeValue(rootNode))

@@ -81,18 +81,12 @@ export type IRuleFunction<T> = (
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface ISwaggerInventory {
-  referencesOf(specPath: string): string[],
-  getSingleDocument(specPath: string):any
-  getAllDocuments(): Map<string,any>
+  referencesOf(specPath: string): Record<string,any>,
+  getDocuments(docPath?:string): Record<string,any> | any
 }
 
 export interface ISwaggerHelper {
-  getOperationIdFromPath(path: string, code:string):any,
-   getDefinitionByName(modelName: string):any,
-   getPropertyOfModelName(modelName: string, propertyName: string):any,
-   getPropertyOfModel(sourceModel: any, propertyName: string):any,
-   resolveSchema(schema: any | string):Promise<any>,
-   getResolvedRef(ref: string):any
+  resolveSchema(schema: any | string):Promise<any>,
 }
 
 export interface IRuleSet {

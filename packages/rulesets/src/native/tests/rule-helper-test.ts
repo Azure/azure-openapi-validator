@@ -1,4 +1,5 @@
 import * as assert from "assert"
+import { stringify } from "../utilities/jsonpath"
 import {
   getAllResourceProvidersFromPath,
   getAllWordsFromPath,
@@ -153,5 +154,10 @@ describe("RuleHelperTests" ,()=> {
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndPointConnections"), true)
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndpointconnections"), true)
+  })
+
+  test("json stringify",()=>{
+    const str = stringify(["definitions","key[word]"])
+    assert.strictEqual(str,"$['definitions']['key[word]']")
   })
 })

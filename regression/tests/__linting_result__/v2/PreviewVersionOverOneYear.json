@@ -1,0 +1,1370 @@
+[
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2014-04-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-01-14-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/commerce/Microsoft.Commerce.Admin/preview/2015-06-01-preview/Commerce.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/locations.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/operations.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/tasks.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/operationsmanagement/resource-manager/Microsoft.OperationsManagement/preview/2015-11-01-preview/OperationsManagement.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/service-map/resource-manager/Microsoft.OperationalInsights/preview/2015-11-01-preview/arm-service-map.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-12-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/preview/2015-12-01-preview/Compute.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-12-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/preview/2015-12-01-preview/PlatformImages.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2015-12-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/preview/2015-12-01-preview/VMExtensions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2016-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/machinelearning/resource-manager/Microsoft.MachineLearning/preview/2016-05-01-preview/commitmentPlans.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/KeyVault.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/Quotas.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/machinelearningexperimentation/resource-manager/Microsoft.MachineLearningExperimentation/preview/2017-05-01-preview/machineLearningExperimentation.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:8:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:8:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/machinelearningcompute/resource-manager/Microsoft.MachineLearningCompute/preview/2017-08-01-preview/machineLearningCompute.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/autoProvisioningSettings.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/compliances.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/informationProtectionPolicies.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/securityContacts.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/workspaceSettings.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-10-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotspaces/resource-manager/Microsoft.IoTSpaces/preview/2017-10-01-preview/iotspaces.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2017-12-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-12-01-preview/metricNamespaces_API.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-02-28-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/customerlockbox/resource-manager/Microsoft.CustomerLockbox/preview/2018-02-28-preview/customerlockbox.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/billing/resource-manager/Microsoft.Billing/preview/2018-03-01-preview/billingV2.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/blockchain/resource-manager/Microsoft.Blockchain/preview/2018-06-01-preview/blockchain.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-07-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/policyinsights/resource-manager/Microsoft.PolicyInsights/preview/2018-07-01-preview/policyTrackedResources.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/customproviders.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/engagementfabric/resource-manager/Microsoft.EngagementFabric/preview/2018-09-01/EngagementFabric.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/servicefabricmesh.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/assignmentOperation.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintAssignment.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2018-11-27-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:9:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-01-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/alertsSuppressionRules.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-01-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/automations.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-01-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/regulatoryCompliance.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-01-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/subAssessments.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-05-05-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/AlertsManagement.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-05-05-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/SmartGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/containerregistry_build.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/managednetwork/resource-manager/Microsoft.ManagedNetwork/preview/2019-06-01-preview/managedNetwork.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-07-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/devops/resource-manager/Microsoft.DevOps/preview/2019-07-01-preview/devops.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-07-24-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azuredata/resource-manager/Microsoft.AzureData/preview/2019-07-24-preview/azuredata.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-08-08-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/acquisitions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-08-08-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/quotas.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-08-08-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/settings.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-08-08-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/storage.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-08-08-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/storage/Microsoft.Storage.Admin/preview/2019-08-08/storageaccounts.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-09-16-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-10-11-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-10-17-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:9:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/capacity.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/configuration.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/operations.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/quotas.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/registries.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/setup.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/preview/2019-11-01-preview/account.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2019-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/connectors.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/certificate.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/connection.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/connectionType.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/credential.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNode.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNodeConfiguration.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNodeCounts.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/jobSchedule.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/linkedWorkspace.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/module.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateEndpointConnection.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateLinkResources.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/python2package.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/schedule.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/sourceControl.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/sourceControlSyncJob.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/sourceControlSyncJobStreams.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/variable.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/watcher.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-01-13-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/workloadmonitor/resource-manager/Microsoft.WorkloadMonitor/preview/2020-01-13-preview/Microsoft.WorkloadMonitor.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-02-07-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/preview/2020-03-01-preview/deviceupdate.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-05-12-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2020-05-12-preview/agfood.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/AzureStack.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/CustomerSubscription.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/LinkedSubscription.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/Product.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/azurestack/resource-manager/Microsoft.AzureStack/preview/2020-06-01-preview/Registration.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-07-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/elastic/resource-manager/Microsoft.Elastic/preview/2020-07-01-preview/elastic.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-07-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2020-07-01-preview/sqlVulnerabilityAssessmentsBaselineRuleOperations.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-07-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2020-07-01-preview/sqlVulnerabilityAssessmentsScanOperations.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-07-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2020-07-01-preview/sqlVulnerabilityAssessmentsScanResultsOperations.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/portal.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/tenantConfiguration.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-10-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2020-10-01-preview/connectedvmware.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-10-05-privatepreview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-10-30-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/powerplatform/resource-manager/Microsoft.PowerPlatform/preview/2020-10-30-preview/account.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-10-30-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/powerplatform/resource-manager/Microsoft.PowerPlatform/preview/2020-10-30-preview/enterprisePolicy.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-10-30-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/powerplatform/resource-manager/Microsoft.PowerPlatform/preview/2020-10-30-preview/privateEndpointConnection.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-10-30-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/powerplatform/resource-manager/Microsoft.PowerPlatform/preview/2020-10-30-preview/privateLinkResources.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DataWarehouseUserActivities.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseColumns.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSchemas.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseTables.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessmentScans.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessments.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DeletedServers.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ElasticPoolOperations.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobCredentials.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobStepExecutions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobSteps.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobVersions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Jobs.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LocationCapabilities.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindowOptions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseRestoreDetails.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSchemas.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityAlertPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityEvents.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseTables.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseTransparentDataEncryption.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentScans.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceTdeCertificates.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Operations.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateLinkResources.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RecoverableManagedDatabases.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDevOpsAudit.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerOperations.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerVulnerabilityAssessments.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SubscriptionUsages.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TdeCertificates.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TimeZones.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-11-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-12-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/edgeorderpartner.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2020-12-16-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-01-15-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/security/resource-manager/Microsoft.Security/preview/2021-01-15-preview/ingestionSettings.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/dfp/resource-manager/Microsoft.Dynamics365Fraudprotection/preview/2021-02-01-preview/dfp.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/defenderSettings.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/deviceGroups.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/devices.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/locations.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/onPremiseSensors.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/operations.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/sensors.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/sites.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseOperations.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseUsages.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Usages.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/object-anchors.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/proxy.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/remote-rendering.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/spatial-anchors.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-15-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/quota.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/common-types.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/privateLinkServicesForEDMUpload.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/privateLinkServicesForM365ComplianceCenter.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/privateLinkServicesForM365SecurityCenter.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/privateLinkServicesForMIPPolicySync.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/privateLinkServicesForO365ManagementActivityAPI.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-25-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/privateLinkServicesForSCCPowershell.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-03-31-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/timeseriesinsights.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-04-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/databricks.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-04-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/vnetpeering.json:5:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-04-04-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/orbital/resource-manager/Microsoft.Orbital/preview/2021-04-04-preview/orbital.json:4:4"
+  }
+]

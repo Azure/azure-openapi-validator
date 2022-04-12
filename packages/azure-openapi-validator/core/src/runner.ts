@@ -5,8 +5,8 @@ import { OpenApiTypes, ValidationMessage,LintResultMessage } from "./types"
 import { IRule, IRuleSet } from "./types"
 import { LintCallBack, LintOptions,  } from "./api"
 import { OpenapiDocument } from "./document"
-import { SwaggerHelper } from "./swaggerHelper"
 import {getRange,convertJsonPath} from "./utils"
+import { SwaggerHelper } from "./swaggerHelper"
 
 const isLegacyRule = (rule: IRule<any>) => {
   return rule.then.execute.name === "run"
@@ -24,15 +24,15 @@ export class LintRunner<T> {
     inventory: SwaggerInventory
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
-    const swaggerHelper = new SwaggerHelper(openapiDefinition, document, inventory)
     let resolvedSwagger
     if (rulesToRun.some(rule => rule[1].resolved)) {
+      const swaggerHelper = new SwaggerHelper(document, inventory)
       resolvedSwagger = await swaggerHelper.resolveSchema(openapiDefinition)
     }
 
     const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
       if (isLegacyRule(rule)) {
-        return [doc, section, location, { specPath: document, inventory, utils: swaggerHelper }]
+        return [doc, section, location, { specPath: document, inventory}]
       } else {
         return [
           section,
@@ -84,7 +84,7 @@ export class LintRunner<T> {
         message: message.message,
         code: ruleName,
         sources: [document],
-        jsonpath: convertJsonPath(message.location as string[]),
+        jsonpath: convertJsonPath(openapiDefinition,message.location as string[]),
         range
       }
       sendMessage(msg)

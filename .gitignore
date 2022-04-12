@@ -17,6 +17,7 @@ packages/**/*.tgz
 
 
 regression/**/*.js
+regression/**/*.d.ts
 regression/**/*.js.map
 src/**/*.map
 src/**/*.d.ts

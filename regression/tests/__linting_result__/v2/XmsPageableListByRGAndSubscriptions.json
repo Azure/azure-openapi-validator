@@ -1,0 +1,8 @@
+[
+  {
+    "code": "XmsPageableListByRGAndSubscriptions",
+    "message": "For the tracked resource 'StorageAccount', the x-ms-pageable extension values must be same for list by resource group and subscriptions operations.",
+    "jsonpath": "$.definitions.StorageAccount",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json:2609:4"
+  }
+]

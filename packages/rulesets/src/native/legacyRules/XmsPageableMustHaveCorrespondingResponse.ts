@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 import { getMostSuccessfulResponseKey, getResolvedSchemaByPath } from "../utilities/rules-helper"
+import { SwaggerHelper } from "../utilities/swagger-helper"
 export const XmsPageableMustHaveCorrespondingResponse = "XmsPageableMustHaveCorrespondingResponse"
 
 rules.push({
@@ -27,7 +28,7 @@ rules.push({
     if (node.responses && node.responses[mostSuccesskey]) {
       const schemaPath = path.concat(["responses", mostSuccesskey, "schema"]) as string[]
       const resolvedSchema = getResolvedSchemaByPath(doc, schemaPath as string[], ctx?.inventory)
-      const utils = ctx?.utils
+      const utils = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
       if (resolvedSchema && !utils?.getPropertyOfModel(resolvedSchema, nextLinkValue)) {
         yield { message: `${msg}`, location: path }
       }

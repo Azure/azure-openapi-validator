@@ -1,0 +1,8 @@
+[
+  {
+    "code": "CollectionObjectPropertiesNaming",
+    "message": "Collection object 'AmlComputeNodesInformation' returned by list operation 'Compute_ListNodes' with 'x-ms-pageable' extension, has no property named 'value'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listNodes\"].post.responses[\"200\"].schema",
+    "source": "specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/machineLearningServices.json:1007:12"
+  }
+]

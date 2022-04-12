@@ -1,0 +1,200 @@
+[
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.consumes[1]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/dscConfiguration.json:16:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.consumes[1]",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:13:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.consumes[1]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:14:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.consumes[1]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/network.json:14:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.consumes[1]",
+    "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:13:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.IoTSecurity/defenderSettings/default/downloadManagerActivation\"].post.produces[0]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/defenderSettings.json:243:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.IoTSecurity/onPremiseSensors/{onPremiseSensorName}/downloadActivation\"].post.produces[0]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/onPremiseSensors.json:205:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.IoTSecurity/onPremiseSensors/{onPremiseSensorName}/downloadResetPassword\"].post.produces[0]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/onPremiseSensors.json:248:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policies/{policyId}\"].get.produces[1]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimapis.json:1965:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policies/{policyId}\"].get.produces[2]",
+    "source": "specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/apimapis.json:1966:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content\"].get.produces[0]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/dscConfiguration.json:282:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/output\"].get.produces[0]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/job.json:47:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent\"].get.produces[0]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/job.json:105:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content\"].get.produces[0]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json:343:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content\"].get.produces[0]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json:55:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content\"].put.consumes[0]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json:108:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile\"].get.produces[0]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:435:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}\"].put.consumes[1]",
+    "source": "specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/signalr.json:553:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}\"].put.consumes[1]",
+    "source": "specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/signalr.json:770:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs\"].post.produces[0]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:2543:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download\"].post.produces[0]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:2591:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publishxml\"].post.produces[0]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:8067:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs\"].post.produces[0]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:11299:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download\"].post.produces[0]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:11354:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publishxml\"].post.produces[0]",
+    "source": "specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/WebApps.json:17348:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.IoTSecurity/sensors/{sensorName}/downloadActivation\"].post.produces[0]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/sensors.json:208:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.IoTSecurity/sensors/{sensorName}/downloadResetPassword\"].post.produces[0]",
+    "source": "specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/sensors.json:251:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNode.json:19:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/dscConfiguration.json:20:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/commerce.json:17:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:18:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/network.json:18:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:17:4"
+  }
+]
