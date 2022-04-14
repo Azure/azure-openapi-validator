@@ -1,7 +1,7 @@
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
 import _ from "lodash"
-import {isExample, traverse } from "./utils"
 import { ISwaggerInventory, ISwaggerHelper } from "./types"
+import {isExample, traverse } from "./utils"
 export class SwaggerHelper implements ISwaggerHelper {
   private schemaCaches = new Map<string, any>()
   constructor(private specPath: string, private inventory?: ISwaggerInventory) {

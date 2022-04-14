@@ -1,5 +1,5 @@
-import { nodes, stringify } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
+import { nodes, stringify } from "../utilities/jsonpath"
 
 export const UniqueClientParameterName = "UniqueClientParameterName"
 

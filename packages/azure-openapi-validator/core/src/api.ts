@@ -2,10 +2,10 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { SwaggerInventory } from "./swaggerInventory"
-import {IRuleSet, LintResultMessage, OpenApiTypes, RulesObject, IFileSystem} from "./types"
 import _ from "lodash"
 import { LintRunner } from "./runner"
+import { SwaggerInventory } from "./swaggerInventory"
+import {IRuleSet, LintResultMessage, OpenApiTypes, RulesObject, IFileSystem} from "./types"
 
 export type LintOptions = {
   ruleSet:IRuleSet,
@@ -28,7 +28,7 @@ export async function LintTester(
   ruleName?: string,
   fileSystem?:IFileSystem
 ): Promise<LintResultMessage[]> {
-  let openapiType = OpenApiTypes.arm | OpenApiTypes.dataplane | OpenApiTypes.rpaas
+  const openapiType = OpenApiTypes.arm | OpenApiTypes.dataplane | OpenApiTypes.rpaas
   let msgs:LintResultMessage[]
   if (ruleName) {
     const rules: RulesObject = {}

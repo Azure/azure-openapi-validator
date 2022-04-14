@@ -1,5 +1,5 @@
-import { rules } from "@microsoft.azure/openapi-validator-core"
-import { IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
+import { rules , IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
+
 // register rules
 require("../legacyRules/PageableOperation")
 require("../legacyRules/DescriptionMustNotBeNodeName")

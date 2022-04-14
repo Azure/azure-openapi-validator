@@ -3,17 +3,17 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { safeLoad } from "js-yaml"
-import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
-import {getRuleSet} from "./loader"
-import { JsonPath, Message } from "./jsonrpc/types"
-const { Spectral } = require("@stoplight/spectral-core")
-import {lint, getOpenapiType, LintResultMessage, isUriAbsolute} from "@microsoft.azure/openapi-validator-core"
-import {nativeRulesets} from "@microsoft.azure/openapi-validator-rulesets"
-import {mergeRulesets} from "./loader"
 import { fileURLToPath } from 'url';
 import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri";
+import {lint, getOpenapiType, LintResultMessage, isUriAbsolute} from "@microsoft.azure/openapi-validator-core"
+import {nativeRulesets} from "@microsoft.azure/openapi-validator-rulesets"
 import {Resolver} from "@stoplight/json-ref-resolver"
+import { safeLoad } from "js-yaml"
+import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
+import { JsonPath, Message } from "./jsonrpc/types"
+import {getRuleSet,mergeRulesets} from "./loader"
+const { Spectral } = require("@stoplight/spectral-core")
+
 
 const cachedFiles = new Map<string,any>()
 
@@ -112,7 +112,7 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
 }
 
 function isCommonTypes(filePath:string) {
-  const regex = new RegExp(/.*common\-types\/resource\-management\/v.*.json/)
+  const regex = new RegExp(/.*common-types\/resource-management\/v.*.json/)
   return regex.test(filePath)
 }
 
@@ -181,8 +181,6 @@ async function main() {
       }
       return file
     }
-
-   
     
     const rules = await getRuleSet(getOpenapiType(openapiType))
     for (const file of files) {
@@ -209,10 +207,8 @@ async function main() {
         }
       },
     }); 
-
-   
-     const spectral = new Spectral({resolver})
-     spectral.setRuleset(rules)
+    const spectral = new Spectral({resolver})
+    spectral.setRuleset(rules)
 
       initiator.Message({
         Channel: "verbose",
@@ -224,7 +220,7 @@ async function main() {
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
         const normolizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
         await runSpectral(openapiDefinitionObject,normolizedFile, initiator.Message.bind(initiator),spectral)
-   
+  
       } catch (e) {
         initiator.Message({
           Channel: "fatal",
@@ -237,4 +233,7 @@ async function main() {
   await pluginHost.Run()
 }
 
-main()
+main().then(
+  () => {},
+  () => {}
+)

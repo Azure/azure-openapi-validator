@@ -1,18 +1,14 @@
-// @ts-nocheck
 import * as _ from "lodash"
-import * as path from "path"
-const DepGraph = require("dependency-graph").DepGraph
-import glob = require("glob")
 import { OpenapiDocument } from "./document"
 import { JsonParser } from "./jsonParser"
-import { isAbsolute, normalize } from "path"
-import { defaultFileSystem, normalizePath } from "./utils"
 import { ISwaggerInventory,IFileSystem } from "./types"
+import { defaultFileSystem, normalizePath } from "./utils"
+const DepGraph = require("dependency-graph").DepGraph
 export class SwaggerInventory implements ISwaggerInventory {
   private inventory = new DepGraph()
   private referenceCache = new Map<string, OpenapiDocument>()
   private allDocs = new Map<string, any>()
-  private docRecords:Record<string,any> = undefined
+  private docRecords:Record<string,any>|undefined = undefined
   constructor(private fileSystem:IFileSystem = defaultFileSystem){
   }
 
@@ -32,7 +28,7 @@ export class SwaggerInventory implements ISwaggerInventory {
     throw new Error(`No cached file:${specPath}`)
   }
 
-  public referencesOf(specPath: string): string[]{
+  public referencesOf(specPath: string): Record<string,any>{
     const result :Record<string,any> = []
     const references = this.inventory.dependantsOf(normalizePath(specPath))
     for (const ref of references) {
@@ -47,27 +43,12 @@ export class SwaggerInventory implements ISwaggerInventory {
     }
     if (!this.docRecords) {
       this.docRecords = {}
-      for (cosnt [key,value] of this.allDocs.entries()) {
-        docs.key = value
+      for (const [key,value] of this.allDocs.entries()) {
+        this.docRecords[key] = value
       }
     }
     return this.docRecords
    
-  }
-
-  private dependenciesOf(specPath: string) {
-    return this.inventory.dependenciesOf(normalizePath(specPath))
-  }
-
-  private createIfNotExists(node: string) {
-    if (!this.inventory.hasNode(node)) {
-      this.inventory.addNode(node)
-    }
-  }
-
-  private async getReferences(specPath: string): Promise<string[]> {
-    const document = await this.cacheDocument(normalizePath(specPath))
-    return document.getReferences()
   }
 
   async loadDocument(specPath: string): Promise<any> {
@@ -81,7 +62,7 @@ export class SwaggerInventory implements ISwaggerInventory {
   }
 
   async cacheDocument(specPath: string) {
-    let cache = this.allDocs.get(specPath)
+    const cache = this.allDocs.get(specPath)
     if (cache) {
       return cache
     }

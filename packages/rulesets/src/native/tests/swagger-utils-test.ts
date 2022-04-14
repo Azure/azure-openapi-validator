@@ -1,8 +1,8 @@
 import * as assert from "assert"
+import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
+import { crwalReference } from "../utilities/ref-helper"
 import { getResolvedSchemaByPath } from "../utilities/rules-helper"
 import { SwaggerHelper } from "../utilities/swagger-helper"
-import { crwalReference } from "../utilities/ref-helper"
-import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 const fileUrl = (absPath: string) => {
   return "file:///" + absPath.replace(/^\//, "").split("\\").join("/")
@@ -52,7 +52,7 @@ describe("SwaggerHelperTests",()=> {
     assert.strictEqual(!!resolved.paths["/foo"].post.responses.default.schema.$ref, true)
   })
 
-  test("test get properties",()=>{
+  test("get properties",()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
     const util = new SwaggerHelper(swagger, undefined, undefined)
     const bar = util.getDefinitionByName("A")

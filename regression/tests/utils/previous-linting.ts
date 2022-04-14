@@ -63,7 +63,7 @@ async function runCmd(cmd:string) {
     resultString += stripCharsBeforeAfterJson(stderr)
   }
   if (err) {
-
+    console.log(err)
   }
   return resultString
 }
@@ -87,7 +87,7 @@ function cleanUpContent(s:string) {
 
   const start = s.indexOf('{\n  "type": "');
   let resultString = s.substring(start)
-  resultString = resultString.replace(/}\nProcessing batch task - {\"package-(.*).\n{/g, "},{")
+  resultString = resultString.replace(/}\nProcessing batch task - {"package-(.*).\n{/g, "},{")
   resultString = resultString.replace(/{"package-(.*)} .\n/, "")
   resultString = resultString.replace(/AutoRest core version selected from configuration/,"")
   resultString = resultString.replace(/\nProcessing batch task(.*)./g, "")

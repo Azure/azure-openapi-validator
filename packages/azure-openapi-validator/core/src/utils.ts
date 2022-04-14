@@ -1,8 +1,8 @@
-import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
-import { SwaggerInventory } from "./swaggerInventory";
-import { nodes, stringify } from "./jsonpath"
-import _ from "lodash"
 import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
+import _ from "lodash"
+import { nodes, stringify } from "./jsonpath"
+import { SwaggerInventory } from "./swaggerInventory";
+import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
 /**
  *
  * @param doc
@@ -22,7 +22,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
       const result = nodes(docToSearch, stringify(pathExpression))
       return result.length !== 0 ? result[0].value : undefined
     } catch (err) {
-      throw err
+      return undefined
     }
   }
 
@@ -73,7 +73,7 @@ export function traverse(obj: unknown, path: string[], visited: Set<any>, option
       traverse(item, [...path, index.toString()], visited, options, visitor)
     }
   } else if (typeof obj === "object") {
-    for (const [key, item] of Object.entries(obj!)) {
+    for (const [key, item] of Object.entries(obj)) {
       traverse(item, [...path, key], visited, options, visitor)
     }
   }

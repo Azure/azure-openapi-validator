@@ -1,4 +1,3 @@
-// import * as autorest from "autorest"
 import { exec } from "child_process"
 import * as _ from "lodash"
 import { toMatchSnapshotForEachCode } from "./snapshot-help";
@@ -12,8 +11,8 @@ function getRelativePath(issueSource: any) {
   if (issueSource.document) {
     issueSource.document = issueSource.document.substring(issueSource.document.indexOf("specification/"))
   }
-  let line = issueSource?.position?.line ?  issueSource?.position?.line : 0
-  let col = issueSource?.position?.column ? issueSource?.position?.column - 1 : 0
+  const line = issueSource?.position?.line ?  issueSource?.position?.line : 0
+  const col = issueSource?.position?.column ? issueSource?.position?.column - 1 : 0
   return issueSource.document + `:${line}:${col}`
 }
 
@@ -38,7 +37,7 @@ function normalizeLintIssues(issues:any[]) {
 export async function runLinter(readme: string) {
   const linterCmd = genLintingCmd(readme)
   try {
-    let linterErrors = await runCmd(linterCmd)
+    const linterErrors = await runCmd(linterCmd)
     if (linterErrors) {
       const errors:any[] = []
       linterErrors.split('\n').forEach((line:string) => {

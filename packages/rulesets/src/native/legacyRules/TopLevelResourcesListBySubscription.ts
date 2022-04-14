@@ -1,6 +1,6 @@
-import { JsonPath } from "@microsoft.azure/openapi-validator-core"
-import { rules } from "@microsoft.azure/openapi-validator-core"
-import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { JsonPath , rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+
+
 import { ArmHelper } from "../utilities/arm-helper"
 export const TopLevelResourcesListBySubscription = "TopLevelResourcesListBySubscription"
 

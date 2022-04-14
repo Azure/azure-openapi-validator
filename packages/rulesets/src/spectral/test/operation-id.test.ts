@@ -1,6 +1,6 @@
+import { Spectral } from '@stoplight/spectral-core';
 import linterForRule from './utils';
 
-import { Spectral } from '@stoplight/spectral-core';
 let linter:Spectral;
 
 beforeAll(async () => {
@@ -60,7 +60,7 @@ test('az-operation-id should find operationId without standard verb', () => {
   });
 });
 
-test('az-operation-id should find operationId without standard verb', () => {
+test('az-operation-id should find operationId without standard verb again', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

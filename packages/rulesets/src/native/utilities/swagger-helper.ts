@@ -1,7 +1,7 @@
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
+import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import _ from "lodash"
 import { crwalReference, isExample, traverse } from "./ref-helper"
-import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 
 export class SwaggerHelper {
   private schemaCaches = new Map<string, any>()

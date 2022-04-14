@@ -43,6 +43,8 @@
     "docs/spec.html": true,
     "common/config/rush/pnpm-lock.yaml": true
   },
-  "eslint.enable": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

@@ -2,9 +2,8 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
+import { MergeStates, OpenApiTypes, rules,JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/arm-helper"
-import { JsonPath } from "@microsoft.azure/openapi-validator-core"
 import { SwaggerHelper } from "../utilities/swagger-helper"
 export const Rpaas_ResourceProvisioningState = "Rpaas_ResourceProvisioningState"
 

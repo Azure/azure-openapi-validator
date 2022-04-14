@@ -2,7 +2,6 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-// @ts-nocheck
 import {
   createMessageConnection,
   NotificationType2,
@@ -16,10 +15,6 @@ import { Mapping, Message, RawSourceMap } from "./types"
 namespace IAutoRestPluginTarget_Types {
   export const GetPluginNames = new RequestType0<string[], Error, void>("GetPluginNames")
   export const Process = new RequestType2<string, string, boolean, Error, void>("Process")
-}
-interface IAutoRestPluginTarget {
-  GetPluginNames(): Promise<string[]>
-  Process(pluginName: string, sessionId: string): Promise<boolean>
 }
 
 namespace IAutoRestPluginInitiator_Types {

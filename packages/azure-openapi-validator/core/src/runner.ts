@@ -1,12 +1,12 @@
-import { SwaggerInventory } from "./swaggerInventory"
-import { nodes } from "./jsonpath"
-import { IRuleLoader} from "./ruleLoader"
-import { OpenApiTypes, ValidationMessage,LintResultMessage } from "./types"
-import { IRule, IRuleSet } from "./types"
 import { LintCallBack, LintOptions,  } from "./api"
 import { OpenapiDocument } from "./document"
-import {getRange,convertJsonPath} from "./utils"
+import { nodes } from "./jsonpath"
+import { IRuleLoader} from "./ruleLoader"
 import { SwaggerHelper } from "./swaggerHelper"
+import { SwaggerInventory } from "./swaggerInventory"
+import { OpenApiTypes, ValidationMessage,LintResultMessage , IRule, IRuleSet } from "./types"
+
+import {getRange,convertJsonPath} from "./utils"
 
 const isLegacyRule = (rule: IRule<any>) => {
   return rule.then.execute.name === "run"
@@ -91,12 +91,6 @@ export class LintRunner<T> {
     }
   }
 
-  output(msgs: string[]) {
-    msgs.forEach(m => {
-      console.log(m)
-    })
-  }
-
   async execute(swaggerPaths: string[], options: LintOptions,cb?:LintCallBack) {
     const specsPromises = []
     for (const spec of swaggerPaths) {
@@ -126,5 +120,4 @@ export class LintRunner<T> {
     return msgs
   }
 }
-
 

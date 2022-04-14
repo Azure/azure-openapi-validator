@@ -2,11 +2,11 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-const matchAll = require("string.prototype.matchall")
 import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import {JSONPath} from "jsonpath-plus"
 
 import { crwalReference } from "./ref-helper"
+const matchAll = require("string.prototype.matchall")
 
 export function getSuccessfulResponseSchema(node:any, doc:any, inventory?: ISwaggerInventory): any {
   if (!node.responses) {
@@ -50,12 +50,12 @@ export function getResponseSchema(response: object, doc:any, inventory?: ISwagge
 }
 
 export function getAllResourceProvidersFromPath(path: string): string[] {
-  const resourceProviderRegex = new RegExp(/providers\/([\w\.]+)/, "g")
+  const resourceProviderRegex = new RegExp(/providers\/([\w.]+)/, "g")
   return Array.from(matchAll(path, resourceProviderRegex), (m:any) => m[1])
 }
 
 export function getAllWordsFromPath(path: string): string[] {
-  const wordRegex = new RegExp(/([\w\.]+)/, "g")
+  const wordRegex = new RegExp(/([\w.]+)/, "g")
   return Array.from(matchAll(path, wordRegex), (m:any) => m[1])
 }
 
@@ -64,7 +64,7 @@ export function resourceProviderMustPascalCase(resourceProvider: string): boolea
     return false
   }
   // refer https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/141e06ef(v=vs.71)?redirectedfrom=MSDN
-  const pascalCase = new RegExp(`^[A-Z][a-z0-9]+(\.([A-Z]{1,3}[a-z0-9]+)+[A-Z]{0,2})+$`)
+  const pascalCase = new RegExp(`^[A-Z][a-z0-9]+(.([A-Z]{1,3}[a-z0-9]+)+[A-Z]{0,2})+$`)
   return pascalCase.test(resourceProvider)
 }
 

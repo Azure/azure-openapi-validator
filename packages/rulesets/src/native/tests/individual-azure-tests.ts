@@ -3,39 +3,39 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import * as assert from "assert"
-import { LintResultMessage } from "@microsoft.azure/openapi-validator-core"
-import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { LintResultMessage , OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+
 import { AvoidEmptyResponseSchema } from "../legacyRules/AvoidEmptyResponseSchema"
+import { AzureResourceTagsSchema } from "../legacyRules/AzureResourceTagsSchema"
 import { ControlCharactersAreNotAllowed } from "../legacyRules/ControlCharactersAreNotAllowed"
 import { DefaultErrorResponseSchema } from "../legacyRules/DefaultErrorResponseSchema"
 import { DeleteOperationResponses } from "../legacyRules/DeleteOperationResponses"
 import { DeprecatedXmsCodeGenerationSetting } from "../legacyRules/DeprecatedXmsCodeGenerationSetting"
 import { EnumMustHaveType } from "../legacyRules/EnumMustHaveType"
 import { EnumMustNotHaveEmptyValue } from "../legacyRules/EnumMustNotHaveEmptyValue"
+import { EnumMustRespectType } from "../legacyRules/EnumMustRespectType"
 import { EnumUniqueValue } from "../legacyRules/EnumUniqueValue"
+import { ExtensionResourcePathPattern } from "../legacyRules/ExtensionResourcePathPattern"
 import { IntegerTypeMustHaveFormat } from "../legacyRules/IntegerTypeMustHaveFormat"
 import { LicenseHeaderMustNotBeSpecified } from "../legacyRules/LicenseHeaderMustNotBeSpecified"
+import { MissingTypeObject } from "../legacyRules/MissingTypeObject"
+import { MissingXmsErrorResponse } from "../legacyRules/MissingXmsErrorResponse"
 import { OperationIdRequired } from "../legacyRules/OperationIdRequired"
+import { ParametersOrder } from "../legacyRules/ParametersOrder"
 import { PostOperationIdContainsUrlVerb } from "../legacyRules/PostOperationIdContainsUrlVerb"
 import { PreviewVersionOverOneYear } from "../legacyRules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../legacyRules/RequiredDefaultResponse"
 import { Rpaas_CreateOperationAsyncResponseValidation } from "../legacyRules/Rpaas_CreateOperationAsyncResponseValidation"
+import { Rpaas_DeleteOperationAsyncResponseValidation } from "../legacyRules/Rpaas_DeleteOperationAsyncResponseValidation"
+import { Rpaas_PostOperationAsyncResponseValidation } from "../legacyRules/Rpaas_PostOperationAsyncResponseValidation"
+import { Rpaas_ResourceProvisioningState } from "../legacyRules/Rpaas_ResourceProvisioningState"
 import { ValidResponseCodeRequired } from "../legacyRules/ValidResponseCodeRequired"
+import { XmsEnumValidation } from "../legacyRules/XmsEnumValidation"
+import { XmsIdentifierValidation } from "../legacyRules/XmsIdentifierValidation"
 import { XmsPageableMustHaveCorrespondingResponse } from "../legacyRules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../legacyRules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../legacyRules/PathResourceTypeNameCamelCase"
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
-import { Rpaas_DeleteOperationAsyncResponseValidation } from "../legacyRules/Rpaas_DeleteOperationAsyncResponseValidation"
-import { Rpaas_PostOperationAsyncResponseValidation } from "../legacyRules/Rpaas_PostOperationAsyncResponseValidation"
-import { Rpaas_ResourceProvisioningState } from "../legacyRules/Rpaas_ResourceProvisioningState"
-import { MissingXmsErrorResponse } from "../legacyRules/MissingXmsErrorResponse"
-import { AzureResourceTagsSchema } from "../legacyRules/AzureResourceTagsSchema"
-import { MissingTypeObject } from "../legacyRules/MissingTypeObject"
-import { ParametersOrder } from "../legacyRules/ParametersOrder"
-import { ExtensionResourcePathPattern } from "../legacyRules/ExtensionResourcePathPattern"
-import { EnumMustRespectType } from "../legacyRules/EnumMustRespectType"
-import { XmsEnumValidation } from "../legacyRules/XmsEnumValidation"
-import { XmsIdentifierValidation } from "../legacyRules/XmsIdentifierValidation"
 
 describe("IndividualAzureTests", ()=>{
   test("control characters not allowed test", async ()=>{
@@ -174,7 +174,7 @@ describe("IndividualAzureTests", ()=>{
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   })
 
-  test("x-ms-pageable have null nextlink ", async ()=>{
+  test("x-ms-pageable have null nextlink", async ()=>{
     const fileName = "PageableOperationWithNullNextLink.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
@@ -384,7 +384,7 @@ describe("IndividualAzureTests", ()=>{
     assertValidationRuleCount(messages, ParametersOrder, 1)
   })
 
-  test("rpaas extension resource ", async ()=>{
+  test("rpaas extension resource", async ()=>{
     const fileName = "RPaaSExtensionResource.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
@@ -394,7 +394,7 @@ describe("IndividualAzureTests", ()=>{
     assertValidationRuleCount(messages, ExtensionResourcePathPattern, 1)
   })
 
-  test("x-ms-enum absent ", async ()=>{
+  test("x-ms-enum absent", async ()=>{
     const fileName = "XmsEnumAbsent.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsEnumValidation)
     assertValidationRuleCount(messages, XmsEnumValidation, 2)

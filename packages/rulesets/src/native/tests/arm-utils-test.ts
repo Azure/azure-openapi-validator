@@ -4,13 +4,13 @@ import { SwaggerHelper } from "../utilities/swagger-helper"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 describe("ArmHelperTests",()=> {
-  test("test contain containsDiscriminator",async ()=>{
+  test("contain containsDiscriminator",async ()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/security.json"))
     const util = new ArmHelper(swagger)
     assert.equal(util.containsDiscriminator("DataExportSettings"), true)
   })
 
-  test("test resource utils",async ()=>{
+  test("resource utils",async ()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/compute.json"))
     const util = new ArmHelper(swagger)
     const allNestedResource = util.getAllNestedResources()
@@ -26,7 +26,7 @@ describe("ArmHelperTests",()=> {
     assert.equal(allCollectionModel.size, 21)
   })
 
- test("test get properties",async ()=>{
+ test("get properties",async ()=>{
     const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
     const util = new SwaggerHelper(swagger, undefined)
     const bar = util.getDefinitionByName("A")
