@@ -49,8 +49,8 @@ export async function runLinter(readme: string) {
 
 // runs the command on a given swagger spec.
 async function runCmd(cmd:string) {
-  const { err, stdout, stderr } = await new Promise(res =>
-    exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err, stdout, stderr) => res({ err, stdout, stderr }))
+  const { stdout, stderr } = await new Promise(res =>
+    exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err, stdout, stderr) => res({ stdout, stderr }))
   )
   let resultString = ""
   if (stdout.indexOf('{\n  "type": "') !== -1) {
@@ -61,9 +61,6 @@ async function runCmd(cmd:string) {
       resultString += ","
     }
     resultString += stripCharsBeforeAfterJson(stderr)
-  }
-  if (err) {
-    console.log(err)
   }
   return resultString
 }

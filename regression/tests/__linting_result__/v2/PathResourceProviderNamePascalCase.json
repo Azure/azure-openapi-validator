@@ -1,81 +1,9 @@
 [
   {
     "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/providers/Microsoft.AAD/operations'",
-    "jsonpath": "$.paths[\"/providers/Microsoft.AAD/operations\"]",
-    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:30:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/providers/Microsoft.WindowsESU/operations'",
-    "jsonpath": "$.paths[\"/providers/Microsoft.WindowsESU/operations\"]",
-    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:40:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/providers/microsoft.visualstudio/operations'",
-    "jsonpath": "$.paths[\"/providers/microsoft.visualstudio/operations\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:37:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices\"]",
-    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:66:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/Microsoft.WindowsESU/multipleActivationKeys'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.WindowsESU/multipleActivationKeys\"]",
-    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:76:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems\"]",
-    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:13:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems/{galleryItemName}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems/{galleryItemName}\"]",
-    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:95:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
     "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:40:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.visualstudio/checkNameAvailability'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.visualstudio/checkNameAvailability\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:63:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices\"]",
-    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:106:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}\"]",
-    "source": "specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/domainservices.json:149:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsESU/multipleActivationKeys'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsESU/multipleActivationKeys\"]",
-    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:115:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsESU/multipleActivationKeys/{multipleActivationKeyName}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsESU/multipleActivationKeys/{multipleActivationKeyName}\"]",
-    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:157:4"
   },
   {
     "code": "PathResourceProviderNamePascalCase",
@@ -109,12 +37,6 @@
   },
   {
     "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/linkedStorageAccounts/{storageType}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/linkedStorageAccounts/{storageType}\"]",
-    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json:37:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
     "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:260:4"
@@ -133,24 +55,6 @@
   },
   {
     "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:573:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:615:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}/subContainers/{subContainerName}/status'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{rootResourceName}/project/{resourceName}/subContainers/{subContainerName}/status\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:790:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
     "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:88:4"
@@ -160,30 +64,6 @@
     "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents/{incidentName}'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents/{incidentName}\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:39:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:103:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:140:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension/{extensionResourceName}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{accountResourceName}/extension/{extensionResourceName}\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:184:4"
-  },
-  {
-    "code": "PathResourceProviderNamePascalCase",
-    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.visualstudio/account/{resourceName}\"]",
-    "source": "specification/visualstudio/resource-manager/Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json:391:4"
   },
   {
     "code": "PathResourceProviderNamePascalCase",

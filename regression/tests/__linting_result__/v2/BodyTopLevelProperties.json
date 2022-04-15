@@ -22,23 +22,5 @@
     "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'IscsiTargetUpdate' has extra properties ['managedByExtended'].",
     "jsonpath": "$.definitions.IscsiTargetUpdate.properties",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1759:6"
-  },
-  {
-    "code": "BodyTopLevelProperties",
-    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'PrivateEndpointConnectionProxy' has extra properties ['remotePrivateEndpoint,status'].",
-    "jsonpath": "$.definitions.PrivateEndpointConnectionProxy.properties",
-    "source": "specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/preview/2020-03-01-preview/deviceupdate.json:1601:6"
-  },
-  {
-    "code": "BodyTopLevelProperties",
-    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'StatusesDefault' has extra properties ['nextlink'].",
-    "jsonpath": "$.definitions.StatusesDefault.properties",
-    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:2313:6"
-  },
-  {
-    "code": "BodyTopLevelProperties",
-    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'SubscriptionDefinition' has extra properties ['delegatedProviderSubscriptionId,displayName,externalReferenceId,offerId,owner,routingResourceManagerType,state,subscriptionId,tenantId'].",
-    "jsonpath": "$.definitions.SubscriptionDefinition.properties",
-    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:899:6"
   }
 ]

@@ -1,33 +1,9 @@
 [
   {
     "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'CloudShellConsole' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.CloudShellConsole",
-    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:665:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'CloudShellUserSettings' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.CloudShellUserSettings",
-    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:810:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'ConsoleDefinition' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.ConsoleDefinition",
-    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:772:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
     "message": "Model definition 'FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
     "jsonpath": "$.definitions.FirewallRule",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:308:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'GuestConfigurationAssignment' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.GuestConfigurationAssignment",
-    "source": "specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2020-06-25/guestconfiguration.json:867:4"
   },
   {
     "code": "RequiredPropertiesMissingInResourceModel",
@@ -37,38 +13,8 @@
   },
   {
     "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'JobCollectionDefinition' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.JobCollectionDefinition",
-    "source": "specification/scheduler/resource-manager/Microsoft.Scheduler/stable/2016-03-01/scheduler.json:767:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
     "message": "Model definition 'ProxyResourceWithWritableName' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
     "jsonpath": "$.definitions.ProxyResourceWithWritableName",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:264:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'StatusesDefault' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.StatusesDefault",
-    "source": "specification/intune/resource-manager/Microsoft.Intune/preview/2015-01-14-preview/intune.json:2312:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'SubscriptionDefinition' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.SubscriptionDefinition",
-    "source": "specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Subscriptions.json:896:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'UserSettingsResponse' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.UserSettingsResponse",
-    "source": "specification/cloudshell/resource-manager/Microsoft.Portal/stable/2018-10-01/CloudShell.json:793:4"
-  },
-  {
-    "code": "RequiredPropertiesMissingInResourceModel",
-    "message": "Model definition 'WorkspaceCollection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
-    "jsonpath": "$.definitions.WorkspaceCollection",
-    "source": "specification/powerbiembedded/resource-manager/Microsoft.PowerBI/stable/2016-01-29/powerbiembedded.json:779:4"
   }
 ]

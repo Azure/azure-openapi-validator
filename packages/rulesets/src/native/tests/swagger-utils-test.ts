@@ -3,10 +3,8 @@ import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { crwalReference } from "../utilities/ref-helper"
 import { getResolvedSchemaByPath } from "../utilities/rules-helper"
 import { SwaggerHelper } from "../utilities/swagger-helper"
-import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
-const fileUrl = (absPath: string) => {
-  return "file:///" + absPath.replace(/^\//, "").split("\\").join("/")
-}
+import { getFilePath} from "./utilities/tests-helper"
+
 describe("SwaggerHelperTests",()=> {
    test("resolve partial schema",async ()=>{
     const filePath = getFilePath("references/external.json")
@@ -15,14 +13,12 @@ describe("SwaggerHelperTests",()=> {
     const comonFilePath = getFilePath("references/common.json")
     const commonDoc = await inventory.loadDocument(comonFilePath)
     const swaggerHelper = new SwaggerHelper(openapiDefinitionObject, filePath, inventory)
-    let resolvedSchema = (await swaggerHelper.resolveSchema(
+    const resolvedSchema = (await swaggerHelper.resolveSchema(
       openapiDefinitionObject.paths[
         "/foo"
       ].post
     )) as any
     assert.strictEqual(resolvedSchema.parameters[0].name, "subscriptionId")
-    resolvedSchema = await swaggerHelper.resolveSchema(fileUrl(comonFilePath) + "#/parameters/ApiVersion")
-    assert.strictEqual(resolvedSchema.name, "api-version")
     const position = commonDoc.getPositionFromJsonPath(["definitions", "a", "allOf", "0"])
 
     assert.ok(!!position.start.line)
@@ -49,27 +45,6 @@ describe("SwaggerHelperTests",()=> {
     const swagger = await (await inventory.loadDocument(getFilePath("references/external.json"))).getObj()
     const util = new SwaggerHelper(swagger, undefined, inventory)
     const resolved = await util.resolveSchema(swagger)
-    assert.strictEqual(!!resolved.paths["/foo"].post.responses.default.schema.$ref, true)
+    assert.strictEqual(!!resolved.paths["/foo"].post.responses.default.schema.properties, true)
   })
-
-  test("get properties",()=>{
-    const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
-    const util = new SwaggerHelper(swagger, undefined, undefined)
-    const bar = util.getDefinitionByName("A")
-    assert.deepEqual(
-      {
-        type: "string",
-        description: "p1"
-      },
-      util.getPropertyOfModel(bar, "p1")
-    )
-    const foo = util.getDefinitionByName("B")
-    assert.deepEqual(
-      {
-        description: "a ref"
-      },
-      util.getPropertyOfModel(foo, "display")
-    )
-  })
- 
 })

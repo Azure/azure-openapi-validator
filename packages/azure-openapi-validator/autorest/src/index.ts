@@ -5,7 +5,7 @@
 
 import { fileURLToPath } from 'url';
 import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri";
-import {lint, getOpenapiType, LintResultMessage, isUriAbsolute} from "@microsoft.azure/openapi-validator-core"
+import {lint, getOpenapiType, LintResultMessage, isUriAbsolute, isExample} from "@microsoft.azure/openapi-validator-core"
 import {nativeRulesets} from "@microsoft.azure/openapi-validator-rulesets"
 import {Resolver} from "@stoplight/json-ref-resolver"
 import { safeLoad } from "js-yaml"
@@ -137,6 +137,9 @@ async function main() {
     }
 
     const readFile = async (fileUri:string) => {
+      if (isExample(fileUri)) {
+        return ""
+      }
       let file = cachedFiles.get(fileUri)
       if (!file) {
         file = await initiator.ReadFile(fileUri)

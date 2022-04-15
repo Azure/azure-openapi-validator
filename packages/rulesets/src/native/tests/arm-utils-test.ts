@@ -1,6 +1,5 @@
 import * as assert from "assert"
 import { ArmHelper } from "../utilities/arm-helper"
-import { SwaggerHelper } from "../utilities/swagger-helper"
 import { getFilePath, readObjectFromFile } from "./utilities/tests-helper"
 
 describe("ArmHelperTests",()=> {
@@ -24,25 +23,5 @@ describe("ArmHelperTests",()=> {
     assert.equal(allOfResource.length, 41)
     assert.equal(allCollectionInfo.length, 22)
     assert.equal(allCollectionModel.size, 21)
-  })
-
- test("get properties",async ()=>{
-    const swagger = readObjectFromFile(getFilePath("armResource/test_get_properties.json"))
-    const util = new SwaggerHelper(swagger, undefined)
-    const bar = util.getDefinitionByName("A")
-    assert.deepEqual(
-      {
-        type: "string",
-        description: "p1"
-      },
-      util.getPropertyOfModel(bar, "p1")
-    )
-    const foo = util.getDefinitionByName("B")
-    assert.deepEqual(
-      {
-        description: "a ref"
-      },
-      util.getPropertyOfModel(foo, "display")
-    )
   })
 })

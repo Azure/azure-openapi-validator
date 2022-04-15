@@ -2,42 +2,6 @@
   {
     "code": "az-post-201-response",
     "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry.Setup/locations/{location}/setup\"].post.responses[\"201\"]",
-    "source": "specification/azsadmin/resource-manager/containerregistry/Microsoft.ContainerRegistry.Admin/preview/2019-11-01-preview/setup.json:46:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.gallery.admin/galleryItems\"].post.responses[\"201\"]",
-    "source": "specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json:86:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Notebooks/notebookProxies/{resourceName}/privateEndpointConnectionProxies/{privateLinkId}\"].post.responses[\"201\"]",
-    "source": "specification/notebooks/resource-manager/Microsoft.Notebooks/preview/2019-10-11-preview/notebooks.json:453:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/debugsend\"].post.responses[\"201\"]",
-    "source": "specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/notificationhubs.json:1028:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/serviceMap/machineGroups\"].post.responses[\"201\"]",
-    "source": "specification/service-map/resource-manager/Microsoft.OperationalInsights/preview/2015-11-01-preview/arm-service-map.json:1436:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/createIndicator\"].post.responses[\"201\"]",
-    "source": "specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-04-01-preview/ThreatIntelligence.json:73:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export\"].post.responses[\"201\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentScans.json:150:10"
   },
@@ -52,18 +16,6 @@
     "message": "Using post for a create operation is discouraged.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export\"].post.responses[\"201\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessmentScans.json:264:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints\"].post.responses[\"201\"]",
-    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:1092:10"
-  },
-  {
-    "code": "az-post-201-response",
-    "message": "Using post for a create operation is discouraged.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export\"].post.responses[\"201\"]",
-    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:3065:10"
   },
   {
     "code": "az-post-201-response",

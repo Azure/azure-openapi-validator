@@ -56,12 +56,9 @@ export async function runLinter(readme: string) {
 
 // runs the command on a given swagger spec.
 async function runCmd(cmd:string) {
-  const { err, stdout, stderr } = await new Promise(res =>
-    exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err:any, stdout:any, stderr:any) => res({ err, stdout, stderr }))
+  const { stdout, stderr } = await new Promise(res =>
+    exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err:any, stdout:any, stderr:any) => res({ stdout, stderr }))
   )
-  if (err) {
-    console.log(JSON.stringify(err))
-  }
   let resultString = ""
   if (stdout.indexOf('"extensionName":"@microsoft.azure/openapi-validator"') !== -1) {
     resultString = stdout

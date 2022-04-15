@@ -1,39 +1,9 @@
 [
   {
     "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"AgreementTerms\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.AgreementTerms",
-    "source": "specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/Agreements.json:384:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"CanonicalSupportPlanResponseEnvelope\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.CanonicalSupportPlanResponseEnvelope",
-    "source": "specification/addons/resource-manager/Microsoft.Addons/preview/2018-03-01/addons-swagger.json:264:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"ComponentLinkedStorageAccounts\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.ComponentLinkedStorageAccounts",
-    "source": "specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json:240:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
     "message": "The nested resource \"DataMaskingPolicy\" does not have list operation, please add it.",
     "jsonpath": "$.definitions.DataMaskingPolicy",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:267:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"DataMaskingPolicy\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.DataMaskingPolicy",
-    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:7252:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"DataWarehouseUserActivities\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.DataWarehouseUserActivities",
-    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:5703:4"
   },
   {
     "code": "NestedResourcesMustHaveListOperation",
@@ -46,18 +16,6 @@
     "message": "The nested resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list operation, please add it.",
     "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:313:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"HeatMapModel\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.HeatMapModel",
-    "source": "specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json:1085:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"LabCost\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.LabCost",
-    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:10107:4"
   },
   {
     "code": "NestedResourcesMustHaveListOperation",
@@ -76,41 +34,5 @@
     "message": "The nested resource \"ManagementPolicy\" does not have list operation, please add it.",
     "jsonpath": "$.definitions.ManagementPolicy",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"PrivateEndpointConnectionResource\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.PrivateEndpointConnectionResource",
-    "source": "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/bms.json:4661:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"ScaleUnit\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.ScaleUnit",
-    "source": "specification/azsadmin/resource-manager/compute/Microsoft.Compute.Admin/stable/2021-03-30/ScaleUnits.json:63:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"ServiceRunner\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.ServiceRunner",
-    "source": "specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json:11891:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"SqlPoolConnectionPolicy\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.SqlPoolConnectionPolicy",
-    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:6642:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"SqlPoolVulnerabilityAssessmentRuleBaseline\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.SqlPoolVulnerabilityAssessmentRuleBaseline",
-    "source": "specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json:7006:4"
-  },
-  {
-    "code": "NestedResourcesMustHaveListOperation",
-    "message": "The nested resource \"Transformation\" does not have list operation, please add it.",
-    "jsonpath": "$.definitions.Transformation",
-    "source": "specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/transformations.json:241:4"
   }
 ]

@@ -10,7 +10,6 @@ export const armRuleset: IRuleSet = {
       category: "SDKViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
-      resolved: true,
       given: "$.definitions.*",
       then: {
         fieldMatch: "$..properties.*~",
