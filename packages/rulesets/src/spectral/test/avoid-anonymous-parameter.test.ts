@@ -99,7 +99,7 @@ test('az-avoid-anonymous-parameter should find errors', () => {
     }
   };
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2);
+    expect(results.length).toBe(1);
   });
 });
 

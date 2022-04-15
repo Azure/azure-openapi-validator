@@ -716,8 +716,8 @@ const avoidAnonymousParameter = (parameters, _opts, paths) => {
     const path = paths.path || paths.target || [];
     const properties = parameters.schema.properties;
     if ((properties === undefined || Object.keys(properties).length === 0) &&
-        parameters.additionalProperties === undefined &&
-        parameters.allOf === undefined) {
+        parameters.schema.additionalProperties === undefined &&
+        parameters.schema.allOf === undefined) {
         return [];
     }
     return [{
@@ -1139,7 +1139,7 @@ const ruleset$1 = {
         },
         "az-default-in-enum": {
             "description": "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
-            "message": "{{message}}",
+            "message": "Default value should appear in the enum constraint for a schema",
             "severity": "error",
             "formats": [spectralFormats.oas2],
             "given": "$..[?(@.enum)]",
@@ -1151,6 +1151,7 @@ const ruleset$1 = {
             "description": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
             "message": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
             "severity": "warn",
+            "resolved": false,
             "formats": [spectralFormats.oas2],
             "given": "$..[?(@.type === 'boolean')]",
             "then": {
@@ -1163,7 +1164,7 @@ const ruleset$1 = {
             "severity": "error",
             "resolved": false,
             "formats": [spectralFormats.oas2],
-            "given": ["$..parameters.*", "$.paths[*].parameters", "$.paths.*[get,put,post,patch,delete,options,head].parameters"],
+            "given": ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             "then": {
                 "function": avoidAnonymousParameter
             }

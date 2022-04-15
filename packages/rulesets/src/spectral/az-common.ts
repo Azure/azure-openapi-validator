@@ -442,6 +442,7 @@ const ruleset : any = {
       "description": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
       "message": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
       "severity": "warn",
+      "resolved": false,
       "formats": [oas2],
       "given": "$..[?(@.type === 'boolean')]",
       "then": {
@@ -454,7 +455,7 @@ const ruleset : any = {
       "severity": "error",
       "resolved": false,
       "formats": [oas2],
-      "given": ["$..parameters.*", "$.paths[*].parameters", "$.paths.*[get,put,post,patch,delete,options,head].parameters"],
+      "given": ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
       "then": {
         "function": avoidAnonymousParameter
       }

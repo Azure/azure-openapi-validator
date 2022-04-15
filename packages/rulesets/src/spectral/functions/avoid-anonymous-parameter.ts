@@ -8,8 +8,8 @@ const avoidAnonymousParameter = (parameters:any, _opts:any, paths:any) => {
 
   const properties: object = parameters.schema.properties;
   if ((properties === undefined || Object.keys(properties).length === 0) &&
-      parameters.additionalProperties === undefined &&
-      parameters.allOf === undefined) {
+      parameters.schema.additionalProperties === undefined &&
+      parameters.schema.allOf === undefined) {
     return [];
   }
   return [{
