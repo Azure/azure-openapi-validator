@@ -3,7 +3,16 @@
 const defaultInEnum = (swaggerObj:any, _opts:any, paths:any) => {
   const defaultValue = swaggerObj.default;
   const enumValue: string[] = swaggerObj.enum;
-  if (swaggerObj === null || typeof swaggerObj !== 'object') {
+  if (swaggerObj === null || 
+    typeof swaggerObj !== 'object' || 
+    defaultValue === null ||
+    defaultValue === undefined ||
+    enumValue === null ||
+    enumValue === undefined) {
+    return [];
+  }
+
+  if (!Array.isArray(enumValue)) {
     return [];
   }
   const path = paths.path || paths.target || [];

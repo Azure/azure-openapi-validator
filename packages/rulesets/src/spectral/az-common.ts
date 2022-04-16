@@ -432,6 +432,7 @@ const ruleset : any = {
       "description": "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
       "message": "Default value should appear in the enum constraint for a schema",
       "severity": "error",
+      "resolved": false,
       "formats": [oas2],
       "given": "$..[?(@.enum)]",
       "then": {
