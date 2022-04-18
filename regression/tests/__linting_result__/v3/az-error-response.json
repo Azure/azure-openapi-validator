@@ -1592,12 +1592,6 @@
   {
     "code": "az-error-response",
     "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceCommunity.json:64:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"].get.responses.default",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:295:10"
   },
@@ -1774,18 +1768,6 @@
     "message": "Error response should contain a x-ms-error-code header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters\"].get.responses.default",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:346:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:344:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:334:10"
   },
   {
     "code": "az-error-response",
@@ -5624,12 +5606,6 @@
   {
     "code": "az-error-response",
     "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:305:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete.responses.default",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:76:10"
   },
@@ -5642,86 +5618,8 @@
   {
     "code": "az-error-response",
     "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:262:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put.responses.default",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:198:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:590:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:407:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:466:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].put.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:536:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:295:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:76:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:128:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:252:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:191:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:76:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:135:10"
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error response should contain a x-ms-error-code header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].put.responses.default",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:198:10"
   },
   {
     "code": "az-error-response",
@@ -13058,12 +12956,6 @@
   {
     "code": "az-error-response",
     "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"].get.responses.default.schema.properties.error",
     "source": ""
   },
@@ -13221,18 +13113,6 @@
     "code": "az-error-response",
     "message": "Error schema should define `code` and `message` properties as required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default.schema.properties.error",
     "source": ""
   },
   {
@@ -16388,12 +16268,6 @@
   {
     "code": "az-error-response",
     "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete.responses.default.schema.properties.error",
     "source": ""
   },
@@ -16406,85 +16280,7 @@
   {
     "code": "az-error-response",
     "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].put.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get.responses.default.schema.properties.error",
-    "source": ""
-  },
-  {
-    "code": "az-error-response",
-    "message": "Error schema should define `code` and `message` properties as required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].put.responses.default.schema.properties.error",
     "source": ""
   },
   {
@@ -18554,12 +18350,6 @@
   {
     "code": "az-error-response",
     "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceCommunity.json:66:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"].get.responses.default.schema",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:297:12"
   },
@@ -18718,18 +18508,6 @@
     "message": "The `error` property in the error response schema should be required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters\"].get.responses.default.schema",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:348:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:346:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:336:12"
   },
   {
     "code": "az-error-response",
@@ -21884,12 +21662,6 @@
   {
     "code": "az-error-response",
     "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:307:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete.responses.default.schema",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:78:12"
   },
@@ -21902,86 +21674,8 @@
   {
     "code": "az-error-response",
     "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:264:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put.responses.default.schema",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:200:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:592:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:409:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:468:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].put.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:538:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:297:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:78:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:130:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:254:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:193:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:78:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:137:12"
-  },
-  {
-    "code": "az-error-response",
-    "message": "The `error` property in the error response schema should be required.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].put.responses.default.schema",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:200:12"
   },
   {
     "code": "az-error-response",

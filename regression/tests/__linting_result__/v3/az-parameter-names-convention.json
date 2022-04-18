@@ -380,12 +380,6 @@
   {
     "code": "az-parameter-names-convention",
     "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get.parameters[\"4\"].name",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:121:12"
-  },
-  {
-    "code": "az-parameter-names-convention",
-    "message": "Parameter name \"$expand\" should not begin with '$' or '@'.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses\"].get.parameters[\"4\"].name",
     "source": ""
   },

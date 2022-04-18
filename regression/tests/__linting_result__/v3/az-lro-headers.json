@@ -1340,24 +1340,6 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses[\"202\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:398:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses[\"202\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:67:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses[\"202\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:67:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}\"].delete.responses[\"202\"]",
     "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:281:10"
   },

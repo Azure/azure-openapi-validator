@@ -1,8 +1,0 @@
-[
-  {
-    "code": "az-parameter-names-unique",
-    "message": "Duplicate parameter name (ignoring case) with parameters.0.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/serviceTopologies/{serviceTopologyName}\"].get.parameters[\"0\"].name",
-    "source": ""
-  }
-]

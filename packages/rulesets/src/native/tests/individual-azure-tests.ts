@@ -9,6 +9,7 @@ import { AvoidEmptyResponseSchema } from "../legacyRules/AvoidEmptyResponseSchem
 import { AzureResourceTagsSchema } from "../legacyRules/AzureResourceTagsSchema"
 import { ControlCharactersAreNotAllowed } from "../legacyRules/ControlCharactersAreNotAllowed"
 import { DefaultErrorResponseSchema } from "../legacyRules/DefaultErrorResponseSchema"
+import { DeleteOperationAsyncResponseValidation } from "../legacyRules/DeleteOperationAsyncResponseValidation"
 import { DeleteOperationResponses } from "../legacyRules/DeleteOperationResponses"
 import { DeprecatedXmsCodeGenerationSetting } from "../legacyRules/DeprecatedXmsCodeGenerationSetting"
 import { EnumMustHaveType } from "../legacyRules/EnumMustHaveType"
@@ -26,7 +27,6 @@ import { PostOperationIdContainsUrlVerb } from "../legacyRules/PostOperationIdCo
 import { PreviewVersionOverOneYear } from "../legacyRules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../legacyRules/RequiredDefaultResponse"
 import { Rpaas_CreateOperationAsyncResponseValidation } from "../legacyRules/Rpaas_CreateOperationAsyncResponseValidation"
-import { Rpaas_DeleteOperationAsyncResponseValidation } from "../legacyRules/Rpaas_DeleteOperationAsyncResponseValidation"
 import { Rpaas_PostOperationAsyncResponseValidation } from "../legacyRules/Rpaas_PostOperationAsyncResponseValidation"
 import { Rpaas_ResourceProvisioningState } from "../legacyRules/Rpaas_ResourceProvisioningState"
 import { ValidResponseCodeRequired } from "../legacyRules/ValidResponseCodeRequired"
@@ -242,9 +242,9 @@ describe("IndividualAzureTests", ()=>{
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_DeleteOperationAsyncResponseValidation
+      DeleteOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 1)
+    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 1)
   })
 
   // Failure #1 : 'x-ms-long-running-operation' is missing
@@ -254,9 +254,9 @@ describe("IndividualAzureTests", ()=>{
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_DeleteOperationAsyncResponseValidation
+      DeleteOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 2)
   })
 
   // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 202 (implies async)
@@ -266,9 +266,9 @@ describe("IndividualAzureTests", ()=>{
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_DeleteOperationAsyncResponseValidation
+      DeleteOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 2)
   })
 
   // Valid 202 response for DELETE operation in RPaaS
@@ -277,9 +277,9 @@ describe("IndividualAzureTests", ()=>{
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_DeleteOperationAsyncResponseValidation
+      DeleteOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_DeleteOperationAsyncResponseValidation, 0)
+    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 0)
   })
 
   // Failure #1 : RPaaS POST async response supports 202 only. 201 is not supported.

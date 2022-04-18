@@ -758,12 +758,6 @@
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities\"].get[\"x-ms-examples\"].ServiceCommunityList",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"].get[\"x-ms-examples\"][\"List all custom IP prefixes\"]",
     "source": ""
   },
@@ -891,18 +885,6 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters\"].get[\"x-ms-examples\"].RouteFilterList",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables\"].get[\"x-ms-examples\"][\"List all route tables\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders\"].get[\"x-ms-examples\"][\"List all Security Partner Providers for a given subscription\"]",
     "source": ""
   },
   {
@@ -1400,7 +1382,7 @@
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].patch[\"x-ms-examples\"][\"Create or update a simple gallery.\"]",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].patch[\"x-ms-examples\"][\"Update a simple gallery.\"]",
     "source": ""
   },
   {
@@ -4142,61 +4124,13 @@
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"].get[\"x-ms-examples\"][\"List route tables in resource group\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].get[\"x-ms-examples\"][\"Get route table\"]",
     "source": ""
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch[\"x-ms-examples\"][\"Update route table tags\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put[\"x-ms-examples\"][\"Create route table with route\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put[\"x-ms-examples\"][\"Create route table\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get[\"x-ms-examples\"][\"List all Security Partner Providers for a given resource group\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get[\"x-ms-examples\"][\"Get Security Partner Provider\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put[\"x-ms-examples\"][\"Create Security Partner Provider\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get[\"x-ms-examples\"][\"Get service endPoint Policy\"]",
-    "source": ""
-  },
-  {
-    "code": "az-property-type",
-    "message": "Property should have a defined type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].put[\"x-ms-examples\"][\"Create service endpoint policy\"]",
     "source": ""
   },
   {

@@ -1,8 +1,0 @@
-[
-  {
-    "code": "Rpaas_CreateOperationAsyncResponseValidation",
-    "message": "[RPaaS] An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsESU/multipleActivationKeys/{multipleActivationKeyName}\"].put",
-    "source": "specification/windowsesu/resource-manager/Microsoft.WindowsESU/preview/2019-09-16-preview/windowsesu.json:198:6"
-  }
-]

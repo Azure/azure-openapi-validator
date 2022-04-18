@@ -1,8 +1,0 @@
-[
-  {
-    "code": "UniqueClientParameterName",
-    "message": "Do not have duplicate name of client parameter name, make sure every client parameter name unique. Client parameter #/parameters/SubscriptionIdParameter conflicted with #/parameters/subscriptionId.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.alertsManagement/smartDetectorAlertRules\"].get.parameters",
-    "source": "specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2019-06-01/SmartDetectorAlertRulesApi.json:44:8"
-  }
-]

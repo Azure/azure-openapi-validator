@@ -362,18 +362,6 @@
   {
     "code": "az-patch-content-type",
     "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:218:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:208:6"
-  },
-  {
-    "code": "az-patch-content-type",
-    "message": "A patch operation should consume 'application/merge-patch+json' content type.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}\"].patch",
     "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:304:6"
   },

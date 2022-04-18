@@ -2,68 +2,14 @@
   {
     "code": "DeleteOperationResponses",
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:771:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:407:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/logprofiles/{logProfileName}\"].delete.responses",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:57:8"
   },
   {
     "code": "DeleteOperationResponses",
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1159:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete.responses",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:121:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete.responses",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:269:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].delete.responses",
     "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:446:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}\"].delete.responses",
-    "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:280:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete.responses",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:467:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete.responses",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:769:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].delete.responses",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:217:8"
   },
   {
     "code": "DeleteOperationResponses",
@@ -148,30 +94,6 @@
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].delete.responses",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:340:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].delete.responses",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2235:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].delete.responses",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2615:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1557:8"
-  },
-  {
-    "code": "DeleteOperationResponses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:87:8"
   },
   {
     "code": "DeleteOperationResponses",

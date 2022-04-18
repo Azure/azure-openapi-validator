@@ -932,24 +932,6 @@
   {
     "code": "az-success-response-body",
     "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:401:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:73:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses[\"200\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:70:10"
-  },
-  {
-    "code": "az-success-response-body",
-    "message": "All success responses except 202 & 204 should define a response body.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].delete.responses[\"200\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:149:10"
   },

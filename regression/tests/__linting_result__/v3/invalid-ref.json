@@ -1,8 +1,0 @@
-[
-  {
-    "code": "invalid-ref",
-    "message": "'#/definitions/metadata' does not exist",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes\"].get[\"x-ms-examples\"].ApiManagementListContentTypes",
-    "source": ""
-  }
-]

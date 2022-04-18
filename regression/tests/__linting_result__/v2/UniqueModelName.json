@@ -1,8 +1,0 @@
-[
-  {
-    "code": "UniqueModelName",
-    "message": "The model name systemData is duplicated with SystemData .",
-    "jsonpath": "$.definitions.systemData",
-    "source": "specification/common-types/resource-management/v2/types.json:519:4"
-  }
-]
