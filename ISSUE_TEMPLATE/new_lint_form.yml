@@ -1,0 +1,74 @@
+name: New Lint Rule Request
+description: request a new lint rule
+title: "[new rule]: "
+labels: ["linter", "rule"]
+assignees: jianyxi,ruoxuanwang
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is to collect lint rule candidate for swagger validation. We will evaluate collected candidates in Swagger reviewer meeting in regular basis. For qualified candidates, swagger team will either prioritize to add them to validation tool, or document them as manual rules must be conformed in swagger authorization. If any question, please mail to Swagger and Tools Team (vscswagger@microsoft.com).
+        To avoid duplicate, please refer to the following two documents for all existing rules:
+        Automated guidelines: https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
+        Manual guidelines: https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-manual-guidelines.md
+  - type: textarea
+    id: Lintruledescription
+    attributes:
+      label: Lint rule description
+      placeholder: please add some description for the lint rule
+    validations:
+      required: true
+      
+  - type: textarea
+    id: swaggerExampleEelated
+    attributes:
+      label: Related swagger example
+      description: add an example for this rule
+      placeholder: please add some example for the lint rule
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: Category
+    attributes:
+      label: Category
+      options:
+        - SDK
+        - ARM
+        - Documentation
+    validations:
+      required: true
+  - type: dropdown
+    id: Severitylevel
+    attributes:
+      label: Severity level
+      options:
+        - Error
+        - Warning
+    validations:
+      required: true
+  - type: dropdown
+    id: AppliesTo
+    attributes:
+      label: Applies to
+      multiple: true
+      options:
+        - Management plane API spec
+        - Data plane API spec
+        - RPaaS API spec
+    validations:
+      required: true
+  - type: textarea
+    id: howtofix
+    attributes:
+      label: How to fix the violation
+      description: please descripe how to fix
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: What't the impact if breaking the rule
+      description: what't the impact if breaking the rule
+    validations:
+      required: true
