@@ -1,5 +1,5 @@
-import { rules } from "@microsoft.azure/openapi-validator-core"
-import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+
 export const ImplementPrivateEndpointAPIs = "ImplementPrivateEndpointAPIs"
 
 rules.push({
@@ -13,7 +13,7 @@ rules.push({
   *run(doc, node, path) {
     const msg = "The private endpoint API: {0} is missing."
 
-    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^\/]+\}){1}$/i
+    const privateEndpointConnectionPattern = /.*\/privateEndpointConnections(\/\{[^/]+\}){1}$/i
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
     const privateLinkResourcesPattern = /.*\/privateLinkResources$/i
     type privateEndpointPaths = {

@@ -1,6 +1,6 @@
-import { rules } from "@microsoft.azure/openapi-validator-core"
+import { rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { getAllResourceProvidersFromPath, resourceProviderMustPascalCase } from "../utilities/rules-helper"
-import { MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+
 
 export const PathResourceProviderNamePascalCase = "PathResourceProviderNamePascalCase"
 

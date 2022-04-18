@@ -23,6 +23,9 @@ jobs:
       - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
         displayName: 'rush build'
 
+      - script: 'node common/scripts/install-run-rush.js lint'
+        displayName: 'rush lint'
+
       - script: 'node common/scripts/install-run-rush.js test'
         displayName: 'rush test'
 

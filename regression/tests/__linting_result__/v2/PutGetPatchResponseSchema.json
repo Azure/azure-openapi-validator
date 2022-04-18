@@ -1,8 +1,0 @@
-[
-  {
-    "code": "PutGetPatchResponseSchema",
-    "message": "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/resourceProviders/{providerId}/locations/{location}/serviceLimits/{resourceName} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/resourceProviders/{providerId}/locations/{location}/serviceLimits/{resourceName}\"]",
-    "source": "specification/reservations/resource-manager/Microsoft.Capacity/preview/2019-07-19/quota.json:37:4"
-  }
-]

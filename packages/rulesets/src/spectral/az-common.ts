@@ -6,8 +6,8 @@ import errorresponse from "./functions/error-response";
 import hasheader from "./functions/has-header";
 import operationid from "./functions/operation-id";
 import paginationresponse from "./functions/pagination-response";
-import paramnamesunique from "./functions/param-names-unique";
 import paramnames from "./functions/param-names";
+import paramnamesunique from "./functions/param-names-unique";
 import paramorder from "./functions/param-order";
 import patchcontenttype from "./functions/patch-content-type";
 import pathparamnames from "./functions/path-param-names";
@@ -235,6 +235,7 @@ const ruleset : any = {
       "severity": "warn",
       "formats": [oas2, oas3],
       "given": "$.paths",
+      resolved: false,
       "then": {
         "function": pathparamnames
       }

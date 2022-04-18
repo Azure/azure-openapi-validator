@@ -4,17 +4,5 @@
     "message": "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
     "jsonpath": "$.info.version",
     "source": ""
-  },
-  {
-    "code": "az-version-convention",
-    "message": "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
-    "jsonpath": "$.info.version",
-    "source": "specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/postgresqlhsc.json:6:4"
-  },
-  {
-    "code": "az-version-convention",
-    "message": "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
-    "jsonpath": "$.info.version",
-    "source": "specification/saas/resource-manager/Microsoft.SaaS/preview/2018-03-01-beta/saas.json:4:4"
   }
 ]

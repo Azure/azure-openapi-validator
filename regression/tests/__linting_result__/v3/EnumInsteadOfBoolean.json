@@ -1,8 +1,0 @@
-[
-  {
-    "code": "EnumInsteadOfBoolean",
-    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: exclude",
-    "jsonpath": "$.definitions.ConfigDataProperties.properties.exclude",
-    "source": "specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json:834:8"
-  }
-]

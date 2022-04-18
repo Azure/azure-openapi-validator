@@ -58,8 +58,11 @@ Differetiating with spectral rule,  there is a swagger inventory (see below defi
 
 ``` ts
 export interface ISwaggerInventory {
+  // return the json objects of all specs that reference to the given specPath
   referencesOf(specPath: string): Record<string,any>,
-  getDocuments(): Record<string,any>
+  // specifify the 'specPath' ,return the json object of given spec
+  // or return a Record<string,any> contains all the specPath and json object
+  getDocuments(specPath?: string): Record<string,any> | any
 }
 ```
 
@@ -71,7 +74,6 @@ a sample rule config is like :
       category: "SDKViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
-      resolved: true,
       given: "$.definitions.*",
       then: {
         fieldMatch: "$..properties.*~",
@@ -98,7 +100,6 @@ Follow below steps to add a native rule:
 - category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
 - OpenapiType:  indicate which kinds of azure spec it applies to.
 - severity:  "error" | "warning" | "info"
-- resolved:  whether or not resolve the "ref" in the swagger.
 - given:  the jsonpath to match for the current swagger.
 - then: the action to invoke for the matched 'given'.
   1. fieldMatch: the jsonpath to match the given json object.

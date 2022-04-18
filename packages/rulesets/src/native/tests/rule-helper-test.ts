@@ -87,7 +87,7 @@ describe("RuleHelperTests" ,()=> {
     assert.equal(resourceTypeMustCamelCase("Cach#e"), false)
   })
 
- test("test enum helper",()=>{
+ test("enum helper",()=>{
     let enumA = `{
         "description": "The provisioning state of the configuration store.",
         "enum": [

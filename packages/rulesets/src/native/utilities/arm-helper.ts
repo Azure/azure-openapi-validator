@@ -2,9 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { nodes } from "./jsonpath"
 import { SwaggerHelper } from "./swagger-helper"
-import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 
 export interface CollectionApiInfo {
   modelName: string
@@ -375,8 +375,8 @@ export class ArmHelper {
             p =>
               p
                 .substr(p.lastIndexOf("/providers"))
-                .replace(/{[^\/]+}/gi, "{}")
-                .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^\/]+}/gi, "{}")
+                .replace(/{[^/]+}/gi, "{}")
+                .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}")
           )
           if (matchedPaths && matchedPaths.length >= 1) {
             collectionApis.push({

@@ -1,5 +1,5 @@
-import { nodes } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
+import { nodes } from "../utilities/jsonpath"
 
 export const UniqueXmsExample = "UniqueXmsExample"
 

@@ -2,23 +2,22 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { LintResultMessage } from "@microsoft.azure/openapi-validator-core"
-import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { LintResultMessage,OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { AllResourcesMustHaveGetOperation } from "../legacyRules/AllResourcesMustHaveGetOperation"
 import { DescriptionMustNotBeNodeName } from "../legacyRules/DescriptionMustNotBeNodeName"
 import { GetCollectionResponseSchema } from "../legacyRules/GetCollectionResponseSchema"
+import { ImplementPrivateEndpointAPIs } from "../legacyRules/ImplementPrivateEndpointAPIs"
 import { NestedResourcesMustHaveListOperation } from "../legacyRules/NestedResourcesMustHaveListOperation"
 import { OperationsApiResponseSchema } from "../legacyRules/OperationsApiResponseSchema"
 import { PageableOperation } from "../legacyRules/PageableOperation"
+import { PrivateEndpointResourceSchemaValidation } from "../legacyRules/PrivateEndpointResourceSchemaValidation"
 import { RequiredReadOnlySystemData } from "../legacyRules/RequiredReadOnlySystemData"
 import { TopLevelResourcesListByResourceGroup } from "../legacyRules/TopLevelResourcesListByResourceGroup"
 import { TopLevelResourcesListBySubscription } from "../legacyRules/TopLevelResourcesListBySubscription"
-import { UniqueXmsEnumName } from "../legacyRules/UniqueXmsEnumName"
 import { UniqueModelName } from "../legacyRules/UniqueModelName"
-import { PrivateEndpointResourceSchemaValidation } from "../legacyRules/PrivateEndpointResourceSchemaValidation"
-import { ImplementPrivateEndpointAPIs } from "../legacyRules/ImplementPrivateEndpointAPIs"
-import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
+import { UniqueXmsEnumName } from "../legacyRules/UniqueXmsEnumName"
 import { UniqueXmsExample } from "../legacyRules/UniqueXmsExample"
+import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 
 describe("CompositeAzureTests", ()=> {
   test( "description should not be property name", async ()=>{
@@ -57,7 +56,7 @@ describe("CompositeAzureTests", ()=> {
     assertValidationRuleCount(messages, RequiredReadOnlySystemData, 2)
   })
 
-  test( "all nested resources must have collection operation ", async ()=>{
+  test( "all nested resources must have collection operation", async ()=>{
     const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
@@ -91,7 +90,7 @@ describe("CompositeAzureTests", ()=> {
     assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 1)
   })
 
-  test( "get collection response schema should match the ARM specification ", async ()=>{
+  test( "get collection response schema should match the ARM specification", async ()=>{
     const fileName = "armResource/cdn.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, GetCollectionResponseSchema)
     assertValidationRuleCount(messages, GetCollectionResponseSchema, 1)

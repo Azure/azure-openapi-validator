@@ -1,7 +1,7 @@
 import { writeFileSync } from "fs"
+import { join } from "path"
 import { glob } from "glob"
 import _ from "lodash"
-import { join } from "path"
 
 export const allIssues:any[] = []
 export function toMatchSnapshotForEachCode(issues:any[]) {
@@ -20,7 +20,7 @@ export function snapshotGroupByCode(version:"v2"|"v3") {
    const groupedErrors =  _.groupBy(allIssues,(issue:any)=> issue.code)
    for (const key of Object.keys(groupedErrors)) {
      const sortedIssues = _.uniqWith(groupedErrors[key],_.isEqual).sort((a:any, b:any) => {
-          let isLess: number = 0
+          let isLess = 0
           ;["id", "message", "jsonpath","source"].some((key:string) => {
             if (a[key] !== b[key]) {
               isLess = a[key] < b[key] ? -1 : 1

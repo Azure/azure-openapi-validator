@@ -1,12 +1,11 @@
-import { SwaggerInventory } from "./swaggerInventory"
-import { nodes } from "./jsonpath"
-import { IRuleLoader} from "./ruleLoader"
-import { OpenApiTypes, ValidationMessage,LintResultMessage } from "./types"
-import { IRule, IRuleSet } from "./types"
 import { LintCallBack, LintOptions,  } from "./api"
 import { OpenapiDocument } from "./document"
+import { nodes } from "./jsonpath"
+import { IRuleLoader} from "./ruleLoader"
+import { SwaggerInventory } from "./swaggerInventory"
+import { OpenApiTypes, ValidationMessage,LintResultMessage , IRule, IRuleSet } from "./types"
+
 import {getRange,convertJsonPath} from "./utils"
-import { SwaggerHelper } from "./swaggerHelper"
 
 const isLegacyRule = (rule: IRule<any>) => {
   return rule.then.execute.name === "run"
@@ -24,12 +23,6 @@ export class LintRunner<T> {
     inventory: SwaggerInventory
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
-    let resolvedSwagger
-    if (rulesToRun.some(rule => rule[1].resolved)) {
-      const swaggerHelper = new SwaggerHelper(document, inventory)
-      resolvedSwagger = await swaggerHelper.resolveSchema(openapiDefinition)
-    }
-
     const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
       if (isLegacyRule(rule)) {
         return [doc, section, location, { specPath: document, inventory}]
@@ -51,7 +44,7 @@ export class LintRunner<T> {
       if (!Array.isArray(givens)) {
         givens = [givens]
       }
-      const targetDefinition = rule.resolved ? resolvedSwagger : openapiDefinition
+      const targetDefinition = openapiDefinition
       for (const given of givens) {
         for (const section of nodes(targetDefinition, given)) {
           const fiieldMatch = rule.then.fieldMatch
@@ -91,12 +84,6 @@ export class LintRunner<T> {
     }
   }
 
-  output(msgs: string[]) {
-    msgs.forEach(m => {
-      console.log(m)
-    })
-  }
-
   async execute(swaggerPaths: string[], options: LintOptions,cb?:LintCallBack) {
     const specsPromises = []
     for (const spec of swaggerPaths) {
@@ -126,5 +113,4 @@ export class LintRunner<T> {
     return msgs
   }
 }
-
 

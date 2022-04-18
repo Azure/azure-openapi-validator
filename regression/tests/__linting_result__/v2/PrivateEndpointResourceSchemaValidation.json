@@ -7,50 +7,8 @@
   },
   {
     "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateEndpointConnectionsList\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateEndpointConnectionsList",
-    "source": "specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2021-10-15/iotdps.json:2051:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateEndpointConnectionsList\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateEndpointConnectionsList",
-    "source": "specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/iothub.json:2731:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateLinkResourceListResult",
-    "source": "specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/privateLinkResources.json:77:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateLinkResourceListResult",
-    "source": "specification/azureactivedirectory/resource-manager/Microsoft.Aadiam/stable/2020-03-01/privateLinkResources.json:117:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateLinkResourceListResult",
-    "source": "specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/PrivateLinkResources.json:133:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
     "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
     "jsonpath": "$.definitions.PrivateLinkResourceListResult",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:886:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateLinkResourceListResult",
-    "source": "specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json:133:4"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateLinkResourcesListResult\" schema does not conform to the common type definition.",
-    "jsonpath": "$.definitions.PrivateLinkResourcesListResult",
-    "source": "specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-02-01/managedClusters.json:4949:4"
   }
 ]
