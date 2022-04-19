@@ -1,7 +1,10 @@
 import {oas2, oas3} from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions";
+import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter";
 import consistentresponsebody from "./functions/consistent-response-body";
+import defaultInEnum from "./functions/default-in-enum";
 import delete204response from "./functions/delete-204-response";
+import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean";
 import errorresponse from "./functions/error-response";
 import hasheader from "./functions/has-header";
 import operationid from "./functions/operation-id";
@@ -420,6 +423,39 @@ const ruleset : any = {
       "given": "$",
       "then": {
         "function": versionpolicy
+      }
+    },
+    "az-default-in-enum": {
+      "description": "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
+      "message": "Default value should appear in the enum constraint for a schema",
+      "severity": "error",
+      "resolved": false,
+      "formats": [oas2],
+      "given": "$..[?(@.enum)]",
+      "then": {
+        "function": defaultInEnum
+      }
+    },
+    "az-enum-insteadOf-boolean": {
+      "description": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+      "message": "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+      "severity": "warn",
+      "resolved": false,
+      "formats": [oas2],
+      "given": "$..[?(@.type === 'boolean')]",
+      "then": {
+        "function": enumInsteadOfBoolean
+      }
+    },
+    "az-avoid-anonymous-parameter": {
+      "description": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+      "message": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+      "severity": "error",
+      "resolved": false,
+      "formats": [oas2],
+      "given": ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
+      "then": {
+        "function": avoidAnonymousParameter
       }
     }
   }
