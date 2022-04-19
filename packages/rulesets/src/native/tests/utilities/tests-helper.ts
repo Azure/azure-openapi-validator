@@ -2,14 +2,13 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import { LintResultMessage,OpenApiTypes, LintTester,IRuleSet, RulesObject} from "@microsoft.azure/openapi-validator-core"
 import { safeLoad } from "js-yaml"
-import { LintResultMessage,OpenApiTypes, LintTester} from "@microsoft.azure/openapi-validator-core"
-import {commonRuleset} from "../../rulesets/common"
 import {armRuleset} from "../../rulesets/arm"
-import { IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
+import {commonRuleset} from "../../rulesets/common"
+const assert = require("assert")
 const fs = require("fs")
 const path = require("path")
-const assert = require("assert")
 const pathToTestResources = "../../tests/resources/"
 
 function getRule(name:string) {

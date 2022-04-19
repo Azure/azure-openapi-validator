@@ -1,11 +1,10 @@
-import { SwaggerInventory } from "./swaggerInventory"
-import { nodes } from "./jsonpath"
-import { IRuleLoader} from "./ruleLoader"
-import { OpenApiTypes, ValidationMessage,LintResultMessage } from "./types"
-import { IRule, IRuleSet } from "./types"
 import { LintCallBack, LintOptions,  } from "./api"
 import { OpenapiDocument } from "./document"
-import { SwaggerHelper } from "./swaggerHelper"
+import { nodes } from "./jsonpath"
+import { IRuleLoader} from "./ruleLoader"
+import { SwaggerInventory } from "./swaggerInventory"
+import { OpenApiTypes, ValidationMessage,LintResultMessage , IRule, IRuleSet } from "./types"
+
 import {getRange,convertJsonPath} from "./utils"
 
 const isLegacyRule = (rule: IRule<any>) => {
@@ -24,15 +23,9 @@ export class LintRunner<T> {
     inventory: SwaggerInventory
   ) => {
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
-    const swaggerHelper = new SwaggerHelper(openapiDefinition, document, inventory)
-    let resolvedSwagger
-    if (rulesToRun.some(rule => rule[1].resolved)) {
-      resolvedSwagger = await swaggerHelper.resolveSchema(openapiDefinition)
-    }
-
     const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
       if (isLegacyRule(rule)) {
-        return [doc, section, location, { specPath: document, inventory, utils: swaggerHelper }]
+        return [doc, section, location, { specPath: document, inventory}]
       } else {
         return [
           section,
@@ -51,12 +44,12 @@ export class LintRunner<T> {
       if (!Array.isArray(givens)) {
         givens = [givens]
       }
-      const targetDefinition = rule.resolved ? resolvedSwagger : openapiDefinition
+      const targetDefinition = openapiDefinition
       for (const given of givens) {
         for (const section of nodes(targetDefinition, given)) {
-          const fieldSelector = rule.then.fieldSelector
-          if (fieldSelector) {
-            for (const subSection of nodes(section.value, fieldSelector)) {
+          const fiieldMatch = rule.then.fieldMatch
+          if (fiieldMatch) {
+            for (const subSection of nodes(section.value, fiieldMatch)) {
               const location = section.path.slice(1).concat(subSection.path.slice(1))
               const args = getArgs(rule, subSection.value, targetDefinition, location)
               for await (const message of (rule.then.execute as any)(...args)) {
@@ -84,17 +77,11 @@ export class LintRunner<T> {
         message: message.message,
         code: ruleName,
         sources: [document],
-        jsonpath: convertJsonPath(message.location as string[]),
+        jsonpath: convertJsonPath(openapiDefinition,message.location as string[]),
         range
       }
       sendMessage(msg)
     }
-  }
-
-  output(msgs: string[]) {
-    msgs.forEach(m => {
-      console.log(m)
-    })
   }
 
   async execute(swaggerPaths: string[], options: LintOptions,cb?:LintCallBack) {
@@ -126,5 +113,4 @@ export class LintRunner<T> {
     return msgs
   }
 }
-
 

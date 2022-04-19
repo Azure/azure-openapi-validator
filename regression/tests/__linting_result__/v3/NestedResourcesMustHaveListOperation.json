@@ -1,0 +1,38 @@
+[
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"DataMaskingPolicy\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.DataMaskingPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:267:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:301:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:313:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"ManagedDatabaseRestoreDetailsResult\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.ManagedDatabaseRestoreDetailsResult",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseRestoreDetails.json:140:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"ManagedInstanceQuery\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceQuery",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:165:4"
+  },
+  {
+    "code": "NestedResourcesMustHaveListOperation",
+    "message": "The nested resource \"ManagementPolicy\" does not have list operation, please add it.",
+    "jsonpath": "$.definitions.ManagementPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
+  }
+]

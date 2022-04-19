@@ -2,9 +2,11 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { nodes, stringify } from "../utilities/jsonpath"
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-import { ArmHelper } from "../utilities/armHelper"
+import { ArmHelper } from "../utilities/arm-helper"
+import { nodes, stringify } from "../utilities/jsonpath"
+import { SwaggerHelper } from "../utilities/swagger-helper"
+
 export const RequiredReadOnlySystemData = "RequiredReadOnlySystemData"
 
 rules.push({
@@ -17,14 +19,14 @@ rules.push({
   *run(doc, node, path, ctx) {
     if (doc.info && doc.info.version) {
       const apiVersion = doc.info.version
-      const matched = apiVersion.match(/\d{4}\-\d{2}\-\d{2}/g)
+      const matched = apiVersion.match(/\d{4}-\d{2}-\d{2}/g)
       const apiVersionFormated = matched && matched.length > 0 ? matched[0] : undefined
       if (!apiVersionFormated || apiVersionFormated < "2020-05-01") {
         // not a new Api Version
         return
       }
       const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
-      const swaggerUtil = ctx?.utils
+      const swaggerUtil = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
       const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions

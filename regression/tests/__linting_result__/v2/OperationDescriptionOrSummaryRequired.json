@@ -1,0 +1,8 @@
+[
+  {
+    "code": "OperationDescriptionOrSummaryRequired",
+    "message": "OperationsDiscovery_Get lacks 'description' and 'summary' property. Consider adding a 'description'/'summary' element. Accurate description/summary is essential for maintaining reference documentation.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:881:6"
+  }
+]

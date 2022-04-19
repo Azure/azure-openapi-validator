@@ -1,0 +1,608 @@
+[
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'AccessPolicy' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.AccessPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:982:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ApiProfile' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ApiProfile",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ApplicationGatewayLoadDistributionTargetPropertiesFormat' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ApplicationGatewayLoadDistributionTargetPropertiesFormat",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3608:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'BlobServiceItems' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.BlobServiceItems",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1374:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'CapacityReservationGroupInstanceView' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CapacityReservationGroupInstanceView",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10673:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'CloudServiceListResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceListResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2423:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'CloudServiceRoleListResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceRoleListResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1975:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'CloudServiceRoleProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceRoleProperties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1932:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'CloudServiceUpdate' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceUpdate",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2351:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'CloudServiceVaultAndSecretReference' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceVaultAndSecretReference",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2172:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'DedicatedHostGroupInstanceView' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.DedicatedHostGroupInstanceView",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10382:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'DiskAccessProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.DiskAccessProperties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3387:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'EncryptionSetProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.EncryptionSetProperties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2359:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'FileServiceItems' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.FileServiceItems",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:601:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'GalleryTargetExtendedLocation' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.GalleryTargetExtendedLocation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2549:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'InstanceSku' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.InstanceSku",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1736:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ListQueue' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ListQueue",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:473:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ListQueueProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ListQueueProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:488:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ListQueueServices' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ListQueueServices",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:409:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ListTableServices' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ListTableServices",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:400:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'LoadBalancerConfigurationProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.LoadBalancerConfigurationProperties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2115:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'LoadBalancerFrontendIPConfiguration' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.LoadBalancerFrontendIPConfiguration",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2098:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ManagedInstancePrivateEndpointProperty' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ManagedInstancePrivateEndpointProperty",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:952:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ManagedInstancePrivateLinkServiceConnectionStateProperty' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ManagedInstancePrivateLinkServiceConnectionStateProperty",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:961:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'MoveResourceFilterProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.MoveResourceFilterProperties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1622:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'OSFamilyListResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.OSFamilyListResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2653:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'OSVersionListResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.OSVersionListResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2554:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'PermissionScope' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.PermissionScope",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5051:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'PrivateEndpointProperty' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.PrivateEndpointProperty",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:652:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'PrivateLinkServiceConnectionStateProperty' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.PrivateLinkServiceConnectionStateProperty",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:662:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'QueryStatistics' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.QueryStatistics",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:337:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'QueueProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.QueueProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:457:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'RoleInstance' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RoleInstance",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1857:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'RoleInstanceListResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RoleInstanceListResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1896:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'RoleInstanceProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RoleInstanceProperties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1846:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'RunCommandResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RunCommandResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:1124:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SQLTempDbSettings' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SQLTempDbSettings",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:2099:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'Schedule' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.Schedule",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:2141:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ScheduledEventsProfile' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ScheduledEventsProfile",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16231:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ShareInfoElement' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ShareInfoElement",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2350:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'Signatures' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.Signatures",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1934:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SignedIdentifier' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SignedIdentifier",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:970:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SingleQueryResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SingleQueryResult",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1856:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SshPublicKey' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SshPublicKey",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5080:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'StatusCodeCount' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.StatusCodeCount",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2363:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'StorageQueue' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.StorageQueue",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:442:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SubResource' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SubResource",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1751:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SubResourceReadOnly' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SubResourceReadOnly",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16543:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'SubResourceWithColocationStatus' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SubResourceWithColocationStatus",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10282:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'TableProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.TableProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:449:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'TerminateNotificationProfile' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.TerminateNotificationProfile",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16240:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'TopQueries' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.TopQueries",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:1059:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'UnresolvedDependenciesFilterProperties' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UnresolvedDependenciesFilterProperties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1638:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'UpdateDomainListResult' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpdateDomainListResult",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2472:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'UpsertManagedServerOperationParameters' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:310:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'UpsertManagedServerOperationStep' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationStep",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:329:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'UserArtifactManage' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UserArtifactManage",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2132:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'VMScaleSetConvertToSinglePlacementGroupInput' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.VMScaleSetConvertToSinglePlacementGroupInput",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16691:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'ZoneMapping' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ZoneMapping",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6606:4"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'access' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.GrantAccessData.properties.access",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3077:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'dataDiskImages' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.VirtualMachineImageProperties.properties.dataDiskImages",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11874:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'family' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.family",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:313:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'features' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.VirtualMachineImageProperties.properties.features",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11893:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'key1' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.KeyCreationTime.properties.key1",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2543:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'key2' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.KeyCreationTime.properties.key2",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2548:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'name' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CheckNameAvailabilityRequest.properties.name",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:978:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'name' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.GalleryExtendedLocation.properties.name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2585:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'name' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationStep.properties.name",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:336:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'nextLink' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceListResult.properties.nextLink",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2432:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'nextLink' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceRoleListResult.properties.nextLink",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1984:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'nextLink' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.OSFamilyListResult.properties.nextLink",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2662:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'nextLink' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.OSVersionListResult.properties.nextLink",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2563:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'nextLink' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RoleInstanceListResult.properties.nextLink",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1905:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'nextLink' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpdateDomainListResult.properties.nextLink",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2481:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'op' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RecommendedSensitivityLabelUpdateProperties.properties.op",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:719:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'op' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SensitivityLabelUpdateProperties.properties.op",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:878:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'operations' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RecommendedSensitivityLabelUpdateList.properties.operations",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:701:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'operations' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SensitivityLabelUpdateList.properties.operations",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:860:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'order' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationStep.properties.order",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:332:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'provisioningState' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ManagedInstanceProperties.properties.provisioningState",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:587:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'rank' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.SensitivityLabelProperties.properties.rank",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:824:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'secretUrl' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceVaultAndSecretReference.properties.secretUrl",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2178:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'status' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationStep.properties.status",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:339:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'statuses' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceInstanceView.properties.statuses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2413:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'statuses' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RoleInstanceInstanceView.properties.statuses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1836:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'statusesSummary' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.InstanceViewStatusesSummary.properties.statusesSummary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2383:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'storageSizeInGB' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.storageSizeInGB",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:323:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'tags' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.Tags.properties.tags",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6361:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'tier' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.tier",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:316:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'timeRanges' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.MaintenanceWindowsProperties.properties.timeRanges",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:134:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'type' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CheckNameAvailabilityRequest.properties.type",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:981:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'vCores' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.vCores",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:319:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'value' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceListResult.properties.value",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2426:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'value' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceRoleListResult.properties.value",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1978:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'value' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.OSFamilyListResult.properties.value",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2656:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'value' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.OSVersionListResult.properties.value",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2557:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'value' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.RoleInstanceListResult.properties.value",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1899:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'value' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.UpdateDomainListResult.properties.value",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2475:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'values' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.FirewallRuleList.properties.values",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:347:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'zoneMappings' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ProviderResourceType.properties.zoneMappings",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5023:8"
+  },
+  {
+    "code": "DescriptionAndTitleMissing",
+    "message": "'zones' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.ZoneMapping.properties.zones",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6613:8"
+  }
+]

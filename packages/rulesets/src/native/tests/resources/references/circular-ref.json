@@ -1,0 +1,27 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "post async supports 202 only",
+    "description": "Some documentation.",
+    "version": "2014-04-01-preview"
+  },
+  "host": "management.azure.com",
+  "schemes": ["https"],
+  "basePath": "/",
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {},
+  "parameters": {},
+  "definitions": {
+    "ErrorResponse": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "detail": {
+          "$ref": "#/definitions/ErrorResponse"
+        }
+      }
+    }
+  }
+}

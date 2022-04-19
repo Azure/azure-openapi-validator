@@ -187,6 +187,6 @@ function errorResponse(responses:any, _opts:any, paths:any) {
   });
 
   return errors;
-};
+}
 
 export default errorResponse

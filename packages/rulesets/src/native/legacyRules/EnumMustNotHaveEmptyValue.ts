@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 export const EnumMustNotHaveEmptyValue = "EnumMustNotHaveEmptyValue"
-import { transformEnum } from "../utilities/rules-helper"
-import { isValidEnum } from "../utilities/rules-helper"
+import { transformEnum , isValidEnum } from "../utilities/rules-helper"
+
 rules.push({
   id: "R3029",
   name: EnumMustNotHaveEmptyValue,

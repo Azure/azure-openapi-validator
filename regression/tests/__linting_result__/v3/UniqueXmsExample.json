@@ -1,0 +1,296 @@
+[
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Copy the long term retention backup.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy\"].post[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create a deployment that will deploy a templateSpec with the given resourceId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put[\"x-ms-examples\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Delete the long term retention backup.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Delete the long term retention backup.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Enable cluster monitoring",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].delete[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Enable cluster monitoring",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].get[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Enable cluster monitoring",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Enable cluster monitoring",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].delete[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Enable cluster monitoring",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].get[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the location.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionBackups\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the location.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstanceBackups\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the managed instance.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionManagedInstanceBackups\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get all long term retention backups under the server.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionBackups\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get an alert rule status",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}/status/{statusName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get provider resource types.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\"].get[\"x-ms-examples\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get the long term retention backup.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get the long term retention policy for the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get the short term retention policy for the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get the subscription usages for specific location",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/checkNameAvailability\"].post[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get the subscription usages for specific location",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/validateCreateRequest\"].post[\"x-ms-examples\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: GetHealthHistoryByResource",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses\"].get[\"x-ms-examples\"]",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets private endpoint connection.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets private endpoint connection.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets the diagnostic setting",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Gets the diagnostic setting",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List action groups",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/actionGroups\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List action groups",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List alert rules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/alertrules\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List autoscale settings",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/autoscalesettings\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List database columns",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseColumns.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List database usage metrics",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metricDefinitions\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List database usage metrics",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/metricDefinitions\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List database usage metrics",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/metrics\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List job step target executions",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List managed database columns",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns\"].get[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseColumns.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List metric alert rules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: List rules",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules\"].get[\"x-ms-examples\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Predict template changes at management group scope",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post[\"x-ms-examples\"]",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: StorageAccountGetBlobInventoryPolicy",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies\"].get[\"x-ms-examples\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: TableOperationPutOrPatchAcls",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Update a sync group",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Update the long term retention backup.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update\"].post[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Update the short term retention policy for the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Update the short term retention policy for the database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Update the short term retention policy for the restorable dropped database.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].patch[\"x-ms-examples\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Workflows_Get",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}\"].get[\"x-ms-examples\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1:0"
+  },
+  {
+    "code": "UniqueXmsExample",
+    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Workflows_Get",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}\"].get[\"x-ms-examples\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1:0"
+  }
+]

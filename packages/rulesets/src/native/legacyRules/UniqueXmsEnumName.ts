@@ -3,9 +3,9 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
+import { nodes, stringify } from "../utilities/jsonpath"
 import { isValidEnum } from "../utilities/rules-helper"
 export const UniqueXmsEnumName = "UniqueXmsEnumName"
-import { nodes, stringify } from "../utilities/jsonpath"
 
 rules.push({
   id: "R4005",

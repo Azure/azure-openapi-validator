@@ -1,8 +1,8 @@
-import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
-import { SwaggerInventory } from "./swaggerInventory";
-import { nodes, stringify } from "./jsonpath"
-import _ from "lodash"
 import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
+import _ from "lodash"
+import { nodes, stringify } from "./jsonpath"
+import { SwaggerInventory } from "./swaggerInventory";
+import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
 /**
  *
  * @param doc
@@ -11,7 +11,7 @@ import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
 export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
-  const getRefModel = (refValue: string, visited: string[]) => {
+  const getRefModel = (docToSearch:any,refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
     }
@@ -19,10 +19,10 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     const refSlices = parseJsonRef(refValue)
     const pathExpression = refSlices[1].split("/").slice(1)
     try {
-      const result = nodes(doc, stringify(["$", ...pathExpression]))
+      const result = nodes(docToSearch, stringify(pathExpression))
       return result.length !== 0 ? result[0].value : undefined
     } catch (err) {
-      throw err
+      return undefined
     }
   }
 
@@ -30,9 +30,9 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
       if (inventory && refSlices[0]) {
-        doc = inventory.getSingleDocument(refSlices[0])
+        doc = inventory.getDocuments(refSlices[0])
       }
-      schema = getRefModel(`#${refSlices[1]}`, [])
+      schema = getRefModel(doc,`#${refSlices[1]}`, [])
       return followReference(doc, schema, inventory)
     }
     return schema
@@ -73,7 +73,7 @@ export function traverse(obj: unknown, path: string[], visited: Set<any>, option
       traverse(item, [...path, index.toString()], visited, options, visitor)
     }
   } else if (typeof obj === "object") {
-    for (const [key, item] of Object.entries(obj!)) {
+    for (const [key, item] of Object.entries(obj)) {
       traverse(item, [...path, key], visited, options, visitor)
     }
   }
@@ -110,13 +110,25 @@ export const defaultFileSystem = {
 }
 
 export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPath) {
-  const document = inventory.getDocument(specPath)
+  const document = inventory.getInternalDocument(specPath)
   if (path && path[0] === "$") {
     path = path.slice(1)
   }
   return document?.getPositionFromJsonPath(path)
 }
 
-export function convertJsonPath(path:string[]) {
-  return path.map(v => (Number.isNaN(+v) ? v : Number.parseInt(v as string)))
+export function convertJsonPath(doc:any, paths:string[]) {
+  if (paths && doc) {
+    const convertedPaths:JsonPath = []
+    paths = paths[0] === "$" ? paths.slice(1) : paths
+    for (const path of paths) {
+      if (!doc || typeof doc !== "object") {
+        return convertedPaths
+      }
+      convertedPaths.push(Array.isArray(doc) ? Number.parseInt(path):path)
+      doc = doc[path]
+    }
+    return convertedPaths
+  }
+  return []
 }

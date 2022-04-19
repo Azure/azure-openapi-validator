@@ -1,7 +1,7 @@
 import { fileURLToPath, pathToFileURL } from "url"
 import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
-import { nodes, stringify } from "./jsonpath"
 import _ from "lodash"
+import { nodes, stringify } from "./jsonpath"
 /**
  *
  * @param doc
@@ -9,8 +9,8 @@ import _ from "lodash"
  * @param inventory
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
-export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
-  const getRefModel = (refValue: string, visited: string[]) => {
+export function crwalReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
+  const getRefModel = (docToSearch:any,refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
     }
@@ -18,10 +18,10 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     const refSlices = parseJsonRef(refValue)
     const pathExpression = refSlices[1].split("/").slice(1)
     try {
-      const result = nodes(doc, stringify(["$", ...pathExpression]))
+      const result = nodes(docToSearch, stringify(pathExpression))
       return result.length !== 0 ? result[0].value : undefined
     } catch (err) {
-      throw err
+      return undefined
     }
   }
 
@@ -29,10 +29,10 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
     if (schema.$ref) {
       const refSlices = parseJsonRef(schema.$ref)
       if (inventory && refSlices[0]) {
-        doc = inventory.getSingleDocument(refSlices[0])
+        doc = inventory.getDocuments(refSlices[0])
       }
-      schema = getRefModel(`#${refSlices[1]}`, [])
-      return followReference(doc, schema, inventory)
+      schema = getRefModel(doc,`#${refSlices[1]}`, [])
+      return crwalReference(doc, schema, inventory)
     }
     return schema
   }
@@ -52,7 +52,7 @@ export const parseJsonRef = (ref: string): string[] => {
   return ref.split("#")
 }
 
-export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj:any, path:string[], context:any) => boolean) :void{
+export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj:any, path:string[], additionalInfo:any) => boolean) :void{
   if (!obj) {
     return
   }
@@ -70,7 +70,7 @@ export function traverse(obj: unknown, path: string[], visited: Set<any>, option
       traverse(item, [...path, index.toString()], visited, options, visitor)
     }
   } else if (typeof obj === "object") {
-    for (const [key, item] of Object.entries(obj!)) {
+    for (const [key, item] of Object.entries(obj)) {
       traverse(item, [...path, key], visited, options, visitor)
     }
   }

@@ -2,8 +2,6 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { SwaggerHelper } from "./swaggerHelper"
-
 export enum OpenApiTypes {
   "default" = 1 << 0,
   "arm" = 1 << 1,
@@ -37,7 +35,7 @@ export const rules: Rule[] = []
 export type RuleThen<T> = {
   execute: IRuleFunction<T>
   readonly options?: T
-  fieldSelector?: string
+  fieldMatch?: string
 }
 
 export interface IRule<T> {
@@ -46,7 +44,6 @@ export interface IRule<T> {
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
   readonly openapiType: OpenApiTypes
   readonly mergeState?: MergeStates
-  readonly resolved?: boolean
   readonly severity: "error" | "warning"
   readonly given?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples , the strings to query data via jsonpath-plus.
   readonly then: RuleThen<T> // the rule procession steps
@@ -56,7 +53,6 @@ export type RulesObject = Record<string, IRule<unknown>>
 
 export interface RuleContextLegacy {
   specPath: string
-  utils?: SwaggerHelper
   inventory?: ISwaggerInventory,
 }
 
@@ -81,18 +77,12 @@ export type IRuleFunction<T> = (
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface ISwaggerInventory {
-  referencesOf(specPath: string): string[],
-  getSingleDocument(specPath: string):any
-  getAllDocuments(): Map<string,any>
+  referencesOf(specPath: string): Record<string,any>,
+  getDocuments(docPath?:string): Record<string,any> | any
 }
 
 export interface ISwaggerHelper {
-  getOperationIdFromPath(path: string, code:string):any,
-   getDefinitionByName(modelName: string):any,
-   getPropertyOfModelName(modelName: string, propertyName: string):any,
-   getPropertyOfModel(sourceModel: any, propertyName: string):any,
-   resolveSchema(schema: any | string):Promise<any>,
-   getResolvedRef(ref: string):any
+  resolveSchema(schema: any | string):Promise<any>,
 }
 
 export interface IRuleSet {

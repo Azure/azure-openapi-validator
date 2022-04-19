@@ -2,7 +2,7 @@ trigger:
 - master
 
 variables:
-  NodeVersion: '10.x'
+  NodeVersion: '12.x'
 
 jobs:
   - job: 'Build'
@@ -15,36 +15,29 @@ jobs:
         inputs:
           versionSpec: '$(NodeVersion)'
         displayName: 'Install Node.js $(NodeVersion)'
-      - task: UseDotNet@2
-        inputs:
-          packageType: 'sdk'
-          version: '2.x'
 
-      - task: Npm@1
-        displayName: 'npm install'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
         inputs:
           verbose: false
 
-      - script: 'gulp build'
-        displayName: 'gulp build'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
 
-      - script: 'gulp test'
-        displayName: 'gulp test'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
+
+      - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
+        displayName: 'rush build'
         
-      - script: 'gulp dotnet/pack'
-        displayName: 'gulp dotnet/pack'
-
-      - script: 'cd src/dotnet && tar -czvf azure-classic-openapi-validator.tgz AutoRest'
-        displayName: 'pack dir: AutoRest'
-
-      - script: 'gulp pack/typescript'
-        displayName: 'gulp pack typescript'
+      - script: 'node common/scripts/install-run-rush.js pack'
+        displayName: 'rush pack'
 
       - task: CopyFiles@2
         displayName: 'Copy Files to: dist'
         inputs:
           Contents: |
-            src/**/*.tgz
+            packages/**/*.tgz
           TargetFolder: '$(Build.SourcesDirectory)/dist'
 
       - task: PublishBuildArtifacts@1

@@ -1,14 +1,13 @@
 import {oas2, oas3} from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions";
-import {oas} from "@stoplight/spectral-rulesets"
 import consistentresponsebody from "./functions/consistent-response-body";
 import delete204response from "./functions/delete-204-response";
 import errorresponse from "./functions/error-response";
 import hasheader from "./functions/has-header";
 import operationid from "./functions/operation-id";
 import paginationresponse from "./functions/pagination-response";
-import paramnamesunique from "./functions/param-names-unique";
 import paramnames from "./functions/param-names";
+import paramnamesunique from "./functions/param-names-unique";
 import paramorder from "./functions/param-order";
 import patchcontenttype from "./functions/patch-content-type";
 import pathparamnames from "./functions/path-param-names";
@@ -19,11 +18,8 @@ import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean";
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter";
 const ruleset : any = {
   extends:[
-    oas
   ],
   rules: {
-    "info-contact": "off",
-    "no-$ref-siblings": "off",
     "az-additional-properties-and-properties": {
       "description": "Don't specify additionalProperties as a sibling of properties.",
       "severity": "warn",
@@ -242,6 +238,7 @@ const ruleset : any = {
       "severity": "warn",
       "formats": [oas2, oas3],
       "given": "$.paths",
+      resolved: false,
       "then": {
         "function": pathparamnames
       }

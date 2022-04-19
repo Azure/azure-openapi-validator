@@ -1,5 +1,5 @@
-import { isExample, traverse ,isUriAbsolute} from "./utils"
 import { resolveUri } from "@azure-tools/uri";
+import { isExample, traverse ,isUriAbsolute} from "./utils"
 
 export class Resolver {
   private references = new Set<string>()

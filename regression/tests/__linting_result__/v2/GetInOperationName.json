@@ -1,0 +1,20 @@
+[
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'LocationOperationStatus' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}\"].get.operationId",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3102:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'Providers_ProviderPermissions' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.operationId",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'VirtualMachines_InstanceView' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4001:8"
+  }
+]

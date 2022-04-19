@@ -1,5 +1,5 @@
-import { rules } from "@microsoft.azure/openapi-validator-core"
-import { IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
+import { rules , IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
+
 // register rules
 require("../legacyRules/PageableOperation")
 require("../legacyRules/DescriptionMustNotBeNodeName")
@@ -30,7 +30,7 @@ require("../legacyRules/TopLevelResourcesListByResourceGroup")
 require("../legacyRules/TopLevelResourcesListBySubscription")
 require("../legacyRules/OperationsApiResponseSchema")
 require("../legacyRules/Rpaas_CreateOperationAsyncResponseValidation")
-require("../legacyRules/Rpaas_DeleteOperationAsyncResponseValidation")
+require("../legacyRules/DeleteOperationAsyncResponseValidation")
 require("../legacyRules/Rpaas_PostOperationAsyncResponseValidation")
 require("../legacyRules/Rpaas_ResourceProvisioningState")
 require("../legacyRules/PreviewVersionOverOneYear")

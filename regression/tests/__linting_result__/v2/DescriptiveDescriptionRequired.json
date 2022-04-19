@@ -1,0 +1,8 @@
+[
+  {
+    "code": "DescriptiveDescriptionRequired",
+    "message": "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
+    "jsonpath": "$.definitions.CloudServiceRoleProperties.description",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1933:6"
+  }
+]

@@ -1,0 +1,206 @@
+[
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ApplicationGateways_ListAvailableWafRuleSets' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:1001:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'AzureFirewalls_Get' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:93:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'CapacityReservationGroups_Get' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5079:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'CapacityReservations_Get' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5462:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'DedicatedHostGroups_Get' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:930:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'DiagnosticSettingsCategory_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories\"].get",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:79:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'DiagnosticSettings_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings\"].get",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:162:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'DiskAccesses_GetPrivateLinkResources' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateLinkResources\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1410:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ExpressRouteConnections_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4513:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ExpressRouteGateways_ListByResourceGroup' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4041:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ExpressRouteGateways_ListBySubscription' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteGateways\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4005:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'FileServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:20:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'FirewallPolicyIdpsSignaturesOverrides_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:822:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'Locations_ListUsages' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/usages\"].get",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:77:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'MetricAlertsStatus_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}/status\"].get",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:341:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'MetricAlertsStatus_ListByName' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}/status/{statusName}\"].get",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:383:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'MoveCollections_ListRequiredFor' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/requiredFor\"].get",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:999:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'OperationsDiscovery_Get' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:881:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'Operations_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Insights/operations\"].get",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json:40:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'Operations_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.ResourceHealth/operations\"].get",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:128:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'PrivateLinkResources_ListByCluster' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateLinkResources\"].get",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateLinkResources.json:38:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'PrivateLinkResources_ListByStorageAccount' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1442:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'PrivateLinkResources_ListByStorageSyncService' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources\"].get",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:524:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ProviderResourceTypes_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\"].get",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2313:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'Providers_ProviderPermissions' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2089:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'QueueServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:20:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ResourceNavigationLinks_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:729:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'ServiceAssociationLinks_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ServiceAssociationLinks\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:783:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'SupportedSecurityProviders' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:800:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'TableServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:20:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'VirtualMachineExtensions_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2249:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'VirtualMachineRunCommands_Get' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:81:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'VirtualMachineScaleSetVMExtensions_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8484:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'VirtualNetworks_CheckIPAddressAvailability' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1162:6"
+  }
+]

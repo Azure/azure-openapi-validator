@@ -1,0 +1,20 @@
+[
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseAdvisors_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseAdvisors_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseRecommendedActions_ListByDatabaseAdvisor\" does not match the response definition in the individual GET  operation \"DatabaseRecommendedActions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:19:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerAdvisors_ListByServer\" does not match the response definition in the individual GET  operation \"ServerAdvisors_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:19:4"
+  }
+]

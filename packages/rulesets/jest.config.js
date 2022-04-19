@@ -38,7 +38,7 @@ module.exports = {
     "!spectral/functions/*.d.ts",
   ],
   coverageThreshold: {
-    "./spectral/functions/*.ts": {
+    "src/spectral/functions/*.ts": {
       "statements": 80
     }
   },

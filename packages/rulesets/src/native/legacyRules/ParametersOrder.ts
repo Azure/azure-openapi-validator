@@ -1,5 +1,5 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-import { followReference } from "../utilities/ref-helper"
+import { crwalReference } from "../utilities/ref-helper"
 export const ParametersOrder = "ParametersOrder"
 
 function getParametersFromPath(apiapiPath: string) {
@@ -14,7 +14,7 @@ function isMethodParameter(schema: any, doc: any) {
   if (!schema.$ref && schema.in === "path") {
     return true
   }
-  const resolvedParameter = followReference(doc, schema)
+  const resolvedParameter = crwalReference(doc, schema)
   if (resolvedParameter && resolvedParameter.in === "path" && resolvedParameter["x-ms-parameter-location"] === "method") {
     return true
   }
@@ -38,7 +38,7 @@ rules.push({
         const resolvedPathParameters = commonParameters
           .concat(node[apiPath][method].parameters || [])
           .filter((x:any) => isMethodParameter(x, doc))
-          .map((x:any) => followReference(doc, x)?.name)
+          .map((x:any) => crwalReference(doc, x)?.name)
         const parametersInPath = getParametersFromPath(apiPath).filter(p => resolvedPathParameters.includes(p))
         if (parametersInPath.some((value, index) => index < resolvedPathParameters.length && resolvedPathParameters[index] !== value)) {
           yield { message: msg.replace("{0}", resolvedPathParameters.join(",")), location: path.concat(apiPath, method) }

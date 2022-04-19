@@ -1,0 +1,44 @@
+[
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:40:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:260:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:70:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:103:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:88:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents/{incidentName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents/{incidentName}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:39:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/{resourceUri}/providers/microsoft.insights/metricNamespaces'",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/microsoft.insights/metricNamespaces\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-12-01-preview/metricNamespaces_API.json:36:4"
+  }
+]

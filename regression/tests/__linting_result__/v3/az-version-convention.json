@@ -1,0 +1,8 @@
+[
+  {
+    "code": "az-version-convention",
+    "message": "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
+    "jsonpath": "$.info.version",
+    "source": ""
+  }
+]

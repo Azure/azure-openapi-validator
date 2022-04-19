@@ -15,7 +15,7 @@ rules.push({
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
   appliesTo_JsonQuery: "$..*[?(@property === 'enum')]^",
   *run(doc, node, path) {
-    const msg = `Enum must not contain duplicated value (case insentive).`
+    const msg = `Enum must not contain duplicated value (case insentive).`
     if (node.enum && path.indexOf("x-ms-examples") === -1 && isValidEnum(node)) {
       const enumList = transformEnum(node.type, node.enum)
       const caseInsensitiveSet = new Set<string>()

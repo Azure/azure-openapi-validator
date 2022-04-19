@@ -11,11 +11,45 @@
    */
   "commands": [
     {
+      "name": "build",
+      "commandKind": "bulk",
+      "summary": "Build all projects that haven't been built, or have changed since they were last built",
+      "incremental": true,
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
+    {
       "commandKind": "global",
       "safeForSimultaneousRushProcesses": true,
       "name": "test",
       "summary": "(CUSTOM) Runs test on all projects.",
       "shellCommand": "node eng/scripts/test.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "pack",
+      "summary": "(CUSTOM) Runs pack on all projects.",
+      "shellCommand": "node eng/scripts/pack.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "regression-test",
+      "summary": "(CUSTOM) Runs regression test",
+      "shellCommand": "node eng/scripts/regression-test.js"
+    },
+    {
+      "commandKind": "bulk",
+      "name": "lint:fix",
+      "summary": "Fix linting errors for projects. Runs `npm run lint:fix` on all projects.",
+      "enableParallelism": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "lint",
+      "summary": "Lint projects. Runs `npm run lint` on all projects.",
+      "enableParallelism": true
     }
   ]
 }

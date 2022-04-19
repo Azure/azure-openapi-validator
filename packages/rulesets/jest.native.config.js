@@ -34,11 +34,6 @@ module.exports = {
   preset: 'ts-jest', 
   collectCoverageFrom: [
   ],
-  coverageThreshold: {
-    "native/functions/*.ts": {
-      "statements": 80
-    }
-  },
   moduleNameMapper: {
   }
 }

@@ -1,0 +1,1298 @@
+[
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: acceleratedNetwork",
+    "jsonpath": "$.definitions.SupportedCapabilities.properties.acceleratedNetwork",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3003:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: allowExtensionOperations",
+    "jsonpath": "$.definitions.OSProfile.properties.allowExtensionOperations",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13034:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: allowExtensionOperations",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetOSProfile.properties.allowExtensionOperations",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14405:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: allowModelOverride",
+    "jsonpath": "$.definitions.CloudServiceProperties.properties.allowModelOverride",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2281:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: allowPartialScopes",
+    "jsonpath": "$.definitions.QueryRequestOptions.properties.allowPartialScopes",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:224:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: asyncExecution",
+    "jsonpath": "$.definitions.VirtualMachineRunCommandProperties.properties.asyncExecution",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:1236:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoDownloadCertificate",
+    "jsonpath": "$.definitions.CacheUsernameDownloadSettings.properties.autoDownloadCertificate",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1903:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoMitigate",
+    "jsonpath": "$.definitions.LogSearchRule.properties.autoMitigate",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:612:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoMitigate",
+    "jsonpath": "$.definitions.MetricAlertProperties.properties.autoMitigate",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:536:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoMitigate",
+    "jsonpath": "$.definitions.MetricAlertPropertiesPatch.properties.autoMitigate",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:608:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoReplaceOnFailure",
+    "jsonpath": "$.definitions.DedicatedHostProperties.properties.autoReplaceOnFailure",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10573:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoUpgradeMinorVersion",
+    "jsonpath": "$.definitions.CloudServiceExtensionProperties.properties.autoUpgradeMinorVersion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2199:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoUpgradeMinorVersion",
+    "jsonpath": "$.definitions.VirtualMachineExtensionProperties.properties.autoUpgradeMinorVersion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11191:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoUpgradeMinorVersion",
+    "jsonpath": "$.definitions.VirtualMachineExtensionUpdateProperties.properties.autoUpgradeMinorVersion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11245:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: autoUpgradeMinorVersion",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetExtensionProperties.properties.autoUpgradeMinorVersion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15167:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: automaticOSUpgradeSupported",
+    "jsonpath": "$.definitions.AutomaticOSUpgradeProperties.properties.automaticOSUpgradeSupported",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11843:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: backupDriveManifest",
+    "jsonpath": "$.definitions.JobDetails.properties.backupDriveManifest",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:656:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: backupSystemDbs",
+    "jsonpath": "$.definitions.AutoBackupSettings.properties.backupSystemDbs",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1761:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: burstingEnabled",
+    "jsonpath": "$.definitions.DiskProperties.properties.burstingEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2205:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: burstingEnabled",
+    "jsonpath": "$.definitions.DiskUpdateProperties.properties.burstingEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2699:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: cancelRequested",
+    "jsonpath": "$.definitions.JobDetails.properties.cancelRequested",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:666:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: clusterMonitoringEnabled",
+    "jsonpath": "$.definitions.AzureMonitorResponse.properties.clusterMonitoringEnabled",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:586:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: clusterMonitoringEnabled",
+    "jsonpath": "$.definitions.ClusterMonitoringResponse.properties.clusterMonitoringEnabled",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:540:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: communityGalleryEnabled",
+    "jsonpath": "$.definitions.CommunityGalleryInfo.properties.communityGalleryEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1886:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: consentToAuthorization",
+    "jsonpath": "$.definitions.ProviderConsentDefinition.properties.consentToAuthorization",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6558:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: createDefaultAvailabilityGroupIfNotExist",
+    "jsonpath": "$.definitions.AvailabilityGroupListenerProperties.properties.createDefaultAvailabilityGroupIfNotExist",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:991:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: disableAutomaticRollback",
+    "jsonpath": "$.definitions.AutomaticOSUpgradePolicy.properties.disableAutomaticRollback",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13993:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: disableGatewayAuth",
+    "jsonpath": "$.definitions.ApplicationGetHttpsEndpoint.properties.disableGatewayAuth",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:329:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: disablePasswordAuthentication",
+    "jsonpath": "$.definitions.LinuxConfiguration.properties.disablePasswordAuthentication",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12947:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: dividePerInstance",
+    "jsonpath": "$.definitions.MetricTrigger.properties.dividePerInstance",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:465:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: doNotRunExtensionsOnOverprovisionedVMs",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetProperties.properties.doNotRunExtensionsOnOverprovisionedVMs",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15421:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: doNotRunExtensionsOnOverprovisionedVMs",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateProperties.properties.doNotRunExtensionsOnOverprovisionedVMs",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15494:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enable",
+    "jsonpath": "$.definitions.AssessmentSettings.properties.enable",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1938:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enable",
+    "jsonpath": "$.definitions.AutoBackupSettings.properties.enable",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1724:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enable",
+    "jsonpath": "$.definitions.AutoPatchingSettings.properties.enable",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1687:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enable",
+    "jsonpath": "$.definitions.KeyVaultCredentialSettings.properties.enable",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1830:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enable",
+    "jsonpath": "$.definitions.Schedule.properties.enable",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:2144:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enable",
+    "jsonpath": "$.definitions.TerminateNotificationProfile.properties.enable",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16247:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAcceleratedNetworking",
+    "jsonpath": "$.definitions.NetworkInterfaceResourceSettings.properties.enableAcceleratedNetworking",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2080:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAcceleratedNetworking",
+    "jsonpath": "$.definitions.VirtualMachineNetworkInterfaceConfigurationProperties.properties.enableAcceleratedNetworking",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13337:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAcceleratedNetworking",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetNetworkConfigurationProperties.properties.enableAcceleratedNetworking",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14814:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAcceleratedNetworking",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateNetworkConfigurationProperties.properties.enableAcceleratedNetworking",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14865:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAutomaticOSUpgrade",
+    "jsonpath": "$.definitions.AutomaticOSUpgradePolicy.properties.enableAutomaticOSUpgrade",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13989:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAutomaticUpdates",
+    "jsonpath": "$.definitions.WindowsConfiguration.properties.enableAutomaticUpdates",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12890:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAutomaticUpgrade",
+    "jsonpath": "$.definitions.VirtualMachineExtensionProperties.properties.enableAutomaticUpgrade",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11195:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAutomaticUpgrade",
+    "jsonpath": "$.definitions.VirtualMachineExtensionUpdateProperties.properties.enableAutomaticUpgrade",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11249:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableAutomaticUpgrade",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetExtensionProperties.properties.enableAutomaticUpgrade",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15171:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableComputeIsolation",
+    "jsonpath": "$.definitions.ComputeIsolationProperties.properties.enableComputeIsolation",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1254:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableCrossZoneUpgrade",
+    "jsonpath": "$.definitions.RollingUpgradePolicy.properties.enableCrossZoneUpgrade",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14053:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableDdosProtection",
+    "jsonpath": "$.definitions.VirtualNetworkResourceSettings.properties.enableDdosProtection",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1994:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableEncryption",
+    "jsonpath": "$.definitions.AutoBackupSettings.properties.enableEncryption",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1728:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableFpga",
+    "jsonpath": "$.definitions.VirtualMachineNetworkInterfaceConfigurationProperties.properties.enableFpga",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13341:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableFpga",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetNetworkConfigurationProperties.properties.enableFpga",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14818:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableFpga",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateNetworkConfigurationProperties.properties.enableFpga",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14869:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableHealthCheck",
+    "jsonpath": "$.definitions.GalleryApplicationVersionPublishingProfile.properties.enableHealthCheck",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2101:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableHotpatching",
+    "jsonpath": "$.definitions.PatchSettings.properties.enableHotpatching",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16746:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableIPForwarding",
+    "jsonpath": "$.definitions.VirtualMachineNetworkInterfaceConfigurationProperties.properties.enableIPForwarding",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13345:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableIPForwarding",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetNetworkConfigurationProperties.properties.enableIPForwarding",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14837:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableIPForwarding",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateNetworkConfigurationProperties.properties.enableIPForwarding",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14888:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enableRegionalMdmAccount",
+    "jsonpath": "$.definitions.MetricSpecifications.properties.enableRegionalMdmAccount",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:172:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.ActionGroup.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:739:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.ActionGroupPatch.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1254:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.AutomaticRepairsPolicy.properties.enabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13047:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.AutoscaleSetting.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:759:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.BootDiagnostics.properties.enabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13427:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.DiskEncryptionSettings.properties.enabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12396:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.EncryptionSettingsCollection.properties.enabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2403:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.LogSettings.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:270:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.MetricAlertProperties.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:503:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.MetricAlertPropertiesPatch.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:575:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.MetricSettings.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:250:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.RetentionPolicy.properties.enabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:222:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: enabled",
+    "jsonpath": "$.definitions.SpotRestorePolicy.properties.enabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14092:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: encryptDataDisks",
+    "jsonpath": "$.definitions.Role.properties.encryptDataDisks",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1130:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: encryptLdapConnection",
+    "jsonpath": "$.definitions.CacheUsernameDownloadSettings.properties.encryptLdapConnection",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1895:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: encryptionAtHost",
+    "jsonpath": "$.definitions.DiskEncryptionProperties.properties.encryptionAtHost",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1909:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: encryptionAtHost",
+    "jsonpath": "$.definitions.SecurityProfile.properties.encryptionAtHost",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12723:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: excludeFromLatest",
+    "jsonpath": "$.definitions.GalleryArtifactPublishingProfileBase.properties.excludeFromLatest",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2462:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: excludeKbsRequiringReboot",
+    "jsonpath": "$.definitions.WindowsParameters.properties.excludeKbsRequiringReboot",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11586:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: extendedGroups",
+    "jsonpath": "$.definitions.CacheUsernameDownloadSettings.properties.extendedGroups",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1860:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: fetchAaddsResource",
+    "jsonpath": "$.definitions.ClusterCreateRequestValidationParameters.properties.fetchAaddsResource",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:771:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: fillGapWithZero",
+    "jsonpath": "$.definitions.MetricSpecifications.properties.fillGapWithZero",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:188:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: fillGapWithZero",
+    "jsonpath": "$.definitions.OperationResourceMetricSpecification.properties.fillGapWithZero",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3807:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: forceDeletion",
+    "jsonpath": "$.definitions.ScaleInPolicy.properties.forceDeletion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14082:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: forceDeletion",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].delete.parameters[2].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6448:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: forceDeletion",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/delete\"].post.parameters[3].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6649:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: forceDeletion",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].delete.parameters[3].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8843:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: forceDeletion",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].delete.parameters[2].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3889:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: getSecureVMGuestStateSAS",
+    "jsonpath": "$.definitions.GrantAccessData.properties.getSecureVMGuestStateSAS",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3094:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: groupByClientApplicationId",
+    "jsonpath": "$.definitions.LogAnalyticsInputBase.properties.groupByClientApplicationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16655:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: groupByOperationName",
+    "jsonpath": "$.definitions.LogAnalyticsInputBase.properties.groupByOperationName",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16647:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: groupByResourceName",
+    "jsonpath": "$.definitions.LogAnalyticsInputBase.properties.groupByResourceName",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16651:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: groupByThrottlePolicy",
+    "jsonpath": "$.definitions.LogAnalyticsInputBase.properties.groupByThrottlePolicy",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16643:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: groupByUserAgent",
+    "jsonpath": "$.definitions.LogAnalyticsInputBase.properties.groupByUserAgent",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16659:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: hibernate",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate\"].post.parameters[2].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4126:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: hibernationEnabled",
+    "jsonpath": "$.definitions.AdditionalCapabilities.properties.hibernationEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12800:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: incremental",
+    "jsonpath": "$.definitions.SnapshotProperties.properties.incremental",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2311:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: initialSyncComplete",
+    "jsonpath": "$.definitions.AaddsResourceDetails.properties.initialSyncComplete",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:842:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isAccessible",
+    "jsonpath": "$.definitions.EndpointDetail.properties.isAccessible",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1133:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isActive",
+    "jsonpath": "$.definitions.Incident.properties.isActive",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:141:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isActive",
+    "jsonpath": "$.definitions.OSVersionProperties.properties.isActive",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2518:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isActive",
+    "jsonpath": "$.definitions.OSVersionPropertiesBase.properties.isActive",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2590:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isCustomerInitiatedMaintenanceAllowed",
+    "jsonpath": "$.definitions.MaintenanceRedeployStatus.properties.isCustomerInitiatedMaintenanceAllowed",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13622:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDataAction",
+    "jsonpath": "$.definitions.ApiOperation.properties.isDataAction",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1355:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDataAction",
+    "jsonpath": "$.definitions.OperationsDiscovery.properties.isDataAction",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1781:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDataAction",
+    "jsonpath": "$.definitions.StoragePoolRPOperation.properties.isDataAction",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1021:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDataAction",
+    "jsonpath": "$.definitions.applianceOperation.properties.isDataAction",
+    "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:564:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDefault",
+    "jsonpath": "$.definitions.OSVersionProperties.properties.isDefault",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2513:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDefault",
+    "jsonpath": "$.definitions.OSVersionPropertiesBase.properties.isDefault",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2585:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDefault",
+    "jsonpath": "$.definitions.StorageAccount.properties.isDefault",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1158:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDefault",
+    "jsonpath": "$.definitions.VersionSpec.properties.isDefault",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:304:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isDimensionRequired",
+    "jsonpath": "$.definitions.MetricDefinition.properties.isDimensionRequired",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/metricDefinitions_API.json:175:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isEnabled",
+    "jsonpath": "$.definitions.AlertRule.properties.isEnabled",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:640:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isEncryptionInTransitEnabled",
+    "jsonpath": "$.definitions.EncryptionInTransitProperties.properties.isEncryptionInTransitEnabled",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1920:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isGlobalRunbook",
+    "jsonpath": "$.definitions.AutomationRunbookReceiver.properties.isGlobalRunbook",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1060:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isInternal",
+    "jsonpath": "$.definitions.MetricSpecifications.properties.isInternal",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:200:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isLegacyLogAnalyticsRule",
+    "jsonpath": "$.definitions.LogSearchRule.properties.isLegacyLogAnalyticsRule",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:599:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isMigrated",
+    "jsonpath": "$.definitions.MetricAlertProperties.properties.isMigrated",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:556:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isMigrated",
+    "jsonpath": "$.definitions.MetricAlertPropertiesPatch.properties.isMigrated",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:628:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isOptimizeForAdHocWorkloadsEnabled",
+    "jsonpath": "$.definitions.SQLInstanceSettings.properties.isOptimizeForAdHocWorkloadsEnabled",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:2065:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isRServicesEnabled",
+    "jsonpath": "$.definitions.AdditionalFeaturesServerConfigurations.properties.isRServicesEnabled",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:2046:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isResolveRequired",
+    "jsonpath": "$.definitions.MoveResourceProperties.properties.isResolveRequired",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1317:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isServiceRole",
+    "jsonpath": "$.definitions.RoleDefinition.properties.isServiceRole",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6482:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isSoftDeleteEnabled",
+    "jsonpath": "$.definitions.SoftDeletePolicy.properties.isSoftDeleteEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1904:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isdir",
+    "jsonpath": "$.definitions.RestoreFileSpec.properties.isdir",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:4016:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: istransitioning",
+    "jsonpath": "$.definitions.SubscriptionState.properties.istransitioning",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3256:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: latestModelApplied",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVMProperties.properties.latestModelApplied",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16012:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: ldapsEnabled",
+    "jsonpath": "$.definitions.AaddsResourceDetails.properties.ldapsEnabled",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:846:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: maintenanceWindowExceeded",
+    "jsonpath": "$.definitions.LastPatchInstallationSummary.properties.maintenanceWindowExceeded",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16899:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: maintenanceWindowExceeded",
+    "jsonpath": "$.definitions.VirtualMachineInstallPatchesResult.properties.maintenanceWindowExceeded",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11677:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: nameAvailable",
+    "jsonpath": "$.definitions.CheckNameAvailabilityResult.properties.nameAvailable",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3867:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: nameAvailable",
+    "jsonpath": "$.definitions.NameAvailabilityCheckResult.properties.nameAvailable",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:734:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: overprovision",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetProperties.properties.overprovision",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15417:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: overprovision",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateProperties.properties.overprovision",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15490:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: overwriteVhds",
+    "jsonpath": "$.definitions.VirtualMachineCaptureParameters.properties.overwriteVhds",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12014:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: persistOnSuccess",
+    "jsonpath": "$.definitions.ExecuteScriptActionParameters.properties.persistOnSuccess",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1677:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.IPConfigurationProperties.properties.primary",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:2128:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.NetworkInterfaceReferenceProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13073:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.NicIpConfigurationResourceSettings.properties.primary",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2157:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.VirtualMachineNetworkInterfaceConfigurationProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13321:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.VirtualMachineNetworkInterfaceIPConfigurationProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13247:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetIPConfigurationProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14661:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetNetworkConfigurationProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14810:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateIPConfigurationProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14718:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: primary",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateNetworkConfigurationProperties.properties.primary",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14861:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: prioritizeUnhealthyInstances",
+    "jsonpath": "$.definitions.RollingUpgradePolicy.properties.prioritizeUnhealthyInstances",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14057:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: protectFromScaleIn",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVMProtectionPolicy.properties.protectFromScaleIn",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16220:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: protectFromScaleSetActions",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVMProtectionPolicy.properties.protectFromScaleSetActions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16224:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: provisionVMAgent",
+    "jsonpath": "$.definitions.LinuxConfiguration.properties.provisionVMAgent",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12955:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: provisionVMAgent",
+    "jsonpath": "$.definitions.WindowsConfiguration.properties.provisionVMAgent",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12886:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: rebootPending",
+    "jsonpath": "$.definitions.AvailablePatchSummary.properties.rebootPending",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16839:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: rebootPending",
+    "jsonpath": "$.definitions.VirtualMachineAssessPatchesResult.properties.rebootPending",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11473:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: requireGuestProvisionSignal",
+    "jsonpath": "$.definitions.OSProfile.properties.requireGuestProvisionSignal",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13038:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: requireValidCertificate",
+    "jsonpath": "$.definitions.CacheUsernameDownloadSettings.properties.requireValidCertificate",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1899:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: required",
+    "jsonpath": "$.definitions.RunCommandParameterDefinition.properties.required",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:987:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: restAuthCredential.isEnabled",
+    "jsonpath": "$.definitions.UpdateGatewaySettingsParameters.properties[\"restAuthCredential.isEnabled\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1930:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: rootSquash",
+    "jsonpath": "$.definitions.NfsAccessRule.properties.rootSquash",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2006:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: rotationToLatestKeyVersionEnabled",
+    "jsonpath": "$.definitions.CacheEncryptionSettings.properties.rotationToLatestKeyVersionEnabled",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1754:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: rotationToLatestKeyVersionEnabled",
+    "jsonpath": "$.definitions.DiskEncryptionSetUpdateProperties.properties.rotationToLatestKeyVersionEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2788:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: rotationToLatestKeyVersionEnabled",
+    "jsonpath": "$.definitions.EncryptionSetProperties.properties.rotationToLatestKeyVersionEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2384:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: runImmediately",
+    "jsonpath": "$.definitions.AssessmentSettings.properties.runImmediately",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1942:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: secureBootEnabled",
+    "jsonpath": "$.definitions.UefiSettings.properties.secureBootEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12706:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: sendToServiceOwners",
+    "jsonpath": "$.definitions.RuleEmailAction.properties.sendToServiceOwners",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:582:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: sendToSubscriptionAdministrator",
+    "jsonpath": "$.definitions.EmailNotification.properties.sendToSubscriptionAdministrator",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:666:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: sendToSubscriptionCoAdministrators",
+    "jsonpath": "$.definitions.EmailNotification.properties.sendToSubscriptionCoAdministrators",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:671:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: singlePlacementGroup",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetProperties.properties.singlePlacementGroup",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15430:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: singlePlacementGroup",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateProperties.properties.singlePlacementGroup",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15498:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: skipMetricValidation",
+    "jsonpath": "$.definitions.MultiMetricCriteria.properties.skipMetricValidation",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:954:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: skipShutdown",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff\"].post.parameters[3].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7308:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: skipShutdown",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/poweroff\"].post.parameters[3].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9119:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: skipShutdown",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff\"].post.parameters[2].name",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5608:12"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: sqlSystemDbOnDataDisk",
+    "jsonpath": "$.definitions.StorageConfigurationSettings.properties.sqlSystemDbOnDataDisk",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1898:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: startCloudService",
+    "jsonpath": "$.definitions.CloudServiceProperties.properties.startCloudService",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2277:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: submountAccess",
+    "jsonpath": "$.definitions.NfsAccessRule.properties.submountAccess",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2002:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: suid",
+    "jsonpath": "$.definitions.NfsAccessRule.properties.suid",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1998:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportAutomaticPlacement",
+    "jsonpath": "$.definitions.DedicatedHostGroupProperties.properties.supportAutomaticPlacement",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10417:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportedByVirtualMachines",
+    "jsonpath": "$.definitions.VmSizeProperty.properties.supportedByVirtualMachines",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:550:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportedByWebWorkerRoles",
+    "jsonpath": "$.definitions.VmSizeProperty.properties.supportedByWebWorkerRoles",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:554:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportsHibernation",
+    "jsonpath": "$.definitions.DiskProperties.properties.supportsHibernation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2214:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportsHibernation",
+    "jsonpath": "$.definitions.DiskRestorePointProperties.properties.supportsHibernation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3603:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportsHibernation",
+    "jsonpath": "$.definitions.DiskUpdateProperties.properties.supportsHibernation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2716:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportsHibernation",
+    "jsonpath": "$.definitions.SnapshotProperties.properties.supportsHibernation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2330:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportsHibernation",
+    "jsonpath": "$.definitions.SnapshotUpdateProperties.properties.supportsHibernation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:2763:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: supportsMultipleExtensions",
+    "jsonpath": "$.definitions.VirtualMachineExtensionImageProperties.properties.supportsMultipleExtensions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11077:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: suppressFailures",
+    "jsonpath": "$.definitions.VirtualMachineExtensionProperties.properties.suppressFailures",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11216:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: suppressFailures",
+    "jsonpath": "$.definitions.VirtualMachineExtensionUpdateProperties.properties.suppressFailures",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11261:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: suppressFailures",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetExtensionProperties.properties.suppressFailures",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15195:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: tempDisk",
+    "jsonpath": "$.definitions.VirtualMachineReimageParameters.properties.tempDisk",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11997:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: toBeDetached",
+    "jsonpath": "$.definitions.DataDisk.properties.toBeDetached",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12640:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: toBeExportedForShoebox",
+    "jsonpath": "$.definitions.Dimension.properties.toBeExportedForShoebox",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:233:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: toBeExportedForShoebox",
+    "jsonpath": "$.definitions.MetricDimension.properties.toBeExportedForShoebox",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2718:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: toBeExportedForShoebox",
+    "jsonpath": "$.definitions.OperationResourceMetricSpecificationDimension.properties.toBeExportedForShoebox",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3835:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: ultraSSDEnabled",
+    "jsonpath": "$.definitions.AdditionalCapabilities.properties.ultraSSDEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12796:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useAadAuth",
+    "jsonpath": "$.definitions.WebhookReceiver.properties.useAadAuth",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:933:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.ArmRoleReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1181:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.AutomationRunbookReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1072:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.AzureFunctionReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1156:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.EmailReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:872:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.EventHubReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1005:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.LogicAppReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:1124:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: useCommonAlertSchema",
+    "jsonpath": "$.definitions.WebhookReceiver.properties.useCommonAlertSchema",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:928:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: vTpmEnabled",
+    "jsonpath": "$.definitions.UefiSettings.properties.vTpmEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12710:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: validateOnly",
+    "jsonpath": "$.definitions.BulkRemoveRequest.properties.validateOnly",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1598:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: validateOnly",
+    "jsonpath": "$.definitions.CommitRequest.properties.validateOnly",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1555:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: validateOnly",
+    "jsonpath": "$.definitions.DiscardRequest.properties.validateOnly",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1578:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: validateOnly",
+    "jsonpath": "$.definitions.PrepareRequest.properties.validateOnly",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1509:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: validateOnly",
+    "jsonpath": "$.definitions.ResourceMoveRequest.properties.validateOnly",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1532:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: vmScaleSetEnabled",
+    "jsonpath": "$.definitions.VirtualMachineExtensionImageProperties.properties.vmScaleSetEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11073:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: walkPerformed",
+    "jsonpath": "$.definitions.RecoveryWalkResponse.properties.walkPerformed",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16579:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: writeAcceleratorEnabled",
+    "jsonpath": "$.definitions.DataDisk.properties.writeAcceleratorEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12623:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: writeAcceleratorEnabled",
+    "jsonpath": "$.definitions.OSDisk.properties.writeAcceleratorEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12569:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: writeAcceleratorEnabled",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetDataDisk.properties.writeAcceleratorEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14564:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: writeAcceleratorEnabled",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetOSDisk.properties.writeAcceleratorEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14466:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: writeAcceleratorEnabled",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetUpdateOSDisk.properties.writeAcceleratorEnabled",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14522:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: zoneBalance",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetProperties.properties.zoneBalance",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15434:8"
+  },
+  {
+    "code": "EnumInsteadOfBoolean",
+    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: zoneResilient",
+    "jsonpath": "$.definitions.ImageStorageProfile.properties.zoneResilient",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14240:8"
+  }
+]

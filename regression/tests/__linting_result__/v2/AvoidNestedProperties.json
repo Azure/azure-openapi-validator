@@ -1,0 +1,284 @@
+[
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.Application.properties.properties",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:459:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.CloudService.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2342:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.CloudServiceRole.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1970:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.Cluster.properties.properties",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1613:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ClusterCreateParametersExtended.properties.properties",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1372:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.Deployment.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4623:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.DeploymentExtended.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5372:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.DeploymentOperation.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5999:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.DeploymentValidateResult.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5344:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.DeploymentWhatIf.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4679:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.EventData.properties.properties",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/tenantActivityLogs_API.json:264:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.Extension.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2240:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.GenericResource.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5447:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.JobResponse.properties.properties",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:862:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.LoadBalancerConfiguration.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2145:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.LoadBalancerFrontendIPConfiguration.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2105:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.LogAnalyticsOperationResult.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16673:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ManagedInstancePecProperty.properties.properties",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:845:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ManagedInstancePrivateLink.properties.properties",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:156:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.MetricNamespace.properties.properties",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-12-01-preview/metricNamespaces_API.json:121:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.MoveCollection.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1476:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.MoveResource.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1353:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.MoveResourceError.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1819:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.MoveResourceFilter.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1617:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.OSFamily.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2648:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.OSVersion.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2549:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.Operation.properties.properties",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:82:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.OperationEntity.properties.properties",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3700:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.OperationStatus.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2551:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.OperationsDiscovery.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1792:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.PrivateLinkResource.properties.properties",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateLinkResources.json:164:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ProviderResourceType.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5048:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.PutJobParameters.properties.properties",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:611:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ResourceGroup.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5661:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ResourceGroupPatchable.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5694:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.RoleInstance.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1891:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.RuleWebhookAction.properties.properties",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:610:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ScopedDeployment.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4646:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ScopedDeploymentWhatIf.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4695:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.ServerPrivateEndpointConnection.properties.properties",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:567:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.SignaturesOverrides.properties.properties",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1971:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.TagsPatchResource.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6401:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.TagsResource.properties.properties",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6429:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.UnresolvedDependenciesFilter.properties.properties",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1633:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.UpgradeOperationHistoricalStatusInfo.properties.properties",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15969:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.WebhookNotification.properties.properties",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:692:8"
+  },
+  {
+    "code": "AvoidNestedProperties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "jsonpath": "$.definitions.availabilityStatus.properties.properties",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:357:8"
+  }
+]

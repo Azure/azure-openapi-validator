@@ -1,0 +1,98 @@
+[
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/logprofiles/{logProfileName}\"].delete.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:57:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}\"].delete.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:597:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].delete.responses",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:446:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:477:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json:207:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:264:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json:189:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:52:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:141:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints/{restorePointName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:207:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:465:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessments.json:198:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:252:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].delete.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerVulnerabilityAssessments.json:189:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].delete.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:656:8"
+  },
+  {
+    "code": "az-delete-204-response",
+    "message": "A delete operation should have a `204` response.",
+    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].delete.responses",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4465:8"
+  }
+]

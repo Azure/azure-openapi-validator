@@ -1,0 +1,14 @@
+[
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"ManagedInstancePrivateLinkListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.definitions.ManagedInstancePrivateLinkListResult",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:109:4"
+  },
+  {
+    "code": "PrivateEndpointResourceSchemaValidation",
+    "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
+    "jsonpath": "$.definitions.PrivateLinkResourceListResult",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:886:4"
+  }
+]

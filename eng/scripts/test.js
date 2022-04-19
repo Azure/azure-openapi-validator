@@ -4,8 +4,10 @@ function main () {
     let errorCnt = 0
     forEachProject((packageName, projectFolder, project, each)=>{
     try {
-        process.chdir(projectFolder)
-        run("npm",["run","test"])
+        if (!packageName.includes("regression")) {
+            process.chdir(projectFolder)
+            run("npm",["run","test"])
+        }
     }
     catch(e) {
         errorCnt++

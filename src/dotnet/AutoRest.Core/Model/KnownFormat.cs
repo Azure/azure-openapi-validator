@@ -38,6 +38,7 @@ namespace AutoRest.Core.Model
         ipv6,
         regex,
         json_pointer,
-        relative_json_pointer
+        relative_json_pointer,
+        arm_id
     }
 }

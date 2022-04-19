@@ -1,0 +1,122 @@
+[
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ApplicationGatewayFirewallDisabledRuleGroup.properties.rules.items[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.AvailabilitySetResourceSettings.properties.faultDomain[\"x-nullable\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1948:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.AvailabilitySetResourceSettings.properties.updateDomain[\"x-nullable\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1956:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ClusterPatchParameters.properties.tags[\"x-nullable\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1388:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.DiagnosticSettingsCategory.properties.categoryType[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.DnsSettings.properties.requireProxyForNetworkRules[\"x-nullable\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1520:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ElasticPoolActivityProperties.properties.operationId[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ElasticPoolDatabaseActivityProperties.properties.operationId[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ExplicitProxySettings.properties.enableExplicitProxy[\"x-nullable\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1532:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.IpAllocationPropertiesFormat.properties.prefixLength[\"x-nullable\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:382:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.NetworkInterfaceResourceSettings.properties.enableAcceleratedNetworking[\"x-nullable\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2083:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.OperationStatus.properties.endTime[\"x-nullable\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:767:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.OperationStatus.properties.error[\"x-nullable\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:778:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.OperationStatus.properties.startTime[\"x-nullable\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:761:10"
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ServiceObjectiveProperties.properties.enabled[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ServiceObjectiveProperties.properties.isDefault[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.ServiceObjectiveProperties.properties.isSystem[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.SloUsageMetric.properties.inRangeTimeRatio[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.SloUsageMetric.properties.serviceLevelObjectiveId[\"x-nullable\"]",
+    "source": ""
+  },
+  {
+    "code": "az-nullable",
+    "message": "Avoid the use of x-nullable.",
+    "jsonpath": "$.definitions.VirtualNetworkResourceSettings.properties.enableDdosProtection[\"x-nullable\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1997:10"
+  }
+]

@@ -1,6 +1,6 @@
-import { JsonPath,IFileSystem } from "./types"
 import { JsonInstance, JsonParser } from "./jsonParser"
 import { Resolver } from "./resolver"
+import { JsonPath,IFileSystem } from "./types"
 export class OpenapiDocument {
   private _content :string|undefined = undefined
   private _doc:any = undefined

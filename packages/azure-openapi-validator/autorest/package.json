@@ -1,11 +1,14 @@
 {
   "name": "@microsoft.azure/openapi-validator",
-  "version": "1.12.1",
+  "version": "2.0.0",
   "description": "Azure OpenAPI Validator",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "start": "node --inspect-brk ./index.js",
-    "build": "tsc"
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "test": "tsc",
+    "lint:fix": "eslint ./src --fix --ext .ts",
+    "lint": "eslint ./src --ext .ts --max-warnings=0"
   },
   "repository": {
     "type": "git",
@@ -31,7 +34,16 @@
     "@types/jest": "^27.0.6",
     "typescript": "4.6.2",
     "jest": "^27.0.6",
-    "ts-jest": "^27.1.3"
+    "ts-jest": "^27.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint": "^8.11.0",
+    "eslint-plugin-jest": "~26.1.4",
+    "eslint-plugin-node": "~11.1.0",
+    "eslint-plugin-prettier": "~3.4.0",
+    "eslint-plugin-unicorn": "~42.0.0",
+    "eslint-plugin-import": "~2.26.0",
+    "prettier": "~2.3.1"
   },
   "dependencies": {
     "@stoplight/spectral-core": "~1.11.1",

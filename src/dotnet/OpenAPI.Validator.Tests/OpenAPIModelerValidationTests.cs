@@ -947,6 +947,13 @@ namespace OpenAPI.Validator.Tests
             var messages = GetValidationMessagesForRule<AvoidAnonymousTypes>(Path.Combine("positive", "anonymous-response-type.json"));
             Assert.Empty(messages);
         }
+
+        [Fact]
+        public void TrackedResourceLongRunningPatchOperationValidationValidation()
+        {
+            var messages = GetValidationMessagesForRule<TrackedResourcePatchOperation>(Path.Combine("positive", "tracked-resource-long-running-patch-operation.json"));
+            Assert.Empty(messages);
+        }
     }
 
     #endregion
