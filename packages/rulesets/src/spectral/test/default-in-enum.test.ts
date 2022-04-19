@@ -1,6 +1,6 @@
+import { Spectral } from '@stoplight/spectral-core';
 import linterForRule from './utils';
 
-import { Spectral } from '@stoplight/spectral-core';
 let linter:Spectral;
 
 beforeAll(async () => {
