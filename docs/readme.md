@@ -1,9 +1,13 @@
-# Linting
+# Azure Ruleset
 
-There are a number of rules that can be validated with AutoRest. The current set of rules is focused on Azure Resource Management (ARM) specs and its applicable rules.
+The following is the rule set for Azure API specs.
 
-## Running linter
-Run
-`autorest -CodeGenerator None -Input <path-to-spec>`
-if you'd like the output to be in Json format please use the following flag:
-`-JsonValidationMessages true`
+## AvoidNestedProperties
+### Description
+This rule appears when you define a property with the name `properties`, and do not use the [`x-ms-client-flatten` extension](../../extensions/readme.md#x-ms-client-flatten). Users often provide feedback that they don't want to create multiple levels of properties to be able to use an operation. By applying the `x-ms-client-flatten` extension, you move the inner `properties` to the top level of your definition.
+
+### How to fix
+
+see [avoid-nested-properties](./avoid-nested-properties.md)
+## Others rules
+to be added...

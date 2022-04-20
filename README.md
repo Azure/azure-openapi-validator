@@ -1,13 +1,17 @@
 # azure-openapi-validator
 
-azure-openapi-validator is linter for azure openapi specifications, it's an extension of autorest and supports [spectral](https://github.com/stoplightio/spectral) lint rule format.
+azure-openapi-validator is linter for azure openapi specifications, it's an extension of [autorest](https://github.com/Azure/autorest) and supports [spectral](https://github.com/stoplightio/spectral) lint rule format.
 This repo also contains all the automated linter rules that apply to the API specs in the [azure-rest-api-sepcs](https://github.com/Azure/azure-rest-api-specs).
 
-## Getting started
+## Rule Set
 
-For new linter rule request or bug report, please file an issue via corresponding template.
+Please refer to [ruleset](./docs/readme.md)
 
-For contributing to new linter rule, check out [CONTRIBUTING.md](./CONTRIBUTING.md)
+## Contributing
+
+- If you want to submit a new rule request or bug, please file an [issue](https://github.com/Azure/azure-openapi-validator/issues)
+
+- If you want to contribute a new linter rule, check out [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Packages
 
