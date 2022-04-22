@@ -1,6 +1,7 @@
 import {oas2, oas3} from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions";
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter";
+import avoidSameClientName from "./functions/avoid-same-client-name";
 import consistentresponsebody from "./functions/consistent-response-body";
 import defaultInEnum from "./functions/default-in-enum";
 import delete204response from "./functions/delete-204-response";
@@ -456,6 +457,29 @@ const ruleset : any = {
       "given": ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
       "then": {
         "function": avoidAnonymousParameter
+      }
+    },
+    "az-xms-examples-required": {
+    "description": "Verifies whether x-ms-examples are provided for each operation or not.",
+    "message": " Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "severity": "error",
+    "resolved": false,
+    "formats": [oas2],
+    "given": ["$.paths[*][*]"],
+    "then": {
+      "field": "x-ms-examples",
+      "function": truthy
+     }
+    },
+    "az-avoid-same-client-name": {
+      "description": "The x-ms-client-name extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+      "message": "Value of 'x-ms-client-name' cannot be the same as Property/Model.",
+      "severity": "error",
+      "resolved": false,
+      "formats": [oas2],
+      "given": ["$.paths[*][*].parameters.*", "$.definitions.[*].properties.*"],
+      "then": {
+        "function": avoidSameClientName
       }
     }
   }
