@@ -1,12 +1,23 @@
 # azure-openapi-validator
 
-azure-openapi-validator is linter for azure openapi specifications, it's a plugin of autorest and support spectral lint rules.
-This repo also contains all the automated linter rules that apply to swaggers in the [azure-rest-api-sepcs](https://github.com/Azure/azure-rest-api-specs).
-## packages
+azure-openapi-validator is linter for azure openapi specifications, it's an extension of [autorest](https://github.com/Azure/autorest) and supports [spectral](https://github.com/stoplightio/spectral) lint rule format.
+This repo also contains all the automated linter rules that apply to the API specs in the [azure-rest-api-sepcs](https://github.com/Azure/azure-rest-api-specs).
+
+## Rule Set
+
+Please refer to [ruleset](./docs/readme.md)
+
+## Contributing
+
+- If you want to submit a new rule request or bug, please file an [issue](https://github.com/Azure/azure-openapi-validator/issues)
+
+- If you want to contribute a new linter rule, check out [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+## Packages
 
 | Name                                            | Latest                                                                                                                             |
 | ----------------------------------------------- |---------------------------------------------------------------------------------------------------------------------------------- |
-| autorest plugin
+| autorest extension
 |[openapi-validator][openapi-validator-src]| ![](https://img.shields.io/npm/v/@microsoft.azure/openapi-validator)](https://www.npmjs.com/package/@microsoft.azure/openapi-validator) |
 | core functionality
 |[openapi-validator-core][openapi-validator-core-src] |![](https://img.shields.io/npm/v/@microsoft.azure/openapi-validator-core)](https://www.npmjs.com/package/@microsoft.azure/openapi-validator-core) |
