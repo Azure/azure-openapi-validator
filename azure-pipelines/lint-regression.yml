@@ -16,6 +16,16 @@ jobs:
     NODE_OPTIONS: '--max-old-space-size=8192'
     
   steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '$(NodeVersion)'
+      displayName: 'Install Node.js $(NodeVersion)'
+      
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.x'
+
     - script: git submodule update --init
       displayName: Init submodule
       condition: always()
