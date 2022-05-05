@@ -1,5 +1,9 @@
 # Changelog
 
+## What's New (05/05/2022)
+### Changed Rule
+
+- RequiredReadOnlySystemData - Change severity to warning.
 
 ## What's New (03/24/2022)
 
