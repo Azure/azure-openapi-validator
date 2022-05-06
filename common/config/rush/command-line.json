@@ -40,6 +40,13 @@
       "shellCommand": "node eng/scripts/regression-test.js"
     },
     {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "regen-ruleindex",
+      "summary": "(CUSTOM) Regen rules index",
+      "shellCommand": "node eng/scripts/gen-rules-index.js"
+    },
+    {
       "commandKind": "bulk",
       "name": "lint:fix",
       "summary": "Fix linting errors for projects. Runs `npm run lint:fix` on all projects.",

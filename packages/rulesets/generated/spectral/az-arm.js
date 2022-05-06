@@ -3,6 +3,23 @@
 var spectralFormats = require('@stoplight/spectral-formats');
 var spectralFunctions = require('@stoplight/spectral-functions');
 
+const avoidAnonymousParameter = (parameters, _opts, paths) => {
+    if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    const properties = parameters.schema.properties;
+    if ((properties === undefined || Object.keys(properties).length === 0) &&
+        parameters.schema.additionalProperties === undefined &&
+        parameters.schema.allOf === undefined) {
+        return [];
+    }
+    return [{
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            path,
+        }];
+};
+
 const consistentresponsebody = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== 'object') {
         return [];
@@ -26,6 +43,30 @@ const consistentresponsebody = (pathItem, _opts, paths) => {
     return errors;
 };
 
+const defaultInEnum = (swaggerObj, _opts, paths) => {
+    const defaultValue = swaggerObj.default;
+    const enumValue = swaggerObj.enum;
+    if (swaggerObj === null ||
+        typeof swaggerObj !== 'object' ||
+        defaultValue === null ||
+        defaultValue === undefined ||
+        enumValue === null ||
+        enumValue === undefined) {
+        return [];
+    }
+    if (!Array.isArray(enumValue)) {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    if (enumValue && !enumValue.includes(defaultValue)) {
+        return [{
+                message: 'Default value should appear in the enum constraint for a schema.',
+                path,
+            }];
+    }
+    return [];
+};
+
 const delete204Response = (deleteResponses, _opts, paths) => {
     if (deleteResponses === null || typeof deleteResponses !== 'object') {
         return [];
@@ -38,6 +79,17 @@ const delete204Response = (deleteResponses, _opts, paths) => {
             }];
     }
     return [];
+};
+
+const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    return [{
+            message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
+            path,
+        }];
 };
 
 function isArraySchema(schema) {
@@ -681,58 +733,6 @@ const versionPolicy = (targetVal) => {
     return errors;
 };
 
-const defaultInEnum = (swaggerObj, _opts, paths) => {
-    const defaultValue = swaggerObj.default;
-    const enumValue = swaggerObj.enum;
-    if (swaggerObj === null ||
-        typeof swaggerObj !== 'object' ||
-        defaultValue === null ||
-        defaultValue === undefined ||
-        enumValue === null ||
-        enumValue === undefined) {
-        return [];
-    }
-    if (!Array.isArray(enumValue)) {
-        return [];
-    }
-    const path = paths.path || paths.target || [];
-    if (enumValue && !enumValue.includes(defaultValue)) {
-        return [{
-                message: 'Default value should appear in the enum constraint for a schema.',
-                path,
-            }];
-    }
-    return [];
-};
-
-const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null) {
-        return [];
-    }
-    const path = paths.path || paths.target || [];
-    return [{
-            message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
-            path,
-        }];
-};
-
-const avoidAnonymousParameter = (parameters, _opts, paths) => {
-    if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
-        return [];
-    }
-    const path = paths.path || paths.target || [];
-    const properties = parameters.schema.properties;
-    if ((properties === undefined || Object.keys(properties).length === 0) &&
-        parameters.schema.additionalProperties === undefined &&
-        parameters.schema.allOf === undefined) {
-        return [];
-    }
-    return [{
-            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-            path,
-        }];
-};
-
 const ruleset$1 = {
     extends: [],
     rules: {
@@ -1177,11 +1177,69 @@ const ruleset$1 = {
     }
 };
 
+function checkApiVersion(param) {
+    if (param.in !== "query") {
+        return false;
+    }
+    return true;
+}
+const apiVersionName = "api-version";
+const hasApiVersionParameter = (apiPath, opts, paths) => {
+    var _a, _b;
+    if (apiPath === null || typeof apiPath !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.methods) {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    if (apiPath.parameters) {
+        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
+            return [];
+        }
+    }
+    const messages = [];
+    for (const method of Object.keys(apiPath)) {
+        if (opts.methods.includes(method)) {
+            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
+            if (!param || param.length === 0) {
+                messages.push({
+                    message: `Operation should include an 'api-version' parameter.`,
+                    path: [...path, method]
+                });
+                continue;
+            }
+            if (!checkApiVersion(param[0])) {
+                messages.push({
+                    message: `Operation 'api-version' parameter should be a query parameter.`,
+                    path: [...path, method]
+                });
+            }
+        }
+    }
+    return messages;
+};
+
 const ruleset = {
     extends: [
         ruleset$1
     ],
-    rules: {}
+    rules: {
+        "ApiVersionParameterRequired": {
+            "description": "All operations should have api-version query parameter.",
+            "message": "{{error}}",
+            "severity": "error",
+            "resolved": true,
+            "formats": [spectralFormats.oas2],
+            "given": ["$.paths.*", "$.x-ms-paths.*"],
+            "then": {
+                "function": hasApiVersionParameter,
+                "functionOptions": {
+                    methods: ["get", "put", "patch", "post", "delete", "trace"]
+                }
+            }
+        }
+    }
 };
 
 module.exports = ruleset;
