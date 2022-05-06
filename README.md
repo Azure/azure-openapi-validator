@@ -3,9 +3,9 @@
 azure-openapi-validator is linter for azure openapi specifications, it's an extension of [autorest](https://github.com/Azure/autorest) and supports [spectral](https://github.com/stoplightio/spectral) lint rule format.
 This repo also contains all the automated linter rules that apply to the API specs in the [azure-rest-api-sepcs](https://github.com/Azure/azure-rest-api-specs).
 
-## Rule Set
+## Rules
 
-Please refer to [ruleset](./docs/readme.md)
+Please refer to [rules](./docs/rules.md)
 
 ## Contributing
 
@@ -28,7 +28,7 @@ Please refer to [ruleset](./docs/readme.md)
 [openapi-validator-core-src]: packages/azure-openapi-validator/core
 [openapi-validator-rulesets-src]: packages/rulesets
 
-## Usage
+## How to run locally
 
 using the autorest to run the linter
 

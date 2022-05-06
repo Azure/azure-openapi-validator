@@ -1,11 +1,15 @@
-# Prerequisites
+# Contributing
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Prerequisites
 
 - Node (12.x or higher)
 - Node Package Manager
 - Typescript (3.7.0 or higher)
 - @Microsoft/Rush (5.x or hider)
 
-# Installing NPM dependencies
+## Installing NPM dependencies
 
 ```bash
 rush update
@@ -18,11 +22,9 @@ cleaned/cloned.
 Note that `rush update` must be done before building in VS Code or
 using the command line.
 
-# Build scripts
-
 ## How to build
 
-The first step would be to run ```rush update``` so we have all the required modules installed.
+The fi#rst step would be to run ```rush update``` so we have all the required modules installed.
 
 ### How to build the whole repo
 
@@ -33,13 +35,15 @@ rush build
 ## How to test
 
 To run all tests under the repo
+
 ```bash
 rush test
 ```
 
 ## How to write a new validation rule using typescript
 
-### spectral rule
+### Spectral rule
+
 please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
 and follow below steps to add a rule for azure rest api specs.
 
@@ -51,7 +55,19 @@ and follow below steps to add a rule for azure rest api specs.
 
 - add a test case, usually one custom function should have one test, the corresponding testing files is in 'packages\rulesets\spectral\test'
 
-### native rule
+- add a doc for the rule in 'docs', the rule doc file name is following kebab-case, contains following content:
+
+``` md
+# RuleName
+
+## Description
+<add the description for the rule.>
+## How to fix
+<describe how to fix the violations.>
+```
+
+### Native rule
+
 Since the spectral rule can only process one swagger in its rule fucntion, the native ruleset is for complicated rules which need to visit multiple swaggers. For example, if you want to have a rule to ensure two swaggers that does not have duplicated model.
 
 Differetiating with spectral rule,  there is a swagger inventory (see below defintions) will be peresent in the rule context to visit other swaggers different with current one.
@@ -95,7 +111,7 @@ Follow below steps to add a native rule:
 
 3. add a test for the custom function
 
-### rule properties
+### Rule properties
 
 - category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
 - OpenapiType:  indicate which kinds of azure spec it applies to.
@@ -114,6 +130,14 @@ git update submodule --init
 2. run test
 ```
 rush regression-test
+```
+
+## How refresh the index of rules documentation
+
+the [doc index](./docs/rules.md) is an index for searching any rule documentation provided in this repo.
+you can run below command to regen it after you added or updated some rules in the 'docs'.
+```bash
+rush regen-ruleindex
 ```
 
 ## How to run locally
