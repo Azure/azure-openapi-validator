@@ -24,7 +24,7 @@ using the command line.
 
 ## How to build
 
-The fi#rst step would be to run ```rush update``` so we have all the required modules installed.
+The first step would be to run ```rush update``` so we have all the required modules installed.
 
 ### How to build the whole repo
 
@@ -44,7 +44,7 @@ rush test
 
 ### Spectral rule
 
-please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
+Please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
 and follow below steps to add a rule for azure rest api specs.
 
 - add a custom function in 'packages\rulesets\spectral\functions'
@@ -74,10 +74,16 @@ Differetiating with spectral rule,  there is a swagger inventory (see below defi
 
 ``` ts
 export interface ISwaggerInventory {
-  // return the json objects of all specs that reference to the given specPath
+  /* Get all specs that reference to the given specPath
+   * 
+   * @param specPath the file path of the swagger.
+   * @returns a record contains all the specs that reference to the given spec path, key indicates spec path, value indicates the json object of the spec.
+   */
   referencesOf(specPath: string): Record<string,any>,
-  // specifify the 'specPath' ,return the json object of given spec
-  // or return a Record<string,any> contains all the specPath and json object
+  /*
+   * param  specPath specPath the file path of the swagger.
+   * returns the json object of given spec if given the 'specPath' or a Record<string,any> contains all the specs paths and objects if specPath is omitted.
+  */
   getDocuments(specPath?: string): Record<string,any> | any
 }
 ```

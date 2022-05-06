@@ -108,6 +108,12 @@ In a spec, parameters can have a `description` property to provide information. 
 
 Please refer to [parameter-description-required.md](./parameter-description-required.md) for details.
 
+### RequiredApiVersionParameter
+
+This rule applies when the 'api-version' parameter is missing in any operations.
+
+Please refer to [required-api-version-parameter.md](./required-api-version-parameter.md) for details.
+
 ### RequiredPropertiesMustExist
 
 Any properties that are specified as required must actually exist. This rule makes sure that all property names in the `required` array are actually properties on a schema.

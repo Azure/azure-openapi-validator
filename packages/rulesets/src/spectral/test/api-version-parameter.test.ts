@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter;
 });
 
-test('ApiVersionParameterRequired should find errors', () => {
+test('ApiVersionParameterRequired should find errors when missing api-version', () => {
   // Test parameter ordering at path item level and operation level.
   const oasDoc = {
     swagger: '2.0',
@@ -37,7 +37,7 @@ test('ApiVersionParameterRequired should find errors', () => {
   });
 });
 
-test('ApiVersionParameterRequired should find errors', () => {
+test('ApiVersionParameterRequired should find errors when api-version is not in query', () => {
   // Test parameter ordering at path item level and operation level.
   const oasDoc = {
     swagger: '2.0',
@@ -74,7 +74,7 @@ test('ApiVersionParameterRequired should find errors', () => {
   });
 });
 
-test('ApiVersionParameterRequired should find no errors', () => {
+test('ApiVersionParameterRequired should find no errors when api-version is in path level parameters', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -108,7 +108,7 @@ test('ApiVersionParameterRequired should find no errors', () => {
   });
 });
 
-test('ApiVersionParameterRequired should find no errors', () => {
+test('ApiVersionParameterRequired should find no errors when api-version is in operation parameters', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
