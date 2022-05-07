@@ -3,7 +3,8 @@ import {spectralRulesets} from "../../index"
 
 export  function buildLinter(ruleset:any,rule:string) {
 
-  const omitRule= (ruleset:any,ruleName:string) => {
+  const omitRule= (extend:any,ruleName:string) => {
+    const ruleset:any = Array.isArray(extend) ? extend[0] : extend
     Object.keys(ruleset.rules).forEach((key:string) => {
       if (key !== ruleName) {
         delete ruleset.rules[key];

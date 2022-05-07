@@ -1,6 +1,7 @@
 'use strict';
 
 var spectralFormats = require('@stoplight/spectral-formats');
+var spectralRulesets = require('@stoplight/spectral-rulesets');
 var spectralFunctions = require('@stoplight/spectral-functions');
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
@@ -1222,9 +1223,11 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
 
 const ruleset = {
     extends: [
-        ruleset$1
+        [ruleset$1, "all"],
+        [spectralRulesets.oas, "off"]
     ],
     rules: {
+        "oas2-api-host": true,
         "ApiVersionParameterRequired": {
             "description": "All operations should have api-version query parameter.",
             "message": "{{error}}",

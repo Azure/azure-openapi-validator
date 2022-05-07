@@ -46,6 +46,22 @@ This rule validates that a description property is not empty. An empty descripti
 
 Please refer to [descriptive-description-required.md](./descriptive-description-required.md) for details.
 
+### HostParametersValidation
+
+This rule is to valiate the parameters in the 'x-ms-parameterized-host' to ensure they are following below rules:
+1. If a parameter matches belows, therefore it must be called "endpoint".
+    - Client level (x-ms-parameter-location: client)
+    - A path component (in: path)
+    - Part of a "x-ms-parametrized-host" with “useSchemePrefix: false”
+    - Tagged "x-ms-skip-encoding: true"
+2. If a parameter matches belows, therefore it must be typed "type:string, format:uri":
+    - Client level
+    - A path component
+    - Part of a "x-ms-parametrized-host" with “useSchemePrefix: false”
+    - Tagged "x-ms-skip-encoding: true"
+
+Please refer to [host-parameters-validation.md](./host-parameters-validation.md) for details.
+
 ### LROStatusCodesValidation
 
 This violation is flagged if a long-running PUT operation has a 200/201 status code specified without a response model definition. Eg:

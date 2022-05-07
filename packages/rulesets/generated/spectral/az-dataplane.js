@@ -1177,11 +1177,57 @@ const ruleset$1 = {
     }
 };
 
+const hostParameters = (parameterizedHost, _opts, paths) => {
+    var _a;
+    if (parameterizedHost === null || typeof parameterizedHost !== 'object') {
+        return [];
+    }
+    const path = paths.path || paths.target || [];
+    const errors = [];
+    const useSchemePrefix = (_a = parameterizedHost.useSchemePrefix) !== null && _a !== void 0 ? _a : true;
+    const parameters = parameterizedHost.parameters;
+    if (!useSchemePrefix && parameters && Array.isArray(parameters)) {
+        parameters.forEach((p, index) => {
+            const location = p["x-ms-parameter-location"];
+            if (p.in === "path" && p["x-ms-skip-url-encoding"] === true && location === "client") {
+                if (p.name !== "endpoint") {
+                    errors.push({
+                        message: "The host parameter must be called 'endpoint'.",
+                        path: [...path, "parameters", index]
+                    });
+                }
+                if (p.type !== "string" || p.format !== "uri") {
+                    errors.push({
+                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
+                        path: [...path, "parameters", index]
+                    });
+                }
+            }
+        });
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [
         ruleset$1
     ],
-    rules: {}
+    rules: {
+        "HostParametersValidation": {
+            "description": "Validate the parameters in x-ms-parameterized-host.",
+            "message": "{{error}}",
+            "severity": "error",
+            "resolved": true,
+            "formats": [spectralFormats.oas2],
+            "given": ["$.x-ms-parameterized-host"],
+            "then": {
+                "function": hostParameters,
+                "functionOptions": {
+                    methods: ["get", "put", "patch", "post", "delete", "trace"]
+                }
+            }
+        }
+    }
 };
 
 module.exports = ruleset;

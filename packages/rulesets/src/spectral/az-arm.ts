@@ -1,11 +1,14 @@
 import { oas2 } from "@stoplight/spectral-formats";
+import { oas } from "@stoplight/spectral-rulesets"
 import common from "./az-common"
 import hasApiVersionParameter from "./functions/has-api-version-parameter";
 const ruleset:any = {
   extends:[
-    common
+    [common,"all"],
+    [oas,"off"] 
   ],
   rules: {
+    "oas2-api-host": true,
     "ApiVersionParameterRequired":{
       "description": "All operations should have api-version query parameter.",
       "message": "{{error}}",
