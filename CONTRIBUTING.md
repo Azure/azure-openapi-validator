@@ -47,13 +47,14 @@ rush test
 Please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
 and follow below steps to add a rule for azure rest api specs.
 
-- add a custom function in 'packages\rulesets\spectral\functions'
-- add a rule config to the proper ruleset configuaration , current we have 3 ruleset configurations:
-  1. az-common.ts : for rule that apply to all azure spec.
+- add a rule config to the proper ruleset configuaration in packages\rulesets\src\spectral.
+  Currently we have 3 ruleset configurations:
+  1. az-common.ts : for rule that apply to all Azure spec.
   1. az-arm.ts: for rules that only apply to ARM spec.
   1. az-dataplane.ts: for rules that only apply to dataplane spec.
+- if needed, add a custom function in 'packages\rulesets\src\spectral\functions'
 
-- add a test case, usually one custom function should have one test, the corresponding testing files is in 'packages\rulesets\spectral\test'
+- add a test case, usually every rule should have one test, the corresponding testing files is in 'packages\rulesets\src\spectral\test'
 
 - add a doc for the rule in 'docs', the rule doc file name is following kebab-case, contains following content:
 
@@ -68,9 +69,9 @@ and follow below steps to add a rule for azure rest api specs.
 
 ### Native rule
 
-Since the spectral rule can only process one swagger in its rule fucntion, the native ruleset is for complicated rules which need to visit multiple swaggers. For example, if you want to have a rule to ensure two swaggers that does not have duplicated model.
+Since the spectral rule can only process one swagger in its rule function, the native ruleset is for complicated rules which need to visit multiple swaggers. For example, if you want to have a rule to ensure two swaggers that does not have duplicated model.
 
-Differetiating with spectral rule,  there is a swagger inventory (see below defintions) will be peresent in the rule context to visit other swaggers different with current one.
+Differentiating with spectral rule, there is a swagger inventory (see below definitions) will be present in the rule context to visit other swaggers different with current one.
 
 ``` ts
 export interface ISwaggerInventory {
