@@ -1221,10 +1221,7 @@ const ruleset = {
             "formats": [spectralFormats.oas2],
             "given": ["$.x-ms-parameterized-host"],
             "then": {
-                "function": hostParameters,
-                "functionOptions": {
-                    methods: ["get", "put", "patch", "post", "delete", "trace"]
-                }
+                "function": hostParameters
             }
         }
     }
