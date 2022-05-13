@@ -97,30 +97,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'Alias' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Alias",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4900:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'AliasPath' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.AliasPath",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4840:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'AliasPathMetadata' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.AliasPathMetadata",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4760:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'AliasPattern' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.AliasPattern",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4865:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'ApiEntityReference' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ApiEntityReference",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14646:4"
@@ -196,12 +172,6 @@
     "message": "The schema 'ApiErrorBase' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ApiErrorBase",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3703:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ApiProfile' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ApiProfile",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4"
   },
   {
     "code": "MissingTypeObject",
@@ -1147,12 +1117,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'BasicDependency' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.BasicDependency",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5108:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'BastionActiveSession' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.BastionActiveSession",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:801:4"
@@ -1450,12 +1414,6 @@
     "message": "The schema 'CloudError' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.CloudError",
     "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2481:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'CloudError' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.CloudError",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4737:4"
   },
   {
     "code": "MissingTypeObject",
@@ -1909,12 +1867,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'DebugSetting' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DebugSetting",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4608:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'DedicatedHost' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.DedicatedHost",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10619:4"
@@ -2032,96 +1984,6 @@
     "message": "The schema 'DeliveryPackageInformation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.DeliveryPackageInformation",
     "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:1117:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Dependency' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Dependency",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5125:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Deployment' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Deployment",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4617:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentExportResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentExportResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4664:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentExtended' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentExtended",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5351:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentExtendedFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentExtendedFilter",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4480:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5387:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentOperation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentOperation",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5987:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentOperationProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentOperationProperties",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5873:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentOperationsListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentOperationsListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6006:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentProperties",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4560:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentPropertiesExtended' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentPropertiesExtended",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5149:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentValidateResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentValidateResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5337:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentWhatIf' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentWhatIf",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4673:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentWhatIfProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentWhatIfProperties",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4706:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'DeploymentWhatIfSettings' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.DeploymentWhatIfSettings",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4720:4"
   },
   {
     "code": "MissingTypeObject",
@@ -2683,12 +2545,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'ExportTemplateRequest' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ExportTemplateRequest",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5756:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'ExpressRouteCircuit' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ExpressRouteCircuit",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:2246:4"
@@ -3001,12 +2857,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'ExpressionEvaluationOptions' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ExpressionEvaluationOptions",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6588:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'ExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ExtendedLocation",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16564:4"
@@ -3022,12 +2872,6 @@
     "message": "The schema 'ExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ExtendedLocation",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:315:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ExtendedLocation",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5476:4"
   },
   {
     "code": "MissingTypeObject",
@@ -3517,24 +3361,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'GenericResource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.GenericResource",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5441:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'GenericResourceExpanded' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.GenericResourceExpanded",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5496:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'GenericResourceFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.GenericResourceFilter",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4489:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'GeoBackupPolicy' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.GeoBackupPolicy",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:197:4"
@@ -3604,12 +3430,6 @@
     "message": "The schema 'HopLinkProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.HopLinkProperties",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:3507:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'HttpMessage' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.HttpMessage",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5864:4"
   },
   {
     "code": "MissingTypeObject",
@@ -3718,12 +3538,6 @@
     "message": "The schema 'IPRule' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.IPRule",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2771:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Identity' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Identity",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5578:4"
   },
   {
     "code": "MissingTypeObject",
@@ -5155,18 +4969,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'OnErrorDeployment' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.OnErrorDeployment",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5290:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'OnErrorDeploymentExtended' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.OnErrorDeploymentExtended",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5311:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'Operation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.Operation",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:558:4"
@@ -5200,12 +5002,6 @@
     "message": "The schema 'OperationListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.OperationListResult",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:546:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'OperationListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.OperationListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6142:4"
   },
   {
     "code": "MissingTypeObject",
@@ -5359,12 +5155,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'ParametersLink' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ParametersLink",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4544:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'PatchInstallationDetail' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.PatchInstallationDetail",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11738:4"
@@ -5440,12 +5230,6 @@
     "message": "The schema 'Plan' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.Plan",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12061:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Plan' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Plan",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5523:4"
   },
   {
     "code": "MissingTypeObject",
@@ -5722,42 +5506,6 @@
     "message": "The schema 'ProtocolSettings' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ProtocolSettings",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:647:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Provider' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Provider",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5059:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ProviderExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ProviderExtendedLocation",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4957:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ProviderListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ProviderListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5404:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ProviderPermissionListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ProviderPermissionListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6536:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ProviderResourceType' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ProviderResourceType",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4977:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ProviderResourceTypeListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ProviderResourceTypeListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5421:4"
   },
   {
     "code": "MissingTypeObject",
@@ -6087,12 +5835,6 @@
     "code": "MissingTypeObject",
     "message": "The schema 'Resource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.Resource",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6048:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Resource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Resource",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:2121:4"
   },
   {
@@ -6100,48 +5842,6 @@
     "message": "The schema 'ResourceAccessRule' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ResourceAccessRule",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2718:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceGroup' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceGroup",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5644:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceGroupExportResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceGroupExportResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6098:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceGroupFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceGroupFilter",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4506:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceGroupListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceGroupListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5723:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceGroupPatchable' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceGroupPatchable",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5688:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceGroupProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceGroupProperties",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5713:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5627:4"
   },
   {
     "code": "MissingTypeObject",
@@ -6163,12 +5863,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'ResourceProviderOperationDisplayProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceProviderOperationDisplayProperties",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6023:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'ResourceRange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ResourceRange",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/communityGallery.json:349:4"
@@ -6184,12 +5878,6 @@
     "message": "The schema 'ResourceRange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ResourceRange",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2341:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourceReference' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourceReference",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5280:4"
   },
   {
     "code": "MissingTypeObject",
@@ -6256,12 +5944,6 @@
     "message": "The schema 'ResourceUriList' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ResourceUriList",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3266:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ResourcesMoveInfo' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ResourcesMoveInfo",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5740:4"
   },
   {
     "code": "MissingTypeObject",
@@ -6580,18 +6262,6 @@
     "message": "The schema 'ScaleRuleMetricDimension' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.ScaleRuleMetricDimension",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:847:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ScopedDeployment' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ScopedDeployment",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4640:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'ScopedDeploymentWhatIf' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.ScopedDeploymentWhatIf",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4689:4"
   },
   {
     "code": "MissingTypeObject",
@@ -6939,12 +6609,6 @@
     "code": "MissingTypeObject",
     "message": "The schema 'Sku' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.Sku",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5548:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Sku' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Sku",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/common.json:96:4"
   },
   {
@@ -7183,12 +6847,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'SubResource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.SubResource",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6088:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'SubResourceReadOnly' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.SubResourceReadOnly",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16543:4"
@@ -7243,18 +6901,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'TagCount' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TagCount",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5772:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'TagDetails' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TagDetails",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5804:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'TagFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.TagFilter",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4604:4"
@@ -7264,24 +6910,6 @@
     "message": "The schema 'TagProperty' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.TagProperty",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1210:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'TagValue' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TagValue",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5785:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'Tags' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Tags",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6358:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'TagsListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TagsListResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5830:4"
   },
   {
     "code": "MissingTypeObject",
@@ -7300,24 +6928,6 @@
     "message": "The schema 'TargetRegion' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.TargetRegion",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2516:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'TargetResource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TargetResource",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5847:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'TemplateHashResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TemplateHashResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6161:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'TemplateLink' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.TemplateLink",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4519:4"
   },
   {
     "code": "MissingTypeObject",
@@ -8851,30 +8461,6 @@
   },
   {
     "code": "MissingTypeObject",
-    "message": "The schema 'WhatIfChange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.WhatIfChange",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6242:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'WhatIfOperationProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.WhatIfOperationProperties",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6324:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'WhatIfOperationResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.WhatIfOperationResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6340:4"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'WhatIfPropertyChange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.WhatIfPropertyChange",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6174:4"
-  },
-  {
-    "code": "MissingTypeObject",
     "message": "The schema 'WinRMConfiguration' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.WinRMConfiguration",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12871:4"
@@ -8932,12 +8518,6 @@
     "message": "The schema 'display' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "jsonpath": "$.definitions.Operation.properties.display",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:565:8"
-  },
-  {
-    "code": "MissingTypeObject",
-    "message": "The schema 'display' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "jsonpath": "$.definitions.Operation.properties.display",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6119:8"
   },
   {
     "code": "MissingTypeObject",

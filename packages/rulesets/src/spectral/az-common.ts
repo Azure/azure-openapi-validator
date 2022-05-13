@@ -431,7 +431,7 @@ const ruleset : any = {
       "severity": "error",
       "resolved": false,
       "formats": [oas2],
-      "given": "$..[?(@.enum)]",
+      "given": "$..[?(@object() && @.enum)]",
       "then": {
         "function": defaultInEnum
       }
@@ -442,7 +442,7 @@ const ruleset : any = {
       "severity": "warn",
       "resolved": false,
       "formats": [oas2],
-      "given": "$..[?(@.type === 'boolean')]",
+      "given": "$..[?(@object() && @.type === 'boolean')]",
       "then": {
         "function": enumInsteadOfBoolean
       }

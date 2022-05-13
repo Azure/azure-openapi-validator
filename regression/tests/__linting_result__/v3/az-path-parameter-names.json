@@ -1,21 +1,9 @@
 [
   {
     "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"backendPoolName\" and \"backendAddressPoolName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1385:4"
-  },
-  {
-    "code": "az-path-parameter-names",
     "message": "Inconsistent path parameter names \"galleryApplicationVersionName\" and \"galleryImageVersionName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"]",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1087:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"groupName\" and \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1385:4"
   },
   {
     "code": "az-path-parameter-names",
@@ -88,18 +76,6 @@
     "message": "Inconsistent path parameter names \"runCommandName\" and \"commandId\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"]",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:252:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"sourceResourceGroupName\" and \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2828:4"
-  },
-  {
-    "code": "az-path-parameter-names",
-    "message": "Inconsistent path parameter names \"sourceResourceGroupName\" and \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2880:4"
   },
   {
     "code": "az-path-parameter-names",

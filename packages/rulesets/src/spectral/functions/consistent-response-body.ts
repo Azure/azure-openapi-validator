@@ -7,7 +7,7 @@ const consistentresponsebody = (pathItem:any, _opts:any, paths:any) => {
   if (pathItem === null || typeof pathItem !== 'object') {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   const errors:any = [];
 

@@ -4,7 +4,7 @@ const avoidAnonymousParameter = (parameters:any, _opts:any, paths:any) => {
   if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   const properties: object = parameters.schema.properties;
   if ((properties === undefined || Object.keys(properties).length === 0) &&

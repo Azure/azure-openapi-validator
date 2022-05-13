@@ -50,12 +50,6 @@
   {
     "code": "az-property-names-convention",
     "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.AdministratorProperties.properties.azureADOnlyAuthentication",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:275:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.ApplicationGetEndpoint.properties.privateIPAddress",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:353:8"
   },
@@ -64,12 +58,6 @@
     "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.ApplicationGetHttpsEndpoint.properties.privateIPAddress",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:313:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.AzureADOnlyAuthProperties.properties.azureADOnlyAuthentication",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:248:8"
   },
   {
     "code": "az-property-names-convention",
@@ -158,18 +146,6 @@
   {
     "code": "az-property-names-convention",
     "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.IPv6ServerFirewallRuleProperties.properties.endIPv6Address",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:258:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.IPv6ServerFirewallRuleProperties.properties.startIPv6Address",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:254:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.LoadBalancerConfigurationProperties.properties.frontendIPConfigurations",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2118:8"
   },
@@ -190,24 +166,6 @@
     "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.LoadBalancerResourceSettings.properties.frontendIPConfigurations",
     "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2317:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.ManagedInstanceAzureADOnlyAuthProperties.properties.azureADOnlyAuthentication",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:248:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.ManagedInstanceExternalAdministrator.properties.azureADOnlyAuthentication",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:894:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.ManagedInstanceProperties.properties.storageSizeInGB",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:670:8"
   },
   {
     "code": "az-property-names-convention",
@@ -238,12 +196,6 @@
     "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.OSDiskImageSecurityProfile.properties.secureVMDiskEncryptionSetId",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2656:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.PrivateEndpointIPConfigurationProperties.properties.privateIPAddress",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:1030:8"
   },
   {
     "code": "az-property-names-convention",
@@ -326,12 +278,6 @@
   {
     "code": "az-property-names-convention",
     "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.ServerExternalAdministrator.properties.azureADOnlyAuthentication",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:616:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.TestNotificationDetailsResponse.properties.ActionDetails",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:514:8"
   },
@@ -376,12 +322,6 @@
     "message": "Property name should be camel case.",
     "jsonpath": "$.definitions.UpdateGatewaySettingsParameters.properties[\"restAuthCredential.username\"]",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1936:8"
-  },
-  {
-    "code": "az-property-names-convention",
-    "message": "Property name should be camel case.",
-    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.storageSizeInGB",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:323:8"
   },
   {
     "code": "az-property-names-convention",

@@ -11,7 +11,7 @@ const hasHeader = (response:any, opts:any, paths:any) => {
     return [];
   }
 
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   const hasHeader = Object.keys(response.headers || {})
     .some((name) => name.toLowerCase() === opts.name.toLowerCase());

@@ -7,7 +7,7 @@ const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const properties = parameters.schema.properties;
     if ((properties === undefined || Object.keys(properties).length === 0) &&
         parameters.schema.additionalProperties === undefined &&
@@ -24,7 +24,7 @@ const consistentresponsebody = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     const createResponseSchema = ((op) => { var _a, _b; return (_b = (_a = op === null || op === void 0 ? void 0 : op.responses) === null || _a === void 0 ? void 0 : _a['201']) === null || _b === void 0 ? void 0 : _b.schema; });
     const resourceSchema = createResponseSchema(pathItem.put) || createResponseSchema(pathItem.patch);
@@ -57,7 +57,7 @@ const defaultInEnum = (swaggerObj, _opts, paths) => {
     if (!Array.isArray(enumValue)) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (enumValue && !enumValue.includes(defaultValue)) {
         return [{
                 message: 'Default value should appear in the enum constraint for a schema.',
@@ -71,7 +71,7 @@ const delete204Response = (deleteResponses, _opts, paths) => {
     if (deleteResponses === null || typeof deleteResponses !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!deleteResponses['204'] && !deleteResponses['202']) {
         return [{
                 message: 'A delete operation should have a 204 response.',
@@ -85,7 +85,7 @@ const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     return [{
             message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
             path,
@@ -214,7 +214,7 @@ function validateErrorResponse(errorResponse, responsePath) {
 }
 function errorResponse(responses, _opts, paths) {
     const errors = [];
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (responses.default) {
         errors.push(...validateErrorResponse(responses.default, [...path, 'default']));
     }
@@ -237,7 +237,7 @@ const hasHeader = (response, opts, paths) => {
     if (opts === null || typeof opts !== 'object' || !opts.name) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const hasHeader = Object.keys(response.headers || {})
         .some((name) => name.toLowerCase() === opts.name.toLowerCase());
     if (!hasHeader) {
@@ -256,7 +256,7 @@ const operationId = (operation, _opts, paths) => {
     if (operation === null || typeof operation !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     if (!operation.operationId) {
         return errors;
@@ -317,7 +317,7 @@ const paginationResponse = (operation, _opts, paths) => {
     if (operation === null || typeof operation !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!operation.responses || typeof operation.responses !== 'object') {
         return [];
     }
@@ -388,7 +388,7 @@ const paramNames = (targetVal, _opts, paths) => {
     if (targetVal === null || typeof targetVal !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!targetVal.in || !targetVal.name) {
         return [];
     }
@@ -437,7 +437,7 @@ const paramNamesUnique = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     const pathParams = pathItem.parameters ? pathItem.parameters.map((p) => p.name) : [];
     const pathDups = dupIgnoreCase(pathParams);
@@ -598,7 +598,7 @@ const pathParamSchema = (param, _opts, paths) => {
     if (param === null || typeof param !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!param.in || !param.name) {
         return [];
     }
@@ -1147,7 +1147,7 @@ const ruleset$1 = {
             "severity": "error",
             "resolved": false,
             "formats": [spectralFormats.oas2],
-            "given": "$..[?(@.enum)]",
+            "given": "$..[?(@object() && @.enum)]",
             "then": {
                 "function": defaultInEnum
             }
@@ -1158,7 +1158,7 @@ const ruleset$1 = {
             "severity": "warn",
             "resolved": false,
             "formats": [spectralFormats.oas2],
-            "given": "$..[?(@.type === 'boolean')]",
+            "given": "$..[?(@object() && @.type === 'boolean')]",
             "then": {
                 "function": enumInsteadOfBoolean
             }
@@ -1182,7 +1182,7 @@ const hostParameters = (parameterizedHost, _opts, paths) => {
     if (parameterizedHost === null || typeof parameterizedHost !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     const useSchemePrefix = (_a = parameterizedHost.useSchemePrefix) !== null && _a !== void 0 ? _a : true;
     const parameters = parameterizedHost.parameters;
@@ -1221,10 +1221,7 @@ const ruleset = {
             "formats": [spectralFormats.oas2],
             "given": ["$.x-ms-parameterized-host"],
             "then": {
-                "function": hostParameters,
-                "functionOptions": {
-                    methods: ["get", "put", "patch", "post", "delete", "trace"]
-                }
+                "function": hostParameters
             }
         }
     }

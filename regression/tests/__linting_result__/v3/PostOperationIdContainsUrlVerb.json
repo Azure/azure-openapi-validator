@@ -1,9 +1,21 @@
 [
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'aborthnsonmigration' in:'StorageAccounts_AbortHierarchicalNamespaceMigration'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration\"].post.operationId",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:838:8"
+    "message": "OperationId should contain the verb: 'begingetaccess' in:'DiskRestorePoint_GrantAccess'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/beginGetAccess\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1745:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'begingetaccess' in:'Disks_GrantAccess'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:354:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'begingetaccess' in:'Snapshots_GrantAccess'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/beginGetAccess\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:704:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -19,15 +31,39 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'forcefailoverallowdataloss' in:'ReplicationLinks_FailoverAllowDataLoss'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:215:8"
+    "message": "OperationId should contain the verb: 'endgetaccess' in:'DiskRestorePoint_RevokeAccess'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/endGetAccess\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1809:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'hnsonmigration' in:'StorageAccounts_HierarchicalNamespaceMigration'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration\"].post.operationId",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:785:8"
+    "message": "OperationId should contain the verb: 'endgetaccess' in:'Disks_RevokeAccess'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:409:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'endgetaccess' in:'Snapshots_RevokeAccess'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/endGetAccess\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:756:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'extensionrollingupgrade' in:'VirtualMachineScaleSetRollingUpgrades_StartExtensionUpgrade'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7901:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'getrequestratebyinterval' in:'LogAnalytics_ExportRequestRateByInterval'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9528:8"
+  },
+  {
+    "code": "PostOperationIdContainsUrlVerb",
+    "message": "OperationId should contain the verb: 'getthrottledrequests' in:'LogAnalytics_ExportThrottledRequests'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9588:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -37,33 +73,21 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'migrate' in:'BlobContainers_ObjectLevelWorm'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate\"].post.operationId",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:839:8"
+    "message": "OperationId should contain the verb: 'manualupgrade' in:'VirtualMachineScaleSets_UpdateInstances'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7604:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'move' in:'Databases_Rename'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/move\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:494:8"
+    "message": "OperationId should contain the verb: 'osrollingupgrade' in:'VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7847:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'refreshschema' in:'SyncMembers_RefreshMemberSchema'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/refreshSchema\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:417:8"
-  },
-  {
-    "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'restorepoints' in:'RestorePoints_Create'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:71:8"
-  },
-  {
-    "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'start' in:'JobExecutions_Create'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/start\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:188:8"
+    "message": "OperationId should contain the verb: 'share' in:'GallerySharingProfile_Update'. Consider updating the operationId",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/share\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1670:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
@@ -73,27 +97,9 @@
   },
   {
     "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'tdecertificates' in:'ManagedInstanceTdeCertificates_Create'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/tdeCertificates\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceTdeCertificates.json:25:8"
-  },
-  {
-    "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'tdecertificates' in:'TdeCertificates_Create'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/tdeCertificates\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TdeCertificates.json:25:8"
-  },
-  {
-    "code": "PostOperationIdContainsUrlVerb",
     "message": "OperationId should contain the verb: 'updateclusteridentitycertificate' in:'Clusters_UpdateIdentityCertificate'. Consider updating the operationId",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/updateClusterIdentityCertificate\"].post.operationId",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:694:8"
-  },
-  {
-    "code": "PostOperationIdContainsUrlVerb",
-    "message": "OperationId should contain the verb: 'updatemanagedinstancednsservers' in:'VirtualClusters_UpdateDnsServers'. Consider updating the operationId",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}/updateManagedInstanceDnsServers\"].post.operationId",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:25:8"
   },
   {
     "code": "PostOperationIdContainsUrlVerb",

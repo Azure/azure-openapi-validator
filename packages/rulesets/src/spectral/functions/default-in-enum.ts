@@ -15,7 +15,7 @@ const defaultInEnum = (swaggerObj:any, _opts:any, paths:any) => {
   if (!Array.isArray(enumValue)) {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   if (enumValue && !enumValue.includes(defaultValue)) {
     return [{

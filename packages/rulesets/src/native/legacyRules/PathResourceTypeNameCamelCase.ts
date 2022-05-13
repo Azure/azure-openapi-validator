@@ -1,7 +1,6 @@
 import { rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { getAllResourceProvidersFromPath, getAllWordsFromPath, resourceTypeMustCamelCase } from "../utilities/rules-helper"
 
-
 export const PathResourceTypeNameCamelCase = "PathResourceTypeNameCamelCase"
 
 rules.push({

@@ -2,42 +2,6 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.AccessPolicy",
-    "source": ""
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.AccessPolicy",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:982:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.AliasPathMetadata",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4760:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ApiProfile",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ApplicationGatewayLoadDistributionTargetPropertiesFormat",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3608:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.BlobServiceItems",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1374:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.CapacityReservationGroupInstanceView",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10673:4"
   },
@@ -92,12 +56,6 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.FileServiceItems",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:601:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.GalleryTargetExtendedLocation",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2549:4"
   },
@@ -110,30 +68,6 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ListQueue",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:473:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ListQueueProperties",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:488:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ListQueueServices",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:409:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ListTableServices",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:400:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.LoadBalancerConfigurationProperties",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2115:4"
   },
@@ -142,30 +76,6 @@
     "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.LoadBalancerFrontendIPConfiguration",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2098:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ManagedInstancePrivateEndpointProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:230:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ManagedInstancePrivateEndpointProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:952:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ManagedInstancePrivateLinkServiceConnectionStateProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:239:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ManagedInstancePrivateLinkServiceConnectionStateProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:961:4"
   },
   {
     "code": "az-schema-description-or-title",
@@ -184,48 +94,6 @@
     "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.OSVersionListResult",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2554:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.PermissionScope",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5051:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.PrivateEndpointProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:241:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.PrivateEndpointProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:652:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.PrivateLinkServiceConnectionStateProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:251:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.PrivateLinkServiceConnectionStateProperty",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:662:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.QueryStatistics",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:337:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.QueueProperties",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:457:4"
   },
   {
     "code": "az-schema-description-or-title",
@@ -278,44 +146,8 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.Signatures",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1934:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.SignedIdentifier",
-    "source": ""
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.SignedIdentifier",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:970:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.SingleQueryResult",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1856:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.SshPublicKey",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5080:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.StatusCodeCount",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2363:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.StorageQueue",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:442:4"
   },
   {
     "code": "az-schema-description-or-title",
@@ -344,20 +176,8 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.TableProperties",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:449:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.TerminateNotificationProfile",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16240:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.TopQueries",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:1059:4"
   },
   {
     "code": "az-schema-description-or-title",
@@ -374,18 +194,6 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.UpsertManagedServerOperationParameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:310:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.UpsertManagedServerOperationStep",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:329:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.UserArtifactManage",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2132:4"
   },
@@ -394,11 +202,5 @@
     "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.VMScaleSetConvertToSinglePlacementGroupInput",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16691:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ZoneMapping",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6606:4"
   }
 ]

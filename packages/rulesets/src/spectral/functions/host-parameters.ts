@@ -3,7 +3,7 @@ const hostParameters = (parameterizedHost:any, _opts:any, paths:any) => {
   if (parameterizedHost === null || typeof parameterizedHost !== 'object') {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   const errors:any = [];
 

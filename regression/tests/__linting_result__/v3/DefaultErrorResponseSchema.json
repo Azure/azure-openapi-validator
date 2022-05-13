@@ -20,6 +20,12 @@
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Network/operations\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:55:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
     "jsonpath": "$.paths[\"/providers/Microsoft.ResourceConnector/operations\"].get.responses.default.schema",
     "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:58:12"
   },
@@ -128,8 +134,176 @@
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:297:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:290:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewallFqdnTags\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewallFqdnTag.json:61:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureWebCategory.json:111:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories/{name}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureWebCategory.json:75:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceCommunity.json:66:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:297:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:290:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ipGroups\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:343:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/checkDnsAvailability.json:72:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableDelegations\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableDelegations.json:65:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableServiceAliases\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableServiceAliases.json:65:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:119:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:65:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/usage.json:69:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/virtualNetworkAvailableEndpointServices\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/endpointService.json:65:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/natGateways\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:300:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:336:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkTaps\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:290:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/appliances\"].get.responses.default.schema",
     "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:99:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:135:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:72:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:82:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:209:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:143:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:233:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/publicipaddresses\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:72:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:143:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:233:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
@@ -518,6 +692,300 @@
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:343:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:137:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:261:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:200:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:336:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:130:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:254:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:193:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:343:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:137:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:261:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:200:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:130:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:254:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:193:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:336:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:130:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:254:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:193:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:145:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:197:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:90:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:304:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:257:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:82:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:206:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:145:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableDelegations\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableDelegations.json:115:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableServiceAliases\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/availableServiceAliases.json:115:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:346:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:137:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:264:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:203:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:297:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:130:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:254:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:193:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:336:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].delete.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:78:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:130:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].patch.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:254:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].put.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:193:12"
+  },
+  {
+    "code": "DefaultErrorResponseSchema",
+    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances\"].get.responses.default.schema",
     "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:142:12"
   },
@@ -554,182 +1022,44 @@
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate\"].post.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:872:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:135:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:54:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:82:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:224:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:209:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].delete.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:473:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:280:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:416:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"].get.responses.default.schema",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:361:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].patch.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:356:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes\"].get.responses.default.schema",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:84:12"
   },
   {
     "code": "DefaultErrorResponseSchema",
     "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:300:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/lease\"].post.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:592:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore\"].post.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:523:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:157:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:114:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}\"].delete.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1210:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1109:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1167:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:54:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:397:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].delete.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:343:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:303:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].patch.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:260:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:208:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/{queueServiceName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:151:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/{queueServiceName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:108:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:54:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:388:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].delete.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:346:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:306:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:263:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:208:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/{tableServiceName}\"].get.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:151:12"
-  },
-  {
-    "code": "DefaultErrorResponseSchema",
-    "message": "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/{tableServiceName}\"].put.responses.default.schema",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:108:12"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes/{changeResourceId}\"].get.responses.default.schema",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:138:12"
   },
   {
     "code": "DefaultErrorResponseSchema",

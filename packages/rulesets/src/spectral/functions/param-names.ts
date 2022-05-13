@@ -7,7 +7,7 @@ export const paramNames = (targetVal:any, _opts:any, paths:any) => {
     return [];
   }
 
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   // These errors will be caught elsewhere, so silently ignore here
   if (!targetVal.in || !targetVal.name) {

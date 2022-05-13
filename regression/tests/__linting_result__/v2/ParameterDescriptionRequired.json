@@ -463,18 +463,6 @@
   },
   {
     "code": "ParameterDescriptionRequired",
-    "message": "'parameters' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].patch.parameters[2]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4390:10"
-  },
-  {
-    "code": "ParameterDescriptionRequired",
-    "message": "'parameters' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].put.parameters[2]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4344:10"
-  },
-  {
-    "code": "ParameterDescriptionRequired",
     "message": "'privateEndpointConnectionName' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete.parameters[2]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:132:10"

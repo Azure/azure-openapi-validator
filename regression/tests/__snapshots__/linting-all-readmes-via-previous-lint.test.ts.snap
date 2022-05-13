@@ -82,12 +82,6 @@ Array [
   },
   Object {
     "code": "AllResourcesMustHaveGetOperation",
-    "jsonpath": "$.definitions.GenericResourceExpanded",
-    "message": "The resource \\"GenericResourceExpanded\\" does not have get operation, please add it.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5496:4",
-  },
-  Object {
-    "code": "AllResourcesMustHaveGetOperation",
     "jsonpath": "$.definitions.ImportExportExtensionsOperationResult",
     "message": "The resource \\"ImportExportExtensionsOperationResult\\" does not have get operation, please add it.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:283:4",
@@ -182,6 +176,12 @@ Array [
   },
   Object {
     "code": "AvoidNestedProperties",
+    "jsonpath": "$.definitions.ChangeResourceResult.properties.properties",
+    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:173:8",
+  },
+  Object {
+    "code": "AvoidNestedProperties",
     "jsonpath": "$.definitions.CloudService.properties.properties",
     "message": "Consider using x-ms-client-flatten to provide a better end user experience",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2342:8",
@@ -206,36 +206,6 @@ Array [
   },
   Object {
     "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.Deployment.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4623:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.DeploymentExtended.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5372:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.DeploymentOperation.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5999:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.DeploymentValidateResult.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5344:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.DeploymentWhatIf.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4679:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
     "jsonpath": "$.definitions.EventData.properties.properties",
     "message": "Consider using x-ms-client-flatten to provide a better end user experience",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/tenantActivityLogs_API.json:264:8",
@@ -245,12 +215,6 @@ Array [
     "jsonpath": "$.definitions.Extension.properties.properties",
     "message": "Consider using x-ms-client-flatten to provide a better end user experience",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2240:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.GenericResource.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5447:8",
   },
   Object {
     "code": "AvoidNestedProperties",
@@ -362,27 +326,9 @@ Array [
   },
   Object {
     "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.ProviderResourceType.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5048:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
     "jsonpath": "$.definitions.PutJobParameters.properties.properties",
     "message": "Consider using x-ms-client-flatten to provide a better end user experience",
     "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:611:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.ResourceGroup.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5661:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.ResourceGroupPatchable.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5694:8",
   },
   Object {
     "code": "AvoidNestedProperties",
@@ -398,18 +344,6 @@ Array [
   },
   Object {
     "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.ScopedDeployment.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4646:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.ScopedDeploymentWhatIf.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4695:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
     "jsonpath": "$.definitions.ServerPrivateEndpointConnection.properties.properties",
     "message": "Consider using x-ms-client-flatten to provide a better end user experience",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:567:8",
@@ -419,18 +353,6 @@ Array [
     "jsonpath": "$.definitions.SignaturesOverrides.properties.properties",
     "message": "Consider using x-ms-client-flatten to provide a better end user experience",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1971:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.TagsPatchResource.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6401:8",
-  },
-  Object {
-    "code": "AvoidNestedProperties",
-    "jsonpath": "$.definitions.TagsResource.properties.properties",
-    "message": "Consider using x-ms-client-flatten to provide a better end user experience",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6429:8",
   },
   Object {
     "code": "AvoidNestedProperties",
@@ -1063,12 +985,6 @@ Array [
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:340:8",
   },
-  Object {
-    "code": "DeleteOperationResponses",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].delete.responses",
-    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4465:8",
-  },
 ]
 `;
 
@@ -1204,12 +1120,6 @@ Array [
     "jsonpath": "$.definitions.AccessPolicy",
     "message": "'AccessPolicy' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:982:4",
-  },
-  Object {
-    "code": "DescriptionAndTitleMissing",
-    "jsonpath": "$.definitions.ApiProfile",
-    "message": "'ApiProfile' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4",
   },
   Object {
     "code": "DescriptionAndTitleMissing",
@@ -1549,12 +1459,6 @@ Array [
   },
   Object {
     "code": "DescriptionAndTitleMissing",
-    "jsonpath": "$.definitions.ZoneMapping",
-    "message": "'ZoneMapping' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6606:4",
-  },
-  Object {
-    "code": "DescriptionAndTitleMissing",
     "jsonpath": "$.definitions.GrantAccessData.properties.access",
     "message": "'access' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3077:8",
@@ -1723,12 +1627,6 @@ Array [
   },
   Object {
     "code": "DescriptionAndTitleMissing",
-    "jsonpath": "$.definitions.Tags.properties.tags",
-    "message": "'tags' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6361:8",
-  },
-  Object {
-    "code": "DescriptionAndTitleMissing",
     "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.tier",
     "message": "'tier' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:316:8",
@@ -1792,18 +1690,6 @@ Array [
     "jsonpath": "$.definitions.FirewallRuleList.properties.values",
     "message": "'values' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:347:8",
-  },
-  Object {
-    "code": "DescriptionAndTitleMissing",
-    "jsonpath": "$.definitions.ProviderResourceType.properties.zoneMappings",
-    "message": "'zoneMappings' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5023:8",
-  },
-  Object {
-    "code": "DescriptionAndTitleMissing",
-    "jsonpath": "$.definitions.ZoneMapping.properties.zones",
-    "message": "'zones' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6613:8",
   },
 ]
 `;
@@ -1964,12 +1850,6 @@ Array [
     "jsonpath": "$.definitions.CommunityGalleryInfo.properties.communityGalleryEnabled",
     "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: communityGalleryEnabled",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1886:8",
-  },
-  Object {
-    "code": "EnumInsteadOfBoolean",
-    "jsonpath": "$.definitions.ProviderConsentDefinition.properties.consentToAuthorization",
-    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: consentToAuthorization",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6558:8",
   },
   Object {
     "code": "EnumInsteadOfBoolean",
@@ -2552,12 +2432,6 @@ Array [
     "jsonpath": "$.definitions.MoveResourceProperties.properties.isResolveRequired",
     "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isResolveRequired",
     "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1317:8",
-  },
-  Object {
-    "code": "EnumInsteadOfBoolean",
-    "jsonpath": "$.definitions.RoleDefinition.properties.isServiceRole",
-    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isServiceRole",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6482:8",
   },
   Object {
     "code": "EnumInsteadOfBoolean",
@@ -3164,12 +3038,6 @@ Array [
   },
   Object {
     "code": "GetInOperationName",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\\"].get.operationId",
-    "message": "'GET' operation 'Providers_ProviderPermissions' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8",
-  },
-  Object {
-    "code": "GetInOperationName",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView\\"].get.operationId",
     "message": "'GET' operation 'VirtualMachines_InstanceView' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4001:8",
@@ -3383,12 +3251,6 @@ Array [
   },
   Object {
     "code": "IntegerTypeMustHaveFormat",
-    "jsonpath": "$.definitions.TagCount.properties.value",
-    "message": "The integer type does not have a format, please add it.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5778:8",
-  },
-  Object {
-    "code": "IntegerTypeMustHaveFormat",
     "jsonpath": "$.definitions.UpdateHistoryProperty.properties.immutabilityPeriodSinceCreationInDays",
     "message": "The integer type does not have a format, please add it.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1151:8",
@@ -3486,17 +3348,6 @@ Array [
 ]
 `;
 
-exports[`linting result group bu rule: rule InvalidSkuModel result 1`] = `
-Array [
-  Object {
-    "code": "InvalidSkuModel",
-    "jsonpath": "$.definitions.Sku",
-    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5548:4",
-  },
-]
-`;
-
 exports[`linting result group bu rule: rule LROStatusCodesReturnTypeSchema result 1`] = `
 Array [
   Object {
@@ -3572,12 +3423,6 @@ Array [
   },
   Object {
     "code": "ListInOperationName",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\\"].get.operationId",
-    "message": "Since operation 'ProvidersProviderPermissions' response has model definition 'array', it should be of the form \\"*list*\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8",
-  },
-  Object {
-    "code": "ListInOperationName",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\\"].post.operationId",
     "message": "Since operation 'PutBastionShareableLink' response has model definition 'x-ms-pageable', it should be of the form \\"*_list*\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:328:8",
@@ -3626,12 +3471,6 @@ Array [
   Object {
     "code": "LocationMustHaveXmsMutability",
     "jsonpath": "$.definitions",
-    "message": "Property 'location' must have '\\"x-ms-mutability\\":[\\"read\\", \\"create\\"]' extension defined. Resource Model: 'ResourceGroup'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4479:2",
-  },
-  Object {
-    "code": "LocationMustHaveXmsMutability",
-    "jsonpath": "$.definitions",
     "message": "Property 'location' must have '\\"x-ms-mutability\\":[\\"read\\", \\"create\\"]' extension defined. Resource Model: 'VirtualMachineImageResource'",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2",
   },
@@ -3640,24 +3479,6 @@ Array [
 
 exports[`linting result group bu rule: rule LongRunningOperationsOptionsValidator result 1`] = `
 Array [
-  Object {
-    "code": "LongRunningOperationsOptionsValidator",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"]",
-    "message": "A LRO Post operation with return schema must have \\"x-ms-long-running-operation-options\\" extension enabled.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:938:4",
-  },
-  Object {
-    "code": "LongRunningOperationsOptionsValidator",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"]",
-    "message": "A LRO Post operation with return schema must have \\"x-ms-long-running-operation-options\\" extension enabled.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:562:4",
-  },
-  Object {
-    "code": "LongRunningOperationsOptionsValidator",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"]",
-    "message": "A LRO Post operation with return schema must have \\"x-ms-long-running-operation-options\\" extension enabled.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1326:4",
-  },
   Object {
     "code": "LongRunningOperationsOptionsValidator",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers/{deletedServerName}/recover\\"]",
@@ -3808,18 +3629,6 @@ Array [
     "message": "A LRO Post operation with return schema must have \\"x-ms-long-running-operation-options\\" extension enabled.",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1496:4",
   },
-  Object {
-    "code": "LongRunningOperationsOptionsValidator",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"]",
-    "message": "A LRO Post operation with return schema must have \\"x-ms-long-running-operation-options\\" extension enabled.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1773:4",
-  },
-  Object {
-    "code": "LongRunningOperationsOptionsValidator",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"]",
-    "message": "A LRO Post operation with return schema must have \\"x-ms-long-running-operation-options\\" extension enabled.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:254:4",
-  },
 ]
 `;
 
@@ -3940,30 +3749,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Alias",
-    "message": "The schema 'Alias' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4900:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.AliasPath",
-    "message": "The schema 'AliasPath' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4840:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.AliasPathMetadata",
-    "message": "The schema 'AliasPathMetadata' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4760:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.AliasPattern",
-    "message": "The schema 'AliasPattern' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4865:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.ApiEntityReference",
     "message": "The schema 'ApiEntityReference' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:14646:4",
@@ -4039,12 +3824,6 @@ Array [
     "jsonpath": "$.definitions.ApiErrorBase",
     "message": "The schema 'ApiErrorBase' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3703:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ApiProfile",
-    "message": "The schema 'ApiProfile' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -4990,12 +4769,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.BasicDependency",
-    "message": "The schema 'BasicDependency' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5108:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.BastionActiveSession",
     "message": "The schema 'BastionActiveSession' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:801:4",
@@ -5293,12 +5066,6 @@ Array [
     "jsonpath": "$.definitions.CloudError",
     "message": "The schema 'CloudError' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2481:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.CloudError",
-    "message": "The schema 'CloudError' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4737:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -5752,12 +5519,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DebugSetting",
-    "message": "The schema 'DebugSetting' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4608:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.DedicatedHost",
     "message": "The schema 'DedicatedHost' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10619:4",
@@ -5875,96 +5636,6 @@ Array [
     "jsonpath": "$.definitions.DeliveryPackageInformation",
     "message": "The schema 'DeliveryPackageInformation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:1117:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Dependency",
-    "message": "The schema 'Dependency' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5125:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Deployment",
-    "message": "The schema 'Deployment' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4617:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentExportResult",
-    "message": "The schema 'DeploymentExportResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4664:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentExtended",
-    "message": "The schema 'DeploymentExtended' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5351:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentExtendedFilter",
-    "message": "The schema 'DeploymentExtendedFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4480:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentListResult",
-    "message": "The schema 'DeploymentListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5387:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentOperation",
-    "message": "The schema 'DeploymentOperation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5987:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentOperationProperties",
-    "message": "The schema 'DeploymentOperationProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5873:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentOperationsListResult",
-    "message": "The schema 'DeploymentOperationsListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6006:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentProperties",
-    "message": "The schema 'DeploymentProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4560:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentPropertiesExtended",
-    "message": "The schema 'DeploymentPropertiesExtended' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5149:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentValidateResult",
-    "message": "The schema 'DeploymentValidateResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5337:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentWhatIf",
-    "message": "The schema 'DeploymentWhatIf' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4673:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentWhatIfProperties",
-    "message": "The schema 'DeploymentWhatIfProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4706:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.DeploymentWhatIfSettings",
-    "message": "The schema 'DeploymentWhatIfSettings' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4720:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -6526,12 +6197,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ExportTemplateRequest",
-    "message": "The schema 'ExportTemplateRequest' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5756:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.ExpressRouteCircuit",
     "message": "The schema 'ExpressRouteCircuit' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:2246:4",
@@ -6844,12 +6509,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ExpressionEvaluationOptions",
-    "message": "The schema 'ExpressionEvaluationOptions' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6588:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.ExtendedLocation",
     "message": "The schema 'ExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16564:4",
@@ -6865,12 +6524,6 @@ Array [
     "jsonpath": "$.definitions.ExtendedLocation",
     "message": "The schema 'ExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:315:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ExtendedLocation",
-    "message": "The schema 'ExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5476:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -7360,24 +7013,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.GenericResource",
-    "message": "The schema 'GenericResource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5441:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.GenericResourceExpanded",
-    "message": "The schema 'GenericResourceExpanded' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5496:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.GenericResourceFilter",
-    "message": "The schema 'GenericResourceFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4489:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.GeoBackupPolicy",
     "message": "The schema 'GeoBackupPolicy' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:197:4",
@@ -7447,12 +7082,6 @@ Array [
     "jsonpath": "$.definitions.HopLinkProperties",
     "message": "The schema 'HopLinkProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:3507:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.HttpMessage",
-    "message": "The schema 'HttpMessage' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5864:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -7561,12 +7190,6 @@ Array [
     "jsonpath": "$.definitions.IPRule",
     "message": "The schema 'IPRule' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2771:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Identity",
-    "message": "The schema 'Identity' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5578:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -8998,18 +8621,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.OnErrorDeployment",
-    "message": "The schema 'OnErrorDeployment' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5290:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.OnErrorDeploymentExtended",
-    "message": "The schema 'OnErrorDeploymentExtended' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5311:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.Operation",
     "message": "The schema 'Operation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:558:4",
@@ -9043,12 +8654,6 @@ Array [
     "jsonpath": "$.definitions.OperationListResult",
     "message": "The schema 'OperationListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:546:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.OperationListResult",
-    "message": "The schema 'OperationListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6142:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -9202,12 +8807,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ParametersLink",
-    "message": "The schema 'ParametersLink' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4544:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.PatchInstallationDetail",
     "message": "The schema 'PatchInstallationDetail' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11738:4",
@@ -9283,12 +8882,6 @@ Array [
     "jsonpath": "$.definitions.Plan",
     "message": "The schema 'Plan' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12061:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Plan",
-    "message": "The schema 'Plan' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5523:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -9565,42 +9158,6 @@ Array [
     "jsonpath": "$.definitions.ProtocolSettings",
     "message": "The schema 'ProtocolSettings' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:647:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Provider",
-    "message": "The schema 'Provider' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5059:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ProviderExtendedLocation",
-    "message": "The schema 'ProviderExtendedLocation' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4957:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ProviderListResult",
-    "message": "The schema 'ProviderListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5404:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ProviderPermissionListResult",
-    "message": "The schema 'ProviderPermissionListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6536:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ProviderResourceType",
-    "message": "The schema 'ProviderResourceType' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4977:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ProviderResourceTypeListResult",
-    "message": "The schema 'ProviderResourceTypeListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5421:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -9930,12 +9487,6 @@ Array [
     "code": "MissingTypeObject",
     "jsonpath": "$.definitions.Resource",
     "message": "The schema 'Resource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6048:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Resource",
-    "message": "The schema 'Resource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:2121:4",
   },
   Object {
@@ -9943,48 +9494,6 @@ Array [
     "jsonpath": "$.definitions.ResourceAccessRule",
     "message": "The schema 'ResourceAccessRule' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2718:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceGroup",
-    "message": "The schema 'ResourceGroup' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5644:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceGroupExportResult",
-    "message": "The schema 'ResourceGroupExportResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6098:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceGroupFilter",
-    "message": "The schema 'ResourceGroupFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4506:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceGroupListResult",
-    "message": "The schema 'ResourceGroupListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5723:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceGroupPatchable",
-    "message": "The schema 'ResourceGroupPatchable' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5688:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceGroupProperties",
-    "message": "The schema 'ResourceGroupProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5713:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceListResult",
-    "message": "The schema 'ResourceListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5627:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -10006,12 +9515,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceProviderOperationDisplayProperties",
-    "message": "The schema 'ResourceProviderOperationDisplayProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6023:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.ResourceRange",
     "message": "The schema 'ResourceRange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/communityGallery.json:349:4",
@@ -10027,12 +9530,6 @@ Array [
     "jsonpath": "$.definitions.ResourceRange",
     "message": "The schema 'ResourceRange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2341:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourceReference",
-    "message": "The schema 'ResourceReference' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5280:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -10099,12 +9596,6 @@ Array [
     "jsonpath": "$.definitions.ResourceUriList",
     "message": "The schema 'ResourceUriList' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3266:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ResourcesMoveInfo",
-    "message": "The schema 'ResourcesMoveInfo' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5740:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -10423,18 +9914,6 @@ Array [
     "jsonpath": "$.definitions.ScaleRuleMetricDimension",
     "message": "The schema 'ScaleRuleMetricDimension' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:847:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ScopedDeployment",
-    "message": "The schema 'ScopedDeployment' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4640:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.ScopedDeploymentWhatIf",
-    "message": "The schema 'ScopedDeploymentWhatIf' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4689:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -10782,12 +10261,6 @@ Array [
     "code": "MissingTypeObject",
     "jsonpath": "$.definitions.Sku",
     "message": "The schema 'Sku' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5548:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Sku",
-    "message": "The schema 'Sku' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/common.json:96:4",
   },
   Object {
@@ -11026,12 +10499,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.SubResource",
-    "message": "The schema 'SubResource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6088:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.SubResourceReadOnly",
     "message": "The schema 'SubResourceReadOnly' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16543:4",
@@ -11086,18 +10553,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TagCount",
-    "message": "The schema 'TagCount' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5772:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TagDetails",
-    "message": "The schema 'TagDetails' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5804:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.TagFilter",
     "message": "The schema 'TagFilter' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4604:4",
@@ -11107,24 +10562,6 @@ Array [
     "jsonpath": "$.definitions.TagProperty",
     "message": "The schema 'TagProperty' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1210:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TagValue",
-    "message": "The schema 'TagValue' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5785:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Tags",
-    "message": "The schema 'Tags' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6358:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TagsListResult",
-    "message": "The schema 'TagsListResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5830:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -11143,24 +10580,6 @@ Array [
     "jsonpath": "$.definitions.TargetRegion",
     "message": "The schema 'TargetRegion' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2516:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TargetResource",
-    "message": "The schema 'TargetResource' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5847:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TemplateHashResult",
-    "message": "The schema 'TemplateHashResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6161:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.TemplateLink",
-    "message": "The schema 'TemplateLink' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4519:4",
   },
   Object {
     "code": "MissingTypeObject",
@@ -12694,30 +12113,6 @@ Array [
   },
   Object {
     "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.WhatIfChange",
-    "message": "The schema 'WhatIfChange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6242:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.WhatIfOperationProperties",
-    "message": "The schema 'WhatIfOperationProperties' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6324:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.WhatIfOperationResult",
-    "message": "The schema 'WhatIfOperationResult' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6340:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.WhatIfPropertyChange",
-    "message": "The schema 'WhatIfPropertyChange' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6174:4",
-  },
-  Object {
-    "code": "MissingTypeObject",
     "jsonpath": "$.definitions.WinRMConfiguration",
     "message": "The schema 'WinRMConfiguration' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:12871:4",
@@ -12775,12 +12170,6 @@ Array [
     "jsonpath": "$.definitions.Operation.properties.display",
     "message": "The schema 'display' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:565:8",
-  },
-  Object {
-    "code": "MissingTypeObject",
-    "jsonpath": "$.definitions.Operation.properties.display",
-    "message": "The schema 'display' is considered an object but without a 'type:object', please add the missing 'type:object'.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6119:8",
   },
   Object {
     "code": "MissingTypeObject",
@@ -12925,41 +12314,6 @@ Array [
     "jsonpath": "$.definitions.TagsResource.properties.tags",
     "message": "The schema 'tags' is considered an object but without a 'type:object', please add the missing 'type:object'.",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:822:8",
-  },
-]
-`;
-
-exports[`linting result group bu rule: rule MissingXmsErrorResponse result 1`] = `
-Array [
-  Object {
-    "code": "MissingXmsErrorResponse",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"].post.responses[\\"400\\"]",
-    "message": "Response code 400 is defined without a x-ms-error-response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:976:10",
-  },
-  Object {
-    "code": "MissingXmsErrorResponse",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"].post.responses[\\"400\\"]",
-    "message": "Response code 400 is defined without a x-ms-error-response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:597:10",
-  },
-  Object {
-    "code": "MissingXmsErrorResponse",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"].post.responses[\\"400\\"]",
-    "message": "Response code 400 is defined without a x-ms-error-response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1364:10",
-  },
-  Object {
-    "code": "MissingXmsErrorResponse",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"].post.responses[\\"400\\"]",
-    "message": "Response code 400 is defined without a x-ms-error-response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1821:10",
-  },
-  Object {
-    "code": "MissingXmsErrorResponse",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\\"].post.responses[\\"400\\"]",
-    "message": "Response code 400 is defined without a x-ms-error-response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:292:10",
   },
 ]
 `;
@@ -13421,60 +12775,6 @@ Array [
   },
   Object {
     "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3813:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames/{tagName}\\"].delete.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3774:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames/{tagName}\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3731:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\\"].delete.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3635:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3679:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].delete.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4455:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4418:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].patch.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4380:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4334:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages\\"].get.operationId",
     "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'UsageModel'. Consider using the plural form of 'Usage' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3014:8",
@@ -13552,12 +12852,6 @@ Array [
   },
   Object {
     "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Providers' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\\"].get.operationId",
     "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:39:8",
@@ -13567,24 +12861,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\\"].get.operationId",
     "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:89:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Resources' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2414:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources\\"].post.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Resources' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2833:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources\\"].post.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Resources' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2885:8",
   },
   Object {
     "code": "OperationIdNounVerb",
@@ -13644,12 +12920,6 @@ Array [
     "jsonpath": "$.paths[\\"/providers/Microsoft.ResourceHealth/operations\\"]",
     "message": "The response schema of operations API \\"/providers/Microsoft.ResourceHealth/operations\\" does not match the ARM specification. Please standardize the schema.",
     "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:127:4",
-  },
-  Object {
-    "code": "OperationsApiResponseSchema",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Resources/operations\\"]",
-    "message": "The response schema of operations API \\"/providers/Microsoft.Resources/operations\\" does not match the ARM specification. Please standardize the schema.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:37:4",
   },
   Object {
     "code": "OperationsApiResponseSchema",
@@ -13817,18 +13087,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources\\"].get",
     "message": "Based on the response model schema, operation 'PrivateLinkResources_ListByStorageSyncService' might be pageable. Consider adding the x-ms-pageable extension.",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:524:6",
-  },
-  Object {
-    "code": "PageableOperation",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\\"].get",
-    "message": "Based on the response model schema, operation 'ProviderResourceTypes_List' might be pageable. Consider adding the x-ms-pageable extension.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2313:6",
-  },
-  Object {
-    "code": "PageableOperation",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\\"].get",
-    "message": "Based on the response model schema, operation 'Providers_ProviderPermissions' might be pageable. Consider adding the x-ms-pageable extension.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2089:6",
   },
   Object {
     "code": "PageableOperation",
@@ -14353,18 +13611,6 @@ Array [
   },
   Object {
     "code": "ParameterDescriptionRequired",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].patch.parameters[2]",
-    "message": "'parameters' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4390:10",
-  },
-  Object {
-    "code": "ParameterDescriptionRequired",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].put.parameters[2]",
-    "message": "'parameters' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4344:10",
-  },
-  Object {
-    "code": "ParameterDescriptionRequired",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\\"].delete.parameters[2]",
     "message": "'privateEndpointConnectionName' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:132:10",
@@ -14676,12 +13922,6 @@ Array [
   },
   Object {
     "code": "ParametersOrder",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register\\"].post",
-    "message": "The parameters:resourceProviderNamespace,groupId should be kept in the same order as they present in the path.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2054:6",
-  },
-  Object {
-    "code": "ParametersOrder",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\\"].delete",
     "message": "The parameters:roleInstanceName,resourceGroupName,cloudServiceName should be kept in the same order as they present in the path.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:14:6",
@@ -14803,12 +14043,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\\"]",
     "message": "The last resource provider 'Microsoft.Compute' doesn't match the namespace.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:158:4",
-  },
-  Object {
-    "code": "PathResourceProviderMatchNamespace",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register\\"]",
-    "message": "The last resource provider 'Microsoft.Management' doesn't match the namespace.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2053:4",
   },
   Object {
     "code": "PathResourceProviderMatchNamespace",
@@ -15958,6 +15192,48 @@ Array [
     "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Usages.json:4:4",
   },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:4:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:4:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:4:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:4:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedDatabases.json:4:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json:4:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:4:4",
+  },
 ]
 `;
 
@@ -16104,36 +15380,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\\"].put",
     "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseExtensions_CreateOrUpdate' Request Model: 'DatabaseExtensions' Response Model: 'ImportExportExtensionsOperationResult'",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:63:6",
-  },
-  Object {
-    "code": "PutRequestResponseScheme",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Deployments_CreateOrUpdate' Request Model: 'Deployment' Response Model: 'DeploymentExtended'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1615:6",
-  },
-  Object {
-    "code": "PutRequestResponseScheme",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Deployments_CreateOrUpdateAtManagementGroupScope' Request Model: 'ScopedDeployment' Response Model: 'DeploymentExtended'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:819:6",
-  },
-  Object {
-    "code": "PutRequestResponseScheme",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Deployments_CreateOrUpdateAtScope' Request Model: 'Deployment' Response Model: 'DeploymentExtended'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:135:6",
-  },
-  Object {
-    "code": "PutRequestResponseScheme",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Deployments_CreateOrUpdateAtSubscriptionScope' Request Model: 'Deployment' Response Model: 'DeploymentExtended'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1207:6",
-  },
-  Object {
-    "code": "PutRequestResponseScheme",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Deployments_CreateOrUpdateAtTenantScope' Request Model: 'ScopedDeployment' Response Model: 'DeploymentExtended'",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:452:6",
   },
   Object {
     "code": "PutRequestResponseScheme",
@@ -16914,66 +16160,6 @@ Array [
   },
   Object {
     "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "The response of operation:'Deployments_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1615:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtManagementGroupScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:819:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:135:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtSubscriptionScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1207:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtTenantScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:452:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].get",
-    "message": "The response of operation:'Deployments_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1688:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].get",
-    "message": "The response of operation:'Deployments_GetAtManagementGroupScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:873:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].get",
-    "message": "The response of operation:'Deployments_GetAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:189:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].get",
-    "message": "The response of operation:'Deployments_GetAtSubscriptionScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1261:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Resources/deployments/{deploymentName}\\"].get",
-    "message": "The response of operation:'Deployments_GetAtTenantScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:503:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\\"].put",
     "message": "The response of operation:'FileShares_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:235:6",
@@ -17010,60 +16196,6 @@ Array [
   },
   Object {
     "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\\"].put",
-    "message": "The response of operation:'ResourceGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2516:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\\"].get",
-    "message": "The response of operation:'ResourceGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2631:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\\"].patch",
-    "message": "The response of operation:'ResourceGroups_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2670:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\\"].put",
-    "message": "The response of operation:'Resources_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3142:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{resourceId}\\"].put",
-    "message": "The response of operation:'Resources_CreateOrUpdateById' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3480:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\\"].get",
-    "message": "The response of operation:'Resources_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3322:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{resourceId}\\"].get",
-    "message": "The response of operation:'Resources_GetById' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3590:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\\"].patch",
-    "message": "The response of operation:'Resources_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3235:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{resourceId}\\"].patch",
-    "message": "The response of operation:'Resources_UpdateById' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3538:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\\"].put",
     "message": "The response of operation:'Table_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:159:6",
@@ -17079,36 +16211,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\\"].patch",
     "message": "The response of operation:'Table_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:214:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames/{tagName}\\"].put",
-    "message": "The response of operation:'Tags_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3727:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].put",
-    "message": "The response of operation:'Tags_CreateOrUpdateAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4330:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\\"].put",
-    "message": "The response of operation:'Tags_CreateOrUpdateValue' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3675:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].get",
-    "message": "The response of operation:'Tags_GetAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4414:6",
-  },
-  Object {
-    "code": "RequiredReadOnlySystemData",
-    "jsonpath": "$.paths[\\"/{scope}/providers/Microsoft.Resources/tags/default\\"].patch",
-    "message": "The response of operation:'Tags_UpdateAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4376:6",
   },
 ]
 `;
@@ -17520,12 +16622,6 @@ Array [
   },
   Object {
     "code": "UniqueXmsExample",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\\"].put[\\"x-ms-examples\\"]",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create a deployment that will deploy a templateSpec with the given resourceId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1672:8",
-  },
-  Object {
-    "code": "UniqueXmsExample",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/proximityPlacementGroups\\"].get[\\"x-ms-examples\\"]",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create a proximity placement group.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:702:8",
@@ -17856,12 +16952,6 @@ Array [
   },
   Object {
     "code": "UniqueXmsExample",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\\"].get[\\"x-ms-examples\\"]",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get provider resource types.",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2355:8",
-  },
-  Object {
-    "code": "UniqueXmsExample",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}\\"].get[\\"x-ms-examples\\"]",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get the encryption protector",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:161:8",
@@ -18159,12 +17249,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover\\"].post[\\"x-ms-examples\\"]",
     "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Planned failover of a failover group",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:281:8",
-  },
-  Object {
-    "code": "UniqueXmsExample",
-    "jsonpath": "$.paths[\\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\\"].post[\\"x-ms-examples\\"]",
-    "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Predict template changes at management group scope",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1045:8",
   },
   Object {
     "code": "UniqueXmsExample",

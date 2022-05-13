@@ -1,14 +1,14 @@
 'use strict';
 
 var spectralFormats = require('@stoplight/spectral-formats');
-var spectralRulesets = require('@stoplight/spectral-rulesets');
 var spectralFunctions = require('@stoplight/spectral-functions');
+var spectralRulesets = require('@stoplight/spectral-rulesets');
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const properties = parameters.schema.properties;
     if ((properties === undefined || Object.keys(properties).length === 0) &&
         parameters.schema.additionalProperties === undefined &&
@@ -25,7 +25,7 @@ const consistentresponsebody = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     const createResponseSchema = ((op) => { var _a, _b; return (_b = (_a = op === null || op === void 0 ? void 0 : op.responses) === null || _a === void 0 ? void 0 : _a['201']) === null || _b === void 0 ? void 0 : _b.schema; });
     const resourceSchema = createResponseSchema(pathItem.put) || createResponseSchema(pathItem.patch);
@@ -58,7 +58,7 @@ const defaultInEnum = (swaggerObj, _opts, paths) => {
     if (!Array.isArray(enumValue)) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (enumValue && !enumValue.includes(defaultValue)) {
         return [{
                 message: 'Default value should appear in the enum constraint for a schema.',
@@ -72,7 +72,7 @@ const delete204Response = (deleteResponses, _opts, paths) => {
     if (deleteResponses === null || typeof deleteResponses !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!deleteResponses['204'] && !deleteResponses['202']) {
         return [{
                 message: 'A delete operation should have a 204 response.',
@@ -86,7 +86,7 @@ const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     return [{
             message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
             path,
@@ -215,7 +215,7 @@ function validateErrorResponse(errorResponse, responsePath) {
 }
 function errorResponse(responses, _opts, paths) {
     const errors = [];
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (responses.default) {
         errors.push(...validateErrorResponse(responses.default, [...path, 'default']));
     }
@@ -238,7 +238,7 @@ const hasHeader = (response, opts, paths) => {
     if (opts === null || typeof opts !== 'object' || !opts.name) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const hasHeader = Object.keys(response.headers || {})
         .some((name) => name.toLowerCase() === opts.name.toLowerCase());
     if (!hasHeader) {
@@ -257,7 +257,7 @@ const operationId = (operation, _opts, paths) => {
     if (operation === null || typeof operation !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     if (!operation.operationId) {
         return errors;
@@ -318,7 +318,7 @@ const paginationResponse = (operation, _opts, paths) => {
     if (operation === null || typeof operation !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!operation.responses || typeof operation.responses !== 'object') {
         return [];
     }
@@ -389,7 +389,7 @@ const paramNames = (targetVal, _opts, paths) => {
     if (targetVal === null || typeof targetVal !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!targetVal.in || !targetVal.name) {
         return [];
     }
@@ -438,7 +438,7 @@ const paramNamesUnique = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     const errors = [];
     const pathParams = pathItem.parameters ? pathItem.parameters.map((p) => p.name) : [];
     const pathDups = dupIgnoreCase(pathParams);
@@ -599,7 +599,7 @@ const pathParamSchema = (param, _opts, paths) => {
     if (param === null || typeof param !== 'object') {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (!param.in || !param.name) {
         return [];
     }
@@ -1148,7 +1148,7 @@ const ruleset$1 = {
             "severity": "error",
             "resolved": false,
             "formats": [spectralFormats.oas2],
-            "given": "$..[?(@.enum)]",
+            "given": "$..[?(@object() && @.enum)]",
             "then": {
                 "function": defaultInEnum
             }
@@ -1159,7 +1159,7 @@ const ruleset$1 = {
             "severity": "warn",
             "resolved": false,
             "formats": [spectralFormats.oas2],
-            "given": "$..[?(@.type === 'boolean')]",
+            "given": "$..[?(@object() && @.type === 'boolean')]",
             "then": {
                 "function": enumInsteadOfBoolean
             }
@@ -1193,7 +1193,7 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     if (opts === null || typeof opts !== 'object' || !opts.methods) {
         return [];
     }
-    const path = paths.path || paths.target || [];
+    const path = paths.path || [];
     if (apiPath.parameters) {
         if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
             return [];
@@ -1221,6 +1221,125 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     return messages;
 };
 
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { properties, ...schema.properties };
+    }
+    return properties;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some(p => {
+        if (typeof root !== "object") {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+
+const validateOriginalUri = (lroOptions, opts, ctx) => {
+    if (!lroOptions || typeof lroOptions !== 'object') {
+        return [];
+    }
+    const path = ctx.path || [];
+    const messages = [];
+    const getOperationPath = [...path.slice(0, -2), "get"];
+    if (!jsonPath(getOperationPath, ctx.document.parserResult.data)) {
+        messages.push({
+            path: [...path.slice(0, -1)],
+            message: ""
+        });
+    }
+    return messages;
+};
+
+const pathBodyParameters = (parameters, _opts, paths) => {
+    if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
+        return [];
+    }
+    const path = paths.path || [];
+    const properties = getProperties(parameters.schema);
+    const requiredProperties = getRequiredProperties(parameters.schema);
+    const errors = [];
+    for (const prop of Object.keys(properties)) {
+        if (properties[prop].default) {
+            errors.push({
+                message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+        if (requiredProperties.includes(prop)) {
+            errors.push({
+                message: `Properties of a PATCH request body must not be required, property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+        const xmsMutability = properties[prop]['x-ms-mutability'];
+        if (xmsMutability && xmsMutability.length === 1 && xmsMutability[0] === "create") {
+            errors.push({
+                message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+    }
+    return errors;
+};
+
+const pathSegmentCasing = (apiPaths, _opts, paths) => {
+    if (apiPaths === null || typeof apiPaths !== 'object') {
+        return [];
+    }
+    if (!_opts || !_opts.segments || !Array.isArray(_opts.segments)) {
+        return [];
+    }
+    const segments = _opts.segments;
+    const path = paths.path || [];
+    const errors = [];
+    for (const apiPath of Object.keys(apiPaths)) {
+        segments.forEach((seg) => {
+            const idx = apiPath.toLowerCase().indexOf("/" + seg.toLowerCase());
+            if (idx !== -1) {
+                const originalSegment = apiPath.substring(idx + 1, idx + seg.length + 1);
+                if (originalSegment !== seg) {
+                    errors.push({
+                        message: `The path segment ${originalSegment} should be ${seg}.`,
+                        path: [...path, apiPath]
+                    });
+                }
+            }
+        });
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [
         [ruleset$1, "all"],
@@ -1238,8 +1357,67 @@ const ruleset = {
             "then": {
                 "function": hasApiVersionParameter,
                 "functionOptions": {
-                    methods: ["get", "put", "patch", "post", "delete", "trace"]
+                    methods: ["get", "put", "patch", "post", "delete"]
                 }
+            }
+        },
+        "PathSegementSubscriptionsAndResoureGroups": {
+            "description": "The suscriptions and resourceGroup segments should follow lower camel case.",
+            "message": "{{error}}",
+            "severity": "error",
+            "resolved": false,
+            "formats": [spectralFormats.oas2],
+            "given": ["$.paths", "$.x-ms-paths"],
+            "then": {
+                "function": pathSegmentCasing,
+                "functionOptions": {
+                    segments: ["resourceGroups", "subscriptions"]
+                }
+            }
+        },
+        "PatchBodyParametersSchema": {
+            "description": "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+            "message": "{{error}}",
+            "severity": "error",
+            "resolved": true,
+            "formats": [spectralFormats.oas2],
+            "given": ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
+            "then": {
+                "function": pathBodyParameters,
+            }
+        },
+        "ArrayMustHaveType": {
+            "description": "Aarry type must have a type except for any type.",
+            "message": "{{error}}",
+            "severity": "warn",
+            "resolved": true,
+            "formats": [spectralFormats.oas2],
+            "given": ["$.definitions..items[?(@object())]^"],
+            "then": {
+                "function": spectralFunctions.truthy,
+                "filed": "type"
+            }
+        },
+        "LroWithOriginalUriAsFinalState": {
+            "description": "The long running operation with final-state-via:original-uri has slibing 'get' operation.",
+            "message": "{{description}}",
+            "severity": "warn",
+            "resolved": true,
+            "formats": [spectralFormats.oas2],
+            "given": ["$[paths,'x-ms-paths'].*[put,patch,delete].x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^"],
+            "then": {
+                "function": validateOriginalUri
+            }
+        },
+        "LROPostMustNotUseOriginalUriAsFinalState": {
+            "description": "The long running post operation must not use final-stat-via:original-uri.",
+            "message": "{{description}}",
+            "severity": "warn",
+            "resolved": true,
+            "formats": [spectralFormats.oas2],
+            "given": ["$[paths,'x-ms-paths'].*.post.x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^"],
+            "then": {
+                "function": spectralFunctions.falsy
             }
         }
     }

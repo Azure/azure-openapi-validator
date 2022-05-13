@@ -3,21 +3,20 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { fileURLToPath } from 'url';
-import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri";
-import {lint, getOpenapiType, LintResultMessage, isUriAbsolute, isExample} from "@microsoft.azure/openapi-validator-core"
-import {nativeRulesets} from "@microsoft.azure/openapi-validator-rulesets"
-import {Resolver} from "@stoplight/json-ref-resolver"
+import { fileURLToPath } from "url"
+import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri"
+import { lint, getOpenapiType, LintResultMessage, isUriAbsolute, isExample } from "@microsoft.azure/openapi-validator-core"
+import { nativeRulesets } from "@microsoft.azure/openapi-validator-rulesets"
+import { Resolver } from "@stoplight/json-ref-resolver"
 import { safeLoad } from "js-yaml"
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
 import { JsonPath, Message } from "./jsonrpc/types"
-import {getRuleSet,mergeRulesets} from "./loader"
+import { getRuleSet, mergeRulesets } from "./loader"
 const { Spectral } = require("@stoplight/spectral-core")
 
+const cachedFiles = new Map<string, any>()
 
-const cachedFiles = new Map<string,any>()
-
-function convertLintMsgToAutoRestMsg(message:LintResultMessage):Message {
+function convertLintMsgToAutoRestMsg(message: LintResultMessage, useOriginalPosition: boolean = false): Message {
   // try to extract provider namespace and resource type
   const path = message.jsonpath?.[1] === "paths" && message.jsonpath[2]
   const pathComponents = typeof path === "string" && path.split("/")
@@ -26,32 +25,29 @@ function convertLintMsgToAutoRestMsg(message:LintResultMessage):Message {
     pathComponentsProviderIndex && pathComponentsProviderIndex >= 0 && pathComponents.slice(pathComponentsProviderIndex + 1)
   const pathComponentProviderNamespace = pathComponentsTail && pathComponentsTail[0]
   const pathComponentResourceType = pathComponentsTail && pathComponentsTail[1]
+  const Position = useOriginalPosition && message.range?.start ? message.range?.start : { path: message.jsonpath }
   const msg = {
     Channel: message.type,
     Text: message.message,
     Key: [message.code],
     Source: [
       {
-        document : message?.sources?.[0] || "",
-        Position: {
-          path: message.jsonpath,
-          //...message.range?.start as Position
-        }
-      }
+        document: message?.sources?.[0] || "",
+        Position,
+      },
     ],
     Details: {
-      jsonpath:message.jsonpath,
+      jsonpath: message.jsonpath,
       validationCategory: message.category,
       providerNamespace: pathComponentProviderNamespace,
       resourceType: pathComponentResourceType,
       range: message.range,
-    }
+    },
   }
   return msg
 }
 
-async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) => void, spectral:any) {
-
+async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
   const mergedResults = []
   const convertSeverity = (severity: number) => {
     switch (severity) {
@@ -69,26 +65,25 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
     return {
       start: {
         line: range.start.line + 1,
-        column: range.start.character
+        column: range.start.character,
       },
       end: {
         line: range.end.line + 1,
-        column: range.end.character
-      }
+        column: range.end.character,
+      },
     }
   }
 
   // this function is added temporarily , should be remove after the autorest fix this issues.
-  const removeXmsExampleFromPath = (paths:JsonPath) => {
-    const index = paths.findIndex(item => item === "x-ms-examples")
-    if (index !== -1 && paths.length > index+2) {
-      return paths.slice(0,index+2)
+  const removeXmsExampleFromPath = (paths: JsonPath) => {
+    const index = paths.findIndex((item) => item === "x-ms-examples")
+    if (index !== -1 && paths.length > index + 2) {
+      return paths.slice(0, index + 2)
     }
     return paths
   }
 
-  const format = (result:any, spec:string) => {
-
+  const format = (result: any, spec: string) => {
     return {
       code: result.code,
       message: result.message,
@@ -98,25 +93,25 @@ async function runSpectral(doc:any,filePath:string, sendMessage: (m: Message) =>
       sources: [`${spec}`],
       location: {
         line: result.range.start.line + 1,
-        column: result.range.start.character
-      }
+        column: result.range.start.character,
+      },
     }
   }
   const results = await spectral.run(doc)
-  mergedResults.push(...results.map((result:any) => format(result, createFileOrFolderUri(filePath))))
+  mergedResults.push(...results.map((result: any) => format(result, createFileOrFolderUri(filePath))))
   for (const message of mergedResults) {
-    sendMessage(convertLintMsgToAutoRestMsg(message))
+    sendMessage(convertLintMsgToAutoRestMsg(message, true))
   }
 
   return mergedResults
 }
 
-function isCommonTypes(filePath:string) {
+function isCommonTypes(filePath: string) {
   const regex = new RegExp(/.*common-types\/resource-management\/v.*.json/)
   return regex.test(filePath)
 }
 
-async function getOpenapiTypeStr(initiator:any) {
+async function getOpenapiTypeStr(initiator: any) {
   let openapiType: string = await initiator.GetValue("openapi-type")
   let subType: string = await initiator.GetValue("openapi-subtype")
   subType = subType === "providerHub" ? "rpaas" : subType
@@ -126,17 +121,16 @@ async function getOpenapiTypeStr(initiator:any) {
   return openapiType
 }
 
-
 async function main() {
   const pluginHost = new AutoRestPluginHost()
-  pluginHost.Add("openapi-validator", async initiator => {
-    const files = await (await initiator.ListInputs()).filter(f => !isCommonTypes(f))
+  pluginHost.Add("openapi-validator", async (initiator) => {
+    const files = await (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
     const openapiType: string = await getOpenapiTypeStr(initiator)
-    const sendMessage = (msg:LintResultMessage)=> {
-        initiator.Message(convertLintMsgToAutoRestMsg(msg))
+    const sendMessage = (msg: LintResultMessage) => {
+      initiator.Message(convertLintMsgToAutoRestMsg(msg))
     }
 
-    const readFile = async (fileUri:string) => {
+    const readFile = async (fileUri: string) => {
       if (isExample(fileUri)) {
         return ""
       }
@@ -146,88 +140,87 @@ async function main() {
         if (!file) {
           throw new Error(`Could not read file: ${fileUri} .`)
         }
-        cachedFiles.set(fileUri,file)
+        cachedFiles.set(fileUri, file)
       }
       return file
     }
 
     const defaultFleSystem = {
-       read: readFile
+      read: readFile,
     }
     initiator.Message({
       Channel: "verbose",
-      Text: `Validating '${files.join("\n")}'`
+      Text: `Validating '${files.join("\n")}'`,
     })
     try {
       const mergedRuleset = mergeRulesets(Object.values(nativeRulesets))
-      await lint(files,{ruleSet:mergedRuleset, fileSystem:defaultFleSystem,openapiType:getOpenapiType(openapiType)},sendMessage)
+      await lint(files, { ruleSet: mergedRuleset, fileSystem: defaultFleSystem, openapiType: getOpenapiType(openapiType) }, sendMessage)
     } catch (e) {
       initiator.Message({
         Channel: "fatal",
-        Text: `Failed validating:` + e
+        Text: `Failed validating:` + e,
       })
     }
   })
 
-  pluginHost.Add("spectral", async initiator => {
-    const files = (await initiator.ListInputs()).filter(f => !isCommonTypes(f))
+  pluginHost.Add("spectral", async (initiator) => {
+    const files = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
     const openapiType: string = await getOpenapiTypeStr(initiator)
-    
-     const readFile = async (fileUri:string) => {
+
+    const readFile = async (fileUri: string) => {
       let file = cachedFiles.get(fileUri)
       if (!file) {
         file = await initiator.ReadFile(fileUri)
         if (!file) {
           throw new Error(`Could not read file: ${fileUri} .`)
         }
-        cachedFiles.set(fileUri,file)
+        cachedFiles.set(fileUri, file)
       }
       return file
     }
-    
+
     const rules = await getRuleSet(getOpenapiType(openapiType))
     for (const file of files) {
       if (file.includes("common-types/resource-management")) {
         continue
       }
 
-      const resolveFile = (uri:any) =>{
-      const ref = uri.href();
-      const fileUri = isUriAbsolute(ref) ? ref : resolveUri(file,ref)
-      const content = readFile(fileUri);
-      return content
-    }
+      const resolveFile = (uri: any) => {
+        const ref = uri.href()
+        const fileUri = isUriAbsolute(ref) ? ref : resolveUri(file, ref)
+        const content = readFile(fileUri)
+        return content
+      }
       const resolver = new Resolver({
-      resolvers: {
-        file: {
-          resolve: resolveFile
+        resolvers: {
+          file: {
+            resolve: resolveFile,
+          },
+          http: {
+            resolve: resolveFile,
+          },
+          https: {
+            resolve: resolveFile,
+          },
         },
-        http: {
-          resolve: resolveFile
-        },
-        https:{
-           resolve: resolveFile
-        }
-      },
-    }); 
-    const spectral = new Spectral({resolver})
-    spectral.setRuleset(rules)
+      })
+      const spectral = new Spectral({ resolver })
+      spectral.setRuleset(rules)
 
       initiator.Message({
         Channel: "verbose",
-        Text: `Validating '${file}'`
+        Text: `Validating '${file}'`,
       })
 
       try {
         const openapiDefinitionDocument = await readFile(file)
         const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
         const normolizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
-        await runSpectral(openapiDefinitionObject,normolizedFile, initiator.Message.bind(initiator),spectral)
-  
+        await runSpectral(openapiDefinitionObject, normolizedFile, initiator.Message.bind(initiator), spectral)
       } catch (e) {
         initiator.Message({
           Channel: "fatal",
-          Text: `Failed validating: '${file}', error encountered: ` + e
+          Text: `Failed validating: '${file}', error encountered: ` + e,
         })
       }
     }

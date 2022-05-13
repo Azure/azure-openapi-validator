@@ -1,0 +1,14 @@
+[
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ChangeResourceResult\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ChangeResourceResult",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:164:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DdosCustomPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DdosCustomPolicy",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
+  }
+]

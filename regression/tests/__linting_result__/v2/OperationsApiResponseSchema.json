@@ -43,12 +43,6 @@
   },
   {
     "code": "OperationsApiResponseSchema",
-    "message": "The response schema of operations API \"/providers/Microsoft.Resources/operations\" does not match the ARM specification. Please standardize the schema.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/operations\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:37:4"
-  },
-  {
-    "code": "OperationsApiResponseSchema",
     "message": "The response schema of operations API \"/providers/Microsoft.Sql/operations\" does not match the ARM specification. Please standardize the schema.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Sql/operations\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Operations.json:19:4"
