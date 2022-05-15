@@ -1,4 +1,4 @@
-# Validation of the structure of Security Definitions
+# SecurityDefinitionsStructure
 ## Description
 Every swagger/configuration must have a security definitions section and it must adhere to the following structure:
 

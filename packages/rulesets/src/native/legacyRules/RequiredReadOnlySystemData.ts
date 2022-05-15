@@ -12,7 +12,7 @@ export const RequiredReadOnlySystemData = "RequiredReadOnlySystemData"
 rules.push({
   id: "R4009",
   name: RequiredReadOnlySystemData,
-  severity: "error",
+  severity: "warning",
   category: "ARMViolation",
   mergeState: MergeStates.composed,
   openapiType: OpenApiTypes.arm,

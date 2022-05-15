@@ -13,7 +13,7 @@ Any resource can be categorized into 2 types: `TrackedResources` and `ProxyResou
 
 ## Validation rules for resource models
 
-### M3007 - PutGetPatchResponseInvalid 
+### R3007 - PutGetPatchResponseSchema 
 For a Given Resource, GET/PUT/PATCH MUST return the same `Resource` Model. The GET/PUT/PATCH operations under a path should reference the same response model schema.
 ### How to fix it
 Ensure GET/PUT/PATCH operations under a path reference the same resource model in their response model schemas.

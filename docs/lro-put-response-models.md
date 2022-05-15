@@ -1,4 +1,4 @@
-# M2064 - LROStatusCodesValidation
+# LROStatusCodesValidation
 ## Description
 This violation is flagged if a long-running PUT operation has a 200/201 status code specified without a response model definition. Eg:
 ```

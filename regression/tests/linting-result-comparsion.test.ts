@@ -13,6 +13,7 @@ describe("comparing", () => {
       expect(isExists).toEqual(true)
       const v3Result = JSON.parse(readFileSync(v3File).toString())
       const v2Result = JSON.parse(readFileSync(v2File).toString())
+      expect(v3Result.length).toEqual(v2Results.length)
       expect(v3Result).toStrictEqual(v2Result)
   },1000000)
 })

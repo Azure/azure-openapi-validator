@@ -1,6 +1,6 @@
 import { spawn, spawnSync } from "child_process";
 import { readFileSync } from "fs";
-import { dirname, join, resolve } from "path";
+import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 
 function read(filename) {
@@ -14,7 +14,6 @@ function read(filename) {
 }
 
 export const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-export const autorest = resolve(repoRoot, "eng/scripts/node_modules/.bin/autorest");
 
 const rush = read(`${repoRoot}/rush.json`);
 
