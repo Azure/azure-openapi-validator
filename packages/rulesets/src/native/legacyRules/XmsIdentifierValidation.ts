@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-import { SwaggerHelper } from "../utilities/swagger-helper"
+import { Workspace } from "../utilities/swagger-workspace"
 export const XmsIdentifierValidation = "XmsIdentifierValidation"
 
 rules.push({
@@ -13,15 +13,14 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
-  appliesTo_JsonQuery: ["$.definitions..[?(@.items)]", "$.parameters..[?(@.items)]"],
+  appliesTo_JsonQuery: ["$.definitions..[?(@property === 'items')]^", "$.parameters..[?(@property === 'items')]^"],
   async *run(doc, node, path, ctx) {
     if (node.type !== "array") {
       return
     }
-    const utils = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
-    const items = await utils?.resolveSchema(node.items)
-    if (items && items.type && items.type !== "object") {
+    const items = await Workspace.resolveRef({ file: ctx?.specPath!, value: node }, ctx?.inventory!)
+    if (items && items.value.type && items.value.type !== "object") {
       return
     }
 
@@ -29,12 +28,12 @@ rules.push({
       const pathExpression = identifier.replace(/^\//, "").split("/")
       let item = items
       for (const key of pathExpression) {
-        item = utils?.getPropertyOfModel(item, key)
+        item = Workspace.getProperty(item!, key, ctx?.inventory!)
         if (item === undefined) {
           yield { message: `Missing identifier ${identifier} in array item property`, location: path }
           break
         }
       }
     }
-  }
+  },
 })

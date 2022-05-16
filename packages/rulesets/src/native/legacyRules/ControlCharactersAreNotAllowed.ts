@@ -17,10 +17,10 @@ rules.push({
     const msg = "May not contain control characters: "
     if (typeof node === "string") {
       const nodeValue: string = node as string
-      const controlChars = nodeValue.split("").filter(ch => ch < " " && ch !== "\t" && ch !== "\n" && ch !== "\r")
+      const controlChars = nodeValue.split("").filter((ch) => ch < " " && ch !== "\t" && ch !== "\n" && ch !== "\r")
       if (controlChars.length > 0) {
         yield { message: `${msg} Characters:'${controlChars}' in:'${nodeValue}'`, location: path }
       }
     }
-  }
+  },
 })

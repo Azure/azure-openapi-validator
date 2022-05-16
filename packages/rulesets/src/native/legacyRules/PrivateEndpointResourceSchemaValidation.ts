@@ -1,5 +1,4 @@
-import { JsonPath , rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
-
+import { JsonPath, rules, MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 
 import { ArmHelper } from "../utilities/arm-helper"
 import { SwaggerHelper } from "../utilities/swagger-helper"
@@ -21,28 +20,28 @@ rules.push({
      */
     const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
-    const utils = new ArmHelper(doc)
-    const swaggerUtil = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
+    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const swaggerUtil = new SwaggerHelper(doc, ctx?.specPath, ctx?.inventory)
     const apiPath = path[path.length - 1] as string
 
     const checkPrivateEndpoint = (model: any) => {
-      const properties = swaggerUtil?.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil?.getProperty(model, "properties")
       if (!properties) {
         return false
       }
       const requiredProperties = ["privateEndpoint", "privateLinkServiceConnectionState"]
-      if (requiredProperties.some(p => !swaggerUtil?.getPropertyOfModel(properties, p))) {
+      if (requiredProperties.some((p) => !swaggerUtil?.getProperty(properties, p))) {
         return false
       }
       return true
     }
     const checkPrivateResources = (model: any) => {
-      const properties = swaggerUtil?.getPropertyOfModel(model, "properties")
+      const properties = swaggerUtil?.getProperty(model, "properties")
       if (!properties) {
         return false
       }
       const requiredProperties = ["groupId", "requiredMembers", "requiredZoneNames"]
-      if (requiredProperties.some(p => !swaggerUtil?.getPropertyOfModel(properties, p))) {
+      if (requiredProperties.some((p) => !swaggerUtil?.getProperty(properties, p))) {
         return false
       }
       return true
@@ -51,26 +50,26 @@ rules.push({
     if (privateEndpointConnection.test(apiPath)) {
       const model = utils.getResponseModelFromPath(apiPath)
       if (model) {
-        const modelName = utils.stripDefinitionPath(model.$ref) || ""
+        const modelName = utils.stripDefinitionPath(model.value.$ref) || ""
         if (apiPath.endsWith("privateEndpointConnections")) {
-          const resolvedModel = await swaggerUtil.resolveSchema(model)
-          const privateEndpoint = utils?.getPropertyOfModel(resolvedModel, "value")
-          if (!privateEndpoint || !privateEndpoint.items) {
+          const privateEndpoint = utils?.getProperty(model, "value")
+          const items = utils?.getAttribute(privateEndpoint, "items")
+          if (!privateEndpoint || !items) {
             yield {
               message: msg.replace("{0}", modelName),
-              location: [...path, "get","responses","200"] as JsonPath
+              location: [...path, "get", "responses", "200"] as JsonPath,
             }
-          } else if (!checkPrivateEndpoint(privateEndpoint.items)) {
+          } else if (!checkPrivateEndpoint(items)) {
             yield {
               message: msg.replace("{0}", modelName),
-              location: [...path, "get","responses","200"] as JsonPath
+              location: [...path, "get", "responses", "200"] as JsonPath,
             }
           }
         } else {
           if (!checkPrivateEndpoint(model)) {
             yield {
               message: msg.replace("{0}", modelName),
-              location: [...path, "get","responses","200"] as JsonPath
+              location: [...path, "get", "responses", "200"] as JsonPath,
             }
           }
         }
@@ -79,21 +78,21 @@ rules.push({
     if (privateLinkResources.test(apiPath)) {
       const model = utils.getResponseModelFromPath(apiPath)
       if (model) {
-        const modelName = utils.stripDefinitionPath(model.$ref) || ""
-        const resolvedModel = await swaggerUtil.resolveSchema(model)
-        const privateResources = utils?.getPropertyOfModel(resolvedModel, "value")
+        const modelName = utils.stripDefinitionPath(model.value.$ref) || ""
+        const privateResources = utils?.getProperty(model, "value")
+        const items = utils?.getAttribute(privateResources, "items")
         if (!privateResources) {
           yield {
             message: msg.replace("{0}", modelName),
-            location: [...path, "get","responses","200"] as JsonPath
+            location: [...path, "get", "responses", "200"] as JsonPath,
           }
-        } else if (!privateResources.items || !checkPrivateResources(privateResources.items)) {
+        } else if (!items || !checkPrivateResources(items)) {
           yield {
             message: msg.replace("{0}", modelName),
-            location: [...path, "get","responses","200"] as JsonPath
+            location: [...path, "get", "responses", "200"] as JsonPath,
           }
         }
       }
     }
-  }
+  },
 })

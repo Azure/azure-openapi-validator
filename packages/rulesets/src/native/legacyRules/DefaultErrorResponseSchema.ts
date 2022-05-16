@@ -2,9 +2,8 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
-import { getResolvedSchemaByPath } from "../utilities/rules-helper"
-import { SwaggerHelper } from "../utilities/swagger-helper"
+import { MergeStates, OpenApiTypes, rules, SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
+import { Workspace } from "../utilities/swagger-workspace"
 
 export const DefaultErrorResponseSchema = "DefaultErrorResponseSchema"
 
@@ -22,16 +21,14 @@ rules.push({
 
     const response: any = node
     if (response.default && response.default.schema) {
-      const paths = path.concat(["default", "schema"])
+      const paths = path.concat(["default"])
 
-      const schema: any = getResolvedSchemaByPath(doc, paths as string[], ctx?.inventory)
-
-      const utils = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
+      const schema: any = Workspace.jsonPath(paths.concat("schema"), doc)
       if (schema) {
-        const errorDefinition = utils?.getPropertyOfModel(schema, "error")
-        if (errorDefinition) {
-          const code = utils?.getPropertyOfModel(errorDefinition, "code")
-          const message = utils?.getPropertyOfModel(errorDefinition, "message")
+        const errorDefinition = Workspace.getProperty({ file: ctx?.specPath!, value: schema }, "error", ctx?.inventory! as SwaggerInventory)
+        if (errorDefinition && errorDefinition.value) {
+          const code = Workspace.getProperty(errorDefinition, "code", ctx?.inventory! as SwaggerInventory)
+          const message = Workspace.getProperty(errorDefinition, "message", ctx?.inventory! as SwaggerInventory)
           if (code && message) {
             return
           }
@@ -39,5 +36,5 @@ rules.push({
       }
       yield { message: `${msg}`, location: paths }
     }
-  }
+  },
 })
