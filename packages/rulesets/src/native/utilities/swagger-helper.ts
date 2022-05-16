@@ -1,11 +1,12 @@
 import $RefParser, { FileInfo } from "@apidevtools/json-schema-ref-parser"
 import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import _ from "lodash"
-import { crwalReference, isExample } from "./ref-helper"
+import { isExample } from "./ref-helper"
+import { Workspace } from "./swagger-workspace"
 
 export class SwaggerHelper {
-  constructor(private root?: any, private specPath?: string, private inventory?: ISwaggerInventory) {
-  }
+  constructor(private root?: any, private specPath?: string, private inventory?: ISwaggerInventory) {}
+
   public getOperationIdFromPath(path: string, code = "get") {
     let pathObj = this.root.paths[path]
     if (!pathObj && this.root["x-ms-paths"]) {
@@ -20,56 +21,18 @@ export class SwaggerHelper {
     return this.specPath
   }
 
-  private getDefinitionByName(modelName: string) {
-    if (!modelName) {
-      return undefined
-    }
-    return this.root?.definitions?.[modelName]
-  }
-
-  /**
-   * get property of model recursively, if not found return undefined
-   */
-  public getPropertyOfModelName(modelName: string, propertyName: string) {
-    const model = this.getDefinitionByName(modelName)
-    if (!model) {
-      return undefined
-    }
-    return this.getPropertyOfModel(model, propertyName)
-  }
-
-  public getPropertyOfModel(sourceModel: any, propertyName: string):any {
+  public getProperty(sourceModel: Workspace.EnhancedSchema, propertyName: string): any {
     if (!sourceModel) {
       return undefined
     }
-    let model = sourceModel
-    if (sourceModel.$ref) {
-      model = this.getUnwrappedModel(sourceModel)
-    }
-    if (!model) {
+    return Workspace.getProperty(sourceModel, propertyName, this.inventory!)
+  }
+
+  public getAttribute(sourceModel: Workspace.EnhancedSchema, attributeName: string) {
+    if (!sourceModel) {
       return undefined
     }
-    if (model.properties && model.properties[propertyName]) {
-      return this.getUnwrappedModel(model.properties[propertyName])
-    }
-    if (model.allOf) {
-      for (const element of model.allOf) {
-        const property:any = this.getPropertyOfModel(element, propertyName)
-        if (property) {
-          return property
-        }
-      }
-    }
-  }
-
-  private getUnwrappedModel(property: any) {
-    if (property) {
-      return crwalReference(this.root, property, this.inventory)
-    }
-  }
-
-  static isLocalRef(schema: any) {
-    return schema.$ref && schema.$ref.startsWith("#/")
+    return Workspace.getAttribute(sourceModel, attributeName, this.inventory!)
   }
 
   public async resolveSchema(schema: any, skipResolveExample = true) {
@@ -78,7 +41,11 @@ export class SwaggerHelper {
     }
     schema = _.cloneDeep(schema)
 
-    if (SwaggerHelper.isLocalRef(schema)) {
+    function isLocalRef(schema: any) {
+      return schema.$ref && schema.$ref.startsWith("#/")
+    }
+
+    if (isLocalRef(schema)) {
       schema.$ref = this.specPath + schema.$ref
     }
     const inventory = this.inventory
@@ -91,9 +58,9 @@ export class SwaggerHelper {
               return {}
             }
             return _.cloneDeep(inventory?.getDocuments(file.url))
-          }
-        }
-      }
+          },
+        },
+      },
     }
     return await $RefParser.dereference(schema, resolveOption)
   }

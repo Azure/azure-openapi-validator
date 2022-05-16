@@ -9,7 +9,7 @@ rules.push({
   name: DescriptionMustNotBeNodeName,
   severity: "error",
   category: "ARMViolation",
-  mergeState: MergeStates.composed,
+  mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
 
   appliesTo_JsonQuery: "$..*[?(@property === 'description')]^",
@@ -29,12 +29,9 @@ rules.push({
     } else if (description === "description") {
       yield { message: `${msg} Node name:'description' Description:'${node.description}'`, location: path.concat(["description"]) }
     }
-  }
+  },
 })
 
 function TrimDescription(description: string): string {
-  return description
-    .trim()
-    .replace(/\./g, "")
-    .toLowerCase()
+  return description.trim().replace(/\./g, "").toLowerCase()
 }
