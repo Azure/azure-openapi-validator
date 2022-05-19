@@ -20,7 +20,7 @@ rules.push({
      */
     const privateEndpointConnection = /.*\/privateEndpointConnections(\/\{[^/]+\})*$/
     const privateLinkResources = /.*\/privateLinkResources$/
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const swaggerUtil = new SwaggerHelper(doc, ctx?.specPath, ctx?.inventory)
     const apiPath = path[path.length - 1] as string
 

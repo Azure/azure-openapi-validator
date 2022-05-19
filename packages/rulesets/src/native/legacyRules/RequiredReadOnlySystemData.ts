@@ -26,7 +26,7 @@ rules.push({
         // not a new Api Version
         return
       }
-      const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
+      const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
       const swaggerUtil = new SwaggerHelper(doc, ctx?.specPath, ctx?.inventory)
       const allResources = utils.getAllResourceNames()
       /*

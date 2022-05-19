@@ -6,14 +6,10 @@
     "description": "Cdn Management Client"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ],
   "securityDefinitions": {
@@ -30,9 +26,7 @@
   "paths": {
     "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles": {
       "get": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Lists all of the CDN profiles within an Azure subscription.",
         "operationId": "Profiles_List",
         "x-ms-examples": null,
@@ -61,19 +55,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles": {
       "get": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Lists all of the CDN profiles within a resource group.",
         "operationId": "Profiles_ListByResourceGroup",
         "x-ms-examples": null,
@@ -105,19 +93,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}": {
       "get": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Gets a CDN profile with the specified profile name under the specified subscription and resource group.",
         "operationId": "Profiles_Get",
         "x-ms-examples": null,
@@ -153,17 +135,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Creates a new CDN profile with a profile name under the specified subscription and resource group.",
         "operationId": "Profiles_Create",
         "x-ms-examples": null,
@@ -221,17 +197,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.",
         "operationId": "Profiles_Update",
         "x-ms-examples": null,
@@ -283,17 +253,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Deletes an existing CDN profile with the specified parameters. Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.",
         "operationId": "Profiles_Delete",
         "x-ms-examples": null,
@@ -330,19 +294,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri": {
       "post": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Generates a dynamic SSO URI used to sign in to the CDN supplemental portal. Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile. The SSO URI changes approximately every 10 minutes.",
         "operationId": "Profiles_GenerateSsoUri",
         "x-ms-examples": null,
@@ -378,19 +336,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes": {
       "post": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.",
         "operationId": "Profiles_ListSupportedOptimizationTypes",
         "x-ms-examples": null,
@@ -426,19 +378,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage": {
       "post": {
-        "tags": [
-          "Profiles"
-        ],
+        "tags": ["Profiles"],
         "description": "Checks the quota and actual usage of endpoints under the given CDN profile.",
         "operationId": "Profiles_ListResourceUsage",
         "x-ms-examples": null,
@@ -477,19 +423,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints": {
       "get": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Lists existing CDN endpoints.",
         "operationId": "Endpoints_ListByProfile",
         "x-ms-examples": null,
@@ -528,19 +468,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}": {
       "get": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
         "operationId": "Endpoints_Get",
         "x-ms-examples": null,
@@ -583,17 +517,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
         "operationId": "Endpoints_Create",
         "x-ms-examples": null,
@@ -658,17 +586,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update custom domains, use the Update Custom Domain operation.",
         "operationId": "Endpoints_Update",
         "x-ms-examples": null,
@@ -727,17 +649,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
         "operationId": "Endpoints_Delete",
         "x-ms-examples": null,
@@ -781,19 +697,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start": {
       "post": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Starts an existing CDN endpoint that is on a stopped state.",
         "operationId": "Endpoints_Start",
         "x-ms-examples": null,
@@ -843,19 +753,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop": {
       "post": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Stops an existing running CDN endpoint.",
         "operationId": "Endpoints_Stop",
         "x-ms-examples": null,
@@ -905,19 +809,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge": {
       "post": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Removes a content from CDN.",
         "operationId": "Endpoints_PurgeContent",
         "x-ms-examples": null,
@@ -970,19 +868,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load": {
       "post": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Pre-loads a content to CDN. Available for Verizon Profiles.",
         "operationId": "Endpoints_LoadContent",
         "x-ms-examples": null,
@@ -1035,19 +927,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain": {
       "post": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.",
         "operationId": "Endpoints_ValidateCustomDomain",
         "x-ms-examples": null,
@@ -1099,19 +985,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage": {
       "post": {
-        "tags": [
-          "Endpoints"
-        ],
+        "tags": ["Endpoints"],
         "description": "Checks the quota and usage of geo filters and custom domains under the given endpoint.",
         "operationId": "Endpoints_ListResourceUsage",
         "x-ms-examples": null,
@@ -1157,19 +1037,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins": {
       "get": {
-        "tags": [
-          "Origins"
-        ],
+        "tags": ["Origins"],
         "description": "Lists all of the existing origins within an endpoint.",
         "operationId": "Origins_ListByEndpoint",
         "x-ms-examples": null,
@@ -1215,19 +1089,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}": {
       "get": {
-        "tags": [
-          "Origins"
-        ],
+        "tags": ["Origins"],
         "description": "Gets an existing origin within an endpoint.",
         "operationId": "Origins_Get",
         "x-ms-examples": null,
@@ -1277,17 +1145,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Origins"
-        ],
+        "tags": ["Origins"],
         "description": "Creates a new origin within the specified endpoint.",
         "operationId": "Origins_Create",
         "x-ms-examples": null,
@@ -1359,17 +1221,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Origins"
-        ],
+        "tags": ["Origins"],
         "description": "Updates an existing origin within an endpoint.",
         "operationId": "Origins_Update",
         "x-ms-examples": null,
@@ -1435,17 +1291,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Origins"
-        ],
+        "tags": ["Origins"],
         "description": "Deletes an existing origin within an endpoint.",
         "operationId": "Origins_Delete",
         "x-ms-examples": null,
@@ -1496,19 +1346,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups": {
       "get": {
-        "tags": [
-          "OriginGroups"
-        ],
+        "tags": ["OriginGroups"],
         "description": "Lists all of the existing origin groups within an endpoint.",
         "operationId": "OriginGroups_ListByEndpoint",
         "x-ms-examples": null,
@@ -1554,19 +1398,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}": {
       "get": {
-        "tags": [
-          "OriginGroups"
-        ],
+        "tags": ["OriginGroups"],
         "description": "Gets an existing origin group within an endpoint.",
         "operationId": "OriginGroups_Get",
         "x-ms-examples": null,
@@ -1616,17 +1454,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "OriginGroups"
-        ],
+        "tags": ["OriginGroups"],
         "description": "Creates a new origin group within the specified endpoint.",
         "operationId": "OriginGroups_Create",
         "x-ms-examples": null,
@@ -1698,17 +1530,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "OriginGroups"
-        ],
+        "tags": ["OriginGroups"],
         "description": "Updates an existing origin group within an endpoint.",
         "operationId": "OriginGroups_Update",
         "x-ms-examples": null,
@@ -1774,17 +1600,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "OriginGroups"
-        ],
+        "tags": ["OriginGroups"],
         "description": "Deletes an existing origin group within an endpoint.",
         "operationId": "OriginGroups_Delete",
         "x-ms-examples": null,
@@ -1835,19 +1655,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains": {
       "get": {
-        "tags": [
-          "CustomDomains"
-        ],
+        "tags": ["CustomDomains"],
         "description": "Lists all of the existing custom domains within an endpoint.",
         "operationId": "CustomDomains_ListByEndpoint",
         "x-ms-examples": null,
@@ -1893,19 +1707,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}": {
       "get": {
-        "tags": [
-          "CustomDomains"
-        ],
+        "tags": ["CustomDomains"],
         "description": "Gets an existing custom domain within an endpoint.",
         "operationId": "CustomDomains_Get",
         "x-ms-examples": null,
@@ -1955,17 +1763,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "CustomDomains"
-        ],
+        "tags": ["CustomDomains"],
         "description": "Creates a new custom domain within an endpoint.",
         "operationId": "CustomDomains_Create",
         "x-ms-examples": null,
@@ -2037,17 +1839,11 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "CustomDomains"
-        ],
+        "tags": ["CustomDomains"],
         "description": "Deletes an existing custom domain within an endpoint.",
         "operationId": "CustomDomains_Delete",
         "x-ms-examples": null,
@@ -2104,19 +1900,13 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps": {
       "post": {
-        "tags": [
-          "CustomDomains"
-        ],
+        "tags": ["CustomDomains"],
         "description": "Disable https delivery of the custom domain.",
         "operationId": "CustomDomains_DisableCustomHttps",
         "x-ms-examples": null,
@@ -2169,19 +1959,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps": {
       "post": {
-        "tags": [
-          "CustomDomains"
-        ],
+        "tags": ["CustomDomains"],
         "description": "Enable https delivery of the custom domain.",
         "operationId": "CustomDomains_EnableCustomHttps",
         "x-ms-examples": null,
@@ -2243,19 +2027,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.Cdn/checkNameAvailability": {
       "post": {
-        "tags": [
-          "CheckNameAvailability"
-        ],
+        "tags": ["CheckNameAvailability"],
         "description": "Check the availability of a resource name. This is needed for resources where name is globally unique, such as a CDN endpoint.",
         "operationId": "CheckNameAvailability",
         "x-ms-examples": null,
@@ -2287,19 +2065,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkNameAvailability": {
       "post": {
-        "tags": [
-          "CheckNameAvailabilityWithSubscription"
-        ],
+        "tags": ["CheckNameAvailabilityWithSubscription"],
         "description": "Check the availability of a resource name. This is needed for resources where name is globally unique, such as a CDN endpoint.",
         "operationId": "CheckNameAvailabilityWithSubscription",
         "x-ms-examples": null,
@@ -2334,19 +2106,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/validateProbe": {
       "post": {
-        "tags": [
-          "ValidateProbe"
-        ],
+        "tags": ["ValidateProbe"],
         "description": "Check if the probe path is a valid path and the file can be accessed. Probe path is the path to a file hosted on the origin server to help accelerate the delivery of dynamic content via the CDN endpoint. This path is relative to the origin path specified in the endpoint configuration.",
         "operationId": "ValidateProbe",
         "x-ms-examples": null,
@@ -2381,19 +2147,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage": {
       "post": {
-        "tags": [
-          "CheckResourceUsage"
-        ],
+        "tags": ["CheckResourceUsage"],
         "description": "Check the quota and actual usage of the CDN profiles under the given subscription.",
         "operationId": "ResourceUsage_List",
         "x-ms-examples": null,
@@ -2422,19 +2182,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.Cdn/operations": {
       "get": {
-        "tags": [
-          "Operations"
-        ],
+        "tags": ["Operations"],
         "description": "Lists all of the available CDN REST API operations.",
         "operationId": "Operations_List",
         "x-ms-examples": null,
@@ -2460,19 +2214,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.Cdn/edgenodes": {
       "get": {
-        "tags": [
-          "Edgenodes"
-        ],
+        "tags": ["Edgenodes"],
         "description": "Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.",
         "operationId": "EdgeNodes_List",
         "x-ms-examples": null,
@@ -2498,19 +2246,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies": {
       "get": {
-        "tags": [
-          "WebApplicationFirewallPolicies"
-        ],
+        "tags": ["WebApplicationFirewallPolicies"],
         "description": "Lists all of the protection policies within a resource group.",
         "operationId": "Policies_List",
         "parameters": [
@@ -2542,19 +2284,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/{policyName}": {
       "get": {
-        "tags": [
-          "WebApplicationFirewallPolicies"
-        ],
+        "tags": ["WebApplicationFirewallPolicies"],
         "description": "Retrieve protection policy with specified name within a resource group.",
         "operationId": "Policies_Get",
         "parameters": [
@@ -2586,17 +2322,11 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "WebApplicationFirewallPolicies"
-        ],
+        "tags": ["WebApplicationFirewallPolicies"],
         "description": "Create or update policy with specified rule set name within a resource group.",
         "operationId": "Policies_CreateOrUpdate",
         "parameters": [
@@ -2650,17 +2380,11 @@
         },
         "x-ms-examples": null,
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "WebApplicationFirewallPolicies"
-        ],
+        "tags": ["WebApplicationFirewallPolicies"],
         "description": "Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group",
         "operationId": "Policies_Update",
         "parameters": [
@@ -2708,17 +2432,11 @@
         },
         "x-ms-examples": null,
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "WebApplicationFirewallPolicies"
-        ],
+        "tags": ["WebApplicationFirewallPolicies"],
         "description": "Deletes Policy",
         "operationId": "Policies_Delete",
         "parameters": [
@@ -2745,19 +2463,13 @@
         },
         "x-ms-examples": null,
         "x-ms-long-running-operation": false,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/CdnWebApplicationFirewallManagedRuleSets": {
       "get": {
-        "tags": [
-          "WebApplicationFirewallManagedRuleSets"
-        ],
+        "tags": ["WebApplicationFirewallManagedRuleSets"],
         "description": "Lists all available managed rule sets.",
         "operationId": "ManagedRuleSets_List",
         "parameters": [
@@ -2786,12 +2498,8 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     }
   },
@@ -2814,9 +2522,7 @@
           "$ref": "#/definitions/ProfileProperties"
         }
       },
-      "required": [
-        "sku"
-      ]
+      "required": ["sku"]
     },
     "ProfileProperties": {
       "description": "The JSON object that contains the properties required to create a profile.",
@@ -2824,12 +2530,7 @@
         "resourceState": {
           "description": "Resource status of the profile.",
           "readOnly": true,
-          "enum": [
-            "Creating",
-            "Active",
-            "Deleting",
-            "Disabled"
-          ],
+          "enum": ["Creating", "Active", "Deleting", "Disabled"],
           "type": "string",
           "x-ms-enum": {
             "name": "ProfileResourceState",
@@ -2916,9 +2617,7 @@
     },
     "EndpointProperties": {
       "description": "The JSON object that contains the properties required to create an endpoint.",
-      "required": [
-        "origins"
-      ],
+      "required": ["origins"],
       "allOf": [
         {
           "$ref": "#/definitions/EndpointPropertiesUpdateParameters"
@@ -3067,9 +2766,7 @@
         "deliveryPolicy": {
           "description": "A policy that specifies the delivery rules to be used for an endpoint.",
           "type": "object",
-          "required": [
-            "rules"
-          ],
+          "required": ["rules"],
           "properties": {
             "description": {
               "description": "User-friendly description of the policy.",
@@ -3099,10 +2796,7 @@
     "DeliveryRule": {
       "description": "A rule that specifies a set of actions and conditions",
       "type": "object",
-      "required": [
-        "order",
-        "actions"
-      ],
+      "required": ["order", "actions"],
       "properties": {
         "name": {
           "description": "Name of the rule",
@@ -3131,9 +2825,7 @@
     "DeliveryRuleCondition": {
       "description": "A condition for the delivery rule.",
       "discriminator": "name",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "description": "The name of the condition for the delivery rule.",
@@ -3169,9 +2861,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3187,9 +2877,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3205,9 +2893,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3223,9 +2909,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3241,9 +2925,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3259,9 +2941,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3277,9 +2957,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3295,9 +2973,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3313,9 +2989,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3331,9 +3005,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3349,9 +3021,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3367,9 +3037,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3385,9 +3053,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3403,9 +3069,7 @@
           "$ref": "#/definitions/DeliveryRuleCondition"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the condition.",
@@ -3415,11 +3079,7 @@
     },
     "RemoteAddressMatchConditionParameters": {
       "description": "Defines the parameters for RemoteAddress match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3430,11 +3090,7 @@
         "operator": {
           "description": "Describes operator to be matched",
           "type": "string",
-          "enum": [
-            "Any",
-            "IPMatch",
-            "GeoMatch"
-          ],
+          "enum": ["Any", "IPMatch", "GeoMatch"],
           "x-ms-enum": {
             "name": "RemoteAddressOperator",
             "modelAsString": true
@@ -3462,11 +3118,7 @@
     },
     "RequestMethodMatchConditionParameters": {
       "description": "Defines the parameters for RequestMethod match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3477,9 +3129,7 @@
         "operator": {
           "description": "Describes operator to be matched",
           "type": "string",
-          "enum": [
-            "Equal"
-          ],
+          "enum": ["Equal"],
           "x-ms-enum": {
             "name": "RequestMethodOperator",
             "modelAsString": true
@@ -3494,26 +3144,14 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "GET",
-              "HEAD",
-              "POST",
-              "PUT",
-              "DELETE",
-              "OPTIONS",
-              "TRACE"
-            ]
+            "enum": ["GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS", "TRACE"]
           }
         }
       }
     },
     "QueryStringMatchConditionParameters": {
       "description": "Defines the parameters for QueryString match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3562,12 +3200,7 @@
     },
     "PostArgsMatchConditionParameters": {
       "description": "Defines the parameters for PostArgs match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "selector",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "selector", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3620,11 +3253,7 @@
     },
     "RequestUriMatchConditionParameters": {
       "description": "Defines the parameters for RequestUri match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3673,12 +3302,7 @@
     },
     "RequestHeaderMatchConditionParameters": {
       "description": "Defines the parameters for RequestHeader match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "selector",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "selector", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3731,11 +3355,7 @@
     },
     "RequestBodyMatchConditionParameters": {
       "description": "Defines the parameters for RequestBody match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3784,11 +3404,7 @@
     },
     "RequestSchemeMatchConditionParameters": {
       "description": "Defines the parameters for RequestScheme match conditions ",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3799,9 +3415,7 @@
         "operator": {
           "description": "Describes operator to be matched",
           "type": "string",
-          "enum": [
-            "Equal"
-          ]
+          "enum": ["Equal"]
         },
         "negateCondition": {
           "description": "Describes if this is negate condition or not",
@@ -3812,21 +3426,14 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "HTTP",
-              "HTTPS"
-            ]
+            "enum": ["HTTP", "HTTPS"]
           }
         }
       }
     },
     "UrlPathMatchConditionParameters": {
       "description": "Defines the parameters for UrlPath match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3876,11 +3483,7 @@
     },
     "UrlFileExtensionMatchConditionParameters": {
       "description": "Defines the parameters for UrlFileExtension match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3929,11 +3532,7 @@
     },
     "UrlFileNameMatchConditionParameters": {
       "description": "Defines the parameters for UrlFilename match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3982,11 +3581,7 @@
     },
     "HttpVersionMatchConditionParameters": {
       "description": "Defines the parameters for HttpVersion match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -3997,9 +3592,7 @@
         "operator": {
           "description": "Describes operator to be matched",
           "type": "string",
-          "enum": [
-            "Equal"
-          ],
+          "enum": ["Equal"],
           "x-ms-enum": {
             "name": "HttpVersionOperator",
             "modelAsString": true
@@ -4020,12 +3613,7 @@
     },
     "CookiesMatchConditionParameters": {
       "description": "Defines the parameters for Cookies match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "selector",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "selector", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4078,11 +3666,7 @@
     },
     "IsDeviceMatchConditionParameters": {
       "description": "Defines the parameters for IsDevice match conditions",
-      "required": [
-        "operator",
-        "matchValues",
-        "@odata.type"
-      ],
+      "required": ["operator", "matchValues", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4093,9 +3677,7 @@
         "operator": {
           "description": "Describes operator to be matched",
           "type": "string",
-          "enum": [
-            "Equal"
-          ],
+          "enum": ["Equal"],
           "x-ms-enum": {
             "name": "IsDeviceOperator",
             "modelAsString": true
@@ -4110,10 +3692,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "Mobile",
-              "Desktop"
-            ]
+            "enum": ["Mobile", "Desktop"]
           }
         },
         "transforms": {
@@ -4128,9 +3707,7 @@
     "DeliveryRuleAction": {
       "description": "An action for the delivery rule.",
       "discriminator": "name",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "description": "The name of the action for the delivery rule.",
@@ -4159,9 +3736,7 @@
           "$ref": "#/definitions/DeliveryRuleAction"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the action.",
@@ -4171,10 +3746,7 @@
     },
     "UrlRedirectActionParameters": {
       "description": "Defines the parameters for the url redirect action.",
-      "required": [
-        "redirectType",
-        "@odata.type"
-      ],
+      "required": ["redirectType", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4185,12 +3757,7 @@
         "redirectType": {
           "description": "The redirect type the rule will use when redirecting traffic.",
           "type": "string",
-          "enum": [
-            "Moved",
-            "Found",
-            "TemporaryRedirect",
-            "PermanentRedirect"
-          ],
+          "enum": ["Moved", "Found", "TemporaryRedirect", "PermanentRedirect"],
           "x-ms-enum": {
             "name": "RedirectType",
             "modelAsString": true
@@ -4199,11 +3766,7 @@
         "destinationProtocol": {
           "description": "Protocol to use for the redirect. The default value is MatchRequest",
           "type": "string",
-          "enum": [
-            "MatchRequest",
-            "Http",
-            "Https"
-          ],
+          "enum": ["MatchRequest", "Http", "Https"],
           "x-ms-enum": {
             "name": "DestinationProtocol",
             "modelAsString": true
@@ -4229,9 +3792,7 @@
     },
     "UrlSigningActionParameters": {
       "description": "Defines the parameters for the Url Signing action.",
-      "required": [
-        "keyId"
-      ],
+      "required": ["keyId"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4246,9 +3807,7 @@
         "algorithm": {
           "description": "Algorithm to use for URL signing",
           "type": "string",
-          "enum": [
-            "SHA256"
-          ],
+          "enum": ["SHA256"],
           "x-ms-enum": {
             "name": "algorithm",
             "modelAsString": true
@@ -4272,19 +3831,12 @@
     },
     "UrlSigningParamIdentifier": {
       "description": "Defines how to identify a parameter for a specific purpose e.g. expires",
-      "required": [
-        "paramIndicator",
-        "paramName"
-      ],
+      "required": ["paramIndicator", "paramName"],
       "properties": {
         "paramIndicator": {
           "description": "Indicates the purpose of the parameter",
           "type": "string",
-          "enum": [
-            "expires",
-            "keyId",
-            "signature"
-          ],
+          "enum": ["expires", "keyId", "signature"],
           "x-ms-enum": {
             "name": "paramIndicator",
             "modelAsString": true
@@ -4304,9 +3856,7 @@
           "$ref": "#/definitions/DeliveryRuleAction"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the action.",
@@ -4316,11 +3866,7 @@
     },
     "UrlRewriteActionParameters": {
       "description": "Defines the parameters for the url rewrite action.",
-      "required": [
-        "sourcePattern",
-        "destination",
-        "@odata.type"
-      ],
+      "required": ["sourcePattern", "destination", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4350,9 +3896,7 @@
           "$ref": "#/definitions/DeliveryRuleAction"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the action.",
@@ -4368,9 +3912,7 @@
           "$ref": "#/definitions/DeliveryRuleAction"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the action.",
@@ -4380,11 +3922,7 @@
     },
     "HeaderActionParameters": {
       "description": "Defines the parameters for the request header action.",
-      "required": [
-        "headerAction",
-        "headerName",
-        "@odata.type"
-      ],
+      "required": ["headerAction", "headerName", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4395,11 +3933,7 @@
         "headerAction": {
           "description": "Action to perform",
           "type": "string",
-          "enum": [
-            "Append",
-            "Overwrite",
-            "Delete"
-          ],
+          "enum": ["Append", "Overwrite", "Delete"],
           "x-ms-enum": {
             "name": "HeaderAction",
             "modelAsString": true
@@ -4423,9 +3957,7 @@
           "$ref": "#/definitions/DeliveryRuleAction"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the action.",
@@ -4435,11 +3967,7 @@
     },
     "CacheExpirationActionParameters": {
       "description": "Defines the parameters for the cache expiration action.",
-      "required": [
-        "cacheBehavior",
-        "cacheType",
-        "@odata.type"
-      ],
+      "required": ["cacheBehavior", "cacheType", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4450,11 +3978,7 @@
         "cacheBehavior": {
           "description": "Caching behavior for the requests",
           "type": "string",
-          "enum": [
-            "BypassCache",
-            "Override",
-            "SetIfMissing"
-          ],
+          "enum": ["BypassCache", "Override", "SetIfMissing"],
           "x-ms-enum": {
             "name": "cacheBehavior",
             "modelAsString": true
@@ -4463,9 +3987,7 @@
         "cacheType": {
           "description": "The level at which the content needs to be cached.",
           "type": "string",
-          "enum": [
-            "All"
-          ],
+          "enum": ["All"],
           "x-ms-enum": {
             "name": "CacheType",
             "modelAsString": true
@@ -4486,9 +4008,7 @@
           "$ref": "#/definitions/DeliveryRuleAction"
         }
       ],
-      "required": [
-        "parameters"
-      ],
+      "required": ["parameters"],
       "properties": {
         "parameters": {
           "description": "Defines the parameters for the action.",
@@ -4498,10 +4018,7 @@
     },
     "CacheKeyQueryStringActionParameters": {
       "description": "Defines the parameters for the cache-key query string action.",
-      "required": [
-        "queryStringBehavior",
-        "@odata.type"
-      ],
+      "required": ["queryStringBehavior", "@odata.type"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4512,12 +4029,7 @@
         "queryStringBehavior": {
           "description": "Caching behavior for the requests",
           "type": "string",
-          "enum": [
-            "Include",
-            "IncludeAll",
-            "Exclude",
-            "ExcludeAll"
-          ],
+          "enum": ["Include", "IncludeAll", "Exclude", "ExcludeAll"],
           "x-ms-enum": {
             "name": "queryStringBehavior",
             "modelAsString": true
@@ -4533,10 +4045,7 @@
     "transform": {
       "description": "Describes what transforms are applied before matching",
       "type": "string",
-      "enum": [
-        "Lowercase",
-        "Uppercase"
-      ],
+      "enum": ["Lowercase", "Uppercase"],
       "x-ms-enum": {
         "name": "transform",
         "modelAsString": true
@@ -4545,9 +4054,7 @@
     "DeepCreatedOrigin": {
       "description": "The main origin of CDN content which is added when creating a CDN endpoint.",
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "description": "Origin name which must be unique within the endpoint. ",
@@ -4563,9 +4070,7 @@
     "DeepCreatedOriginProperties": {
       "description": "Properties of the origin created on the CDN endpoint.",
       "type": "object",
-      "required": [
-        "hostName"
-      ],
+      "required": ["hostName"],
       "properties": {
         "hostName": {
           "description": "The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.",
@@ -4629,9 +4134,7 @@
     "DeepCreatedOriginGroup": {
       "description": "The origin group for CDN content which is added when creating a CDN endpoint. Traffic is sent to the origins within the origin group based on origin health.",
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "description": "Origin group name which must be unique within the endpoint.",
@@ -4647,9 +4150,7 @@
     "DeepCreatedOriginGroupProperties": {
       "description": "Properties of the origin group created on the CDN endpoint.",
       "type": "object",
-      "required": [
-        "origins"
-      ],
+      "required": ["origins"],
       "properties": {
         "healthProbeSettings": {
           "description": "Health probe settings to the origin that is used to determine the health of the origin.",
@@ -4691,11 +4192,7 @@
     "GeoFilter": {
       "description": "Rules defining user's geo access within a CDN endpoint.",
       "type": "object",
-      "required": [
-        "relativePath",
-        "action",
-        "countryCodes"
-      ],
+      "required": ["relativePath", "action", "countryCodes"],
       "properties": {
         "relativePath": {
           "description": "Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)",
@@ -4703,10 +4200,7 @@
         },
         "action": {
           "description": "Action of the geo filter, i.e. allow or block access.",
-          "enum": [
-            "Block",
-            "Allow"
-          ],
+          "enum": ["Block", "Allow"],
           "type": "string",
           "x-ms-enum": {
             "name": "GeoFilterActions",
@@ -4725,9 +4219,7 @@
     "PurgeParameters": {
       "type": "object",
       "description": "Parameters required for content purge.",
-      "required": [
-        "contentPaths"
-      ],
+      "required": ["contentPaths"],
       "properties": {
         "contentPaths": {
           "description": "The path to the content to be purged. Can describe a file path or a wild card directory.",
@@ -4740,10 +4232,7 @@
     },
     "UrlSigningKey": {
       "description": "Url signing key",
-      "required": [
-        "keyId",
-        "keySourceParameters"
-      ],
+      "required": ["keyId", "keySourceParameters"],
       "properties": {
         "keyId": {
           "description": "Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.",
@@ -4768,9 +4257,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.KeyVaultSigningKeyParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.KeyVaultSigningKeyParameters"]
         },
         "subscriptionId": {
           "description": "Subscription Id of the user's Key Vault containing the secret",
@@ -4797,9 +4284,7 @@
     "LoadParameters": {
       "type": "object",
       "description": "Parameters required for content load.",
-      "required": [
-        "contentPaths"
-      ],
+      "required": ["contentPaths"],
       "properties": {
         "contentPaths": {
           "description": "The path to the content to be loaded. Path should be a relative file URL of the origin.",
@@ -4827,9 +4312,7 @@
     },
     "OriginProperties": {
       "description": "The JSON object that contains the properties of the origin.",
-      "required": [
-        "hostName"
-      ],
+      "required": ["hostName"],
       "allOf": [
         {
           "$ref": "#/definitions/OriginUpdatePropertiesParameters"
@@ -4839,11 +4322,7 @@
         "resourceState": {
           "description": "Resource status of the origin.",
           "readOnly": true,
-          "enum": [
-            "Creating",
-            "Active",
-            "Deleting"
-          ],
+          "enum": ["Creating", "Active", "Deleting"],
           "type": "string",
           "x-ms-enum": {
             "name": "OriginResourceState",
@@ -4987,9 +4466,7 @@
     "OriginGroupProperties": {
       "description": "The JSON object that contains the properties of the origin group.",
       "type": "object",
-      "required": [
-        "origins"
-      ],
+      "required": ["origins"],
       "allOf": [
         {
           "$ref": "#/definitions/OriginGroupUpdatePropertiesParameters"
@@ -4999,11 +4476,7 @@
         "resourceState": {
           "description": "Resource status of the origin group.",
           "readOnly": true,
-          "enum": [
-            "Creating",
-            "Active",
-            "Deleting"
-          ],
+          "enum": ["Creating", "Active", "Deleting"],
           "type": "string",
           "x-ms-enum": {
             "name": "OriginGroupResourceState",
@@ -5066,11 +4539,7 @@
         },
         "probeRequestType": {
           "description": "The type of health probe request that is made.",
-          "enum": [
-            "NotSet",
-            "GET",
-            "HEAD"
-          ],
+          "enum": ["NotSet", "GET", "HEAD"],
           "type": "string",
           "x-ms-enum": {
             "name": "HealthProbeRequestType",
@@ -5080,11 +4549,7 @@
         "probeProtocol": {
           "description": "Protocol to use for health probe.",
           "type": "string",
-          "enum": [
-            "NotSet",
-            "Http",
-            "Https"
-          ],
+          "enum": ["NotSet", "Http", "Https"],
           "x-ms-enum": {
             "name": "ProbeProtocol",
             "modelAsString": false
@@ -5104,11 +4569,7 @@
         "responseBasedDetectedErrorTypes": {
           "description": "Type of response errors for real user requests for which origin will be deemed unhealthy",
           "type": "string",
-          "enum": [
-            "None",
-            "TcpErrorsOnly",
-            "TcpAndHttpErrors"
-          ],
+          "enum": ["None", "TcpErrorsOnly", "TcpAndHttpErrors"],
           "x-ms-enum": {
             "name": "ResponseBasedDetectedErrorTypes",
             "modelAsString": false
@@ -5180,9 +4641,7 @@
     },
     "CustomDomainProperties": {
       "description": "The JSON object that contains the properties of the custom domain to create.",
-      "required": [
-        "hostName"
-      ],
+      "required": ["hostName"],
       "properties": {
         "hostName": {
           "description": "The host name of the custom domain. Must be a domain name.",
@@ -5191,11 +4650,7 @@
         "resourceState": {
           "description": "Resource status of the custom domain.",
           "readOnly": true,
-          "enum": [
-            "Creating",
-            "Active",
-            "Deleting"
-          ],
+          "enum": ["Creating", "Active", "Deleting"],
           "type": "string",
           "x-ms-enum": {
             "name": "CustomDomainResourceState",
@@ -5205,13 +4660,7 @@
         "customHttpsProvisioningState": {
           "description": "Provisioning status of Custom Https of the custom domain.",
           "readOnly": true,
-          "enum": [
-            "Enabling",
-            "Enabled",
-            "Disabling",
-            "Disabled",
-            "Failed"
-          ],
+          "enum": ["Enabling", "Enabled", "Disabling", "Disabled", "Failed"],
           "type": "string",
           "x-ms-enum": {
             "name": "CustomHttpsProvisioningState",
@@ -5262,9 +4711,7 @@
     },
     "CustomDomainPropertiesParameters": {
       "description": "The JSON object that contains the properties of the custom domain to create.",
-      "required": [
-        "hostName"
-      ],
+      "required": ["hostName"],
       "properties": {
         "hostName": {
           "description": "The host name of the custom domain. Must be a domain name.",
@@ -5275,17 +4722,11 @@
     "CustomDomainHttpsParameters": {
       "description": "The JSON object that contains the properties to secure a custom domain.",
       "discriminator": "certificateSource",
-      "required": [
-        "certificateSource",
-        "protocolType"
-      ],
+      "required": ["certificateSource", "protocolType"],
       "properties": {
         "certificateSource": {
           "description": "Defines the source of the SSL certificate.",
-          "enum": [
-            "AzureKeyVault",
-            "Cdn"
-          ],
+          "enum": ["AzureKeyVault", "Cdn"],
           "type": "string",
           "x-ms-enum": {
             "name": "CertificateSource",
@@ -5294,10 +4735,7 @@
         },
         "protocolType": {
           "description": "Defines the TLS extension protocol that is used for secure delivery.",
-          "enum": [
-            "ServerNameIndication",
-            "IPBased"
-          ],
+          "enum": ["ServerNameIndication", "IPBased"],
           "type": "string",
           "x-ms-enum": {
             "name": "ProtocolType",
@@ -5306,11 +4744,7 @@
         },
         "minimumTlsVersion": {
           "description": "TLS protocol version that will be used for Https",
-          "enum": [
-            "None",
-            "TLS10",
-            "TLS12"
-          ],
+          "enum": ["None", "TLS10", "TLS12"],
           "type": "string",
           "x-ms-enum": {
             "name": "MinimumTlsVersion",
@@ -5327,9 +4761,7 @@
           "$ref": "#/definitions/CustomDomainHttpsParameters"
         }
       ],
-      "required": [
-        "certificateSourceParameters"
-      ],
+      "required": ["certificateSourceParameters"],
       "properties": {
         "certificateSourceParameters": {
           "description": "Defines the certificate source parameters using CDN managed certificate for enabling SSL.",
@@ -5339,23 +4771,15 @@
     },
     "CdnCertificateSourceParameters": {
       "description": "Defines the parameters for using CDN managed certificate for securing custom domain.",
-      "required": [
-        "@odata.type",
-        "certificateType"
-      ],
+      "required": ["@odata.type", "certificateType"],
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.CdnCertificateSourceParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.CdnCertificateSourceParameters"]
         },
         "certificateType": {
           "description": "Type of certificate used",
-          "enum": [
-            "Shared",
-            "Dedicated"
-          ],
+          "enum": ["Shared", "Dedicated"],
           "type": "string",
           "x-ms-enum": {
             "name": "CertificateType",
@@ -5372,9 +4796,7 @@
           "$ref": "#/definitions/CustomDomainHttpsParameters"
         }
       ],
-      "required": [
-        "certificateSourceParameters"
-      ],
+      "required": ["certificateSourceParameters"],
       "properties": {
         "certificateSourceParameters": {
           "description": "Defines the certificate source parameters using user's keyvault certificate for enabling SSL.",
@@ -5424,9 +4846,7 @@
         "updateRule": {
           "description": "Describes the action that shall be taken when the certificate is updated in Key Vault.",
           "type": "string",
-          "enum": [
-            "NoAction"
-          ],
+          "enum": ["NoAction"],
           "x-ms-enum": {
             "name": "UpdateRule",
             "modelAsString": true
@@ -5435,9 +4855,7 @@
         "deleteRule": {
           "description": "Describes the action that shall be taken when the certificate is removed from Key Vault.",
           "type": "string",
-          "enum": [
-            "NoAction"
-          ],
+          "enum": ["NoAction"],
           "x-ms-enum": {
             "name": "DeleteRule",
             "modelAsString": true
@@ -5465,9 +4883,7 @@
     "ValidateCustomDomainInput": {
       "description": "Input of the custom domain to be validated for DNS mapping.",
       "type": "object",
-      "required": [
-        "hostName"
-      ],
+      "required": ["hostName"],
       "properties": {
         "hostName": {
           "description": "The host name of the custom domain. Must be a domain name.",
@@ -5499,10 +4915,7 @@
     "CheckNameAvailabilityInput": {
       "description": "Input of CheckNameAvailability API.",
       "type": "object",
-      "required": [
-        "name",
-        "type"
-      ],
+      "required": ["name", "type"],
       "properties": {
         "name": {
           "description": "The resource name to validate.",
@@ -5543,9 +4956,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "probeURL"
-      ],
+      "required": ["probeURL"],
       "type": "object"
     },
     "ValidateProbeOutput": {
@@ -5614,9 +5025,7 @@
     },
     "ResourceType": {
       "description": "Type of CDN resource used in CheckNameAvailability.",
-      "enum": [
-        "Microsoft.Cdn/Profiles/Endpoints"
-      ],
+      "enum": ["Microsoft.Cdn/Profiles/Endpoints"],
       "type": "string",
       "x-ms-enum": {
         "name": "ResourceType",
@@ -5705,9 +5114,7 @@
     },
     "EdgeNodeProperties": {
       "description": "The JSON object that contains the properties required to create an edgenode.",
-      "required": [
-        "ipAddressGroups"
-      ],
+      "required": ["ipAddressGroups"],
       "properties": {
         "ipAddressGroups": {
           "description": "List of ip address groups.",
@@ -5794,17 +5201,11 @@
           "additionalProperties": {
             "type": "string"
           },
-          "x-ms-mutability": [
-            "read",
-            "create",
-            "update"
-          ],
+          "x-ms-mutability": ["read", "create", "update"],
           "description": "Resource tags."
         }
       },
-      "required": [
-        "location"
-      ]
+      "required": ["location"]
     },
     "ProxyResource": {
       "description": "The resource model definition for a ARM proxy resource. It will have everything other than required location and tags",
@@ -5916,9 +5317,7 @@
           "$ref": "#/definitions/Sku"
         }
       },
-      "required": [
-        "sku"
-      ],
+      "required": ["sku"],
       "allOf": [
         {
           "$ref": "#/definitions/TrackedResource"
@@ -5970,11 +5369,7 @@
           "readOnly": true,
           "type": "string",
           "description": "Provisioning state of the WebApplicationFirewallPolicy.",
-          "enum": [
-            "Creating",
-            "Succeeded",
-            "Failed"
-          ],
+          "enum": ["Creating", "Succeeded", "Failed"],
           "x-ms-enum": {
             "name": "ProvisioningState",
             "modelAsString": true
@@ -6005,10 +5400,7 @@
         "enabledState": {
           "description": "describes if the policy is in enabled state or disabled state",
           "type": "string",
-          "enum": [
-            "Disabled",
-            "Enabled"
-          ],
+          "enum": ["Disabled", "Enabled"],
           "x-ms-enum": {
             "name": "PolicyEnabledState",
             "modelAsString": true
@@ -6017,10 +5409,7 @@
         "mode": {
           "description": "Describes if it is in detection mode or prevention mode at policy level.",
           "type": "string",
-          "enum": [
-            "Prevention",
-            "Detection"
-          ],
+          "enum": ["Prevention", "Detection"],
           "x-ms-enum": {
             "name": "PolicyMode",
             "modelAsString": true
@@ -6033,13 +5422,7 @@
         "defaultCustomBlockResponseStatusCode": {
           "description": "If the action type is block, this field defines the default customer overridable http response status code.",
           "type": "integer",
-          "enum": [
-            200,
-            403,
-            405,
-            406,
-            429
-          ]
+          "enum": [200, 403, 405, 406, 429]
         },
         "defaultCustomBlockResponseBody": {
           "description": "If the action type is block, customer can override the response body. The body must be specified in base64 encoding.",
@@ -6074,12 +5457,7 @@
     "CustomRule": {
       "description": "Defines the common attributes for a custom rule that can be included in a waf policy",
       "type": "object",
-      "required": [
-        "name",
-        "priority",
-        "matchConditions",
-        "action"
-      ],
+      "required": ["name", "priority", "matchConditions", "action"],
       "properties": {
         "name": {
           "description": "Defines the name of the custom rule",
@@ -6088,10 +5466,7 @@
         "enabledState": {
           "description": "Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.",
           "type": "string",
-          "enum": [
-            "Disabled",
-            "Enabled"
-          ],
+          "enum": ["Disabled", "Enabled"],
           "x-ms-enum": {
             "name": "CustomRuleEnabledState",
             "modelAsString": true
@@ -6133,10 +5508,7 @@
     "RateLimitRule": {
       "description": "Defines a rate limiting rule that can be included in a waf policy",
       "type": "object",
-      "required": [
-        "rateLimitThreshold",
-        "rateLimitDurationInMinutes"
-      ],
+      "required": ["rateLimitThreshold", "rateLimitDurationInMinutes"],
       "properties": {
         "rateLimitThreshold": {
           "description": "Defines rate limit threshold.",
@@ -6161,11 +5533,7 @@
     },
     "MatchCondition": {
       "description": "Define match conditions",
-      "required": [
-        "matchVariable",
-        "operator",
-        "matchValue"
-      ],
+      "required": ["matchVariable", "operator", "matchValue"],
       "properties": {
         "matchVariable": {
           "description": "Match variable to compare against.",
@@ -6263,10 +5631,7 @@
     "ManagedRuleSet": {
       "type": "object",
       "description": "Defines a managed rule set.",
-      "required": [
-        "ruleSetType",
-        "ruleSetVersion"
-      ],
+      "required": ["ruleSetType", "ruleSetVersion"],
       "properties": {
         "ruleSetType": {
           "description": "Defines the rule set type to use.",
@@ -6295,9 +5660,7 @@
     },
     "ManagedRuleGroupOverride": {
       "description": "Defines a managed rule group override setting.",
-      "required": [
-        "ruleGroupName"
-      ],
+      "required": ["ruleGroupName"],
       "properties": {
         "ruleGroupName": {
           "description": "Describes the managed rule group within the rule set to override",
@@ -6314,9 +5677,7 @@
     },
     "ManagedRuleOverride": {
       "description": "Defines a managed rule group override setting.",
-      "required": [
-        "ruleId"
-      ],
+      "required": ["ruleId"],
       "properties": {
         "ruleId": {
           "description": "Identifier for the managed rule.",
@@ -6325,10 +5686,7 @@
         "enabledState": {
           "description": "Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.",
           "type": "string",
-          "enum": [
-            "Disabled",
-            "Enabled"
-          ],
+          "enum": ["Disabled", "Enabled"],
           "x-ms-enum": {
             "name": "ManagedRuleEnabledState",
             "modelAsString": true
@@ -6445,12 +5803,7 @@
     "ActionType": {
       "description": "Defines the action to take on rule match.",
       "type": "string",
-      "enum": [
-        "Allow",
-        "Block",
-        "Log",
-        "Redirect"
-      ],
+      "enum": ["Allow", "Block", "Log", "Redirect"],
       "x-ms-enum": {
         "name": "ActionType",
         "modelAsString": true

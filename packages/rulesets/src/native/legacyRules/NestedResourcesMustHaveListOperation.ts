@@ -18,7 +18,7 @@ rules.push({
      * 1 get all nested resources that have point get resource
      * 2 travel all resources by searching in all get/put operations and find all the resources that have a collection get
      */
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const nestedResource = utils.getAllNestedResources()
     const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of nestedResource) {

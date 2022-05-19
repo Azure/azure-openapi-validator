@@ -67,6 +67,12 @@
   },
   {
     "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'FileServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:20:6"
+  },
+  {
+    "code": "PageableOperation",
     "message": "Based on the response model schema, operation 'FirewallPolicyIdpsSignaturesOverrides_List' might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides\"].get",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:822:6"
@@ -121,9 +127,21 @@
   },
   {
     "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'PrivateLinkResources_ListByStorageAccount' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1442:6"
+  },
+  {
+    "code": "PageableOperation",
     "message": "Based on the response model schema, operation 'PrivateLinkResources_ListByStorageSyncService' might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources\"].get",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:524:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'QueueServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:20:6"
   },
   {
     "code": "PageableOperation",
@@ -142,6 +160,12 @@
     "message": "Based on the response model schema, operation 'SupportedSecurityProviders' might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:800:6"
+  },
+  {
+    "code": "PageableOperation",
+    "message": "Based on the response model schema, operation 'TableServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices\"].get",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:20:6"
   },
   {
     "code": "PageableOperation",

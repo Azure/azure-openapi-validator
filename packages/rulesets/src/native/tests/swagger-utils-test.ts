@@ -29,7 +29,7 @@ describe("SwaggerHelperTests", () => {
       ["paths", "/providers/Microsoft.MachineLearning/operations", "get", "responses", "default", "schema"],
       specPath,
       inventory
-    )
+    )?.value
 
     const resolvedSchema = crawlReference(swagger, schema, inventory)
     assert.strictEqual(!!resolvedSchema.properties, true)

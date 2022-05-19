@@ -1,0 +1,92 @@
+[
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"BlobContainers_List\" does not match the response definition in the individual GET  operation \"BlobContainers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:149:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FileShares_List\" does not match the response definition in the individual GET  operation \"FileShares_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:164:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallPolicies_List\" does not match the response definition in the individual GET  operation \"FirewallPolicyIdpsSignaturesOverrides_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:216:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallRules_ListByServer\" does not match the response definition in the individual GET  operation \"FirewallRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:171:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"MetricAlertsStatus_List\" does not match the response definition in the individual GET  operation \"MetricAlertsStatus_ListByName\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}/status\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:340:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListCloudServiceRoleInstanceNetworkInterfaces\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetCloudServiceNetworkInterface\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:37:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListVirtualMachineScaleSetIpConfigurations\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetVirtualMachineScaleSetIpConfiguration\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:221:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListVirtualMachineScaleSetVMNetworkInterfaces\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetVirtualMachineScaleSetNetworkInterface\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:37:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpointConnections_List\" does not match the response definition in the individual GET  operation \"PrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1262:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpointConnections_ListByStorageSyncService\" does not match the response definition in the individual GET  operation \"PrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:751:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PublicIPAddresses_ListCloudServiceRoleInstancePublicIPAddresses\" does not match the response definition in the individual GET  operation \"PublicIPAddresses_GetCloudServicePublicIPAddress\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:87:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PublicIPAddresses_ListVirtualMachineScaleSetVMPublicIPAddresses\" does not match the response definition in the individual GET  operation \"PublicIPAddresses_GetVirtualMachineScaleSetPublicIPAddress\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:87:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Queue_List\" does not match the response definition in the individual GET  operation \"Queue_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:350:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualMachineRunCommands_List\" does not match the response definition in the individual GET  operation \"VirtualMachineRunCommands_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:39:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"undefined\" does not match the response definition in the individual GET  operation \"Configurations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/configurations.json:37:4"
+  }
+]

@@ -13,7 +13,7 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path, ctx) {
     const msg = 'The top-level resource "{0}" does not have list by resource group operation, please add it.'
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const topLevelResources = utils.getTopLevelResourcesByRG()
     const allCollectionApis = utils.getCollectionApiInfo()
     for (const resource of topLevelResources) {

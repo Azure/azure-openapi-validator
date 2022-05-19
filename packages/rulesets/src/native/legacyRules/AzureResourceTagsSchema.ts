@@ -17,7 +17,7 @@ rules.push({
      * 1. get all resources
      * 2. for each resource, check the property tags schema.
      */
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const allResources = utils.getAllResourceNames()
     for (const resourceName of allResources) {
       const resource = utils?.getResourceByName(resourceName)

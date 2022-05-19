@@ -1,14 +1,908 @@
 [
   {
     "code": "TopLevelResourcesListBySubscription",
-    "message": "The top-level resource \"ChangeResourceResult\" does not have list by subscription operation, please add it.",
-    "jsonpath": "$.definitions.ChangeResourceResult",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:164:4"
+    "message": "The top-level resource \"Advisor\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Advisor",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:607:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Advisor\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Advisor",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:598:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Application\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Application",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:439:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ApplicationGatewayPrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ApplicationGatewayPrivateEndpointConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:2678:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"AvailabilityGroupListener\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.AvailabilityGroupListener",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1158:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"BackendAddressPool\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.BackendAddressPool",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1812:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"BackupShortTermRetentionPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.BackupShortTermRetentionPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:280:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"BgpConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.BgpConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6082:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"BlobContainer\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.BlobContainer",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1020:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"BlobInventoryPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.BlobInventoryPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:5111:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"BlobServiceProperties\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.BlobServiceProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1316:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"CapacityReservation\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.CapacityReservation",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10862:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"CloudEndpoint\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.CloudEndpoint",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3300:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ConnectionMonitorResult\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ConnectionMonitorResult",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:4637:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DataCollectionRuleAssociationProxyOnlyResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DataCollectionRuleAssociationProxyOnlyResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:368:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DataMaskingPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DataMaskingPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:267:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DataMaskingRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DataMaskingRule",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:372:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Database\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Database",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:780:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseBlobAuditingPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseBlobAuditingPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:986:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseSecurityAlertPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseSecurityAlertPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json:276:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseVulnerabilityAssessment\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessment",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessments.json:320:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseVulnerabilityAssessment\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessment",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json:333:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:301:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:313:4"
   },
   {
     "code": "TopLevelResourcesListBySubscription",
     "message": "The top-level resource \"DdosCustomPolicy\" does not have list by subscription operation, please add it.",
     "jsonpath": "$.definitions.DdosCustomPolicy",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DedicatedHost\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DedicatedHost",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10619:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DiagnosticSettingsCategoryResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DiagnosticSettingsCategoryResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:154:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DiagnosticSettingsResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DiagnosticSettingsResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:333:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DistributedAvailabilityGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DistributedAvailabilityGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:277:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ElasticPool\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ElasticPool",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:451:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"EncryptionProtector\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.EncryptionProtector",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:300:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"EncryptionScope\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.EncryptionScope",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4751:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExpressRouteCircuitAuthorization\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExpressRouteCircuitAuthorization",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1631:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExpressRouteCircuitConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExpressRouteCircuitConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1999:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExpressRouteCircuitPeering\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExpressRouteCircuitPeering",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1881:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExpressRouteConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExpressRouteConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7944:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExpressRouteCrossConnectionPeering\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExpressRouteCrossConnectionPeering",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:966:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExtendedDatabaseBlobAuditingPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExtendedDatabaseBlobAuditingPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:677:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ExtendedServerBlobAuditingPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ExtendedServerBlobAuditingPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:784:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FailoverGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FailoverGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:534:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FileServiceProperties\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FileServiceProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:613:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FileShare\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FileShare",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:690:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FirewallPolicyRuleCollectionGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FirewallPolicyRuleCollectionGroup",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:970:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FirewallRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FirewallRule",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:308:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"FlowLog\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.FlowLog",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:3070:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"GalleryApplication\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.GalleryApplication",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1967:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"GalleryApplicationVersion\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.GalleryApplicationVersion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2036:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"GalleryImage\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.GalleryImage",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2152:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"GalleryImageVersion\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.GalleryImageVersion",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2385:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"GeoBackupPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.GeoBackupPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:197:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"HubIpConfiguration\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.HubIpConfiguration",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6207:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"HubRouteTable\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.HubRouteTable",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7010:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"HubVirtualNetworkConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.HubVirtualNetworkConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6930:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"IPv6 FirewallRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions[\"IPv6 FirewallRule\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:215:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ImmutabilityPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ImmutabilityPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1089:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ImportExportExtensionsOperationResult\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ImportExportExtensionsOperationResult",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:283:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"InboundNatRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.InboundNatRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:2090:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"InboundSecurityRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.InboundSecurityRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:1099:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"InstanceFailoverGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.InstanceFailoverGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:480:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"IscsiTarget\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.IscsiTarget",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1693:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Job\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Job",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Jobs.json:322:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"JobAgent\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.JobAgent",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:329:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"JobCredential\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.JobCredential",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobCredentials.json:281:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"JobExecution\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.JobExecution",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:636:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"JobStep\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.JobStep",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobSteps.json:585:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"JobTargetGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.JobTargetGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetGroups.json:335:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LedgerDigestUploads\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LedgerDigestUploads",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:268:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LocalNetworkGateway\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LocalNetworkGateway",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3731:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LocalUser\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LocalUser",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4970:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LogicalDatabaseTransparentDataEncryption\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LogicalDatabaseTransparentDataEncryption",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:239:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LongTermRetentionPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LongTermRetentionPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:212:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedBackupShortTermRetentionPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedBackupShortTermRetentionPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:267:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedBackupShortTermRetentionPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedBackupShortTermRetentionPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:279:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedDatabase\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedDatabase",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:544:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedDatabaseSecurityAlertPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedDatabaseSecurityAlertPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityAlertPolicies.json:277:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstanceAdministrator\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceAdministrator",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:293:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstanceAzureADOnlyAuthentication\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceAzureADOnlyAuthentication",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:254:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstanceEncryptionProtector\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceEncryptionProtector",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:295:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstanceKey\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceKey",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:293:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstanceLongTermRetentionPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceLongTermRetentionPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:212:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstancePrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstancePrivateEndpointConnection",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:261:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedInstanceVulnerabilityAssessment\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedInstanceVulnerabilityAssessment",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json:311:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedServerDnsAlias\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedServerDnsAlias",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:273:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedServerSecurityAlertPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedServerSecurityAlertPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:241:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagedTransparentDataEncryption\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagedTransparentDataEncryption",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseTransparentDataEncryption.json:236:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ManagementPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ManagementPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"MoveResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.MoveResource",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1333:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"NetworkInterfaceTapConfiguration\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.NetworkInterfaceTapConfiguration",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:886:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ObjectReplicationPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ObjectReplicationPolicy",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4866:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"OutboundFirewallRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.OutboundFirewallRule",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:227:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PacketCaptureResult\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PacketCaptureResult",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2836:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateDnsZoneGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateDnsZoneGroup",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:889:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateEndpointConnection",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3361:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateEndpointConnection",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateEndpointConnections.json:259:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateEndpointConnection",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:992:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateEndpointConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:937:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateEndpointConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateEndpointConnection",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:290:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"PrivateLinkResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.PrivateLinkResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:905:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"QueueServiceProperties\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.QueueServiceProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:421:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"RecommendedAction\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.RecommendedAction",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:520:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"RegisteredServer\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.RegisteredServer",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3615:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"RestorePoint\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.RestorePoint",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9913:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Route\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Route",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:638:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"RouteFilterRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.RouteFilterRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:643:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"RoutingIntent\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.RoutingIntent",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:8189:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ScopedResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ScopedResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:1046:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SecurityRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SecurityRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:827:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SensitivityLabel\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SensitivityLabel",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:764:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SensitivityLabel\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SensitivityLabel",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:744:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerAzureADAdministrator\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerAzureADAdministrator",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:282:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerAzureADOnlyAuthentication\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerAzureADOnlyAuthentication",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:254:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerBlobAuditingPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerBlobAuditingPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:887:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerCommunicationLink\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerCommunicationLink",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:216:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerConnectionPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerConnectionPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:202:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerDevOpsAuditingSettings\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerDevOpsAuditingSettings",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDevOpsAudit.json:215:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerDnsAlias\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerDnsAlias",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:300:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerEndpoint\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerEndpoint",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3599:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerKey\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerKey",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:291:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerSecurityAlertPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerSecurityAlertPolicy",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:241:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerTrustCertificate\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerTrustCertificate",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:220:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerTrustGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerTrustGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:319:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServerVulnerabilityAssessment\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServerVulnerabilityAssessment",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerVulnerabilityAssessments.json:307:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServiceEndpointPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServiceEndpointPolicy",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:719:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServiceEndpointPolicyDefinition\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServiceEndpointPolicyDefinition",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:634:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"StorageQueue\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.StorageQueue",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:442:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"StorageTarget\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.StorageTarget",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2168:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Subnet\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Subnet",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1672:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SyncAgent\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SyncAgent",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:393:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SyncGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SyncGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:1008:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SyncGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SyncGroup",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3284:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"SyncMember\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.SyncMember",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:576:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"Table\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.Table",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:433:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"TableServiceProperties\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.TableServiceProperties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:412:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VMInsightsOnboardingStatus\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VMInsightsOnboardingStatus",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:192:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualApplianceSite\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualApplianceSite",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:908:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualHubRouteTableV2\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualHubRouteTableV2",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7725:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualMachineExtension\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualMachineExtension",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11272:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualMachineRunCommand\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualMachineRunCommand",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:1275:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualMachineScaleSetExtension\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetExtension",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15206:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualMachineScaleSetVM\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVM",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16088:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualMachineScaleSetVMExtension\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVMExtension",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11286:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGateway\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGateway",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3213:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGatewayConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGatewayConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3495:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGatewayNatRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGatewayNatRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2674:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkPeering\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkPeering",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1700:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkRule",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:254:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualRouterPeering\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualRouterPeering",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:613:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VpnConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VpnConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6667:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VpnGatewayNatRule\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VpnGatewayNatRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6524:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"WorkloadClassifier\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.WorkloadClassifier",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:296:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"WorkloadGroup\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.WorkloadGroup",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:275:4"
   }
 ]

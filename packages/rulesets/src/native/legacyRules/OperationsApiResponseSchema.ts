@@ -19,7 +19,7 @@ rules.push({
      * 2 verify the schema
      * per ARM spec:https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/proxy-api-reference.md#exposing-available-operations
      */
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const operationsApi = utils.getOperationApi()
     if (operationsApi && operationsApi[1]) {
       let isValid = true

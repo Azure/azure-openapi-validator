@@ -1,0 +1,108 @@
+{
+  "common": [
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.ActiveDirectoryProperties.properties.accountType",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2926:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.CorsRule.properties.allowedMethods.items",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/common.json:34:10"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.DnsRefreshConfigurationProperties.properties.status",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:269:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.GalleryApplicationVersionProperties.properties.provisioningState",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2069:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.GalleryImageProperties.properties.provisioningState",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2251:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.GalleryImageVersionProperties.properties.provisioningState",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2418:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.GalleryProperties.properties.provisioningState",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1772:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.LeaseContainerRequest.properties.action",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1469:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.ManagedInstanceProperties.properties.provisioningState",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:587:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.OrderBy.properties.order",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1828:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.ServerTrustGroupProperties.properties.trustScopes.items",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:296:10"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.SingleQueryResult.properties.direction",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1884:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.SingleQueryResult.properties.mode",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1864:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.SingleQueryResult.properties.severity",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1874:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.SqlAgentConfigurationProperties.properties.state",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:109:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.StorageCapability.properties.storageAccountType",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LocationCapabilities.json:538:8"
+    },
+    {
+      "code": "XmsEnumValidation",
+      "message": "The enum types should have x-ms-enum type extension set with appropriate options.",
+      "jsonpath": "$.definitions.UpsertManagedServerOperationStep.properties.status",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:339:8"
+    }
+  ],
+  "v2Only": [],
+  "v3Only": []
+}

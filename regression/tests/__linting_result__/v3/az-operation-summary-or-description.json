@@ -3,6 +3,6 @@
     "code": "az-operation-summary-or-description",
     "message": "Operation should have a summary or description.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
-    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:881:6"
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:881:11"
   }
 ]

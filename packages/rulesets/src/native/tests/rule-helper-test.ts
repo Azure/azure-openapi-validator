@@ -6,11 +6,11 @@ import {
   isValidEnum,
   resourceProviderMustPascalCase,
   resourceTypeMustCamelCase,
-  transformEnum
+  transformEnum,
 } from "../utilities/rules-helper"
 
-describe("RuleHelperTests" ,()=> {
- test("get all resource providers from path",()=>{
+describe("RuleHelperTests", () => {
+  test("get all resource providers from path", () => {
     let path = "/providers/Microsoft.Cache/xxxx/abc/providers/Microsoft.Computer"
     let res = getAllResourceProvidersFromPath(path)
     assert.deepEqual(res, ["Microsoft.Cache", "Microsoft.Computer"])
@@ -20,7 +20,7 @@ describe("RuleHelperTests" ,()=> {
     assert.equal(res.length, 0)
   })
 
- test("get all words from path",()=>{
+  test("get all words from path", () => {
     let path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.cache/redis/{name}"
 
     let res = getAllWordsFromPath(path)
@@ -32,7 +32,7 @@ describe("RuleHelperTests" ,()=> {
       "providers",
       "Microsoft.cache",
       "redis",
-      "name"
+      "name",
     ])
 
     path = "////&^*/@/"
@@ -49,11 +49,11 @@ describe("RuleHelperTests" ,()=> {
       "providers",
       "Microsoft.Network",
       "virtualWans",
-      "VirtualWANName"
+      "VirtualWANName",
     ])
   })
 
- test("resource provider must pascal case",()=>{
+  test("resource provider must pascal case", () => {
     assert.equal(resourceProviderMustPascalCase("Microsoft.Network"), true)
     assert.equal(resourceProviderMustPascalCase("Microsoft.HDInsight"), true)
     assert.equal(resourceProviderMustPascalCase("Microsoft.Computer"), true)
@@ -73,7 +73,7 @@ describe("RuleHelperTests" ,()=> {
     assert.equal(resourceProviderMustPascalCase("Microsoft.SQL"), false)
   })
 
- test("resource type must camel case",()=>{
+  test("resource type must camel case", () => {
     assert.equal(resourceTypeMustCamelCase("cache"), true)
     assert.equal(resourceTypeMustCamelCase("deepEqual"), true)
     assert.equal(resourceTypeMustCamelCase("azureHDInsight"), true)
@@ -87,7 +87,7 @@ describe("RuleHelperTests" ,()=> {
     assert.equal(resourceTypeMustCamelCase("Cach#e"), false)
   })
 
- test("enum helper",()=>{
+  test("enum helper", () => {
     let enumA = `{
         "description": "The provisioning state of the configuration store.",
         "enum": [
@@ -150,14 +150,20 @@ describe("RuleHelperTests" ,()=> {
     assert.deepEqual(transformEnum(enumObj1.type, enumObj1.enum), ["1", "2"])
   })
 
- test("regex test",()=>{
+  test("regex test", () => {
     const privateEndpointConnectionsPattern = /.*\/privateEndpointConnections$/i
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndPointConnections"), true)
     assert.equal(privateEndpointConnectionsPattern.test("Microsoft.InformationRuntime/privateEndpointconnections"), true)
+
+    const singleResourceRegex = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+$", "gi")
+    assert.equal(
+      singleResourceRegex.test("/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}"),
+      true
+    )
   })
 
-  test("json stringify",()=>{
-    const str = stringify(["definitions","key[word]"])
-    assert.strictEqual(str,"$['definitions']['key[word]']")
+  test("json stringify", () => {
+    const str = stringify(["definitions", "key[word]"])
+    assert.strictEqual(str, "$['definitions']['key[word]']")
   })
 })

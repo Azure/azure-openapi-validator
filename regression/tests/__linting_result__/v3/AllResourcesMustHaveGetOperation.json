@@ -1,0 +1,26 @@
+[
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ConnectionSharedKey\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ConnectionSharedKey",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3550:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"DatabaseAutomaticTuning\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.DatabaseAutomaticTuning",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:213:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ServerAutomaticTuning\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ServerAutomaticTuning",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:201:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"SqlAgentConfiguration\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.SqlAgentConfiguration",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:119:4"
+  }
+]
