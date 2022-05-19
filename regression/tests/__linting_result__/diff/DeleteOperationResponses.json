@@ -103,6 +103,13 @@
       "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:340:8"
     }
   ],
-  "v2Only": [],
+  "v2Only": [
+    {
+      "code": "DeleteOperationResponses",
+      "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
+      "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].delete.responses",
+      "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4465:8"
+    }
+  ],
   "v3Only": []
 }

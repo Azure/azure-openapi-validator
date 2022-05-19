@@ -4,21 +4,6 @@
     "message": "The private endpoint model \"ManagedInstancePrivateLinkListResult\" schema does not conform to the common type definition.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateLinkResources\"].get.responses[\"200\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:41:10"
-<<<<<<< HEAD
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateEndpointConnection\" schema does not conform to the common type definition.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get.responses[\"200\"]",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1331:10"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateEndpointConnection\" schema does not conform to the common type definition.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get.responses[\"200\"]",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:589:10"
-=======
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "PrivateEndpointResourceSchemaValidation",

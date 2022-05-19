@@ -3,286 +3,186 @@
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.DynamicMetricCriteria.allOf[\"0\"].additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:971:7"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:971:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.Error.properties.details.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:515:17"
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:515:10"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.Error.properties.details.items.additionalProperties",
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:203:17"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:203:10"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.ErrorDetails.additionalProperties",
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:538:28"
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:538:6"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.ErrorDetails.additionalProperties",
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:226:28"
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:226:6"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.ErrorResponse.properties.error.properties.details.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:490:15"
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:490:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.ErrorResponse.properties.error.properties.details.items.additionalProperties",
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:178:15"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:178:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.FacetError.properties.errors.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:471:17"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:471:10"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertCriteria.additionalProperties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:740:28"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:740:6"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertMultipleResourceMultipleMetricCriteria.allOf[\"0\"].additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:880:7"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:880:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertMultipleResourceMultipleMetricCriteria.properties.allOf.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:887:17"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:887:10"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertProperties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:532:18"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:532:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertPropertiesPatch.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:604:18"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:604:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertResource.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:647:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:647:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertResourceCollection.properties.value.items.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:675:17"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:675:10"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertResourcePatch.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:663:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:663:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertSingleResourceMultipleMetricCriteria.allOf[\"0\"].additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:768:7"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:768:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricAlertSingleResourceMultipleMetricCriteria.properties.allOf.items.allOf[\"0\"].additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:775:17"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:775:10"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MetricCriteria.allOf[\"0\"].additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:819:7"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:819:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.MultiMetricCriteria.additionalProperties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:900:28"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:900:6"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.definitions.WebtestLocationAvailabilityCriteria.allOf[\"0\"].additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:790:7"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:790:8"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/providers/Microsoft.ResourceGraph/operations\"].get.responses.default.schema.properties.error.properties.details.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:139:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:139:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/providers/Microsoft.ResourceGraph/resources\"].post.responses.default.schema.properties.error.properties.details.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:71:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:71:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/providers/Microsoft.ResourceGraph/resourcesHistory\"].post.responses.default.schema.properties.error.properties.details.items.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:67:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:67:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/metricAlerts\"].get.responses[\"200\"].schema.properties.value.items.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:58:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:58:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts\"].get.responses[\"200\"].schema.properties.value.items.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:100:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:100:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}\"].get.responses[\"200\"].schema.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:145:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:145:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}\"].patch.parameters[\"4\"].schema.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:273:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:273:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}\"].patch.responses[\"200\"].schema.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:282:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:282:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}\"].put.parameters[\"4\"].schema.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:203:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:203:12"
   },
   {
     "code": "az-additional-properties-and-properties",
     "message": "Don't specify additionalProperties as a sibling of properties.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}\"].put.responses[\"200\"].schema.properties.properties.properties.criteria.additionalProperties",
-<<<<<<< HEAD
-    "source": ""
-=======
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:212:20"
->>>>>>> ad511a5... native rules improvement
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:212:12"
   }
 ]

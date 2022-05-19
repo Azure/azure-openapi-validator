@@ -1,11 +1,6 @@
 [
   {
     "code": "AllResourcesMustHaveGetOperation",
-<<<<<<< HEAD
-    "message": "The resource \"GenericResourceExpanded\" does not have get operation, please add it.",
-    "jsonpath": "$.definitions.GenericResourceExpanded",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5496:4"
-=======
     "message": "The resource \"ConnectionSharedKey\" does not have get operation, please add it.",
     "jsonpath": "$.definitions.ConnectionSharedKey",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3550:4"
@@ -27,6 +22,5 @@
     "message": "The resource \"SqlAgentConfiguration\" does not have get operation, please add it.",
     "jsonpath": "$.definitions.SqlAgentConfiguration",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:119:4"
->>>>>>> ad511a5... native rules improvement
   }
 ]

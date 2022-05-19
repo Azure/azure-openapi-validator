@@ -1,23 +1,6 @@
 [
   {
     "code": "GetCollectionResponseSchema",
-<<<<<<< HEAD
-    "message": "The response in the GET collection operation \"DatabaseAdvisors_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseAdvisors_Get\" .",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:19:4"
-  },
-  {
-    "code": "GetCollectionResponseSchema",
-    "message": "The response in the GET collection operation \"DatabaseRecommendedActions_ListByDatabaseAdvisor\" does not match the response definition in the individual GET  operation \"DatabaseRecommendedActions_Get\" .",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:19:4"
-  },
-  {
-    "code": "GetCollectionResponseSchema",
-    "message": "The response in the GET collection operation \"ServerAdvisors_ListByServer\" does not match the response definition in the individual GET  operation \"ServerAdvisors_Get\" .",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:19:4"
-=======
     "message": "The response in the GET collection operation \"BlobContainers_List\" does not match the response definition in the individual GET  operation \"BlobContainers_Get\" .",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"]",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:149:4"
@@ -105,6 +88,5 @@
     "message": "The response in the GET collection operation \"undefined\" does not match the response definition in the individual GET  operation \"Configurations_Get\" .",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations\"]",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/configurations.json:37:4"
->>>>>>> ad511a5... native rules improvement
   }
 ]

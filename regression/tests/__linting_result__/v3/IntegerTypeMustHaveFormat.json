@@ -2,15 +2,12 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-<<<<<<< HEAD
-=======
     "jsonpath": "$.definitions.ApplicationGatewayRewriteRule.properties.ruleSequence",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:2338:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
->>>>>>> ad511a5... native rules improvement
     "jsonpath": "$.definitions.ContainerProperties.properties.remainingRetentionDays",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:903:8"
   },
@@ -29,8 +26,6 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-<<<<<<< HEAD
-=======
     "jsonpath": "$.definitions.ExpressRouteConnectionProperties.properties.routingWeight",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7925:8"
   },
@@ -67,7 +62,6 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
->>>>>>> ad511a5... native rules improvement
     "jsonpath": "$.definitions.FileShareProperties.properties.remainingRetentionDays",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:822:8"
   },
@@ -86,19 +80,8 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-<<<<<<< HEAD
-    "jsonpath": "$.definitions.LeaseContainerRequest.properties.breakPeriod",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1484:8"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.LeaseContainerRequest.properties.leaseDuration",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1488:8"
-=======
     "jsonpath": "$.definitions.IpAllocationPropertiesFormat.properties.prefixLength",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:380:8"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -129,8 +112,6 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.QueueProperties.properties.approximateMessageCount",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:466:8"
-<<<<<<< HEAD
-=======
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -143,7 +124,6 @@
     "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.RecoveryWalkResponse.properties.nextPlatformUpdateDomain",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16584:8"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "IntegerTypeMustHaveFormat",
@@ -202,94 +182,18 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-<<<<<<< HEAD
-    "jsonpath": "$.definitions.TagCount.properties.value",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5778:8"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-=======
->>>>>>> ad511a5... native rules improvement
     "jsonpath": "$.definitions.UpdateHistoryProperty.properties.immutabilityPeriodSinceCreationInDays",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1151:8"
   },
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-<<<<<<< HEAD
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityEvents\"].get.parameters[4]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityEvents.json:47:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityEvents\"].get.parameters[5]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityEvents.json:54:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/executions\"].get.parameters[8]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:79:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/executions\"].get.parameters[9]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:86:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions\"].get.parameters[10]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:313:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions\"].get.parameters[9]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:306:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps\"].get.parameters[10]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobStepExecutions.json:94:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps\"].get.parameters[11]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobStepExecutions.json:101:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets\"].get.parameters[11]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:218:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets\"].get.parameters[12]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:225:10"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/targets\"].get.parameters[10]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:94:10"
-=======
     "jsonpath": "$.definitions.VirtualNetworkTapPropertiesFormat.properties.destinationPort",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:403:8"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-<<<<<<< HEAD
-=======
     "jsonpath": "$.definitions.WebApplicationFirewallCustomRule.properties.priority",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:491:8"
   },
@@ -368,7 +272,6 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
->>>>>>> ad511a5... native rules improvement
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/targets\"].get.parameters[11]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:101:10"
   }

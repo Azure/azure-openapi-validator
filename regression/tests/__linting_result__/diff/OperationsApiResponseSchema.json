@@ -67,6 +67,13 @@
       "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:22:4"
     }
   ],
-  "v2Only": [],
+  "v2Only": [
+    {
+      "code": "OperationsApiResponseSchema",
+      "message": "The response schema of operations API \"/providers/Microsoft.Resources/operations\" does not match the ARM specification. Please standardize the schema.",
+      "jsonpath": "$.paths[\"/providers/Microsoft.Resources/operations\"]",
+      "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:37:4"
+    }
+  ],
   "v3Only": []
 }

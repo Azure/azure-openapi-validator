@@ -3,16 +3,6 @@
     "code": "az-version-convention",
     "message": "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
     "jsonpath": "$.info.version",
-<<<<<<< HEAD
     "source": ""
-=======
-    "source": "specification/sql/resource-manager/common/v1/types.json:4:14"
-  },
-  {
-    "code": "az-version-convention",
-    "message": "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
-    "jsonpath": "$.info.version",
-    "source": "specification/sql/resource-manager/common/v2/types.json:4:14"
->>>>>>> ad511a5... native rules improvement
   }
 ]

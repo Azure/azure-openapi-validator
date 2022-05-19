@@ -520,6 +520,12 @@
     },
     {
       "code": "UniqueXmsExample",
+      "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create a deployment that will deploy a templateSpec with the given resourceId",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put[\"x-ms-examples\"]",
+      "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1672:8"
+    },
+    {
+      "code": "UniqueXmsExample",
       "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Create a workload group with all properties specified.",
       "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].put[\"x-ms-examples\"]",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:127:8"
@@ -655,6 +661,12 @@
       "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get failover group",
       "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].get[\"x-ms-examples\"]",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:62:8"
+    },
+    {
+      "code": "UniqueXmsExample",
+      "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Get provider resource types.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\"].get[\"x-ms-examples\"]",
+      "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2355:8"
     },
     {
       "code": "UniqueXmsExample",
@@ -799,6 +811,12 @@
       "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Planned failover of a failover group",
       "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover\"].post[\"x-ms-examples\"]",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:281:8"
+    },
+    {
+      "code": "UniqueXmsExample",
+      "message": "Do not have duplicate name of x-ms-example, make sure every x-ms-example name unique. Duplicate x-ms-example: Predict template changes at management group scope",
+      "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post[\"x-ms-examples\"]",
+      "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1045:8"
     },
     {
       "code": "UniqueXmsExample",

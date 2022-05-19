@@ -1,6 +1,12 @@
 [
   {
     "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Compute/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Compute/operations\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
     "message": "The response schema of operations API \"/providers/Microsoft.HDInsight/operations\" does not match the ARM specification. Please standardize the schema.",
     "jsonpath": "$.paths[\"/providers/Microsoft.HDInsight/operations\"]",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:37:4"
@@ -19,6 +25,12 @@
   },
   {
     "code": "OperationsApiResponseSchema",
+    "message": "The response schema of operations API \"/providers/Microsoft.Network/operations\" does not match the ARM specification. Please standardize the schema.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Network/operations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:37:4"
+  },
+  {
+    "code": "OperationsApiResponseSchema",
     "message": "The response schema of operations API \"/providers/Microsoft.ResourceGraph/operations\" does not match the ARM specification. Please standardize the schema.",
     "jsonpath": "$.paths[\"/providers/Microsoft.ResourceGraph/operations\"]",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:113:4"
@@ -31,15 +43,6 @@
   },
   {
     "code": "OperationsApiResponseSchema",
-<<<<<<< HEAD
-    "message": "The response schema of operations API \"/providers/Microsoft.Resources/operations\" does not match the ARM specification. Please standardize the schema.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/operations\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:37:4"
-  },
-  {
-    "code": "OperationsApiResponseSchema",
-=======
->>>>>>> ad511a5... native rules improvement
     "message": "The response schema of operations API \"/providers/Microsoft.Sql/operations\" does not match the ARM specification. Please standardize the schema.",
     "jsonpath": "$.paths[\"/providers/Microsoft.Sql/operations\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Operations.json:19:4"

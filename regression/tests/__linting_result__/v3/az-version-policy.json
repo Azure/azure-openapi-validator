@@ -3,80 +3,48 @@
     "code": "az-version-policy",
     "message": "Operation does not define an \"api-version\" query parameter.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsFilterOptions\"].post.parameters",
-<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:773:8"
-=======
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:773:20"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Operation does not define an \"api-version\" query parameter.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsSignatures\"].post.parameters",
-<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:575:8"
-=======
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:575:20"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Operation does not define an \"api-version\" query parameter.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides\"].get.parameters",
-<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:825:8"
-=======
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:825:20"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Operation does not define an \"api-version\" query parameter.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].get.parameters",
-<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:729:8"
-=======
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:729:20"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Operation does not define an \"api-version\" query parameter.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch.parameters",
-<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:627:8"
-=======
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:627:20"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Operation does not define an \"api-version\" query parameter.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].put.parameters",
-<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:678:8"
-=======
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:678:20"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Version segment \"ipv6FirewallRules\" in path violates Azure versioning policy.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules\"]",
-<<<<<<< HEAD
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:19:4"
-=======
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:19:135"
->>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-version-policy",
     "message": "Version segment \"ipv6FirewallRules\" in path violates Azure versioning policy.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"]",
-<<<<<<< HEAD
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:61:4"
-=======
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:61:154"
->>>>>>> ad511a5... native rules improvement
   }
 ]

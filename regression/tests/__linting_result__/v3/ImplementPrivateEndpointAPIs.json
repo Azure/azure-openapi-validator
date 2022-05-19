@@ -19,15 +19,12 @@
   },
   {
     "code": "ImplementPrivateEndpointAPIs",
-<<<<<<< HEAD
-=======
     "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateLinkResources is missing.",
     "jsonpath": "$.paths",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:36:2"
   },
   {
     "code": "ImplementPrivateEndpointAPIs",
->>>>>>> ad511a5... native rules improvement
     "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections is missing.",
     "jsonpath": "$.paths",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:18:2"

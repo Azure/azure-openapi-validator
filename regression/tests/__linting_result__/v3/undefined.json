@@ -1,7 +1,0 @@
-[
-  {
-    "message": "Failed validating:Error: Parser failed with errors:[{\"error\":1,\"offset\":0,\"length\":1},{\"error\":1,\"offset\":1,\"length\":1},{\"error\":1,\"offset\":2,\"length\":1},{\"error\":1,\"offset\":4,\"length\":7},{\"error\":4,\"offset\":11,\"length\":1}]",
-    "jsonpath": "",
-    "source": ""
-  }
-]

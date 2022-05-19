@@ -121,6 +121,13 @@
       "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:482:6"
     }
   ],
-  "v2Only": [],
+  "v2Only": [
+    {
+      "code": "ParametersOrder",
+      "message": "The parameters:resourceProviderNamespace,groupId should be kept in the same order as they present in the path.",
+      "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register\"].post",
+      "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2054:6"
+    }
+  ],
   "v3Only": []
 }

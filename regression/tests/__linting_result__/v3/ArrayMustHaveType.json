@@ -1,8 +1,0 @@
-[
-  {
-    "code": "ArrayMustHaveType",
-    "message": "\"items.type\" property must be truthy",
-    "jsonpath": "$.definitions.ErrorResponse.properties.error.properties.details.items",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:574:21"
-  }
-]

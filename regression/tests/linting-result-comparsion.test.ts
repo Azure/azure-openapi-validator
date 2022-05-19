@@ -13,7 +13,8 @@ describe("comparing", () => {
     rmdirSync(resultDir, { recursive: true })
   }
   mkdirSync(resultDir)
-  test.each(v3Results.filter((f) => !f.includes("az-")))(
+  const excludes = ["MissingTypeObject", "AllResourceMustHaveGetOperation"]
+  test.each(v3Results.filter((f) => !f.includes("az-") && !excludes.includes(f)))(
     "%s should match v2",
     (v3File: string) => {
       const v2File = v3File.replace("v3", "v2")
