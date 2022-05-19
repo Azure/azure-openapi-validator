@@ -19,7 +19,7 @@ rules.push({
      *   - by searching all the models return by a get operation and verify the schema
      * 2 check the collection model schema
      */
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const allCollectionPath = utils.getCollectionApiInfo()
     for (const collection of allCollectionPath) {
       let hasMatched = false

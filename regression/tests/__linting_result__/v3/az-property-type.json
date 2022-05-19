@@ -3,31 +3,43 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.ActionGroup.properties.webhookProperties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:484:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:484:27"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.AlertRulePatchObject.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:498:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:498:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.AlertRuleResourcePatch.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:729:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:729:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.ApiOperation.properties.properties.properties",
-    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1367:10"
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1367:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.AutoscaleSettingResourcePatch.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:801:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:801:14"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.BlobServiceProperties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1318:20"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.BlobServiceProperties.properties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1319:22"
   },
   {
     "code": "az-property-type",
@@ -45,121 +57,145 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Cache.properties.properties.properties",
-    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1552:10"
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1552:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionEndpoint.properties.configurationAccess",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:374:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:374:29"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionEndpoint.properties.logsIngestion",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:382:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:382:23"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionEndpoint.properties.networkAcls",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:390:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:390:21"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionEndpointResource.properties.properties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:427:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:427:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionEndpointResource.properties.properties.allOf",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:429:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:429:17"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionEndpointResource.properties.systemData",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:499:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:499:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRule.properties.dataSources",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:900:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:900:21"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRule.properties.destinations",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:908:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:908:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRule.properties.metadata",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:881:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:881:18"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleAssociation.properties.metadata",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:354:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:354:18"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleAssociationProxyOnlyResource.properties.properties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:372:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:372:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleAssociationProxyOnlyResource.properties.properties.allOf",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:374:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:374:17"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleAssociationProxyOnlyResource.properties.systemData",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:416:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:416:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleResource.properties.properties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:953:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:953:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleResource.properties.properties.allOf",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:955:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:955:17"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DataCollectionRuleResource.properties.systemData",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:1025:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:1025:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.DestinationsSpec.properties.azureMonitorMetrics",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:809:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:809:29"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.ErrorResponse.properties.error",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:555:8"
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:555:15"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Export.properties.blobList",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:1208:8"
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:1208:18"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.ExpressRouteGatewayProperties.properties.autoScaleConfiguration",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7837:32"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.ExpressRouteGatewayProperties.properties.autoScaleConfiguration.properties.bounds",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7839:20"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.FileServiceProperties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:615:20"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.FileServiceProperties.properties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:616:22"
   },
   {
     "code": "az-property-type",
@@ -177,66 +213,79 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Location.properties.properties",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:915:8"
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:915:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Location.properties.properties.properties",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:918:10"
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:918:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.LogFileSettings.properties.text",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:605:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:605:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.LogFilesDataSource.properties.settings",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:650:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:650:18"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.LogProfileResourcePatch.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:339:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:339:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.MetricAlertResourcePatch.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:657:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:657:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.MoveCollectionProperties.properties.errors",
-    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1417:8"
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1417:16"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.MoveResourceProperties.properties.errors",
-    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1322:8"
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1322:16"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.MoveResourceProperties.properties.moveStatus",
-    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1293:8"
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1293:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Operation.properties.display",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json:95:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json:95:17"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Operation.properties.display",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:96:17"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.Operation.properties.display",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:565:17"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.Operation.properties.display",
+<<<<<<< HEAD
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:96:8"
   },
   {
@@ -244,16 +293,24 @@
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Operation.properties.display",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:565:8"
+=======
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2207:17"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Operation.properties.display",
+<<<<<<< HEAD
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6119:8"
+=======
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:876:17"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
+<<<<<<< HEAD
     "jsonpath": "$.definitions.Operation.properties.display",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2207:8"
   },
@@ -262,6 +319,10 @@
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Operation.properties.display",
     "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:876:8"
+=======
+    "jsonpath": "$.definitions.OperationPropertiesFormat.properties.serviceSpecification",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/operation.json:131:30"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-property-type",
@@ -273,7 +334,31 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.PrivateLinkScopesResource.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:807:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:807:14"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.PrivateLinkServiceProperties.properties.autoApproval",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:839:22"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.PrivateLinkServiceProperties.properties.visibility",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:831:20"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.QueueServiceProperties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:423:20"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.QueueServiceProperties.properties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:424:22"
   },
   {
     "code": "az-property-type",
@@ -303,31 +388,49 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Resource.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:330:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:330:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Resource.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:694:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:694:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Resource.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:249:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:249:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.Resource.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:454:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:454:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.SharingProfile.properties.communityGalleryInfo",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1833:8"
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1833:30"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.SignaturesOverrides.properties.properties.properties",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1974:22"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.TableServiceProperties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:414:20"
+  },
+  {
+    "code": "az-property-type",
+    "message": "Property should have a defined type.",
+    "jsonpath": "$.definitions.TableServiceProperties.properties.properties.properties",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:415:22"
   },
   {
     "code": "az-property-type",
@@ -351,54 +454,55 @@
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.TagsResource.properties.tags",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:822:8"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:822:14"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.UpdateJobParameters.properties.properties",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:762:8"
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:762:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.UpdateJobParameters.properties.properties.properties",
-    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:764:10"
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:764:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.VMInsightsOnboardingStatus.properties.properties.properties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:204:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:204:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.VMInsightsOnboardingStatus.properties.properties.required",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:245:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:245:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.WorkspaceInfo.properties.properties.properties",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:162:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:162:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.WorkspaceInfo.properties.properties.required",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:168:10"
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:168:20"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.availabilityStatus.properties.properties.properties",
-    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:360:10"
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:360:22"
   },
   {
     "code": "az-property-type",
     "message": "Property should have a defined type.",
     "jsonpath": "$.definitions.impactedResourceStatus.properties.properties.properties",
+<<<<<<< HEAD
     "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:267:10"
   },
   {
@@ -6058,5 +6162,8 @@
     "message": "Property should have a defined type.",
     "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].put[\"x-ms-examples\"][\"Update tags on a subscription\"]",
     "source": ""
+=======
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:267:22"
+>>>>>>> ad511a5... native rules improvement
   }
 ]

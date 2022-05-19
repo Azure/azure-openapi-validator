@@ -17,24 +17,14 @@ rules.push({
      * 1 get all collection models
      * 2 travel all resources and paths to find all the resources that have a collection get
      */
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory!)
-    const allCollectionModels = utils.getCollectionModels()
-    const allCollectionApiInfo = utils.getCollectionApiInfo()
-    const allResourcesHavingGetOperation = utils.getAllOperationGetResponseModels()
-    for (const resource of allCollectionModels.entries()) {
-      if (
-        allResourcesHavingGetOperation.has(resource[0]) &&
-        !allResourcesHavingGetOperation.has(resource[1]) &&
-        /**
-         * This condition is used to identify this exception:
-         * the resource of a collection Api has specific get operation, but the resource does not match the item of the collection model.
-         * this exception can be detect by Rule: GetCollectionResponseSchema
-         */
-        !allCollectionApiInfo.some((info) => info.modelName === resource[0])
-      ) {
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
+    const allResources = utils.resourcesWithPutPatchOperations()
+    const allResourcesHavingGetOperation = utils.getAllResourceNames()
+    for (const resource of allResources) {
+      if (!allResourcesHavingGetOperation.includes(resource.modelName)) {
         yield {
-          message: msg.replace("{0}", resource[1]),
-          location: ["$", "definitions", resource[1]] as JsonPath,
+          message: msg.replace("{0}", resource.modelName),
+          location: ["$", "definitions", resource.modelName] as JsonPath,
         }
       }
     }

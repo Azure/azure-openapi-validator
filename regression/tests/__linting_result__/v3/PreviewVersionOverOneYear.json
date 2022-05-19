@@ -586,5 +586,50 @@
     "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
     "jsonpath": "$.info.version",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Usages.json:4:4"
+<<<<<<< HEAD
+=======
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedDatabases.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:4:4"
+>>>>>>> ad511a5... native rules improvement
   }
 ]

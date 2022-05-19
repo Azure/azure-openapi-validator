@@ -1,8 +1,8 @@
-import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core"
+import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { nodes } from "./jsonpath"
 type WalkCallBack = (path: string[], value: any, rootPath: string, root: any) => void
 export class SwaggerWalker {
-  constructor(private inventory: SwaggerInventory) {}
+  constructor(private inventory: ISwaggerInventory) {}
 
   private _walkOnDocuments(documents: any[], paths: string[], cb: WalkCallBack) {
     for (const doc of documents) {
@@ -13,12 +13,12 @@ export class SwaggerWalker {
     }
   }
 
-  public warkAll(paths: string[], current: string, cb: WalkCallBack) {
+  public warkReferenced(paths: string[], current: string, cb: WalkCallBack) {
     const documents = this.inventory.referencesOf(current).values()
     this._walkOnDocuments(Object.values(documents), paths, cb)
   }
 
-  public warkReferenced(paths: string[], cb: WalkCallBack) {
+  public warkAll(paths: string[], cb: WalkCallBack) {
     const documents = Object.values(this.inventory.getDocuments())
     this._walkOnDocuments([...documents], paths, cb)
   }

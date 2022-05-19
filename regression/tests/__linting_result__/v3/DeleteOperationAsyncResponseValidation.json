@@ -38,8 +38,25 @@
   {
     "code": "DeleteOperationAsyncResponseValidation",
     "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+<<<<<<< HEAD
     "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:753:6"
+=======
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:79:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:227:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5400:6"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "DeleteOperationAsyncResponseValidation",
@@ -160,6 +177,198 @@
     "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].delete",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:127:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:172:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:141:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:141:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:206:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:491:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:158:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:136:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:150:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:126:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:189:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:135:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:169:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:169:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:124:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:119:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:138:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:127:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:171:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:124:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:135:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:422:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:724:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:135:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:277:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:184:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:141:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:176:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:169:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:166:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:176:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:119:6"
+  },
+  {
+    "code": "DeleteOperationAsyncResponseValidation",
+    "message": "[RPaaS] An async DELETE operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:169:6"
   },
   {
     "code": "DeleteOperationAsyncResponseValidation",

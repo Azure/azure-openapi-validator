@@ -14,6 +14,15 @@
   {
     "code": "DeleteOperationResponses",
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
+<<<<<<< HEAD
+=======
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].delete.responses",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:446:8"
+  },
+  {
+    "code": "DeleteOperationResponses",
+    "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
+>>>>>>> ad511a5... native rules improvement
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].delete.responses",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:477:8"
   },
@@ -94,11 +103,14 @@
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].delete.responses",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:340:8"
+<<<<<<< HEAD
   },
   {
     "code": "DeleteOperationResponses",
     "message": "The delete operation is defined without a 200 or 204 error response implementation,please add it.'",
     "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].delete.responses",
     "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4465:8"
+=======
+>>>>>>> ad511a5... native rules improvement
   }
 ]

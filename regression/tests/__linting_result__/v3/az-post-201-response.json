@@ -3,24 +3,36 @@
     "code": "az-post-201-response",
     "message": "Using post for a create operation is discouraged.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export\"].post.responses[\"201\"]",
+<<<<<<< HEAD
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentScans.json:150:10"
+=======
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentScans.json:147:15"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-post-201-response",
     "message": "Using post for a create operation is discouraged.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"].post.responses[\"201\"]",
+<<<<<<< HEAD
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:111:10"
+=======
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:105:15"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-post-201-response",
     "message": "Using post for a create operation is discouraged.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export\"].post.responses[\"201\"]",
+<<<<<<< HEAD
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessmentScans.json:264:10"
+=======
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessmentScans.json:261:15"
+>>>>>>> ad511a5... native rules improvement
   },
   {
     "code": "az-post-201-response",
     "message": "Using post for a create operation is discouraged.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade\"].post.responses[\"201\"]",
-    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1292:10"
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1292:15"
   }
 ]

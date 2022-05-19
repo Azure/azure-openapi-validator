@@ -25,9 +25,18 @@ function normalizeLintIssues(issues:any[]) {
       issue.source = ""
     }
     if (issue?.details?.jsonpath) {
+<<<<<<< HEAD
       issue["jsonpath"] = jp.stringify(issue?.details?.jsonpath)
     }
     else {
+=======
+      try {
+        issue["jsonpath"] = issue?.details?.jsonpath.length ? jp.stringify(issue?.details?.jsonpath) : " $"
+      } catch (e) {
+        issue["jsonpath"] = ""
+      }
+    } else {
+>>>>>>> ad511a5... native rules improvement
       issue.jsonpath = ""
     }
     return _.pick(issue,["code","message","jsonpath","source"])
@@ -64,9 +73,6 @@ async function runCmd(cmd:string) {
     resultString = stdout
   }
   if (stderr.indexOf('"extensionName":"@microsoft.azure/openapi-validator"') !== -1) {
-    if (resultString !== "") {
-      resultString += ","
-    }
     resultString += stderr
   }
   return resultString

@@ -17,9 +17,9 @@ rules.push({
   appliesTo_JsonQuery: "$",
   *run(doc, node, path, ctx) {
     const msg = `[RPaaS] The resource {0} is defined without 'provisioningState' in properties bag, consider adding the provisioningState for it.`
-    const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
+    const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const swaggerUtil = new SwaggerHelper(doc, ctx?.specPath, ctx?.inventory)
-    const allResources = utils.getAllResource()
+    const allResources = utils.getAllResourceNames()
     for (const resource of allResources) {
       const model = utils.getResourceByName(resource)
       const properties = swaggerUtil?.getProperty(model!, "properties")
