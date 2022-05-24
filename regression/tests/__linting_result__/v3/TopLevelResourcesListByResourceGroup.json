@@ -1,80 +1,8 @@
 [
   {
     "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"Advisor\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.Advisor",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:607:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"Advisor\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.Advisor",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:598:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"DataMaskingPolicy\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.DataMaskingPolicy",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:267:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"DataMaskingRule\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.DataMaskingRule",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:372:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:301:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"DatabaseVulnerabilityAssessmentRuleBaseline\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.DatabaseVulnerabilityAssessmentRuleBaseline",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:313:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
     "message": "The top-level resource \"DdosCustomPolicy\" does not have list by resource group operation, please add it.",
     "jsonpath": "$.definitions.DdosCustomPolicy",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"ImmutabilityPolicy\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.ImmutabilityPolicy",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1089:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"ImportExportExtensionsOperationResult\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.ImportExportExtensionsOperationResult",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:283:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"InboundSecurityRule\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.InboundSecurityRule",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:1099:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"ManagementPolicy\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.ManagementPolicy",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"RecommendedAction\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.RecommendedAction",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:520:4"
-  },
-  {
-    "code": "TopLevelResourcesListByResourceGroup",
-    "message": "The top-level resource \"RestorePoint\" does not have list by resource group operation, please add it.",
-    "jsonpath": "$.definitions.RestorePoint",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9913:4"
   }
 ]

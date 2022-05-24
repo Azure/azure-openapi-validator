@@ -160,34 +160,14 @@ export class ArmHelper {
    * @param modelName
    *  instructions:
    *  1 if it's a x-ms-resource
-   *  2 if it's allOfing a x-ms-azure-resource or base resource
-   *  3 if it contains allOf, check the allOf resource recursively
+   *  2 if its name match any base resource name
    */
   private checkResource(modelName: string) {
-    const model = this.getResourceByName(modelName)
-    if (!model) {
-      return false
+    if (this.BaseResourceModelNames.includes(modelName.toLowerCase())) {
+      return true
     }
     if (this.XmsResources.has(modelName)) {
       return true
-    }
-    if (this.BaseResourceModelNames.includes(modelName.toLowerCase())) {
-      return false
-    }
-    for (const refs of jsonPathIt(model, `$.allOf`)) {
-      for (const ref of refs) {
-        const refPoint = ref.$ref
-        const subModel = this.stripDefinitionPath(refPoint)
-        if (!subModel) {
-          continue
-        }
-        if (this.BaseResourceModelNames.indexOf(subModel.toLowerCase()) !== -1) {
-          return true
-        }
-        if (this.XmsResources.has(subModel)) {
-          return true
-        }
-      }
     }
     return false
   }
@@ -239,7 +219,7 @@ export class ArmHelper {
     return fullResources.filter((re) =>
       re.operations.some((op) => {
         const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
-        if (hierarchy.length > 0) {
+        if (hierarchy.length === 1) {
           return true
         }
         return false
@@ -271,7 +251,7 @@ export class ArmHelper {
       this.populateResources(reference, specPath)
     }
     const localResourceModels = this.resources.filter((re) => re.specPath === this.specPath)
-    const resWithXmsRes = localResourceModels.filter((re) => this.XmsResources.has(re.modelName))
+    const resWithXmsRes = localResourceModels.filter((re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase()))
     const resWithPutOrPath = localResourceModels.filter((re) =>
       re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
     )
@@ -437,7 +417,7 @@ export class ArmHelper {
                 .replace(/{[^/]+}/gi, "{}")
                 .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}")
           )
-          if (matchedPaths && matchedPaths.length >= 1) {
+          if (matchedPaths && matchedPaths.length >= 1 && ) {
             collectionApis.push({
               specificGetPath: [path],
               collectionGetPath: matchedPaths,

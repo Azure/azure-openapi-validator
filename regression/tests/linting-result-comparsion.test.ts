@@ -13,8 +13,20 @@ describe("comparing", () => {
     rmdirSync(resultDir, { recursive: true })
   }
   mkdirSync(resultDir)
-  const excludes = ["MissingTypeObject", "AllResourceMustHaveGetOperation"]
-  test.each(v3Results.filter((f) => !f.includes("az-") && !excludes.includes(f)))(
+  const verifiedLists = [
+    "MissingTypeObject",
+    "AllResourcesMustHaveGetOperation",
+    "DeleteOperationResponses",
+    "GetCollectionResponseSchema",
+    "IntegerTypeMustHaveFormat",
+    "OperationsApiResponseSchema",
+    "PageableOperation",
+    "ParametersOrder",
+    "PrivateEndpointResourceSchemaValidation",
+    "UniqueXmsExample",
+    "RequiredReadOnlySystemData",
+  ]
+  test.each(v3Results.filter((f) => !f.includes("az-") && !verifiedLists.includes(basename(f.replace(".json", "")))))(
     "%s should match v2",
     (v3File: string) => {
       const v2File = v3File.replace("v3", "v2")
