@@ -145,12 +145,6 @@
   },
   {
     "code": "EnumInsteadOfBoolean",
-    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: consentToAuthorization",
-    "jsonpath": "$.definitions.ProviderConsentDefinition.properties.consentToAuthorization",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6558:8"
-  },
-  {
-    "code": "EnumInsteadOfBoolean",
     "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: createDefaultAvailabilityGroupIfNotExist",
     "jsonpath": "$.definitions.AvailabilityGroupListenerProperties.properties.createDefaultAvailabilityGroupIfNotExist",
     "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:991:8"
@@ -730,12 +724,6 @@
     "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isResolveRequired",
     "jsonpath": "$.definitions.MoveResourceProperties.properties.isResolveRequired",
     "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1317:8"
-  },
-  {
-    "code": "EnumInsteadOfBoolean",
-    "message": "Booleans are not descriptive and make them hard to use. Consider using string enums with allowed set of values defined. Property: isServiceRole",
-    "jsonpath": "$.definitions.RoleDefinition.properties.isServiceRole",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6482:8"
   },
   {
     "code": "EnumInsteadOfBoolean",

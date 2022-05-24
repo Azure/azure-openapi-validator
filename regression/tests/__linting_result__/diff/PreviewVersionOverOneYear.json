@@ -587,10 +587,7 @@
       "message": "The API version:2021-02-01-preview having been in a preview state over one year , please move it to GA or retire.",
       "jsonpath": "$.info.version",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Usages.json:4:4"
-    }
-  ],
-  "v2Only": [],
-  "v3Only": [
+    },
     {
       "code": "PreviewVersionOverOneYear",
       "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
@@ -633,5 +630,7 @@
       "jsonpath": "$.info.version",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:4:4"
     }
-  ]
+  ],
+  "v2Only": [],
+  "v3Only": []
 }

@@ -2,24 +2,6 @@
   {
     "code": "LongRunningOperationsOptionsValidator",
     "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:938:4"
-  },
-  {
-    "code": "LongRunningOperationsOptionsValidator",
-    "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:562:4"
-  },
-  {
-    "code": "LongRunningOperationsOptionsValidator",
-    "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1326:4"
-  },
-  {
-    "code": "LongRunningOperationsOptionsValidator",
-    "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers/{deletedServerName}/recover\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DeletedServers.json:145:4"
   },
@@ -166,17 +148,5 @@
     "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup\"]",
     "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1496:4"
-  },
-  {
-    "code": "LongRunningOperationsOptionsValidator",
-    "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1773:4"
-  },
-  {
-    "code": "LongRunningOperationsOptionsValidator",
-    "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:254:4"
   }
 ]

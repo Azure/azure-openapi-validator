@@ -13,12 +13,6 @@
   },
   {
     "code": "LocationMustHaveXmsMutability",
-    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'ResourceGroup'",
-    "jsonpath": "$.definitions",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4479:2"
-  },
-  {
-    "code": "LocationMustHaveXmsMutability",
     "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'VirtualMachineImageResource'",
     "jsonpath": "$.definitions",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"

@@ -139,18 +139,6 @@
   },
   {
     "code": "PageableOperation",
-    "message": "Based on the response model schema, operation 'ProviderResourceTypes_List' might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2313:6"
-  },
-  {
-    "code": "PageableOperation",
-    "message": "Based on the response model schema, operation 'Providers_ProviderPermissions' might be pageable. Consider adding the x-ms-pageable extension.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2089:6"
-  },
-  {
-    "code": "PageableOperation",
     "message": "Based on the response model schema, operation 'QueueServices_List' might be pageable. Consider adding the x-ms-pageable extension.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices\"].get",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:20:6"

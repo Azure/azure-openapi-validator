@@ -385,60 +385,6 @@
   },
   {
     "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames\"].get.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3813:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}\"].delete.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3774:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}\"].put.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3731:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\"].delete.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3635:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\"].put.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3679:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].delete.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4455:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].get.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4418:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].patch.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4380:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TagsModel'. Consider using the plural form of 'Tags' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].put.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4334:8"
-  },
-  {
-    "code": "OperationIdNounConflictingModelNames",
     "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'UsageModel'. Consider using the plural form of 'Usage' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages\"].get.operationId",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3014:8"
