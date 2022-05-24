@@ -251,7 +251,9 @@ export class ArmHelper {
       this.populateResources(reference, specPath)
     }
     const localResourceModels = this.resources.filter((re) => re.specPath === this.specPath)
-    const resWithXmsRes = localResourceModels.filter((re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase()))
+    const resWithXmsRes = localResourceModels.filter(
+      (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase())
+    )
     const resWithPutOrPath = localResourceModels.filter((re) =>
       re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
     )
@@ -417,7 +419,7 @@ export class ArmHelper {
                 .replace(/{[^/]+}/gi, "{}")
                 .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}")
           )
-          if (matchedPaths && matchedPaths.length >= 1 && ) {
+          if (matchedPaths && matchedPaths.length >= 1 && this.getOperationIdFromPath(matchedPaths[0])) {
             collectionApis.push({
               specificGetPath: [path],
               collectionGetPath: matchedPaths,
