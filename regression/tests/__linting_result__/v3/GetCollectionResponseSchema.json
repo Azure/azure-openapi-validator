@@ -82,11 +82,5 @@
     "message": "The response in the GET collection operation \"VirtualMachineRunCommands_List\" does not match the response definition in the individual GET  operation \"VirtualMachineRunCommands_Get\" .",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands\"]",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:39:4"
-  },
-  {
-    "code": "GetCollectionResponseSchema",
-    "message": "The response in the GET collection operation \"undefined\" does not match the response definition in the individual GET  operation \"Configurations_Get\" .",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations\"]",
-    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/configurations.json:37:4"
   }
 ]

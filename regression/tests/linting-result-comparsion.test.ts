@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, rmdirSync } from "fs"
-import _ from "lodash"
 import { basename, join } from "path"
+import _ from "lodash"
 import { allIssues, getLintResult, writeLintingResult } from "./utils/snapshot-help"
 
 allIssues.splice(0, allIssues.length)

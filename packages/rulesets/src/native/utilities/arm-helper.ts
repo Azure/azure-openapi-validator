@@ -122,12 +122,10 @@ export class ArmHelper {
         this.XmsResources.add(name)
       }
     }
-    while (true) {
-      const resources = this.getAllOfResources()
-      if (resources.length === 0) {
-        break
-      }
+    let resources = this.getAllOfResources()
+    while (resources && resources.length) {
       resources.forEach((re) => this.XmsResources.add(re))
+      resources = this.getAllOfResources()
     }
   }
 
@@ -305,7 +303,7 @@ export class ArmHelper {
     const result = []
     const matches = lastProvider.match(this.SpecificResourcePathRegEx)
     if (matches && matches.length) {
-      let match = matches[0]
+      const match = matches[0]
       const segments = match.split("/").slice(3)
       for (const segment of segments) {
         if (segment.startsWith("{") || segment === "default") {
@@ -323,7 +321,7 @@ export class ArmHelper {
    */
   private getResourceHierarchy(model: string | Workspace.EnhancedSchema) {
     let hierarchy: string[] = []
-    let enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
+    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
 
     if (!enhancedModel) {
       return hierarchy
@@ -343,12 +341,30 @@ export class ArmHelper {
     return hierarchy
   }
 
+  private containsDiscriminatorInternal(model: Workspace.EnhancedSchema) {
+    if (model) {
+      const unWrappedModel = Workspace.resolveRef(model, this.inventory)
+      if (unWrappedModel?.value && unWrappedModel?.value.allOf) {
+        for (const ref of unWrappedModel.value.allOf) {
+          const unWrappedRef = Workspace.resolveRef(this.enhancedSchema(ref), this.inventory)
+          if (unWrappedRef?.value?.discriminator || (unWrappedRef && this.containsDiscriminatorInternal(unWrappedRef))) {
+            return true
+          }
+        }
+      }
+    }
+    return false
+  }
+
   public containsDiscriminator(modelName: string) {
-    const hierarchy = this.getResourceHierarchy(modelName)
-    return hierarchy.some((h) => {
-      const resource = this.getResourceByName(h)
-      return resource && resource.value.discriminator
-    })
+    let model
+    if (typeof modelName === "string") {
+      model = this.getResourceByName(modelName)
+    }
+    if (model) {
+      return this.containsDiscriminatorInternal(model)
+    }
+    return false
   }
 
   /**
@@ -370,7 +386,7 @@ export class ArmHelper {
     return result
   }
 
-  private resourcesWithGetOperations() {
+  public resourcesWithGetOperations() {
     return this.resources.filter((re) => re.operations.some((op) => op.httpMethod === "get"))
   }
 
@@ -388,7 +404,7 @@ export class ArmHelper {
   public getCollectionApiInfo() {
     const getOperationModels = this.resourcesWithGetOperations()
 
-    let allPathKeys = _.uniq(_.flattenDeep(this.resources.map((re) => re.operations.map((op) => op.apiPath))))
+    const allPathKeys = _.uniq(_.flattenDeep(this.resources.map((re) => re.operations.map((op) => op.apiPath))))
 
     const getResourcePaths = (res: ResourceInfo[], name: string) =>
       _.flattenDeep(res.filter((re) => re.modelName === name).map((re) => re.operations.map((op) => op.apiPath)))
