@@ -2,9 +2,12 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
+import { ISwaggerInventory, parseJsonRef } from "@microsoft.azure/openapi-validator-core"
+import _ from "lodash"
 import { nodes } from "./jsonpath"
 import { SwaggerHelper } from "./swagger-helper"
+import { SwaggerWalker } from "./swagger-walker"
+import { Workspace } from "./swagger-workspace"
 
 export interface CollectionApiInfo {
   modelName: string
@@ -13,20 +16,28 @@ export interface CollectionApiInfo {
   specificGetPath: string[]
 }
 
-function* jsonPathIt(doc:any, jsonPath: string): Iterable<any> {
+type Operation = {
+  specPath: string
+  apiPath: string
+  httpMethod: string
+  operationId: string
+  requestBodyParameter?: any
+  requestParameters?: any[]
+  responseSchema: any
+}
+
+type ResourceInfo = {
+  modelName: string
+  specPath: string
+  resourceType?: string
+  operations: Operation[]
+}
+
+function* jsonPathIt(doc: any, jsonPath: string): Iterable<any> {
   if (doc) {
     for (const node of nodes(doc, jsonPath)) {
       yield node.value
     }
-  }
-}
-
-function addToMap(map: Map<string, string[]>, key: string, value: string) {
-  const pre = map.get(key)
-  if (pre) {
-    map.set(key, pre.concat(value))
-  } else {
-    map.set(key, [value])
   }
 }
 
@@ -42,88 +53,119 @@ export class ArmHelper {
 
   private OperationApiRegEx = new RegExp("^/providers/[^/]+/operations$", "gi")
 
-  private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(/\\w+/{[^/}]+})+$", "gi")
+  private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+$", "gi")
 
+  //  resource model with 'x-ms-resource' or allOfing 'Resource' or 'TrackedResource' for ProxyResource
   private XmsResources = new Set<string>()
+  resources: ResourceInfo[] = []
+  armResource: ResourceInfo[] | undefined
   private swaggerUtil: SwaggerHelper
 
-  constructor(private innerDoc: any, private specPath?: string, private inventory?: ISwaggerInventory) {
-    this.getXmsResources()
+  constructor(private innerDoc: any, private specPath: string, private inventory: ISwaggerInventory) {
     this.swaggerUtil = new SwaggerHelper(this.innerDoc, this.specPath, this.inventory)
+    this.getXmsResources()
+    this.getAllResources()
   }
 
-  private getSpecificOperationModels(httpMethod:string, code:string) {
-    const models: Map<string, string[]> = new Map<string, string[]>()
-    const getModel = (node:any) => {
-      if (node && node.value) {
-        const response = node.value
-        if (response.schema && response.schema.$ref) {
-          const modelName = this.stripDefinitionPath(response.schema.$ref)
-          if (modelName) {
-            addToMap(models, modelName, node.path[2] as string)
+  private populateOperations(doc: any, specPath: string) {
+    const paths = { ...(doc.paths || {}), ...(doc["x-ms-paths"] || {}) }
+    const operations: Operation[] = []
+    for (const [key, value] of Object.entries(paths)) {
+      for (const [method, operation] of Object.entries(value as any)) {
+        if (method !== "parameters") {
+          const op = operation as any
+          const response = op?.responses?.["200"] || op?.responses?.["201"]
+          if (response) {
+            operations.push({
+              specPath,
+              apiPath: key,
+              httpMethod: method,
+              responseSchema: response.schema,
+              operationId: op?.operationId,
+            })
           }
         }
       }
     }
-    for (const node of nodes(this.innerDoc, `$.paths.*.${httpMethod}.responses.${code}`)) {
-      getModel(node)
-    }
-    for (const node of nodes(this.innerDoc, `$['x-ms-paths'].*.${httpMethod}.responses.${code}`)) {
-      getModel(node)
-    }
-    return models
+    return operations
   }
 
-  private getXmsResources() {
-    for (const node of nodes(this.innerDoc, `$.definitions.*`)) {
-      const model = node.value
-      for (const extension of jsonPathIt(model, `$..['x-ms-azure-resource']`)) {
-        if (extension === true) {
-          this.XmsResources.add(node.path[2] as string)
+  private populateResources(doc: any, specPath: string) {
+    const operations = this.populateOperations(doc, specPath)
+    for (const op of operations) {
+      const resourceInfo = this.extractResourceInfo(op.responseSchema, specPath)
+      // if no response or response with no $ref , it's deemed not a resource
+      if (resourceInfo) {
+        const existing = this.resources.find((re) => re.modelName === resourceInfo.modelName && re.specPath === resourceInfo.specPath)
+        if (existing) {
+          existing.operations.push(op)
+        } else {
+          this.resources.push({
+            ...resourceInfo,
+            operations: [op],
+          })
         }
       }
     }
+  }
+
+  private getXmsResources() {
+    for (const name of Object.keys(this.innerDoc.definitions || {})) {
+      const model = this.getResourceByName(name)
+      for (const extension of jsonPathIt(model?.value, `$..['x-ms-azure-resource']`)) {
+        if (extension === true) {
+          this.XmsResources.add(name as string)
+          break
+        }
+      }
+      if (this.checkResource(name)) {
+        this.XmsResources.add(name)
+      }
+    }
+    let resources = this.getAllOfResources()
+    while (resources && resources.length) {
+      resources.forEach((re) => this.XmsResources.add(re))
+      resources = this.getAllOfResources()
+    }
+  }
+
+  /**
+   *  Get all resources which allOf a x-ms-azure-resource
+   */
+  private getAllOfResources() {
+    if (!this.innerDoc.definitions) {
+      return []
+    }
+    const keys = Object.keys(this.innerDoc.definitions || {}).filter((key) => !this.XmsResources.has(key))
+    const AllResources = keys.reduce((pre, cur) => {
+      if (this.getResourceHierarchy(cur).some((model) => this.checkResource(model))) {
+        return [...pre, cur]
+      } else {
+        return pre
+      }
+    }, [])
+    return AllResources
   }
 
   public getResourceByName(modelName: string) {
     if (!modelName) {
       return undefined
     }
-    return this.innerDoc?.definitions?.[modelName]
+    return Workspace.createEnhancedSchema(this.innerDoc?.definitions?.[modelName], this.specPath!)
   }
 
   /**
    * @param modelName
    *  instructions:
    *  1 if it's a x-ms-resource
-   *  2 if it's allOfing a x-ms-azure-resource or base resource
-   *  3 if it contains allOf, check the allOf resource recursively
+   *  2 if its name match any base resource name
    */
   private checkResource(modelName: string) {
-    const model = this.getResourceByName(modelName)
-    if (!model) {
-      return false
+    if (this.BaseResourceModelNames.includes(modelName.toLowerCase())) {
+      return true
     }
     if (this.XmsResources.has(modelName)) {
       return true
-    }
-    for (const refs of jsonPathIt(model, `$.allOf`)) {
-      for (const ref of refs) {
-        const refPoint = ref.$ref
-        const subModel = this.stripDefinitionPath(refPoint)
-        if (!subModel) {
-          continue
-        }
-        if (this.BaseResourceModelNames.indexOf(subModel.toLowerCase()) !== -1) {
-          return true
-        }
-        if (this.XmsResources.has(subModel)) {
-          return true
-        }
-        if (this.checkResource(subModel)) {
-          return true
-        }
-      }
     }
     return false
   }
@@ -140,122 +182,104 @@ export class ArmHelper {
     return undefined
   }
 
-  /**
-   *  Get all resources which allOf a x-ms-resource
-   */
-  public getAllResourcesFromDefinitions() {
-    if (!this.innerDoc.definitions) {
-      return []
-    }
-    const keys = Object.keys(this.innerDoc.definitions as object)
-    const AllResources = keys.reduce((pre, cur) => {
-      if (this.getResourceHierarchy(cur).some(model => this.checkResource(model))) {
-        return [...pre, cur]
-      } else {
-        return pre
+  private extractResourceInfo(schema: any, specPath?: string) {
+    if (schema && schema.$ref) {
+      const segments = parseJsonRef(schema.$ref)
+      return {
+        specPath: segments[0] || specPath || this.specPath,
+        modelName: this.stripDefinitionPath("#" + segments[1])!,
       }
-    }, [])
-    return AllResources
-  }
-
-  public getAllOperationGetResponseModels() {
-    return this.getSpecificOperationModels("get", "200")
-  }
-
-  private getOperationGetResponseResources() {
-    const models = [...this.getAllOperationGetResponseModels().entries()].filter(m => this.checkResource(m[0]))
-    return new Map(models)
-  }
-
-  // from paths
-  public getAllResourceNames() {
-    const modelNames = [
-      ...this.getSpecificOperationModels("get", "200").keys(),
-      ...this.getSpecificOperationModels("put", "200").keys(),
-      ...this.getSpecificOperationModels("put", "201").keys()
-    ]
-    return modelNames.filter(m => this.checkResource(m))
+    }
+    return undefined
   }
 
   public getAllNestedResources() {
-    const fullModels = this.getOperationGetResponseResources()
-    const nestedModels = new Set<string>()
-    for (const entry of fullModels.entries()) {
-      const paths = entry[1]
-      paths
-        /* some paths not begin with /subscriptions/, they should be ignored */
-        .filter(p => p.toLowerCase().startsWith("/subscriptions/"))
-        .some(p => {
-          const hierarchy = this.getResourcesTypeHierarchy(p)
+    const fullResources = this.getAllResources()
+    const nestedResource = new Set<string>()
+    for (const re of fullResources) {
+      const operations = re.operations
+      operations
+        .filter((op) => op.apiPath.toLowerCase().startsWith("/subscriptions/"))
+        .some((op) => {
+          const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
           if (hierarchy.length > 1) {
-            nestedModels.add(entry[0])
+            nestedResource.add(re.modelName)
             return true
           }
           return false
         })
     }
-    return nestedModels
+    return Array.from(nestedResource.values())
   }
 
-  /**
-   * Check the following conditions , to decide if a model can be considered as a top-level resource
-   * 1 when a model existing in a get/put operation and 200/201 response, consider as a resource
-   * 2 when the path match the pattern: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}
-   * 3 filter tenant wide resource
-   */
-  public getAllTopLevelResources() {
-    const fullModels = this.getOperationGetResponseResources()
-    const topLevelModels = new Set<string>()
-    for (const entry of fullModels.entries()) {
-      const paths = entry[1]
-      paths
-        .filter(p => p.toLowerCase().startsWith("/subscriptions/"))
-        .some(p => {
-          const hierarchy = this.getResourcesTypeHierarchy(p)
-          if (hierarchy.length === 1) {
-            topLevelModels.add(entry[0])
-            return true
-          }
-          return false
-        })
-    }
-    return topLevelModels
+  public getTopLevelResources() {
+    const fullResources = this.getAllResources()
+    return fullResources.filter((re) =>
+      re.operations.some((op) => {
+        const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
+        if (hierarchy.length === 1) {
+          return true
+        }
+        return false
+      })
+    )
+  }
+
+  public getTopLevelResourceNames() {
+    return _.uniq(Array.from(this.getTopLevelResources().map((re) => re.modelName)))
   }
 
   public getTopLevelResourcesByRG() {
-    const fullModels = this.getOperationGetResponseResources()
-    const topLevelModels = new Set<string>()
-    for (const entry of fullModels.entries()) {
-      const paths = entry[1]
-      paths
-        .filter((p:string) => this.isPathByResourceGroup(p))
-        .some((p:string) => {
-          const hierarchy = this.getResourcesTypeHierarchy(p)
-          if (hierarchy.length === 1) {
-            topLevelModels.add(entry[0])
-            return true
-          }
-          return false
-        })
-    }
-    return topLevelModels
+    return _.uniq(
+      Array.from(
+        this.getTopLevelResources()
+          .filter((re) => re.operations.some((op) => this.isPathByResourceGroup(op.apiPath)))
+          .map((re) => re.modelName)
+      )
+    )
   }
 
-  public getAllResource() {
-    const fullModels = this.getOperationGetResponseResources()
+  public getAllResources() {
+    if (this.armResource) {
+      return this.armResource
+    }
+    this.populateResources(this.innerDoc, this.specPath)
+    const references = this.inventory.referencesOf(this.specPath)
+    for (const [specPath, reference] of Object.entries(references)) {
+      this.populateResources(reference, specPath)
+    }
+    const localResourceModels = this.resources.filter((re) => re.specPath === this.specPath)
+    const resWithXmsRes = localResourceModels.filter(
+      (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase())
+    )
+    const resWithPutOrPath = localResourceModels.filter((re) =>
+      re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
+    )
+    const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
+
+    //  remove the resource only return by post , and add the resources return by put or patch
+    this.armResource = _.uniqWith(
+      resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPath),
+      _.isEqual
+    )
+    return this.armResource
+  }
+
+  public getAllResourceNames() {
+    const fullResources = this.getAllResources()
     const resources = new Set<string>()
-    for (const entry of fullModels.entries()) {
-      const paths = entry[1]
-      paths.some(p => {
-        const hierarchy = this.getResourcesTypeHierarchy(p)
+    for (const re of fullResources) {
+      const operations = re.operations
+      operations.some((op) => {
+        const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
         if (hierarchy.length > 0) {
-          resources.add(entry[0])
+          resources.add(re.modelName)
           return true
         }
         return false
       })
     }
-    return resources.values()
+    return [...resources.values()]
   }
 
   /**
@@ -279,14 +303,13 @@ export class ArmHelper {
     const result = []
     const matches = lastProvider.match(this.SpecificResourcePathRegEx)
     if (matches && matches.length) {
-      let match = matches[0]
-      while (match.indexOf("/{") !== -1) {
-        result.push(match.substr(1, match.indexOf("/{") - 1))
-        if (match.indexOf("}/") !== -1) {
-          match = match.substr(match.indexOf("}/") + 1)
-        } else {
-          match = ""
+      const match = matches[0]
+      const segments = match.split("/").slice(3)
+      for (const segment of segments) {
+        if (segment.startsWith("{") || segment === "default") {
+          continue
         }
+        result.push(segment)
       }
     }
     return result
@@ -296,47 +319,79 @@ export class ArmHelper {
    * hierarchy base on keyword:allOf
    * @param modelName
    */
-  private getResourceHierarchy(modelName: string) {
-    let hierarchy :string[]= []
-    const model = this.getResourceByName(modelName)
-    if (!model) {
+  private getResourceHierarchy(model: string | Workspace.EnhancedSchema) {
+    let hierarchy: string[] = []
+    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
+
+    if (!enhancedModel) {
       return hierarchy
     }
-    for (const refs of jsonPathIt(model, `$.allOf`)) {
+    const unwrappedSchema = Workspace.resolveRef(enhancedModel, this.inventory)!
+    for (const refs of jsonPathIt(unwrappedSchema.value, `$.allOf`)) {
       refs
-        .filter((ref:any) => !!ref.$ref)
-        .forEach((ref:any) => {
+        .filter((ref: any) => !!ref.$ref)
+        .forEach((ref: any) => {
           const allOfModel = this.stripDefinitionPath(ref.$ref)
           if (allOfModel) {
             hierarchy.push(allOfModel)
-            hierarchy = hierarchy.concat(this.getResourceHierarchy(allOfModel))
+            hierarchy = hierarchy.concat(this.getResourceHierarchy(this.enhancedSchema(ref, unwrappedSchema.file)))
           }
         })
     }
     return hierarchy
   }
 
+  private containsDiscriminatorInternal(model: Workspace.EnhancedSchema) {
+    if (model) {
+      const unWrappedModel = Workspace.resolveRef(model, this.inventory)
+      if (unWrappedModel?.value && unWrappedModel?.value.allOf) {
+        for (const ref of unWrappedModel.value.allOf) {
+          const unWrappedRef = Workspace.resolveRef(this.enhancedSchema(ref), this.inventory)
+          if (unWrappedRef?.value?.discriminator || (unWrappedRef && this.containsDiscriminatorInternal(unWrappedRef))) {
+            return true
+          }
+        }
+      }
+    }
+    return false
+  }
+
   public containsDiscriminator(modelName: string) {
-    const hierarchy = this.getResourceHierarchy(modelName)
-    return hierarchy.some(h => {
-      const resource = this.getResourceByName(h)
-      return resource && resource.discriminator
-    })
+    let model
+    if (typeof modelName === "string") {
+      model = this.getResourceByName(modelName)
+    }
+    if (model) {
+      return this.containsDiscriminatorInternal(model)
+    }
+    return false
   }
 
   /**
-   * return [{operationPath}:{schema}]
+   * return [{operationPath}:{Workspace.EnhancedSchema}]
    */
 
   public getOperationApi() {
-    for (const pathNode of nodes(this.innerDoc, "$.paths.*")) {
-      const path = pathNode.path[2] as string
-      const matchResult = path.match(this.OperationApiRegEx)
-      if (matchResult) {
-        return [path, this.stripDefinitionPath(pathNode.value?.get?.responses["200"]?.schema?.$ref)]
+    const walker = new SwaggerWalker(this.inventory)
+    let result: any = undefined
+    walker.warkAll(["$.paths.*"], () => {
+      for (const pathNode of nodes(this.innerDoc, "$.paths.*")) {
+        const path = pathNode.path[2] as string
+        const matchResult = path.match(this.OperationApiRegEx)
+        if (matchResult) {
+          result = [path, this.enhancedSchema(pathNode.value?.get?.responses["200"]?.schema)]
+        }
       }
-    }
-    return undefined
+    })
+    return result
+  }
+
+  public resourcesWithGetOperations() {
+    return this.resources.filter((re) => re.operations.some((op) => op.httpMethod === "get"))
+  }
+
+  public resourcesWithPutPatchOperations() {
+    return this.armResource?.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")) || []
   }
 
   /**
@@ -347,18 +402,20 @@ export class ArmHelper {
    */
 
   public getCollectionApiInfo() {
-    let allPathKeys = this.innerDoc.paths ? Object.keys(this.innerDoc.paths) : []
-    if (this.innerDoc["x-ms-paths"]) {
-      allPathKeys = allPathKeys.concat(Object.keys(this.innerDoc["x-ms-paths"]))
-    }
-    const modelMapping = this.getOperationGetResponseResources()
-    const getOperationModels = this.getAllOperationGetResponseModels()
+    const getOperationModels = this.resourcesWithGetOperations()
+
+    const allPathKeys = _.uniq(_.flattenDeep(this.resources.map((re) => re.operations.map((op) => op.apiPath))))
+
+    const getResourcePaths = (res: ResourceInfo[], name: string) =>
+      _.flattenDeep(res.filter((re) => re.modelName === name).map((re) => re.operations.map((op) => op.apiPath)))
+
     const collectionApis: CollectionApiInfo[] = []
-    for (const modelEntry of modelMapping.entries()) {
-      if (!getOperationModels.has(modelEntry[0])) {
-        continue
-      }
-      modelEntry[1].forEach(path => {
+    for (const re of getOperationModels) {
+      re.operations.forEach((op) => {
+        const path = op.apiPath
+        if (collectionApis.find((re) => re.specificGetPath[0] === path)) {
+          return
+        }
         if (path.match(this.SpecificResourcePathRegEx)) {
           const firstProviderIndex = path.lastIndexOf("/providers")
           const lastIndex = path.lastIndexOf("/{")
@@ -372,18 +429,18 @@ export class ArmHelper {
             /**
              * path may end with "/", so here we remove it
              */
-            p =>
+            (p) =>
               p
                 .substr(p.lastIndexOf("/providers"))
                 .replace(/{[^/]+}/gi, "{}")
                 .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}")
           )
-          if (matchedPaths && matchedPaths.length >= 1) {
+          if (matchedPaths && matchedPaths.length >= 1 && this.getOperationIdFromPath(matchedPaths[0])) {
             collectionApis.push({
               specificGetPath: [path],
               collectionGetPath: matchedPaths,
-              modelName: this.getResponseModelNameFromPath(matchedPaths[0]),
-              childModelName: modelEntry[0]
+              modelName: this.getResponseModelNameFromPath(matchedPaths[0])!,
+              childModelName: re.modelName,
             })
           }
         }
@@ -395,13 +452,13 @@ export class ArmHelper {
      */
     const collectionResources = this.getCollectionResources()
     for (const resource of collectionResources) {
-      if (getOperationModels.has(resource[1])) {
-        const index = collectionApis.findIndex(e => e.modelName === resource[1])
+      if (getOperationModels.some((re) => re.modelName === resource[1])) {
+        const index = collectionApis.findIndex((e) => e.modelName === resource[1])
         const collectionInfo = {
-          specificGetPath: getOperationModels.get(resource[0]) || [],
-          collectionGetPath: getOperationModels.get(resource[1])|| [],
+          specificGetPath: getResourcePaths(getOperationModels, resource[0]) || [],
+          collectionGetPath: getResourcePaths(getOperationModels, resource[1]) || [],
           modelName: resource[1],
-          childModelName: resource[0]
+          childModelName: resource[0],
         }
         if (index === -1) {
           collectionApis.push(collectionInfo)
@@ -418,7 +475,7 @@ export class ArmHelper {
    * 2 its items refers one of resources definition
    */
   public getCollectionResources() {
-    const resourceModel = this.getOperationGetResponseResources()
+    const resourceModel = this.resourcesWithGetOperations()
     const resourceCollectMap = new Map<string, string>()
     const doc = this.innerDoc
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
@@ -428,7 +485,7 @@ export class ArmHelper {
         const res = this.stripDefinitionPath(items?.$ref)
         if (
           res &&
-          resourceModel.has(res) &&
+          resourceModel.some((re) => re.modelName === res) &&
           arrayNode.path.length === 3 &&
           arrayNode.path[1] === "properties" &&
           arrayNode.path[2] === "value"
@@ -443,7 +500,7 @@ export class ArmHelper {
   public getCollectionModels() {
     const collectionModels = new Map<string, string>()
     const doc = this.innerDoc
-    const allResources = this.getAllResourcesFromDefinitions()
+    const allResources = [...this.XmsResources.keys()]
 
     for (const resourceNode of nodes(doc, "$.definitions.*")) {
       for (const arrayNode of nodes(resourceNode.value, "$..[?(@property === 'type' && @ === 'array')]^")) {
@@ -473,25 +530,28 @@ export class ArmHelper {
    * @param path
    * @returns response model or undefined if the model is anonymous
    */
-  public getResponseModelFromPath(path: string) {
+  public getResponseModelFromPath(path: string): Workspace.EnhancedSchema | undefined {
     let pathObj = this.innerDoc.paths[path]
     if (!pathObj && this.innerDoc["x-ms-paths"]) {
       pathObj = this.innerDoc["x-ms-paths"][path]
     }
     if (pathObj && pathObj.get && pathObj.get.responses["200"]) {
-      return pathObj.get.responses["200"]?.schema
+      return this.enhancedSchema(pathObj.get.responses["200"]?.schema)
     }
     return undefined
   }
 
-    /**
+  /**
    *
    * @param path
    * @returns model definitions name or undefined if the model is anonymous
    */
   public getResponseModelNameFromPath(path: string) {
-    const model = this.getResponseModelFromPath(path)
-    return model?.$ref ? this.stripDefinitionPath(model.$ref) || "" : ""
+    const re = this.resources.find((re) => re.operations.some((op) => op.apiPath === path))
+    if (re) {
+      return re.modelName
+    }
+    return undefined
   }
 
   public getOperationIdFromPath(path: string, code = "get") {
@@ -516,7 +576,7 @@ export class ArmHelper {
    *  }
    * }
    */
-  public verifyCollectionModel(collectionModel:any, childModelName: string) {
+  public verifyCollectionModel(collectionModel: any, childModelName: string) {
     if (collectionModel) {
       if (collectionModel.type === "array" && collectionModel.items) {
         const itemsRef = collectionModel.items.$ref
@@ -528,11 +588,18 @@ export class ArmHelper {
     return false
   }
 
-  public getPropertyOfModel(schema: any, property: string) {
-    return this.swaggerUtil.getPropertyOfModel(schema, property)
+  public getProperty(schema: Workspace.EnhancedSchema, property: string): Workspace.EnhancedSchema {
+    return this.swaggerUtil.getProperty(schema, property)
   }
 
-  public getPropertyOfModelName(modelName: string, propertyName: string) {
-    return this.swaggerUtil.getPropertyOfModelName(modelName, propertyName)
+  public getAttribute(schema: Workspace.EnhancedSchema, attr: string): Workspace.EnhancedSchema | undefined {
+    return this.swaggerUtil.getAttribute(schema, attr)
+  }
+
+  public enhancedSchema(schema: any, specPath?: string): Workspace.EnhancedSchema {
+    return {
+      value: schema,
+      file: specPath || this.specPath!,
+    }
   }
 }

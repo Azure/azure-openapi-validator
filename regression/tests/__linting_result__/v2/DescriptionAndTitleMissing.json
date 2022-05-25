@@ -7,12 +7,6 @@
   },
   {
     "code": "DescriptionAndTitleMissing",
-    "message": "'ApiProfile' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "jsonpath": "$.definitions.ApiProfile",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4"
-  },
-  {
-    "code": "DescriptionAndTitleMissing",
     "message": "'ApplicationGatewayLoadDistributionTargetPropertiesFormat' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "jsonpath": "$.definitions.ApplicationGatewayLoadDistributionTargetPropertiesFormat",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3608:4"
@@ -349,12 +343,6 @@
   },
   {
     "code": "DescriptionAndTitleMissing",
-    "message": "'ZoneMapping' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "jsonpath": "$.definitions.ZoneMapping",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6606:4"
-  },
-  {
-    "code": "DescriptionAndTitleMissing",
     "message": "'access' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "jsonpath": "$.definitions.GrantAccessData.properties.access",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3077:8"
@@ -523,12 +511,6 @@
   },
   {
     "code": "DescriptionAndTitleMissing",
-    "message": "'tags' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "jsonpath": "$.definitions.Tags.properties.tags",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6361:8"
-  },
-  {
-    "code": "DescriptionAndTitleMissing",
     "message": "'tier' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "jsonpath": "$.definitions.UpsertManagedServerOperationParameters.properties.tier",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:316:8"
@@ -592,17 +574,5 @@
     "message": "'values' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
     "jsonpath": "$.definitions.FirewallRuleList.properties.values",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:347:8"
-  },
-  {
-    "code": "DescriptionAndTitleMissing",
-    "message": "'zoneMappings' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "jsonpath": "$.definitions.ProviderResourceType.properties.zoneMappings",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5023:8"
-  },
-  {
-    "code": "DescriptionAndTitleMissing",
-    "message": "'zones' model/property lacks 'description' and 'title' property. Consider adding a 'description'/'title' element. Accurate description/title is essential for maintaining reference documentation.",
-    "jsonpath": "$.definitions.ZoneMapping.properties.zones",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6613:8"
   }
 ]

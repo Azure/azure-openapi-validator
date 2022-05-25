@@ -14,18 +14,6 @@
   {
     "code": "az-schema-description-or-title",
     "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.AliasPathMetadata",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4760:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ApiProfile",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4746:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.ApplicationGatewayLoadDistributionTargetPropertiesFormat",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3608:4"
   },
@@ -394,11 +382,5 @@
     "message": "Schema should have a description or title.",
     "jsonpath": "$.definitions.VMScaleSetConvertToSinglePlacementGroupInput",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16691:4"
-  },
-  {
-    "code": "az-schema-description-or-title",
-    "message": "Schema should have a description or title.",
-    "jsonpath": "$.definitions.ZoneMapping",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:6606:4"
   }
 ]

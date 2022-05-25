@@ -67,12 +67,6 @@
   },
   {
     "code": "OperationIdNounVerb",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Providers' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8"
-  },
-  {
-    "code": "OperationIdNounVerb",
     "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\"].get.operationId",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:39:8"
@@ -82,24 +76,6 @@
     "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.operationId",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:89:8"
-  },
-  {
-    "code": "OperationIdNounVerb",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Resources' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources\"].get.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2414:8"
-  },
-  {
-    "code": "OperationIdNounVerb",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Resources' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources\"].post.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2833:8"
-  },
-  {
-    "code": "OperationIdNounVerb",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'Resources' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources\"].post.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2885:8"
   },
   {
     "code": "OperationIdNounVerb",

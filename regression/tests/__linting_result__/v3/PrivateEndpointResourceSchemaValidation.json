@@ -7,18 +7,6 @@
   },
   {
     "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateEndpointConnection\" schema does not conform to the common type definition.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get.responses[\"200\"]",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1331:10"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
-    "message": "The private endpoint model \"PrivateEndpointConnection\" schema does not conform to the common type definition.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get.responses[\"200\"]",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:589:10"
-  },
-  {
-    "code": "PrivateEndpointResourceSchemaValidation",
     "message": "The private endpoint model \"PrivateLinkResourceListResult\" schema does not conform to the common type definition.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources\"].get.responses[\"200\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:325:10"

@@ -7,6 +7,36 @@
   },
   {
     "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:97:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:37:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:150:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:221:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
+    "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:295:4"
+  },
+  {
+    "code": "PathResourceProviderNamePascalCase",
     "message": "Resource provider naming must follow the pascal case. Path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}\"]",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:260:4"

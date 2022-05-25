@@ -37,12 +37,6 @@
   },
   {
     "code": "ListInOperationName",
-    "message": "Since operation 'ProvidersProviderPermissions' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8"
-  },
-  {
-    "code": "ListInOperationName",
     "message": "Since operation 'PutBastionShareableLink' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\"].post.operationId",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:328:8"

@@ -694,17 +694,5 @@
     "message": "Parameter should have a description.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore\"].post.parameters[\"3\"]",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:502:10"
-  },
-  {
-    "code": "az-parameter-description",
-    "message": "Parameter should have a description.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].patch.parameters[\"2\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4390:10"
-  },
-  {
-    "code": "az-parameter-description",
-    "message": "Parameter should have a description.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].put.parameters[\"2\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4344:10"
   }
 ]

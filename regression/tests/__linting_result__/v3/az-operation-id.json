@@ -38,14 +38,20 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for get method should contain \"Get\" or \"list\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.operationId",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2093:8"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4001:8"
   },
   {
     "code": "az-operation-id",
     "message": "OperationId for get method should contain \"Get\" or \"list\"",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView\"].get.operationId",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4001:8"
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"].get.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1163:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for get method should contain \"Get\" or \"list\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:801:8"
   },
   {
     "code": "az-operation-id",
@@ -164,6 +170,12 @@
   {
     "code": "az-operation-id",
     "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey\"].put.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1469:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId for put method should contain both \"Create\" and \"Update\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].put.operationId",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:222:8"
   },
@@ -238,5 +250,17 @@
     "message": "OperationId should be of the form \"Noun_Verb\"",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post.operationId",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:434:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId should be of the form \"Noun_Verb\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3646:8"
+  },
+  {
+    "code": "az-operation-id",
+    "message": "OperationId should be of the form \"Noun_Verb\"",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:801:8"
   }
 ]

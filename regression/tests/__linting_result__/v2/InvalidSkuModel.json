@@ -1,8 +1,0 @@
-[
-  {
-    "code": "InvalidSkuModel",
-    "message": "Sku Model definition 'Sku' is not valid. A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.",
-    "jsonpath": "$.definitions.Sku",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5548:4"
-  }
-]

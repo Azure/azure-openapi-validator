@@ -55,12 +55,6 @@
   },
   {
     "code": "PathResourceProviderMatchNamespace",
-    "message": "The last resource provider 'Microsoft.Management' doesn't match the namespace.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2053:4"
-  },
-  {
-    "code": "PathResourceProviderMatchNamespace",
     "message": "The last resource provider 'microsoft.Compute' doesn't match the namespace.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:97:4"

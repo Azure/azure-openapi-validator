@@ -3,7 +3,7 @@
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.ApplicationGatewayFirewallDisabledRuleGroup.properties.rules.items[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3200:12"
   },
   {
     "code": "az-nullable",
@@ -27,7 +27,7 @@
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.DiagnosticSettingsCategory.properties.categoryType[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:148:10"
   },
   {
     "code": "az-nullable",
@@ -39,13 +39,13 @@
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.ElasticPoolActivityProperties.properties.operationId[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:148:10"
   },
   {
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.ElasticPoolDatabaseActivityProperties.properties.operationId[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:311:10"
   },
   {
     "code": "az-nullable",
@@ -87,31 +87,31 @@
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.ServiceObjectiveProperties.properties.enabled[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serviceObjectives.json:146:10"
   },
   {
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.ServiceObjectiveProperties.properties.isDefault[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serviceObjectives.json:129:10"
   },
   {
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.ServiceObjectiveProperties.properties.isSystem[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serviceObjectives.json:135:10"
   },
   {
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.SloUsageMetric.properties.inRangeTimeRatio[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:486:10"
   },
   {
     "code": "az-nullable",
     "message": "Avoid the use of x-nullable.",
     "jsonpath": "$.definitions.SloUsageMetric.properties.serviceLevelObjectiveId[\"x-nullable\"]",
-    "source": ""
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:479:10"
   },
   {
     "code": "az-nullable",

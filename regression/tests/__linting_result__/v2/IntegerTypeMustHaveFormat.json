@@ -182,12 +182,6 @@
   {
     "code": "IntegerTypeMustHaveFormat",
     "message": "The integer type does not have a format, please add it.",
-    "jsonpath": "$.definitions.TagCount.properties.value",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5778:8"
-  },
-  {
-    "code": "IntegerTypeMustHaveFormat",
-    "message": "The integer type does not have a format, please add it.",
     "jsonpath": "$.definitions.UpdateHistoryProperty.properties.immutabilityPeriodSinceCreationInDays",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:1151:8"
   },

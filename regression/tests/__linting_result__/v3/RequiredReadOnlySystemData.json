@@ -37,6 +37,96 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationGatewayPrivateEndpointConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:783:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationGatewayPrivateEndpointConnections_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:712:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationGateways_ListAvailableSslOptions' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:1037:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationSecurityGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationSecurityGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ApplicationSecurityGroups_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'AvailabilitySets_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:77:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'AvailabilitySets_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:245:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'AvailabilitySets_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:134:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'AzureFirewalls_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:153:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'AzureFirewalls_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'AzureFirewalls_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:237:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'BackupShortTermRetentionPolicies_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:74:6"
@@ -52,6 +142,24 @@
     "message": "The response of operation:'BackupShortTermRetentionPolicies_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'BastionHosts_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:125:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'BastionHosts_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:85:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'BastionHosts_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:184:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -97,15 +205,99 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'CloudEndpoints_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1064:6"
+    "message": "The response of operation:'CapacityReservationGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4905:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'CloudEndpoints_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].get",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1167:6"
+    "message": "The response of operation:'CapacityReservationGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5079:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CapacityReservationGroups_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4968:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CapacityReservations_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5258:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CapacityReservations_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5462:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CapacityReservations_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5329:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ChangeResource_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes/{changeResourceId}\"].get",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:95:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CloudServices_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:588:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CloudServices_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:769:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CloudServices_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:660:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ConnectionMonitors_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1530:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ConnectionMonitors_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1614:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ConnectionMonitors_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1728:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CustomIPPrefixes_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CustomIPPrefixes_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'CustomIPPrefixes_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:215:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -124,18 +316,6 @@
     "message": "The response of operation:'DatabaseAdvisors_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}\"].patch",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:122:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'DatabaseAutomaticTuning_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/automaticTuning/current\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:20:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'DatabaseAutomaticTuning_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/automaticTuning/current\"].patch",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:60:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -235,6 +415,84 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DdosCustomPolicies_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DdosCustomPolicies_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DdosCustomPolicies_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DdosProtectionPlans_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DdosProtectionPlans_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DdosProtectionPlans_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DedicatedHostGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:756:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DedicatedHostGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:930:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DedicatedHostGroups_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:819:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DedicatedHosts_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1086:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DedicatedHosts_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1287:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DedicatedHosts_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1157:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DefaultSecurityRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules/{defaultSecurityRuleName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:661:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'DeletedAccounts_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}\"].get",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:399:6"
@@ -247,81 +505,99 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1615:6"
+    "message": "The response of operation:'DiskAccesses_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1128:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtManagementGroupScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:819:6"
+    "message": "The response of operation:'DiskAccesses_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1240:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:135:6"
+    "message": "The response of operation:'DiskAccesses_GetAPrivateEndpointConnection' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1505:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtSubscriptionScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1207:6"
+    "message": "The response of operation:'DiskAccesses_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1184:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_CreateOrUpdateAtTenantScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:452:6"
+    "message": "The response of operation:'DiskAccesses_UpdateAPrivateEndpointConnection' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1446:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1688:6"
+    "message": "The response of operation:'DiskEncryptionSets_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:792:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_GetAtManagementGroupScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:873:6"
+    "message": "The response of operation:'DiskEncryptionSets_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:913:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_GetAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:189:6"
+    "message": "The response of operation:'DiskEncryptionSets_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:851:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_GetAtSubscriptionScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1261:6"
+    "message": "The response of operation:'Disks_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:38:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Deployments_GetAtTenantScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:503:6"
+    "message": "The response of operation:'Disks_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:207:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Disks_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:136:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'DistributedAvailabilityGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:106:6"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:106:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'DistributedAvailabilityGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:62:6"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:62:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'DistributedAvailabilityGroups_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].patch",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:217:6"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:217:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DscpConfiguration_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:38:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'DscpConfiguration_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:160:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -370,6 +646,150 @@
     "message": "The response of operation:'EncryptionScopes_Put' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].put",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1989:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'EndpointCertificates_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/endpointCertificates/{endpointType}\"].get",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/EndpointCertificates.json:62:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuitAuthorizations_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:155:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuitAuthorizations_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:100:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuitConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:661:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuitConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:599:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuitPeerings_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:401:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuitPeerings_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:346:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuits_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1031:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuits_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:983:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCircuits_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1101:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4320:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4394:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCrossConnectionPeerings_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:461:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCrossConnectionPeerings_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:406:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCrossConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:171:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCrossConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:123:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteCrossConnections_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:232:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4084:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4215:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRouteGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4151:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRoutePortsLocations_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:77:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRoutePorts_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:223:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRoutePorts_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:175:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ExpressRoutePorts_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:293:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -445,6 +865,48 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicies_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicies_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicyIdpsSignaturesOverrides_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:726:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicyIdpsSignaturesOverrides_Patch' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:624:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicyIdpsSignaturesOverrides_Put' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:675:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicyRuleCollectionGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:428:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FirewallPolicyRuleCollectionGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:364:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'FirewallRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:64:6"
@@ -463,6 +925,138 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FlowLogs_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2036:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FlowLogs_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2174:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'FlowLogs_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2110:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Galleries_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:38:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Galleries_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:167:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Galleries_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:113:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryApplicationVersions_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1088:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryApplicationVersions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1236:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryApplicationVersions_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1168:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryApplications_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:846:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryApplications_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:980:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryApplications_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:919:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryImageVersions_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:529:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryImageVersions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:701:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryImageVersions_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:630:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryImages_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:287:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryImages_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:421:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'GalleryImages_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:360:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'HubRouteTables_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5153:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'HubRouteTables_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5224:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'HubVirtualNetworkConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1445:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'HubVirtualNetworkConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1575:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'IPv6FirewallRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:106:6"
@@ -472,6 +1066,42 @@
     "message": "The response of operation:'IPv6FirewallRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:62:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Images_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3204:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Images_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3414:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Images_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3295:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'InboundNatRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:925:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'InboundNatRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:863:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'InboundSecurityRule_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:687:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -502,6 +1132,42 @@
     "message": "The response of operation:'InstancePools_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].patch",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:169:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'IpAllocations_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'IpAllocations_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'IpAllocations_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:215:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'IpGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'IpGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:38:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'IpGroups_UpdateGroups' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:160:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -619,6 +1285,54 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LoadBalancerBackendAddressPools_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:500:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LoadBalancerBackendAddressPools_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:442:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LoadBalancers_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:151:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LoadBalancers_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LoadBalancers_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:242:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LocalNetworkGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1937:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LocalNetworkGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2005:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'LocalNetworkGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2110:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'LongTermRetentionBackups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:168:6"
@@ -652,18 +1366,6 @@
     "message": "The response of operation:'LongTermRetentionPolicies_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:20:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'MaintenanceWindowOptions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindowOptions/current\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindowOptions.json:20:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'MaintenanceWindows_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:20:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -955,6 +1657,138 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NatGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NatGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NatGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:218:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NatRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2857:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NatRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2805:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkInterfaceTapConfigurations_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:756:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkInterfaceTapConfigurations_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:701:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkInterfaces_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkInterfaces_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkInterfaces_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:218:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkProfiles_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:151:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkProfiles_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkProfiles_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:215:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkSecurityGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkSecurityGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkSecurityGroups_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:218:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkVirtualAppliances_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:205:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkVirtualAppliances_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkVirtualAppliances_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkWatchers_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:38:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkWatchers_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:101:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'NetworkWatchers_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:201:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'ObjectReplicationPolicies_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}\"].put",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1566:6"
@@ -979,6 +1813,48 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'P2sVpnGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3084:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'P2sVpnGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3039:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'P2sVpnGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PacketCaptures_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:611:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PacketCaptures_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:679:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateDnsZoneGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:524:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateDnsZoneGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:469:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'PrivateEndpointConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:64:6"
@@ -991,9 +1867,99 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateEndpoints_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:154:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateEndpoints_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'PrivateLinkResources_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateLinkResources/{groupName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateLinkResources.json:62:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateLinkServices_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateLinkServices_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateLinkServices_GetPrivateEndpointConnection' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:302:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PrivateLinkServices_UpdatePrivateEndpointConnection' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:364:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ProximityPlacementGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:449:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ProximityPlacementGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:614:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ProximityPlacementGroups_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:512:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PublicIPAddresses_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PublicIPAddresses_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PublicIPAddresses_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:221:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PublicIPPrefixes_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PublicIPPrefixes_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'PublicIPPrefixes_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:218:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1033,75 +1999,9 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'RegisteredServers_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2562:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'RegisteredServers_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].get",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2501:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'ReplicationLinks_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:65:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ResourceGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2516:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ResourceGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2631:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ResourceGroups_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].patch",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2670:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Resources_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3142:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Resources_CreateOrUpdateById' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{resourceId}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3480:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Resources_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3322:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Resources_GetById' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{resourceId}\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3590:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Resources_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].patch",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3235:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Resources_UpdateById' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{resourceId}\"].patch",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3538:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1117,9 +2017,141 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RestorePointCollections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4324:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RestorePointCollections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4505:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RestorePointCollections_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4390:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RestorePoints_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4657:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RestorePoints_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4781:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'RestorePoints_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints/{restorePointName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:127:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteFilterRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:476:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteFilterRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:421:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteFilters_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteFilters_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteFilters_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:215:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteTables_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteTables_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RouteTables_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:218:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Routes_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:479:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Routes_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:424:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RoutingIntent_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5453:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'RoutingIntent_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5524:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SecurityPartnerProviders_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SecurityPartnerProviders_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SecurityPartnerProviders_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SecurityRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:479:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SecurityRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:424:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1144,18 +2176,6 @@
     "message": "The response of operation:'ServerAdvisors_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors/{advisorName}\"].patch",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:116:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ServerAutomaticTuning_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:20:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ServerAutomaticTuning_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\"].patch",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:57:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1219,24 +2239,6 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ServerEndpoints_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1927:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ServerEndpoints_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].get",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2124:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'ServerEndpoints_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].patch",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2026:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'ServerKeys_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:106:6"
@@ -1251,13 +2253,13 @@
     "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'ServerTrustCertificates_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:64:6"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:106:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'ServerTrustCertificates_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:20:6"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:62:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1303,15 +2305,69 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'SqlAgent_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/sqlAgent/current\"].put",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:57:6"
+    "message": "The response of operation:'ServiceEndpointPolicies_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:148:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'SqlAgent_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/sqlAgent/current\"].get",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:20:6"
+    "message": "The response of operation:'ServiceEndpointPolicies_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ServiceEndpointPolicies_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:218:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ServiceEndpointPolicyDefinitions_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:479:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'ServiceEndpointPolicyDefinitions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:424:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Snapshots_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:445:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Snapshots_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:557:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'Snapshots_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:504:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SshPublicKeys_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1506:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SshPublicKeys_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1680:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'SshPublicKeys_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1569:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1333,21 +2389,15 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'StorageSyncServices_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:120:6"
+    "message": "The response of operation:'Subnets_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:513:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'StorageSyncServices_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].get",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:199:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'StorageSyncServices_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].patch",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:253:6"
+    "message": "The response of operation:'Subnets_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:448:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1369,12 +2419,6 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'SyncGroups_Create' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}\"].put",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:870:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'SyncGroups_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:418:6"
@@ -1384,12 +2428,6 @@
     "message": "The response of operation:'SyncGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:367:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'SyncGroups_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}\"].get",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:940:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1447,36 +2485,6 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Tags_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3727:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Tags_CreateOrUpdateAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4330:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Tags_CreateOrUpdateValue' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\"].put",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3675:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Tags_GetAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].get",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4414:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Tags_UpdateAtScope' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/tags/default\"].patch",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4376:6"
-  },
-  {
-    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'TimeZones_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones/{timeZoneId}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TimeZones.json:62:6"
@@ -1495,6 +2503,24 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualApplianceSites_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:476:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualApplianceSites_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:421:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualApplianceSkus_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus/{skuName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:644:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
     "message": "The response of operation:'VirtualClusters_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}\"].get",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:134:6"
@@ -1504,6 +2530,258 @@
     "message": "The response of operation:'VirtualClusters_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}\"].patch",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:212:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubBgpConnection_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4615:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubBgpConnection_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4563:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubIpConfiguration_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4971:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubIpConfiguration_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4919:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubRouteTableV2s_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3760:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubRouteTableV2s_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3708:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubs_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1191:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubs_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1146:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualHubs_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1255:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineExtensions_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1981:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineExtensions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2182:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineExtensions_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2055:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineRunCommands_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:253:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineRunCommands_GetByVirtualMachine' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:448:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineRunCommands_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:324:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetExtensions_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6790:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetExtensions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7000:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetExtensions_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6864:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMExtensions_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8197:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMExtensions_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8413:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMExtensions_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8275:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMRunCommands_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:572:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMRunCommands_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:788:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMRunCommands_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:650:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMs_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8880:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSetVMs_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8740:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSets_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6205:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSets_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6485:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachineScaleSets_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6365:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachines_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3625:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachines_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3926:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualMachines_Update' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3806:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGatewayConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1229:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGatewayConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1296:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGatewayConnections_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1399:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGatewayNatRules_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2388:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGatewayNatRules_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2336:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:38:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:105:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkPeerings_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1010:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkPeerings_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:952:6"
   },
   {
     "code": "RequiredReadOnlySystemData",
@@ -1519,9 +2797,159 @@
   },
   {
     "code": "RequiredReadOnlySystemData",
-    "message": "The response of operation:'Workflows_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}\"].get",
-    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2882:6"
+    "message": "The response of operation:'VirtualNetworkTaps_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:141:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkTaps_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworkTaps_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:208:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworks_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:154:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworks_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualNetworks_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:242:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualRouterPeerings_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:419:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualRouterPeerings_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:364:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualRouters_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:148:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualRouters_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:93:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualWans_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:83:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualWans_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:38:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VirtualWans_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:147:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnConnections_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2294:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnConnections_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2242:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnGateways_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1724:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnGateways_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1679:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnGateways_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1788:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnServerConfigurations_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:892:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnServerConfigurations_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:847:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnServerConfigurations_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:956:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnSites_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:382:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnSites_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:337:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'VpnSites_UpdateTags' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}\"].patch",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:446:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'WebApplicationFirewallPolicies_CreateOrUpdate' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:172:6"
+  },
+  {
+    "code": "RequiredReadOnlySystemData",
+    "message": "The response of operation:'WebApplicationFirewallPolicies_Get' is defined without 'systemData'. Consider adding the systemData to the response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].get",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:123:6"
   },
   {
     "code": "RequiredReadOnlySystemData",

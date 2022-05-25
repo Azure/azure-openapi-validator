@@ -73,12 +73,6 @@
   },
   {
     "code": "ParametersOrder",
-    "message": "The parameters:resourceProviderNamespace,groupId should be kept in the same order as they present in the path.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register\"].post",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2054:6"
-  },
-  {
-    "code": "ParametersOrder",
     "message": "The parameters:roleInstanceName,resourceGroupName,cloudServiceName should be kept in the same order as they present in the path.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].delete",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:14:6"

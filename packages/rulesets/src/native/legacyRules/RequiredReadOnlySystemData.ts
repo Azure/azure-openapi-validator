@@ -6,6 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-valid
 import { ArmHelper } from "../utilities/arm-helper"
 import { nodes, stringify } from "../utilities/jsonpath"
 import { SwaggerHelper } from "../utilities/swagger-helper"
+import { Workspace } from "../utilities/swagger-workspace"
 
 export const RequiredReadOnlySystemData = "RequiredReadOnlySystemData"
 
@@ -14,7 +15,7 @@ rules.push({
   name: RequiredReadOnlySystemData,
   severity: "warning",
   category: "ARMViolation",
-  mergeState: MergeStates.composed,
+  mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,
   *run(doc, node, path, ctx) {
     if (doc.info && doc.info.version) {
@@ -25,8 +26,8 @@ rules.push({
         // not a new Api Version
         return
       }
-      const utils = new ArmHelper(doc, ctx?.specPath, ctx?.inventory)
-      const swaggerUtil = new SwaggerHelper(doc,ctx?.specPath,ctx?.inventory)
+      const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
+      const swaggerUtil = new SwaggerHelper(doc, ctx?.specPath, ctx?.inventory)
       const allResources = utils.getAllResourceNames()
       /*
        * need to check get, put and patch actions
@@ -46,12 +47,12 @@ rules.push({
               const toValidateModelName = utils.stripDefinitionPath(toValidateSchema.$ref)
               // Needs to check if it's a resource first.
               if (toValidateModelName && allResources.includes(toValidateModelName)) {
-                const systemData = swaggerUtil?.getPropertyOfModelName(toValidateModelName, "systemData")
+                const systemData = swaggerUtil?.getProperty(Workspace.createEnhancedSchema(toValidateSchema, ctx?.specPath!), "systemData")
                 if (!systemData) {
                   hasSystemData = false
                   break
                 }
-                if (!systemData.readOnly) {
+                if (!systemData.value.readOnly) {
                   isReadOnly = false
                   break
                 }
@@ -63,18 +64,18 @@ rules.push({
             const operationId = nodes(doc, stringify(responses.path.slice(0, -1)))[0].value.operationId
             yield {
               message: `The response of operation:'${operationId}' is defined without 'systemData'. Consider adding the systemData to the response.`,
-              location: responses.path.slice(0, -1)
+              location: responses.path.slice(0, -1),
             }
           }
           if (!isReadOnly) {
             const operationId = nodes(doc, stringify(responses.path.slice(0, -1)))[0].value.operationId
             yield {
               message: `The property systemData in the response of operation:'${operationId}' is not read only. Please add the readonly for the systemData.`,
-              location: responses.path.slice(0, -1)
+              location: responses.path.slice(0, -1),
             }
           }
         }
       }
     }
-  }
+  },
 })

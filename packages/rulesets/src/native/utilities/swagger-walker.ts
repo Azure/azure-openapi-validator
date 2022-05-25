@@ -1,39 +1,38 @@
-import { SwaggerInventory } from "@microsoft.azure/openapi-validator-core";
-import {nodes} from "./jsonpath"
-type WalkCallBack = (path:string[],value:any,root:any)=>void
+import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
+import { nodes } from "./jsonpath"
+type WalkCallBack = (path: string[], value: any, rootPath: string, root: any) => void
 export class SwaggerWalker {
-  constructor(private inventory : SwaggerInventory) {
-  }
+  constructor(private inventory: ISwaggerInventory) {}
 
-  private interanlWalkOnDocuments(documents:any[],paths:string[],cb:WalkCallBack) {
-     for (const doc of documents) {
+  private _walkOnDocuments(documents: any[], paths: string[], cb: WalkCallBack) {
+    for (const doc of documents) {
       for (const path of paths) {
-        const result = nodes(doc,path)
-        cb(result.path, result.value,doc)
+        const result = nodes(doc[1], path)
+        cb(result.path, result.value, doc[0], doc[1])
       }
     }
   }
 
-  public WarkOnJsonPathForAllDocuments(paths:string[],current:string,cb:WalkCallBack ) {
+  public warkReferenced(paths: string[], current: string, cb: WalkCallBack) {
     const documents = this.inventory.referencesOf(current).values()
-    this.interanlWalkOnDocuments(Object.values(documents),paths,cb)
+    this._walkOnDocuments(Object.values(documents), paths, cb)
   }
 
-  public WarkOnJsonPathForReferencedDocuments(paths:string[],cb:WalkCallBack ) {
+  public warkAll(paths: string[], cb: WalkCallBack) {
     const documents = Object.values(this.inventory.getDocuments())
-    this.interanlWalkOnDocuments([...documents],paths,cb)
+    this._walkOnDocuments([...documents], paths, cb)
   }
 
-  public WarkOnJsonPathForAllDocumentExceptCurrent(paths:string[],current:string,cb:WalkCallBack ) {
+  public warkAllExcept(paths: string[], excepts: string[] | string, cb: WalkCallBack) {
     const documentsRecord = this.inventory.getDocuments()
-    let documents 
-    if (documentsRecord[current]) {
-      documents = Object.entries(documentsRecord).filter(pair=>pair[0] !== current).map(pair=>pair[1])
-    }
-    else {
+    let documents
+    excepts = Array.isArray(excepts) ? excepts : [excepts]
+    if (excepts.length) {
+      documents = Object.entries(documentsRecord).filter((pair) => excepts.includes(pair[0]))
+    } else {
       documents = Object.values(documentsRecord)
     }
-    
-    this.interanlWalkOnDocuments(documents,paths,cb)
+
+    this._walkOnDocuments(documents, paths, cb)
   }
 }

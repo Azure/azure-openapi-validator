@@ -1,12 +1,6 @@
 [
   {
     "code": "az-parameter-order",
-    "message": "Path parameter \"groupId\" should appear before \"resourceProviderNamespace\".",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2060:8"
-  },
-  {
-    "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"asyncOperationId\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopeOperationStatuses/{asyncOperationId}\"].get.parameters",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:272:8"
@@ -16,66 +10,6 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"deletedAccountName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}\"].get.parameters",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:410:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1148:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1267:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].head.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1181:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1214:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1302:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1451:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4143:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4102:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1334:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"deploymentName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1386:8"
   },
   {
     "code": "az-parameter-order",
@@ -302,8 +236,26 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"location\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:81:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"location\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:41:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"location\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses\"].post.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1336:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"location\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/usage.json:44:8"
   },
   {
     "code": "az-parameter-order",
@@ -902,8 +854,26 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/publicipaddresses\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:41:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines\"].get.parameters",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9018:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:91:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:162:8"
   },
   {
     "code": "az-parameter-order",
@@ -1460,6 +1430,30 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:49:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:247:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:134:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:183:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations\"].get.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:319:8"
   },
@@ -1684,6 +1678,84 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:436:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1588:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1350:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1302:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1405:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1235:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/getikesas\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1835:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/resetconnection\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1892:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1538:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1471:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1634:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/startPacketCapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1700:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/stopPacketCapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1769:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1041:8"
   },
   {
     "code": "az-parameter-order",
@@ -2006,6 +2078,54 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4052:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4274:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4226:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4095:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4524:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4460:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4405:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4331:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies\"].get.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:223:8"
   },
@@ -2248,6 +2368,36 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}\"].get.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1468:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2176:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2060:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2011:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2116:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1943:8"
   },
   {
     "code": "az-parameter-order",
@@ -2738,6 +2888,24 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3408:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealth\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3474:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/reset\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3351:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints\"].get.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:235:8"
   },
@@ -2942,6 +3110,12 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:283:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:44:8"
   },
@@ -2954,8 +3128,482 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:224:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].put.parameters",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:154:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:561:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:368:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:430:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:485:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:273:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:99:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:214:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:147:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:322:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:99:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:224:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:154:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:561:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:368:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:430:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:485:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4861:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4800:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:280:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:159:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:111:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:214:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/connections\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:326:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:497:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:563:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:857:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:686:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:800:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2222:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:987:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:629:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:379:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:443:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:921:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startPacketCapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1100:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopPacketCapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1169:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/supportedvpndevices\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:750:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:312:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:99:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:214:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:147:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:346:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:99:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].patch.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:248:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:160:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1165:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:843:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:392:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:454:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:519:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:598:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:732:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ServiceAssociationLinks\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:786:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:665:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/usages\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1219:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1112:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:896:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:958:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1016:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:223:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:99:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:154:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:501:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].delete.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:308:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:370:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].put.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:425:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:46:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/reset\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1912:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/startpacketcapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1969:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/stoppacketcapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2038:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/startpacketcapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2558:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/stoppacketcapture\"].post.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2631:8"
   },
   {
     "code": "az-parameter-order",
@@ -3519,31 +4167,31 @@
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups\"].get.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:26:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:26:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].delete.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:175:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:175:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].get.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:68:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:68:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].patch.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:223:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:223:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:112:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:112:8"
   },
   {
     "code": "az-parameter-order",
@@ -3598,6 +4246,18 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}/revalidate\"].post.parameters",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:26:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/endpointCertificates\"].get.parameters",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/EndpointCertificates.json:26:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/endpointCertificates/{endpointType}\"].get.parameters",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/EndpointCertificates.json:68:8"
   },
   {
     "code": "az-parameter-order",
@@ -3759,25 +4419,25 @@
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates\"].get.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:183:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:26:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].delete.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:133:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:175:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].get.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:26:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:68:8"
   },
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put.parameters",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:70:8"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:112:8"
   },
   {
     "code": "az-parameter-order",
@@ -6002,6 +6662,36 @@
   {
     "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:104:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:44:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:157:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:228:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}\"].get.parameters",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:302:8"
+  },
+  {
+    "code": "az-parameter-order",
+    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes\"].get.parameters",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:74:8"
   },
@@ -6028,54 +6718,6 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].put.parameters",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:173:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2416:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].delete.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2582:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2637:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].head.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2483:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].patch.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2677:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].put.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2527:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/operations\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4239:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/operations/{operationId}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:4188:8"
   },
   {
     "code": "az-parameter-order",
@@ -6142,60 +6784,6 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}\"].get.parameters",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:105:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1962:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1536:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1694:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].head.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1579:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].put.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1622:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1739:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1918:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1781:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1843:8"
   },
   {
     "code": "az-parameter-order",
@@ -6337,66 +6925,6 @@
   },
   {
     "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].delete.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3070:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3328:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].head.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2996:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].patch.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3241:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].put.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3148:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceProviderNamespace\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2269:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceProviderNamespace\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2095:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceProviderNamespace\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2138:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceProviderNamespace\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes\"].get.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2319:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"resourceProviderNamespace\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/unregister\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2022:8"
-  },
-  {
-    "code": "az-parameter-order",
     "message": "Path parameter \"subscriptionId\" should appear before \"roleInstanceName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].delete.parameters",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:20:8"
@@ -6442,41 +6970,5 @@
     "message": "Path parameter \"subscriptionId\" should appear before \"roleName\".",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roles/{roleName}\"].get.parameters",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:488:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"sourceResourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2836:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"sourceResourceGroupName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources\"].post.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2888:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"tagName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}\"].delete.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3777:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"tagName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}\"].put.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3734:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"tagName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\"].delete.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3638:8"
-  },
-  {
-    "code": "az-parameter-order",
-    "message": "Path parameter \"subscriptionId\" should appear before \"tagName\".",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}\"].put.parameters",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3682:8"
   }
 ]

@@ -79,12 +79,6 @@
   },
   {
     "code": "AllResourcesMustHaveGetOperation",
-    "message": "The resource \"GenericResourceExpanded\" does not have get operation, please add it.",
-    "jsonpath": "$.definitions.GenericResourceExpanded",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:5496:4"
-  },
-  {
-    "code": "AllResourcesMustHaveGetOperation",
     "message": "The resource \"ImportExportExtensionsOperationResult\" does not have get operation, please add it.",
     "jsonpath": "$.definitions.ImportExportExtensionsOperationResult",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:283:4"

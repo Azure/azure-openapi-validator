@@ -2,42 +2,6 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:772:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:973:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post.responses[\"202\"].headers",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1027:12"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:408:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:594:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post.responses[\"202\"].headers",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:645:12"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval\"].post.responses[\"202\"]",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9567:10"
   },
@@ -64,24 +28,6 @@
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses\"].post.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1364:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1160:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1361:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post.responses[\"202\"].headers",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1415:12"
   },
   {
     "code": "az-lro-headers",
@@ -866,6 +812,12 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:271:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].delete.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:152:10"
   },
@@ -968,6 +920,48 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1376:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}\"].patch.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1437:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/getikesas\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1858:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/resetconnection\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1915:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1672:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/startPacketCapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1732:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/stopPacketCapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1801:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].delete.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:70:10"
   },
@@ -1058,6 +1052,24 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4300:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}\"].patch.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4194:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4493:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"].delete.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:67:10"
   },
@@ -1090,6 +1102,12 @@
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}\"].delete.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:840:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2090:10"
   },
   {
     "code": "az-lro-headers",
@@ -1286,6 +1304,48 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3246:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}\"].patch.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3191:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3446:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealth\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3503:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealthDetailed\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3569:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/reset\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3380:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3983:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"].delete.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:67:10"
   },
@@ -1336,6 +1396,336 @@
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete.responses[\"202\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:73:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:398:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:67:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:67:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:401:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4897:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4836:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1346:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4727:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5436:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5317:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1557:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5083:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3872:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5617:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:185:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}\"].patch.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:246:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2314:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:535:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:601:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:893:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:722:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:829:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2251:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:658:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2500:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:409:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:469:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:953:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startPacketCapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1132:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopPacketCapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1201:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:70:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:67:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:428:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:640:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:707:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:932:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:67:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:338:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:238:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3691:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:783:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3628:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1886:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}\"].patch.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1831:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2969:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/reset\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1941:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/startpacketcapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2007:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/stoppacketcapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2076:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2406:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/getikesas\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2532:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/resetconnection\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2141:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/startpacketcapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2597:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/stoppacketcapture\"].post.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2670:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:1047:10"
+  },
+  {
+    "code": "az-lro-headers",
+    "message": "A 202 response should include an Operation-Location response header.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}\"].delete.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:537:10"
   },
   {
     "code": "az-lro-headers",
@@ -1515,19 +1905,19 @@
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].delete.responses[\"202\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:203:10"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:203:10"
   },
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].patch.responses[\"202\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:263:10"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:263:10"
   },
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put.responses[\"202\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/DistributedAvailabilityGroups.json:152:10"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:152:10"
   },
   {
     "code": "az-lro-headers",
@@ -1611,13 +2001,13 @@
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].delete.responses[\"202\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:161:10"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:203:10"
   },
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put.responses[\"202\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerTrustCertificates.json:110:10"
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:152:10"
   },
   {
     "code": "az-lro-headers",
@@ -2318,48 +2708,6 @@
   {
     "code": "az-lro-headers",
     "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2864:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2916:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2619:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/exportTemplate\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:2762:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1558:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1818:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf\"].post.responses[\"202\"].headers",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:1882:12"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration\"].post.responses[\"202\"]",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:863:10"
   },
@@ -2452,53 +2800,5 @@
     "message": "A 202 response should include an Operation-Location response header.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade\"].post.responses[\"202\"]",
     "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1295:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3127:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].patch.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3310:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}\"].put.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3223:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/{resourceId}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3465:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/{resourceId}\"].patch.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3578:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/{resourceId}\"].put.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:3526:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}\"].delete.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:88:10"
-  },
-  {
-    "code": "az-lro-headers",
-    "message": "A 202 response should include an Operation-Location response header.",
-    "jsonpath": "$.paths[\"/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate\"].post.responses[\"202\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json:289:10"
   }
 ]

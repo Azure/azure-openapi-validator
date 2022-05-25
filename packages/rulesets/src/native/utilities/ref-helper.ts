@@ -9,8 +9,8 @@ import { nodes, stringify } from "./jsonpath"
  * @param inventory
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
-export function crwalReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
-  const getRefModel = (docToSearch:any,refValue: string, visited: string[]) => {
+export function crawlReference(doc: any, schema: any, inventory?: ISwaggerInventory): any {
+  const getRefModel = (docToSearch: any, refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
     }
@@ -31,8 +31,8 @@ export function crwalReference(doc: any, schema: any, inventory?: ISwaggerInvent
       if (inventory && refSlices[0]) {
         doc = inventory.getDocuments(refSlices[0])
       }
-      schema = getRefModel(doc,`#${refSlices[1]}`, [])
-      return crwalReference(doc, schema, inventory)
+      schema = getRefModel(doc, `#${refSlices[1]}`, [])
+      return crawlReference(doc, schema, inventory)
     }
     return schema
   }
@@ -52,7 +52,13 @@ export const parseJsonRef = (ref: string): string[] => {
   return ref.split("#")
 }
 
-export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj:any, path:string[], additionalInfo:any) => boolean) :void{
+export function traverse(
+  obj: unknown,
+  path: string[],
+  visited: Set<any>,
+  options: any,
+  visitor: (obj: any, path: string[], additionalInfo: any) => boolean
+): void {
   if (!obj) {
     return
   }
@@ -79,4 +85,3 @@ export function traverse(obj: unknown, path: string[], visited: Set<any>, option
 export function isExample(path: string) {
   return path.split(/\\|\//g).includes("examples")
 }
-
