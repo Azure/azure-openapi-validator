@@ -4,7 +4,9 @@ import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import validateOriginalUri from "./functions/lro-original-uri"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import common from "./az-common"
 const ruleset: any = {
+  extends: [common],
   rules: {
     ApiHost: {
       description: "The host is required for management plane specs.",
@@ -69,7 +71,7 @@ const ruleset: any = {
       },
     },
     LroWithOriginalUriAsFinalState: {
-      description: "The long running operation with final-state-via:original-uri has sibling 'get' operation.",
+      description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
       message: "{{description}}",
       severity: "warn",
       resolved: true,

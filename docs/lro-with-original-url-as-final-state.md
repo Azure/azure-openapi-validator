@@ -2,7 +2,7 @@
 
 ## Description
 
-The long running operation with final-state-via:original-uri has sibling 'get' operation.
+The long running operation with final-state-via:original-uri should have a sibling 'get' operation.
 
 ## How to fix
 

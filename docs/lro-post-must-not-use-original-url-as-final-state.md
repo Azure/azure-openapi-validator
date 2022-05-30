@@ -1,4 +1,4 @@
-# LroPostMustNotUseOriginalUriAsFinalState: {
+# LroPostMustNotUseOriginalUriAsFinalState
 
 ## Description
 

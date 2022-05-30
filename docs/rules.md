@@ -63,6 +63,12 @@ This rule is to valiate the parameters in the 'x-ms-parameterized-host' to ensur
 
 Please refer to [host-parameters-validation.md](./host-parameters-validation.md) for details.
 
+### LroPostMustNotUseOriginalUriAsFinalState
+
+The long running post operation must not use final-stat-via:original-uri.
+
+Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
+
 ### LROStatusCodesValidation
 
 This violation is flagged if a long-running PUT operation has a 200/201 status code specified without a response model definition. Eg:
@@ -82,15 +88,9 @@ This violation is flagged if a long-running PUT operation has a 200/201 status c
 
 Please refer to [lro-put-response-models.md](./lro-put-response-models.md) for details.
 
-### LroPostMustNotUseOriginalUriAsFinalState: {
-
-The long running post operation must not use final-stat-via:original-uri.
-
-Please refer to [lro-with-original-url-as-final-state copy.md](./lro-with-original-url-as-final-state copy.md) for details.
-
 ### LroWithOriginalUriAsFinalState
 
-The long running operation with final-state-via:original-uri has sibling 'get' operation.
+The long running operation with final-state-via:original-uri should have a sibling 'get' operation.
 
 Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
 
