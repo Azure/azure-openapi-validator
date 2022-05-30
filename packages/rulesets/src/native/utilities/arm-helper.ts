@@ -122,12 +122,10 @@ export class ArmHelper {
         this.XmsResources.add(name)
       }
     }
-    while (true) {
-      const resources = this.getAllOfResources()
-      if (resources.length === 0) {
-        break
-      }
+    let resources = this.getAllOfResources()
+    while (resources && resources.length) {
       resources.forEach((re) => this.XmsResources.add(re))
+      resources = this.getAllOfResources()
     }
   }
 
@@ -160,34 +158,14 @@ export class ArmHelper {
    * @param modelName
    *  instructions:
    *  1 if it's a x-ms-resource
-   *  2 if it's allOfing a x-ms-azure-resource or base resource
-   *  3 if it contains allOf, check the allOf resource recursively
+   *  2 if its name match any base resource name
    */
   private checkResource(modelName: string) {
-    const model = this.getResourceByName(modelName)
-    if (!model) {
-      return false
+    if (this.BaseResourceModelNames.includes(modelName.toLowerCase())) {
+      return true
     }
     if (this.XmsResources.has(modelName)) {
       return true
-    }
-    if (this.BaseResourceModelNames.includes(modelName.toLowerCase())) {
-      return false
-    }
-    for (const refs of jsonPathIt(model, `$.allOf`)) {
-      for (const ref of refs) {
-        const refPoint = ref.$ref
-        const subModel = this.stripDefinitionPath(refPoint)
-        if (!subModel) {
-          continue
-        }
-        if (this.BaseResourceModelNames.indexOf(subModel.toLowerCase()) !== -1) {
-          return true
-        }
-        if (this.XmsResources.has(subModel)) {
-          return true
-        }
-      }
     }
     return false
   }
@@ -239,7 +217,7 @@ export class ArmHelper {
     return fullResources.filter((re) =>
       re.operations.some((op) => {
         const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
-        if (hierarchy.length > 0) {
+        if (hierarchy.length === 1) {
           return true
         }
         return false
@@ -271,7 +249,9 @@ export class ArmHelper {
       this.populateResources(reference, specPath)
     }
     const localResourceModels = this.resources.filter((re) => re.specPath === this.specPath)
-    const resWithXmsRes = localResourceModels.filter((re) => this.XmsResources.has(re.modelName))
+    const resWithXmsRes = localResourceModels.filter(
+      (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase())
+    )
     const resWithPutOrPath = localResourceModels.filter((re) =>
       re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
     )
@@ -323,7 +303,7 @@ export class ArmHelper {
     const result = []
     const matches = lastProvider.match(this.SpecificResourcePathRegEx)
     if (matches && matches.length) {
-      let match = matches[0]
+      const match = matches[0]
       const segments = match.split("/").slice(3)
       for (const segment of segments) {
         if (segment.startsWith("{") || segment === "default") {
@@ -341,7 +321,7 @@ export class ArmHelper {
    */
   private getResourceHierarchy(model: string | Workspace.EnhancedSchema) {
     let hierarchy: string[] = []
-    let enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
+    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
 
     if (!enhancedModel) {
       return hierarchy
@@ -361,12 +341,30 @@ export class ArmHelper {
     return hierarchy
   }
 
+  private containsDiscriminatorInternal(model: Workspace.EnhancedSchema) {
+    if (model) {
+      const unWrappedModel = Workspace.resolveRef(model, this.inventory)
+      if (unWrappedModel?.value && unWrappedModel?.value.allOf) {
+        for (const ref of unWrappedModel.value.allOf) {
+          const unWrappedRef = Workspace.resolveRef(this.enhancedSchema(ref), this.inventory)
+          if (unWrappedRef?.value?.discriminator || (unWrappedRef && this.containsDiscriminatorInternal(unWrappedRef))) {
+            return true
+          }
+        }
+      }
+    }
+    return false
+  }
+
   public containsDiscriminator(modelName: string) {
-    const hierarchy = this.getResourceHierarchy(modelName)
-    return hierarchy.some((h) => {
-      const resource = this.getResourceByName(h)
-      return resource && resource.value.discriminator
-    })
+    let model
+    if (typeof modelName === "string") {
+      model = this.getResourceByName(modelName)
+    }
+    if (model) {
+      return this.containsDiscriminatorInternal(model)
+    }
+    return false
   }
 
   /**
@@ -388,7 +386,7 @@ export class ArmHelper {
     return result
   }
 
-  private resourcesWithGetOperations() {
+  public resourcesWithGetOperations() {
     return this.resources.filter((re) => re.operations.some((op) => op.httpMethod === "get"))
   }
 
@@ -406,7 +404,7 @@ export class ArmHelper {
   public getCollectionApiInfo() {
     const getOperationModels = this.resourcesWithGetOperations()
 
-    let allPathKeys = _.uniq(_.flattenDeep(this.resources.map((re) => re.operations.map((op) => op.apiPath))))
+    const allPathKeys = _.uniq(_.flattenDeep(this.resources.map((re) => re.operations.map((op) => op.apiPath))))
 
     const getResourcePaths = (res: ResourceInfo[], name: string) =>
       _.flattenDeep(res.filter((re) => re.modelName === name).map((re) => re.operations.map((op) => op.apiPath)))
@@ -437,7 +435,7 @@ export class ArmHelper {
                 .replace(/{[^/]+}/gi, "{}")
                 .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}")
           )
-          if (matchedPaths && matchedPaths.length >= 1) {
+          if (matchedPaths && matchedPaths.length >= 1 && this.getOperationIdFromPath(matchedPaths[0])) {
             collectionApis.push({
               specificGetPath: [path],
               collectionGetPath: matchedPaths,

@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, rmdirSync } from "fs"
-import _ from "lodash"
 import { basename, join } from "path"
+import _ from "lodash"
 import { allIssues, getLintResult, writeLintingResult } from "./utils/snapshot-help"
 
 allIssues.splice(0, allIssues.length)
@@ -13,7 +13,20 @@ describe("comparing", () => {
     rmdirSync(resultDir, { recursive: true })
   }
   mkdirSync(resultDir)
-  test.each(v3Results.filter((f) => !f.includes("az-")))(
+  const verifiedLists = [
+    "MissingTypeObject",
+    "AllResourcesMustHaveGetOperation",
+    "DeleteOperationResponses",
+    "GetCollectionResponseSchema",
+    "IntegerTypeMustHaveFormat",
+    "OperationsApiResponseSchema",
+    "PageableOperation",
+    "ParametersOrder",
+    "PrivateEndpointResourceSchemaValidation",
+    "UniqueXmsExample",
+    "RequiredReadOnlySystemData",
+  ]
+  test.each(v3Results.filter((f) => !f.includes("az-") && !verifiedLists.includes(basename(f.replace(".json", "")))))(
     "%s should match v2",
     (v3File: string) => {
       const v2File = v3File.replace("v3", "v2")

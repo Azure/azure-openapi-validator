@@ -19,9 +19,13 @@ rules.push({
      */
     const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const allResources = utils.resourcesWithPutPatchOperations()
-    const allResourcesHavingGetOperation = utils.getAllResourceNames()
+    const allResourcesHavingGetOperation = utils.resourcesWithGetOperations()
     for (const resource of allResources) {
-      if (!allResourcesHavingGetOperation.includes(resource.modelName)) {
+      // the concrete models in polymorphism should be ignored
+      if (
+        !utils.containsDiscriminator(resource.modelName) &&
+        !allResourcesHavingGetOperation.some((re) => re.modelName === resource.modelName)
+      ) {
         yield {
           message: msg.replace("{0}", resource.modelName),
           location: ["$", "definitions", resource.modelName] as JsonPath,

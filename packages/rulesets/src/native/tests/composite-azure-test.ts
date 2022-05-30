@@ -78,7 +78,7 @@ describe("CompositeAzureTests", () => {
       OpenApiTypes.arm,
       TopLevelResourcesListByResourceGroup
     )
-    assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 2)
+    assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 1)
   })
   test("top level resources must list by subscription", async () => {
     const fileName = "armResource/compute.json"
@@ -87,7 +87,7 @@ describe("CompositeAzureTests", () => {
       OpenApiTypes.arm,
       TopLevelResourcesListBySubscription
     )
-    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 9)
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 1)
   })
 
   test("get collection response schema should match the ARM specification", async () => {
@@ -97,7 +97,7 @@ describe("CompositeAzureTests", () => {
   })
 
   test("all resources must have get operation", async () => {
-    const fileName = "armResources/cluster.json"
+    const fileName = "armResource/cluster.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,

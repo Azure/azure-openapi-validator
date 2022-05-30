@@ -14,14 +14,6 @@
     },
     {
       "code": "NestedResourcesMustHaveListOperation",
-      "message": "The nested resource \"ManagementPolicy\" does not have list operation, please add it.",
-      "jsonpath": "$.definitions.ManagementPolicy",
-      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
-    }
-  ],
-  "v2Only": [
-    {
-      "code": "NestedResourcesMustHaveListOperation",
       "message": "The nested resource \"ManagedDatabaseRestoreDetailsResult\" does not have list operation, please add it.",
       "jsonpath": "$.definitions.ManagedDatabaseRestoreDetailsResult",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseRestoreDetails.json:140:4"
@@ -31,8 +23,15 @@
       "message": "The nested resource \"ManagedInstanceQuery\" does not have list operation, please add it.",
       "jsonpath": "$.definitions.ManagedInstanceQuery",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseQueries.json:165:4"
+    },
+    {
+      "code": "NestedResourcesMustHaveListOperation",
+      "message": "The nested resource \"ManagementPolicy\" does not have list operation, please add it.",
+      "jsonpath": "$.definitions.ManagementPolicy",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:4478:4"
     }
   ],
+  "v2Only": [],
   "v3Only": [
     {
       "code": "NestedResourcesMustHaveListOperation",

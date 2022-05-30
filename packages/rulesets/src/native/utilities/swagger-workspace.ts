@@ -28,7 +28,7 @@ export namespace Workspace {
 
   export function resolveRef(schema: EnhancedSchema, inventory: ISwaggerInventory): EnhancedSchema | undefined {
     function getRef(refValue: string, swaggerPath: string) {
-      let root = inventory.getDocuments(swaggerPath)
+      const root = inventory.getDocuments(swaggerPath)
       if (refValue.startsWith("/")) {
         refValue = refValue.substring(1)
       }
