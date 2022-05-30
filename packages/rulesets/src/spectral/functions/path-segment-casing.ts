@@ -1,4 +1,3 @@
-
 // _opts has a property 'segments' as string[] to specify the segment names to check for 
 export const pathSegmentCasing = (apiPaths:any, _opts:any, paths: any) => {
   if (apiPaths === null || typeof apiPaths !== 'object') {
