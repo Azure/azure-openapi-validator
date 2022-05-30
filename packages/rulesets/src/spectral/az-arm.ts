@@ -1,10 +1,10 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, truthy } from "@stoplight/spectral-functions"
+import common from "./az-common"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import validateOriginalUri from "./functions/lro-original-uri"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
-import common from "./az-common"
 const ruleset: any = {
   extends: [common],
   rules: {
