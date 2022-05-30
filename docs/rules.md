@@ -10,6 +10,12 @@ This rule appears when you define a model type inline, rather than in the `defin
 
 Please refer to [anonymous-parameter-types.md](./anonymous-parameter-types.md) for details.
 
+### ArrayMustHaveType
+
+Array type must have a type except for any type.
+
+Please refer to [array-must-have-type.md](./array-must-have-type.md) for details.
+
 ### AvoidNestedProperties
 
 This rule appears when you define a property with the name `properties`, and do not use the [`x-ms-client-flatten` extension](../../extensions/readme.md#x-ms-client-flatten). Users often provide feedback that they don't want to create multiple levels of properties to be able to use an operation. By applying the `x-ms-client-flatten` extension, you move the inner `properties` to the top level of your definition.
@@ -76,6 +82,18 @@ This violation is flagged if a long-running PUT operation has a 200/201 status c
 
 Please refer to [lro-put-response-models.md](./lro-put-response-models.md) for details.
 
+### LroPostMustNotUseOriginalUriAsFinalState: {
+
+The long running post operation must not use final-stat-via:original-uri.
+
+Please refer to [lro-with-original-url-as-final-state copy.md](./lro-with-original-url-as-final-state copy.md) for details.
+
+### LroWithOriginalUriAsFinalState
+
+The long running operation with final-state-via:original-uri has sibling 'get' operation.
+
+Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
+
 ### ModelTypeIncomplete
 
 AutoRest turns JSON schemas of `type: "object"` with properties into models in the generated code (i.e. class definitions in object oriented languages). Certain properties are required for generating this model, and this rule validates that they are present.
@@ -119,6 +137,12 @@ In a spec, parameters can have a `description` property to provide information. 
 
 Please refer to [parameter-description-required.md](./parameter-description-required.md) for details.
 
+### PatchBodyParametersSchema
+
+ A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: ["create"]' value.
+
+Please refer to [patch-body-parameters-schema.md](./patch-body-parameters-schema.md) for details.
+
 ### RequiredApiVersionParameter
 
 This rule applies when the 'api-version' parameter is missing in any operations.
@@ -155,6 +179,12 @@ Every swagger/configuration must have a security definitions section and it must
 ```
 
 Please refer to [security-definitions-structure-validation.md](./security-definitions-structure-validation.md) for details.
+
+### SubscriptionsAndResourceGroupCasing
+
+The URLs should be checked for consistency. It is easy to type "resourcegroups" instead of "resourceGroups". The current rules allow that through, which causes an issue at the resource provider registration step. When that happens, the APIs get split into two sets in the swagger. The RPaaS registration is very strict and requires the same resource to have all APIs in one set. The pipeline needs to be aware of this kind of behavior and provider URL validation.
+
+Please refer to [subscriptions-and-resourcegroup-casing.md](./subscriptions-and-resourcegroup-casing.md) for details.
 
 ### ValidFormats
 

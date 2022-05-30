@@ -1,4 +1,4 @@
-# ConsistentUrlInResourceOperation
+# SubscriptionsAndResourceGroupCasing
 
 ## Description
 
