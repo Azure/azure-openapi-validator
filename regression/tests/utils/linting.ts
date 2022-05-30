@@ -4,7 +4,7 @@ import { toMatchSnapshotForEachCode } from "./snapshot-help"
 const jp = require("jsonpath")
 
 function genLintingCmd(readme: string): string {
-  const linterCmd = `npx autorest --version=next --v3 --azure-validator --spectral --message-format=json --openapiType=arm --use=../packages/azure-openapi-validator/autorest ${readme}`
+  const linterCmd = `npx autorest --version=next --v3 --azure-validator --spectral --message-format=json --openapi-type=arm --use=../packages/azure-openapi-validator/autorest ${readme}`
   return linterCmd
 }
 function getRelativePath(issueSource: any) {

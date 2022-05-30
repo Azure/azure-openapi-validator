@@ -6,8 +6,6 @@ A model definition is considered as a resource model definition if:
 - The model has an 'allOf' Resource at any level [name of the root model is 'Resource'] AND the model is returned by a GET operation in 200 response.
 - The model has 'x-ms-azure-resource': true or if any model has an 'x-ms-azure-resource' set to true in its model hierarchy and is not named either of 'Resource', 'TrackedResource' or 'ProxyResource'.
 
-- Path matches '^/subscriptions/{[^/]+}/resourceGroups/{[^/]+}/providers/[^/]+(/\\w+/{[^/}]+})+$' ,200 response schma of get/put/patch   
-
 ## Types of resource models
 Any resource can be categorized into 2 types: `TrackedResources` and `ProxyResources`.
 1. TrackedResource: A resource is considered a tracked resource if a model hierarchy has a property named 'location' which is marked as __required__.
