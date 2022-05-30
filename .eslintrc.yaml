@@ -46,6 +46,8 @@ rules:
   "@typescript-eslint/explicit-module-boundary-types": off
   "@typescript-eslint/ban-types": off
   "@typescript-eslint/consistent-type-assertions": off
+  "@typescript-eslint/no-non-null-assertion": off
+  "@typescript-eslint/no-non-null-asserted-optional-chain": off
   "@typescript-eslint/no-floating-promises": warn
 
   "require-atomic-updates": off
