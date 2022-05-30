@@ -12,7 +12,7 @@ Please refer to [anonymous-parameter-types.md](./anonymous-parameter-types.md) f
 
 ### ArrayMustHaveType
 
-Array type must have a type except for any type.
+An array must claim "type:'array'" explicitly.
 
 Please refer to [array-must-have-type.md](./array-must-have-type.md) for details.
 
@@ -30,7 +30,7 @@ Please refer to [body-properties-names-camel-case.md](./body-properties-names-ca
 
 ### BooleanPropertyNotRecommended
 
-Booleans are not descriptive and make them hard to use. Instead use string enums with allowed set of values defined.
+Booleans may not be descriptive enough to use in the case. Instead, consider using string enums with allowed set of values defined..
 
 Please refer to [boolean-property.md](./boolean-property.md) for details.
 
@@ -54,12 +54,12 @@ Please refer to [descriptive-description-required.md](./descriptive-description-
 
 ### HostParametersValidation
 
-This rule is to valiate the parameters in the 'x-ms-parameterized-host' to ensure they are following below rules:
+This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
 1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:uri'.
-    - Client level (x-ms-parameter-location: client)
-    - A path component (in: path)
-    - Part of a 'x-ms-parametrized-host' with 'useSchemePrefix: false'
-    - Tagged 'x-ms-skip-encoding: true'
+   - Client level (x-ms-parameter-location: client)
+   - A path component (in: path)
+   - Part of a 'x-ms-parametrized-host' with 'useSchemePrefix: false'
+   - Tagged 'x-ms-skip-encoding: true'
 
 Please refer to [host-parameters-validation.md](./host-parameters-validation.md) for details.
 
@@ -139,7 +139,7 @@ Please refer to [parameter-description-required.md](./parameter-description-requ
 
 ### PatchBodyParametersSchema
 
- A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: ["create"]' value.
+A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability:"create"' value.
 
 Please refer to [patch-body-parameters-schema.md](./patch-body-parameters-schema.md) for details.
 

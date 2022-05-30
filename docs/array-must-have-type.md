@@ -2,7 +2,7 @@
 
 ## Description
 
-Array type must have a type except for any type.
+An array must claim "type:'array'" explicitly.
 
 ## How to fix
 
