@@ -1,0 +1,158 @@
+[
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"backendPoolName\" and \"backendAddressPoolName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1385:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"galleryApplicationVersionName\" and \"galleryImageVersionName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1087:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"groupName\" and \"resourceGroupName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1385:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"hubName\" and \"virtualHubName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4857:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"hubName\" and \"virtualHubName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:4796:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8739:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8678:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8483:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8196:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/instanceView\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8954:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8547:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8617:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:858:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:571:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"instanceId\" and \"vmName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/simulateEviction\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9468:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"p2sVpnGatewayName\" and \"gatewayName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3941:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"runCommandName\" and \"commandId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:571:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"runCommandName\" and \"commandId\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:252:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualMachineScaleSetName\" and \"vmScaleSetName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9011:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3644:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:799:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:739:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"virtualWANName\" and \"VirtualWANName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:3590:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"vmssExtensionName\" and \"vmExtensionName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6789:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"vpnConnectionName\" and \"connectionName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/startpacketcapture\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2554:4"
+  },
+  {
+    "code": "az-path-parameter-names",
+    "message": "Inconsistent path parameter names \"vpnConnectionName\" and \"connectionName\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/stoppacketcapture\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:2627:4"
+  }
+]
