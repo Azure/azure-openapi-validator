@@ -1,7 +1,5 @@
-'use strict';
-
-var spectralFormats = require('@stoplight/spectral-formats');
-var spectralFunctions = require('@stoplight/spectral-functions');
+import { oas2, oas3 } from '@stoplight/spectral-formats';
+import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
@@ -739,41 +737,41 @@ const ruleset = {
         "az-additional-properties-and-properties": {
             description: "Don't specify additionalProperties as a sibling of properties.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$..[?(@object() && @.type === 'object' && @.properties)]",
             then: {
                 field: "additionalProperties",
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-additional-properties-object": {
             description: "additionalProperties with type object is a common error.",
             severity: "info",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             resolved: false,
             given: "$..[?(@property == 'additionalProperties' && @.type == 'object' && @.properties == undefined)]",
             then: {
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-api-version-enum": {
             description: "The api-version parameter should not be an enum.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: [
                 "$.paths[*].parameters.[?(@.name == 'api-version')]",
                 "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
             ],
             then: {
                 field: "enum",
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-consistent-response-body": {
             description: "Ensure the get, put, and patch response body schemas are consistent.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.paths.*",
             then: {
                 function: consistentresponsebody,
@@ -786,14 +784,14 @@ const ruleset = {
             given: "$.paths.*.*.responses",
             then: {
                 field: "default",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-delete-204-response": {
             description: "A delete operation should have a 204 response.",
             message: "A delete operation should have a `204` response.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.paths[*].delete.responses",
             then: {
                 function: delete204Response,
@@ -803,7 +801,7 @@ const ruleset = {
             description: "Error response body should conform to Microsoft Azure API Guidelines.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.paths[*][*].responses",
             then: {
                 function: errorResponse,
@@ -812,23 +810,23 @@ const ruleset = {
         "az-formdata": {
             description: "Check for appropriate use of formData parameters.",
             severity: "info",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: '$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == "formData")]',
             then: {
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-header-disallowed": {
             description: "Authorization, Content-type, and Accept headers should not be defined explicitly.",
             message: 'Header parameter "{{value}}" should not be defined explicitly.',
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: [
                 "$.paths[*].parameters.[?(@.in == 'header')]",
                 "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == 'header')]",
             ],
             then: {
-                function: spectralFunctions.pattern,
+                function: pattern,
                 field: "name",
                 functionOptions: {
                     notMatch: "/^(authorization|content-type|accept)$/i",
@@ -839,18 +837,18 @@ const ruleset = {
             description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
             message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^^",
             then: {
                 field: "x-ms-long-running-operation",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-lro-headers": {
             description: "A 202 response should include an Operation-Location response header.",
             message: "A 202 response should include an Operation-Location response header.",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]",
             then: {
                 function: hasHeader,
@@ -862,20 +860,20 @@ const ruleset = {
         "az-ms-paths": {
             description: "Don't use x-ms-paths except where necessary to support legacy APIs.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.x-ms-paths",
             then: {
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-nullable": {
             description: "Avoid the use of x-nullable.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             resolved: false,
             given: "$..x-nullable",
             then: {
-                function: spectralFunctions["undefined"],
+                function: undefined$1,
             },
         },
         "az-operation-id": {
@@ -902,14 +900,14 @@ const ruleset = {
                 "$.paths[*][?( @property === 'trace' && !@.summary && !@.description )]",
             ],
             then: {
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-pagination-response": {
             description: "An operation that returns a list that is potentially large should support pagination.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths.*[get,post]"],
             then: {
                 function: paginationResponse,
@@ -921,7 +919,7 @@ const ruleset = {
             given: ["$.paths[*].parameters.[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.required)]"],
             then: {
                 field: "default",
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-parameter-description": {
@@ -931,7 +929,7 @@ const ruleset = {
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-parameter-names-convention": {
@@ -947,7 +945,7 @@ const ruleset = {
             description: "All parameter names for an operation should be case-insensitive unique.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.paths[*]",
             then: {
                 function: paramNamesUnique,
@@ -957,7 +955,7 @@ const ruleset = {
             description: "Path parameters must be in the same order as in the path.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.paths",
             then: {
                 function: paramOrder,
@@ -967,7 +965,7 @@ const ruleset = {
             description: "Path parameter names should be consistent across all paths.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.paths",
             resolved: false,
             then: {
@@ -978,7 +976,7 @@ const ruleset = {
             description: "The request body content type for patch operations should be JSON merge patch.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$",
             then: {
                 function: patchContentYype,
@@ -988,10 +986,10 @@ const ruleset = {
             description: "Path should contain only recommended characters.",
             message: "Path contains non-recommended characters.",
             severity: "info",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.paths.*~",
             then: {
-                function: spectralFunctions.pattern,
+                function: pattern,
                 functionOptions: {
                     match: "^(/([0-9A-Za-z._~-]+|{[^}]+}))*(/([0-9A-Za-z._~:-]+|{[^}]*}(:[0-9A-Za-z._~-]+)?))$",
                 },
@@ -1001,7 +999,7 @@ const ruleset = {
             description: "Path parameter should be type: string and specify maxLength and pattern.",
             message: "{{error}}",
             severity: "info",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: [
                 "$.paths[*].parameters[?(@.in == 'path')]",
                 "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.in == 'path')]",
@@ -1014,11 +1012,11 @@ const ruleset = {
             description: "Using post for a create operation is discouraged.",
             message: "Using post for a create operation is discouraged.",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.paths[*].post.responses",
             then: {
                 field: "201",
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-property-description": {
@@ -1029,7 +1027,7 @@ const ruleset = {
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
                 field: "description",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-property-names-convention": {
@@ -1039,7 +1037,7 @@ const ruleset = {
             resolved: false,
             given: "$..[?(@.type === 'object' && @.properties)].properties.*~",
             then: {
-                function: spectralFunctions.casing,
+                function: casing,
                 functionOptions: {
                     type: "camel",
                 },
@@ -1053,17 +1051,17 @@ const ruleset = {
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
                 field: "type",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-put-path": {
             description: "The path for a put should have a final path parameter.",
             message: "The path for a put should have a final path parameter.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.paths[*].put^~",
             then: {
-                function: spectralFunctions.pattern,
+                function: pattern,
                 functionOptions: {
                     match: "/\\}$/",
                 },
@@ -1072,11 +1070,11 @@ const ruleset = {
         "az-request-body-not-allowed": {
             description: "A get or delete operation must not accept a body parameter.",
             severity: "error",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths[*].[get,delete].parameters[*]"],
             then: {
                 field: "in",
-                function: spectralFunctions.pattern,
+                function: pattern,
                 functionOptions: {
                     notMatch: "/^body$/",
                 },
@@ -1086,31 +1084,31 @@ const ruleset = {
             description: "Flag optional request body -- common oversight.",
             message: "The body parameter is not marked as required.",
             severity: "info",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')]"],
             then: {
                 field: "required",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-schema-description-or-title": {
             description: "All schemas should have a description or title.",
             message: "Schema should have a description or title.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
         "az-schema-names-convention": {
             description: "Schema names should be Pascal case.",
             message: "Schema name should be Pascal case.",
             severity: "info",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.definitions.*~",
             then: {
-                function: spectralFunctions.casing,
+                function: casing,
                 functionOptions: {
                     type: "pascal",
                 },
@@ -1120,30 +1118,30 @@ const ruleset = {
             description: "A security definition should have a description.",
             message: "Security definition should have a description.",
             severity: "warn",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: ["$.securityDefinitions[*]", "$.components.securitySchemes[*]"],
             then: {
                 field: "description",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-success-response-body": {
             description: "All success responses except 202 & 204 should define a response body.",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$.paths[*][*].responses[?(@property >= 200 && @property < 300 && @property != '202' && @property != '204')]",
             then: {
                 field: "schema",
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         "az-version-convention": {
             description: "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
             severity: "error",
-            formats: [spectralFormats.oas2, spectralFormats.oas3],
+            formats: [oas2, oas3],
             given: "$.info.version",
             then: {
-                function: spectralFunctions.pattern,
+                function: pattern,
                 functionOptions: {
                     match: "^\\d\\d\\d\\d-\\d\\d-\\d\\d(-preview)?$",
                 },
@@ -1153,7 +1151,7 @@ const ruleset = {
             description: "Specify API version using `api-version` query parameter, not in path.",
             message: "{{error}}",
             severity: "warn",
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$",
             then: {
                 function: versionPolicy,
@@ -1164,7 +1162,7 @@ const ruleset = {
             message: "Default value should appear in the enum constraint for a schema",
             severity: "error",
             resolved: false,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$..[?(@object() && @.enum)]",
             then: {
                 function: defaultInEnum,
@@ -1175,7 +1173,7 @@ const ruleset = {
             message: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
             severity: "warn",
             resolved: false,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: "$..[?(@object() && @.type === 'boolean')]",
             then: {
                 function: enumInsteadOfBoolean,
@@ -1186,7 +1184,7 @@ const ruleset = {
             message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
             severity: "error",
             resolved: false,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 function: avoidAnonymousParameter,
@@ -1195,4 +1193,4 @@ const ruleset = {
     },
 };
 
-module.exports = ruleset;
+export { ruleset as default };

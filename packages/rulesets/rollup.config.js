@@ -5,7 +5,7 @@ export default [
   input: ['esm/spectral/az-arm.js'],
   output: {
     dir: 'generated/spectral',
-    format: 'cjs',
+    format: 'es',
     exports: 'default'
   },
   plugins: [commonjs(),json()],
@@ -15,7 +15,7 @@ export default [
   input: ['esm/spectral/az-dataplane.js'],
   output: {
     dir: 'generated/spectral',
-    format: 'cjs',
+    format: 'es',
     exports: 'default'
   },
   plugins: [commonjs(),json()],
@@ -25,7 +25,7 @@ export default [
   input: ['esm/spectral/az-common.js'],
   output: {
     dir: 'generated/spectral',
-    format: 'cjs',
+    format: 'es',
     exports: 'default'
   },
   plugins: [commonjs(),json()],
