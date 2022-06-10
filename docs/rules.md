@@ -500,24 +500,6 @@ The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
 
-### RPaasPostLongRunningOperation202Only
-
-An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [r-paas-post-long-running-operation202-only.md](./r-paas-post-long-running-operation202-only.md) for details.
-
-### RPaasPutLongRunningOperation201Only
-
-An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
-
-Please refer to [r-paas-put-long-running-operation201-only.md](./r-paas-put-long-running-operation201-only.md) for details.
-
-### RPaasResourceProvisioningState
-
-Verifies if a Azure resource has a corresponding 'provisioningState' property. If the 'provisioningState' is not defining explicitly , the client will drop the state when the service does return it.
-
-Please refer to [r-paas-resource-provisioning-state.md](./r-paas-resource-provisioning-state.md) for details.
-
 ### RequiredApiVersionParameter
 
 This rule applies when the 'api-version' parameter is missing in any operations.
@@ -553,6 +535,24 @@ Please refer to [required-read-only-system-data.md](./required-read-only-system-
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
+
+### RPaasPostLongRunningOperation202Only
+
+An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
+
+Please refer to [rpaas-post-long-running-operation202-only.md](./rpaas-post-long-running-operation202-only.md) for details.
+
+### RPaasPutLongRunningOperation201Only
+
+An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
+
+Please refer to [rpaas-put-long-running-operation201-only.md](./rpaas-put-long-running-operation201-only.md) for details.
+
+### RPaasResourceProvisioningState
+
+Verifies if a Azure resource has a corresponding 'provisioningState' property. If the 'provisioningState' is not defining explicitly , the client will drop the state when the service does return it.
+
+Please refer to [rpaas-resource-provisioning-state.md](./rpaas-resource-provisioning-state.md) for details.
 
 ### SecurityDefinitionsStructure
 
