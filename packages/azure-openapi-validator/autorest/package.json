@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/Azure/azure-openapi-validator/issues"
   },
-  "homepage": "https://github.com/Azure/azure-openapi-validator/blob/master/README.md",
+  "homepage": "https://github.com/Azure/azure-openapi-validator/blob/main/README.md",
   "devDependencies": {
     "@types/js-yaml": "^3.12.4",
     "@types/jsonpath": "^0.2.0",

@@ -1,4 +1,6 @@
 {
   "type": "module",
-  "dependencies": {}
+  "dependencies": {
+    "change-case": "^4.1.2"
+  }
 }

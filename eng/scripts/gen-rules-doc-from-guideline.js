@@ -1,12 +1,13 @@
 
-import { readdirSync, readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import {join} from "path";
 import { repoRoot } from "./helper.js";
+import {paramCase} from "change-case";
 
 export function genDocs() {
     const docsFile = join(repoRoot,"regression/azure-rest-api-specs/documentation/openapi-authoring-automated-guidelines.md")
     const file = readFileSync(docsFile).toString()
-    const docsDir = join(repoRoot,"docs","old")
+    const docsDir = join(repoRoot,"docs")
     const ruleDocs = []
     let ruleStart = false
     let rule = {}
@@ -31,7 +32,7 @@ export function genDocs() {
         const ruleContent = `# ${doc.name}
 
 ${doc.description}`.trim() + "\n"
-        writeFileSync(join(docsDir,doc.name + ".md"),ruleContent)
+        writeFileSync(join(docsDir,paramCase(doc.name) + ".md"),ruleContent)
 
     }
 }
