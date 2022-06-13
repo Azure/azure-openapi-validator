@@ -7,7 +7,7 @@ const delete204Response = (deleteResponses:any, _opts:any, paths:any) => {
   if (deleteResponses === null || typeof deleteResponses !== 'object') {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   if (!deleteResponses['204'] && !deleteResponses['202']) {
     return [{

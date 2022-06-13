@@ -1,0 +1,146 @@
+[
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:228:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:39:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:39:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:81:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:272:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:37:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:833:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:780:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:305:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:350:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:618:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:670:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:722:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:774:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:826:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:874:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:566:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1052:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1217:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1162:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1107:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1272:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:88:4"
+  },
+  {
+    "code": "SubscriptionsAndResourceGroupCasing",
+    "message": "The path segment resourcegroups should be resourceGroups.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents/{incidentName}\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRulesIncidents_API.json:39:4"
+  }
+]

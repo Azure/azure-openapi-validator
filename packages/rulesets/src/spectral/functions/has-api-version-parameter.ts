@@ -19,7 +19,7 @@ const hasApiVersionParameter = (apiPath:any, opts:any, paths:any) => {
     return [];
   }
 
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   if (apiPath.parameters) {
     if (apiPath.parameters.some((p:any) => p.name === apiVersionName && checkApiVersion(p))) {

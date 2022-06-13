@@ -2,7 +2,7 @@
 
 ## Description
 
-Booleans are not descriptive and make them hard to use. Instead use string enums with allowed set of values defined.
+Booleans may not be descriptive enough to use in the case. Instead, consider using string enums with allowed set of values defined..
 
 ## Why?
 

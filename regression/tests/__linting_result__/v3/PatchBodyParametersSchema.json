@@ -1,0 +1,14 @@
+[
+  {
+    "code": "PatchBodyParametersSchema",
+    "message": "Properties of a PATCH request body must not be required, property:properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}\"].patch.parameters[\"3\"].schema",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:237:10"
+  },
+  {
+    "code": "PatchBodyParametersSchema",
+    "message": "Properties of a PATCH request body must not be required, property:properties.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}\"].patch.parameters[\"4\"].schema",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:747:10"
+  }
+]

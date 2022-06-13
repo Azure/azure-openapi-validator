@@ -8,7 +8,7 @@ const paginationResponse = (operation:any, _opts:any, paths:any) => {
   if (operation === null || typeof operation !== 'object') {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   // responses is required property of an operation in OpenAPI 2.0, so if
   // isn't present this will be flagged elsewhere -- just return;

@@ -11,7 +11,7 @@ const operationId = (operation:any, _opts:any, paths:any) => {
   if (operation === null || typeof operation !== 'object') {
     return [];
   }
-  const path = paths.path || paths.target || [];
+  const path = paths.path || [];
 
   const errors:any[] = [];
 
