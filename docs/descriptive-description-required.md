@@ -1,14 +1,25 @@
 # DescriptiveDescriptionRequired
+
+## Category
+
+SDK Warning
+
+## Applies to
+
+ARM and Data plane OpenAPI(swagger) specs
+
+## Output Message
+
+The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.
+
 ## Description
-This rule validates that a description property is not empty. An empty description does not provide value for customers and makes it more difficult to use the generated code as a consumer.
-## How to fix
-Replace the empty string with a useful description.
-## Effect on generated code
-### Before
-```
 
-```
-### After
-```
+The value of the 'description' property must be descriptive. It cannot be spaces or empty description.
 
-```
+## Why the rule is important
+
+Appropriate documentation could not be generated without a detailed 'description' value.
+
+## How to fix the violation
+
+For each 'description' property, provide a detailed description value.

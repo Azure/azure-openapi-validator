@@ -1,5 +1,25 @@
 # ParameterDescriptionRequired
+
+## Category
+
+SDK Warning
+
+## Applies to
+
+ARM and Data plane OpenAPI(swagger) specs
+
+## Output Message
+
+{0} lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.
+
 ## Description
-In a spec, parameters can have a `description` property to provide information. This value is used in the documentation for the operation and in doc comments for methods that represent this operation in the generated code. Providing a description is necessary for generating high quality code.
-## How to fix
-Add a `description` property to the parameter.
+
+A parameter must have 'description' property.
+
+## Why the rule is important
+
+Appropriate documentation could not be generated without the 'description' property.
+
+## How to fix the violation
+
+For each parameter, provide a 'description' property.
