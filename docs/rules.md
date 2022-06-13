@@ -35,6 +35,12 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.md) for details.
 
+### ArrayMustHaveType
+
+An array must claim "type:'array'" explicitly.
+
+Please refer to [array-must-have-type.md](./array-must-have-type.md) for details.
+
 ### ArraySchemaMustHaveItems
 
 A schema of `array` type must always contain an `items` property. without it, AutoRest will fail to generate an SDK.
@@ -58,12 +64,6 @@ Please refer to [avoid-empty-response-schema.md](./avoid-empty-response-schema.m
 The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
 
 Please refer to [avoid-msdn-references.md](./avoid-msdn-references.md) for details.
-
-### ArrayMustHaveType
-
-An array must claim "type:'array'" explicitly.
-
-Please refer to [array-must-have-type.md](./array-must-have-type.md) for details.
 
 ### AvoidNestedProperties
 
@@ -232,6 +232,18 @@ Verifies whether format is specified as "uuid" or not.
 
 Please refer to [guid-usage.md](./guid-usage.md) for details.
 
+### HostParametersValidation
+
+This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
+
+1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:uri'.
+   - Client level (x-ms-parameter-location: client)
+   - A path component (in: path)
+   - Part of a 'x-ms-parametrized-host' with 'useSchemePrefix: false'
+   - Tagged 'x-ms-skip-encoding: true'
+
+Please refer to [host-parameters-validation.md](./host-parameters-validation.md) for details.
+
 ### HttpsSupportedScheme
 
 Verifies whether specification supports HTTPS scheme or not.
@@ -304,11 +316,23 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### LroPostMustNotUseOriginalUriAsFinalState
+
+The long running post operation must not use final-stat-via:original-uri.
+
+Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
+
 ### LROStatusCodesReturnTypeSchema
 
 The '200'/'201' responses of the long running operation must have a schema definition.
 
 Please refer to [lro-status-codes-return-type-schema.md](./lro-status-codes-return-type-schema.md) for details.
+
+### LroWithOriginalUriAsFinalState
+
+The long running operation with final-state-via:original-uri should have a sibling 'get' operation.
+
+Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
 
 ### MissingTypeObject
 
@@ -432,8 +456,7 @@ Please refer to [parameters-order.md](./parameters-order.md) for details.
 
 ### PatchBodyParametersSchema
 
-A request parameter of the Patch Operation must not have a required/default value.
-But it's allowed when the only required properties is marked as discriminator, because the discriminator must be required.
+A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability:"create"' value.
 
 Please refer to [patch-body-parameters-schema.md](./patch-body-parameters-schema.md) for details.
 
@@ -572,6 +595,12 @@ Please refer to [security-definitions-structure.md](./security-definitions-struc
 
 Please refer to [subscription-id-parameter-in-operations.md](./subscription-id-parameter-in-operations.md) for details.
 
+### SubscriptionsAndResourceGroupCasing
+
+The URLs should be checked for consistency. It is easy to type "resourcegroups" instead of "resourceGroups". The current rules allow that through, which causes an issue at the resource provider registration step. When that happens, the APIs get split into two sets in the swagger. The RPaaS registration is very strict and requires the same resource to have all APIs in one set. The pipeline needs to be aware of this kind of behavior and provider URL validation.
+
+Please refer to [subscriptions-and-resourcegroup-casing.md](./subscriptions-and-resourcegroup-casing.md) for details.
+
 ### SummaryAndDescriptionMustNotBeSame
 
 Each operation has a summary and description values. They must not be same.
@@ -654,12 +683,6 @@ Please refer to [unique-xms-enum-name.md](./unique-xms-enum-name.md) for details
 x-ms-example name should be unique in the same API version.
 
 Please refer to [unique-xms-example.md](./unique-xms-example.md) for details.
-
-### SubscriptionsAndResourceGroupCasing
-
-The URLs should be checked for consistency. It is easy to type "resourcegroups" instead of "resourceGroups". The current rules allow that through, which causes an issue at the resource provider registration step. When that happens, the APIs get split into two sets in the swagger. The RPaaS registration is very strict and requires the same resource to have all APIs in one set. The pipeline needs to be aware of this kind of behavior and provider URL validation.
-
-Please refer to [subscriptions-and-resourcegroup-casing.md](./subscriptions-and-resourcegroup-casing.md) for details.
 
 ### ValidFormats
 
