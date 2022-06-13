@@ -1,5 +1,17 @@
 # PatchBodyParametersSchema
 
+## Category
+
+ARM Error
+
+## Applies to
+
+ARM and Data plane OpenAPI(swagger) specs
+
+## Output Message
+
+Properties of a PATCH request body must not be {0}. PATCH operation: '{1}' Model Definition: '{2}' Property: '{3}'
+
 ## Description
 
 A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability:"create"' value.
@@ -12,7 +24,9 @@ A PATCH operation is used to update properties of a resource. Therefore, if the 
 
 Ensure that the request parameter of the Patch Operation does not have a required/default/'x-ms-mutability:"create"' value.A recommended way is to define a new model that only contains the patchable properties to replace the original parameter in request body.
 
-Good Examples: The following is a good example:
+## Good Examples
+
+The following is a good example:
 
 ```json
 ......
