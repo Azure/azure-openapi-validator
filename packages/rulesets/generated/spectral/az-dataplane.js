@@ -1232,7 +1232,7 @@ const ruleset = {
             message: "{{error}}",
             severity: "error",
             resolved: true,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.x-ms-parameterized-host"],
             then: {
                 function: hostParameters,
