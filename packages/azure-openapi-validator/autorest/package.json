@@ -1,6 +1,6 @@
 {
   "name": "@microsoft.azure/openapi-validator",
-  "version": "2.0.0",
+  "version": "2.0.0-beta.1",
   "description": "Azure OpenAPI Validator",
   "main": "./dist/index.js",
   "scripts": {
@@ -63,8 +63,8 @@
     "@stoplight/spectral-ref-resolver": "^1.0.0",
     "@stoplight/types": "12.3.0",
     "dependency-graph": "^0.11.0",
-    "@microsoft.azure/openapi-validator-core": "^1.0.0",
-    "@microsoft.azure/openapi-validator-rulesets": "^1.0.0",
+    "@microsoft.azure/openapi-validator-core": "^1.0.0-beta.1",
+    "@microsoft.azure/openapi-validator-rulesets": "^1.0.0-beta.1",
     "@azure-tools/openapi": "^3.3.0",
     "fs": "^0.0.1-security",
     "js-yaml": "^3.14.0",

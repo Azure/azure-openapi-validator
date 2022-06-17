@@ -1,168 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
 
-function checkApiVersion(param) {
-    if (param.in !== "query") {
-        return false;
-    }
-    return true;
-}
-const apiVersionName = "api-version";
-const hasApiVersionParameter = (apiPath, opts, paths) => {
-    var _a, _b;
-    if (apiPath === null || typeof apiPath !== 'object') {
-        return [];
-    }
-    if (opts === null || typeof opts !== 'object' || !opts.methods) {
-        return [];
-    }
-    const path = paths.path || [];
-    if (apiPath.parameters) {
-        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
-            return [];
-        }
-    }
-    const messages = [];
-    for (const method of Object.keys(apiPath)) {
-        if (opts.methods.includes(method)) {
-            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
-            if (!param || param.length === 0) {
-                messages.push({
-                    message: `Operation should include an 'api-version' parameter.`,
-                    path: [...path, method]
-                });
-                continue;
-            }
-            if (!checkApiVersion(param[0])) {
-                messages.push({
-                    message: `Operation 'api-version' parameter should be a query parameter.`,
-                    path: [...path, method]
-                });
-            }
-        }
-    }
-    return messages;
-};
-
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { properties, ...schema.properties };
-    }
-    return properties;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
-        return [];
-    }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
-    }
-    if (schema.required) {
-        requires = [...schema.required, requires];
-    }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
-
-const validateOriginalUri = (lroOptions, opts, ctx) => {
-    if (!lroOptions || typeof lroOptions !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const messages = [];
-    const getOperationPath = [...path.slice(0, -2), "get"];
-    if (!jsonPath(getOperationPath, ctx.document.parserResult.data)) {
-        messages.push({
-            path: [...path.slice(0, -1)],
-            message: "",
-        });
-    }
-    return messages;
-};
-
-const pathBodyParameters = (parameters, _opts, paths) => {
-    if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
-        return [];
-    }
-    const path = paths.path || [];
-    const properties = getProperties(parameters.schema);
-    const requiredProperties = getRequiredProperties(parameters.schema);
-    const errors = [];
-    for (const prop of Object.keys(properties)) {
-        if (properties[prop].default) {
-            errors.push({
-                message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
-                path: [...path, "schema"]
-            });
-        }
-        if (requiredProperties.includes(prop)) {
-            errors.push({
-                message: `Properties of a PATCH request body must not be required, property:${prop}.`,
-                path: [...path, "schema"]
-            });
-        }
-        const xmsMutability = properties[prop]['x-ms-mutability'];
-        if (xmsMutability && xmsMutability.length === 1 && xmsMutability[0] === "create") {
-            errors.push({
-                message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
-                path: [...path, "schema"]
-            });
-        }
-    }
-    return errors;
-};
-
-const pathSegmentCasing = (apiPaths, _opts, paths) => {
-    if (apiPaths === null || typeof apiPaths !== 'object') {
-        return [];
-    }
-    if (!_opts || !_opts.segments || !Array.isArray(_opts.segments)) {
-        return [];
-    }
-    const segments = _opts.segments;
-    const path = paths.path || [];
-    const errors = [];
-    for (const apiPath of Object.keys(apiPaths)) {
-        segments.forEach((seg) => {
-            const idx = apiPath.toLowerCase().indexOf("/" + seg.toLowerCase());
-            if (idx !== -1) {
-                const originalSegment = apiPath.substring(idx + 1, idx + seg.length + 1);
-                if (originalSegment !== seg) {
-                    errors.push({
-                        message: `The path segment ${originalSegment} should be ${seg}.`,
-                        path: [...path, apiPath]
-                    });
-                }
-            }
-        });
-    }
-    return errors;
-};
-
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
         return [];
@@ -1355,6 +1193,168 @@ const ruleset$1 = {
     },
 };
 
+function checkApiVersion(param) {
+    if (param.in !== "query") {
+        return false;
+    }
+    return true;
+}
+const apiVersionName = "api-version";
+const hasApiVersionParameter = (apiPath, opts, paths) => {
+    var _a, _b;
+    if (apiPath === null || typeof apiPath !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.methods) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (apiPath.parameters) {
+        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
+            return [];
+        }
+    }
+    const messages = [];
+    for (const method of Object.keys(apiPath)) {
+        if (opts.methods.includes(method)) {
+            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
+            if (!param || param.length === 0) {
+                messages.push({
+                    message: `Operation should include an 'api-version' parameter.`,
+                    path: [...path, method]
+                });
+                continue;
+            }
+            if (!checkApiVersion(param[0])) {
+                messages.push({
+                    message: `Operation 'api-version' parameter should be a query parameter.`,
+                    path: [...path, method]
+                });
+            }
+        }
+    }
+    return messages;
+};
+
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { properties, ...schema.properties };
+    }
+    return properties;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+
+const validateOriginalUri = (lroOptions, opts, ctx) => {
+    if (!lroOptions || typeof lroOptions !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const messages = [];
+    const getOperationPath = [...path.slice(0, -2), "get"];
+    if (!jsonPath(getOperationPath, ctx.document.parserResult.data)) {
+        messages.push({
+            path: [...path.slice(0, -1)],
+            message: "",
+        });
+    }
+    return messages;
+};
+
+const pathBodyParameters = (parameters, _opts, paths) => {
+    if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
+        return [];
+    }
+    const path = paths.path || [];
+    const properties = getProperties(parameters.schema);
+    const requiredProperties = getRequiredProperties(parameters.schema);
+    const errors = [];
+    for (const prop of Object.keys(properties)) {
+        if (properties[prop].default) {
+            errors.push({
+                message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+        if (requiredProperties.includes(prop)) {
+            errors.push({
+                message: `Properties of a PATCH request body must not be required, property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+        const xmsMutability = properties[prop]['x-ms-mutability'];
+        if (xmsMutability && xmsMutability.length === 1 && xmsMutability[0] === "create") {
+            errors.push({
+                message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+    }
+    return errors;
+};
+
+const pathSegmentCasing = (apiPaths, _opts, paths) => {
+    if (apiPaths === null || typeof apiPaths !== 'object') {
+        return [];
+    }
+    if (!_opts || !_opts.segments || !Array.isArray(_opts.segments)) {
+        return [];
+    }
+    const segments = _opts.segments;
+    const path = paths.path || [];
+    const errors = [];
+    for (const apiPath of Object.keys(apiPaths)) {
+        segments.forEach((seg) => {
+            const idx = apiPath.toLowerCase().indexOf("/" + seg.toLowerCase());
+            if (idx !== -1) {
+                const originalSegment = apiPath.substring(idx + 1, idx + seg.length + 1);
+                if (originalSegment !== seg) {
+                    errors.push({
+                        message: `The path segment ${originalSegment} should be ${seg}.`,
+                        path: [...path, apiPath]
+                    });
+                }
+            }
+        });
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -1363,10 +1363,10 @@ const ruleset = {
             message: "{{description}}",
             severity: "error",
             resolved: false,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.host"],
             then: {
-                function: spectralFunctions.truthy,
+                function: truthy,
             },
         },
         ApiVersionParameterRequired: {
@@ -1374,7 +1374,7 @@ const ruleset = {
             message: "{{error}}",
             severity: "error",
             resolved: true,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths.*", "$.x-ms-paths.*"],
             then: {
                 function: hasApiVersionParameter,
@@ -1388,7 +1388,7 @@ const ruleset = {
             message: "{{error}}",
             severity: "error",
             resolved: false,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths", "$.x-ms-paths"],
             then: {
                 function: pathSegmentCasing,
@@ -1402,7 +1402,7 @@ const ruleset = {
             message: "{{error}}",
             severity: "error",
             resolved: true,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
             then: {
                 function: pathBodyParameters,
@@ -1413,10 +1413,10 @@ const ruleset = {
             message: "{{error}}",
             severity: "warn",
             resolved: false,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: ["$.definitions..items[?(@object())]^"],
             then: {
-                function: spectralFunctions.truthy,
+                function: truthy,
                 field: "type",
             },
         },
@@ -1425,7 +1425,7 @@ const ruleset = {
             message: "{{description}}",
             severity: "warn",
             resolved: true,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: [
                 "$[paths,'x-ms-paths'].*[put,patch,delete].x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
             ],
@@ -1438,12 +1438,12 @@ const ruleset = {
             message: "{{description}}",
             severity: "warn",
             resolved: true,
-            formats: [spectralFormats.oas2],
+            formats: [oas2],
             given: [
                 "$[paths,'x-ms-paths'].*.post.x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
             ],
             then: {
-                function: spectralFunctions.falsy,
+                function: falsy,
             },
         },
     },
