@@ -4,6 +4,18 @@ There are a number of rules that can be validated with azure openapi validator, 
 
 ## Rules
 
+### AdditionalPropertiesAndProperties
+
+Don't specify both additionalProperties and properties in the same object schema. Only use additionalProperties to define "map" structures.
+
+Please refer to [additional-properties-and-properties.md](./additional-properties-and-properties.md) for details.
+
+### AdditionalPropertiesObject
+
+Specifying `additionalProperties` with `type: object` is a common error.
+
+Please refer to [additional-properties-object.md](./additional-properties-object.md) for details.
+
 ### AllResourcesMustHaveGetOperation
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md) ,all the resources ,including top-level and nested resources, must have a get operation.
@@ -16,16 +28,23 @@ This rule appears if in the parameter definition you have anonymous types.
 
 Please refer to [anonymous-body-parameter.md](./anonymous-body-parameter.md) for details.
 
+### ApiVersionEnum
+
+The `api-version` parameter should not be an enum. This rule is primarily to discourage a practice observed
+in some APIs of defining `api-version` as an enum with a single value -- the most current API version.
+This requires removing the old API version when a new version is defined, which is disallowed by the breaking changes policy.
+
+Please refer to [api-version-enum.md](./api-version-enum.md) for details.
+
 ### APIVersionPattern
 
-The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.) NOTE that this is the en-US ordering of month and date.
+The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
-
-- -preview - Indicates the API version is in (public) preview
-- -alpha
-- -beta
-- -rc (release candidate)
-- -privatepreview
+* -preview - Indicates the API version is in (public) preview
+* -alpha
+* -beta
+* -rc (release candidate)
+* -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -101,6 +120,15 @@ Per ARM guidelines, a model returned by an `x-ms-pageable` operation must have a
 
 Please refer to [collection-object-properties-naming.md](./collection-object-properties-naming.md) for details.
 
+### ConsistentResponseBody
+
+The standard pattern for REST operations is that a create (PUT), read (GET), and update (PATCH) all return
+a representation of the resource.
+For a path with a "create" operation (put or patch that returns 201), the 200 response of get, put, and patch, if present,
+should have the same response body schema as the create operation 201 response.
+
+Please refer to [consistent-response-body.md](./consistent-response-body.md) for details.
+
 ### ControlCharactersNotAllowed
 
 Verifies whether if a specification does not have any control characters in it.
@@ -120,15 +148,27 @@ The value assigned as a default for an enum property must be present in the enum
 
 Please refer to [default-must-be-in-enum.md](./default-must-be-in-enum.md) for details.
 
+### DefaultResponse
+
+All operations should have a default (error) response.
+
+Please refer to [default-response.md](./default-response.md) for details.
+
 ### DefinitionsPropertiesNamesCamelCase
 
 Property names must use lowerCamelCase style.
-If the property is a single word (ex: foo, bar, etc.) it will be all lowercase.
-Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized.
-Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.)
-For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](<https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx>)
+If the property is a single word (ex: foo, bar, etc.) it will be all lowercase. 
+Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized. 
+Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.) 
+For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx)
 
 Please refer to [definitions-properties-names-camel-case.md](./definitions-properties-names-camel-case.md) for details.
+
+### Delete204Response
+
+A delete operation should have a 204 response.
+
+Please refer to [delete-204-response.md](./delete-204-response.md) for details.
 
 ### DeleteInOperationName
 
@@ -208,11 +248,25 @@ Enum must not contain duplicated value (case insensitive).
 
 Please refer to [enum-unique-value.md](./enum-unique-value.md) for details.
 
+### ErrorResponse
+
+Error response body should conform to [Azure API Guidelines](https://github.com/microsoft/api-guidelines/blob/vNext/azure/Guidelines.md#handling-errors).
+
+Please refer to [error-response.md](./error-response.md) for details.
+
 ### ExtensionResourcePathPattern
 
 Path (operation) for 'extension routing type' (that has additional /providers/ segment in parent scope) must be of the form '{scope}/provider/RPNamespace/resourceTypeName' (shouldn't include parent scope)
 
 Please refer to [extension-resource-path-pattern.md](./extension-resource-path-pattern.md) for details.
+
+### FormData
+
+It can be appropriate to use formData parameters when sending multiple file-type parameters or an array of file-type parameters.
+But it is usually unnecessary and can be overly complicated to use formData when all you are doing is sending a single file-type parameter.
+Instead, consider defining a `body` parameter with `type: string, format: binary` and use content-type `application/octet-stream`.
+
+Please refer to [formdata.md](./formdata.md) for details.
 
 ### GetCollectionResponseSchema
 
@@ -232,10 +286,15 @@ Verifies whether format is specified as "uuid" or not.
 
 Please refer to [guid-usage.md](./guid-usage.md) for details.
 
+### HeaderDisallowed
+
+Authorization, Content-type, and Accept headers should not be defined explicitly.
+
+Please refer to [header-disallowed.md](./header-disallowed.md) for details.
+
 ### HostParametersValidation
 
 This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
-
 1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:uri'.
    - Client level (x-ms-parameter-location: client)
    - A path component (in: path)
@@ -316,6 +375,18 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### LroExtension
+
+Operations with a 202 response should specify `x-ms-long-running-operation: true`.
+
+Please refer to [lro-extension.md](./lro-extension.md) for details.
+
+### LroHeaders
+
+A 202 response should include an `Operation-Location` response header.
+
+Please refer to [lro-headers.md](./lro-headers.md) for details.
+
 ### LroPostMustNotUseOriginalUriAsFinalState
 
 The long running post operation must not use final-stat-via:original-uri.
@@ -345,6 +416,13 @@ Please refer to [missing-type-object.md](./missing-type-object.md) for details.
 If defines response code 4xx or 5xx , x-ms-error-response:true is required. There is one exception: a HEAD operation with 404 SHOULD have x-ms-error-response:false, as it is often used to check for existence of resources, the HEAD with 404 means the resource doesn’t exist.
 
 Please refer to [missing-xms-error-response.md](./missing-xms-error-response.md) for details.
+
+### MsPaths
+
+Don't use `x-ms-paths` except where necessary to support legacy APIs.
+It is non-standard and therefore ignored by tooling that has not been specifically designed to support it.
+
+Please refer to [ms-paths.md](./ms-paths.md) for details.
 
 ### MutabilityWithReadOnly
 
@@ -382,6 +460,12 @@ The [`x-ms-client-name`](https://github.com/Azure/autorest/tree/main/docs/extens
 
 Please refer to [non-empty-client-name.md](./non-empty-client-name.md) for details.
 
+### Nullable
+
+You should avoid the use of `x-nullable: true`. Properties with no value should simply be omitted from the payload.
+
+Please refer to [nullable.md](./nullable.md) for details.
+
 ### OneUnderscoreInOperationId
 
 An operationId can have exactly one underscore, not adhering to it can cause errors in code generation.
@@ -412,6 +496,18 @@ Each operation must have a unique operationId.
 
 Please refer to [operation-id-required.md](./operation-id-required.md) for details.
 
+### OperationId
+
+OperationId should conform to Azure API Guidelines.
+
+Please refer to [operation-id.md](./operation-id.md) for details.
+
+### OperationSummaryOrDescription
+
+Every operation should have a summary or description.
+
+Please refer to [operation-summary-or-description.md](./operation-summary-or-description.md) for details.
+
 ### OperationsAPIImplementation
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), each RP must expose an operations API that returns information about all the operations available with the service.
@@ -436,17 +532,53 @@ Per definition of AutoRest [x-ms-pageable extension](https://github.com/Azure/au
 
 Please refer to [pageable-requires200-response.md](./pageable-requires200-response.md) for details.
 
+### PaginationResponse
+
+Pagination parameters must conform to Azure guidelines.
+
+Please refer to [pagination-response.md](./pagination-response.md) for details.
+
+### ParameterDefaultNotAllowed
+
+A required parameter should not specify a default value.
+
+Please refer to [parameter-default-not-allowed.md](./parameter-default-not-allowed.md) for details.
+
 ### ParameterDescriptionRequired
 
 A parameter must have 'description' property.
 
 Please refer to [parameter-description-required.md](./parameter-description-required.md) for details.
 
+### ParameterDescriptionRequired
+
+All parameters should have a description.
+
+Please refer to [parameter-description.md](./parameter-description.md) for details.
+
+### ParameterNamesConvention
+
+Parameter names should conform to Azure naming conventions.
+
+Please refer to [parameter-names-convention.md](./parameter-names-convention.md) for details.
+
+### ParameterNamesUnique
+
+All parameter names for an operation should be case-insensitive unique.
+
+Please refer to [parameter-names-unique.md](./parameter-names-unique.md) for details.
+
 ### ParameterNotDefinedInGlobalParameters
 
 Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.
 
 Please refer to [parameter-not-defined-in-global-parameters.md](./parameter-not-defined-in-global-parameters.md) for details.
+
+### ParameterOrder
+
+Path parameters must be in the same order as in the path.
+
+Please refer to [parameter-order.md](./parameter-order.md) for details.
 
 ### ParametersOrder
 
@@ -460,11 +592,36 @@ A request parameter of the Patch Operation must not have a required/default/'x-m
 
 Please refer to [patch-body-parameters-schema.md](./patch-body-parameters-schema.md) for details.
 
+### PatchContentType
+
+The request body content type for patch operations should be JSON merge patch.
+
+Please refer to [patch-content-type.md](./patch-content-type.md) for details.
+
 ### PatchInOperationName
 
 Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
+
+### PathCharacters
+
+Path should contain only recommended characters.
+The recommended characters are 0-9, A-Z, a-z, -, ., _, ~, and :.
+
+Please refer to [path-characters.md](./path-characters.md) for details.
+
+### PathParameterNames
+
+Path parameter names should be consistent across all paths.
+
+Please refer to [path-parameter-names.md](./path-parameter-names.md) for details.
+
+### PathParameterSchema
+
+Path parameter should be type: string and specify maxLength and pattern.
+
+Please refer to [path-parameter-schema.md](./path-parameter-schema.md) for details.
 
 ### PathResourceProviderMatchNamespace
 
@@ -486,6 +643,12 @@ For more detail, pls refer to https://github.com/microsoft/api-guidelines/blob/v
 
 Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-name-camel-case.md) for details.
 
+### Post201Response
+
+Using post for a create operation is discouraged.
+
+Please refer to [post-201-response.md](./post-201-response.md) for details.
+
 ### PostOperationIdContainsUrlVerb
 
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
@@ -501,7 +664,6 @@ Please refer to [preview-version-over-one-year.md](./preview-version-over-one-ye
 ### PrivateEndpointResourceSchemaValidation
 
 This rule is to check if the schemas used by private endpoint conform to the common [privateLink](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v1/privatelinks.json). The rule will check the schemas of following models and their properties:
-
 1. PrivateEndpointConnection
 2. PrivateEndpointConnectionProperties
 3. PrivateEndpointConnectionListResult
@@ -510,6 +672,24 @@ This rule is to check if the schemas used by private endpoint conform to the com
 6. PrivateLinkResourceListResult
 
 Please refer to [private-endpoint-resource-schema-validation.md](./private-endpoint-resource-schema-validation.md) for details.
+
+### PropertyDescription
+
+Property should have a description.
+
+Please refer to [property-description.md](./property-description.md) for details.
+
+### PropertyNameConvention
+
+Property names should be camel case.
+
+Please refer to [property-names-convention.md](./property-names-convention.md) for details.
+
+### PropertyType
+
+Schema property should have a defined type.
+
+Please refer to [property-type.md](./property-type.md) for details.
 
 ### PutGetPatchResponseSchema
 
@@ -523,11 +703,30 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [put-in-operation-name.md](./put-in-operation-name.md) for details.
 
+### PutPath
+
+The put method should be used for resource create or replace, which generally requires the resource id to specified as the final path parameter.
+
+Please refer to [put-path.md](./put-path.md) for details.
+
 ### PutRequestResponseScheme
 
 The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
+
+### RequestBodyNotAllowed
+
+A get or delete operation must not accept a body parameter.
+
+Please refer to [request-body-not-allowed.md](./request-body-not-allowed.md) for details.
+
+### RequestBodyOptional
+
+The body parameter is not marked as required -- this is a common error.
+While there are some cases where a body may be optional, they are rare.
+
+Please refer to [request-body-optional.md](./request-body-optional.md) for details.
 
 ### RequiredApiVersionParameter
 
@@ -583,6 +782,24 @@ Verifies if a Azure resource has a corresponding 'provisioningState' property. I
 
 Please refer to [rpaas-resource-provisioning-state.md](./rpaas-resource-provisioning-state.md) for details.
 
+### SchemaDescriptionOrTitle
+
+All schemas should have a description or title.
+
+Please refer to [schema-description-or-title.md](./schema-description-or-title.md) for details.
+
+### SchemaNamesConvention
+
+Schema names should be Pascal case. This includes any acronyms.
+
+Please refer to [schema-names-convention.md](./schema-names-convention.md) for details.
+
+### SecurityDefinitionDescription
+
+All security definitions should have a description.
+
+Please refer to [security-definition-description.md](./security-definition-description.md) for details.
+
 ### SecurityDefinitionsStructure
 
 Each OpenAPI json document must contain a security definitions section and the section must adhere to a certain format.
@@ -600,6 +817,12 @@ Please refer to [subscription-id-parameter-in-operations.md](./subscription-id-p
 The URLs should be checked for consistency. It is easy to type "resourcegroups" instead of "resourceGroups". The current rules allow that through, which causes an issue at the resource provider registration step. When that happens, the APIs get split into two sets in the swagger. The RPaaS registration is very strict and requires the same resource to have all APIs in one set. The pipeline needs to be aware of this kind of behavior and provider URL validation.
 
 Please refer to [subscriptions-and-resourcegroup-casing.md](./subscriptions-and-resourcegroup-casing.md) for details.
+
+### SuccessResponseBody
+
+All success responses except 202 & 204 should define a response body.
+
+Please refer to [success-response-body.md](./success-response-body.md) for details.
 
 ### SummaryAndDescriptionMustNotBeSame
 
@@ -670,7 +893,6 @@ Please refer to [unique-model-name.md](./unique-model-name.md) for details.
 
 This rule will check all the swagger files with the same api-version, and ensure there is no duplicate x-ms-enum name.
 The following cases are deemed as violation:
-
 1. if two enums have the same x-ms-enum name , but types are different.
 2. if two enums have the same x-ms-enum name , but 'modelAsString' are different.
 3. if two enums have the same x-ms-enum name , but include different values.
@@ -695,6 +917,18 @@ Please refer to [valid-formats.md](./valid-formats.md) for details.
 Every operation response must contain a valid code like "200","201","202" or "204" which indicates the operation is succeed and it's not allowed that a response schema just contains a "default" code.
 
 Please refer to [valid-response-code-required.md](./valid-response-code-required.md) for details.
+
+### VersionConvention
+
+API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.
+
+Please refer to [version-convention.md](./version-convention.md) for details.
+
+### VersionPolicy
+
+All services should follow the Azure API Guidelines for specifying the API version using a query parameter with a date-based value.
+
+Please refer to [version-policy.md](./version-policy.md) for details.
 
 ### XmsClientNameParameter
 
