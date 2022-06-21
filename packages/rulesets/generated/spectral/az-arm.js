@@ -1193,6 +1193,64 @@ const ruleset$1 = {
     },
 };
 
+function verifyResourceGroup(path) {
+    const lowerCasePath = path.toLowerCase();
+    if (lowerCasePath.includes("/resourcegroups/") && lowerCasePath.includes("/resourcegroups/{resourcegroupsname}")) {
+        return false;
+    }
+    return true;
+}
+function verifySubscriptionId(path) {
+    const lowerCasePath = path.toLowerCase();
+    if (lowerCasePath.includes("/subscriptions/") && lowerCasePath.includes("/subscriptions/{subscriptionid}")) {
+        return false;
+    }
+    return true;
+}
+function verifyResourceType(path) {
+    const patterns = [/.+\/providers\/[^\/]+\/{[^\/]+}.+/gi, /.+\/providers\/{[^\/]+}\/.+/gi, /.+\/providers\/\w+\/.+/gi];
+    if (patterns.some((p) => p.test(path))) {
+        return false;
+    }
+    return true;
+}
+const verifyArmPath = (pathKey, _opts, paths) => {
+    if (pathKey === null || typeof pathKey !== "string") {
+        return [];
+    }
+    const validSegments = ["resourceType", "resourceGroups", "subscriptionId"];
+    if (!_opts || !_opts.segmentToCheck || !validSegments.includes(_opts.segmentToCheck)) {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    if (_opts.segmentToCheck === "resourceType") {
+        if (!verifyResourceType(pathKey)) {
+            errors.push({
+                message: "The URI for the CURD methods do not contain a resource type.",
+                path: [...path],
+            });
+        }
+    }
+    if (_opts.segmentToCheck === "resourceGroups") {
+        if (!verifyResourceGroup(pathKey)) {
+            errors.push({
+                message: "The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.",
+                path: [...path],
+            });
+        }
+    }
+    if (_opts.segmentToCheck === "subscriptionId") {
+        if (!verifySubscriptionId(pathKey)) {
+            errors.push({
+                message: "The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.",
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
 function checkApiVersion(param) {
     if (param.in !== "query") {
         return false;
@@ -1444,6 +1502,87 @@ const ruleset = {
             ],
             then: {
                 function: falsy,
+            },
+        },
+        URIContainsSubscriptionId: {
+            description: "Uri for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*~"],
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "subscriptionId",
+                },
+            },
+        },
+        URIContainsResourceType: {
+            description: "Uri for resource CRUD methods MUST contain a resource type.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*~"],
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "resourceType",
+                },
+            },
+        },
+        URIContainsResourceGroup: {
+            description: "Uri for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*~"],
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "resourceGroups",
+                },
+            },
+        },
+        URIForPutOperation: {
+            description: "The URI for 'put' operation must be under a subscription and resource group.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*"],
+            then: {
+                function: falsy,
+            },
+        },
+        URIForNestedResource: {
+            description: "Uri for CRUD methods on a nested resource type MUST follow valid resource naming.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*~"],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    notMatch: ".+/providers/[\\w\\.]+/\\w+(?:/\\w+/default|/\\w+/{[^/]+}){2,3}/w+$",
+                },
+            },
+        },
+        URIForResourceAction: {
+            description: "Uri for 'post' method on a resource type MUST follow valid resource naming.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.post^~"],
+            then: {
+                function: pattern,
+                functionOPtions: {
+                    match: ".+/providers/[w.]+(?:/\\w+/default|/\\w+/{[^/]+}){1,3}/w+$",
+                },
             },
         },
     },

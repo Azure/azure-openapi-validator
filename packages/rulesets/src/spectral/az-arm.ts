@@ -1,6 +1,7 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { falsy, truthy } from "@stoplight/spectral-functions"
+import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
+import verifyArmPath from "./functions/arm-path-validation"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import validateOriginalUri from "./functions/lro-original-uri"
 import pathBodyParameters from "./functions/patch-body-parameters"
@@ -94,6 +95,87 @@ const ruleset: any = {
       ],
       then: {
         function: falsy,
+      },
+    },
+    URIContainsSubscriptionId: {
+      description: "Uri for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*~"],
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "subscriptionId",
+        },
+      },
+    },
+    URIContainsResourceType: {
+      description: "Uri for resource CRUD methods MUST contain a resource type.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*~"],
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceType",
+        },
+      },
+    },
+    URIContainsResourceGroup: {
+      description: "Uri for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*~"],
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceGroups",
+        },
+      },
+    },
+    URIForPutOperation: {
+      description: "The URI for 'put' operation must be under a subscription and resource group.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*"],
+      then: {
+        function: falsy,
+      },
+    },
+    URIForNestedResource: {
+      description: "Uri for CRUD methods on a nested resource type MUST follow valid resource naming.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*~"],
+      then: {
+        function: pattern,
+        functionOptions: {
+          notMatch: ".+/providers/[\\w\\.]+/\\w+(?:/\\w+/default|/\\w+/{[^/]+}){2,3}/w+$",
+        },
+      },
+    },
+    URIForResourceAction: {
+      description: "Uri for 'post' method on a resource type MUST follow valid resource naming.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.post^~"],
+      then: {
+        function: pattern,
+        functionOPtions: {
+          match: ".+/providers/[w.]+(?:/\\w+/default|/\\w+/{[^/]+}){1,3}/w+$",
+        },
       },
     },
   },
