@@ -1193,61 +1193,120 @@ const ruleset$1 = {
     },
 };
 
+function matchAnyPatterns(patterns, path) {
+    return patterns.some((p) => p.test(path));
+}
+function notMatchPatterns(patterns, path) {
+    return patterns.every((p) => !p.test(path));
+}
 function verifyResourceGroup(path) {
     const lowerCasePath = path.toLowerCase();
-    if (lowerCasePath.includes("/resourcegroups/") && lowerCasePath.includes("/resourcegroups/{resourcegroupsname}")) {
+    if (lowerCasePath.includes("/resourcegroups/") && !lowerCasePath.includes("/resourcegroups/{resourcegroupname}")) {
         return false;
     }
     return true;
 }
 function verifySubscriptionId(path) {
     const lowerCasePath = path.toLowerCase();
-    if (lowerCasePath.includes("/subscriptions/") && lowerCasePath.includes("/subscriptions/{subscriptionid}")) {
+    if (lowerCasePath.includes("/subscriptions/") && !lowerCasePath.includes("/subscriptions/{subscriptionid}")) {
         return false;
     }
     return true;
 }
+function verifyResourceGroupScope(path) {
+    const patterns = [
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
+        /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
+        /^\/?{\w+}\/providers\/.+/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
+}
 function verifyResourceType(path) {
-    const patterns = [/.+\/providers\/[^\/]+\/{[^\/]+}.+/gi, /.+\/providers\/{[^\/]+}\/.+/gi, /.+\/providers\/\w+\/.+/gi];
-    if (patterns.some((p) => p.test(path))) {
-        return false;
-    }
-    return true;
+    const patterns = [/^.*\/providers\/microsoft\.\w+\/\w+.*/gi];
+    return matchAnyPatterns(patterns, path);
+}
+function verifyNestResourceType(path) {
+    const patterns = [
+        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}/gi,
+        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+/gi,
+        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*/gi,
+    ];
+    return notMatchPatterns(patterns, path);
+}
+function verifyScope(path) {
+    const patterns = [
+        /^\/subscriptions\/{subscriptionId}(\/resourceGroups\/{resourceGroupName})?\/providers\/.+/gi,
+        /^\/?{\w+}\/providers\/.+/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
 }
 const verifyArmPath = (pathKey, _opts, paths) => {
     if (pathKey === null || typeof pathKey !== "string") {
         return [];
     }
-    const validSegments = ["resourceType", "resourceGroups", "subscriptionId"];
-    if (!_opts || !_opts.segmentToCheck || !validSegments.includes(_opts.segmentToCheck)) {
+    const validOptions = ["scope", "resourceGroupParam", "subscriptionIdParam", "resourceGroupScope", "resourceType", "nestedResourceType"];
+    if (!_opts ||
+        !_opts.segmentToCheck ||
+        (typeof _opts.segmentToCheck === "string" && !validOptions.includes(_opts.segmentToCheck)) ||
+        (Array.isArray(_opts.segmentToCheck) && !_opts.segmentToCheck.every((s) => validOptions.includes(s)))) {
         return [];
     }
     const path = paths.path || [];
     const errors = [];
-    if (_opts.segmentToCheck === "resourceType") {
-        if (!verifyResourceType(pathKey)) {
-            errors.push({
-                message: "The URI for the CURD methods do not contain a resource type.",
-                path: [...path],
-            });
-        }
-    }
-    if (_opts.segmentToCheck === "resourceGroups") {
-        if (!verifyResourceGroup(pathKey)) {
-            errors.push({
-                message: "The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.",
-                path: [...path],
-            });
-        }
-    }
-    if (_opts.segmentToCheck === "subscriptionId") {
-        if (!verifySubscriptionId(pathKey)) {
-            errors.push({
-                message: "The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.",
-                path: [...path],
-            });
-        }
-    }
+    const optionsHandlers = {
+        resourceType: (pathKey) => {
+            if (!verifyResourceType(pathKey)) {
+                errors.push({
+                    message: `The URI for the CURD methods do not contain a resource type.`,
+                    path: [...path],
+                });
+            }
+        },
+        nestedResourceType: (pathKey) => {
+            if (!verifyNestResourceType(pathKey)) {
+                errors.push({
+                    message: `The URI for nested resource doest not meet the valid resource pattern.`,
+                    path: [...path],
+                });
+            }
+        },
+        resourceGroupParam: (pathKey) => {
+            if (!verifyResourceGroup(pathKey)) {
+                errors.push({
+                    message: `The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
+                    path: [...path],
+                });
+            }
+        },
+        subscriptionIdParam: (pathKey) => {
+            if (!verifySubscriptionId(pathKey)) {
+                errors.push({
+                    message: `The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
+                    path: [...path],
+                });
+            }
+        },
+        scope: (pathKey) => {
+            if (!verifyScope(pathKey)) {
+                errors.push({
+                    message: "",
+                    path: [...path],
+                });
+            }
+        },
+        resourceGroupScope: (pathKey) => {
+            if (!verifyResourceGroupScope(pathKey)) {
+                errors.push({
+                    message: "",
+                    path: [...path],
+                });
+            }
+        },
+    };
+    const segments = typeof _opts.segmentToCheck === "string" ? [_opts.segmentToCheck] : _opts.segmentToCheck;
+    segments.forEach((segment) => {
+        optionsHandlers[segment](pathKey);
+    });
     return errors;
 };
 
@@ -1469,7 +1528,7 @@ const ruleset = {
         ArrayMustHaveType: {
             description: "Array type must have a type except for any type.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$.definitions..items[?(@object())]^"],
@@ -1481,7 +1540,7 @@ const ruleset = {
         LroWithOriginalUriAsFinalState: {
             description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
             message: "{{description}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: [
@@ -1494,7 +1553,7 @@ const ruleset = {
         LroPostMustNotUseOriginalUriAsFinalState: {
             description: "The long running post operation must not use final-stat-via:original-uri.",
             message: "{{description}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: [
@@ -1507,24 +1566,24 @@ const ruleset = {
         URIContainsSubscriptionId: {
             description: "Uri for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
             message: "{{error}}",
-            severity: "warn",
-            resolved: true,
+            severity: "error",
+            resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*~"],
+            given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
             then: {
                 function: verifyArmPath,
                 functionOptions: {
-                    segmentToCheck: "subscriptionId",
+                    segmentToCheck: "subscriptionIdParam",
                 },
             },
         },
         URIContainsResourceType: {
             description: "Uri for resource CRUD methods MUST contain a resource type.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*~"],
+            given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
             then: {
                 function: verifyArmPath,
                 functionOptions: {
@@ -1535,53 +1594,56 @@ const ruleset = {
         URIContainsResourceGroup: {
             description: "Uri for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
             message: "{{error}}",
-            severity: "warn",
-            resolved: true,
+            severity: "error",
+            resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*~"],
+            given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
             then: {
                 function: verifyArmPath,
                 functionOptions: {
-                    segmentToCheck: "resourceGroups",
+                    segmentToCheck: "resourceGroupParam",
                 },
             },
         },
         URIForPutOperation: {
             description: "The URI for 'put' operation must be under a subscription and resource group.",
-            message: "{{error}}",
+            message: "{{description}}",
             severity: "warn",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*"],
+            given: ["$[paths,'x-ms-paths'].*[put]^~"],
             then: {
-                function: falsy,
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "resourceGroupScope",
+                },
             },
         },
         URIForNestedResource: {
             description: "Uri for CRUD methods on a nested resource type MUST follow valid resource naming.",
             message: "{{error}}",
             severity: "warn",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*~"],
+            given: ["$[paths,'x-ms-paths'].*[get,patch,delete,put]^~"],
             then: {
-                function: pattern,
+                function: verifyArmPath,
                 functionOptions: {
-                    notMatch: ".+/providers/[\\w\\.]+/\\w+(?:/\\w+/default|/\\w+/{[^/]+}){2,3}/w+$",
+                    segmentToCheck: "nestedResourceType",
                 },
             },
         },
         URIForResourceAction: {
             description: "Uri for 'post' method on a resource type MUST follow valid resource naming.",
-            message: "{{error}}",
+            message: "{{description}}",
             severity: "warn",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.post^~"],
             then: {
                 function: pattern,
-                functionOPtions: {
-                    match: ".+/providers/[w.]+(?:/\\w+/default|/\\w+/{[^/]+}){1,3}/w+$",
+                functionOptions: {
+                    match: ".+/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+})){1,3}/\\w+$",
                 },
             },
         },

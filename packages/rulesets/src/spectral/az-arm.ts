@@ -62,7 +62,7 @@ const ruleset: any = {
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: ["$.definitions..items[?(@object())]^"],
@@ -74,7 +74,7 @@ const ruleset: any = {
     LroWithOriginalUriAsFinalState: {
       description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
       message: "{{description}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: [
@@ -87,7 +87,7 @@ const ruleset: any = {
     LroPostMustNotUseOriginalUriAsFinalState: {
       description: "The long running post operation must not use final-stat-via:original-uri.",
       message: "{{description}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: [
@@ -100,24 +100,24 @@ const ruleset: any = {
     URIContainsSubscriptionId: {
       description: "Uri for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
       message: "{{error}}",
-      severity: "warn",
-      resolved: true,
+      severity: "error",
+      resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*~"],
+      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
       then: {
         function: verifyArmPath,
         functionOptions: {
-          segmentToCheck: "subscriptionId",
+          segmentToCheck: "subscriptionIdParam",
         },
       },
     },
     URIContainsResourceType: {
       description: "Uri for resource CRUD methods MUST contain a resource type.",
       message: "{{error}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*~"],
+      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
       then: {
         function: verifyArmPath,
         functionOptions: {
@@ -128,53 +128,56 @@ const ruleset: any = {
     URIContainsResourceGroup: {
       description: "Uri for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
       message: "{{error}}",
-      severity: "warn",
-      resolved: true,
+      severity: "error",
+      resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*~"],
+      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
       then: {
         function: verifyArmPath,
         functionOptions: {
-          segmentToCheck: "resourceGroups",
+          segmentToCheck: "resourceGroupParam",
         },
       },
     },
     URIForPutOperation: {
       description: "The URI for 'put' operation must be under a subscription and resource group.",
-      message: "{{error}}",
+      message: "{{description}}",
       severity: "warn",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*"],
+      given: ["$[paths,'x-ms-paths'].*[put]^~"],
       then: {
-        function: falsy,
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceGroupScope",
+        },
       },
     },
     URIForNestedResource: {
       description: "Uri for CRUD methods on a nested resource type MUST follow valid resource naming.",
       message: "{{error}}",
       severity: "warn",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*~"],
+      given: ["$[paths,'x-ms-paths'].*[get,patch,delete,put]^~"],
       then: {
-        function: pattern,
+        function: verifyArmPath,
         functionOptions: {
-          notMatch: ".+/providers/[\\w\\.]+/\\w+(?:/\\w+/default|/\\w+/{[^/]+}){2,3}/w+$",
+          segmentToCheck: "nestedResourceType",
         },
       },
     },
     URIForResourceAction: {
       description: "Uri for 'post' method on a resource type MUST follow valid resource naming.",
-      message: "{{error}}",
+      message: "{{description}}",
       severity: "warn",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.post^~"],
       then: {
         function: pattern,
-        functionOPtions: {
-          match: ".+/providers/[w.]+(?:/\\w+/default|/\\w+/{[^/]+}){1,3}/w+$",
+        functionOptions: {
+          match: ".+/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+})){1,3}/\\w+$",
         },
       },
     },
