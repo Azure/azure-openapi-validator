@@ -1,7 +1,7 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
-let linters: { [index: string]: Spectral } = {}
+const linters: { [index: string]: Spectral } = {}
 
 beforeAll(async () => {
   linters.URIContainsResourceType = await linterForRule("URIContainsResourceType")
