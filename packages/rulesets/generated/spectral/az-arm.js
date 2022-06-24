@@ -1643,7 +1643,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: ".+/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
+                    match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
                 },
             },
         },
