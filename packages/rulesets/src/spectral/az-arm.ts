@@ -177,7 +177,7 @@ const ruleset: any = {
       then: {
         function: pattern,
         functionOptions: {
-          match: ".+/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+})){1,3}/\\w+$",
+          match: ".+/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
         },
       },
     },
