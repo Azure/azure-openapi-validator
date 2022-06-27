@@ -1310,6 +1310,79 @@ const verifyArmPath = (pathKey, _opts, paths) => {
     return errors;
 };
 
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+
+const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const pathParams = pathItem.parameters || [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const pathAndQueryParameters = allParams.filter((p) => p.in === "path" || p.in === "query").map((p) => p.name);
+        const bodyParam = allParams.find((p) => p.in === "body");
+        if (bodyParam) {
+            const properties = getProperties(bodyParam.schema);
+            if ("properties" in properties) {
+                const propertiesProperties = getProperties(properties.properties);
+                for (const prop of Object.keys(propertiesProperties)) {
+                    if (pathAndQueryParameters.includes(prop)) {
+                        errors.push({
+                            message: ``,
+                            path: [...path, "put", "parameters", pathItem["put"].parameters.findIndex((p) => p.name === prop)],
+                        });
+                    }
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 function checkApiVersion(param) {
     if (param.in !== "query") {
         return false;
@@ -1352,50 +1425,6 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     }
     return messages;
 };
-
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { properties, ...schema.properties };
-    }
-    return properties;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
-        return [];
-    }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
-    }
-    if (schema.required) {
-        requires = [...schema.required, requires];
-    }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
 
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
@@ -1645,6 +1674,17 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
                 },
+            },
+        },
+        RepeatedUriInfo: {
+            description: "Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+            message: "The '{{error}}' already appears in the URI, please don't repeat it in the request body.",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.put^"],
+            then: {
+                function: bodyParamRepeatedInfo,
             },
         },
     },

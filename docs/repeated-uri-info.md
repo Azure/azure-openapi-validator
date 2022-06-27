@@ -41,7 +41,7 @@ Bad example:
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/FooDefinition"
+              "$ref": "#/definitions/FooResource"
             },
           },
           ],
@@ -49,7 +49,7 @@ Bad example:
         },
 },
 "definitions":{
-  "MyResource": {
+  "FooResource": {
     "properties": {
       "properties": {
         "type": "object",

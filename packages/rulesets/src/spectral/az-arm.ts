@@ -2,6 +2,7 @@ import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
+import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import validateOriginalUri from "./functions/lro-original-uri"
 import pathBodyParameters from "./functions/patch-body-parameters"
@@ -179,6 +180,18 @@ const ruleset: any = {
         functionOptions: {
           match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
         },
+      },
+    },
+    RepeatedUriInfo: {
+      description:
+        "Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+      message: "The '{{error}}' already appears in the URI, please don't repeat it in the request body.",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.put^"],
+      then: {
+        function: bodyParamRepeatedInfo,
       },
     },
   },
