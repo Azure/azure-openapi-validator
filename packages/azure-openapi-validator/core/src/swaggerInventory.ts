@@ -31,7 +31,7 @@ export class SwaggerInventory implements ISwaggerInventory {
     const result: Record<string, any> = {}
     const references = this.inventory.dependantsOf(normalizePath(specPath))
     for (const ref of references) {
-      result[ref] = this.allDocs.get(ref)
+      result[ref] = this.getSingleDocument(ref)
     }
     return result
   }

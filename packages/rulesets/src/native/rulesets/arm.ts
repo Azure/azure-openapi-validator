@@ -1,25 +1,18 @@
-import { OpenApiTypes , IRuleSet } from "@microsoft.azure/openapi-validator-core"
-
-import { pattern } from "../functions/pattern"
-
+import { OpenApiTypes, IRuleSet } from "@microsoft.azure/openapi-validator-core"
+import { trackedResourceMustHavePut } from "../functions/arm-resource-validation"
 export const armRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
   rules: {
-    noPasswordInPropertyName: {
-      id: "R4033",
-      category: "SDKViolation",
+    AllTrackedResourceMustHavePut: {
+      category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
-      given: "$.definitions.*",
+      given: "$",
       then: {
-        fieldMatch: "$..properties.*~",
-        options: {
-          match: ".*Password.*"
-        },
-        execute: pattern
-      }
-    }
-  }
+        execute: trackedResourceMustHavePut,
+      },
+    },
+  },
 }
 
 export default armRuleset

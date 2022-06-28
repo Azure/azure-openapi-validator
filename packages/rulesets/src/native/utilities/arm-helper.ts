@@ -265,6 +265,21 @@ export class ArmHelper {
     return this.armResource
   }
 
+  public getTrackedResources() {
+    const isTrackedResource = (schema: any) => {
+      const enhancedSchema = this.enhancedSchema(schema)
+      return !!this.getProperty(enhancedSchema, "location")
+    }
+    const allTracledResources = this.getAllResources().filter((re) => {
+      const schema = re.operations.find((op) => op.responseSchema)
+      if (schema) {
+        return isTrackedResource(schema.responseSchema)
+      }
+      return false
+    })
+    return allTracledResources
+  }
+
   public getAllResourceNames() {
     const fullResources = this.getAllResources()
     const resources = new Set<string>()

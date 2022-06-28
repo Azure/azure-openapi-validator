@@ -1,26 +1,15 @@
 import { RuleContext } from "@microsoft.azure/openapi-validator-core"
-export type ResourceValiationOption = {
-  match?: string
-  notMatch?: string
-}
+import { ArmHelper } from "../utilities/arm-helper"
 
-export function* armResourceValidation(openapiSection: any, options: ResourceValiationOption, ctx?: RuleContext) {
-  if (typeof openapiSection === "string") {
-    if (options?.match && matchPattern(options.match, openapiSection)) {
+export function* trackedResourceMustHavePut(openapiSection: any, options: {}, ctx: RuleContext) {
+  const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
+  const allTrackedResources = armHelper.getTrackedResources()
+  for (const re of allTrackedResources) {
+    if (!re.operations.some((op) => op.httpMethod === "put")) {
       yield {
-        location: ctx?.location || [],
-        message: "Matched the pattern " + options?.match
-      }
-    }
-    if (options?.notMatch && !matchPattern(options.notMatch, openapiSection)) {
-      yield {
-        location: ctx?.location || [],
-        message: "Not matched the pattern " + options?.notMatch
+        location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
+        message: `The tracked resource ${re.modelName} does not define the put operation.`,
       }
     }
   }
-}
-
-function matchPattern(regStr: string, target: string, ignoreCase?: boolean) {
-  return new RegExp(regStr).test(target)
 }

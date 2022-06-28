@@ -19,7 +19,7 @@ rules.push({
       return
     }
     const identifiers = node["x-ms-identifiers"] ?? ["id"]
-    const items = await Workspace.resolveRef({ file: ctx?.specPath!, value: node }, ctx?.inventory!)
+    const items = await Workspace.resolveRef({ file: ctx?.specPath!, value: node.items }, ctx?.inventory!)
     if (items && items.value.type && items.value.type !== "object") {
       return
     }

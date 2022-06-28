@@ -5,31 +5,32 @@
 import _ from "lodash"
 import { LintRunner } from "./runner"
 import { SwaggerInventory } from "./swaggerInventory"
-import {IRuleSet, LintResultMessage, OpenApiTypes, RulesObject, IFileSystem} from "./types"
+import { IRuleSet, LintResultMessage, OpenApiTypes, RulesObject, IFileSystem } from "./types"
 
 export type LintOptions = {
-  ruleSet:IRuleSet,
+  ruleSet: IRuleSet
   openapiType: OpenApiTypes
-  fileSystem?:IFileSystem
+  fileSystem?: IFileSystem
 }
-export type LintCallBack = (msg:LintResultMessage)=>void
+export type LintCallBack = (msg: LintResultMessage) => void
 
-export async function lint( swaggerPaths: string[],options: LintOptions,cb?:LintCallBack):Promise<LintResultMessage[]> {
+export async function lint(swaggerPaths: string[], options: LintOptions, cb?: LintCallBack): Promise<LintResultMessage[]> {
   const inventory = new SwaggerInventory(options?.fileSystem)
   const ruleLoader = { getRuleSet: () => options.ruleSet }
   const runner = new LintRunner(ruleLoader, inventory)
-  const msgs = await runner.execute(swaggerPaths, options,cb)
+  const msgs = await runner.execute(swaggerPaths, options, cb)
   return msgs
 }
 
 export async function LintTester(
-  sampleFilePath: string,
-  ruleSet:IRuleSet,
+  sampleFilePath: string | string[],
+  ruleSet: IRuleSet,
   ruleName?: string,
-  fileSystem?:IFileSystem
+  fileSystem?: IFileSystem
 ): Promise<LintResultMessage[]> {
   const openapiType = OpenApiTypes.arm | OpenApiTypes.dataplane | OpenApiTypes.rpaas
-  let msgs:LintResultMessage[]
+  let msgs: LintResultMessage[]
+  const sampleFilePaths = Array.isArray(sampleFilePath) ? sampleFilePath : [sampleFilePath]
   if (ruleName) {
     const rules: RulesObject = {}
     if (!ruleSet.rules[ruleName]) {
@@ -37,11 +38,9 @@ export async function LintTester(
     }
     rules[ruleName] = ruleSet.rules[ruleName]
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
-    msgs = await lint([sampleFilePath],{ruleSet:singleRuleSet,openapiType,fileSystem})
-  }
-  else {
-    msgs = await lint([sampleFilePath],{ruleSet,openapiType,fileSystem})
+    msgs = await lint(sampleFilePaths, { ruleSet: singleRuleSet, openapiType, fileSystem })
+  } else {
+    msgs = await lint(sampleFilePaths, { ruleSet, openapiType, fileSystem })
   }
   return msgs
 }
-
