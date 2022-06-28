@@ -28,7 +28,7 @@ export async function LintTester(
   ruleName?: string,
   fileSystem?: IFileSystem
 ): Promise<LintResultMessage[]> {
-  const openapiType = OpenApiTypes.arm | OpenApiTypes.dataplane | OpenApiTypes.rpaas
+  const openapiType = OpenApiTypes.arm | OpenApiTypes.dataplane | OpenApiTypes.rpaas | OpenApiTypes.default
   let msgs: LintResultMessage[]
   const sampleFilePaths = Array.isArray(sampleFilePath) ? sampleFilePath : [sampleFilePath]
   if (ruleName) {
