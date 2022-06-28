@@ -74,5 +74,6 @@ test("RepeatedUriInfo should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/foo/{fooName}.put.parameters.1")
+    expect(results[0].message).toBe("The 'fooName' already appears in the URI, please don't repeat it in the request body.")
   })
 })

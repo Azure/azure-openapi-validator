@@ -25,7 +25,7 @@ const bodyParamRepeatedInfo = (pathItem: any, _opts: any, paths: any) => {
         for (const prop of Object.keys(propertiesProperties)) {
           if (pathAndQueryParameters.includes(prop)) {
             errors.push({
-              message: ``,
+              message: `${prop}`,
               path: [...path, "put", "parameters", pathItem["put"].parameters.findIndex((p: any) => p.name === prop)],
             })
           }
