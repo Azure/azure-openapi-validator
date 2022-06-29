@@ -1,4 +1,3 @@
-
 const ruleset: any = {
   extends: [],
   rules: {

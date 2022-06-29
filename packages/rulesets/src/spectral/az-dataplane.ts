@@ -1,5 +1,6 @@
 import { oas2, oas3 } from "@stoplight/spectral-formats"
 import { casing, falsy, pattern, truthy, undefined } from "@stoplight/spectral-functions"
+import common from "./az-common"
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
 import consistentresponsebody from "./functions/consistent-response-body"
 import defaultInEnum from "./functions/default-in-enum"
@@ -7,6 +8,7 @@ import delete204response from "./functions/delete-204-response"
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
 import hasheader from "./functions/has-header"
+import hostParameters from "./functions/host-parameters"
 import operationid from "./functions/operation-id"
 import paginationresponse from "./functions/pagination-response"
 import paramnames from "./functions/param-names"
@@ -16,8 +18,6 @@ import patchcontenttype from "./functions/patch-content-type"
 import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
 import versionpolicy from "./functions/version-policy"
-import common from "./az-common"
-import hostParameters from "./functions/host-parameters"
 const ruleset: any = {
   extends: [common],
   rules: {
