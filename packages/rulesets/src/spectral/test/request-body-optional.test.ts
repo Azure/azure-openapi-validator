@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-request-body-optional');
+  linter = await linterForRule('RequestBodyOptional');
   return linter;
 });
 
-test('az-request-body-optional should find errors', () => {
+test('RequestBodyOptional should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -55,7 +55,7 @@ test('az-request-body-optional should find errors', () => {
   });
 });
 
-test('az-request-body-optional should find no errors', () => {
+test('RequestBodyOptional should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

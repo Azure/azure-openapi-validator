@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-version-policy');
+  linter = await linterForRule('VersionPolicy');
   return linter;
 });
 
-test('az-version-policy should find version in basePath', () => {
+test('VersionPolicy should find version in basePath', () => {
   const oasDoc = {
     swagger: '2.0',
     basePath: '/v3/api',
@@ -31,7 +31,7 @@ test('az-version-policy should find version in basePath', () => {
   });
 });
 
-test('az-version-policy should find errors', () => {
+test('VersionPolicy should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -98,7 +98,7 @@ test('az-version-policy should find errors', () => {
   });
 });
 
-test('az-version-policy should find no errors', () => {
+test('VersionPolicy should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

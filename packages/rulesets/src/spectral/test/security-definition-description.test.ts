@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-security-definition-description');
+  linter = await linterForRule('SecurityDefinitionDescription');
   return linter;
 });
 
-test('az-security-definition-description should find errors', () => {
+test('SecurityDefinitionDescription should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     securityDefinitions: {
@@ -25,7 +25,7 @@ test('az-security-definition-description should find errors', () => {
   });
 });
 
-test('az-security-definition-description should find oas3 errors', () => {
+test('SecurityDefinitionDescription should find oas3 errors', () => {
   const oasDoc = {
     openapi: '3.0.0',
     components: {
@@ -44,7 +44,7 @@ test('az-security-definition-description should find oas3 errors', () => {
   });
 });
 
-test('az-security-definition-description should find no errors', () => {
+test('SecurityDefinitionDescription should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     securityDefinitions: {
@@ -61,7 +61,7 @@ test('az-security-definition-description should find no errors', () => {
   });
 });
 
-test('az-security-definition-description should find no oas3 errors', () => {
+test('SecurityDefinitionDescription should find no oas3 errors', () => {
   const oasDoc = {
     openapi: '3.0.0',
     components: {

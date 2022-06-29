@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-lro-headers');
+  linter = await linterForRule('LroHeaders');
   return linter;
 });
 
-test('az-lro-headers should find errors', () => {
+test('LroHeaders should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -47,7 +47,7 @@ test('az-lro-headers should find errors', () => {
   });
 });
 
-test('az-lro-headers should find no errors', () => {
+test('LroHeaders should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
