@@ -116,7 +116,7 @@ const ruleset: any = {
         function: pattern,
         field: "name",
         functionOptions: {
-          notMatch: "/^(authorization'content-type'accept)$/i",
+          notMatch: "/^(authorization|content-type|accept)$/i",
         },
       },
     },

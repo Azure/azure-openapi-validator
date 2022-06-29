@@ -1,6 +1,11 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
 
+const ruleset$1 = {
+    extends: [],
+    rules: {},
+};
+
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
         return [];
@@ -247,6 +252,37 @@ const hasHeader = (response, opts, paths) => {
         ];
     }
     return [];
+};
+
+const hostParameters = (parameterizedHost, _opts, paths) => {
+    var _a;
+    if (parameterizedHost === null || typeof parameterizedHost !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const useSchemePrefix = (_a = parameterizedHost.useSchemePrefix) !== null && _a !== void 0 ? _a : true;
+    const parameters = parameterizedHost.parameters;
+    if (!useSchemePrefix && parameters && Array.isArray(parameters)) {
+        parameters.forEach((p, index) => {
+            const location = p["x-ms-parameter-location"];
+            if (p.in === "path" && p["x-ms-skip-url-encoding"] === true && location === "client") {
+                if (p.name !== "endpoint") {
+                    errors.push({
+                        message: "The host parameter must be called 'endpoint'.",
+                        path: [...path, "parameters", index],
+                    });
+                }
+                if (p.type !== "string" || p.format !== "uri") {
+                    errors.push({
+                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
+                        path: [...path, "parameters", index],
+                    });
+                }
+            }
+        });
+    }
+    return errors;
 };
 
 const operationId = (operation, _opts, paths) => {
@@ -731,42 +767,6 @@ const versionPolicy = (targetVal) => {
     return errors;
 };
 
-const ruleset$1 = {
-    extends: [],
-    rules: {},
-};
-
-const hostParameters = (parameterizedHost, _opts, paths) => {
-    var _a;
-    if (parameterizedHost === null || typeof parameterizedHost !== "object") {
-        return [];
-    }
-    const path = paths.path || [];
-    const errors = [];
-    const useSchemePrefix = (_a = parameterizedHost.useSchemePrefix) !== null && _a !== void 0 ? _a : true;
-    const parameters = parameterizedHost.parameters;
-    if (!useSchemePrefix && parameters && Array.isArray(parameters)) {
-        parameters.forEach((p, index) => {
-            const location = p["x-ms-parameter-location"];
-            if (p.in === "path" && p["x-ms-skip-url-encoding"] === true && location === "client") {
-                if (p.name !== "endpoint") {
-                    errors.push({
-                        message: "The host parameter must be called 'endpoint'.",
-                        path: [...path, "parameters", index],
-                    });
-                }
-                if (p.type !== "string" || p.format !== "uri") {
-                    errors.push({
-                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
-                        path: [...path, "parameters", index],
-                    });
-                }
-            }
-        });
-    }
-    return errors;
-};
-
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -865,7 +865,7 @@ const ruleset = {
                 function: pattern,
                 field: "name",
                 functionOptions: {
-                    notMatch: "/^(authorization'content-type'accept)$/i",
+                    notMatch: "/^(authorization|content-type|accept)$/i",
                 },
             },
         },
