@@ -795,8 +795,8 @@ const ruleset = {
             severity: "warn",
             formats: [oas2, oas3],
             given: [
-                "$.paths[*].parameters.[?(@.name == 'ApiVersion')]",
-                "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'ApiVersion')]",
+                "$.paths[*].parameters.[?(@.name == 'api-version')]",
+                "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
             ],
             then: {
                 field: "enum",
