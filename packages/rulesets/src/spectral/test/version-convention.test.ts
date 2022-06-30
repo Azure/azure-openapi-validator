@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-version-convention');
+  linter = await linterForRule('VersionConvention');
   return linter;
 });
 
-test('az-version-convention should find errors', () => {
+test('VersionConvention should find errors', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     info: {
@@ -21,7 +21,7 @@ test('az-version-convention should find errors', () => {
   });
 });
 
-test('az-version-convention should find no errors', () => {
+test('VersionConvention should find no errors', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     info: {
@@ -33,7 +33,7 @@ test('az-version-convention should find no errors', () => {
   });
 });
 
-test('az-version-convention allows -preview suffix', () => {
+test('VersionConvention allows -preview suffix', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     info: {

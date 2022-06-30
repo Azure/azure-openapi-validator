@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-enum-insteadOf-boolean');
+  linter = await linterForRule('EnumInsteadOfBoolean');
   return linter;
 });
 
-test('az-enum-insteadOf-boolean should find errors', () => {
+test('EnumInsteadOfBoolean should find errors', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
@@ -103,7 +103,7 @@ test('az-enum-insteadOf-boolean should find errors', () => {
   });
 });
 
-test('az-default-in-enum should find no errors', () => {
+test('DefaultInEnum should find no errors', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {

@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-default-in-enum');
+  linter = await linterForRule('DefaultInEnum');
   return linter;
 });
 
-test('az-default-in-enum should find 1 error', () => {
+test('DefaultInEnum should find 1 error', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
@@ -81,7 +81,7 @@ test('az-default-in-enum should find 1 error', () => {
   });
 });
 
-test('az-default-in-enum should find no errors', () => {
+test('DefaultInEnum should find no errors', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {

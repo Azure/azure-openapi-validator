@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-pagination-response');
+  linter = await linterForRule('PaginationResponse');
   return linter;
 });
 
-test('az-pagination-response should find missing x-ms-pageable extension', () => {
+test('PaginationResponse should find missing x-ms-pageable extension', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -53,7 +53,7 @@ test('az-pagination-response should find missing x-ms-pageable extension', () =>
   });
 });
 
-test('az-pagination-response should find errors in value property', () => {
+test('PaginationResponse should find errors in value property', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -138,7 +138,7 @@ test('az-pagination-response should find errors in value property', () => {
   });
 });
 
-test('az-pagination-response should find errors in nextLink property', () => {
+test('PaginationResponse should find errors in nextLink property', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -224,7 +224,7 @@ test('az-pagination-response should find errors in nextLink property', () => {
   });
 });
 
-test('az-pagination-response should find no errors', () => {
+test('PaginationResponse should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

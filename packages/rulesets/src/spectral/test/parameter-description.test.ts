@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-parameter-description');
+  linter = await linterForRule('ParameterDescription');
   return linter;
 });
 
-test('az-parameter-description should find errors', () => {
+test('ParameterDescription should find errors', () => {
   // Test missing description in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
@@ -54,7 +54,7 @@ test('az-parameter-description should find errors', () => {
   });
 });
 
-test('az-parameter-description should find no errors', () => {
+test('ParameterDescription should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

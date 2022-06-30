@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-delete-204-response');
+  linter = await linterForRule('Delete204Response');
   return linter;
 });
 
-test('az-delete-204-response should find errors', () => {
+test('Delete204Response should find errors', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     paths: {
@@ -29,7 +29,7 @@ test('az-delete-204-response should find errors', () => {
   });
 });
 
-test('az-delete-204-response should find no errors', () => {
+test('Delete204Response should find no errors', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     paths: {

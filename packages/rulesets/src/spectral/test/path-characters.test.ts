@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-path-characters');
+  linter = await linterForRule('PathCharacters');
   return linter;
 });
 
-test('az-path-characters should find errors', () => {
+test('PathCharacters should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -25,7 +25,7 @@ test('az-path-characters should find errors', () => {
   });
 });
 
-test('az-path-characters should find no errors', () => {
+test('PathCharacters should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
