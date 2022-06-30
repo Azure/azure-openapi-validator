@@ -21,7 +21,7 @@ import versionpolicy from "./functions/version-policy"
 const ruleset: any = {
   extends: [common],
   rules: {
-     'AdditionalPropertiesAndProperties': {
+    AdditionalPropertiesAndProperties: {
       description: "Don't specify additionalProperties as a sibling of properties.",
       severity: "warn",
       formats: [oas2, oas3],
@@ -31,7 +31,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'AdditionalPropertiesObject': {
+    AdditionalPropertiesObject: {
       description: "additionalProperties with type object is a common error.",
       severity: "info",
       formats: [oas2, oas3],
@@ -41,20 +41,20 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'ApiVersionEnum': {
+    ApiVersionEnum: {
       description: "The api-version parameter should not be an enum.",
       severity: "warn",
       formats: [oas2, oas3],
       given: [
         "$.paths[*].parameters.[?(@.name == 'ApiVersion')]",
-        "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'ApiVersion')]",
+        "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
       ],
       then: {
         field: "enum",
         function: falsy,
       },
     },
-    'ConsistentResponseBody': {
+    ConsistentResponseBody: {
       description: "Ensure the get, put, and patch response body schemas are consistent.",
       message: "{{error}}",
       severity: "warn",
@@ -64,7 +64,7 @@ const ruleset: any = {
         function: consistentresponsebody,
       },
     },
-    'DefaultResponse': {
+    DefaultResponse: {
       description: "All operations should have a default (error) response.",
       message: "Operation is missing a default response.",
       severity: "warn",
@@ -74,7 +74,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'Delete204Response': {
+    Delete204Response: {
       description: "A delete operation should have a 204 response.",
       message: "A delete operation should have a `204` response.",
       severity: "warn",
@@ -84,7 +84,7 @@ const ruleset: any = {
         function: delete204response,
       },
     },
-    'ErrorResponse': {
+    ErrorResponse: {
       description: "Error response body should conform to Microsoft Azure API Guidelines.",
       message: "{{error}}",
       severity: "warn",
@@ -94,7 +94,7 @@ const ruleset: any = {
         function: errorresponse,
       },
     },
-    "formdata": {
+    Formdata: {
       description: "Check for appropriate use of formData parameters.",
       severity: "info",
       formats: [oas2],
@@ -103,7 +103,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'HeaderDisallowed': {
+    HeaderDisallowed: {
       description: "Authorization, Content-type, and Accept headers should not be defined explicitly.",
       message: 'Header parameter "{{value}}" should not be defined explicitly.',
       severity: "warn",
@@ -120,18 +120,18 @@ const ruleset: any = {
         },
       },
     },
-    'LroExtension': {
+    LroExtension: {
       description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
       message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
       severity: "warn",
       formats: [oas2],
       given: "$.paths[*][*].responses[?(@property == '202')]^^",
       then: {
-        field: 'x-ms-long-running-operation',
+        field: "x-ms-long-running-operation",
         function: truthy,
       },
     },
-    'LroHeaders': {
+    LroHeaders: {
       description: "A 202 response should include an Operation-Location response header.",
       message: "A 202 response should include an Operation-Location response header.",
       severity: "warn",
@@ -140,11 +140,11 @@ const ruleset: any = {
       then: {
         function: hasheader,
         functionOptions: {
-          name: 'Operation-location',
+          name: "Operation-location",
         },
       },
     },
-    'MsPaths': {
+    MsPaths: {
       description: "Don't use x-ms-paths except where necessary to support legacy APIs.",
       severity: "warn",
       formats: [oas2, oas3],
@@ -153,7 +153,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    "nullable": {
+    Nullable: {
       description: "Avoid the use of x-nullable.",
       severity: "warn",
       formats: [oas2, oas3],
@@ -163,7 +163,7 @@ const ruleset: any = {
         function: undefined,
       },
     },
-    'OperationId': {
+    OperationId: {
       description: "OperationId should conform to Azure API Guidelines",
       message: "{{error}}",
       severity: "warn",
@@ -172,7 +172,7 @@ const ruleset: any = {
         function: operationid,
       },
     },
-    'OperationSummaryOrDescription': {
+    OperationSummaryOrDescription: {
       description: "Operation should have a summary or description.",
       message: "Operation should have a summary or description.",
       severity: "warn",
@@ -190,7 +190,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'PaginationResponse': {
+    PaginationResponse: {
       description: "An operation that returns a list that is potentially large should support pagination.",
       message: "{{error}}",
       severity: "warn",
@@ -200,7 +200,7 @@ const ruleset: any = {
         function: paginationresponse,
       },
     },
-    'ParameterDefaultNotAllowed': {
+    ParameterDefaultNotAllowed: {
       description: "A required parameter should not specify a default value.",
       severity: "warn",
       given: ["$.paths[*].parameters.[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.required)]"],
@@ -209,7 +209,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'ParameterDescription': {
+    ParameterDescription: {
       description: "All parameters should have a description.",
       message: "Parameter should have a description.",
       severity: "warn",
@@ -219,7 +219,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'ParameterNamesConvention': {
+    ParameterNamesConvention: {
       description: "Parameter names should conform to Azure naming conventions.",
       message: "{{error}}",
       severity: "warn",
@@ -228,7 +228,7 @@ const ruleset: any = {
         function: paramnames,
       },
     },
-    'ParameterNamesUnique': {
+    ParameterNamesUnique: {
       description: "All parameter names for an operation should be case-insensitive unique.",
       message: "{{error}}",
       severity: "warn",
@@ -238,7 +238,7 @@ const ruleset: any = {
         function: paramnamesunique,
       },
     },
-    'ParameterOrder': {
+    ParameterOrder: {
       description: "Path parameters must be in the same order as in the path.",
       message: "{{error}}",
       severity: "warn",
@@ -248,7 +248,7 @@ const ruleset: any = {
         function: paramorder,
       },
     },
-    'PathParameterNames': {
+    PathParameterNames: {
       description: "Path parameter names should be consistent across all paths.",
       message: "{{error}}",
       severity: "warn",
@@ -259,7 +259,7 @@ const ruleset: any = {
         function: pathparamnames,
       },
     },
-    'PatchContentType': {
+    PatchContentType: {
       description: "The request body content type for patch operations should be JSON merge patch.",
       message: "{{error}}",
       severity: "warn",
@@ -269,7 +269,7 @@ const ruleset: any = {
         function: patchcontenttype,
       },
     },
-    'PathCharacters': {
+    PathCharacters: {
       description: "Path should contain only recommended characters.",
       message: "Path contains non-recommended characters.",
       severity: "info",
@@ -282,7 +282,7 @@ const ruleset: any = {
         },
       },
     },
-    'PathParameterSchema': {
+    PathParameterSchema: {
       description: "Path parameter should be type: string and specify maxLength and pattern.",
       message: "{{error}}",
       severity: "info",
@@ -295,7 +295,7 @@ const ruleset: any = {
         function: pathparamschema,
       },
     },
-    'Post_201Response': {
+    Post201Response: {
       description: "Using post for a create operation is discouraged.",
       message: "Using post for a create operation is discouraged.",
       severity: "warn",
@@ -306,7 +306,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'PropertyDescription': {
+    PropertyDescription: {
       description: "All schema properties should have a description.",
       message: "Property should have a description.",
       severity: "warn",
@@ -317,7 +317,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'PropertyNamesConvention': {
+    PropertyNamesConvention: {
       description: "Property names should be camel case.",
       message: "Property name should be camel case.",
       severity: "warn",
@@ -330,7 +330,7 @@ const ruleset: any = {
         },
       },
     },
-    'PropertyType': {
+    PropertyType: {
       description: "All schema properties should have a defined type.",
       message: "Property should have a defined type.",
       severity: "warn",
@@ -341,7 +341,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'PutPath': {
+    PutPath: {
       description: "The path for a put should have a final path parameter.",
       message: "The path for a put should have a final path parameter.",
       severity: "warn",
@@ -354,7 +354,7 @@ const ruleset: any = {
         },
       },
     },
-    'RequestBodyNotAllowed': {
+    RequestBodyNotAllowed: {
       description: "A get or delete operation must not accept a body parameter.",
       severity: "error",
       formats: [oas2],
@@ -367,7 +367,7 @@ const ruleset: any = {
         },
       },
     },
-    'RequestBodyOptional': {
+    RequestBodyOptional: {
       description: "Flag optional request body -- common oversight.",
       message: "The body parameter is not marked as required.",
       severity: "info",
@@ -378,7 +378,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'SchemaDescriptionOrTitle': {
+    SchemaDescriptionOrTitle: {
       description: "All schemas should have a description or title.",
       message: "Schema should have a description or title.",
       severity: "warn",
@@ -388,7 +388,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    'SchemaNamesConvention': {
+    SchemaNamesConvention: {
       description: "Schema names should be Pascal case.",
       message: "Schema name should be Pascal case.",
       severity: "info",
@@ -401,7 +401,7 @@ const ruleset: any = {
         },
       },
     },
-    'SecurityDefinitionDescription': {
+    SecurityDefinitionDescription: {
       description: "A security definition should have a description.",
       message: "Security definition should have a description.",
       severity: "warn",
@@ -412,7 +412,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'SuccessResponseBody': {
+    SuccessResponseBody: {
       description: "All success responses except 202 & 204 should define a response body.",
       severity: "warn",
       formats: [oas2],
@@ -422,7 +422,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    'VersionConvention': {
+    VersionConvention: {
       description: "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
       severity: "error",
       formats: [oas2, oas3],
@@ -434,7 +434,7 @@ const ruleset: any = {
         },
       },
     },
-    'VersionPolicy': {
+    VersionPolicy: {
       description: "Specify API version using `api-version` query parameter, not in path.",
       message: "{{error}}",
       severity: "warn",
@@ -444,7 +444,7 @@ const ruleset: any = {
         function: versionpolicy,
       },
     },
-    'DefaultInEnum': {
+    DefaultInEnum: {
       description:
         "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
       message: "Default value should appear in the enum constraint for a schema",
@@ -456,7 +456,7 @@ const ruleset: any = {
         function: defaultInEnum,
       },
     },
-    'EnumInsteadOfBoolean': {
+    EnumInsteadOfBoolean: {
       description:
         "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
       message:
@@ -469,7 +469,7 @@ const ruleset: any = {
         function: enumInsteadOfBoolean,
       },
     },
-    'AvoidAnonymousParameter': {
+    AvoidAnonymousParameter: {
       description:
         'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
       message:
