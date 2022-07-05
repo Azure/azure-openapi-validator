@@ -15234,6 +15234,18 @@ Array [
     "message": "The API version:2021-05-01-preview having been in a preview state over one year , please move it to GA or retire.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:4:4",
   },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:6:4",
+  },
+  Object {
+    "code": "PreviewVersionOverOneYear",
+    "jsonpath": "$.info.version",
+    "message": "The API version:2021-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:6:4",
+  },
 ]
 `;
 
