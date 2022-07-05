@@ -403,7 +403,7 @@ describe("IndividualAzureTests", () => {
   })
   test("no put in for tracked resource", async () => {
     const fileNames = ["armResource/trackedResourceNoPut.json", "armResource/trackedResourceNoPutCommon.json"]
-    const ruleName = "AllTrackedResourceMustHavePut"
+    const ruleName = "TrackedResourceMustHavePut"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
