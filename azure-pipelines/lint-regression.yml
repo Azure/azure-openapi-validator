@@ -42,7 +42,7 @@ jobs:
       displayName: Fail test if snapshots have been updated
       condition: always()
 
-    - script: git diff > $(Build.ArtifactStagingDirectory)/snapshot.patch
+    - script: git add -A && git diff HEAD > $(Build.ArtifactStagingDirectory)/snapshot.patch
       displayName: Publish jest update snapshot patch
       condition: always()
 

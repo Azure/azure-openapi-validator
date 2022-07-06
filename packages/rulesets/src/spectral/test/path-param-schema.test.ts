@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-path-parameter-schema');
+  linter = await linterForRule('PathParameterSchema');
   return linter;
 });
 
-test('az-path-parameter-schema should find errors', () => {
+test('PathParameterSchema should find errors', () => {
   // Test path parameter in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
@@ -71,7 +71,7 @@ test('az-path-parameter-schema should find errors', () => {
   });
 });
 
-test('az-path-parameter-schema should find no errors', () => {
+test('PathParameterSchema should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -118,7 +118,7 @@ test('az-path-parameter-schema should find no errors', () => {
   });
 });
 
-test('az-path-parameter-schema should find oas3 errors', () => {
+test('PathParameterSchema should find oas3 errors', () => {
   const oasDoc = {
     openapi: '3.0',
     paths: {
@@ -177,7 +177,7 @@ test('az-path-parameter-schema should find oas3 errors', () => {
   });
 });
 
-test('az-path-parameter-schema should find no oas3 errors', () => {
+test('PathParameterSchema should find no oas3 errors', () => {
   const oasDoc = {
     openapi: '3.0',
     paths: {

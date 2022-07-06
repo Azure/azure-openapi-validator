@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-consistent-response-body');
+  linter = await linterForRule('ConsistentResponseBody');
   return linter;
 });
 
-test('az-consistent-response-body should find errors', () => {
+test('ConsistentResponseBody should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -74,7 +74,7 @@ test('az-consistent-response-body should find errors', () => {
   });
 });
 
-test('az-consistent-response-body should find no errors', () => {
+test('ConsistentResponseBody should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

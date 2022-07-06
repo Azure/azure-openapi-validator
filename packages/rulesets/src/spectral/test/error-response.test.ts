@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-error-response');
+  linter = await linterForRule('ErrorResponse');
   return linter;
 });
 
-test('az-error-response should find errors', () => {
+test('ErrorResponse should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -157,7 +157,7 @@ test('az-error-response should find errors', () => {
   });
 });
 
-test('az-error-response should find no errors', () => {
+test('ErrorResponse should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-parameter-names-unique');
+  linter = await linterForRule('ParameterNamesUnique');
   return linter;
 });
 
-test('az-parameter-names-unique should find errors', () => {
+test('ParameterNamesUnique should find errors', () => {
   // Test parameter names in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
@@ -76,7 +76,7 @@ test('az-parameter-names-unique should find errors', () => {
   });
 });
 
-test('az-parameter-names-unique should find no errors', () => {
+test('ParameterNamesUnique should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
