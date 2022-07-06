@@ -25,6 +25,7 @@ describe("comparing", () => {
     "PrivateEndpointResourceSchemaValidation",
     "UniqueXmsExample",
     "RequiredReadOnlySystemData",
+    "XmsIdentifierValidation",
   ]
   test.each(v3Results.filter((f) => !f.includes("az-") && !verifiedLists.includes(basename(f.replace(".json", "")))))(
     "%s should match v2",
