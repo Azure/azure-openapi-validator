@@ -67,6 +67,22 @@ export class ArmHelper {
     this.getAllResources()
   }
 
+  private getBodyParameter(paramters: any) {
+    let bodyParameter
+    if (paramters && Array.isArray(paramters)) {
+      paramters.forEach((param: any) => {
+        if (param.$ref) {
+          const resolvedParam = this.swaggerUtil.resolveRef(this.enhancedSchema(param))
+          if (resolvedParam && resolvedParam.value && resolvedParam.value.in === "body") {
+            bodyParameter = this.enhancedSchema(resolvedParam.value.schema, resolvedParam.file)
+          }
+        }
+      })
+    }
+
+    return bodyParameter
+  }
+
   private populateOperations(doc: any, specPath: string) {
     const paths = { ...(doc.paths || {}), ...(doc["x-ms-paths"] || {}) }
     const operations: Operation[] = []
@@ -75,11 +91,13 @@ export class ArmHelper {
         if (method !== "parameters") {
           const op = operation as any
           const response = op?.responses?.["200"] || op?.responses?.["201"]
+          const requestBodyParameter = this.getBodyParameter(op.parameters)
           if (response) {
             operations.push({
               specPath,
               apiPath: key,
               httpMethod: method,
+              requestBodyParameter,
               responseSchema: response.schema,
               operationId: op?.operationId,
             })
@@ -263,6 +281,21 @@ export class ArmHelper {
       _.isEqual
     )
     return this.armResource
+  }
+
+  public getTrackedResources() {
+    const isTrackedResource = (schema: any) => {
+      const enhancedSchema = this.enhancedSchema(schema)
+      return !!this.getProperty(enhancedSchema, "location")
+    }
+    const allTracledResources = this.getAllResources().filter((re) => {
+      const schema = re.operations.find((op) => op.responseSchema)
+      if (schema) {
+        return isTrackedResource(schema.responseSchema)
+      }
+      return false
+    })
+    return allTracledResources
   }
 
   public getAllResourceNames() {

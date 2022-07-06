@@ -28,6 +28,13 @@ export class SwaggerHelper {
     return Workspace.getProperty(sourceModel, propertyName, this.inventory!)
   }
 
+  public resolveRef(sourceModel: Workspace.EnhancedSchema): any {
+    if (!sourceModel) {
+      return undefined
+    }
+    return Workspace.resolveRef(sourceModel, this.inventory!)
+  }
+
   public getAttribute(sourceModel: Workspace.EnhancedSchema, attributeName: string) {
     if (!sourceModel) {
       return undefined
