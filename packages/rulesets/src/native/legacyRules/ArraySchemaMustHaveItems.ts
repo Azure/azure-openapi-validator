@@ -12,11 +12,11 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.default,
-  appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type==='array')]^",
+  appliesTo_JsonQuery: "$.definitions.*.properties[?(@.type === 'array')]^",
   *run(doc, node, path) {
     const msg = "Please provide an 'items' property for array type: "
     if (!("items" in node)) {
       yield { message: `${msg} '${path[path.length - 2]}'`, location: path.slice(0, path.length - 2) }
     }
-  }
+  },
 })

@@ -4,7 +4,7 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-property-description');
+  linter = await linterForRule('PropertyDescription');
   return linter;
 });
 
@@ -14,7 +14,7 @@ beforeAll(async () => {
 // - top-level schema in definitions
 // - inner schema in definitions
 
-test('az-property-description should find errors', () => {
+test('PropertyDescription should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -105,7 +105,7 @@ test('az-property-description should find errors', () => {
   });
 });
 
-test('az-property-description should find no errors', () => {
+test('PropertyDescription should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

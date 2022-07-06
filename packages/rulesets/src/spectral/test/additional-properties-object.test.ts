@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-additional-properties-object');
+  linter = await linterForRule('AdditionalPropertiesObject');
   return linter;
 });
 
-test('az-additional-properties-object should find errors', () => {
+test('AdditionalPropertiesObject should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     definitions: {
@@ -39,7 +39,7 @@ test('az-additional-properties-object should find errors', () => {
   });
 });
 
-test('az-additional-properties-object should find no errors', () => {
+test('AdditionalPropertiesObject should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     definitions: {

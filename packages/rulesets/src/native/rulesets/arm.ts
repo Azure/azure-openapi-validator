@@ -1,25 +1,7 @@
-import { OpenApiTypes , IRuleSet } from "@microsoft.azure/openapi-validator-core"
-
-import { pattern } from "../functions/pattern"
-
+import { IRuleSet } from "@microsoft.azure/openapi-validator-core"
 export const armRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
-  rules: {
-    noPasswordInPropertyName: {
-      id: "R4033",
-      category: "SDKViolation",
-      openapiType: OpenApiTypes.arm,
-      severity: "error",
-      given: "$.definitions.*",
-      then: {
-        fieldMatch: "$..properties.*~",
-        options: {
-          match: ".*Password.*"
-        },
-        execute: pattern
-      }
-    }
-  }
+  rules: {},
 }
 
 export default armRuleset

@@ -6,12 +6,12 @@ export enum OpenApiTypes {
   "default" = 1 << 0,
   "arm" = 1 << 1,
   "dataplane" = 1 << 2,
-  "rpaas" = 1 << 3
+  "rpaas" = 1 << 3,
 }
 
 export enum MergeStates {
   "individual",
-  "composed"
+  "composed",
 }
 
 export interface ValidationMessage {
@@ -39,7 +39,7 @@ export type RuleThen<T> = {
 }
 
 export interface IRule<T> {
-  readonly id: string // see rule ID
+  readonly id?: string // see rule ID
   readonly description?: string
   readonly category: "ARMViolation" | "OneAPIViolation" | "SDKViolation" | "RPaaSViolation"
   readonly openapiType: OpenApiTypes
@@ -53,7 +53,7 @@ export type RulesObject = Record<string, IRule<unknown>>
 
 export interface RuleContextLegacy {
   specPath: string
-  inventory?: ISwaggerInventory,
+  inventory?: ISwaggerInventory
 }
 
 export interface RuleContext {
@@ -77,12 +77,12 @@ export type IRuleFunction<T> = (
 ) => Iterable<ValidationMessage> | AsyncIterable<ValidationMessage>
 
 export interface ISwaggerInventory {
-  referencesOf(specPath: string): Record<string,any>,
-  getDocuments(docPath?:string): Record<string,any> | any
+  referencesOf(specPath: string): Record<string, any>
+  getDocuments(docPath?: string): Record<string, any> | any
 }
 
 export interface ISwaggerHelper {
-  resolveSchema(schema: any | string):Promise<any>,
+  resolveSchema(schema: any | string): Promise<any>
 }
 
 export interface IRuleSet {
@@ -119,15 +119,15 @@ export interface Range {
 
 export interface LintResultMessage {
   type: MessageSeverity
-  id: string
+  id?: string
   code: string
   message: string
-  category: string,
-  jsonpath: JsonPath,
+  category: string
+  jsonpath: JsonPath
   sources?: string[]
   range?: Range
 }
 
 export interface IFileSystem {
-  read(uri:string):string | Promise<string>
+  read(uri: string): string | Promise<string>
 }

@@ -1,6 +1,11 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
 
+const ruleset$1 = {
+    extends: [],
+    rules: {},
+};
+
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
         return [];
@@ -247,6 +252,37 @@ const hasHeader = (response, opts, paths) => {
         ];
     }
     return [];
+};
+
+const hostParameters = (parameterizedHost, _opts, paths) => {
+    var _a;
+    if (parameterizedHost === null || typeof parameterizedHost !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const useSchemePrefix = (_a = parameterizedHost.useSchemePrefix) !== null && _a !== void 0 ? _a : true;
+    const parameters = parameterizedHost.parameters;
+    if (!useSchemePrefix && parameters && Array.isArray(parameters)) {
+        parameters.forEach((p, index) => {
+            const location = p["x-ms-parameter-location"];
+            if (p.in === "path" && p["x-ms-skip-url-encoding"] === true && location === "client") {
+                if (p.name !== "endpoint") {
+                    errors.push({
+                        message: "The host parameter must be called 'endpoint'.",
+                        path: [...path, "parameters", index],
+                    });
+                }
+                if (p.type !== "string" || p.format !== "uri") {
+                    errors.push({
+                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
+                        path: [...path, "parameters", index],
+                    });
+                }
+            }
+        });
+    }
+    return errors;
 };
 
 const operationId = (operation, _opts, paths) => {
@@ -731,10 +767,10 @@ const versionPolicy = (targetVal) => {
     return errors;
 };
 
-const ruleset$1 = {
-    extends: [],
+const ruleset = {
+    extends: [ruleset$1],
     rules: {
-        "az-additional-properties-and-properties": {
+        AdditionalPropertiesAndProperties: {
             description: "Don't specify additionalProperties as a sibling of properties.",
             severity: "warn",
             formats: [oas2, oas3],
@@ -744,7 +780,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-additional-properties-object": {
+        AdditionalPropertiesObject: {
             description: "additionalProperties with type object is a common error.",
             severity: "info",
             formats: [oas2, oas3],
@@ -754,12 +790,12 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-api-version-enum": {
+        ApiVersionEnum: {
             description: "The api-version parameter should not be an enum.",
             severity: "warn",
             formats: [oas2, oas3],
             given: [
-                "$.paths[*].parameters.[?(@.name == 'api-version')]",
+                "$.paths[*].parameters.[?(@.name == 'ApiVersion')]",
                 "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
             ],
             then: {
@@ -767,7 +803,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-consistent-response-body": {
+        ConsistentResponseBody: {
             description: "Ensure the get, put, and patch response body schemas are consistent.",
             message: "{{error}}",
             severity: "warn",
@@ -777,7 +813,7 @@ const ruleset$1 = {
                 function: consistentresponsebody,
             },
         },
-        "az-default-response": {
+        DefaultResponse: {
             description: "All operations should have a default (error) response.",
             message: "Operation is missing a default response.",
             severity: "warn",
@@ -787,7 +823,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-delete-204-response": {
+        Delete204Response: {
             description: "A delete operation should have a 204 response.",
             message: "A delete operation should have a `204` response.",
             severity: "warn",
@@ -797,7 +833,7 @@ const ruleset$1 = {
                 function: delete204Response,
             },
         },
-        "az-error-response": {
+        ErrorResponse: {
             description: "Error response body should conform to Microsoft Azure API Guidelines.",
             message: "{{error}}",
             severity: "warn",
@@ -807,7 +843,7 @@ const ruleset$1 = {
                 function: errorResponse,
             },
         },
-        "az-formdata": {
+        Formdata: {
             description: "Check for appropriate use of formData parameters.",
             severity: "info",
             formats: [oas2],
@@ -816,7 +852,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-header-disallowed": {
+        HeaderDisallowed: {
             description: "Authorization, Content-type, and Accept headers should not be defined explicitly.",
             message: 'Header parameter "{{value}}" should not be defined explicitly.',
             severity: "warn",
@@ -833,7 +869,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-lro-extension": {
+        LroExtension: {
             description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
             message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
             severity: "warn",
@@ -844,7 +880,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-lro-headers": {
+        LroHeaders: {
             description: "A 202 response should include an Operation-Location response header.",
             message: "A 202 response should include an Operation-Location response header.",
             severity: "warn",
@@ -857,7 +893,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-ms-paths": {
+        MsPaths: {
             description: "Don't use x-ms-paths except where necessary to support legacy APIs.",
             severity: "warn",
             formats: [oas2, oas3],
@@ -866,7 +902,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-nullable": {
+        Nullable: {
             description: "Avoid the use of x-nullable.",
             severity: "warn",
             formats: [oas2, oas3],
@@ -876,7 +912,7 @@ const ruleset$1 = {
                 function: undefined$1,
             },
         },
-        "az-operation-id": {
+        OperationId: {
             description: "OperationId should conform to Azure API Guidelines",
             message: "{{error}}",
             severity: "warn",
@@ -885,7 +921,7 @@ const ruleset$1 = {
                 function: operationId,
             },
         },
-        "az-operation-summary-or-description": {
+        OperationSummaryOrDescription: {
             description: "Operation should have a summary or description.",
             message: "Operation should have a summary or description.",
             severity: "warn",
@@ -903,7 +939,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-pagination-response": {
+        PaginationResponse: {
             description: "An operation that returns a list that is potentially large should support pagination.",
             message: "{{error}}",
             severity: "warn",
@@ -913,7 +949,7 @@ const ruleset$1 = {
                 function: paginationResponse,
             },
         },
-        "az-parameter-default-not-allowed": {
+        ParameterDefaultNotAllowed: {
             description: "A required parameter should not specify a default value.",
             severity: "warn",
             given: ["$.paths[*].parameters.[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.required)]"],
@@ -922,7 +958,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-parameter-description": {
+        ParameterDescription: {
             description: "All parameters should have a description.",
             message: "Parameter should have a description.",
             severity: "warn",
@@ -932,7 +968,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-parameter-names-convention": {
+        ParameterNamesConvention: {
             description: "Parameter names should conform to Azure naming conventions.",
             message: "{{error}}",
             severity: "warn",
@@ -941,7 +977,7 @@ const ruleset$1 = {
                 function: paramNames,
             },
         },
-        "az-parameter-names-unique": {
+        ParameterNamesUnique: {
             description: "All parameter names for an operation should be case-insensitive unique.",
             message: "{{error}}",
             severity: "warn",
@@ -951,7 +987,7 @@ const ruleset$1 = {
                 function: paramNamesUnique,
             },
         },
-        "az-parameter-order": {
+        ParameterOrder: {
             description: "Path parameters must be in the same order as in the path.",
             message: "{{error}}",
             severity: "warn",
@@ -961,7 +997,7 @@ const ruleset$1 = {
                 function: paramOrder,
             },
         },
-        "az-path-parameter-names": {
+        PathParameterNames: {
             description: "Path parameter names should be consistent across all paths.",
             message: "{{error}}",
             severity: "warn",
@@ -972,7 +1008,7 @@ const ruleset$1 = {
                 function: pathParamNames,
             },
         },
-        "az-patch-content-type": {
+        PatchContentType: {
             description: "The request body content type for patch operations should be JSON merge patch.",
             message: "{{error}}",
             severity: "warn",
@@ -982,7 +1018,7 @@ const ruleset$1 = {
                 function: patchContentYype,
             },
         },
-        "az-path-characters": {
+        PathCharacters: {
             description: "Path should contain only recommended characters.",
             message: "Path contains non-recommended characters.",
             severity: "info",
@@ -995,7 +1031,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-path-parameter-schema": {
+        PathParameterSchema: {
             description: "Path parameter should be type: string and specify maxLength and pattern.",
             message: "{{error}}",
             severity: "info",
@@ -1008,7 +1044,7 @@ const ruleset$1 = {
                 function: pathParamSchema,
             },
         },
-        "az-post-201-response": {
+        Post201Response: {
             description: "Using post for a create operation is discouraged.",
             message: "Using post for a create operation is discouraged.",
             severity: "warn",
@@ -1019,7 +1055,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-property-description": {
+        PropertyDescription: {
             description: "All schema properties should have a description.",
             message: "Property should have a description.",
             severity: "warn",
@@ -1030,7 +1066,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-property-names-convention": {
+        PropertyNamesConvention: {
             description: "Property names should be camel case.",
             message: "Property name should be camel case.",
             severity: "warn",
@@ -1043,7 +1079,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-property-type": {
+        PropertyType: {
             description: "All schema properties should have a defined type.",
             message: "Property should have a defined type.",
             severity: "warn",
@@ -1054,7 +1090,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-put-path": {
+        PutPath: {
             description: "The path for a put should have a final path parameter.",
             message: "The path for a put should have a final path parameter.",
             severity: "warn",
@@ -1067,7 +1103,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-request-body-not-allowed": {
+        RequestBodyNotAllowed: {
             description: "A get or delete operation must not accept a body parameter.",
             severity: "error",
             formats: [oas2],
@@ -1080,7 +1116,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-request-body-optional": {
+        RequestBodyOptional: {
             description: "Flag optional request body -- common oversight.",
             message: "The body parameter is not marked as required.",
             severity: "info",
@@ -1091,7 +1127,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-schema-description-or-title": {
+        SchemaDescriptionOrTitle: {
             description: "All schemas should have a description or title.",
             message: "Schema should have a description or title.",
             severity: "warn",
@@ -1101,7 +1137,7 @@ const ruleset$1 = {
                 function: falsy,
             },
         },
-        "az-schema-names-convention": {
+        SchemaNamesConvention: {
             description: "Schema names should be Pascal case.",
             message: "Schema name should be Pascal case.",
             severity: "info",
@@ -1114,7 +1150,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-security-definition-description": {
+        SecurityDefinitionDescription: {
             description: "A security definition should have a description.",
             message: "Security definition should have a description.",
             severity: "warn",
@@ -1125,7 +1161,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-success-response-body": {
+        SuccessResponseBody: {
             description: "All success responses except 202 & 204 should define a response body.",
             severity: "warn",
             formats: [oas2],
@@ -1135,7 +1171,7 @@ const ruleset$1 = {
                 function: truthy,
             },
         },
-        "az-version-convention": {
+        VersionConvention: {
             description: "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
             severity: "error",
             formats: [oas2, oas3],
@@ -1147,7 +1183,7 @@ const ruleset$1 = {
                 },
             },
         },
-        "az-version-policy": {
+        VersionPolicy: {
             description: "Specify API version using `api-version` query parameter, not in path.",
             message: "{{error}}",
             severity: "warn",
@@ -1157,7 +1193,7 @@ const ruleset$1 = {
                 function: versionPolicy,
             },
         },
-        "az-default-in-enum": {
+        DefaultInEnum: {
             description: "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
             message: "Default value should appear in the enum constraint for a schema",
             severity: "error",
@@ -1168,7 +1204,7 @@ const ruleset$1 = {
                 function: defaultInEnum,
             },
         },
-        "az-enum-insteadOf-boolean": {
+        EnumInsteadOfBoolean: {
             description: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
             message: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
             severity: "warn",
@@ -1179,7 +1215,7 @@ const ruleset$1 = {
                 function: enumInsteadOfBoolean,
             },
         },
-        "az-avoid-anonymous-parameter": {
+        AvoidAnonymousParameter: {
             description: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
             message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
             severity: "error",
@@ -1190,43 +1226,6 @@ const ruleset$1 = {
                 function: avoidAnonymousParameter,
             },
         },
-    },
-};
-
-const hostParameters = (parameterizedHost, _opts, paths) => {
-    var _a;
-    if (parameterizedHost === null || typeof parameterizedHost !== "object") {
-        return [];
-    }
-    const path = paths.path || [];
-    const errors = [];
-    const useSchemePrefix = (_a = parameterizedHost.useSchemePrefix) !== null && _a !== void 0 ? _a : true;
-    const parameters = parameterizedHost.parameters;
-    if (!useSchemePrefix && parameters && Array.isArray(parameters)) {
-        parameters.forEach((p, index) => {
-            const location = p["x-ms-parameter-location"];
-            if (p.in === "path" && p["x-ms-skip-url-encoding"] === true && location === "client") {
-                if (p.name !== "endpoint") {
-                    errors.push({
-                        message: "The host parameter must be called 'endpoint'.",
-                        path: [...path, "parameters", index],
-                    });
-                }
-                if (p.type !== "string" || p.format !== "uri") {
-                    errors.push({
-                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
-                        path: [...path, "parameters", index],
-                    });
-                }
-            }
-        });
-    }
-    return errors;
-};
-
-const ruleset = {
-    extends: [ruleset$1],
-    rules: {
         HostParametersValidation: {
             description: "Validate the parameters in x-ms-parameterized-host.",
             message: "{{error}}",

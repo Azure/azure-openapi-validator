@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-parameter-order');
+  linter = await linterForRule('ParameterOrder');
   return linter;
 });
 
-test('az-parameter-order should find errors', () => {
+test('ParameterOrder should find errors', () => {
   // Test parameter ordering at path item level and operation level.
   const oasDoc = {
     swagger: '2.0',
@@ -68,7 +68,7 @@ test('az-parameter-order should find errors', () => {
   });
 });
 
-test('az-parameter-order should find no errors', () => {
+test('ParameterOrder should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -125,7 +125,7 @@ test('az-parameter-order should find no errors', () => {
   });
 });
 
-test('az-parameter-order should find oas3 errors', () => {
+test('ParameterOrder should find oas3 errors', () => {
   // Test parameter ordering at path item level and operation level.
   const oasDoc = {
     openapi: '3.0.3',
@@ -197,7 +197,7 @@ test('az-parameter-order should find oas3 errors', () => {
   });
 });
 
-test('az-parameter-order should find no oas3 errors', () => {
+test('ParameterOrder should find no oas3 errors', () => {
   const oasDoc = {
     openapi: '3.0.3',
     paths: {

@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-patch-content-type');
+  linter = await linterForRule('PatchContentType');
   return linter;
 });
 
-test('az-patch-content-type should find errors', () => {
+test('PatchContentType should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     consumes: [
@@ -51,7 +51,7 @@ test('az-patch-content-type should find errors', () => {
   });
 });
 
-test('az-patch-content-type should find no errors', () => {
+test('PatchContentType should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     consumes: [
