@@ -104,7 +104,7 @@ const ruleset: any = {
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
       then: {
         function: verifyArmPath,
         functionOptions: {
@@ -116,9 +116,9 @@ const ruleset: any = {
       description: "Uri for resource CRUD methods MUST contain a resource type.",
       message: "{{error}}",
       severity: "error",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
       then: {
         function: verifyArmPath,
         functionOptions: {
@@ -146,7 +146,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[put]^~"],
+      given: "$[paths,'x-ms-paths'].*[put]^~",
       then: {
         function: verifyArmPath,
         functionOptions: {
@@ -160,7 +160,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get,patch,delete,put]^~"],
+      given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
       then: {
         function: verifyArmPath,
         functionOptions: {

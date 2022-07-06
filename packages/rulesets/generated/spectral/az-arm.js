@@ -1,5 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
+import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
@@ -1233,82 +1234,80 @@ function verifyNestResourceType(path) {
     ];
     return notMatchPatterns(patterns, path);
 }
-function verifyScope(path) {
-    const patterns = [
-        /^\/subscriptions\/{subscriptionId}(\/resourceGroups\/{resourceGroupName})?\/providers\/.+/gi,
-        /^\/?{\w+}\/providers\/.+/gi,
-    ];
-    return matchAnyPatterns(patterns, path);
-}
-const verifyArmPath = (pathKey, _opts, paths) => {
-    if (pathKey === null || typeof pathKey !== "string") {
-        return [];
-    }
-    const validOptions = ["scope", "resourceGroupParam", "subscriptionIdParam", "resourceGroupScope", "resourceType", "nestedResourceType"];
-    if (!_opts ||
-        !_opts.segmentToCheck ||
-        (typeof _opts.segmentToCheck === "string" && !validOptions.includes(_opts.segmentToCheck)) ||
-        (Array.isArray(_opts.segmentToCheck) && !_opts.segmentToCheck.every((s) => validOptions.includes(s)))) {
+const verifyArmPath = createRulesetFunction({
+    input: null,
+    options: {
+        type: 'object',
+        properties: {
+            segmentToCheck: {
+                oneOf: [{
+                        type: "string",
+                        "enum": ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"]
+                    }, {
+                        type: "array",
+                        items: {
+                            type: "string",
+                            "enum": ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"]
+                        }
+                    }]
+            },
+        },
+        additionalProperties: false,
+    },
+}, (fullPath, _opts, paths) => {
+    if (fullPath === null || typeof fullPath !== "string") {
         return [];
     }
     const path = paths.path || [];
     const errors = [];
     const optionsHandlers = {
-        resourceType: (pathKey) => {
-            if (!verifyResourceType(pathKey)) {
+        resourceType: (fullPath) => {
+            if (!verifyResourceType(fullPath)) {
                 errors.push({
                     message: `The URI for the CURD methods do not contain a resource type.`,
-                    path: [...path],
+                    path,
                 });
             }
         },
-        nestedResourceType: (pathKey) => {
-            if (!verifyNestResourceType(pathKey)) {
+        nestedResourceType: (fullPath) => {
+            if (!verifyNestResourceType(fullPath)) {
                 errors.push({
                     message: `The URI for nested resource doest not meet the valid resource pattern.`,
-                    path: [...path],
+                    path,
                 });
             }
         },
-        resourceGroupParam: (pathKey) => {
-            if (!verifyResourceGroup(pathKey)) {
+        resourceGroupParam: (fullPath) => {
+            if (!verifyResourceGroup(fullPath)) {
                 errors.push({
                     message: `The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
-                    path: [...path],
+                    path,
                 });
             }
         },
-        subscriptionIdParam: (pathKey) => {
-            if (!verifySubscriptionId(pathKey)) {
+        subscriptionIdParam: (fullPath) => {
+            if (!verifySubscriptionId(fullPath)) {
                 errors.push({
                     message: `The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
-                    path: [...path],
+                    path,
                 });
             }
         },
-        scope: (pathKey) => {
-            if (!verifyScope(pathKey)) {
+        resourceGroupScope: (fullPath) => {
+            if (!verifyResourceGroupScope(fullPath)) {
                 errors.push({
                     message: "",
-                    path: [...path],
-                });
-            }
-        },
-        resourceGroupScope: (pathKey) => {
-            if (!verifyResourceGroupScope(pathKey)) {
-                errors.push({
-                    message: "",
-                    path: [...path],
+                    path,
                 });
             }
         },
     };
     const segments = typeof _opts.segmentToCheck === "string" ? [_opts.segmentToCheck] : _opts.segmentToCheck;
     segments.forEach((segment) => {
-        optionsHandlers[segment](pathKey);
+        optionsHandlers[segment](fullPath);
     });
     return errors;
-};
+});
 
 function getProperties(schema) {
     if (!schema) {
@@ -1372,7 +1371,7 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
                 for (const prop of Object.keys(propertiesProperties)) {
                     if (pathAndQueryParameters.includes(prop)) {
                         errors.push({
-                            message: ``,
+                            message: `${prop}`,
                             path: [...path, "put", "parameters", pathItem["put"].parameters.findIndex((p) => p.name === prop)],
                         });
                     }
@@ -1598,7 +1597,7 @@ const ruleset = {
             severity: "error",
             resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+            given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
             then: {
                 function: verifyArmPath,
                 functionOptions: {
@@ -1610,9 +1609,9 @@ const ruleset = {
             description: "Uri for resource CRUD methods MUST contain a resource type.",
             message: "{{error}}",
             severity: "error",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+            given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
             then: {
                 function: verifyArmPath,
                 functionOptions: {
@@ -1640,7 +1639,7 @@ const ruleset = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[put]^~"],
+            given: "$[paths,'x-ms-paths'].*[put]^~",
             then: {
                 function: verifyArmPath,
                 functionOptions: {
@@ -1654,7 +1653,7 @@ const ruleset = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get,patch,delete,put]^~"],
+            given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
             then: {
                 function: verifyArmPath,
                 functionOptions: {
