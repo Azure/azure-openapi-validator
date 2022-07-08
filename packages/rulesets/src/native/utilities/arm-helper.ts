@@ -67,10 +67,10 @@ export class ArmHelper {
     this.getAllResources()
   }
 
-  private getBodyParameter(paramters: any) {
+  private getBodyParameter(parameters: any) {
     let bodyParameter
-    if (paramters && Array.isArray(paramters)) {
-      paramters.forEach((param: any) => {
+    if (parameters && Array.isArray(parameters)) {
+      parameters.forEach((param: any) => {
         if (param.$ref) {
           const resolvedParam = this.swaggerUtil.resolveRef(this.enhancedSchema(param))
           if (resolvedParam && resolvedParam.value && resolvedParam.value.in === "body") {
@@ -288,14 +288,14 @@ export class ArmHelper {
       const enhancedSchema = this.enhancedSchema(schema)
       return !!this.getProperty(enhancedSchema, "location")
     }
-    const allTracledResources = this.getAllResources().filter((re) => {
+    const allTrackedResources = this.getAllResources().filter((re) => {
       const schema = re.operations.find((op) => op.responseSchema)
       if (schema) {
         return isTrackedResource(schema.responseSchema)
       }
       return false
     })
-    return allTracledResources
+    return allTrackedResources
   }
 
   public getAllResourceNames() {

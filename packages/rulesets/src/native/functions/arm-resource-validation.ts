@@ -1,5 +1,6 @@
 import { RuleContext } from "@microsoft.azure/openapi-validator-core"
 import { ArmHelper } from "../utilities/arm-helper"
+import _ from "lodash"
 
 export function* trackedResourcesMustHavePut(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
@@ -19,7 +20,7 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
   const allTrackedResources = armHelper.getTrackedResources()
   const regex = /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(\w+|{\w+})){4,}/gi
   for (const re of allTrackedResources) {
-    if (!re.operations.some((op) => regex.test(op.apiPath))) {
+    if (re.operations.some((op) => regex.test(op.apiPath))) {
       yield {
         location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
         message: `The tracked resource ${re.modelName} is beyond third level of nesting.`,
@@ -36,7 +37,7 @@ export function* allResourcesHaveDelete(openapiSection: any, options: {}, ctx: R
   const allResources = _.uniq(allTrackedResources.concat(allTopLevelResource))
   for (const re of allResources) {
     const deleteOp = re.operations.find((op) => op.httpMethod === "delete")
-    if (deleteOp) {
+    if (!deleteOp) {
       yield {
         location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
         message: `The resource ${re.modelName} does not have a corresponding delete operation.`,

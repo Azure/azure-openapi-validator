@@ -321,7 +321,6 @@ const lroPatch202 = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-
 const ruleset = {
     extends: [ruleset$1],
     rules: {
