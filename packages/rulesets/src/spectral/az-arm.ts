@@ -4,10 +4,12 @@ import common from "./az-common"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import validateOriginalUri from "./functions/lro-original-uri"
 import pathBodyParameters from "./functions/patch-body-parameters"
-import { consistentPatchProperties, lroPatchReturns202, validatePatchBodyParamProperties } from "./functions/patch-resource"
+import { consistentPatchProperties } from "./functions/consistent-patch-properties"
+import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import hasheader from "./functions/has-header"
+import { lroPatch202 } from "./functions/lro-patch-202"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -63,7 +65,7 @@ const ruleset: any = {
     },
     //https://github.com/Azure/azure-openapi-validator/issues/324
     ConsistentPatchProperties: {
-      description: "The properties in the patch body needs to be in the resource model and follow json merge path",
+      description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -73,16 +75,16 @@ const ruleset: any = {
         function: consistentPatchProperties,
       },
     },
-    //https://github.com/Azure/azure-openapi-validator/issues/324
-    LroPatchReturns202: {
-      description: "The properties in the patch body needs to be in the resource model and follow json merge path",
+    //https://github.com/Azure/azure-openapi-validator/issues/335
+    LroPatch202: {
+      description: "Async PATCH should return 202.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
       then: {
-        function: lroPatchReturns202,
+        function: lroPatch202,
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/330
@@ -99,10 +101,10 @@ const ruleset: any = {
     },
     // github issue https://github.com/Azure/azure-openapi-validator/issues/331
     //Get operation should return 200
-    // we have rule to check if operation reutrns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
+    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
     // so here on check if the 200 return '201','202','203'
-    GetOperationReturns200: {
-      description: "The get operation should return 200.",
+    GetOperation200: {
+      description: "The get operation should only return 200.",
       message: "{{description}}",
       severity: "error",
       resolved: true,
@@ -114,7 +116,7 @@ const ruleset: any = {
     },
     // https://github.com/Azure/azure-openapi-validator/issues/332
     ProvisioningStateValidation: {
-      description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled",
+      description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -129,7 +131,7 @@ const ruleset: any = {
     XmsLongRunningOperationOptions: {
       description:
         "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
-      message: "{{error}}",
+      message: "{{description}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
@@ -139,7 +141,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    PatchNotSupportedProperties: {
+    UnSupportedPatchProperties: {
       description: "Patch may not change the name, location, or type of the resource.",
       message: "{{error}}",
       severity: "error",
@@ -153,7 +155,7 @@ const ruleset: any = {
         },
       },
     },
-    PatchSkuProperties: {
+    PatchSkuProperty: {
       description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
       message: "{{error}}",
       severity: "error",
@@ -167,7 +169,7 @@ const ruleset: any = {
         },
       },
     },
-    PatchIdentityProperties: {
+    PatchIdentityProperty: {
       description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
       message: "{{error}}",
       severity: "error",
@@ -193,7 +195,7 @@ const ruleset: any = {
         field: "type",
       },
     },
-    LroLocationHeaders: {
+    LroLocationHeader: {
       description: "Location header must be supported for all async operations that return 202.",
       message: "A 202 response should include an Location response header.",
       severity: "warn",

@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("PatchNotSupportedProperties")
+  linter = await linterForRule("UnSupportedPatchProperties")
   return linter
 })
 
-test("PatchNotSupportedProperties should find errors ", () => {
+test("UnSupportedPatchProperties should find errors ", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -89,7 +89,7 @@ test("PatchNotSupportedProperties should find errors ", () => {
   })
 })
 
-test("PatchNotSupportedProperties should find errors ", () => {
+test("UnSupportedPatchProperties should find errors ", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

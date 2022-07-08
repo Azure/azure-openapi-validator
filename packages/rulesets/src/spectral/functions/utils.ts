@@ -67,3 +67,12 @@ export function diffSchema(a: any, b: any) {
   diffSchemaInternal(a, b, [])
   return notMatchedProperties
 }
+
+export function getGetOperationSchema(paths: string[], ctx: any) {
+  const getOperationPath = [...paths, "get"]
+  const getOperation = jsonPath(getOperationPath, ctx?.document?.parserResult?.data)
+  if (!getOperation) {
+    return undefined
+  }
+  return getOperation?.responses["200"]?.schema || getOperation?.responses["201"]?.schema
+}

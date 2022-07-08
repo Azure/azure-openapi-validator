@@ -114,6 +114,15 @@ function diffSchema(a, b) {
     diffSchemaInternal(a, b, []);
     return notMatchedProperties;
 }
+function getGetOperationSchema(paths, ctx) {
+    var _a, _b, _c, _d;
+    const getOperationPath = [...paths, "get"];
+    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
+    if (!getOperation) {
+        return undefined;
+    }
+    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
+}
 
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
@@ -163,15 +172,6 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
-function getGetOperationSchema(paths, ctx) {
-    var _a, _b, _c, _d;
-    const getOperationPath = [...paths, "get"];
-    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
-    if (!getOperation) {
-        return undefined;
-    }
-    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
-}
 const consistentPatchProperties = (patchOp, _opts, ctx) => {
     var _a, _b, _c, _d, _e, _f, _g;
     if (patchOp === null || typeof patchOp !== "object") {
@@ -193,23 +193,7 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     }
     return errors;
 };
-const lroPatchReturns202 = (patchOp, _opts, ctx) => {
-    if (patchOp === null || typeof patchOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    if (!patchOp["x-ms-long-running-operation"]) {
-        return [];
-    }
-    const errors = [];
-    if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"])) {
-        errors.push({
-            message: "The async patch operation should return 202.",
-            path: [...path, "responses"],
-        });
-    }
-    return errors;
-};
+
 const validatePatchBodyParamProperties = (patchOp, _opts, ctx) => {
     var _a, _b, _c, _d, _e, _f;
     if (patchOp === null || typeof patchOp !== "object") {
@@ -229,7 +213,7 @@ const validatePatchBodyParamProperties = (patchOp, _opts, ctx) => {
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
                     errors.push({
-                        message: `The patch operation body parameter schema should contains property ${p}.`,
+                        message: `The patch operation body parameter schema should contains property '${p}'.`,
                         path: [...path, "parameters", index],
                     });
                 }
@@ -298,6 +282,45 @@ const provisioningState = (swaggerObj, _opts, paths) => {
     return [];
 };
 
+const hasHeader = (response, opts, paths) => {
+    if (response === null || typeof response !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.name) {
+        return [];
+    }
+    const path = paths.path || [];
+    const hasHeader = Object.keys(response.headers || {})
+        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
+    if (!hasHeader) {
+        return [
+            {
+                message: `Response should include an "${opts.name}" response header.`,
+                path: [...path, 'headers'],
+            },
+        ];
+    }
+    return [];
+};
+
+const lroPatch202 = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!patchOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"])) {
+        errors.push({
+            message: "The async patch operation should return 202.",
+            path: [...path, "responses"],
+        });
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -352,7 +375,7 @@ const ruleset = {
             },
         },
         ConsistentPatchProperties: {
-            description: "The properties in the patch body needs to be in the resource model and follow json merge path",
+            description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
@@ -362,15 +385,15 @@ const ruleset = {
                 function: consistentPatchProperties,
             },
         },
-        LroPatchReturns202: {
-            description: "The properties in the patch body needs to be in the resource model and follow json merge path",
+        LroPatch202: {
+            description: "Async PATCH should return 202.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
             then: {
-                function: lroPatchReturns202,
+                function: lroPatch202,
             },
         },
         DeleteResponseBodyEmpty: {
@@ -384,8 +407,8 @@ const ruleset = {
                 function: falsy,
             },
         },
-        GetOperationReturns200: {
-            description: "The get operation should return 200.",
+        GetOperation200: {
+            description: "The get operation should only return 200.",
             message: "{{description}}",
             severity: "error",
             resolved: true,
@@ -396,7 +419,7 @@ const ruleset = {
             },
         },
         ProvisioningStateValidation: {
-            description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled",
+            description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
@@ -408,7 +431,7 @@ const ruleset = {
         },
         XmsLongRunningOperationOptions: {
             description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
-            message: "{{error}}",
+            message: "{{description}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
@@ -418,7 +441,7 @@ const ruleset = {
                 function: truthy,
             },
         },
-        PatchNotSupportedProperties: {
+        UnSupportedPatchProperties: {
             description: "Patch may not change the name, location, or type of the resource.",
             message: "{{error}}",
             severity: "error",
@@ -432,7 +455,7 @@ const ruleset = {
                 },
             },
         },
-        PatchSkuProperties: {
+        PatchSkuProperty: {
             description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
             message: "{{error}}",
             severity: "error",
@@ -446,7 +469,7 @@ const ruleset = {
                 },
             },
         },
-        PatchIdentityProperties: {
+        PatchIdentityProperty: {
             description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
             message: "{{error}}",
             severity: "error",
@@ -472,7 +495,7 @@ const ruleset = {
                 field: "type",
             },
         },
-        LroLocationHeaders: {
+        LroLocationHeader: {
             description: "Location header must be supported for all async operations that return 202.",
             message: "A 202 response should include an Location response header.",
             severity: "warn",

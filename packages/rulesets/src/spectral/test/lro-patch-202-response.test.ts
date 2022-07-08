@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("LroPatchReturns202")
+  linter = await linterForRule("LroPatch202")
   return linter
 })
 
-test("LroPatchReturns202 should find errors", () => {
+test("LroPatch202 should find errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {

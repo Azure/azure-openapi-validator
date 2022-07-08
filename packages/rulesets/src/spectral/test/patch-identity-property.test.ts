@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("PatchIdentityProperties")
+  linter = await linterForRule("PatchIdentityProperty")
   return linter
 })
 
-test("PatchIdentityProperties should find errors ", () => {
+test("PatchIdentityProperty should find errors ", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -113,11 +113,11 @@ test("PatchIdentityProperties should find errors ", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
-    expect(results[0].message).toContain("The patch operation body parameter schema should contains property identity.")
+    expect(results[0].message).toContain("The patch operation body parameter schema should contains property 'identity'.")
   })
 })
 
-test("PatchIdentityProperties should find errors ", () => {
+test("PatchIdentityProperty should find errors ", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

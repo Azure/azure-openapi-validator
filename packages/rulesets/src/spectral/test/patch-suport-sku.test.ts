@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("PatchSkuProperties")
+  linter = await linterForRule("PatchSkuProperty")
   return linter
 })
 
-test("PatchSkuProperties should find errors ", () => {
+test("PatchSkuProperty should find errors ", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -110,7 +110,7 @@ test("PatchSkuProperties should find errors ", () => {
   })
 })
 
-test("PatchSkuProperties should find errors ", () => {
+test("PatchSkuProperty should find errors ", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
