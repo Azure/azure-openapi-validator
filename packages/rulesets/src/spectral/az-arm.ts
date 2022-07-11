@@ -1,15 +1,15 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
-import hasApiVersionParameter from "./functions/has-api-version-parameter"
-import validateOriginalUri from "./functions/lro-original-uri"
-import pathBodyParameters from "./functions/patch-body-parameters"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
-import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
+import hasApiVersionParameter from "./functions/has-api-version-parameter"
+import hasheader from "./functions/has-header"
+import validateOriginalUri from "./functions/lro-original-uri"
+import { lroPatch202 } from "./functions/lro-patch-202"
+import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
-import hasheader from "./functions/has-header"
-import { lroPatch202 } from "./functions/lro-patch-202"
+import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 const ruleset: any = {
   extends: [common],
   rules: {

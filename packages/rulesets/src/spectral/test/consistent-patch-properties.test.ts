@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("ConsistentPatchProperties should find errors ", () => {
+test("ConsistentPatchProperties should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -111,7 +111,7 @@ test("ConsistentPatchProperties should find errors ", () => {
   })
 })
 
-test("ConsistentPatchProperties should find errors ", () => {
+test("ConsistentPatchProperties should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

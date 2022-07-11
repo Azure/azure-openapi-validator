@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("PatchSkuProperty should find errors ", () => {
+test("PatchSkuProperty should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -110,7 +110,7 @@ test("PatchSkuProperty should find errors ", () => {
   })
 })
 
-test("PatchSkuProperty should find errors ", () => {
+test("PatchSkuProperty should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

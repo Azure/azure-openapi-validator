@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("ProvisioningStateValidation should find errors ", () => {
+test("ProvisioningStateValidation should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -70,7 +70,7 @@ test("ProvisioningStateValidation should find errors ", () => {
   })
 })
 
-test("ProvisioningStateValidation should find errors ", () => {
+test("ProvisioningStateValidation should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

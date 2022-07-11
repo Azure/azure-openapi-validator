@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("UnSupportedPatchProperties should find errors ", () => {
+test("UnSupportedPatchProperties should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -89,7 +89,7 @@ test("UnSupportedPatchProperties should find errors ", () => {
   })
 })
 
-test("UnSupportedPatchProperties should find errors ", () => {
+test("UnSupportedPatchProperties should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

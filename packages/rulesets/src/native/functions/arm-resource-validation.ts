@@ -1,6 +1,6 @@
 import { RuleContext } from "@microsoft.azure/openapi-validator-core"
-import { ArmHelper } from "../utilities/arm-helper"
 import _ from "lodash"
+import { ArmHelper } from "../utilities/arm-helper"
 
 export function* trackedResourcesMustHavePut(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)

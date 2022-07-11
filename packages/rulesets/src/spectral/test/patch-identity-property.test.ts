@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("PatchIdentityProperty should find errors ", () => {
+test("PatchIdentityProperty should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -117,7 +117,7 @@ test("PatchIdentityProperty should find errors ", () => {
   })
 })
 
-test("PatchIdentityProperty should find errors ", () => {
+test("PatchIdentityProperty should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
