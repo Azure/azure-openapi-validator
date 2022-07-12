@@ -9,7 +9,7 @@ export function* trackedResourcesMustHavePut(openapiSection: any, options: {}, c
     if (!re.operations.some((op) => op.httpMethod === "put")) {
       yield {
         location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath, "put"],
-        message: `The tracked resource ${re.modelName} does not a corresponding put operation.`,
+        message: `The tracked resource ${re.modelName} does not have a corresponding put operation.`,
       }
     }
   }

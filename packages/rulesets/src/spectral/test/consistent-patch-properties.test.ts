@@ -111,7 +111,7 @@ test("ConsistentPatchProperties should find errors", () => {
   })
 })
 
-test("ConsistentPatchProperties should find errors", () => {
+test("ConsistentPatchProperties should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

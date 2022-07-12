@@ -117,7 +117,7 @@ test("PatchIdentityProperty should find errors", () => {
   })
 })
 
-test("PatchIdentityProperty should find errors", () => {
+test("PatchIdentityProperty should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

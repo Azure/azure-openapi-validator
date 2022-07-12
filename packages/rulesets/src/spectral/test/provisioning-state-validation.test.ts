@@ -70,7 +70,7 @@ test("ProvisioningStateValidation should find errors", () => {
   })
 })
 
-test("ProvisioningStateValidation should find errors", () => {
+test("ProvisioningStateValidation should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

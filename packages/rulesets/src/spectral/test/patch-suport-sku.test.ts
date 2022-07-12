@@ -110,7 +110,7 @@ test("PatchSkuProperty should find errors", () => {
   })
 })
 
-test("PatchSkuProperty should find errors", () => {
+test("PatchSkuProperty should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

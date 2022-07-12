@@ -89,7 +89,7 @@ test("UnSupportedPatchProperties should find errors", () => {
   })
 })
 
-test("UnSupportedPatchProperties should find errors", () => {
+test("UnSupportedPatchProperties should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
