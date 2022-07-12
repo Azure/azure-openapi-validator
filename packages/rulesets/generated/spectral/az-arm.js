@@ -6,49 +6,6 @@ const ruleset$1 = {
     rules: {},
 };
 
-function checkApiVersion(param) {
-    if (param.in !== "query") {
-        return false;
-    }
-    return true;
-}
-const apiVersionName = "api-version";
-const hasApiVersionParameter = (apiPath, opts, paths) => {
-    var _a, _b;
-    if (apiPath === null || typeof apiPath !== 'object') {
-        return [];
-    }
-    if (opts === null || typeof opts !== 'object' || !opts.methods) {
-        return [];
-    }
-    const path = paths.path || [];
-    if (apiPath.parameters) {
-        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
-            return [];
-        }
-    }
-    const messages = [];
-    for (const method of Object.keys(apiPath)) {
-        if (opts.methods.includes(method)) {
-            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
-            if (!param || param.length === 0) {
-                messages.push({
-                    message: `Operation should include an 'api-version' parameter.`,
-                    path: [...path, method]
-                });
-                continue;
-            }
-            if (!checkApiVersion(param[0])) {
-                messages.push({
-                    message: `Operation 'api-version' parameter should be a query parameter.`,
-                    path: [...path, method]
-                });
-            }
-        }
-    }
-    return messages;
-};
-
 function getProperties(schema) {
     if (!schema) {
         return {};
@@ -124,6 +81,92 @@ function getGetOperationSchema(paths, ctx) {
     return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
 }
 
+const consistentPatchProperties = (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f, _g;
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const patchBodySchema = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    const patchBodySchemaIndex = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _c === void 0 ? void 0 : _c.findIndex((p) => p.in === "body");
+    const responseSchema = ((_e = (_d = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _d === void 0 ? void 0 : _d["200"]) === null || _e === void 0 ? void 0 : _e.schema) || ((_g = (_f = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _f === void 0 ? void 0 : _f["201"]) === null || _g === void 0 ? void 0 : _g.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+    if (patchBodySchema && responseSchema) {
+        const absents = diffSchema(patchBodySchema, responseSchema);
+        absents.forEach((absent) => {
+            errors.push({
+                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
+                path: [...path, "parameters", patchBodySchemaIndex, "schema"],
+            });
+        });
+    }
+    return errors;
+};
+
+function checkApiVersion(param) {
+    if (param.in !== "query") {
+        return false;
+    }
+    return true;
+}
+const apiVersionName = "api-version";
+const hasApiVersionParameter = (apiPath, opts, paths) => {
+    var _a, _b;
+    if (apiPath === null || typeof apiPath !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.methods) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (apiPath.parameters) {
+        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
+            return [];
+        }
+    }
+    const messages = [];
+    for (const method of Object.keys(apiPath)) {
+        if (opts.methods.includes(method)) {
+            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
+            if (!param || param.length === 0) {
+                messages.push({
+                    message: `Operation should include an 'api-version' parameter.`,
+                    path: [...path, method]
+                });
+                continue;
+            }
+            if (!checkApiVersion(param[0])) {
+                messages.push({
+                    message: `Operation 'api-version' parameter should be a query parameter.`,
+                    path: [...path, method]
+                });
+            }
+        }
+    }
+    return messages;
+};
+
+const hasHeader = (response, opts, paths) => {
+    if (response === null || typeof response !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.name) {
+        return [];
+    }
+    const path = paths.path || [];
+    const hasHeader = Object.keys(response.headers || {})
+        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
+    if (!hasHeader) {
+        return [
+            {
+                message: `Response should include an "${opts.name}" response header.`,
+                path: [...path, 'headers'],
+            },
+        ];
+    }
+    return [];
+};
+
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
         return [];
@@ -138,6 +181,24 @@ const validateOriginalUri = (lroOptions, opts, ctx) => {
         });
     }
     return messages;
+};
+
+const lroPatch202 = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!patchOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"])) {
+        errors.push({
+            message: "The async patch operation should return 202.",
+            path: [...path, "responses"],
+        });
+    }
+    return errors;
 };
 
 const pathBodyParameters = (parameters, _opts, paths) => {
@@ -166,68 +227,6 @@ const pathBodyParameters = (parameters, _opts, paths) => {
             errors.push({
                 message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
                 path: [...path, "schema"]
-            });
-        }
-    }
-    return errors;
-};
-
-const consistentPatchProperties = (patchOp, _opts, ctx) => {
-    var _a, _b, _c, _d, _e, _f, _g;
-    if (patchOp === null || typeof patchOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const patchBodySchema = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
-    const patchBodySchemaIndex = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _c === void 0 ? void 0 : _c.findIndex((p) => p.in === "body");
-    const responseSchema = ((_e = (_d = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _d === void 0 ? void 0 : _d["200"]) === null || _e === void 0 ? void 0 : _e.schema) || ((_g = (_f = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _f === void 0 ? void 0 : _f["201"]) === null || _g === void 0 ? void 0 : _g.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
-    if (patchBodySchema && responseSchema) {
-        const absents = diffSchema(patchBodySchema, responseSchema);
-        absents.forEach((absent) => {
-            errors.push({
-                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
-                path: [...path, "parameters", patchBodySchemaIndex, "schema"],
-            });
-        });
-    }
-    return errors;
-};
-
-const validatePatchBodyParamProperties = (patchOp, _opts, ctx) => {
-    var _a, _b, _c, _d, _e, _f;
-    if (patchOp === null || typeof patchOp !== "object") {
-        return [];
-    }
-    if (!_opts.should && !_opts.shouldNot) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const bodyParameter = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
-    if (bodyParameter) {
-        const index = patchOp.parameters.findIndex((p) => p.in === "body");
-        if (_opts.should) {
-            const responseSchema = ((_d = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
-            _opts.should.forEach((p) => {
-                var _a, _b;
-                if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
-                    errors.push({
-                        message: `The patch operation body parameter schema should contains property '${p}'.`,
-                        path: [...path, "parameters", index],
-                    });
-                }
-            });
-        }
-        if (_opts.shouldNot) {
-            _opts.shouldNot.forEach((p) => {
-                var _a;
-                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
-                    errors.push({
-                        message: `The patch operation body parameter schema should not contains property ${p}.`,
-                        path: [...path, "parameters", index],
-                    });
-                }
             });
         }
     }
@@ -282,41 +281,42 @@ const provisioningState = (swaggerObj, _opts, paths) => {
     return [];
 };
 
-const hasHeader = (response, opts, paths) => {
-    if (response === null || typeof response !== 'object') {
-        return [];
-    }
-    if (opts === null || typeof opts !== 'object' || !opts.name) {
-        return [];
-    }
-    const path = paths.path || [];
-    const hasHeader = Object.keys(response.headers || {})
-        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
-    if (!hasHeader) {
-        return [
-            {
-                message: `Response should include an "${opts.name}" response header.`,
-                path: [...path, 'headers'],
-            },
-        ];
-    }
-    return [];
-};
-
-const lroPatch202 = (patchOp, _opts, ctx) => {
+const validatePatchBodyParamProperties = (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
-    const path = ctx.path || [];
-    if (!patchOp["x-ms-long-running-operation"]) {
+    if (!_opts.should && !_opts.shouldNot) {
         return [];
     }
+    const path = ctx.path || [];
     const errors = [];
-    if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"])) {
-        errors.push({
-            message: "The async patch operation should return 202.",
-            path: [...path, "responses"],
-        });
+    const bodyParameter = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    if (bodyParameter) {
+        const index = patchOp.parameters.findIndex((p) => p.in === "body");
+        if (_opts.should) {
+            const responseSchema = ((_d = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            _opts.should.forEach((p) => {
+                var _a, _b;
+                if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
+                    errors.push({
+                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        path: [...path, "parameters", index],
+                    });
+                }
+            });
+        }
+        if (_opts.shouldNot) {
+            _opts.shouldNot.forEach((p) => {
+                var _a;
+                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
+                    errors.push({
+                        message: `The patch operation body parameter schema should not contains property ${p}.`,
+                        path: [...path, "parameters", index],
+                    });
+                }
+            });
+        }
     }
     return errors;
 };
