@@ -611,6 +611,53 @@ The recommended characters are 0-9, A-Z, a-z, -, ., _, ~, and :.
 
 Please refer to [path-characters.md](./path-characters.md) for details.
 
+### PathContainsResourceGroup
+
+Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.
+
+Please refer to [path-contains-resource-group.md](./path-contains-resource-group.md) for details.
+
+### PathContainsResourceType
+
+Per ARM RPC,Uri for resource CRUD methods MUST contain a resource type.
+Uri path starts with \<scope\>/providers/\<namespace\>/\<resourcetype\> format, where
+- \<scope\> is one of:
+  1.  Tenant/Global: '/'
+  2.  Subscription: "/subscriptions/{subscriptionId}"
+  3.  Resource group: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+- \<namespace\> is a literal (e.g. "Microsoft.Compute") consisting of alphanumeric characters, plus '.'.
+- \<resourcetype\> is a literal resource type name, follow below rules:
+  1.  MUST consist of alphanumeric characters only
+  2.  SHOULD describe the resource type
+  3.  Must be lowerCamelCase words
+  4.  Must be a plural
+
+Please refer to [path-contains-resource-type.md](./path-contains-resource-type.md) for details.
+
+### PathContainsSubscriptionId
+
+Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}'.
+
+Please refer to [path-contains-subscription-id.md](./path-contains-subscription-id.md) for details.
+
+### PathForNestedResource
+
+Path for CRUD methods on a nested resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/NestedResourceType/{nestedResourceName}'.
+
+Please refer to [path-for-nested-resource.md](./path-for-nested-resource.md) for details.
+
+### PathForPutOperation
+
+For a PUT operation, If a uri segment has subscription, it needs to have a resource group segment as well.
+
+Please refer to [path-for-put-operation.md](./path-for-put-operation.md) for details.
+
+### PathForResourceAction
+
+Path for 'post' method on a resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/Action'.
+
+Please refer to [path-for-resource-action.md](./path-for-resource-action.md) for details.
+
 ### PathParameterNames
 
 Path parameter names should be consistent across all paths.
@@ -714,6 +761,12 @@ Please refer to [put-path.md](./put-path.md) for details.
 The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
+
+### RepeatedUriInfo
+
+Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
+
+Please refer to [repeated-uri-info.md](./repeated-uri-info.md) for details.
 
 ### RequestBodyNotAllowed
 

@@ -1,4 +1,4 @@
-# URIContainsResourceType
+# PathContainsResourceType
 
 ## Category
 

@@ -4,15 +4,15 @@ import linterForRule from "./utils"
 const linters: { [index: string]: Spectral } = {}
 
 beforeAll(async () => {
-  linters.URIContainsResourceType = await linterForRule("URIContainsResourceType")
-  linters.URIContainsResourceGroup = await linterForRule("URIContainsResourceGroup")
-  linters.URIContainsSubscriptionId = await linterForRule("URIContainsSubscriptionId")
-  linters.URIForPutOperation = await linterForRule("URIForPutOperation")
-  linters.URIForNestedResource = await linterForRule("URIForNestedResource")
-  linters.URIForResourceAction = await linterForRule("URIForResourceAction")
+  linters.PathContainsResourceType = await linterForRule("PathContainsResourceType")
+  linters.PathContainsResourceGroup = await linterForRule("PathContainsResourceGroup")
+  linters.PathContainsSubscriptionId = await linterForRule("PathContainsSubscriptionId")
+  linters.PathForPutOperation = await linterForRule("PathForPutOperation")
+  linters.PathForNestedResource = await linterForRule("PathForNestedResource")
+  linters.PathForResourceAction = await linterForRule("PathForResourceAction")
 })
 
-test("URIContainsResourceType should find errors for invalid path", () => {
+test("PathContainsResourceType should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -27,10 +27,6 @@ test("URIContainsResourceType should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
       "/subscriptions/{subscriptionId}/providers/{resourceName}/Microsoft.MyNs/resourceType": {
@@ -40,10 +36,6 @@ test("URIContainsResourceType should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
       "/subscriptions/{subscriptionId}/providers/resourceType/Microsoft.MyNs/resourceType": {
@@ -53,27 +45,23 @@ test("URIContainsResourceType should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
     },
   }
-  return linters.URIContainsResourceType.run(oasDoc).then((results) => {
+  return linters.PathContainsResourceType.run(oasDoc).then((results) => {
     expect(results.length).toBe(3)
-    expect(results[0].message).toContain("The URI for the CURD methods do not contain a resource type.")
+    expect(results[0].message).toContain("The path for the CURD methods do not contain a resource type.")
 
     expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/{resourceName}/resourceType")
-    expect(results[1].message).toContain("The URI for the CURD methods do not contain a resource type.")
+    expect(results[1].message).toContain("The path for the CURD methods do not contain a resource type.")
     expect(results[1].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/{resourceName}/Microsoft.MyNs/resourceType")
-    expect(results[2].message).toContain("The URI for the CURD methods do not contain a resource type.")
+    expect(results[2].message).toContain("The path for the CURD methods do not contain a resource type.")
     expect(results[2].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/resourceType/Microsoft.MyNs/resourceType")
   })
 })
 
-test("URIContainsResourceGroup should find errors for invalid path", () => {
+test("PathContainsResourceGroup should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -88,24 +76,20 @@ test("URIContainsResourceGroup should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
     },
   }
-  return linters.URIContainsResourceGroup.run(oasDoc).then((results) => {
+  return linters.PathContainsResourceGroup.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.")
+    expect(results[0].message).toContain("The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.")
 
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/providers/Microsoft.MyNs/{resourceName}/resourceType"
     )
   })
 })
-test("URIContainsSubscription should find errors for invalid path", () => {
+test("PathContainsSubscription should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -120,23 +104,19 @@ test("URIContainsSubscription should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
     },
   }
-  return linters.URIContainsSubscriptionId.run(oasDoc).then((results) => {
+  return linters.PathContainsSubscriptionId.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.")
+    expect(results[0].message).toContain("The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.")
 
     expect(results[0].path.join(".")).toBe("paths./subscriptions/resourceGroups/providers/Microsoft.MyNs/{resourceName}/resourceType")
   })
 })
 
-test("URIForPutOperation should find errors for invalid path", () => {
+test("PathForPutOperation should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -151,10 +131,6 @@ test("URIForPutOperation should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
       "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}": {
@@ -164,22 +140,18 @@ test("URIForPutOperation should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
     },
   }
-  return linters.URIForPutOperation.run(oasDoc).then((results) => {
+  return linters.PathForPutOperation.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The URI for 'put' operation must be under a subscription and resource group.")
+    expect(results[0].message).toContain("The path for 'put' operation must be under a subscription and resource group.")
     expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}")
   })
 })
 
-test("URIForNestedResource should find errors for invalid path", () => {
+test("PathForNestedResource should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -194,10 +166,6 @@ test("URIForNestedResource should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
       "/{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}/disk/{diskName}/DiskSize/list": {
@@ -207,10 +175,6 @@ test("URIForNestedResource should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
       "/{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}/disk/default": {
@@ -220,17 +184,13 @@ test("URIForNestedResource should find errors for invalid path", () => {
           description: "Test Description",
           parameters: [],
           responses: {},
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "original-uri",
-          },
         },
       },
     },
   }
-  return linters.URIForNestedResource.run(oasDoc).then((results) => {
+  return linters.PathForNestedResource.run(oasDoc).then((results) => {
     expect(results.length).toBe(2)
-    expect(results[0].message).toContain("The URI for nested resource doest not meet the valid resource pattern.")
+    expect(results[0].message).toContain("The path for nested resource doest not meet the valid resource pattern.")
     expect(results[0].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}/disk/diskList")
     expect(results[1].path.join(".")).toBe(
       "paths./{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}/disk/{diskName}/DiskSize/list"

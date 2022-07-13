@@ -117,7 +117,7 @@ export const verifyArmPath = createRulesetFunction<unknown, Options>(
     resourceType: (fullPath: string) => {
       if (!verifyResourceType(fullPath)) {
         errors.push({
-          message: `The URI for the CURD methods do not contain a resource type.`,
+          message: `The path for the CURD methods do not contain a resource type.`,
           path,
         })
       }
@@ -125,7 +125,7 @@ export const verifyArmPath = createRulesetFunction<unknown, Options>(
     nestedResourceType: (fullPath: string) => {
       if (!verifyNestResourceType(fullPath)) {
         errors.push({
-          message: `The URI for nested resource doest not meet the valid resource pattern.`,
+          message: `The path for nested resource doest not meet the valid resource pattern.`,
           path,
         })
       }
@@ -133,7 +133,7 @@ export const verifyArmPath = createRulesetFunction<unknown, Options>(
     resourceGroupParam: (fullPath: string) => {
       if (!verifyResourceGroup(fullPath)) {
         errors.push({
-          message: `The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
+          message: `The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
           path,
         })
       }
@@ -141,7 +141,7 @@ export const verifyArmPath = createRulesetFunction<unknown, Options>(
     subscriptionIdParam: (fullPath: string) => {
       if (!verifySubscriptionId(fullPath)) {
         errors.push({
-          message: `The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
+          message: `The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
           path,
         })
       }

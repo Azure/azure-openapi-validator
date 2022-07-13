@@ -1,4 +1,4 @@
-# URIForPutOperation
+# PathForPutOperation
 
 ## Category
 
@@ -10,7 +10,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The URI for 'put' operation must be under a subscription and resource group.
+The path for 'put' operation must be under a subscription and resource group.
 
 ## Description
 

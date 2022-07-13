@@ -80,7 +80,7 @@ const verifyArmPath = createRulesetFunction({
         resourceType: (fullPath) => {
             if (!verifyResourceType(fullPath)) {
                 errors.push({
-                    message: `The URI for the CURD methods do not contain a resource type.`,
+                    message: `The path for the CURD methods do not contain a resource type.`,
                     path,
                 });
             }
@@ -88,7 +88,7 @@ const verifyArmPath = createRulesetFunction({
         nestedResourceType: (fullPath) => {
             if (!verifyNestResourceType(fullPath)) {
                 errors.push({
-                    message: `The URI for nested resource doest not meet the valid resource pattern.`,
+                    message: `The path for nested resource doest not meet the valid resource pattern.`,
                     path,
                 });
             }
@@ -96,7 +96,7 @@ const verifyArmPath = createRulesetFunction({
         resourceGroupParam: (fullPath) => {
             if (!verifyResourceGroup(fullPath)) {
                 errors.push({
-                    message: `The URI for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
+                    message: `The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
                     path,
                 });
             }
@@ -104,7 +104,7 @@ const verifyArmPath = createRulesetFunction({
         subscriptionIdParam: (fullPath) => {
             if (!verifySubscriptionId(fullPath)) {
                 errors.push({
-                    message: `The URI for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
+                    message: `The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
                     path,
                 });
             }
@@ -407,8 +407,8 @@ const ruleset = {
                 function: falsy,
             },
         },
-        URIContainsSubscriptionId: {
-            description: "Uri for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
+        PathContainsSubscriptionId: {
+            description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
             message: "{{error}}",
             severity: "error",
             resolved: false,
@@ -421,8 +421,8 @@ const ruleset = {
                 },
             },
         },
-        URIContainsResourceType: {
-            description: "Uri for resource CRUD methods MUST contain a resource type.",
+        PathContainsResourceType: {
+            description: "Path for resource CRUD methods MUST contain a resource type.",
             message: "{{error}}",
             severity: "error",
             resolved: false,
@@ -435,8 +435,8 @@ const ruleset = {
                 },
             },
         },
-        URIContainsResourceGroup: {
-            description: "Uri for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
+        PathContainsResourceGroup: {
+            description: "Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
             message: "{{error}}",
             severity: "error",
             resolved: false,
@@ -449,8 +449,8 @@ const ruleset = {
                 },
             },
         },
-        URIForPutOperation: {
-            description: "The URI for 'put' operation must be under a subscription and resource group.",
+        PathForPutOperation: {
+            description: "The path for 'put' operation must be under a subscription and resource group.",
             message: "{{description}}",
             severity: "warn",
             resolved: false,
@@ -463,8 +463,8 @@ const ruleset = {
                 },
             },
         },
-        URIForNestedResource: {
-            description: "Uri for CRUD methods on a nested resource type MUST follow valid resource naming.",
+        PathForNestedResource: {
+            description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
             message: "{{error}}",
             severity: "warn",
             resolved: false,
@@ -477,13 +477,13 @@ const ruleset = {
                 },
             },
         },
-        URIForResourceAction: {
-            description: "Uri for 'post' method on a resource type MUST follow valid resource naming.",
+        PathForResourceAction: {
+            description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
             message: "{{description}}",
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.post^~"],
+            given: "$[paths,'x-ms-paths'].*.post^~",
             then: {
                 function: pattern,
                 functionOptions: {
@@ -491,13 +491,13 @@ const ruleset = {
                 },
             },
         },
-        RepeatedUriInfo: {
-            description: "Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
-            message: "The '{{error}}' already appears in the URI, please don't repeat it in the request body.",
+        RepeatedPathInfo: {
+            description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+            message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
             severity: "warn",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.put^"],
+            given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: bodyParamRepeatedInfo,
             },

@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("RepeatedUriInfo")
+  linter = await linterForRule("RepeatedPathInfo")
   return linter
 })
 
-test("RepeatedUriInfo should find errors", () => {
+test("RepeatedPathInfo should find errors", () => {
   // Test parameter names in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
@@ -74,6 +74,6 @@ test("RepeatedUriInfo should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/foo/{fooName}.put.parameters.1")
-    expect(results[0].message).toBe("The 'fooName' already appears in the URI, please don't repeat it in the request body.")
+    expect(results[0].message).toBe("The 'fooName' already appears in the path, please don't repeat it in the request body.")
   })
 })
