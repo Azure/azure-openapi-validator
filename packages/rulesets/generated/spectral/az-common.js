@@ -16,7 +16,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "https://docs.microsoft.com/\w+\-\w+/azure/.*"
+                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
                 }
             },
         }
