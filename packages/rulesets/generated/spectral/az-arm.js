@@ -1,9 +1,26 @@
 import { oas2 } from '@stoplight/spectral-formats';
-import { truthy, falsy } from '@stoplight/spectral-functions';
+import { pattern, truthy, falsy } from '@stoplight/spectral-functions';
 
 const ruleset$1 = {
     extends: [],
-    rules: {},
+    rules: {
+        docLinkLocale: {
+            description: "This rule is to ensure the documentation link in the description does not contains any locale.",
+            message: "The documentation link in the description contains locale info, please change it to the link without locale.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: [
+                "$..[?(@property === 'description')]^",
+            ],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "https://docs.microsoft.com/\w+\-\w+/azure/.*"
+                }
+            },
+        }
+    },
 };
 
 function checkApiVersion(param) {
