@@ -273,9 +273,9 @@ const hostParameters = (parameterizedHost, _opts, paths) => {
                         path: [...path, "parameters", index],
                     });
                 }
-                if (p.type !== "string" || p.format !== "uri") {
+                if (p.type !== "string" || p.format !== "url") {
                     errors.push({
-                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
+                        message: "The host parameter must be typed \"type 'string', format 'url'\".",
                         path: [...path, "parameters", index],
                     });
                 }
