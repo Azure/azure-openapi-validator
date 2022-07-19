@@ -587,14 +587,30 @@ export class ArmHelper {
     return undefined
   }
 
-  public getOperationIdFromPath(path: string, code = "get") {
-    let pathObj = this.innerDoc.paths[path]
-    if (!pathObj && this.innerDoc["x-ms-paths"]) {
-      pathObj = this.innerDoc["x-ms-paths"][path]
+  public getOperationIdFromPath(path: string, code = "get", doc?: any) {
+    doc = doc || this.innerDoc
+    let pathObj = doc?.paths[path]
+    if (!pathObj && doc?.["x-ms-paths"]) {
+      pathObj = doc?.["x-ms-paths"][path]
     }
     if (pathObj && pathObj[code]) {
       return pathObj[code].operationId
     }
+  }
+
+  public findOperation(path: string, code = "get") {
+    let op = this.getOperationIdFromPath(path, code, this.innerDoc)
+    if (op) {
+      return op
+    }
+    const references = this.inventory.referencesOf(this.specPath)
+    for (const reference of Object.values(references)) {
+      let op = this.getOperationIdFromPath(path, code, reference)
+      if (op) {
+        return op
+      }
+    }
+    return undefined
   }
 
   /**

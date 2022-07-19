@@ -36,11 +36,13 @@ export function* allResourcesHaveDelete(openapiSection: any, options: {}, ctx: R
   const allTopLevelResource = armHelper.getTopLevelResources()
   const allResources = _.uniq(allTrackedResources.concat(allTopLevelResource))
   for (const re of allResources) {
-    const deleteOp = re.operations.find((op) => op.httpMethod === "delete")
-    if (!deleteOp) {
-      yield {
-        location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
-        message: `The resource ${re.modelName} does not have a corresponding delete operation.`,
+    const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
+    if (apiPath) {
+      if (!armHelper.findOperation(apiPath, "delete")) {
+        yield {
+          location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
+          message: `The resource ${re.modelName} does not have a corresponding delete operation.`,
+        }
       }
     }
   }

@@ -1,0 +1,20 @@
+[
+  {
+    "code": "DeleteResponseBodyEmpty",
+    "message": "The delete response body must be empty.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}\"].delete.responses[\"200\"].schema",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:159:12"
+  },
+  {
+    "code": "DeleteResponseBodyEmpty",
+    "message": "The delete response body must be empty.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}\"].delete.responses[\"200\"].schema",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:810:12"
+  },
+  {
+    "code": "DeleteResponseBodyEmpty",
+    "message": "The delete response body must be empty.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}\"].delete.responses[\"200\"].schema",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:659:12"
+  }
+]
