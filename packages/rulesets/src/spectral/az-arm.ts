@@ -1,7 +1,9 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { falsy, truthy } from "@stoplight/spectral-functions"
+import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
+import verifyArmPath from "./functions/arm-path-validation"
+import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import validateOriginalUri from "./functions/lro-original-uri"
@@ -186,7 +188,7 @@ const ruleset: any = {
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: ["$.definitions..items[?(@object())]^"],
@@ -211,7 +213,7 @@ const ruleset: any = {
     LroWithOriginalUriAsFinalState: {
       description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
       message: "{{description}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: [
@@ -224,7 +226,7 @@ const ruleset: any = {
     LroPostMustNotUseOriginalUriAsFinalState: {
       description: "The long running post operation must not use final-stat-via:original-uri.",
       message: "{{description}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: [
@@ -232,6 +234,102 @@ const ruleset: any = {
       ],
       then: {
         function: falsy,
+      },
+    },
+    PathContainsSubscriptionId: {
+      description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "subscriptionIdParam",
+        },
+      },
+    },
+    PathContainsResourceType: {
+      description: "Path for resource CRUD methods MUST contain a resource type.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceType",
+        },
+      },
+    },
+    PathContainsResourceGroup: {
+      description: "Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceGroupParam",
+        },
+      },
+    },
+    PathForPutOperation: {
+      description: "The path for 'put' operation must be under a subscription and resource group.",
+      message: "{{description}}",
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceGroupScope",
+        },
+      },
+    },
+    PathForNestedResource: {
+      description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "nestedResourceType",
+        },
+      },
+    },
+    PathForResourceAction: {
+      description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
+      message: "{{description}}",
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.post^~",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
+        },
+      },
+    },
+    RepeatedPathInfo: {
+      description:
+        "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+      message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^",
+      then: {
+        function: bodyParamRepeatedInfo,
       },
     },
   },
