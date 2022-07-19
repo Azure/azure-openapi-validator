@@ -599,13 +599,13 @@ export class ArmHelper {
   }
 
   public findOperation(path: string, code = "get") {
-    let op = this.getOperationIdFromPath(path, code, this.innerDoc)
+    const op = this.getOperationIdFromPath(path, code, this.innerDoc)
     if (op) {
       return op
     }
     const references = this.inventory.referencesOf(this.specPath)
     for (const reference of Object.values(references)) {
-      let op = this.getOperationIdFromPath(path, code, reference)
+      const op = this.getOperationIdFromPath(path, code, reference)
       if (op) {
         return op
       }

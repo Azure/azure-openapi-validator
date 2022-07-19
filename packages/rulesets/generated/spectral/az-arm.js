@@ -7,103 +7,6 @@ const ruleset$1 = {
     rules: {},
 };
 
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { ...properties, ...schema.properties };
-    }
-    return properties;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
-        return [];
-    }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
-    }
-    if (schema.required) {
-        requires = [...schema.required, requires];
-    }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
-function diffSchema(a, b) {
-    const notMatchedProperties = [];
-    function diffSchemaInternal(a, b, paths) {
-        if (!(a || b)) {
-            return;
-        }
-        if (a && b) {
-            const propsA = getProperties(a);
-            const propsB = getProperties(b);
-            Object.keys(propsA).forEach((p) => {
-                if (propsB[p]) {
-                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
-                }
-                else {
-                    notMatchedProperties.push([...paths, p].join("."));
-                }
-            });
-        }
-    }
-    diffSchemaInternal(a, b, []);
-    return notMatchedProperties;
-}
-function getGetOperationSchema(paths, ctx) {
-    var _a, _b, _c, _d;
-    const getOperationPath = [...paths, "get"];
-    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
-    if (!getOperation) {
-        return undefined;
-    }
-    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
-}
-
-const consistentPatchProperties = (patchOp, _opts, ctx) => {
-    var _a, _b, _c, _d, _e, _f, _g;
-    if (patchOp === null || typeof patchOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const patchBodySchema = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
-    const patchBodySchemaIndex = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _c === void 0 ? void 0 : _c.findIndex((p) => p.in === "body");
-    const responseSchema = ((_e = (_d = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _d === void 0 ? void 0 : _d["200"]) === null || _e === void 0 ? void 0 : _e.schema) || ((_g = (_f = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _f === void 0 ? void 0 : _f["201"]) === null || _g === void 0 ? void 0 : _g.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
-    if (patchBodySchema && responseSchema) {
-        const absents = diffSchema(patchBodySchema, responseSchema);
-        absents.forEach((absent) => {
-            errors.push({
-                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
-                path: [...path, "parameters", patchBodySchemaIndex, "schema"],
-            });
-        });
-    }
-    return errors;
-};
-
 function matchAnyPatterns(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
@@ -222,6 +125,81 @@ const verifyArmPath = createRulesetFunction({
     return errors;
 });
 
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+function diffSchema(a, b) {
+    const notMatchedProperties = [];
+    function diffSchemaInternal(a, b, paths) {
+        if (!(a || b)) {
+            return;
+        }
+        if (a && b) {
+            const propsA = getProperties(a);
+            const propsB = getProperties(b);
+            Object.keys(propsA).forEach((p) => {
+                if (propsB[p]) {
+                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
+                }
+                else {
+                    notMatchedProperties.push([...paths, p].join("."));
+                }
+            });
+        }
+    }
+    diffSchemaInternal(a, b, []);
+    return notMatchedProperties;
+}
+function getGetOperationSchema(paths, ctx) {
+    var _a, _b, _c, _d;
+    const getOperationPath = [...paths, "get"];
+    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
+    if (!getOperation) {
+        return undefined;
+    }
+    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
+}
+
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -247,6 +225,28 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
                 }
             }
         }
+    }
+    return errors;
+};
+
+const consistentPatchProperties = (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f, _g;
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const patchBodySchema = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    const patchBodySchemaIndex = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _c === void 0 ? void 0 : _c.findIndex((p) => p.in === "body");
+    const responseSchema = ((_e = (_d = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _d === void 0 ? void 0 : _d["200"]) === null || _e === void 0 ? void 0 : _e.schema) || ((_g = (_f = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _f === void 0 ? void 0 : _f["201"]) === null || _g === void 0 ? void 0 : _g.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+    if (patchBodySchema && responseSchema) {
+        const absents = diffSchema(patchBodySchema, responseSchema);
+        absents.forEach((absent) => {
+            errors.push({
+                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
+                path: [...path, "parameters", patchBodySchemaIndex, "schema"],
+            });
+        });
     }
     return errors;
 };
@@ -429,21 +429,38 @@ const provisioningState = (swaggerObj, _opts, paths) => {
     return [];
 };
 
-const validatePatchBodyParamProperties = (patchOp, _opts, ctx) => {
+const validatePatchBodyParamProperties = createRulesetFunction({
+    input: null,
+    options: {
+        type: "object",
+        properties: {
+            should: {
+                type: "array",
+                items: {
+                    type: "string",
+                },
+            },
+            shouldNot: {
+                type: "array",
+                items: {
+                    type: "string",
+                },
+            },
+        },
+        additionalProperties: false,
+    },
+}, (patchOp, _opts, ctx) => {
     var _a, _b, _c, _d, _e, _f;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
-    if (!_opts.should && !_opts.shouldNot) {
-        return [];
-    }
     const path = ctx.path || [];
     const errors = [];
-    const bodyParameter = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    const bodyParameter = (_b = (_a = patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
     if (bodyParameter) {
         const index = patchOp.parameters.findIndex((p) => p.in === "body");
         if (_opts.should) {
-            const responseSchema = ((_d = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
             _opts.should.forEach((p) => {
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
@@ -467,7 +484,7 @@ const validatePatchBodyParamProperties = (patchOp, _opts, ctx) => {
         }
     }
     return errors;
-};
+});
 
 const ruleset = {
     extends: [ruleset$1],
