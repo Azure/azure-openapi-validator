@@ -2,7 +2,11 @@
 
 ## Category
 
-ARM Warning
+ARM Error
+
+## Related ARM Guideline Code
+
+RPC-V2-GET-04
 
 ## Applies to
 
