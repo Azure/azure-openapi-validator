@@ -675,6 +675,90 @@ const pathParamSchema = (param, _opts, paths) => {
     return errors;
 };
 
+function checkSchemaTypeAndFormat(schema, options, { path }) {
+    if (schema === null || typeof schema !== "object") {
+        return [];
+    }
+    const errors = [];
+    const stringFormats = [
+        "byte",
+        "binary",
+        "date",
+        "date-time",
+        "password",
+        "char",
+        "time",
+        "date-time-rfc1123",
+        "duration",
+        "uuid",
+        "base64url",
+        "url",
+        "odata-query",
+        "certificate",
+    ];
+    if (schema.type === "string") {
+        if (schema.format) {
+            if (!stringFormats.includes(schema.format)) {
+                errors.push({
+                    message: `Schema with type: string has unrecognized format: ${schema.format}`,
+                    path: [...path, "format"],
+                });
+            }
+        }
+    }
+    else if (schema.type === "integer") {
+        if (schema.format) {
+            if (!["int32", "int64", "unixtime"].includes(schema.format)) {
+                errors.push({
+                    message: `Schema with type: integer has unrecognized format: ${schema.format}`,
+                    path: [...path, "format"],
+                });
+            }
+        }
+        else {
+            errors.push({
+                message: "Schema with type: integer should specify format",
+                path,
+            });
+        }
+    }
+    else if (schema.type === "number") {
+        if (schema.format) {
+            if (!["float", "double", "decimal"].includes(schema.format)) {
+                errors.push({
+                    message: `Schema with type: number has unrecognized format: ${schema.format}`,
+                    path: [...path, "format"],
+                });
+            }
+        }
+        else {
+            errors.push({
+                message: "Schema with type: number should specify format",
+                path,
+            });
+        }
+    }
+    else if (schema.type === "boolean") {
+        if (schema.format) {
+            errors.push({
+                message: "Schema with type: boolean should not specify format",
+                path: [...path, "format"],
+            });
+        }
+    }
+    else if (schema.properties && typeof schema.properties === "object") {
+        for (const [key, value] of Object.entries(schema.properties)) {
+            errors.push(...checkSchemaTypeAndFormat(value, options, { path: [...path, "properties", key] }));
+        }
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const [index, value] of schema.allOf.entries()) {
+            errors.push(...checkSchemaTypeAndFormat(value, options, { path: [...path, "allOf", index] }));
+        }
+    }
+    return errors;
+}
+
 function getVersion(path) {
     const url = new URL(path, 'https://foo.bar');
     const segments = url.pathname.split('/');
@@ -1148,6 +1232,19 @@ const ruleset = {
                 functionOptions: {
                     type: "pascal",
                 },
+            },
+        },
+        SchemaTypeAndFormat: {
+            description: "Schema should use well-defined type and format.",
+            message: "{{error}}",
+            severity: "warn",
+            formats: [oas2],
+            given: [
+                "$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')].schema",
+                "$.paths[*].[get,put,post,patch,delete].responses[*].schema",
+            ],
+            then: {
+                function: checkSchemaTypeAndFormat,
             },
         },
         SecurityDefinitionDescription: {

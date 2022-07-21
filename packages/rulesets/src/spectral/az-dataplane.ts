@@ -17,6 +17,7 @@ import paramorder from "./functions/param-order"
 import patchcontenttype from "./functions/patch-content-type"
 import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
+import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
 const ruleset: any = {
   extends: [common],
@@ -399,6 +400,19 @@ const ruleset: any = {
         functionOptions: {
           type: "pascal",
         },
+      },
+    },
+    SchemaTypeAndFormat: {
+      description: "Schema should use well-defined type and format.",
+      message: "{{error}}",
+      severity: "warn",
+      formats: [oas2],
+      given: [
+        "$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')].schema",
+        "$.paths[*].[get,put,post,patch,delete].responses[*].schema",
+      ],
+      then: {
+        function: schematypeandformat,
       },
     },
     SecurityDefinitionDescription: {

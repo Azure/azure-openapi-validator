@@ -26,7 +26,7 @@ specifiers:
   '@stoplight/spectral-ruleset-migrator': ^1.7.1
   '@stoplight/spectral-rulesets': ~1.6.0
   '@stoplight/spectral-runtime': ^1.1.0
-  '@stoplight/types': 12.3.0
+  '@stoplight/types': ^13.5.0
   '@types/glob': ^7.2.0
   '@types/jest': ^27.0.6
   '@types/js-yaml': ^3.12.4
@@ -93,7 +93,7 @@ dependencies:
   '@stoplight/spectral-ruleset-migrator': 1.7.3
   '@stoplight/spectral-rulesets': 1.6.0
   '@stoplight/spectral-runtime': 1.1.2
-  '@stoplight/types': 12.3.0
+  '@stoplight/types': 13.6.0
   '@types/glob': 7.2.0
   '@types/jest': 27.4.1
   '@types/js-yaml': 3.12.7
@@ -1168,6 +1168,14 @@ packages:
   /@stoplight/types/12.3.0:
     resolution: {integrity: sha512-hgzUR1z5BlYvIzUeFK5pjs5JXSvEutA9Pww31+dVicBlunsG1iXopDx/cvfBY7rHOrgtZDuvyeK4seqkwAZ6Cg==}
     engines: {node: '>=8'}
+    dependencies:
+      '@types/json-schema': 7.0.10
+      utility-types: 3.10.0
+    dev: false
+
+  /@stoplight/types/13.6.0:
+    resolution: {integrity: sha512-dzyuzvUjv3m1wmhPfq82lCVYGcXG0xUYgqnWfCq3PCVR4BKFhjdkHrnJ+jIDoMKvXb05AZP/ObQF6+NpDo29IQ==}
+    engines: {node: ^12.20 || >=14.13}
     dependencies:
       '@types/json-schema': 7.0.10
       utility-types: 3.10.0
@@ -7803,7 +7811,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-ktO5KHLruJr2srWW8CU9RX72L5wQAgSkjfWxkho6LhNljUrJ9XaZvsR/RkEZ2p+LiqoelYv4u8CRDvBsadozFg==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-YCwiDngB/1oZ5WdvN0S4t6OAvdNqSowuMiRJ7XIn9btUe79zggMoP8qmcZeLjnH3Gn41tLdV+Q+ploHELfj4yQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -7818,6 +7826,7 @@ packages:
       '@stoplight/spectral-ruleset-migrator': 1.7.3
       '@stoplight/spectral-rulesets': 1.6.0
       '@stoplight/spectral-runtime': 1.1.2
+      '@stoplight/types': 13.6.0
       '@types/jest': 27.4.1
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
@@ -7858,7 +7867,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator.tgz:
-    resolution: {integrity: sha512-0y7khmkuRlmOPG//3AXirOVc8qAHnLY2HZDJ6W/loTsDi9BEuslmsEYBg0RdhNHrg/BnRN53PuJjxQZRWpj1/Q==, tarball: file:projects/openapi-validator.tgz}
+    resolution: {integrity: sha512-+NEF+fHVObiSBEtXnfuYtFvXHMgWwFZVgjuXk/u5YqGUIorYvjp2BRsf6Rhn8dLuhm3zx5lUzKX2hfZ0/PM4uA==, tarball: file:projects/openapi-validator.tgz}
     name: '@rush-temp/openapi-validator'
     version: 0.0.0
     dependencies:
@@ -7879,7 +7888,7 @@ packages:
       '@stoplight/spectral-ruleset-migrator': 1.7.3
       '@stoplight/spectral-rulesets': 1.6.0
       '@stoplight/spectral-runtime': 1.1.2
-      '@stoplight/types': 12.3.0
+      '@stoplight/types': 13.6.0
       '@types/jest': 27.4.1
       '@types/js-yaml': 3.12.7
       '@types/jsonpath': 0.2.0
