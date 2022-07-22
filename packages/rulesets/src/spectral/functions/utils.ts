@@ -1,3 +1,6 @@
+/**
+ * get all properties as array
+ */
 export function getProperties(schema: any) {
   if (!schema) {
     return {}
@@ -31,6 +34,13 @@ export function getRequiredProperties(schema: any) {
 }
 export type JsonPath = (string | number)[]
 
+
+/**
+ * 
+ * @param paths json pointer as an array , like ["paths","/foo"]
+ * @param root source doc to search 
+ * @returns the found object
+ */
 export function jsonPath(paths: JsonPath, root: any): any {
   let result = undefined
   paths.some((p) => {
@@ -45,7 +55,7 @@ export function jsonPath(paths: JsonPath, root: any): any {
   return result
 }
 
-// diff A  B , return the properties in A but not present in B with the same structure
+// diff A  B , return the properties in A but not present in B with the same layout
 export function diffSchema(a: any, b: any) {
   const notMatchedProperties: string[] = []
   function diffSchemaInternal(a: any, b: any, paths: string[]) {

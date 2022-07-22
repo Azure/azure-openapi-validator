@@ -4,6 +4,10 @@ export type Options = {
   schema: Record<string, unknown>
 }
 
+/*
+ * Custom function to verify whether the patch body should or should not include some properties.
+ */
+
 export const validatePatchBodyParamProperties = createRulesetFunction<unknown, Options>(
   {
     input: null,

@@ -1,3 +1,7 @@
+/**
+ * verify if a patch operation has 202 response code.
+ */
+
 export const lroPatch202 = (patchOp: any, _opts: any, ctx: any) => {
   if (patchOp === null || typeof patchOp !== "object") {
     return []

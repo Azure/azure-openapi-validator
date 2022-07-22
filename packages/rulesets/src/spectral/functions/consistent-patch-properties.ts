@@ -1,5 +1,8 @@
 import { diffSchema, getGetOperationSchema } from "./utils"
 
+/**
+ * verify if the properties in patch body also present in the resource model and it has the same layout with the resource model . 
+ */
 export const consistentPatchProperties = (patchOp: any, _opts: any, ctx: any) => {
   if (patchOp === null || typeof patchOp !== "object") {
     return []
