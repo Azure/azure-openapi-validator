@@ -817,6 +817,12 @@ A 'Resource' definition must have x-ms-azure-resource extension enabled and set 
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
 
+### ResourceNameRestriction
+
+This rule ensures that the authors explicitly define these restrictions as a regex on the resource name. If a team does not have custom rules then the ARM's default rule should get applied.
+
+Please refer to [resource-name-restriction.md](./resource-name-restriction.md) for details.
+
 ### RPaasPostLongRunningOperation202Only
 
 An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).

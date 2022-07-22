@@ -7,6 +7,7 @@ import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import validateOriginalUri from "./functions/lro-original-uri"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import resourceNameRestriction from "./functions/resource-name-restriction"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -192,6 +193,18 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*.put^",
       then: {
         function: bodyParamRepeatedInfo,
+      },
+    },
+    ResourceNameRestriction: {
+      description:
+        "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.^",
+      then: {
+        function: resourceNameRestriction,
       },
     },
   },

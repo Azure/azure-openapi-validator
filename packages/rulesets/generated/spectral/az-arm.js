@@ -316,6 +316,45 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const resourceNameRestriction = (paths, _opts, ctx) => {
+    if (paths === null || typeof paths !== 'object') {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    function getPathParameter(pathItem, paramName) {
+        let parameters = [];
+        const method = Object.keys(pathItem).find(k => k !== "parameters");
+        if (method) {
+            const operationParameters = pathItem[method].parameters;
+            parameters = parameters.concat(operationParameters);
+        }
+        if (pathItem.parameters) {
+            parameters = parameters.concat(pathItem.parameters);
+        }
+        return parameters.find(p => p.in === "path" && p.name === paramName);
+    }
+    for (const pathKey of Object.keys(paths)) {
+        const parts = pathKey.split('/').slice(1);
+        parts.slice(1).forEach((v, i) => {
+            var _a;
+            if (v.includes('}')) {
+                const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
+                if ((param === null || param === void 0 ? void 0 : param.match(/^\w+Name+$/)) && param !== "resourceGroupName") {
+                    const paramDefinition = getPathParameter(paths[pathKey], param);
+                    if (paramDefinition && !paramDefinition.pattern) {
+                        errors.push({
+                            message: "The resource name parameter should be defined with a 'pattern' restriction.",
+                            path: [...path, pathKey],
+                        });
+                    }
+                }
+            }
+        });
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -500,6 +539,17 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: bodyParamRepeatedInfo,
+            },
+        },
+        ResourceNameRestriction: {
+            description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.^",
+            then: {
+                function: resourceNameRestriction,
             },
         },
     },
