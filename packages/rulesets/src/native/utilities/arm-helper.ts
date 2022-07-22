@@ -67,10 +67,10 @@ export class ArmHelper {
     this.getAllResources()
   }
 
-  private getBodyParameter(paramters: any) {
+  private getBodyParameter(parameters: any) {
     let bodyParameter
-    if (paramters && Array.isArray(paramters)) {
-      paramters.forEach((param: any) => {
+    if (parameters && Array.isArray(parameters)) {
+      parameters.forEach((param: any) => {
         if (param.$ref) {
           const resolvedParam = this.swaggerUtil.resolveRef(this.enhancedSchema(param))
           if (resolvedParam && resolvedParam.value && resolvedParam.value.in === "body") {
@@ -288,14 +288,14 @@ export class ArmHelper {
       const enhancedSchema = this.enhancedSchema(schema)
       return !!this.getProperty(enhancedSchema, "location")
     }
-    const allTracledResources = this.getAllResources().filter((re) => {
+    const allTrackedResources = this.getAllResources().filter((re) => {
       const schema = re.operations.find((op) => op.responseSchema)
       if (schema) {
         return isTrackedResource(schema.responseSchema)
       }
       return false
     })
-    return allTracledResources
+    return allTrackedResources
   }
 
   public getAllResourceNames() {
@@ -587,14 +587,30 @@ export class ArmHelper {
     return undefined
   }
 
-  public getOperationIdFromPath(path: string, code = "get") {
-    let pathObj = this.innerDoc.paths[path]
-    if (!pathObj && this.innerDoc["x-ms-paths"]) {
-      pathObj = this.innerDoc["x-ms-paths"][path]
+  public getOperationIdFromPath(path: string, code = "get", doc?: any) {
+    doc = doc || this.innerDoc
+    let pathObj = doc?.paths[path]
+    if (!pathObj && doc?.["x-ms-paths"]) {
+      pathObj = doc?.["x-ms-paths"][path]
     }
     if (pathObj && pathObj[code]) {
       return pathObj[code].operationId
     }
+  }
+
+  public findOperation(path: string, code = "get") {
+    const op = this.getOperationIdFromPath(path, code, this.innerDoc)
+    if (op) {
+      return op
+    }
+    const references = this.inventory.referencesOf(this.specPath)
+    for (const reference of Object.values(references)) {
+      const op = this.getOperationIdFromPath(path, code, reference)
+      if (op) {
+        return op
+      }
+    }
+    return undefined
   }
 
   /**

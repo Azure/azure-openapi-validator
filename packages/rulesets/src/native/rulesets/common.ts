@@ -59,7 +59,7 @@ function createFromLegacyRules() {
 export const legacyRules = createFromLegacyRules()
 
 export const commonRuleset: IRuleSet = {
-  documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
+  documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
   rules: {
     ...legacyRules
   }

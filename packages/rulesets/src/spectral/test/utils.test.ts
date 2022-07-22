@@ -1,6 +1,5 @@
 import { getProperties, jsonPath } from '../functions/utils';
 
-
 test('getProperties return empty object', () => {
   expect(getProperties(undefined)).toEqual({})
 });

@@ -16,6 +16,12 @@ Specifying `additionalProperties` with `type: object` is a common error.
 
 Please refer to [additional-properties-object.md](./additional-properties-object.md) for details.
 
+### AllResourcesMustHaveDelete
+
+All top level proxy and (tracked at all levels) resources MUST support delete.
+
+Please refer to [all-resources-must-have-delete.md](./all-resources-must-have-delete.md) for details.
+
 ### AllResourcesMustHaveGetOperation
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md) ,all the resources ,including top-level and nested resources, must have a get operation.
@@ -120,6 +126,12 @@ Per ARM guidelines, a model returned by an `x-ms-pageable` operation must have a
 
 Please refer to [collection-object-properties-naming.md](./collection-object-properties-naming.md) for details.
 
+### ConsistentPatchProperties
+
+The properties in the patch body must be present in the resource model and follow json merge patch.
+
+Please refer to [consistent-patch-properties.md](./consistent-patch-properties.md) for details.
+
 ### ConsistentResponseBody
 
 The standard pattern for REST operations is that a create (PUT), read (GET), and update (PATCH) all return
@@ -193,6 +205,12 @@ Please refer to [delete-operation-async-response-validation.md](./delete-operati
 Per ARM Specs, all DELETE methods (non-async) must have responses code implementation: 200, 204.
 
 Please refer to [delete-operation-responses.md](./delete-operation-responses.md) for details.
+
+### DeleteResponseBodyEmpty
+
+The delete response body must be empty.
+
+Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
 
 ### DeprecatedXmsCodeGenerationSetting
 
@@ -279,6 +297,12 @@ Please refer to [get-collection-response-schema.md](./get-collection-response-sc
 Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for details.
+
+### GetOperation200
+
+The get operation should only return 200, also it should not be a long running operation.
+
+Please refer to [get-operation-200.md](./get-operation-200.md) for details.
 
 ### GuidUsage
 
@@ -386,6 +410,18 @@ Please refer to [lro-extension.md](./lro-extension.md) for details.
 A 202 response should include an `Operation-Location` response header.
 
 Please refer to [lro-headers.md](./lro-headers.md) for details.
+
+### LroLocationHeader
+
+Location header must be supported for all async operations that return 202.
+
+Please refer to [lro-location-header.md](./lro-location-header.md) for details.
+
+### LroPatch202
+
+Async PATCH should return 202.
+
+Please refer to [lro-patch-202.md](./lro-patch-202.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -598,11 +634,23 @@ The request body content type for patch operations should be JSON merge patch.
 
 Please refer to [patch-content-type.md](./patch-content-type.md) for details.
 
+### PatchIdentityProperty
+
+RP must implement PATCH for the 'identity' envelope property if it's defined in the resource model.
+
+Please refer to [patch-identity-property.md](./patch-identity-property.md) for details.
+
 ### PatchInOperationName
 
 Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
+
+### PatchSkuProperty
+
+RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.
+
+Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 
 ### PathCharacters
 
@@ -737,6 +785,12 @@ Please refer to [property-names-convention.md](./property-names-convention.md) f
 Schema property should have a defined type.
 
 Please refer to [property-type.md](./property-type.md) for details.
+
+### ProvisioningStateValidation
+
+Per ARM guideline, provisioningState must have terminal states: Succeeded, Failed and Canceled.
+
+Please refer to [provisioning-state-validation.md](./provisioning-state-validation.md) for details.
 
 ### PutGetPatchResponseSchema
 
@@ -895,6 +949,12 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [top-level-resources-list-by-subscription.md](./top-level-resources-list-by-subscription.md) for details.
 
+### TrackedResourceBeyondsThirdLevel
+
+Tracked resources must not be used beyond the third level of nesting.
+
+Please refer to [tracked-resource-beyond-thrid-level.md](./tracked-resource-beyond-thrid-level.md) for details.
+
 ### TrackedResourceGetOperation
 
 Verifies if a tracked resource has a corresponding GET operation.
@@ -930,6 +990,12 @@ What's a tracked resource? A Tracked Resource is an ARM Resource with "location"
 
 Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-operation.md) for details.
 
+### TrackedResourcesMustHavePut
+
+Tracked resources must have put operation.
+
+Please refer to [tracked-resources-must-have-put.md](./tracked-resources-must-have-put.md) for details.
+
 ### UniqueClientParameterName
 
 This may cause a problem when different swagger files come together. If two APIs with different client name have the same client parameter subscriptionId, but with different reference name in swaggers, the generated model will also have two clients with two client parameters subscriptionId and subscriptionId1 (the latter one has been renamed to avoid collision). We should ensure that the client parameters are all unique in the same API version.
@@ -959,6 +1025,12 @@ x-ms-example name should be unique in the same API version.
 
 Please refer to [unique-xms-example.md](./unique-xms-example.md) for details.
 
+### UnSupportedPatchProperties
+
+Patch may not change the name, location, or type of the resource.
+
+Please refer to [unsupported-patch-properties.md](./unsupported-patch-properties.md) for details.
+
 ### ValidFormats
 
 Only valid types are allowed for properties.
@@ -982,6 +1054,12 @@ Please refer to [version-convention.md](./version-convention.md) for details.
 All services should follow the Azure API Guidelines for specifying the API version using a query parameter with a date-based value.
 
 Please refer to [version-policy.md](./version-policy.md) for details.
+
+### XmsLongRunningOperationOptions
+
+The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
+
+Please refer to [x-ms-long-running-operation-options.md](./x-ms-long-running-operation-options.md) for details.
 
 ### XmsClientNameParameter
 

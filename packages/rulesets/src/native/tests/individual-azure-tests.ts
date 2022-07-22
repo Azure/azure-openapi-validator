@@ -401,4 +401,24 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, XmsIdentifierValidation)
     assertValidationRuleCount(messages, XmsIdentifierValidation, 2)
   })
+  test("no put in for tracked resource", async () => {
+    const fileNames = ["armResource/trackedResourceNoPut.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "TrackedResourcesMustHavePut"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
+  test("no delete in for tracked resource", async () => {
+    const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "AllResourcesMustHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
+  test("tracked resource beyonds third level", async () => {
+    const fileNames = ["armResource/trackedResourceBeyondsThirdLevel.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "TrackedResourceBeyondsThirdLevel"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
 })
