@@ -9,7 +9,7 @@ export function getProperties(schema: any) {
     })
   }
   if (schema.properties) {
-    properties = { properties, ...schema.properties }
+    properties = { ...properties, ...schema.properties }
   }
   return properties
 }
