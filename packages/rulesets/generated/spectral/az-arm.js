@@ -168,6 +168,37 @@ function jsonPath(paths, root) {
     });
     return result;
 }
+function diffSchema(a, b) {
+    const notMatchedProperties = [];
+    function diffSchemaInternal(a, b, paths) {
+        if (!(a || b)) {
+            return;
+        }
+        if (a && b) {
+            const propsA = getProperties(a);
+            const propsB = getProperties(b);
+            Object.keys(propsA).forEach((p) => {
+                if (propsB[p]) {
+                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
+                }
+                else {
+                    notMatchedProperties.push([...paths, p].join("."));
+                }
+            });
+        }
+    }
+    diffSchemaInternal(a, b, []);
+    return notMatchedProperties;
+}
+function getGetOperationSchema(paths, ctx) {
+    var _a, _b, _c, _d;
+    const getOperationPath = [...paths, "get"];
+    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
+    if (!getOperation) {
+        return undefined;
+    }
+    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
+}
 
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
@@ -194,6 +225,28 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
                 }
             }
         }
+    }
+    return errors;
+};
+
+const consistentPatchProperties = (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f, _g;
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const patchBodySchema = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    const patchBodySchemaIndex = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _c === void 0 ? void 0 : _c.findIndex((p) => p.in === "body");
+    const responseSchema = ((_e = (_d = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _d === void 0 ? void 0 : _d["200"]) === null || _e === void 0 ? void 0 : _e.schema) || ((_g = (_f = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _f === void 0 ? void 0 : _f["201"]) === null || _g === void 0 ? void 0 : _g.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+    if (patchBodySchema && responseSchema) {
+        const absents = diffSchema(patchBodySchema, responseSchema);
+        absents.forEach((absent) => {
+            errors.push({
+                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
+                path: [...path, "parameters", patchBodySchemaIndex, "schema"],
+            });
+        });
     }
     return errors;
 };
@@ -241,6 +294,27 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     return messages;
 };
 
+const hasHeader = (response, opts, paths) => {
+    if (response === null || typeof response !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.name) {
+        return [];
+    }
+    const path = paths.path || [];
+    const hasHeader = Object.keys(response.headers || {})
+        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
+    if (!hasHeader) {
+        return [
+            {
+                message: `Response should include an "${opts.name}" response header.`,
+                path: [...path, 'headers'],
+            },
+        ];
+    }
+    return [];
+};
+
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
         return [];
@@ -255,6 +329,24 @@ const validateOriginalUri = (lroOptions, opts, ctx) => {
         });
     }
     return messages;
+};
+
+const lroPatch202 = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!patchOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"])) {
+        errors.push({
+            message: "The async patch operation should return 202.",
+            path: [...path, "responses"],
+        });
+    }
+    return errors;
 };
 
 const pathBodyParameters = (parameters, _opts, paths) => {
@@ -317,14 +409,14 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
 };
 
 const resourceNameRestriction = (paths, _opts, ctx) => {
-    if (paths === null || typeof paths !== 'object') {
+    if (paths === null || typeof paths !== "object") {
         return [];
     }
-    const path = paths.path || [];
+    const path = ctx.path || [];
     const errors = [];
     function getPathParameter(pathItem, paramName) {
         let parameters = [];
-        const method = Object.keys(pathItem).find(k => k !== "parameters");
+        const method = Object.keys(pathItem).find((k) => k !== "parameters");
         if (method) {
             const operationParameters = pathItem[method].parameters;
             parameters = parameters.concat(operationParameters);
@@ -332,13 +424,13 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
         if (pathItem.parameters) {
             parameters = parameters.concat(pathItem.parameters);
         }
-        return parameters.find(p => p.in === "path" && p.name === paramName);
+        return parameters.find((p) => p.in === "path" && p.name === paramName);
     }
     for (const pathKey of Object.keys(paths)) {
-        const parts = pathKey.split('/').slice(1);
+        const parts = pathKey.split("/").slice(1);
         parts.slice(1).forEach((v, i) => {
             var _a;
-            if (v.includes('}')) {
+            if (v.includes("}")) {
                 const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
                 if ((param === null || param === void 0 ? void 0 : param.match(/^\w+Name+$/)) && param !== "resourceGroupName") {
                     const paramDefinition = getPathParameter(paths[pathKey], param);
@@ -354,6 +446,84 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
     }
     return errors;
 };
+
+const provisioningState = (swaggerObj, _opts, paths) => {
+    const enumValue = swaggerObj.enum;
+    if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
+        return [];
+    }
+    if (!Array.isArray(enumValue)) {
+        return [];
+    }
+    const path = paths.path || [];
+    const valuesMustHave = ["succeeded", "failed", "canceled"];
+    if (enumValue && valuesMustHave.some((v) => !enumValue.some((ev) => ev.toLowerCase() === v))) {
+        return [
+            {
+                message: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+                path,
+            },
+        ];
+    }
+    return [];
+};
+
+const validatePatchBodyParamProperties = createRulesetFunction({
+    input: null,
+    options: {
+        type: "object",
+        properties: {
+            should: {
+                type: "array",
+                items: {
+                    type: "string",
+                },
+            },
+            shouldNot: {
+                type: "array",
+                items: {
+                    type: "string",
+                },
+            },
+        },
+        additionalProperties: false,
+    },
+}, (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f;
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const bodyParameter = (_b = (_a = patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    if (bodyParameter) {
+        const index = patchOp.parameters.findIndex((p) => p.in === "body");
+        if (_opts.should) {
+            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            _opts.should.forEach((p) => {
+                var _a, _b;
+                if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
+                    errors.push({
+                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        path: [...path, "parameters", index],
+                    });
+                }
+            });
+        }
+        if (_opts.shouldNot) {
+            _opts.shouldNot.forEach((p) => {
+                var _a;
+                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
+                    errors.push({
+                        message: `The patch operation body parameter schema should not contains property ${p}.`,
+                        path: [...path, "parameters", index],
+                    });
+                }
+            });
+        }
+    }
+    return errors;
+});
 
 const ruleset = {
     extends: [ruleset$1],
@@ -408,6 +578,115 @@ const ruleset = {
                 function: pathBodyParameters,
             },
         },
+        ConsistentPatchProperties: {
+            description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths.*.patch"],
+            then: {
+                function: consistentPatchProperties,
+            },
+        },
+        LroPatch202: {
+            description: "Async PATCH should return 202.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+            then: {
+                function: lroPatch202,
+            },
+        },
+        DeleteResponseBodyEmpty: {
+            description: "The delete response body must be empty.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[delete].responses.['200','204'].schema"],
+            then: {
+                function: falsy,
+            },
+        },
+        GetOperation200: {
+            description: "The get operation should only return 200.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[get].responses.['201','202','203','204']"],
+            then: {
+                function: falsy,
+            },
+        },
+        ProvisioningStateValidation: {
+            description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions..provisioningState[?(@property === 'enum')]^"],
+            then: {
+                function: provisioningState,
+            },
+        },
+        XmsLongRunningOperationOptions: {
+            description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+            then: {
+                field: "x-ms-long-running-operation-options",
+                function: truthy,
+            },
+        },
+        UnSupportedPatchProperties: {
+            description: "Patch may not change the name, location, or type of the resource.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.patch"],
+            then: {
+                function: validatePatchBodyParamProperties,
+                functionOptions: {
+                    shouldNot: ["name", "type", "location"],
+                },
+            },
+        },
+        PatchSkuProperty: {
+            description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.patch"],
+            then: {
+                function: validatePatchBodyParamProperties,
+                functionOptions: {
+                    should: ["sku"],
+                },
+            },
+        },
+        PatchIdentityProperty: {
+            description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.patch"],
+            then: {
+                function: validatePatchBodyParamProperties,
+                functionOptions: {
+                    should: ["identity"],
+                },
+            },
+        },
         ArrayMustHaveType: {
             description: "Array type must have a type except for any type.",
             message: "{{error}}",
@@ -418,6 +697,19 @@ const ruleset = {
             then: {
                 function: truthy,
                 field: "type",
+            },
+        },
+        LroLocationHeader: {
+            description: "Location header must be supported for all async operations that return 202.",
+            message: "A 202 response should include an Location response header.",
+            severity: "warn",
+            formats: [oas2],
+            given: "$.paths[*][*].responses[?(@property == '202')]^",
+            then: {
+                function: hasHeader,
+                functionOptions: {
+                    name: "Location",
+                },
             },
         },
         LroWithOriginalUriAsFinalState: {

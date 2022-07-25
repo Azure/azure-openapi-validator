@@ -39,7 +39,7 @@ export async function collectTestMessagesFromValidator(
     }
     rules[ruleName] = rule
     const singleRuleSet: IRuleSet = { documentationUrl: "", rules }
-    return LintTester(filePaths, singleRuleSet, ruleName)
+    return await LintTester(filePaths, singleRuleSet, ruleName)
   }
   return []
 }

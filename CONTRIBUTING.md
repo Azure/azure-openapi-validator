@@ -4,10 +4,12 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## Prerequisites
 
-- Node (12.x or higher)
-- Node Package Manager
-- Typescript (3.7.0 or higher)
-- @Microsoft/Rush (5.x or hider)
+- [Node.js](https://nodejs.org/) (14.x or higher)
+- [@Microsoft/Rush](https://rushjs.io/) (5.x or hider)
+
+```bash
+npm install -g @microsoft/rush
+```
 
 ## Installing NPM dependencies
 

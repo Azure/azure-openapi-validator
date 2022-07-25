@@ -1,0 +1,26 @@
+[
+  {
+    "code": "ConsistentPatchProperties",
+    "message": "The property 'operations' in the request body doesn't appear in the resource model.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/currentSensitivityLabels\"].patch.parameters[\"3\"].schema",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:103:12"
+  },
+  {
+    "code": "ConsistentPatchProperties",
+    "message": "The property 'operations' in the request body doesn't appear in the resource model.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/recommendedSensitivityLabels\"].patch.parameters[\"3\"].schema",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:214:12"
+  },
+  {
+    "code": "ConsistentPatchProperties",
+    "message": "The property 'operations' in the request body doesn't appear in the resource model.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/currentSensitivityLabels\"].patch.parameters[\"3\"].schema",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:103:12"
+  },
+  {
+    "code": "ConsistentPatchProperties",
+    "message": "The property 'operations' in the request body doesn't appear in the resource model.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/recommendedSensitivityLabels\"].patch.parameters[\"3\"].schema",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:214:12"
+  }
+]
