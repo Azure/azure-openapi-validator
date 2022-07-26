@@ -6,7 +6,8 @@ ARM Error
 
 ## Related ARM Guideline Code
 
-RPC-V2-GET-04
+- RPC-V2-GET-04
+- RPC-V2-GET-05
 
 ## Applies to
 
