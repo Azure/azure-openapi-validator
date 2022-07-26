@@ -47,3 +47,23 @@ export function* allResourcesHaveDelete(openapiSection: any, options: {}, ctx: R
     }
   }
 }
+
+export function* ArmResourcePropertiesBag(openapiSection:any, options:{},ctx:RuleContext) {
+  const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
+  const allResources = armHelper.getAllResources()
+  for (const re of allResources) {
+    const model = armHelper.getResourceByName(re.modelName)
+    const propertiesBag = ["name", "id", "type", "location", "tags"]
+    const properties = armHelper.getProperty(model!,"properties")
+    if (properties) {
+      for (const p of propertiesBag) {
+        if (armHelper.getProperty(properties,p)) {
+           yield {
+          location: ["defintions",re.modelName],
+          message: `Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [${p}] conflict with ARM top level properties. Please rename these.`,
+        }
+        }
+      }
+    }
+  }
+}

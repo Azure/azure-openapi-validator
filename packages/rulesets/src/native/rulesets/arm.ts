@@ -1,6 +1,7 @@
 import { OpenApiTypes, IRuleSet } from "@microsoft.azure/openapi-validator-core"
 import {
   allResourcesHaveDelete,
+  ArmResourcePropertiesBag,
   trackedResourceBeyondsThirdLevel,
   trackedResourcesMustHavePut,
 } from "../functions/arm-resource-validation"
@@ -35,6 +36,17 @@ export const armRuleset: IRuleSet = {
         execute: allResourcesHaveDelete,
       },
     },
+    ArmResourcePropertiesBag:{
+      description:
+        "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties should not be repeated inside the properties bag for ARM resources.",
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "error",
+      given: "$",
+      then: {
+        execute: ArmResourcePropertiesBag,
+      },
+    }
   },
 }
 export default armRuleset
