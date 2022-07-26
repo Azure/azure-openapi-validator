@@ -10,8 +10,8 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
-import resourceNameRestriction from "./functions/resource-name-restriction"
 import provisioningState from "./functions/provisioning-state"
+import resourceNameRestriction from "./functions/resource-name-restriction"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 const ruleset: any = {
   extends: [common],
