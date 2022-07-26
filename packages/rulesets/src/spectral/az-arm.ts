@@ -345,22 +345,7 @@ const ruleset: any = {
           match: "^(20\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
         }
       },
-    },
-    ArmResourcePropertiesBag:{
-      description:
-        "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties should not be repeated inside the properties bag for ARM resources.",
-      severity: "Error",
-      resolved: true,
-      formats: [oas2],
-      given: "$.info.version",
-      then: {
-        function: pattern,
-        functionOptions:{
-          match: "^(20\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
-        }
-      },
     }
-
   },
 }
 
