@@ -236,6 +236,12 @@ The value of the 'description' property must be descriptive. It cannot be spaces
 
 Please refer to [descriptive-description-required.md](./descriptive-description-required.md) for details.
 
+### docLinkLocale
+
+This rule is to ensure the documentation link in the description does not contains any locale.
+
+Please refer to [doc-link-locale.md](./doc-link-locale.md) for details.
+
 ### EnumInsteadOfBoolean
 
 Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.
@@ -319,7 +325,7 @@ Please refer to [header-disallowed.md](./header-disallowed.md) for details.
 ### HostParametersValidation
 
 This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
-1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:uri'.
+1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:url'.
    - Client level (x-ms-parameter-location: client)
    - A path component (in: path)
    - Part of a 'x-ms-parametrized-host' with 'useSchemePrefix: false'

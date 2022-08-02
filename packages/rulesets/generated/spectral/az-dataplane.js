@@ -1,9 +1,26 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
-import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
+import { pattern, falsy, truthy, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
 
 const ruleset$1 = {
     extends: [],
-    rules: {},
+    rules: {
+        docLinkLocale: {
+            description: "This rule is to ensure the documentation link in the description does not contains any locale.",
+            message: "The documentation link in the description contains locale info, please change it to the link without locale.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: [
+                "$..[?(@property === 'description')]^",
+            ],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
+                }
+            },
+        }
+    },
 };
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
@@ -273,9 +290,9 @@ const hostParameters = (parameterizedHost, _opts, paths) => {
                         path: [...path, "parameters", index],
                     });
                 }
-                if (p.type !== "string" || p.format !== "uri") {
+                if (p.type !== "string" || p.format !== "url") {
                     errors.push({
-                        message: "The host parameter must be typed \"type 'string', format 'uri'\".",
+                        message: "The host parameter must be typed \"type 'string', format 'url'\".",
                         path: [...path, "parameters", index],
                     });
                 }
