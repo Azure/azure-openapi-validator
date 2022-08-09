@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-parameter-default-not-allowed');
+  linter = await linterForRule('ParameterDefaultNotAllowed');
   return linter;
 });
 
-test('az-parameter-default-not-allowed should find errors', () => {
+test('ParameterDefaultNotAllowed should find errors', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     paths: {
@@ -43,7 +43,7 @@ test('az-parameter-default-not-allowed should find errors', () => {
   });
 });
 
-test('az-parameter-default-not-allowed should find no errors', () => {
+test('ParameterDefaultNotAllowed should find no errors', () => {
   const myOpenApiDocument = {
     swagger: '2.0',
     paths: {

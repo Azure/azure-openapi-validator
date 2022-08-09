@@ -1,25 +1,40 @@
-import { OpenApiTypes , IRuleSet } from "@microsoft.azure/openapi-validator-core"
-
-import { pattern } from "../functions/pattern"
-
+import { OpenApiTypes, IRuleSet } from "@microsoft.azure/openapi-validator-core"
+import {
+  allResourcesHaveDelete,
+  trackedResourceBeyondsThirdLevel,
+  trackedResourcesMustHavePut,
+} from "../functions/arm-resource-validation"
 export const armRuleset: IRuleSet = {
-  documentationUrl: "https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md",
+  documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
   rules: {
-    noPasswordInPropertyName: {
-      id: "R4033",
-      category: "SDKViolation",
+    TrackedResourcesMustHavePut: {
+      category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
-      given: "$.definitions.*",
+      given: "$",
       then: {
-        fieldMatch: "$..properties.*~",
-        options: {
-          match: ".*Password.*"
-        },
-        execute: pattern
-      }
-    }
-  }
+        execute: trackedResourcesMustHavePut,
+      },
+    },
+    TrackedResourceBeyondsThirdLevel: {
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "error",
+      given: "$",
+      then: {
+        execute: trackedResourceBeyondsThirdLevel,
+      },
+    },
+    // https://github.com/Azure/azure-openapi-validator/issues/329
+    AllResourcesMustHaveDelete: {
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "error",
+      given: "$",
+      then: {
+        execute: allResourcesHaveDelete,
+      },
+    },
+  },
 }
-
 export default armRuleset

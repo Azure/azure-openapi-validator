@@ -1,7 +1,6 @@
-//This rule appears if in the patch body parameters have properties which is marked as required or x-ms-mutibility:["create"] or have default
-
 import { getProperties, getRequiredProperties } from "./utils";
 
+//This rule appears if in the patch body parameters have properties which is marked as required or x-ms-mutibility:["create"] or have default
 const pathBodyParameters = (parameters:any, _opts:any, paths:any) => {
   if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
     return [];

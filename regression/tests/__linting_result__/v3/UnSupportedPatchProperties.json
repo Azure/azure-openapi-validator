@@ -1,0 +1,338 @@
+[
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property location.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors/{advisorName}\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:136:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property location.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:145:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property location.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}\"].patch.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:156:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property location.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].patch.parameters[\"4\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:528:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].patch.parameters[\"4\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:136:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].patch.parameters[\"5\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:949:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].patch.parameters[\"6\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1205:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].patch.parameters[\"5\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:390:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].patch.parameters[\"6\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:667:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].patch.parameters[\"3\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6892:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].patch.parameters[\"4\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8310:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch.parameters[\"0\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:628:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:171:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:237:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:180:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors/{advisorName}\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:136:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\"].patch.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:70:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:145:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}\"].patch.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:156:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/automaticTuning/current\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:76:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:171:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:573:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].patch.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:254:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].patch.parameters[\"3\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:297:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].patch.parameters[\"5\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2077:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].patch.parameters[\"3\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:330:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].patch.parameters[\"5\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:241:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch.parameters[\"2\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:235:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}\"].patch.parameters[\"4\"]",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:747:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property name.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].patch.parameters[\"4\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:528:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].patch.parameters[\"4\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:136:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].patch.parameters[\"5\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:949:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].patch.parameters[\"6\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1205:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].patch.parameters[\"5\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:390:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].patch.parameters[\"6\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:667:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].patch.parameters[\"3\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6892:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].patch.parameters[\"4\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8310:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch.parameters[\"0\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:628:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:171:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:237:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:180:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors/{advisorName}\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:136:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\"].patch.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:70:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:145:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}\"].patch.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:156:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/automaticTuning/current\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:76:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:171:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].patch.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:573:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].patch.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:254:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].patch.parameters[\"3\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:297:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].patch.parameters[\"5\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2077:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].patch.parameters[\"3\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:330:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}\"].patch.parameters[\"5\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:241:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch.parameters[\"2\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:235:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}\"].patch.parameters[\"4\"]",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:747:10"
+  },
+  {
+    "code": "UnSupportedPatchProperties",
+    "message": "The patch operation body parameter schema should not contains property type.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].patch.parameters[\"4\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:528:10"
+  }
+]

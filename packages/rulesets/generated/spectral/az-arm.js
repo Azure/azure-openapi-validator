@@ -1,5 +1,168 @@
-import { oas2, oas3 } from '@stoplight/spectral-formats';
-import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
+import { oas2 } from '@stoplight/spectral-formats';
+import { truthy, falsy, pattern } from '@stoplight/spectral-functions';
+import { createRulesetFunction } from '@stoplight/spectral-core';
+
+function checkApiVersion(param) {
+    if (param.in !== "query") {
+        return false;
+    }
+    return true;
+}
+const apiVersionName = "api-version";
+const hasApiVersionParameter = (apiPath, opts, paths) => {
+    var _a, _b;
+    if (apiPath === null || typeof apiPath !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.methods) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (apiPath.parameters) {
+        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
+            return [];
+        }
+    }
+    const messages = [];
+    for (const method of Object.keys(apiPath)) {
+        if (opts.methods.includes(method)) {
+            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
+            if (!param || param.length === 0) {
+                messages.push({
+                    message: `Operation should include an 'api-version' parameter.`,
+                    path: [...path, method]
+                });
+                continue;
+            }
+            if (!checkApiVersion(param[0])) {
+                messages.push({
+                    message: `Operation 'api-version' parameter should be a query parameter.`,
+                    path: [...path, method]
+                });
+            }
+        }
+    }
+    return messages;
+};
+
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { properties, ...schema.properties };
+    }
+    return properties;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+
+const validateOriginalUri = (lroOptions, opts, ctx) => {
+    if (!lroOptions || typeof lroOptions !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const messages = [];
+    const getOperationPath = [...path.slice(0, -2), "get"];
+    if (!jsonPath(getOperationPath, ctx.document.parserResult.data)) {
+        messages.push({
+            path: [...path.slice(0, -1)],
+            message: "",
+        });
+    }
+    return messages;
+};
+
+const pathBodyParameters = (parameters, _opts, paths) => {
+    if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
+        return [];
+    }
+    const path = paths.path || [];
+    const properties = getProperties(parameters.schema);
+    const requiredProperties = getRequiredProperties(parameters.schema);
+    const errors = [];
+    for (const prop of Object.keys(properties)) {
+        if (properties[prop].default) {
+            errors.push({
+                message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+        if (requiredProperties.includes(prop)) {
+            errors.push({
+                message: `Properties of a PATCH request body must not be required, property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+        const xmsMutability = properties[prop]['x-ms-mutability'];
+        if (xmsMutability && xmsMutability.length === 1 && xmsMutability[0] === "create") {
+            errors.push({
+                message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
+                path: [...path, "schema"]
+            });
+        }
+    }
+    return errors;
+};
+
+const pathSegmentCasing = (apiPaths, _opts, paths) => {
+    if (apiPaths === null || typeof apiPaths !== 'object') {
+        return [];
+    }
+    if (!_opts || !_opts.segments || !Array.isArray(_opts.segments)) {
+        return [];
+    }
+    const segments = _opts.segments;
+    const path = paths.path || [];
+    const errors = [];
+    for (const apiPath of Object.keys(apiPaths)) {
+        segments.forEach((seg) => {
+            const idx = apiPath.toLowerCase().indexOf("/" + seg.toLowerCase());
+            if (idx !== -1) {
+                const originalSegment = apiPath.substring(idx + 1, idx + seg.length + 1);
+                if (originalSegment !== seg) {
+                    errors.push({
+                        message: `The path segment ${originalSegment} should be ${seg}.`,
+                        path: [...path, apiPath]
+                    });
+                }
+            }
+        });
+    }
+    return errors;
+};
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
@@ -129,104 +292,8 @@ function validateErrorResponseSchema(errorResponseSchema, pathToSchema) {
             path: [...pathToErrorSchema, 'properties'],
         });
     }
-    else if (hasCode && !hasMessage) {
-        errors.push({
-            message: 'Error schema should contain `message` property.',
-            path: [...pathToErrorSchema, 'properties'],
-        });
-    }
-    else if (!hasCode && !hasMessage) {
-        errors.push({
-            message: 'Error schema should contain `code` and `message` properties.',
-            path: [...pathToErrorSchema, 'properties'],
-        });
-    }
-    if (hasCode && errorSchema.properties.code.type !== 'string') {
-        errors.push({
-            message: 'The `code` property of error schema should be type `string`.',
-            path: [...pathToErrorSchema, 'properties', 'code', 'type'],
-        });
-    }
-    if (hasMessage && errorSchema.properties.message.type !== 'string') {
-        errors.push({
-            message: 'The `message` property of error schema should be type `string`.',
-            path: [...pathToErrorSchema, 'properties', 'message', 'type'],
-        });
-    }
-    if (['code', 'message'].every((prop) => { var _a, _b; return !((_b = (_a = errorSchema.required) === null || _a === void 0 ? void 0 : _a.includes) === null || _b === void 0 ? void 0 : _b.call(_a, prop)); })) {
-        errors.push({
-            message: 'Error schema should define `code` and `message` properties as required.',
-            path: [...pathToErrorSchema, 'required'],
-        });
-    }
-    else if (!errorSchema.required.includes('code')) {
-        errors.push({
-            message: 'Error schema should define `code` property as required.',
-            path: [...pathToErrorSchema, 'required'],
-        });
-    }
-    else if (!errorSchema.required.includes('message')) {
-        errors.push({
-            message: 'Error schema should define `message` property as required.',
-            path: [...pathToErrorSchema, 'required'],
-        });
-    }
-    if (!!errorSchema.properties.target && errorSchema.properties.target.type !== 'string') {
-        errors.push({
-            message: 'The `target` property of the error schema should be type `string`.',
-            path: [...pathToErrorSchema, 'properties', 'target'],
-        });
-    }
-    if (!!errorSchema.properties.details && !isArraySchema(errorSchema.properties.details)) {
-        errors.push({
-            message: 'The `details` property of the error schema should be an array.',
-            path: [...pathToErrorSchema, 'properties', 'details'],
-        });
-    }
-    if (!!errorSchema.properties.innererror && !isObjectSchema(errorSchema.properties.innererror)) {
-        errors.push({
-            message: 'The `innererror` property of the error schema should be an object.',
-            path: [...pathToErrorSchema, 'properties', 'innererror'],
-        });
-    }
-    return errors;
-}
-function validateErrorResponse(errorResponse, responsePath) {
-    const errors = [];
-    if (!errorResponse.schema) {
-        errors.push({
-            message: 'Error response should have a schema.',
-            path: responsePath,
-        });
-    }
-    else {
-        errors.push(...validateErrorResponseSchema(errorResponse.schema, [...responsePath, 'schema']));
-    }
-    if (!errorResponse.headers || !errorResponse.headers['x-ms-error-code']) {
-        errors.push({
-            message: 'Error response should contain a x-ms-error-code header.',
-            path: !errorResponse.headers ? responsePath : [...responsePath, 'headers'],
-        });
-    }
-    return errors;
-}
-function errorResponse(responses, _opts, paths) {
-    const errors = [];
-    const path = paths.path || [];
-    if (responses.default) {
-        errors.push(...validateErrorResponse(responses.default, [...path, 'default']));
-    }
-    Object.keys(responses).filter((code) => code.match(/[45]\d\d/)).forEach((code) => {
-        errors.push(...validateErrorResponse(responses[code], [...path, code]));
-        if (!(responses[code]['x-ms-error-response'])) {
-            errors.push({
-                message: 'Error response should contain x-ms-error-response.',
-                path: [...path, code],
-            });
-        }
-    });
-    return errors;
-}
+    return messages;
+};
 
 const hasHeader = (response, opts, paths) => {
     if (response === null || typeof response !== 'object') {
@@ -249,9 +316,8 @@ const hasHeader = (response, opts, paths) => {
     return [];
 };
 
-const operationId = (operation, _opts, paths) => {
-    var _a, _b;
-    if (operation === null || typeof operation !== 'object') {
+const validateOriginalUri = (lroOptions, opts, ctx) => {
+    if (!lroOptions || typeof lroOptions !== "object") {
         return [];
     }
     const path = paths.path || [];
@@ -506,7 +572,7 @@ const paramOrder = (paths) => {
             }
         }
     }
-    return errors;
+    return messages;
 };
 
 const MERGE_PATCH = 'application/merge-patch+json';
@@ -731,48 +797,27 @@ const versionPolicy = (targetVal) => {
     return errors;
 };
 
-const ruleset$1 = {
-    extends: [],
+const ruleset = {
+    extends: [ruleset$1],
     rules: {
-        "az-additional-properties-and-properties": {
-            description: "Don't specify additionalProperties as a sibling of properties.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$..[?(@object() && @.type === 'object' && @.properties)]",
-            then: {
-                field: "additionalProperties",
-                function: falsy,
-            },
-        },
-        "az-additional-properties-object": {
-            description: "additionalProperties with type object is a common error.",
-            severity: "info",
-            formats: [oas2, oas3],
+        ApiHost: {
+            description: "The host is required for management plane specs.",
+            message: "{{description}}",
+            severity: "error",
             resolved: false,
-            given: "$..[?(@property == 'additionalProperties' && @.type == 'object' && @.properties == undefined)]",
-            then: {
-                function: falsy,
-            },
-        },
-        "az-api-version-enum": {
-            description: "The api-version parameter should not be an enum.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: [
-                "$.paths[*].parameters.[?(@.name == 'api-version')]",
-                "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
-            ],
-            then: {
-                field: "enum",
-                function: falsy,
-            },
-        },
-        "az-consistent-response-body": {
-            description: "Ensure the get, put, and patch response body schemas are consistent.",
-            message: "{{error}}",
-            severity: "warn",
             formats: [oas2],
-            given: "$.paths.*",
+            given: ["$.host"],
+            then: {
+                function: truthy,
+            },
+        },
+        ApiVersionParameterRequired: {
+            description: "All operations should have api-version query parameter.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths.*", "$.x-ms-paths.*"],
             then: {
                 function: consistentresponsebody,
             },
@@ -829,25 +874,26 @@ const ruleset$1 = {
                 function: pattern,
                 field: "name",
                 functionOptions: {
-                    notMatch: "/^(authorization|content-type|accept)$/i",
+                    segments: ["resourceGroups", "subscriptions"],
                 },
             },
         },
-        "az-lro-extension": {
-            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            severity: "warn",
+        PatchBodyParametersSchema: {
+            description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
             formats: [oas2],
-            given: "$.paths[*][*].responses[?(@property == '202')]^^",
+            given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
             then: {
-                field: "x-ms-long-running-operation",
-                function: truthy,
+                function: pathBodyParameters,
             },
         },
-        "az-lro-headers": {
-            description: "A 202 response should include an Operation-Location response header.",
-            message: "A 202 response should include an Operation-Location response header.",
-            severity: "warn",
+        ConsistentPatchProperties: {
+            description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]",
             then: {
@@ -879,539 +925,105 @@ const ruleset$1 = {
         "az-operation-id": {
             description: "OperationId should conform to Azure API Guidelines",
             message: "{{error}}",
-            severity: "warn",
-            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
-            then: {
-                function: operationId,
-            },
-        },
-        "az-operation-summary-or-description": {
-            description: "Operation should have a summary or description.",
-            message: "Operation should have a summary or description.",
-            severity: "warn",
-            given: [
-                "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'post' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'patch' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'delete' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'options' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'head' && !@.summary && !@.description )]",
-                "$.paths[*][?( @property === 'trace' && !@.summary && !@.description )]",
-            ],
-            then: {
-                function: falsy,
-            },
-        },
-        "az-pagination-response": {
-            description: "An operation that returns a list that is potentially large should support pagination.",
-            message: "{{error}}",
-            severity: "warn",
-            formats: [oas2],
-            given: ["$.paths.*[get,post]"],
-            then: {
-                function: paginationResponse,
-            },
-        },
-        "az-parameter-default-not-allowed": {
-            description: "A required parameter should not specify a default value.",
-            severity: "warn",
-            given: ["$.paths[*].parameters.[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.required)]"],
-            then: {
-                field: "default",
-                function: falsy,
-            },
-        },
-        "az-parameter-description": {
-            description: "All parameters should have a description.",
-            message: "Parameter should have a description.",
-            severity: "warn",
-            given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-            then: {
-                field: "description",
-                function: truthy,
-            },
-        },
-        "az-parameter-names-convention": {
-            description: "Parameter names should conform to Azure naming conventions.",
-            message: "{{error}}",
-            severity: "warn",
-            given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-            then: {
-                function: paramNames,
-            },
-        },
-        "az-parameter-names-unique": {
-            description: "All parameter names for an operation should be case-insensitive unique.",
-            message: "{{error}}",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$.paths[*]",
-            then: {
-                function: paramNamesUnique,
-            },
-        },
-        "az-parameter-order": {
-            description: "Path parameters must be in the same order as in the path.",
-            message: "{{error}}",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$.paths",
-            then: {
-                function: paramOrder,
-            },
-        },
-        "az-path-parameter-names": {
-            description: "Path parameter names should be consistent across all paths.",
-            message: "{{error}}",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$.paths",
-            resolved: false,
-            then: {
-                function: pathParamNames,
-            },
-        },
-        "az-patch-content-type": {
-            description: "The request body content type for patch operations should be JSON merge patch.",
-            message: "{{error}}",
-            severity: "warn",
-            formats: [oas2],
-            given: "$",
-            then: {
-                function: patchContentYype,
-            },
-        },
-        "az-path-characters": {
-            description: "Path should contain only recommended characters.",
-            message: "Path contains non-recommended characters.",
-            severity: "info",
-            formats: [oas2, oas3],
-            given: "$.paths.*~",
-            then: {
-                function: pattern,
-                functionOptions: {
-                    match: "^(/([0-9A-Za-z._~-]+|{[^}]+}))*(/([0-9A-Za-z._~:-]+|{[^}]*}(:[0-9A-Za-z._~-]+)?))$",
-                },
-            },
-        },
-        "az-path-parameter-schema": {
-            description: "Path parameter should be type: string and specify maxLength and pattern.",
-            message: "{{error}}",
-            severity: "info",
-            formats: [oas2, oas3],
-            given: [
-                "$.paths[*].parameters[?(@.in == 'path')]",
-                "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.in == 'path')]",
-            ],
-            then: {
-                function: pathParamSchema,
-            },
-        },
-        "az-post-201-response": {
-            description: "Using post for a create operation is discouraged.",
-            message: "Using post for a create operation is discouraged.",
-            severity: "warn",
-            formats: [oas2],
-            given: "$.paths[*].post.responses",
-            then: {
-                field: "201",
-                function: falsy,
-            },
-        },
-        "az-property-description": {
-            description: "All schema properties should have a description.",
-            message: "Property should have a description.",
-            severity: "warn",
-            resolved: false,
-            given: "$..properties[?(@object() && @.$ref == undefined)]",
-            then: {
-                field: "description",
-                function: truthy,
-            },
-        },
-        "az-property-names-convention": {
-            description: "Property names should be camel case.",
-            message: "Property name should be camel case.",
-            severity: "warn",
-            resolved: false,
-            given: "$..[?(@.type === 'object' && @.properties)].properties.*~",
-            then: {
-                function: casing,
-                functionOptions: {
-                    type: "camel",
-                },
-            },
-        },
-        "az-property-type": {
-            description: "All schema properties should have a defined type.",
-            message: "Property should have a defined type.",
-            severity: "warn",
-            resolved: false,
-            given: "$..properties[?(@object() && @.$ref == undefined)]",
-            then: {
-                field: "type",
-                function: truthy,
-            },
-        },
-        "az-put-path": {
-            description: "The path for a put should have a final path parameter.",
-            message: "The path for a put should have a final path parameter.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$.paths[*].put^~",
-            then: {
-                function: pattern,
-                functionOptions: {
-                    match: "/\\}$/",
-                },
-            },
-        },
-        "az-request-body-not-allowed": {
-            description: "A get or delete operation must not accept a body parameter.",
             severity: "error",
+            resolved: true,
             formats: [oas2],
-            given: ["$.paths[*].[get,delete].parameters[*]"],
+            given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
             then: {
-                field: "in",
-                function: pattern,
-                functionOptions: {
-                    notMatch: "/^body$/",
-                },
+                function: lroPatch202,
             },
         },
-        "az-request-body-optional": {
-            description: "Flag optional request body -- common oversight.",
-            message: "The body parameter is not marked as required.",
-            severity: "info",
-            formats: [oas2],
-            given: ["$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')]"],
-            then: {
-                field: "required",
-                function: truthy,
-            },
-        },
-        "az-schema-description-or-title": {
-            description: "All schemas should have a description or title.",
-            message: "Schema should have a description or title.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
-            then: {
-                function: falsy,
-            },
-        },
-        "az-schema-names-convention": {
-            description: "Schema names should be Pascal case.",
-            message: "Schema name should be Pascal case.",
-            severity: "info",
-            formats: [oas2],
-            given: "$.definitions.*~",
-            then: {
-                function: casing,
-                functionOptions: {
-                    type: "pascal",
-                },
-            },
-        },
-        "az-security-definition-description": {
-            description: "A security definition should have a description.",
-            message: "Security definition should have a description.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: ["$.securityDefinitions[*]", "$.components.securitySchemes[*]"],
-            then: {
-                field: "description",
-                function: truthy,
-            },
-        },
-        "az-success-response-body": {
-            description: "All success responses except 202 & 204 should define a response body.",
-            severity: "warn",
-            formats: [oas2],
-            given: "$.paths[*][*].responses[?(@property >= 200 && @property < 300 && @property != '202' && @property != '204')]",
-            then: {
-                field: "schema",
-                function: truthy,
-            },
-        },
-        "az-version-convention": {
-            description: "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
-            severity: "error",
-            formats: [oas2, oas3],
-            given: "$.info.version",
-            then: {
-                function: pattern,
-                functionOptions: {
-                    match: "^\\d\\d\\d\\d-\\d\\d-\\d\\d(-preview)?$",
-                },
-            },
-        },
-        "az-version-policy": {
-            description: "Specify API version using `api-version` query parameter, not in path.",
-            message: "{{error}}",
-            severity: "warn",
-            formats: [oas2],
-            given: "$",
-            then: {
-                function: versionPolicy,
-            },
-        },
-        "az-default-in-enum": {
-            description: "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
-            message: "Default value should appear in the enum constraint for a schema",
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: "$..[?(@object() && @.enum)]",
-            then: {
-                function: defaultInEnum,
-            },
-        },
-        "az-enum-insteadOf-boolean": {
-            description: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
-            message: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: "$..[?(@object() && @.type === 'boolean')]",
-            then: {
-                function: enumInsteadOfBoolean,
-            },
-        },
-        "az-avoid-anonymous-parameter": {
-            description: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-            then: {
-                function: avoidAnonymousParameter,
-            },
-        },
-    },
-};
-
-function checkApiVersion(param) {
-    if (param.in !== "query") {
-        return false;
-    }
-    return true;
-}
-const apiVersionName = "api-version";
-const hasApiVersionParameter = (apiPath, opts, paths) => {
-    var _a, _b;
-    if (apiPath === null || typeof apiPath !== 'object') {
-        return [];
-    }
-    if (opts === null || typeof opts !== 'object' || !opts.methods) {
-        return [];
-    }
-    const path = paths.path || [];
-    if (apiPath.parameters) {
-        if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
-            return [];
-        }
-    }
-    const messages = [];
-    for (const method of Object.keys(apiPath)) {
-        if (opts.methods.includes(method)) {
-            const param = (_b = (_a = apiPath[method]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter((p) => p.name === apiVersionName);
-            if (!param || param.length === 0) {
-                messages.push({
-                    message: `Operation should include an 'api-version' parameter.`,
-                    path: [...path, method]
-                });
-                continue;
-            }
-            if (!checkApiVersion(param[0])) {
-                messages.push({
-                    message: `Operation 'api-version' parameter should be a query parameter.`,
-                    path: [...path, method]
-                });
-            }
-        }
-    }
-    return messages;
-};
-
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { properties, ...schema.properties };
-    }
-    return properties;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
-        return [];
-    }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
-    }
-    if (schema.required) {
-        requires = [...schema.required, requires];
-    }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
-
-const validateOriginalUri = (lroOptions, opts, ctx) => {
-    if (!lroOptions || typeof lroOptions !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const messages = [];
-    const getOperationPath = [...path.slice(0, -2), "get"];
-    if (!jsonPath(getOperationPath, ctx.document.parserResult.data)) {
-        messages.push({
-            path: [...path.slice(0, -1)],
-            message: "",
-        });
-    }
-    return messages;
-};
-
-const pathBodyParameters = (parameters, _opts, paths) => {
-    if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
-        return [];
-    }
-    const path = paths.path || [];
-    const properties = getProperties(parameters.schema);
-    const requiredProperties = getRequiredProperties(parameters.schema);
-    const errors = [];
-    for (const prop of Object.keys(properties)) {
-        if (properties[prop].default) {
-            errors.push({
-                message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
-                path: [...path, "schema"]
-            });
-        }
-        if (requiredProperties.includes(prop)) {
-            errors.push({
-                message: `Properties of a PATCH request body must not be required, property:${prop}.`,
-                path: [...path, "schema"]
-            });
-        }
-        const xmsMutability = properties[prop]['x-ms-mutability'];
-        if (xmsMutability && xmsMutability.length === 1 && xmsMutability[0] === "create") {
-            errors.push({
-                message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
-                path: [...path, "schema"]
-            });
-        }
-    }
-    return errors;
-};
-
-const pathSegmentCasing = (apiPaths, _opts, paths) => {
-    if (apiPaths === null || typeof apiPaths !== 'object') {
-        return [];
-    }
-    if (!_opts || !_opts.segments || !Array.isArray(_opts.segments)) {
-        return [];
-    }
-    const segments = _opts.segments;
-    const path = paths.path || [];
-    const errors = [];
-    for (const apiPath of Object.keys(apiPaths)) {
-        segments.forEach((seg) => {
-            const idx = apiPath.toLowerCase().indexOf("/" + seg.toLowerCase());
-            if (idx !== -1) {
-                const originalSegment = apiPath.substring(idx + 1, idx + seg.length + 1);
-                if (originalSegment !== seg) {
-                    errors.push({
-                        message: `The path segment ${originalSegment} should be ${seg}.`,
-                        path: [...path, apiPath]
-                    });
-                }
-            }
-        });
-    }
-    return errors;
-};
-
-const ruleset = {
-    extends: [ruleset$1],
-    rules: {
-        ApiHost: {
-            description: "The host is required for management plane specs.",
+        DeleteResponseBodyEmpty: {
+            description: "The delete response body must be empty.",
             message: "{{description}}",
             severity: "error",
-            resolved: false,
+            resolved: true,
             formats: [oas2],
-            given: ["$.host"],
+            given: ["$[paths,'x-ms-paths'].*[delete].responses.['200','204'].schema"],
             then: {
+                function: falsy,
+            },
+        },
+        GetOperation200: {
+            description: "The get operation should only return 200.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[get].responses.['201','202','203','204']"],
+            then: {
+                function: falsy,
+            },
+        },
+        ProvisioningStateValidation: {
+            description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions..provisioningState[?(@property === 'enum')]^"],
+            then: {
+                function: provisioningState,
+            },
+        },
+        XmsLongRunningOperationOptions: {
+            description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+            then: {
+                field: "x-ms-long-running-operation-options",
                 function: truthy,
             },
         },
-        ApiVersionParameterRequired: {
-            description: "All operations should have api-version query parameter.",
+        UnSupportedPatchProperties: {
+            description: "Patch may not change the name, location, or type of the resource.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$.paths.*", "$.x-ms-paths.*"],
+            given: ["$[paths,'x-ms-paths'].*.patch"],
             then: {
-                function: hasApiVersionParameter,
+                function: validatePatchBodyParamProperties,
                 functionOptions: {
-                    methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
+                    shouldNot: ["name", "type", "location"],
                 },
             },
         },
-        SubscriptionsAndResourceGroupCasing: {
-            description: "The subscriptions and resourceGroup in resource uri should follow lower camel case.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.paths", "$.x-ms-paths"],
-            then: {
-                function: pathSegmentCasing,
-                functionOptions: {
-                    segments: ["resourceGroups", "subscriptions"],
-                },
-            },
-        },
-        PatchBodyParametersSchema: {
-            description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+        PatchSkuProperty: {
+            description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
+            given: ["$[paths,'x-ms-paths'].*.patch"],
             then: {
-                function: pathBodyParameters,
+                function: validatePatchBodyParamProperties,
+                functionOptions: {
+                    should: ["sku"],
+                },
+            },
+        },
+        PatchIdentityProperty: {
+            description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.patch"],
+            then: {
+                function: validatePatchBodyParamProperties,
+                functionOptions: {
+                    should: ["identity"],
+                },
             },
         },
         ArrayMustHaveType: {
             description: "Array type must have a type except for any type.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$.definitions..items[?(@object())]^"],
@@ -1420,10 +1032,23 @@ const ruleset = {
                 field: "type",
             },
         },
+        LroLocationHeader: {
+            description: "Location header must be supported for all async operations that return 202.",
+            message: "A 202 response should include an Location response header.",
+            severity: "warn",
+            formats: [oas2],
+            given: "$.paths[*][*].responses[?(@property == '202')]^",
+            then: {
+                function: hasHeader,
+                functionOptions: {
+                    name: "Location",
+                },
+            },
+        },
         LroWithOriginalUriAsFinalState: {
             description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
             message: "{{description}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: [
@@ -1436,14 +1061,110 @@ const ruleset = {
         LroPostMustNotUseOriginalUriAsFinalState: {
             description: "The long running post operation must not use final-stat-via:original-uri.",
             message: "{{description}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: [
                 "$[paths,'x-ms-paths'].*.post.x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
             ],
             then: {
-                function: falsy,
+                field: "schema",
+                function: truthy,
+            },
+        },
+        PathContainsSubscriptionId: {
+            description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "subscriptionIdParam",
+                },
+            },
+        },
+        PathContainsResourceType: {
+            description: "Path for resource CRUD methods MUST contain a resource type.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "resourceType",
+                },
+            },
+        },
+        PathContainsResourceGroup: {
+            description: "Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "resourceGroupParam",
+                },
+            },
+        },
+        PathForPutOperation: {
+            description: "The path for 'put' operation must be under a subscription and resource group.",
+            message: "{{description}}",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[put]^~",
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "resourceGroupScope",
+                },
+            },
+        },
+        PathForNestedResource: {
+            description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
+            then: {
+                function: verifyArmPath,
+                functionOptions: {
+                    segmentToCheck: "nestedResourceType",
+                },
+            },
+        },
+        PathForResourceAction: {
+            description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
+            message: "{{description}}",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.post^~",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
+                },
+            },
+        },
+        RepeatedPathInfo: {
+            description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+            message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^",
+            then: {
+                function: spectralFunctions.falsy,
             },
         },
     },

@@ -67,6 +67,22 @@ export class ArmHelper {
     this.getAllResources()
   }
 
+  private getBodyParameter(parameters: any) {
+    let bodyParameter
+    if (parameters && Array.isArray(parameters)) {
+      parameters.forEach((param: any) => {
+        if (param.$ref) {
+          const resolvedParam = this.swaggerUtil.resolveRef(this.enhancedSchema(param))
+          if (resolvedParam && resolvedParam.value && resolvedParam.value.in === "body") {
+            bodyParameter = this.enhancedSchema(resolvedParam.value.schema, resolvedParam.file)
+          }
+        }
+      })
+    }
+
+    return bodyParameter
+  }
+
   private populateOperations(doc: any, specPath: string) {
     const paths = { ...(doc.paths || {}), ...(doc["x-ms-paths"] || {}) }
     const operations: Operation[] = []
@@ -75,11 +91,13 @@ export class ArmHelper {
         if (method !== "parameters") {
           const op = operation as any
           const response = op?.responses?.["200"] || op?.responses?.["201"]
+          const requestBodyParameter = this.getBodyParameter(op.parameters)
           if (response) {
             operations.push({
               specPath,
               apiPath: key,
               httpMethod: method,
+              requestBodyParameter,
               responseSchema: response.schema,
               operationId: op?.operationId,
             })
@@ -263,6 +281,21 @@ export class ArmHelper {
       _.isEqual
     )
     return this.armResource
+  }
+
+  public getTrackedResources() {
+    const isTrackedResource = (schema: any) => {
+      const enhancedSchema = this.enhancedSchema(schema)
+      return !!this.getProperty(enhancedSchema, "location")
+    }
+    const allTrackedResources = this.getAllResources().filter((re) => {
+      const schema = re.operations.find((op) => op.responseSchema)
+      if (schema) {
+        return isTrackedResource(schema.responseSchema)
+      }
+      return false
+    })
+    return allTrackedResources
   }
 
   public getAllResourceNames() {
@@ -554,14 +587,30 @@ export class ArmHelper {
     return undefined
   }
 
-  public getOperationIdFromPath(path: string, code = "get") {
-    let pathObj = this.innerDoc.paths[path]
-    if (!pathObj && this.innerDoc["x-ms-paths"]) {
-      pathObj = this.innerDoc["x-ms-paths"][path]
+  public getOperationIdFromPath(path: string, code = "get", doc?: any) {
+    doc = doc || this.innerDoc
+    let pathObj = doc?.paths[path]
+    if (!pathObj && doc?.["x-ms-paths"]) {
+      pathObj = doc?.["x-ms-paths"][path]
     }
     if (pathObj && pathObj[code]) {
       return pathObj[code].operationId
     }
+  }
+
+  public findOperation(path: string, code = "get") {
+    const op = this.getOperationIdFromPath(path, code, this.innerDoc)
+    if (op) {
+      return op
+    }
+    const references = this.inventory.referencesOf(this.specPath)
+    for (const reference of Object.values(references)) {
+      const op = this.getOperationIdFromPath(path, code, reference)
+      if (op) {
+        return op
+      }
+    }
+    return undefined
   }
 
   /**

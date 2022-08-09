@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-put-path');
+  linter = await linterForRule('PutPath');
   return linter;
 });
 
-test('az-put-path should find errors', () => {
+test('PutPath should find errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -23,7 +23,7 @@ test('az-put-path should find errors', () => {
   });
 });
 
-test('az-put-path should find no errors', () => {
+test('PutPath should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

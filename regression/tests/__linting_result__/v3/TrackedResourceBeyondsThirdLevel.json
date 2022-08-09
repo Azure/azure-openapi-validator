@@ -1,0 +1,26 @@
+[
+  {
+    "code": "TrackedResourceBeyondsThirdLevel",
+    "message": "The tracked resource DataMaskingRule is beyond third level of nesting.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:113:4"
+  },
+  {
+    "code": "TrackedResourceBeyondsThirdLevel",
+    "message": "The tracked resource RecommendedAction is beyond third level of nesting.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:71:4"
+  },
+  {
+    "code": "TrackedResourceBeyondsThirdLevel",
+    "message": "The tracked resource VirtualMachineExtensionImage is beyond third level of nesting.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1779:4"
+  },
+  {
+    "code": "TrackedResourceBeyondsThirdLevel",
+    "message": "The tracked resource VirtualMachineImage is beyond third level of nesting.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2308:4"
+  }
+]

@@ -28,6 +28,7 @@ module.exports = {
   },
   testMatch: [
     '**/native/tests/*-test.ts',
+    '**/native/tests/*-tests.ts',
     '!**/native/tests/**/*.d.ts',
   ],
   verbose: true,

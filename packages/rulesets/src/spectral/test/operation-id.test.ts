@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-operation-id');
+  linter = await linterForRule('OperationId');
   return linter;
 });
 
-test('az-operation-id should find operationId not Noun_Verb', () => {
+test('OperationId should find operationId not Noun_Verb', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -28,7 +28,7 @@ test('az-operation-id should find operationId not Noun_Verb', () => {
   });
 });
 
-test('az-operation-id should find operationId without standard verb', () => {
+test('OperationId should find operationId without standard verb', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -60,7 +60,7 @@ test('az-operation-id should find operationId without standard verb', () => {
   });
 });
 
-test('az-operation-id should find operationId without standard verb again', () => {
+test('OperationId should find operationId without standard verb again', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
@@ -107,7 +107,7 @@ test('az-operation-id should find operationId without standard verb again', () =
   });
 });
 
-test('az-operation-id should find no errors', () => {
+test('OperationId should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

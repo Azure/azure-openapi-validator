@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-header-disallowed');
+  linter = await linterForRule('HeaderDisallowed');
   return linter;
 });
 
-test('az-header-disallowed should find errors', () => {
+test('HeaderDisallowed should find errors', () => {
   // Test parameter names in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
@@ -54,7 +54,7 @@ test('az-header-disallowed should find errors', () => {
   });
 });
 
-test('az-header-disallowed should find no errors', () => {
+test('HeaderDisallowed should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {

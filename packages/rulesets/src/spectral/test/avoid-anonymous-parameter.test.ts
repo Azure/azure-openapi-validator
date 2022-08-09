@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-avoid-anonymous-parameter');
+  linter = await linterForRule('AvoidAnonymousParameter');
   return linter;
 });
 
-test('az-avoid-anonymous-parameter should find errors', () => {
+test('AvoidAnonymousParameter should find errors', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
@@ -103,7 +103,7 @@ test('az-avoid-anonymous-parameter should find errors', () => {
   });
 });
 
-test('az-avoid-anonymous-parameter should find no errors', () => {
+test('AvoidAnonymousParameter should find no errors', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {

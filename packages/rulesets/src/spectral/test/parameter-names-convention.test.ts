@@ -4,11 +4,11 @@ import linterForRule from './utils';
 let linter:Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule('az-parameter-names-convention');
+  linter = await linterForRule('ParameterNamesConvention');
   return linter;
 });
 
-test('az-parameter-names-convention should find errors', () => {
+test('ParameterNamesConvention should find errors', () => {
   // Test parameter names in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
@@ -83,7 +83,7 @@ test('az-parameter-names-convention should find errors', () => {
   });
 });
 
-test('az-parameter-names-convention should find no errors', () => {
+test('ParameterNamesConvention should find no errors', () => {
   const oasDoc = {
     swagger: '2.0',
     paths: {
