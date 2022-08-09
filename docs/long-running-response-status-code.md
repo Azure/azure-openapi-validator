@@ -8,6 +8,10 @@ SDK Error
 
 ARM and Data plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-1
+
 ## Output Message
 
 A '{0}' operation '{1}' with x-ms-long-running-operation extension must have a valid terminal success status code {2}.

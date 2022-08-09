@@ -1,6 +1,272 @@
 import { oas2 } from '@stoplight/spectral-formats';
-import { truthy, falsy, pattern } from '@stoplight/spectral-functions';
+import { pattern, truthy, falsy } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
+
+const ruleset$1 = {
+    extends: [],
+    rules: {
+        docLinkLocale: {
+            description: "This rule is to ensure the documentation link in the description does not contains any locale.",
+            message: "The documentation link in the description contains locale info, please change it to the link without locale.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: [
+                "$..[?(@property === 'description')]^",
+            ],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
+                }
+            },
+        }
+    },
+};
+
+function matchAnyPatterns(patterns, path) {
+    return patterns.some((p) => p.test(path));
+}
+function notMatchPatterns(patterns, path) {
+    return patterns.every((p) => !p.test(path));
+}
+function verifyResourceGroup(path) {
+    const lowerCasePath = path.toLowerCase();
+    if (lowerCasePath.includes("/resourcegroups/") && !lowerCasePath.includes("/resourcegroups/{resourcegroupname}")) {
+        return false;
+    }
+    return true;
+}
+function verifySubscriptionId(path) {
+    const lowerCasePath = path.toLowerCase();
+    if (lowerCasePath.includes("/subscriptions/") && !lowerCasePath.includes("/subscriptions/{subscriptionid}")) {
+        return false;
+    }
+    return true;
+}
+function verifyResourceGroupScope(path) {
+    const patterns = [
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
+        /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
+        /^\/?{\w+}\/providers\/.+/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
+}
+function verifyResourceType(path) {
+    const patterns = [/^.*\/providers\/microsoft\.\w+\/\w+.*/gi];
+    return matchAnyPatterns(patterns, path);
+}
+function verifyNestResourceType(path) {
+    const patterns = [
+        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}/gi,
+        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+/gi,
+        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*/gi,
+    ];
+    return notMatchPatterns(patterns, path);
+}
+const verifyArmPath = createRulesetFunction({
+    input: null,
+    options: {
+        type: 'object',
+        properties: {
+            segmentToCheck: {
+                oneOf: [
+                    {
+                        type: "string",
+                        enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"]
+                    },
+                    {
+                        type: "array",
+                        items: {
+                            type: "string",
+                            "enum": ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"]
+                        }
+                    }
+                ]
+            },
+        },
+        additionalProperties: false,
+    },
+}, (fullPath, _opts, paths) => {
+    if (fullPath === null || typeof fullPath !== "string") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const optionsHandlers = {
+        resourceType: (fullPath) => {
+            if (!verifyResourceType(fullPath)) {
+                errors.push({
+                    message: `The path for the CURD methods do not contain a resource type.`,
+                    path,
+                });
+            }
+        },
+        nestedResourceType: (fullPath) => {
+            if (!verifyNestResourceType(fullPath)) {
+                errors.push({
+                    message: `The path for nested resource doest not meet the valid resource pattern.`,
+                    path,
+                });
+            }
+        },
+        resourceGroupParam: (fullPath) => {
+            if (!verifyResourceGroup(fullPath)) {
+                errors.push({
+                    message: `The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
+                    path,
+                });
+            }
+        },
+        subscriptionIdParam: (fullPath) => {
+            if (!verifySubscriptionId(fullPath)) {
+                errors.push({
+                    message: `The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
+                    path,
+                });
+            }
+        },
+        resourceGroupScope: (fullPath) => {
+            if (!verifyResourceGroupScope(fullPath)) {
+                errors.push({
+                    message: "",
+                    path,
+                });
+            }
+        },
+    };
+    const segments = typeof _opts.segmentToCheck === "string" ? [_opts.segmentToCheck] : _opts.segmentToCheck;
+    segments.forEach((segment) => {
+        optionsHandlers[segment](fullPath);
+    });
+    return errors;
+});
+
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+function diffSchema(a, b) {
+    const notMatchedProperties = [];
+    function diffSchemaInternal(a, b, paths) {
+        if (!(a || b)) {
+            return;
+        }
+        if (a && b) {
+            const propsA = getProperties(a);
+            const propsB = getProperties(b);
+            Object.keys(propsA).forEach((p) => {
+                if (propsB[p]) {
+                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
+                }
+                else {
+                    notMatchedProperties.push([...paths, p].join("."));
+                }
+            });
+        }
+    }
+    diffSchemaInternal(a, b, []);
+    return notMatchedProperties;
+}
+function getGetOperationSchema(paths, ctx) {
+    var _a, _b, _c, _d;
+    const getOperationPath = [...paths, "get"];
+    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
+    if (!getOperation) {
+        return undefined;
+    }
+    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
+}
+
+const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const pathParams = pathItem.parameters || [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const pathAndQueryParameters = allParams.filter((p) => p.in === "path" || p.in === "query").map((p) => p.name);
+        const bodyParam = allParams.find((p) => p.in === "body");
+        if (bodyParam) {
+            const properties = getProperties(bodyParam.schema);
+            if ("properties" in properties) {
+                const propertiesProperties = getProperties(properties.properties);
+                for (const prop of Object.keys(propertiesProperties)) {
+                    if (pathAndQueryParameters.includes(prop)) {
+                        errors.push({
+                            message: `${prop}`,
+                            path: [...path, "put", "parameters", pathItem["put"].parameters.findIndex((p) => p.name === prop)],
+                        });
+                    }
+                }
+            }
+        }
+    }
+    return errors;
+};
+
+const consistentPatchProperties = (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f, _g;
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const patchBodySchema = (_b = (_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    const patchBodySchemaIndex = (_c = patchOp === null || patchOp === void 0 ? void 0 : patchOp.parameters) === null || _c === void 0 ? void 0 : _c.findIndex((p) => p.in === "body");
+    const responseSchema = ((_e = (_d = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _d === void 0 ? void 0 : _d["200"]) === null || _e === void 0 ? void 0 : _e.schema) || ((_g = (_f = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) === null || _f === void 0 ? void 0 : _f["201"]) === null || _g === void 0 ? void 0 : _g.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+    if (patchBodySchema && responseSchema) {
+        const absents = diffSchema(patchBodySchema, responseSchema);
+        absents.forEach((absent) => {
+            errors.push({
+                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
+                path: [...path, "parameters", patchBodySchemaIndex, "schema"],
+            });
+        });
+    }
+    return errors;
+};
 
 function checkApiVersion(param) {
     if (param.in !== "query") {
@@ -45,49 +311,26 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     return messages;
 };
 
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { properties, ...schema.properties };
-    }
-    return properties;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
+const hasHeader = (response, opts, paths) => {
+    if (response === null || typeof response !== 'object') {
         return [];
     }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
+    if (opts === null || typeof opts !== 'object' || !opts.name) {
+        return [];
     }
-    if (schema.required) {
-        requires = [...schema.required, requires];
+    const path = paths.path || [];
+    const hasHeader = Object.keys(response.headers || {})
+        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
+    if (!hasHeader) {
+        return [
+            {
+                message: `Response should include an "${opts.name}" response header.`,
+                path: [...path, 'headers'],
+            },
+        ];
     }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
+    return [];
+};
 
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
@@ -103,6 +346,24 @@ const validateOriginalUri = (lroOptions, opts, ctx) => {
         });
     }
     return messages;
+};
+
+const lroPatch202 = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!patchOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"])) {
+        errors.push({
+            message: "The async patch operation should return 202.",
+            path: [...path, "responses"],
+        });
+    }
+    return errors;
 };
 
 const pathBodyParameters = (parameters, _opts, paths) => {
@@ -164,638 +425,83 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
-const avoidAnonymousParameter = (parameters, _opts, paths) => {
-    if (parameters === null || parameters.schema === undefined || parameters["x-ms-client-name"] !== undefined) {
-        return [];
-    }
-    const path = paths.path || [];
-    const properties = parameters.schema.properties;
-    if ((properties === undefined || Object.keys(properties).length === 0) &&
-        parameters.schema.additionalProperties === undefined &&
-        parameters.schema.allOf === undefined) {
-        return [];
-    }
-    return [{
-            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-            path,
-        }];
-};
-
-const consistentresponsebody = (pathItem, _opts, paths) => {
-    if (pathItem === null || typeof pathItem !== 'object') {
-        return [];
-    }
-    const path = paths.path || [];
-    const errors = [];
-    const createResponseSchema = ((op) => { var _a, _b; return (_b = (_a = op === null || op === void 0 ? void 0 : op.responses) === null || _a === void 0 ? void 0 : _a['201']) === null || _b === void 0 ? void 0 : _b.schema; });
-    const resourceSchema = createResponseSchema(pathItem.put) || createResponseSchema(pathItem.patch);
-    if (resourceSchema) {
-        ['put', 'get', 'patch'].forEach((method) => {
-            var _a, _b, _c;
-            const responseSchema = (_c = (_b = (_a = pathItem[method]) === null || _a === void 0 ? void 0 : _a.responses) === null || _b === void 0 ? void 0 : _b['200']) === null || _c === void 0 ? void 0 : _c.schema;
-            if (responseSchema && responseSchema !== resourceSchema) {
-                errors.push({
-                    message: 'Response body schema does not match create response body schema.',
-                    path: [...path, method, 'responses', '200', 'schema'],
-                });
-            }
-        });
-    }
-    return errors;
-};
-
-const defaultInEnum = (swaggerObj, _opts, paths) => {
-    const defaultValue = swaggerObj.default;
+const provisioningState = (swaggerObj, _opts, paths) => {
     const enumValue = swaggerObj.enum;
-    if (swaggerObj === null ||
-        typeof swaggerObj !== 'object' ||
-        defaultValue === null ||
-        defaultValue === undefined ||
-        enumValue === null ||
-        enumValue === undefined) {
+    if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
         return [];
     }
     if (!Array.isArray(enumValue)) {
         return [];
     }
     const path = paths.path || [];
-    if (enumValue && !enumValue.includes(defaultValue)) {
-        return [{
-                message: 'Default value should appear in the enum constraint for a schema.',
-                path,
-            }];
-    }
-    return [];
-};
-
-const delete204Response = (deleteResponses, _opts, paths) => {
-    if (deleteResponses === null || typeof deleteResponses !== 'object') {
-        return [];
-    }
-    const path = paths.path || [];
-    if (!deleteResponses['204'] && !deleteResponses['202']) {
-        return [{
-                message: 'A delete operation should have a 204 response.',
-                path,
-            }];
-    }
-    return [];
-};
-
-const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null) {
-        return [];
-    }
-    const path = paths.path || [];
-    return [{
-            message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
-            path,
-        }];
-};
-
-function isArraySchema(schema) {
-    return schema.type === 'array' || !!schema.items;
-}
-function isObjectSchema(schema) {
-    return schema.type === 'object' || !!schema.properties || schema.$ref;
-}
-function validateErrorResponseSchema(errorResponseSchema, pathToSchema) {
-    var _a, _b;
-    const errors = [];
-    if (!errorResponseSchema.properties) {
-        errors.push({
-            message: 'Error response schema must be an object schema.',
-            path: pathToSchema,
-        });
-        return errors;
-    }
-    if (!errorResponseSchema.properties.error || !errorResponseSchema.properties.error.properties) {
-        errors.push({
-            message: 'Error response schema should contain an object property named `error`.',
-            path: [...pathToSchema, 'properties', 'error'],
-        });
-        return errors;
-    }
-    if (!((_b = (_a = errorResponseSchema.required) === null || _a === void 0 ? void 0 : _a.includes) === null || _b === void 0 ? void 0 : _b.call(_a, 'error'))) {
-        errors.push({
-            message: 'The `error` property in the error response schema should be required.',
-            path: [...pathToSchema, 'required'],
-        });
-    }
-    const errorSchema = errorResponseSchema.properties.error;
-    const pathToErrorSchema = [...pathToSchema, 'properties', 'error'];
-    const hasCode = !!errorSchema.properties.code;
-    const hasMessage = !!errorSchema.properties.message;
-    if (!hasCode && hasMessage) {
-        errors.push({
-            message: 'Error schema should contain `code` property.',
-            path: [...pathToErrorSchema, 'properties'],
-        });
-    }
-    return messages;
-};
-
-const hasHeader = (response, opts, paths) => {
-    if (response === null || typeof response !== 'object') {
-        return [];
-    }
-    if (opts === null || typeof opts !== 'object' || !opts.name) {
-        return [];
-    }
-    const path = paths.path || [];
-    const hasHeader = Object.keys(response.headers || {})
-        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
-    if (!hasHeader) {
+    const valuesMustHave = ["succeeded", "failed", "canceled"];
+    if (enumValue && valuesMustHave.some((v) => !enumValue.some((ev) => ev.toLowerCase() === v))) {
         return [
             {
-                message: `Response should include an "${opts.name}" response header.`,
-                path: [...path, 'headers'],
+                message: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+                path,
             },
         ];
     }
     return [];
 };
 
-const validateOriginalUri = (lroOptions, opts, ctx) => {
-    if (!lroOptions || typeof lroOptions !== "object") {
-        return [];
-    }
-    const path = paths.path || [];
-    const errors = [];
-    if (!operation.operationId) {
-        return errors;
-    }
-    const m = operation.operationId.match(/[A-Za-z0-9]+_([A-Za-z0-9]+)/);
-    if (!m) {
-        errors.push({
-            message: 'OperationId should be of the form "Noun_Verb"',
-            path: [...path, 'operationId'],
-        });
-    }
-    const verb = m ? m[1] : operation.operationId;
-    const method = path[path.length - 1];
-    const isCreate = ['put', 'patch'].includes(method) && ((_a = operation.responses) === null || _a === void 0 ? void 0 : _a['201']);
-    const isUpdate = ['put', 'patch'].includes(method) && ((_b = operation.responses) === null || _b === void 0 ? void 0 : _b['200']);
-    if (isCreate && isUpdate) {
-        if (!verb.match(/create/i) || !verb.match(/update/i)) {
-            errors.push({
-                message: `OperationId for ${method} method should contain both "Create" and "Update"`,
-                path: [...path, 'operationId'],
-            });
-        }
-    }
-    else {
-        const isList = method === 'get' && operation['x-ms-pageable'];
-        const patterns = {
-            get: isList ? /list/i : /(get|list)/i,
-            put: isCreate ? /create/i : /(create|update)/i,
-            patch: /update/i,
-            delete: /delete/i,
-        };
-        const frags = {
-            get: isList ? '"List"' : '"Get" or "list"',
-            put: isCreate ? '"Create"' : '"Create" or "Update"',
-            patch: '"Update"',
-            delete: '"Delete"',
-        };
-        if (patterns[method] && !verb.match(patterns[method])) {
-            if (isList) {
-                errors.push({
-                    message: 'OperationId for get method on a collection should contain "List"',
-                    path: [...path, 'operationId'],
-                });
-            }
-            else {
-                errors.push({
-                    message: `OperationId for ${method} method should contain ${frags[method]}`,
-                    path: [...path, 'operationId'],
-                });
-            }
-        }
-    }
-    return errors;
-};
-
-const paginationResponse = (operation, _opts, paths) => {
-    var _a, _b;
-    if (operation === null || typeof operation !== 'object') {
-        return [];
-    }
-    const path = paths.path || [];
-    if (!operation.responses || typeof operation.responses !== 'object') {
-        return [];
-    }
-    const resp = Object.keys(operation.responses)
-        .find((code) => code.startsWith('2'));
-    if (!resp) {
-        return [];
-    }
-    const responseSchema = operation.responses[resp].schema || {};
-    const errors = [];
-    if (operation['x-ms-pageable']) {
-        if (responseSchema.properties && 'value' in responseSchema.properties) {
-            if (responseSchema.properties.value.type !== 'array') {
-                errors.push({
-                    message: '`value` property in pageable response should be type: array',
-                    path: [...path, 'responses', resp, 'schema', 'properties', 'value', 'type'],
-                });
-            }
-            if (!((_a = responseSchema.required) === null || _a === void 0 ? void 0 : _a.includes('value'))) {
-                errors.push({
-                    message: '`value` property in pageable response should be required',
-                    path: [...path, 'responses', resp, 'schema', 'required'],
-                });
-            }
-        }
-        else if (!responseSchema.allOf) {
-            errors.push({
-                message: 'Response body schema of pageable response should contain top-level array property `value`',
-                path: [...path, 'responses', resp, 'schema', 'properties'],
-            });
-        }
-        const nextLinkName = operation['x-ms-pageable'].nextLinkName || 'nextLink';
-        if (responseSchema.properties && nextLinkName in responseSchema.properties) {
-            if (responseSchema.properties[nextLinkName].type !== 'string') {
-                errors.push({
-                    message: `\`${nextLinkName}\` property in pageable response should be type: string`,
-                    path: [...path, 'responses', resp, 'schema', 'properties', nextLinkName, 'type'],
-                });
-            }
-            if ((_b = responseSchema.required) === null || _b === void 0 ? void 0 : _b.includes(nextLinkName)) {
-                errors.push({
-                    message: `\`${nextLinkName}\` property in pageable response should be optional.`,
-                    path: [...path, 'responses', resp, 'schema', 'required'],
-                });
-            }
-        }
-        else if (!responseSchema.allOf) {
-            errors.push({
-                message: `Response body schema of pageable response should contain top-level property \`${nextLinkName}\``,
-                path: [...path, 'responses', resp, 'schema', 'properties'],
-            });
-        }
-    }
-    else {
-        const responseHasArray = Object.values(responseSchema.properties || {})
-            .some((prop) => (prop === null || prop === void 0 ? void 0 : prop.type) === 'array');
-        if (responseHasArray && Object.keys(responseSchema.properties).length <= 3) {
-            errors.push({
-                message: 'Operation might be pageable. Consider adding the x-ms-pageable extension.',
-                path,
-            });
-        }
-    }
-    return errors;
-};
-
-const paramNames = (targetVal, _opts, paths) => {
-    if (targetVal === null || typeof targetVal !== 'object') {
-        return [];
-    }
-    const path = paths.path || [];
-    if (!targetVal.in || !targetVal.name) {
-        return [];
-    }
-    if (targetVal.name.match(/^[$@]/)) {
-        return [
-            {
-                message: `Parameter name "${targetVal.name}" should not begin with '$' or '@'.`,
-                path: [...path, 'name'],
+const validatePatchBodyParamProperties = createRulesetFunction({
+    input: null,
+    options: {
+        type: "object",
+        properties: {
+            should: {
+                type: "array",
+                items: {
+                    type: "string",
+                },
             },
-        ];
-    }
-    if (['path', 'query'].includes(targetVal.in) && targetVal.name !== 'api-version') {
-        if (!targetVal.name.match(/^[a-z][a-z0-9]*([A-Z][a-z0-9]+)*$/)) {
-            return [
-                {
-                    message: `Parameter name "${targetVal.name}" should be camel case.`,
-                    path: [...path, 'name'],
+            shouldNot: {
+                type: "array",
+                items: {
+                    type: "string",
                 },
-            ];
-        }
-    }
-    else if (targetVal.in === 'header') {
-        if (!targetVal.name.match(/^[A-Za-z][a-z0-9]*(-[A-Za-z][a-z0-9]*)*$/)) {
-            return [
-                {
-                    message: `header parameter name "${targetVal.name}" should be kebab case.`,
-                    path: [...path, 'name'],
-                },
-            ];
-        }
-    }
-    return [];
-};
-
-function canonical(name) {
-    return typeof (name) === 'string' ? name.toLowerCase() : name;
-}
-function dupIgnoreCase(arr) {
-    if (!Array.isArray(arr)) {
+            },
+        },
+        additionalProperties: false,
+    },
+}, (patchOp, _opts, ctx) => {
+    var _a, _b, _c, _d, _e, _f;
+    if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
-    const isDup = (value, index, self) => self.indexOf(value) !== index;
-    return [...new Set(arr.map((v) => canonical(v)).filter(isDup))];
-}
-const paramNamesUnique = (pathItem, _opts, paths) => {
-    if (pathItem === null || typeof pathItem !== 'object') {
-        return [];
-    }
-    const path = paths.path || [];
+    const path = ctx.path || [];
     const errors = [];
-    const pathParams = pathItem.parameters ? pathItem.parameters.map((p) => p.name) : [];
-    const pathDups = dupIgnoreCase(pathParams);
-    pathDups.forEach((dup) => {
-        const dupKeys = [...pathParams.keys()].filter((k) => canonical(pathParams[k]) === dup);
-        const first = `parameters.${dupKeys[0]}`;
-        dupKeys.slice(1).forEach((key) => {
-            errors.push({
-                message: `Duplicate parameter name (ignoring case) with ${first}.`,
-                path: [...path, 'parameters', key, 'name'],
-            });
-        });
-    });
-    ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'].forEach((method) => {
-        if (pathItem[method] && Array.isArray(pathItem[method].parameters)) {
-            const allParams = [...pathParams, ...pathItem[method].parameters.map((p) => p.name)];
-            const dups = dupIgnoreCase(allParams);
-            dups.forEach((dup) => {
-                const dupKeys = [...allParams.keys()].filter((k) => canonical(allParams[k]) === dup);
-                const first = dupKeys[0] < pathParams.length ? `parameters.${dupKeys[0]}`
-                    : `${method}.parameters.${dupKeys[0] - pathParams.length}`;
-                dupKeys.slice(1).filter((k) => k >= pathParams.length).forEach((key) => {
+    const bodyParameter = (_b = (_a = patchOp.parameters) === null || _a === void 0 ? void 0 : _a.find((p) => p.in === "body")) === null || _b === void 0 ? void 0 : _b.schema;
+    if (bodyParameter) {
+        const index = patchOp.parameters.findIndex((p) => p.in === "body");
+        if (_opts.should) {
+            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            _opts.should.forEach((p) => {
+                var _a, _b;
+                if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
                     errors.push({
-                        message: `Duplicate parameter name (ignoring case) with ${first}.`,
-                        path: [...path, method, 'parameters', key - pathParams.length, 'name'],
-                    });
-                });
-            });
-        }
-    });
-    return errors;
-};
-
-const paramOrder = (paths) => {
-    var _a, _b, _c;
-    if (paths === null || typeof paths !== 'object') {
-        return [];
-    }
-    const inPath = (p) => p.in === 'path';
-    const paramName = (p) => p.name;
-    const methods = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];
-    const errors = [];
-    for (const pathKey of Object.keys(paths)) {
-        const paramsInPath = (_a = pathKey.match(/[^{}]+(?=})/g)) !== null && _a !== void 0 ? _a : [];
-        if (paramsInPath.length > 0) {
-            const pathItem = paths[pathKey];
-            const pathItemPathParams = (_c = (_b = pathItem.parameters) === null || _b === void 0 ? void 0 : _b.filter(inPath).map(paramName)) !== null && _c !== void 0 ? _c : [];
-            const indx = pathItemPathParams.findIndex((v, i) => v !== paramsInPath[i]);
-            if (indx >= 0 && indx < paramsInPath.length) {
-                errors.push({
-                    message: `Path parameter "${paramsInPath[indx]}" should appear before "${pathItemPathParams[indx]}".`,
-                    path: ['paths', pathKey, 'parameters'],
-                });
-            }
-            else {
-                const offset = pathItemPathParams.length;
-                methods.filter((m) => pathItem[m]).forEach((method) => {
-                    var _a, _b;
-                    const opPathParams = (_b = (_a = pathItem[method].parameters) === null || _a === void 0 ? void 0 : _a.filter(inPath).map(paramName)) !== null && _b !== void 0 ? _b : [];
-                    const indx2 = opPathParams.findIndex((v, i) => v !== paramsInPath[offset + i]);
-                    if (indx2 >= 0 && (offset + indx2) < paramsInPath.length) {
-                        errors.push({
-                            message: `Path parameter "${paramsInPath[offset + indx2]}" should appear before "${opPathParams[indx2]}".`,
-                            path: ['paths', pathKey, method, 'parameters'],
-                        });
-                    }
-                });
-            }
-        }
-    }
-    return messages;
-};
-
-const MERGE_PATCH = 'application/merge-patch+json';
-function checkOperationConsumes(targetVal) {
-    const { paths } = targetVal;
-    const errors = [];
-    if (paths && typeof paths === 'object') {
-        Object.keys(paths).forEach((path) => {
-            ['post', 'put'].forEach((method) => {
-                if (paths[path][method]) {
-                    const { consumes } = paths[path][method];
-                    if (consumes === null || consumes === void 0 ? void 0 : consumes.includes(MERGE_PATCH)) {
-                        errors.push({
-                            message: `A ${method} operation should not consume 'application/merge-patch+json' content type.`,
-                            path: ['paths', path, method, 'consumes'],
-                        });
-                    }
-                }
-            });
-            if (paths[path].patch) {
-                const { consumes } = paths[path].patch;
-                if (!consumes || !consumes.includes(MERGE_PATCH)) {
-                    errors.push({
-                        message: "A patch operation should consume 'application/merge-patch+json' content type.",
-                        path: ['paths', path, 'patch', ...(consumes ? ['consumes'] : [])],
+                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        path: [...path, "parameters", index],
                     });
                 }
-                else if (consumes.length > 1) {
+            });
+        }
+        if (_opts.shouldNot) {
+            _opts.shouldNot.forEach((p) => {
+                var _a;
+                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
                     errors.push({
-                        message: "A patch operation should only consume 'application/merge-patch+json' content type.",
-                        path: ['paths', path, 'patch', 'consumes'],
+                        message: `The patch operation body parameter schema should not contains property ${p}.`,
+                        path: [...path, "parameters", index],
                     });
                 }
-            }
-        });
-    }
-    return errors;
-}
-const patchContentYype = (targetVal) => {
-    var _a;
-    if (targetVal === null || typeof targetVal !== 'object') {
-        return [];
-    }
-    const errors = [];
-    if ((_a = targetVal.consumes) === null || _a === void 0 ? void 0 : _a.includes(MERGE_PATCH)) {
-        errors.push({
-            message: 'Global consumes should not specify `application/merge-patch+json` content type.',
-            path: ['consumes'],
-        });
-    }
-    errors.push(...checkOperationConsumes(targetVal));
-    return errors;
-};
-
-const pathParamNames = (paths) => {
-    if (paths === null || typeof paths !== 'object') {
-        return [];
-    }
-    const errors = [];
-    const paramNameForSegment = {};
-    for (const pathKey of Object.keys(paths)) {
-        const parts = pathKey.split('/').slice(1);
-        parts.slice(1).forEach((v, i) => {
-            var _a;
-            if (v.includes('}')) {
-                const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
-                const p = parts[i];
-                if (paramNameForSegment[p]) {
-                    if (paramNameForSegment[p] !== param) {
-                        errors.push({
-                            message: `Inconsistent path parameter names "${param}" and "${paramNameForSegment[p]}".`,
-                            path: ['paths', pathKey],
-                        });
-                    }
-                }
-                else {
-                    paramNameForSegment[p] = param;
-                }
-            }
-        });
-    }
-    return errors;
-};
-
-const URL_MAX_LENGTH = 2083;
-const pathParamSchema = (param, _opts, paths) => {
-    if (param === null || typeof param !== 'object') {
-        return [];
-    }
-    const path = paths.path || [];
-    if (!param.in || !param.name) {
-        return [];
-    }
-    const errors = [];
-    const isOas3 = !!param.schema;
-    const schema = isOas3 ? param.schema : param;
-    if (isOas3) {
-        path.push('schema');
-    }
-    if (schema.type !== 'string') {
-        errors.push({
-            message: 'Path parameter should be defined as type: string.',
-            path: [...path, 'type'],
-        });
-    }
-    if (!schema.maxLength && !schema.pattern) {
-        errors.push({
-            message: 'Path parameter should specify a maximum length (maxLength) and characters allowed (pattern).',
-            path,
-        });
-    }
-    else if (!schema.maxLength) {
-        errors.push({
-            message: 'Path parameter should specify a maximum length (maxLength).',
-            path,
-        });
-    }
-    else if (schema.maxLength && schema.maxLength >= URL_MAX_LENGTH) {
-        errors.push({
-            message: `Path parameter maximum length should be less than ${URL_MAX_LENGTH}`,
-            path,
-        });
-    }
-    else if (!schema.pattern) {
-        errors.push({
-            message: 'Path parameter should specify characters allowed (pattern).',
-            path,
-        });
-    }
-    return errors;
-};
-
-function getVersion(path) {
-    const url = new URL(path, 'https://foo.bar');
-    const segments = url.pathname.split('/');
-    return segments.find((segment) => segment.match(/v[0-9]+(.[0-9]+)?/));
-}
-function checkPaths(targetVal) {
-    const oas2 = targetVal.swagger;
-    if (oas2) {
-        const basePath = targetVal.basePath || '';
-        const version = getVersion(basePath);
-        if (version) {
-            return [
-                {
-                    message: `Version segment "${version}" in basePath violates Azure versioning policy.`,
-                    path: ['basePath'],
-                },
-            ];
+            });
         }
     }
-    const { paths } = targetVal;
-    const errors = [];
-    if (paths && typeof paths === 'object') {
-        Object.keys(paths).forEach((path) => {
-            const version = getVersion(path);
-            if (version) {
-                errors.push({
-                    message: `Version segment "${version}" in path violates Azure versioning policy.`,
-                    path: ['paths', path],
-                });
-            }
-        });
-    }
     return errors;
-}
-function findVersionParam(params) {
-    const isApiVersion = (elem) => elem.name === 'api-version' && elem.in === 'query';
-    if (params && Array.isArray(params)) {
-        return params.filter(isApiVersion).shift();
-    }
-    return undefined;
-}
-function validateVersionParam(param, path) {
-    const errors = [];
-    if (!param.required) {
-        errors.push({
-            message: '"api-version" should be a required parameter',
-            path,
-        });
-    }
-    return errors;
-}
-function checkVersionParam(targetVal) {
-    const { paths } = targetVal;
-    const errors = [];
-    if (paths && typeof paths === 'object') {
-        Object.keys(paths).forEach((path) => {
-            if (paths[path].parameters && Array.isArray(paths[path].parameters)) {
-                const versionParam = findVersionParam(paths[path].parameters);
-                if (versionParam) {
-                    const index = paths[path].parameters.indexOf(versionParam);
-                    errors.push(...validateVersionParam(versionParam, ['paths', path, 'parameters', index.toString()]));
-                    return;
-                }
-            }
-            ['get', 'post', 'put', 'patch', 'delete'].forEach((method) => {
-                if (paths[path][method]) {
-                    const versionParam = findVersionParam(paths[path][method].parameters);
-                    if (versionParam) {
-                        const index = paths[path][method].parameters.indexOf(versionParam);
-                        errors.push(...validateVersionParam(versionParam, ['paths', path, method, 'parameters', index]));
-                    }
-                    else {
-                        errors.push({
-                            message: 'Operation does not define an "api-version" query parameter.',
-                            path: ['paths', path, method, 'parameters'],
-                        });
-                    }
-                }
-            });
-        });
-    }
-    return errors;
-}
-const versionPolicy = (targetVal) => {
-    if (targetVal === null || typeof targetVal !== 'object') {
-        return [];
-    }
-    const errors = checkPaths(targetVal);
-    errors.push(...checkVersionParam(targetVal));
-    return errors;
-};
+});
 
 const ruleset = {
     extends: [ruleset$1],
@@ -819,60 +525,21 @@ const ruleset = {
             formats: [oas2],
             given: ["$.paths.*", "$.x-ms-paths.*"],
             then: {
-                function: consistentresponsebody,
+                function: hasApiVersionParameter,
+                functionOptions: {
+                    methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
+                },
             },
         },
-        "az-default-response": {
-            description: "All operations should have a default (error) response.",
-            message: "Operation is missing a default response.",
-            severity: "warn",
-            given: "$.paths.*.*.responses",
-            then: {
-                field: "default",
-                function: truthy,
-            },
-        },
-        "az-delete-204-response": {
-            description: "A delete operation should have a 204 response.",
-            message: "A delete operation should have a `204` response.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$.paths[*].delete.responses",
-            then: {
-                function: delete204Response,
-            },
-        },
-        "az-error-response": {
-            description: "Error response body should conform to Microsoft Azure API Guidelines.",
+        SubscriptionsAndResourceGroupCasing: {
+            description: "The subscriptions and resourceGroup in resource uri should follow lower camel case.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
+            resolved: false,
             formats: [oas2],
-            given: "$.paths[*][*].responses",
+            given: ["$.paths", "$.x-ms-paths"],
             then: {
-                function: errorResponse,
-            },
-        },
-        "az-formdata": {
-            description: "Check for appropriate use of formData parameters.",
-            severity: "info",
-            formats: [oas2],
-            given: '$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == "formData")]',
-            then: {
-                function: falsy,
-            },
-        },
-        "az-header-disallowed": {
-            description: "Authorization, Content-type, and Accept headers should not be defined explicitly.",
-            message: 'Header parameter "{{value}}" should not be defined explicitly.',
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: [
-                "$.paths[*].parameters.[?(@.in == 'header')]",
-                "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == 'header')]",
-            ],
-            then: {
-                function: pattern,
-                field: "name",
+                function: pathSegmentCasing,
                 functionOptions: {
                     segments: ["resourceGroups", "subscriptions"],
                 },
@@ -895,35 +562,13 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: "$.paths[*][*].responses[?(@property == '202')]",
+            given: ["$.paths.*.patch"],
             then: {
-                function: hasHeader,
-                functionOptions: {
-                    name: "Operation-location",
-                },
+                function: consistentPatchProperties,
             },
         },
-        "az-ms-paths": {
-            description: "Don't use x-ms-paths except where necessary to support legacy APIs.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            given: "$.x-ms-paths",
-            then: {
-                function: falsy,
-            },
-        },
-        "az-nullable": {
-            description: "Avoid the use of x-nullable.",
-            severity: "warn",
-            formats: [oas2, oas3],
-            resolved: false,
-            given: "$..x-nullable",
-            then: {
-                function: undefined$1,
-            },
-        },
-        "az-operation-id": {
-            description: "OperationId should conform to Azure API Guidelines",
+        LroPatch202: {
+            description: "Async PATCH should return 202.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
@@ -1068,8 +713,7 @@ const ruleset = {
                 "$[paths,'x-ms-paths'].*.post.x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
             ],
             then: {
-                field: "schema",
-                function: truthy,
+                function: falsy,
             },
         },
         PathContainsSubscriptionId: {
@@ -1164,7 +808,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
-                function: spectralFunctions.falsy,
+                function: bodyParamRepeatedInfo,
             },
         },
     },

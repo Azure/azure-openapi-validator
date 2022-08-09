@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-GET-05
+
 ## Output Message
 
 The top-level resource "{0}" does not have list by resource group operation, please add it.

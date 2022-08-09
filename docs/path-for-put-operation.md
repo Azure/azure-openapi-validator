@@ -8,6 +8,11 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-7
+- RPC-V2-PUT-1
+
 ## Output Message
 
 The path for 'put' operation must be under a subscription and resource group.

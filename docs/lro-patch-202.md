@@ -8,6 +8,11 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Patch-6
+- RPC-V2-ASYNC-8
+
 ## Output Message
 
 Async PATCH should return 202.

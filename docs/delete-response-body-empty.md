@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Delete-04
+
 ## Output Message
 
 The delete response body must be empty.

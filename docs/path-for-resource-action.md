@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-7
+
 ## Output Message
 
 The path for resource action does not follow the valid resource pattern.

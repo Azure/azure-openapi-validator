@@ -1,4 +1,4 @@
-# RPaasPostLongRunningOperation202Only
+# PostLongRunningOperation202Only
 
 ## Category
 
@@ -8,9 +8,14 @@ RPaaS Error
 
 ARM OpenAPI(swagger) specs
 
+
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-11
+
 ## Output Message
 
-[RPaaS] POST async supports
+POST async supports
 
 ## Description
 

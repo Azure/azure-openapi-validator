@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Patch-3
+
 ## Output Message
 
 The property '{propertyName}' in the request body doesn't appear in the resource model.

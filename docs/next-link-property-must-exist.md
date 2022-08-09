@@ -8,6 +8,10 @@ SDK Error
 
 ARM and Data plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-GET-06
+
 ## Output Message
 
 The property '{0}' specified by nextLinkName does not exist in the 200 response schema. Please, specify the name of the property that provides the nextLink. If the model does not have the nextLink property then specify null.
