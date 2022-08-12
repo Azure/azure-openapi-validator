@@ -1,10 +1,26 @@
 import { oas2 } from '@stoplight/spectral-formats';
-import { falsy, truthy, pattern, casing } from '@stoplight/spectral-functions';
+import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const ruleset$1 = {
     extends: [],
     rules: {
+        docLinkLocale: {
+            description: "This rule is to ensure the documentation link in the description does not contains any locale.",
+            message: "The documentation link in the description contains locale info, please change it to the link without locale.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: [
+                "$..[?(@property === 'description')]^",
+            ],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
+                }
+            },
+        },
         InvalidVerbUsed: {
             description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
             message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
@@ -1030,7 +1046,7 @@ const ruleset = {
             message: "Property name should be camel case.",
             severity: "error",
             resolved: false,
-            given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/$\@.+/))]~",
+            given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/$@.+/))]~",
             then: {
                 function: casing,
                 functionOptions: {

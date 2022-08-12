@@ -37,7 +37,7 @@ test('host parameter validation should find errors', () => {
     expect(results[0].path.join('.')).toBe('x-ms-parameterized-host.parameters.0');
     expect(results[0].message).toBe('The host parameter must be called \'endpoint\'.')
      expect(results[1].path.join('.')).toBe('x-ms-parameterized-host.parameters.0');
-    expect(results[1].message).toBe("The host parameter must be typed \"type 'string', format 'uri'\".")
+    expect(results[1].message).toBe("The host parameter must be typed \"type 'string', format 'url'\".")
   });
 });
 
@@ -59,7 +59,7 @@ test('host parameters validation should find no errors', () => {
           "name": "endpoint",
           "required": true,
           "type": "string",
-          "format": "uri",
+          "format": "url",
           "in": "path",
           "x-ms-skip-url-encoding": true,
           "x-ms-parameter-location": "client"
