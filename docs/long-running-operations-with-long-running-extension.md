@@ -8,6 +8,10 @@ SDK Warning
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-5
+
 ## Output Message
 
 The operation '{0}' returns 202 status code, which indicates a long running operation, please enable 'x-ms-long-running-operation'.

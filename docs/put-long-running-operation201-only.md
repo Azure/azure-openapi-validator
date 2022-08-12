@@ -1,4 +1,4 @@
-# RPaasPutLongRunningOperation201Only
+# PutLongRunningOperation201Only
 
 ## Category
 
@@ -8,9 +8,13 @@ RPaaS Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-1
+
 ## Output Message
 
-[RPaaS] Only 201 is the supported response code for PUT async response
+Only 201 is the supported response code for PUT async response
 
 ## Description
 

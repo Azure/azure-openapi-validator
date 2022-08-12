@@ -8,6 +8,10 @@ SDK Warning
 
 ARM and Data Plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-5
+
 ## Output Message
 
 A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.

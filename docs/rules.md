@@ -34,6 +34,12 @@ This rule appears if in the parameter definition you have anonymous types.
 
 Please refer to [anonymous-body-parameter.md](./anonymous-body-parameter.md) for details.
 
+### ApiHost
+
+The host is required for management plane specs.
+
+Please refer to [api-host.md](./api-host.md) for details.
+
 ### ApiVersionEnum
 
 The `api-version` parameter should not be an enum. This rule is primarily to discourage a practice observed
@@ -41,6 +47,12 @@ in some APIs of defining `api-version` as an enum with a single value -- the mos
 This requires removing the old API version when a new version is defined, which is disallowed by the breaking changes policy.
 
 Please refer to [api-version-enum.md](./api-version-enum.md) for details.
+
+### ApiVersionParameterRequired
+
+This rule applies when the 'api-version' parameter is missing in any operations.
+
+Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
 
 ### APIVersionPattern
 
@@ -750,6 +762,12 @@ Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
 
+### PostLongRunningOperation202Only
+
+An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
+
+Please refer to [post-long-running-operation202-only.md](./post-long-running-operation202-only.md) for details.
+
 ### PostOperationIdContainsUrlVerb
 
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
@@ -810,6 +828,12 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [put-in-operation-name.md](./put-in-operation-name.md) for details.
 
+### PutLongRunningOperation201Only
+
+An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
+
+Please refer to [put-long-running-operation201-only.md](./put-long-running-operation201-only.md) for details.
+
 ### PutPath
 
 The put method should be used for resource create or replace, which generally requires the resource id to specified as the final path parameter.
@@ -841,12 +865,6 @@ While there are some cases where a body may be optional, they are rare.
 
 Please refer to [request-body-optional.md](./request-body-optional.md) for details.
 
-### RequiredApiVersionParameter
-
-This rule applies when the 'api-version' parameter is missing in any operations.
-
-Please refer to [required-api-version-parameter.md](./required-api-version-parameter.md) for details.
-
 ### RequiredDefaultResponse
 
 Per ARM Specs, every operation must have a default error response implementation.
@@ -876,18 +894,6 @@ Please refer to [required-read-only-system-data.md](./required-read-only-system-
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
-
-### RPaasPostLongRunningOperation202Only
-
-An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [rpaas-post-long-running-operation202-only.md](./rpaas-post-long-running-operation202-only.md) for details.
-
-### RPaasPutLongRunningOperation201Only
-
-An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
-
-Please refer to [rpaas-put-long-running-operation201-only.md](./rpaas-put-long-running-operation201-only.md) for details.
 
 ### RPaasResourceProvisioningState
 

@@ -1,4 +1,16 @@
-# RequiredApiVersionParameter
+# ApiVersionParameterRequired
+
+## Category
+
+ARM Error
+
+## Applies to
+
+ARM OpenAPI(swagger) specs
+
+## Related ARM Guideline Code
+
+- RPC-V2-URI-9
 
 ## Description
 
