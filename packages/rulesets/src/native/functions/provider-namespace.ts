@@ -15,4 +15,4 @@ export function* providerNamespace(apiPath:any, options:{},ctx:RuleContext) {
       }
     }
   }
-};
+}
