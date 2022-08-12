@@ -68,6 +68,7 @@ export const armRuleset: IRuleSet = {
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), each RP must expose an operations API that returns information about all the operations available with the service.",
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
+      scope:"Global",
       severity: "error",
       given: "$",
       then: {

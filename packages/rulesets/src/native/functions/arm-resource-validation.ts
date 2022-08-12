@@ -110,7 +110,7 @@ export function* bodyTopLevelProperties(openapiSection:any, options:{},ctx:RuleC
             "managedby", "identity", "kind", "zones","systemdata", "extendedlocation"];
     const properties = armHelper.getResourceProperties(re.modelName);
     for (const propName of Object.keys(properties)) {
-      if (!allowedBodyTopLevelProperties.includes(propName)){
+      if (!allowedBodyTopLevelProperties.includes(propName.toLowerCase())){
         yield {
           location: ["definitions",re.modelName],
           message: `Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition '${re.modelName}' has extra properties ['${propName}'].`,
@@ -140,11 +140,10 @@ export function* resourcesHaveRequiredProperties(openapiSection:any, options:{},
     const properties = armHelper.getResourceProperties(re.modelName);
     for (const propName  of requiredProperties) {
       const prop = properties[propName]
-      if (!prop && armHelper.getAttribute(prop,"readOnly")?.value !== "true") {
+      if (!prop || armHelper.getAttribute(prop,"readOnly")?.value !== "true") {
          yield {
           location: ["definitions",re.modelName],
-          message: `
-Model definition '${re.modelName}' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.`,
+          message: `Model definition '${re.modelName}' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.`,
         }
       }
     }
