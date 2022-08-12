@@ -12,7 +12,7 @@ describe("IndividualAzureTests", () => {
     const fileNames = ["body-top-level-properties.json"]
     const ruleName = "BodyTopLevelProperties"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
-    assertValidationRuleCount(messages, ruleName, 3)
+    assertValidationRuleCount(messages, ruleName, 2)
   })
   
   test("tracked resource must have patch", async () => {
@@ -27,6 +27,13 @@ describe("IndividualAzureTests", () => {
     const ruleName = "RequiredPropertiesMissingInResourceModel"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
+  })
+
+  test("[positive] required properties in resource model with reference", async () => {
+    const fileNames = ["ext-resource-validation-with-reference.json","common-types/types.json"]
+    const ruleName = "RequiredPropertiesMissingInResourceModel"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 0)
   })
 
   test("operation api implementation", async () => {

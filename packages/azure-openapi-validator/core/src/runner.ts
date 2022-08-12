@@ -101,7 +101,7 @@ export class LintRunner<T> {
     const runPromises = []
     let runGlobalRuleFlag = false;
     for (const doc of documents) {
-      for (const scope of  ["File","Global"]){
+      for (const scope of  ["Global","File"]){
         if (scope === "Global" && runGlobalRuleFlag) {
           continue
         }
