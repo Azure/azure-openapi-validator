@@ -381,7 +381,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/$@.+/))]~",
+      given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/^@.+$/))]~",
       then: {
         function: casing,
         functionOptions: {
@@ -404,7 +404,7 @@ const ruleset: any = {
       message: "{{error}}",
       severity: "warn",
       resolved: true,
-      given: "$.definitions[?(@property.match(/sku/i))]",
+      given: "$.definitions[?(@property.match(/^sku$/i))]",
       then: {
         function: skuValidation,
       },
