@@ -248,25 +248,6 @@ function getGetOperationSchema(paths, ctx) {
 function isPagableOperation(operation) {
     return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
 }
-function getProviderNamespace(apiPath) {
-    const resourceProviderRegex = new RegExp(/providers\/([\w.]+)/, "g");
-    const match = [...apiPath.matchAll(resourceProviderRegex)].pop();
-    if (match) {
-        return match === null || match === void 0 ? void 0 : match[1];
-    }
-    return undefined;
-}
-function getProviderNamespaceFromPath(filePath) {
-    if (!filePath) {
-        return undefined;
-    }
-    const resourceProviderRegex = new RegExp(/\/Microsoft\.\w+/i, "g");
-    const match = [...filePath.replaceAll("\\", "/").matchAll(resourceProviderRegex)].pop();
-    if (match) {
-        return match === null || match === void 0 ? void 0 : match[0];
-    }
-    return undefined;
-}
 function getReturnedType(operation) {
     var _a;
     const succeededCodes = ["200", "201", "202"];
@@ -527,23 +508,6 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
                     });
                 }
             }
-        });
-    }
-    return errors;
-};
-
-const providerNamespace = (apiPath, opts, ctx) => {
-    if (apiPath === null || typeof apiPath !== 'string') {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const nameSpaceFromApiPath = getProviderNamespace(apiPath);
-    const nameSpaceFromFromFilePath = getProviderNamespaceFromPath(ctx.document.source);
-    if (nameSpaceFromApiPath && nameSpaceFromFromFilePath && nameSpaceFromApiPath !== nameSpaceFromFromFilePath) {
-        errors.push({
-            error: `The last resource provider '${nameSpaceFromApiPath}' doesn't match the namespace.`,
-            path
         });
     }
     return errors;
@@ -1085,16 +1049,6 @@ const ruleset = {
                 functionOptions: {
                     match: "application/json"
                 }
-            },
-        },
-        PathResourceProviderMatchNamespace: {
-            description: `Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).`,
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            given: ["$[paths,'x-ms-paths'].*"],
-            then: {
-                function: providerNamespace
             },
         },
         PutGetPatchResponseSchema: {

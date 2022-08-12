@@ -110,30 +110,8 @@ export function getGetOperationSchema(paths: string[], ctx: any) {
   return getOperation?.responses["200"]?.schema || getOperation?.responses["201"]?.schema
 }
 
-
 export function isPagableOperation(operation:any) {
   return !!operation?.["x-ms-pageable"]
-}
-
-export function getProviderNamespace(apiPath:string) {
-  const resourceProviderRegex = new RegExp(/providers\/([\w.]+)/, "g")
-  const match = [...apiPath.matchAll(resourceProviderRegex)].pop()
-  if (match) {
-    return match?.[1]
-  }
-  return undefined
-}
-
-export function getProviderNamespaceFromPath(filePath:string) {
-  if (!filePath) {
-    return undefined
-  }
-  const resourceProviderRegex = new RegExp(/\/Microsoft\.\w+/i, "g")
-  const match = [...filePath.replaceAll("\\","/").matchAll(resourceProviderRegex)].pop()
-  if (match) {
-    return match?.[0]
-  }
-  return undefined
 }
 
 export function getReturnedType(operation:any) {

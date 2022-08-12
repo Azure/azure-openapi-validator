@@ -56,6 +56,27 @@ export function getAllResourceProvidersFromPath(path: string): string[] {
   return Array.from(matchAll(path, resourceProviderRegex), (m: any) => m[1])
 }
 
+export function getProviderNamespace(apiPath:string) {
+  const matches = getAllResourceProvidersFromPath(apiPath)
+  if (matches.length) {
+    return matches.pop()
+  }
+  return undefined
+}
+
+export function getProviderNamespaceFromPath(filePath:string) {
+  if (!filePath) {
+    return undefined
+  }
+  const resourceProviderRegex = new RegExp(/\/(Microsoft\.\w+)\//i, "g")
+  const match = Array.from(matchAll(filePath.replaceAll("\\","/"),resourceProviderRegex), (m: any) => m[1])
+  if (match) {
+    return match[0]
+  }
+  return undefined
+}
+
+
 export function getAllWordsFromPath(path: string): string[] {
   const wordRegex = new RegExp(/([\w.]+)/, "g")
   return Array.from(matchAll(path, wordRegex), (m: any) => m[1])

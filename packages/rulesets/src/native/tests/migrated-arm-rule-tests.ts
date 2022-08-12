@@ -71,4 +71,11 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 2)
   })
 
+  test("provider namespace does not match file path", async () => {
+    const fileNames = ["resource-manager/Microsoft.Network/network-interface-invalid.json"]
+    const ruleName = "PathResourceProviderMatchNamespace"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
 })

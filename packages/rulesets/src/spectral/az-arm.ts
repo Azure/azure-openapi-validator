@@ -11,7 +11,6 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
-import providerNamespace from "./functions/provider-namespace"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import skuValidation from "./functions/sku-validation"
@@ -423,16 +422,7 @@ const ruleset: any = {
         }
       },
     },
-    PathResourceProviderMatchNamespace: {
-      description: `Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).`,
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      given: ["$[paths,'x-ms-paths'].*"],
-      then: {
-        function: providerNamespace
-      },
-    },
+   
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
       message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
