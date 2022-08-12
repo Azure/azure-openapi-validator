@@ -3,7 +3,18 @@ import { falsy, truthy, pattern, undefined as undefined$1, casing } from '@stopl
 
 const ruleset$1 = {
     extends: [],
-    rules: {},
+    rules: {
+        InvalidVerbUsed: {
+            description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
+            message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
+            severity: "error",
+            resolved: false,
+            given: "$[paths,'x-ms-paths'].*[?(!@property.match(/^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE|PARAMETERS)$/i))]",
+            then: {
+                function: falsy,
+            },
+        },
+    },
 };
 
 const avoidAnonymousParameter = (parameters, _opts, paths) => {
@@ -1148,19 +1159,6 @@ const ruleset = {
             then: {
                 field: "description",
                 function: truthy,
-            },
-        },
-        PropertyNamesConvention: {
-            description: "Property names should be camel case.",
-            message: "Property name should be camel case.",
-            severity: "warn",
-            resolved: false,
-            given: "$..[?(@.type === 'object' && @.properties)].properties.*~",
-            then: {
-                function: casing,
-                functionOptions: {
-                    type: "camel",
-                },
             },
         },
         PropertyType: {

@@ -17,6 +17,29 @@ export function getProperties(schema: any) {
   return properties
 }
 
+/**
+ * get all specific property as array
+ */
+export function getProperty(schema: any,propName:string):any {
+  if (!schema) {
+    return {}
+  }
+  if (schema.allOf && Array.isArray(schema.allOf)) {
+    for (const base of schema.allOf ){
+      const result = getProperty(base,propName)
+      if (result) {
+        return result
+      }
+    }
+  }
+  if (schema.properties) {
+    if (propName in schema.properties) {
+      return schema.properties[propName]
+    }
+  }
+  return undefined
+}
+
 export function getRequiredProperties(schema: any) {
   if (!schema) {
     return []
@@ -85,4 +108,67 @@ export function getGetOperationSchema(paths: string[], ctx: any) {
     return undefined
   }
   return getOperation?.responses["200"]?.schema || getOperation?.responses["201"]?.schema
+}
+
+
+export function isPagableOperation(operation:any) {
+  return !!operation?.["x-ms-pageable"]
+}
+
+export function getProviderNamespace(apiPath:string) {
+  const resourceProviderRegex = new RegExp(/providers\/([\w.]+)/, "g")
+  const match = [...apiPath.matchAll(resourceProviderRegex)].pop()
+  if (match) {
+    return match?.[1]
+  }
+  return undefined
+}
+
+export function getProviderNamespaceFromPath(filePath:string) {
+  if (!filePath) {
+    return undefined
+  }
+  const resourceProviderRegex = new RegExp(/\/Microsoft\.\w+/i, "g")
+  const match = [...filePath.replaceAll("\\","/").matchAll(resourceProviderRegex)].pop()
+  if (match) {
+    return match?.[0]
+  }
+  return undefined
+}
+
+export function getReturnedType(operation:any) {
+  const succeededCodes = ["200","201","202"]
+  for (const code of succeededCodes) {
+    const resposne = operation.responses[code]
+    if (resposne){
+      return resposne?.schema?.$ref
+    }
+  }
+}
+
+export function getReturnedSchema(operation:any) {
+  const succeededCodes = ["200","201"]
+  for (const code of succeededCodes) {
+    const resposne = operation.responses[code]
+    if (resposne?.schema){
+      return resposne?.schema
+    }
+  }
+}
+
+export function isXmsResource(schema:any) {
+  if (!schema) {
+    return false
+  }
+  if (schema["x-ms-azure-resource"]) {
+    return true
+  }
+  if (schema.allOf && Array.isArray(schema.allOf)) {
+    for (const base of schema.allOf ){
+      if (isXmsResource(base)) {
+        return true
+      }
+    }
+  }
+  return false
 }

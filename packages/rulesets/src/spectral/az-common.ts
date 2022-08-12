@@ -1,20 +1,16 @@
-import { casing } from "@stoplight/spectral-functions"
+import { falsy } from "@stoplight/spectral-functions"
 
 const ruleset: any = {
   extends: [],
   rules: {
-    // this rule equivalent to BodyPropertiesNamesCamelCase
-    PropertyNamesConvention: {
-      description: "Property names should be camel case.",
-      message: "Property name should be camel case.",
-      severity: "warn",
+    InvalidVerbUsed: {
+      description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
+      message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
+      severity: "error",
       resolved: false,
-      given: "$..[?(@.type === 'object' && @.properties)].properties.*~",
+      given: "$[paths,'x-ms-paths'].*[?(!@property.match(/^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE|PARAMETERS)$/i))]",
       then: {
-        function: casing,
-        functionOptions: {
-          type: "camel",
-        },
+        function: falsy,
       },
     },
   },

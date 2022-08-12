@@ -1,8 +1,9 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
+import { casing, falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
+import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
@@ -10,8 +11,12 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import providerNamespace from "./functions/provider-namespace"
 import provisioningState from "./functions/provisioning-state"
+import putGetPatchScehma from "./functions/put-get-patch-schema"
+import skuValidation from "./functions/sku-validation"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
+import withXmsResource from "./functions/with-xms-resource"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -335,17 +340,119 @@ const ruleset: any = {
     APIVersionPattern:{
       description:
         "The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.",
-      severity: "Error",
+      severity: "error",
+      message:"{{description}}",
       resolved: true,
       formats: [oas2],
       given: "$.info.version",
       then: {
         function: pattern,
         functionOptions:{
-          match: "^(20\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
+          match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
         }
       },
-    }
+    },
+    CollectionObjectPropertiesNaming:{
+      description:
+        "Per ARM guidelines, a model returned by an `x-ms-pageable` operation must have a property named `value`. This property indicates what type of array the object is.",
+      severity: "error",
+      message:"{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.paths.*[get,post]",
+      then: {
+        function: collectionObjectPropertiesNaming,
+      },
+    },
+   DeleteMustNotHaveRequestBody:{
+      description:
+        "The delete operation must not have a request body.",
+      severity: "error",
+      message:"{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
+      then: {
+        function: falsy,
+      },
+    },
+    // this rule covers BodyPropertiesNamesCamelCase and DefinitionsPropertiesNamesCamelCase
+    DefinitionsPropertiesNamesCamelCase: {
+      description: "Property names should be camel case.",
+      message: "Property name should be camel case.",
+      severity: "error",
+      resolved: false,
+      given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/$@.+/))]~",
+      then: {
+        function: casing,
+        functionOptions: {
+          type: "camel",
+        },
+      },
+    },
+    GuidUsage: {
+      description: `Verifies whether format is specified as "uuid" or not.`,
+      message: "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      severity: "warn",
+      resolved: false,
+      given: "$..[?(@property === 'format'&& @ === 'guid')]",
+      then: {
+        function: falsy,
+      },
+    },
+    InvalidSkuModel: {
+      description: `A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.`,
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      given: "$.definitions[?(@property.match(/sku/i))]",
+      then: {
+        function: skuValidation,
+      },
+    },
+    NonApplicationJsonType: {
+      description: `Verifies whether operation supports "application/json" as consumes or produces section.`,
+      message: "Only content-type 'application/json' is supported by ARM",
+      severity: "warn",
+      resolved: true,
+      given: ["$[produces,consumes].*","$[paths,'x-ms-paths'].*.*[produces,consumes].*"],
+      then: {
+        function: pattern,
+        functionOptions:{
+          match: "application/json"
+        }
+      },
+    },
+    PathResourceProviderMatchNamespace: {
+      description: `Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$[paths,'x-ms-paths'].*"],
+      then: {
+        function: providerNamespace
+      },
+    },
+    PutGetPatchResponseSchema: {
+      description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
+      message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
+      severity: "error",
+      resolved: false,
+      given: ["$[paths,'x-ms-paths'].*.put^"],
+      then: {
+        function: putGetPatchScehma
+      },
+    },
+    XmsResourceInPutResponse: {
+      description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$[paths,'x-ms-paths'].*.put"],
+      then: {
+        function: withXmsResource
+      },
+    },
   },
 }
 

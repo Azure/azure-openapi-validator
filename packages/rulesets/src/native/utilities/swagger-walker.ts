@@ -7,8 +7,12 @@ export class SwaggerWalker {
   private _walkOnDocuments(documents: any[], paths: string[], cb: WalkCallBack) {
     for (const doc of documents) {
       for (const path of paths) {
-        const result = nodes(doc[1], path)
-        cb(result.path, result.value, doc[0], doc[1])
+        const results = nodes(doc[1], path)
+        if (results && results.length) {
+          for (const result of results) {
+            cb(result.path, result.value, doc[0], doc[1])
+          }
+        }
       }
     }
   }

@@ -1,10 +1,21 @@
 import { oas2 } from '@stoplight/spectral-formats';
-import { truthy, falsy, pattern } from '@stoplight/spectral-functions';
+import { falsy, truthy, pattern, casing } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const ruleset$1 = {
     extends: [],
-    rules: {},
+    rules: {
+        InvalidVerbUsed: {
+            description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
+            message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
+            severity: "error",
+            resolved: false,
+            given: "$[paths,'x-ms-paths'].*[?(!@property.match(/^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE|PARAMETERS)$/i))]",
+            then: {
+                function: falsy,
+            },
+        },
+    },
 };
 
 function matchAnyPatterns(patterns, path) {
@@ -140,6 +151,25 @@ function getProperties(schema) {
     }
     return properties;
 }
+function getProperty(schema, propName) {
+    if (!schema) {
+        return {};
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const base of schema.allOf) {
+            const result = getProperty(base, propName);
+            if (result) {
+                return result;
+            }
+        }
+    }
+    if (schema.properties) {
+        if (propName in schema.properties) {
+            return schema.properties[propName];
+        }
+    }
+    return undefined;
+}
 function getRequiredProperties(schema) {
     if (!schema) {
         return [];
@@ -199,6 +229,63 @@ function getGetOperationSchema(paths, ctx) {
     }
     return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
 }
+function isPagableOperation(operation) {
+    return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
+}
+function getProviderNamespace(apiPath) {
+    const resourceProviderRegex = new RegExp(/providers\/([\w.]+)/, "g");
+    const match = [...apiPath.matchAll(resourceProviderRegex)].pop();
+    if (match) {
+        return match === null || match === void 0 ? void 0 : match[1];
+    }
+    return undefined;
+}
+function getProviderNamespaceFromPath(filePath) {
+    if (!filePath) {
+        return undefined;
+    }
+    const resourceProviderRegex = new RegExp(/\/Microsoft\.\w+/i, "g");
+    const match = [...filePath.replaceAll("\\", "/").matchAll(resourceProviderRegex)].pop();
+    if (match) {
+        return match === null || match === void 0 ? void 0 : match[0];
+    }
+    return undefined;
+}
+function getReturnedType(operation) {
+    var _a;
+    const succeededCodes = ["200", "201", "202"];
+    for (const code of succeededCodes) {
+        const resposne = operation.responses[code];
+        if (resposne) {
+            return (_a = resposne === null || resposne === void 0 ? void 0 : resposne.schema) === null || _a === void 0 ? void 0 : _a.$ref;
+        }
+    }
+}
+function getReturnedSchema(operation) {
+    const succeededCodes = ["200", "201"];
+    for (const code of succeededCodes) {
+        const resposne = operation.responses[code];
+        if (resposne === null || resposne === void 0 ? void 0 : resposne.schema) {
+            return resposne === null || resposne === void 0 ? void 0 : resposne.schema;
+        }
+    }
+}
+function isXmsResource(schema) {
+    if (!schema) {
+        return false;
+    }
+    if (schema["x-ms-azure-resource"]) {
+        return true;
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const base of schema.allOf) {
+            if (isXmsResource(base)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
@@ -224,6 +311,27 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
                     }
                 }
             }
+        }
+    }
+    return errors;
+};
+
+const collectionObjectPropertiesNaming = (op, _opts, paths) => {
+    var _a, _b;
+    if (op === null || typeof op !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const regex = /.+_List([^_]*)$/;
+    if (op && regex.test(op.operationId) && isPagableOperation(op)) {
+        const schema = (_b = (_a = op.responses) === null || _a === void 0 ? void 0 : _a["200"]) === null || _b === void 0 ? void 0 : _b.schema;
+        const valueSchema = getProperty(schema, "value");
+        if (schema && !(valueSchema && valueSchema.type === "array")) {
+            errors.push({
+                message: `Collection object returned by list operation '${op.operationId}' with 'x-ms-pageable' extension, has no property named 'value'.`,
+                path: path.concat(['responses', "200", "schema"])
+            });
         }
     }
     return errors;
@@ -408,6 +516,23 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const providerNamespace = (apiPath, opts, ctx) => {
+    if (apiPath === null || typeof apiPath !== 'string') {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const nameSpaceFromApiPath = getProviderNamespace(apiPath);
+    const nameSpaceFromFromFilePath = getProviderNamespaceFromPath(ctx.document.source);
+    if (nameSpaceFromApiPath && nameSpaceFromFromFilePath && nameSpaceFromApiPath !== nameSpaceFromFromFilePath) {
+        errors.push({
+            error: `The last resource provider '${nameSpaceFromApiPath}' doesn't match the namespace.`,
+            path
+        });
+    }
+    return errors;
+};
+
 const provisioningState = (swaggerObj, _opts, paths) => {
     const enumValue = swaggerObj.enum;
     if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
@@ -427,6 +552,63 @@ const provisioningState = (swaggerObj, _opts, paths) => {
         ];
     }
     return [];
+};
+
+const putGetPatchScehma = (pathItem, opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== 'object') {
+        return [];
+    }
+    const neededHttpVerbs = ["put", "get", "patch"];
+    const path = ctx.path || [];
+    const errors = [];
+    const models = new Set();
+    for (const verb of neededHttpVerbs) {
+        if (pathItem[verb]) {
+            models.add(getReturnedType(pathItem[verb]));
+        }
+        if (models.size > 1) {
+            errors.push({
+                message: "",
+                path
+            });
+            break;
+        }
+    }
+    return errors;
+};
+
+const skuValidation = (skuSchema, opts, paths) => {
+    if (skuSchema === null || typeof skuSchema !== 'object') {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const propertiesRegEx = /^(NAME|TIER|SIZE|FAMILY|CAPACITY)$/i;
+    const properties = getProperties(skuSchema);
+    const message = {
+        message: `A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.`,
+        path,
+    };
+    if (!properties) {
+        errors.push(message);
+        return errors;
+    }
+    if (!Object.keys(properties).includes('name')) {
+        errors.push(message);
+        return errors;
+    }
+    for (const prop of Object.entries(properties)) {
+        if (!propertiesRegEx.test(prop[0])) {
+            errors.push(message);
+            break;
+        }
+        if (prop[0].toLowerCase() === "name") {
+            if (prop[1].type !== "string") {
+                errors.push(message);
+            }
+        }
+    }
+    return errors;
 };
 
 const validatePatchBodyParamProperties = createRulesetFunction({
@@ -485,6 +667,19 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     }
     return errors;
 });
+
+const withXmsResource = (putOperation, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const returnSchema = getReturnedSchema(putOperation);
+    if (returnSchema && !isXmsResource(returnSchema)) {
+        errors.push({
+            message: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.Operation: ${putOperation.operationId}`,
+            path
+        });
+    }
+    return errors;
+};
 
 const ruleset = {
     extends: [ruleset$1],
@@ -792,6 +987,118 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: bodyParamRepeatedInfo,
+            },
+        },
+        APIVersionPattern: {
+            description: "The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.info.version",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
+                }
+            },
+        },
+        CollectionObjectPropertiesNaming: {
+            description: "Per ARM guidelines, a model returned by an `x-ms-pageable` operation must have a property named `value`. This property indicates what type of array the object is.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.paths.*[get,post]",
+            then: {
+                function: collectionObjectPropertiesNaming,
+            },
+        },
+        DeleteMustNotHaveRequestBody: {
+            description: "The delete operation must not have a request body.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
+            then: {
+                function: falsy,
+            },
+        },
+        DefinitionsPropertiesNamesCamelCase: {
+            description: "Property names should be camel case.",
+            message: "Property name should be camel case.",
+            severity: "error",
+            resolved: false,
+            given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/$\@.+/))]~",
+            then: {
+                function: casing,
+                functionOptions: {
+                    type: "camel",
+                },
+            },
+        },
+        GuidUsage: {
+            description: `Verifies whether format is specified as "uuid" or not.`,
+            message: "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+            severity: "warn",
+            resolved: false,
+            given: "$..[?(@property === 'format'&& @ === 'guid')]",
+            then: {
+                function: falsy,
+            },
+        },
+        InvalidSkuModel: {
+            description: `A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.`,
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            given: "$.definitions[?(@property.match(/sku/i))]",
+            then: {
+                function: skuValidation,
+            },
+        },
+        NonApplicationJsonType: {
+            description: `Verifies whether operation supports "application/json" as consumes or produces section.`,
+            message: "Only content-type 'application/json' is supported by ARM",
+            severity: "warn",
+            resolved: true,
+            given: ["$[produces,consumes].*", "$[paths,'x-ms-paths'].*.*[produces,consumes].*"],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "application/json"
+                }
+            },
+        },
+        PathResourceProviderMatchNamespace: {
+            description: `Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            given: ["$[paths,'x-ms-paths'].*"],
+            then: {
+                function: providerNamespace
+            },
+        },
+        PutGetPatchResponseSchema: {
+            description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
+            message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
+            severity: "error",
+            resolved: false,
+            given: ["$[paths,'x-ms-paths'].*.put^"],
+            then: {
+                function: putGetPatchScehma
+            },
+        },
+        XmsResourceInPutResponse: {
+            description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            given: ["$[paths,'x-ms-paths'].*.put"],
+            then: {
+                function: withXmsResource
             },
         },
     },

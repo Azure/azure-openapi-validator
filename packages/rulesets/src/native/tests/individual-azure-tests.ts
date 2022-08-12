@@ -421,4 +421,6 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
+
+  
 })

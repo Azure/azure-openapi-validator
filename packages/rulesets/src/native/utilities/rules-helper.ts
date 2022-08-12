@@ -6,6 +6,7 @@ import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { JSONPath } from "jsonpath-plus"
 
 import { crawlReference } from "./ref-helper"
+import { SwaggerWalker } from "./swagger-walker"
 import { Workspace } from "./swagger-workspace"
 const matchAll = require("string.prototype.matchall")
 
@@ -114,4 +115,16 @@ export function nodes(obj: any, pathExpression: string) {
 export function stringify(path: string[]) {
   const pathWithRoot = ["$", ...path]
   return JSONPath.toPathString(pathWithRoot)
+}
+
+export function getResourceProvider(inventory:ISwaggerInventory) {
+  const walker = new SwaggerWalker(inventory)
+    let result: string[] = []
+    walker.warkAll(["$.paths.*"], (path: string[]) => {
+        const apiPath = path[1] as string
+        if (result.length === 0) {
+          result = [...getAllResourceProvidersFromPath(apiPath)]
+        }
+    })
+    return result.length ? result.pop() || "" : ""
 }
