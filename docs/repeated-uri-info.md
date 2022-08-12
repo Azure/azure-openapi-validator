@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-PUT-5
+
 ## Output Message
 
 The '{property name}' already appears in the URI, please don't repeat it in the request body.

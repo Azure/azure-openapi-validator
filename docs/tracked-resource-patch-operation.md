@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Patch-3
+
 ## Output Message
 
 Tracked resource '{0}' must have patch operation that at least supports the update of tags.

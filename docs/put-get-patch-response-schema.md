@@ -8,6 +8,10 @@ ARM Error
 
 ARM and Data plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-PUT-12
+
 ## Output Message
 
 {0} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.

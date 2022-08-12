@@ -1,5 +1,5 @@
 import { oas2 } from '@stoplight/spectral-formats';
-import { truthy, falsy, pattern } from '@stoplight/spectral-functions';
+import { pattern, truthy, falsy } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const ruleset$1 = {

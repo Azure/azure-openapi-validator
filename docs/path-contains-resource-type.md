@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-4
+
 ## Output Message
 
 The URI for the CURD methods do not contain a resource type.

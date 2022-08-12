@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-03
+
 ## Output Message
 
 ProvisioningState must have terminal states: Succeeded, Failed and Canceled.

@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Patch-2
+
 ## Output Message
 
 The patch operation body parameter schema should not contains property {propertyName}.
