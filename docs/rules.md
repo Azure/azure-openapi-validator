@@ -160,6 +160,12 @@ Control characters are not allowed in a specification.
 
 Please refer to [control-characters-not-allowed.md](./control-characters-not-allowed.md) for details.
 
+### CreateOperationAsyncResponseValidation
+
+An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
+
+Please refer to [create-operation-async-response-validation.md](./create-operation-async-response-validation.md) for details.
+
 ### DefaultErrorResponseSchema
 
 The default error response schema SHOULD correspond to the schema documented at [common-api-details](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content).
@@ -766,7 +772,7 @@ Please refer to [post-201-response.md](./post-201-response.md) for details.
 
 An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
 
-Please refer to [post-long-running-operation202-only.md](./post-long-running-operation202-only.md) for details.
+Please refer to [post-operation-async-response-validation.md](./post-operation-async-response-validation.md) for details.
 
 ### PostOperationIdContainsUrlVerb
 
@@ -827,12 +833,6 @@ Please refer to [put-get-patch-response-schema.md](./put-get-patch-response-sche
 Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [put-in-operation-name.md](./put-in-operation-name.md) for details.
-
-### PutLongRunningOperation201Only
-
-An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
-
-Please refer to [put-long-running-operation201-only.md](./put-long-running-operation201-only.md) for details.
 
 ### PutPath
 
