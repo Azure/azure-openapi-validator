@@ -1,0 +1,7 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/foo/{p1}": {},
+    "/{scope}/providers/Microsoft.Conto/bar/{p3}": {}
+  }
+}

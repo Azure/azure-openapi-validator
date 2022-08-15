@@ -3,7 +3,7 @@ import { OpenapiDocument } from "./document"
 import { nodes } from "./jsonpath"
 import { IRuleLoader} from "./ruleLoader"
 import { SwaggerInventory } from "./swaggerInventory"
-import { OpenApiTypes, ValidationMessage,LintResultMessage , IRule, IRuleSet } from "./types"
+import { OpenApiTypes, ValidationMessage,LintResultMessage , IRule, IRuleSet, RuleScope } from "./types"
 
 import {getRange,convertJsonPath} from "./utils"
 
@@ -20,9 +20,10 @@ export class LintRunner<T> {
     sendMessage: (m: LintResultMessage) => void,
     openapiType: OpenApiTypes,
     ruleset: IRuleSet,
-    inventory: SwaggerInventory
+    inventory: SwaggerInventory,
+    scope: RuleScope = "File"
   ) => {
-    const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType)
+    const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType && (rule[1].scope || "File")  === scope)
     const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
       if (isLegacyRule(rule)) {
         return [doc, section, location, { specPath: document, inventory}]
@@ -98,16 +99,25 @@ export class LintRunner<T> {
       }
     }
     const runPromises = []
+    let runGlobalRuleFlag = false;
     for (const doc of documents) {
-      const promise = this.runRules(
-        doc.getDocumentPath(),
-        doc.getObj(),
-        sendMessage,
-        options.openapiType,
-        await this.loader.getRuleSet(),
-        this.inventory
-      )
-      runPromises.push(promise)
+      for (const scope of  ["Global","File"]){
+        if (scope === "Global" && runGlobalRuleFlag) {
+          continue
+        }
+        else {
+          runGlobalRuleFlag = true
+        }
+        const promise = this.runRules(
+          doc.getDocumentPath(),
+          doc.getObj(),
+          sendMessage,
+          options.openapiType,
+          await this.loader.getRuleSet(),
+          this.inventory,scope as RuleScope
+        )
+        runPromises.push(promise)
+      }
     }
     await Promise.all(runPromises)
     return msgs

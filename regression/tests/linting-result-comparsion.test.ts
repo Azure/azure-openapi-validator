@@ -26,6 +26,9 @@ describe("comparing", () => {
     "UniqueXmsExample",
     "RequiredReadOnlySystemData",
     "XmsIdentifierValidation",
+    "NonApplicationJsonType",
+    "RequiredPropertiesMissingInResourceModel",
+    "BodyTopLevelProperties",
   ]
   test.each(v3Results.filter((f) => !f.includes("az-") && !verifiedLists.includes(basename(f.replace(".json", "")))))(
     "%s should match v2",

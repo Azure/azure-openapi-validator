@@ -1,6 +1,6 @@
 {
   "name": "@microsoft.azure/openapi-validator-rulesets",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Azure OpenAPI Validator",
   "main": "dist/index.js",
   "scripts": {
@@ -44,7 +44,7 @@
     "rollup": "^2.70.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "typescript": "4.6.2",
-    "@microsoft.azure/openapi-validator-core": "^1.0.0-beta.1",
+    "@microsoft.azure/openapi-validator-core": "^1.0.0-beta.2",
     "@stoplight/spectral-core": "~1.11.1",
     "@stoplight/spectral-formats": "~1.1.0",
     "@stoplight/spectral-functions": "~1.6.1",

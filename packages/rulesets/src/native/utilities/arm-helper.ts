@@ -407,14 +407,12 @@ export class ArmHelper {
   public getOperationApi() {
     const walker = new SwaggerWalker(this.inventory)
     let result: any = undefined
-    walker.warkAll(["$.paths.*"], () => {
-      for (const pathNode of nodes(this.innerDoc, "$.paths.*")) {
-        const path = pathNode.path[2] as string
-        const matchResult = path.match(this.OperationApiRegEx)
+    walker.warkAll(["$.paths.*"], (path: string[], value: any, rootPath: string) => {
+        const apiPath = path[2] as string
+        const matchResult = apiPath.match(this.OperationApiRegEx)
         if (matchResult) {
-          result = [path, this.enhancedSchema(pathNode.value?.get?.responses["200"]?.schema)]
+          result = [path, this.enhancedSchema(value?.get?.responses["200"]?.schema,rootPath)]
         }
-      }
     })
     return result
   }
@@ -639,6 +637,18 @@ export class ArmHelper {
 
   public getProperty(schema: Workspace.EnhancedSchema, property: string): Workspace.EnhancedSchema {
     return this.swaggerUtil.getProperty(schema, property)
+  }
+
+  public getResourceProperties(resourceName:string) {
+    const schema = this.getResourceByName(resourceName)
+    if (schema){
+      return this.getProperties(schema)
+    }
+    return []
+  }
+
+  public getProperties(schema: Workspace.EnhancedSchema) {
+    return Workspace.getProperties(schema, this.inventory)
   }
 
   public getAttribute(schema: Workspace.EnhancedSchema, attr: string): Workspace.EnhancedSchema | undefined {

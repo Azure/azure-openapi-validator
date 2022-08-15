@@ -1,0 +1,68 @@
+[
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9523:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9583:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7788:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations/{configurationName}\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/configurations.json:79:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1627:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1159:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTables/{devicePath}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1230:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTablesSummary/{devicePath}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1301:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/arpTables/{devicePath}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:536:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTables/{devicePath}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:678:4"
+  },
+  {
+    "code": "PathForResourceAction",
+    "message": "Path for 'post' method on a resource type MUST follow valid resource naming.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTablesSummary/{devicePath}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:607:4"
+  }
+]

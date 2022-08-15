@@ -318,19 +318,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    PropertyNamesConvention: {
-      description: "Property names should be camel case.",
-      message: "Property name should be camel case.",
-      severity: "warn",
-      resolved: false,
-      given: "$..[?(@.type === 'object' && @.properties)].properties.*~",
-      then: {
-        function: casing,
-        functionOptions: {
-          type: "camel",
-        },
-      },
-    },
+   
     PropertyType: {
       description: "All schema properties should have a defined type.",
       message: "Property should have a defined type.",
