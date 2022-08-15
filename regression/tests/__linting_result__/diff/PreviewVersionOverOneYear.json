@@ -644,5 +644,12 @@
     }
   ],
   "v2Only": [],
-  "v3Only": []
+  "v3Only": [
+    {
+      "code": "PreviewVersionOverOneYear",
+      "message": "The API version:2021-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+      "jsonpath": "$.info.version",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:4:4"
+    }
+  ]
 }
