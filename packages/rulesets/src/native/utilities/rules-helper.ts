@@ -69,7 +69,7 @@ export function getProviderNamespaceFromPath(filePath:string) {
     return undefined
   }
   const resourceProviderRegex = new RegExp(/\/(Microsoft\.\w+)\//i, "g")
-  const match = Array.from(matchAll(filePath.replaceAll("\\","/"),resourceProviderRegex), (m: any) => m[1])
+  const match = Array.from(matchAll(filePath.replace(/\\/g,"/"),resourceProviderRegex), (m: any) => m[1])
   if (match) {
     return match[0]
   }

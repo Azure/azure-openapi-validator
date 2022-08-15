@@ -408,7 +408,7 @@ export class ArmHelper {
     const walker = new SwaggerWalker(this.inventory)
     let result: any = undefined
     walker.warkAll(["$.paths.*"], (path: string[], value: any, rootPath: string) => {
-        const apiPath = path[1] as string
+        const apiPath = path[2] as string
         const matchResult = apiPath.match(this.OperationApiRegEx)
         if (matchResult) {
           result = [path, this.enhancedSchema(value?.get?.responses["200"]?.schema,rootPath)]

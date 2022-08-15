@@ -23,7 +23,7 @@ export class SwaggerWalker {
   }
 
   public warkAll(paths: string[], cb: WalkCallBack) {
-    const documents = Object.values(this.inventory.getDocuments())
+    const documents = Object.entries(this.inventory.getDocuments())
     this._walkOnDocuments([...documents], paths, cb)
   }
 
