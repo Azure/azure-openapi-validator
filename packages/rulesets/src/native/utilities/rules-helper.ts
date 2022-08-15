@@ -142,7 +142,7 @@ export function getResourceProvider(inventory:ISwaggerInventory) {
   const walker = new SwaggerWalker(inventory)
     let result: string[] = []
     walker.warkAll(["$.paths.*"], (path: string[]) => {
-        const apiPath = path[1] as string
+        const apiPath = path[2] as string
         if (result.length === 0) {
           result = [...getAllResourceProvidersFromPath(apiPath)]
         }
