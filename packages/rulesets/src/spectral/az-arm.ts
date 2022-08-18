@@ -204,7 +204,7 @@ const ruleset: any = {
     LroLocationHeader: {
       description: "Location header must be supported for all async operations that return 202.",
       message: "A 202 response should include an Location response header.",
-      severity: "warn",
+      severity: "error",
       formats: [oas2],
       given: "$.paths[*][*].responses[?(@property == '202')]^",
       then: {
@@ -336,26 +336,26 @@ const ruleset: any = {
         function: bodyParamRepeatedInfo,
       },
     },
-    APIVersionPattern:{
+    APIVersionPattern: {
       description:
         "The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.",
       severity: "error",
-      message:"{{description}}",
+      message: "{{description}}",
       resolved: true,
       formats: [oas2],
       given: "$.info.version",
       then: {
         function: pattern,
-        functionOptions:{
-          match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
-        }
+        functionOptions: {
+          match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
+        },
       },
     },
-    CollectionObjectPropertiesNaming:{
+    CollectionObjectPropertiesNaming: {
       description:
         "Per ARM guidelines, a model returned by an `x-ms-pageable` operation must have a property named `value`. This property indicates what type of array the object is.",
       severity: "error",
-      message:"{{error}}",
+      message: "{{error}}",
       resolved: true,
       formats: [oas2],
       given: "$.paths.*[get,post]",
@@ -363,11 +363,10 @@ const ruleset: any = {
         function: collectionObjectPropertiesNaming,
       },
     },
-   DeleteMustNotHaveRequestBody:{
-      description:
-        "The delete operation must not have a request body.",
+    DeleteMustNotHaveRequestBody: {
+      description: "The delete operation must not have a request body.",
       severity: "error",
-      message:"{{description}}",
+      message: "{{description}}",
       resolved: true,
       formats: [oas2],
       given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
@@ -391,7 +390,8 @@ const ruleset: any = {
     },
     GuidUsage: {
       description: `Verifies whether format is specified as "uuid" or not.`,
-      message: "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      message:
+        "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
       severity: "warn",
       resolved: false,
       given: "$..[?(@property === 'format'&& @ === 'guid')]",
@@ -414,23 +414,24 @@ const ruleset: any = {
       message: "Only content-type 'application/json' is supported by ARM",
       severity: "warn",
       resolved: true,
-      given: ["$[produces,consumes].*","$[paths,'x-ms-paths'].*.*[produces,consumes].*"],
+      given: ["$[produces,consumes].*", "$[paths,'x-ms-paths'].*.*[produces,consumes].*"],
       then: {
         function: pattern,
-        functionOptions:{
-          match: "application/json"
-        }
+        functionOptions: {
+          match: "application/json",
+        },
       },
     },
-   
+
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
-      message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
+      message:
+        "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
       severity: "error",
       resolved: false,
       given: ["$[paths,'x-ms-paths'].*.put^"],
       then: {
-        function: putGetPatchScehma
+        function: putGetPatchScehma,
       },
     },
     XmsResourceInPutResponse: {
@@ -440,7 +441,7 @@ const ruleset: any = {
       resolved: true,
       given: ["$[paths,'x-ms-paths'].*.put"],
       then: {
-        function: withXmsResource
+        function: withXmsResource,
       },
     },
   },

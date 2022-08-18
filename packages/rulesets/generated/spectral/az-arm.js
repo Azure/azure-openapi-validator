@@ -838,7 +838,7 @@ const ruleset = {
         LroLocationHeader: {
             description: "Location header must be supported for all async operations that return 202.",
             message: "A 202 response should include an Location response header.",
-            severity: "warn",
+            severity: "error",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^",
             then: {
@@ -979,8 +979,8 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$"
-                }
+                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
+                },
             },
         },
         CollectionObjectPropertiesNaming: {
@@ -1047,8 +1047,8 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "application/json"
-                }
+                    match: "application/json",
+                },
             },
         },
         PutGetPatchResponseSchema: {
@@ -1058,7 +1058,7 @@ const ruleset = {
             resolved: false,
             given: ["$[paths,'x-ms-paths'].*.put^"],
             then: {
-                function: putGetPatchScehma
+                function: putGetPatchScehma,
             },
         },
         XmsResourceInPutResponse: {
@@ -1068,7 +1068,7 @@ const ruleset = {
             resolved: true,
             given: ["$[paths,'x-ms-paths'].*.put"],
             then: {
-                function: withXmsResource
+                function: withXmsResource,
             },
         },
     },
