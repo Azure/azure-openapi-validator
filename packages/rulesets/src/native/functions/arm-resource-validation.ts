@@ -71,7 +71,7 @@ export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx:
   const allResources = armHelper.getAllResources()
   const propertiesBag = ["name", "id", "type", "location", "tags"]
 
-  function checkPropertiesBag(model: any, propertiesPath: string[]) {
+  function checkPropertiesBag(model: any, resourceName: string, propertiesPath: string[]) {
     let messages: any[] = []
     const properties = armHelper.getProperty(model!, "properties")
     if (properties) {
@@ -79,14 +79,14 @@ export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx:
       for (const p of propertiesBag) {
         if (armHelper.getProperty(properties, p)) {
           messages.push(
-            `Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [${propertiesPath
+            `Top level property names should not be repeated inside the properties bag for ARM resource '${resourceName}'. Properties [${propertiesPath
               .concat(p)
               .join(".")}] conflict with ARM top level properties. Please rename these.`
           )
         }
       }
 
-      const subResult = checkPropertiesBag(properties, propertiesPath)
+      const subResult = checkPropertiesBag(properties, resourceName, propertiesPath)
       messages = messages.concat(subResult)
     }
     return messages
@@ -94,7 +94,7 @@ export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx:
 
   for (const re of allResources) {
     const model = armHelper.getResourceByName(re.modelName)
-    const messages = checkPropertiesBag(model, [])
+    const messages = checkPropertiesBag(model, re.modelName, [])
     for (const message of messages) {
       yield {
         location: ["definitions", re.modelName],
