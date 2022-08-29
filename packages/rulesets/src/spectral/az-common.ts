@@ -1,10 +1,22 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { pattern , falsy } from "@stoplight/spectral-functions"
+import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
 
 const ruleset: any = {
   extends: [],
   rules: {
-   docLinkLocale: {
+    LroStatusCodesReturnTypeSchema: {
+      description: "The '200'/'201' responses of the long running operation must have a schema definition.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+      then: {
+        function: lroStatusCodesReturnTypeSchema,
+      },
+    },
+    docLinkLocale: {
       description: "This rule is to ensure the documentation link in the description does not contains any locale.",
       message: "The documentation link in the description contains locale info, please change it to the link without locale.",
       severity: "warn",
@@ -19,8 +31,8 @@ const ruleset: any = {
           match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
         }
       },
-   }, 
-   InvalidVerbUsed: {
+    },
+    InvalidVerbUsed: {
       description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
       message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
       severity: "error",
