@@ -206,7 +206,7 @@ const ruleset: any = {
       message: "A 202 response should include an Location response header.",
       severity: "error",
       formats: [oas2],
-      given: "$.paths[*][*].responses[?(@property == '202')]^",
+      given: "$.paths[*][*].responses[?(@property == '202')]",
       then: {
         function: hasheader,
         functionOptions: {

@@ -49,8 +49,7 @@ If a resource is defined as below and the 'properties.propertyA' is patchable
     },
   },
 ```
-
-then if then 'propertyA' must appear in the patch body with the same layout.
+then 'propertyA' must appear in the patch body with the same layout.
 
 ```json
   FooResourceUpdate: {
