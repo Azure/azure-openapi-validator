@@ -194,12 +194,6 @@ For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library
 
 Please refer to [definitions-properties-names-camel-case.md](./definitions-properties-names-camel-case.md) for details.
 
-### Delete204Response
-
-A delete operation should have a 204 response.
-
-Please refer to [delete-204-response.md](./delete-204-response.md) for details.
-
 ### DeleteInOperationName
 
 Verifies whether value for `operationId` is named as per ARM guidelines.
@@ -229,6 +223,12 @@ Please refer to [delete-operation-responses.md](./delete-operation-responses.md)
 The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
+
+### Delete204Response
+
+A delete operation should have a 204 response.
+
+Please refer to [delete204-response.md](./delete204-response.md) for details.
 
 ### DeprecatedXmsCodeGenerationSetting
 
@@ -326,7 +326,7 @@ Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for detai
 
 The get operation should only return 200, also it should not be a long running operation.
 
-Please refer to [get-operation-200.md](./get-operation-200.md) for details.
+Please refer to [get-operation200.md](./get-operation200.md) for details.
 
 ### GuidUsage
 
@@ -445,7 +445,7 @@ Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
 Async PATCH should return 202.
 
-Please refer to [lro-patch-202.md](./lro-patch-202.md) for details.
+Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 

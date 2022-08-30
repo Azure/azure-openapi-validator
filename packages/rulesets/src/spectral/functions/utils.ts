@@ -20,13 +20,13 @@ export function getProperties(schema: any) {
 /**
  * get all specific property as array
  */
-export function getProperty(schema: any,propName:string):any {
+export function getProperty(schema: any, propName: string): any {
   if (!schema) {
     return {}
   }
   if (schema.allOf && Array.isArray(schema.allOf)) {
-    for (const base of schema.allOf ){
-      const result = getProperty(base,propName)
+    for (const base of schema.allOf) {
+      const result = getProperty(base, propName)
       if (result) {
         return result
       }
@@ -57,11 +57,10 @@ export function getRequiredProperties(schema: any) {
 }
 export type JsonPath = (string | number)[]
 
-
 /**
- * 
+ *
  * @param paths json pointer as an array , like ["paths","/foo"]
- * @param root source doc to search 
+ * @param root source doc to search
  * @returns the found object
  */
 export function jsonPath(paths: JsonPath, root: any): any {
@@ -103,38 +102,38 @@ export function diffSchema(a: any, b: any) {
 
 export function getGetOperationSchema(paths: string[], ctx: any) {
   const getOperationPath = [...paths, "get"]
-  const getOperation = jsonPath(getOperationPath, ctx?.document?.parserResult?.data)
+  const getOperation = jsonPath(getOperationPath, ctx?.documentInventory?.resolved)
   if (!getOperation) {
     return undefined
   }
   return getOperation?.responses["200"]?.schema || getOperation?.responses["201"]?.schema
 }
 
-export function isPagableOperation(operation:any) {
+export function isPagableOperation(operation: any) {
   return !!operation?.["x-ms-pageable"]
 }
 
-export function getReturnedType(operation:any) {
-  const succeededCodes = ["200","201","202"]
+export function getReturnedType(operation: any) {
+  const succeededCodes = ["200", "201", "202"]
   for (const code of succeededCodes) {
-    const resposne = operation.responses[code]
-    if (resposne){
-      return resposne?.schema?.$ref
+    const response = operation.responses[code]
+    if (response) {
+      return response?.schema?.$ref
     }
   }
 }
 
-export function getReturnedSchema(operation:any) {
-  const succeededCodes = ["200","201"]
+export function getReturnedSchema(operation: any) {
+  const succeededCodes = ["200", "201"]
   for (const code of succeededCodes) {
-    const resposne = operation.responses[code]
-    if (resposne?.schema){
-      return resposne?.schema
+    const response = operation.responses[code]
+    if (response?.schema) {
+      return response?.schema
     }
   }
 }
 
-export function isXmsResource(schema:any) {
+export function isXmsResource(schema: any) {
   if (!schema) {
     return false
   }
@@ -142,7 +141,7 @@ export function isXmsResource(schema:any) {
     return true
   }
   if (schema.allOf && Array.isArray(schema.allOf)) {
-    for (const base of schema.allOf ){
+    for (const base of schema.allOf) {
       if (isXmsResource(base)) {
         return true
       }
