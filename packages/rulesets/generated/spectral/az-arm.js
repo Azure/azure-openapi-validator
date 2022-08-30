@@ -237,13 +237,13 @@ function diffSchema(a, b) {
     return notMatchedProperties;
 }
 function getGetOperationSchema(paths, ctx) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c;
     const getOperationPath = [...paths, "get"];
-    const getOperation = jsonPath(getOperationPath, (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.document) === null || _a === void 0 ? void 0 : _a.parserResult) === null || _b === void 0 ? void 0 : _b.data);
+    const getOperation = jsonPath(getOperationPath, (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved);
     if (!getOperation) {
         return undefined;
     }
-    return ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _c === void 0 ? void 0 : _c.schema) || ((_d = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _d === void 0 ? void 0 : _d.schema);
+    return ((_b = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema) || ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _c === void 0 ? void 0 : _c.schema);
 }
 function isPagableOperation(operation) {
     return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
@@ -252,18 +252,18 @@ function getReturnedType(operation) {
     var _a;
     const succeededCodes = ["200", "201", "202"];
     for (const code of succeededCodes) {
-        const resposne = operation.responses[code];
-        if (resposne) {
-            return (_a = resposne === null || resposne === void 0 ? void 0 : resposne.schema) === null || _a === void 0 ? void 0 : _a.$ref;
+        const response = operation.responses[code];
+        if (response) {
+            return (_a = response === null || response === void 0 ? void 0 : response.schema) === null || _a === void 0 ? void 0 : _a.$ref;
         }
     }
 }
 function getReturnedSchema(operation) {
     const succeededCodes = ["200", "201"];
     for (const code of succeededCodes) {
-        const resposne = operation.responses[code];
-        if (resposne === null || resposne === void 0 ? void 0 : resposne.schema) {
-            return resposne === null || resposne === void 0 ? void 0 : resposne.schema;
+        const response = operation.responses[code];
+        if (response === null || response === void 0 ? void 0 : response.schema) {
+            return response === null || response === void 0 ? void 0 : response.schema;
         }
     }
 }
