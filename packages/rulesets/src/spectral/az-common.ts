@@ -1,10 +1,22 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { pattern , falsy } from "@stoplight/spectral-functions"
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
+import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
 
 const ruleset: any = {
   extends: [],
   rules: {
+    NamePropertyDefinitionInParameter: {
+      description: "A parameter must have a `name` property for the SDK to be properly generated.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+      then: {
+        function: namePropertyDefinitionInParameter,
+      },
+    },
     LroStatusCodesReturnTypeSchema: {
       description: "The '200'/'201' responses of the long running operation must have a schema definition.",
       message: "{{error}}",
