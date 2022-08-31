@@ -5,12 +5,60 @@ import { namePropertyDefinitionInParameter } from "./functions/name-property-def
 import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names";
 import { operationIdNounVerb } from "./functions/operation-id-noun-verb";
 import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id";
+import { getInOperationName } from "./functions/get-in-operation-name";
+import { putInOperationName } from "./functions/put-in-operation-name";
+import { patchInOperationName } from "./functions/patch-in-operation-name";
+import { deleteInOperationName } from "./functions/delete-in-operation-name";
 
 const ruleset: any = {
   extends: [],
   rules: {
+    DeleteInOperationName: {
+      description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
+      then: {
+        function: deleteInOperationName,
+      },
+    },
+    PatchInOperationName: {
+      description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'operationId')]"],
+      then: {
+        function: patchInOperationName,
+      },
+    },
+    PutInOperationName: {
+      description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'operationId')]"],
+      then: {
+        function: putInOperationName,
+      },
+    },
+    GetInOperationName: {
+      description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[get][?(@property === 'operationId')]"],
+      then: {
+        function: getInOperationName,
+      },
+    },
     OperationIdSingleUnderscore: {
-      description: "An operationId can have exactly one underscore, not adhering to it can cause errors in code generation",
+      description: "An operationId can have exactly one underscore, not adhering to it can cause errors in code generation.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -21,7 +69,7 @@ const ruleset: any = {
       },
     },
     OperationIdNounVerb: {
-      description: "OperationId should be of the form `Noun_Verb`",
+      description: "OperationId should be of the form `Noun_Verb`.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
