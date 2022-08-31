@@ -4,10 +4,22 @@ import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-ret
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
 import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names";
 import { operationIdNounVerb } from "./functions/operation-id-noun-verb";
+import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id";
 
 const ruleset: any = {
   extends: [],
   rules: {
+    OperationIdSingleUnderscore: {
+      description: "An operationId can have exactly one underscore, not adhering to it can cause errors in code generation",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
+      then: {
+        function: operationIdSingleUnderscore,
+      },
+    },
     OperationIdNounVerb: {
       description: "OperationId should be of the form `Noun_Verb`",
       message: "{{error}}",
