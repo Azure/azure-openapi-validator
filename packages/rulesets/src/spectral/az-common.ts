@@ -9,10 +9,22 @@ import { getInOperationName } from "./functions/get-in-operation-name";
 import { putInOperationName } from "./functions/put-in-operation-name";
 import { patchInOperationName } from "./functions/patch-in-operation-name";
 import { deleteInOperationName } from "./functions/delete-in-operation-name";
+import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters";
 
 const ruleset: any = {
   extends: [],
   rules: {
+    ParameterNotDefinedInGlobalParameters: {
+      description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+      then: {
+        function: parameterNotDefinedInGlobalParameters,
+      },
+    },
     DeleteInOperationName: {
       description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
       message: "{{error}}",
