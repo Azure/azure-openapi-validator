@@ -1,4 +1,4 @@
-import {Spectral} from "@stoplight/spectral-core";
+import { Spectral } from "@stoplight/spectral-core";
 import linterForRule from "./utils";
 
 let linter: Spectral;
@@ -63,7 +63,9 @@ test("RequiredReadOnlyProperties should find errors", () => {
   };
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1);
-    expect(results[0].message).toBe("Property 'name' is a required property. It should not be marked as 'readonly'");
+    expect(results[0].message).toBe(
+      "Property 'name' is a required property. It should not be marked as 'readonly'"
+    );
     expect(results[0].path.join(".")).toBe("definitions.ResponseResource");
   });
 });

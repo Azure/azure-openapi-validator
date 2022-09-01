@@ -1,12 +1,12 @@
-import { Spectral } from "@stoplight/spectral-core"
-import linterForRule from "./utils"
+import {Spectral} from "@stoplight/spectral-core";
+import linterForRule from "./utils";
 
-let linter: Spectral
+let linter: Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule("ParameterNotDefinedInGlobalParameters")
-  return linter
-})
+  linter = await linterForRule("ParameterNotDefinedInGlobalParameters");
+  return linter;
+});
 
 test("ParameterNotDefinedInGlobalParameters should find errors", () => {
   const myOpenApiDocument = {
@@ -17,19 +17,19 @@ test("ParameterNotDefinedInGlobalParameters should find errors", () => {
           operationId: "Path_Get",
           parameters: [
             {
-              "name": "subscriptionId",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "description": "test subscription id"
+              name: "subscriptionId",
+              in: "path",
+              required: true,
+              type: "string",
+              description: "test subscription id",
             },
             {
-              "name": "api-version",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "description": "test api version"
-            }
+              name: "api-version",
+              in: "path",
+              required: true,
+              type: "string",
+              description: "test api version",
+            },
           ],
           responses: {
             200: {
@@ -39,18 +39,18 @@ test("ParameterNotDefinedInGlobalParameters should find errors", () => {
         },
       },
     },
-    "parameters": {
-      "ServiceNameParameter": {
-        "name": "serviceName",
-        "in": "path",
-        "description": "The name of the Service resource.",
-        "required": true,
-        "type": "string",
+    parameters: {
+      ServiceNameParameter: {
+        name: "serviceName",
+        in: "path",
+        description: "The name of the Service resource.",
+        required: true,
+        type: "string",
       },
-    }
-  }
+    },
+  };
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
-  })
-})
+    expect(results.length).toBe(2);
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters");
+  });
+});

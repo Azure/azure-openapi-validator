@@ -1,12 +1,12 @@
-import { Spectral } from "@stoplight/spectral-core"
-import linterForRule from "./utils"
+import {Spectral} from "@stoplight/spectral-core";
+import linterForRule from "./utils";
 
-let linter: Spectral
+let linter: Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule("NamePropertyDefinitionInParameter")
-  return linter
-})
+  linter = await linterForRule("NamePropertyDefinitionInParameter");
+  return linter;
+});
 
 test("NamePropertyDefinitionInParameter should find errors", () => {
   const myOpenApiDocument = {
@@ -20,7 +20,7 @@ test("NamePropertyDefinitionInParameter should find errors", () => {
               name: "",
               in: "path",
               type: "string",
-            }
+            },
           ],
           responses: {
             200: {
@@ -30,9 +30,9 @@ test("NamePropertyDefinitionInParameter should find errors", () => {
         },
       },
     },
-  }
+  };
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters")
-  })
-})
+    expect(results.length).toBe(1);
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters");
+  });
+});

@@ -19,19 +19,21 @@ export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
     } else if (Object.keys(parameter).length === 1 && Object.keys(parameter)[0] === "$ref") {
       const globalParameterName = parameter.$ref.split("/").reverse()[0];
       if (
-          Object.keys(globalParameters).includes(globalParameterName) &&
-          globalParameters[globalParameterName].in === "body"
+        Object.keys(globalParameters).includes(globalParameterName) &&
+        globalParameters[globalParameterName].in === "body"
       ) {
         reqBodySchemaRef = globalParameters[globalParameterName].schema?.$ref
-            ? globalParameters[globalParameterName].schema.$ref
-            : "";
+          ? globalParameters[globalParameterName].schema.$ref
+          : "";
       }
     }
   }
   if (reqBodySchemaRef === "") {
     return [];
   }
-  const respModelRef = putOp.responses["200"].schema?.$ref ? putOp.responses["200"].schema.$ref : "";
+  const respModelRef = putOp.responses["200"].schema?.$ref
+    ? putOp.responses["200"].schema.$ref
+    : "";
   if (reqBodySchemaRef !== respModelRef) {
     const [reqBodySchema, respModel] = [
       reqBodySchemaRef.split("/").reverse()[0],

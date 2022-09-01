@@ -5,7 +5,7 @@ const pushToError = (errors: any[], parameter: string, path: string[]) => {
     message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
     path: [...path],
   });
-}
+};
 
 export const parameterNotDefinedInGlobalParameters = (parameters: any, _opts: any, ctx: any) => {
   if (parameters === null || !Array.isArray(parameters)) {
@@ -26,9 +26,9 @@ export const parameterNotDefinedInGlobalParameters = (parameters: any, _opts: an
     // Check if subscriptionId is used but not defined in global parameters
     for (const parameter of parameters) {
       if (
-          parameter.name &&
-          parameter.name === "subscriptionId" &&
-          !globalParametersList.includes("subscriptionId")
+        parameter.name &&
+        parameter.name === "subscriptionId" &&
+        !globalParametersList.includes("subscriptionId")
       ) {
         pushToError(errors, "subscriptionId", path);
       }

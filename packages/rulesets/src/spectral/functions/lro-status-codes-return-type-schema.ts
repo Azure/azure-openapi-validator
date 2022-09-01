@@ -14,8 +14,8 @@ export const lroStatusCodesReturnTypeSchema = (putOp: any, _opts: any, ctx: any)
   for (const responseCode of responseCodes) {
     if (putOp?.responses && putOp?.responses[responseCode]) {
       if (
-          !putOp?.responses[responseCode].schema ||
-          Object.keys(putOp?.responses[responseCode].schema).length === 0
+        !putOp?.responses[responseCode].schema ||
+        Object.keys(putOp?.responses[responseCode].schema).length === 0
       ) {
         errors.push({
           message: `200/201 Responses of long running operations must have a schema definition for return type. OperationId: '${operationId}', Response code: '${responseCode}'`,
