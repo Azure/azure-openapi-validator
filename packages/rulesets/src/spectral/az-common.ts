@@ -10,10 +10,22 @@ import { putInOperationName } from "./functions/put-in-operation-name";
 import { patchInOperationName } from "./functions/patch-in-operation-name";
 import { deleteInOperationName } from "./functions/delete-in-operation-name";
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters";
+import { putRequestResponseScheme } from "./functions/put-request-response-scheme";
 
 const ruleset: any = {
   extends: [],
   rules: {
+    PutRequestResponseScheme: {
+      description: "The request & response('200') schema of the PUT operation must be same",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200')]^^"],
+      then: {
+        function: putRequestResponseScheme,
+      },
+    },
     ParameterNotDefinedInGlobalParameters: {
       description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
       message: "{{error}}",
