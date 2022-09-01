@@ -16,6 +16,7 @@ import putGetPatchScehma from "./functions/put-get-patch-schema"
 import skuValidation from "./functions/sku-validation"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { securityDefinitionsStructure } from "./functions/security-definitions-structure";
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -442,6 +443,16 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.put"],
       then: {
         function: withXmsResource,
+      },
+    },
+    SecurityDefinitionsStructure: {
+      description: `Each OpenAPI json document must contain a security definitions section and the section must adhere to a certain format.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$"],
+      then: {
+        function: securityDefinitionsStructure,
       },
     },
   },
