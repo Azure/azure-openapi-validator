@@ -17,7 +17,7 @@ export const parameterNotDefinedInGlobalParameters = (parameters: any, _opts: an
   const path = ctx.path || [];
   const errors: any = [];
   const globalParametersList = [];
-  const swagger = ctx.document.parserResult.data;
+  const swagger = ctx?.documentInventory?.resolved;
   if (swagger.parameters) {
     for (const parameters in swagger.parameters) {
       const parameterName = swagger.parameters[parameters].name;

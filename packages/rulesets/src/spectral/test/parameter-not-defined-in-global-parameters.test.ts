@@ -54,3 +54,48 @@ test("ParameterNotDefinedInGlobalParameters should find errors", () => {
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters");
   });
 });
+
+test("ParameterNotDefinedInGlobalParameters should find no errors", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        get: {
+          operationId: "Path_Get",
+          parameters: [
+            {
+              $ref: "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              $ref: "#/parameters/ApiVersionParameter"
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      SubscriptionIdParameter: {
+        name: "subscriptionId",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "test subscription id",
+      },
+      ApiVersionParameter: {
+        name: "api-version",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "test api version",
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});

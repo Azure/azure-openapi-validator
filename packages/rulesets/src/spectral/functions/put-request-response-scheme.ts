@@ -31,8 +31,9 @@ export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
   if (reqBodySchemaRef === "") {
     return [];
   }
-  const respModelRef = putOp.responses["200"].schema?.$ref
-    ? putOp.responses["200"].schema.$ref
+  const responseCode = putOp.responses["200"] ? "200" : "201";
+  const respModelRef = putOp.responses[responseCode]?.schema?.$ref
+    ? putOp.responses[responseCode].schema.$ref
     : "";
   if (reqBodySchemaRef !== respModelRef) {
     const [reqBodySchema, respModel] = [

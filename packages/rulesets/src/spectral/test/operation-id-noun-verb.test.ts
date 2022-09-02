@@ -29,3 +29,24 @@ test("OperationIdNounVerb should find errors", () => {
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.operationId");
   });
 });
+
+test("OperationIdNounVerb should find no errors", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        get: {
+          operationId: "Paths_list",
+          responses: {
+            "200": {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});

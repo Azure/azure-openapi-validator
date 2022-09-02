@@ -1,6 +1,42 @@
 import { oas2 } from '@stoplight/spectral-formats';
 import { pattern, falsy } from '@stoplight/spectral-functions';
 
+const deleteInOperationName = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!operationId.match(/^(\w+)_(Delete)/) && !operationId.match(/^(Delete)/)) {
+        errors.push({
+            message: `'DELETE' operation '${operationId}' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const getInOperationName = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!operationId.match(/^(\w+)_(Get|List)/) && !operationId.match(/^(Get|List)/)) {
+        errors.push({
+            message: `'GET' operation '${operationId}' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
 const lroStatusCodesReturnTypeSchema = (putOp, _opts, ctx) => {
     if (putOp === null || typeof putOp !== "object") {
         return [];
@@ -42,6 +78,24 @@ const namePropertyDefinitionInParameter = (parameters, _opts, ctx) => {
                 path: [...path],
             });
         }
+    }
+    return errors;
+};
+
+const operationIdSingleUnderscore = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (operationId.match(/_/g).length > 1) {
+        errors.push({
+            message: `Only 1 underscore is permitted in the operation id, following Noun_Verb conventions`,
+            path: [...path],
+        });
     }
     return errors;
 };
@@ -91,25 +145,47 @@ const operationIdNounVerb = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const operationIdSingleUnderscore = (operationId, _opts, ctx) => {
-    if (operationId === "" || typeof operationId !== "string") {
+const pushToError = (errors, parameter, path) => {
+    errors.push({
+        message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
+        path: [...path],
+    });
+};
+const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
+    var _a;
+    if (parameters === null || !Array.isArray(parameters)) {
         return [];
     }
-    if (!operationId.includes("_")) {
+    if (parameters.length === 0) {
         return [];
     }
     const path = ctx.path || [];
     const errors = [];
-    if (operationId.match(/_/g).length > 1) {
-        errors.push({
-            message: `Only 1 underscore is permitted in the operation id, following Noun_Verb conventions`,
-            path: [...path],
-        });
+    const globalParametersList = [];
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (swagger.parameters) {
+        for (const parameters in swagger.parameters) {
+            const parameterName = swagger.parameters[parameters].name;
+            globalParametersList.push(parameterName);
+        }
+        for (const parameter of parameters) {
+            if (parameter.name &&
+                parameter.name === "subscriptionId" &&
+                !globalParametersList.includes("subscriptionId")) {
+                pushToError(errors, "subscriptionId", path);
+            }
+        }
+        if (!globalParametersList.includes("api-version")) {
+            pushToError(errors, "api-version", path);
+        }
+    }
+    else {
+        pushToError(errors, "api-version", path);
     }
     return errors;
 };
 
-const getInOperationName = (operationId, _opts, ctx) => {
+const patchInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
     }
@@ -118,9 +194,9 @@ const getInOperationName = (operationId, _opts, ctx) => {
     }
     const path = ctx.path || [];
     const errors = [];
-    if (!operationId.match(/^(\w+)_(Get|List)/) && !operationId.match(/^(Get|List)/)) {
+    if (!operationId.match(/^(\w+)_(Update)/) && !operationId.match(/^(Update)/)) {
         errors.push({
-            message: `'GET' operation '${operationId}' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change`,
+            message: `'PATCH' operation '${operationId}' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
             path: [...path],
         });
     }
@@ -145,83 +221,8 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const patchInOperationName = (operationId, _opts, ctx) => {
-    if (operationId === "" || typeof operationId !== "string") {
-        return [];
-    }
-    if (!operationId.includes("_")) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    if (!operationId.match(/^(\w+)_(Update)/) && !operationId.match(/^(Update)/)) {
-        errors.push({
-            message: `'PATCH' operation '${operationId}' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
-            path: [...path],
-        });
-    }
-    return errors;
-};
-
-const deleteInOperationName = (operationId, _opts, ctx) => {
-    if (operationId === "" || typeof operationId !== "string") {
-        return [];
-    }
-    if (!operationId.includes("_")) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    if (!operationId.match(/^(\w+)_(Delete)/) && !operationId.match(/^(Delete)/)) {
-        errors.push({
-            message: `'DELETE' operation '${operationId}' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
-            path: [...path],
-        });
-    }
-    return errors;
-};
-
-const pushToError = (errors, parameter, path) => {
-    errors.push({
-        message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
-        path: [...path],
-    });
-};
-const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
-    if (parameters === null || !Array.isArray(parameters)) {
-        return [];
-    }
-    if (parameters.length === 0) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const globalParametersList = [];
-    const swagger = ctx.document.parserResult.data;
-    if (swagger.parameters) {
-        for (const parameters in swagger.parameters) {
-            const parameterName = swagger.parameters[parameters].name;
-            globalParametersList.push(parameterName);
-        }
-        for (const parameter of parameters) {
-            if (parameter.name &&
-                parameter.name === "subscriptionId" &&
-                !globalParametersList.includes("subscriptionId")) {
-                pushToError(errors, "subscriptionId", path);
-            }
-        }
-        if (!globalParametersList.includes("api-version")) {
-            pushToError(errors, "api-version", path);
-        }
-    }
-    else {
-        pushToError(errors, "api-version", path);
-    }
-    return errors;
-};
-
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     if (putOp === null || typeof putOp !== "object") {
         return [];
     }
@@ -251,8 +252,9 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
     if (reqBodySchemaRef === "") {
         return [];
     }
-    const respModelRef = ((_c = putOp.responses["200"].schema) === null || _c === void 0 ? void 0 : _c.$ref)
-        ? putOp.responses["200"].schema.$ref
+    const responseCode = putOp.responses["200"] ? "200" : "201";
+    const respModelRef = ((_d = (_c = putOp.responses[responseCode]) === null || _c === void 0 ? void 0 : _c.schema) === null || _d === void 0 ? void 0 : _d.$ref)
+        ? putOp.responses[responseCode].schema.$ref
         : "";
     if (reqBodySchemaRef !== respModelRef) {
         const [reqBodySchema, respModel] = [
@@ -425,7 +427,7 @@ const ruleset = {
             description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
             message: "{{error}}",
             severity: "error",
-            resolved: false,
+            resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
             then: {
@@ -438,7 +440,7 @@ const ruleset = {
             severity: "error",
             resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200')]^^"],
+            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
             then: {
                 function: putRequestResponseScheme,
             },

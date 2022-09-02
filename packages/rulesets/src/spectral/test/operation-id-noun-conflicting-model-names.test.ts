@@ -34,3 +34,32 @@ test("OperationIdNounConflictingModelNames should find errors", () => {
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.operationId");
   });
 });
+
+test("OperationIdNounConflictingModelNames should find no errors", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        get: {
+          operationId: "Paths_listPaths",
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Path",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Path: {
+        type: "string",
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});

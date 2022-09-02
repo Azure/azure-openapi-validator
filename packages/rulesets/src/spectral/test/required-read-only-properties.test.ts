@@ -69,3 +69,60 @@ test("RequiredReadOnlyProperties should find errors", () => {
     expect(results[0].path.join(".")).toBe("definitions.ResponseResource");
   });
 });
+
+test("RequiredReadOnlyProperties should find no errors", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        get: {
+          operationId: "Paths_listPath",
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/ResponseResource",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      ResponseResource: {
+        properties: {
+          id: {
+            readOnly: true,
+            type: "string",
+            description: "Resource Id",
+          },
+          name: {
+            type: "string",
+            description: "Resource name",
+          },
+          type: {
+            readOnly: true,
+            type: "string",
+            description: "Resource type",
+          },
+          location: {
+            type: "string",
+            description: "Resource location",
+          },
+          tags: {
+            type: "object",
+            additionalProperties: {
+              type: "string",
+            },
+            description: "Resource tags",
+          },
+        },
+        required: ["location", "name"],
+        description: "The Resource definition.",
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});
