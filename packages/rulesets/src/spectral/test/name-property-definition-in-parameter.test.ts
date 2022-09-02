@@ -13,6 +13,13 @@ test("NamePropertyDefinitionInParameter should find errors", () => {
     swagger: "2.0",
     paths: {
       "/api/Paths": {
+        parameters: [
+          {
+            name: "",
+            in: "path",
+            type: "string",
+          },
+        ],
         put: {
           operationId: "Path_Create",
           parameters: [
@@ -23,17 +30,26 @@ test("NamePropertyDefinitionInParameter should find errors", () => {
             },
           ],
           responses: {
-            200: {
+            "200": {
               description: "Success",
             },
           },
         },
       },
     },
+    parameters: {
+      NoNameParameter: {
+        name: "",
+        in: "path",
+        type: "string",
+      },
+    },
   };
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters");
+    expect(results.length).toBe(3);
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.parameters");
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.parameters");
+    expect(results[2].path.join(".")).toBe("parameters");
   });
 });
 
@@ -42,6 +58,15 @@ test("NamePropertyDefinitionInParameter should find no errors", () => {
     swagger: "2.0",
     paths: {
       "/api/Paths": {
+        parameters: [
+          {
+            name: "serviceName",
+            in: "path",
+            description: "The name of the Service resource.",
+            required: true,
+            type: "string",
+          },
+        ],
         put: {
           operationId: "Path_Create",
           parameters: [
@@ -57,7 +82,7 @@ test("NamePropertyDefinitionInParameter should find no errors", () => {
             },
           ],
           responses: {
-            200: {
+            "200": {
               description: "Success",
             },
           },
