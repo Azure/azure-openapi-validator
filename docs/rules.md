@@ -1108,12 +1108,6 @@ All services should follow the Azure API Guidelines for specifying the API versi
 
 Please refer to [version-policy.md](./version-policy.md) for details.
 
-### XmsLongRunningOperationOptions
-
-The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
-
-Please refer to [x-ms-long-running-operation-options.md](./x-ms-long-running-operation-options.md) for details.
-
 ### XmsClientNameParameter
 
 The [`x-ms-client-name`](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-client-name) extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.
@@ -1143,6 +1137,12 @@ Please refer to [xms-examples-required.md](./xms-examples-required.md) for detai
 This rule is to check the `id` property or identifier of objects in the array. See more here: [x-ms-identifiers](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-identifiers).
 
 Please refer to [xms-identifier-validation.md](./xms-identifier-validation.md) for details.
+
+### XmsLongRunningOperationOptions
+
+The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
+
+Please refer to [xms-long-running-operation-options.md](./xms-long-running-operation-options.md) for details.
 
 ### XmsPageableListByRGAndSubscriptions
 
