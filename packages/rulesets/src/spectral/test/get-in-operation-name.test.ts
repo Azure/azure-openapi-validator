@@ -29,3 +29,24 @@ test("GetInOperationName should find errors", () => {
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.operationId");
   });
 });
+
+test("GetInOperationName should find no errors", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        get: {
+          operationId: "Noun_Get",
+          responses: {
+            default: {
+              description: "Unexpected error",
+            },
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});

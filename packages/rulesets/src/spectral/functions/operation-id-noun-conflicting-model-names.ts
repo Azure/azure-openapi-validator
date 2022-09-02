@@ -10,7 +10,7 @@ export const operationIdNounConflictingModelNames = (operationId: any, _opts: an
   const path = ctx.path || [];
   const errors: any = [];
   const nounPartOfOperationId = operationId.split("_")[0];
-  const swagger = ctx.document.parserResult.data;
+  const swagger = ctx?.documentInventory?.resolved;
   const definitionsList = swagger.definitions ? Object.keys(swagger.definitions) : [];
   if (definitionsList.includes(nounPartOfOperationId)) {
     errors.push({

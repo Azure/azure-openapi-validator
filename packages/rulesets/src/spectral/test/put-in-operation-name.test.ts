@@ -14,7 +14,7 @@ test("PutInOperationName should find errors", () => {
     paths: {
       "/api/Paths": {
         put: {
-          operationId: "Noun_NotNamedPut",
+          operationId: "Noun_NotNamedCreate",
           responses: {
             default: {
               description: "Unexpected error",
@@ -27,5 +27,26 @@ test("PutInOperationName should find errors", () => {
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1);
     expect(results[0].path.join(".")).toBe("paths./api/Paths.put.operationId");
+  });
+});
+
+test("PutInOperationName should find no errors", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Noun_Create",
+          responses: {
+            default: {
+              description: "Unexpected error",
+            },
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
   });
 });
