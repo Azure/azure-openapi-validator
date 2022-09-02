@@ -47,6 +47,7 @@ const namePropertyDefinitionInParameter = (parameters, _opts, ctx) => {
 };
 
 const operationIdNounConflictingModelNames = (operationId, _opts, ctx) => {
+    var _a;
     if (operationId === "" || typeof operationId !== "string") {
         return [];
     }
@@ -56,7 +57,7 @@ const operationIdNounConflictingModelNames = (operationId, _opts, ctx) => {
     const path = ctx.path || [];
     const errors = [];
     const nounPartOfOperationId = operationId.split("_")[0];
-    const swagger = ctx.document.parserResult.data;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
     const definitionsList = swagger.definitions ? Object.keys(swagger.definitions) : [];
     if (definitionsList.includes(nounPartOfOperationId)) {
         errors.push({

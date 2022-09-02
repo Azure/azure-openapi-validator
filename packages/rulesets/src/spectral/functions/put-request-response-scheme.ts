@@ -10,7 +10,7 @@ export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
     return [];
   }
   let reqBodySchemaRef = "";
-  const swagger = ctx?.documentInventory?.resolved;
+  const swagger = ctx.document.parserResult.data;
   const globalParameters = swagger.parameters ? swagger.parameters : {};
   for (const parameter of putOp.parameters) {
     if (parameter.in === "body") {
