@@ -1,15 +1,15 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { pattern , falsy } from "@stoplight/spectral-functions"
+import { deleteInOperationName } from "./functions/delete-in-operation-name";
+import { getInOperationName } from "./functions/get-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
+import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id";
 import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names";
 import { operationIdNounVerb } from "./functions/operation-id-noun-verb";
-import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id";
-import { getInOperationName } from "./functions/get-in-operation-name";
-import { putInOperationName } from "./functions/put-in-operation-name";
-import { patchInOperationName } from "./functions/patch-in-operation-name";
-import { deleteInOperationName } from "./functions/delete-in-operation-name";
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters";
+import { patchInOperationName } from "./functions/patch-in-operation-name";
+import { putInOperationName } from "./functions/put-in-operation-name";
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme";
 import { requiredReadOnlyProperties } from "./functions/required-read-only-properties";
 

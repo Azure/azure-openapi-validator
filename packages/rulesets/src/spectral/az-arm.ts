@@ -13,10 +13,10 @@ import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { securityDefinitionsStructure } from "./functions/security-definitions-structure";
 import skuValidation from "./functions/sku-validation"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
-import { securityDefinitionsStructure } from "./functions/security-definitions-structure";
 const ruleset: any = {
   extends: [common],
   rules: {
