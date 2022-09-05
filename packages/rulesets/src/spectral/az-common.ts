@@ -156,7 +156,7 @@ const ruleset: any = {
       description: "The request & response('200') schema of the PUT operation must be same.",
       message: "{{error}}",
       severity: "error",
-      resolved: false,
+      resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
       then: {

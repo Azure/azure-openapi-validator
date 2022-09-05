@@ -1,5 +1,7 @@
 // Verifies if a PUT operation request and response schemas match.
 
+import lodash from "lodash";
+
 export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
   if (putOp === null || typeof putOp !== "object") {
     return [];
@@ -9,39 +11,27 @@ export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
   if (!putOp.parameters) {
     return [];
   }
-  let reqBodySchemaRef = "";
-  const swagger = ctx.document.parserResult.data;
-  const globalParameters = swagger.parameters ? swagger.parameters : {};
-  for (const parameter of putOp.parameters) {
+  let reqBodySchema: object = {};
+  let reqBodySchemaPath: string = "";
+  for (let i = 0; i < putOp.parameters.length; i++) {
+    const parameter = putOp.parameters[i];
     if (parameter.in === "body") {
-      reqBodySchemaRef = parameter.schema?.$ref ? parameter.schema.$ref : "";
+      reqBodySchemaPath = `parameters[${i}].schema`;
+      reqBodySchema = parameter.schema ? parameter.schema : {};
       break;
-    } else if (Object.keys(parameter).length === 1 && Object.keys(parameter)[0] === "$ref") {
-      const globalParameterName = parameter.$ref.split("/").reverse()[0];
-      if (
-        Object.keys(globalParameters).includes(globalParameterName) &&
-        globalParameters[globalParameterName].in === "body"
-      ) {
-        reqBodySchemaRef = globalParameters[globalParameterName].schema?.$ref
-          ? globalParameters[globalParameterName].schema.$ref
-          : "";
-      }
     }
   }
-  if (reqBodySchemaRef === "") {
+  if (Object.keys(reqBodySchema).length === 0) {
     return [];
   }
   const responseCode = putOp.responses["200"] ? "200" : "201";
-  const respModelRef = putOp.responses[responseCode]?.schema?.$ref
-    ? putOp.responses[responseCode].schema.$ref
-    : "";
-  if (reqBodySchemaRef !== respModelRef) {
-    const [reqBodySchema, respModel] = [
-      reqBodySchemaRef.split("/").reverse()[0],
-      respModelRef.split("/").reverse()[0],
-    ];
+  const respModelPath = `response[${responseCode}].schema`;
+  const respModel = putOp.responses[responseCode]?.schema
+    ? putOp.responses[responseCode].schema
+    : {};
+  if (!lodash.isEqual(reqBodySchema, respModel)) {
     errors.push({
-      message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchema}' Response Model: '${respModel}'`,
+      message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
       path: [...path],
     });
   }
