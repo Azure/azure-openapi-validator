@@ -407,12 +407,12 @@ export class ArmHelper {
   public getOperationApi() {
     const walker = new SwaggerWalker(this.inventory)
     let result: any = undefined
-    walker.warkAll(["$.paths.*"], (path: string[], value: any, rootPath: string) => {
-        const apiPath = path[2] as string
-        const matchResult = apiPath.match(this.OperationApiRegEx)
-        if (matchResult) {
-          result = [path, this.enhancedSchema(value?.get?.responses["200"]?.schema,rootPath)]
-        }
+    walker.warkAll(["$.[paths,x-ms-paths].*"], (path: string[], value: any, rootPath: string) => {
+      const apiPath = path[2] as string
+      const matchResult = apiPath.match(this.OperationApiRegEx)
+      if (matchResult) {
+        result = [path, this.enhancedSchema(value?.get?.responses["200"]?.schema, rootPath)]
+      }
     })
     return result
   }
@@ -562,12 +562,9 @@ export class ArmHelper {
    * @returns response model or undefined if the model is anonymous
    */
   public getResponseModelFromPath(path: string): Workspace.EnhancedSchema | undefined {
-    let pathObj = this.innerDoc.paths[path]
-    if (!pathObj && this.innerDoc["x-ms-paths"]) {
-      pathObj = this.innerDoc["x-ms-paths"][path]
-    }
-    if (pathObj && pathObj.get && pathObj.get.responses["200"]) {
-      return this.enhancedSchema(pathObj.get.responses["200"]?.schema)
+    const getOperation = this.getOperation(path)
+    if (getOperation && getOperation.responses["200"]) {
+      return this.enhancedSchema(getOperation.responses?.["200"]?.schema)
     }
     return undefined
   }
@@ -585,15 +582,31 @@ export class ArmHelper {
     return undefined
   }
 
-  public getOperationIdFromPath(path: string, code = "get", doc?: any) {
-    doc = doc || this.innerDoc
-    let pathObj = doc?.paths[path]
-    if (!pathObj && doc?.["x-ms-paths"]) {
-      pathObj = doc?.["x-ms-paths"][path]
+  public getOperation(path: string, code = "get", doc?: any) {
+    let pathObj: any
+    if (doc) {
+      pathObj = doc.paths?.[path]
+    } else {
+      const walker = new SwaggerWalker(this.inventory)
+      walker.warkAll([`$.[paths,x-ms-paths][${path}]`], (path: string[], value: any, rootPath: string) => {
+        pathObj = value
+      })
     }
+
     if (pathObj && pathObj[code]) {
-      return pathObj[code].operationId
+      return pathObj[code]
     }
+    return undefined
+  }
+
+  public getOperationIdFromPath(path: string, code = "get", doc?: any) {
+    const operation = this.getOperation(path, code, doc)
+    return operation?.operationId
+  }
+
+  public isPathXmsPageable(path: string, code = "get", doc?: any) {
+    const operation = this.getOperation(path, code, doc)
+    return !!operation?.["x-ms-pageable"]
   }
 
   public findOperation(path: string, code = "get") {
@@ -639,9 +652,9 @@ export class ArmHelper {
     return this.swaggerUtil.getProperty(schema, property)
   }
 
-  public getResourceProperties(resourceName:string) {
+  public getResourceProperties(resourceName: string) {
     const schema = this.getResourceByName(resourceName)
-    if (schema){
+    if (schema) {
       return this.getProperties(schema)
     }
     return []
