@@ -1,5 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
+import lodash from 'lodash';
 
 const deleteInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
@@ -238,7 +239,7 @@ const putInOperationName = (operationId, _opts, ctx) => {
 };
 
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
-    var _a, _b, _c, _d;
+    var _a;
     if (putOp === null || typeof putOp !== "object") {
         return [];
     }
@@ -247,38 +248,27 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
     if (!putOp.parameters) {
         return [];
     }
-    let reqBodySchemaRef = "";
-    const swagger = ctx.document.parserResult.data;
-    const globalParameters = swagger.parameters ? swagger.parameters : {};
-    for (const parameter of putOp.parameters) {
+    let reqBodySchema = {};
+    let reqBodySchemaPath = "";
+    for (let i = 0; i < putOp.parameters.length; i++) {
+        const parameter = putOp.parameters[i];
         if (parameter.in === "body") {
-            reqBodySchemaRef = ((_a = parameter.schema) === null || _a === void 0 ? void 0 : _a.$ref) ? parameter.schema.$ref : "";
+            reqBodySchemaPath = `parameters[${i}].schema`;
+            reqBodySchema = parameter.schema ? parameter.schema : {};
             break;
         }
-        else if (Object.keys(parameter).length === 1 && Object.keys(parameter)[0] === "$ref") {
-            const globalParameterName = parameter.$ref.split("/").reverse()[0];
-            if (Object.keys(globalParameters).includes(globalParameterName) &&
-                globalParameters[globalParameterName].in === "body") {
-                reqBodySchemaRef = ((_b = globalParameters[globalParameterName].schema) === null || _b === void 0 ? void 0 : _b.$ref)
-                    ? globalParameters[globalParameterName].schema.$ref
-                    : "";
-            }
-        }
     }
-    if (reqBodySchemaRef === "") {
+    if (Object.keys(reqBodySchema).length === 0) {
         return [];
     }
     const responseCode = putOp.responses["200"] ? "200" : "201";
-    const respModelRef = ((_d = (_c = putOp.responses[responseCode]) === null || _c === void 0 ? void 0 : _c.schema) === null || _d === void 0 ? void 0 : _d.$ref)
-        ? putOp.responses[responseCode].schema.$ref
-        : "";
-    if (reqBodySchemaRef !== respModelRef) {
-        const [reqBodySchema, respModel] = [
-            reqBodySchemaRef.split("/").reverse()[0],
-            respModelRef.split("/").reverse()[0],
-        ];
+    const respModelPath = `response[${responseCode}].schema`;
+    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
+        ? putOp.responses[responseCode].schema
+        : {};
+    if (!lodash.isEqual(reqBodySchema, respModel)) {
         errors.push({
-            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchema}' Response Model: '${respModel}'`,
+            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
             path: [...path],
         });
     }
@@ -454,7 +444,7 @@ const ruleset$1 = {
             description: "The request & response('200') schema of the PUT operation must be same.",
             message: "{{error}}",
             severity: "error",
-            resolved: false,
+            resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
             then: {

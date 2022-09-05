@@ -12,7 +12,7 @@ export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
     return [];
   }
   let reqBodySchema: object = {};
-  let reqBodySchemaPath: string = "";
+  let reqBodySchemaPath = "";
   for (let i = 0; i < putOp.parameters.length; i++) {
     const parameter = putOp.parameters[i];
     if (parameter.in === "body") {
