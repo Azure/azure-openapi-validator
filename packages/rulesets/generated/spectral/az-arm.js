@@ -1,6 +1,5 @@
 import { oas2 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
-import lodash from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const deleteInOperationName = (operationId, _opts, ctx) => {
@@ -239,6 +238,163 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function getProperty(schema, propName) {
+    if (!schema) {
+        return {};
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const base of schema.allOf) {
+            const result = getProperty(base, propName);
+            if (result) {
+                return result;
+            }
+        }
+    }
+    if (schema.properties) {
+        if (propName in schema.properties) {
+            return schema.properties[propName];
+        }
+    }
+    return undefined;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+function diffSchema(a, b) {
+    const notMatchedProperties = [];
+    function diffSchemaInternal(a, b, paths) {
+        if (!(a || b)) {
+            return;
+        }
+        if (a && b) {
+            const propsA = getProperties(a);
+            const propsB = getProperties(b);
+            Object.keys(propsA).forEach((p) => {
+                if (propsB[p]) {
+                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
+                }
+                else {
+                    notMatchedProperties.push([...paths, p].join("."));
+                }
+            });
+        }
+    }
+    diffSchemaInternal(a, b, []);
+    return notMatchedProperties;
+}
+function getGetOperationSchema(paths, ctx) {
+    var _a, _b, _c;
+    const getOperationPath = [...paths, "get"];
+    const getOperation = jsonPath(getOperationPath, (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved);
+    if (!getOperation) {
+        return undefined;
+    }
+    return ((_b = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema) || ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _c === void 0 ? void 0 : _c.schema);
+}
+function isPageableOperation(operation) {
+    return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
+}
+function getReturnedType(operation) {
+    var _a;
+    const succeededCodes = ["200", "201", "202"];
+    for (const code of succeededCodes) {
+        const response = operation.responses[code];
+        if (response) {
+            return (_a = response === null || response === void 0 ? void 0 : response.schema) === null || _a === void 0 ? void 0 : _a.$ref;
+        }
+    }
+}
+function getReturnedSchema(operation) {
+    const succeededCodes = ["200", "201"];
+    for (const code of succeededCodes) {
+        const response = operation.responses[code];
+        if (response === null || response === void 0 ? void 0 : response.schema) {
+            return response === null || response === void 0 ? void 0 : response.schema;
+        }
+    }
+}
+function isXmsResource(schema) {
+    if (!schema) {
+        return false;
+    }
+    if (schema["x-ms-azure-resource"]) {
+        return true;
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const base of schema.allOf) {
+            if (isXmsResource(base)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+function isSchemaEqual(a, b, isSecurityDefinitions) {
+    if (a && b) {
+        const propsA = Object.getOwnPropertyNames(a);
+        const propsB = Object.getOwnPropertyNames(b);
+        if (propsA.length !== propsB.length) {
+            return false;
+        }
+        for (const propsAName of propsA) {
+            if ((propsAName === "description" || propsAName === "user_impersonation") &&
+                isSecurityDefinitions) {
+                continue;
+            }
+            const [propA, propB] = [a[propsAName], b[propsAName]];
+            if (typeof propA === "object") {
+                if (!isSchemaEqual(propA, propB, isSecurityDefinitions)) {
+                    return false;
+                }
+            }
+            else if (propA !== propB) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -267,7 +423,7 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
     const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
         ? putOp.responses[responseCode].schema
         : {};
-    if (!lodash.isEqual(reqBodySchema, respModel)) {
+    if (!isSchemaEqual(reqBodySchema, respModel)) {
         errors.push({
             message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
             path: [...path],
@@ -584,138 +740,6 @@ const verifyArmPath = createRulesetFunction({
     return errors;
 });
 
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { ...properties, ...schema.properties };
-    }
-    return properties;
-}
-function getProperty(schema, propName) {
-    if (!schema) {
-        return {};
-    }
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        for (const base of schema.allOf) {
-            const result = getProperty(base, propName);
-            if (result) {
-                return result;
-            }
-        }
-    }
-    if (schema.properties) {
-        if (propName in schema.properties) {
-            return schema.properties[propName];
-        }
-    }
-    return undefined;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
-        return [];
-    }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
-    }
-    if (schema.required) {
-        requires = [...schema.required, requires];
-    }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
-function diffSchema(a, b) {
-    const notMatchedProperties = [];
-    function diffSchemaInternal(a, b, paths) {
-        if (!(a || b)) {
-            return;
-        }
-        if (a && b) {
-            const propsA = getProperties(a);
-            const propsB = getProperties(b);
-            Object.keys(propsA).forEach((p) => {
-                if (propsB[p]) {
-                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
-                }
-                else {
-                    notMatchedProperties.push([...paths, p].join("."));
-                }
-            });
-        }
-    }
-    diffSchemaInternal(a, b, []);
-    return notMatchedProperties;
-}
-function getGetOperationSchema(paths, ctx) {
-    var _a, _b, _c;
-    const getOperationPath = [...paths, "get"];
-    const getOperation = jsonPath(getOperationPath, (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved);
-    if (!getOperation) {
-        return undefined;
-    }
-    return ((_b = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema) || ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _c === void 0 ? void 0 : _c.schema);
-}
-function isPagableOperation(operation) {
-    return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
-}
-function getReturnedType(operation) {
-    var _a;
-    const succeededCodes = ["200", "201", "202"];
-    for (const code of succeededCodes) {
-        const response = operation.responses[code];
-        if (response) {
-            return (_a = response === null || response === void 0 ? void 0 : response.schema) === null || _a === void 0 ? void 0 : _a.$ref;
-        }
-    }
-}
-function getReturnedSchema(operation) {
-    const succeededCodes = ["200", "201"];
-    for (const code of succeededCodes) {
-        const response = operation.responses[code];
-        if (response === null || response === void 0 ? void 0 : response.schema) {
-            return response === null || response === void 0 ? void 0 : response.schema;
-        }
-    }
-}
-function isXmsResource(schema) {
-    if (!schema) {
-        return false;
-    }
-    if (schema["x-ms-azure-resource"]) {
-        return true;
-    }
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        for (const base of schema.allOf) {
-            if (isXmsResource(base)) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -753,7 +777,7 @@ const collectionObjectPropertiesNaming = (op, _opts, paths) => {
     const path = paths.path || [];
     const errors = [];
     const regex = /.+_List([^_]*)$/;
-    if (op && regex.test(op.operationId) && isPagableOperation(op)) {
+    if (op && regex.test(op.operationId) && isPageableOperation(op)) {
         const schema = (_b = (_a = op.responses) === null || _a === void 0 ? void 0 : _a["200"]) === null || _b === void 0 ? void 0 : _b.schema;
         const valueSchema = getProperty(schema, "value");
         if (schema && !(valueSchema && valueSchema.type === "array")) {
@@ -990,7 +1014,6 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
 };
 
 const securityDefinitionsStructure = (swagger, _opts) => {
-    var _a, _b;
     if (swagger === "" || typeof swagger !== "object") {
         return [];
     }
@@ -1010,16 +1033,7 @@ const securityDefinitionsStructure = (swagger, _opts) => {
         },
     };
     const securityDefinition = swagger.securityDefinitions;
-    const securityDefinitionClone = lodash.cloneDeep(securityDefinition);
-    if (((_a = securityDefinitionClone.azure_auth) === null || _a === void 0 ? void 0 : _a.description) &&
-        securityDefinitionClone.azure_auth.description !== "") {
-        securityDefinitionClone.azure_auth.description = "Azure Active Directory OAuth2 Flow";
-    }
-    if (((_b = securityDefinitionClone.azure_auth) === null || _b === void 0 ? void 0 : _b.scopes.user_impersonation) &&
-        securityDefinitionClone.azure_auth.scopes.user_impersonation !== "") {
-        securityDefinitionClone.azure_auth.scopes.user_impersonation = "impersonate your user account";
-    }
-    if (!lodash.isEqual(securityDefinitionClone, securityDefinitionsModule)) {
+    if (!isSchemaEqual(securityDefinition, securityDefinitionsModule, true)) {
         errors.push({
             message: `Every OpenAPI(swagger) spec/configuration must have a security definitions section and it must adhere to the following structure: https://github.com/Azure/azure-openapi-validator/blob/main/docs/security-definitions-structure-validation.md`,
         });

@@ -109,7 +109,7 @@ export function getGetOperationSchema(paths: string[], ctx: any) {
   return getOperation?.responses["200"]?.schema || getOperation?.responses["201"]?.schema
 }
 
-export function isPagableOperation(operation: any) {
+export function isPageableOperation(operation: any) {
   return !!operation?.["x-ms-pageable"]
 }
 
@@ -148,4 +148,31 @@ export function isXmsResource(schema: any) {
     }
   }
   return false
+}
+
+export function isSchemaEqual(a: any, b: any, isSecurityDefinitions?: boolean): boolean {
+  if (a && b) {
+    const propsA = Object.getOwnPropertyNames(a);
+    const propsB = Object.getOwnPropertyNames(b);
+    if (propsA.length !== propsB.length) {
+      return false;
+    }
+    for (const propsAName of propsA) {
+      if (
+        (propsAName === "description" || propsAName === "user_impersonation") &&
+        isSecurityDefinitions
+      ) {
+        continue;
+      }
+      const [propA, propB] = [a[propsAName], b[propsAName]];
+      if (typeof propA === "object") {
+        if (!isSchemaEqual(propA, propB, isSecurityDefinitions)) {
+          return false;
+        }
+      } else if (propA !== propB) {
+        return false;
+      }
+    }
+  }
+  return true;
 }

@@ -1,6 +1,5 @@
 import { oas2 } from '@stoplight/spectral-formats';
 import { pattern, falsy } from '@stoplight/spectral-functions';
-import lodash from 'lodash';
 
 const deleteInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
@@ -238,6 +237,32 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
+function isSchemaEqual(a, b, isSecurityDefinitions) {
+    if (a && b) {
+        const propsA = Object.getOwnPropertyNames(a);
+        const propsB = Object.getOwnPropertyNames(b);
+        if (propsA.length !== propsB.length) {
+            return false;
+        }
+        for (const propsAName of propsA) {
+            if ((propsAName === "description" || propsAName === "user_impersonation") &&
+                isSecurityDefinitions) {
+                continue;
+            }
+            const [propA, propB] = [a[propsAName], b[propsAName]];
+            if (typeof propA === "object") {
+                if (!isSchemaEqual(propA, propB, isSecurityDefinitions)) {
+                    return false;
+                }
+            }
+            else if (propA !== propB) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -266,7 +291,7 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
     const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
         ? putOp.responses[responseCode].schema
         : {};
-    if (!lodash.isEqual(reqBodySchema, respModel)) {
+    if (!isSchemaEqual(reqBodySchema, respModel)) {
         errors.push({
             message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
             path: [...path],

@@ -1,6 +1,6 @@
 // Checks for the presence and existence of the security definition
 
-import lodash from "lodash";
+import { isSchemaEqual } from "./utils";
 
 export const securityDefinitionsStructure = (swagger: any, _opts: any) => {
   if (swagger === "" || typeof swagger !== "object") {
@@ -22,20 +22,7 @@ export const securityDefinitionsStructure = (swagger: any, _opts: any) => {
     },
   };
   const securityDefinition = swagger.securityDefinitions;
-  const securityDefinitionClone = lodash.cloneDeep(securityDefinition);
-  if (
-    securityDefinitionClone.azure_auth?.description &&
-    securityDefinitionClone.azure_auth.description !== ""
-  ) {
-    securityDefinitionClone.azure_auth.description = "Azure Active Directory OAuth2 Flow";
-  }
-  if (
-    securityDefinitionClone.azure_auth?.scopes.user_impersonation &&
-    securityDefinitionClone.azure_auth.scopes.user_impersonation !== ""
-  ) {
-    securityDefinitionClone.azure_auth.scopes.user_impersonation = "impersonate your user account";
-  }
-  if (!lodash.isEqual(securityDefinitionClone, securityDefinitionsModule)) {
+  if (!isSchemaEqual(securityDefinition, securityDefinitionsModule, true)) {
     errors.push({
       message: `Every OpenAPI(swagger) spec/configuration must have a security definitions section and it must adhere to the following structure: https://github.com/Azure/azure-openapi-validator/blob/main/docs/security-definitions-structure-validation.md`,
     });
