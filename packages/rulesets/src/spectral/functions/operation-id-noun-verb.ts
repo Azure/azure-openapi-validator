@@ -22,7 +22,7 @@ export const operationIdNounVerb = (operationId: any, _opts: any, ctx: any) => {
   const verbPartOfOperationId = operationId.split("_")[1];
   if (verbPartOfOperationId.match(nounSearchPattern)) {
     errors.push({
-      message: `Per the Noun_Verb convention for Operation Ids, the noun '${nounPartOfOperationId}' should not appear after the underscore`,
+      message: `Per the Noun_Verb convention for Operation Ids, the noun '${nounPartOfOperationId}' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
       path: [...path],
     });
   }

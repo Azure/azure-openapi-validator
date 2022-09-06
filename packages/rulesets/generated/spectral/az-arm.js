@@ -24,14 +24,11 @@ const getInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
     }
-    if (!operationId.includes("_")) {
-        return [];
-    }
     const path = ctx.path || [];
     const errors = [];
     if (!operationId.match(/^(\w+)_(Get|List)/) && !operationId.match(/^(Get|List)/)) {
         errors.push({
-            message: `'GET' operation '${operationId}' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change`,
+            message: `'GET' operation '${operationId}' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
             path: [...path],
         });
     }
@@ -121,7 +118,7 @@ const operationIdNounConflictingModelNames = (operationId, _opts, ctx) => {
     const definitionsList = swagger.definitions ? Object.keys(swagger.definitions) : [];
     if (definitionsList.includes(nounPartOfOperationId)) {
         errors.push({
-            message: `OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to '${nounPartOfOperationId}Model'. Consider using the plural form of '${nounPartOfOperationId}' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change`,
+            message: `OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to '${nounPartOfOperationId}Model'. Consider using the plural form of '${nounPartOfOperationId}' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
             path: [...path],
         });
     }
@@ -144,7 +141,7 @@ const operationIdNounVerb = (operationId, _opts, ctx) => {
     const verbPartOfOperationId = operationId.split("_")[1];
     if (verbPartOfOperationId.match(nounSearchPattern)) {
         errors.push({
-            message: `Per the Noun_Verb convention for Operation Ids, the noun '${nounPartOfOperationId}' should not appear after the underscore`,
+            message: `Per the Noun_Verb convention for Operation Ids, the noun '${nounPartOfOperationId}' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
             path: [...path],
         });
     }
@@ -220,7 +217,7 @@ const putInOperationName = (operationId, _opts, ctx) => {
     const errors = [];
     if (!operationId.match(/^(\w+)_(Create)/) && !operationId.match(/^(Create)/)) {
         errors.push({
-            message: `'PUT' operation '${operationId}' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change`,
+            message: `'PUT' operation '${operationId}' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
             path: [...path],
         });
     }

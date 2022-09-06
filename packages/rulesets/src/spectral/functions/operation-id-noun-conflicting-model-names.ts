@@ -14,7 +14,7 @@ export const operationIdNounConflictingModelNames = (operationId: any, _opts: an
   const definitionsList = swagger.definitions ? Object.keys(swagger.definitions) : [];
   if (definitionsList.includes(nounPartOfOperationId)) {
     errors.push({
-      message: `OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to '${nounPartOfOperationId}Model'. Consider using the plural form of '${nounPartOfOperationId}' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change`,
+      message: `OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to '${nounPartOfOperationId}Model'. Consider using the plural form of '${nounPartOfOperationId}' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
       path: [...path],
     });
   }
