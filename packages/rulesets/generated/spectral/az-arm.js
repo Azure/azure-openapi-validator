@@ -64,36 +64,25 @@ const lroStatusCodesReturnTypeSchema = (putOp, _opts, ctx) => {
 };
 
 const namePropertyDefinitionInParameter = (parameters, _opts, ctx) => {
-    if (parameters === null || (!Array.isArray(parameters) && typeof parameters !== "object")) {
+    if (parameters === null || typeof parameters !== "object") {
         return [];
     }
     const path = ctx.path || [];
     const errors = [];
-    if (Array.isArray(parameters)) {
-        if (parameters.length === 0) {
-            return [];
-        }
-        for (const parameter of parameters) {
-            if (!parameter.name || parameter.name === "") {
-                errors.push({
-                    message: `Parameter Must have the "name" property defined with non-empty string as its value`,
-                    path: [...path],
-                });
-            }
-        }
+    const propsParameters = Object.getOwnPropertyNames(parameters);
+    if (propsParameters.length === 0) {
+        return [];
     }
-    else {
-        if (Object.keys(parameters).length === 0) {
-            return [];
+    for (const propsParameter of propsParameters) {
+        if (propsParameter === "length") {
+            continue;
         }
-        for (const parameterName in parameters) {
-            const parameter = parameters[parameterName];
-            if (!parameter.name || parameter.name === "") {
-                errors.push({
-                    message: `Parameter Must have the "name" property defined with non-empty string as its value`,
-                    path: [...path],
-                });
-            }
+        const parameter = parameters[propsParameter];
+        if (!parameter.name || parameter.name === "") {
+            errors.push({
+                message: `Parameter Must have the "name" property defined with non-empty string as its value`,
+                path: [...path],
+            });
         }
     }
     return errors;
@@ -369,7 +358,7 @@ function isXmsResource(schema) {
     }
     return false;
 }
-function isSchemaEqual(a, b, isSecurityDefinitions) {
+function isSchemaEqual(a, b) {
     if (a && b) {
         const propsA = Object.getOwnPropertyNames(a);
         const propsB = Object.getOwnPropertyNames(b);
@@ -377,13 +366,9 @@ function isSchemaEqual(a, b, isSecurityDefinitions) {
             return false;
         }
         for (const propsAName of propsA) {
-            if ((propsAName === "description" || propsAName === "user_impersonation") &&
-                isSecurityDefinitions) {
-                continue;
-            }
             const [propA, propB] = [a[propsAName], b[propsAName]];
             if (typeof propA === "object") {
-                if (!isSchemaEqual(propA, propB, isSecurityDefinitions)) {
+                if (!isSchemaEqual(propA, propB)) {
                     return false;
                 }
             }
@@ -433,7 +418,7 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
 };
 
 const requiredReadOnlyProperties = (definition, _opts, ctx) => {
-    if (definition === "" || typeof definition !== "object") {
+    if (definition === null || typeof definition !== "object") {
         return [];
     }
     if (!Array.isArray(definition.required) ||
@@ -504,7 +489,7 @@ const ruleset$1 = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$..[?(@property === 'parameters')]"],
+            given: ["$.parameters", "$.paths.*.parameters", "$.paths.*.*.parameters"],
             then: {
                 function: namePropertyDefinitionInParameter,
             },
@@ -1014,6 +999,7 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
 };
 
 const securityDefinitionsStructure = (swagger, _opts) => {
+    var _a, _b;
     if (swagger === "" || typeof swagger !== "object") {
         return [];
     }
@@ -1033,7 +1019,16 @@ const securityDefinitionsStructure = (swagger, _opts) => {
         },
     };
     const securityDefinition = swagger.securityDefinitions;
-    if (!isSchemaEqual(securityDefinition, securityDefinitionsModule, true)) {
+    const securityDefinitionClone = JSON.parse(JSON.stringify(securityDefinition));
+    if (((_a = securityDefinitionClone.azure_auth) === null || _a === void 0 ? void 0 : _a.description) &&
+        securityDefinitionClone.azure_auth.description !== "") {
+        securityDefinitionClone.azure_auth.description = "Azure Active Directory OAuth2 Flow";
+    }
+    if (((_b = securityDefinitionClone.azure_auth) === null || _b === void 0 ? void 0 : _b.scopes.user_impersonation) &&
+        securityDefinitionClone.azure_auth.scopes.user_impersonation !== "") {
+        securityDefinitionClone.azure_auth.scopes.user_impersonation = "impersonate your user account";
+    }
+    if (!isSchemaEqual(securityDefinitionClone, securityDefinitionsModule)) {
         errors.push({
             message: `Every OpenAPI(swagger) spec/configuration must have a security definitions section and it must adhere to the following structure: https://github.com/Azure/azure-openapi-validator/blob/main/docs/security-definitions-structure-validation.md`,
         });

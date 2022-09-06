@@ -150,7 +150,7 @@ export function isXmsResource(schema: any) {
   return false
 }
 
-export function isSchemaEqual(a: any, b: any, isSecurityDefinitions?: boolean): boolean {
+export function isSchemaEqual(a: any, b: any): boolean {
   if (a && b) {
     const propsA = Object.getOwnPropertyNames(a);
     const propsB = Object.getOwnPropertyNames(b);
@@ -158,15 +158,9 @@ export function isSchemaEqual(a: any, b: any, isSecurityDefinitions?: boolean): 
       return false;
     }
     for (const propsAName of propsA) {
-      if (
-        (propsAName === "description" || propsAName === "user_impersonation") &&
-        isSecurityDefinitions
-      ) {
-        continue;
-      }
       const [propA, propB] = [a[propsAName], b[propsAName]];
       if (typeof propA === "object") {
-        if (!isSchemaEqual(propA, propB, isSecurityDefinitions)) {
+        if (!isSchemaEqual(propA, propB)) {
           return false;
         }
       } else if (propA !== propB) {

@@ -22,7 +22,20 @@ export const securityDefinitionsStructure = (swagger: any, _opts: any) => {
     },
   };
   const securityDefinition = swagger.securityDefinitions;
-  if (!isSchemaEqual(securityDefinition, securityDefinitionsModule, true)) {
+  const securityDefinitionClone = JSON.parse(JSON.stringify(securityDefinition));
+  if (
+    securityDefinitionClone.azure_auth?.description &&
+    securityDefinitionClone.azure_auth.description !== ""
+  ) {
+    securityDefinitionClone.azure_auth.description = "Azure Active Directory OAuth2 Flow";
+  }
+  if (
+    securityDefinitionClone.azure_auth?.scopes.user_impersonation &&
+    securityDefinitionClone.azure_auth.scopes.user_impersonation !== ""
+  ) {
+    securityDefinitionClone.azure_auth.scopes.user_impersonation = "impersonate your user account";
+  }
+  if (!isSchemaEqual(securityDefinitionClone, securityDefinitionsModule)) {
     errors.push({
       message: `Every OpenAPI(swagger) spec/configuration must have a security definitions section and it must adhere to the following structure: https://github.com/Azure/azure-openapi-validator/blob/main/docs/security-definitions-structure-validation.md`,
     });

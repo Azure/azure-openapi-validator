@@ -1,7 +1,7 @@
 // Validates if a property is marked as required, it should not be read only
 
 export const requiredReadOnlyProperties = (definition: any, _opts: any, ctx: any) => {
-  if (definition === "" || typeof definition !== "object") {
+  if (definition === null || typeof definition !== "object") {
     return [];
   }
   if (

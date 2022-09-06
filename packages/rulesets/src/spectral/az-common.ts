@@ -59,7 +59,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$..[?(@property === 'parameters')]"],
+      given: ["$.parameters", "$.paths.*.parameters", "$.paths.*.*.parameters"],
       then: {
         function: namePropertyDefinitionInParameter,
       },
