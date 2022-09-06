@@ -19,6 +19,7 @@ import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
+import avoidMsdnReferences from "./functions/avoid-msdn-references";
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -493,6 +494,19 @@ const ruleset: any = {
       given: ["$.x-ms-parameterized-host"],
       then: {
         function: hostParameters,
+      },
+    },
+    AvoidMsdnReferences: {
+      description:
+          'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+      message:
+          'For better generated code quality, remove all references to "msdn.microsoft.com".',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$..[?(@object() && @.externalDocs)].externalDocs","$.info.description"],
+      then: {
+        function: avoidMsdnReferences,
       },
     },
   },
