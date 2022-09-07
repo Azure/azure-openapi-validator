@@ -1,4 +1,5 @@
-//The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
+//The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com".
+//From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
 //For better generated code quality, remove all references to "msdn.microsoft.com".
 const avoidMsdnReferences = (swaggerObj:any, _opts:any, paths:any) => {
   if (swaggerObj === null) {

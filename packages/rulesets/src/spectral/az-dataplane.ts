@@ -20,6 +20,7 @@ import pathparamschema from "./functions/path-param-schema"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
 import avoidMsdnReferences from "./functions/avoid-msdn-references";
+import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -521,6 +522,19 @@ const ruleset: any = {
       then: {
         field: "x-ms-client-flatten",
         function: truthy
+      },
+    },
+    DescriptiveDescriptionRequired: {
+      description:
+          'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+      message:
+          'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$..[?(@object() && @.description)].description"],
+      then: {
+          function: descriptiveDescriptionRequired
       },
     },
   },
