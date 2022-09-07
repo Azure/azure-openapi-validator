@@ -1,0 +1,151 @@
+{
+  "common": [],
+  "v2Only": [
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'CapacityReservations' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations\"].get.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5537:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'ManagedInstances' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/topqueries\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:381:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'MoveCollections' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections\"].get.operationId",
+      "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:919:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'MoveCollections' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections\"].get.operationId",
+      "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:959:8"
+    }
+  ],
+  "v3Only": [
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'CapacityReservations' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations\"].get.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5537:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'ManagedInstances' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/topqueries\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:381:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'MoveCollections' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections\"].get.operationId",
+      "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:919:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'MoveCollections' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections\"].get.operationId",
+      "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:959:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:102:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:42:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:155:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:102:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:42:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:155:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:674:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility\"].post.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:549:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:720:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility\"].post.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:608:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:39:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:89:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/publicipaddresses\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:39:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:89:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'VirtualHubs' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes\"].post.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5388:8"
+    },
+    {
+      "code": "OperationIdNounVerb",
+      "message": "Per the Noun_Verb convention for Operation Ids, the noun 'VirtualNetworkGateways' should not appear after the underscore",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections\"].post.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2277:8"
+    }
+  ]
+}

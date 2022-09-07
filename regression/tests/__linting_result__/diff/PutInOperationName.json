@@ -1,0 +1,175 @@
+{
+  "common": [],
+  "v2Only": [
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'BlobServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:63:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'CloudServicesUpdateDomain_WalkUpdateDomain' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1297:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'DiskAccesses_UpdateAPrivateEndpointConnection' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1450:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'EncryptionScopes_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1993:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'Extensions_EnableAzureMonitor' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put.operationId",
+      "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:190:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'Extensions_EnableMonitoring' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put.operationId",
+      "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:48:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'FileServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:66:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'FirewallRules_Replace' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:217:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'PrivateEndpointConnections_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1349:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'QueueServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/{queueServiceName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:66:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'TableServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/{tableServiceName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:66:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'VirtualMachineScaleSetVMs_Update' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8744:8"
+    }
+  ],
+  "v3Only": [
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'ApplicationGatewayPrivateEndpointConnections_Update' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:716:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'BlobServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:63:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'CloudServicesUpdateDomain_WalkUpdateDomain' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1297:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'DiskAccesses_UpdateAPrivateEndpointConnection' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1450:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'EncryptionScopes_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1993:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'Extensions_EnableAzureMonitor' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put.operationId",
+      "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:190:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'Extensions_EnableMonitoring' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put.operationId",
+      "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:48:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'FileServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:66:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'FirewallPolicyIdpsSignaturesOverrides_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:677:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'FirewallRules_Replace' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:217:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'PrivateEndpointConnections_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1349:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'PrivateLinkServices_UpdatePrivateEndpointConnection' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:368:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'QueueServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/{queueServiceName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:66:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'TableServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/{tableServiceName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:66:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'VirtualMachineScaleSetVMs_Update' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8744:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'VirtualNetworkGatewayConnections_SetSharedKey' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:1469:8"
+    }
+  ]
+}

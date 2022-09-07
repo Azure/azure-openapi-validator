@@ -12493,78 +12493,6 @@ Array [
   },
   Object {
     "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/dscpConfigurations\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:260:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:214:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\\"].delete.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:109:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:164:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:42:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'InboundSecurityRuleModel'. Consider using the plural form of 'InboundSecurityRule' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:688:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ipGroups\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'IpGroupsModel'. Consider using the plural form of 'IpGroups' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:324:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'IpGroupsModel'. Consider using the plural form of 'IpGroups' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:278:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\\"].delete.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'IpGroupsModel'. Consider using the plural form of 'IpGroups' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:221:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'IpGroupsModel'. Consider using the plural form of 'IpGroups' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:42:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\\"].patch.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'IpGroupsModel'. Consider using the plural form of 'IpGroups' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:164:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'IpGroupsModel'. Consider using the plural form of 'IpGroups' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:97:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads\\"].get.operationId",
     "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LedgerDigestUploadsModel'. Consider using the plural form of 'LedgerDigestUploads' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:145:8",
@@ -12679,30 +12607,6 @@ Array [
   },
   Object {
     "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5638:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\\"].delete.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5577:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5525:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\\"].put.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5454:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\\"].get.operationId",
     "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ServerAutomaticTuningModel'. Consider using the plural form of 'ServerAutomaticTuning' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:25:8",
@@ -12712,12 +12616,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\\"].patch.operationId",
     "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ServerAutomaticTuningModel'. Consider using the plural form of 'ServerAutomaticTuning' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:62:8",
-  },
-  Object {
-    "code": "OperationIdNounConflictingModelNames",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails\\"].get.operationId",
-    "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ServiceTagInformationModel'. Consider using the plural form of 'ServiceTagInformation' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:79:8",
   },
   Object {
     "code": "OperationIdNounConflictingModelNames",
@@ -12807,72 +12705,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections\\"].get.operationId",
     "message": "Per the Noun_Verb convention for Operation Ids, the noun 'MoveCollections' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:959:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:102:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:42:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'NetworkInterfaces' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:155:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:674:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility\\"].post.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:549:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:720:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility\\"].post.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PrivateLinkServices' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:608:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:39:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\\"].get.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'PublicIPAddresses' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:89:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes\\"].post.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'VirtualHubs' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5388:8",
-  },
-  Object {
-    "code": "OperationIdNounVerb",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections\\"].post.operationId",
-    "message": "Per the Noun_Verb convention for Operation Ids, the noun 'VirtualNetworkGateways' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2277:8",
   },
 ]
 `;
@@ -13978,12 +13810,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\\"].patch.operationId",
     "message": "'PATCH' operation 'EncryptionScopes_Patch' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2054:8",
-  },
-  Object {
-    "code": "PatchInOperationName",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\\"].patch.operationId",
-    "message": "'PATCH' operation 'FirewallPolicyIdpsSignaturesOverrides_Patch' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:625:8",
   },
 ]
 `;
@@ -15270,12 +15096,6 @@ exports[`linting result group bu rule: rule PutInOperationName result 1`] = `
 Array [
   Object {
     "code": "PutInOperationName",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\\"].put.operationId",
-    "message": "'PUT' operation 'ApplicationGatewayPrivateEndpointConnections_Update' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:716:8",
-  },
-  Object {
-    "code": "PutInOperationName",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\\"].put.operationId",
     "message": "'PUT' operation 'BlobServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:63:8",
@@ -15318,12 +15138,6 @@ Array [
   },
   Object {
     "code": "PutInOperationName",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\\"].put.operationId",
-    "message": "'PUT' operation 'FirewallPolicyIdpsSignaturesOverrides_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:677:8",
-  },
-  Object {
-    "code": "PutInOperationName",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\\"].put.operationId",
     "message": "'PUT' operation 'FirewallRules_Replace' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:217:8",
@@ -15333,12 +15147,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\\"].put.operationId",
     "message": "'PUT' operation 'PrivateEndpointConnections_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1349:8",
-  },
-  Object {
-    "code": "PutInOperationName",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\\"].put.operationId",
-    "message": "'PUT' operation 'PrivateLinkServices_UpdatePrivateEndpointConnection' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:368:8",
   },
   Object {
     "code": "PutInOperationName",
@@ -15380,12 +15188,6 @@ Array [
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}\\"].put",
     "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Clusters_Create' Request Model: 'ClusterCreateParametersExtended' Response Model: 'Cluster'",
     "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:38:6",
-  },
-  Object {
-    "code": "PutRequestResponseScheme",
-    "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\\"].put",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConnectionMonitors_CreateOrUpdate' Request Model: 'ConnectionMonitor' Response Model: 'ConnectionMonitorResult'",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1530:6",
   },
   Object {
     "code": "PutRequestResponseScheme",
