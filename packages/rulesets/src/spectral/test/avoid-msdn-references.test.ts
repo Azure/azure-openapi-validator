@@ -18,19 +18,23 @@ test('AvoidMsdnReferences should find errors', () => {
     },
     definitions:{
       AuthorizationServerCollection:{
-        externalDocs: {
-          url: "https://msdn.microsoft.com"
-        },
-        grantTypes:{
-          externalDocs:{
-            url: "https://msdn.microsoft.com"
+        definitions:{
+          AuthorizationServerCollection:{
+            externalDocs: {
+              url: "https://msdn.microsoft.com"
+            },
+            grantTypes:{
+              externalDocs:{
+                url: "https://docs.microsoft.com/msdn.microsoft.com"
+              }
+            }
           }
         }
       }
     }
   };
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(3);
+    expect(results.length).toBe(2);
   });
 });
 

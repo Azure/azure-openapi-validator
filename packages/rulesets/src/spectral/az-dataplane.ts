@@ -509,6 +509,20 @@ const ruleset: any = {
         function: avoidMsdnReferences,
       },
     },
+    AvoidNestedProperties: {
+      description:
+          'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
+      message:
+          'Consider using x-ms-client-flatten to provide a better end user experience',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+      then: {
+        field: "x-ms-client-flatten",
+        function: truthy
+      },
+    },
   },
 }
 
