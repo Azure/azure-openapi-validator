@@ -173,7 +173,7 @@ export function* xmsPageableListByRGAndSubscriptions(openapiSection: any, option
   const trackedResources = armHelper.getTrackedResources()
   const collectionApiInfos = armHelper.getCollectionApiInfo()
   function isListByRgAndSubscription(apiPaths: string[]) {
-    return apiPaths.some((p) => armHelper.isPathByResourceGroup(p)) && apiPaths.some((p) => armHelper.isPathByResourceGroup(p))
+    return apiPaths.some((p) => armHelper.isPathByResourceGroup(p)) && apiPaths.some((p) => armHelper.isPathBySubscription(p))
   }
   for (const collectionApiInfo of collectionApiInfos) {
     if (isListByRgAndSubscription(collectionApiInfo.collectionGetPath)) {

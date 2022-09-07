@@ -582,7 +582,7 @@ function operationsApiSchema(schema, options, { path }) {
     }
     if (!isValid) {
         errors.push({
-            message: path[2],
+            message: path[1],
             path,
         });
     }
