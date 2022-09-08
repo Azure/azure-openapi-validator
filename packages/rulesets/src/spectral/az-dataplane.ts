@@ -2,13 +2,17 @@ import { oas2, oas3 } from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions"
 import common from "./az-common"
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
+import avoidMsdnReferences from "./functions/avoid-msdn-references";
 import consistentresponsebody from "./functions/consistent-response-body"
 import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
+import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
 import hasheader from "./functions/has-header"
 import hostParameters from "./functions/host-parameters"
+import httpsSupportedScheme from "./functions/https-supported-scheme";
+import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability";
 import operationid from "./functions/operation-id"
 import paginationresponse from "./functions/pagination-response"
 import paramnames from "./functions/param-names"
@@ -19,9 +23,7 @@ import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
-import avoidMsdnReferences from "./functions/avoid-msdn-references";
-import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
-import httpsSupportedScheme from "./functions/https-supported-scheme";
+
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -553,7 +555,7 @@ const ruleset: any = {
     },
     ListInOperationName: {
       description:
-          'Verifies whether value for \`operationId\` is named as per ARM guidelines when response contains array of items.',
+          'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
       message:
           'Since operation response has model definition, it should be of the form "_list".',
       severity: "warn",
@@ -567,6 +569,21 @@ const ruleset: any = {
         }
       }
     },
+    LocationMustHaveXmsMutability: {
+      description:
+          'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
+      message:
+          'Property \'location\' must have \'"x-ms-mutability":["read", "create"]\' extension defined.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ['$.definitions[*].properties.location'],
+      then: [
+        {
+          function: locationMustHaveXmsMutability
+        }
+      ]
+    }
   },
 }
 
