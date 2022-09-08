@@ -1,5 +1,5 @@
 import { oas2, oas3 } from "@stoplight/spectral-formats"
-import { casing, falsy, pattern, truthy, undefined } from "@stoplight/spectral-functions"
+import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions"
 import common from "./az-common"
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
 import consistentresponsebody from "./functions/consistent-response-body"
@@ -21,6 +21,7 @@ import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
 import avoidMsdnReferences from "./functions/avoid-msdn-references";
 import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
+import httpsSupportedScheme from "./functions/https-supported-scheme";
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -536,6 +537,35 @@ const ruleset: any = {
       then: {
           function: descriptiveDescriptionRequired
       },
+    },
+    HttpsSupportedScheme: {
+      description:
+          'Verifies whether specification supports HTTPS scheme or not.',
+      message:
+          'Azure Resource Management only supports HTTPS scheme.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.schemes"],
+      then: {
+        function: httpsSupportedScheme
+      }
+    },
+    ListInOperationName: {
+      description:
+          'Verifies whether value for \`operationId\` is named as per ARM guidelines when response contains array of items.',
+      message:
+          'Since operation response has model definition, it should be of the form "_list".',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*[?('get' && @['x-ms-pageable'])].operationId"],
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: "^((\\w+\\_List\\w*)|List)$"
+        }
+      }
     },
   },
 }
