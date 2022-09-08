@@ -1,13 +1,31 @@
 [
   {
     "code": "GetInOperationName",
-    "message": "'GET' operation 'VirtualMachines_InstanceView' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+    "message": "'GET' operation 'CheckDnsNameAvailability' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability\"].get.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/checkDnsAvailability.json:39:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'LocationOperationStatus' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}\"].get.operationId",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3102:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'SupportedSecurityProviders' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders\"].get.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:801:8"
+  },
+  {
+    "code": "GetInOperationName",
+    "message": "'GET' operation 'VirtualMachines_InstanceView' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView\"].get.operationId",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4001:8"
   },
   {
     "code": "GetInOperationName",
-    "message": "'GET' operation 'VirtualNetworks_CheckIPAddressAvailability' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change",
+    "message": "'GET' operation 'VirtualNetworks_CheckIPAddressAvailability' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability\"].get.operationId",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1163:8"
   }
