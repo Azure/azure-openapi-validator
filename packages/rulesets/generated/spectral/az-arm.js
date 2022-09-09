@@ -1002,7 +1002,6 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
 };
 
 const securityDefinitionsStructure = (swagger, _opts) => {
-    var _a, _b;
     if (swagger === "" || typeof swagger !== "object") {
         return [];
     }
@@ -1010,28 +1009,24 @@ const securityDefinitionsStructure = (swagger, _opts) => {
         return [];
     }
     const errors = [];
-    const securityDefinitionsModule = {
-        azure_auth: {
-            type: "oauth2",
-            authorizationUrl: "https://login.microsoftonline.com/common/oauth2/authorize",
-            flow: "implicit",
-            description: "Azure Active Directory OAuth2 Flow",
-            scopes: {
-                user_impersonation: "impersonate your user account",
-            },
-        },
-    };
     const securityDefinition = swagger.securityDefinitions;
-    const securityDefinitionClone = JSON.parse(JSON.stringify(securityDefinition));
-    if (((_a = securityDefinitionClone.azure_auth) === null || _a === void 0 ? void 0 : _a.description) &&
-        securityDefinitionClone.azure_auth.description !== "") {
-        securityDefinitionClone.azure_auth.description = "Azure Active Directory OAuth2 Flow";
+    let likeModule = false;
+    if (Object.getOwnPropertyNames(securityDefinition).length === 1 &&
+        Object.getOwnPropertyNames(securityDefinition)[0] === "azure_auth" &&
+        Object.getOwnPropertyNames(securityDefinition.azure_auth).length === 5 &&
+        securityDefinition.azure_auth.type === "oauth2" &&
+        securityDefinition.azure_auth.authorizationUrl ===
+            "https://login.microsoftonline.com/common/oauth2/authorize" &&
+        securityDefinition.azure_auth.flow === "implicit" &&
+        securityDefinition.azure_auth.description &&
+        securityDefinition.azure_auth.description !== "" &&
+        Object.getOwnPropertyNames(securityDefinition.azure_auth.scopes).length === 1 &&
+        Object.getOwnPropertyNames(securityDefinition.azure_auth.scopes)[0] === "user_impersonation" &&
+        securityDefinition.azure_auth.scopes.user_impersonation &&
+        securityDefinition.azure_auth.scopes.user_impersonation !== "") {
+        likeModule = true;
     }
-    if (((_b = securityDefinitionClone.azure_auth) === null || _b === void 0 ? void 0 : _b.scopes.user_impersonation) &&
-        securityDefinitionClone.azure_auth.scopes.user_impersonation !== "") {
-        securityDefinitionClone.azure_auth.scopes.user_impersonation = "impersonate your user account";
-    }
-    if (!isSchemaEqual(securityDefinitionClone, securityDefinitionsModule)) {
+    if (!likeModule) {
         errors.push({
             message: `Every OpenAPI(swagger) spec/configuration must have a security definitions section and it must adhere to the following structure: https://github.com/Azure/azure-openapi-validator/blob/main/docs/security-definitions-structure-validation.md`,
         });
