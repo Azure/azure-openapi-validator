@@ -1002,6 +1002,7 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
 };
 
 const securityDefinitionsStructure = (swagger, _opts) => {
+    var _a, _b, _c, _d, _e, _f;
     if (swagger === "" || typeof swagger !== "object") {
         return [];
     }
@@ -1011,19 +1012,12 @@ const securityDefinitionsStructure = (swagger, _opts) => {
     const errors = [];
     const securityDefinition = swagger.securityDefinitions;
     let likeModule = false;
-    if (Object.getOwnPropertyNames(securityDefinition).length === 1 &&
-        Object.getOwnPropertyNames(securityDefinition)[0] === "azure_auth" &&
-        Object.getOwnPropertyNames(securityDefinition.azure_auth).length === 5 &&
-        securityDefinition.azure_auth.type === "oauth2" &&
-        securityDefinition.azure_auth.authorizationUrl ===
+    if (((_a = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _a === void 0 ? void 0 : _a.type) === "oauth2" &&
+        ((_b = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _b === void 0 ? void 0 : _b.authorizationUrl) ===
             "https://login.microsoftonline.com/common/oauth2/authorize" &&
-        securityDefinition.azure_auth.flow === "implicit" &&
-        securityDefinition.azure_auth.description &&
-        securityDefinition.azure_auth.description !== "" &&
-        Object.getOwnPropertyNames(securityDefinition.azure_auth.scopes).length === 1 &&
-        Object.getOwnPropertyNames(securityDefinition.azure_auth.scopes)[0] === "user_impersonation" &&
-        securityDefinition.azure_auth.scopes.user_impersonation &&
-        securityDefinition.azure_auth.scopes.user_impersonation !== "") {
+        ((_c = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _c === void 0 ? void 0 : _c.flow) === "implicit" &&
+        ((_d = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _d === void 0 ? void 0 : _d.description) &&
+        ((_f = (_e = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _e === void 0 ? void 0 : _e.scopes) === null || _f === void 0 ? void 0 : _f.user_impersonation)) {
         likeModule = true;
     }
     if (!likeModule) {
