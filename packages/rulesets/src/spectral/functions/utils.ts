@@ -154,19 +154,23 @@ export function isSchemaEqual(a: any, b: any): boolean {
   if (a && b) {
     const propsA = Object.getOwnPropertyNames(a);
     const propsB = Object.getOwnPropertyNames(b);
-    if (propsA.length !== propsB.length) {
-      return false;
-    }
-    for (const propsAName of propsA) {
-      const [propA, propB] = [a[propsAName], b[propsAName]];
-      if (typeof propA === "object") {
-        if (!isSchemaEqual(propA, propB)) {
+    if (propsA.length === propsB.length) {
+      for (let i = 0; i < propsA.length; i++) {
+        const propsAName = propsA[i];
+        const [propA, propB] = [a[propsAName], b[propsAName]];
+        if (typeof propA === "object") {
+          if (!isSchemaEqual(propA, propB)) {
+            return false;
+          } else if (i === propsA.length - 1) {
+            return true;
+          }
+        } else if (propA !== propB) {
           return false;
+        } else if (propA === propB && i === propsA.length - 1) {
+          return true;
         }
-      } else if (propA !== propB) {
-        return false;
       }
     }
   }
-  return true;
+  return false;
 }

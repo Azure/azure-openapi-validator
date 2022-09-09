@@ -359,22 +359,28 @@ function isSchemaEqual(a, b) {
     if (a && b) {
         const propsA = Object.getOwnPropertyNames(a);
         const propsB = Object.getOwnPropertyNames(b);
-        if (propsA.length !== propsB.length) {
-            return false;
-        }
-        for (const propsAName of propsA) {
-            const [propA, propB] = [a[propsAName], b[propsAName]];
-            if (typeof propA === "object") {
-                if (!isSchemaEqual(propA, propB)) {
+        if (propsA.length === propsB.length) {
+            for (let i = 0; i < propsA.length; i++) {
+                const propsAName = propsA[i];
+                const [propA, propB] = [a[propsAName], b[propsAName]];
+                if (typeof propA === "object") {
+                    if (!isSchemaEqual(propA, propB)) {
+                        return false;
+                    }
+                    else if (i === propsA.length - 1) {
+                        return true;
+                    }
+                }
+                else if (propA !== propB) {
                     return false;
                 }
-            }
-            else if (propA !== propB) {
-                return false;
+                else if (propA === propB && i === propsA.length - 1) {
+                    return true;
+                }
             }
         }
     }
-    return true;
+    return false;
 }
 
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
@@ -401,7 +407,7 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
         return [];
     }
     const responseCode = putOp.responses["200"] ? "200" : "201";
-    const respModelPath = `response[${responseCode}].schema`;
+    const respModelPath = `responses[${responseCode}].schema`;
     const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
         ? putOp.responses[responseCode].schema
         : {};

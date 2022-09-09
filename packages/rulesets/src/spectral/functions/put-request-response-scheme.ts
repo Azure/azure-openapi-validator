@@ -25,7 +25,7 @@ export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
     return [];
   }
   const responseCode = putOp.responses["200"] ? "200" : "201";
-  const respModelPath = `response[${responseCode}].schema`;
+  const respModelPath = `responses[${responseCode}].schema`;
   const respModel = putOp.responses[responseCode]?.schema
     ? putOp.responses[responseCode].schema
     : {};

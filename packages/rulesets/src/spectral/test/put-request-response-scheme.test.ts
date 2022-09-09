@@ -102,7 +102,7 @@ test("PutRequestResponseScheme should find errors", () => {
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1);
     expect(results[0].message).toBe(
-      "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConfigServers_Update' Request Model: 'parameters[2].schema' Response Model: 'response[200].schema'"
+      "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConfigServers_Update' Request Model: 'parameters[2].schema' Response Model: 'responses[200].schema'"
     );
     expect(results[0].path.join(".")).toBe("paths./api/configServers.put");
   });
@@ -202,7 +202,7 @@ test("PutRequestResponseScheme should find errors when response code 200 is not 
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1);
     expect(results[0].message).toBe(
-      "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConfigServers_Update' Request Model: 'parameters[2].schema' Response Model: 'response[201].schema'"
+      "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConfigServers_Update' Request Model: 'parameters[2].schema' Response Model: 'responses[201].schema'"
     );
     expect(results[0].path.join(".")).toBe("paths./api/configServers.put");
   });
