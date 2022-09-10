@@ -1,6 +1,6 @@
 // Check that the collection object must have a property named `value`.
 
-import { getProperty, isPagableOperation } from "./utils"
+import { getProperty, isPageableOperation } from "./utils"
 
 // The code assumes it is running on a resolved doc
 const collectionObjectPropertiesNaming = (op: any, _opts: any, paths: any) => {
@@ -12,7 +12,7 @@ const collectionObjectPropertiesNaming = (op: any, _opts: any, paths: any) => {
   const errors: any[] = []
 
   const regex = /.+_List([^_]*)$/
-  if (op && regex.test(op.operationId) && isPagableOperation(op)) {
+  if (op && regex.test(op.operationId) && isPageableOperation(op)) {
     const schema = op.responses?.["200"]?.schema
     const valueSchema = getProperty(schema,"value")
     if (schema && !(valueSchema && valueSchema.type === "array")) {

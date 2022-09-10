@@ -19,12 +19,6 @@
   },
   {
     "code": "PutRequestResponseScheme",
-    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConnectionMonitors_CreateOrUpdate' Request Model: 'ConnectionMonitor' Response Model: 'ConnectionMonitorResult'",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\"].put",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1530:6"
-  },
-  {
-    "code": "PutRequestResponseScheme",
     "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseExtensions_CreateOrUpdate' Request Model: 'DatabaseExtensions' Response Model: 'ImportExportExtensionsOperationResult'",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:63:6"

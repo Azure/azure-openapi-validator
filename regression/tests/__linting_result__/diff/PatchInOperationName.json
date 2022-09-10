@@ -1,0 +1,19 @@
+{
+  "common": [
+    {
+      "code": "PatchInOperationName",
+      "message": "'PATCH' operation 'EncryptionScopes_Patch' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].patch.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:2054:8"
+    }
+  ],
+  "v2Only": [],
+  "v3Only": [
+    {
+      "code": "PatchInOperationName",
+      "message": "'PATCH' operation 'FirewallPolicyIdpsSignaturesOverrides_Patch' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].patch.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:625:8"
+    }
+  ]
+}

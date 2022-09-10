@@ -29,6 +29,8 @@ describe("comparing", () => {
     "NonApplicationJsonType",
     "RequiredPropertiesMissingInResourceModel",
     "BodyTopLevelProperties",
+    "OperationIdNounConflictingModelNames",
+    "PutRequestResponseScheme",
   ]
   test.each(v3Results.filter((f) => !f.includes("az-") && !verifiedLists.includes(basename(f.replace(".json", "")))))(
     "%s should match v2",
