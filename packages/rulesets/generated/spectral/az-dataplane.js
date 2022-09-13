@@ -19,6 +19,37 @@ const deleteInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
+const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
+    var _a;
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!postOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    const responses = postOp === null || postOp === void 0 ? void 0 : postOp.responses;
+    let schemaAvailable = false;
+    for (const responseCode in responses) {
+        if (responseCode[0] === "2" && ((_a = responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema) !== undefined) {
+            schemaAvailable = true;
+            break;
+        }
+    }
+    if (schemaAvailable &&
+        (postOp["x-ms-long-running-operation-options"] === undefined ||
+            (postOp["x-ms-long-running-operation-options"]["final-state-via"] !== "location" &&
+                postOp["x-ms-long-running-operation-options"]["final-state-via"] !==
+                    "azure-async-operation"))) {
+        errors.push({
+            message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
 const getInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -473,6 +504,17 @@ const ruleset$1 = {
             given: ["$..?(@property === 'required')^"],
             then: {
                 function: requiredReadOnlyProperties,
+            },
+        },
+        LongRunningOperationsOptionsValidator: {
+            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+            then: {
+                function: longRunningOperationsOptionsValidator,
             },
         },
     },

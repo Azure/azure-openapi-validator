@@ -1,6 +1,9 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { pattern , falsy } from "@stoplight/spectral-functions"
 import { deleteInOperationName } from "./functions/delete-in-operation-name";
+import {
+  longRunningOperationsOptionsValidator
+} from "./functions/Extensions/long-running-operations-options-validator";
 import { getInOperationName } from "./functions/get-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
@@ -172,6 +175,17 @@ const ruleset: any = {
       given: ["$..?(@property === 'required')^"],
       then: {
         function: requiredReadOnlyProperties,
+      },
+    },
+    LongRunningOperationsOptionsValidator: {
+      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+      then: {
+        function: longRunningOperationsOptionsValidator,
       },
     },
   },
