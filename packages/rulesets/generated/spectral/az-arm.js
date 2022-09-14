@@ -148,6 +148,20 @@ const operationIdNounVerb = (operationId, _opts, ctx) => {
     return errors;
 };
 
+function paramLocation(paramSchema, options, { path }) {
+    if (paramSchema === null || typeof paramSchema !== "object") {
+        return [];
+    }
+    const errors = [];
+    if (!paramSchema["x-ms-parameter-location"]) {
+        errors.push({
+            message: ``,
+            path,
+        });
+    }
+    return errors;
+}
+
 const pushToError = (errors, parameter, path) => {
     errors.push({
         message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
@@ -445,20 +459,6 @@ const requiredReadOnlyProperties = (definition, _opts, ctx) => {
     }
     return errors;
 };
-
-function paramLocation(paramSchema, options, { path }) {
-    if (paramSchema === null || typeof paramSchema !== "object") {
-        return [];
-    }
-    const errors = [];
-    if (!paramSchema["x-ms-parameter-location"]) {
-        errors.push({
-            message: ``,
-            path,
-        });
-    }
-    return errors;
-}
 
 function checkSchemaFormat(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
