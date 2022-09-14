@@ -644,9 +644,9 @@ function verifyResourceType(path) {
 }
 function verifyNestResourceType(path) {
     const patterns = [
-        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+/gi,
-        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*/gi,
+        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*$/gi,
     ];
     return notMatchPatterns(patterns, path);
 }
@@ -1390,7 +1390,7 @@ const ruleset = {
         PathForPutOperation: {
             description: "The path for 'put' operation must be under a subscription and resource group.",
             message: "{{description}}",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[put]^~",
@@ -1404,7 +1404,7 @@ const ruleset = {
         PathForNestedResource: {
             description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
@@ -1418,7 +1418,7 @@ const ruleset = {
         PathForResourceAction: {
             description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
             message: "{{description}}",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*.post^~",
@@ -1432,7 +1432,7 @@ const ruleset = {
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
             message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*.put^",
@@ -1492,7 +1492,7 @@ const ruleset = {
         GuidUsage: {
             description: `Verifies whether format is specified as "uuid" or not.`,
             message: "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             given: "$..[?(@property === 'format'&& @ === 'guid')]",
             then: {
