@@ -449,7 +449,7 @@ export class ArmHelper {
         }
         if (path.match(this.SpecificResourcePathRegEx)) {
           const firstProviderIndex = path.lastIndexOf("/providers")
-          const lastIndex = path.lastIndexOf("/{")
+          const lastIndex = path.lastIndexOf("/")
           const possibleCollectionApiPath = path.substr(firstProviderIndex, lastIndex - firstProviderIndex)
           /*
           * case 1:"providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines"
