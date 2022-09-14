@@ -7,6 +7,7 @@ import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
+import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code";
 import hasheader from "./functions/has-header"
 import hostParameters from "./functions/host-parameters"
 import operationid from "./functions/operation-id"
@@ -493,6 +494,17 @@ const ruleset: any = {
       given: ["$.x-ms-parameterized-host"],
       then: {
         function: hostParameters,
+      },
+    },
+    LongRunningResponseStatusCodeDataPlane: {
+      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
+      then: {
+        function: longRunningResponseStatusCodeDataPlane,
       },
     },
   },

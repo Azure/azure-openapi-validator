@@ -20,7 +20,7 @@ const deleteInOperationName = (operationId, _opts, ctx) => {
 };
 
 const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
-    var _a;
+    var _a, _b, _c;
     if (postOp === null || typeof postOp !== "object") {
         return [];
     }
@@ -38,10 +38,8 @@ const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
         }
     }
     if (schemaAvailable &&
-        (postOp["x-ms-long-running-operation-options"] === undefined ||
-            (postOp["x-ms-long-running-operation-options"]["final-state-via"] !== "location" &&
-                postOp["x-ms-long-running-operation-options"]["final-state-via"] !==
-                    "azure-async-operation"))) {
+        ((_b = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _b === void 0 ? void 0 : _b["final-state-via"]) !== "location" &&
+        ((_c = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _c === void 0 ? void 0 : _c["final-state-via"]) !== "azure-async-operation") {
         errors.push({
             message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
             path: [...path],

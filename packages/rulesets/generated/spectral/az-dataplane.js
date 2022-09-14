@@ -20,7 +20,7 @@ const deleteInOperationName = (operationId, _opts, ctx) => {
 };
 
 const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
-    var _a;
+    var _a, _b, _c;
     if (postOp === null || typeof postOp !== "object") {
         return [];
     }
@@ -38,10 +38,8 @@ const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
         }
     }
     if (schemaAvailable &&
-        (postOp["x-ms-long-running-operation-options"] === undefined ||
-            (postOp["x-ms-long-running-operation-options"]["final-state-via"] !== "location" &&
-                postOp["x-ms-long-running-operation-options"]["final-state-via"] !==
-                    "azure-async-operation"))) {
+        ((_b = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _b === void 0 ? void 0 : _b["final-state-via"]) !== "location" &&
+        ((_c = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _c === void 0 ? void 0 : _c["final-state-via"]) !== "azure-async-operation") {
         errors.push({
             message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
             path: [...path],
@@ -746,6 +744,47 @@ function errorResponse(responses, _opts, paths) {
     });
     return errors;
 }
+
+const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesList) => {
+    var _a, _b, _c, _d;
+    if (methodOp === null || typeof methodOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const method = Object.getOwnPropertyNames(methodOp)[0];
+    if (!["delete", "put", "patch", "post"].includes(method)) {
+        return [];
+    }
+    const operationId = ((_a = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _a === void 0 ? void 0 : _a.operationId) || "";
+    if (!((_b = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _b === void 0 ? void 0 : _b["x-ms-long-running-operation"])) {
+        return [];
+    }
+    if ((_c = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _c === void 0 ? void 0 : _c.responses) {
+        const responseCodes = Object.getOwnPropertyNames((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
+        const validResponseCodes = validResponseCodesList[method];
+        const validResponseCodeString = validResponseCodes.join(" or ");
+        for (const responseCode of responseCodes) {
+            if ((responseCodes.length === 1 && !validResponseCodes.includes(responseCode)) ||
+                (responseCode !== "default" && !validResponseCodes.includes(responseCode))) {
+                errors.push({
+                    message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
+                    path: [...path, method],
+                });
+            }
+        }
+    }
+    return errors;
+};
+const longRunningResponseStatusCodeDataPlane = (methodOp, _opts, ctx) => {
+    const validResponseCodesList = {
+        delete: ["200", "204", "202"],
+        post: ["200", "201", "202", "204"],
+        put: ["200", "201", "202"],
+        patch: ["200", "201", "202"],
+    };
+    return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList);
+};
 
 const hasHeader = (response, opts, paths) => {
     if (response === null || typeof response !== 'object') {
@@ -1833,6 +1872,17 @@ const ruleset = {
             given: ["$.x-ms-parameterized-host"],
             then: {
                 function: hostParameters,
+            },
+        },
+        LongRunningResponseStatusCodeDataPlane: {
+            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
+            then: {
+                function: longRunningResponseStatusCodeDataPlane,
             },
         },
     },

@@ -19,10 +19,8 @@ export const longRunningOperationsOptionsValidator = (postOp: any, _opts: any, c
   }
   if (
     schemaAvailable &&
-    (postOp["x-ms-long-running-operation-options"] === undefined ||
-      (postOp["x-ms-long-running-operation-options"]["final-state-via"] !== "location" &&
-        postOp["x-ms-long-running-operation-options"]["final-state-via"] !==
-        "azure-async-operation"))
+    postOp?.["x-ms-long-running-operation-options"]?.["final-state-via"] !== "location" &&
+    postOp?.["x-ms-long-running-operation-options"]?.["final-state-via"] !== "azure-async-operation"
   ) {
     errors.push({
       message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
