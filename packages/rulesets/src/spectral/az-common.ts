@@ -1,18 +1,18 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { pattern , falsy } from "@stoplight/spectral-functions"
-import { deleteInOperationName } from "./functions/delete-in-operation-name";
-import { getInOperationName } from "./functions/get-in-operation-name";
-import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
-import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
-import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id";
-import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names";
-import { operationIdNounVerb } from "./functions/operation-id-noun-verb";
+import { pattern, falsy } from "@stoplight/spectral-functions"
+import { deleteInOperationName } from "./functions/delete-in-operation-name"
+import { getInOperationName } from "./functions/get-in-operation-name"
+import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema"
+import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter"
+import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id"
+import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names"
+import { operationIdNounVerb } from "./functions/operation-id-noun-verb"
 import paramLocation from "./functions/parameter-location"
-import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters";
-import { patchInOperationName } from "./functions/patch-in-operation-name";
-import { putInOperationName } from "./functions/put-in-operation-name";
-import { putRequestResponseScheme } from "./functions/put-request-response-scheme";
-import { requiredReadOnlyProperties } from "./functions/required-read-only-properties";
+import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
+import { patchInOperationName } from "./functions/patch-in-operation-name"
+import { putInOperationName } from "./functions/put-in-operation-name"
+import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
+import { requiredReadOnlyProperties } from "./functions/required-read-only-properties"
 import checkSchemaFormat from "./functions/schema-format"
 import checkSummaryAndDescription from "./functions/summary-description-must-not-be-same"
 
@@ -25,14 +25,12 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: [
-        "$..[?(@property === 'description')]^",
-      ],
+      given: ["$..[?(@property === 'description')]^"],
       then: {
         function: pattern,
-        functionOptions:{
-          match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
-        }
+        functionOptions: {
+          match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*",
+        },
       },
     },
     InvalidVerbUsed: {
@@ -68,7 +66,8 @@ const ruleset: any = {
       },
     },
     OperationIdNounConflictingModelNames: {
-      description: "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
+      description:
+        "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -103,7 +102,7 @@ const ruleset: any = {
     GetInOperationName: {
       description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[get][?(@property === 'operationId')]"],
@@ -114,7 +113,7 @@ const ruleset: any = {
     PutInOperationName: {
       description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'operationId')]"],
@@ -125,7 +124,7 @@ const ruleset: any = {
     PatchInOperationName: {
       description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'operationId')]"],
@@ -136,7 +135,7 @@ const ruleset: any = {
     DeleteInOperationName: {
       description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
@@ -145,9 +144,10 @@ const ruleset: any = {
       },
     },
     ParameterNotDefinedInGlobalParameters: {
-      description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
+      description:
+        "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: false,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
@@ -167,7 +167,8 @@ const ruleset: any = {
       },
     },
     RequiredReadOnlyProperties: {
-      description: "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
+      description:
+        "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
       message: "{{error}}",
       severity: "error",
       resolved: false,
