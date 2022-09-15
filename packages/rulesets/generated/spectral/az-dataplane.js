@@ -82,6 +82,30 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     return errors;
 };
 
+const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
+    var _a, _b, _c, _d;
+    if (opt === null || typeof opt !== "object") {
+        return [];
+    }
+    if (opt["x-ms-pageable"] === undefined) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const nextLinkName = ((_a = opt["x-ms-pageable"]) === null || _a === void 0 ? void 0 : _a.nextLinkName) || null;
+    const responseSchemaProperties = ((_d = (_c = (_b = opt === null || opt === void 0 ? void 0 : opt.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema) === null || _d === void 0 ? void 0 : _d.properties) || {};
+    if (nextLinkName !== null && nextLinkName !== "") {
+        if (Object.getOwnPropertyNames(responseSchemaProperties).length === 0 ||
+            !Object.getOwnPropertyNames(responseSchemaProperties).includes(nextLinkName)) {
+            errors.push({
+                message: `The property '${nextLinkName}' specified by nextLinkName does not exist in the 200 response schema. Please, specify the name of the property that provides the nextLink. If the model does not have the nextLink property then specify null.`,
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
 const getInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -550,7 +574,7 @@ const ruleset$1 = {
             },
         },
         MutabilityWithReadOnly: {
-            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            description: "Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `[\"read\"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
@@ -558,6 +582,17 @@ const ruleset$1 = {
             given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
             then: {
                 function: mutabilityWithReadOnly,
+            },
+        },
+        NextLinkPropertyMustExist: {
+            description: "Per definition of AutoRest x-ms-pageable extension, the property specified by nextLinkName must exist in the 200 response schema.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
+            then: {
+                function: nextLinkPropertyMustExist,
             },
         },
     },

@@ -5,6 +5,7 @@ import {
   longRunningOperationsOptionsValidator
 } from "./functions/Extensions/long-running-operations-options-validator";
 import { mutabilityWithReadOnly } from "./functions/Extensions/mutability-with-read-only";
+import { nextLinkPropertyMustExist } from "./functions/Extensions/next-link-property-must-exist";
 import { getInOperationName } from "./functions/get-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
@@ -190,7 +191,7 @@ const ruleset: any = {
       },
     },
     MutabilityWithReadOnly: {
-      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      description: "Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `[\"read\"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.",
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -198,6 +199,17 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
       then: {
         function: mutabilityWithReadOnly,
+      },
+    },
+    NextLinkPropertyMustExist: {
+      description: "Per definition of AutoRest x-ms-pageable extension, the property specified by nextLinkName must exist in the 200 response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
+      then: {
+        function: nextLinkPropertyMustExist,
       },
     },
   },
