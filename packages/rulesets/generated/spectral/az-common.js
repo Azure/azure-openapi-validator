@@ -124,9 +124,9 @@ const xmsClientName = (opt, _opts, ctx) => {
         }
     }
     else {
-        if (opt["x-ms-client-name"] === path.at(-1)) {
+        if (opt["x-ms-client-name"] === path.slice(-1)[0]) {
             errors.push({
-                message: `Value of 'x-ms-client-name' cannot be the same as '${path.at(-1)}' Property/Model.`,
+                message: `Value of 'x-ms-client-name' cannot be the same as '${path.slice(-1)[0]}' Property/Model.`,
                 path: [...path],
             });
         }
