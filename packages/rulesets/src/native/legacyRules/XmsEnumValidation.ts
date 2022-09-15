@@ -13,7 +13,11 @@ rules.push({
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm | OpenApiTypes.dataplane,
-  appliesTo_JsonQuery: ["$.definitions..[?(@property==='enum')]^", "$..parameters..[?(@property==='enum')]^"],
+  appliesTo_JsonQuery: [
+    "$.definitions..[?(@property==='enum')]^",
+    "$..parameters..[?(@property==='enum')]^",
+    "$..responses..[?(@property==='enum')]^",
+  ],
   *run(doc, node, path) {
     const msg = `The enum types should have x-ms-enum type extension set with appropriate options.`
     if (node.enum && isValidEnum(node)) {
@@ -21,5 +25,5 @@ rules.push({
         yield { message: `${msg}`, location: path }
       }
     }
-  }
+  },
 })
