@@ -1,5 +1,5 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { pattern , falsy } from "@stoplight/spectral-functions"
+import { pattern, falsy, truthy } from "@stoplight/spectral-functions"
 import { deleteInOperationName } from "./functions/delete-in-operation-name";
 import {
   longRunningOperationsOptionsValidator
@@ -210,6 +210,17 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
       then: {
         function: nextLinkPropertyMustExist,
+      },
+    },
+    NonEmptyClientName: {
+      description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.",
+      message: "Empty x-ms-client-name property.",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')"],
+      then: {
+        function: truthy,
       },
     },
   },

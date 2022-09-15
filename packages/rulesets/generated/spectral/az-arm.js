@@ -727,6 +727,17 @@ const ruleset$1 = {
                 function: nextLinkPropertyMustExist,
             },
         },
+        NonEmptyClientName: {
+            description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.",
+            message: "Empty x-ms-client-name property.",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')"],
+            then: {
+                function: truthy,
+            },
+        },
     },
 };
 
