@@ -7811,7 +7811,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-YCwiDngB/1oZ5WdvN0S4t6OAvdNqSowuMiRJ7XIn9btUe79zggMoP8qmcZeLjnH3Gn41tLdV+Q+ploHELfj4yQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-JTrCGjtJAft16+cMFRukAwnHouj4Z6Kpt3FdyLeK9J4bB0syxEzM99RzHYCh3HHzxsSvla/HIcGvQKKFv/FydQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -7842,6 +7842,7 @@ packages:
       eslint-plugin-prettier: 3.4.1_eslint@8.11.0+prettier@2.3.2
       eslint-plugin-unicorn: 42.0.0_eslint@8.11.0
       jest: 27.5.1
+      js-yaml: 3.14.1
       jsonpath-plus: 6.0.1
       lodash: 4.17.21
       nimma: 0.2.0
@@ -7867,7 +7868,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator.tgz:
-    resolution: {integrity: sha512-+NEF+fHVObiSBEtXnfuYtFvXHMgWwFZVgjuXk/u5YqGUIorYvjp2BRsf6Rhn8dLuhm3zx5lUzKX2hfZ0/PM4uA==, tarball: file:projects/openapi-validator.tgz}
+    resolution: {integrity: sha512-GEW7kTC/v0X72aCPRoJjH854/LAyTlVevQTZ/8X8TtGn0h2by0a9L3zH4guGCBOYz5DGJrgPDs1e8hAzhgnOtA==, tarball: file:projects/openapi-validator.tgz}
     name: '@rush-temp/openapi-validator'
     version: 0.0.0
     dependencies:

@@ -1,0 +1,314 @@
+[
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2703:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/communityGallery.json:534:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/sharedGallery.json:790:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/skus.json:428:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:3152:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16963:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:1449:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3766:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:520:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:2219:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/configurations.json:242:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:667:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:885:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:273:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateEndpointConnections.json:388:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateLinkResources.json:184:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/scriptActions.json:495:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/virtualMachines.json:254:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:337:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourcegraph.json:594:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:236:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:666:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:389:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2733:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionParameter",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:885:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'ApiVersionVmssParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.ApiVersionVmssParameter",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:344:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2696:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/communityGallery.json:495:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/sharedGallery.json:775:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/skus.json:421:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:3137:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16956:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:1442:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:3759:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:489:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:2196:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/configurations.json:211:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:636:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/locations.json:870:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateEndpointConnections.json:365:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateLinkResources.json:161:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/scriptActions.json:456:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/virtualMachines.json:231:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:330:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:659:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:350:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2726:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'SubscriptionIdParameter' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.SubscriptionIdParameter",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:877:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'api-version' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters[\"api-version\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2660:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'api-version' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters[\"api-version\"]",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:1285:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'subscriptionId' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.subscriptionId",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:2653:4"
+  },
+  {
+    "code": "XmsParameterLocation",
+    "message": "The parameter 'subscriptionId' is defined in global parameters section without 'x-ms-parameter-location' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension \"x-ms-parameter-location\": \"client\". Else, apply the extension \"x-ms-parameter-location\": \"method\".",
+    "jsonpath": "$.parameters.subscriptionId",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:1292:4"
+  }
+]
