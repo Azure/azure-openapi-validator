@@ -7,6 +7,7 @@ import {
 import { mutabilityWithReadOnly } from "./functions/Extensions/mutability-with-read-only";
 import { nextLinkPropertyMustExist } from "./functions/Extensions/next-link-property-must-exist";
 import { xmsClientName } from "./functions/Extensions/xms-client-name";
+import { xmsPathsMustOverloadPaths } from "./functions/Extensions/xms-paths-must-overload-paths";
 import { getInOperationName } from "./functions/get-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
@@ -257,6 +258,17 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
       then: {
         function: xmsClientName,
+      },
+    },
+    XmsPathsMustOverloadPaths: {
+      description: "The `x-ms-paths` extension allows us to overload an existing path based on path parameters. We cannot specify an `x-ms-paths` without a path that already exists in the `paths` section.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$['x-ms-paths']"],
+      then: {
+        function: xmsPathsMustOverloadPaths,
       },
     },
   },

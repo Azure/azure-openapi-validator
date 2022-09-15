@@ -134,6 +134,26 @@ const xmsClientName = (opt, _opts, ctx) => {
     return errors;
 };
 
+const xmsPathsMustOverloadPaths = (xmsPaths, _opts, ctx) => {
+    var _a;
+    if (xmsPaths === null || typeof xmsPaths !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    for (const xmsPath in xmsPaths) {
+        const pathName = xmsPath.split("?")[0];
+        if (!Object.getOwnPropertyNames(swagger.paths).includes(pathName)) {
+            errors.push({
+                message: `Paths in x-ms-paths must overload a normal path in the paths section, i.e. a path in the x-ms-paths must either be same as a path in the paths section or a path in the paths sections followed by additional parameters.`,
+                path: [...path, xmsPath],
+            });
+        }
+    }
+    return errors;
+};
+
 const getInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -667,6 +687,17 @@ const ruleset$1 = {
             given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
             then: {
                 function: xmsClientName,
+            },
+        },
+        XmsPathsMustOverloadPaths: {
+            description: "The `x-ms-paths` extension allows us to overload an existing path based on path parameters. We cannot specify an `x-ms-paths` without a path that already exists in the `paths` section.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$['x-ms-paths']"],
+            then: {
+                function: xmsPathsMustOverloadPaths,
             },
         },
     },
