@@ -7,21 +7,20 @@ import { LintResultMessage, OpenApiTypes } from "@microsoft.azure/openapi-valida
 import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
 
 describe("IndividualAzureTests", () => {
-  
   test("body top level resource with extra", async () => {
     const fileNames = ["body-top-level-properties.json"]
     const ruleName = "BodyTopLevelProperties"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 2)
   })
-  
+
   test("tracked resource must have patch", async () => {
     const fileNames = ["armResource/trackedResourceNoPatch.json", "armResource/trackedResourceCommon.json"]
     const ruleName = "TrackedResourcePatchOperation"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
-  
+
   test("required properties in resource model", async () => {
     const fileNames = ["ext-resource-validation.json"]
     const ruleName = "RequiredPropertiesMissingInResourceModel"
@@ -30,7 +29,7 @@ describe("IndividualAzureTests", () => {
   })
 
   test("[positive] required properties in resource model with reference", async () => {
-    const fileNames = ["ext-resource-validation-with-reference.json","common-types/types.json"]
+    const fileNames = ["ext-resource-validation-with-reference.json", "common-types/types.json"]
     const ruleName = "RequiredPropertiesMissingInResourceModel"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 0)
@@ -70,7 +69,7 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 2)
   })
-  
+
   test("resource property bag with multiple level reference", async () => {
     const fileNames = ["arm-resource-properties-bag-with-multiple-level-reference.json"]
     const ruleName = "ArmResourcePropertiesBag"
@@ -85,4 +84,10 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 1)
   })
 
+  test("xms-pageable list by RG and subscription", async () => {
+    const fileName = ["armResource/xmsPageableListByRGAndSubscription.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "XmsPageableListByRGAndSubscriptions"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
 })

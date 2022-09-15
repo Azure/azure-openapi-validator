@@ -1,114 +1,86 @@
 [
   {
     "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VirtualMachineExtension",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11272:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VirtualMachineScaleSetExtension",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15206:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VirtualMachineScaleSetVMExtension",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11286:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.name] conflict with ARM top level properties. Please rename these."
-    },
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'AlertRuleResource'. Properties [properties.name] conflict with ARM top level properties. Please rename these.",
     "jsonpath": "$.definitions.AlertRuleResource",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:707:4"
   },
   {
     "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.name] conflict with ARM top level properties. Please rename these."
-    },
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'AutoscaleSettingResource'. Properties [properties.name] conflict with ARM top level properties. Please rename these.",
     "jsonpath": "$.definitions.AutoscaleSettingResource",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:779:4"
   },
   {
     "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.IpAllocation",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:405:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.location] conflict with ARM top level properties. Please rename these."
-    },
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'BackendAddressPool'. Properties [properties.location] conflict with ARM top level properties. Please rename these.",
     "jsonpath": "$.definitions.BackendAddressPool",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1812:4"
   },
   {
     "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VirtualNetworkGatewayNatRule",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2674:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VirtualWAN",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5734:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.name] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VpnServerConfiguration",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7403:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.type] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.VpnGatewayNatRule",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6524:4"
-  },
-  {
-    "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.id] conflict with ARM top level properties. Please rename these."
-    },
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'DataMaskingRule'. Properties [properties.id] conflict with ARM top level properties. Please rename these.",
     "jsonpath": "$.definitions.DataMaskingRule",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:372:4"
   },
   {
     "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.name] conflict with ARM top level properties. Please rename these."
-    },
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'DeletedAccount'. Properties [properties.location] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.DeletedAccount",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:3790:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'IpAllocation'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.IpAllocation",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:405:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'SyncAgent'. Properties [properties.name] conflict with ARM top level properties. Please rename these.",
     "jsonpath": "$.definitions.SyncAgent",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:393:4"
   },
   {
     "code": "ArmResourcePropertiesBag",
-    "message": {
-      "message": "Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [properties.location] conflict with ARM top level properties. Please rename these."
-    },
-    "jsonpath": "$.definitions.DeletedAccount",
-    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:3790:4"
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VirtualMachineExtension'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VirtualMachineExtension",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11272:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VirtualMachineScaleSetExtension'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetExtension",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15206:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VirtualMachineScaleSetVMExtension'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVMExtension",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11286:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VirtualNetworkGatewayNatRule'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VirtualNetworkGatewayNatRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2674:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VirtualWAN'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VirtualWAN",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5734:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VpnGatewayNatRule'. Properties [properties.type] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VpnGatewayNatRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6524:4"
+  },
+  {
+    "code": "ArmResourcePropertiesBag",
+    "message": "Top level property names should not be repeated inside the properties bag for ARM resource 'VpnServerConfiguration'. Properties [properties.name] conflict with ARM top level properties. Please rename these.",
+    "jsonpath": "$.definitions.VpnServerConfiguration",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7403:4"
   }
 ]

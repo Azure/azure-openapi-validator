@@ -8,7 +8,6 @@ import { DescriptionMustNotBeNodeName } from "../legacyRules/DescriptionMustNotB
 import { GetCollectionResponseSchema } from "../legacyRules/GetCollectionResponseSchema"
 import { ImplementPrivateEndpointAPIs } from "../legacyRules/ImplementPrivateEndpointAPIs"
 import { NestedResourcesMustHaveListOperation } from "../legacyRules/NestedResourcesMustHaveListOperation"
-import { OperationsApiResponseSchema } from "../legacyRules/OperationsApiResponseSchema"
 import { PageableOperation } from "../legacyRules/PageableOperation"
 import { PrivateEndpointResourceSchemaValidation } from "../legacyRules/PrivateEndpointResourceSchemaValidation"
 import { RequiredReadOnlySystemData } from "../legacyRules/RequiredReadOnlySystemData"
@@ -66,11 +65,6 @@ describe("CompositeAzureTests", () => {
     assertValidationRuleCount(messages, NestedResourcesMustHaveListOperation, 1)
   })
 
-  test("operations api response must have specific schema", async () => {
-    const fileName = "armResource/compute.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, OperationsApiResponseSchema)
-    assertValidationRuleCount(messages, OperationsApiResponseSchema, 1)
-  })
   test("top level resources must list by resource group", async () => {
     const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(

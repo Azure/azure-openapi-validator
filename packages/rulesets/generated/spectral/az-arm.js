@@ -2,6 +2,523 @@ import { oas2 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
+const deleteInOperationName = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!operationId.match(/^(\w+)_(Delete)/) && !operationId.match(/^(Delete)/)) {
+        errors.push({
+            message: `'DELETE' operation '${operationId}' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const getInOperationName = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!operationId.match(/^(\w+)_(Get|List)/) && !operationId.match(/^(Get|List)/)) {
+        errors.push({
+            message: `'GET' operation '${operationId}' should use method name 'Get' or Method name start with 'List'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const lroStatusCodesReturnTypeSchema = (putOp, _opts, ctx) => {
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!putOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    const operationId = putOp["operationId"] || "";
+    const responseCodes = ["200", "201"];
+    for (const responseCode of responseCodes) {
+        if ((putOp === null || putOp === void 0 ? void 0 : putOp.responses) && (putOp === null || putOp === void 0 ? void 0 : putOp.responses[responseCode])) {
+            if (!(putOp === null || putOp === void 0 ? void 0 : putOp.responses[responseCode].schema) ||
+                Object.keys(putOp === null || putOp === void 0 ? void 0 : putOp.responses[responseCode].schema).length === 0) {
+                errors.push({
+                    message: `200/201 Responses of long running operations must have a schema definition for return type. OperationId: '${operationId}', Response code: '${responseCode}'`,
+                    path: [...path, "responses", `${responseCode}`],
+                });
+            }
+        }
+    }
+    return errors;
+};
+
+const namePropertyDefinitionInParameter = (parameters, _opts, ctx) => {
+    if (parameters === null || typeof parameters !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const propsParameters = Object.getOwnPropertyNames(parameters);
+    if (propsParameters.length === 0) {
+        return [];
+    }
+    for (const propsParameter of propsParameters) {
+        if (propsParameter === "length") {
+            continue;
+        }
+        const parameter = parameters[propsParameter];
+        if (!parameter.name || parameter.name === "") {
+            errors.push({
+                message: `Parameter Must have the "name" property defined with non-empty string as its value`,
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
+const operationIdSingleUnderscore = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (operationId.match(/_/g).length > 1) {
+        errors.push({
+            message: `Only 1 underscore is permitted in the operation id, following Noun_Verb conventions`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const operationIdNounConflictingModelNames = (operationId, _opts, ctx) => {
+    var _a;
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const nounPartOfOperationId = operationId.split("_")[0];
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    const definitionsList = swagger.definitions ? Object.keys(swagger.definitions) : [];
+    if (definitionsList.includes(nounPartOfOperationId)) {
+        errors.push({
+            message: `OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to '${nounPartOfOperationId}Model'. Consider using the plural form of '${nounPartOfOperationId}' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const operationIdNounVerb = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const nounPartOfOperationId = operationId.split("_")[0];
+    const nounSearchPattern = nounPartOfOperationId.slice(-1) === "s"
+        ? `${nounPartOfOperationId}?`
+        : `${nounPartOfOperationId}`;
+    const verbPartOfOperationId = operationId.split("_")[1];
+    if (verbPartOfOperationId.match(nounSearchPattern)) {
+        errors.push({
+            message: `Per the Noun_Verb convention for Operation Ids, the noun '${nounPartOfOperationId}' should not appear after the underscore. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+function paramLocation(paramSchema, options, { path }) {
+    if (paramSchema === null || typeof paramSchema !== "object") {
+        return [];
+    }
+    const errors = [];
+    if (!paramSchema["x-ms-parameter-location"]) {
+        errors.push({
+            message: ``,
+            path,
+        });
+    }
+    return errors;
+}
+
+const pushToError = (errors, parameter, path) => {
+    errors.push({
+        message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
+        path: [...path],
+    });
+};
+const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
+    var _a;
+    if (parameters === null || !Array.isArray(parameters)) {
+        return [];
+    }
+    if (parameters.length === 0) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const globalParametersList = [];
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (swagger.parameters) {
+        for (const parameters in swagger.parameters) {
+            const parameterName = swagger.parameters[parameters].name;
+            globalParametersList.push(parameterName);
+        }
+        for (const parameter of parameters) {
+            if (parameter.name &&
+                parameter.name === "subscriptionId" &&
+                !globalParametersList.includes("subscriptionId")) {
+                pushToError(errors, "subscriptionId", path);
+            }
+        }
+        if (!globalParametersList.includes("api-version")) {
+            pushToError(errors, "api-version", path);
+        }
+    }
+    else {
+        pushToError(errors, "api-version", path);
+    }
+    return errors;
+};
+
+const patchInOperationName = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!operationId.match(/^(\w+)_(Update)/) && !operationId.match(/^(Update)/)) {
+        errors.push({
+            message: `'PATCH' operation '${operationId}' should use method name 'Update'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const putInOperationName = (operationId, _opts, ctx) => {
+    if (operationId === "" || typeof operationId !== "string") {
+        return [];
+    }
+    if (!operationId.includes("_")) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!operationId.match(/^(\w+)_(Create)/) && !operationId.match(/^(Create)/)) {
+        errors.push({
+            message: `'PUT' operation '${operationId}' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function getProperty(schema, propName) {
+    if (!schema) {
+        return {};
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const base of schema.allOf) {
+            const result = getProperty(base, propName);
+            if (result) {
+                return result;
+            }
+        }
+    }
+    if (schema.properties) {
+        if (propName in schema.properties) {
+            return schema.properties[propName];
+        }
+    }
+    return undefined;
+}
+function getRequiredProperties(schema) {
+    if (!schema) {
+        return [];
+    }
+    let requires = [];
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            requires = [...getRequiredProperties(base), ...requires];
+        });
+    }
+    if (schema.required) {
+        requires = [...schema.required, requires];
+    }
+    return requires;
+}
+function jsonPath(paths, root) {
+    let result = undefined;
+    paths.some((p) => {
+        if (typeof root !== "object" && root !== null) {
+            result = undefined;
+            return true;
+        }
+        root = root[p];
+        result = root;
+        return false;
+    });
+    return result;
+}
+function diffSchema(a, b) {
+    const notMatchedProperties = [];
+    function diffSchemaInternal(a, b, paths) {
+        if (!(a || b)) {
+            return;
+        }
+        if (a && b) {
+            const propsA = getProperties(a);
+            const propsB = getProperties(b);
+            Object.keys(propsA).forEach((p) => {
+                if (propsB[p]) {
+                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
+                }
+                else {
+                    notMatchedProperties.push([...paths, p].join("."));
+                }
+            });
+        }
+    }
+    diffSchemaInternal(a, b, []);
+    return notMatchedProperties;
+}
+function getGetOperationSchema(paths, ctx) {
+    var _a, _b, _c;
+    const getOperationPath = [...paths, "get"];
+    const getOperation = jsonPath(getOperationPath, (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved);
+    if (!getOperation) {
+        return undefined;
+    }
+    return ((_b = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema) || ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _c === void 0 ? void 0 : _c.schema);
+}
+function isPageableOperation(operation) {
+    return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
+}
+function getReturnedType(operation) {
+    var _a;
+    const succeededCodes = ["200", "201", "202"];
+    for (const code of succeededCodes) {
+        const response = operation.responses[code];
+        if (response) {
+            return (_a = response === null || response === void 0 ? void 0 : response.schema) === null || _a === void 0 ? void 0 : _a.$ref;
+        }
+    }
+}
+function getReturnedSchema(operation) {
+    const succeededCodes = ["200", "201"];
+    for (const code of succeededCodes) {
+        const response = operation.responses[code];
+        if (response === null || response === void 0 ? void 0 : response.schema) {
+            return response === null || response === void 0 ? void 0 : response.schema;
+        }
+    }
+}
+function isXmsResource(schema) {
+    if (!schema) {
+        return false;
+    }
+    if (schema["x-ms-azure-resource"]) {
+        return true;
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        for (const base of schema.allOf) {
+            if (isXmsResource(base)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+function isSchemaEqual(a, b) {
+    if (a && b) {
+        const propsA = Object.getOwnPropertyNames(a);
+        const propsB = Object.getOwnPropertyNames(b);
+        if (propsA.length === propsB.length) {
+            for (let i = 0; i < propsA.length; i++) {
+                const propsAName = propsA[i];
+                const [propA, propB] = [a[propsAName], b[propsAName]];
+                if (typeof propA === "object") {
+                    if (!isSchemaEqual(propA, propB)) {
+                        return false;
+                    }
+                    else if (i === propsA.length - 1) {
+                        return true;
+                    }
+                }
+                else if (propA !== propB) {
+                    return false;
+                }
+                else if (propA === propB && i === propsA.length - 1) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+const putRequestResponseScheme = (putOp, _opts, ctx) => {
+    var _a;
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!putOp.parameters) {
+        return [];
+    }
+    let reqBodySchema = {};
+    let reqBodySchemaPath = "";
+    for (let i = 0; i < putOp.parameters.length; i++) {
+        const parameter = putOp.parameters[i];
+        if (parameter.in === "body") {
+            reqBodySchemaPath = `parameters[${i}].schema`;
+            reqBodySchema = parameter.schema ? parameter.schema : {};
+            break;
+        }
+    }
+    if (Object.keys(reqBodySchema).length === 0) {
+        return [];
+    }
+    const responseCode = putOp.responses["200"] ? "200" : "201";
+    const respModelPath = `responses[${responseCode}].schema`;
+    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
+        ? putOp.responses[responseCode].schema
+        : {};
+    if (!isSchemaEqual(reqBodySchema, respModel)) {
+        errors.push({
+            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+const requiredReadOnlyProperties = (definition, _opts, ctx) => {
+    if (definition === null || typeof definition !== "object") {
+        return [];
+    }
+    if (!Array.isArray(definition.required) ||
+        (Array.isArray(definition.required) && definition.required.length === 0)) {
+        return [];
+    }
+    if (!definition.properties) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const required = definition.required;
+    const properties = definition.properties;
+    for (const property in properties) {
+        if (properties[property].readOnly === true && required.includes(property)) {
+            errors.push({
+                message: `Property '${property}' is a required property. It should not be marked as 'readonly'`,
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
+function checkSchemaFormat(schema, options, { path }) {
+    if (schema === null || typeof schema !== "object") {
+        return [];
+    }
+    const errors = [];
+    const schemaFormats = [
+        "int32",
+        "int64",
+        "float",
+        "double",
+        "byte",
+        "binary",
+        "date",
+        "date-time",
+        "password",
+        "char",
+        "time",
+        "date-time-rfc1123",
+        "duration",
+        "uuid",
+        "base64url",
+        "url",
+        "odata-query",
+        "certificate",
+        "uri",
+        "uri_reference",
+        "uri_template",
+        "email",
+        "hostname",
+        "ipv4",
+        "ipv6",
+        "regex",
+        "json_pointer",
+        "relative_json_pointer",
+        "arm_id",
+    ];
+    if (schema.type && schema.format) {
+        if (!schemaFormats.includes(schema.format)) {
+            errors.push({
+                message: `${schema.format}`,
+                path: [...path, "format"],
+            });
+        }
+    }
+    return errors;
+}
+
+function checkSummaryAndDescription(op, options, ctx) {
+    const errors = [];
+    const path = ctx.path;
+    if (op.summary && op.description && op.summary.trim() === op.description.trim()) {
+        errors.push({
+            message: ``,
+            path,
+        });
+    }
+    return errors;
+}
+
 const ruleset$1 = {
     extends: [],
     rules: {
@@ -29,6 +546,169 @@ const ruleset$1 = {
             given: "$[paths,'x-ms-paths'].*[?(!@property.match(/^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE|PARAMETERS)$/i))]",
             then: {
                 function: falsy,
+            },
+        },
+        LroStatusCodesReturnTypeSchema: {
+            description: "The '200'/'201' responses of the long running operation must have a schema definition.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+            then: {
+                function: lroStatusCodesReturnTypeSchema,
+            },
+        },
+        NamePropertyDefinitionInParameter: {
+            description: "A parameter must have a `name` property for the SDK to be properly generated.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.parameters", "$.paths.*.parameters", "$.paths.*.*.parameters"],
+            then: {
+                function: namePropertyDefinitionInParameter,
+            },
+        },
+        OperationIdNounConflictingModelNames: {
+            description: "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
+            then: {
+                function: operationIdNounConflictingModelNames,
+            },
+        },
+        OperationIdNounVerb: {
+            description: "OperationId should be of the form `Noun_Verb`.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
+            then: {
+                function: operationIdNounVerb,
+            },
+        },
+        OperationIdSingleUnderscore: {
+            description: "An operationId can have exactly one underscore, not adhering to it can cause errors in code generation.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
+            then: {
+                function: operationIdSingleUnderscore,
+            },
+        },
+        GetInOperationName: {
+            description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[get][?(@property === 'operationId')]"],
+            then: {
+                function: getInOperationName,
+            },
+        },
+        PutInOperationName: {
+            description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'operationId')]"],
+            then: {
+                function: putInOperationName,
+            },
+        },
+        PatchInOperationName: {
+            description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'operationId')]"],
+            then: {
+                function: patchInOperationName,
+            },
+        },
+        DeleteInOperationName: {
+            description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
+            then: {
+                function: deleteInOperationName,
+            },
+        },
+        ParameterNotDefinedInGlobalParameters: {
+            description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+            then: {
+                function: parameterNotDefinedInGlobalParameters,
+            },
+        },
+        PutRequestResponseScheme: {
+            description: "The request & response('200') schema of the PUT operation must be same.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+            then: {
+                function: putRequestResponseScheme,
+            },
+        },
+        RequiredReadOnlyProperties: {
+            description: "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..?(@property === 'required')^"],
+            then: {
+                function: requiredReadOnlyProperties,
+            },
+        },
+        SummaryAndDescriptionMustNotBeSame: {
+            description: `Each operation has a summary and description values. They must not be same.`,
+            message: "The summary and description values should not be same.",
+            severity: "warn",
+            resolved: false,
+            given: "$[paths,'x-ms-paths'].*.*",
+            then: {
+                function: checkSummaryAndDescription,
+            },
+        },
+        ValidFormats: {
+            description: `Only valid types are allowed for properties.`,
+            message: "'{{error}}' is not a known format.",
+            severity: "error",
+            resolved: false,
+            given: "$..[?(@property === 'format')]^",
+            then: {
+                function: checkSchemaFormat,
+            },
+        },
+        XmsParameterLocation: {
+            description: `SDKs generated by AutoRest have two types of operation parameters: method arguments and client fields. The 'x-ms-parameter-location' extension gives the Swagger author control of how an operation-parameter will be interpreted by AutoRest, and as such is one of few things in a Swagger document that has semantic value only relevant to the shape of the generated SDKs.
+    Some parameters, such as API Version and Subscription ID will make sense as part of nearly every request. For these, having developers specify them for each method call would be burdensome; attaching them to the client and automatically including them in each request makes way more sense. Other parameters will be very operation specific and should be provided each time the method is called.`,
+            message: 'The parameter \'{{property}}\' is defined in global parameters section without \'x-ms-parameter-location\' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension "x-ms-parameter-location": "client". Else, apply the extension "x-ms-parameter-location": "method".',
+            severity: "error",
+            resolved: false,
+            given: "$.parameters.*[?(@property === 'name' && @.match(/^(subscriptionid|subscription-id|api-version|apiversion)$/i))]^",
+            then: {
+                function: paramLocation,
             },
         },
     },
@@ -152,138 +832,6 @@ const verifyArmPath = createRulesetFunction({
     return errors;
 });
 
-function getProperties(schema) {
-    if (!schema) {
-        return {};
-    }
-    let properties = {};
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            properties = { ...getProperties(base), ...properties };
-        });
-    }
-    if (schema.properties) {
-        properties = { ...properties, ...schema.properties };
-    }
-    return properties;
-}
-function getProperty(schema, propName) {
-    if (!schema) {
-        return {};
-    }
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        for (const base of schema.allOf) {
-            const result = getProperty(base, propName);
-            if (result) {
-                return result;
-            }
-        }
-    }
-    if (schema.properties) {
-        if (propName in schema.properties) {
-            return schema.properties[propName];
-        }
-    }
-    return undefined;
-}
-function getRequiredProperties(schema) {
-    if (!schema) {
-        return [];
-    }
-    let requires = [];
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        schema.allOf.forEach((base) => {
-            requires = [...getRequiredProperties(base), ...requires];
-        });
-    }
-    if (schema.required) {
-        requires = [...schema.required, requires];
-    }
-    return requires;
-}
-function jsonPath(paths, root) {
-    let result = undefined;
-    paths.some((p) => {
-        if (typeof root !== "object" && root !== null) {
-            result = undefined;
-            return true;
-        }
-        root = root[p];
-        result = root;
-        return false;
-    });
-    return result;
-}
-function diffSchema(a, b) {
-    const notMatchedProperties = [];
-    function diffSchemaInternal(a, b, paths) {
-        if (!(a || b)) {
-            return;
-        }
-        if (a && b) {
-            const propsA = getProperties(a);
-            const propsB = getProperties(b);
-            Object.keys(propsA).forEach((p) => {
-                if (propsB[p]) {
-                    diffSchemaInternal(propsA[p], propsB[p], [...paths, p]);
-                }
-                else {
-                    notMatchedProperties.push([...paths, p].join("."));
-                }
-            });
-        }
-    }
-    diffSchemaInternal(a, b, []);
-    return notMatchedProperties;
-}
-function getGetOperationSchema(paths, ctx) {
-    var _a, _b, _c;
-    const getOperationPath = [...paths, "get"];
-    const getOperation = jsonPath(getOperationPath, (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved);
-    if (!getOperation) {
-        return undefined;
-    }
-    return ((_b = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema) || ((_c = getOperation === null || getOperation === void 0 ? void 0 : getOperation.responses["201"]) === null || _c === void 0 ? void 0 : _c.schema);
-}
-function isPagableOperation(operation) {
-    return !!(operation === null || operation === void 0 ? void 0 : operation["x-ms-pageable"]);
-}
-function getReturnedType(operation) {
-    var _a;
-    const succeededCodes = ["200", "201", "202"];
-    for (const code of succeededCodes) {
-        const response = operation.responses[code];
-        if (response) {
-            return (_a = response === null || response === void 0 ? void 0 : response.schema) === null || _a === void 0 ? void 0 : _a.$ref;
-        }
-    }
-}
-function getReturnedSchema(operation) {
-    const succeededCodes = ["200", "201"];
-    for (const code of succeededCodes) {
-        const response = operation.responses[code];
-        if (response === null || response === void 0 ? void 0 : response.schema) {
-            return response === null || response === void 0 ? void 0 : response.schema;
-        }
-    }
-}
-function isXmsResource(schema) {
-    if (!schema) {
-        return false;
-    }
-    if (schema["x-ms-azure-resource"]) {
-        return true;
-    }
-    if (schema.allOf && Array.isArray(schema.allOf)) {
-        for (const base of schema.allOf) {
-            if (isXmsResource(base)) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -321,7 +869,7 @@ const collectionObjectPropertiesNaming = (op, _opts, paths) => {
     const path = paths.path || [];
     const errors = [];
     const regex = /.+_List([^_]*)$/;
-    if (op && regex.test(op.operationId) && isPagableOperation(op)) {
+    if (op && regex.test(op.operationId) && isPageableOperation(op)) {
         const schema = (_b = (_a = op.responses) === null || _a === void 0 ? void 0 : _a["200"]) === null || _b === void 0 ? void 0 : _b.schema;
         const valueSchema = getProperty(schema, "value");
         if (schema && !(valueSchema && valueSchema.type === "array")) {
@@ -454,6 +1002,39 @@ const lroPatch202 = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+function operationsApiSchema(schema, options, { path }) {
+    if (schema === null || typeof schema !== "object") {
+        return [];
+    }
+    const errors = [];
+    let isValid = true;
+    const value = getProperty(schema, "value");
+    const items = value === null || value === void 0 ? void 0 : value.items;
+    if (value && items) {
+        const name = getProperty(items, "name");
+        const display = getProperty(items, "display");
+        const isDataAction = getProperty(items, "isDataAction");
+        if (!name || !isDataAction || !display) {
+            isValid = false;
+        }
+        else {
+            if (["description", "provider", "operation", "resource"].some((e) => !getProperty(display, e))) {
+                isValid = false;
+            }
+        }
+    }
+    else {
+        isValid = false;
+    }
+    if (!isValid) {
+        errors.push({
+            message: path[1],
+            path,
+        });
+    }
+    return errors;
+}
+
 const pathBodyParameters = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
         return [];
@@ -553,6 +1134,33 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
             });
             break;
         }
+    }
+    return errors;
+};
+
+const securityDefinitionsStructure = (swagger, _opts) => {
+    var _a, _b, _c, _d, _e, _f;
+    if (swagger === "" || typeof swagger !== "object") {
+        return [];
+    }
+    if (!Object.keys(swagger).includes("securityDefinitions")) {
+        return [];
+    }
+    const errors = [];
+    const securityDefinition = swagger.securityDefinitions;
+    let likeModule = false;
+    if (((_a = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _a === void 0 ? void 0 : _a.type) === "oauth2" &&
+        ((_b = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _b === void 0 ? void 0 : _b.authorizationUrl) ===
+            "https://login.microsoftonline.com/common/oauth2/authorize" &&
+        ((_c = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _c === void 0 ? void 0 : _c.flow) === "implicit" &&
+        ((_d = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _d === void 0 ? void 0 : _d.description) &&
+        ((_f = (_e = securityDefinition === null || securityDefinition === void 0 ? void 0 : securityDefinition.azure_auth) === null || _e === void 0 ? void 0 : _e.scopes) === null || _f === void 0 ? void 0 : _f.user_impersonation)) {
+        likeModule = true;
+    }
+    if (!likeModule) {
+        errors.push({
+            message: `Every OpenAPI(swagger) spec/configuration must have a security definitions section and it must adhere to the following structure: https://github.com/Azure/azure-openapi-validator/blob/main/docs/security-definitions-structure-validation.md`,
+        });
     }
     return errors;
 };
@@ -1010,7 +1618,7 @@ const ruleset = {
             message: "Property name should be camel case.",
             severity: "error",
             resolved: false,
-            given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/^@.+$/))]~",
+            given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
             then: {
                 function: casing,
                 functionOptions: {
@@ -1069,6 +1677,38 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.put"],
             then: {
                 function: withXmsResource,
+            },
+        },
+        SecurityDefinitionsStructure: {
+            description: `Each OpenAPI json document must contain a security definitions section and the section must adhere to a certain format.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            given: ["$"],
+            then: {
+                function: securityDefinitionsStructure,
+            },
+        },
+        SubscriptionIdParameterInOperations: {
+            description: `'subscriptionId' must not be an operation parameter and must be declared in the global parameters section.`,
+            message: "Parameter 'subscriptionId' is not allowed in the operations section, define it in the global parameters section instead/Parameter '{{path}}' is referenced but not defined in the global parameters section of Service Definition",
+            severity: "error",
+            resolved: false,
+            given: [
+                "$[paths,'x-ms-paths'].*.*.parameters.*[?(@property === 'name' && @.match(/^subscriptionid$/i))]^",
+                "$[paths,'x-ms-paths'].*.parameters.*[?(@property === 'name' && @.match(/^subscriptionid$/i))]^",
+            ],
+            then: {
+                function: falsy,
+            },
+        },
+        OperationsApiResponseSchema: {
+            severity: "error",
+            message: "The response schema of operations API '{{error}}' does not match the ARM specification. Please standardize the schema.",
+            resolved: true,
+            given: "$.paths[?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema",
+            then: {
+                function: operationsApiSchema,
             },
         },
     },

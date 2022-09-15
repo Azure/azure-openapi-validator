@@ -7,14 +7,14 @@ import collectionObjectPropertiesNaming from "./functions/collection-object-prop
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
-import httpsSupportedScheme from "./functions/https-supported-scheme";
-import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability";
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
+import operationsApiSchema from "./functions/operations-api-schema"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { securityDefinitionsStructure } from "./functions/security-definitions-structure";
 import skuValidation from "./functions/sku-validation"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -382,7 +382,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/^@.+$/))]~",
+      given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
       then: {
         function: casing,
         functionOptions: {
@@ -424,6 +424,7 @@ const ruleset: any = {
         },
       },
     },
+
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
       message:
@@ -445,28 +446,39 @@ const ruleset: any = {
         function: withXmsResource,
       },
     },
-    LocationMustHaveXmsMutability: {
-      description: 'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
-      message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ['$.definitions[*].properties.location'],
+    SecurityDefinitionsStructure: {
+      description: `Each OpenAPI json document must contain a security definitions section and the section must adhere to a certain format.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$"],
       then: {
-        function: locationMustHaveXmsMutability
-      }
+        function: securityDefinitionsStructure,
+      },
     },
-    HttpsSupportedScheme: {
-      description: 'Verifies whether specification supports HTTPS scheme or not.',
-      message: 'Azure Resource Management only supports HTTPS scheme.',
-      severity: "warn",
+    SubscriptionIdParameterInOperations: {
+      description: `'subscriptionId' must not be an operation parameter and must be declared in the global parameters section.`,
+      message:
+        "Parameter 'subscriptionId' is not allowed in the operations section, define it in the global parameters section instead/Parameter '{{path}}' is referenced but not defined in the global parameters section of Service Definition",
+      severity: "error",
       resolved: false,
-      formats: [oas2],
-      given: ["$.schemes"],
+      given: [
+        "$[paths,'x-ms-paths'].*.*.parameters.*[?(@property === 'name' && @.match(/^subscriptionid$/i))]^",
+        "$[paths,'x-ms-paths'].*.parameters.*[?(@property === 'name' && @.match(/^subscriptionid$/i))]^",
+      ],
       then: {
-        function: httpsSupportedScheme
-      }
-    }
+        function: falsy,
+      },
+    },
+    OperationsApiResponseSchema: {
+      severity: "error",
+      message: "The response schema of operations API '{{error}}' does not match the ARM specification. Please standardize the schema.",
+      resolved: true,
+      given: "$.paths[?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema",
+      then: {
+        function: operationsApiSchema,
+      },
+    },
   },
 }
 

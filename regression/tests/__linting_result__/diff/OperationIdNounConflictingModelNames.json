@@ -1,0 +1,361 @@
+{
+  "common": [
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DataWarehouseUserActivitiesModel'. Consider using the plural form of 'DataWarehouseUserActivities' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataWarehouseUserActivities\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DataWarehouseUserActivities.json:81:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DataWarehouseUserActivitiesModel'. Consider using the plural form of 'DataWarehouseUserActivities' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataWarehouseUserActivities/{dataWarehouseUserActivityName}\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DataWarehouseUserActivities.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DatabaseAutomaticTuningModel'. Consider using the plural form of 'DatabaseAutomaticTuning' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/automaticTuning/current\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DatabaseAutomaticTuningModel'. Consider using the plural form of 'DatabaseAutomaticTuning' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/automaticTuning/current\"].patch.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAutomaticTuning.json:65:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DatabaseExtensionsModel'. Consider using the plural form of 'DatabaseExtensions' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:129:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DatabaseExtensionsModel'. Consider using the plural form of 'DatabaseExtensions' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DatabaseExtensionsModel'. Consider using the plural form of 'DatabaseExtensions' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:68:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiagnosticSettingsCategoryModel'. Consider using the plural form of 'DiagnosticSettingsCategory' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories\"].get.operationId",
+      "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:83:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiagnosticSettingsCategoryModel'. Consider using the plural form of 'DiagnosticSettingsCategory' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories/{name}\"].get.operationId",
+      "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:44:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiagnosticSettingsModel'. Consider using the plural form of 'DiagnosticSettings' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings\"].get.operationId",
+      "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:166:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiagnosticSettingsModel'. Consider using the plural form of 'DiagnosticSettings' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}\"].delete.operationId",
+      "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:127:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiagnosticSettingsModel'. Consider using the plural form of 'DiagnosticSettings' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}\"].get.operationId",
+      "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:44:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiagnosticSettingsModel'. Consider using the plural form of 'DiagnosticSettings' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}\"].put.operationId",
+      "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:81:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiskRestorePointModel'. Consider using the plural form of 'DiskRestorePoint' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints\"].get.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1697:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiskRestorePointModel'. Consider using the plural form of 'DiskRestorePoint' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}\"].get.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1646:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiskRestorePointModel'. Consider using the plural form of 'DiskRestorePoint' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/beginGetAccess\"].post.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1745:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DiskRestorePointModel'. Consider using the plural form of 'DiskRestorePoint' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/endGetAccess\"].post.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1809:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LedgerDigestUploadsModel'. Consider using the plural form of 'LedgerDigestUploads' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:145:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LedgerDigestUploadsModel'. Consider using the plural form of 'LedgerDigestUploads' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LedgerDigestUploadsModel'. Consider using the plural form of 'LedgerDigestUploads' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:78:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LedgerDigestUploadsModel'. Consider using the plural form of 'LedgerDigestUploads' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}/disable\"].post.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:190:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LocalUsersModel'. Consider using the plural form of 'LocalUsers' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers\"].get.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1715:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LocalUsersModel'. Consider using the plural form of 'LocalUsers' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}\"].delete.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1858:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LocalUsersModel'. Consider using the plural form of 'LocalUsers' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}\"].get.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1760:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LocalUsersModel'. Consider using the plural form of 'LocalUsers' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1803:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LocalUsersModel'. Consider using the plural form of 'LocalUsers' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys\"].post.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1903:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'LocalUsersModel'. Consider using the plural form of 'LocalUsers' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword\"].post.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1948:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'MaintenanceWindowOptionsModel'. Consider using the plural form of 'MaintenanceWindowOptions' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindowOptions/current\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindowOptions.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'MaintenanceWindowsModel'. Consider using the plural form of 'MaintenanceWindows' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'MaintenanceWindowsModel'. Consider using the plural form of 'MaintenanceWindows' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].put.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:76:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ObjectReplicationPoliciesModel'. Consider using the plural form of 'ObjectReplicationPolicies' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies\"].get.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1482:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ObjectReplicationPoliciesModel'. Consider using the plural form of 'ObjectReplicationPolicies' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}\"].delete.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1631:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ObjectReplicationPoliciesModel'. Consider using the plural form of 'ObjectReplicationPolicies' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}\"].get.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1527:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ObjectReplicationPoliciesModel'. Consider using the plural form of 'ObjectReplicationPolicies' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1570:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'OperationStatusModel'. Consider using the plural form of 'OperationStatus' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}\"].get.operationId",
+      "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3042:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'OperationsDiscoveryModel'. Consider using the plural form of 'OperationsDiscovery' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get.operationId",
+      "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:885:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ServerAutomaticTuningModel'. Consider using the plural form of 'ServerAutomaticTuning' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\"].get.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:25:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ServerAutomaticTuningModel'. Consider using the plural form of 'ServerAutomaticTuning' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current\"].patch.operationId",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAutomaticTuning.json:62:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'StorageTargetModel'. Consider using the plural form of 'StorageTarget' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush\"].post.operationId",
+      "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1104:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'StorageTargetModel'. Consider using the plural form of 'StorageTarget' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate\"].post.operationId",
+      "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1269:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'StorageTargetModel'. Consider using the plural form of 'StorageTarget' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume\"].post.operationId",
+      "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1214:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'StorageTargetModel'. Consider using the plural form of 'StorageTarget' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend\"].post.operationId",
+      "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1159:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TableModel'. Consider using the plural form of 'Table' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables\"].get.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:358:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TableModel'. Consider using the plural form of 'Table' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].delete.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:316:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TableModel'. Consider using the plural form of 'Table' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].get.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:273:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TableModel'. Consider using the plural form of 'Table' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].patch.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:218:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'TableModel'. Consider using the plural form of 'Table' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].put.operationId",
+      "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:163:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'UsageModel'. Consider using the plural form of 'Usage' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages\"].get.operationId",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3014:8"
+    }
+  ],
+  "v2Only": [],
+  "v3Only": [
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/dscpConfigurations\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:260:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:214:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].delete.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:109:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:164:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'DscpConfigurationModel'. Consider using the plural form of 'DscpConfiguration' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:42:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'InboundSecurityRuleModel'. Consider using the plural form of 'InboundSecurityRule' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:688:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5638:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].delete.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5577:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5525:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'RoutingIntentModel'. Consider using the plural form of 'RoutingIntent' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5454:8"
+    },
+    {
+      "code": "OperationIdNounConflictingModelNames",
+      "message": "OperationId has a noun that conflicts with one of the model names in definitions section. The model name will be disambiguated to 'ServiceTagInformationModel'. Consider using the plural form of 'ServiceTagInformation' to avoid this. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails\"].get.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceTags.json:79:8"
+    }
+  ]
+}

@@ -167,3 +167,26 @@ export function* resourcesHaveRequiredProperties(openapiSection: any, options: {
     }
   }
 }
+
+export function* xmsPageableListByRGAndSubscriptions(openapiSection: any, options: {}, ctx: RuleContext) {
+  const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
+  const trackedResources = armHelper.getTrackedResources()
+  const collectionApiInfos = armHelper.getCollectionApiInfo()
+  function isListByRgAndSubscription(apiPaths: string[]) {
+    return apiPaths.some((p) => armHelper.isPathByResourceGroup(p)) && apiPaths.some((p) => armHelper.isPathBySubscription(p))
+  }
+  for (const collectionApiInfo of collectionApiInfos) {
+    if (isListByRgAndSubscription(collectionApiInfo.collectionGetPath)) {
+      const trackedResource = trackedResources.find((r) => r.modelName === collectionApiInfo.childModelName)
+      const isXmsPageableResult = collectionApiInfo.collectionGetPath
+        .map((p) => armHelper.isPathXmsPageable(p))
+        .reduce((result, cur) => (result !== cur ? false : true))
+      if (trackedResource && !isXmsPageableResult) {
+        yield {
+          location: ["definitions", trackedResource.modelName],
+          message: `For the tracked resource '${trackedResource.modelName}', the x-ms-pageable extension values must be same for list by resource group and subscriptions operations.`,
+        }
+      }
+    }
+  }
+}
