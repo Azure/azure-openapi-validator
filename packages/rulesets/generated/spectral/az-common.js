@@ -48,6 +48,40 @@ const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
     return errors;
 };
 
+const mutabilityWithReadOnly = (prop, _opts, ctx) => {
+    if (prop === null || typeof prop !== "object") {
+        return [];
+    }
+    if (prop.readOnly === undefined ||
+        prop["x-ms-mutability"] === undefined ||
+        prop["x-ms-mutability"].length === 0) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    let hasErrors = false;
+    let invalidValues = "";
+    if (prop.readOnly === true) {
+        if (prop["x-ms-mutability"].length !== 1 || prop["x-ms-mutability"][0] !== "read") {
+            hasErrors = true;
+            invalidValues = prop["x-ms-mutability"].join(", ");
+        }
+    }
+    else {
+        if (prop["x-ms-mutability"].length === 1 && prop["x-ms-mutability"][0] === "read") {
+            hasErrors = true;
+            invalidValues = "read";
+        }
+    }
+    if (hasErrors) {
+        errors.push({
+            message: `When property is modeled as "readOnly": true then x-ms-mutability extension can only have "read" value. When property is modeled as "readOnly": false then applying x-ms-mutability extension with only "read" value is not allowed. Extension contains invalid values: '${invalidValues}'.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
 const getInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -513,6 +547,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
             then: {
                 function: longRunningOperationsOptionsValidator,
+            },
+        },
+        MutabilityWithReadOnly: {
+            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
+            then: {
+                function: mutabilityWithReadOnly,
             },
         },
     },

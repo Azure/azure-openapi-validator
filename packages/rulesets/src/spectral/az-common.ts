@@ -4,9 +4,9 @@ import { deleteInOperationName } from "./functions/delete-in-operation-name";
 import {
   longRunningOperationsOptionsValidator
 } from "./functions/Extensions/long-running-operations-options-validator";
+import { mutabilityWithReadOnly } from "./functions/Extensions/mutability-with-read-only";
 import { getInOperationName } from "./functions/get-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
-import { mutabilityWithReadOnly } from "./functions/Extensions/mutability-with-read-only";
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
 import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id";
 import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names";
@@ -195,7 +195,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$..?(@property === 'readOnly')^"],
+      given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
       then: {
         function: mutabilityWithReadOnly,
       },
