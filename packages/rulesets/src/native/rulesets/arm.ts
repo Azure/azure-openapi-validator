@@ -8,6 +8,7 @@ import {
   trackedResourceBeyondsThirdLevel,
   trackedResourcesHavePatch,
   trackedResourcesMustHavePut,
+  xmsPageableListByRGAndSubscriptions,
 } from "../functions/arm-resource-validation"
 import { providerNamespace } from "../functions/provider-namespace"
 export const armRuleset: IRuleSet = {
@@ -41,7 +42,7 @@ export const armRuleset: IRuleSet = {
         execute: allResourcesHaveDelete,
       },
     },
-    ArmResourcePropertiesBag:{
+    ArmResourcePropertiesBag: {
       description:
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties should not be repeated inside the properties bag for ARM resources.",
       category: "ARMViolation",
@@ -52,7 +53,7 @@ export const armRuleset: IRuleSet = {
         execute: armResourcePropertiesBag,
       },
     },
-    BodyTopLevelProperties:{
+    BodyTopLevelProperties: {
       description:
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties of a resource should be only ones from the allowed set.",
       category: "ARMViolation",
@@ -63,19 +64,19 @@ export const armRuleset: IRuleSet = {
         execute: bodyTopLevelProperties,
       },
     },
-    OperationsAPIImplementation:{
+    OperationsAPIImplementation: {
       description:
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), each RP must expose an operations API that returns information about all the operations available with the service.",
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
-      scope:"Global",
+      scope: "Global",
       severity: "error",
       given: "$",
       then: {
         execute: operationsAPIImplementation,
       },
     },
-     RequiredPropertiesMissingInResourceModel: {
+    RequiredPropertiesMissingInResourceModel: {
       description: `Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), a 'Resource' model must have the 'name', 'id' and 'type' properties defined as 'readOnly' in its hierarchy.`,
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
@@ -102,7 +103,16 @@ export const armRuleset: IRuleSet = {
       openapiType: OpenApiTypes.arm,
       given: ["$[paths,'x-ms-paths'].*~"],
       then: {
-        execute: providerNamespace
+        execute: providerNamespace,
+      },
+    },
+    XmsPageableListByRGAndSubscriptions: {
+      description: `When a tracked resource has list by resource group and subscription operations, the x-ms-pageable extension values must be same for both operations. A tracked resource is a resource with a 'location' property as required. If this rule flags a resource which does not have a 'location' property, then it might be a false positive.`,
+      severity: "warning",
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      then: {
+        execute: xmsPageableListByRGAndSubscriptions,
       },
     },
   },

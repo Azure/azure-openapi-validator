@@ -9,6 +9,7 @@ import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
+import operationsApiSchema from "./functions/operations-api-schema"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
@@ -381,7 +382,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@.type === 'object' && @.properties)].properties.[?(!@property.match(/^@.+$/))]~",
+      given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
       then: {
         function: casing,
         functionOptions: {
@@ -453,6 +454,29 @@ const ruleset: any = {
       given: ["$"],
       then: {
         function: securityDefinitionsStructure,
+      },
+    },
+    SubscriptionIdParameterInOperations: {
+      description: `'subscriptionId' must not be an operation parameter and must be declared in the global parameters section.`,
+      message:
+        "Parameter 'subscriptionId' is not allowed in the operations section, define it in the global parameters section instead/Parameter '{{path}}' is referenced but not defined in the global parameters section of Service Definition",
+      severity: "error",
+      resolved: false,
+      given: [
+        "$[paths,'x-ms-paths'].*.*.parameters.*[?(@property === 'name' && @.match(/^subscriptionid$/i))]^",
+        "$[paths,'x-ms-paths'].*.parameters.*[?(@property === 'name' && @.match(/^subscriptionid$/i))]^",
+      ],
+      then: {
+        function: falsy,
+      },
+    },
+    OperationsApiResponseSchema: {
+      severity: "error",
+      message: "The response schema of operations API '{{error}}' does not match the ARM specification. Please standardize the schema.",
+      resolved: true,
+      given: "$.paths[?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema",
+      then: {
+        function: operationsApiSchema,
       },
     },
   },
