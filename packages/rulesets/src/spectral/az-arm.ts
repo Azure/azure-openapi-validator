@@ -7,6 +7,8 @@ import collectionObjectPropertiesNaming from "./functions/collection-object-prop
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
+import httpsSupportedScheme from "./functions/https-supported-scheme";
+import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability";
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -479,6 +481,28 @@ const ruleset: any = {
         function: operationsApiSchema,
       },
     },
+    LocationMustHaveXmsMutability: {
+      description: 'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
+      message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ['$.definitions[*].properties.location'],
+      then: {
+        function: locationMustHaveXmsMutability
+      }
+    },
+    HttpsSupportedScheme: {
+      description: 'Verifies whether specification supports HTTPS scheme or not.',
+      message: 'Azure Resource Management only supports HTTPS scheme.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.schemes"],
+      then: {
+        function: httpsSupportedScheme
+      }
+    }
   },
 }
 
