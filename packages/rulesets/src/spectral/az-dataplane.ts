@@ -23,6 +23,9 @@ import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
+import xmsClientNameParameter from "./functions/xms-client-name-parameter";
+import xmsClientNameProperty from "./functions/xms-client-name-property";
+import xmsExamplesRequired from "./functions/xms-examples-required";
 
 const ruleset: any = {
   extends: [common],
@@ -561,7 +564,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$.paths.*[?('get' && @['x-ms-pageable'])].operationId"],
+      given: ["$.paths.*[get]['x-ms-pageable']^.operationId"],
       then: {
         function: pattern,
         functionOptions: {
@@ -583,6 +586,52 @@ const ruleset: any = {
           function: locationMustHaveXmsMutability
         }
       ]
+    },
+    XmsClientNameParameter: {
+      description:
+          'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
+          'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
+          'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+      message:
+          'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]","$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+      then: [
+        {
+          function: xmsClientNameParameter
+        }
+      ]
+    },
+    XmsClientNameProperty: {
+      description:
+          'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
+          'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
+          'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+      message:
+          'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.definitions[*].properties.*['x-ms-client-name']"],
+      then: {
+        function: xmsClientNameProperty
+      }
+    }
+    ,
+    XmsExamplesRequired: {
+      description:
+          'Verifies whether `x-ms-examples` are provided for each operation or not.',
+      message:
+          'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+      then: {
+        function: xmsExamplesRequired
+      }
     }
   },
 }

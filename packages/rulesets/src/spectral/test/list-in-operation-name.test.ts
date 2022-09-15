@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter;
 });
 
-test('ListInOperationName should find errors', () => {
+test('ListInOperationName should find invalid operationId', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     schemes: [
@@ -31,18 +31,13 @@ test('ListInOperationName should find errors', () => {
       },
       "/some/test/path2":{
         get:{
-          operationId:"Extensions_Get"
-        },
-      },
-      "/some/test/path3":{
-        get:{
           operationId:"_List",
           "x-ms-pageable": {
             nextLinkName: "nextLink"
           },
         },
       },
-      "/some/test/path4":{
+      "/some/test/path3":{
         get:{
           operationId:"ExtensionsList",
           "x-ms-pageable": {
@@ -57,7 +52,7 @@ test('ListInOperationName should find errors', () => {
   });
 });
 
-test('ListInOperationName should find no errors', () => {
+test('ListInOperationName should pass check', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     schemes: [
@@ -93,6 +88,14 @@ test('ListInOperationName should find no errors', () => {
       "/some/test/path3":{
         get:{
           operationId:"Extension_ListByTest",
+          "x-ms-pageable": {
+            nextLinkName: "nextLink"
+          },
+        },
+      },
+      "/some/test/path4":{
+        post:{
+          operationId:"Extension_UpdateByTest",
           "x-ms-pageable": {
             nextLinkName: "nextLink"
           },

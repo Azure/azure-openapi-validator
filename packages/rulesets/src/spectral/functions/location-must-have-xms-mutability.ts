@@ -2,14 +2,14 @@
 const locationMustHaveXmsMutability = (scheme:any, _opts:any, paths:any) => {
     if(scheme == null || typeof scheme !== "object")
         return [];
-    if(scheme["x-ms-mutability"] !== undefined) {
+    if(scheme["x-ms-mutability"] !== undefined && Array.isArray(scheme["x-ms-mutability"])) {
         const schemeArray: string[] = scheme["x-ms-mutability"];
         if(schemeArray.includes("create") && schemeArray.includes("read"))
             return [];
     }
     const path = paths.path || [];
     return [{
-        message: 'Azure Resource Management only supports HTTPS scheme.',
+        message: 'Property \'location\' must have \'\\"x-ms-mutability\\":[\\"read\\", \\"create\\"]\' extension defined.',
         path,
     }];
 };

@@ -46,11 +46,20 @@ test('LocationMustHaveXmsMutability should find errors', () => {
             description: "Resource location"
           },
         }
+      },
+      ResourceWithoutArray:{
+        properties: {
+          location: {
+            type: "string",
+            description: "Resource location",
+            "x-ms-mutability": "create"
+          },
+        }
       }
     }
   };
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(3);
+    expect(results.length).toBe(4);
   });
 });
 
