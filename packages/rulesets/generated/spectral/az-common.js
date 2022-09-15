@@ -618,6 +618,18 @@ const ruleset = {
                 function: truthy,
             },
         },
+        ResourceHasXMsResourceEnabled: {
+            description: "A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.",
+            message: "A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions[?(@property === 'Resource')]"],
+            then: {
+                field: "[x-ms-azure-resource]",
+                function: truthy,
+            },
+        },
     },
 };
 
