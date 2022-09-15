@@ -223,6 +223,18 @@ const ruleset: any = {
         function: truthy,
       },
     },
+    PageableRequires200Response: {
+      description: "Per definition of AutoRest x-ms-pageable extension, the response schema must contain a 200 response schema.",
+      message: "A response for the 200 HTTP status code must be defined to use x-ms-pageable.",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
+      then: {
+        field: "[responses][200]",
+        function: truthy,
+      },
+    },
   },
 }
 export default ruleset
