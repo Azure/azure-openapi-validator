@@ -107,6 +107,34 @@ const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     return errors;
 };
 
+const xmsClientName = (opt, _opts, ctx) => {
+    if (opt === null || typeof opt !== "object") {
+        return [];
+    }
+    if (opt["x-ms-client-name"] === undefined) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (path.includes("parameters")) {
+        if (opt["x-ms-client-name"] === opt.name) {
+            errors.push({
+                message: `Value of 'x-ms-client-name' cannot be the same as '${opt.name}' Property/Model.`,
+                path: [...path],
+            });
+        }
+    }
+    else {
+        if (opt["x-ms-client-name"] === path.at(-1)) {
+            errors.push({
+                message: `Value of 'x-ms-client-name' cannot be the same as '${path.at(-1)}' Property/Model.`,
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
 const getInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -728,7 +756,7 @@ const ruleset$1 = {
             },
         },
         NonEmptyClientName: {
-            description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.",
+            description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code.",
             message: "Empty x-ms-client-name property.",
             severity: "error",
             resolved: true,
@@ -760,6 +788,17 @@ const ruleset$1 = {
             then: {
                 field: "[x-ms-azure-resource]",
                 function: truthy,
+            },
+        },
+        XmsClientName: {
+            description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
+            then: {
+                function: xmsClientName,
             },
         },
     },

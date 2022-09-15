@@ -6,6 +6,7 @@ import {
 } from "./functions/Extensions/long-running-operations-options-validator";
 import { mutabilityWithReadOnly } from "./functions/Extensions/mutability-with-read-only";
 import { nextLinkPropertyMustExist } from "./functions/Extensions/next-link-property-must-exist";
+import { xmsClientName } from "./functions/Extensions/xms-client-name";
 import { getInOperationName } from "./functions/get-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema";
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter";
@@ -213,7 +214,7 @@ const ruleset: any = {
       },
     },
     NonEmptyClientName: {
-      description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.",
+      description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code.",
       message: "Empty x-ms-client-name property.",
       severity: "error",
       resolved: true,
@@ -245,6 +246,17 @@ const ruleset: any = {
       then: {
         field: "[x-ms-azure-resource]",
         function: truthy,
+      },
+    },
+    XmsClientName: {
+      description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
+      then: {
+        function: xmsClientName,
       },
     },
   },
