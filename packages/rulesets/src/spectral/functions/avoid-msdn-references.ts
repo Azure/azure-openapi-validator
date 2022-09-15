@@ -5,10 +5,9 @@ const avoidMsdnReferences = (swaggerObj:any, _opts:any, paths:any) => {
   if (swaggerObj === null) {
     return [];
   }
-  if(typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
+  if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
     return [];
-  if(typeof swaggerObj === "object")
-  {
+  if (typeof swaggerObj === "object") {
     const docUrl: string = swaggerObj.url;
     if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
       return [];

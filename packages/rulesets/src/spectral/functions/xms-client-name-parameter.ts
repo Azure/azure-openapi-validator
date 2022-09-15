@@ -5,7 +5,7 @@ const xmsClientNameParameter = (swaggerObj:any, _opts:any, paths:any) => {
     if (swaggerObj === null) {
         return [];
     }
-    if(swaggerObj.name !== swaggerObj['x-ms-client-name'])
+    if (swaggerObj.name !== swaggerObj['x-ms-client-name'])
         return [];
     const path = paths.path || [];
     path.push('x-ms-client-name')

@@ -2,17 +2,13 @@ import { oas2, oas3 } from "@stoplight/spectral-formats"
 import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions"
 import common from "./az-common"
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
-import avoidMsdnReferences from "./functions/avoid-msdn-references";
 import consistentresponsebody from "./functions/consistent-response-body"
 import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
-import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
 import hasheader from "./functions/has-header"
 import hostParameters from "./functions/host-parameters"
-import httpsSupportedScheme from "./functions/https-supported-scheme";
-import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability";
 import operationid from "./functions/operation-id"
 import paginationresponse from "./functions/pagination-response"
 import paramnames from "./functions/param-names"
@@ -23,9 +19,6 @@ import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
-import xmsClientNameParameter from "./functions/xms-client-name-parameter";
-import xmsClientNameProperty from "./functions/xms-client-name-property";
-import xmsExamplesRequired from "./functions/xms-examples-required";
 
 const ruleset: any = {
   extends: [common],
@@ -502,138 +495,8 @@ const ruleset: any = {
       then: {
         function: hostParameters,
       },
-    },
-    AvoidMsdnReferences: {
-      description:
-          'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
-      message:
-          'For better generated code quality, remove all references to "msdn.microsoft.com".',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$..[?(@object() && @.externalDocs)].externalDocs","$.info.description"],
-      then: {
-        function: avoidMsdnReferences,
-      },
-    },
-    AvoidNestedProperties: {
-      description:
-          'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
-      message:
-          'Consider using x-ms-client-flatten to provide a better end user experience',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
-      then: {
-        field: "x-ms-client-flatten",
-        function: truthy
-      },
-    },
-    DescriptiveDescriptionRequired: {
-      description:
-          'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
-      message:
-          'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$..[?(@object() && @.description)].description"],
-      then: {
-          function: descriptiveDescriptionRequired
-      },
-    },
-    HttpsSupportedScheme: {
-      description:
-          'Verifies whether specification supports HTTPS scheme or not.',
-      message:
-          'Azure Resource Management only supports HTTPS scheme.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.schemes"],
-      then: {
-        function: httpsSupportedScheme
-      }
-    },
-    ListInOperationName: {
-      description:
-          'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
-      message:
-          'Since operation response has model definition, it should be of the form "_list".',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths.*[get]['x-ms-pageable']^.operationId"],
-      then: {
-        function: pattern,
-        functionOptions: {
-          match: "^((\\w+\\_List\\w*)|List)$"
-        }
-      }
-    },
-    LocationMustHaveXmsMutability: {
-      description:
-          'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
-      message:
-          'Property \'location\' must have \'"x-ms-mutability":["read", "create"]\' extension defined.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ['$.definitions[*].properties.location'],
-      then: [
-        {
-          function: locationMustHaveXmsMutability
-        }
-      ]
-    },
-    XmsClientNameParameter: {
-      description:
-          'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
-          'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
-          'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-      message:
-          'Value of `x-ms-client-name` cannot be the same as Property/Model.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]","$.parameters.[?(@.name && @['x-ms-client-name'])]"],
-      then: [
-        {
-          function: xmsClientNameParameter
-        }
-      ]
-    },
-    XmsClientNameProperty: {
-      description:
-          'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
-          'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
-          'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-      message:
-          'Value of `x-ms-client-name` cannot be the same as Property/Model.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.definitions[*].properties.*['x-ms-client-name']"],
-      then: {
-        function: xmsClientNameProperty
-      }
     }
-    ,
-    XmsExamplesRequired: {
-      description:
-          'Verifies whether `x-ms-examples` are provided for each operation or not.',
-      message:
-          'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
-      then: {
-        function: xmsExamplesRequired
-      }
-    }
-  },
+  }
 }
 
 export default ruleset

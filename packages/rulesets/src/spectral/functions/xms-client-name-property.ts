@@ -6,10 +6,10 @@ const xmsClientNameProperty = (swaggerObj:any, _opts:any, paths:any) => {
         return [];
     }
     const path = paths.path || [];
-    if(path === [] || path.length <= 2)
+    if (!path || path.length <= 2)
         return [];
     const name: string = path[path.length - 2]
-    if(swaggerObj !== name)
+    if (swaggerObj !== name)
         return [];
     return [
         {

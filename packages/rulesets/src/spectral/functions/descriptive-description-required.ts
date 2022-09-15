@@ -3,9 +3,8 @@ const descriptiveDescriptionRequired = (swaggerObj:any, _opts:any, paths:any) =>
   if (swaggerObj === null || typeof swaggerObj !== "string") {
     return [];
   }
-  if(swaggerObj.trim().length != 0)
-  {
-      return [];
+  if (swaggerObj.trim().length != 0) {
+    return [];
   }
   const path = paths.path || [];
   return [{
