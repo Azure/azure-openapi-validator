@@ -480,7 +480,7 @@ const ruleset: any = {
         function: operationsApiSchema,
       },
     },
-    LongRunningResponseStatusCodeArm: {
+    LongRunningResponseStatusCode: {
       description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
       message: "{{error}}",
       severity: "error",

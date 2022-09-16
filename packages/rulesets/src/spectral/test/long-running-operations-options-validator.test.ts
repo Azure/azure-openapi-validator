@@ -47,7 +47,7 @@ test("LongRunningOperationsOptionsValidator should find errors", () => {
   };
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.post");
+    expect(results[0].path.join(".")).toBe("paths./api/Paths");
   });
 });
 

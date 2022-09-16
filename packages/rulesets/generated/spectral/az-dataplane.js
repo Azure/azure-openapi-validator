@@ -42,7 +42,7 @@ const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
         ((_c = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _c === void 0 ? void 0 : _c["final-state-via"]) !== "azure-async-operation") {
         errors.push({
             message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
-            path: [...path],
+            path: [...path.slice(0, -1)],
         });
     }
     return errors;
@@ -82,8 +82,51 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     return errors;
 };
 
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function isSchemaEqual(a, b) {
+    if (a && b) {
+        const propsA = Object.getOwnPropertyNames(a);
+        const propsB = Object.getOwnPropertyNames(b);
+        if (propsA.length === propsB.length) {
+            for (let i = 0; i < propsA.length; i++) {
+                const propsAName = propsA[i];
+                const [propA, propB] = [a[propsAName], b[propsAName]];
+                if (typeof propA === "object") {
+                    if (!isSchemaEqual(propA, propB)) {
+                        return false;
+                    }
+                    else if (i === propsA.length - 1) {
+                        return true;
+                    }
+                }
+                else if (propA !== propB) {
+                    return false;
+                }
+                else if (propA === propB && i === propsA.length - 1) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
-    var _a, _b, _c, _d;
+    var _a, _b, _c;
     if (opt === null || typeof opt !== "object") {
         return [];
     }
@@ -93,10 +136,10 @@ const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     const path = ctx.path || [];
     const errors = [];
     const nextLinkName = ((_a = opt["x-ms-pageable"]) === null || _a === void 0 ? void 0 : _a.nextLinkName) || null;
-    const responseSchemaProperties = ((_d = (_c = (_b = opt === null || opt === void 0 ? void 0 : opt.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema) === null || _d === void 0 ? void 0 : _d.properties) || {};
+    const responseSchemaProperties = getProperties((_c = (_b = opt === null || opt === void 0 ? void 0 : opt.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema);
     if (nextLinkName !== null && nextLinkName !== "") {
-        if (Object.getOwnPropertyNames(responseSchemaProperties).length === 0 ||
-            !Object.getOwnPropertyNames(responseSchemaProperties).includes(nextLinkName)) {
+        if (Object.keys(responseSchemaProperties).length === 0 ||
+            !Object.keys(responseSchemaProperties).includes(nextLinkName)) {
             errors.push({
                 message: `The property '${nextLinkName}' specified by nextLinkName does not exist in the 200 response schema. Please, specify the name of the property that provides the nextLink. If the model does not have the nextLink property then specify null.`,
                 path: [...path],
@@ -144,7 +187,7 @@ const xmsPathsMustOverloadPaths = (xmsPaths, _opts, ctx) => {
     const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
     for (const xmsPath in xmsPaths) {
         const pathName = xmsPath.split("?")[0];
-        if (!Object.getOwnPropertyNames(swagger.paths).includes(pathName)) {
+        if (!Object.keys(swagger.paths).includes(pathName)) {
             errors.push({
                 message: `Paths in x-ms-paths must overload a normal path in the paths section, i.e. a path in the x-ms-paths must either be same as a path in the paths section or a path in the paths sections followed by additional parameters.`,
                 path: [...path, xmsPath],
@@ -372,34 +415,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-function isSchemaEqual(a, b) {
-    if (a && b) {
-        const propsA = Object.getOwnPropertyNames(a);
-        const propsB = Object.getOwnPropertyNames(b);
-        if (propsA.length === propsB.length) {
-            for (let i = 0; i < propsA.length; i++) {
-                const propsAName = propsA[i];
-                const [propA, propB] = [a[propsAName], b[propsAName]];
-                if (typeof propA === "object") {
-                    if (!isSchemaEqual(propA, propB)) {
-                        return false;
-                    }
-                    else if (i === propsA.length - 1) {
-                        return true;
-                    }
-                }
-                else if (propA !== propB) {
-                    return false;
-                }
-                else if (propA === propB && i === propsA.length - 1) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
-
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -531,14 +546,12 @@ const ruleset$1 = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: [
-                "$..[?(@property === 'description')]^",
-            ],
+            given: ["$..[?(@property === 'description')]^"],
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
-                }
+                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*",
+                },
             },
         },
         InvalidVerbUsed: {
@@ -609,7 +622,7 @@ const ruleset$1 = {
         GetInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[get][?(@property === 'operationId')]"],
@@ -620,7 +633,7 @@ const ruleset$1 = {
         PutInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'operationId')]"],
@@ -631,7 +644,7 @@ const ruleset$1 = {
         PatchInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'operationId')]"],
@@ -642,7 +655,7 @@ const ruleset$1 = {
         DeleteInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
@@ -653,7 +666,7 @@ const ruleset$1 = {
         ParameterNotDefinedInGlobalParameters: {
             description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
@@ -683,10 +696,41 @@ const ruleset$1 = {
                 function: requiredReadOnlyProperties,
             },
         },
+        SummaryAndDescriptionMustNotBeSame: {
+            description: `Each operation has a summary and description values. They must not be same.`,
+            message: "The summary and description values should not be same.",
+            severity: "warn",
+            resolved: false,
+            given: "$[paths,'x-ms-paths'].*.*",
+            then: {
+                function: checkSummaryAndDescription,
+            },
+        },
+        ValidFormats: {
+            description: `Only valid types are allowed for properties.`,
+            message: "'{{error}}' is not a known format.",
+            severity: "error",
+            resolved: false,
+            given: "$..[?(@property === 'format')]^",
+            then: {
+                function: checkSchemaFormat,
+            },
+        },
+        XmsParameterLocation: {
+            description: `SDKs generated by AutoRest have two types of operation parameters: method arguments and client fields. The 'x-ms-parameter-location' extension gives the Swagger author control of how an operation-parameter will be interpreted by AutoRest, and as such is one of few things in a Swagger document that has semantic value only relevant to the shape of the generated SDKs.
+    Some parameters, such as API Version and Subscription ID will make sense as part of nearly every request. For these, having developers specify them for each method call would be burdensome; attaching them to the client and automatically including them in each request makes way more sense. Other parameters will be very operation specific and should be provided each time the method is called.`,
+            message: 'The parameter \'{{property}}\' is defined in global parameters section without \'x-ms-parameter-location\' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension "x-ms-parameter-location": "client". Else, apply the extension "x-ms-parameter-location": "method".',
+            severity: "error",
+            resolved: false,
+            given: "$.parameters.*[?(@property === 'name' && @.match(/^(subscriptionid|subscription-id|api-version|apiversion)$/i))]^",
+            then: {
+                function: paramLocation,
+            },
+        },
         LongRunningOperationsOptionsValidator: {
             description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -771,37 +815,6 @@ const ruleset$1 = {
             given: ["$['x-ms-paths']"],
             then: {
                 function: xmsPathsMustOverloadPaths,
-            },
-        },
-        SummaryAndDescriptionMustNotBeSame: {
-            description: `Each operation has a summary and description values. They must not be same.`,
-            message: "The summary and description values should not be same.",
-            severity: "warn",
-            resolved: false,
-            given: "$[paths,'x-ms-paths'].*.*",
-            then: {
-                function: checkSummaryAndDescription,
-            },
-        },
-        ValidFormats: {
-            description: `Only valid types are allowed for properties.`,
-            message: "'{{error}}' is not a known format.",
-            severity: "error",
-            resolved: false,
-            given: "$..[?(@property === 'format')]^",
-            then: {
-                function: checkSchemaFormat,
-            },
-        },
-        XmsParameterLocation: {
-            description: `SDKs generated by AutoRest have two types of operation parameters: method arguments and client fields. The 'x-ms-parameter-location' extension gives the Swagger author control of how an operation-parameter will be interpreted by AutoRest, and as such is one of few things in a Swagger document that has semantic value only relevant to the shape of the generated SDKs.
-    Some parameters, such as API Version and Subscription ID will make sense as part of nearly every request. For these, having developers specify them for each method call would be burdensome; attaching them to the client and automatically including them in each request makes way more sense. Other parameters will be very operation specific and should be provided each time the method is called.`,
-            message: 'The parameter \'{{property}}\' is defined in global parameters section without \'x-ms-parameter-location\' extension. This would add the parameter as the client property. Please ensure that this is exactly you want. If so, apply the extension "x-ms-parameter-location": "client". Else, apply the extension "x-ms-parameter-location": "method".',
-            severity: "error",
-            resolved: false,
-            given: "$.parameters.*[?(@property === 'name' && @.match(/^(subscriptionid|subscription-id|api-version|apiversion)$/i))]^",
-            then: {
-                function: paramLocation,
             },
         },
     },
@@ -1041,7 +1054,7 @@ const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesL
     }
     const path = ctx.path || [];
     const errors = [];
-    const method = Object.getOwnPropertyNames(methodOp)[0];
+    const method = Object.keys(methodOp)[0];
     if (!["delete", "put", "patch", "post"].includes(method)) {
         return [];
     }
@@ -1050,7 +1063,7 @@ const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesL
         return [];
     }
     if ((_c = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _c === void 0 ? void 0 : _c.responses) {
-        const responseCodes = Object.getOwnPropertyNames((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
+        const responseCodes = Object.keys((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
         const validResponseCodes = validResponseCodesList[method];
         const validResponseCodeString = validResponseCodes.join(" or ");
         for (const responseCode of responseCodes) {

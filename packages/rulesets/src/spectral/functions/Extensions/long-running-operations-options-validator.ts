@@ -24,7 +24,7 @@ export const longRunningOperationsOptionsValidator = (postOp: any, _opts: any, c
   ) {
     errors.push({
       message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
-      path: [...path],
+      path: [...path.slice(0, -1)],
     });
   }
   return errors;

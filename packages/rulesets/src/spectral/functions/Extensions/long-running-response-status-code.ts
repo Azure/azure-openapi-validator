@@ -11,7 +11,7 @@ const longRunningResponseStatusCode = (
   }
   const path = ctx.path || [];
   const errors: any = [];
-  const method = Object.getOwnPropertyNames(methodOp)[0];
+  const method = Object.keys(methodOp)[0];
   if (!["delete", "put", "patch", "post"].includes(method)) {
     return [];
   }
@@ -20,7 +20,7 @@ const longRunningResponseStatusCode = (
     return [];
   }
   if (methodOp?.[method]?.responses) {
-    const responseCodes = Object.getOwnPropertyNames(methodOp?.[method]?.responses);
+    const responseCodes = Object.keys(methodOp?.[method]?.responses);
     const validResponseCodes = validResponseCodesList[method];
     const validResponseCodeString = validResponseCodes.join(" or ");
     for (const responseCode of responseCodes) {

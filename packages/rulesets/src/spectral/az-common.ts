@@ -220,7 +220,7 @@ const ruleset: any = {
     LongRunningOperationsOptionsValidator: {
       description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
