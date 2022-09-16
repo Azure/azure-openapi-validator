@@ -1,6 +1,24 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
 
+const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
+        return [];
+    if (typeof swaggerObj === "object") {
+        const docUrl = swaggerObj.url;
+        if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
+            return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            path,
+        }];
+};
+
 const deleteInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -17,6 +35,20 @@ const deleteInOperationName = (operationId, _opts, ctx) => {
         });
     }
     return errors;
+};
+
+const descriptiveDescriptionRequired = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null || typeof swaggerObj !== "string") {
+        return [];
+    }
+    if (swaggerObj.trim().length != 0) {
+        return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            path,
+        }];
 };
 
 const getInOperationName = (operationId, _opts, ctx) => {
@@ -387,6 +419,55 @@ function checkSummaryAndDescription(op, options, ctx) {
     return errors;
 }
 
+const xmsClientNameParameter = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    if (swaggerObj.name !== swaggerObj['x-ms-client-name'])
+        return [];
+    const path = paths.path || [];
+    path.push('x-ms-client-name');
+    return [
+        {
+            message: `Value of 'x-ms-client-name' cannot be the same as ${swaggerObj.name} Property/Model.`,
+            path: path
+        },
+    ];
+};
+
+const xmsClientNameProperty = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null || typeof swaggerObj !== "string") {
+        return [];
+    }
+    const path = paths.path || [];
+    if (!path || path.length <= 2)
+        return [];
+    const name = path[path.length - 2];
+    if (swaggerObj !== name)
+        return [];
+    return [
+        {
+            message: `Value of 'x-ms-client-name' cannot be the same as ${name} Property/Model.`,
+            path: path
+        },
+    ];
+};
+
+const xmsExamplesRequired = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null || typeof swaggerObj !== "object") {
+        return [];
+    }
+    if (swaggerObj['x-ms-examples'] !== undefined)
+        return [];
+    const path = paths.path || [];
+    return [
+        {
+            message: `Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.`,
+            path: path
+        },
+    ];
+};
+
 const ruleset$1 = {
     extends: [],
     rules: {
@@ -396,14 +477,12 @@ const ruleset$1 = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: [
-                "$..[?(@property === 'description')]^",
-            ],
+            given: ["$..[?(@property === 'description')]^"],
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*"
-                }
+                    match: "https://docs.microsoft.com/\\w+\\-\\w+/azure/.*",
+                },
             },
         },
         InvalidVerbUsed: {
@@ -474,7 +553,7 @@ const ruleset$1 = {
         GetInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[get][?(@property === 'operationId')]"],
@@ -485,7 +564,7 @@ const ruleset$1 = {
         PutInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'operationId')]"],
@@ -496,7 +575,7 @@ const ruleset$1 = {
         PatchInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'operationId')]"],
@@ -507,7 +586,7 @@ const ruleset$1 = {
         DeleteInOperationName: {
             description: "Verifies whether value for `operationId` is named as per ARM guidelines.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
@@ -518,7 +597,7 @@ const ruleset$1 = {
         ParameterNotDefinedInGlobalParameters: {
             description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
@@ -579,6 +658,91 @@ const ruleset$1 = {
                 function: paramLocation,
             },
         },
+        XmsExamplesRequired: {
+            description: 'Verifies whether `x-ms-examples` are provided for each operation or not.',
+            message: 'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            then: {
+                function: xmsExamplesRequired
+            }
+        },
+        XmsClientNameParameter: {
+            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
+                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
+                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]", "$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+            then: {
+                function: xmsClientNameParameter
+            }
+        },
+        XmsClientNameProperty: {
+            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
+                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
+                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.definitions[*].properties.*['x-ms-client-name']"],
+            then: {
+                function: xmsClientNameProperty
+            }
+        },
+        ListInOperationName: {
+            description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
+            message: 'Since operation response has model definition, it should be of the form "_list".',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths[*].get['x-ms-pageable']^.operationId"],
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: "^((\\w+\\_List\\w*)|List)$"
+                }
+            }
+        },
+        DescriptiveDescriptionRequired: {
+            description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..[?(@object() && @.description)].description"],
+            then: {
+                function: descriptiveDescriptionRequired
+            },
+        },
+        AvoidNestedProperties: {
+            description: 'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
+            message: 'Consider using x-ms-client-flatten to provide a better end user experience',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+            then: {
+                field: "x-ms-client-flatten",
+                function: truthy
+            },
+        },
+        AvoidMsdnReferences: {
+            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..[?(@property === 'externalDocs')].", "$.info.description"],
+            then: {
+                function: avoidMsdnReferences,
+            },
+        }
     },
 };
 
@@ -1896,8 +2060,8 @@ const ruleset = {
             then: {
                 function: hostParameters,
             },
-        },
-    },
+        }
+    }
 };
 
 export { ruleset as default };
