@@ -262,7 +262,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$.paths.*[get]['x-ms-pageable']^.operationId"],
+      given: ["$.paths[*].get['x-ms-pageable']^.operationId"],
       then: {
         function: pattern,
         functionOptions: {
