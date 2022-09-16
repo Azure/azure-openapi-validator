@@ -543,7 +543,7 @@ const ruleset$1 = {
         docLinkLocale: {
             description: "This rule is to ensure the documentation link in the description does not contains any locale.",
             message: "The documentation link in the description contains locale info, please change it to the link without locale.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@property === 'description')]^"],
@@ -567,7 +567,7 @@ const ruleset$1 = {
         LroStatusCodesReturnTypeSchema: {
             description: "The '200'/'201' responses of the long running operation must have a schema definition.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -589,7 +589,7 @@ const ruleset$1 = {
         OperationIdNounConflictingModelNames: {
             description: "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
@@ -677,7 +677,7 @@ const ruleset$1 = {
         PutRequestResponseScheme: {
             description: "The request & response('200') schema of the PUT operation must be same.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
@@ -1721,7 +1721,7 @@ const ruleset = {
         },
         AdditionalPropertiesObject: {
             description: "additionalProperties with type object is a common error.",
-            severity: "info",
+            severity: "warn",
             formats: [oas2, oas3],
             resolved: false,
             given: "$..[?(@property == 'additionalProperties' && @.type == 'object' && @.properties == undefined)]",
@@ -1784,7 +1784,7 @@ const ruleset = {
         },
         Formdata: {
             description: "Check for appropriate use of formData parameters.",
-            severity: "info",
+            severity: "warn",
             formats: [oas2],
             given: '$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == "formData")]',
             then: {
@@ -1960,7 +1960,7 @@ const ruleset = {
         PathCharacters: {
             description: "Path should contain only recommended characters.",
             message: "Path contains non-recommended characters.",
-            severity: "info",
+            severity: "warn",
             formats: [oas2, oas3],
             given: "$.paths.*~",
             then: {
@@ -1973,7 +1973,7 @@ const ruleset = {
         PathParameterSchema: {
             description: "Path parameter should be type: string and specify maxLength and pattern.",
             message: "{{error}}",
-            severity: "info",
+            severity: "warn",
             formats: [oas2, oas3],
             given: [
                 "$.paths[*].parameters[?(@.in == 'path')]",
@@ -2031,7 +2031,7 @@ const ruleset = {
         },
         RequestBodyNotAllowed: {
             description: "A get or delete operation must not accept a body parameter.",
-            severity: "error",
+            severity: "warn",
             formats: [oas2],
             given: ["$.paths[*].[get,delete].parameters[*]"],
             then: {
@@ -2045,7 +2045,7 @@ const ruleset = {
         RequestBodyOptional: {
             description: "Flag optional request body -- common oversight.",
             message: "The body parameter is not marked as required.",
-            severity: "info",
+            severity: "warn",
             formats: [oas2],
             given: ["$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')]"],
             then: {
@@ -2066,7 +2066,7 @@ const ruleset = {
         SchemaNamesConvention: {
             description: "Schema names should be Pascal case.",
             message: "Schema name should be Pascal case.",
-            severity: "info",
+            severity: "warn",
             formats: [oas2],
             given: "$.definitions.*~",
             then: {
@@ -2112,7 +2112,7 @@ const ruleset = {
         },
         VersionConvention: {
             description: "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
-            severity: "error",
+            severity: "warn",
             formats: [oas2, oas3],
             given: "$.info.version",
             then: {

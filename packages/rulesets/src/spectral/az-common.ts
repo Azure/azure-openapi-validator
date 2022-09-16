@@ -29,7 +29,7 @@ const ruleset: any = {
     docLinkLocale: {
       description: "This rule is to ensure the documentation link in the description does not contains any locale.",
       message: "The documentation link in the description contains locale info, please change it to the link without locale.",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: ["$..[?(@property === 'description')]^"],
@@ -53,7 +53,7 @@ const ruleset: any = {
     LroStatusCodesReturnTypeSchema: {
       description: "The '200'/'201' responses of the long running operation must have a schema definition.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -76,7 +76,7 @@ const ruleset: any = {
       description:
         "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
@@ -165,7 +165,7 @@ const ruleset: any = {
     PutRequestResponseScheme: {
       description: "The request & response('200') schema of the PUT operation must be same.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
