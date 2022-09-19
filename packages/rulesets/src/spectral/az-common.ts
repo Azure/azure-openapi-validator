@@ -236,7 +236,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]","$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+      given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]","$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]","$.parameters.[?(@.name && @['x-ms-client-name'])]"],
       then: {
         function: xmsClientNameParameter
       }
