@@ -846,11 +846,11 @@ The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
 
-### RepeatedUriInfo
+### RepeatedPathInfo
 
 Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
-Please refer to [repeated-uri-info.md](./repeated-uri-info.md) for details.
+Please refer to [repeated-path-info.md](./repeated-path-info.md) for details.
 
 ### RequestBodyNotAllowed
 

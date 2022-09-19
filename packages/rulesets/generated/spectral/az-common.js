@@ -1,24 +1,6 @@
 import { oas2 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
 
-const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null) {
-        return [];
-    }
-    if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
-        return [];
-    if (typeof swaggerObj === "object") {
-        const docUrl = swaggerObj.url;
-        if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
-            return [];
-    }
-    const path = paths.path || [];
-    return [{
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
-            path,
-        }];
-};
-
 const deleteInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -37,18 +19,182 @@ const deleteInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const descriptiveDescriptionRequired = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null || typeof swaggerObj !== "string") {
+const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
+    var _a, _b, _c;
+    if (postOp === null || typeof postOp !== "object") {
         return [];
     }
-    if (swaggerObj.trim().length != 0) {
+    const path = ctx.path || [];
+    if (!postOp["x-ms-long-running-operation"]) {
         return [];
     }
-    const path = paths.path || [];
-    return [{
-            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
-            path,
-        }];
+    const errors = [];
+    const responses = postOp === null || postOp === void 0 ? void 0 : postOp.responses;
+    let schemaAvailable = false;
+    for (const responseCode in responses) {
+        if (responseCode[0] === "2" && ((_a = responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema) !== undefined) {
+            schemaAvailable = true;
+            break;
+        }
+    }
+    if (schemaAvailable &&
+        ((_b = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _b === void 0 ? void 0 : _b["final-state-via"]) !== "location" &&
+        ((_c = postOp === null || postOp === void 0 ? void 0 : postOp["x-ms-long-running-operation-options"]) === null || _c === void 0 ? void 0 : _c["final-state-via"]) !== "azure-async-operation") {
+        errors.push({
+            message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
+            path: [...path.slice(0, -1)],
+        });
+    }
+    return errors;
+};
+
+const mutabilityWithReadOnly = (prop, _opts, ctx) => {
+    if (prop === null || typeof prop !== "object") {
+        return [];
+    }
+    if (prop.readOnly === undefined ||
+        prop["x-ms-mutability"] === undefined ||
+        prop["x-ms-mutability"].length === 0) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    let hasErrors = false;
+    let invalidValues = "";
+    if (prop.readOnly === true) {
+        if (prop["x-ms-mutability"].length !== 1 || prop["x-ms-mutability"][0] !== "read") {
+            hasErrors = true;
+            invalidValues = prop["x-ms-mutability"].join(", ");
+        }
+    }
+    else {
+        if (prop["x-ms-mutability"].length === 1 && prop["x-ms-mutability"][0] === "read") {
+            hasErrors = true;
+            invalidValues = "read";
+        }
+    }
+    if (hasErrors) {
+        errors.push({
+            message: `When property is modeled as "readOnly": true then x-ms-mutability extension can only have "read" value. When property is modeled as "readOnly": false then applying x-ms-mutability extension with only "read" value is not allowed. Extension contains invalid values: '${invalidValues}'.`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
+function getProperties(schema) {
+    if (!schema) {
+        return {};
+    }
+    let properties = {};
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            properties = { ...getProperties(base), ...properties };
+        });
+    }
+    if (schema.properties) {
+        properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function isSchemaEqual(a, b) {
+    if (a && b) {
+        const propsA = Object.getOwnPropertyNames(a);
+        const propsB = Object.getOwnPropertyNames(b);
+        if (propsA.length === propsB.length) {
+            for (let i = 0; i < propsA.length; i++) {
+                const propsAName = propsA[i];
+                const [propA, propB] = [a[propsAName], b[propsAName]];
+                if (typeof propA === "object") {
+                    if (!isSchemaEqual(propA, propB)) {
+                        return false;
+                    }
+                    else if (i === propsA.length - 1) {
+                        return true;
+                    }
+                }
+                else if (propA !== propB) {
+                    return false;
+                }
+                else if (propA === propB && i === propsA.length - 1) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
+    var _a, _b, _c;
+    if (opt === null || typeof opt !== "object") {
+        return [];
+    }
+    if (opt["x-ms-pageable"] === undefined) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const nextLinkName = ((_a = opt["x-ms-pageable"]) === null || _a === void 0 ? void 0 : _a.nextLinkName) || null;
+    const responseSchemaProperties = getProperties((_c = (_b = opt === null || opt === void 0 ? void 0 : opt.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema);
+    if (nextLinkName !== null && nextLinkName !== "") {
+        if (Object.keys(responseSchemaProperties).length === 0 ||
+            !Object.keys(responseSchemaProperties).includes(nextLinkName)) {
+            errors.push({
+                message: `The property '${nextLinkName}' specified by nextLinkName does not exist in the 200 response schema. Please, specify the name of the property that provides the nextLink. If the model does not have the nextLink property then specify null.`,
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
+const xmsClientName = (opt, _opts, ctx) => {
+    if (opt === null || typeof opt !== "object") {
+        return [];
+    }
+    if (opt["x-ms-client-name"] === undefined) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (path.includes("parameters")) {
+        if (opt["x-ms-client-name"] === opt.name) {
+            errors.push({
+                message: `Value of 'x-ms-client-name' cannot be the same as '${opt.name}' Property/Model.`,
+                path: [...path],
+            });
+        }
+    }
+    else {
+        if (opt["x-ms-client-name"] === path.slice(-1)[0]) {
+            errors.push({
+                message: `Value of 'x-ms-client-name' cannot be the same as '${path.slice(-1)[0]}' Property/Model.`,
+                path: [...path],
+            });
+        }
+    }
+    return errors;
+};
+
+const xmsPathsMustOverloadPaths = (xmsPaths, _opts, ctx) => {
+    var _a;
+    if (xmsPaths === null || typeof xmsPaths !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    for (const xmsPath in xmsPaths) {
+        const pathName = xmsPath.split("?")[0];
+        if (!Object.keys(swagger.paths).includes(pathName)) {
+            errors.push({
+                message: `Paths in x-ms-paths must overload a normal path in the paths section, i.e. a path in the x-ms-paths must either be same as a path in the paths section or a path in the paths sections followed by additional parameters.`,
+                path: [...path, xmsPath],
+            });
+        }
+    }
+    return errors;
 };
 
 const getInOperationName = (operationId, _opts, ctx) => {
@@ -269,34 +415,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-function isSchemaEqual(a, b) {
-    if (a && b) {
-        const propsA = Object.getOwnPropertyNames(a);
-        const propsB = Object.getOwnPropertyNames(b);
-        if (propsA.length === propsB.length) {
-            for (let i = 0; i < propsA.length; i++) {
-                const propsAName = propsA[i];
-                const [propA, propB] = [a[propsAName], b[propsAName]];
-                if (typeof propA === "object") {
-                    if (!isSchemaEqual(propA, propB)) {
-                        return false;
-                    }
-                    else if (i === propsA.length - 1) {
-                        return true;
-                    }
-                }
-                else if (propA !== propB) {
-                    return false;
-                }
-                else if (propA === propB && i === propsA.length - 1) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
-
 const putRequestResponseScheme = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -419,62 +537,13 @@ function checkSummaryAndDescription(op, options, ctx) {
     return errors;
 }
 
-const xmsClientNameParameter = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null) {
-        return [];
-    }
-    if (swaggerObj.name !== swaggerObj['x-ms-client-name'])
-        return [];
-    const path = paths.path || [];
-    path.push('x-ms-client-name');
-    return [
-        {
-            message: `Value of 'x-ms-client-name' cannot be the same as ${swaggerObj.name} Property/Model.`,
-            path: path
-        },
-    ];
-};
-
-const xmsClientNameProperty = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null || typeof swaggerObj !== "string") {
-        return [];
-    }
-    const path = paths.path || [];
-    if (!path || path.length <= 2)
-        return [];
-    const name = path[path.length - 2];
-    if (swaggerObj !== name)
-        return [];
-    return [
-        {
-            message: `Value of 'x-ms-client-name' cannot be the same as ${name} Property/Model.`,
-            path: path
-        },
-    ];
-};
-
-const xmsExamplesRequired = (swaggerObj, _opts, paths) => {
-    if (swaggerObj === null || typeof swaggerObj !== "object") {
-        return [];
-    }
-    if (swaggerObj['x-ms-examples'] !== undefined)
-        return [];
-    const path = paths.path || [];
-    return [
-        {
-            message: `Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.`,
-            path: path
-        },
-    ];
-};
-
 const ruleset = {
     extends: [],
     rules: {
         docLinkLocale: {
             description: "This rule is to ensure the documentation link in the description does not contains any locale.",
             message: "The documentation link in the description contains locale info, please change it to the link without locale.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@property === 'description')]^"],
@@ -498,7 +567,7 @@ const ruleset = {
         LroStatusCodesReturnTypeSchema: {
             description: "The '200'/'201' responses of the long running operation must have a schema definition.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -520,7 +589,7 @@ const ruleset = {
         OperationIdNounConflictingModelNames: {
             description: "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
@@ -608,7 +677,7 @@ const ruleset = {
         PutRequestResponseScheme: {
             description: "The request & response('200') schema of the PUT operation must be same.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
@@ -658,91 +727,96 @@ const ruleset = {
                 function: paramLocation,
             },
         },
-        XmsExamplesRequired: {
-            description: 'Verifies whether `x-ms-examples` are provided for each operation or not.',
-            message: 'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+        LongRunningOperationsOptionsValidator: {
+            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            message: "{{error}}",
             severity: "warn",
-            resolved: false,
+            resolved: true,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
             then: {
-                function: xmsExamplesRequired
-            }
-        },
-        XmsClientNameParameter: {
-            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
-                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
-                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]", "$.parameters.[?(@.name && @['x-ms-client-name'])]"],
-            then: {
-                function: xmsClientNameParameter
-            }
-        },
-        XmsClientNameProperty: {
-            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
-                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
-                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.definitions[*].properties.*['x-ms-client-name']"],
-            then: {
-                function: xmsClientNameProperty
-            }
-        },
-        ListInOperationName: {
-            description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
-            message: 'Since operation response has model definition, it should be of the form "_list".',
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.paths[*].get['x-ms-pageable']^.operationId"],
-            then: {
-                function: pattern,
-                functionOptions: {
-                    match: "^((\\w+\\_List\\w*)|List)$"
-                }
-            }
-        },
-        DescriptiveDescriptionRequired: {
-            description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
-            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$..[?(@object() && @.description)].description"],
-            then: {
-                function: descriptiveDescriptionRequired
+                function: longRunningOperationsOptionsValidator,
             },
         },
-        AvoidNestedProperties: {
-            description: 'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
-            message: 'Consider using x-ms-client-flatten to provide a better end user experience',
-            severity: "warn",
-            resolved: false,
+        MutabilityWithReadOnly: {
+            description: "Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `[\"read\"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
             formats: [oas2],
-            given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+            given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
             then: {
-                field: "x-ms-client-flatten",
-                function: truthy
+                function: mutabilityWithReadOnly,
             },
         },
-        AvoidMsdnReferences: {
-            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
-            severity: "warn",
-            resolved: false,
+        NextLinkPropertyMustExist: {
+            description: "Per definition of AutoRest x-ms-pageable extension, the property specified by nextLinkName must exist in the 200 response schema.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
             formats: [oas2],
-            given: ["$..[?(@property === 'externalDocs')].", "$.info.description"],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
             then: {
-                function: avoidMsdnReferences,
+                function: nextLinkPropertyMustExist,
             },
-        }
+        },
+        NonEmptyClientName: {
+            description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code.",
+            message: "Empty x-ms-client-name property.",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')"],
+            then: {
+                function: truthy,
+            },
+        },
+        PageableRequires200Response: {
+            description: "Per definition of AutoRest x-ms-pageable extension, the response schema must contain a 200 response schema.",
+            message: "A response for the 200 HTTP status code must be defined to use x-ms-pageable.",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
+            then: {
+                field: "[responses][200]",
+                function: truthy,
+            },
+        },
+        ResourceHasXMsResourceEnabled: {
+            description: "A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.",
+            message: "A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions[?(@property === 'Resource')]"],
+            then: {
+                field: "[x-ms-azure-resource]",
+                function: truthy,
+            },
+        },
+        XmsClientName: {
+            description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
+            then: {
+                function: xmsClientName,
+            },
+        },
+        XmsPathsMustOverloadPaths: {
+            description: "The `x-ms-paths` extension allows us to overload an existing path based on path parameters. We cannot specify an `x-ms-paths` without a path that already exists in the `paths` section.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$['x-ms-paths']"],
+            then: {
+                function: xmsPathsMustOverloadPaths,
+            },
+        },
     },
 };
 

@@ -3,6 +3,15 @@ import {pattern, falsy, truthy} from "@stoplight/spectral-functions"
 import avoidMsdnReferences from "./functions/avoid-msdn-references";
 import { deleteInOperationName } from "./functions/delete-in-operation-name"
 import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
+import { pattern, falsy, truthy } from "@stoplight/spectral-functions"
+import { deleteInOperationName } from "./functions/delete-in-operation-name"
+import {
+  longRunningOperationsOptionsValidator
+} from "./functions/Extensions/long-running-operations-options-validator";
+import { mutabilityWithReadOnly } from "./functions/Extensions/mutability-with-read-only";
+import { nextLinkPropertyMustExist } from "./functions/Extensions/next-link-property-must-exist";
+import { xmsClientName } from "./functions/Extensions/xms-client-name";
+import { xmsPathsMustOverloadPaths } from "./functions/Extensions/xms-paths-must-overload-paths";
 import { getInOperationName } from "./functions/get-in-operation-name"
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema"
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter"
@@ -27,7 +36,7 @@ const ruleset: any = {
     docLinkLocale: {
       description: "This rule is to ensure the documentation link in the description does not contains any locale.",
       message: "The documentation link in the description contains locale info, please change it to the link without locale.",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: ["$..[?(@property === 'description')]^"],
@@ -51,7 +60,7 @@ const ruleset: any = {
     LroStatusCodesReturnTypeSchema: {
       description: "The '200'/'201' responses of the long running operation must have a schema definition.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -74,7 +83,7 @@ const ruleset: any = {
       description:
         "The first part of an operation Id separated by an underscore i.e., `Noun` in a `Noun_Verb` should not conflict with names of the models defined in the definitions section. If this happens, AutoRest appends `Model` to the name of the model to resolve the conflict (`NounModel` in given example) with the name of the client itself (which will be named as `Noun` in given example). This can result in an inconsistent user experience.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'operationId')]"],
@@ -163,7 +172,7 @@ const ruleset: any = {
     PutRequestResponseScheme: {
       description: "The request & response('200') schema of the PUT operation must be same.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
@@ -213,6 +222,96 @@ const ruleset: any = {
       given: "$.parameters.*[?(@property === 'name' && @.match(/^(subscriptionid|subscription-id|api-version|apiversion)$/i))]^",
       then: {
         function: paramLocation,
+      },
+    },
+    LongRunningOperationsOptionsValidator: {
+      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+      then: {
+        function: longRunningOperationsOptionsValidator,
+      },
+    },
+    MutabilityWithReadOnly: {
+      description: "Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `[\"read\"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
+      then: {
+        function: mutabilityWithReadOnly,
+      },
+    },
+    NextLinkPropertyMustExist: {
+      description: "Per definition of AutoRest x-ms-pageable extension, the property specified by nextLinkName must exist in the 200 response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
+      then: {
+        function: nextLinkPropertyMustExist,
+      },
+    },
+    NonEmptyClientName: {
+      description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code.",
+      message: "Empty x-ms-client-name property.",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')"],
+      then: {
+        function: truthy,
+      },
+    },
+    PageableRequires200Response: {
+      description: "Per definition of AutoRest x-ms-pageable extension, the response schema must contain a 200 response schema.",
+      message: "A response for the 200 HTTP status code must be defined to use x-ms-pageable.",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-pageable')]^"],
+      then: {
+        field: "[responses][200]",
+        function: truthy,
+      },
+    },
+    ResourceHasXMsResourceEnabled: {
+      description: "A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.",
+      message: "A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.definitions[?(@property === 'Resource')]"],
+      then: {
+        field: "[x-ms-azure-resource]",
+        function: truthy,
+      },
+    },
+    XmsClientName: {
+      description: "The 'x-ms-client-name' extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
+      then: {
+        function: xmsClientName,
+      },
+    },
+    XmsPathsMustOverloadPaths: {
+      description: "The `x-ms-paths` extension allows us to overload an existing path based on path parameters. We cannot specify an `x-ms-paths` without a path that already exists in the `paths` section.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$['x-ms-paths']"],
+      then: {
+        function: xmsPathsMustOverloadPaths,
       },
     },
     XmsExamplesRequired: {
@@ -307,7 +406,7 @@ const ruleset: any = {
       then: {
         function: avoidMsdnReferences,
       },
-    }
+    },
   },
 }
 export default ruleset

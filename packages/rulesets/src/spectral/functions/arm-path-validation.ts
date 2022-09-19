@@ -61,9 +61,9 @@ function verifyNestResourceType(path: string) {
   // 2 <scope>/providers/Microsoft.Compute/virtualMachine/{vmName}/{nestedResourceType}
 
   const patterns = [
-    /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}/gi,
-    /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+/gi,
-    /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*/gi,
+    /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+    /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+    /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*$/gi,
   ]
   return notMatchPatterns(patterns, path)
 }
@@ -146,7 +146,7 @@ export const verifyArmPath = createRulesetFunction<unknown, Options>(
         })
       }
     },
-       resourceGroupScope: (fullPath: string) => {
+    resourceGroupScope: (fullPath: string) => {
       if (!verifyResourceGroupScope(fullPath)) {
         errors.push({
           message: "",
