@@ -287,7 +287,7 @@ const ruleset: any = {
     PathForPutOperation: {
       description: "The path for 'put' operation must be under a subscription and resource group.",
       message: "{{description}}",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[put]^~",
@@ -301,7 +301,7 @@ const ruleset: any = {
     PathForNestedResource: {
       description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
       message: "{{error}}",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
@@ -315,7 +315,7 @@ const ruleset: any = {
     PathForResourceAction: {
       description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
       message: "{{description}}",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*.post^~",
@@ -330,7 +330,7 @@ const ruleset: any = {
       description:
         "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
       message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*.put^",
@@ -394,7 +394,7 @@ const ruleset: any = {
       description: `Verifies whether format is specified as "uuid" or not.`,
       message:
         "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       given: "$..[?(@property === 'format'&& @ === 'guid')]",
       then: {
