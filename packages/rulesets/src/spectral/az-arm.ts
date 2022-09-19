@@ -5,6 +5,7 @@ import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
+import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code";
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import validateOriginalUri from "./functions/lro-original-uri"
@@ -477,6 +478,17 @@ const ruleset: any = {
       given: "$.paths[?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema",
       then: {
         function: operationsApiSchema,
+      },
+    },
+    LongRunningResponseStatusCode: {
+      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
+      then: {
+        function: longRunningResponseStatusCodeArm,
       },
     },
   },

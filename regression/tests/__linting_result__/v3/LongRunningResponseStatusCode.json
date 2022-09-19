@@ -1,0 +1,422 @@
+[
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ApplicationGatewayPrivateEndpointConnections_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:650:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ApplicationGateways_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ApplicationSecurityGroups_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'AzureFirewalls_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'BastionHosts_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'Caches_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].delete",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:351:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'CloudServiceRoleInstances_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:14:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'CustomIPPrefixes_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'DdosCustomPolicies_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'DdosProtectionPlans_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ExpressRouteCircuitAuthorizations_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ExpressRouteCircuitConnections_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:530:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ExpressRouteCircuitPeerings_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:284:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ExpressRouteCircuits_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:928:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ExpressRouteCrossConnectionPeerings_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:344:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ExpressRoutePorts_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:120:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'FirewallPolicies_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'FirewallPolicyRuleCollectionGroups_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:302:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'InboundNatRules_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:801:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'IpAllocations_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'LoadBalancers_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'NatGateways_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'NetworkInterfaceTapConfigurations_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:639:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'NetworkInterfaces_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'NetworkProfiles_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'NetworkSecurityGroups_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'NetworkVirtualAppliances_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'PrivateDnsZoneGroups_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:407:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'PrivateEndpoints_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'PrivateLinkScopes_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].delete",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:104:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'PrivateLinkServices_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'PublicIPAddresses_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'PublicIPPrefixes_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'RouteFilterRules_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:359:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'RouteFilters_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'RouteTables_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'Routes_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:362:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'SecurityPartnerProviders_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'SecurityRules_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:362:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ServiceEndpointPolicies_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'ServiceEndpointPolicyDefinitions_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:362:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'StorageTargets_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"].delete",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:875:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'Subnets_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:386:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'VirtualApplianceSites_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:359:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'VirtualNetworkPeerings_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:890:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'VirtualNetworkTaps_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'VirtualNetworks_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'VirtualRouterPeerings_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:302:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'delete' operation 'VirtualRouters_Delete' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"].delete",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'post' operation 'Clusters_ExecuteScriptActions' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201 or 202 or 204.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions\"].post",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/scriptActions.json:83:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'CloudEndpoints_Create' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1064:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'CloudServicesUpdateDomain_WalkUpdateDomain' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1292:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'DiskAccesses_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1128:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'DiskAccesses_UpdateAPrivateEndpointConnection' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1446:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'DiskEncryptionSets_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:792:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'Disks_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'Extensions_Create' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:322:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'Extensions_EnableAzureMonitor' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:180:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'Extensions_EnableMonitoring' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'Galleries_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:38:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'GalleryApplicationVersions_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1088:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'GalleryApplications_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:846:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'GalleryImageVersions_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:529:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'GalleryImages_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:287:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'MoveResources_Create' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}\"].put",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:714:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'ServerEndpoints_Create' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1927:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'Snapshots_CreateOrUpdate' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:445:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'StorageAccounts_Create' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:122:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'StorageSyncServices_Create' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:120:6"
+  },
+  {
+    "code": "LongRunningResponseStatusCode",
+    "message": "A 'put' operation 'VirtualMachineScaleSetVMs_Update' with x-ms-long-running-operation extension must have a valid terminal success status code 200 or 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8740:6"
+  }
+]

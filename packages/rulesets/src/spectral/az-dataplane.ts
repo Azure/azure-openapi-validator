@@ -7,6 +7,7 @@ import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
+import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code";
 import hasheader from "./functions/has-header"
 import hostParameters from "./functions/host-parameters"
 import operationid from "./functions/operation-id"
@@ -34,7 +35,7 @@ const ruleset: any = {
     },
     AdditionalPropertiesObject: {
       description: "additionalProperties with type object is a common error.",
-      severity: "info",
+      severity: "warn",
       formats: [oas2, oas3],
       resolved: false,
       given: "$..[?(@property == 'additionalProperties' && @.type == 'object' && @.properties == undefined)]",
@@ -97,7 +98,7 @@ const ruleset: any = {
     },
     Formdata: {
       description: "Check for appropriate use of formData parameters.",
-      severity: "info",
+      severity: "warn",
       formats: [oas2],
       given: '$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == "formData")]',
       then: {
@@ -273,7 +274,7 @@ const ruleset: any = {
     PathCharacters: {
       description: "Path should contain only recommended characters.",
       message: "Path contains non-recommended characters.",
-      severity: "info",
+      severity: "warn",
       formats: [oas2, oas3],
       given: "$.paths.*~",
       then: {
@@ -286,7 +287,7 @@ const ruleset: any = {
     PathParameterSchema: {
       description: "Path parameter should be type: string and specify maxLength and pattern.",
       message: "{{error}}",
-      severity: "info",
+      severity: "warn",
       formats: [oas2, oas3],
       given: [
         "$.paths[*].parameters[?(@.in == 'path')]",
@@ -345,7 +346,7 @@ const ruleset: any = {
     },
     RequestBodyNotAllowed: {
       description: "A get or delete operation must not accept a body parameter.",
-      severity: "error",
+      severity: "warn",
       formats: [oas2],
       given: ["$.paths[*].[get,delete].parameters[*]"],
       then: {
@@ -359,7 +360,7 @@ const ruleset: any = {
     RequestBodyOptional: {
       description: "Flag optional request body -- common oversight.",
       message: "The body parameter is not marked as required.",
-      severity: "info",
+      severity: "warn",
       formats: [oas2],
       given: ["$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')]"],
       then: {
@@ -380,7 +381,7 @@ const ruleset: any = {
     SchemaNamesConvention: {
       description: "Schema names should be Pascal case.",
       message: "Schema name should be Pascal case.",
-      severity: "info",
+      severity: "warn",
       formats: [oas2],
       given: "$.definitions.*~",
       then: {
@@ -426,7 +427,7 @@ const ruleset: any = {
     },
     VersionConvention: {
       description: "API version should be a date in YYYY-MM-DD format, optionally suffixed with '-preview'.",
-      severity: "error",
+      severity: "warn",
       formats: [oas2, oas3],
       given: "$.info.version",
       then: {
@@ -493,6 +494,17 @@ const ruleset: any = {
       given: ["$.x-ms-parameterized-host"],
       then: {
         function: hostParameters,
+      },
+    },
+    LongRunningResponseStatusCodeDataPlane: {
+      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
+      then: {
+        function: longRunningResponseStatusCodeDataPlane,
       },
     },
   },
