@@ -8,6 +8,10 @@ ARM Error
 
 ARM and Data plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-GET-04
+
 ## Output Message
 
 Top level property names should not be repeated inside the properties bag for ARM resource '{0}'. Properties [{1}] conflict with ARM top level properties. Please rename these.

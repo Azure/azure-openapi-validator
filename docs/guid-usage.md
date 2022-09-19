@@ -6,7 +6,7 @@ ARM Warning
 
 ## Applies to
 
-ARM and Data plane OpenAPI(swagger) specs
+ARM OpenAPI(swagger) specs
 
 ## Output Message
 

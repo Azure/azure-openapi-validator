@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-2
+
 ## Output Message
 
 The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.

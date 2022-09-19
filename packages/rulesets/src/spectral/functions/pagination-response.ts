@@ -3,6 +3,7 @@
 // - The response should contain a top-level `value` property of type array and required
 // - The response should contain a top-level `nextLink` property of type string and optional [R4012]
 
+// 
 const paginationResponse = (operation:any, _opts:any, paths:any) => {
   // operation should be a get or post operation
   if (operation === null || typeof operation !== 'object') {

@@ -8,6 +8,10 @@ SDK Warning
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-PUT-14
+
 ## Output Message
 
 Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: '{0}'
@@ -24,6 +28,7 @@ Location is a property that is set once and non-updatable for a tracked resource
 
 Ensure that the `location` property in the tracked resource's hierarchy has `x-ms-mutability` correctly set to `read` and `create`.
 For example:
+
 ```json
 "location": {
   "type": "string",

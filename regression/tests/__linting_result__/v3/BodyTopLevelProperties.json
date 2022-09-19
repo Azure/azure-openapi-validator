@@ -1,0 +1,44 @@
+[
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'ConnectionSharedKey' has extra properties ['value'].",
+    "jsonpath": "$.definitions.ConnectionSharedKey",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3550:4"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'Disk' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.Disk",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1913:4"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'DiskPool' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.DiskPool",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1404:4"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'IscsiTarget' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.IscsiTarget",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1693:4"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'VirtualMachine' has extra properties ['resources'].",
+    "jsonpath": "$.definitions.VirtualMachine",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13880:4"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'VirtualMachineScaleSetVM' has extra properties ['instanceId'].",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVM",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16088:4"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'VirtualMachineScaleSetVM' has extra properties ['resources'].",
+    "jsonpath": "$.definitions.VirtualMachineScaleSetVM",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16088:4"
+  }
+]

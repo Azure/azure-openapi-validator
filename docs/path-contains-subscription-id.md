@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-1
+
 ## Output Message
 
 The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.

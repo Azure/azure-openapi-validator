@@ -34,6 +34,12 @@ This rule appears if in the parameter definition you have anonymous types.
 
 Please refer to [anonymous-body-parameter.md](./anonymous-body-parameter.md) for details.
 
+### ApiHost
+
+The host is required for management plane specs.
+
+Please refer to [api-host.md](./api-host.md) for details.
+
 ### ApiVersionEnum
 
 The `api-version` parameter should not be an enum. This rule is primarily to discourage a practice observed
@@ -42,15 +48,22 @@ This requires removing the old API version when a new version is defined, which 
 
 Please refer to [api-version-enum.md](./api-version-enum.md) for details.
 
+### ApiVersionParameterRequired
+
+This rule applies when the 'api-version' parameter is missing in any operations.
+
+Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
+
 ### APIVersionPattern
 
-The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
+The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.) NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
-* -preview - Indicates the API version is in (public) preview
-* -alpha
-* -beta
-* -rc (release candidate)
-* -privatepreview
+
+- -preview - Indicates the API version is in (public) preview
+- -alpha
+- -beta
+- -rc (release candidate)
+- -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -148,6 +161,12 @@ Control characters are not allowed in a specification.
 
 Please refer to [control-characters-not-allowed.md](./control-characters-not-allowed.md) for details.
 
+### CreateOperationAsyncResponseValidation
+
+An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
+
+Please refer to [create-operation-async-response-validation.md](./create-operation-async-response-validation.md) for details.
+
 ### DefaultErrorResponseSchema
 
 The default error response schema SHOULD correspond to the schema documented at [common-api-details](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content).
@@ -169,18 +188,12 @@ Please refer to [default-response.md](./default-response.md) for details.
 ### DefinitionsPropertiesNamesCamelCase
 
 Property names must use lowerCamelCase style.
-If the property is a single word (ex: foo, bar, etc.) it will be all lowercase. 
-Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized. 
-Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.) 
-For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx)
+If the property is a single word (ex: foo, bar, etc.) it will be all lowercase.
+Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized.
+Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.)
+For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](<https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx>)
 
 Please refer to [definitions-properties-names-camel-case.md](./definitions-properties-names-camel-case.md) for details.
-
-### Delete204Response
-
-A delete operation should have a 204 response.
-
-Please refer to [delete-204-response.md](./delete-204-response.md) for details.
 
 ### DeleteInOperationName
 
@@ -212,6 +225,12 @@ The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
 
+### Delete204Response
+
+A delete operation should have a 204 response.
+
+Please refer to [delete204-response.md](./delete204-response.md) for details.
+
 ### DeprecatedXmsCodeGenerationSetting
 
 The x-ms-code-generation-settings is being deprecated. AutoRest (v3) is using settings in readme file for code generation and will stop supporting it inside the swagger file. Please ensure to remove the parameter from swagger spec and move settings to readme.
@@ -235,6 +254,12 @@ Please refer to [description-must-not-be-node-name.md](./description-must-not-be
 The value of the 'description' property must be descriptive. It cannot be spaces or empty description.
 
 Please refer to [descriptive-description-required.md](./descriptive-description-required.md) for details.
+
+### docLinkLocale
+
+This rule is to ensure the documentation link in the description does not contains any locale.
+
+Please refer to [doc-link-locale.md](./doc-link-locale.md) for details.
 
 ### EnumInsteadOfBoolean
 
@@ -302,7 +327,7 @@ Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for detai
 
 The get operation should only return 200, also it should not be a long running operation.
 
-Please refer to [get-operation-200.md](./get-operation-200.md) for details.
+Please refer to [get-operation200.md](./get-operation200.md) for details.
 
 ### GuidUsage
 
@@ -319,7 +344,8 @@ Please refer to [header-disallowed.md](./header-disallowed.md) for details.
 ### HostParametersValidation
 
 This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
-1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:uri'.
+
+1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:url'.
    - Client level (x-ms-parameter-location: client)
    - A path component (in: path)
    - Part of a 'x-ms-parametrized-host' with 'useSchemePrefix: false'
@@ -421,7 +447,7 @@ Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
 Async PATCH should return 202.
 
-Please refer to [lro-patch-202.md](./lro-patch-202.md) for details.
+Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -655,7 +681,7 @@ Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 ### PathCharacters
 
 Path should contain only recommended characters.
-The recommended characters are 0-9, A-Z, a-z, -, ., _, ~, and :.
+The recommended characters are 0-9, A-Z, a-z, -, ., \_, ~, and :.
 
 Please refer to [path-characters.md](./path-characters.md) for details.
 
@@ -669,6 +695,7 @@ Please refer to [path-contains-resource-group.md](./path-contains-resource-group
 
 Per ARM RPC,Uri for resource CRUD methods MUST contain a resource type.
 Uri path starts with \<scope\>/providers/\<namespace\>/\<resourcetype\> format, where
+
 - \<scope\> is one of:
   1.  Tenant/Global: '/'
   2.  Subscription: "/subscriptions/{subscriptionId}"
@@ -744,6 +771,12 @@ Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
 
+### PostLongRunningOperation202Only
+
+An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
+
+Please refer to [post-operation-async-response-validation.md](./post-operation-async-response-validation.md) for details.
+
 ### PostOperationIdContainsUrlVerb
 
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
@@ -759,6 +792,7 @@ Please refer to [preview-version-over-one-year.md](./preview-version-over-one-ye
 ### PrivateEndpointResourceSchemaValidation
 
 This rule is to check if the schemas used by private endpoint conform to the common [privateLink](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v1/privatelinks.json). The rule will check the schemas of following models and their properties:
+
 1. PrivateEndpointConnection
 2. PrivateEndpointConnectionProperties
 3. PrivateEndpointConnectionListResult
@@ -816,11 +850,11 @@ The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
 
-### RepeatedUriInfo
+### RepeatedPathInfo
 
 Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
-Please refer to [repeated-uri-info.md](./repeated-uri-info.md) for details.
+Please refer to [repeated-path-info.md](./repeated-path-info.md) for details.
 
 ### RequestBodyNotAllowed
 
@@ -834,12 +868,6 @@ The body parameter is not marked as required -- this is a common error.
 While there are some cases where a body may be optional, they are rare.
 
 Please refer to [request-body-optional.md](./request-body-optional.md) for details.
-
-### RequiredApiVersionParameter
-
-This rule applies when the 'api-version' parameter is missing in any operations.
-
-Please refer to [required-api-version-parameter.md](./required-api-version-parameter.md) for details.
 
 ### RequiredDefaultResponse
 
@@ -906,6 +934,47 @@ Please refer to [schema-description-or-title.md](./schema-description-or-title.m
 Schema names should be Pascal case. This includes any acronyms.
 
 Please refer to [schema-names-convention.md](./schema-names-convention.md) for details.
+
+### SchemaTypeAndFormat
+
+Every schema should specify a well-defined combination of `type` and `format`.
+`format` is required for type integer and number, optional for type string,
+and not allowed for any other types.
+The well-defined type/format combinations are:
+**type: integer**
+| format | description | comments |
+| -------- | --------------- | ------------------------- |
+| int32 | signed 32 bits | from [oas2][oas2] |
+| int64 | signed 64 bits | from [oas2][oas2] |
+| unixtime | Unix time stamp | from [autorest][autorest] |
+**type: number**
+| format | description | comments |
+| ------- | ---------------------- | ------------------------- |
+| float | 32 bit floating point | from [oas2][oas2] |
+| int64 | 64 bit floating point | from [oas2][oas2] |
+| decimal | 128 bit floating point | from [autorest][autorest] |
+**type: string**
+| format | description | comments |
+| ----------------- | ---------------------------- | ------------------------- |
+| byte | base64 encoded characters | from [oas2][oas2] |
+| binary | any sequence of octets | from [oas2][oas2] |
+| date | [RFC3339][rfc3339] full-date | from [oas2][oas2] |
+| date-time | [RFC3339][rfc3339] date-time | from [oas2][oas2] |
+| password | sensitive value | from [oas2][oas2] |
+| char | | from [autorest][autorest] |
+| time | | from [autorest][autorest] |
+| date-time-rfc1123 | | from [autorest][autorest] |
+| duration | | from [autorest][autorest] |
+| uuid | | from [autorest][autorest] |
+| base64url | | from [autorest][autorest] |
+| url | | from [autorest][autorest] |
+| odata-query | | from [autorest][autorest] |
+| certificate | | from [autorest][autorest] |
+oas2: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
+autorest: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
+rfc3339: https://xml2rfc.tools.ietf.org/public/rfc/
+
+Please refer to [schema-type-and-format.md](./schema-type-and-format.md) for details.
 
 ### SecurityDefinitionDescription
 
@@ -1018,6 +1087,7 @@ Please refer to [unique-model-name.md](./unique-model-name.md) for details.
 
 This rule will check all the swagger files with the same api-version, and ensure there is no duplicate x-ms-enum name.
 The following cases are deemed as violation:
+
 1. if two enums have the same x-ms-enum name , but types are different.
 2. if two enums have the same x-ms-enum name , but 'modelAsString' are different.
 3. if two enums have the same x-ms-enum name , but include different values.
@@ -1061,12 +1131,6 @@ All services should follow the Azure API Guidelines for specifying the API versi
 
 Please refer to [version-policy.md](./version-policy.md) for details.
 
-### XmsLongRunningOperationOptions
-
-The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
-
-Please refer to [x-ms-long-running-operation-options.md](./x-ms-long-running-operation-options.md) for details.
-
 ### XmsClientNameParameter
 
 The [`x-ms-client-name`](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-client-name) extension is used to change the name of a parameter or property in the generated code. By using the 'x-ms-client-name' extension, a name can be defined for use specifically in code generation, separately from the name on the wire. It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.
@@ -1096,6 +1160,12 @@ Please refer to [xms-examples-required.md](./xms-examples-required.md) for detai
 This rule is to check the `id` property or identifier of objects in the array. See more here: [x-ms-identifiers](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-identifiers).
 
 Please refer to [xms-identifier-validation.md](./xms-identifier-validation.md) for details.
+
+### XmsLongRunningOperationOptions
+
+The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
+
+Please refer to [xms-long-running-operation-options.md](./xms-long-running-operation-options.md) for details.
 
 ### XmsPageableListByRGAndSubscriptions
 

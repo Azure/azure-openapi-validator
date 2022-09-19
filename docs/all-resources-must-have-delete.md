@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-DELETE-02
+
 ## Output Message
 
 The resource {resourceName} does not have a corresponding delete operation.

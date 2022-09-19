@@ -1,5 +1,4 @@
-import { rules , IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
-
+import { rules, IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
 // register rules
 require("../legacyRules/PageableOperation")
 require("../legacyRules/DescriptionMustNotBeNodeName")
@@ -28,10 +27,9 @@ require("../legacyRules/AllResourcesMustHaveGetOperation")
 require("../legacyRules/NestedResourcesMustHaveListOperation")
 require("../legacyRules/TopLevelResourcesListByResourceGroup")
 require("../legacyRules/TopLevelResourcesListBySubscription")
-require("../legacyRules/OperationsApiResponseSchema")
-require("../legacyRules/Rpaas_CreateOperationAsyncResponseValidation")
+require("../legacyRules/CreateOperationAsyncResponseValidation")
 require("../legacyRules/DeleteOperationAsyncResponseValidation")
-require("../legacyRules/Rpaas_PostOperationAsyncResponseValidation")
+require("../legacyRules/PostOperationAsyncResponseValidation")
 require("../legacyRules/Rpaas_ResourceProvisioningState")
 require("../legacyRules/PreviewVersionOverOneYear")
 require("../legacyRules/UniqueXmsExample")
@@ -61,9 +59,8 @@ export const legacyRules = createFromLegacyRules()
 export const commonRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
   rules: {
-    ...legacyRules
-  }
+    ...legacyRules,
+  },
 }
 
 export default commonRuleset
-

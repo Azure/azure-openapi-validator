@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-PUT-22
+
 ## Output Message
 
 The tracked resource {resourceName} does not have a corresponding put operation.

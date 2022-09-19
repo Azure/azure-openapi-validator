@@ -1,0 +1,488 @@
+[
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'AvailabilityGroupListeners_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:75:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'BackupShortTermRetentionPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'CloudEndpoints_Create' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1064:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'CloudServicesUpdateDomain_WalkUpdateDomain' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1292:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Clusters_Create' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:38:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ConnectionMonitors_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:1530:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DataMaskingPolicies_CreateOrUpdate' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:20:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DataMaskingRules_CreateOrUpdate' Request Model: 'parameters[7].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:114:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseBlobAuditingPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:497:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseExtensions_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:63:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseSecurityAlertPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json:82:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseVulnerabilityAssessmentRuleBaselines_CreateOrUpdate' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json:100:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DatabaseVulnerabilityAssessments_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessments.json:78:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DiskPools_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}\"].put",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:168:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'DistributedAvailabilityGroups_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:106:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'EncryptionProtectors_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:113:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ExtendedDatabaseBlobAuditingPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:63:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ExtendedServerBlobAuditingPolicies_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:214:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Extensions_Create' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:322:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Extensions_EnableAzureMonitor' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:180:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Extensions_EnableMonitoring' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:38:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'FailoverGroups_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:68:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'FirewallRules_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:64:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'FirewallRules_Replace' Request Model: 'parameters[2].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:212:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'GeoBackupPolicies_CreateOrUpdate' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:20:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'IPv6FirewallRules_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:106:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'InstanceFailoverGroups_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:68:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'IscsiTargets_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}\"].put",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:672:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'JobCredentials_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/credentials/{credentialName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobCredentials.json:120:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'JobSteps_CreateOrUpdate' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/steps/{stepName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobSteps.json:266:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'JobTargetGroups_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups/{targetGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetGroups.json:120:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Jobs_Create' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].put",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:346:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'Jobs_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Jobs.json:120:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'LedgerDigestUploads_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:73:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'LongTermRetentionPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'MaintenanceWindows_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedBackupShortTermRetentionPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedDatabaseSecurityAlertPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityAlertPolicies.json:82:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedDatabaseSensitivityLabels_CreateOrUpdate' Request Model: 'parameters[7].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:321:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedDatabaseTransparentDataEncryption_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseTransparentDataEncryption.json:82:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedDatabaseVulnerabilityAssessmentRuleBaselines_CreateOrUpdate' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json:104:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedDatabaseVulnerabilityAssessments_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json:82:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstanceAdministrators_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:112:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstanceAzureADOnlyAuthentications_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstanceEncryptionProtectors_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:167:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstanceKeys_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:113:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstanceLongTermRetentionPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstancePrivateEndpointConnections_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:64:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedInstanceVulnerabilityAssessments_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json:75:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:77:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedServerDnsAliases_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:105:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ManagedServerSecurityAlertPolicies_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'NetworkProfiles_CreateOrUpdate' Request Model: 'parameters[2].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:151:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'OutboundFirewallRules_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:63:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'PacketCaptures_Create' Request Model: 'parameters[3].schema' Response Model: 'responses[201].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:611:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'PrivateEndpointConnections_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:64:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'RegisteredServers_Create' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2562:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'SensitivityLabels_CreateOrUpdate' Request Model: 'parameters[7].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:317:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerAzureADAdministrators_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerAzureADOnlyAuthentications_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerBlobAuditingPolicies_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:354:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerCommunicationLinks_CreateOrUpdate' Request Model: 'parameters[5].schema' Response Model: 'responses[201].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:99:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerConnectionPolicies_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerDevOpsAuditSettings_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings/{devOpsAuditingSettingsName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDevOpsAudit.json:64:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerEndpoints_Create' Request Model: 'parameters[6].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1927:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerKeys_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:106:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerSecurityAlertPolicies_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:71:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerTrustCertificates_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:106:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerTrustGroups_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:68:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'ServerVulnerabilityAssessments_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerVulnerabilityAssessments.json:75:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'SqlAgent_CreateOrUpdate' Request Model: 'parameters[2].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/sqlAgent/current\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SqlAgent.json:57:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'StorageAccounts_Create' Request Model: 'parameters[2].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:122:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'StorageSyncServices_Create' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:120:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'SyncAgents_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:68:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'SyncGroups_Create' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:870:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'SyncGroups_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:418:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'SyncMembers_CreateOrUpdate' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:78:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'TransparentDataEncryptions_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:82:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'VirtualNetworkRules_CreateOrUpdate' Request Model: 'parameters[3].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:64:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'WorkloadClassifiers_CreateOrUpdate' Request Model: 'parameters[5].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:74:6"
+  },
+  {
+    "code": "PutRequestResponseScheme",
+    "message": "A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: 'WorkloadGroups_CreateOrUpdate' Request Model: 'parameters[4].schema' Response Model: 'responses[200].schema'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:67:6"
+  }
+]

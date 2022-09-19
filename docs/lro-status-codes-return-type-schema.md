@@ -18,7 +18,7 @@ The '200'/'201' responses of the long running operation must have a schema defin
 
 ## Why the rule is important
 
-Please refer [here](https://github.com/Azure/autorest/tree/main/docs/extensions.md#x-ms-long-running-operation) for details on the x-ms-long-running-operation. The '201' response code indicates 'Created' & '200' response code indicates 'Success'. In either case, it is logical for the response to be the same.
+Please refer [here](https://github.com/Azure/autorest/tree/main/docs/extensions/readme.md#x-ms-long-running-operation) for details on the x-ms-long-running-operation. The '201' response code indicates 'Created' & '200' response code indicates 'Success'. In either case, it is logical for the response to be the same.
 
 ## How to fix the violation
 

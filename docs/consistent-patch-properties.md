@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Patch-3
+
 ## Output Message
 
 The property '{propertyName}' in the request body doesn't appear in the resource model.
@@ -45,8 +49,7 @@ If a resource is defined as below and the 'properties.propertyA' is patchable
     },
   },
 ```
-
-then if then 'propertyA' must appear in the patch body with the same layout.
+then 'propertyA' must appear in the patch body with the same layout.
 
 ```json
   FooResourceUpdate: {

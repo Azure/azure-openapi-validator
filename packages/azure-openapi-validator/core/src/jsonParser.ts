@@ -21,6 +21,9 @@ export class JsonParser implements IJsonParser {
       getLocation: (path: JsonPath) => {
         // JSONPath does not include the root '$', replace number string to number
         const targetPath = [...path]
+        if (targetPath.length === 0) {
+          return getRange(text, rootNode)
+        }
         while (targetPath.length > 0) {
           const root = findNodeAtLocation(rootNode, targetPath)
           if (root) {

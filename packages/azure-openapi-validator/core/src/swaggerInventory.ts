@@ -68,7 +68,7 @@ export class SwaggerInventory implements ISwaggerInventory {
     const document = new OpenapiDocument(specPath, parser, this.fileSystem)
     await document.resolve()
     this.referenceCache.set(specPath, document)
-    this.allDocs.set(specPath, document.getContent())
+    this.allDocs.set(specPath, document.getObj())
     this.inventory.addNode(specPath)
     const references = document.getReferences()
     for (const ref of references) {
