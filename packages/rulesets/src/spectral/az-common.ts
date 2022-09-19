@@ -1,10 +1,8 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import {pattern, falsy, truthy} from "@stoplight/spectral-functions"
+import { pattern, falsy, truthy } from "@stoplight/spectral-functions"
 import avoidMsdnReferences from "./functions/avoid-msdn-references";
 import { deleteInOperationName } from "./functions/delete-in-operation-name"
 import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
-import { pattern, falsy, truthy } from "@stoplight/spectral-functions"
-import { deleteInOperationName } from "./functions/delete-in-operation-name"
 import {
   longRunningOperationsOptionsValidator
 } from "./functions/Extensions/long-running-operations-options-validator";
