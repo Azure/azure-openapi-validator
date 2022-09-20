@@ -12,7 +12,6 @@ test('ListInOperationName should find invalid operationId', () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     schemes: [
-      "http",
       "https"
     ],
     info: {
@@ -30,7 +29,7 @@ test('ListInOperationName should find invalid operationId', () => {
         }
       },
       "/some/test/path2":{
-        get:{
+        post:{
           operationId:"_List",
           "x-ms-pageable": {
             nextLinkName: "nextLink"
@@ -38,7 +37,7 @@ test('ListInOperationName should find invalid operationId', () => {
         },
       },
       "/some/test/path3":{
-        get:{
+        delete:{
           operationId:"ExtensionsList",
           "x-ms-pageable": {
             nextLinkName: "nextLink"
@@ -49,6 +48,56 @@ test('ListInOperationName should find invalid operationId', () => {
   };
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(3);
+  });
+});
+
+test('ListInOperationName should find invalid operation id which response contains array.', () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    schemes: [
+      "http",
+      "https"
+    ],
+    info: {
+      title: "Consumes has an unsupported MIME type",
+      description: "Use these APIs to manage Azure Websites resources through the Azure Resource Manager. All task operations conform to the HTTP/1.1 protocol specification and each operation returns an x-ms-request-id header that can be used to obtain information about the request. You must make sure that requests made to these resources are secure. For more information, see https://msdn.microsoft.com/en-us/library/azure/dn790557.aspx.",
+      version: "2014-04-01-preview"
+    },
+    paths:{
+      "/some/test/path":{
+        post:{
+          operationId:"Extensions_Update",
+          "x-ms-pageable": {
+            nextLinkName: "nextLink"
+          },
+          responses:{
+            "200":{
+              "schema": {
+                "$ref": "#/definitions/BastionSessionDeleteResult"
+              }
+            },
+            "default": {
+              description: "The detailed error response.",
+              schema: {
+                "$ref": "#/definitions/BastionSessionDeleteResult"
+              }
+            }
+          }
+        }
+      }
+    },
+    definitions:{
+      BastionSessionDeleteResult:{
+        properties:{
+          value:{
+            type: "array"
+          }
+        }
+      }
+    }
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1);
   });
 });
 
@@ -86,21 +135,32 @@ test('ListInOperationName should pass check', () => {
         },
       },
       "/some/test/path3":{
-        get:{
-          operationId:"Extension_ListByTest",
-          "x-ms-pageable": {
-            nextLinkName: "nextLink"
-          },
-        },
-      },
-      "/some/test/path4":{
         post:{
-          operationId:"Extension_UpdateByTest",
-          "x-ms-pageable": {
-            nextLinkName: "nextLink"
-          },
+          operationId:"Extension_ListByTest",
+          responses:{
+            "200":{
+              "schema": {
+                "$ref": "#/definitions/BastionSessionDeleteResult"
+              }
+            },
+            "default": {
+              description: "The detailed error response.",
+              schema: {
+                "$ref": "#/definitions/BastionSessionDeleteResult"
+              }
+            }
+          }
         },
       },
+    },
+    definitions:{
+      BastionSessionDeleteResult:{
+        properties:{
+          value:{
+            type: "array"
+          }
+        }
+      }
     }
   };
   return linter.run(myOpenApiDocument).then((results) => {

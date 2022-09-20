@@ -11,6 +11,7 @@ import { nextLinkPropertyMustExist } from "./functions/Extensions/next-link-prop
 import { xmsClientName } from "./functions/Extensions/xms-client-name";
 import { xmsPathsMustOverloadPaths } from "./functions/Extensions/xms-paths-must-overload-paths";
 import { getInOperationName } from "./functions/get-in-operation-name"
+import listInOperationName from "./functions/list-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema"
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter"
 import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id"
@@ -355,20 +356,17 @@ const ruleset: any = {
     },
     ListInOperationName: {
       description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
-      message: 'Since operation response has model definition, it should be of the form "_list".',
+      message: 'Since operation response has model definition in array type, it should be of the form "_list".',
       severity: "warn",
-      resolved: false,
+      resolved: true,
       formats: [oas2],
-      given: ["$.paths[*].get['x-ms-pageable']^.operationId"],
+      given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
       then: {
-        function: pattern,
-        functionOptions: {
-          match: "^((\\w+\\_List\\w*)|List)$"
-        }
+        function: listInOperationName
       }
     },
     DescriptiveDescriptionRequired: {
-      description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+      description: 'alue of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
       message:
           'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
       severity: "warn",

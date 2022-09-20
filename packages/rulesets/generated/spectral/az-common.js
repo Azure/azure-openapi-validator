@@ -244,6 +244,44 @@ const getInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
+const listInOperationName = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null && typeof swaggerObj !== "object") {
+        return [];
+    }
+    const listRegex = /^((\w+_List\w*)|List)$/;
+    const path = paths.path;
+    if (swaggerObj["x-ms-pageable"] !== undefined) {
+        if (!listRegex.test(swaggerObj.operationId)) {
+            return [{
+                    message: 'Since operation \'${swaggerObj.operationId}\' response has model definition \'x-ms-pageable\', it should be of the form \\"*_list*\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.',
+                    path: [...path, path[path.length - 1], 'operationId'],
+                }];
+        }
+        else {
+            return [];
+        }
+    }
+    if (swaggerObj.responses === undefined)
+        return [];
+    const responseList = swaggerObj.responses;
+    let gotArray = false;
+    Object.values(responseList).every((response) => {
+        if (response.schema.properties.value.type === "array") {
+            if (!listRegex.test(swaggerObj['operationId'])) {
+                gotArray = true;
+                return true;
+            }
+        }
+        return [];
+    });
+    if (gotArray)
+        return [{
+                message: 'Since operation `${swaggerObj.operationId}` response has model definition \'array\', it should be of the form "_\\_list_".',
+                path: [...path, path[path.length - 1], 'operationId'],
+            }];
+    return [];
+};
+
 const lroStatusCodesReturnTypeSchema = (putOp, _opts, ctx) => {
     if (putOp === null || typeof putOp !== "object") {
         return [];
@@ -937,20 +975,17 @@ const ruleset = {
         },
         ListInOperationName: {
             description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
-            message: 'Since operation response has model definition, it should be of the form "_list".',
+            message: 'Since operation response has model definition in array type, it should be of the form "_list".',
             severity: "warn",
-            resolved: false,
+            resolved: true,
             formats: [oas2],
-            given: ["$.paths[*].get['x-ms-pageable']^.operationId"],
+            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
             then: {
-                function: pattern,
-                functionOptions: {
-                    match: "^((\\w+\\_List\\w*)|List)$"
-                }
+                function: listInOperationName
             }
         },
         DescriptiveDescriptionRequired: {
-            description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+            description: 'alue of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
             message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
             severity: "warn",
             resolved: false,
