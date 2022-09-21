@@ -366,7 +366,7 @@ const ruleset: any = {
       }
     },
     DescriptiveDescriptionRequired: {
-      description: 'alue of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+      description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
       message:
           'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
       severity: "warn",

@@ -22,11 +22,13 @@ const listInOperationName = (swaggerObj:any, _opts:any, paths:any) => {
   const responseList = swaggerObj.responses;
   let gotArray = false;
   Object.values(responseList).every((response: any) => {
-    if(response.schema.properties.value.type === "array")
-    {
-      if(!listRegex.test(swaggerObj['operationId'])){
-        gotArray = true;
-        return true;
+    if(response.schema !== undefined && response.schema !== null) {
+      if(response.schema.properties.value.type === "array")
+      {
+        if(!listRegex.test(swaggerObj['operationId'])){
+          gotArray = true;
+          return true;
+        }
       }
     }
     return [];
