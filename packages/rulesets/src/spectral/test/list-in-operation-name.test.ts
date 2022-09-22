@@ -37,7 +37,7 @@ test('ListInOperationName should find invalid operationId', () => {
         },
       },
       "/some/test/path3":{
-        delete:{
+        get:{
           operationId:"ExtensionsList",
           "x-ms-pageable": {
             nextLinkName: "nextLink"
