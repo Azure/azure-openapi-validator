@@ -382,7 +382,7 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
         return [];
     const responseList = swaggerObj.responses;
     let gotArray = false;
-    Object.values(responseList).every((response) => {
+    Object.values(responseList).some((response) => {
         var _a, _b;
         if (response.schema) {
             if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array") {
@@ -392,7 +392,7 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
                 }
             }
         }
-        return [];
+        return false;
     });
     if (gotArray)
         return [{
@@ -1062,7 +1062,7 @@ const ruleset$1 = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            given: ["$[paths,'x-ms-paths'].*[get,put,post,patch,delete,options,head]"],
             then: {
                 function: xmsExamplesRequired
             }
@@ -1099,7 +1099,7 @@ const ruleset$1 = {
             severity: "warn",
             resolved: true,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            given: ["$.paths.*[get,post]"],
             then: {
                 function: listInOperationName
             }
@@ -2114,7 +2114,7 @@ const ruleset = {
             message: "Property name should be camel case.",
             severity: "error",
             resolved: false,
-            given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
+            given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties.[?(!@property.match(/^@.+$/))]~",
             then: {
                 function: casing,
                 functionOptions: {
