@@ -319,7 +319,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+      given: ["$[paths,'x-ms-paths'].*[get,put,post,patch,delete,options,head]"],
       then: {
         function: xmsExamplesRequired
       }
