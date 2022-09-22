@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-3
+
 ## Output Message
 
 The last resource provider '{0}' doesn't match the namespace.

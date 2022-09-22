@@ -1,0 +1,157 @@
+{
+  "common": [
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers/{deletedServerName}/recover\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DeletedServers.json:145:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:19:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:93:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/share\"]",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1665:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:234:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:288:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:507:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:584:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}/acquire\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:214:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:310:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/import\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:430:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}/disable\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:184:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:540:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/failover\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:156:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:209:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:19:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/resume\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:590:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}/acquire\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:225:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/failover\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:295:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:349:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:310:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/start\"]",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:182:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup\"]",
+      "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1496:4"
+    }
+  ],
+  "v2Only": [
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/retrieveBootDiagnosticsData\"]",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9341:4"
+    },
+    {
+      "code": "LongRunningOperationsOptionsValidator",
+      "message": "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/retrieveBootDiagnosticsData\"]",
+      "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5920:4"
+    }
+  ],
+  "v3Only": []
+}

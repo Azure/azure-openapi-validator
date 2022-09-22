@@ -12,7 +12,7 @@
   "projectFolderMaxDepth": 5,
   "gitPolicy": {},
   "repository": {
-    "defaultBranch": "main",
+    "defaultBranch": "develop",
     "url": "https://github.com/Azure/azure-openapi-validator.git"
   },
   "projects": [

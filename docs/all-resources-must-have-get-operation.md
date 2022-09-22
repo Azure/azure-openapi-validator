@@ -2,11 +2,15 @@
 
 ## Category
 
-ARM Warning
+ARM Error
 
 ## Applies to
 
 ARM OpenAPI(swagger) specs
+
+## Related ARM Guideline Code
+
+- RPC-V2-GET-04
 
 ## Output Message
 

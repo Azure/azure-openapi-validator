@@ -25,7 +25,7 @@
   },
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}": {
-      "patch": {
+      "put": {
         "tags": ["Clusters"],
         "operationId": "Clusters_Update",
         "description": "Patch HDInsight cluster with the specified parameters.",

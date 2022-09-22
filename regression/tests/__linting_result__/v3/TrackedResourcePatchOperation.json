@@ -1,0 +1,152 @@
+[
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'ApplicationGatewayAvailableSslOptions' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:1036:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'DataMaskingPolicy' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:19:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'DataMaskingRule' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:113:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'DscpConfiguration' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:37:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'EncryptionProtector' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:61:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'ExpressRoutePortsLocation' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:76:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'FirewallPolicy' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:37:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'GeoBackupPolicy' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:19:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'NetworkVirtualApplianceSku' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus/{skuName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:643:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'PrivateEndpoint' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:37:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'PrivateLinkService' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:37:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'RestorableDroppedDatabase' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedDatabases.json:61:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'RestorableDroppedManagedDatabase' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json:61:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'RestorePoint' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:19:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'RollingUpgradeStatusInfo' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7947:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'RouteFilterRule' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:358:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'ServerCommunicationLink' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:19:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'ServerConnectionPolicy' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:19:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'ServerKey' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:61:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'StorageTarget' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:874:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'VirtualMachineExtensionImage' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1779:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'VirtualMachineImage' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2308:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'VirtualMachineScaleSetVM' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8739:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'VirtualRouter' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:37:4"
+  },
+  {
+    "code": "TrackedResourcePatchOperation",
+    "message": "Tracked resource 'WebApplicationFirewallPolicy' must have patch operation that at least supports the update of tags.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:122:4"
+  }
+]

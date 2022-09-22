@@ -6,6 +6,7 @@ import { ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { JSONPath } from "jsonpath-plus"
 
 import { crawlReference } from "./ref-helper"
+import { SwaggerWalker } from "./swagger-walker"
 import { Workspace } from "./swagger-workspace"
 const matchAll = require("string.prototype.matchall")
 
@@ -54,6 +55,27 @@ export function getAllResourceProvidersFromPath(path: string): string[] {
   const resourceProviderRegex = new RegExp(/providers\/([\w.]+)/, "g")
   return Array.from(matchAll(path, resourceProviderRegex), (m: any) => m[1])
 }
+
+export function getProviderNamespace(apiPath:string) {
+  const matches = getAllResourceProvidersFromPath(apiPath)
+  if (matches.length) {
+    return matches.pop()
+  }
+  return undefined
+}
+
+export function getProviderNamespaceFromPath(filePath:string) {
+  if (!filePath) {
+    return undefined
+  }
+  const resourceProviderRegex = new RegExp(/\/(Microsoft\.\w+)\//i, "g")
+  const match = Array.from(matchAll(filePath.replace(/\\/g,"/"),resourceProviderRegex), (m: any) => m[1])
+  if (match) {
+    return match[0]
+  }
+  return undefined
+}
+
 
 export function getAllWordsFromPath(path: string): string[] {
   const wordRegex = new RegExp(/([\w.]+)/, "g")
@@ -114,4 +136,16 @@ export function nodes(obj: any, pathExpression: string) {
 export function stringify(path: string[]) {
   const pathWithRoot = ["$", ...path]
   return JSONPath.toPathString(pathWithRoot)
+}
+
+export function getResourceProvider(inventory:ISwaggerInventory) {
+  const walker = new SwaggerWalker(inventory)
+    let result: string[] = []
+    walker.warkAll(["$.paths.*"], (path: string[]) => {
+        const apiPath = path[2] as string
+        if (result.length === 0) {
+          result = [...getAllResourceProvidersFromPath(apiPath)]
+        }
+    })
+    return result.length ? result.pop() || "" : ""
 }

@@ -1,0 +1,18 @@
+{
+  "common": [
+    {
+      "code": "DeleteInOperationName",
+      "message": "'DELETE' operation 'Extensions_DisableAzureMonitor' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].delete.operationId",
+      "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:283:8"
+    },
+    {
+      "code": "DeleteInOperationName",
+      "message": "'DELETE' operation 'Extensions_DisableMonitoring' should use method name 'Delete'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].delete.operationId",
+      "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:141:8"
+    }
+  ],
+  "v2Only": [],
+  "v3Only": []
+}

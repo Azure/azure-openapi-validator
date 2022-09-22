@@ -8,6 +8,10 @@ ARM Error
 
 ARM and Data plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-Patch-10
+
 ## Output Message
 
 Properties of a PATCH request body must not be {0}. PATCH operation: '{1}' Model Definition: '{2}' Property: '{3}'

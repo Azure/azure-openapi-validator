@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-ASYNC-7
+
 ## Output Message
 
 A 202 response should include an Location response header.

@@ -38,6 +38,8 @@ export type RuleThen<T> = {
   fieldMatch?: string
 }
 
+export type RuleScope = "Global" | "File"
+
 export interface IRule<T> {
   readonly id?: string // see rule ID
   readonly description?: string
@@ -45,6 +47,7 @@ export interface IRule<T> {
   readonly openapiType: OpenApiTypes
   readonly mergeState?: MergeStates
   readonly severity: "error" | "warning"
+  readonly scope?: RuleScope
   readonly given?: string | string[] // see https://github.com/JSONPath-Plus/JSONPath for syntax and samples , the strings to query data via jsonpath-plus.
   readonly then: RuleThen<T> // the rule procession steps
 }

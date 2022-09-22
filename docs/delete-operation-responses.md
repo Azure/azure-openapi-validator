@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-DELETE-01
+
 ## Output Message
 
 The delete operation is defined without a 200 or 204 error response implementation,please add it.

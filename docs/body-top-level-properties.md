@@ -8,6 +8,11 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+
+## Related ARM Guideline Code
+
+- RPC-V2-PUT-6
+
 ## Output Message
 
 Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, systemData, extendedlocation. Model definition '{0}' has extra properties ['{1}'].

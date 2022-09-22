@@ -1,0 +1,8 @@
+[
+  {
+    "code": "OperationsAPIImplementation",
+    "message": "Operations API must be implemented for 'Microsoft.Resources'.",
+    "jsonpath": " $",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:1:0"
+  }
+]

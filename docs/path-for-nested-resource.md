@@ -8,6 +8,11 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-V2-URI-6
+- RPC-V2-PUT-2
+
 ## Output Message
 
 The path for nested resource doest not meet the valid resource pattern.

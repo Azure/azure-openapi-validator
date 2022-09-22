@@ -8,6 +8,7 @@ import { LintResultMessage, OpenApiTypes } from "@microsoft.azure/openapi-valida
 import { AvoidEmptyResponseSchema } from "../legacyRules/AvoidEmptyResponseSchema"
 import { AzureResourceTagsSchema } from "../legacyRules/AzureResourceTagsSchema"
 import { ControlCharactersAreNotAllowed } from "../legacyRules/ControlCharactersAreNotAllowed"
+import { CreateOperationAsyncResponseValidation } from "../legacyRules/CreateOperationAsyncResponseValidation"
 import { DefaultErrorResponseSchema } from "../legacyRules/DefaultErrorResponseSchema"
 import { DeleteOperationAsyncResponseValidation } from "../legacyRules/DeleteOperationAsyncResponseValidation"
 import { DeleteOperationResponses } from "../legacyRules/DeleteOperationResponses"
@@ -23,11 +24,10 @@ import { MissingTypeObject } from "../legacyRules/MissingTypeObject"
 import { MissingXmsErrorResponse } from "../legacyRules/MissingXmsErrorResponse"
 import { OperationIdRequired } from "../legacyRules/OperationIdRequired"
 import { ParametersOrder } from "../legacyRules/ParametersOrder"
+import { PostOperationAsyncResponseValidation } from "../legacyRules/PostOperationAsyncResponseValidation"
 import { PostOperationIdContainsUrlVerb } from "../legacyRules/PostOperationIdContainsUrlVerb"
 import { PreviewVersionOverOneYear } from "../legacyRules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../legacyRules/RequiredDefaultResponse"
-import { Rpaas_CreateOperationAsyncResponseValidation } from "../legacyRules/Rpaas_CreateOperationAsyncResponseValidation"
-import { Rpaas_PostOperationAsyncResponseValidation } from "../legacyRules/Rpaas_PostOperationAsyncResponseValidation"
 import { Rpaas_ResourceProvisioningState } from "../legacyRules/Rpaas_ResourceProvisioningState"
 import { ValidResponseCodeRequired } from "../legacyRules/ValidResponseCodeRequired"
 import { XmsEnumValidation } from "../legacyRules/XmsEnumValidation"
@@ -190,9 +190,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_CreateOperationAsyncResponseValidation
+      CreateOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 1)
+    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 1)
   })
 
   // Failure #1 : 'x-ms-long-running-operation' is missing
@@ -202,9 +202,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_CreateOperationAsyncResponseValidation
+      CreateOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 2)
   })
 
   // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 201 (implies async)
@@ -214,9 +214,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_CreateOperationAsyncResponseValidation
+      CreateOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 2)
   })
 
   // Valid 201 response for RPaaS
@@ -225,9 +225,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_CreateOperationAsyncResponseValidation
+      CreateOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_CreateOperationAsyncResponseValidation, 0)
+    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 0)
   })
 
   test("Preview version over a year", async () => {
@@ -288,9 +288,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_PostOperationAsyncResponseValidation
+      PostOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 1)
+    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 1)
   })
 
   // Failure #1 : 'x-ms-long-running-operation' is missing
@@ -300,9 +300,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_PostOperationAsyncResponseValidation
+      PostOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 2)
   })
 
   // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 202 (implies async)
@@ -312,9 +312,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_PostOperationAsyncResponseValidation
+      PostOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 2)
   })
 
   // Valid 202 response for POST operation in RPaaS
@@ -323,9 +323,9 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.rpaas,
-      Rpaas_PostOperationAsyncResponseValidation
+      PostOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, Rpaas_PostOperationAsyncResponseValidation, 0)
+    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 0)
   })
 
   test("Raas resource is defined with empty properties", async () => {
@@ -421,4 +421,6 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
+
+  
 })
