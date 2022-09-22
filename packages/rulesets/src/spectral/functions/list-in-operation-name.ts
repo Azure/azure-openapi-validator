@@ -21,7 +21,7 @@ const listInOperationName = (swaggerObj:any, _opts:any, paths:any) => {
     return [];
   const responseList = swaggerObj.responses;
   let gotArray = false;
-  Object.values(responseList).every((response: any) => {
+  Object.values(responseList).some((response: any) => {
     if(response.schema) {
       if(response.schema.properties?.value?.type === "array")
       {
