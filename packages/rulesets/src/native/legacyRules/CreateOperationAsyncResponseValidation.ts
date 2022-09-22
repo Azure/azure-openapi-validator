@@ -11,13 +11,13 @@ rules.push({
   severity: "error",
   category: "RPaaSViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.rpaas,
+  openapiType: OpenApiTypes.arm,
   appliesTo_JsonQuery: "$.paths.*.put",
   *run(doc, node, path) {
     if (node.responses["202"]) {
       yield {
         message: `Only 201 is the supported response code for PUT async response.`,
-        location: path.concat(["responses", "202"])
+        location: path.concat(["responses", "202"]),
       }
     }
 
@@ -30,21 +30,21 @@ rules.push({
       if (!node.responses["201"]) {
         yield {
           message: `An async PUT operation must return 201.`,
-          location: path.concat(["responses"])
+          location: path.concat(["responses"]),
         }
       }
 
       if (!node["x-ms-long-running-operation"] || node["x-ms-long-running-operation"] !== true) {
         yield {
           message: `An async PUT operation must set '"x-ms-long-running-operation" : true''.`,
-          location: path
+          location: path,
         }
       }
 
       if (!node["x-ms-long-running-operation-options"]) {
         yield {
           message: `An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'`,
-          location: path
+          location: path,
         }
       }
 
@@ -55,9 +55,9 @@ rules.push({
       ) {
         yield {
           message: `An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'`,
-          location: path
+          location: path,
         }
       }
     }
-  }
+  },
 })

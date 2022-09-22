@@ -1634,9 +1634,9 @@ const ruleset = {
             description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
             message: "{{error}}",
             severity: "error",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
-            given: ["$.definitions..provisioningState[?(@property === 'enum')]^"],
+            given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
             then: {
                 function: provisioningState,
             },
@@ -1976,7 +1976,7 @@ const ruleset = {
             },
         },
         LongRunningResponseStatusCode: {
-            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "error",
             resolved: true,

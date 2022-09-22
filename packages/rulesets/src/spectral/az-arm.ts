@@ -5,7 +5,7 @@ import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
-import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code";
+import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import validateOriginalUri from "./functions/lro-original-uri"
@@ -15,7 +15,7 @@ import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
-import { securityDefinitionsStructure } from "./functions/security-definitions-structure";
+import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -128,9 +128,9 @@ const ruleset: any = {
       description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: ["$.definitions..provisioningState[?(@property === 'enum')]^"],
+      given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
       then: {
         function: provisioningState,
       },
@@ -383,7 +383,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
+      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties.[?(!@property.match(/^@.+$/))]~",
       then: {
         function: casing,
         functionOptions: {
@@ -481,7 +481,7 @@ const ruleset: any = {
       },
     },
     LongRunningResponseStatusCode: {
-      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
