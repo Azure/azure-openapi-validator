@@ -408,6 +408,27 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const provisioningState = (swaggerObj, _opts, paths) => {
+    const enumValue = swaggerObj.enum;
+    if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
+        return [];
+    }
+    if (!Array.isArray(enumValue)) {
+        return [];
+    }
+    const path = paths.path || [];
+    const valuesMustHave = ["succeeded", "failed", "canceled"];
+    if (enumValue && valuesMustHave.some((v) => !enumValue.some((ev) => ev.toLowerCase() === v))) {
+        return [
+            {
+                message: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+                path,
+            },
+        ];
+    }
+    return [];
+};
+
 const resourceNameRestriction = (paths, _opts, ctx) => {
     if (paths === null || typeof paths !== "object") {
         return [];
@@ -428,7 +449,7 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
     }
     for (const pathKey of Object.keys(paths)) {
         const parts = pathKey.split("/").slice(1);
-        parts.slice(1).forEach((v, i) => {
+        parts.forEach((v, i) => {
             var _a;
             if (v.includes("}")) {
                 const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
@@ -445,27 +466,6 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
         });
     }
     return errors;
-};
-
-const provisioningState = (swaggerObj, _opts, paths) => {
-    const enumValue = swaggerObj.enum;
-    if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
-        return [];
-    }
-    if (!Array.isArray(enumValue)) {
-        return [];
-    }
-    const path = paths.path || [];
-    const valuesMustHave = ["succeeded", "failed", "canceled"];
-    if (enumValue && valuesMustHave.some((v) => !enumValue.some((ev) => ev.toLowerCase() === v))) {
-        return [
-            {
-                message: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
-                path,
-            },
-        ];
-    }
-    return [];
 };
 
 const validatePatchBodyParamProperties = createRulesetFunction({

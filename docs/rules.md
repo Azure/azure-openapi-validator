@@ -877,18 +877,6 @@ This rule ensures that the authors explicitly define these restrictions as a reg
 
 Please refer to [resource-name-restriction.md](./resource-name-restriction.md) for details.
 
-### RPaasPostLongRunningOperation202Only
-
-An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [rpaas-post-long-running-operation202-only.md](./rpaas-post-long-running-operation202-only.md) for details.
-
-### RPaasPutLongRunningOperation201Only
-
-An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
-
-Please refer to [rpaas-put-long-running-operation201-only.md](./rpaas-put-long-running-operation201-only.md) for details.
-
 ### RPaasResourceProvisioningState
 
 Verifies if a Azure resource has a corresponding 'provisioningState' property. If the 'provisioningState' is not defining explicitly , the client will drop the state when the service does return it.

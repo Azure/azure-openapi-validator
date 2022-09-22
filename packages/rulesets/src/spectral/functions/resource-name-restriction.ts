@@ -23,8 +23,7 @@ export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
 
   for (const pathKey of Object.keys(paths)) {
     const parts = pathKey.split("/").slice(1)
-
-    parts.slice(1).forEach((v, i) => {
+    parts.forEach((v, i) => {
       if (v.includes("}")) {
         const param = v.match(/[^{}]+(?=})/)?.[0]
         // Get the preceding path segment
