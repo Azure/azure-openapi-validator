@@ -2,6 +2,24 @@ import { oas2 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
+const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
+        return [];
+    if (typeof swaggerObj === "object") {
+        const docUrl = swaggerObj.url;
+        if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
+            return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            path,
+        }];
+};
+
 const deleteInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -18,6 +36,20 @@ const deleteInOperationName = (operationId, _opts, ctx) => {
         });
     }
     return errors;
+};
+
+const descriptiveDescriptionRequired = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null || typeof swaggerObj !== "string") {
+        return [];
+    }
+    if (swaggerObj.trim().length != 0) {
+        return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            path,
+        }];
 };
 
 const longRunningOperationsOptionsValidator = (postOp, _opts, ctx) => {
@@ -327,6 +359,47 @@ const getInOperationName = (operationId, _opts, ctx) => {
         });
     }
     return errors;
+};
+
+const listInOperationName = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null && typeof swaggerObj !== "object") {
+        return [];
+    }
+    const listRegex = /^((\w+_List\w*)|List)$/;
+    const path = paths.path;
+    if (swaggerObj["x-ms-pageable"] !== undefined) {
+        if (!listRegex.test(swaggerObj.operationId)) {
+            return [{
+                    message: 'Since operation \'${swaggerObj.operationId}\' response has model definition \'x-ms-pageable\', it should be of the form \\"*_list*\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.',
+                    path: [...path, path[path.length - 1], 'operationId'],
+                }];
+        }
+        else {
+            return [];
+        }
+    }
+    if (swaggerObj.responses === undefined)
+        return [];
+    const responseList = swaggerObj.responses;
+    let gotArray = false;
+    Object.values(responseList).every((response) => {
+        var _a, _b;
+        if (response.schema) {
+            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array") {
+                if (!listRegex.test(swaggerObj['operationId'])) {
+                    gotArray = true;
+                    return true;
+                }
+            }
+        }
+        return [];
+    });
+    if (gotArray)
+        return [{
+                message: 'Since operation `${swaggerObj.operationId}` response has model definition \'array\', it should be of the form "_\\_list_".',
+                path: [...path, path[path.length - 1], 'operationId'],
+            }];
+    return [];
 };
 
 const lroStatusCodesReturnTypeSchema = (putOp, _opts, ctx) => {
@@ -654,6 +727,55 @@ function checkSummaryAndDescription(op, options, ctx) {
     return errors;
 }
 
+const xmsClientNameParameter = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    if (swaggerObj.name !== swaggerObj['x-ms-client-name'])
+        return [];
+    const path = paths.path || [];
+    path.push('x-ms-client-name');
+    return [
+        {
+            message: `Value of 'x-ms-client-name' cannot be the same as ${swaggerObj.name} Property/Model.`,
+            path: path
+        },
+    ];
+};
+
+const xmsClientNameProperty = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null || typeof swaggerObj !== "string") {
+        return [];
+    }
+    const path = paths.path || [];
+    if (!path || path.length <= 2)
+        return [];
+    const name = path[path.length - 2];
+    if (swaggerObj !== name)
+        return [];
+    return [
+        {
+            message: `Value of 'x-ms-client-name' cannot be the same as ${name} Property/Model.`,
+            path: path
+        },
+    ];
+};
+
+const xmsExamplesRequired = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null || typeof swaggerObj !== "object") {
+        return [];
+    }
+    if (swaggerObj['x-ms-examples'] !== undefined)
+        return [];
+    const path = paths.path || [];
+    return [
+        {
+            message: `Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.`,
+            path: path
+        },
+    ];
+};
+
 const ruleset$1 = {
     extends: [],
     rules: {
@@ -932,6 +1054,88 @@ const ruleset$1 = {
             given: ["$['x-ms-paths']"],
             then: {
                 function: xmsPathsMustOverloadPaths,
+            },
+        },
+        XmsExamplesRequired: {
+            description: 'Verifies whether `x-ms-examples` are provided for each operation or not.',
+            message: 'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            then: {
+                function: xmsExamplesRequired
+            }
+        },
+        XmsClientNameParameter: {
+            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
+                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
+                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]", "$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]", "$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+            then: {
+                function: xmsClientNameParameter
+            }
+        },
+        XmsClientNameProperty: {
+            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
+                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
+                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.definitions[*].properties.*['x-ms-client-name']"],
+            then: {
+                function: xmsClientNameProperty
+            }
+        },
+        ListInOperationName: {
+            description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
+            message: 'Since operation response has model definition in array type, it should be of the form "_list".',
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            then: {
+                function: listInOperationName
+            }
+        },
+        DescriptiveDescriptionRequired: {
+            description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..[?(@object() && @.description)].description"],
+            then: {
+                function: descriptiveDescriptionRequired
+            },
+        },
+        AvoidNestedProperties: {
+            description: 'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
+            message: 'Consider using x-ms-client-flatten to provide a better end user experience',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+            then: {
+                field: "x-ms-client-flatten",
+                function: truthy
+            },
+        },
+        AvoidMsdnReferences: {
+            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$..[?(@property === 'externalDocs')].", "$.info.description"],
+            then: {
+                function: avoidMsdnReferences,
             },
         },
     },
@@ -1230,6 +1434,34 @@ const hasHeader = (response, opts, paths) => {
         ];
     }
     return [];
+};
+
+const httpsSupportedScheme = (scheme, _opts, paths) => {
+    if (scheme == null || typeof scheme !== "object")
+        return [];
+    const schemeArray = scheme;
+    if (schemeArray[0] === "https" && schemeArray.length === 1)
+        return [];
+    const path = paths.path || [];
+    return [{
+            message: 'Azure Resource Management only supports HTTPS scheme.',
+            path,
+        }];
+};
+
+const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
+    if (scheme == null || typeof scheme !== "object")
+        return [];
+    if (scheme["x-ms-mutability"] !== undefined && Array.isArray(scheme["x-ms-mutability"])) {
+        const schemeArray = scheme["x-ms-mutability"];
+        if (schemeArray.includes("create") && schemeArray.includes("read"))
+            return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'Property \'location\' must have \'\\"x-ms-mutability\\":[\\"read\\", \\"create\\"]\' extension defined.',
+            path,
+        }];
 };
 
 const validateOriginalUri = (lroOptions, opts, ctx) => {
@@ -1986,6 +2218,28 @@ const ruleset = {
                 function: longRunningResponseStatusCodeArm,
             },
         },
+        LocationMustHaveXmsMutability: {
+            description: 'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
+            message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ['$.definitions[*].properties.location'],
+            then: {
+                function: locationMustHaveXmsMutability
+            }
+        },
+        HttpsSupportedScheme: {
+            description: 'Verifies whether specification supports HTTPS scheme or not.',
+            message: 'Azure Resource Management only supports HTTPS scheme.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.schemes"],
+            then: {
+                function: httpsSupportedScheme
+            }
+        }
     },
 };
 
