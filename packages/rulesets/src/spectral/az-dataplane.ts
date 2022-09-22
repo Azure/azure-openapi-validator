@@ -1,5 +1,5 @@
 import { oas2, oas3 } from "@stoplight/spectral-formats"
-import { casing, falsy, pattern, truthy, undefined } from "@stoplight/spectral-functions"
+import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions"
 import common from "./az-common"
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
 import consistentresponsebody from "./functions/consistent-response-body"
@@ -20,6 +20,7 @@ import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
+
 const ruleset: any = {
   extends: [common],
   rules: {

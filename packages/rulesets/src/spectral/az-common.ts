@@ -1,6 +1,8 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { pattern, falsy, truthy } from "@stoplight/spectral-functions"
+import avoidMsdnReferences from "./functions/avoid-msdn-references";
 import { deleteInOperationName } from "./functions/delete-in-operation-name"
+import descriptiveDescriptionRequired from "./functions/descriptive-description-required";
 import {
   longRunningOperationsOptionsValidator
 } from "./functions/Extensions/long-running-operations-options-validator";
@@ -9,6 +11,7 @@ import { nextLinkPropertyMustExist } from "./functions/Extensions/next-link-prop
 import { xmsClientName } from "./functions/Extensions/xms-client-name";
 import { xmsPathsMustOverloadPaths } from "./functions/Extensions/xms-paths-must-overload-paths";
 import { getInOperationName } from "./functions/get-in-operation-name"
+import listInOperationName from "./functions/list-in-operation-name";
 import { lroStatusCodesReturnTypeSchema } from "./functions/lro-status-codes-return-type-schema"
 import { namePropertyDefinitionInParameter } from "./functions/name-property-definition-in-parameter"
 import { operationIdSingleUnderscore } from "./functions/one-underscore-in-operation-id"
@@ -22,6 +25,9 @@ import { putRequestResponseScheme } from "./functions/put-request-response-schem
 import { requiredReadOnlyProperties } from "./functions/required-read-only-properties"
 import checkSchemaFormat from "./functions/schema-format"
 import checkSummaryAndDescription from "./functions/summary-description-must-not-be-same"
+import xmsClientNameParameter from "./functions/xms-client-name-parameter";
+import xmsClientNameProperty from "./functions/xms-client-name-property";
+import xmsExamplesRequired from "./functions/xms-examples-required";
 
 const ruleset: any = {
   extends: [],
@@ -305,6 +311,96 @@ const ruleset: any = {
       given: ["$['x-ms-paths']"],
       then: {
         function: xmsPathsMustOverloadPaths,
+      },
+    },
+    XmsExamplesRequired: {
+      description: 'Verifies whether `x-ms-examples` are provided for each operation or not.',
+      message: 'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[get,put,post,patch,delete,options,head]"],
+      then: {
+        function: xmsExamplesRequired
+      }
+    },
+    XmsClientNameParameter: {
+      description:
+          'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
+          'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
+          'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+      message:
+          'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]","$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]","$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+      then: {
+        function: xmsClientNameParameter
+      }
+    },
+    XmsClientNameProperty: {
+      description:
+          'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
+          'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
+          'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
+      message:
+          'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.definitions[*].properties.*['x-ms-client-name']"],
+      then: {
+        function: xmsClientNameProperty
+      }
+    },
+    ListInOperationName: {
+      description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
+      message: 'Since operation response has model definition in array type, it should be of the form "_list".',
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths.*[get,post]"],
+      then: {
+        function: listInOperationName
+      }
+    },
+    DescriptiveDescriptionRequired: {
+      description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
+      message:
+          'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$..[?(@object() && @.description)].description"],
+      then: {
+        function: descriptiveDescriptionRequired
+      },
+    },
+    AvoidNestedProperties: {
+      description:
+          'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
+      message: 'Consider using x-ms-client-flatten to provide a better end user experience',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+      then: {
+        field: "x-ms-client-flatten",
+        function: truthy
+      },
+    },
+    AvoidMsdnReferences: {
+      description:
+          'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+      message:
+          'For better generated code quality, remove all references to "msdn.microsoft.com".',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$..[?(@property === 'externalDocs')].","$.info.description"],
+      then: {
+        function: avoidMsdnReferences,
       },
     },
   },
