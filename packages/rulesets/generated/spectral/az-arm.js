@@ -383,8 +383,9 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
     const responseList = swaggerObj.responses;
     let gotArray = false;
     Object.values(responseList).every((response) => {
-        if (response.schema !== undefined && response.schema !== null) {
-            if (response.schema.properties.value.type === "array") {
+        var _a, _b;
+        if (response.schema) {
+            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array") {
                 if (!listRegex.test(swaggerObj['operationId'])) {
                     gotArray = true;
                     return true;
