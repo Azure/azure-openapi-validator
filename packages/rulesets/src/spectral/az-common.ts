@@ -360,7 +360,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: true,
       formats: [oas2],
-      given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+      given: ["$.paths.*[get,post]"],
       then: {
         function: listInOperationName
       }
