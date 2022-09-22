@@ -31,7 +31,7 @@ const listInOperationName = (swaggerObj:any, _opts:any, paths:any) => {
         }
       }
     }
-    return [];
+    return false;
   });
   if(gotArray)
     return [{
