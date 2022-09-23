@@ -411,7 +411,7 @@ const ruleset: any = {
         "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@property === 'format'&& @ === 'guid')]",
+      given: "$..[?(@property === 'format' && @ === 'uuid')]",
       then: {
         function: falsy,
       },

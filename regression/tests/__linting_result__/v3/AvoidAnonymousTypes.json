@@ -1,0 +1,8 @@
+[
+  {
+    "code": "AvoidAnonymousTypes",
+    "message": "Inline/anonymous models must not be used, instead define a schema with a model name in the \"definitions\" section and refer to it. This allows operations to share the models.",
+    "jsonpath": "$.definitions.ManagedServiceIdentity.properties.userAssignedIdentities.additionalProperties",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:221:10"
+  }
+]

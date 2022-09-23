@@ -1,5 +1,24 @@
-import { oas2 } from '@stoplight/spectral-formats';
+import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
+
+const avoidAnonymousSchema = (schema, _opts, paths) => {
+    if (schema === null || schema["x-ms-client-name"] !== undefined) {
+        return [];
+    }
+    const path = paths.path || [];
+    const properties = schema.properties;
+    if ((properties === undefined || Object.keys(properties).length === 0) &&
+        schema.additionalProperties === undefined &&
+        schema.allOf === undefined) {
+        return [];
+    }
+    return [
+        {
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            path,
+        },
+    ];
+};
 
 const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
@@ -17,6 +36,32 @@ const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
             message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
             path,
         }];
+};
+
+const defaultInEnum = (swaggerObj, _opts, paths) => {
+    const defaultValue = swaggerObj.default;
+    const enumValue = swaggerObj.enum;
+    if (swaggerObj === null ||
+        typeof swaggerObj !== "object" ||
+        !defaultValue === null ||
+        defaultValue === undefined ||
+        enumValue === null ||
+        enumValue === undefined) {
+        return [];
+    }
+    if (!Array.isArray(enumValue)) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (enumValue && !enumValue.includes(defaultValue)) {
+        return [
+            {
+                message: "Default value should appear in the enum constraint for a schema.",
+                path,
+            },
+        ];
+    }
+    return [];
 };
 
 const deleteInOperationName = (operationId, _opts, ctx) => {
@@ -47,6 +92,17 @@ const descriptiveDescriptionRequired = (swaggerObj, _opts, paths) => {
     const path = paths.path || [];
     return [{
             message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            path,
+        }];
+};
+
+const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
             path,
         }];
 };
@@ -676,6 +732,44 @@ const ruleset = {
                 },
             },
         },
+        OperationSummaryOrDescription: {
+            description: "Operation should have a summary or description.",
+            message: "Operation should have a summary or description.",
+            severity: "warn",
+            given: [
+                "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'post' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'patch' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'delete' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'options' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'head' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'trace' && !@.summary && !@.description )]",
+            ],
+            then: {
+                function: falsy,
+            },
+        },
+        SchemaDescriptionOrTitle: {
+            description: "All schemas should have a description or title.",
+            message: "Schema should have a description or title.",
+            severity: "warn",
+            formats: [oas2, oas3],
+            given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
+            then: {
+                function: falsy,
+            },
+        },
+        ParameterDescription: {
+            description: "All parameters should have a description.",
+            message: "Parameter should have a description.",
+            severity: "warn",
+            given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
+            then: {
+                field: "description",
+                function: truthy,
+            },
+        },
         InvalidVerbUsed: {
             description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
             message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
@@ -684,6 +778,17 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[?(!@property.match(/^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE|PARAMETERS)$/i))]",
             then: {
                 function: falsy,
+            },
+        },
+        LroExtension: {
+            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+            severity: "warn",
+            formats: [oas2],
+            given: "$.paths[*][*].responses[?(@property == '202')]^^",
+            then: {
+                field: "x-ms-long-running-operation",
+                function: truthy,
             },
         },
         LroStatusCodesReturnTypeSchema: {
@@ -1000,6 +1105,65 @@ const ruleset = {
             given: ["$..[?(@object() && @.description)].description"],
             then: {
                 function: descriptiveDescriptionRequired,
+            },
+        },
+        ParameterDescriptionRequired: {
+            description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
+            message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.parameters.*"],
+            then: {
+                function: descriptiveDescriptionRequired,
+            },
+        },
+        DefaultInEnum: {
+            description: "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
+            message: "Default value should appear in the enum constraint for a schema",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$..[?(@object() && @.enum)]",
+            then: {
+                function: defaultInEnum,
+            },
+        },
+        EnumInsteadOfBoolean: {
+            description: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+            message: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: "$..[?(@object() && @.type === 'boolean')]",
+            then: {
+                function: enumInsteadOfBoolean,
+            },
+        },
+        AvoidAnonymousParameter: {
+            description: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths[*].parameters.*.schema", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*.schema"],
+            then: {
+                function: avoidAnonymousSchema,
+            },
+        },
+        AvoidAnonymousTypes: {
+            description: "This rule appears when you define a model type inline, rather than in the definitions section. If the model represents the same type as another parameter in a different operation, then it becomes impossible to reuse that same class for both operations.",
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: [
+                "$.paths[*].*.responses.*.schema",
+                "$.definitions..additionalProperties[?(@property === 'type' && @ === 'object')]^",
+                "$.definitions..allOf[?(@property === 'type' && @ === 'object')]^",
+            ],
+            then: {
+                function: avoidAnonymousSchema,
             },
         },
         AvoidNestedProperties: {

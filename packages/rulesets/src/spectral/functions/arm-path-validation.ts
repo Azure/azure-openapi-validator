@@ -1,4 +1,4 @@
-import { createRulesetFunction } from '@stoplight/spectral-core';
+import { createRulesetFunction } from "@stoplight/spectral-core"
 
 // given a path object key for ARM resource in swagger , validate the path is valid.
 /**
@@ -57,20 +57,22 @@ function verifyResourceType(path: string) {
 
 function verifyNestResourceType(path: string) {
   // invalid patterns:
-  // 1 <scope>/providers/Microsoft.Compute/virtualMachine/{vmName}/nestedResourceType/actions
-  // 2 <scope>/providers/Microsoft.Compute/virtualMachine/{vmName}/{nestedResourceType}
+  //
 
   const patterns = [
+    // 1 <scope>/providers/Microsoft.Compute/virtualMachine/{vmName}/nestedResourceType/actions
     /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+    // 2 <scope>/providers/Microsoft.Compute/virtualMachine/{vmName}/nestedTypes/{nestedResourceType}/action1/action2..
     /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
-    /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*$/gi,
+    // 3 <scope>/providers/Microsoft.Compute/virtualMachine/{vmName}/{nestedResourceType}
+    /^.*\/providers\/microsoft\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
   ]
   return notMatchPatterns(patterns, path)
 }
 
 export type Options = {
-  schema: Record<string, unknown>;
-};
+  schema: Record<string, unknown>
+}
 /**
  *
  * @param fullPath path key for ARM resource in swagger
@@ -85,82 +87,84 @@ export const verifyArmPath = createRulesetFunction<unknown, Options>(
   {
     input: null,
     options: {
-      type: 'object',
+      type: "object",
       properties: {
         segmentToCheck: {
           oneOf: [
-          {
-            type:"string",
-            enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType","resourceGroupScope"]
-          },
-          {
-            type:"array",
-            items: {
-               type:"string",
-               "enum": ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType","resourceGroupScope"]
-            }
-          }]
+            {
+              type: "string",
+              enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"],
+            },
+            {
+              type: "array",
+              items: {
+                type: "string",
+                enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"],
+              },
+            },
+          ],
         },
       },
       additionalProperties: false,
     },
-  }, (fullPath: any, _opts: any, paths: any) => {
-  if (fullPath === null || typeof fullPath !== "string") {
-    return []
+  },
+  (fullPath: any, _opts: any, paths: any) => {
+    if (fullPath === null || typeof fullPath !== "string") {
+      return []
+    }
+
+    const path = paths.path || []
+
+    const errors: any[] = []
+
+    const optionsHandlers = {
+      resourceType: (fullPath: string) => {
+        if (!verifyResourceType(fullPath)) {
+          errors.push({
+            message: `The path for the CURD methods do not contain a resource type.`,
+            path,
+          })
+        }
+      },
+      nestedResourceType: (fullPath: string) => {
+        if (!verifyNestResourceType(fullPath)) {
+          errors.push({
+            message: `The path for nested resource doest not meet the valid resource pattern.`,
+            path,
+          })
+        }
+      },
+      resourceGroupParam: (fullPath: string) => {
+        if (!verifyResourceGroup(fullPath)) {
+          errors.push({
+            message: `The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
+            path,
+          })
+        }
+      },
+      subscriptionIdParam: (fullPath: string) => {
+        if (!verifySubscriptionId(fullPath)) {
+          errors.push({
+            message: `The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
+            path,
+          })
+        }
+      },
+      resourceGroupScope: (fullPath: string) => {
+        if (!verifyResourceGroupScope(fullPath)) {
+          errors.push({
+            message: "",
+            path,
+          })
+        }
+      },
+    }
+    const segments = typeof _opts.segmentToCheck === "string" ? [_opts.segmentToCheck] : _opts.segmentToCheck
+    segments.forEach((segment: string) => {
+      optionsHandlers[segment](fullPath)
+    })
+    return errors
   }
-
-  const path = paths.path || []
-
-  const errors: any[] = []
-
-  const optionsHandlers = {
-    resourceType: (fullPath: string) => {
-      if (!verifyResourceType(fullPath)) {
-        errors.push({
-          message: `The path for the CURD methods do not contain a resource type.`,
-          path,
-        })
-      }
-    },
-    nestedResourceType: (fullPath: string) => {
-      if (!verifyNestResourceType(fullPath)) {
-        errors.push({
-          message: `The path for nested resource doest not meet the valid resource pattern.`,
-          path,
-        })
-      }
-    },
-    resourceGroupParam: (fullPath: string) => {
-      if (!verifyResourceGroup(fullPath)) {
-        errors.push({
-          message: `The path for resource group scoped CRUD methods does not contain a resourceGroupName parameter.`,
-          path,
-        })
-      }
-    },
-    subscriptionIdParam: (fullPath: string) => {
-      if (!verifySubscriptionId(fullPath)) {
-        errors.push({
-          message: `The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.`,
-          path,
-        })
-      }
-    },
-    resourceGroupScope: (fullPath: string) => {
-      if (!verifyResourceGroupScope(fullPath)) {
-        errors.push({
-          message: "",
-          path,
-        })
-      }
-    },
-  }
-  const segments = typeof _opts.segmentToCheck === "string" ? [_opts.segmentToCheck] : _opts.segmentToCheck
-  segments.forEach((segment: string) => {
-    optionsHandlers[segment](fullPath)
-  })
-  return errors
-}
 )
 
 export default verifyArmPath

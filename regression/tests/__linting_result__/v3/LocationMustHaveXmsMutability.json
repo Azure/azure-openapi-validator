@@ -1,0 +1,320 @@
+[
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Advisor.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:621:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Advisor.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:612:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ApplicationGetEndpoint.properties.location",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:339:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ApplicationGetHttpsEndpoint.properties.location",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:297:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.BackendAddressPoolPropertiesFormat.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1749:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.CloudService.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2331:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.CloudServiceRole.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1962:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ClusterCreateParametersExtended.properties.location",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1354:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ConnectionMonitor.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:4066:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ConnectionMonitorResult.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:4660:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ConnectivityEndpoint.properties.location",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:1434:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.DataMaskingPolicy.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:274:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.DataMaskingRule.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:379:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.DdosProtectionPlan.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosProtectionPlan.json:372:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.DeletedAccountProperties.properties.location",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:3497:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.EncryptionProtector.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:314:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.FailoverGroup.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:543:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.GeoBackupPolicy.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:209:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.JobResponse.properties.location",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:847:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.OSFamily.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2643:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.OSVersion.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2544:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.PartnerInfo.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:514:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.PartnerRegionInfo.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:447:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.PirCommunityGalleryResource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/communityGallery.json:181:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.PirResource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/sharedGallery.json:395:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.PutJobParameters.properties.location",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:602:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RecommendedAction.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:595:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RecommendedAction.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:534:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RecommendedAction.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:586:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Resource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:3059:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Resource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16505:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Resource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:1411:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Resource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1876:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.Resource.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:156:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ResourceSkuLocationInfo.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/skus.json:328:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ResourceSkuLocationInfo.properties.location",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2461:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ResourceSkuLocationInfo.properties.location",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1230:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RestorePoint.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:288:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RestorePointCollectionSourceProperties.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9702:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RestorePointSourceMetadata.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9814:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RoleInstance.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1875:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.RouteFilterRule.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:654:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ServerCommunicationLink.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:223:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ServerConnectionPolicy.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:211:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.ServerKey.properties.location",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:305:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.StorageAccountCreateParameters.properties.location",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:3185:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.StorageSyncServiceCreateParameters.properties.location",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:3359:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.StorageTargetResource.properties.location",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2203:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.TopologyResource.properties.location",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2452:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.UpgradeOperationHistoricalStatusInfo.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15979:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.VirtualMachineImageResource.properties.location",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11113:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.WorkspaceInfo.properties.location",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:154:8"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property `location` must have `\"x-ms-mutability\":[\"read\", \"create\"]` extension defined.",
+    "jsonpath": "$.definitions.availabilityStatus.properties.location",
+    "source": "specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/ResourceHealth.json:353:8"
+  }
+]

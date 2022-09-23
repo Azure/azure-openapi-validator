@@ -253,14 +253,8 @@
   },
   {
     "code": "GetCollectionResponseSchema",
-    "message": "The response in the GET collection operation \"FirewallPolicies_List\" does not match the response definition in the individual GET  operation \"FirewallPolicyIdpsSignaturesOverrides_Get\" .",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:216:4"
-  },
-  {
-    "code": "GetCollectionResponseSchema",
-    "message": "The response in the GET collection operation \"FirewallPolicies_List\" does not match the response definition in the individual GET  operation \"FirewallPolicyIdpsSignaturesOverrides_Get\" .",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies\"]",
+    "message": "The response in the GET collection operation \"FirewallPolicyIdpsSignaturesOverrides_List\" does not match the response definition in the individual GET  operation \"FirewallPolicyIdpsSignaturesOverrides_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides\"]",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
   },
   {

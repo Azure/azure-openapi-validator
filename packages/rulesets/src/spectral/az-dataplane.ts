@@ -1,11 +1,8 @@
 import { oas2, oas3 } from "@stoplight/spectral-formats"
 import { casing, falsy, pattern, truthy, undefined } from "@stoplight/spectral-functions"
 import common from "./az-common"
-import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
 import consistentresponsebody from "./functions/consistent-response-body"
-import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
-import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
 import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code"
 import hasheader from "./functions/has-header"
@@ -123,17 +120,6 @@ const ruleset: any = {
         },
       },
     },
-    LroExtension: {
-      description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-      message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-      severity: "warn",
-      formats: [oas2],
-      given: "$.paths[*][*].responses[?(@property == '202')]^^",
-      then: {
-        field: "x-ms-long-running-operation",
-        function: truthy,
-      },
-    },
     LroHeaders: {
       description: "A 202 response should include an Operation-Location response header.",
       message: "A 202 response should include an Operation-Location response header.",
@@ -175,24 +161,6 @@ const ruleset: any = {
         function: operationid,
       },
     },
-    OperationSummaryOrDescription: {
-      description: "Operation should have a summary or description.",
-      message: "Operation should have a summary or description.",
-      severity: "warn",
-      given: [
-        "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'post' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'patch' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'delete' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'options' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'head' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'trace' && !@.summary && !@.description )]",
-      ],
-      then: {
-        function: falsy,
-      },
-    },
     PaginationResponse: {
       description: "An operation that returns a list that is potentially large should support pagination.",
       message: "{{error}}",
@@ -210,16 +178,6 @@ const ruleset: any = {
       then: {
         field: "default",
         function: falsy,
-      },
-    },
-    ParameterDescription: {
-      description: "All parameters should have a description.",
-      message: "Parameter should have a description.",
-      severity: "warn",
-      given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-      then: {
-        field: "description",
-        function: truthy,
       },
     },
     ParameterNamesConvention: {
@@ -369,16 +327,6 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    SchemaDescriptionOrTitle: {
-      description: "All schemas should have a description or title.",
-      message: "Schema should have a description or title.",
-      severity: "warn",
-      formats: [oas2, oas3],
-      given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
-      then: {
-        function: falsy,
-      },
-    },
     SchemaNamesConvention: {
       description: "Schema names should be Pascal case.",
       message: "Schema name should be Pascal case.",
@@ -446,44 +394,6 @@ const ruleset: any = {
       given: "$",
       then: {
         function: versionpolicy,
-      },
-    },
-    DefaultInEnum: {
-      description:
-        "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
-      message: "Default value should appear in the enum constraint for a schema",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$..[?(@object() && @.enum)]",
-      then: {
-        function: defaultInEnum,
-      },
-    },
-    EnumInsteadOfBoolean: {
-      description:
-        "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
-      message:
-        "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: "$..[?(@object() && @.type === 'boolean')]",
-      then: {
-        function: enumInsteadOfBoolean,
-      },
-    },
-    AvoidAnonymousParameter: {
-      description:
-        'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-      message:
-        'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-      then: {
-        function: avoidAnonymousParameter,
       },
     },
     HostParametersValidation: {
