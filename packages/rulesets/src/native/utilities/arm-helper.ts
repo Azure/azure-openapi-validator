@@ -58,7 +58,7 @@ export class ArmHelper {
   //  resource model with 'x-ms-resource' or allOfing 'Resource' or 'TrackedResource' for ProxyResource
   private XmsResources = new Set<string>()
   resources: ResourceInfo[] = []
-  armResource: ResourceInfo[] | undefined
+  armResources: ResourceInfo[] | undefined
   private swaggerUtil: SwaggerHelper
 
   constructor(private innerDoc: any, private specPath: string, private inventory: ISwaggerInventory) {
@@ -258,8 +258,8 @@ export class ArmHelper {
   }
 
   public getAllResources() {
-    if (this.armResource) {
-      return this.armResource
+    if (this.armResources) {
+      return this.armResources
     }
     this.populateResources(this.innerDoc, this.specPath)
     const references = this.inventory.referencesOf(this.specPath)
@@ -276,11 +276,11 @@ export class ArmHelper {
     const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
 
     //  remove the resource only return by post , and add the resources return by put or patch
-    this.armResource = _.uniqWith(
+    this.armResources = _.uniqWith(
       resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPath),
       _.isEqual
     )
-    return this.armResource
+    return this.armResources
   }
 
   public getTrackedResources() {
@@ -422,7 +422,7 @@ export class ArmHelper {
   }
 
   public resourcesWithPutPatchOperations() {
-    return this.armResource?.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")) || []
+    return this.armResources?.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")) || []
   }
 
   /**
