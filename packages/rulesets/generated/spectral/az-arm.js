@@ -2269,27 +2269,27 @@ const ruleset = {
             },
         },
         LocationMustHaveXmsMutability: {
-            description: 'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
+            description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
             message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ['$.definitions[*].properties.location'],
+            given: ["$.definitions[*].properties.location"],
             then: {
-                function: locationMustHaveXmsMutability
-            }
+                function: locationMustHaveXmsMutability,
+            },
         },
         HttpsSupportedScheme: {
-            description: 'Verifies whether specification supports HTTPS scheme or not.',
-            message: 'Azure Resource Management only supports HTTPS scheme.',
+            description: "Verifies whether specification supports HTTPS scheme or not.",
+            message: "Azure Resource Management only supports HTTPS scheme.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$.schemes"],
             then: {
-                function: httpsSupportedScheme
-            }
-        }
+                function: httpsSupportedScheme,
+            },
+        },
     },
 };
 
