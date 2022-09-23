@@ -106,7 +106,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[delete].responses.['200','204'].schema"],
+      given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
       then: {
         function: falsy,
       },
@@ -121,7 +121,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get].responses.['201','202','203','204']"],
+      given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
       },
@@ -397,7 +397,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties.[?(!@property.match(/^@.+$/))]~",
+      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@object() && @property.match(/^[^@].+$/))]~",
       then: {
         function: casing,
         functionOptions: {

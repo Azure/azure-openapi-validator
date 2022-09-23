@@ -967,7 +967,7 @@ const ruleset$1 = {
             },
         },
         LongRunningOperationsOptionsValidator: {
-            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "warn",
             resolved: true,
@@ -978,7 +978,7 @@ const ruleset$1 = {
             },
         },
         MutabilityWithReadOnly: {
-            description: "Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `[\"read\"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.",
+            description: 'Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `["read"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.',
             message: "{{error}}",
             severity: "error",
             resolved: true,
@@ -1057,74 +1057,78 @@ const ruleset$1 = {
             },
         },
         XmsExamplesRequired: {
-            description: 'Verifies whether `x-ms-examples` are provided for each operation or not.',
-            message: 'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+            description: "Verifies whether `x-ms-examples` are provided for each operation or not.",
+            message: "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[get,put,post,patch,delete,options,head]"],
             then: {
-                function: xmsExamplesRequired
-            }
+                function: xmsExamplesRequired,
+            },
         },
         XmsClientNameParameter: {
-            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
-                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
-                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. " +
+                "By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. " +
+                "It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+            message: "Value of `x-ms-client-name` cannot be the same as Property/Model.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]", "$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]", "$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+            given: [
+                "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]",
+                "$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]",
+                "$.parameters[?(@.name && @['x-ms-client-name'])]",
+            ],
             then: {
-                function: xmsClientNameParameter
-            }
+                function: xmsClientNameParameter,
+            },
         },
         XmsClientNameProperty: {
-            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
-                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
-                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code." +
+                "By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire." +
+                "It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+            message: "Value of `x-ms-client-name` cannot be the same as Property/Model.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$.definitions[*].properties.*['x-ms-client-name']"],
             then: {
-                function: xmsClientNameProperty
-            }
+                function: xmsClientNameProperty,
+            },
         },
         ListInOperationName: {
-            description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
+            description: "Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.",
             message: 'Since operation response has model definition in array type, it should be of the form "_list".',
             severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$.paths.*[get,post]"],
             then: {
-                function: listInOperationName
-            }
+                function: listInOperationName,
+            },
         },
         DescriptiveDescriptionRequired: {
-            description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
-            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
+            message: "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.description)].description"],
             then: {
-                function: descriptiveDescriptionRequired
+                function: descriptiveDescriptionRequired,
             },
         },
         AvoidNestedProperties: {
-            description: 'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
-            message: 'Consider using x-ms-client-flatten to provide a better end user experience',
+            description: "Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.",
+            message: "Consider using x-ms-client-flatten to provide a better end user experience",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
             then: {
                 field: "x-ms-client-flatten",
-                function: truthy
+                function: truthy,
             },
         },
         AvoidMsdnReferences: {
@@ -1885,7 +1889,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[delete].responses.['200','204'].schema"],
+            given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
             then: {
                 function: falsy,
             },
@@ -1896,7 +1900,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get].responses.['201','202','203','204']"],
+            given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
             then: {
                 function: falsy,
             },
@@ -2164,7 +2168,7 @@ const ruleset = {
             message: "Property name should be camel case.",
             severity: "error",
             resolved: false,
-            given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties.[?(!@property.match(/^@.+$/))]~",
+            given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@object() && @property.match(/^[^@].+$/))]~",
             then: {
                 function: casing,
                 functionOptions: {

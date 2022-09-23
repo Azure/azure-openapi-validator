@@ -1,5 +1,5 @@
 import { oas2, oas3 } from "@stoplight/spectral-formats"
-import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions"
+import { casing, falsy, pattern, truthy, undefined } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
 import consistentresponsebody from "./functions/consistent-response-body"
@@ -7,7 +7,7 @@ import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
 import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
-import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code";
+import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code"
 import hasheader from "./functions/has-header"
 import hostParameters from "./functions/host-parameters"
 import operationid from "./functions/operation-id"
@@ -49,8 +49,8 @@ const ruleset: any = {
       severity: "warn",
       formats: [oas2, oas3],
       given: [
-        "$.paths[*].parameters.[?(@.name == 'ApiVersion')]",
-        "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
+        "$.paths[*].parameters[?(@.name == 'ApiVersion')]",
+        "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name == 'api-version')]",
       ],
       then: {
         field: "enum",
@@ -101,7 +101,7 @@ const ruleset: any = {
       description: "Check for appropriate use of formData parameters.",
       severity: "warn",
       formats: [oas2],
-      given: '$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == "formData")]',
+      given: '$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.in == "formData")]',
       then: {
         function: falsy,
       },
@@ -112,8 +112,8 @@ const ruleset: any = {
       severity: "warn",
       formats: [oas2, oas3],
       given: [
-        "$.paths[*].parameters.[?(@.in == 'header')]",
-        "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == 'header')]",
+        "$.paths[*].parameters[?(@.in == 'header')]",
+        "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.in == 'header')]",
       ],
       then: {
         function: pattern,
@@ -206,7 +206,7 @@ const ruleset: any = {
     ParameterDefaultNotAllowed: {
       description: "A required parameter should not specify a default value.",
       severity: "warn",
-      given: ["$.paths[*].parameters.[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.required)]"],
+      given: ["$.paths[*].parameters[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.required)]"],
       then: {
         field: "default",
         function: falsy,
@@ -320,7 +320,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-   
+
     PropertyType: {
       description: "All schema properties should have a defined type.",
       message: "Property should have a defined type.",
@@ -349,7 +349,7 @@ const ruleset: any = {
       description: "A get or delete operation must not accept a body parameter.",
       severity: "warn",
       formats: [oas2],
-      given: ["$.paths[*].[get,delete].parameters[*]"],
+      given: ["$.paths[*][get,delete].parameters[*]"],
       then: {
         field: "in",
         function: pattern,
@@ -363,7 +363,7 @@ const ruleset: any = {
       message: "The body parameter is not marked as required.",
       severity: "warn",
       formats: [oas2],
-      given: ["$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')]"],
+      given: ["$.paths[*][put,post,patch].parameters[?(@.in == 'body')]"],
       then: {
         field: "required",
         function: truthy,
@@ -398,8 +398,8 @@ const ruleset: any = {
       severity: "warn",
       formats: [oas2],
       given: [
-        "$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')].schema",
-        "$.paths[*].[get,put,post,patch,delete].responses[*].schema",
+        "$.paths[*][put,post,patch].parameters[?(@.in == 'body')].schema",
+        "$.paths[*][get,put,post,patch,delete].responses[*].schema",
       ],
       then: {
         function: schematypeandformat,
@@ -498,7 +498,7 @@ const ruleset: any = {
       },
     },
     LongRunningResponseStatusCodeDataPlane: {
-      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
