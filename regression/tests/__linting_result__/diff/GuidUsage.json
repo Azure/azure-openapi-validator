@@ -1,0 +1,379 @@
+{
+  "common": [],
+  "v2Only": [
+    {
+      "code": "GuidUsage",
+      "message": "Guid used in model definition 'ResourceIdentity' for property 'principalId'. Usage of Guid is not recommanded. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ResourceIdentity.properties.principalId",
+      "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1535:8"
+    }
+  ],
+  "v3Only": [
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.AdministratorProperties.properties.sid.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:266:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.AdministratorProperties.properties.tenantId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:271:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseBlobAuditingPolicyProperties.properties.storageAccountSubscriptionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:980:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseIdentity.properties.tenantId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:838:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseProperties.properties.databaseId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:974:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseProperties.properties.federatedClientId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:1196:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseUpdateProperties.properties.databaseId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:1338:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseUpdateProperties.properties.federatedClientId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:1560:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseUserIdentity.properties.clientId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:1577:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DatabaseUserIdentity.properties.principalId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:1571:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DistributedAvailabilityGroupProperties.properties.distributedAvailabilityGroupId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:326:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DistributedAvailabilityGroupProperties.properties.sourceReplicaId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:332:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.DistributedAvailabilityGroupProperties.properties.targetReplicaId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:338:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ElasticPoolActivityProperties.properties.operationId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:146:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ElasticPoolDatabaseActivityProperties.properties.operationId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:309:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ExtendedDatabaseBlobAuditingPolicyProperties.properties.storageAccountSubscriptionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:671:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ExtendedServerBlobAuditingPolicyProperties.properties.storageAccountSubscriptionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:778:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ImportExportExtensionsOperationResultProperties.properties.requestId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:246:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ImportExportOperationResultProperties.properties.requestId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:878:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ImportExportOperationResultProperties.properties.requestId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:1745:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.JobExecutionProperties.properties.jobExecutionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:521:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.JobExecutionProperties.properties.jobExecutionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobStepExecutions.json:247:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.JobExecutionProperties.properties.jobExecutionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:379:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.JobStepOutput.properties.subscriptionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobSteps.json:518:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.LongTermRetentionOperationResultProperties.properties.requestId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:1092:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ManagedInstanceAdministratorProperties.properties.sid.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:282:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ManagedInstanceAdministratorProperties.properties.tenantId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:287:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ManagedInstanceExternalAdministrator.properties.sid.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:885:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ManagedInstanceExternalAdministrator.properties.tenantId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:890:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ResourceIdentity.properties.principalId.format",
+      "source": ""
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ResourceIdentity.properties.principalId.format",
+      "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1536:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ResourceIdentity.properties.tenantId.format",
+      "source": ""
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ResourceIdentity.properties.tenantId.format",
+      "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:1554:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ServerBlobAuditingPolicyProperties.properties.storageAccountSubscriptionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:881:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ServerDevOpsAuditSettingsProperties.properties.storageAccountSubscriptionId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDevOpsAudit.json:209:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ServerExternalAdministrator.properties.sid.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:607:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ServerExternalAdministrator.properties.tenantId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:612:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ServerProperties.properties.federatedClientId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:510:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.ServiceObjectiveCapability.properties.id.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LocationCapabilities.json:410:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.SloUsageMetric.properties.serviceLevelObjectiveId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json:476:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.SyncGroupLogProperties.properties.tracingId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:861:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.SyncMemberProperties.properties.sqlServerDatabaseId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:495:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.UserIdentity.properties.clientId.format",
+      "source": ""
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.UserIdentity.properties.clientId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:551:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.UserIdentity.properties.clientId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:829:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.UserIdentity.properties.principalId.format",
+      "source": ""
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.UserIdentity.properties.principalId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:545:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.definitions.UserIdentity.properties.principalId.format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:823:10"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations/{operationId}\"].get.parameters[\"2\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:80:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations/{operationId}/cancel\"].post.parameters[\"2\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceOperations.json:126:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/operations/{operationId}/cancel\"].post.parameters[\"3\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseOperations.json:42:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/operations/{operationId}/cancel\"].post.parameters[\"3\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ElasticPoolOperations.json:45:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}\"].get.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:382:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}\"].put.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:441:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/cancel\"].post.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:158:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps\"].get.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobStepExecutions.json:53:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}\"].get.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobStepExecutions.json:170:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets\"].get.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:170:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets/{targetId}\"].get.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:294:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets/{targetId}\"].get.parameters[\"6\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:309:12"
+    },
+    {
+      "code": "GuidUsage",
+      "message": "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/targets\"].get.parameters[\"4\"].format",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetExecutions.json:53:12"
+    }
+  ]
+}

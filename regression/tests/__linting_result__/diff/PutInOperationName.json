@@ -2,6 +2,12 @@
   "common": [
     {
       "code": "PutInOperationName",
+      "message": "'PUT' operation 'ApplicationGatewayPrivateEndpointConnections_Update' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:716:8"
+    },
+    {
+      "code": "PutInOperationName",
       "message": "'PUT' operation 'BlobServices_SetServiceProperties' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
       "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}\"].put.operationId",
       "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:63:8"
@@ -44,6 +50,12 @@
     },
     {
       "code": "PutInOperationName",
+      "message": "'PUT' operation 'FirewallPolicyIdpsSignaturesOverrides_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:677:8"
+    },
+    {
+      "code": "PutInOperationName",
       "message": "'PUT' operation 'FirewallRules_Replace' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
       "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put.operationId",
       "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:217:8"
@@ -53,6 +65,12 @@
       "message": "'PUT' operation 'PrivateEndpointConnections_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
       "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.operationId",
       "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1349:8"
+    },
+    {
+      "code": "PutInOperationName",
+      "message": "'PUT' operation 'PrivateLinkServices_UpdatePrivateEndpointConnection' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].put.operationId",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:368:8"
     },
     {
       "code": "PutInOperationName",
@@ -75,24 +93,6 @@
   ],
   "v2Only": [],
   "v3Only": [
-    {
-      "code": "PutInOperationName",
-      "message": "'PUT' operation 'ApplicationGatewayPrivateEndpointConnections_Update' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].put.operationId",
-      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:716:8"
-    },
-    {
-      "code": "PutInOperationName",
-      "message": "'PUT' operation 'FirewallPolicyIdpsSignaturesOverrides_Put' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default\"].put.operationId",
-      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:677:8"
-    },
-    {
-      "code": "PutInOperationName",
-      "message": "'PUT' operation 'PrivateLinkServices_UpdatePrivateEndpointConnection' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
-      "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}\"].put.operationId",
-      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:368:8"
-    },
     {
       "code": "PutInOperationName",
       "message": "'PUT' operation 'VirtualNetworkGatewayConnections_SetSharedKey' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
