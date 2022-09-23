@@ -397,7 +397,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@object() && @property.match(/^[^@].+$/))]~",
+      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
       then: {
         function: casing,
         functionOptions: {
