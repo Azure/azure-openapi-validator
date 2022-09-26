@@ -640,5 +640,29 @@
     "message": "The API version:2021-06-01-preview having been in a preview state over one year , please move it to GA or retire.",
     "jsonpath": "$.info.version",
     "source": "specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/resourceshistory.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-08-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:4:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:6:4"
+  },
+  {
+    "code": "PreviewVersionOverOneYear",
+    "message": "The API version:2021-09-01-preview having been in a preview state over one year , please move it to GA or retire.",
+    "jsonpath": "$.info.version",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:6:4"
   }
 ]

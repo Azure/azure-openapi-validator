@@ -1,30 +1,6 @@
 [
   {
     "code": "AllResourcesMustHaveDelete",
-    "message": "The resource Advisor does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors/{advisorName}\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAdvisors.json:71:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource Advisor does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseAdvisors.json:74:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource ApplicationGatewayAvailableSslOptions does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:1036:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource ChangeResourceResult does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes/{changeResourceId}\"]",
-    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:94:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
     "message": "The resource DataMaskingPolicy does not have a corresponding delete operation.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:19:4"
@@ -34,12 +10,6 @@
     "message": "The resource DataMaskingRule does not have a corresponding delete operation.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:113:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource DiagnosticSettingsCategoryResource does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories/{name}\"]",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:39:4"
   },
   {
     "code": "AllResourcesMustHaveDelete",
@@ -55,74 +25,14 @@
   },
   {
     "code": "AllResourcesMustHaveDelete",
-    "message": "The resource ExpressRoutePortsLocation does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:76:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
     "message": "The resource GeoBackupPolicy does not have a corresponding delete operation.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:19:4"
   },
   {
     "code": "AllResourcesMustHaveDelete",
-    "message": "The resource NetworkVirtualApplianceSku does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus/{skuName}\"]",
-    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:643:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource RecommendedAction does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseRecommendedActions.json:71:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource RestorableDroppedDatabase does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedDatabases.json:61:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource RestorableDroppedManagedDatabase does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json:61:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource RestorePoint does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"]",
-    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:19:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource RollingUpgradeStatusInfo does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest\"]",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7947:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
     "message": "The resource ServerConnectionPolicy does not have a corresponding delete operation.",
     "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"]",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:19:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource VMInsightsOnboardingStatus does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/vmInsightsOnboardingStatuses/default\"]",
-    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:40:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource VirtualMachineExtensionImage does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}\"]",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1779:4"
-  },
-  {
-    "code": "AllResourcesMustHaveDelete",
-    "message": "The resource VirtualMachineImage does not have a corresponding delete operation.",
-    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}\"]",
-    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2308:4"
   }
 ]

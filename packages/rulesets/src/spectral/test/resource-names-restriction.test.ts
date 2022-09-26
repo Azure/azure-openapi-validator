@@ -34,7 +34,7 @@ test("ResourceNameRestriction should find errors on path level", () => {
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}"
     )
-    expect(results[0].message).toContain("The resource name parameter should be defined with a 'pattern' restriction.")
+    expect(results[0].message).toContain("The resource name parameter 'fooName' should be defined with a 'pattern' restriction.")
   })
 })
 
@@ -63,7 +63,7 @@ test("ResourceNameRestriction should find errors on operation level", () => {
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}"
     )
-    expect(results[0].message).toContain("The resource name parameter should be defined with a 'pattern' restriction.")
+    expect(results[0].message).toContain("The resource name parameter 'fooName' should be defined with a 'pattern' restriction.")
   })
 })
 

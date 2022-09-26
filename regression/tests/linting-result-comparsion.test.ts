@@ -32,6 +32,10 @@ describe("comparing", () => {
     "OperationIdNounConflictingModelNames",
     "PutRequestResponseScheme",
     "LongRunningOperationsOptionsValidator",
+    "LocationMustHaveXmsMutability",
+    "ListInOperationName",
+    "GuidUsage",
+    "EnumInsteadOfBoolean",
   ]
   test.each(v3Results.filter((f) => !f.includes("az-") && !verifiedLists.includes(basename(f.replace(".json", "")))))(
     "%s should match v2",

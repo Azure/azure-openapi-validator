@@ -2,11 +2,11 @@
 
 ## Category
 
-Data Plane Warning
+ARM & Data Plane Warning
 
 ## Applies to
 
-Data Plane OpenAPI specs
+ARM & Data Plane OpenAPI specs
 
 ## Output Message
 

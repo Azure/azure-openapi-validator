@@ -8,8 +8,8 @@ import { consistentPatchProperties } from "./functions/consistent-patch-properti
 import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
-import httpsSupportedScheme from "./functions/https-supported-scheme";
-import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability";
+import httpsSupportedScheme from "./functions/https-supported-scheme"
+import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -106,7 +106,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[delete].responses.['200','204'].schema"],
+      given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
       then: {
         function: falsy,
       },
@@ -121,7 +121,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get].responses.['201','202','203','204']"],
+      given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
       },
@@ -131,9 +131,9 @@ const ruleset: any = {
       description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: ["$.definitions..provisioningState[?(@property === 'enum')]^"],
+      given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
       then: {
         function: provisioningState,
       },
@@ -397,7 +397,7 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
+      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
       then: {
         function: casing,
         functionOptions: {
@@ -411,7 +411,7 @@ const ruleset: any = {
         "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
       severity: "error",
       resolved: false,
-      given: "$..[?(@property === 'format'&& @ === 'guid')]",
+      given: "$..[?(@property === 'format' && @ === 'uuid')]",
       then: {
         function: falsy,
       },
@@ -506,27 +506,27 @@ const ruleset: any = {
       },
     },
     LocationMustHaveXmsMutability: {
-      description: 'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
+      description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
       message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ['$.definitions[*].properties.location'],
+      given: ["$.definitions[*].properties.location"],
       then: {
-        function: locationMustHaveXmsMutability
-      }
+        function: locationMustHaveXmsMutability,
+      },
     },
     HttpsSupportedScheme: {
-      description: 'Verifies whether specification supports HTTPS scheme or not.',
-      message: 'Azure Resource Management only supports HTTPS scheme.',
+      description: "Verifies whether specification supports HTTPS scheme or not.",
+      message: "Azure Resource Management only supports HTTPS scheme.",
       severity: "warn",
       resolved: false,
       formats: [oas2],
       given: ["$.schemes"],
       then: {
-        function: httpsSupportedScheme
-      }
-    }
+        function: httpsSupportedScheme,
+      },
+    },
   },
 }
 

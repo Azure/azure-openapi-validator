@@ -68,7 +68,7 @@ export function* trackedResourcesHavePatch(openapiSection: any, options: {}, ctx
 
 export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allResources = armHelper.getAllResources()
+  const allResources = armHelper.getTrackedResources()
   const propertiesBag = ["name", "id", "type", "location", "tags"]
 
   function checkPropertiesBag(model: any, resourceName: string, propertiesPath: string[]) {

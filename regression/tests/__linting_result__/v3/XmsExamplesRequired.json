@@ -1,0 +1,20 @@
+[
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.HDInsight/operations\"].get",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:38:6"
+  },
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Sql/operations\"].get",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Operations.json:20:6"
+  },
+  {
+    "code": "XmsExamplesRequired",
+    "message": "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:428:6"
+  }
+]

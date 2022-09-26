@@ -31,7 +31,7 @@ export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
           const paramDefinition = getPathParameter(paths[pathKey], param)
           if (paramDefinition && !paramDefinition.pattern) {
             errors.push({
-              message: "The resource name parameter should be defined with a 'pattern' restriction.",
+              message: `The resource name parameter '${param}' should be defined with a 'pattern' restriction.`,
               path: [...path, pathKey],
             })
           }

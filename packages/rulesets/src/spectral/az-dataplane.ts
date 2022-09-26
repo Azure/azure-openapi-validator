@@ -1,13 +1,10 @@
 import { oas2, oas3 } from "@stoplight/spectral-formats"
-import {casing, falsy, pattern, truthy, undefined} from "@stoplight/spectral-functions"
+import { casing, falsy, pattern, truthy, undefined } from "@stoplight/spectral-functions"
 import common from "./az-common"
-import avoidAnonymousParameter from "./functions/avoid-anonymous-parameter"
 import consistentresponsebody from "./functions/consistent-response-body"
-import defaultInEnum from "./functions/default-in-enum"
 import delete204response from "./functions/delete-204-response"
-import enumInsteadOfBoolean from "./functions/enum-insteadof-boolean"
 import errorresponse from "./functions/error-response"
-import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code";
+import { longRunningResponseStatusCodeDataPlane } from "./functions/Extensions/long-running-response-status-code"
 import hasheader from "./functions/has-header"
 import hostParameters from "./functions/host-parameters"
 import operationid from "./functions/operation-id"
@@ -49,8 +46,8 @@ const ruleset: any = {
       severity: "warn",
       formats: [oas2, oas3],
       given: [
-        "$.paths[*].parameters.[?(@.name == 'ApiVersion')]",
-        "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.name == 'api-version')]",
+        "$.paths[*].parameters[?(@.name == 'ApiVersion')]",
+        "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name == 'api-version')]",
       ],
       then: {
         field: "enum",
@@ -101,7 +98,7 @@ const ruleset: any = {
       description: "Check for appropriate use of formData parameters.",
       severity: "warn",
       formats: [oas2],
-      given: '$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == "formData")]',
+      given: '$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.in == "formData")]',
       then: {
         function: falsy,
       },
@@ -112,8 +109,8 @@ const ruleset: any = {
       severity: "warn",
       formats: [oas2, oas3],
       given: [
-        "$.paths[*].parameters.[?(@.in == 'header')]",
-        "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.in == 'header')]",
+        "$.paths[*].parameters[?(@.in == 'header')]",
+        "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.in == 'header')]",
       ],
       then: {
         function: pattern,
@@ -121,17 +118,6 @@ const ruleset: any = {
         functionOptions: {
           notMatch: "/^(authorization|content-type|accept)$/i",
         },
-      },
-    },
-    LroExtension: {
-      description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-      message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-      severity: "warn",
-      formats: [oas2],
-      given: "$.paths[*][*].responses[?(@property == '202')]^^",
-      then: {
-        field: "x-ms-long-running-operation",
-        function: truthy,
       },
     },
     LroHeaders: {
@@ -175,24 +161,6 @@ const ruleset: any = {
         function: operationid,
       },
     },
-    OperationSummaryOrDescription: {
-      description: "Operation should have a summary or description.",
-      message: "Operation should have a summary or description.",
-      severity: "warn",
-      given: [
-        "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'post' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'patch' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'delete' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'options' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'head' && !@.summary && !@.description )]",
-        "$.paths[*][?( @property === 'trace' && !@.summary && !@.description )]",
-      ],
-      then: {
-        function: falsy,
-      },
-    },
     PaginationResponse: {
       description: "An operation that returns a list that is potentially large should support pagination.",
       message: "{{error}}",
@@ -206,20 +174,10 @@ const ruleset: any = {
     ParameterDefaultNotAllowed: {
       description: "A required parameter should not specify a default value.",
       severity: "warn",
-      given: ["$.paths[*].parameters.[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters.[?(@.required)]"],
+      given: ["$.paths[*].parameters[?(@.required)]", "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.required)]"],
       then: {
         field: "default",
         function: falsy,
-      },
-    },
-    ParameterDescription: {
-      description: "All parameters should have a description.",
-      message: "Parameter should have a description.",
-      severity: "warn",
-      given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-      then: {
-        field: "description",
-        function: truthy,
       },
     },
     ParameterNamesConvention: {
@@ -320,7 +278,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
-   
+
     PropertyType: {
       description: "All schema properties should have a defined type.",
       message: "Property should have a defined type.",
@@ -349,7 +307,7 @@ const ruleset: any = {
       description: "A get or delete operation must not accept a body parameter.",
       severity: "warn",
       formats: [oas2],
-      given: ["$.paths[*].[get,delete].parameters[*]"],
+      given: ["$.paths[*][get,delete].parameters[*]"],
       then: {
         field: "in",
         function: pattern,
@@ -363,20 +321,10 @@ const ruleset: any = {
       message: "The body parameter is not marked as required.",
       severity: "warn",
       formats: [oas2],
-      given: ["$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')]"],
+      given: ["$.paths[*][put,post,patch].parameters[?(@.in == 'body')]"],
       then: {
         field: "required",
         function: truthy,
-      },
-    },
-    SchemaDescriptionOrTitle: {
-      description: "All schemas should have a description or title.",
-      message: "Schema should have a description or title.",
-      severity: "warn",
-      formats: [oas2, oas3],
-      given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
-      then: {
-        function: falsy,
       },
     },
     SchemaNamesConvention: {
@@ -398,8 +346,8 @@ const ruleset: any = {
       severity: "warn",
       formats: [oas2],
       given: [
-        "$.paths[*].[put,post,patch].parameters.[?(@.in == 'body')].schema",
-        "$.paths[*].[get,put,post,patch,delete].responses[*].schema",
+        "$.paths[*][put,post,patch].parameters[?(@.in == 'body')].schema",
+        "$.paths[*][get,put,post,patch,delete].responses[*].schema",
       ],
       then: {
         function: schematypeandformat,
@@ -448,44 +396,6 @@ const ruleset: any = {
         function: versionpolicy,
       },
     },
-    DefaultInEnum: {
-      description:
-        "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
-      message: "Default value should appear in the enum constraint for a schema",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$..[?(@object() && @.enum)]",
-      then: {
-        function: defaultInEnum,
-      },
-    },
-    EnumInsteadOfBoolean: {
-      description:
-        "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
-      message:
-        "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: "$..[?(@object() && @.type === 'boolean')]",
-      then: {
-        function: enumInsteadOfBoolean,
-      },
-    },
-    AvoidAnonymousParameter: {
-      description:
-        'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-      message:
-        'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
-      then: {
-        function: avoidAnonymousParameter,
-      },
-    },
     HostParametersValidation: {
       description: "Validate the parameters in x-ms-parameterized-host.",
       message: "{{error}}",
@@ -498,7 +408,7 @@ const ruleset: any = {
       },
     },
     LongRunningResponseStatusCodeDataPlane: {
-      description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
       message: "{{error}}",
       severity: "error",
       resolved: true,

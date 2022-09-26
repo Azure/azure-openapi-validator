@@ -1,6 +1,25 @@
-import { oas2 } from '@stoplight/spectral-formats';
+import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
+
+const avoidAnonymousSchema = (schema, _opts, paths) => {
+    if (schema === null || schema["x-ms-client-name"] !== undefined) {
+        return [];
+    }
+    const path = paths.path || [];
+    const properties = schema.properties;
+    if ((properties === undefined || Object.keys(properties).length === 0) &&
+        schema.additionalProperties === undefined &&
+        schema.allOf === undefined) {
+        return [];
+    }
+    return [
+        {
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            path,
+        },
+    ];
+};
 
 const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
@@ -18,6 +37,32 @@ const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
             message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
             path,
         }];
+};
+
+const defaultInEnum = (swaggerObj, _opts, paths) => {
+    const defaultValue = swaggerObj.default;
+    const enumValue = swaggerObj.enum;
+    if (swaggerObj === null ||
+        typeof swaggerObj !== "object" ||
+        !defaultValue === null ||
+        defaultValue === undefined ||
+        enumValue === null ||
+        enumValue === undefined) {
+        return [];
+    }
+    if (!Array.isArray(enumValue)) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (enumValue && !enumValue.includes(defaultValue)) {
+        return [
+            {
+                message: "Default value should appear in the enum constraint for a schema.",
+                path,
+            },
+        ];
+    }
+    return [];
 };
 
 const deleteInOperationName = (operationId, _opts, ctx) => {
@@ -48,6 +93,17 @@ const descriptiveDescriptionRequired = (swaggerObj, _opts, paths) => {
     const path = paths.path || [];
     return [{
             message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            path,
+        }];
+};
+
+const enumInsteadOfBoolean = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    const path = paths.path || [];
+    return [{
+            message: 'Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.',
             path,
         }];
 };
@@ -382,7 +438,7 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
         return [];
     const responseList = swaggerObj.responses;
     let gotArray = false;
-    Object.values(responseList).every((response) => {
+    Object.values(responseList).some((response) => {
         var _a, _b;
         if (response.schema) {
             if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array") {
@@ -392,7 +448,7 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
                 }
             }
         }
-        return [];
+        return false;
     });
     if (gotArray)
         return [{
@@ -793,6 +849,44 @@ const ruleset$1 = {
                 },
             },
         },
+        OperationSummaryOrDescription: {
+            description: "Operation should have a summary or description.",
+            message: "Operation should have a summary or description.",
+            severity: "warn",
+            given: [
+                "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'post' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'patch' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'delete' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'options' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'head' && !@.summary && !@.description )]",
+                "$.paths[*][?( @property === 'trace' && !@.summary && !@.description )]",
+            ],
+            then: {
+                function: falsy,
+            },
+        },
+        SchemaDescriptionOrTitle: {
+            description: "All schemas should have a description or title.",
+            message: "Schema should have a description or title.",
+            severity: "warn",
+            formats: [oas2, oas3],
+            given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
+            then: {
+                function: falsy,
+            },
+        },
+        ParameterDescription: {
+            description: "All parameters should have a description.",
+            message: "Parameter should have a description.",
+            severity: "warn",
+            given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
+            then: {
+                field: "description",
+                function: truthy,
+            },
+        },
         InvalidVerbUsed: {
             description: `Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.`,
             message: "Permissible values for HTTP Verb are DELETE, GET, PUT, PATCH, HEAD, OPTIONS, POST, TRACE.",
@@ -801,6 +895,17 @@ const ruleset$1 = {
             given: "$[paths,'x-ms-paths'].*[?(!@property.match(/^(DELETE|GET|PUT|PATCH|HEAD|OPTIONS|POST|TRACE|PARAMETERS)$/i))]",
             then: {
                 function: falsy,
+            },
+        },
+        LroExtension: {
+            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+            severity: "warn",
+            formats: [oas2],
+            given: "$.paths[*][*].responses[?(@property == '202')]^^",
+            then: {
+                field: "x-ms-long-running-operation",
+                function: truthy,
             },
         },
         LroStatusCodesReturnTypeSchema: {
@@ -967,7 +1072,7 @@ const ruleset$1 = {
             },
         },
         LongRunningOperationsOptionsValidator: {
-            description: "A LRO Post operation with return schema must have \"x-ms-long-running-operation-options\" extension enabled.",
+            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "warn",
             resolved: true,
@@ -978,7 +1083,7 @@ const ruleset$1 = {
             },
         },
         MutabilityWithReadOnly: {
-            description: "Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `[\"read\"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.",
+            description: 'Verifies whether a model property which has a readOnly property set has the appropriate `x-ms-mutability` options. If `readonly: true`, `x-ms-mutability` must be `["read"]`. If `readonly: false`, `x-ms-mutability` can be any of the `x-ms-mutability` options.',
             message: "{{error}}",
             severity: "error",
             resolved: true,
@@ -1057,74 +1162,137 @@ const ruleset$1 = {
             },
         },
         XmsExamplesRequired: {
-            description: 'Verifies whether `x-ms-examples` are provided for each operation or not.',
-            message: 'Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.',
+            description: "Verifies whether `x-ms-examples` are provided for each operation or not.",
+            message: "Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            given: ["$[paths,'x-ms-paths'].*[get,put,post,patch,delete,options,head]"],
             then: {
-                function: xmsExamplesRequired
-            }
+                function: xmsExamplesRequired,
+            },
         },
         XmsClientNameParameter: {
-            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. ' +
-                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. ' +
-                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code. " +
+                "By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire. " +
+                "It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+            message: "Value of `x-ms-client-name` cannot be the same as Property/Model.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]", "$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]", "$.parameters.[?(@.name && @['x-ms-client-name'])]"],
+            given: [
+                "$.paths.*[get,put,post,patch,delete,options,head].parameters[?(@.name && @['x-ms-client-name'])]",
+                "$.paths.*.parameters[?(@.name && @['x-ms-client-name'])]",
+                "$.parameters[?(@.name && @['x-ms-client-name'])]",
+            ],
             then: {
-                function: xmsClientNameParameter
-            }
+                function: xmsClientNameParameter,
+            },
         },
         XmsClientNameProperty: {
-            description: 'The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code.' +
-                'By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire.' +
-                'It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.',
-            message: 'Value of `x-ms-client-name` cannot be the same as Property/Model.',
+            description: "The `x-ms-client-name` extension is used to change the name of a parameter or property in the generated code." +
+                "By using the `x-ms-client-name` extension, a name can be defined for use specifically in code generation, separately from the name on the wire." +
+                "It can be used for query parameters and header parameters, as well as properties of schemas. This name is case sensitive.",
+            message: "Value of `x-ms-client-name` cannot be the same as Property/Model.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$.definitions[*].properties.*['x-ms-client-name']"],
             then: {
-                function: xmsClientNameProperty
-            }
+                function: xmsClientNameProperty,
+            },
         },
         ListInOperationName: {
-            description: 'Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.',
+            description: "Verifies whether value for `operationId` is named as per ARM guidelines when response contains array of items.",
             message: 'Since operation response has model definition in array type, it should be of the form "_list".',
             severity: "warn",
             resolved: true,
             formats: [oas2],
-            given: ["$.paths.*[get,put,post,patch,delete,options,head]"],
+            given: ["$.paths.*[get,post]"],
             then: {
-                function: listInOperationName
-            }
+                function: listInOperationName,
+            },
         },
         DescriptiveDescriptionRequired: {
-            description: 'The value of the \'description\' property must be descriptive. It cannot be spaces or empty description.',
-            message: 'The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.',
+            description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
+            message: "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.description)].description"],
             then: {
-                function: descriptiveDescriptionRequired
+                function: descriptiveDescriptionRequired,
+            },
+        },
+        ParameterDescriptionRequired: {
+            description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
+            message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.parameters.*"],
+            then: {
+                function: descriptiveDescriptionRequired,
+            },
+        },
+        DefaultInEnum: {
+            description: "This rule applies when the value specified by the default property does not appear in the enum constraint for a schema.",
+            message: "Default value should appear in the enum constraint for a schema",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$..[?(@object() && @.enum)]",
+            then: {
+                function: defaultInEnum,
+            },
+        },
+        EnumInsteadOfBoolean: {
+            description: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+            message: "Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: "$..[?(@object() && @.type === 'boolean')]",
+            then: {
+                function: enumInsteadOfBoolean,
+            },
+        },
+        AvoidAnonymousParameter: {
+            description: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths[*].parameters.*.schema", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*.schema"],
+            then: {
+                function: avoidAnonymousSchema,
+            },
+        },
+        AvoidAnonymousTypes: {
+            description: "This rule appears when you define a model type inline, rather than in the definitions section. If the model represents the same type as another parameter in a different operation, then it becomes impossible to reuse that same class for both operations.",
+            message: 'Inline/anonymous models must not be used, instead define a schema with a model name in the "definitions" section and refer to it. This allows operations to share the models.',
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: [
+                "$.paths[*].*.responses.*.schema",
+                "$.definitions..additionalProperties[?(@property === 'type' && @ === 'object')]^",
+                "$.definitions..allOf[?(@property === 'type' && @ === 'object')]^",
+            ],
+            then: {
+                function: avoidAnonymousSchema,
             },
         },
         AvoidNestedProperties: {
-            description: 'Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.',
-            message: 'Consider using x-ms-client-flatten to provide a better end user experience',
+            description: "Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.",
+            message: "Consider using x-ms-client-flatten to provide a better end user experience",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
             then: {
                 field: "x-ms-client-flatten",
-                function: truthy
+                function: truthy,
             },
         },
         AvoidMsdnReferences: {
@@ -1177,29 +1345,29 @@ function verifyNestResourceType(path) {
     const patterns = [
         /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
         /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
-        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/{\w+})+.*$/gi,
+        /^.*\/providers\/microsoft\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
     ];
     return notMatchPatterns(patterns, path);
 }
 const verifyArmPath = createRulesetFunction({
     input: null,
     options: {
-        type: 'object',
+        type: "object",
         properties: {
             segmentToCheck: {
                 oneOf: [
                     {
                         type: "string",
-                        enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"]
+                        enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"],
                     },
                     {
                         type: "array",
                         items: {
                             type: "string",
-                            "enum": ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"]
-                        }
-                    }
-                ]
+                            enum: ["resourceGroupParam", "subscriptionIdParam", "resourceType", "nestedResourceType", "resourceGroupScope"],
+                        },
+                    },
+                ],
             },
         },
         additionalProperties: false,
@@ -1662,7 +1830,7 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
                     const paramDefinition = getPathParameter(paths[pathKey], param);
                     if (paramDefinition && !paramDefinition.pattern) {
                         errors.push({
-                            message: "The resource name parameter should be defined with a 'pattern' restriction.",
+                            message: `The resource name parameter '${param}' should be defined with a 'pattern' restriction.`,
                             path: [...path, pathKey],
                         });
                     }
@@ -1885,7 +2053,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[delete].responses.['200','204'].schema"],
+            given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
             then: {
                 function: falsy,
             },
@@ -1896,7 +2064,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get].responses.['201','202','203','204']"],
+            given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
             then: {
                 function: falsy,
             },
@@ -1905,9 +2073,9 @@ const ruleset = {
             description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
             message: "{{error}}",
             severity: "error",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
-            given: ["$.definitions..provisioningState[?(@property === 'enum')]^"],
+            given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
             then: {
                 function: provisioningState,
             },
@@ -2164,7 +2332,7 @@ const ruleset = {
             message: "Property name should be camel case.",
             severity: "error",
             resolved: false,
-            given: "$..[?(@.type === 'object')].properties.[?(!@property.match(/^@.+$/))]~",
+            given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
             then: {
                 function: casing,
                 functionOptions: {
@@ -2177,7 +2345,7 @@ const ruleset = {
             message: "Usage of Guid is not recommended. If GUIDs are absolutely required in your service, please get sign off from the Azure API review board.",
             severity: "error",
             resolved: false,
-            given: "$..[?(@property === 'format'&& @ === 'guid')]",
+            given: "$..[?(@property === 'format' && @ === 'uuid')]",
             then: {
                 function: falsy,
             },
@@ -2269,27 +2437,27 @@ const ruleset = {
             },
         },
         LocationMustHaveXmsMutability: {
-            description: 'A tracked resource\'s location property must have the x-ms-mutability properties set as read, create.',
+            description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
             message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ['$.definitions[*].properties.location'],
+            given: ["$.definitions[*].properties.location"],
             then: {
-                function: locationMustHaveXmsMutability
-            }
+                function: locationMustHaveXmsMutability,
+            },
         },
         HttpsSupportedScheme: {
-            description: 'Verifies whether specification supports HTTPS scheme or not.',
-            message: 'Azure Resource Management only supports HTTPS scheme.',
+            description: "Verifies whether specification supports HTTPS scheme or not.",
+            message: "Azure Resource Management only supports HTTPS scheme.",
             severity: "warn",
             resolved: false,
             formats: [oas2],
             given: ["$.schemes"],
             then: {
-                function: httpsSupportedScheme
-            }
-        }
+                function: httpsSupportedScheme,
+            },
+        },
     },
 };
 
