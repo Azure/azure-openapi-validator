@@ -15,7 +15,7 @@ const hostParameters = (parameterizedHost: any, _opts: any, paths: any) => {
     parameters.forEach((p: any, index: number) => {
       const location = p["x-ms-parameter-location"]
       if (p.in === "path" && p["x-ms-skip-url-encoding"] === true && location === "client") {
-        if (p.name !== "endpoint") {
+        if (p.name !== "endpoint" && p.name.toLowerCase() !== "apiversion") {
           errors.push({
             message: "The host parameter must be called 'endpoint'.",
             path: [...path, "parameters", index],
