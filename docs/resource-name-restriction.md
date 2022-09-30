@@ -39,4 +39,16 @@ This rule aims to mitigate below problems:
 
 ## How to fix the violation
 
-Adding the pattern to the resource name parameter definition.
+Adding the `pattern` to the resource name parameter definition, like
+
+```json
+{
+  "name": "resourceName",
+  "in": "path",
+  "required": true,
+  "type": "string",
+  "pattern": "^[a-z][a-z0-9]*$",
+  "minLength": 3,
+  "maxLength": 63
+}
+```
