@@ -107,7 +107,9 @@ test("ConsistentPatchProperties should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0.schema")
-    expect(results[0].message).toContain("The property 'nonExistProp' in the request body doesn't appear in the resource model.")
+    expect(results[0].message).toContain(
+      "The property 'nonExistProp' in the request body either not apppear in the resource model or has the wrong level."
+    )
   })
 })
 
