@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The property '{propertyName}' in the request body doesn't appear in the resource model.
+The property '{propertyName}' in the request body either not apppear in the resource model or has the wrong level.
 
 ## Description
 
@@ -49,6 +49,7 @@ If a resource is defined as below and the 'properties.propertyA' is patchable
     },
   },
 ```
+
 then 'propertyA' must appear in the patch body with the same layout.
 
 ```json

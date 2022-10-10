@@ -37,12 +37,12 @@ rules.push({
               existingEnum.length !== curEnum.length ||
               // if modelAsString is true , the order of the values is insensitive , otherwise the order is sensitive.
               currentEnumModelAsString
-                ? existingEnum.some((value:any) => !curEnum.includes(value))
-                : existingEnum.some((value:any, index:number) => curEnum[index] !== value)
+                ? existingEnum.some((value: any) => !curEnum.includes(value))
+                : existingEnum.some((value: any, index: number) => curEnum[index] !== value)
             ) {
               yield {
-                message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path)}`,
-                location: path.concat(section.path.slice(1))
+                message: `${msg} The duplicate x-ms-enum name: ${enumName}, path: ${stringify(existingNode.path.slice(1))}`,
+                location: path.concat(section.path.slice(1)),
               }
             }
           } else {
@@ -51,5 +51,5 @@ rules.push({
         }
       }
     }
-  }
+  },
 })
