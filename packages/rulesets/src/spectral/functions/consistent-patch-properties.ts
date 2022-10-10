@@ -1,7 +1,7 @@
 import { diffSchema, getGetOperationSchema } from "./utils"
 
 /**
- * verify if the properties in patch body also present in the resource model and it has the same layout with the resource model . 
+ * verify if the properties in patch body also present in the resource model and it has the same layout with the resource model .
  */
 export const consistentPatchProperties = (patchOp: any, _opts: any, ctx: any) => {
   if (patchOp === null || typeof patchOp !== "object") {
@@ -22,7 +22,7 @@ export const consistentPatchProperties = (patchOp: any, _opts: any, ctx: any) =>
     const absents = diffSchema(patchBodySchema, responseSchema)
     absents.forEach((absent) => {
       errors.push({
-        message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
+        message: `The property '${absent}' in the request body either not apppear in the resource model or has the wrong level.`,
         path: [...path, "parameters", patchBodySchemaIndex, "schema"],
       })
     })

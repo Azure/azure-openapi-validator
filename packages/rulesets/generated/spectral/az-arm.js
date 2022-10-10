@@ -1491,7 +1491,7 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
         const absents = diffSchema(patchBodySchema, responseSchema);
         absents.forEach((absent) => {
             errors.push({
-                message: `The property '${absent}' in the request body doesn't appear in the resource model.`,
+                message: `The property '${absent}' in the request body either not apppear in the resource model or has the wrong level.`,
                 path: [...path, "parameters", patchBodySchemaIndex, "schema"],
             });
         });
