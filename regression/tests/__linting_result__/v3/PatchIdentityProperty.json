@@ -1,0 +1,50 @@
+[
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}\"].patch.parameters[\"4\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:151:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].patch.parameters[\"5\"]",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:321:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}\"].patch.parameters[\"4\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:182:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}\"].patch.parameters[\"4\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:320:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}\"].patch.parameters[\"2\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:234:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}\"].patch.parameters[\"4\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:175:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}\"].patch.parameters[\"4\"]",
+    "source": "specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2021-10-31-preview/appliances.json:324:10"
+  },
+  {
+    "code": "PatchIdentityProperty",
+    "message": "The patch operation body parameter schema should contains property 'identity'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}\"].patch.parameters[\"2\"]",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:851:10"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'certificateName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:119:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'columnName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:355:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'columnName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put.parameters[\"5\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:347:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'databaseName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].put.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:91:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'schemaName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:341:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'schemaName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:333:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'serverId' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put.parameters[\"4\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2580:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'serverName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].put.parameters[\"1\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:88:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'tableName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:348:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'tableName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put.parameters[\"4\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:340:10"
+  },
+  {
+    "code": "RepeatedPathInfo",
+    "message": "The 'tableName' already appears in the path, please don't repeat it in the request body.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}\"].put.parameters[\"5\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/table.json:195:10"
+  }
+]

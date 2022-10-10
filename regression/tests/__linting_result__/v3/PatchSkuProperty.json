@@ -1,0 +1,56 @@
+[
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].patch.parameters[\"3\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1185:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}\"].patch.parameters[\"3\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:200:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}\"].patch.parameters[\"2\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1122:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}\"].patch.parameters[\"2\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:263:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].patch.parameters[\"2\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:239:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}\"].patch.parameters[\"2\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:242:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].patch.parameters[\"2\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:239:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].patch.parameters[\"2\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:186:10"
+  },
+  {
+    "code": "PatchSkuProperty",
+    "message": "The patch operation body parameter schema should contains property 'sku'.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].patch.parameters[\"3\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:237:10"
+  }
+]

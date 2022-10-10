@@ -1,0 +1,20 @@
+[
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.consumes[1]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:14:4"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile\"].get.produces[0]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:435:10"
+  },
+  {
+    "code": "NonApplicationJsonType",
+    "message": "Only 'application/json' content-type is supported by ARM.",
+    "jsonpath": "$.produces[1]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:18:4"
+  }
+]

@@ -1,0 +1,62 @@
+/**
+ * This configuration file defines custom commands for the "rush" command-line.
+ * For full documentation, please see https://rushjs.io
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  /**
+   * Custom "commands" introduce new verbs for the command-line.  To see the help for these
+   * example commands, try "rush --help", "rush my-bulk-command --help", or
+   * "rush my-global-command --help".
+   */
+  "commands": [
+    {
+      "name": "build",
+      "commandKind": "bulk",
+      "summary": "Build all projects that haven't been built, or have changed since they were last built",
+      "incremental": true,
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "test",
+      "summary": "(CUSTOM) Runs test on all projects.",
+      "shellCommand": "node eng/scripts/test.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "pack",
+      "summary": "(CUSTOM) Runs pack on all projects.",
+      "shellCommand": "node eng/scripts/pack.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "regression-test",
+      "summary": "(CUSTOM) Runs regression test",
+      "shellCommand": "node eng/scripts/regression-test.js"
+    },
+    {
+      "commandKind": "global",
+      "safeForSimultaneousRushProcesses": true,
+      "name": "regen-ruleindex",
+      "summary": "(CUSTOM) Regen rules index",
+      "shellCommand": "node eng/scripts/gen-rules-index.js"
+    },
+    {
+      "commandKind": "bulk",
+      "name": "lint:fix",
+      "summary": "Fix linting errors for projects. Runs `npm run lint:fix` on all projects.",
+      "enableParallelism": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "lint",
+      "summary": "Lint projects. Runs `npm run lint` on all projects.",
+      "enableParallelism": true
+    }
+  ]
+}

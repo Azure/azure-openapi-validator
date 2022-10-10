@@ -1,0 +1,145 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SwaggerInventoryTests",
+        "description": "Use this swagger to test the inventory to detect response types with arrays as possible pageable operations",
+        "version": "2016-10-10"
+    },
+    "host": "management.azure.com",
+    "paths": {
+        "/plants": {
+            "get": {
+                "description": "Get a list of plants.",
+                "operationId": "Plants_List",
+                "x-ms-pageable": {
+                    "nextLinkName": "nextLink"
+                },
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK.",
+                        "schema": {
+                            "$ref": "#/definitions/PlantsList"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PlantsList": {
+            "type": "object",
+            "description": "Response to a Pageable operation. This one lists plants",
+            "readOnly": true,
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "description": "List of plants",
+                    "items": {
+                        "$ref": "#/definitions/Plant"
+                    },
+                    "readOnly": true
+                },
+                "nextLink": {
+                    "type": "string",
+                    "description": "Link to next page of results",
+                    "readOnly": true
+                }
+            }
+        },
+        "Plant": {
+            "type": "object",
+            "description": "A plant",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The plant's name"
+                },
+                "edible": {
+                    "type": "boolean",
+                    "enum": [
+                        true
+                    ],
+                    "description": "Is the plant edible?"
+                }
+            }
+        },
+        "ConfigurationStoreProperties": {
+            "description": "The properties of a configuration store.",
+            "type": "object",
+            "properties": {
+                "provisioningState": {
+                    "description": "The provisioning state of the configuration store.",
+                    "enum": [
+                        "Creating",
+                        "Updating",
+                        "Deleting",
+                        "Succeeded",
+                        "Failed",
+                        "Canceled",
+                        null
+                    ],
+                    "type": "string",
+                    "readOnly": true,
+                    "x-ms-enum": {
+                        "name": "ProvisioningState",
+                        "modelAsString": true
+                    }
+                },
+                "status": {
+                    "description": "The state code.",
+                    "enum": [
+                        true,
+                        0
+                    ],
+                    "type": "boolean",
+                    "readOnly": true,
+                    "x-ms-enum": {
+                        "name": "RespStatus",
+                        "modelAsString": true
+                    }
+
+                }
+            }
+        }
+
+    },
+    "parameters": {
+      "Foo": {
+        "name": "foo",
+        "in": "path",
+        "required": true,
+        "type": "integer",
+        "description": "test foo",
+        "enum": [
+          1,
+          2,
+          3.14
+        ]
+      },
+      "Bar": {
+        "name": "bar",
+        "in": "path",
+        "required": true,
+        "type": "number",
+        "description": "test bar",
+        "enum": [
+          1.2,
+          "3.5",
+          1
+        ]
+      },
+      "defaultCustomBlockResponseStatusCode": {
+        "description": "If the action type is block, this field defines the default customer overridable http response status code.",
+        "type": "integer",
+        "enum": [
+          200,
+          403,
+          405,
+          406,
+          429
+        ]
+      }
+    }
+
+}

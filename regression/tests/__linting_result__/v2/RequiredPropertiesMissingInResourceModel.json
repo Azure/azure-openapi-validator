@@ -1,0 +1,20 @@
+[
+  {
+    "code": "RequiredPropertiesMissingInResourceModel",
+    "message": "Model definition 'FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "jsonpath": "$.definitions.FirewallRule",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:308:4"
+  },
+  {
+    "code": "RequiredPropertiesMissingInResourceModel",
+    "message": "Model definition 'IPv6 FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "jsonpath": "$.definitions[\"IPv6 FirewallRule\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:215:4"
+  },
+  {
+    "code": "RequiredPropertiesMissingInResourceModel",
+    "message": "Model definition 'ProxyResourceWithWritableName' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "jsonpath": "$.definitions.ProxyResourceWithWritableName",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:264:4"
+  }
+]

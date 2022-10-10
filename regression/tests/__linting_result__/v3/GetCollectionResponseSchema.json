@@ -1,0 +1,986 @@
+[
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ApplicationGatewayPrivateEndpointConnections_List\" does not match the response definition in the individual GET  operation \"ApplicationGatewayPrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ApplicationGateways_List\" does not match the response definition in the individual GET  operation \"ApplicationGateways_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ApplicationGateways_ListAvailableSslPredefinedPolicies\" does not match the response definition in the individual GET  operation \"ApplicationGateways_GetSslPredefinedPolicy\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ApplicationSecurityGroups_ListAll\" does not match the response definition in the individual GET  operation \"ApplicationSecurityGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Applications_ListByCluster\" does not match the response definition in the individual GET  operation \"Applications_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"AzureFirewalls_List\" does not match the response definition in the individual GET  operation \"AzureFirewalls_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"BackupShortTermRetentionPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"BackupShortTermRetentionPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"BastionHosts_List\" does not match the response definition in the individual GET  operation \"BastionHosts_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"BlobContainers_List\" does not match the response definition in the individual GET  operation \"BlobContainers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:149:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Clusters_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"Clusters_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"CustomIPPrefixes_ListAll\" does not match the response definition in the individual GET  operation \"CustomIPPrefixes_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DataWarehouseUserActivities_ListByDatabase\" does not match the response definition in the individual GET  operation \"DataWarehouseUserActivities_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataWarehouseUserActivities\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseBlobAuditingPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseBlobAuditingPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseColumns_ListByTable\" does not match the response definition in the individual GET  operation \"DatabaseColumns_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseSchemas_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseSchemas_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseSecurityAlertPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseSecurityAlertPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseTables_ListBySchema\" does not match the response definition in the individual GET  operation \"DatabaseTables_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseVulnerabilityAssessmentScans_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseVulnerabilityAssessmentScans_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DatabaseVulnerabilityAssessments_ListByDatabase\" does not match the response definition in the individual GET  operation \"DatabaseVulnerabilityAssessments_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Databases_ListByServer\" does not match the response definition in the individual GET  operation \"Databases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DdosProtectionPlans_List\" does not match the response definition in the individual GET  operation \"DdosProtectionPlans_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DefaultSecurityRules_List\" does not match the response definition in the individual GET  operation \"DefaultSecurityRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DeletedServers_ListByLocation\" does not match the response definition in the individual GET  operation \"DeletedServers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DistributedAvailabilityGroups_ListByInstance\" does not match the response definition in the individual GET  operation \"DistributedAvailabilityGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"DscpConfiguration_List\" does not match the response definition in the individual GET  operation \"DscpConfiguration_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ElasticPools_ListByServer\" does not match the response definition in the individual GET  operation \"ElasticPools_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"EncryptionProtectors_ListByServer\" does not match the response definition in the individual GET  operation \"EncryptionProtectors_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"EndpointCertificates_ListByInstance\" does not match the response definition in the individual GET  operation \"EndpointCertificates_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/endpointCertificates\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteCircuitAuthorizations_List\" does not match the response definition in the individual GET  operation \"ExpressRouteCircuitAuthorizations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteCircuitConnections_List\" does not match the response definition in the individual GET  operation \"ExpressRouteCircuitConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteCircuitPeerings_List\" does not match the response definition in the individual GET  operation \"ExpressRouteCircuitPeerings_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteCircuits_List\" does not match the response definition in the individual GET  operation \"ExpressRouteCircuits_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteCrossConnectionPeerings_List\" does not match the response definition in the individual GET  operation \"ExpressRouteCrossConnectionPeerings_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteCrossConnections_List\" does not match the response definition in the individual GET  operation \"ExpressRouteCrossConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCrossConnections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRouteLinks_List\" does not match the response definition in the individual GET  operation \"ExpressRouteLinks_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRoutePortsLocations_List\" does not match the response definition in the individual GET  operation \"ExpressRoutePortsLocations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExpressRoutePorts_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"ExpressRoutePorts_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExtendedDatabaseBlobAuditingPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"ExtendedDatabaseBlobAuditingPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ExtendedServerBlobAuditingPolicies_ListByServer\" does not match the response definition in the individual GET  operation \"ExtendedServerBlobAuditingPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FailoverGroups_ListByServer\" does not match the response definition in the individual GET  operation \"FailoverGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FileShares_List\" does not match the response definition in the individual GET  operation \"FileShares_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:164:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallPolicies_List\" does not match the response definition in the individual GET  operation \"FirewallPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallPolicyIdpsSignaturesOverrides_List\" does not match the response definition in the individual GET  operation \"FirewallPolicyIdpsSignaturesOverrides_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallPolicyRuleCollectionGroups_List\" does not match the response definition in the individual GET  operation \"FirewallPolicyRuleCollectionGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallRules_ListByServer\" does not match the response definition in the individual GET  operation \"FirewallRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"FirewallRules_ListByServer\" does not match the response definition in the individual GET  operation \"FirewallRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:171:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"GeoBackupPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"GeoBackupPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"IPv6FirewallRules_ListByServer\" does not match the response definition in the individual GET  operation \"IPv6FirewallRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"InboundNatRules_List\" does not match the response definition in the individual GET  operation \"InboundNatRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"InstanceFailoverGroups_ListByLocation\" does not match the response definition in the individual GET  operation \"InstanceFailoverGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"InstancePools_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"InstancePools_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"IpAllocations_List\" does not match the response definition in the individual GET  operation \"IpAllocations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"IpGroups_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"IpGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobAgents_ListByServer\" does not match the response definition in the individual GET  operation \"JobAgents_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobCredentials_ListByAgent\" does not match the response definition in the individual GET  operation \"JobCredentials_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/credentials\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobExecutions_ListByJob\" does not match the response definition in the individual GET  operation \"JobExecutions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobStepExecutions_ListByJobExecution\" does not match the response definition in the individual GET  operation \"JobStepExecutions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobSteps_ListByJob\" does not match the response definition in the individual GET  operation \"JobSteps_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/steps\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobSteps_ListByVersion\" does not match the response definition in the individual GET  operation \"JobSteps_GetByVersion\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/versions/{jobVersion}/steps\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobTargetExecutions_ListByStep\" does not match the response definition in the individual GET  operation \"JobTargetExecutions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobTargetGroups_ListByAgent\" does not match the response definition in the individual GET  operation \"JobTargetGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"JobVersions_ListByJob\" does not match the response definition in the individual GET  operation \"JobVersions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/versions\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Jobs_ListByAgent\" does not match the response definition in the individual GET  operation \"Jobs_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LedgerDigestUploads_ListByDatabase\" does not match the response definition in the individual GET  operation \"LedgerDigestUploads_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LoadBalancerBackendAddressPools_List\" does not match the response definition in the individual GET  operation \"LoadBalancerBackendAddressPools_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LoadBalancerFrontendIPConfigurations_List\" does not match the response definition in the individual GET  operation \"LoadBalancerFrontendIPConfigurations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LoadBalancerLoadBalancingRules_List\" does not match the response definition in the individual GET  operation \"LoadBalancerLoadBalancingRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LoadBalancerOutboundRules_List\" does not match the response definition in the individual GET  operation \"LoadBalancerOutboundRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LoadBalancerProbes_List\" does not match the response definition in the individual GET  operation \"LoadBalancerProbes_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LoadBalancers_ListAll\" does not match the response definition in the individual GET  operation \"LoadBalancers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LocalNetworkGateways_List\" does not match the response definition in the individual GET  operation \"LocalNetworkGateways_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LongTermRetentionBackups_ListByDatabase\" does not match the response definition in the individual GET  operation \"LongTermRetentionBackups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LongTermRetentionBackups_ListByDatabase\" does not match the response definition in the individual GET  operation \"LongTermRetentionBackups_GetByResourceGroup\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LongTermRetentionManagedInstanceBackups_ListByDatabase\" does not match the response definition in the individual GET  operation \"LongTermRetentionManagedInstanceBackups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LongTermRetentionManagedInstanceBackups_ListByDatabase\" does not match the response definition in the individual GET  operation \"LongTermRetentionManagedInstanceBackups_GetByResourceGroup\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"LongTermRetentionPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"LongTermRetentionPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedBackupShortTermRetentionPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedBackupShortTermRetentionPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseColumns_ListByTable\" does not match the response definition in the individual GET  operation \"ManagedDatabaseColumns_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseSchemas_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedDatabaseSchemas_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseSecurityAlertPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedDatabaseSecurityAlertPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseTables_ListBySchema\" does not match the response definition in the individual GET  operation \"ManagedDatabaseTables_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseTransparentDataEncryption_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedDatabaseTransparentDataEncryption_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseVulnerabilityAssessmentScans_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedDatabaseVulnerabilityAssessmentScans_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabaseVulnerabilityAssessments_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedDatabaseVulnerabilityAssessments_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedDatabases_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedDatabases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceAdministrators_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedInstanceAdministrators_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceAzureADOnlyAuthentications_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedInstanceAzureADOnlyAuthentications_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceEncryptionProtectors_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedInstanceEncryptionProtectors_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceKeys_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedInstanceKeys_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceLongTermRetentionPolicies_ListByDatabase\" does not match the response definition in the individual GET  operation \"ManagedInstanceLongTermRetentionPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceOperations_ListByManagedInstance\" does not match the response definition in the individual GET  operation \"ManagedInstanceOperations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstancePrivateEndpointConnections_ListByManagedInstance\" does not match the response definition in the individual GET  operation \"ManagedInstancePrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstancePrivateLinkResources_ListByManagedInstance\" does not match the response definition in the individual GET  operation \"ManagedInstancePrivateLinkResources_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateLinkResources\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstanceVulnerabilityAssessments_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedInstanceVulnerabilityAssessments_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedInstances_List\" does not match the response definition in the individual GET  operation \"ManagedInstances_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/managedInstances\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_ListByRestorableDroppedDatabase\" does not match the response definition in the individual GET  operation \"ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedServerDnsAliases_ListByManagedInstance\" does not match the response definition in the individual GET  operation \"ManagedServerDnsAliases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ManagedServerSecurityAlertPolicies_ListByInstance\" does not match the response definition in the individual GET  operation \"ManagedServerSecurityAlertPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"MetricAlertsStatus_List\" does not match the response definition in the individual GET  operation \"MetricAlertsStatus_ListByName\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}/status\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/metricAlert_API.json:340:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NatGateways_ListAll\" does not match the response definition in the individual GET  operation \"NatGateways_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/natGateways\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaceIPConfigurations_List\" does not match the response definition in the individual GET  operation \"NetworkInterfaceIPConfigurations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaceTapConfigurations_List\" does not match the response definition in the individual GET  operation \"NetworkInterfaceTapConfigurations_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListAll\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListCloudServiceRoleInstanceNetworkInterfaces\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetCloudServiceNetworkInterface\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServiceNetworkInterface.json:37:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListCloudServiceRoleInstanceNetworkInterfaces\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetCloudServiceNetworkInterface\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListVirtualMachineScaleSetIpConfigurations\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetVirtualMachineScaleSetIpConfiguration\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:221:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkInterfaces_ListVirtualMachineScaleSetVMNetworkInterfaces\" does not match the response definition in the individual GET  operation \"NetworkInterfaces_GetVirtualMachineScaleSetNetworkInterface\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssNetworkInterface.json:37:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkProfiles_ListAll\" does not match the response definition in the individual GET  operation \"NetworkProfiles_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkProfiles\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"NetworkSecurityGroups_ListAll\" does not match the response definition in the individual GET  operation \"NetworkSecurityGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"OutboundFirewallRules_ListByServer\" does not match the response definition in the individual GET  operation \"OutboundFirewallRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PeerExpressRouteCircuitConnections_List\" does not match the response definition in the individual GET  operation \"PeerExpressRouteCircuitConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateDnsZoneGroups_List\" does not match the response definition in the individual GET  operation \"PrivateDnsZoneGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpointConnections_List\" does not match the response definition in the individual GET  operation \"PrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1262:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpointConnections_ListByServer\" does not match the response definition in the individual GET  operation \"PrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpointConnections_ListByStorageSyncService\" does not match the response definition in the individual GET  operation \"PrivateEndpointConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:751:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateEndpoints_List\" does not match the response definition in the individual GET  operation \"PrivateEndpoints_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateLinkResources_ListByServer\" does not match the response definition in the individual GET  operation \"PrivateLinkResources_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateLinkResources\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateLinkServices_List\" does not match the response definition in the individual GET  operation \"PrivateLinkServices_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PrivateLinkServices_ListPrivateEndpointConnections\" does not match the response definition in the individual GET  operation \"PrivateLinkServices_GetPrivateEndpointConnection\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PublicIPAddresses_ListCloudServiceRoleInstancePublicIPAddresses\" does not match the response definition in the individual GET  operation \"PublicIPAddresses_GetCloudServicePublicIPAddress\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/cloudServicePublicIpAddress.json:87:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PublicIPAddresses_ListCloudServiceRoleInstancePublicIPAddresses\" does not match the response definition in the individual GET  operation \"PublicIPAddresses_GetCloudServicePublicIPAddress\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"PublicIPAddresses_ListVirtualMachineScaleSetVMPublicIPAddresses\" does not match the response definition in the individual GET  operation \"PublicIPAddresses_GetVirtualMachineScaleSetPublicIPAddress\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/vmssPublicIpAddress.json:87:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Queue_List\" does not match the response definition in the individual GET  operation \"Queue_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/queue.json:350:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"RecoverableDatabases_ListByServer\" does not match the response definition in the individual GET  operation \"RecoverableDatabases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recoverableDatabases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"RecoverableManagedDatabases_ListByInstance\" does not match the response definition in the individual GET  operation \"RecoverableManagedDatabases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/recoverableDatabases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ReplicationLinks_ListByDatabase\" does not match the response definition in the individual GET  operation \"ReplicationLinks_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"RestorableDroppedDatabases_ListByServer\" does not match the response definition in the individual GET  operation \"RestorableDroppedDatabases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"RestorableDroppedManagedDatabases_ListByInstance\" does not match the response definition in the individual GET  operation \"RestorableDroppedManagedDatabases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"RestorePoints_ListByDatabase\" does not match the response definition in the individual GET  operation \"RestorePoints_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"RouteTables_List\" does not match the response definition in the individual GET  operation \"RouteTables_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Routes_List\" does not match the response definition in the individual GET  operation \"Routes_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ScriptExecutionHistory_ListByCluster\" does not match the response definition in the individual GET  operation \"ScriptActions_GetExecutionDetail\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/operations.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"SecurityRules_List\" does not match the response definition in the individual GET  operation \"SecurityRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerAzureADAdministrators_ListByServer\" does not match the response definition in the individual GET  operation \"ServerAzureADAdministrators_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerAzureADOnlyAuthentications_ListByServer\" does not match the response definition in the individual GET  operation \"ServerAzureADOnlyAuthentications_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerBlobAuditingPolicies_ListByServer\" does not match the response definition in the individual GET  operation \"ServerBlobAuditingPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerCommunicationLinks_ListByServer\" does not match the response definition in the individual GET  operation \"ServerCommunicationLinks_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerConnectionPolicies_ListByServer\" does not match the response definition in the individual GET  operation \"ServerConnectionPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerDevOpsAuditSettings_ListByServer\" does not match the response definition in the individual GET  operation \"ServerDevOpsAuditSettings_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerDnsAliases_ListByServer\" does not match the response definition in the individual GET  operation \"ServerDnsAliases_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerKeys_ListByServer\" does not match the response definition in the individual GET  operation \"ServerKeys_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerSecurityAlertPolicies_ListByServer\" does not match the response definition in the individual GET  operation \"ServerSecurityAlertPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerTrustCertificates_ListByInstance\" does not match the response definition in the individual GET  operation \"ServerTrustCertificates_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerTrustGroups_ListByLocation\" does not match the response definition in the individual GET  operation \"ServerTrustGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServerVulnerabilityAssessments_ListByServer\" does not match the response definition in the individual GET  operation \"ServerVulnerabilityAssessments_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/vulnerabilityAssessments\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"Servers_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"Servers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServiceEndpointPolicies_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"ServiceEndpointPolicies_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServiceEndpointPolicyDefinitions_ListByResourceGroup\" does not match the response definition in the individual GET  operation \"ServiceEndpointPolicyDefinitions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"ServiceObjectives_ListByServer\" does not match the response definition in the individual GET  operation \"ServiceObjectives_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/serviceObjectives\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"SubscriptionUsages_ListByLocation\" does not match the response definition in the individual GET  operation \"SubscriptionUsages_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/usages\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"SyncAgents_ListByServer\" does not match the response definition in the individual GET  operation \"SyncAgents_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"SyncGroups_ListByDatabase\" does not match the response definition in the individual GET  operation \"SyncGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"SyncMembers_ListBySyncGroup\" does not match the response definition in the individual GET  operation \"SyncMembers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"TimeZones_ListByLocation\" does not match the response definition in the individual GET  operation \"TimeZones_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"TransparentDataEncryptions_ListByDatabase\" does not match the response definition in the individual GET  operation \"TransparentDataEncryptions_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualClusters_List\" does not match the response definition in the individual GET  operation \"VirtualClusters_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/virtualClusters\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualMachineRunCommands_List\" does not match the response definition in the individual GET  operation \"VirtualMachineRunCommands_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:39:4"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualNetworkGatewayConnections_List\" does not match the response definition in the individual GET  operation \"VirtualNetworkGatewayConnections_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualNetworkGatewayNatRules_ListByVirtualNetworkGateway\" does not match the response definition in the individual GET  operation \"VirtualNetworkGatewayNatRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualNetworkGateways_List\" does not match the response definition in the individual GET  operation \"VirtualNetworkGateways_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"VirtualNetworkRules_ListByServer\" does not match the response definition in the individual GET  operation \"VirtualNetworkRules_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"WebCategories_ListBySubscription\" does not match the response definition in the individual GET  operation \"WebCategories_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:36:2"
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"WorkloadClassifiers_ListByWorkloadGroup\" does not match the response definition in the individual GET  operation \"WorkloadClassifiers_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers\"]",
+    "source": ""
+  },
+  {
+    "code": "GetCollectionResponseSchema",
+    "message": "The response in the GET collection operation \"WorkloadGroups_ListByDatabase\" does not match the response definition in the individual GET  operation \"WorkloadGroups_Get\" .",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups\"]",
+    "source": ""
+  }
+]

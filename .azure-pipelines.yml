@@ -3,7 +3,7 @@ trigger:
 - master
 
 variables:
-  NodeVersion: '10.x'
+  NodeVersion: '12.x'
 
 jobs:
   - job: 'Build'
@@ -16,30 +16,24 @@ jobs:
         inputs:
           versionSpec: '$(NodeVersion)'
         displayName: 'Install Node.js $(NodeVersion)'
-      - task: UseDotNet@2
-        inputs:
-          packageType: 'sdk'
-          version: '2.x'
-      - task: Npm@1
-        displayName: 'npm install'
-        inputs:
-          verbose: false
 
-      - script: 'npm run tslint'
-        displayName: 'tslint'
+      - script: 'node common/scripts/install-run-rush.js install'
+        displayName: 'rush install'
 
-      - script: 'gulp build'
-        displayName: 'gulp build'
+      - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
+        displayName: 'rush build'
 
-      - script: 'gulp test'
-        displayName: 'gulp test'
-        
-      - script: 'gulp pack'
-        displayName: 'gulp pack'
+      - script: 'node common/scripts/install-run-rush.js lint'
+        displayName: 'rush lint'
 
-      - task: PublishBuildArtifacts@1
-        inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist
+      - script: 'node common/scripts/install-run-rush.js test'
+        displayName: 'rush test'
+
+      - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
+        displayName: 'rush regen rule index'
+      
+      - script: 'node eng/scripts/checkForChangedFile.js'
+        displayName: 'check changed files'
 
   - job: Windows
     displayName: credentialScan

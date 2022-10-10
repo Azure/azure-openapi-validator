@@ -1,0 +1,38 @@
+{
+    "include": [
+        "./src/spectral/**/*.ts",
+    ],
+    "compilerOptions": {
+        "outDir": "esm",
+        "baseUrl": ".",
+        "types": [
+            "node","jest"
+        ],
+        "moduleResolution": "node",
+        "target": "ES2019",
+        "module": "esnext",
+        "esModuleInterop": true,
+        "lib": ["es2021"],
+        "strict": false,
+        "pretty": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "declaration": true,
+        "removeComments": true,
+        "skipLibCheck": false,
+        "noEmitHelpers": true,
+        "skipDefaultLibCheck": true,
+        "allowJs": false,
+    }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'AvailabilitySet', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.AvailabilitySet",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:10227:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'CloudService', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.CloudService",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:2312:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'RestorePointCollection', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.RestorePointCollection",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9740:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'RollingUpgradeStatusInfo', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.RollingUpgradeStatusInfo",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:16282:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'VirtualMachine', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.VirtualMachine",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:13880:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'VirtualMachineImageResource', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.VirtualMachineImageResource",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11107:4"
+  },
+  {
+    "code": "TrackedResourceListByResourceGroup",
+    "message": "The tracked resource, 'VirtualMachineScaleSet', must have a list by resource group operation.(This rule does not apply for tenant level resources.)",
+    "jsonpath": "$.definitions.VirtualMachineScaleSet",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15517:4"
+  }
+]

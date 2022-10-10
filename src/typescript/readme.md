@@ -4,31 +4,16 @@ Azure OpenAPI validator (Typescript)
 
 ## Validation
 
-``` yaml $(azure-validator) && !$(v3)
+``` yaml $(azure-validator)
 pipeline:
   swagger-document/openapi-validator:
     input: swagger-document/identity
     scope: azure-validator-composed
   swagger-document/individual/openapi-validator:
     input: swagger-document/individual/identity
-    scope: azure-validator-individual  
+    scope: azure-validator-individual
+    
 ```
-
-``` yaml $(azure-validator) && $(v3)
-use-extension:
-  "@autorest/modelerfour": "4.21.4"
-
-pipeline:
-  swagger-document/modelerfour-consumer:
-    input: modelerfour
-    scope: azure-validator-composed
-  modelerfour:
-    input: openapi-document/multi-api/identity     # the plugin where we get inputs from
-    flatten-models: true
-    flatten-payloads: true
-    group-parameters: true
-```
-
 
 ``` yaml $(azure-validator)
 azure-validator-composed:

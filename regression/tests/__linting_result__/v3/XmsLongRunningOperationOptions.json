@@ -1,0 +1,1670 @@
+[
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers/{deletedServerName}/recover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DeletedServers.json:146:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:79:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:227:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:20:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:94:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5400:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5329:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5258:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:717:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:660:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:588:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/delete\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1233:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/poweroff\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1005:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/rebuild\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1174:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/reimage\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1115:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/restart\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1056:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:14:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/rebuild\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:372:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:316:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/restart\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:260:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/start\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:954:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1292:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1283:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1184:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1128:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1548:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1446:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:956:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:851:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:792:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:241:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:136:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:38:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:237:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:113:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:38:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1031:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:919:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:846:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1311:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1168:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1088:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:472:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:360:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:287:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:782:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:630:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:529:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/share\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1666:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1225:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1157:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1086:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9644:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3359:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3295:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3204:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4450:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4722:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4657:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:591:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:504:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:445:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6426:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6365:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6205:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/deallocate\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6555:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/delete\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6618:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7897:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6938:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6864:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6790:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7600:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7843:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/performMaintenance\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7537:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7277:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7474:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7663:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7726:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7348:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7789:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8134:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7411:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8814:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8740:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8679:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8347:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8275:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8197:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8548:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8618:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:722:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:650:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:572:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/performMaintenance\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9408:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/poweroff\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9090:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/redeploy\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9281:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/restart\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9159:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/start\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:9220:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3867:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3806:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3625:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4050:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4104:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2120:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:2055:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1981:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5980:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5586:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5648:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5807:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5861:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5699:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].delete",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:389:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].patch",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:324:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:253:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5753:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:473:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:420:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].delete",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:659:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:600:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:124:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:169:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:61:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:135:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:68:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:235:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:289:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json:422:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:724:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/copy\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:508:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/update\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json:585:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:135:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:68:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:277:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:318:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:218:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:184:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:112:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:141:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:71:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:176:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:220:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:102:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:141:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/completeRestore\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:278:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentScans.json:20:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:169:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:217:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:106:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:166:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:105:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}/acquire\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:215:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:167:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}/revalidate\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:20:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/failover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:504:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:176:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:113:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:119:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:64:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:147:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:77:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:71:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:169:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:106:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/tdeCertificates\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceTdeCertificates.json:20:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:172:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:213:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:116:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:141:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:71:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:354:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:141:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:71:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:99:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:71:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:206:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:250:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:108:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:141:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:311:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:63:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/failover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:369:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/import\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:431:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:73:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}/disable\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:185:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:541:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/failover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:157:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ReplicationLinks.json:210:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/RestorePoints.json:66:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/resume\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:591:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:491:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:546:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:418:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/refreshHubSchema\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:63:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:158:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:220:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:78:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/refreshSchema\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:412:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/upgradeDataWarehouse\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:641:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessmentScans.json:20:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:136:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:67:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:150:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:74:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:126:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:68:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}/acquire\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:226:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:189:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:237:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:117:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/failover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:308:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:113:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}/revalidate\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:182:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:214:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:135:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:187:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:68:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/failover\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:296:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:350:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:311:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:169:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:217:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:106:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:408:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/start\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:183:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:169:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:106:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:124:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:63:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:119:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:64:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:71:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:138:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:68:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/tdeCertificates\"].post",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/TdeCertificates.json:20:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:127:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:64:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}\"].delete",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:171:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}\"].patch",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json:212:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}\"].delete",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:370:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}\"].patch",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:415:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:313:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}\"].delete",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:139:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:75:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}\"].delete",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:789:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}\"].patch",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:834:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:717:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/redeploy\"].post",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:625:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment\"].post",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:926:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:122:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].delete",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:341:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].patch",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:253:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:120:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].delete",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:681:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:603:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].delete",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2654:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2562:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2735:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].delete",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1235:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1064:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1497:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1755:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1397:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1600:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1841:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].delete",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2192:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].patch",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2026:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1927:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction\"].post",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2347:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].delete",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:104:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].delete",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:351:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].put",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:441:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"].delete",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:875:6"
+  },
+  {
+    "code": "XmsLongRunningOperationOptions",
+    "message": "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"].put",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:978:6"
+  }
+]

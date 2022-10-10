@@ -1,0 +1,32 @@
+[
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'CloudServicesUpdateDomain_WalkUpdateDomain', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put.responses[\"200\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1337:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Extensions_Create', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put.responses[\"200\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:366:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Extensions_EnableAzureMonitor', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put.responses[\"200\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:221:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'Extensions_EnableMonitoring', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put.responses[\"200\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:79:10"
+  },
+  {
+    "code": "LROStatusCodesReturnTypeSchema",
+    "message": "200/201 Responses of long running operations must have a schema definition for return type. OperationId: 'MaintenanceWindows_CreateOrUpdate', Response code: '200'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/maintenanceWindows/current\"].put.responses[\"200\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/MaintenanceWindows.json:114:10"
+  }
+]

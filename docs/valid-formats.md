@@ -1,5 +1,25 @@
 # ValidFormats
+
+## Category
+
+SDK Error
+
+## Applies to
+
+ARM and Data plane OpenAPI(swagger) specs
+
+## Output Message
+
+'{0}' is not a known format.
+
 ## Description
-The `format` property is an extendible way of providing more information about a `type` in the spec. AutoRest will generate code for formats that it does not know about (or ones that are typically used with a different type), but there will be no special handling for those values. You can see the set of formats that AutoRest supports here: [AutoRest Data Types](../guide/defining-clients-swagger.md#data-types).
-## How to fix
-Change the `format` to a format that AutoRest knows about, or omit it.
+
+Only valid types are allowed for properties.
+
+## Why the rule is important
+
+Invalid formats can cause errors during code generation or result in erroneous generated code.
+
+## How to fix the violation
+
+Ensure format defined for property is valid. Please refer [here](https://github.com/Azure/autorest/blob/81d4d31d06637f4f9ef042d7f2ec64cfea29892f/docs/developer/validation-rules/valid-formats.md) for allowed types in OpenAPI.

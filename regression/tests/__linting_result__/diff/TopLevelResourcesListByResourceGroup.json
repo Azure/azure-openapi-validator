@@ -1,0 +1,12 @@
+{
+  "common": [
+    {
+      "code": "TopLevelResourcesListByResourceGroup",
+      "message": "The top-level resource \"DdosCustomPolicy\" does not have list by resource group operation, please add it.",
+      "jsonpath": "$.definitions.DdosCustomPolicy",
+      "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
+    }
+  ],
+  "v2Only": [],
+  "v3Only": []
+}

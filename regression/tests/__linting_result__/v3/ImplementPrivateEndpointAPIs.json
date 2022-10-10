@@ -1,0 +1,62 @@
+[
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateLinkResources.json:36:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName} is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateLinkResources.json:36:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateLinkResources is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/privateEndpointConnections.json:36:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateLinkResources is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:36:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:18:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName} is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateLinkResources.json:18:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateLinkResources is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:18:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateLinkResources.json:18:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName} is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateLinkResources.json:18:2"
+  },
+  {
+    "code": "ImplementPrivateEndpointAPIs",
+    "message": "The private endpoint API: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateLinkResources is missing.",
+    "jsonpath": "$.paths",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:18:2"
+  }
+]

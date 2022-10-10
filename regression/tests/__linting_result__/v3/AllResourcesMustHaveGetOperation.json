@@ -1,0 +1,20 @@
+[
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"DataMaskingRule\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.DataMaskingRule",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:372:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"ImportExportExtensionsOperationResult\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.ImportExportExtensionsOperationResult",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:283:4"
+  },
+  {
+    "code": "AllResourcesMustHaveGetOperation",
+    "message": "The resource \"InboundSecurityRule\" does not have get operation, please add it.",
+    "jsonpath": "$.definitions.InboundSecurityRule",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:1099:4"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "common": [
+    {
+      "code": "EnumMustRespectType",
+      "message": "Enum values should respect the type.",
+      "jsonpath": "$.definitions.BackupShortTermRetentionPolicyProperties.properties.diffBackupIntervalInHours",
+      "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:265:8"
+    }
+  ],
+  "v2Only": [],
+  "v3Only": []
+}

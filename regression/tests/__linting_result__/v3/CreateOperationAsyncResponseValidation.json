@@ -1,0 +1,1736 @@
+[
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:129:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:180:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:322:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:148:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:148:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1336:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1157:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1478:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:821:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:67:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:474:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put.responses",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8784:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}\"].put.responses",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json:108:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}\"].put.responses",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/applications.json:166:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put.responses",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:214:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put.responses",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:72:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put.responses",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:359:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:455:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}\"].put.responses",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:754:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].put.responses",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:756:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}\"].put.responses",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:208:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:120:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:120:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:210:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:98:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:126:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:114:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings/{blobAuditingPolicyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:386:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:114:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:120:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:120:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:101:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:117:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings/{devOpsAuditingSettingsName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDevOpsAudit.json:100:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:156:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:246:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:98:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}\"].put.responses",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:114:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put.responses",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:189:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put.responses",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:158:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:640:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put.responses",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2607:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put.responses",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1116:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must return 201.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put.responses",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1979:8"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4905:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:756:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:449:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4324:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1506:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].put",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:346:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:40:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts/{activityLogAlertName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:41:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:153:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:153:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}\"].put",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:17:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:172:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:151:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:321:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityAlertPolicies.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseTransparentDataEncryption.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json:75:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:497:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:114:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:63:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:20:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:317:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessments.json:78:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:64:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:106:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/credentials/{credentialName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobCredentials.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Jobs.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/steps/{stepName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobSteps.json:266:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups/{targetGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetGroups.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerVulnerabilityAssessments.json:75:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:218:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1989:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:235:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:170:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:40:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set '\"x-ms-long-running-operation\" : true''.",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:201:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4905:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:5258:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:588:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1292:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1128:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1446:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:792:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:846:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1088:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:287:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:529:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:756:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1086:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3204:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:449:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4324:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:4657:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:445:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1506:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6205:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:6790:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8740:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8197:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:572:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:3625:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:1981:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}\"].put",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:253:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}\"].put",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/storageimportexport.json:346:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/actionGroups_API.json:40:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts/{activityLogAlertName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json:41:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:153:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:153:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:420:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:600:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}\"].put",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:17:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:172:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:151:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}\"].put",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:61:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:68:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:68:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:218:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:112:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:71:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:102:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedDatabaseSensitivityLabels.json:321:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSecurityAlertPolicies.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseTransparentDataEncryption.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:106:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:105:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:167:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:113:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:64:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:77:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:71:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:106:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json:75:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:116:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:71:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:354:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:71:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:99:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:71:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:108:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:497:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:74:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:114:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:63:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:63:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:20:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:73:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/SensitivityLabels.json:317:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:418:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:78:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseVulnerabilityAssessments.json:78:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:67:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:74:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:68:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:117:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:113:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:214:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:68:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:64:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules/{firewallRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:106:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:106:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/credentials/{credentialName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobCredentials.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/Jobs.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:408:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/steps/{stepName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobSteps.json:266:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups/{targetGroupName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobTargetGroups.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:106:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:63:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:64:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:71:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:68:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:64:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerVulnerabilityAssessments.json:75:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:313:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:75:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}\"].put",
+    "source": "specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json:717:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:122:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/blob.json:218:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:1989:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}\"].put",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/file.json:235:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:120:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:603:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2562:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1064:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1927:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:170:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json:40:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/autoscale_API.json:82:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/scheduledQueryRule_API.json:38:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].put",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:441:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"].put",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:978:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'",
+    "jsonpath": "$.paths[\"/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}\"].put",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:201:6"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1340:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1164:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1485:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:828:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:74:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:84:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:899:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1148:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:340:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:589:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:481:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}\"].put.responses[\"202\"]",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:8791:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor\"].put.responses[\"202\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:224:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring\"].put.responses[\"202\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:82:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}\"].put.responses[\"202\"]",
+    "source": "specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/extensions.json:369:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses[\"202\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:462:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}\"].put.responses[\"202\"]",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2019-10-17-preview/privateLinkScopes_API.json:648:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}\"].put.responses[\"202\"]",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:755:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}\"].put.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:763:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}\"].put.responses[\"202\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:198:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json:104:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json:118:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups/{serverTrustGroupName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerTrustGroups.json:118:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ManagedInstances.json:257:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAdministrators.json:164:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications/{authenticationName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json:124:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabases.json:144:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json:130:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json:130:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups/{distributedAvailabilityGroupName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/DistributedAvailabilityGroups.json:152:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases/{dnsAliasName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json:149:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector/{encryptionProtectorName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json:220:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstanceKeys.json:159:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedInstancePrivateEndpointConnections.json:108:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies/{policyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.json:136:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedServerSecurityAlertPolicies.json:124:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ServerTrustCertificates.json:152:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:155:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADAdministrators.json:124:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings/{blobAuditingPolicyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:396:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications/{authenticationName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerAzureADOnlyAuthentications.json:124:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/serverCommunicationLinks.json:147:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:124:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/Databases.json:150:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies/{policyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json:130:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/BackupShortTermRetentionPolicies.json:130:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/DatabaseExtensions.json:111:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads/{ledgerDigestUploads}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json:127:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json:471:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncMembers.json:138:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:152:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadGroups.json:116:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/WorkloadClassifiers.json:130:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings/{devOpsAuditingSettingsName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDevOpsAudit.json:110:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerDnsAliases.json:109:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-08-01-preview/ElasticPools.json:163:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:166:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings/{blobAuditingPolicyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/BlobAuditing.json:256:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json:118:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:250:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json:152:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobExecutions.json:460:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys/{keyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerKeys.json:152:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules/{outboundRuleFqdn}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json:107:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:108:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ServerSecurityAlertPolicies.json:124:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncAgents.json:118:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}\"].put.responses[\"202\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualNetworkRules.json:110:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}\"].put.responses[\"202\"]",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:196:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}\"].put.responses[\"202\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:165:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}\"].put.responses[\"202\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:647:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}\"].put.responses[\"202\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:2624:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}\"].put.responses[\"202\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1133:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}\"].put.responses[\"202\"]",
+    "source": "specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/storagesync.json:1996:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}\"].put.responses[\"202\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:483:10"
+  },
+  {
+    "code": "CreateOperationAsyncResponseValidation",
+    "message": "Only 201 is the supported response code for PUT async response.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}\"].put.responses[\"202\"]",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1023:10"
+  }
+]

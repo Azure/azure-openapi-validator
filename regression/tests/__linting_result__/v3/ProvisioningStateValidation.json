@@ -1,0 +1,86 @@
+[
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.Cache.properties.properties.properties.provisioningState",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1575:12"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.DataCollectionEndpoint.properties.provisioningState",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionEndpoints_API.json:398:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.DataCollectionRule.properties.provisioningState",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRules_API.json:924:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.DataCollectionRuleAssociation.properties.provisioningState",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:334:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.GalleryApplicationVersionProperties.properties.provisioningState",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2069:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.GalleryImageProperties.properties.provisioningState",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2251:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.GalleryImageVersionProperties.properties.provisioningState",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:2418:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.GalleryProperties.properties.provisioningState",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1772:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.PrivateEndpointConnectionProperties.properties.provisioningState",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/PrivateEndpointConnections.json:223:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.PrivateEndpointConnectionProperties.properties.provisioningState",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Servers.json:634:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.ProvisioningState",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/network.json:241:4"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.ProvisioningState",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:1117:4"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.StorageAccountProperties.properties.provisioningState",
+    "source": "specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/storage.json:3522:8"
+  },
+  {
+    "code": "ProvisioningStateValidation",
+    "message": "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+    "jsonpath": "$.definitions.StorageTargetProperties.properties.provisioningState",
+    "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2249:8"
+  }
+]

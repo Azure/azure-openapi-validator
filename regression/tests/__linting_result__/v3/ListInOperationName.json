@@ -1,0 +1,92 @@
+[
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:881:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateLinkResources\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1410:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osUpgradeHistory\"].get",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7221:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:186:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand\"].post",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:126:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies\"].get",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:571:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:323:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:530:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:478:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:429:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:362:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:851:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:680:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:794:6"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation response has model definition in array type, it should be of the form \"_list\".",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth\"].post",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2216:6"
+  }
+]

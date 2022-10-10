@@ -1,0 +1,32 @@
+[
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DdosCustomPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DdosCustomPolicy",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LocalNetworkGateway\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LocalNetworkGateway",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3731:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServiceEndpointPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServiceEndpointPolicy",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:719:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGateway\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGateway",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3213:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGatewayConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGatewayConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3495:4"
+  }
+]

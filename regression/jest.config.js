@@ -8,15 +8,12 @@ module.exports = {
   testEnvironment: "node",
   moduleFileExtensions: ["ts", "js", "json", "node"],
   moduleNameMapper: {},
-  collectCoverage: true,
-  collectCoverageFrom: ["./lib/**/*.ts", "!**/node_modules/**"],
-  coverageReporters: ["json", "lcov", "cobertura", "text", "html", "clover"],
-  coveragePathIgnorePatterns: ["/node_modules/", ".*/tests/.*"],
   globals: {
     "ts-jest": {
       tsConfig: "tsconfig.json"
     }
   },
-  testMatch: ["**/test/**/*.ts", "!**/test/**/*.d.ts", "!**/test/sample.ts"],
-  verbose: true
+  testMatch: ["**/*.test.ts", "!*test.d.ts"],
+  verbose: true,
+  testSequencer: './test-sequence.js'
 }

@@ -1,6 +1,13 @@
 # Changelog
 
+## What's New (09/26/2022)
+
+### Changed Rule
+
+Migrate all dotnet rules to spectral or typescript.
+
 ## What's New (05/05/2022)
+
 ### Changed Rule
 
 - RequiredReadOnlySystemData - Change severity to warning.
@@ -8,27 +15,32 @@
 ## What's New (03/24/2022)
 
 ### Changed Rule
+
 - deleteOperationResponse - For LRO delete, 200 is no longer required.
-- validFormats - Support 'arm-id' format. 
+- validFormats - Support 'arm-id' format.
 
 ## What's New (02/07/2022)
 
 ### Changed Rule
-- TrackedResourcePatchOperation - Fix false positive for long running patch operation. 
+
+- TrackedResourcePatchOperation - Fix false positive for long running patch operation.
 
 ## What's New (12/15/2021)
 
 ### New validation rules
+
 - XmsIdentifierValidation - Check the identifying properties of objects in the array.
 
 ## What's New (12/10/2021)
 
 ### Changed Rule
+
 - XmsEnumValidation - Extends to check the enum in parameters & move to typescript validator.
 
 ## What's New (11/19/2021)
 
 ### New validation rules
+
 - ExtensionResourcePathPattern - To ensure extension resource path pattern conform to rpaas contract.
 - ParametersOrder - To ensure the parameters in the same order as they are ranked in the path.
 - EnumMustRespectType - To ensure the enum values conform to the type.
@@ -38,8 +50,11 @@
 ### Bug fix
 
 - UniqueClientParameterName - throw exception when reference contains '.'.
+
 ### Changed validation rules
-- LongRunningResponseStatusCode  - support response code '202' in patch operation. 
+
+- LongRunningResponseStatusCode - support response code '202' in patch operation.
+
 ## What's New (08/17/2021)
 
 ### Bug fix
@@ -49,18 +64,22 @@
 ## What's New (07/30/2021)
 
 ### Changed validation rules
-- DescriptionAndTitleMissing  - description & title are not required for reference properties. 
-- PathResourceProviderMatchNamespace  - fix the false alarm when the provider namespace in swagger file path is null.
+
+- DescriptionAndTitleMissing - description & title are not required for reference properties.
+- PathResourceProviderMatchNamespace - fix the false alarm when the provider namespace in swagger file path is null.
 - TopLevelResourcesListBySubscription - fix false positive caused by unused model.
+
 ## What's New (06/22/2021)
 
 ### Changed validation rules
-- AvoidAnonymousTypes  - add exception: anonymous types with 'x-ms-client-name'   
+
+- AvoidAnonymousTypes - add exception: anonymous types with 'x-ms-client-name'
 
 ## What's New (05/31/2021)
 
 ### New validation rules
-- MissingTypeObject - To ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object. 
+
+- MissingTypeObject - To ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object.
 
 ### Changed Rule
 
@@ -75,6 +94,7 @@
 ## What's New (02/24/2021)
 
 ### New validation rules
+
 - MissingXmsErrorResponse - Validate if error code 4xx or 5xx defined with x-ms-error-response.
 - UniqueModelName - Validate if model name is unique case insensitive.
 - AzureResourceTagsSchemaValidation - Validate if tags definition is same with the common types.
@@ -89,11 +109,13 @@
 ## What's New (02/01/2021 openapi-validator v1.8.0)
 
 ### Added plugin
+
 - Added modeler4 consumer plugin to run modeler4 check.
 
 ## What's New (12/18/2020)
 
 ### New validation rules
+
 - Rpaas_ResourceProvisioningState - Validate if 'provisioningState' is defined in a resource definition.
 
 ### Changed Rule
@@ -104,6 +126,7 @@
 ## What's New (11/23/2020)
 
 ### New validation rules
+
 - ValidResponseCodeRequired - Validate if a operation contains valid status code.
 - UniqueClientParameterName - Ensure the client parameter name unique in same API version.
 - UniqueXmsExample - Ensure the x-ms-examples name unique in same API version.
@@ -125,7 +148,7 @@
 
 ### Changed Rule
 
-- PathResourceProviderNamePascalCase - allow acronyms that consist of only two characters. 
+- PathResourceProviderNamePascalCase - allow acronyms that consist of only two characters.
 
 ### New validation rules
 
@@ -139,38 +162,38 @@
 
 ### Changed Rule
 
-- AllowedTopLevelProperties  rule -  allow new top-level property:"extendedlocation" 
+- AllowedTopLevelProperties rule - allow new top-level property:"extendedlocation"
 
 ## What's New (07/30/2020)
 
 ### New validation Rule
 
 - AllResourcesMustHaveGetOperation rule - the rule ensure all the ARM resources have a get operation.
-- NestedResourcesMustHaveListOperation rule - the rule ensure all nested resources have a list operation which return a resource collection. 
-- TopLevelResourcesListByResourceGroup rule - the rule ensure all top level resources have a list operation by resource group  which return a resource collection.
-- TopLevelResourcesListBySubscription rule - the rule ensure all top level resources have a list operation by subscriptions  which return a resource collection.
+- NestedResourcesMustHaveListOperation rule - the rule ensure all nested resources have a list operation which return a resource collection.
+- TopLevelResourcesListByResourceGroup rule - the rule ensure all top level resources have a list operation by resource group which return a resource collection.
+- TopLevelResourcesListBySubscription rule - the rule ensure all top level resources have a list operation by subscriptions which return a resource collection.
 - OperationsApiResponseSchema rule - the rule ensure all the operations API have the correct schema.
-- GetCollectionResponseSchema rule - the rule ensure the collection schema is an array whose item is exactly the schema of the specific resource.   
+- GetCollectionResponseSchema rule - the rule ensure the collection schema is an array whose item is exactly the schema of the specific resource.
 
 ## What's New (07/29/2020)
 
 ### Bug fix
 
-- DefaultErrorResponseSchema - throw exception when the examples of operations contain $ref 
+- DefaultErrorResponseSchema - throw exception when the examples of operations contain $ref
 
 ## What's New (07/27/2020)
 
 ### Changed Rule
 
-- DescriptiveDescriptionRequired rule -  change ruleId to `R4020` 
-- DescriptionAndTitleMissing rule -  change ruleId to `R4021` 
-- OperationDescriptionOrSummaryRequired rule -  change ruleId to `R4022` 
+- DescriptiveDescriptionRequired rule - change ruleId to `R4020`
+- DescriptionAndTitleMissing rule - change ruleId to `R4021`
+- OperationDescriptionOrSummaryRequired rule - change ruleId to `R4022`
 - EnumMustHaveType rule - fix false positive when `enum` is a property.
 - EnumMustNotHaveEmptyValue - fix false positive when `enum` is a property.
 - EnumUniqueValue - fix false positive when `enum` is a property.
 - IntegerTypeMustHaveFormat - fix false positive when `enum` is in `x-ms-examples`.
 - UniqueXmsEnumName - fix false positive when `enum` is in `x-ms-examples`.
-- OperationsAPIImplementation - fix false positive when exists multiple providers in path. 
+- OperationsAPIImplementation - fix false positive when exists multiple providers in path.
 
 ## What's New (05/28/2020)
 
@@ -178,20 +201,20 @@
 
 - RequiredSystemDataInNewApiVersion rule - the rule ensure the responses of GET, PUT and PATCH in new API versions contain the systemData object.
 - RequiredDefaultResponse rule - the rule ensure every operation have a default error response implementation.
-- DeleteOperationResponses rule - the rule ensure all DELETE methods have responses code implementation: 200, 204.   
+- DeleteOperationResponses rule - the rule ensure all DELETE methods have responses code implementation: 200, 204.
 - XmsPageableMustHaveCorrespondingResponse rule - the rule ensure the corresponding nextlink property has been defined in the response schema when specifying a x-ms-pagable/nextLinkName.
-- IntegerTypeMustHaveFormat rule -  the rule ensure the type:integer have a required format.
+- IntegerTypeMustHaveFormat rule - the rule ensure the type:integer have a required format.
 
 ### Changed Rule
 
-- ValidFormats rule -  format:`time` is allowed. 
+- ValidFormats rule - format:`time` is allowed.
 - LongRunningOperationsWithLongRunningExtension rule - apply to data-plane.
 
 ## What's New (05/20/2020)
 
 ### Changed Rule
 
-- XmsEnumNameUnique rule -  the rule should passed if the two enums are defined with same entries.
+- XmsEnumNameUnique rule - the rule should passed if the two enums are defined with same entries.
 
 ## What's New (04/26/2020)
 

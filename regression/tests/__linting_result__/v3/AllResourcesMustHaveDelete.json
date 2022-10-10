@@ -1,0 +1,38 @@
+[
+  {
+    "code": "AllResourcesMustHaveDelete",
+    "message": "The resource DataMaskingPolicy does not have a corresponding delete operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:19:4"
+  },
+  {
+    "code": "AllResourcesMustHaveDelete",
+    "message": "The resource DataMaskingRule does not have a corresponding delete operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/dataMasking.json:113:4"
+  },
+  {
+    "code": "AllResourcesMustHaveDelete",
+    "message": "The resource EncryptionProtector does not have a corresponding delete operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json:61:4"
+  },
+  {
+    "code": "AllResourcesMustHaveDelete",
+    "message": "The resource ExpressRouteCrossConnection does not have a corresponding delete operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}\"]",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:122:4"
+  },
+  {
+    "code": "AllResourcesMustHaveDelete",
+    "message": "The resource GeoBackupPolicy does not have a corresponding delete operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/geoBackupPolicies.json:19:4"
+  },
+  {
+    "code": "AllResourcesMustHaveDelete",
+    "message": "The resource ServerConnectionPolicy does not have a corresponding delete operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}\"]",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/ServerConnectionPolicies.json:19:4"
+  }
+]

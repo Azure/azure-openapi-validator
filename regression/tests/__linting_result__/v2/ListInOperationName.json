@@ -1,0 +1,68 @@
+[
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DisconnectActiveSessions' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:534:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'DiskAccessesGetPrivateLinkResources' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateLinkResources\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/disk.json:1414:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GallerySharingProfileUpdate' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/share\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/gallery.json:1670:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetActiveSessions' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:482:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'GetBastionShareableLink' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:434:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'OperationsDiscoveryGet' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/providers/Microsoft.Migrate/operations\"].get.operationId",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:885:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'PutBastionShareableLink' response has model definition 'x-ms-pageable', it should be of the form \"*_list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks\"].post.operationId",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:328:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'UnresolvedDependenciesGet' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies\"].get.operationId",
+    "source": "specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/resourcemovercollection.json:575:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualMachineScaleSetVMsRunCommand' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:190:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualMachineScaleSetsGetOSUpgradeHistory' response has model definition 'x-ms-pageable', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osUpgradeHistory\"].get.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:7225:8"
+  },
+  {
+    "code": "ListInOperationName",
+    "message": "Since operation 'VirtualMachinesRunCommand' response has model definition 'array', it should be of the form \"*list*\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand\"].post.operationId",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/runCommands.json:130:8"
+  }
+]

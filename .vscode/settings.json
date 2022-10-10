@@ -13,18 +13,38 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "svipas.prettier-plus"
   },
   "files.exclude": {
     "node_modules/**": true,
     "src/**/*.js": true,
     "src/**/*.js.map": true,
     "src/**/*.d.ts": true,
+    "packages/**/*.js.map": true,
+    "packages/**/*.d.ts": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "packages/rulesets/spectral/functions/*.js":false,
   },
-  "eslint.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "search.exclude": {
+    "**/dist/**": true,
+    "**/dist-dev/**": true,
+    "**/CHANGELOG.json": true,
+    "**/CHANGELOG.md": true,
+    "docs/spec.html": true,
+    "common/config/rush/pnpm-lock.yaml": true
+  },
+  "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

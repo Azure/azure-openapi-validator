@@ -1,0 +1,26 @@
+[
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'DiskPool' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.DiskPool.properties",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1410:6"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'IscsiTarget' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.IscsiTarget.properties",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1699:6"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'IscsiTargetCreate' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.IscsiTargetCreate.properties",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1732:6"
+  },
+  {
+    "code": "BodyTopLevelProperties",
+    "message": "Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition 'IscsiTargetUpdate' has extra properties ['managedByExtended'].",
+    "jsonpath": "$.definitions.IscsiTargetUpdate.properties",
+    "source": "specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json:1759:6"
+  }
+]

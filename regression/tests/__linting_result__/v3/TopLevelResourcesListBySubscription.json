@@ -1,0 +1,68 @@
+[
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ApplicationGatewayAvailableSslOptions\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ApplicationGatewayAvailableSslOptions",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3351:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ChangeResourceResult\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ChangeResourceResult",
+    "source": "specification/resources/resource-manager/Microsoft.Resources/preview/2022-03-01-preview/changes.json:164:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DataCollectionRuleAssociationProxyOnlyResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DataCollectionRuleAssociationProxyOnlyResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/dataCollectionRuleAssociations_API.json:368:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DdosCustomPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DdosCustomPolicy",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DiagnosticSettingsCategoryResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DiagnosticSettingsCategoryResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json:154:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"DiagnosticSettingsResource\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.DiagnosticSettingsResource",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json:333:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"LocalNetworkGateway\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.LocalNetworkGateway",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3731:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"ServiceEndpointPolicy\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.ServiceEndpointPolicy",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:719:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VMInsightsOnboardingStatus\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VMInsightsOnboardingStatus",
+    "source": "specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/vmInsightsOnboarding_API.json:192:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGateway\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGateway",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3213:4"
+  },
+  {
+    "code": "TopLevelResourcesListBySubscription",
+    "message": "The top-level resource \"VirtualNetworkGatewayConnection\" does not have list by subscription operation, please add it.",
+    "jsonpath": "$.definitions.VirtualNetworkGatewayConnection",
+    "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3495:4"
+  }
+]

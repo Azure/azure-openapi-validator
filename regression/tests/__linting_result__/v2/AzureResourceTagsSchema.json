@@ -1,0 +1,8 @@
+[
+  {
+    "code": "AzureResourceTagsSchema",
+    "message": "The property tags in the resource \"JobResponse\" does not conform to the common type definition.",
+    "jsonpath": "$.definitions.JobResponse",
+    "source": "specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json:830:4"
+  }
+]

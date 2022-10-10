@@ -1,105 +1,91 @@
-# Contributing
+# azure-openapi-validator
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+azure-openapi-validator is linter for azure openapi specifications, it's an extension of [autorest](https://github.com/Azure/autorest) and supports [spectral](https://github.com/stoplightio/spectral) lint rule format.
+This repo also contains all the automated linter rules that apply to the API specs in the [azure-rest-api-sepcs](https://github.com/Azure/azure-rest-api-specs).
 
-## Build dependencies
-- Node (6.9.5 or higher)
-- Node Package Manager
-- Typescript (2.3.0 or higher)
+## Rules
 
-## Build scripts
-### How to build
-The first step would be to run ```npm install``` so we have all the required modules installed.
-#### How to build the whole repo
-```
-gulp build
-```
-#### How to build the typescript repo
-```
-gulp build/typescript
-```
-#### How to build the dotnet repo
-To restore the dotnet packages
-```
-gulp restore/dotnet
-```
-This builds the dotnet projects.
-```
-gulp build/dotnet
-```
-### How to test
-To run all tests under the repo
-```
-gulp test
-```
-#### How to run the typescript tests
-```
-gulp test/typescript
-```
-#### How to run the dotnet tests
-```
-gulp test/dotnet
-```
-#### How to debug the dotnet repo
+Please refer to [rules](./docs/rules.md)
 
-This extension runs the validation on two threads:
- - Individual merge state: validates each individual OpenAPI file.
- - Composed merge state: validates the full OpenAPI spec.
+## Contributing
 
-For debugging both composed and individual merge state at the same time
-```
-autorest input/file --validation --azure-validator --use=path/to/your/repo/sr
-c/dotnet/AutoRest --azure-validator.debugger 
-```
-For debugging composed merge state
-```
-autorest input/file --validation --azure-validator --use=path/to/your/repo/sr
-c/dotnet/AutoRest --azure-validator.composed-debugger 
-```
-For debugging individual merge state
-```
-autorest --input-file=path/to/swagger --validation --azure-validator --use=path/to/your/repo/sr
-c/dotnet/AutoRest --azure-validator.individual-debugger 
-```
-#### How to debug the typescript repo
-Temporarily change the start script in `src/typescript/package.json` to `"start": "node --inspect-brk ./index.js"`.
-Then run:
-```
-autorest input/file --validation --azure-validator --use=path/to/your/repo/src/typescript
-```
-The typescript repo can be debugged with VS Code or Chrome.
-### How to write a new validation rule using typescript
-1. Add a typescript file under ```azure-openapi-validator``` directory named same as the name of the rule. Add the ```id```, ```name```, ```severity```, ```category```,  ```mergeState```,  ```openapiType```,  ```appliesTo_JsonQuery``` properties to the rule. ```appliesTo_JsonQuery``` is the node(s) to which the rule needs to be applied. This is evaluated using JsonPaths. Please refer [here](https://www.npmjs.com/package/jsonpath#jsonpath-syntax) for a brief tutorial about JsonPaths.
-2. Next, implement the ```run``` method under the rule that actually does the validation. Add a reference to this script file under ```src/typescript/azure-openapi-validator/index.ts```.
-3. Lastly add a test case for the validation rule, by adding a test json/yaml under ```src/typescript/azure-openapi-validator/tests/resources``` and a script under ```src/typescript/azure-openapi-validator/tests``` depending on the type of the validation rule.
+- If you want to submit a new rule request or bug, please file an [issue](https://github.com/Azure/azure-openapi-validator/issues)
 
-### How to run regression test
-1. Init sub module.
-```
-git update submodule --init
-```
-2. npm run 
-```
-npm run regression-test
+- If you want to contribute a new linter rule, check out [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+## Packages
+
+| Name                                            | Latest                                                                                                                             |
+| ----------------------------------------------- |---------------------------------------------------------------------------------------------------------------------------------- |
+| autorest extension
+|[openapi-validator][openapi-validator-src]| ![](https://img.shields.io/npm/v/@microsoft.azure/openapi-validator)](https://www.npmjs.com/package/@microsoft.azure/openapi-validator) |
+| core functionality
+|[openapi-validator-core][openapi-validator-core-src] |![](https://img.shields.io/npm/v/@microsoft.azure/openapi-validator-core)](https://www.npmjs.com/package/@microsoft.azure/openapi-validator-core) |
+| ruleset
+|[openapi-validator-rulesets][openapi-validator-rulesets-src]|![](https://img.shields.io/npm/v/@microsoft.azure/openapi-validator-rulsets)](https://www.npmjs.com/package/@microsoft.azure/openapi-validator-rulesets) |
+
+[openapi-validator-src]: packages/packages/azure-openapi-validator/autorest
+[openapi-validator-core-src]: packages/azure-openapi-validator/core
+[openapi-validator-rulesets-src]: packages/rulesets
+
+## How to run locally
+
+using the autorest to run the linter
+
+```bash
+autorest --v3 --azure-validator [--tag=<readme tag>] <path-to-readme>
+or
+autorest --v3 --azure-validator --input-file=<path-to-swagger>
 ```
 
-### How to run locally
-1. use default lint version:
-```
-autorest --validation --azure-validator --input-file=<path-to-spec>
-or 
-autorest --validation --azure-validator <path-to-readme> [--tag=<readme tag>]
-```
-2. use specified lint version:
-```
-autorest --validation --azure-validator --input-file=<path-to-spec> --use=@microsoft.azure/classic-openapi-validator@1.1.4 --use=@microsoft.azure/openapi-validator@1.4.0
-autorest --validation --azure-validator --use=@microsoft.azure/classic-openapi-validator@1.1.4 --use=@microsoft.azure/openapi-validator@1.4.0 [--tag=<readme tag>] <path-to-readme>
-```
-3. use latest lint version:
-```
-autorest --validation --azure-validator --input-file=<path-to-spec> --use=@microsoft.azure/classic-openapi-validator@latest --use=@microsoft.azure/openapi-validator@latest
-autorest --validation --azure-validator --use=@microsoft.azure/classic-openapi-validator@latest --use=@microsoft.azure/openapi-validator@latest [--tag=<readme tag>] <path-to-readme>
+## How to use the Spectral ruleset
+
+### Dependencies
+
+The Spectral ruleset requires Node version 14 or later.
+
+### Install Spectral
+
+`npm i @stoplight/spectral-cli -g`
+
+### Usage
+
+Azure-openapi-validator currently defines three Spectral ruleset configurations:
+  1. az-common.ts : for rules that apply to all Azure REST APIs
+  1. az-arm.ts: for rules that only apply to ARM REST APIs
+  1. az-dataplane.ts: for rules that only apply to dataplane REST APIs
+
+All rulesets reside in the `packages/rulesets/generated/spectral` folder of the repo.
+
+You can specify the ruleset directly on the command line:
+
+`spectral lint -r https://raw.githubusercontent.com/Azure/azure-openapi-validator/develop/packages/rulesets/generated/spectral/az-dataplane.js <api definition file>`
+
+Or you can create a Spectral configuration file (`.spectral.yaml`) that references the ruleset:
+
+```yaml
+extends:
+  - https://raw.githubusercontent.com/Azure/azure-openapi-validator/develop/packages/rulesets/generated/spectral/az-dataplane.js
 ```
 
-### How to publish
+### Example
 
+```bash
+spectral lint -r https://raw.githubusercontent.com/Azure/azure-openapi-validator/develop/packages/rulesets/generated/spectral/az-dataplane.js petstore.yaml
+```
+
+### Using the Spectral VSCode extension
+
+There is a [Spectral VSCode extension](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) that will run the Spectral linter on an open API definition file and show errors right within VSCode.  You can use this ruleset with the Spectral VSCode extension.
+
+1. Install the Spectral VSCode extension from the extensions tab in VSCode.
+2. Create a Spectral configuration file (`.spectral.yaml`) in the root directory of your project as shown above.
+3. Set `spectral.rulesetFile` to the name of this configuration file in your VSCode settings.
+
+Now when you open an API definition in this project, it should highlight lines with errors.
+You can also get a full list of problems in the file by opening the "Problems panel" with "View / Problems".
+In the Problems panel you can filter to show or hide errors, warnings, or infos.
+
+## Troubleshooting
+
+[See common issues here](./troubleshooting.md)

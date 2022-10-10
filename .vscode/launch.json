@@ -53,6 +53,17 @@
             "preLaunchTask": "build"
         },
         {
+            "type": "node",
+            "protocol": "inspector",
+            "request": "launch",
+            "name": "run cli",
+            "program": "${workspaceRoot}/src/typescript/commands/cli.js",
+            "args": [
+                "D:/codes/forks/azure-openapi-validator/src/typescript/azure-openapi-validator/tests/resources/armResource/cdn.json","--openapiType","arm"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",

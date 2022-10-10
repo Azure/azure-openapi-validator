@@ -1,0 +1,14 @@
+[
+  {
+    "code": "LongRunningOperationsWithLongRunningExtension",
+    "message": "The operation 'FirewallRules_Replace' returns 202 status code, which indicates a long running operation, please enable \"x-ms-long-running-operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:212:6"
+  },
+  {
+    "code": "LongRunningOperationsWithLongRunningExtension",
+    "message": "The operation 'TransparentDataEncryptions_CreateOrUpdate' returns 202 status code, which indicates a long running operation, please enable \"x-ms-long-running-operation.",
+    "jsonpath": "$.paths[\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}\"].put",
+    "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/TransparentDataEncryptions.json:82:6"
+  }
+]

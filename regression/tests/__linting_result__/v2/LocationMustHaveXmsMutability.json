@@ -1,0 +1,20 @@
+[
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'CloudService'",
+    "jsonpath": "$.definitions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'Resource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"
+  },
+  {
+    "code": "LocationMustHaveXmsMutability",
+    "message": "Property 'location' must have '\"x-ms-mutability\":[\"read\", \"create\"]' extension defined. Resource Model: 'VirtualMachineImageResource'",
+    "jsonpath": "$.definitions",
+    "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json:1660:2"
+  }
+]

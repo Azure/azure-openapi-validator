@@ -1,0 +1,40 @@
+{
+    
+    "compilerOptions": {
+        "baseUrl": ".",
+        "types": [
+            "node","jest"
+        ],
+        "moduleResolution": "node",
+        "target": "ES2019",
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "lib": ["es2021"],
+        "strict": false,
+        "pretty": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "declaration": true,
+        "removeComments": true,
+        "skipLibCheck": false,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "skipDefaultLibCheck": true,
+        "allowJs": false,
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "sourcemap": true
+}
