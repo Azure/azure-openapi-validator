@@ -74,6 +74,17 @@ describe("CompositeAzureTests", () => {
     )
     assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 1)
   })
+
+  test("extension top level resources should report no errors", async () => {
+    const fileName = ["armResource/extensionTrackedResourceNoListBySubscription.json", "armResource/trackedResourceCommon.json"]
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      TopLevelResourcesListBySubscription
+    )
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 0)
+  })
+
   test("top level resources must list by subscription", async () => {
     const fileName = "armResource/compute.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(

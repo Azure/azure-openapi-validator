@@ -55,6 +55,7 @@ export class ArmHelper {
 
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+$", "gi")
 
+  private ExtensionResourceReg = new RegExp(".+/providers/.+/providers/.+$", "gi")
   //  resource model with 'x-ms-resource' or allOfing 'Resource' or 'TrackedResource' for ProxyResource
   private XmsResources = new Set<string>()
   resources: ResourceInfo[] = []
@@ -235,7 +236,7 @@ export class ArmHelper {
     return fullResources.filter((re) =>
       re.operations.some((op) => {
         const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
-        if (hierarchy.length === 1) {
+        if (hierarchy.length === 1 && !this.isPathOfExtensionResource(op.apiPath)) {
           return true
         }
         return false
@@ -554,6 +555,10 @@ export class ArmHelper {
 
   public isPathByResourceGroup(path: string) {
     return !!path.match(this.ResourceGroupWideResourceRegEx)
+  }
+
+  public isPathOfExtensionResource(path: string) {
+    return !!path.match(this.ExtensionResourceReg)
   }
 
   /**
