@@ -22,9 +22,7 @@ rules.push({
     }
 
     const isAsyncOperation =
-      node.responses["201"] ||
-      (node["x-ms-long-running-operation"] && node["x-ms-long-running-operation"] === true) ||
-      node["x-ms-long-running-operation-options"]
+      (node["x-ms-long-running-operation"] && node["x-ms-long-running-operation"] === true) || node["x-ms-long-running-operation-options"]
 
     if (isAsyncOperation) {
       if (!node.responses["201"]) {
