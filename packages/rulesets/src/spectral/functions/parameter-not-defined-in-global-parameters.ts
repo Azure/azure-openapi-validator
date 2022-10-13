@@ -29,7 +29,7 @@ export const parameterNotDefinedInGlobalParameters = (parameters: any, _opts: an
         pushToError(errors, "subscriptionId", path)
       }
     }
-    const commonTypeApiVersionReg = /.*common\-types\/resource-management\/v\d\/types\.json#\/parameters\/ApiVersionParameter/gi
+    const commonTypeApiVersionReg = /.*common-types\/resource-management\/v\d\/types\.json#\/parameters\/ApiVersionParameter/gi
     // For ARM specs, api version is almost always required, call it out if it isn't defined in the global params
     // We are not distinguishing between ARM and non-ARM specs currently, so let's apply this for all specs regardless
     // and make appropriate changes in the future so this gets applied only for ARM specs

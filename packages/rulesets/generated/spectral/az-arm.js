@@ -781,13 +781,13 @@ const xmsExamplesRequired = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null || typeof swaggerObj !== "object") {
         return [];
     }
-    if (swaggerObj['x-ms-examples'] !== undefined)
+    if (swaggerObj["x-ms-examples"] !== undefined && Object.keys(swaggerObj["x-ms-examples"].length > 0))
         return [];
     const path = paths.path || [];
     return [
         {
             message: `Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.`,
-            path: path
+            path: path,
         },
     ];
 };
@@ -1676,7 +1676,7 @@ const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
                 pushToError(errors, "subscriptionId", path);
             }
         }
-        const commonTypeApiVersionReg = /.*common\-types\/resource-management\/v\d\/types\.json#\/parameters\/ApiVersionParameter/gi;
+        const commonTypeApiVersionReg = /.*common-types\/resource-management\/v\d\/types\.json#\/parameters\/ApiVersionParameter/gi;
         if (!globalParametersList.includes("api-version") && !parameters.some((p) => p.$ref && commonTypeApiVersionReg.test(p.$ref))) {
             pushToError(errors, "api-version", path);
         }

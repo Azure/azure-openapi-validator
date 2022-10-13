@@ -664,13 +664,13 @@ const xmsExamplesRequired = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null || typeof swaggerObj !== "object") {
         return [];
     }
-    if (swaggerObj['x-ms-examples'] !== undefined)
+    if (swaggerObj["x-ms-examples"] !== undefined && Object.keys(swaggerObj["x-ms-examples"].length > 0))
         return [];
     const path = paths.path || [];
     return [
         {
             message: `Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.`,
-            path: path
+            path: path,
         },
     ];
 };
