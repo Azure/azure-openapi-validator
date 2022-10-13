@@ -19,7 +19,6 @@ import { operationIdSingleUnderscore } from "./functions/one-underscore-in-opera
 import { operationIdNounConflictingModelNames } from "./functions/operation-id-noun-conflicting-model-names"
 import { operationIdNounVerb } from "./functions/operation-id-noun-verb"
 import paramLocation from "./functions/parameter-location"
-import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { patchInOperationName } from "./functions/patch-in-operation-name"
 import { putInOperationName } from "./functions/put-in-operation-name"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
@@ -204,18 +203,6 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
       then: {
         function: deleteInOperationName,
-      },
-    },
-    ParameterNotDefinedInGlobalParameters: {
-      description:
-        "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
-      message: "{{error}}",
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
-      then: {
-        function: parameterNotDefinedInGlobalParameters,
       },
     },
     PutRequestResponseScheme: {

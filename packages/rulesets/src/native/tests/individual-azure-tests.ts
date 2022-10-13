@@ -185,7 +185,7 @@ describe("IndividualAzureTests", () => {
   })
 
   // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
-  test("Raas Put async operation doesn't support 202", async () => {
+  test("Put async operation doesn't support 202", async () => {
     const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
@@ -197,7 +197,7 @@ describe("IndividualAzureTests", () => {
 
   // Failure #1 : 'x-ms-long-running-operation' is missing
   // Failure #2: 'x-ms-long-running-operation-options' is missing
-  test("Raas Put async operation missing x-ms* async extensions", async () => {
+  test.skip("Put async operation missing x-ms* async extensions", async () => {
     const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
@@ -421,6 +421,4 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
-
-  
 })

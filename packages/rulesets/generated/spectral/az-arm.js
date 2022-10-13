@@ -585,46 +585,6 @@ function paramLocation(paramSchema, options, { path }) {
     return errors;
 }
 
-const pushToError = (errors, parameter, path) => {
-    errors.push({
-        message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
-        path: [...path],
-    });
-};
-const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
-    var _a;
-    if (parameters === null || !Array.isArray(parameters)) {
-        return [];
-    }
-    if (parameters.length === 0) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const globalParametersList = [];
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    if (swagger.parameters) {
-        for (const parameters in swagger.parameters) {
-            const parameterName = swagger.parameters[parameters].name;
-            globalParametersList.push(parameterName);
-        }
-        for (const parameter of parameters) {
-            if (parameter.name &&
-                parameter.name === "subscriptionId" &&
-                !globalParametersList.includes("subscriptionId")) {
-                pushToError(errors, "subscriptionId", path);
-            }
-        }
-        if (!globalParametersList.includes("api-version")) {
-            pushToError(errors, "api-version", path);
-        }
-    }
-    else {
-        pushToError(errors, "api-version", path);
-    }
-    return errors;
-};
-
 const patchInOperationName = (operationId, _opts, ctx) => {
     if (operationId === "" || typeof operationId !== "string") {
         return [];
@@ -821,13 +781,13 @@ const xmsExamplesRequired = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null || typeof swaggerObj !== "object") {
         return [];
     }
-    if (swaggerObj['x-ms-examples'] !== undefined)
+    if (swaggerObj["x-ms-examples"] !== undefined && Object.keys(swaggerObj["x-ms-examples"].length > 0))
         return [];
     const path = paths.path || [];
     return [
         {
             message: `Please provide x-ms-examples describing minimum/maximum property set for response/request payloads for operations.`,
-            path: path
+            path: path,
         },
     ];
 };
@@ -1005,17 +965,6 @@ const ruleset$1 = {
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
             then: {
                 function: deleteInOperationName,
-            },
-        },
-        ParameterNotDefinedInGlobalParameters: {
-            description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
-            message: "{{error}}",
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
-            then: {
-                function: parameterNotDefinedInGlobalParameters,
             },
         },
         PutRequestResponseScheme: {
@@ -1699,6 +1648,45 @@ function operationsApiSchema(schema, options, { path }) {
     return errors;
 }
 
+const pushToError = (errors, parameter, path) => {
+    errors.push({
+        message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
+        path: [...path],
+    });
+};
+const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
+    var _a;
+    if (parameters === null || !Array.isArray(parameters)) {
+        return [];
+    }
+    if (parameters.length === 0) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const globalParametersList = [];
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (swagger.parameters) {
+        for (const parameters in swagger.parameters) {
+            const parameterName = swagger.parameters[parameters].name;
+            globalParametersList.push(parameterName);
+        }
+        for (const parameter of parameters) {
+            if (parameter.name && parameter.name === "subscriptionId" && !globalParametersList.includes("subscriptionId")) {
+                pushToError(errors, "subscriptionId", path);
+            }
+        }
+        const commonTypeApiVersionReg = /.*common-types\/resource-management\/v\d\/types\.json#\/parameters\/ApiVersionParameter/gi;
+        if (!globalParametersList.includes("api-version") && !parameters.some((p) => p.$ref && commonTypeApiVersionReg.test(p.$ref))) {
+            pushToError(errors, "api-version", path);
+        }
+    }
+    else {
+        pushToError(errors, "api-version", path);
+    }
+    return errors;
+};
+
 const pathBodyParameters = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
         return [];
@@ -2303,6 +2291,17 @@ const ruleset = {
                 functionOptions: {
                     match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
                 },
+            },
+        },
+        ParameterNotDefinedInGlobalParameters: {
+            description: "Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+            then: {
+                function: parameterNotDefinedInGlobalParameters,
             },
         },
         CollectionObjectPropertiesNaming: {
