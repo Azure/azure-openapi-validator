@@ -2,7 +2,7 @@
 
 ## Category
 
-RPaaS Error
+ARM Error
 
 ## Applies to
 
@@ -14,7 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-POST async supports
+- Only 202 is the supported response code for POST async response.
+- An async POST operation must return 202.
+- An async POST operation must set '"x-ms-long-running-operation" : true''.
+- An async POST operation must set long running operation options 'x-ms-long-running-operation-options'.
+- An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' on 'x-ms-long-running-operation-options'.
 
 ## Description
 
@@ -30,7 +34,7 @@ November 12, 2020
 
 ## Why this rule is important
 
-RPaaS only supports 202 for async POST operations. This is enforced at runtime via swagger validation.
+202 or async POST operations. This is enforced at runtime via swagger validation.
 
 ## How to fix the violation
 
