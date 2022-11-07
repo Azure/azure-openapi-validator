@@ -145,7 +145,7 @@ const ruleset: any = {
       description:
         "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
       message: "{{description}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -387,6 +387,7 @@ const ruleset: any = {
       severity: "error",
       message: "{{error}}",
       resolved: true,
+
       formats: [oas2],
       given: "$.paths.*[get,post]",
       then: {
