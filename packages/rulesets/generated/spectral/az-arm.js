@@ -1496,7 +1496,7 @@ function checkApiVersion(param) {
     return true;
 }
 const apiVersionName = "api-version";
-const hasApiVersionParameter = (apiPath, opts, paths) => {
+const hasApiVersionParameter = (apiPath, opts, ctx) => {
     var _a, _b;
     if (apiPath === null || typeof apiPath !== 'object') {
         return [];
@@ -1504,7 +1504,7 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     if (opts === null || typeof opts !== 'object' || !opts.methods) {
         return [];
     }
-    const path = paths.path || [];
+    const path = ctx.path || [];
     if (apiPath.parameters) {
         if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
             return [];
@@ -2071,7 +2071,7 @@ const ruleset = {
         XmsLongRunningOperationOptions: {
             description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
             message: "{{description}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
