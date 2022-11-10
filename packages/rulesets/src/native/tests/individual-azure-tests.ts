@@ -410,7 +410,7 @@ describe("IndividualAzureTests", () => {
 
   test("no delete in for tracked resource", async () => {
     const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
-    const ruleName = "AllResourcesMustHaveDelete"
+    const ruleName = "TrackedResourcesMustHaveDelete"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })

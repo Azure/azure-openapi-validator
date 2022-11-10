@@ -33,9 +33,8 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
 // support delete operation for all tracked resource , and all top level proxy resources.
 export function* allResourcesHaveDelete(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allTrackedResources = armHelper.getTrackedResources()
-  const allTopLevelResource = armHelper.getTopLevelResources()
-  const allResources = _.uniq(allTrackedResources.concat(allTopLevelResource))
+  const allTrackedResources = armHelper.getTrackedResources().filter((re) => !armHelper.isTenantResource(re))
+  const allResources = _.uniq(allTrackedResources)
   for (const re of allResources) {
     const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
     if (apiPath) {
@@ -170,7 +169,7 @@ export function* resourcesHaveRequiredProperties(openapiSection: any, options: {
 
 export function* xmsPageableListByRGAndSubscriptions(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const trackedResources = armHelper.getTrackedResources()
+  const trackedResources = armHelper.getTrackedResources().filter((re) => !armHelper.isTenantResource(re))
   const collectionApiInfos = armHelper.getCollectionApiInfo()
   function isListByRgAndSubscription(apiPaths: string[]) {
     return apiPaths.some((p) => armHelper.isPathByResourceGroup(p)) && apiPaths.some((p) => armHelper.isPathBySubscription(p))

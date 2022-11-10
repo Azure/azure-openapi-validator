@@ -33,7 +33,7 @@ export const armRuleset: IRuleSet = {
       },
     },
     // https://github.com/Azure/azure-openapi-validator/issues/329
-    AllResourcesMustHaveDelete: {
+    TrackedResourcesMustHaveDelete: {
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",

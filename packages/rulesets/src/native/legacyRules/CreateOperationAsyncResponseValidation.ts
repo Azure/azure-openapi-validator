@@ -20,7 +20,6 @@ rules.push({
         location: path.concat(["responses", "202"]),
       }
     }
-
     const isAsyncOperation =
       (node["x-ms-long-running-operation"] && node["x-ms-long-running-operation"] === true) || node["x-ms-long-running-operation-options"]
 
