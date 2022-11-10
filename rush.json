@@ -18,15 +18,18 @@
   "projects": [
     {
       "packageName": "@microsoft.azure/openapi-validator-core",
-      "projectFolder": "packages/azure-openapi-validator/core"
+      "projectFolder": "packages/azure-openapi-validator/core",
+      "shouldPublish": true
     },
     {
       "packageName": "@microsoft.azure/openapi-validator",
-      "projectFolder": "packages/azure-openapi-validator/autorest"
+      "projectFolder": "packages/azure-openapi-validator/autorest",
+      "shouldPublish": true
     },
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "projectFolder": "packages/rulesets"
+      "projectFolder": "packages/rulesets",
+      "shouldPublish": true
     },
     {
       "packageName": "openapi-validator-regression",
