@@ -129,7 +129,7 @@ const ruleset: any = {
     },
     // https://github.com/Azure/azure-openapi-validator/issues/332
     ProvisioningStateValidation: {
-      description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+      description: "[RPC-V1-ASYNC-03] ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
       resolved: false,
