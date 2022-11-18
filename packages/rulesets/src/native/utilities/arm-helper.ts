@@ -5,6 +5,7 @@
 import { ISwaggerInventory, parseJsonRef } from "@microsoft.azure/openapi-validator-core"
 import _ from "lodash"
 import { nodes } from "./jsonpath"
+import { isLikeTenantResourcePath } from "./rules-helper"
 import { SwaggerHelper } from "./swagger-helper"
 import { SwaggerWalker } from "./swagger-walker"
 import { Workspace } from "./swagger-workspace"
@@ -297,6 +298,10 @@ export class ArmHelper {
       return false
     })
     return allTrackedResources
+  }
+
+  public isTenantResource(re: ResourceInfo) {
+    return re.operations.some((op) => isLikeTenantResourcePath(op.apiPath))
   }
 
   public getAllResourceNames() {

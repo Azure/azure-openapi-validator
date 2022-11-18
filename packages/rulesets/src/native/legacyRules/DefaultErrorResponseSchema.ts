@@ -20,9 +20,8 @@ rules.push({
       "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content."
 
     const response: any = node
+    const paths = path.concat(["default"])
     if (response.default && response.default.schema) {
-      const paths = path.concat(["default"])
-
       const schema: any = Workspace.jsonPath(paths.concat("schema"), doc)
       if (schema) {
         const errorDefinition = Workspace.getProperty({ file: ctx?.specPath!, value: schema }, "error", ctx?.inventory! as SwaggerInventory)
@@ -34,6 +33,8 @@ rules.push({
           }
         }
       }
+    }
+    if (response.default) {
       yield { message: `${msg}`, location: paths }
     }
   },
