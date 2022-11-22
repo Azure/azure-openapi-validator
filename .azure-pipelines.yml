@@ -1,9 +1,10 @@
 trigger:
 
-- master
+- main
 
 variables:
   NodeVersion: '12.x'
+  Codeql.Enabled: true
 
 jobs:
   - job: 'Build'
