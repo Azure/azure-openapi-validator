@@ -1,6 +1,21 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
-import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
+import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
+
+function camelCase(propertyName, options, { path }) {
+    if (!propertyName) {
+        return [];
+    }
+    const errors = [];
+    const camelCaseReg = /^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)+$|^[a-z0-9\$-]+$|^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)*[A-Z]{1,3}$/;
+    if (!camelCaseReg.test(propertyName)) {
+        errors.push({
+            message: "",
+            path
+        });
+    }
+    return errors;
+}
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
     if (schema === null || schema["x-ms-client-name"] !== undefined) {
@@ -709,16 +724,16 @@ function checkSchemaFormat(schema, options, { path }) {
         "odata-query",
         "certificate",
         "uri",
-        "uri_reference",
-        "uri_template",
+        "uri-reference",
+        "uri-template",
         "email",
         "hostname",
         "ipv4",
         "ipv6",
         "regex",
-        "json_pointer",
-        "relative_json_pointer",
-        "arm_id",
+        "json-pointer",
+        "relative-json-pointer",
+        "arm-id",
     ];
     if (schema.type && schema.format) {
         if (!schemaFormats.includes(schema.format)) {
@@ -1496,7 +1511,7 @@ function checkApiVersion(param) {
     return true;
 }
 const apiVersionName = "api-version";
-const hasApiVersionParameter = (apiPath, opts, ctx) => {
+const hasApiVersionParameter = (apiPath, opts, paths) => {
     var _a, _b;
     if (apiPath === null || typeof apiPath !== 'object') {
         return [];
@@ -1504,7 +1519,7 @@ const hasApiVersionParameter = (apiPath, opts, ctx) => {
     if (opts === null || typeof opts !== 'object' || !opts.methods) {
         return [];
     }
-    const path = ctx.path || [];
+    const path = paths.path || [];
     if (apiPath.parameters) {
         if (apiPath.parameters.some((p) => p.name === apiVersionName && checkApiVersion(p))) {
             return [];
@@ -2333,10 +2348,7 @@ const ruleset = {
             resolved: false,
             given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
             then: {
-                function: casing,
-                functionOptions: {
-                    type: "camel",
-                },
+                function: camelCase,
             },
         },
         GuidUsage: {

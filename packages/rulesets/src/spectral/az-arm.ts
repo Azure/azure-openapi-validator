@@ -1,5 +1,6 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { casing, falsy, pattern, truthy } from "@stoplight/spectral-functions"
+import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
+import { camelCase } from "./functions/camel-case"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
@@ -413,10 +414,7 @@ const ruleset: any = {
       resolved: false,
       given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
       then: {
-        function: casing,
-        functionOptions: {
-          type: "camel",
-        },
+        function: camelCase,
       },
     },
     GuidUsage: {
