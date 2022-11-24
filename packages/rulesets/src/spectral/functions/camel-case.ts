@@ -8,7 +8,7 @@ export function camelCase(propertyName: string, options: any, { path }: { path: 
   }
   const errors:IFunctionResult[] = []
 
-  const camelCaseReg = /^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)+$|^[a-z0-9\$-]+$|^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)*[A-Z]{1,3}$/
+  const camelCaseReg = /^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)+$|^[a-z0-9$-]+$|^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)*[A-Z]{1,3}$/
 
   if (!camelCaseReg.test(propertyName)) {
     errors.push({

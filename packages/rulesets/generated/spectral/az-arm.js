@@ -2,21 +2,6 @@ import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
-function camelCase(propertyName, options, { path }) {
-    if (!propertyName) {
-        return [];
-    }
-    const errors = [];
-    const camelCaseReg = /^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)+$|^[a-z0-9\$-]+$|^[a-z0-9\$-]+([A-Z]{1,3}[a-z0-9\$-]+)*[A-Z]{1,3}$/;
-    if (!camelCaseReg.test(propertyName)) {
-        errors.push({
-            message: "",
-            path
-        });
-    }
-    return errors;
-}
-
 const avoidAnonymousSchema = (schema, _opts, paths) => {
     if (schema === null || schema["x-ms-client-name"] !== undefined) {
         return [];
@@ -1419,6 +1404,21 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     }
     return errors;
 };
+
+function camelCase(propertyName, options, { path }) {
+    if (!propertyName) {
+        return [];
+    }
+    const errors = [];
+    const camelCaseReg = /^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)+$|^[a-z0-9$-]+$|^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)*[A-Z]{1,3}$/;
+    if (!camelCaseReg.test(propertyName)) {
+        errors.push({
+            message: "",
+            path
+        });
+    }
+    return errors;
+}
 
 const collectionObjectPropertiesNaming = (op, _opts, paths) => {
     var _a, _b;
