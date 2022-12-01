@@ -38,6 +38,7 @@ const ruleset: any = {
         function: truthy,
       },
     },
+    // RPC-V2-URI-9
     ApiVersionParameterRequired: {
       description: "All operations should have api-version query parameter.",
       message: "{{error}}",
@@ -66,6 +67,7 @@ const ruleset: any = {
         },
       },
     },
+    // RPC-V2-Patch-10
     PatchBodyParametersSchema: {
       description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
       message: "{{error}}",
@@ -78,6 +80,7 @@ const ruleset: any = {
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/324
+    // RPC-V2-Patch-3
     ConsistentPatchProperties: {
       description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
       message: "{{error}}",
@@ -90,6 +93,7 @@ const ruleset: any = {
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/335
+    // RPC-V2-Patch-6, RPC-V2-ASYNC-8
     LroPatch202: {
       description: "Async PATCH should return 202.",
       message: "{{error}}",
@@ -102,6 +106,7 @@ const ruleset: any = {
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/330
+    // RPC-V2-Delete-04
     DeleteResponseBodyEmpty: {
       description: "The delete response body must be empty.",
       message: "{{description}}",
