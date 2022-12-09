@@ -13,7 +13,7 @@ export const camelCase = createRuleFunctionWithPasses((propertyName: string, opt
 
   if (!camelCaseReg.test(propertyName)) {
     errors.push({
-      message:"",
+      message: "Property name should be camel case.",
       path
     })
   }

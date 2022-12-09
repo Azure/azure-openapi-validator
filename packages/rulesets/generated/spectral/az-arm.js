@@ -334,7 +334,7 @@ function createRuleFunctionWithPasses(fn) {
         const messsages = fn(input, options, ctx);
         if (messsages.length === 0) {
             messsages.push({
-                message: `[Info]this is a message to indicate that this rule was passed for specific swagger schema successfully, please ignore it if you see this message output by spectral cli diectly.`,
+                message: `[Verbose]this is a verbose message to indicate that this rule was passed for specific swagger schema successfully and no fix is needed, please ignore it.`,
                 path: ctx.path
             });
         }
@@ -1425,7 +1425,7 @@ const camelCase = createRuleFunctionWithPasses((propertyName, options, { path })
     const camelCaseReg = /^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)+$|^[a-z0-9$-]+$|^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)*[A-Z]{1,3}$/;
     if (!camelCaseReg.test(propertyName)) {
         errors.push({
-            message: "",
+            message: "Property name should be camel case.",
             path
         });
     }
@@ -2354,7 +2354,7 @@ const ruleset = {
         },
         DefinitionsPropertiesNamesCamelCase: {
             description: "Property names should be camel case.",
-            message: "Property name should be camel case.",
+            message: "{{error}}",
             severity: "error",
             resolved: false,
             given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
