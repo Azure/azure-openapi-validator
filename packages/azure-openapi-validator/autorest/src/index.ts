@@ -27,8 +27,9 @@ function convertLintMsgToAutoRestMsg(message:LintResultMessage):Message {
 
   // we can infer the resource type from the path pattern like: "{scope}/providers/MyNamepace/RT1/{rt1Name}/RT2/{rt2Name}" whose pathComponentsTail is ["MyNamespace","RT1","{rt1Name}","RT2","{rt2Name}"]
   const pathComponentResourceType = pathComponentsTail && pathComponentsTail.length >= 3 && pathComponentsTail.length % 2 ? pathComponentsTail[pathComponentsTail.length -2] : ""
+  const type = message.message.startsWith("[Verbose]this is a verbose message to indicate that this rule was passed for specific swagger schema successfully and no fix is needed]") ? "verbose" : message.type
   const msg = {
-    Channel: message.type,
+    Channel: type,
     Text: message.message,
     Key: [message.code],
     Source: [
