@@ -39,17 +39,17 @@ function checkSchemaFormat(schema: any, options: any, { path }: { path: JsonPath
 
     // ajv supported format
     "uri",
-    "uri_reference",
-    "uri_template",
+    "uri-reference",
+    "uri-template",
     "email",
     "hostname",
     "ipv4",
     "ipv6",
     "regex",
-    "json_pointer",
-    "relative_json_pointer",
+    "json-pointer",
+    "relative-json-pointer",
     // for arm id purpose
-    "arm_id",
+    "arm-id",
   ]
 
   if (schema.type && schema.format) {

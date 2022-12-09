@@ -592,16 +592,16 @@ function checkSchemaFormat(schema, options, { path }) {
         "odata-query",
         "certificate",
         "uri",
-        "uri_reference",
-        "uri_template",
+        "uri-reference",
+        "uri-template",
         "email",
         "hostname",
         "ipv4",
         "ipv6",
         "regex",
-        "json_pointer",
-        "relative_json_pointer",
-        "arm_id",
+        "json-pointer",
+        "relative-json-pointer",
+        "arm-id",
     ];
     if (schema.type && schema.format) {
         if (!schemaFormats.includes(schema.format)) {
