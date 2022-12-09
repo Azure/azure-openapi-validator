@@ -329,6 +329,18 @@ function isSchemaEqual(a, b) {
     }
     return false;
 }
+function createRuleFunctionWithPasses(fn) {
+    return (input, options, ctx) => {
+        const messsages = fn(input, options, ctx);
+        if (messsages.length === 0) {
+            messsages.push({
+                message: `[Info]this is a message to indicate that this rule was passed for specific swagger schema successfully, please ignore it if you see this message output by spectral cli diectly.`,
+                path: ctx.path
+            });
+        }
+        return messsages;
+    };
+}
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     var _a, _b, _c;
@@ -1405,7 +1417,7 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     return errors;
 };
 
-function camelCase(propertyName, options, { path }) {
+const camelCase = createRuleFunctionWithPasses((propertyName, options, { path }) => {
     if (!propertyName) {
         return [];
     }
@@ -1418,7 +1430,7 @@ function camelCase(propertyName, options, { path }) {
         });
     }
     return errors;
-}
+});
 
 const collectionObjectPropertiesNaming = (op, _opts, paths) => {
     var _a, _b;
@@ -1734,7 +1746,7 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
-const pathSegmentCasing = (apiPaths, _opts, paths) => {
+const pathSegmentCasing = (apiPaths, _opts, { path }) => {
     if (apiPaths === null || typeof apiPaths !== 'object') {
         return [];
     }
@@ -1742,7 +1754,6 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
         return [];
     }
     const segments = _opts.segments;
-    const path = paths.path || [];
     const errors = [];
     for (const apiPath of Object.keys(apiPaths)) {
         segments.forEach((seg) => {
