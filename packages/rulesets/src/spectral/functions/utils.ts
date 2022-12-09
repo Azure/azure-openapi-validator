@@ -177,7 +177,7 @@ export function isSchemaEqual(a: any, b: any): boolean {
   return false;
 }
 
-export function createRuleFunctionWithPasses<I extends unknown = unknown, O extends unknown = unknown>(fn:(input:I, options:O, ctx: RulesetFunctionContext)=> IFunctionResult[]) {
+export function createRuleFunctionWithPasses<I = unknown, O = unknown>(fn:(input:I, options:O, ctx: RulesetFunctionContext)=> IFunctionResult[]) {
   return (input:I, options:O, ctx: RulesetFunctionContext):IFunctionResult[] => {
     const messsages = fn(input,options,ctx)
     if (messsages.length === 0) {
