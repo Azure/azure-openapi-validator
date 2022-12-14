@@ -1,0 +1,17 @@
+{
+  "name": "@microsoft.azure/openapi-validator-rulesets",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.0.1",
+      "date": "Thu, 24 Nov 2022 04:00:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix rule DefinitionsPropertiesNamesCamelCase & validFormats"
+          }
+        ]
+      }
+    }
+  ]
+}

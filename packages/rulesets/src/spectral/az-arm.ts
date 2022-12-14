@@ -1,8 +1,9 @@
 import { oas2 } from "@stoplight/spectral-formats"
-import { casing, falsy, pattern, truthy } from "@stoplight/spectral-functions"
+import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
+import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
@@ -516,10 +517,7 @@ const ruleset: any = {
       resolved: false,
       given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
       then: {
-        function: casing,
-        functionOptions: {
-          type: "camel",
-        },
+        function: camelCase,
       },
     },
     GuidUsage: {
