@@ -10,11 +10,11 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-V2-URI-9
+- RPC-Uri-V1-08
 
 ## Description
 
-This rule applies when the 'api-version' parameter is missing in any operations.
+Operation is missing the 'api-version' parameter.
 
 ## How to fix
 

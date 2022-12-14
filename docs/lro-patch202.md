@@ -10,8 +10,7 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-V2-Patch-6
-- RPC-V2-ASYNC-8
+- RPC-Patch-V1-06, RPC-Async-V1-08
 
 ## Output Message
 

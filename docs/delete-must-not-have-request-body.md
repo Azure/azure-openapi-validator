@@ -8,6 +8,10 @@ SDK Error
 
 ARM and Data plane OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-Delete-V1-02
+
 ## Output Message
 
 'Delete' operation '{0}' must not have a request body.
