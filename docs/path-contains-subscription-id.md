@@ -10,11 +10,11 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-V2-URI-1
+- RPC-Uri-V1-01
 
 ## Output Message
 
-The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.
+The path for the resource group scoped CRUD methods do not contain the subscriptionId parameter.
 
 ## Description
 

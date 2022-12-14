@@ -8,6 +8,10 @@ ARM Warning
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-Async-V1-06
+
 ## Output Message
 
 The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.

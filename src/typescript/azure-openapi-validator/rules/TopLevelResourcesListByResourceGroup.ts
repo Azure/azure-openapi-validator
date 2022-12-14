@@ -4,6 +4,7 @@ import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
 export const TopLevelResourcesListByResourceGroup: string = "TopLevelResourcesListByResourceGroup"
 
+// RPC Code: RPC-Get-V1-05
 rules.push({
   id: "R4016",
   name: TopLevelResourcesListByResourceGroup,

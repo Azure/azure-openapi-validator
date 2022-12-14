@@ -10,7 +10,7 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-V2-DELETE-01
+- RPC-Delete-V1-01
 
 ## Output Message
 

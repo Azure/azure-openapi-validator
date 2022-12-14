@@ -4,6 +4,7 @@ import { MergeStates, OpenApiTypes } from "../rule"
 import { ResourceUtils } from "./utilities/resourceUtils"
 export const AllResourcesMustHaveGetOperation: string = "AllResourcesMustHaveGetOperation"
 
+// RPC Code: RPC-Get-V1-04
 rules.push({
   id: "R4014",
   name: AllResourcesMustHaveGetOperation,
