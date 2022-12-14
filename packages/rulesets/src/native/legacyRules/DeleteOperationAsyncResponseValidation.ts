@@ -6,6 +6,7 @@ import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-valid
 export const DeleteOperationAsyncResponseValidation = "DeleteOperationAsyncResponseValidation"
 
 rules.push({
+  // RPC Code: RPC-Async-V1-09
   id: "R4025",
   name: DeleteOperationAsyncResponseValidation,
   severity: "error",

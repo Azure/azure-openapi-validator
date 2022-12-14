@@ -2,7 +2,7 @@
 
 ## Category
 
-ARM Error
+ARM Warning
 
 ## Applies to
 
@@ -10,7 +10,7 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-V2-ASYNC-6
+- RPC-Async-V1-06
 
 ## Output Message
 

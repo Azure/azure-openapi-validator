@@ -3,6 +3,7 @@ import { JsonPath, rules, MergeStates, OpenApiTypes } from "@microsoft.azure/ope
 import { ArmHelper } from "../utilities/arm-helper"
 export const TopLevelResourcesListBySubscription = "TopLevelResourcesListBySubscription"
 
+// RPC Code: RPC-Get-V1-05
 rules.push({
   id: "R4017",
   name: TopLevelResourcesListBySubscription,

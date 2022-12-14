@@ -1,5 +1,5 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
-import { pattern, falsy, truthy, casing } from '@stoplight/spectral-functions';
+import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -709,16 +709,16 @@ function checkSchemaFormat(schema, options, { path }) {
         "odata-query",
         "certificate",
         "uri",
-        "uri_reference",
-        "uri_template",
+        "uri-reference",
+        "uri-template",
         "email",
         "hostname",
         "ipv4",
         "ipv6",
         "regex",
-        "json_pointer",
-        "relative_json_pointer",
-        "arm_id",
+        "json-pointer",
+        "relative-json-pointer",
+        "arm-id",
     ];
     if (schema.type && schema.format) {
         if (!schemaFormats.includes(schema.format)) {
@@ -1405,6 +1405,21 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     return errors;
 };
 
+function camelCase(propertyName, options, { path }) {
+    if (!propertyName) {
+        return [];
+    }
+    const errors = [];
+    const camelCaseReg = /^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)+$|^[a-z0-9$-]+$|^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)*[A-Z]{1,3}$/;
+    if (!camelCaseReg.test(propertyName)) {
+        errors.push({
+            message: "",
+            path
+        });
+    }
+    return errors;
+}
+
 const collectionObjectPropertiesNaming = (op, _opts, paths) => {
     var _a, _b;
     if (op === null || typeof op !== "object") {
@@ -2071,7 +2086,7 @@ const ruleset = {
         XmsLongRunningOperationOptions: {
             description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
             message: "{{description}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -2333,10 +2348,7 @@ const ruleset = {
             resolved: false,
             given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
             then: {
-                function: casing,
-                functionOptions: {
-                    type: "camel",
-                },
+                function: camelCase,
             },
         },
         GuidUsage: {

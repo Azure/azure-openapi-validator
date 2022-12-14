@@ -56,14 +56,13 @@ Please refer to [api-version-parameter-required.md](./api-version-parameter-requ
 
 ### APIVersionPattern
 
-The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.) NOTE that this is the en-US ordering of month and date.
+The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
-
-- -preview - Indicates the API version is in (public) preview
-- -alpha
-- -beta
-- -rc (release candidate)
-- -privatepreview
+* -preview - Indicates the API version is in (public) preview
+* -alpha
+* -beta
+* -rc (release candidate)
+* -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -173,6 +172,12 @@ The default error response schema SHOULD correspond to the schema documented at 
 
 Please refer to [default-error-response-schema.md](./default-error-response-schema.md) for details.
 
+### DefaultInEnum
+
+This rule applies when the default value specified by the property does not appear in the enum constraint for a schema.
+
+Please refer to [default-in-enum.md](./default-in-enum.md) for details.
+
 ### DefaultMustBeInEnum
 
 The value assigned as a default for an enum property must be present in the enums' list.
@@ -188,10 +193,10 @@ Please refer to [default-response.md](./default-response.md) for details.
 ### DefinitionsPropertiesNamesCamelCase
 
 Property names must use lowerCamelCase style.
-If the property is a single word (ex: foo, bar, etc.) it will be all lowercase.
-Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized.
-Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.)
-For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](<https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx>)
+If the property is a single word (ex: foo, bar, etc.) it will be all lowercase. 
+Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized. 
+Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.) 
+For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx)
 
 Please refer to [definitions-properties-names-camel-case.md](./definitions-properties-names-camel-case.md) for details.
 
@@ -344,7 +349,6 @@ Please refer to [header-disallowed.md](./header-disallowed.md) for details.
 ### HostParametersValidation
 
 This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
-
 1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:url'.
    - Client level (x-ms-parameter-location: client)
    - A path component (in: path)
@@ -417,6 +421,13 @@ Please refer to [long-running-operations-options-validator.md](./long-running-op
 Per [x-ms-long-running-operation](https://github.com/Azure/autorest/tree/main/docs/extensions.md#x-ms-long-running-operation) ,The operation which returns 202 status code indicates a long running operation. Every long running operation must have the x-ms-long-running-operation enabled.
 
 Please refer to [long-running-operations-with-long-running-extension.md](./long-running-operations-with-long-running-extension.md) for details.
+
+### LongRunningResponseStatusCode
+
+For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
+For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
+
+Please refer to [long-running-response-status-code-data-plane.md](./long-running-response-status-code-data-plane.md) for details.
 
 ### LongRunningResponseStatusCode
 
@@ -681,7 +692,7 @@ Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 ### PathCharacters
 
 Path should contain only recommended characters.
-The recommended characters are 0-9, A-Z, a-z, -, ., \_, ~, and :.
+The recommended characters are 0-9, A-Z, a-z, -, ., _, ~, and :.
 
 Please refer to [path-characters.md](./path-characters.md) for details.
 
@@ -695,7 +706,6 @@ Please refer to [path-contains-resource-group.md](./path-contains-resource-group
 
 Per ARM RPC,Uri for resource CRUD methods MUST contain a resource type.
 Uri path starts with \<scope\>/providers/\<namespace\>/\<resourcetype\> format, where
-
 - \<scope\> is one of:
   1.  Tenant/Global: '/'
   2.  Subscription: "/subscriptions/{subscriptionId}"
@@ -771,7 +781,7 @@ Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
 
-### PostLongRunningOperation202Only
+### PostOperationAsyncResponseValidation
 
 An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
 
@@ -792,7 +802,6 @@ Please refer to [preview-version-over-one-year.md](./preview-version-over-one-ye
 ### PrivateEndpointResourceSchemaValidation
 
 This rule is to check if the schemas used by private endpoint conform to the common [privateLink](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v1/privatelinks.json). The rule will check the schemas of following models and their properties:
-
 1. PrivateEndpointConnection
 2. PrivateEndpointConnectionProperties
 3. PrivateEndpointConnectionListResult
@@ -930,34 +939,34 @@ Every schema should specify a well-defined combination of `type` and `format`.
 and not allowed for any other types.
 The well-defined type/format combinations are:
 **type: integer**
-| format | description | comments |
+| format   | description     | comments                  |
 | -------- | --------------- | ------------------------- |
-| int32 | signed 32 bits | from [oas2][oas2] |
-| int64 | signed 64 bits | from [oas2][oas2] |
+| int32    | signed 32 bits  | from [oas2][oas2]         |
+| int64    | signed 64 bits  | from [oas2][oas2]         |
 | unixtime | Unix time stamp | from [autorest][autorest] |
 **type: number**
-| format | description | comments |
+| format  | description            | comments                  |
 | ------- | ---------------------- | ------------------------- |
-| float | 32 bit floating point | from [oas2][oas2] |
-| int64 | 64 bit floating point | from [oas2][oas2] |
+| float   | 32 bit floating point  | from [oas2][oas2]         |
+| int64   | 64 bit floating point  | from [oas2][oas2]         |
 | decimal | 128 bit floating point | from [autorest][autorest] |
 **type: string**
-| format | description | comments |
+| format            | description                  | comments                  |
 | ----------------- | ---------------------------- | ------------------------- |
-| byte | base64 encoded characters | from [oas2][oas2] |
-| binary | any sequence of octets | from [oas2][oas2] |
-| date | [RFC3339][rfc3339] full-date | from [oas2][oas2] |
-| date-time | [RFC3339][rfc3339] date-time | from [oas2][oas2] |
-| password | sensitive value | from [oas2][oas2] |
-| char | | from [autorest][autorest] |
-| time | | from [autorest][autorest] |
-| date-time-rfc1123 | | from [autorest][autorest] |
-| duration | | from [autorest][autorest] |
-| uuid | | from [autorest][autorest] |
-| base64url | | from [autorest][autorest] |
-| url | | from [autorest][autorest] |
-| odata-query | | from [autorest][autorest] |
-| certificate | | from [autorest][autorest] |
+| byte              | base64 encoded characters    | from [oas2][oas2]         |
+| binary            | any sequence of octets       | from [oas2][oas2]         |
+| date              | [RFC3339][rfc3339] full-date | from [oas2][oas2]         |
+| date-time         | [RFC3339][rfc3339] date-time | from [oas2][oas2]         |
+| password          | sensitive value              | from [oas2][oas2]         |
+| char              |                              | from [autorest][autorest] |
+| time              |                              | from [autorest][autorest] |
+| date-time-rfc1123 |                              | from [autorest][autorest] |
+| duration          |                              | from [autorest][autorest] |
+| uuid              |                              | from [autorest][autorest] |
+| base64url         |                              | from [autorest][autorest] |
+| url               |                              | from [autorest][autorest] |
+| odata-query       |                              | from [autorest][autorest] |
+| certificate       |                              | from [autorest][autorest] |
 oas2: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
 autorest: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
 rfc3339: https://xml2rfc.tools.ietf.org/public/rfc/
@@ -986,7 +995,7 @@ Please refer to [subscription-id-parameter-in-operations.md](./subscription-id-p
 
 The URLs should be checked for consistency. It is easy to type "resourcegroups" instead of "resourceGroups". The current rules allow that through, which causes an issue at the resource provider registration step. When that happens, the APIs get split into two sets in the swagger. The RPaaS registration is very strict and requires the same resource to have all APIs in one set. The pipeline needs to be aware of this kind of behavior and provider URL validation.
 
-Please refer to [subscriptions-and-resourcegroup-casing.md](./subscriptions-and-resourcegroup-casing.md) for details.
+Please refer to [subscriptions-and-resource-group-casing.md](./subscriptions-and-resource-group-casing.md) for details.
 
 ### SuccessResponseBody
 
@@ -1059,6 +1068,12 @@ Tracked resources must have put operation.
 
 Please refer to [tracked-resources-must-have-put.md](./tracked-resources-must-have-put.md) for details.
 
+### UnSupportedPatchProperties
+
+Patch may not change the name, location, or type of the resource.
+
+Please refer to [un-supported-patch-properties.md](./un-supported-patch-properties.md) for details.
+
 ### UniqueClientParameterName
 
 This may cause a problem when different swagger files come together. If two APIs with different client name have the same client parameter subscriptionId, but with different reference name in swaggers, the generated model will also have two clients with two client parameters subscriptionId and subscriptionId1 (the latter one has been renamed to avoid collision). We should ensure that the client parameters are all unique in the same API version.
@@ -1075,7 +1090,6 @@ Please refer to [unique-model-name.md](./unique-model-name.md) for details.
 
 This rule will check all the swagger files with the same api-version, and ensure there is no duplicate x-ms-enum name.
 The following cases are deemed as violation:
-
 1. if two enums have the same x-ms-enum name , but types are different.
 2. if two enums have the same x-ms-enum name , but 'modelAsString' are different.
 3. if two enums have the same x-ms-enum name , but include different values.
@@ -1088,12 +1102,6 @@ Please refer to [unique-xms-enum-name.md](./unique-xms-enum-name.md) for details
 x-ms-example name should be unique in the same API version.
 
 Please refer to [unique-xms-example.md](./unique-xms-example.md) for details.
-
-### UnSupportedPatchProperties
-
-Patch may not change the name, location, or type of the resource.
-
-Please refer to [unsupported-patch-properties.md](./unsupported-patch-properties.md) for details.
 
 ### ValidFormats
 

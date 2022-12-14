@@ -3,6 +3,7 @@ import { JsonPath, rules, MergeStates, OpenApiTypes } from "@microsoft.azure/ope
 import { ArmHelper } from "../utilities/arm-helper"
 export const AllResourcesMustHaveGetOperation = "AllResourcesMustHaveGetOperation"
 
+// RPC Code: RPC-Get-V1-04
 rules.push({
   id: "R4014",
   name: AllResourcesMustHaveGetOperation,
