@@ -9,7 +9,7 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
   }
 
   // TODO: maybe read this from the most recent common-types/resource-management/v#/types.json
-  let commonTypesParametersNames = [
+  const commonTypesParametersNames = [
     "subscriptionId",
     "api-version",
     "resourceGroupName",
@@ -27,11 +27,11 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
   // TODO: remove
   console.log(parameters)
 
-  let allParams = parameters.concat(Object.values(swagger?.parameters ?? []))
-  let paramsWithNames = allParams.filter((param) => Object.keys(param).length > 0).filter((param) => Object.keys(param).includes("name"))
-  let paramNames = paramsWithNames.map((param) => param.name)
-  let paramsWithNamesThatAreCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.includes(pName))
-  let errors = paramsWithNamesThatAreCommonTypes.map((pName) => {
+  const allParams = parameters.concat(Object.values(swagger?.parameters ?? []))
+  const paramsWithNames = allParams.filter((param) => Object.keys(param).length > 0).filter((param) => Object.keys(param).includes("name"))
+  const paramNames = paramsWithNames.map((param) => param.name)
+  const paramsWithNamesThatAreCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.includes(pName))
+  const errors = paramsWithNamesThatAreCommonTypes.map((pName) => {
     return {
       message: `Not using the common-types defined parameter "${pName}".`,
       path: ctx.path,
