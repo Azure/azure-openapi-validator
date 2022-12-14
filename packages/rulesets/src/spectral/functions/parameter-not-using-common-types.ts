@@ -24,9 +24,6 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
 
   const swagger = ctx?.documentInventory?.resolved
 
-  // TODO: remove
-  console.log(parameters)
-
   const allParams = parameters.concat(Object.values(swagger?.parameters ?? []))
   const paramsWithNames = allParams.filter((param) => Object.keys(param).length > 0).filter((param) => Object.keys(param).includes("name"))
   const paramNames = paramsWithNames.map((param) => param.name)

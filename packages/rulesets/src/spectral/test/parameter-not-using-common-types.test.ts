@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("ParameterNotUsingCommonTypes should find errors", () => {
+test("ParameterNotUsingCommonTypes should find errors path parameters", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -56,7 +56,7 @@ test("ParameterNotUsingCommonTypes should find errors", () => {
   return ret
 })
 
-test("ParameterNotUsingCommonTypes should find errors", () => {
+test("ParameterNotUsingCommonTypes should find errors global parameters", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -99,7 +99,6 @@ test("ParameterNotUsingCommonTypes should find errors", () => {
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
-    console.log(results)
   })
 })
 
@@ -140,12 +139,7 @@ test("ParameterNotUsingCommonTypes should find no errors", () => {
     },
   }
 
-  console.log(linter)
-
   return linter.run(myOpenApiDocument).then((results) => {
-    // temp for debugging
-    console.log(results)
-
     expect(results.length).toBe(0)
   })
 })
