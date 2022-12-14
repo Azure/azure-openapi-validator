@@ -1,5 +1,4 @@
 import { Spectral } from "@stoplight/spectral-core"
-import { resolve } from "path"
 import linterForRule from "./utils"
 
 let linter: Spectral
