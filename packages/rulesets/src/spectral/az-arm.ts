@@ -15,6 +15,7 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
+import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
@@ -385,6 +386,17 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
       then: {
         function: parameterNotDefinedInGlobalParameters,
+      },
+    },
+    ParameterNotUsingCommonTypes: {
+      description: "This rule checks for parameters defined in common-types that are not using the common-types definition.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+      then: {
+        function: parameterNotUsingCommonTypes,
       },
     },
     CollectionObjectPropertiesNaming: {
