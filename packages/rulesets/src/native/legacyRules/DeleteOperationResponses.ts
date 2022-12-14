@@ -5,6 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 export const DeleteOperationResponses = "DeleteOperationResponses"
 
+// RPC Code: RPC-Delete-V1-01
 rules.push({
   id: "R4011",
   name: DeleteOperationResponses,

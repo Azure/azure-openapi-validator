@@ -5,6 +5,7 @@
 import { MergeStates, OpenApiTypes, rules } from "@microsoft.azure/openapi-validator-core"
 export const PostOperationAsyncResponseValidation = "PostOperationAsyncResponseValidation"
 
+// RPC Code: RPC-Async-V1-11
 rules.push({
   id: "R4026",
   name: PostOperationAsyncResponseValidation,

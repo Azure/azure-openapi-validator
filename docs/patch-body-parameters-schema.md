@@ -10,7 +10,7 @@ ARM and Data plane OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-V2-Patch-10
+- RPC-Patch-V1-10
 
 ## Output Message
 

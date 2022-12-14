@@ -37,20 +37,6 @@ const ruleset: any = {
         function: truthy,
       },
     },
-    ApiVersionParameterRequired: {
-      description: "All operations should have api-version query parameter.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$.paths.*", "$.x-ms-paths.*"],
-      then: {
-        function: hasApiVersionParameter,
-        functionOptions: {
-          methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
-        },
-      },
-    },
     SubscriptionsAndResourceGroupCasing: {
       description: "The subscriptions and resourceGroup in resource uri should follow lower camel case.",
       message: "{{error}}",
@@ -65,71 +51,27 @@ const ruleset: any = {
         },
       },
     },
-    PatchBodyParametersSchema: {
-      description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+
+    ///
+    /// ARM RPC rules for Async patterns
+    ///
+
+    // RPC Code: RPC-Async-V1-01
+    LongRunningResponseStatusCode: {
+      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
       then: {
-        function: pathBodyParameters,
-      },
-    },
-    //https://github.com/Azure/azure-openapi-validator/issues/324
-    ConsistentPatchProperties: {
-      description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$.paths.*.patch"],
-      then: {
-        function: consistentPatchProperties,
-      },
-    },
-    //https://github.com/Azure/azure-openapi-validator/issues/335
-    LroPatch202: {
-      description: "Async PATCH should return 202.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
-      then: {
-        function: lroPatch202,
-      },
-    },
-    //https://github.com/Azure/azure-openapi-validator/issues/330
-    DeleteResponseBodyEmpty: {
-      description: "The delete response body must be empty.",
-      message: "{{description}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
-      then: {
-        function: falsy,
-      },
-    },
-    // github issue https://github.com/Azure/azure-openapi-validator/issues/331
-    //Get operation should return 200
-    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
-    // so here on check if the 200 return '201','202','203'
-    GetOperation200: {
-      description: "The get operation should only return 200.",
-      message: "{{description}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
-      then: {
-        function: falsy,
+        function: longRunningResponseStatusCodeArm,
       },
     },
     // https://github.com/Azure/azure-openapi-validator/issues/332
+    // RPC Code: RPC-Async-V1-03
     ProvisioningStateValidation: {
-      description: "[RPC-V1-ASYNC-03] ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+      description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
       resolved: false,
@@ -141,6 +83,7 @@ const ruleset: any = {
     },
     // x-ms-long-running-operation-options should indicate the type of response header to track the async operation
     //https://github.com/Azure/azure-openapi-validator/issues/324
+    // RPC Code: RPC-Async-V1-06
     XmsLongRunningOperationOptions: {
       description:
         "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
@@ -154,6 +97,77 @@ const ruleset: any = {
         function: truthy,
       },
     },
+    // RPC Code: RPC-Async-V1-07
+    LroLocationHeader: {
+      description: "Location header must be supported for all async operations that return 202.",
+      message: "A 202 response should include an Location response header.",
+      severity: "error",
+      formats: [oas2],
+      given: "$.paths[*][*].responses[?(@property == '202')]",
+      then: {
+        function: hasheader,
+        functionOptions: {
+          name: "Location",
+        },
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Delete patterns
+    ///
+
+    // RPC Code: RPC-Delete-V1-02
+    DeleteMustNotHaveRequestBody: {
+      description: "The delete operation must not have a request body.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
+      then: {
+        function: falsy,
+      },
+    },
+    //https://github.com/Azure/azure-openapi-validator/issues/330
+    // RPC Code: RPC-Delete-V1-04
+    DeleteResponseBodyEmpty: {
+      description: "The delete response body must be empty.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
+      then: {
+        function: falsy,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Get patterns
+    ///
+
+    // github issue https://github.com/Azure/azure-openapi-validator/issues/331
+    // Get operation should return 200
+    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
+    // so here on check if the 200 return '201','202','203'
+    // RPC Code: RPC-Get-V1-01
+    GetOperation200: {
+      description: "The get operation should only return 200.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
+      then: {
+        function: falsy,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Patch patterns
+    ///
+
+    // RPC Code: RPC-Patch-V1-02
     UnSupportedPatchProperties: {
       description: "Patch may not change the name, location, or type of the resource.",
       message: "{{error}}",
@@ -167,7 +181,34 @@ const ruleset: any = {
           shouldNot: ["name", "type", "location"],
         },
       },
+    },    
+    //https://github.com/Azure/azure-openapi-validator/issues/324
+    // RPC Code: RPC-Patch-V1-03
+    ConsistentPatchProperties: {
+      description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths.*.patch"],
+      then: {
+        function: consistentPatchProperties,
+      },
     },
+    //https://github.com/Azure/azure-openapi-validator/issues/335
+    // RPC Code: RPC-Patch-V1-06, RPC-Async-V1-08
+    LroPatch202: {
+      description: "Async PATCH should return 202.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+      then: {
+        function: lroPatch202,
+      },
+    },
+    // RPC Code: RPC-Patch-V1-09
     PatchSkuProperty: {
       description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
       message: "{{error}}",
@@ -182,6 +223,19 @@ const ruleset: any = {
         },
       },
     },
+    // RPC Code: RPC-Patch-V1-10
+    PatchBodyParametersSchema: {
+      description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
+      then: {
+        function: pathBodyParameters,
+      },
+    },
+    // RPC Code: RPC-Patch-V1-11
     PatchIdentityProperty: {
       description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
       message: "{{error}}",
@@ -196,6 +250,186 @@ const ruleset: any = {
         },
       },
     },
+
+    ///
+    /// ARM RPC rules for Put patterns
+    ///
+
+    // RPC Code: RPC-Put-V1-01
+    PathForPutOperation: {
+      description: "The path for 'put' operation must be under a subscription and resource group.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceGroupScope",
+        },
+      },
+    },
+    // RPC Code: RPC-Put-V1-05
+    RepeatedPathInfo: {
+      description:
+        "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+      message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^",
+      then: {
+        function: bodyParamRepeatedInfo,
+      },
+    },
+    // RPC Code: RPC-Put-V1-12
+    PutGetPatchResponseSchema: {
+      description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
+      message:
+        "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
+      severity: "error",
+      resolved: false,
+      given: ["$[paths,'x-ms-paths'].*.put^"],
+      then: {
+        function: putGetPatchScehma,
+      },
+    },
+    // RPC Code: RPC-Put-V1-12
+    XmsResourceInPutResponse: {
+      description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$[paths,'x-ms-paths'].*.put"],
+      then: {
+        function: withXmsResource,
+      },
+    },
+    // RPC Code: RPC-Put-V1-14
+    LocationMustHaveXmsMutability: {
+      description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
+      message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.definitions[*].properties.location"],
+      then: {
+        function: locationMustHaveXmsMutability,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Uri path patterns
+    ///
+
+    // RPC Code: RPC-Uri-V1-01
+    PathContainsSubscriptionId: {
+      description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "subscriptionIdParam",
+        },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-02
+    PathContainsResourceGroup: {
+      description: "Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceGroupParam",
+        },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-04
+    PathContainsResourceType: {
+      description: "Path for resource CRUD methods MUST contain a resource type.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "resourceType",
+        },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-05
+    ResourceNameRestriction: {
+      description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.^",
+      then: {
+        function: resourceNameRestriction,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-06, RPC-Put-V1-02
+    PathForNestedResource: {
+      description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
+      then: {
+        function: verifyArmPath,
+        functionOptions: {
+          segmentToCheck: "nestedResourceType",
+        },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-07
+    PathForResourceAction: {
+      description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.post^~",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
+        },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-08
+    ApiVersionParameterRequired: {
+      description: "All operations should have api-version query parameter.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths.*", "$.x-ms-paths.*"],
+      then: {
+        function: hasApiVersionParameter,
+        functionOptions: {
+          methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
+        },
+      },
+    },
+
+    ///
+    /// ARM rules without an RPC code
+    ///
+
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",
@@ -206,19 +440,6 @@ const ruleset: any = {
       then: {
         function: truthy,
         field: "type",
-      },
-    },
-    LroLocationHeader: {
-      description: "Location header must be supported for all async operations that return 202.",
-      message: "A 202 response should include an Location response header.",
-      severity: "error",
-      formats: [oas2],
-      given: "$.paths[*][*].responses[?(@property == '202')]",
-      then: {
-        function: hasheader,
-        functionOptions: {
-          name: "Location",
-        },
       },
     },
     LroWithOriginalUriAsFinalState: {
@@ -245,113 +466,6 @@ const ruleset: any = {
       ],
       then: {
         function: falsy,
-      },
-    },
-    PathContainsSubscriptionId: {
-      description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
-      then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "subscriptionIdParam",
-        },
-      },
-    },
-    PathContainsResourceType: {
-      description: "Path for resource CRUD methods MUST contain a resource type.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
-      then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "resourceType",
-        },
-      },
-    },
-    PathContainsResourceGroup: {
-      description: "Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get,patch,put,delete]^~"],
-      then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "resourceGroupParam",
-        },
-      },
-    },
-    PathForPutOperation: {
-      description: "The path for 'put' operation must be under a subscription and resource group.",
-      message: "{{description}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[put]^~",
-      then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "resourceGroupScope",
-        },
-      },
-    },
-    PathForNestedResource: {
-      description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[get,patch,delete,put]^~",
-      then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "nestedResourceType",
-        },
-      },
-    },
-    PathForResourceAction: {
-      description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
-      message: "{{description}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*.post^~",
-      then: {
-        function: pattern,
-        functionOptions: {
-          match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
-        },
-      },
-    },
-    RepeatedPathInfo: {
-      description:
-        "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
-      message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*.put^",
-      then: {
-        function: bodyParamRepeatedInfo,
-      },
-    },
-    ResourceNameRestriction: {
-      description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*.^",
-      then: {
-        function: resourceNameRestriction,
       },
     },
     APIVersionPattern: {
@@ -392,17 +506,6 @@ const ruleset: any = {
       given: "$.paths.*[get,post]",
       then: {
         function: collectionObjectPropertiesNaming,
-      },
-    },
-    DeleteMustNotHaveRequestBody: {
-      description: "The delete operation must not have a request body.",
-      severity: "error",
-      message: "{{description}}",
-      resolved: true,
-      formats: [oas2],
-      given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
-      then: {
-        function: falsy,
       },
     },
     // this rule covers BodyPropertiesNamesCamelCase and DefinitionsPropertiesNamesCamelCase
@@ -453,28 +556,6 @@ const ruleset: any = {
         },
       },
     },
-
-    PutGetPatchResponseSchema: {
-      description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
-      message:
-        "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
-      severity: "error",
-      resolved: false,
-      given: ["$[paths,'x-ms-paths'].*.put^"],
-      then: {
-        function: putGetPatchScehma,
-      },
-    },
-    XmsResourceInPutResponse: {
-      description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      given: ["$[paths,'x-ms-paths'].*.put"],
-      then: {
-        function: withXmsResource,
-      },
-    },
     SecurityDefinitionsStructure: {
       description: `Each OpenAPI json document must contain a security definitions section and the section must adhere to a certain format.`,
       message: "{{error}}",
@@ -506,28 +587,6 @@ const ruleset: any = {
       given: "$.paths[?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema",
       then: {
         function: operationsApiSchema,
-      },
-    },
-    LongRunningResponseStatusCode: {
-      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
-      then: {
-        function: longRunningResponseStatusCodeArm,
-      },
-    },
-    LocationMustHaveXmsMutability: {
-      description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
-      message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
-      severity: "warn",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.definitions[*].properties.location"],
-      then: {
-        function: locationMustHaveXmsMutability,
       },
     },
     HttpsSupportedScheme: {

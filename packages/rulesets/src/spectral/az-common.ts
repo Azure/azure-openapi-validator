@@ -283,6 +283,7 @@ const ruleset: any = {
         function: mutabilityWithReadOnly,
       },
     },
+    // RPC Code: RPC-Get-V1-06
     NextLinkPropertyMustExist: {
       description:
         "Per definition of AutoRest x-ms-pageable extension, the property specified by nextLinkName must exist in the 200 response schema.",
