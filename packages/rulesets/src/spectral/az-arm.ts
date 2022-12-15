@@ -154,7 +154,7 @@ const ruleset: any = {
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
-      given: "$.paths.*.get.parameters[?(@.in === 'body')]",
+      given: "$[paths,'x-ms-paths'].*.get.parameters[?(@.in === 'body')]",
       then: {
         function: falsy,
       },
