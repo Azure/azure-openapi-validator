@@ -2,11 +2,11 @@
 
 ## Category
 
-SDK Error
+ARM Error
 
 ## Applies to
 
-ARM and Data plane OpenAPI(swagger) specs
+ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
