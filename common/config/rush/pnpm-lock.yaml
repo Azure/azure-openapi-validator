@@ -7811,7 +7811,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-Efuf/1wVK8b+DONKug+dvjxbJYRUXHGOZab5nBBaKcGOB8zMdkgKuSukM3WmSc5SQEuC4WQNsL120fbHoSB8jQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-JTrCGjtJAft16+cMFRukAwnHouj4Z6Kpt3FdyLeK9J4bB0syxEzM99RzHYCh3HHzxsSvla/HIcGvQKKFv/FydQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -7819,7 +7819,6 @@ packages:
       '@rollup/plugin-commonjs': 21.0.2_rollup@2.70.1
       '@rollup/plugin-json': 4.1.0_rollup@2.70.1
       '@rollup/plugin-node-resolve': 13.1.3_rollup@2.70.1
-      '@stoplight/json-ref-resolver': 3.1.3
       '@stoplight/spectral-core': 1.11.1
       '@stoplight/spectral-formats': 1.1.0
       '@stoplight/spectral-functions': 1.6.1
@@ -7869,7 +7868,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator.tgz:
-    resolution: {integrity: sha512-bkmsrsHQuYWsUMafs0tiRRhNFZHM6uLZEOlcDkbNifs2WnZmB/R6jTTbre/0lmXZf0NJqGfyVuRYRL9o9TpnaA==, tarball: file:projects/openapi-validator.tgz}
+    resolution: {integrity: sha512-GEW7kTC/v0X72aCPRoJjH854/LAyTlVevQTZ/8X8TtGn0h2by0a9L3zH4guGCBOYz5DGJrgPDs1e8hAzhgnOtA==, tarball: file:projects/openapi-validator.tgz}
     name: '@rush-temp/openapi-validator'
     version: 0.0.0
     dependencies:
