@@ -9,7 +9,7 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
   }
 
   // TODO: maybe read this from the most recent common-types/resource-management/v#/types.json
-  const commonTypesParametersNames = [
+  const commonTypesParametersNames = new Set([
     "subscriptionId",
     "api-version",
     "resourceGroupName",
@@ -20,15 +20,15 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
     "tenantId",
     "ifMatch",
     "ifNoneMatch",
-  ]
+  ])
 
   const swagger = ctx?.documentInventory?.resolved
 
   const allParams = parameters.concat(Object.values(swagger?.parameters ?? []))
-  const paramsWithNames = allParams.filter((param) => Object.keys(param).length > 0).filter((param) => Object.keys(param).includes("name"))
-  const paramNames = paramsWithNames.map((param) => param.name)
-  const paramsWithNamesThatAreCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.includes(pName))
-  const errors = paramsWithNamesThatAreCommonTypes.map((pName) => {
+  const paramsWithNameProperty = allParams.filter((param) => Object.keys(param).includes("name"))
+  const paramNames = paramsWithNameProperty.map((param) => param.name)
+  const paramsFromCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.has(pName))
+  const errors = paramsFromCommonTypes.map((pName) => {
     return {
       message: `Not using the common-types defined parameter "${pName}".`,
       path: ctx.path,
