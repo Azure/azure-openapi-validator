@@ -3,7 +3,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import _ from "lodash"
 import { spectralRulesets } from "../../index"
 
-export function buildLinter(ruleset: any, rule: string, resolved = true) {
+export function buildLinter(ruleset: any, rule: string, useNoopResolver = false) {
   const omitRule = (extend: any, ruleName: string) => {
     const ruleset: any = Array.isArray(extend) ? extend[0] : extend
     Object.keys(ruleset.rules).forEach((key: string) => {
@@ -17,24 +17,24 @@ export function buildLinter(ruleset: any, rule: string, resolved = true) {
   }
 
   omitRule(ruleset, rule)
-  const linter = resolved
-    ? new Spectral()
-    : new Spectral({
+  const linter = useNoopResolver
+    ? new Spectral({
         resolver: noopResolver(),
       })
+    : new Spectral()
 
   linter.setRuleset(ruleset)
   return linter
 }
 
-function linterForRule(rule: string, resolved = true): Spectral {
+function linterForRule(rule: string, useNoopResolver = false): Spectral {
   return buildLinter(
     {
       extends: _.cloneDeep(Object.values(spectralRulesets)),
       rules: {},
     },
     rule,
-    resolved
+    useNoopResolver
   )
 }
 

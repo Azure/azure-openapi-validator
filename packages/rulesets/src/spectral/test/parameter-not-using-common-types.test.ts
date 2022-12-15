@@ -139,9 +139,9 @@ test("ParameterNotUsingCommonTypes should find no errors", () => {
     },
   }
 
-  const noResolvingLinter = linterForRule("ParameterNotUsingCommonTypes", false)
+  const nonResolvingLinter = linterForRule("ParameterNotUsingCommonTypes", true)
 
-  return noResolvingLinter.run(myOpenApiDocument).then((results) => {
+  return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(0)
   })
 })
