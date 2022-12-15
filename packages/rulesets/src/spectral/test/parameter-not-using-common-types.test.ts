@@ -142,7 +142,6 @@ test("ParameterNotUsingCommonTypes should find no errors", () => {
   const noResolvingLinter = linterForRule("ParameterNotUsingCommonTypes", false)
 
   return noResolvingLinter.run(myOpenApiDocument).then((results) => {
-    console.log(results)
     expect(results.length).toBe(0)
   })
 })
