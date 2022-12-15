@@ -63,7 +63,7 @@ export const armRuleset: IRuleSet = {
     /// ARM RPC rules for Put patterns
     ///
 
-    // RPC Code: RPC-Put-V1-06, RPC-Get-V1-02
+    // RPC Code: RPC-Put-V1-06
     BodyTopLevelProperties: {
       description:
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties of a resource should be only ones from the allowed set.",
