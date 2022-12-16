@@ -147,6 +147,18 @@ const ruleset: any = {
     /// ARM RPC rules for Get patterns
     ///
 
+    // RPC Code: RPC-Get-V1-02
+    GetMustNotHaveRequestBody: {
+      description: "The Get operation must not have a request body.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.get.parameters[?(@.in === 'body')]",
+      then: {
+        function: falsy,
+      },
+    },
     // github issue https://github.com/Azure/azure-openapi-validator/issues/331
     // Get operation should return 200
     // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
