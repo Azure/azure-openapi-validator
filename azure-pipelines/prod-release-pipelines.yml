@@ -15,12 +15,6 @@ jobs:
       - script: 'node common/scripts/install-run-rush.js install'
         displayName: 'rush install'
 
-      - script: 'node common/scripts/install-run-rush.js install'
-        displayName: 'rush install'
-
-      - script: 'node common/scripts/install-run-rush.js install'
-        displayName: 'rush install'
-
       - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
         displayName: 'rush build'
         

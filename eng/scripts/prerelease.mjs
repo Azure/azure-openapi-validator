@@ -92,7 +92,7 @@ async function addPrereleaseNumber(changeCounts, packages) {
 export async function bumpVersionsForPrerelease(workspaceRoots) {
     let changeCounts = {};
     let packages = {};
-    const prerelease_type = process.env.PRERELEASE_TYPE || 'beta'
+    const prerelease_type = process.env.PRERELEASE_TYPE ?? 'beta'
     for (const workspaceRoot of workspaceRoots) {
         changeCounts = { ...changeCounts, ...(await getChangeCountPerPackage(workspaceRoot)) };
         packages = { ...packages, ...(await getPackages(workspaceRoot)) };

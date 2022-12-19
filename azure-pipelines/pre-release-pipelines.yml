@@ -15,16 +15,10 @@ jobs:
     - script: 'node common/scripts/install-run-rush.js install'
       displayName: 'rush install'
 
-    - script: 'node common/scripts/install-run-rush.js install'
-      displayName: 'rush install'
-
-    - script: 'node common/scripts/install-run-rush.js install'
-      displayName: 'rush install'
-
     - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
       displayName: 'rush build'
 
-    - script: 'node eng/scripts/prerelease.js'
+    - script: 'node eng/scripts/prerelease.mjs'
       displayName: 'bump dev release version'
 
     - script: 'node common/scripts/install-run-rush.js pack'
