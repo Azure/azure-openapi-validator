@@ -74,7 +74,6 @@ const ruleset: any = {
         function: falsy,
       },
     },
-
     ParameterDescription: {
       description: "All parameters should have a description.",
       message: "Parameter should have a description.",
