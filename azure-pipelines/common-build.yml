@@ -1,11 +1,13 @@
-variables:
-  NODE_OPTIONS: '--max-old-space-size=8192'
-  NodeVersion: '12.x'
+parameters:
+- name: 'NodeVersion'
+  default: '12.x'
+  type: string
+
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '$(NodeVersion)'
-    displayName: 'Install Node.js $(NodeVersion)'
+      versionSpec: '${{ parameters.NodeVersion }}'
+    displayName: 'Install Node.js ${{ parameters.NodeVersion }}'
 
   - script: 'node common/scripts/install-run-rush.js install'
     displayName: 'rush install'

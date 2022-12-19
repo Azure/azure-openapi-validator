@@ -1,5 +1,5 @@
 variables:
-  NodeVersion: '12.x'
+  NODE_OPTIONS: '--max-old-space-size=8192'
 
 jobs:
   - job: 'Release Build'

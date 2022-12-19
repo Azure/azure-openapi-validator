@@ -14,10 +14,9 @@ jobs:
 
   variables:
     NODE_OPTIONS: '--max-old-space-size=8192'
-    NodeVersion: '12.x'
   steps:
     - template: common-build.yml
-    
+
     - script: git submodule update --init
       displayName: Init submodule
       condition: always()

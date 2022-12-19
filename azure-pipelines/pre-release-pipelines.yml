@@ -1,5 +1,5 @@
 variables:
-  NodeVersion: '12.x'
+  NODE_OPTIONS: '--max-old-space-size=8192'
 
 jobs:
 - job: 'Staging_Release_Build'
@@ -8,6 +8,11 @@ jobs:
 
   steps:
     - template: common-build.yml
+      parameters: 
+        NodeVersion: "16.x"
+    
+    - script: 'node eng/scripts/prerelease.mjs'
+      displayName: 'bump dev release version'
     
     - script: 'node common/scripts/install-run-rush.js pack'
       displayName: 'rush pack'

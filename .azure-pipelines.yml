@@ -3,7 +3,7 @@ trigger:
 - main
 
 variables:
-  NodeVersion: '12.x'
+  NODE_OPTIONS: '--max-old-space-size=8192'
   Codeql.Enabled: true
 
 jobs:
