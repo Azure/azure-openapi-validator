@@ -2,7 +2,7 @@ variables:
   NodeVersion: '12.x'
 
 jobs:
-- job: 'Dev Release Build'
+  - job: 'Release Build'
 
     pool:
       vmImage: 'Ubuntu 18.04'
@@ -24,10 +24,7 @@ jobs:
 
       - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
         displayName: 'rush build'
-
-      - script: 'node eng/scripts/prerelease.js'
-        displayName: 'bump dev release version'
-
+        
       - script: 'node common/scripts/install-run-rush.js pack'
         displayName: 'rush pack'
 
