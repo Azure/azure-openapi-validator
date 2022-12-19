@@ -7,20 +7,8 @@ jobs:
     vmImage: 'ubuntu-22.04'
 
   steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '$(NodeVersion)'
-      displayName: 'Install Node.js $(NodeVersion)'
-
-    - script: 'node common/scripts/install-run-rush.js install'
-      displayName: 'rush install'
-
-    - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
-      displayName: 'rush build'
-
-    - script: 'node eng/scripts/prerelease.mjs'
-      displayName: 'bump dev release version'
-
+    - template: common-build.yml
+    
     - script: 'node common/scripts/install-run-rush.js pack'
       displayName: 'rush pack'
 
@@ -34,31 +22,4 @@ jobs:
     - task: PublishBuildArtifacts@1
       inputs:
         pathtoPublish: $(Build.SourcesDirectory)/dist
-
-- job: Windows
-  displayName: credentialScan
-  pool:
-    vmImage: "windows-2019"
-
-  steps:
-    - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2 # CredScan@2  
-      inputs:
-        toolMajorVersion: 'V2'
-
-    - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1 # PostAnalysis@1
-      inputs:
-        AllTools: false
-        APIScan: false
-        BinSkim: false
-        CodesignValidation: false
-        CredScan: true
-        FortifySCA: false
-        FxCop: false
-        ModernCop: false
-        PoliCheck: false
-        RoslynAnalyzers: false
-        SDLNativeRules: false
-        Semmle: false
-        TSLint: false
-        ToolLogsNotFoundAction: 'Standard'
 

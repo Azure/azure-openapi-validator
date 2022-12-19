@@ -12,16 +12,7 @@ jobs:
       vmImage: 'ubuntu-22.04'
 
     steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '$(NodeVersion)'
-        displayName: 'Install Node.js $(NodeVersion)'
-
-      - script: 'node common/scripts/install-run-rush.js install'
-        displayName: 'rush install'
-
-      - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
-        displayName: 'rush build'
+      - template: azure-pipelines/common-build.yml
 
       - script: 'node common/scripts/install-run-rush.js lint'
         displayName: 'rush lint'
