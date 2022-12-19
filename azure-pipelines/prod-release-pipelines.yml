@@ -3,7 +3,6 @@ variables:
 
 jobs:
   - job: 'Release Build'
-
     pool:
       vmImage: 'Ubuntu 18.04'
 
