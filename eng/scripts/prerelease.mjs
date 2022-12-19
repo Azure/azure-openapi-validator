@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { execSync } from "child_process";
 import { lstat, readdir, readFile, writeFile } from "fs/promises";
+import {existsSync} from "fs"
 import { join } from "path";
 async function getAllChanges(workspaceRoot) {
     const changeDir = join(workspaceRoot, "common", "changes");
@@ -111,6 +112,9 @@ export async function bumpVersionsForPrerelease(workspaceRoots) {
 }
 async function findAllFiles(dir) {
     const files = [];
+    if (!existsSync(dir)) {
+        return files
+    }
     for (const file of await readdir(dir)) {
         const path = join(dir, file);
         const stat = await lstat(path);
