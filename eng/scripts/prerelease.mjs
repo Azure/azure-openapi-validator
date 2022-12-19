@@ -109,6 +109,9 @@ export async function bumpVersionsForPrerelease(workspaceRoots) {
     }
     console.log("Adding prerelease number");
     await addPrereleaseNumber(changeCounts, packages);
+    if (Object.keys(changeCounts).length) {
+       updateOpenapiValidatorPck()
+    }
 }
 async function findAllFiles(dir) {
     const files = [];
@@ -127,6 +130,16 @@ async function findAllFiles(dir) {
     }
     return files;
 }
+
+// update rulesets and core version in the package.json of openapi-validator to the latest beta version.
+async function updateOpenapiValidatorPck() {
+    const packagePath = `packages/azure-openapi-validator/autorest/package.json`
+    const pkg = await readJsonFile(packagePath)
+    pkg.dependencies["@microsoft.azure/openapi-validator-core"] = "beta"
+    pkg.dependencies["@microsoft.azure/openapi-validator-rulesets"] = "beta"
+    await writeFile(packagePath,JSON.stringify(pkg,null,2))
+}
+
 async function readJsonFile(filename) {
     const content = await readFile(filename);
     return JSON.parse(content.toString());
