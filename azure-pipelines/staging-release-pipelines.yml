@@ -22,6 +22,7 @@ jobs:
       inputs:
         Contents: |
           packages/**/*.tgz
+          !packages/**/node_modules/**/*.tgz
         TargetFolder: '$(Build.SourcesDirectory)/dist'
 
     - task: PublishBuildArtifacts@1
