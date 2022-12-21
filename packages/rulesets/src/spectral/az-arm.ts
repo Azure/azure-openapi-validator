@@ -194,7 +194,7 @@ const ruleset: any = {
           shouldNot: ["name", "type", "location"],
         },
       },
-    },    
+    },
     //https://github.com/Azure/azure-openapi-validator/issues/324
     // RPC Code: RPC-Patch-V1-03
     ConsistentPatchProperties: {
@@ -492,7 +492,7 @@ const ruleset: any = {
       then: {
         function: pattern,
         functionOptions: {
-          match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
+          match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview))?$",
         },
       },
     },
