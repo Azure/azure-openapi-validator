@@ -2,7 +2,7 @@ variables:
   NODE_OPTIONS: '--max-old-space-size=8192'
 
 jobs:
-  - job: 'Release Build'
+  - job: 'Release_Build'
     pool:
       vmImage: 'ubuntu-22.04'
 
