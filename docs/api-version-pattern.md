@@ -10,7 +10,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-API Version must be in the format: yyyy-MM-dd, optionally followed by -preview, -alpha, -beta, -rc, -privatepreview.
+API Version must be in the format: yyyy-MM-dd, optionally followed by -preview.
 
 ## Description
 
