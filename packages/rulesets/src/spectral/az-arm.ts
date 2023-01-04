@@ -142,6 +142,7 @@ const ruleset: any = {
     },
     // x-ms-long-running-operation-options should indicate the type of response header to track the async operation
     //https://github.com/Azure/azure-openapi-validator/issues/324
+    //RPC-Async-V1-06
     XmsLongRunningOperationOptions: {
       description:
         "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
