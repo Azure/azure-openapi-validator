@@ -8,7 +8,6 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
     return []
   }
 
-  // TODO: maybe read this from the most recent common-types/resource-management/v#/types.json
   const commonTypesParametersNames = new Set([
     "subscriptionId",
     "api-version",

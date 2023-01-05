@@ -52,6 +52,9 @@ test("ParameterNotUsingCommonTypes should find errors path parameters", () => {
   const ret = linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
+    expect(results[0].message).toContain("location")
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.get.parameters")
+    expect(results[1].message).toContain("scope")
   })
   return ret
 })
