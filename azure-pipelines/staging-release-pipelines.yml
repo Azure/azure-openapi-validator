@@ -1,0 +1,31 @@
+variables:
+  NODE_OPTIONS: '--max-old-space-size=8192'
+
+jobs:
+- job: 'Staging_Release_Build'
+  pool:
+    vmImage: 'ubuntu-22.04'
+
+  steps:
+    - template: common-build.yml
+      parameters: 
+        NodeVersion: "16.x"
+    
+    - script: 'node eng/scripts/prerelease.mjs'
+      displayName: 'bump dev release version'
+    
+    - script: 'node common/scripts/install-run-rush.js pack'
+      displayName: 'rush pack'
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: dist'
+      inputs:
+        Contents: |
+          packages/**/*.tgz
+          !packages/**/node_modules/**/*.tgz
+        TargetFolder: '$(Build.SourcesDirectory)/dist'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: $(Build.SourcesDirectory)/dist
+

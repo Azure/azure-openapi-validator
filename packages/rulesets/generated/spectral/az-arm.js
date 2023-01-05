@@ -694,6 +694,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "int64",
         "float",
         "double",
+        "unixtime",
         "byte",
         "binary",
         "date",
@@ -1989,20 +1990,6 @@ const ruleset = {
                 function: truthy,
             },
         },
-        ApiVersionParameterRequired: {
-            description: "All operations should have api-version query parameter.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$.paths.*", "$.x-ms-paths.*"],
-            then: {
-                function: hasApiVersionParameter,
-                functionOptions: {
-                    methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
-                },
-            },
-        },
         SubscriptionsAndResourceGroupCasing: {
             description: "The subscriptions and resourceGroup in resource uri should follow lower camel case.",
             message: "{{error}}",
@@ -2017,59 +2004,15 @@ const ruleset = {
                 },
             },
         },
-        PatchBodyParametersSchema: {
-            description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+        LongRunningResponseStatusCode: {
+            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
             then: {
-                function: pathBodyParameters,
-            },
-        },
-        ConsistentPatchProperties: {
-            description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$.paths.*.patch"],
-            then: {
-                function: consistentPatchProperties,
-            },
-        },
-        LroPatch202: {
-            description: "Async PATCH should return 202.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
-            then: {
-                function: lroPatch202,
-            },
-        },
-        DeleteResponseBodyEmpty: {
-            description: "The delete response body must be empty.",
-            message: "{{description}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
-            then: {
-                function: falsy,
-            },
-        },
-        GetOperation200: {
-            description: "The get operation should only return 200.",
-            message: "{{description}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
-            then: {
-                function: falsy,
+                function: longRunningResponseStatusCodeArm,
             },
         },
         ProvisioningStateValidation: {
@@ -2095,6 +2038,63 @@ const ruleset = {
                 function: truthy,
             },
         },
+        LroLocationHeader: {
+            description: "Location header must be supported for all async operations that return 202.",
+            message: "A 202 response should include an Location response header.",
+            severity: "error",
+            formats: [oas2],
+            given: "$.paths[*][*].responses[?(@property == '202')]",
+            then: {
+                function: hasHeader,
+                functionOptions: {
+                    name: "Location",
+                },
+            },
+        },
+        DeleteMustNotHaveRequestBody: {
+            description: "The delete operation must not have a request body.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
+            then: {
+                function: falsy,
+            },
+        },
+        DeleteResponseBodyEmpty: {
+            description: "The delete response body must be empty.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
+            then: {
+                function: falsy,
+            },
+        },
+        GetMustNotHaveRequestBody: {
+            description: "The Get operation must not have a request body.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.get.parameters[?(@.in === 'body')]",
+            then: {
+                function: falsy,
+            },
+        },
+        GetOperation200: {
+            description: "The get operation should only return 200.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
+            then: {
+                function: falsy,
+            },
+        },
         UnSupportedPatchProperties: {
             description: "Patch may not change the name, location, or type of the resource.",
             message: "{{error}}",
@@ -2107,6 +2107,28 @@ const ruleset = {
                 functionOptions: {
                     shouldNot: ["name", "type", "location"],
                 },
+            },
+        },
+        ConsistentPatchProperties: {
+            description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths.*.patch"],
+            then: {
+                function: consistentPatchProperties,
+            },
+        },
+        LroPatch202: {
+            description: "Async PATCH should return 202.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+            then: {
+                function: lroPatch202,
             },
         },
         PatchSkuProperty: {
@@ -2123,6 +2145,17 @@ const ruleset = {
                 },
             },
         },
+        PatchBodyParametersSchema: {
+            description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
+            then: {
+                function: pathBodyParameters,
+            },
+        },
         PatchIdentityProperty: {
             description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
             message: "{{error}}",
@@ -2137,55 +2170,60 @@ const ruleset = {
                 },
             },
         },
-        ArrayMustHaveType: {
-            description: "Array type must have a type except for any type.",
-            message: "{{error}}",
+        PathForPutOperation: {
+            description: "The path for 'put' operation must be under a subscription and resource group.",
+            message: "{{description}}",
             severity: "error",
             resolved: false,
             formats: [oas2],
-            given: ["$.definitions..items[?(@object())]^"],
+            given: "$[paths,'x-ms-paths'].*[put]^~",
             then: {
-                function: truthy,
-                field: "type",
-            },
-        },
-        LroLocationHeader: {
-            description: "Location header must be supported for all async operations that return 202.",
-            message: "A 202 response should include an Location response header.",
-            severity: "error",
-            formats: [oas2],
-            given: "$.paths[*][*].responses[?(@property == '202')]",
-            then: {
-                function: hasHeader,
+                function: verifyArmPath,
                 functionOptions: {
-                    name: "Location",
+                    segmentToCheck: "resourceGroupScope",
                 },
             },
         },
-        LroWithOriginalUriAsFinalState: {
-            description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
-            message: "{{description}}",
+        RepeatedPathInfo: {
+            description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
+            message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: [
-                "$[paths,'x-ms-paths'].*[put,patch,delete].x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
-            ],
+            given: "$[paths,'x-ms-paths'].*.put^",
             then: {
-                function: validateOriginalUri,
+                function: bodyParamRepeatedInfo,
             },
         },
-        LroPostMustNotUseOriginalUriAsFinalState: {
-            description: "The long running post operation must not use final-stat-via:original-uri.",
-            message: "{{description}}",
+        PutGetPatchResponseSchema: {
+            description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
+            message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
+            severity: "error",
+            resolved: false,
+            given: ["$[paths,'x-ms-paths'].*.put^"],
+            then: {
+                function: putGetPatchScehma,
+            },
+        },
+        XmsResourceInPutResponse: {
+            description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
+            message: "{{error}}",
             severity: "error",
             resolved: true,
-            formats: [oas2],
-            given: [
-                "$[paths,'x-ms-paths'].*.post.x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
-            ],
+            given: ["$[paths,'x-ms-paths'].*.put"],
             then: {
-                function: falsy,
+                function: withXmsResource,
+            },
+        },
+        LocationMustHaveXmsMutability: {
+            description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
+            message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.definitions[*].properties.location"],
+            then: {
+                function: locationMustHaveXmsMutability,
             },
         },
         PathContainsSubscriptionId: {
@@ -2199,20 +2237,6 @@ const ruleset = {
                 function: verifyArmPath,
                 functionOptions: {
                     segmentToCheck: "subscriptionIdParam",
-                },
-            },
-        },
-        PathContainsResourceType: {
-            description: "Path for resource CRUD methods MUST contain a resource type.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
-            then: {
-                function: verifyArmPath,
-                functionOptions: {
-                    segmentToCheck: "resourceType",
                 },
             },
         },
@@ -2230,18 +2254,29 @@ const ruleset = {
                 },
             },
         },
-        PathForPutOperation: {
-            description: "The path for 'put' operation must be under a subscription and resource group.",
-            message: "{{description}}",
+        PathContainsResourceType: {
+            description: "Path for resource CRUD methods MUST contain a resource type.",
+            message: "{{error}}",
             severity: "error",
             resolved: false,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[put]^~",
+            given: "$[paths,'x-ms-paths'].*[get,patch,put,delete]^~",
             then: {
                 function: verifyArmPath,
                 functionOptions: {
-                    segmentToCheck: "resourceGroupScope",
+                    segmentToCheck: "resourceType",
                 },
+            },
+        },
+        ResourceNameRestriction: {
+            description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.^",
+            then: {
+                function: resourceNameRestriction,
             },
         },
         PathForNestedResource: {
@@ -2272,26 +2307,56 @@ const ruleset = {
                 },
             },
         },
-        RepeatedPathInfo: {
-            description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
-            message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*.put^",
-            then: {
-                function: bodyParamRepeatedInfo,
-            },
-        },
-        ResourceNameRestriction: {
-            description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
+        ApiVersionParameterRequired: {
+            description: "All operations should have api-version query parameter.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*.^",
+            given: ["$.paths.*", "$.x-ms-paths.*"],
             then: {
-                function: resourceNameRestriction,
+                function: hasApiVersionParameter,
+                functionOptions: {
+                    methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
+                },
+            },
+        },
+        ArrayMustHaveType: {
+            description: "Array type must have a type except for any type.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.definitions..items[?(@object())]^"],
+            then: {
+                function: truthy,
+                field: "type",
+            },
+        },
+        LroWithOriginalUriAsFinalState: {
+            description: "The long running operation with final-state-via:original-uri should have a sibling 'get' operation.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: [
+                "$[paths,'x-ms-paths'].*[put,patch,delete].x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
+            ],
+            then: {
+                function: validateOriginalUri,
+            },
+        },
+        LroPostMustNotUseOriginalUriAsFinalState: {
+            description: "The long running post operation must not use final-stat-via:original-uri.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: [
+                "$[paths,'x-ms-paths'].*.post.x-ms-long-running-operation-options[?(@property === 'final-state-via' && @ === 'original-uri')]^",
+            ],
+            then: {
+                function: falsy,
             },
         },
         APIVersionPattern: {
@@ -2304,7 +2369,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
+                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview))?$",
                 },
             },
         },
@@ -2328,17 +2393,6 @@ const ruleset = {
             given: "$.paths.*[get,post]",
             then: {
                 function: collectionObjectPropertiesNaming,
-            },
-        },
-        DeleteMustNotHaveRequestBody: {
-            description: "The delete operation must not have a request body.",
-            severity: "error",
-            message: "{{description}}",
-            resolved: true,
-            formats: [oas2],
-            given: "$.paths.*.delete.parameters[?(@.in === 'body')]",
-            then: {
-                function: falsy,
             },
         },
         DefinitionsPropertiesNamesCamelCase: {
@@ -2384,26 +2438,6 @@ const ruleset = {
                 },
             },
         },
-        PutGetPatchResponseSchema: {
-            description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
-            message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
-            severity: "error",
-            resolved: false,
-            given: ["$[paths,'x-ms-paths'].*.put^"],
-            then: {
-                function: putGetPatchScehma,
-            },
-        },
-        XmsResourceInPutResponse: {
-            description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            given: ["$[paths,'x-ms-paths'].*.put"],
-            then: {
-                function: withXmsResource,
-            },
-        },
         SecurityDefinitionsStructure: {
             description: `Each OpenAPI json document must contain a security definitions section and the section must adhere to a certain format.`,
             message: "{{error}}",
@@ -2434,28 +2468,6 @@ const ruleset = {
             given: "$.paths[?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema",
             then: {
                 function: operationsApiSchema,
-            },
-        },
-        LongRunningResponseStatusCode: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
-            then: {
-                function: longRunningResponseStatusCodeArm,
-            },
-        },
-        LocationMustHaveXmsMutability: {
-            description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
-            message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.definitions[*].properties.location"],
-            then: {
-                function: locationMustHaveXmsMutability,
             },
         },
         HttpsSupportedScheme: {
