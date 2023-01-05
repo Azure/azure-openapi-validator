@@ -102,6 +102,9 @@ test("ParameterNotUsingCommonTypes should find errors global parameters", () => 
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
+    expect(results[0].message).toContain("subscriptionId")
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.get.parameters")
+    expect(results[1].message).toContain("api-version")
   })
 })
 
