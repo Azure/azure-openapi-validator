@@ -13,7 +13,7 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "editor.defaultFormatter": "svipas.prettier-plus"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "files.exclude": {
     "node_modules/**": true,

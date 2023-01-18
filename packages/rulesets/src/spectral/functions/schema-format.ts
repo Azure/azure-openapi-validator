@@ -20,6 +20,7 @@ function checkSchemaFormat(schema: any, options: any, { path }: { path: JsonPath
     "int64",
     "float",
     "double",
+    "unixtime",
     // OAS-defined formats
     "byte",
     "binary",

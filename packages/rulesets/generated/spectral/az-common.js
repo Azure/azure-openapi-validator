@@ -577,6 +577,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "int64",
         "float",
         "double",
+        "unixtime",
         "byte",
         "binary",
         "date",
