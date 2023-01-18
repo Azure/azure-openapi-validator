@@ -1,9 +1,9 @@
 export const responseSchemaSpecifiedForSuccessStatusCode = (putOperation: any, _opts: any, ctx: any) => {
   const errors = []
   const path = ctx.path
-  const succeededCodes = ["200", "201"]
+  const successCodes = ["200", "201"]
 
-  for (const code of succeededCodes) {
+  for (const code of successCodes) {
     const response = putOperation.responses[code]
     if (!response?.schema) {
       errors.push({

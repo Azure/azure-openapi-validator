@@ -10,11 +10,11 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-Put-V1-24
+RPC-Put-V1-24
 
 ## Output Message
 
-The 200 and 201 success status code have missing response schema. They must have a response schema specified.
+The ${code} success status code has missing response schema. 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.
 
 ## Description
 
