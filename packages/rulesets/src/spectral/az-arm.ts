@@ -11,6 +11,7 @@ import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
+import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -329,6 +330,18 @@ const ruleset: any = {
       given: ["$.definitions[*].properties.location"],
       then: {
         function: locationMustHaveXmsMutability,
+      },
+    },
+    // RPC Code: RPC-Put-V1-24
+    ResponseSchemaSpecifiedForSuccessStatusCode: {
+      description: "The 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.put"],
+      then: {
+        function: responseSchemaSpecifiedForSuccessStatusCode,
       },
     },
 
