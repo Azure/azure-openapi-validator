@@ -694,6 +694,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "int64",
         "float",
         "double",
+        "unixtime",
         "byte",
         "binary",
         "date",
@@ -2106,6 +2107,17 @@ const ruleset = {
                 function: falsy,
             },
         },
+        GetMustNotHaveRequestBody: {
+            description: "The Get operation must not have a request body.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.get.parameters[?(@.in === 'body')]",
+            then: {
+                function: falsy,
+            },
+        },
         GetOperation200: {
             description: "The get operation should only return 200.",
             message: "{{description}}",
@@ -2402,7 +2414,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
+                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview))?$",
                 },
             },
         },
