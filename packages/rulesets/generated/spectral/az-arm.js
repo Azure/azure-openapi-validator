@@ -1976,6 +1976,40 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const pathParams = pathItem.parameters || [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const bodyParam = allParams.find((p) => p.in === "body");
+        if (bodyParam) {
+            const properties = getProperties(bodyParam.schema);
+            const requiredProperties = getRequiredProperties(bodyParam.schema);
+            if ("location" in properties) {
+                if ("tags" in properties) {
+                    if (requiredProperties.includes("tags")) {
+                        errors.push({
+                            message: `Tags must not be a required property.`,
+                            path: [...path, "put"]
+                        });
+                    }
+                }
+                else {
+                    errors.push({
+                        message: `Tracked resource does not have tags in the request schema.`,
+                        path: [...path, "put"],
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2193,6 +2227,17 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: bodyParamRepeatedInfo,
+            },
+        },
+        RequestSchemaForTrackedResourcesMustHaveTags: {
+            description: "A tracked resource MUST always have tags as a top level optional property",
+            message: "{{description}}. {{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^",
+            then: {
+                function: trackedResourceTagsPropertyInRequest,
             },
         },
         PutGetPatchResponseSchema: {
