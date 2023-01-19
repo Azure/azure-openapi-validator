@@ -22,6 +22,7 @@ import putGetPatchScehma from "./functions/put-get-patch-schema"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 const ruleset: any = {
@@ -296,6 +297,20 @@ const ruleset: any = {
         function: bodyParamRepeatedInfo,
       },
     },
+    // RPC Code: RPC-Put-V1-07
+    RequestSchemaForTrackedResourcesMustHaveTags: {
+      description:
+        "A tracked resource MUST always have tags as a top level optional property",
+      message: "{{description}}. {{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^",
+      then: {
+        function: trackedResourceTagsPropertyInRequest,
+      },
+    },
+
     // RPC Code: RPC-Put-V1-12
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
