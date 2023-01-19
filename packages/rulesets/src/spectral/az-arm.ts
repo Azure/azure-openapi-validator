@@ -22,9 +22,9 @@ import putGetPatchScehma from "./functions/put-get-patch-schema"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
-import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 const ruleset: any = {
   extends: [common],
   rules: {
