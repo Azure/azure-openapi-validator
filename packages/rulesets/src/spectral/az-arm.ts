@@ -12,6 +12,7 @@ import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
+import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -68,6 +69,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
       then: {
         function: longRunningResponseStatusCodeArm,
+      },
+    },
+    // RPC Code: RPC-Async-V1-02
+    ProvisioningStateSpecified: {
+      description: 'A LRO PUT and PATCH operations response must have "ProvisioningState" specified.',
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^^",
+      then: {
+        function: provisioningStateSpecified,
       },
     },
     // https://github.com/Azure/azure-openapi-validator/issues/332

@@ -50,20 +50,15 @@ Please refer to [api-version-enum.md](./api-version-enum.md) for details.
 
 ### ApiVersionParameterRequired
 
-This rule applies when the 'api-version' parameter is missing in any operations.
+Operation is missing the 'api-version' parameter.
 
 Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
 
 ### APIVersionPattern
 
-The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.) NOTE that this is the en-US ordering of month and date.
+The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
-
-- -preview - Indicates the API version is in (public) preview
-- -alpha
-- -beta
-- -rc (release candidate)
-- -privatepreview
+* -preview - Indicates the API version is in (public) preview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -194,10 +189,10 @@ Please refer to [default-response.md](./default-response.md) for details.
 ### DefinitionsPropertiesNamesCamelCase
 
 Property names must use lowerCamelCase style.
-If the property is a single word (ex: foo, bar, etc.) it will be all lowercase.
-Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized.
-Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.)
-For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](<https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx>)
+If the property is a single word (ex: foo, bar, etc.) it will be all lowercase. 
+Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized. 
+Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.) 
+For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx)
 
 Please refer to [definitions-properties-names-camel-case.md](./definitions-properties-names-camel-case.md) for details.
 
@@ -356,7 +351,6 @@ Please refer to [header-disallowed.md](./header-disallowed.md) for details.
 ### HostParametersValidation
 
 This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
-
 1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:url'.
    - Client level (x-ms-parameter-location: client)
    - A path component (in: path)
@@ -416,12 +410,6 @@ A tracked resource's `location` property must have the `x-ms-mutability` propert
 
 Please refer to [location-must-have-xms-mutability.md](./location-must-have-xms-mutability.md) for details.
 
-### ResponseSchemaSpecifiedForSuccessStatusCode
-
-Validates if 200 & 201 success status codes for an ARM PUT operation has a response schema specified.
-
-Please refer to [response-schema-specified-for-success-status-code.md](./response-schema-specified-for-success-status-code.md) for details.
-
 ### LongRunningOperationsOptionsValidator
 
 This is a rule introduced to make the understanding of Long Running Operations more clear.
@@ -479,6 +467,14 @@ Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
+
+### LongRunningOperationsOptionsValidator
+
+This is a rule introduced to make the understanding of Long Running Operations more clear.
+In case of LRO Post operation with return schema, it MAY be ambiguous for the SDK to understand automatically what the return schema is modeling. To avoid any confusion that would lead SDK to incorrectly instantiate the return type, service team needs to explain if the return schema is modeling a result from a "Location" header, or from an "Azure-AsyncOperation" header.
+More details on LRO operation could be found [here](https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-long-running-operation)
+
+Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
 
 ### LROStatusCodesReturnTypeSchema
 
@@ -706,7 +702,7 @@ Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 ### PathCharacters
 
 Path should contain only recommended characters.
-The recommended characters are 0-9, A-Z, a-z, -, ., \_, ~, and :.
+The recommended characters are 0-9, A-Z, a-z, -, ., _, ~, and :.
 
 Please refer to [path-characters.md](./path-characters.md) for details.
 
@@ -720,7 +716,6 @@ Please refer to [path-contains-resource-group.md](./path-contains-resource-group
 
 Per ARM RPC,Uri for resource CRUD methods MUST contain a resource type.
 Uri path starts with \<scope\>/providers/\<namespace\>/\<resourcetype\> format, where
-
 - \<scope\> is one of:
   1.  Tenant/Global: '/'
   2.  Subscription: "/subscriptions/{subscriptionId}"
@@ -772,7 +767,7 @@ Please refer to [path-parameter-schema.md](./path-parameter-schema.md) for detai
 
 ### PathResourceProviderMatchNamespace
 
-Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).
+Verifies whether the resource provider namespace in the last segment of the path matches the namespace to which the specification file belongs. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if the segment /Microsoft.Insights matches the namespace name to which the specification file belongs (Microsoft.Insights).
 
 Please refer to [path-resource-provider-match-namespace.md](./path-resource-provider-match-namespace.md) for details.
 
@@ -817,7 +812,6 @@ Please refer to [preview-version-over-one-year.md](./preview-version-over-one-ye
 ### PrivateEndpointResourceSchemaValidation
 
 This rule is to check if the schemas used by private endpoint conform to the common [privateLink](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v1/privatelinks.json). The rule will check the schemas of following models and their properties:
-
 1. PrivateEndpointConnection
 2. PrivateEndpointConnectionProperties
 3. PrivateEndpointConnectionListResult
@@ -930,6 +924,12 @@ This rule ensures that the authors explicitly define these restrictions as a reg
 
 Please refer to [resource-name-restriction.md](./resource-name-restriction.md) for details.
 
+### ResponseSchemaSpecifiedForSuccessStatusCode
+
+Validates if 200 & 201 success status codes for an ARM PUT operation has a response schema specified.
+
+Please refer to [response-schema-specified-for-success-status-code.md](./response-schema-specified-for-success-status-code.md) for details.
+
 ### RPaasResourceProvisioningState
 
 Verifies if a Azure resource has a corresponding 'provisioningState' property. If the 'provisioningState' is not defining explicitly , the client will drop the state when the service does return it.
@@ -955,34 +955,34 @@ Every schema should specify a well-defined combination of `type` and `format`.
 and not allowed for any other types.
 The well-defined type/format combinations are:
 **type: integer**
-| format | description | comments |
+| format   | description     | comments                  |
 | -------- | --------------- | ------------------------- |
-| int32 | signed 32 bits | from [oas2][oas2] |
-| int64 | signed 64 bits | from [oas2][oas2] |
+| int32    | signed 32 bits  | from [oas2][oas2]         |
+| int64    | signed 64 bits  | from [oas2][oas2]         |
 | unixtime | Unix time stamp | from [autorest][autorest] |
 **type: number**
-| format | description | comments |
+| format  | description            | comments                  |
 | ------- | ---------------------- | ------------------------- |
-| float | 32 bit floating point | from [oas2][oas2] |
-| int64 | 64 bit floating point | from [oas2][oas2] |
+| float   | 32 bit floating point  | from [oas2][oas2]         |
+| int64   | 64 bit floating point  | from [oas2][oas2]         |
 | decimal | 128 bit floating point | from [autorest][autorest] |
 **type: string**
-| format | description | comments |
+| format            | description                  | comments                  |
 | ----------------- | ---------------------------- | ------------------------- |
-| byte | base64 encoded characters | from [oas2][oas2] |
-| binary | any sequence of octets | from [oas2][oas2] |
-| date | [RFC3339][rfc3339] full-date | from [oas2][oas2] |
-| date-time | [RFC3339][rfc3339] date-time | from [oas2][oas2] |
-| password | sensitive value | from [oas2][oas2] |
-| char | | from [autorest][autorest] |
-| time | | from [autorest][autorest] |
-| date-time-rfc1123 | | from [autorest][autorest] |
-| duration | | from [autorest][autorest] |
-| uuid | | from [autorest][autorest] |
-| base64url | | from [autorest][autorest] |
-| url | | from [autorest][autorest] |
-| odata-query | | from [autorest][autorest] |
-| certificate | | from [autorest][autorest] |
+| byte              | base64 encoded characters    | from [oas2][oas2]         |
+| binary            | any sequence of octets       | from [oas2][oas2]         |
+| date              | [RFC3339][rfc3339] full-date | from [oas2][oas2]         |
+| date-time         | [RFC3339][rfc3339] date-time | from [oas2][oas2]         |
+| password          | sensitive value              | from [oas2][oas2]         |
+| char              |                              | from [autorest][autorest] |
+| time              |                              | from [autorest][autorest] |
+| date-time-rfc1123 |                              | from [autorest][autorest] |
+| duration          |                              | from [autorest][autorest] |
+| uuid              |                              | from [autorest][autorest] |
+| base64url         |                              | from [autorest][autorest] |
+| url               |                              | from [autorest][autorest] |
+| odata-query       |                              | from [autorest][autorest] |
+| certificate       |                              | from [autorest][autorest] |
 oas2: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
 autorest: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
 rfc3339: https://xml2rfc.tools.ietf.org/public/rfc/
@@ -1106,7 +1106,6 @@ Please refer to [unique-model-name.md](./unique-model-name.md) for details.
 
 This rule will check all the swagger files with the same api-version, and ensure there is no duplicate x-ms-enum name.
 The following cases are deemed as violation:
-
 1. if two enums have the same x-ms-enum name , but types are different.
 2. if two enums have the same x-ms-enum name , but 'modelAsString' are different.
 3. if two enums have the same x-ms-enum name , but include different values.
