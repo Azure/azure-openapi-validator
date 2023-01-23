@@ -73,12 +73,12 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Async-V1-02
     ProvisioningStateSpecified: {
-      description: 'A LRO PUT and PATCH operations response must have "ProvisioningState" specified.',
+      description: 'A LRO PUT and PATCH operations response schema must have "ProvisioningState" property specified.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^^",
+      given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
       then: {
         function: provisioningStateSpecified,
       },
