@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator",
+      "comment": "bump version",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator"
+}

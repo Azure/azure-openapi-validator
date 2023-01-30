@@ -3,26 +3,16 @@ trigger:
 - main
 
 variables:
-  NodeVersion: '12.x'
+  NODE_OPTIONS: '--max-old-space-size=8192'
   Codeql.Enabled: true
 
 jobs:
   - job: 'Build'
-
     pool:
-      vmImage: 'Ubuntu 18.04'
+      vmImage: 'ubuntu-22.04'
 
     steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '$(NodeVersion)'
-        displayName: 'Install Node.js $(NodeVersion)'
-
-      - script: 'node common/scripts/install-run-rush.js install'
-        displayName: 'rush install'
-
-      - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
-        displayName: 'rush build'
+      - template: azure-pipelines/common-build.yml
 
       - script: 'node common/scripts/install-run-rush.js lint'
         displayName: 'rush lint'
@@ -32,6 +22,10 @@ jobs:
 
       - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
         displayName: 'rush regen rule index'
+
+      - script: node common/scripts/install-run-rush.js change -v
+        condition: and(succeeded(), not(or(startsWith(variables['System.PullRequest.SourceBranch'], 'publish/'), startsWith(variables['System.PullRequest.SourceBranch'], 'backmerge/'))))
+        displayName: Check that changelog has been provided
       
       - script: 'node eng/scripts/checkForChangedFile.js'
         displayName: 'check changed files'

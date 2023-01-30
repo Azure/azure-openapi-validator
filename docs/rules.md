@@ -329,6 +329,12 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for details.
 
+### GetMustNotHaveRequestBody
+
+The request body of a get operation must be empty.
+
+Please refer to [get-must-not-have-request-body.md](./get-must-not-have-request-body.md) for details.
+
 ### GetOperation200
 
 The get operation should only return 200, also it should not be a long running operation.
