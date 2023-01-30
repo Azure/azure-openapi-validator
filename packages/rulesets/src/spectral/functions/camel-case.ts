@@ -1,8 +1,9 @@
 import type { IFunctionResult } from "@stoplight/spectral-core"
 import type { JsonPath } from "@stoplight/types"
+import { createRuleFunctionWithPasses } from "./utils"
 
 // check if given propertyName is camel case
-export function camelCase(propertyName: string, options: any, { path }: { path: JsonPath }): IFunctionResult[] {
+export const camelCase = createRuleFunctionWithPasses((propertyName: string, options: any, { path }: { path: JsonPath }): IFunctionResult[] => {
   if (!propertyName) {
     return [] as IFunctionResult[]
   }
@@ -12,11 +13,11 @@ export function camelCase(propertyName: string, options: any, { path }: { path: 
 
   if (!camelCaseReg.test(propertyName)) {
     errors.push({
-      message:"",
+      message: "Property name should be camel case.",
       path
     })
   }
   return errors
-}
+})
 
 export default camelCase

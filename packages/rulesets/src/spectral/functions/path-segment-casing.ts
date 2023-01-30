@@ -1,5 +1,5 @@
 // _opts has a property 'segments' as string[] to specify the segment names to check for 
-export const pathSegmentCasing = (apiPaths:any, _opts:any, paths: any) => {
+export const pathSegmentCasing = (apiPaths:any, _opts:any, {path}: any) => {
   if (apiPaths === null || typeof apiPaths !== 'object') {
     return [];
   }
@@ -8,8 +8,6 @@ export const pathSegmentCasing = (apiPaths:any, _opts:any, paths: any) => {
     return []
   }
   const segments = _opts.segments
-  const path = paths.path || [];
-
   const errors:any[] = [];
   for (const apiPath of Object.keys(apiPaths)) {
     segments.forEach((seg:string) => {

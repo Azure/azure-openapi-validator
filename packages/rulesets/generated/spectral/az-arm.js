@@ -329,6 +329,18 @@ function isSchemaEqual(a, b) {
     }
     return false;
 }
+function createRuleFunctionWithPasses(fn) {
+    return (input, options, ctx) => {
+        const messsages = fn(input, options, ctx);
+        if (messsages.length === 0) {
+            messsages.push({
+                message: `[Verbose]this is a verbose message to indicate that this rule was passed for specific swagger schema successfully and no fix is needed, please ignore it.`,
+                path: ctx.path
+            });
+        }
+        return messsages;
+    };
+}
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     var _a, _b, _c;
@@ -1406,7 +1418,7 @@ const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     return errors;
 };
 
-function camelCase(propertyName, options, { path }) {
+const camelCase = createRuleFunctionWithPasses((propertyName, options, { path }) => {
     if (!propertyName) {
         return [];
     }
@@ -1414,12 +1426,12 @@ function camelCase(propertyName, options, { path }) {
     const camelCaseReg = /^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)+$|^[a-z0-9$-]+$|^[a-z0-9$-]+([A-Z]{1,3}[a-z0-9$-]+)*[A-Z]{1,3}$/;
     if (!camelCaseReg.test(propertyName)) {
         errors.push({
-            message: "",
+            message: "Property name should be camel case.",
             path
         });
     }
     return errors;
-}
+});
 
 const collectionObjectPropertiesNaming = (op, _opts, paths) => {
     var _a, _b;
@@ -1735,7 +1747,7 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
-const pathSegmentCasing = (apiPaths, _opts, paths) => {
+const pathSegmentCasing = (apiPaths, _opts, { path }) => {
     if (apiPaths === null || typeof apiPaths !== 'object') {
         return [];
     }
@@ -1743,7 +1755,6 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
         return [];
     }
     const segments = _opts.segments;
-    const path = paths.path || [];
     const errors = [];
     for (const apiPath of Object.keys(apiPaths)) {
         segments.forEach((seg) => {
@@ -2442,7 +2453,7 @@ const ruleset = {
         },
         DefinitionsPropertiesNamesCamelCase: {
             description: "Property names should be camel case.",
-            message: "Property name should be camel case.",
+            message: "{{error}}",
             severity: "error",
             resolved: false,
             given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",

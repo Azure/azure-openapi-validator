@@ -539,7 +539,7 @@ const ruleset: any = {
     // this rule covers BodyPropertiesNamesCamelCase and DefinitionsPropertiesNamesCamelCase
     DefinitionsPropertiesNamesCamelCase: {
       description: "Property names should be camel case.",
-      message: "Property name should be camel case.",
+      message: "{{error}}",
       severity: "error",
       resolved: false,
       given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",

@@ -19,15 +19,17 @@ const cachedFiles = new Map<string,any>()
 
 function convertLintMsgToAutoRestMsg(message:LintResultMessage):Message {
   // try to extract provider namespace and resource type
-  const path = message.jsonpath?.[1] === "paths" && message.jsonpath[2]
-  const pathComponents = typeof path === "string" && path.split("/")
-  const pathComponentsProviderIndex = pathComponents && pathComponents.indexOf("providers")
-  const pathComponentsTail =
-    pathComponentsProviderIndex && pathComponentsProviderIndex >= 0 && pathComponents.slice(pathComponentsProviderIndex + 1)
-  const pathComponentProviderNamespace = pathComponentsTail && pathComponentsTail[0]
-  const pathComponentResourceType = pathComponentsTail && pathComponentsTail[1]
+  const path = message.jsonpath?.[0] === "paths" ? message.jsonpath[1] : undefined
+  const pathComponents = typeof path === "string" ? path.split("/") : undefined
+  const pathComponentsProviderIndex = pathComponents ? pathComponents.lastIndexOf("providers") : -1
+  const pathComponentsTail = pathComponents && pathComponentsProviderIndex >= 0 ? pathComponents.slice(pathComponentsProviderIndex + 1) : []
+  const pathComponentProviderNamespace = pathComponentsTail[0] || ""
+
+  // we can infer the resource type from the path pattern like: "{scope}/providers/MyNamepace/RT1/{rt1Name}/RT2/{rt2Name}" whose pathComponentsTail is ["MyNamespace","RT1","{rt1Name}","RT2","{rt2Name}"]
+  const pathComponentResourceType = pathComponentsTail && pathComponentsTail.length >= 3 && pathComponentsTail.length % 2 ? pathComponentsTail[pathComponentsTail.length -2] : ""
+  const type = message.message.startsWith("[Verbose]this is a verbose message to indicate that this rule was passed for specific swagger schema successfully and no fix is needed") ? "verbose" : message.type
   const msg = {
-    Channel: message.type,
+    Channel: type,
     Text: message.message,
     Key: [message.code],
     Source: [
