@@ -13,7 +13,7 @@ export const provisioningStateSpecified = (pathItem: any, _opts: any, ctx: any) 
 
   for (const verb of neededHttpVerbs) {
     if (pathItem[verb]) {
-      var codes = []
+      let codes = []
       if (verb === "patch") {
         codes = patchCodes
       } else {
