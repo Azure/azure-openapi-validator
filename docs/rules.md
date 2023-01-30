@@ -50,7 +50,7 @@ Please refer to [api-version-enum.md](./api-version-enum.md) for details.
 
 ### ApiVersionParameterRequired
 
-This rule applies when the 'api-version' parameter is missing in any operations.
+Operation is missing the 'api-version' parameter.
 
 Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
 
@@ -59,10 +59,6 @@ Please refer to [api-version-parameter-required.md](./api-version-parameter-requ
 The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
 * -preview - Indicates the API version is in (public) preview
-* -alpha
-* -beta
-* -rc (release candidate)
-* -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -484,6 +480,12 @@ The long running operation with final-state-via:original-uri should have a sibli
 
 Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
 
+### MissingDefaultResponse
+
+All operations should have a default (error) response.
+
+Please refer to [missing-default-response.md](./missing-default-response.md) for details.
+
 ### MissingTypeObject
 
 The rule should apply to any schema with "properties" or "additionalProperties". It is to ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object.
@@ -763,7 +765,7 @@ Please refer to [path-parameter-schema.md](./path-parameter-schema.md) for detai
 
 ### PathResourceProviderMatchNamespace
 
-Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).
+Verifies whether the resource provider namespace in the last segment of the path matches the namespace to which the specification file belongs. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if the segment /Microsoft.Insights matches the namespace name to which the specification file belongs (Microsoft.Insights).
 
 Please refer to [path-resource-provider-match-namespace.md](./path-resource-provider-match-namespace.md) for details.
 

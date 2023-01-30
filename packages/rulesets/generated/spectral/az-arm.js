@@ -2480,6 +2480,16 @@ const ruleset = {
                 function: httpsSupportedScheme,
             },
         },
+        MissingDefaultResponse: {
+            description: "All operations should have a default (error) response.",
+            message: "Operation is missing a default response.",
+            severity: "error",
+            given: "$.paths.*.*.responses",
+            then: {
+                field: "default",
+                function: truthy,
+            },
+        },
     },
 };
 
