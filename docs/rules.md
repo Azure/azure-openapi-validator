@@ -50,7 +50,7 @@ Please refer to [api-version-enum.md](./api-version-enum.md) for details.
 
 ### ApiVersionParameterRequired
 
-This rule applies when the 'api-version' parameter is missing in any operations.
+Operation is missing the 'api-version' parameter.
 
 Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
 
@@ -59,10 +59,6 @@ Please refer to [api-version-parameter-required.md](./api-version-parameter-requ
 The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
 * -preview - Indicates the API version is in (public) preview
-* -alpha
-* -beta
-* -rc (release candidate)
-* -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -527,6 +523,27 @@ Per definition of AutoRest [x-ms-pageable extension](https://github.com/Azure/au
 
 Please refer to [next-link-property-must-exist.md](./next-link-property-must-exist.md) for details.
 
+### NoDuplicatePathsForScopeParameter
+
+Swagger authors that use the `scope` parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group), must not include API paths with explicitly defined scopes (e.g. subscription API path).
+"subscriptions/{subscriptionId}",
+"subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}",
+"providers/Microsoft.Management/managementGroups/{managementGroupId}",
+"providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}",
+"providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}",
+For example,
+```json
+"paths": {
+}
+```
+
+Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
+
 ### NonApplicationJsonType
 
 Verifies whether operation supports "application/json" as consumes or produces section.
@@ -763,7 +780,7 @@ Please refer to [path-parameter-schema.md](./path-parameter-schema.md) for detai
 
 ### PathResourceProviderMatchNamespace
 
-Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).
+Verifies whether the resource provider namespace in the last segment of the path matches the namespace to which the specification file belongs. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if the segment /Microsoft.Insights matches the namespace name to which the specification file belongs (Microsoft.Insights).
 
 Please refer to [path-resource-provider-match-namespace.md](./path-resource-provider-match-namespace.md) for details.
 
