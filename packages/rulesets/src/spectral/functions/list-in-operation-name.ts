@@ -23,7 +23,8 @@ const listInOperationName = (swaggerObj: any, _opts: any, paths: any) => {
   let gotArray = false
   Object.values(responseList).some((response: any) => {
     if (response.schema) {
-      if (response.schema.properties?.value?.type === "array" && Object.keys(response.schema.properties).length === 1) {
+      // for paging model, it should contain a 'value' property, may contain a nextLink property.
+      if (response.schema.properties?.value?.type === "array" && Object.keys(response.schema.properties).length <= 2) {
         if (!listRegex.test(swaggerObj["operationId"])) {
           gotArray = true
           return true
