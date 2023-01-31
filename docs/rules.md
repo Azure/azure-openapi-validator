@@ -50,7 +50,7 @@ Please refer to [api-version-enum.md](./api-version-enum.md) for details.
 
 ### ApiVersionParameterRequired
 
-This rule applies when the 'api-version' parameter is missing in any operations.
+Operation is missing the 'api-version' parameter.
 
 Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
 
@@ -59,10 +59,6 @@ Please refer to [api-version-parameter-required.md](./api-version-parameter-requ
 The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
 * -preview - Indicates the API version is in (public) preview
-* -alpha
-* -beta
-* -rc (release candidate)
-* -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -472,6 +468,12 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
+### ProvisioningStateSpecified
+
+This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+
+Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
+
 ### LROStatusCodesReturnTypeSchema
 
 The '200'/'201' responses of the long running operation must have a schema definition.
@@ -763,7 +765,7 @@ Please refer to [path-parameter-schema.md](./path-parameter-schema.md) for detai
 
 ### PathResourceProviderMatchNamespace
 
-Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).
+Verifies whether the resource provider namespace in the last segment of the path matches the namespace to which the specification file belongs. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if the segment /Microsoft.Insights matches the namespace name to which the specification file belongs (Microsoft.Insights).
 
 Please refer to [path-resource-provider-match-namespace.md](./path-resource-provider-match-namespace.md) for details.
 
@@ -919,6 +921,12 @@ Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-reso
 This rule ensures that the authors explicitly define these restrictions as a regex on the resource name. If a team does not have custom rules then the ARM's default rule should get applied.
 
 Please refer to [resource-name-restriction.md](./resource-name-restriction.md) for details.
+
+### ResponseSchemaSpecifiedForSuccessStatusCode
+
+Validates if 200 & 201 success status codes for an ARM PUT operation has a response schema specified.
+
+Please refer to [response-schema-specified-for-success-status-code.md](./response-schema-specified-for-success-status-code.md) for details.
 
 ### RPaasResourceProvisioningState
 

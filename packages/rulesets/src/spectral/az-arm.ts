@@ -13,6 +13,7 @@ import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
+import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import pathBodyParameters from "./functions/patch-body-parameters"
@@ -20,6 +21,7 @@ import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import resourceNameRestriction from "./functions/resource-name-restriction"
+import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
@@ -68,6 +70,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
       then: {
         function: longRunningResponseStatusCodeArm,
+      },
+    },
+    // RPC Code: RPC-Async-V1-02
+    ProvisioningStateSpecified: {
+      description: 'A LRO PUT and PATCH operations response schema must have "ProvisioningState" property specified.',
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^^",
+      then: {
+        function: provisioningStateSpecified,
       },
     },
     // https://github.com/Azure/azure-openapi-validator/issues/332
@@ -344,6 +358,18 @@ const ruleset: any = {
       given: ["$.definitions[*].properties.location"],
       then: {
         function: locationMustHaveXmsMutability,
+      },
+    },
+    // RPC Code: RPC-Put-V1-24
+    ResponseSchemaSpecifiedForSuccessStatusCode: {
+      description: "The 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.put"],
+      then: {
+        function: responseSchemaSpecifiedForSuccessStatusCode,
       },
     },
 
