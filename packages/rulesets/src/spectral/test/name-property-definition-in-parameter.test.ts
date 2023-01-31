@@ -1,12 +1,12 @@
-import {Spectral} from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("NamePropertyDefinitionInParameter");
-  return linter;
-});
+  linter = await linterForRule("NamePropertyDefinitionInParameter")
+  return linter
+})
 
 test("NamePropertyDefinitionInParameter should find errors", () => {
   const myOpenApiDocument = {
@@ -44,14 +44,14 @@ test("NamePropertyDefinitionInParameter should find errors", () => {
         type: "string",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(3);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.parameters");
-    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.parameters");
-    expect(results[2].path.join(".")).toBe("parameters");
-  });
-});
+    expect(results.length).toBe(3)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.parameters")
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.parameters")
+    expect(results[2].path.join(".")).toBe("parameters")
+  })
+})
 
 test("NamePropertyDefinitionInParameter should find no errors", () => {
   const myOpenApiDocument = {
@@ -98,8 +98,8 @@ test("NamePropertyDefinitionInParameter should find no errors", () => {
         description: "test api version",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

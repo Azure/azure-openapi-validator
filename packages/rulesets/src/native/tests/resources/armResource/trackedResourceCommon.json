@@ -23,8 +23,7 @@
       }
     }
   },
-  "paths": {
-  },
+  "paths": {},
   "definitions": {
     "Resource": {
       "description": "The core properties of ARM resources",
@@ -107,6 +106,5 @@
       }
     }
   },
-  "parameters": {
-  }
+  "parameters": {}
 }

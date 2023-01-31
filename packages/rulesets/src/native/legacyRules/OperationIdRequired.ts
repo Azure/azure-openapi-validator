@@ -24,11 +24,11 @@ rules.push({
           if (!node[pathKey][op].operationId) {
             yield {
               message: `Missing operationId in path:'${pathKey}', operation:'${op}', consider adding the operationId .`,
-              location: path.concat([pathKey, op])
+              location: path.concat([pathKey, op]),
             }
           }
         }
       }
     }
-  }
+  },
 })

@@ -2646,14 +2646,7 @@
         "resourceState": {
           "description": "Resource status of the endpoint.",
           "readOnly": true,
-          "enum": [
-            "Creating",
-            "Deleting",
-            "Running",
-            "Starting",
-            "Stopped",
-            "Stopping"
-          ],
+          "enum": ["Creating", "Deleting", "Running", "Starting", "Stopped", "Stopping"],
           "type": "string",
           "x-ms-enum": {
             "name": "EndpointResourceState",
@@ -3083,9 +3076,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleRemoteAddressConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleRemoteAddressConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3122,9 +3113,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestMethodConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestMethodConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3155,9 +3144,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleQueryStringConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleQueryStringConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3204,9 +3191,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRulePostArgsConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRulePostArgsConditionParameters"]
         },
         "selector": {
           "description": "Name of PostArg to be matched",
@@ -3257,9 +3242,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestUriConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestUriConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3306,9 +3289,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestHeaderConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestHeaderConditionParameters"]
         },
         "selector": {
           "description": "Name of Header to be matched",
@@ -3359,9 +3340,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestBodyConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestBodyConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3408,9 +3387,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3437,9 +3414,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlPathMatchConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlPathMatchConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3487,9 +3462,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFileExtensionMatchConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFileExtensionMatchConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3536,9 +3509,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFilenameConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFilenameConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3585,9 +3556,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleHttpVersionConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleHttpVersionConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3617,9 +3586,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleCookiesConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleCookiesConditionParameters"]
         },
         "selector": {
           "description": "Name of Cookies to be matched",
@@ -3670,9 +3637,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleIsDeviceConditionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleIsDeviceConditionParameters"]
         },
         "operator": {
           "description": "Describes operator to be matched",
@@ -3750,9 +3715,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRedirectActionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRedirectActionParameters"]
         },
         "redirectType": {
           "description": "The redirect type the rule will use when redirecting traffic.",
@@ -3796,9 +3759,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlSigningActionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlSigningActionParameters"]
         },
         "keyId": {
           "description": "Id reference of the key to be used to verify the hash and should be defined in UrlSigningKeys",
@@ -3870,9 +3831,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRewriteActionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRewriteActionParameters"]
         },
         "sourcePattern": {
           "description": "define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.",
@@ -3926,9 +3885,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleHeaderActionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleHeaderActionParameters"]
         },
         "headerAction": {
           "description": "Action to perform",
@@ -3971,9 +3928,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheExpirationActionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheExpirationActionParameters"]
         },
         "cacheBehavior": {
           "description": "Caching behavior for the requests",
@@ -4022,9 +3977,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheKeyQueryStringBehaviorActionParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.DeliveryRuleCacheKeyQueryStringBehaviorActionParameters"]
         },
         "queryStringBehavior": {
           "description": "Caching behavior for the requests",
@@ -4246,14 +4199,7 @@
     },
     "KeyVaultSigningKeyParameters": {
       "description": "Describes the parameters for using a user's KeyVault for URL Signing Key.",
-      "required": [
-        "@odata.type",
-        "subscriptionId",
-        "resourceGroupName",
-        "vaultName",
-        "secretName",
-        "secretVersion"
-      ],
+      "required": ["@odata.type", "subscriptionId", "resourceGroupName", "vaultName", "secretName", "secretVersion"],
       "properties": {
         "@odata.type": {
           "type": "string",
@@ -4338,13 +4284,7 @@
           "description": "The approval status for the connection to the Private Link",
           "type": "string",
           "readOnly": true,
-          "enum": [
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-            "Timeout"
-          ],
+          "enum": ["Pending", "Approved", "Rejected", "Disconnected", "Timeout"],
           "x-ms-enum": {
             "name": "PrivateEndpointStatus",
             "modelAsString": true
@@ -4819,9 +4759,7 @@
       "properties": {
         "@odata.type": {
           "type": "string",
-          "enum": [
-            "#Microsoft.Azure.Cdn.Models.KeyVaultCertificateSourceParameters"
-          ]
+          "enum": ["#Microsoft.Azure.Cdn.Models.KeyVaultCertificateSourceParameters"]
         },
         "subscriptionId": {
           "description": "Subscription Id of the user's Key Vault containing the SSL certificate",
@@ -5217,12 +5155,7 @@
     },
     "QueryStringCachingBehavior": {
       "description": "Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.",
-      "enum": [
-        "IgnoreQueryString",
-        "BypassCaching",
-        "UseQueryString",
-        "NotSet"
-      ],
+      "enum": ["IgnoreQueryString", "BypassCaching", "UseQueryString", "NotSet"],
       "type": "string",
       "x-ms-enum": {
         "name": "QueryStringCachingBehavior",
@@ -5378,14 +5311,7 @@
         "resourceState": {
           "title": "Resource status of the policy.",
           "readOnly": true,
-          "enum": [
-            "Creating",
-            "Enabling",
-            "Enabled",
-            "Disabling",
-            "Disabled",
-            "Deleting"
-          ],
+          "enum": ["Creating", "Enabling", "Enabled", "Disabling", "Disabled", "Deleting"],
           "type": "string",
           "x-ms-enum": {
             "name": "PolicyResourceState",
@@ -5603,14 +5529,7 @@
     "TransformType": {
       "description": "Describes what transforms were applied before matching.",
       "type": "string",
-      "enum": [
-        "Lowercase",
-        "Uppercase",
-        "Trim",
-        "UrlDecode",
-        "UrlEncode",
-        "RemoveNulls"
-      ],
+      "enum": ["Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls"],
       "x-ms-enum": {
         "name": "TransformType",
         "modelAsString": true

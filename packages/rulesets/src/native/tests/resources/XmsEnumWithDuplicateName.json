@@ -1,102 +1,92 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "title": "SwaggerInventoryTests",
-        "description": "Use this swagger to test the inventory to detect response types with arrays as possible pageable operations",
-        "version": "2016-10-10"
-    },
-    "host": "management.azure.com",
-    "paths": {
-        "/plants": {
-            "put": {
-                "description": "Get a list of plants.",
-                "operationId": "Plants_List",
-                "x-ms-pageable": {
-                    "nextLinkName": "nextLink"
-                },
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "OK.",
-                        "schema": {
-                            "$ref": "#/definitions/PlantsList"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "PlantsList": {
-            "type": "object",
-            "description": "Response to a Pageable operation. This one lists plants",
-            "readOnly": true,
-            "properties": {
-                "value": {
-                    "type": "array",
-                    "description": "List of plants",
-                    "items": {
-                        "$ref": "#/definitions/Plant"
-                    },
-                    "readOnly": true
-                },
-                "nextLink": {
-                    "type": "string",
-                    "description": "Link to next page of results",
-                    "readOnly": true
-                }
-            }
+  "swagger": "2.0",
+  "info": {
+    "title": "SwaggerInventoryTests",
+    "description": "Use this swagger to test the inventory to detect response types with arrays as possible pageable operations",
+    "version": "2016-10-10"
+  },
+  "host": "management.azure.com",
+  "paths": {
+    "/plants": {
+      "put": {
+        "description": "Get a list of plants.",
+        "operationId": "Plants_List",
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
         },
-        "Plant": {
-            "type": "object",
-            "description": "A plant",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The plant's name"
-                },
-                "edible": {
-                    "type": "boolean",
-                    "description": "Is the plant edible?"
-                }
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "schema": {
+              "$ref": "#/definitions/PlantsList"
             }
-        },
-        "ConfigurationStoreProperties": {
-            "description": "The properties of a configuration store.",
-            "type": "object",
-            "properties": {
-                "provisioningState": {
-                    "description": "The provisioning state of the configuration store.",
-                    "enum": [
-                        "Creating",
-                        "Updating",
-                        "Deleting",
-                        "Succeeded",
-                        "Failed",
-                        "Canceled"
-                    ],
-                    "type": "string",
-                    "readOnly": true,
-                    "x-ms-enum": {
-                        "name": "RespStatus",
-                        "modelAsString": true
-                    }
-                },
-                "status": {
-                    "description": "The state code.",
-                    "enum": [
-                        "Success",
-                        "FAILED"
-                    ],
-                    "readOnly": true,
-                    "type": "string",
-                    "x-ms-enum": {
-                        "name": "RespStatus",
-                        "modelAsString": true
-                    }
-                }
-            }
+          }
         }
+      }
+    }
+  },
+  "definitions": {
+    "PlantsList": {
+      "type": "object",
+      "description": "Response to a Pageable operation. This one lists plants",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "List of plants",
+          "items": {
+            "$ref": "#/definitions/Plant"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Link to next page of results",
+          "readOnly": true
+        }
+      }
     },
-    "parameters": {}
+    "Plant": {
+      "type": "object",
+      "description": "A plant",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The plant's name"
+        },
+        "edible": {
+          "type": "boolean",
+          "description": "Is the plant edible?"
+        }
+      }
+    },
+    "ConfigurationStoreProperties": {
+      "description": "The properties of a configuration store.",
+      "type": "object",
+      "properties": {
+        "provisioningState": {
+          "description": "The provisioning state of the configuration store.",
+          "enum": ["Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled"],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "RespStatus",
+            "modelAsString": true
+          }
+        },
+        "status": {
+          "description": "The state code.",
+          "enum": ["Success", "FAILED"],
+          "readOnly": true,
+          "type": "string",
+          "x-ms-enum": {
+            "name": "RespStatus",
+            "modelAsString": true
+          }
+        }
+      }
+    }
+  },
+  "parameters": {}
 }

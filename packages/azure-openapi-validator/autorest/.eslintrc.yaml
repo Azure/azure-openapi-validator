@@ -2,4 +2,4 @@ parser: "@typescript-eslint/parser"
 extends:
   - "../../../.eslintrc.yaml"
 rules:
- no-console: off
+  no-console: off

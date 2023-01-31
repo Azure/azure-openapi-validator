@@ -17,8 +17,8 @@ rules.push({
     if (node) {
       yield {
         message: `The x-ms-code-generation-setting extension is being deprecated. Please remove it and move settings to readme file for code generation.`,
-        location: path
+        location: path,
       }
     }
-  }
+  },
 })

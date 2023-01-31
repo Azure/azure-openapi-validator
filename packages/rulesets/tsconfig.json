@@ -1,11 +1,7 @@
 {
-    "extends": "../../tsconfig-base.json",
-    "include": [
-        "./src/spectral/**/*.ts",
-        "./src/native/**/*.ts",
-        "src/index.ts"
-    ],
-    "compilerOptions": {
-        "outDir": "dist"
-    }
+  "extends": "../../tsconfig-base.json",
+  "include": ["./src/spectral/**/*.ts", "./src/native/**/*.ts", "src/index.ts"],
+  "compilerOptions": {
+    "outDir": "dist"
+  }
 }

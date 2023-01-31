@@ -202,15 +202,16 @@ test("PathForNestedResource should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}":
+        {
+          put: {
+            tags: ["SampleTag"],
+            operationId: "Foo_CreateOrUpdate",
+            description: "Test Description",
+            parameters: [],
+            responses: {},
+          },
         },
-      },
     },
   }
   return linters.PathForNestedResource.run(oasDoc).then((results) => {

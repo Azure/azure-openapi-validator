@@ -1,184 +1,186 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('CollectionObjectPropertiesNaming');
-  return linter;
-});
+  linter = await linterForRule("CollectionObjectPropertiesNaming")
+  return linter
+})
 
-
-test('CollectionObjectPropertiesNaming should find errors in value property', () => {
+test("CollectionObjectPropertiesNaming should find errors in value property", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/test2': {
+      "/test2": {
         get: {
           operationId: "test_ListByID",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
                 properties: {
                   value: {
-                    type: 'string',
+                    type: "string",
                   },
                   nextLink: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['value'],
+                required: ["value"],
               },
             },
           },
-          'x-ms-pageable': {
-            nextLinkName: 'nextLink',
+          "x-ms-pageable": {
+            nextLinkName: "nextLink",
           },
         },
       },
-      '/test3': {
+      "/test3": {
         get: {
           operationId: "test_ListByID",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
                 properties: {
                   values: {
-                    type: 'array',
+                    type: "array",
                   },
                   nextLink: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['value'],
+                required: ["value"],
               },
             },
           },
-          'x-ms-pageable': {
-            nextLinkName: 'nextLink',
+          "x-ms-pageable": {
+            nextLinkName: "nextLink",
           },
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2);
-    expect(results[0].path.join('.')).toBe('paths./test2.get.responses.200.schema');
-    expect(results[0].message).toBe("Collection object returned by list operation 'test_ListByID' with 'x-ms-pageable' extension, has no property named 'value'.");
-    expect(results[1].path.join('.')).toBe('paths./test3.get.responses.200.schema');
-    expect(results[1].message).toBe("Collection object returned by list operation 'test_ListByID' with 'x-ms-pageable' extension, has no property named 'value'.");
-  });
-});
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./test2.get.responses.200.schema")
+    expect(results[0].message).toBe(
+      "Collection object returned by list operation 'test_ListByID' with 'x-ms-pageable' extension, has no property named 'value'."
+    )
+    expect(results[1].path.join(".")).toBe("paths./test3.get.responses.200.schema")
+    expect(results[1].message).toBe(
+      "Collection object returned by list operation 'test_ListByID' with 'x-ms-pageable' extension, has no property named 'value'."
+    )
+  })
+})
 
-
-test('CollectionObjectPropertiesNaming should find no errors', () => {
+test("CollectionObjectPropertiesNaming should find no errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/good-path': {
+      "/good-path": {
         get: {
-          operationId: 'Good_List',
+          operationId: "Good_List",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
                 properties: {
                   value: {
-                    type: 'array',
+                    type: "array",
                   },
                   nextLink: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['value'],
+                required: ["value"],
               },
             },
           },
-          'x-ms-pageable': {
-            nextLinkName: 'nextLink',
+          "x-ms-pageable": {
+            nextLinkName: "nextLink",
           },
         },
       },
-      '/good-path2': {
+      "/good-path2": {
         get: {
-          operationId: 'Good_List2',
+          operationId: "Good_List2",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
                 properties: {
                   value: {
-                    type: 'array',
+                    type: "array",
                   },
                   nextLink: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['value'],
+                required: ["value"],
               },
             },
           },
-          'x-ms-pageable': {
+          "x-ms-pageable": {
             nextLinkName: null,
           },
         },
       },
-      '/good-path3': {
+      "/good-path3": {
         get: {
-          operationId: 'Good_List3',
+          operationId: "Good_List3",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
                 properties: {
                   value: {
-                    type: 'array',
+                    type: "array",
                   },
                   nextPage: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['value'],
+                required: ["value"],
               },
             },
           },
-          'x-ms-pageable': {
-            nextLinkName: 'nextPage',
+          "x-ms-pageable": {
+            nextLinkName: "nextPage",
           },
         },
       },
-      '/good-path4': {
+      "/good-path4": {
         get: {
-          operationId: 'Good_NotList',
+          operationId: "Good_NotList",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
                 properties: {
                   value: {
-                    type: 'array',
+                    type: "array",
                   },
                   this: {
-                    type: 'string',
+                    type: "string",
                   },
                   that: {
-                    type: 'string',
+                    type: "string",
                   },
                   theOther: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['value'],
+                required: ["value"],
               },
             },
           },
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

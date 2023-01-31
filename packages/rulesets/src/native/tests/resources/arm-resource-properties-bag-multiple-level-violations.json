@@ -6,22 +6,14 @@
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/Res": {
       "get": {
-        "tags": [
-          "Redis"
-        ],
+        "tags": ["Redis"],
         "operationId": "Redis_get",
         "description": "gets a Redis cache.",
         "parameters": [
@@ -45,9 +37,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}": {
       "put": {
-        "tags": [
-          "Redis"
-        ],
+        "tags": ["Redis"],
         "operationId": "Redis_CreateOrUpdate",
         "description": "gets a Redis cache.",
         "parameters": [
@@ -110,7 +100,7 @@
           "type": "string",
           "description": "Resource type"
         },
-        "location":{
+        "location": {
           "type": "string",
           "description": "Resource type"
         }

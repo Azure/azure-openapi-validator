@@ -37,11 +37,11 @@ rules.push({
       if (isMissingTypeObject(node)) {
         yield {
           message: msg.replace(`{0}`, path[path.length - 1].toString()),
-          location: path
+          location: path,
         }
       }
       if (node.properties) {
-        Object.keys(node.properties).forEach(p => keys.push({ node: node.properties[p], path: path.concat(["properties", p]) }))
+        Object.keys(node.properties).forEach((p) => keys.push({ node: node.properties[p], path: path.concat(["properties", p]) }))
       }
       if (node.additionalProperties) {
         keys.push({ node: node.additionalProperties, path: path.concat(["additionalProperties"]) })
@@ -50,10 +50,10 @@ rules.push({
         keys.push({ node: node.items, path: path.concat(["items"]) })
       }
       if (node.allOf && Array.isArray(node.allOf)) {
-        node.allOf.forEach((element:any, index:number) => {
+        node.allOf.forEach((element: any, index: number) => {
           keys.push({ node: element, path: path.concat(["allOf", index]) })
         })
       }
     }
-  }
+  },
 })

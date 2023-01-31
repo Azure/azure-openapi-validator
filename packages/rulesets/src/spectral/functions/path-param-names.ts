@@ -1,15 +1,15 @@
 // Check that path parameter names are consistent across all paths.
 
 // `given` is the paths object
-export const pathParamNames = (paths:any) => {
-  if (paths === null || typeof paths !== 'object') {
-    return [];
+export const pathParamNames = (paths: any) => {
+  if (paths === null || typeof paths !== "object") {
+    return []
   }
 
-  const errors:any[] = [];
+  const errors: any[] = []
 
   // Dict to accumulate the parameter name associated with a path segment
-  const paramNameForSegment = {};
+  const paramNameForSegment = {}
 
   // Identify inconsistent names by iterating over all paths and building up a
   // dictionary that maps a static path segment to the path parameter that
@@ -19,28 +19,28 @@ export const pathParamNames = (paths:any) => {
 
   // eslint-disable-next-line no-restricted-syntax
   for (const pathKey of Object.keys(paths)) {
-    const parts = pathKey.split('/').slice(1);
+    const parts = pathKey.split("/").slice(1)
 
     parts.slice(1).forEach((v, i) => {
-      if (v.includes('}')) {
-        const param = v.match(/[^{}]+(?=})/)?.[0];
+      if (v.includes("}")) {
+        const param = v.match(/[^{}]+(?=})/)?.[0]
         // Get the preceding path segment
-        const p = parts[i];
+        const p = parts[i]
         if (paramNameForSegment[p]) {
           if (paramNameForSegment[p] !== param) {
             errors.push({
               message: `Inconsistent path parameter names "${param}" and "${paramNameForSegment[p]}".`,
-              path: ['paths', pathKey],
-            });
+              path: ["paths", pathKey],
+            })
           }
         } else {
-          paramNameForSegment[p] = param;
+          paramNameForSegment[p] = param
         }
       }
-    });
+    })
   }
 
-  return errors;
-};
+  return errors
+}
 
 export default pathParamNames

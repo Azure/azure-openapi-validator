@@ -1,4 +1,4 @@
-import { rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { rules, MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 
 export const ImplementPrivateEndpointAPIs = "ImplementPrivateEndpointAPIs"
 
@@ -32,57 +32,39 @@ rules.push({
 
     for (const apiPath of Object.keys(node)) {
       if (privateEndpointConnectionPattern.test(apiPath)) {
-        setMap(
-          apiPath
-            .split("/")
-            .slice(0, -2)
-            .join("/"),
-          { PathForPrivateConnection: apiPath }
-        )
+        setMap(apiPath.split("/").slice(0, -2).join("/"), { PathForPrivateConnection: apiPath })
       }
       if (privateEndpointConnectionsPattern.test(apiPath)) {
-        setMap(
-          apiPath
-            .split("/")
-            .slice(0, -1)
-            .join("/"),
-          { pathForListPrivateConnections: apiPath }
-        )
+        setMap(apiPath.split("/").slice(0, -1).join("/"), { pathForListPrivateConnections: apiPath })
       }
       if (privateLinkResourcesPattern.test(apiPath)) {
-        setMap(
-          apiPath
-            .split("/")
-            .slice(0, -1)
-            .join("/"),
-          { pathForListResources: apiPath }
-        )
+        setMap(apiPath.split("/").slice(0, -1).join("/"), { pathForListResources: apiPath })
       }
     }
     const pathPostfix = [
       "/privateEndpointConnections/{privateEndpointConnectionName}",
       "/privateLinkResources",
-      "/privateEndpointConnections"
+      "/privateEndpointConnections",
     ]
     for (const [key, value] of supportedResources.entries()) {
       if (!value.PathForPrivateConnection) {
         yield {
           message: msg.replace("{0}", key + pathPostfix[0]),
-          location: path
+          location: path,
         }
       }
       if (!value.pathForListResources) {
         yield {
           message: msg.replace("{0}", key + pathPostfix[1]),
-          location: path
+          location: path,
         }
       }
       if (!value.pathForListPrivateConnections) {
         yield {
           message: msg.replace("{0}", key + pathPostfix[2]),
-          location: path
+          location: path,
         }
       }
     }
-  }
+  },
 })

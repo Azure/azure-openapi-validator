@@ -1,5 +1,5 @@
-import { resolveUri } from "@azure-tools/uri";
-import { isExample, traverse ,isUriAbsolute} from "./utils"
+import { resolveUri } from "@azure-tools/uri"
+import { isExample, traverse, isUriAbsolute } from "./utils"
 
 export class Resolver {
   private references = new Set<string>()
@@ -9,7 +9,7 @@ export class Resolver {
   async resolve() {
     const references = this.references
     const currentFile = this.currentFile
-    await traverse(this.innerDoc, ["/"], new Set<any>(), {references,currentFile}, updateFileRefs)
+    await traverse(this.innerDoc, ["/"], new Set<any>(), { references, currentFile }, updateFileRefs)
   }
 
   getReferences() {
@@ -17,11 +17,11 @@ export class Resolver {
   }
 }
 
-const updateFileRefs = (node: any, path: string[], ctx: any) =>{
+const updateFileRefs = (node: any, path: string[], ctx: any) => {
   if (typeof node === "object" && typeof node.$ref === "string") {
     const slices = node.$ref.split("#") as string[]
     if (slices.length === 2 && slices[0] && !isUriAbsolute(slices[0])) {
-      const referenceFile = resolveUri(ctx.currentFile,slices[0])
+      const referenceFile = resolveUri(ctx.currentFile, slices[0])
       node.$ref = referenceFile + `#${slices[1]}`
       if (!isExample(referenceFile)) ctx.references.add(referenceFile)
     }

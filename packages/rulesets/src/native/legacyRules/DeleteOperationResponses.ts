@@ -22,8 +22,8 @@ rules.push({
     if (!node["200"] || !node["204"] || !Object.keys(node["200"]) || !Object.keys(node["204"])) {
       yield {
         message: `The delete operation is defined without a 200 or 204 error response implementation,please add it.'`,
-        location: path
+        location: path,
       }
     }
-  }
+  },
 })

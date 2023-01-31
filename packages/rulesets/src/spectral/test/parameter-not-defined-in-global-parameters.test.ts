@@ -1,12 +1,12 @@
-import {Spectral} from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("ParameterNotDefinedInGlobalParameters");
-  return linter;
-});
+  linter = await linterForRule("ParameterNotDefinedInGlobalParameters")
+  return linter
+})
 
 test("ParameterNotDefinedInGlobalParameters should find errors", () => {
   const myOpenApiDocument = {
@@ -48,12 +48,12 @@ test("ParameterNotDefinedInGlobalParameters should find errors", () => {
         type: "string",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters");
-  });
-});
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
+  })
+})
 
 test("ParameterNotDefinedInGlobalParameters should find no errors", () => {
   const myOpenApiDocument = {
@@ -64,10 +64,10 @@ test("ParameterNotDefinedInGlobalParameters should find no errors", () => {
           operationId: "Path_Get",
           parameters: [
             {
-              $ref: "#/parameters/SubscriptionIdParameter"
+              $ref: "#/parameters/SubscriptionIdParameter",
             },
             {
-              $ref: "#/parameters/ApiVersionParameter"
+              $ref: "#/parameters/ApiVersionParameter",
             },
           ],
           responses: {
@@ -94,8 +94,8 @@ test("ParameterNotDefinedInGlobalParameters should find no errors", () => {
         description: "test api version",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

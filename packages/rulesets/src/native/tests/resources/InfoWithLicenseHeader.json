@@ -1,12 +1,12 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "title": "SampleClient",
-        "description": "Simple OA without license",
-        "version": "0.0.0",
-        "x-ms-code-generation-settings": {
-            "header": "Invalid license"
-        }
-    },
-    "host": "management.azure.com"
+  "swagger": "2.0",
+  "info": {
+    "title": "SampleClient",
+    "description": "Simple OA without license",
+    "version": "0.0.0",
+    "x-ms-code-generation-settings": {
+      "header": "Invalid license"
+    }
+  },
+  "host": "management.azure.com"
 }

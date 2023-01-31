@@ -25,5 +25,5 @@ rules.push({
         yield { message: `${msg}`, location: path }
       }
     }
-  }
+  },
 })

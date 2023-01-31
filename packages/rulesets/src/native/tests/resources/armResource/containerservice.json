@@ -5,14 +5,10 @@
     "description": "The Container Service Client."
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ],
   "securityDefinitions": {
@@ -29,9 +25,7 @@
   "paths": {
     "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/openShiftManagedClusters": {
       "get": {
-        "tags": [
-          "OpenShiftManagedClusters"
-        ],
+        "tags": ["OpenShiftManagedClusters"],
         "operationId": "OpenShiftManagedClusters_List",
         "summary": "Gets a list of OpenShift managed clusters in the specified subscription.",
         "description": "Gets a list of OpenShift managed clusters in the specified subscription. The operation returns properties of each OpenShift managed cluster.",
@@ -43,9 +37,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-04-30"
-            ]
+            "enum": ["2019-04-30"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -63,19 +55,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/openShiftManagedClusters": {
       "get": {
-        "tags": [
-          "OpenShiftManagedClusters"
-        ],
+        "tags": ["OpenShiftManagedClusters"],
         "operationId": "OpenShiftManagedClusters_ListByResourceGroup",
         "summary": "Lists OpenShift managed clusters in the specified subscription and resource group.",
         "description": "Lists OpenShift managed clusters in the specified subscription and resource group. The operation returns properties of each OpenShift managed cluster.",
@@ -87,9 +73,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-04-30"
-            ]
+            "enum": ["2019-04-30"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -115,19 +99,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/openShiftManagedClusters/{resourceName}": {
       "get": {
-        "tags": [
-          "OpenShiftManagedClusters"
-        ],
+        "tags": ["OpenShiftManagedClusters"],
         "operationId": "OpenShiftManagedClusters_Get",
         "summary": "Gets a OpenShift managed cluster.",
         "description": "Gets the details of the managed OpenShift cluster with a specified resource group and name.",
@@ -139,9 +117,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-04-30"
-            ]
+            "enum": ["2019-04-30"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -177,17 +153,11 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "OpenShiftManagedClusters"
-        ],
+        "tags": ["OpenShiftManagedClusters"],
         "operationId": "OpenShiftManagedClusters_CreateOrUpdate",
         "summary": "Creates or updates an OpenShift managed cluster.",
         "description": "Creates or updates a OpenShift managed cluster with the specified configuration for agents and OpenShift version.",
@@ -199,9 +169,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-04-30"
-            ]
+            "enum": ["2019-04-30"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -253,17 +221,11 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "OpenShiftManagedClusters"
-        ],
+        "tags": ["OpenShiftManagedClusters"],
         "operationId": "OpenShiftManagedClusters_UpdateTags",
         "summary": "Updates tags on an OpenShift managed cluster.",
         "description": "Updates an OpenShift managed cluster with the specified tags.",
@@ -275,9 +237,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-04-30"
-            ]
+            "enum": ["2019-04-30"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -323,17 +283,11 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "OpenShiftManagedClusters"
-        ],
+        "tags": ["OpenShiftManagedClusters"],
         "operationId": "OpenShiftManagedClusters_Delete",
         "summary": "Deletes an OpenShift managed cluster.",
         "description": "Deletes the OpenShift managed cluster with a specified resource group and name.",
@@ -345,9 +299,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-04-30"
-            ]
+            "enum": ["2019-04-30"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -384,20 +336,14 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices": {
       "get": {
         "deprecated": true,
-        "tags": [
-          "ContainerServices"
-        ],
+        "tags": ["ContainerServices"],
         "operationId": "ContainerServices_List",
         "summary": "Gets a list of container services in the specified subscription.",
         "description": "Gets a list of container services in the specified subscription. The operation returns properties of each container service including state, orchestrator, number of masters and agents, and FQDNs of masters and agents.",
@@ -409,9 +355,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2017-07-01"
-            ]
+            "enum": ["2017-07-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -429,20 +373,14 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}": {
       "put": {
         "deprecated": true,
-        "tags": [
-          "ContainerService"
-        ],
+        "tags": ["ContainerService"],
         "operationId": "ContainerServices_CreateOrUpdate",
         "summary": "Creates or updates a container service.",
         "description": "Creates or updates a container service with the specified configuration of orchestrator, masters, and agents.",
@@ -473,9 +411,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2017-07-01"
-            ]
+            "enum": ["2017-07-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -503,18 +439,12 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "get": {
         "deprecated": true,
-        "tags": [
-          "ContainerService"
-        ],
+        "tags": ["ContainerService"],
         "operationId": "ContainerServices_Get",
         "summary": "Gets the properties of the specified container service.",
         "description": "Gets the properties of the specified container service in the specified subscription and resource group. The operation returns the properties including state, orchestrator, number of masters and agents, and FQDNs of masters and agents. ",
@@ -536,9 +466,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2017-07-01"
-            ]
+            "enum": ["2017-07-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -553,18 +481,12 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
         "deprecated": true,
-        "tags": [
-          "ContainerService"
-        ],
+        "tags": ["ContainerService"],
         "operationId": "ContainerServices_Delete",
         "summary": "Deletes the specified container service.",
         "description": "Deletes the specified container service in the specified subscription and resource group. The operation does not delete other resources created as part of creating a container service, including storage accounts, VMs, and availability sets. All the other resources created with the container service are part of the same resource group and can be deleted individually.",
@@ -586,9 +508,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2017-07-01"
-            ]
+            "enum": ["2017-07-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -604,20 +524,14 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices": {
       "get": {
         "deprecated": true,
-        "tags": [
-          "ContainerServices"
-        ],
+        "tags": ["ContainerServices"],
         "operationId": "ContainerServices_ListByResourceGroup",
         "summary": "Gets a list of container services in the specified resource group.",
         "description": "Gets a list of container services in the specified subscription and resource group. The operation returns properties of each container service including state, orchestrator, number of masters and agents, and FQDNs of masters and agents.",
@@ -632,9 +546,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2017-07-01"
-            ]
+            "enum": ["2017-07-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -652,19 +564,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/orchestrators": {
       "get": {
-        "tags": [
-          "ContainerServices"
-        ],
+        "tags": ["ContainerServices"],
         "operationId": "ContainerServices_ListOrchestrators",
         "summary": "Gets a list of supported orchestrators in the specified subscription.",
         "description": "Gets a list of supported orchestrators in the specified subscription. The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.",
@@ -676,9 +582,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2019-08-01"
-            ]
+            "enum": ["2019-08-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -699,19 +603,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.ContainerService/operations": {
       "get": {
-        "tags": [
-          "managedClusters"
-        ],
+        "tags": ["managedClusters"],
         "operationId": "Operations_List",
         "description": "Gets a list of compute operations.",
         "parameters": [
@@ -722,9 +620,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           }
         ],
         "responses": {
@@ -744,19 +640,13 @@
         "x-ms-pageable": {
           "nextLinkName": null
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters": {
       "get": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_List",
         "summary": "Gets a list of managed clusters in the specified subscription.",
         "description": "Gets a list of managed clusters in the specified subscription. The operation returns properties of each managed cluster.",
@@ -768,9 +658,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -794,19 +682,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters": {
       "get": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_ListByResourceGroup",
         "summary": "Lists managed clusters in the specified subscription and resource group.",
         "description": "Lists managed clusters in the specified subscription and resource group. The operation returns properties of each managed cluster.",
@@ -818,9 +700,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -847,19 +727,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default": {
       "get": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_GetUpgradeProfile",
         "summary": "Gets upgrade profile for a managed cluster.",
         "description": "Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.",
@@ -871,9 +745,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -900,20 +772,14 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/accessProfiles/{roleName}/listCredential": {
       "post": {
         "deprecated": true,
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_GetAccessProfile",
         "summary": "Gets an access profile of a managed cluster.",
         "description": "Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name. **WARNING**: This API will be deprecated. Instead use [ListClusterUserCredentials](https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/listclusterusercredentials) or [ListClusterAdminCredentials](https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/listclusteradmincredentials) .",
@@ -925,9 +791,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -961,19 +825,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential": {
       "post": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_ListClusterAdminCredentials",
         "summary": "Gets cluster admin credential of a managed cluster.",
         "description": "Gets cluster admin credential of the managed cluster with a specified resource group and name.",
@@ -985,9 +843,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1014,19 +870,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential": {
       "post": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_ListClusterUserCredentials",
         "summary": "Gets cluster user credential of a managed cluster.",
         "description": "Gets cluster user credential of the managed cluster with a specified resource group and name.",
@@ -1038,9 +888,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1067,19 +915,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterMonitoringUserCredential": {
       "post": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_ListClusterMonitoringUserCredentials",
         "summary": "Gets cluster monitoring user credential of a managed cluster.",
         "description": "Gets cluster monitoring user credential of the managed cluster with a specified resource group and name.",
@@ -1091,9 +933,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1120,19 +960,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}": {
       "get": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_Get",
         "summary": "Gets a managed cluster.",
         "description": "Gets the details of the managed cluster with a specified resource group and name.",
@@ -1144,9 +978,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1173,17 +1005,11 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_CreateOrUpdate",
         "summary": "Creates or updates a managed cluster.",
         "description": "Creates or updates a managed cluster with the specified configuration for agents and Kubernetes version.",
@@ -1195,9 +1021,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1240,17 +1064,11 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_UpdateTags",
         "summary": "Updates tags on a managed cluster.",
         "description": "Updates a managed cluster with the specified tags.",
@@ -1262,9 +1080,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1301,17 +1117,11 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_Delete",
         "summary": "Deletes a managed cluster.",
         "description": "Deletes the managed cluster with a specified resource group and name.",
@@ -1323,9 +1133,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1353,19 +1161,13 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools": {
       "get": {
-        "tags": [
-          "AgentPools"
-        ],
+        "tags": ["AgentPools"],
         "operationId": "AgentPools_List",
         "summary": "Gets a list of agent pools in the specified managed cluster.",
         "description": "Gets a list of agent pools in the specified managed cluster. The operation returns properties of each agent pool.",
@@ -1377,9 +1179,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1409,19 +1209,13 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}": {
       "get": {
-        "tags": [
-          "AgentPools"
-        ],
+        "tags": ["AgentPools"],
         "operationId": "AgentPools_Get",
         "summary": "Gets the agent pool.",
         "description": "Gets the details of the agent pool by managed cluster and resource group.",
@@ -1433,9 +1227,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1469,17 +1261,11 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "AgentPools"
-        ],
+        "tags": ["AgentPools"],
         "operationId": "AgentPools_CreateOrUpdate",
         "summary": "Creates or updates an agent pool.",
         "description": "Creates or updates an agent pool in the specified managed cluster.",
@@ -1491,9 +1277,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1543,17 +1327,11 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "AgentPools"
-        ],
+        "tags": ["AgentPools"],
         "operationId": "AgentPools_Delete",
         "summary": "Deletes an agent pool.",
         "description": "Deletes the agent pool in the specified managed cluster.",
@@ -1565,9 +1343,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1602,19 +1378,13 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default": {
       "get": {
-        "tags": [
-          "AgentPools"
-        ],
+        "tags": ["AgentPools"],
         "operationId": "AgentPools_GetUpgradeProfile",
         "summary": "Gets upgrade profile for an agent pool.",
         "description": "Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.",
@@ -1626,9 +1396,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1662,19 +1430,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/availableAgentPoolVersions": {
       "get": {
-        "tags": [
-          "AgentPools"
-        ],
+        "tags": ["AgentPools"],
         "operationId": "AgentPools_GetAvailableAgentPoolVersions",
         "summary": "Gets a list of supported versions for the specified agent pool.",
         "description": "Gets a list of supported versions for the specified agent pool.",
@@ -1686,9 +1448,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1709,19 +1469,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile": {
       "post": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_ResetServicePrincipalProfile",
         "summary": "Reset Service Principal Profile of a managed cluster.",
         "description": "Update the service principal Profile for a managed cluster.",
@@ -1733,9 +1487,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1772,19 +1524,13 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetAADProfile": {
       "post": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_ResetAADProfile",
         "summary": "Reset AAD Profile of a managed cluster.",
         "description": "Update the AAD Profile for a managed cluster.",
@@ -1796,9 +1542,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1835,19 +1579,13 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateClusterCertificates": {
       "post": {
-        "tags": [
-          "ManagedClusters"
-        ],
+        "tags": ["ManagedClusters"],
         "operationId": "ManagedClusters_RotateClusterCertificates",
         "summary": "Rotate certificates of a managed cluster.",
         "description": "Rotate certificates of a managed cluster.",
@@ -1859,9 +1597,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1889,19 +1625,13 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections": {
       "get": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_List",
         "summary": "Gets a list of private endpoint connections in the specified managed cluster.",
         "description": "Gets a list of private endpoint connections in the specified managed cluster. The operation returns properties of each private endpoint connection.",
@@ -1913,9 +1643,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -1942,19 +1670,13 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}": {
       "get": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_Get",
         "summary": "Gets the private endpoint connection.",
         "description": "Gets the details of the private endpoint connection by managed cluster and resource group.",
@@ -1966,9 +1688,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -2002,17 +1722,11 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_Update",
         "summary": "Updates a private endpoint connection.",
         "description": "Updates a private endpoint connection in the specified managed cluster.",
@@ -2024,9 +1738,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -2069,17 +1781,11 @@
           }
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_Delete",
         "summary": "Deletes a private endpoint connection.",
         "description": "Deletes the private endpoint connection in the specified managed cluster.",
@@ -2091,9 +1797,7 @@
             "type": "string",
             "description": "Client Api Version.",
             "x-ms-parameter-location": "client",
-            "enum": [
-              "2020-06-01"
-            ]
+            "enum": ["2020-06-01"]
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
@@ -2128,12 +1832,8 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     }
   },
@@ -2159,10 +1859,7 @@
         "location": {
           "type": "string",
           "description": "Resource location",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ]
+          "x-ms-mutability": ["read", "create"]
         },
         "tags": {
           "type": "object",
@@ -2172,9 +1869,7 @@
           "description": "Resource tags"
         }
       },
-      "required": [
-        "location"
-      ],
+      "required": ["location"],
       "x-ms-azure-resource": true
     },
     "CloudError": {
@@ -2273,10 +1968,7 @@
     "OSType": {
       "type": "string",
       "default": "Linux",
-      "enum": [
-        "Linux",
-        "Windows"
-      ],
+      "enum": ["Linux", "Windows"],
       "x-ms-enum": {
         "name": "OSType",
         "modelAsString": true
@@ -2328,10 +2020,7 @@
     },
     "OpenShiftAgentPoolProfileRole": {
       "type": "string",
-      "enum": [
-        "compute",
-        "infra"
-      ],
+      "enum": ["compute", "infra"],
       "x-ms-enum": {
         "name": "OpenShiftAgentPoolProfileRole",
         "modelAsString": true
@@ -2362,10 +2051,7 @@
           "description": "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux."
         }
       },
-      "required": [
-        "count",
-        "vmSize"
-      ],
+      "required": ["count", "vmSize"],
       "description": "OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs."
     },
     "OpenShiftManagedClusterAgentPoolProfile": {
@@ -2397,11 +2083,7 @@
           "$ref": "#/definitions/OpenShiftAgentPoolProfileRole"
         }
       },
-      "required": [
-        "name",
-        "count",
-        "vmSize"
-      ],
+      "required": ["name", "count", "vmSize"],
       "description": "Defines the configuration of the OpenShift cluster VMs."
     },
     "OpenShiftManagedClusterIdentityProvider": {
@@ -2482,9 +2164,7 @@
           "description": "Configures OpenShift authentication."
         }
       },
-      "required": [
-        "openShiftVersion"
-      ],
+      "required": ["openShiftVersion"],
       "description": "Properties of the OpenShift managed cluster."
     },
     "OpenShiftManagedCluster": {
@@ -2510,9 +2190,7 @@
     },
     "OpenShiftManagedClusterBaseIdentityProvider": {
       "discriminator": "kind",
-      "required": [
-        "kind"
-      ],
+      "required": ["kind"],
       "properties": {
         "kind": {
           "type": "string",
@@ -2592,10 +2270,7 @@
         "name": "ContainerServiceStorageProfileTypes",
         "modelAsString": true
       },
-      "enum": [
-        "StorageAccount",
-        "ManagedDisks"
-      ],
+      "enum": ["StorageAccount", "ManagedDisks"],
       "description": "Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
     },
     "ContainerServiceVnetSubnetID": {
@@ -2794,9 +2469,7 @@
         }
       },
       "description": "Properties to configure a custom container service cluster.",
-      "required": [
-        "orchestrator"
-      ]
+      "required": ["orchestrator"]
     },
     "KeyVaultSecretRef": {
       "properties": {
@@ -2814,10 +2487,7 @@
         }
       },
       "description": "Reference to a secret stored in Azure Key Vault.",
-      "required": [
-        "vaultID",
-        "secretName"
-      ]
+      "required": ["vaultID", "secretName"]
     },
     "ContainerServiceServicePrincipalProfile": {
       "properties": {
@@ -2835,21 +2505,13 @@
         }
       },
       "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified.",
-      "required": [
-        "clientId"
-      ]
+      "required": ["clientId"]
     },
     "ContainerServiceOrchestratorProfile": {
       "properties": {
         "orchestratorType": {
           "type": "string",
-          "enum": [
-            "Kubernetes",
-            "Swarm",
-            "DCOS",
-            "DockerCE",
-            "Custom"
-          ],
+          "enum": ["Kubernetes", "Swarm", "DCOS", "DockerCE", "Custom"],
           "x-ms-enum": {
             "name": "ContainerServiceOrchestratorTypes",
             "modelAsString": true
@@ -2862,20 +2524,14 @@
         }
       },
       "description": "Profile for the container service orchestrator.",
-      "required": [
-        "orchestratorType"
-      ]
+      "required": ["orchestratorType"]
     },
     "ContainerServiceMasterProfile": {
       "properties": {
         "count": {
           "type": "integer",
           "format": "int32",
-          "enum": [
-            1,
-            3,
-            5
-          ],
+          "enum": [1, 3, 5],
           "x-ms-enum": {
             "name": "Count",
             "modelAsString": false
@@ -2914,10 +2570,7 @@
           "description": "FQDN for the master pool."
         }
       },
-      "required": [
-        "dnsPrefix",
-        "vmSize"
-      ],
+      "required": ["dnsPrefix", "vmSize"],
       "description": "Profile for the container service master."
     },
     "ContainerServiceAgentPoolProfile": {
@@ -2973,10 +2626,7 @@
           "description": "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux."
         }
       },
-      "required": [
-        "name",
-        "vmSize"
-      ],
+      "required": ["name", "vmSize"],
       "description": "Profile for the container service agent pool."
     },
     "ContainerServiceWindowsProfile": {
@@ -2992,10 +2642,7 @@
           "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$"
         }
       },
-      "required": [
-        "adminUsername",
-        "adminPassword"
-      ],
+      "required": ["adminUsername", "adminPassword"],
       "description": "Profile for Windows VMs in the container service cluster."
     },
     "ContainerServiceLinuxProfile": {
@@ -3010,10 +2657,7 @@
           "description": "SSH configuration for Linux-based VMs running on Azure."
         }
       },
-      "required": [
-        "adminUsername",
-        "ssh"
-      ],
+      "required": ["adminUsername", "ssh"],
       "description": "Profile for Linux VMs in the container service cluster."
     },
     "ContainerServiceSshConfiguration": {
@@ -3027,9 +2671,7 @@
         }
       },
       "description": "SSH configuration for Linux-based VMs running on Azure.",
-      "required": [
-        "publicKeys"
-      ]
+      "required": ["publicKeys"]
     },
     "ContainerServiceSshPublicKey": {
       "properties": {
@@ -3038,9 +2680,7 @@
           "description": "Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers."
         }
       },
-      "required": [
-        "keyData"
-      ],
+      "required": ["keyData"],
       "description": "Contains information about SSH certificate public key data."
     },
     "ContainerServiceDiagnosticsProfile": {
@@ -3051,9 +2691,7 @@
         }
       },
       "description": "Profile for diagnostics on the container service cluster.",
-      "required": [
-        "vmDiagnostics"
-      ]
+      "required": ["vmDiagnostics"]
     },
     "ContainerServiceVMDiagnostics": {
       "properties": {
@@ -3068,9 +2706,7 @@
         }
       },
       "description": "Profile for diagnostics on the container service VMs.",
-      "required": [
-        "enabled"
-      ]
+      "required": ["enabled"]
     },
     "ContainerService": {
       "allOf": [
@@ -3149,11 +2785,7 @@
           "description": "Profile for diagnostics in the container service cluster."
         }
       },
-      "required": [
-        "orchestratorProfile",
-        "masterProfile",
-        "linuxProfile"
-      ],
+      "required": ["orchestratorProfile", "masterProfile", "linuxProfile"],
       "description": "Properties of the container service."
     },
     "OrchestratorProfile": {
@@ -3171,9 +2803,7 @@
           "description": "Whether Kubernetes version is currently in preview."
         }
       },
-      "required": [
-        "orchestratorVersion"
-      ],
+      "required": ["orchestratorVersion"],
       "description": "Contains information about orchestrator."
     },
     "OrchestratorVersionProfile": {
@@ -3202,10 +2832,7 @@
           "description": "The list of available upgrade versions."
         }
       },
-      "required": [
-        "orchestratorVersion",
-        "orchestratorType"
-      ],
+      "required": ["orchestratorVersion", "orchestratorType"],
       "description": "The profile of an orchestrator and its available versions."
     },
     "OrchestratorVersionProfileProperties": {
@@ -3218,9 +2845,7 @@
           "description": "List of orchestrator version profiles."
         }
       },
-      "required": [
-        "orchestrators"
-      ],
+      "required": ["orchestrators"],
       "description": "The properties of an orchestrator version profile."
     },
     "OrchestratorVersionProfileListResult": {
@@ -3246,9 +2871,7 @@
           "x-ms-client-flatten": true
         }
       },
-      "required": [
-        "properties"
-      ],
+      "required": ["properties"],
       "description": "The list of versions for supported orchestrators."
     },
     "OperationListResult": {
@@ -3342,9 +2965,7 @@
         }
       },
       "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs.",
-      "required": [
-        "clientId"
-      ]
+      "required": ["clientId"]
     },
     "ManagedClusterAgentPoolProfileProperties": {
       "properties": {
@@ -3479,17 +3100,12 @@
           }
         }
       ],
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "description": "Profile for the container service agent pool."
     },
     "AgentPoolType": {
       "type": "string",
-      "enum": [
-        "VirtualMachineScaleSets",
-        "AvailabilitySet"
-      ],
+      "enum": ["VirtualMachineScaleSets", "AvailabilitySet"],
       "x-ms-enum": {
         "name": "AgentPoolType",
         "modelAsString": true
@@ -3498,10 +3114,7 @@
     },
     "AgentPoolMode": {
       "type": "string",
-      "enum": [
-        "System",
-        "User"
-      ],
+      "enum": ["System", "User"],
       "x-ms-enum": {
         "name": "AgentPoolMode",
         "modelAsString": true
@@ -3564,19 +3177,14 @@
           "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$"
         }
       },
-      "required": [
-        "adminUsername"
-      ],
+      "required": ["adminUsername"],
       "description": "Profile for Windows VMs in the container service cluster."
     },
     "ContainerServiceNetworkProfile": {
       "properties": {
         "networkPlugin": {
           "type": "string",
-          "enum": [
-            "azure",
-            "kubenet"
-          ],
+          "enum": ["azure", "kubenet"],
           "default": "kubenet",
           "x-ms-enum": {
             "name": "NetworkPlugin",
@@ -3586,10 +3194,7 @@
         },
         "networkPolicy": {
           "type": "string",
-          "enum": [
-            "calico",
-            "azure"
-          ],
+          "enum": ["calico", "azure"],
           "x-ms-enum": {
             "name": "NetworkPolicy",
             "modelAsString": true
@@ -3598,10 +3203,7 @@
         },
         "networkMode": {
           "type": "string",
-          "enum": [
-            "transparent",
-            "bridge"
-          ],
+          "enum": ["transparent", "bridge"],
           "x-ms-enum": {
             "name": "networkMode",
             "modelAsString": true
@@ -3634,10 +3236,7 @@
         },
         "outboundType": {
           "type": "string",
-          "enum": [
-            "loadBalancer",
-            "userDefinedRouting"
-          ],
+          "enum": ["loadBalancer", "userDefinedRouting"],
           "x-ms-enum": {
             "name": "outboundType",
             "modelAsString": true
@@ -3647,10 +3246,7 @@
         },
         "loadBalancerSku": {
           "type": "string",
-          "enum": [
-            "standard",
-            "basic"
-          ],
+          "enum": ["standard", "basic"],
           "x-ms-enum": {
             "name": "loadBalancerSku",
             "modelAsString": true
@@ -3944,11 +3540,7 @@
         "type": {
           "type": "string",
           "description": "The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.",
-          "enum": [
-            "SystemAssigned",
-            "UserAssigned",
-            "None"
-          ],
+          "enum": ["SystemAssigned", "UserAssigned", "None"],
           "x-ms-enum": {
             "name": "ResourceIdentityType",
             "modelAsString": false
@@ -4033,10 +3625,7 @@
         },
         "osType": {
           "$ref": "#/definitions/OSType",
-          "enum": [
-            "Linux",
-            "Windows"
-          ],
+          "enum": ["Linux", "Windows"],
           "x-ms-enum": {
             "name": "ContainerServiceOSTypes",
             "modelAsString": true
@@ -4061,10 +3650,7 @@
           "description": "List of orchestrator types and versions available for upgrade."
         }
       },
-      "required": [
-        "kubernetesVersion",
-        "osType"
-      ],
+      "required": ["kubernetesVersion", "osType"],
       "description": "The list of available upgrade versions."
     },
     "ManagedClusterUpgradeProfileProperties": {
@@ -4081,10 +3667,7 @@
           "description": "The list of available upgrade versions for agent pools."
         }
       },
-      "required": [
-        "controlPlaneProfile",
-        "agentPoolProfiles"
-      ],
+      "required": ["controlPlaneProfile", "agentPoolProfiles"],
       "description": "Control plane and agent pool upgrade profiles."
     },
     "ManagedClusterAADProfile": {
@@ -4145,9 +3728,7 @@
           ]
         }
       },
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "description": "A Kubernetes add-on profile for a managed cluster."
     },
     "ManagedClusterUpgradeProfile": {
@@ -4173,9 +3754,7 @@
           "x-ms-client-flatten": true
         }
       },
-      "required": [
-        "properties"
-      ],
+      "required": ["properties"],
       "description": "The list of available upgrades for compute pools."
     },
     "AgentPoolUpgradeProfile": {
@@ -4201,9 +3780,7 @@
           "x-ms-client-flatten": true
         }
       },
-      "required": [
-        "properties"
-      ],
+      "required": ["properties"],
       "description": "The list of available upgrades for an agent pool."
     },
     "AgentPoolUpgradeProfileProperties": {
@@ -4214,10 +3791,7 @@
         },
         "osType": {
           "$ref": "#/definitions/OSType",
-          "enum": [
-            "Linux",
-            "Windows"
-          ],
+          "enum": ["Linux", "Windows"],
           "x-ms-enum": {
             "name": "ContainerServiceOSTypes",
             "modelAsString": true
@@ -4246,10 +3820,7 @@
           "description": "LatestNodeImageVersion is the latest AKS supported node image version."
         }
       },
-      "required": [
-        "kubernetesVersion",
-        "osType"
-      ],
+      "required": ["kubernetesVersion", "osType"],
       "description": "The list of available upgrade versions."
     },
     "AgentPoolAvailableVersions": {
@@ -4275,9 +3846,7 @@
           "x-ms-client-flatten": true
         }
       },
-      "required": [
-        "properties"
-      ],
+      "required": ["properties"],
       "description": "The list of available versions for an agent pool."
     },
     "AgentPoolAvailableVersionsProperties": {
@@ -4309,10 +3878,7 @@
     "ScaleSetPriority": {
       "type": "string",
       "default": "Regular",
-      "enum": [
-        "Spot",
-        "Regular"
-      ],
+      "enum": ["Spot", "Regular"],
       "x-ms-enum": {
         "name": "ScaleSetPriority",
         "modelAsString": true
@@ -4322,10 +3888,7 @@
     "ScaleSetEvictionPolicy": {
       "type": "string",
       "default": "Delete",
-      "enum": [
-        "Delete",
-        "Deallocate"
-      ],
+      "enum": ["Delete", "Deallocate"],
       "x-ms-enum": {
         "name": "ScaleSetEvictionPolicy",
         "modelAsString": true
@@ -4376,9 +3939,7 @@
         "name": {
           "type": "string",
           "description": "Name of a managed cluster SKU.",
-          "enum": [
-            "Basic"
-          ],
+          "enum": ["Basic"],
           "x-ms-enum": {
             "name": "ManagedClusterSKUName",
             "modelAsString": true
@@ -4387,10 +3948,7 @@
         "tier": {
           "type": "string",
           "description": "Tier of a managed cluster SKU.",
-          "enum": [
-            "Paid",
-            "Free"
-          ],
+          "enum": ["Paid", "Free"],
           "x-ms-enum": {
             "name": "ManagedClusterSKUTier",
             "modelAsString": true
@@ -4449,12 +4007,7 @@
           "type": "string",
           "readOnly": true,
           "description": "The current provisioning state.",
-          "enum": [
-            "Succeeded",
-            "Creating",
-            "Deleting",
-            "Failed"
-          ],
+          "enum": ["Succeeded", "Creating", "Deleting", "Failed"],
           "x-ms-enum": {
             "name": "PrivateEndpointConnectionProvisioningState",
             "modelAsString": true
@@ -4469,9 +4022,7 @@
           "description": "A collection of information about the state of the connection between service consumer and provider."
         }
       },
-      "required": [
-        "privateLinkServiceConnectionState"
-      ]
+      "required": ["privateLinkServiceConnectionState"]
     },
     "PrivateEndpoint": {
       "type": "object",
@@ -4488,12 +4039,7 @@
       "type": "object",
       "properties": {
         "status": {
-          "enum": [
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected"
-          ],
+          "enum": ["Pending", "Approved", "Rejected", "Disconnected"],
           "type": "string",
           "description": "The private link service connection status.",
           "x-ms-enum": {

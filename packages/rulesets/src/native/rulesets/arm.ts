@@ -14,7 +14,6 @@ import { providerNamespace } from "../functions/provider-namespace"
 export const armRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
   rules: {
-
     ///
     /// ARM RPC rules for Delete patterns
     ///

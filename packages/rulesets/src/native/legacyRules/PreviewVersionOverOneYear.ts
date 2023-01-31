@@ -29,5 +29,5 @@ rules.push({
         yield { message: msg.replace("{0}", node.version), location: path.concat("version") }
       }
     }
-  }
+  },
 })

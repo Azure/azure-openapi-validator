@@ -1,6 +1,5 @@
-import { rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { rules, MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { getAllResourceProvidersFromPath, getAllWordsFromPath, resourceTypeMustCamelCase } from "../utilities/rules-helper"
-
 
 export const PathResourceTypeNameCamelCase = "PathResourceTypeNameCamelCase"
 
@@ -19,14 +18,14 @@ rules.push({
       for (const it of paths) {
         const allWords = getAllWordsFromPath(it)
         const resourceProviders = new Set<string>(getAllResourceProvidersFromPath(it))
-        const resourceTypes = allWords.filter(subPath => !resourceProviders.has(subPath))
-        if (resourceTypes.some(it => !resourceTypeMustCamelCase(it))) {
+        const resourceTypes = allWords.filter((subPath) => !resourceProviders.has(subPath))
+        if (resourceTypes.some((it) => !resourceTypeMustCamelCase(it))) {
           yield {
             message: `${msg} Path: '${it}'`,
-            location: path.concat(["paths", it])
+            location: path.concat(["paths", it]),
           }
         }
       }
     }
-  }
+  },
 })

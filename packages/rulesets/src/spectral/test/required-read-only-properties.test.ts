@@ -1,12 +1,12 @@
-import { Spectral } from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("RequiredReadOnlyProperties");
-  return linter;
-});
+  linter = await linterForRule("RequiredReadOnlyProperties")
+  return linter
+})
 
 test("RequiredReadOnlyProperties should find errors", () => {
   const myOpenApiDocument = {
@@ -60,15 +60,13 @@ test("RequiredReadOnlyProperties should find errors", () => {
         description: "The Resource definition.",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].message).toBe(
-      "Property 'name' is a required property. It should not be marked as 'readonly'"
-    );
-    expect(results[0].path.join(".")).toBe("definitions.ResponseResource");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].message).toBe("Property 'name' is a required property. It should not be marked as 'readonly'")
+    expect(results[0].path.join(".")).toBe("definitions.ResponseResource")
+  })
+})
 
 test("RequiredReadOnlyProperties should find no errors", () => {
   const myOpenApiDocument = {
@@ -121,8 +119,8 @@ test("RequiredReadOnlyProperties should find no errors", () => {
         description: "The Resource definition.",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

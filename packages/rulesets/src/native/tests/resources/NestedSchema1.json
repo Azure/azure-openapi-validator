@@ -7,7 +7,7 @@
         }
       ],
       "properties": {
-        "properties":{
+        "properties": {
           "details": {
             "type": "string",
             "readOnly": true,

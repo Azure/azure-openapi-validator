@@ -12,7 +12,7 @@ export interface IJsonParser {
 
 export class JsonParser implements IJsonParser {
   parse(text: string) {
-    const errors :any[] = []
+    const errors: any[] = []
     const rootNode = parseTree(text, errors, { disallowComments: true })
     if (errors.length || rootNode == undefined) {
       throw new Error("Parser failed with errors:" + JSON.stringify(errors))
@@ -35,7 +35,7 @@ export class JsonParser implements IJsonParser {
       },
       getValue: () => {
         return Object.assign({}, getNodeValue(rootNode))
-      }
+      },
     }
   }
 }
@@ -52,13 +52,13 @@ function getLocation(text: string, offset: number) {
   }
   return {
     line,
-    column
+    column,
   }
 }
 
 function getRange(text: string, node: Node) {
   return {
     start: getLocation(text, node.offset),
-    end: getLocation(text, node.offset + node.length)
+    end: getLocation(text, node.offset + node.length),
   }
 }

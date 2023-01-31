@@ -1,6 +1,5 @@
-import { rules , MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { rules, MergeStates, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { getAllResourceProvidersFromPath, resourceProviderMustPascalCase } from "../utilities/rules-helper"
-
 
 export const PathResourceProviderNamePascalCase = "PathResourceProviderNamePascalCase"
 
@@ -19,13 +18,13 @@ rules.push({
       for (const it of paths) {
         const resourceProviders = getAllResourceProvidersFromPath(it)
 
-        if (resourceProviders.some(rp => !resourceProviderMustPascalCase(rp))) {
+        if (resourceProviders.some((rp) => !resourceProviderMustPascalCase(rp))) {
           yield {
             message: `${msg} Path: '${it}'`,
-            location: path.concat(["paths", it])
+            location: path.concat(["paths", it]),
           }
         }
       }
     }
-  }
+  },
 })

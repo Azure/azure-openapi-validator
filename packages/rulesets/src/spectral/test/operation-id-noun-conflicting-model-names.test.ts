@@ -1,12 +1,12 @@
-import {Spectral} from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("OperationIdNounConflictingModelNames");
-  return linter;
-});
+  linter = await linterForRule("OperationIdNounConflictingModelNames")
+  return linter
+})
 
 test("OperationIdNounConflictingModelNames should find errors", () => {
   const myOpenApiDocument = {
@@ -28,12 +28,12 @@ test("OperationIdNounConflictingModelNames should find errors", () => {
         type: "string",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.operationId");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.operationId")
+  })
+})
 
 test("OperationIdNounConflictingModelNames should find no errors", () => {
   const myOpenApiDocument = {
@@ -58,8 +58,8 @@ test("OperationIdNounConflictingModelNames should find no errors", () => {
         type: "string",
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

@@ -1,71 +1,64 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('AvoidAnonymousParameter');
-  return linter;
-});
+  linter = await linterForRule("AvoidAnonymousParameter")
+  return linter
+})
 
-test('AvoidAnonymousParameter should find errors', () => {
+test("AvoidAnonymousParameter should find errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
       title: "Consumes has an unsupported MIME type",
       description: "Some documentation.",
-      version: "2014-04-01-preview"
+      version: "2014-04-01-preview",
     },
     host: "management.azure.com",
-    schemes: [
-      "https"
-    ],
+    schemes: ["https"],
     basePath: "/",
-    produces: [
-      "application/json"
-    ],
+    produces: ["application/json"],
     paths: {
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}": {
-      patch: {
-        tags: [
-          "RecordSets"
-        ],
-        operationId: "RecordSets_Update",
-        description: "Updates a record set within a DNS zone.",
-        parameters: [
-          {
-            name: "zoneName",
-            in: "path",
-            required: true,
-            type: "string",
-            schema: {
-              type: "string",
-              description: "error",
-              properties: {
-                prop1: {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}":
+        {
+          patch: {
+            tags: ["RecordSets"],
+            operationId: "RecordSets_Update",
+            description: "Updates a record set within a DNS zone.",
+            parameters: [
+              {
+                name: "zoneName",
+                in: "path",
+                required: true,
+                type: "string",
+                schema: {
                   type: "string",
-                  description: "property 1"
-                }
-              }
-            },
-            description: "The name of the DNS zone (without a terminating dot)."
+                  description: "error",
+                  properties: {
+                    prop1: {
+                      type: "string",
+                      description: "property 1",
+                    },
+                  },
+                },
+                description: "The name of the DNS zone (without a terminating dot).",
+              },
+              {
+                name: "parameters",
+                in: "body",
+                required: true,
+                schema: {
+                  $ref: "#/parameters/test",
+                },
+                description: "Parameters supplied to the Update operation.",
+              },
+            ],
           },
-          {
-            name: "parameters",
-            in: "body",
-            required: true,
-            schema: {
-              "$ref": "#/parameters/test"
-            },
-            description: "Parameters supplied to the Update operation."
-          }
-        ]
-      }
-    }
+        },
     },
-    consumes: [
-      "application/json"
-    ],
+    consumes: ["application/json"],
     parameters: {
       test: {
         name: "PetCreateOrUpdateParameter",
@@ -77,74 +70,67 @@ test('AvoidAnonymousParameter should find errors', () => {
           properties: {
             prop1: {
               type: "string",
-              description: "property 1"
-            }
-          }
-        }
+              description: "property 1",
+            },
+          },
+        },
       },
       SubscriptionIdParameter: {
         name: "subscriptionId",
         in: "path",
         required: true,
         type: "string",
-        description: "test subscription id"
+        description: "test subscription id",
       },
       ApiVersion: {
         name: "api-version",
         in: "path",
         required: true,
         type: "string",
-        description: "test api version"
-      }
-    }
-  };
+        description: "test api version",
+      },
+    },
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-  });
-});
+    expect(results.length).toBe(1)
+  })
+})
 
-test('AvoidAnonymousParameter should find no errors', () => {
+test("AvoidAnonymousParameter should find no errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
       title: "Consumes has an unsupported MIME type",
       description: "Some documentation.",
-      version: "2014-04-01-preview"
+      version: "2014-04-01-preview",
     },
     host: "management.azure.com",
-    schemes: [
-      "https"
-    ],
+    schemes: ["https"],
     basePath: "/",
-    produces: [
-      "application/json"
-    ],
-    consumes: [
-      "application/json"
-    ],
+    produces: ["application/json"],
+    consumes: ["application/json"],
     parameters: {
       test: {
         name: "PetCreateOrUpdateParameter",
         description: "test",
         in: "body",
         schema: {
-          "$ref": "#/definitions/FooRequestParams"
-        }
-      }
+          $ref: "#/definitions/FooRequestParams",
+        },
+      },
     },
     definitions: {
       FooRequestParams: {
         properties: {
           prop0: {
-            type: "string"
-          }
+            type: "string",
+          },
         },
-        required: []
-      }
-    }
-  };
+        required: [],
+      },
+    },
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
-
+    expect(results.length).toBe(0)
+  })
+})

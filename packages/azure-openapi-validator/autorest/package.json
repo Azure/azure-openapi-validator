@@ -8,7 +8,9 @@
     "build": "tsc",
     "test": "tsc",
     "lint:fix": "eslint ./src --fix --ext .ts",
-    "lint": "eslint ./src --ext .ts --max-warnings=0"
+    "lint": "eslint ./src --ext .ts --max-warnings=0",
+    "prettier": "prettier -w .",
+    "prettier-check": "prettier -c ."
   },
   "repository": {
     "type": "git",

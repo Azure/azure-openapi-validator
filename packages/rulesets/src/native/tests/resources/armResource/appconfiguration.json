@@ -5,21 +5,13 @@
     "title": "AppConfigurationManagementClient"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "paths": {
     "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores": {
       "get": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Lists the configuration stores for a given subscription.",
         "operationId": "ConfigurationStores_List",
         "parameters": [
@@ -58,9 +50,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores": {
       "get": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Lists the configuration stores for a given resource group.",
         "operationId": "ConfigurationStores_ListByResourceGroup",
         "parameters": [
@@ -102,9 +92,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}": {
       "get": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Gets the properties of the specified configuration store.",
         "operationId": "ConfigurationStores_Get",
         "parameters": [
@@ -137,9 +125,7 @@
         }
       },
       "put": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Creates a configuration store with the specified parameters.",
         "operationId": "ConfigurationStores_Create",
         "parameters": [
@@ -188,9 +174,7 @@
         "x-ms-long-running-operation": true
       },
       "delete": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Deletes a configuration store.",
         "operationId": "ConfigurationStores_Delete",
         "parameters": [
@@ -227,9 +211,7 @@
         "x-ms-long-running-operation": true
       },
       "patch": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Updates a configuration store with the specified parameters.",
         "operationId": "ConfigurationStores_Update",
         "parameters": [
@@ -280,9 +262,7 @@
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability": {
       "post": {
-        "tags": [
-          "Operations"
-        ],
+        "tags": ["Operations"],
         "description": "Checks whether the configuration store name is available for use.",
         "operationId": "Operations_CheckNameAvailability",
         "parameters": [
@@ -320,9 +300,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys": {
       "post": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Lists the access key for the specified configuration store.",
         "operationId": "ConfigurationStores_ListKeys",
         "parameters": [
@@ -367,9 +345,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/RegenerateKey": {
       "post": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Regenerates an access key for the specified configuration store.",
         "operationId": "ConfigurationStores_RegenerateKey",
         "parameters": [
@@ -413,9 +389,7 @@
     },
     "/providers/Microsoft.AppConfiguration/operations": {
       "get": {
-        "tags": [
-          "Operations"
-        ],
+        "tags": ["Operations"],
         "description": "Lists the operations available from this provider.",
         "operationId": "Operations_List",
         "parameters": [
@@ -452,9 +426,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/listKeyValue": {
       "post": {
-        "tags": [
-          "ConfigurationStores"
-        ],
+        "tags": ["ConfigurationStores"],
         "description": "Lists a configuration store key-value.",
         "operationId": "ConfigurationStores_ListKeyValue",
         "parameters": [
@@ -499,9 +471,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections": {
       "get": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_ListByConfigurationStore",
         "description": "Lists all private endpoint connections for a configuration store.",
         "parameters": [
@@ -540,9 +510,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}": {
       "get": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_Get",
         "description": "Gets the specified private endpoint connection associated with the configuration store.",
         "parameters": [
@@ -583,9 +551,7 @@
         "x-ms-examples": null
       },
       "put": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "operationId": "PrivateEndpointConnections_CreateOrUpdate",
         "description": "Update the state of the specified private endpoint connection associated with the configuration store.",
         "parameters": [
@@ -642,9 +608,7 @@
         "x-ms-long-running-operation": true
       },
       "delete": {
-        "tags": [
-          "PrivateEndpointConnections"
-        ],
+        "tags": ["PrivateEndpointConnections"],
         "description": "Deletes a private endpoint connection.",
         "operationId": "PrivateEndpointConnections_Delete",
         "parameters": [
@@ -691,9 +655,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources": {
       "get": {
-        "tags": [
-          "PrivateLinkResources"
-        ],
+        "tags": ["PrivateLinkResources"],
         "operationId": "PrivateLinkResources_ListByConfigurationStore",
         "description": "Gets the private link resources that need to be created for a configuration store.",
         "parameters": [
@@ -732,9 +694,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources/{groupName}": {
       "get": {
-        "tags": [
-          "PrivateLinkResources"
-        ],
+        "tags": ["PrivateLinkResources"],
         "operationId": "PrivateLinkResources_Get",
         "description": "Gets a private link resource that need to be created for a configuration store.",
         "parameters": [
@@ -796,10 +756,7 @@
     },
     "ConfigurationStore": {
       "description": "The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.",
-      "required": [
-        "location",
-        "sku"
-      ],
+      "required": ["location", "sku"],
       "type": "object",
       "allOf": [
         {
@@ -828,14 +785,7 @@
       "properties": {
         "provisioningState": {
           "description": "The provisioning state of the configuration store.",
-          "enum": [
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled"
-          ],
+          "enum": ["Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled"],
           "type": "string",
           "readOnly": true,
           "x-ms-enum": {
@@ -868,10 +818,7 @@
         },
         "publicNetworkAccess": {
           "description": "Control permission for data plane traffic coming from public networks while private endpoint is enabled.",
-          "enum": [
-            "Enabled",
-            "Disabled"
-          ],
+          "enum": ["Enabled", "Disabled"],
           "type": "string",
           "x-ms-enum": {
             "name": "PublicNetworkAccess",
@@ -968,10 +915,7 @@
     },
     "CheckNameAvailabilityParameters": {
       "description": "Parameters used for checking whether a resource name is available.",
-      "required": [
-        "name",
-        "type"
-      ],
+      "required": ["name", "type"],
       "type": "object",
       "properties": {
         "name": {
@@ -980,9 +924,7 @@
         },
         "type": {
           "description": "The resource type to check for name availability.",
-          "enum": [
-            "Microsoft.AppConfiguration/configurationStores"
-          ],
+          "enum": ["Microsoft.AppConfiguration/configurationStores"],
           "type": "string",
           "x-ms-enum": {
             "name": "ConfigurationResourceType",
@@ -1078,9 +1020,7 @@
     },
     "ListKeyValueParameters": {
       "description": "The parameters used to list a configuration store key-value",
-      "required": [
-        "key"
-      ],
+      "required": ["key"],
       "type": "object",
       "properties": {
         "key": {
@@ -1203,12 +1143,7 @@
       "properties": {
         "type": {
           "description": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.",
-          "enum": [
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned"
-          ],
+          "enum": ["None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned"],
           "type": "string",
           "x-ms-enum": {
             "name": "IdentityType",
@@ -1252,9 +1187,7 @@
     },
     "Sku": {
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "description": "The SKU name of the configuration store.",
@@ -1278,9 +1211,7 @@
     },
     "Resource": {
       "description": "An Azure resource.",
-      "required": [
-        "location"
-      ],
+      "required": ["location"],
       "properties": {
         "id": {
           "description": "The resource ID.",
@@ -1300,10 +1231,7 @@
         "location": {
           "description": "The location of the resource. This cannot be changed after the resource is created.",
           "type": "string",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ]
+          "x-ms-mutability": ["read", "create"]
         },
         "tags": {
           "description": "The tags of the resource.",
@@ -1364,14 +1292,7 @@
       "description": "Properties of a private endpoint connection.",
       "properties": {
         "provisioningState": {
-          "enum": [
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled"
-          ],
+          "enum": ["Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled"],
           "type": "string",
           "readOnly": true,
           "description": "The provisioning status of the private endpoint connection.",
@@ -1389,9 +1310,7 @@
           "description": "A collection of information about the state of the connection between service consumer and provider."
         }
       },
-      "required": [
-        "privateLinkServiceConnectionState"
-      ]
+      "required": ["privateLinkServiceConnectionState"]
     },
     "PrivateEndpoint": {
       "type": "object",
@@ -1408,12 +1327,7 @@
       "type": "object",
       "properties": {
         "status": {
-          "enum": [
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected"
-          ],
+          "enum": ["Pending", "Approved", "Rejected", "Disconnected"],
           "type": "string",
           "description": "The private link service connection status.",
           "x-ms-enum": {
@@ -1426,10 +1340,7 @@
           "description": "The private link service connection description."
         },
         "actionsRequired": {
-          "enum": [
-            "None",
-            "Recreate"
-          ],
+          "enum": ["None", "Recreate"],
           "type": "string",
           "readOnly": true,
           "description": "Any action that is required beyond basic workflow (approve/ reject/ disconnect)",
@@ -1559,9 +1470,7 @@
   },
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ]
 }

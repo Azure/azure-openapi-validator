@@ -25,5 +25,5 @@ rules.push({
         yield { message: `${msg}`.replace("{0}", errorCode), location: path }
       }
     }
-  }
+  },
 })

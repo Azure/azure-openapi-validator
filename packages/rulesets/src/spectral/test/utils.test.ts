@@ -1,9 +1,9 @@
-import { getProperties, jsonPath } from '../functions/utils';
+import { getProperties, jsonPath } from "../functions/utils"
 
-test('getProperties return empty object', () => {
+test("getProperties return empty object", () => {
   expect(getProperties(undefined)).toEqual({})
-});
+})
 
-test('jsonPath return undefined', () => {
- expect(jsonPath(["/"],"string")).toBe(undefined)
-});
+test("jsonPath return undefined", () => {
+  expect(jsonPath(["/"], "string")).toBe(undefined)
+})

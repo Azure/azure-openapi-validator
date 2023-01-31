@@ -6,20 +6,12 @@
     "description": "REST APIs for orchestrating deployments using the Azure Deployment Manager (ADM). See https://docs.microsoft.com/en-us/azure/azure-resource-manager/deployment-manager-overview for more information."
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ],
   "paths": {
@@ -39,9 +31,7 @@
         }
       ],
       "put": {
-        "tags": [
-          "ServiceTopologies"
-        ],
+        "tags": ["ServiceTopologies"],
         "operationId": "ServiceTopologies_CreateOrUpdate",
         "summary": "Creates or updates a service topology.",
         "description": "Synchronously creates a new service topology or updates an existing service topology.",
@@ -73,9 +63,7 @@
         }
       },
       "get": {
-        "tags": [
-          "ServiceTopologies"
-        ],
+        "tags": ["ServiceTopologies"],
         "operationId": "ServiceTopologies_Get",
         "summary": "Gets the service topology.",
         "x-ms-examples": null,
@@ -109,9 +97,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "ServiceTopologies"
-        ],
+        "tags": ["ServiceTopologies"],
         "operationId": "ServiceTopologies_Delete",
         "summary": "Deletes the service topology.",
         "x-ms-examples": null,
@@ -158,9 +144,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "ServiceTopologies"
-        ],
+        "tags": ["ServiceTopologies"],
         "operationId": "ServiceTopologies_List",
         "summary": "Lists the service topologies in the resource group.",
         "x-ms-examples": null,
@@ -193,9 +177,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/serviceTopologies/{serviceTopologyName}/services/{serviceName}": {
       "put": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "operationId": "Services_CreateOrUpdate",
         "summary": "Creates or updates a service in the service topology.",
         "description": "Synchronously creates a new service or updates an existing service.",
@@ -242,9 +224,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "operationId": "Services_Get",
         "summary": "Gets the service.",
         "x-ms-examples": null,
@@ -281,9 +261,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "operationId": "Services_Delete",
         "summary": "Deletes the service.",
         "x-ms-examples": null,
@@ -336,9 +314,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "operationId": "Services_List",
         "summary": "Lists the services in the service topology.",
         "x-ms-examples": null,
@@ -374,9 +350,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/serviceTopologies/{serviceTopologyName}/services/{serviceName}/serviceUnits/{serviceUnitName}": {
       "put": {
-        "tags": [
-          "ServiceUnits"
-        ],
+        "tags": ["ServiceUnits"],
         "operationId": "ServiceUnits_CreateOrUpdate",
         "x-ms-long-running-operation": true,
         "summary": "Creates or updates a service unit under the service in the service topology.",
@@ -433,9 +407,7 @@
         }
       },
       "get": {
-        "tags": [
-          "ServiceUnits"
-        ],
+        "tags": ["ServiceUnits"],
         "operationId": "ServiceUnits_Get",
         "summary": "Gets the service unit.",
         "x-ms-examples": null,
@@ -475,9 +447,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "ServiceUnits"
-        ],
+        "tags": ["ServiceUnits"],
         "operationId": "ServiceUnits_Delete",
         "summary": "Deletes the service unit.",
         "x-ms-examples": null,
@@ -536,9 +506,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "ServiceUnits"
-        ],
+        "tags": ["ServiceUnits"],
         "operationId": "ServiceUnits_List",
         "summary": "Lists the service units under a service in the service topology.",
         "x-ms-examples": null,
@@ -577,9 +545,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/steps/{stepName}": {
       "put": {
-        "tags": [
-          "Steps"
-        ],
+        "tags": ["Steps"],
         "operationId": "Steps_CreateOrUpdate",
         "summary": "Creates or updates a rollout step with the given step properties.",
         "description": "Synchronously creates a new step or updates an existing step.",
@@ -621,9 +587,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Steps"
-        ],
+        "tags": ["Steps"],
         "operationId": "Steps_Get",
         "summary": "Gets the step.",
         "parameters": [
@@ -656,9 +620,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Steps"
-        ],
+        "tags": ["Steps"],
         "operationId": "Steps_Delete",
         "summary": "Deletes the step.",
         "parameters": [
@@ -704,9 +666,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "Steps"
-        ],
+        "tags": ["Steps"],
         "operationId": "Steps_List",
         "summary": "Lists the steps in a resource group.",
         "parameters": [
@@ -738,9 +698,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/rollouts/{rolloutName}": {
       "put": {
-        "tags": [
-          "Rollouts"
-        ],
+        "tags": ["Rollouts"],
         "operationId": "Rollouts_CreateOrUpdate",
         "x-ms-long-running-operation": true,
         "summary": "Creates or updates a rollout.",
@@ -790,9 +748,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Rollouts"
-        ],
+        "tags": ["Rollouts"],
         "operationId": "Rollouts_Get",
         "summary": "Gets detailed information of a rollout.",
         "x-ms-examples": null,
@@ -829,9 +785,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Rollouts"
-        ],
+        "tags": ["Rollouts"],
         "operationId": "Rollouts_Delete",
         "summary": "Deletes a rollout resource.",
         "description": "Only rollouts in terminal state can be deleted.",
@@ -868,9 +822,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/rollouts/{rolloutName}/cancel": {
       "post": {
-        "tags": [
-          "Rollouts"
-        ],
+        "tags": ["Rollouts"],
         "operationId": "Rollouts_Cancel",
         "summary": "Stops a running rollout.",
         "description": "Only running rollouts can be canceled.",
@@ -907,9 +859,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/rollouts/{rolloutName}/restart": {
       "post": {
-        "tags": [
-          "Rollouts"
-        ],
+        "tags": ["Rollouts"],
         "operationId": "Rollouts_Restart",
         "summary": "Restarts a failed rollout and optionally skips all succeeded steps.",
         "description": "Only failed rollouts can be restarted.",
@@ -964,9 +914,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "Rollouts"
-        ],
+        "tags": ["Rollouts"],
         "operationId": "Rollouts_List",
         "summary": "Lists the rollouts in a resource group.",
         "x-ms-examples": null,
@@ -999,9 +947,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeploymentManager/artifactSources/{artifactSourceName}": {
       "put": {
-        "tags": [
-          "ArtifactSources"
-        ],
+        "tags": ["ArtifactSources"],
         "operationId": "ArtifactSources_CreateOrUpdate",
         "summary": "Creates or updates an artifact source.",
         "description": "Synchronously creates a new artifact source or updates an existing artifact source.",
@@ -1044,9 +990,7 @@
         }
       },
       "get": {
-        "tags": [
-          "ArtifactSources"
-        ],
+        "tags": ["ArtifactSources"],
         "operationId": "ArtifactSources_Get",
         "summary": "Gets an artifact source.",
         "x-ms-examples": null,
@@ -1080,9 +1024,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "ArtifactSources"
-        ],
+        "tags": ["ArtifactSources"],
         "operationId": "ArtifactSources_Delete",
         "summary": "Deletes an artifact source.",
         "x-ms-examples": null,
@@ -1129,9 +1071,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "ArtifactSources"
-        ],
+        "tags": ["ArtifactSources"],
         "operationId": "ArtifactSources_List",
         "summary": "Lists the artifact sources in a resource group.",
         "x-ms-examples": null,
@@ -1164,9 +1104,7 @@
     },
     "/providers/Microsoft.DeploymentManager/operations": {
       "get": {
-        "tags": [
-          "Operations"
-        ],
+        "tags": ["Operations"],
         "operationId": "Operations_List",
         "summary": "Lists the supported operations.",
         "x-ms-examples": null,
@@ -1211,10 +1149,7 @@
           "description": "The list of identities."
         }
       },
-      "required": [
-        "type",
-        "identityIds"
-      ]
+      "required": ["type", "identityIds"]
     },
     "RolloutRequest": {
       "description": "Defines the PUT rollout request body.",
@@ -1234,10 +1169,7 @@
           "$ref": "#/definitions/RolloutRequestProperties"
         }
       },
-      "required": [
-        "identity",
-        "properties"
-      ]
+      "required": ["identity", "properties"]
     },
     "RolloutRequestProperties": {
       "description": "The properties for defining a rollout.",
@@ -1265,11 +1197,7 @@
           }
         }
       },
-      "required": [
-        "stepGroups",
-        "targetServiceTopologyId",
-        "buildVersion"
-      ]
+      "required": ["stepGroups", "targetServiceTopologyId", "buildVersion"]
     },
     "StepGroup": {
       "description": "The properties that define a Step group in a rollout.",
@@ -1284,10 +1212,7 @@
           "items": {
             "type": "string"
           },
-          "example": [
-            "stepGroup1",
-            "stepGroup2"
-          ]
+          "example": ["stepGroup1", "stepGroup2"]
         },
         "preDeploymentSteps": {
           "description": "The list of steps to be run before deploying the target.",
@@ -1309,10 +1234,7 @@
           }
         }
       },
-      "required": [
-        "deploymentTargetId",
-        "name"
-      ]
+      "required": ["deploymentTargetId", "name"]
     },
     "PrePostStep": {
       "description": "The properties that define a step.",
@@ -1323,9 +1245,7 @@
           "example": "Microsoft.DeploymentManager/steps/healthCheckStep1"
         }
       },
-      "required": [
-        "stepId"
-      ]
+      "required": ["stepId"]
     },
     "ArtifactSource": {
       "description": "The resource that defines the source location where the artifacts are located.",
@@ -1364,10 +1284,7 @@
           "$ref": "#/definitions/Authentication"
         }
       },
-      "required": [
-        "sourceType",
-        "authentication"
-      ]
+      "required": ["sourceType", "authentication"]
     },
     "Authentication": {
       "description": "Defines the authentication method and properties to access the artifacts.",
@@ -1379,9 +1296,7 @@
           "description": "The authentication type"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "SasAuthentication": {
       "x-ms-discriminator-value": "Sas",
@@ -1408,9 +1323,7 @@
           "description": "The SAS URI to the Azure Storage blob container. Any offset from the root of the container to where the artifacts are located can be defined in the artifactRoot."
         }
       },
-      "required": [
-        "sasUri"
-      ]
+      "required": ["sasUri"]
     },
     "Rollout": {
       "description": "Defines the rollout.",
@@ -1518,9 +1431,7 @@
           ]
         }
       },
-      "required": [
-        "properties"
-      ]
+      "required": ["properties"]
     },
     "ServiceTopologyProperties": {
       "description": "The properties of a service topology.",
@@ -1549,9 +1460,7 @@
           ]
         }
       },
-      "required": [
-        "properties"
-      ]
+      "required": ["properties"]
     },
     "Service": {
       "description": "Defines a service.",
@@ -1586,10 +1495,7 @@
           "description": "The subscription to which the resources in the service belong to or should be deployed to."
         }
       },
-      "required": [
-        "targetLocation",
-        "targetSubscriptionId"
-      ]
+      "required": ["targetLocation", "targetSubscriptionId"]
     },
     "ServiceUnitResource": {
       "allOf": [
@@ -1609,9 +1515,7 @@
           ]
         }
       },
-      "required": [
-        "properties"
-      ]
+      "required": ["properties"]
     },
     "ServiceUnit": {
       "description": "Defines a service unit.",
@@ -1643,10 +1547,7 @@
         },
         "deploymentMode": {
           "type": "string",
-          "enum": [
-            "Incremental",
-            "Complete"
-          ],
+          "enum": ["Incremental", "Complete"],
           "x-ms-enum": {
             "name": "DeploymentMode",
             "modelAsString": false
@@ -1659,10 +1560,7 @@
           "$ref": "#/definitions/ServiceUnitArtifacts"
         }
       },
-      "required": [
-        "targetResourceGroup",
-        "deploymentMode"
-      ]
+      "required": ["targetResourceGroup", "deploymentMode"]
     },
     "ServiceUnitArtifacts": {
       "description": "Defines the artifacts of a service unit.",
@@ -1727,9 +1625,7 @@
           "description": "Supplementary informative messages during rollout."
         }
       },
-      "required": [
-        "name"
-      ]
+      "required": ["name"]
     },
     "StepOperationInfo": {
       "description": "Detailed information of a specific step run.",
@@ -1920,9 +1816,7 @@
           "$ref": "#/definitions/StepProperties"
         }
       },
-      "required": [
-        "properties"
-      ]
+      "required": ["properties"]
     },
     "StepProperties": {
       "description": "The properties of a step resource.",
@@ -1932,19 +1826,14 @@
         "stepType": {
           "type": "string",
           "description": "The type of step.",
-          "enum": [
-            "Wait",
-            "HealthCheck"
-          ],
+          "enum": ["Wait", "HealthCheck"],
           "x-ms-enum": {
             "name": "StepType",
             "modelAsString": false
           }
         }
       },
-      "required": [
-        "stepType"
-      ]
+      "required": ["stepType"]
     },
     "HealthCheckStepProperties": {
       "x-ms-discriminator-value": "HealthCheck",
@@ -1961,9 +1850,7 @@
           "$ref": "#/definitions/HealthCheckStepAttributes"
         }
       },
-      "required": [
-        "attributes"
-      ]
+      "required": ["attributes"]
     },
     "HealthCheckStepAttributes": {
       "type": "object",
@@ -1991,10 +1878,7 @@
           "example": "PT60M"
         }
       },
-      "required": [
-        "type",
-        "healthyStateDuration"
-      ]
+      "required": ["type", "healthyStateDuration"]
     },
     "RestHealthCheckStepAttributes": {
       "x-ms-discriminator-value": "REST",
@@ -2025,9 +1909,7 @@
           "description": "The list of checks that form the health check step."
         }
       },
-      "required": [
-        "healthChecks"
-      ]
+      "required": ["healthChecks"]
     },
     "RestHealthCheck": {
       "type": "object",
@@ -2046,10 +1928,7 @@
           "$ref": "#/definitions/RestResponse"
         }
       },
-      "required": [
-        "name",
-        "request"
-      ]
+      "required": ["name", "request"]
     },
     "RestRequest": {
       "type": "object",
@@ -2058,10 +1937,7 @@
         "method": {
           "type": "string",
           "description": "The HTTP method to use for the request.",
-          "enum": [
-            "GET",
-            "POST"
-          ],
+          "enum": ["GET", "POST"],
           "x-ms-enum": {
             "name": "RestRequestMethod",
             "modelAsString": false
@@ -2076,11 +1952,7 @@
           "$ref": "#/definitions/RestRequestAuthentication"
         }
       },
-      "required": [
-        "method",
-        "uri",
-        "authentication"
-      ]
+      "required": ["method", "uri", "authentication"]
     },
     "RestRequestAuthentication": {
       "type": "object",
@@ -2091,19 +1963,14 @@
           "type": "string",
           "description": "The authentication type.",
           "example": "ApiKey",
-          "enum": [
-            "ApiKey",
-            "RolloutIdentity"
-          ],
+          "enum": ["ApiKey", "RolloutIdentity"],
           "x-ms-enum": {
             "name": "RestAuthType",
             "modelAsString": false
           }
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "RolloutIdentityAuthentication": {
       "x-ms-discriminator-value": "RolloutIdentity",
@@ -2132,10 +1999,7 @@
         "in": {
           "type": "string",
           "description": "The location of the authentication key/value pair in the request.",
-          "enum": [
-            "Query",
-            "Header"
-          ],
+          "enum": ["Query", "Header"],
           "x-ms-enum": {
             "name": "RestAuthLocation",
             "modelAsString": false
@@ -2146,11 +2010,7 @@
           "description": "The value of the authentication key/value pair."
         }
       },
-      "required": [
-        "name",
-        "in",
-        "value"
-      ]
+      "required": ["name", "in", "value"]
     },
     "RestResponse": {
       "type": "object",
@@ -2162,10 +2022,7 @@
           "items": {
             "type": "string"
           },
-          "example": [
-            "Ok",
-            "No Content"
-          ]
+          "example": ["Ok", "No Content"]
         },
         "regex": {
           "type": "object",
@@ -2186,10 +2043,7 @@
             "matchQuantifier": {
               "type": "string",
               "description": "Indicates whether any or all of the expressions should match with the response content.",
-              "enum": [
-                "All",
-                "Any"
-              ],
+              "enum": ["All", "Any"],
               "x-ms-enum": {
                 "name": "RestMatchQuantifier",
                 "modelAsString": false
@@ -2214,9 +2068,7 @@
           "$ref": "#/definitions/WaitStepAttributes"
         }
       },
-      "required": [
-        "attributes"
-      ]
+      "required": ["attributes"]
     },
     "WaitStepAttributes": {
       "type": "object",
@@ -2228,9 +2080,7 @@
           "example": "PT30M"
         }
       },
-      "required": [
-        "duration"
-      ]
+      "required": ["duration"]
     },
     "ServiceTopologiesListResult": {
       "description": "The list of service topologies.",
@@ -2326,25 +2176,16 @@
           "additionalProperties": {
             "type": "string"
           },
-          "x-ms-mutability": [
-            "read",
-            "create",
-            "update"
-          ],
+          "x-ms-mutability": ["read", "create", "update"],
           "description": "Resource tags."
         },
         "location": {
           "type": "string",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ],
+          "x-ms-mutability": ["read", "create"],
           "description": "The geo-location where the resource lives"
         }
       },
-      "required": [
-        "location"
-      ],
+      "required": ["location"],
       "allOf": [
         {
           "$ref": "#/definitions/Resource"

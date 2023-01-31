@@ -11,7 +11,9 @@
     "test-native": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.native.config.js",
     "test-spectral": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js",
     "lint:fix": "eslint ./src --fix --ext .ts",
-    "lint": "eslint ./src --ext .ts --max-warnings=0"
+    "lint": "eslint ./src --ext .ts --max-warnings=0",
+    "prettier": "prettier -w ./src",
+    "prettier-check": "prettier -c ./src"
   },
   "engines": {
     "node": ">=12"

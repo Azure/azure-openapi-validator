@@ -40,6 +40,8 @@
     "test": "jest -u --runInBand --max-old-space-size=10192 --ci --config ./jest.config.js ",
     "build": "tsc",
     "lint:fix": "eslint ./tests --fix --ext .ts",
-    "lint": "eslint ./tests --ext .ts --max-warnings=0"
+    "lint": "eslint ./tests --ext .ts --max-warnings=0",
+    "prettier": "prettier -w ./tests",
+    "prettier-check": "prettier -c ./tests"
   }
 }

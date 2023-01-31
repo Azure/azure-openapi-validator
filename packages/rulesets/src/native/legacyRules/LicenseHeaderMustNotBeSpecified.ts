@@ -18,5 +18,5 @@ rules.push({
     if (node.header !== undefined) {
       yield { message: `${msg}`, location: path }
     }
-  }
+  },
 })

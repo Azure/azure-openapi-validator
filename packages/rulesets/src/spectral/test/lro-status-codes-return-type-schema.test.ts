@@ -1,12 +1,12 @@
-import {Spectral} from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("LroStatusCodesReturnTypeSchema");
-  return linter;
-});
+  linter = await linterForRule("LroStatusCodesReturnTypeSchema")
+  return linter
+})
 
 test("LroStatusCodesReturnTypeSchema should find errors", () => {
   const myOpenApiDocument = {
@@ -24,12 +24,12 @@ test("LroStatusCodesReturnTypeSchema should find errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.responses.200");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.responses.200")
+  })
+})
 
 test("LroStatusCodesReturnTypeSchema should find no errors", () => {
   const myOpenApiDocument = {
@@ -60,8 +60,8 @@ test("LroStatusCodesReturnTypeSchema should find no errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

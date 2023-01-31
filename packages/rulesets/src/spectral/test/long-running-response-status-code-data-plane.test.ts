@@ -1,12 +1,12 @@
-import { Spectral } from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("LongRunningResponseStatusCodeDataPlane");
-  return linter;
-});
+  linter = await linterForRule("LongRunningResponseStatusCodeDataPlane")
+  return linter
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find errors in DELETE operation", () => {
   const myOpenApiDocument = {
@@ -23,12 +23,12 @@ test("LongRunningResponseStatusCodeDataPlane should find errors in DELETE operat
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.delete");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.delete")
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find errors in POST operation", () => {
   const myOpenApiDocument = {
@@ -45,12 +45,12 @@ test("LongRunningResponseStatusCodeDataPlane should find errors in POST operatio
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.post");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.post")
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find errors in PUT operation", () => {
   const myOpenApiDocument = {
@@ -67,12 +67,12 @@ test("LongRunningResponseStatusCodeDataPlane should find errors in PUT operation
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.put")
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find errors in PATCH operation", () => {
   const myOpenApiDocument = {
@@ -89,12 +89,12 @@ test("LongRunningResponseStatusCodeDataPlane should find errors in PATCH operati
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.patch");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.patch")
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find no errors in DELETE operation", () => {
   const myOpenApiDocument = {
@@ -117,11 +117,11 @@ test("LongRunningResponseStatusCodeDataPlane should find no errors in DELETE ope
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find no errors in POST operation", () => {
   const myOpenApiDocument = {
@@ -147,11 +147,11 @@ test("LongRunningResponseStatusCodeDataPlane should find no errors in POST opera
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find no errors in PUT operation", () => {
   const myOpenApiDocument = {
@@ -174,11 +174,11 @@ test("LongRunningResponseStatusCodeDataPlane should find no errors in PUT operat
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})
 
 test("LongRunningResponseStatusCodeDataPlane should find no errors in PATCH operation", () => {
   const myOpenApiDocument = {
@@ -201,8 +201,8 @@ test("LongRunningResponseStatusCodeDataPlane should find no errors in PATCH oper
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})
