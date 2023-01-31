@@ -486,6 +486,12 @@ The long running operation with final-state-via:original-uri should have a sibli
 
 Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
 
+### MissingDefaultResponse
+
+All operations should have a default (error) response.
+
+Please refer to [missing-default-response.md](./missing-default-response.md) for details.
+
 ### MissingTypeObject
 
 The rule should apply to any schema with "properties" or "additionalProperties". It is to ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object.
