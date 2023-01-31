@@ -468,6 +468,12 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
+### ProvisioningStateSpecified
+
+This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+
+Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
+
 ### LROStatusCodesReturnTypeSchema
 
 The '200'/'201' responses of the long running operation must have a schema definition.
@@ -479,6 +485,12 @@ Please refer to [lro-status-codes-return-type-schema.md](./lro-status-codes-retu
 The long running operation with final-state-via:original-uri should have a sibling 'get' operation.
 
 Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
+
+### MissingDefaultResponse
+
+All operations should have a default (error) response.
+
+Please refer to [missing-default-response.md](./missing-default-response.md) for details.
 
 ### MissingTypeObject
 
@@ -921,6 +933,12 @@ Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-reso
 This rule ensures that the authors explicitly define these restrictions as a regex on the resource name. If a team does not have custom rules then the ARM's default rule should get applied.
 
 Please refer to [resource-name-restriction.md](./resource-name-restriction.md) for details.
+
+### ResponseSchemaSpecifiedForSuccessStatusCode
+
+Validates if 200 & 201 success status codes for an ARM PUT operation has a response schema specified.
+
+Please refer to [response-schema-specified-for-success-status-code.md](./response-schema-specified-for-success-status-code.md) for details.
 
 ### RPaasResourceProvisioningState
 
