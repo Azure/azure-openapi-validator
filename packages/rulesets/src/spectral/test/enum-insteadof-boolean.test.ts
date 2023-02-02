@@ -1,68 +1,62 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('EnumInsteadOfBoolean');
-  return linter;
-});
+  linter = await linterForRule("EnumInsteadOfBoolean")
+  return linter
+})
 
-test('EnumInsteadOfBoolean should find errors', () => {
+test("EnumInsteadOfBoolean should find errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
       title: "Boolean properties not recommended in models",
       description: "Some documentation.",
-      version: "2017-02-08"
+      version: "2017-02-08",
     },
     host: "management.azure.com",
-    schemes: [
-        "https"
-    ],
+    schemes: ["https"],
     basePath: "/",
-    produces: [
-        "application/json"
-    ],
-    consumes: [
-        "application/json"
-    ],
+    produces: ["application/json"],
+    consumes: ["application/json"],
     paths: {
-        "/foo/{boolparam}": {
-          post: {
-            operationId: "PostFoo",
-            summary: "Foo path",
-            description: "Foo operation",
-            parameters: [
-              {
-                in: "body",
-                name: "fooPost",
-                schema: {
-                  type: "boolean",
-                  description: "A foo boolean"
-                },
-                description: "Foo body parameter"
-              },
-              {
-                name: "boolparam",
-                in: "path",
-                require: true,
+      "/foo/{boolparam}": {
+        post: {
+          operationId: "PostFoo",
+          summary: "Foo path",
+          description: "Foo operation",
+          parameters: [
+            {
+              in: "body",
+              name: "fooPost",
+              schema: {
                 type: "boolean",
-                description: "A boolean param defined without schema"
-              }
-            ],
-            responses: {
-              default: {
-                description: "Unexpected error",
-                schema: {
-                  type: "boolean",
-                  description: "A foo boolean"
-                }
-              }
-            }
-          }
-        }
+                description: "A foo boolean",
+              },
+              description: "Foo body parameter",
+            },
+            {
+              name: "boolparam",
+              in: "path",
+              require: true,
+              type: "boolean",
+              description: "A boolean param defined without schema",
+            },
+          ],
+          responses: {
+            default: {
+              description: "Unexpected error",
+              schema: {
+                type: "boolean",
+                description: "A foo boolean",
+              },
+            },
+          },
+        },
       },
+    },
     definitions: {
       Test1: {
         description: "Property for foo path 1",
@@ -70,14 +64,16 @@ test('EnumInsteadOfBoolean should find errors', () => {
           nameAvailable: {
             readOnly: true,
             type: "boolean",
-            description: "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used."
+            description:
+              "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used.",
           },
           anotherProp: {
             readOnly: true,
             type: "boolean",
-            description: "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used."
-          }
-        }
+            description:
+              "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used.",
+          },
+        },
       },
       parameters: {
         SubscriptionIdParameter: {
@@ -85,72 +81,66 @@ test('EnumInsteadOfBoolean should find errors', () => {
           in: "path",
           required: true,
           type: "string",
-          description: "test subscription id"
+          description: "test subscription id",
         },
         ApiVersion: {
           name: "api-version",
           in: "path",
           required: true,
           type: "string",
-          description: "test api version"
-        }
-      }
-    }
-  };
+          description: "test api version",
+        },
+      },
+    },
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(5);
-    expect(results[0].path.join('.')).toBe('paths./foo/{boolparam}.post.parameters.0.schema');
-  });
-});
+    expect(results.length).toBe(5)
+    expect(results[0].path.join(".")).toBe("paths./foo/{boolparam}.post.parameters.0.schema")
+  })
+})
 
-test('DefaultInEnum should find no errors', () => {
+test("DefaultInEnum should find no errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     info: {
       title: "Boolean properties not recommended in models",
       description: "Some documentation.",
-      version: "2017-02-08"
+      version: "2017-02-08",
     },
     host: "management.azure.com",
-    schemes: [
-        "https"
-    ],
+    schemes: ["https"],
     basePath: "/",
-    produces: [
-        "application/json"
-    ],
-    consumes: [
-        "application/json"
-    ],
+    produces: ["application/json"],
+    consumes: ["application/json"],
     paths: {
-        "/foo/{boolparam}": {
-          post: {
-            operationId: "PostFoo",
-            summary: "Foo path",
-            description: "Foo operation",
-            parameters: [
-              {
-                in: "body",
-                name: "fooPost",
-                schema: {
-                  type: "string",
-                  description: "A foo boolean"
-                },
-                description: "Foo body parameter"
-              }
-            ],
-            responses: {
-              default: {
-                description: "Unexpected error",
-                schema: {
-                  type: "string",
-                  description: "A foo boolean"
-                }
-              }
-            }
-          }
-        }
+      "/foo/{boolparam}": {
+        post: {
+          operationId: "PostFoo",
+          summary: "Foo path",
+          description: "Foo operation",
+          parameters: [
+            {
+              in: "body",
+              name: "fooPost",
+              schema: {
+                type: "string",
+                description: "A foo boolean",
+              },
+              description: "Foo body parameter",
+            },
+          ],
+          responses: {
+            default: {
+              description: "Unexpected error",
+              schema: {
+                type: "string",
+                description: "A foo boolean",
+              },
+            },
+          },
+        },
       },
+    },
     definitions: {
       Test1: {
         description: "Property for foo path 1",
@@ -158,9 +148,10 @@ test('DefaultInEnum should find no errors', () => {
           anotherProp: {
             readOnly: true,
             type: "string",
-            description: "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used."
-          }
-        }
+            description:
+              "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used.",
+          },
+        },
       },
       parameters: {
         SubscriptionIdParameter: {
@@ -168,19 +159,19 @@ test('DefaultInEnum should find no errors', () => {
           in: "path",
           required: true,
           type: "string",
-          description: "test subscription id"
+          description: "test subscription id",
         },
         ApiVersion: {
           name: "api-version",
           in: "path",
           required: true,
           type: "string",
-          description: "test api version"
-        }
-      }
-    }
-  };
+          description: "test api version",
+        },
+      },
+    },
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

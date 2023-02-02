@@ -20,18 +20,12 @@
       }
     ]
   },
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "paths": {
     "/securitydomain/download": {
       "post": {
-        "tags": [
-          "HSMSecurityDomain"
-        ],
+        "tags": ["HSMSecurityDomain"],
         "operationId": "HSMSecurityDomain_Download",
         "description": "Retrieves Security domain from HSM enclave",
         "parameters": [
@@ -71,9 +65,7 @@
     },
     "/securitydomain/transferkey": {
       "get": {
-        "tags": [
-          "HSMSecurityDomain"
-        ],
+        "tags": ["HSMSecurityDomain"],
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -104,9 +96,7 @@
     },
     "/securitydomain/upload": {
       "post": {
-        "tags": [
-          "HSMSecurityDomain"
-        ],
+        "tags": ["HSMSecurityDomain"],
         "operationId": "HSMSecurityDomain_Upload",
         "x-ms-long-running-operation": true,
         "x-ms-long-running-operation-options": {
@@ -157,9 +147,7 @@
     },
     "/securitydomain/upload/pending": {
       "get": {
-        "tags": [
-          "HSMSecurityDomain"
-        ],
+        "tags": ["HSMSecurityDomain"],
         "operationId": "HSMSecurityDomain_UploadPending",
         "description": "Get Security domain upload operation status",
         "responses": {
@@ -198,9 +186,7 @@
           "description": "Three certificates needed from customer"
         }
       },
-      "required": [
-        "certificates"
-      ]
+      "required": ["certificates"]
     },
     "SecurityDomainCertificateItem": {
       "properties": {
@@ -209,9 +195,7 @@
           "description": "Customer generated certificate containing public key in JWK format"
         }
       },
-      "required": [
-        "value"
-      ]
+      "required": ["value"]
     },
     "TransferKey": {
       "properties": {
@@ -219,9 +203,7 @@
           "$ref": "#/definitions/SecurityDomainJsonWebKey"
         }
       },
-      "required": [
-        "transfer_key"
-      ]
+      "required": ["transfer_key"]
     },
     "SecurityDomainObject": {
       "properties": {
@@ -234,11 +216,7 @@
       "properties": {
         "status": {
           "description": "operation status",
-          "enum": [
-            "Success",
-            "InProgress",
-            "Failed"
-          ],
+          "enum": ["Success", "InProgress", "Failed"],
           "x-ms-enum": {
             "modelAsString": false,
             "name": "OperationStatus"
@@ -259,10 +237,7 @@
         "kty": {
           "type": "string",
           "description": "JsonWebKey Key Type (kty), as defined in https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. For security domain this value must be RSA",
-          "enum": [
-            "RSA",
-            "RSA-HSM"
-          ],
+          "enum": ["RSA", "RSA-HSM"],
           "x-ms-enum": {
             "name": "JsonWebKeyType",
             "modelAsString": true
@@ -307,15 +282,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "kty",
-        "key_ops",
-        "kid",
-        "x5c",
-        "x5t#S256",
-        "n",
-        "e"
-      ]
+      "required": ["kty", "key_ops", "kid", "x5c", "x5t#S256", "n", "e"]
     }
   },
   "parameters": {

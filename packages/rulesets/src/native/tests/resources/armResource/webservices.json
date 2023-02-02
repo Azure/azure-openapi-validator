@@ -6,14 +6,10 @@
     "description": "These APIs allow end users to operate on Azure Machine Learning Workspace resources. They support CRUD operations for Azure Machine Learning Workspaces."
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ],
   "securityDefinitions": {
@@ -30,9 +26,7 @@
   "paths": {
     "/providers/Microsoft.MachineLearning/operations": {
       "get": {
-        "tags": [
-          "Operation"
-        ],
+        "tags": ["Operation"],
         "description": "Lists all of the available Azure Machine Learning Studio REST API operations.",
         "operationId": "Operations_List",
         "parameters": [
@@ -57,19 +51,13 @@
         "x-ms-pageable": {
           "nextLinkName": null
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}": {
       "get": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Gets the properties of the specified machine learning workspace.",
         "operationId": "Workspaces_Get",
         "parameters": [
@@ -101,17 +89,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Creates or updates a workspace with the specified parameters.",
         "operationId": "Workspaces_CreateOrUpdate",
         "parameters": [
@@ -152,17 +134,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Deletes a machine learning workspace.",
         "operationId": "Workspaces_Delete",
         "parameters": [
@@ -194,17 +170,11 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Updates a machine learning workspace with the specified parameters.",
         "operationId": "Workspaces_Update",
         "parameters": [
@@ -245,19 +215,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}/resyncStorageKeys": {
       "post": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Resync storage keys associated with this workspace.",
         "operationId": "Workspaces_ResyncStorageKeys",
         "parameters": [
@@ -286,19 +250,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}/listWorkspaceKeys": {
       "post": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "List the authorization keys associated with this workspace.",
         "operationId": "Workspaces_ListWorkspaceKeys",
         "parameters": [
@@ -330,19 +288,13 @@
             }
           }
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces": {
       "get": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Lists all the available machine learning workspaces under the specified resource group.",
         "operationId": "Workspaces_ListByResourceGroup",
         "parameters": [
@@ -374,19 +326,13 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearning/workspaces": {
       "get": {
-        "tags": [
-          "Workspaces"
-        ],
+        "tags": ["Workspaces"],
         "description": "Lists all the available machine learning workspaces under the specified subscription.",
         "operationId": "Workspaces_List",
         "parameters": [
@@ -415,12 +361,8 @@
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     }
   },
@@ -437,10 +379,7 @@
           "description": "error message"
         }
       },
-      "required": [
-        "code",
-        "message"
-      ]
+      "required": ["code", "message"]
     },
     "Workspace": {
       "type": "object",
@@ -461,10 +400,7 @@
     "WorkspaceProperties": {
       "type": "object",
       "description": "The properties of a machine learning workspace.",
-      "required": [
-        "userStorageAccountId",
-        "ownerEmail"
-      ],
+      "required": ["userStorageAccountId", "ownerEmail"],
       "properties": {
         "userStorageAccountId": {
           "description": "The fully qualified arm id of the storage account associated with this workspace.",
@@ -476,13 +412,7 @@
         },
         "workspaceType": {
           "type": "string",
-          "enum": [
-            "Production",
-            "Free",
-            "Anonymous",
-            "PaidStandard",
-            "PaidPremium"
-          ],
+          "enum": ["Production", "Free", "Anonymous", "PaidStandard", "PaidPremium"],
           "x-ms-enum": {
             "name": "WorkspaceType",
             "modelAsString": false
@@ -492,15 +422,7 @@
         },
         "workspaceState": {
           "type": "string",
-          "enum": [
-            "Deleted",
-            "Enabled",
-            "Disabled",
-            "Migrated",
-            "Updated",
-            "Registered",
-            "Unregistered"
-          ],
+          "enum": ["Deleted", "Enabled", "Disabled", "Migrated", "Updated", "Registered", "Unregistered"],
           "x-ms-enum": {
             "name": "WorkspaceState",
             "modelAsString": false
@@ -551,15 +473,7 @@
       "properties": {
         "workspaceState": {
           "type": "string",
-          "enum": [
-            "Deleted",
-            "Enabled",
-            "Disabled",
-            "Migrated",
-            "Updated",
-            "Registered",
-            "Unregistered"
-          ],
+          "enum": ["Deleted", "Enabled", "Disabled", "Migrated", "Updated", "Registered", "Unregistered"],
           "x-ms-enum": {
             "name": "WorkspaceState",
             "modelAsString": false
@@ -647,9 +561,7 @@
     },
     "Resource": {
       "description": "An Azure resource.",
-      "required": [
-        "location"
-      ],
+      "required": ["location"],
       "properties": {
         "id": {
           "description": "The resource ID.",

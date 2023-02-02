@@ -2,19 +2,19 @@
 
 export const longRunningOperationsOptionsValidator = (postOp: any, _opts: any, ctx: any) => {
   if (postOp === null || typeof postOp !== "object") {
-    return [];
+    return []
   }
-  const path = ctx.path || [];
+  const path = ctx.path || []
   if (!postOp["x-ms-long-running-operation"]) {
-    return [];
+    return []
   }
-  const errors: any = [];
-  const responses = postOp?.responses;
-  let schemaAvailable = false;
+  const errors: any = []
+  const responses = postOp?.responses
+  let schemaAvailable = false
   for (const responseCode in responses) {
     if (responseCode[0] === "2" && responses[responseCode]?.schema !== undefined) {
-      schemaAvailable = true;
-      break;
+      schemaAvailable = true
+      break
     }
   }
   if (
@@ -25,7 +25,7 @@ export const longRunningOperationsOptionsValidator = (postOp: any, _opts: any, c
     errors.push({
       message: `A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.`,
       path: [...path.slice(0, -1)],
-    });
+    })
   }
-  return errors;
-};
+  return errors
+}

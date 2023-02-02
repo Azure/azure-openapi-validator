@@ -20,7 +20,7 @@ rules.push({
       const enumList = transformEnum(node.type, node.enum)
       const caseInsensitiveSet = new Set<string>()
       if (
-        enumList.some((value:any) => {
+        enumList.some((value: any) => {
           if (caseInsensitiveSet.has(value.toLowerCase())) {
             return true
           }
@@ -31,5 +31,5 @@ rules.push({
         yield { message: `${msg}`, location: path }
       }
     }
-  }
+  },
 })

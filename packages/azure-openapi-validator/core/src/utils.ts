@@ -1,8 +1,8 @@
-import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
+import { createFileOrFolderUri, readUri } from "@azure-tools/uri"
 import _ from "lodash"
 import { nodes, stringify } from "./jsonpath"
-import { SwaggerInventory } from "./swaggerInventory";
-import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
+import { SwaggerInventory } from "./swaggerInventory"
+import { ISwaggerInventory, OpenApiTypes, JsonPath } from "./types"
 /**
  *
  * @param doc
@@ -10,8 +10,8 @@ import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
  * @param inventory
  * @returns the schema that the reference pointed to, this will not de-reference the child item of this reference.
  */
-export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory):any {
-  const getRefModel = (docToSearch:any,refValue: string, visited: string[]) => {
+export function followReference(doc: any, schema: any, inventory?: ISwaggerInventory): any {
+  const getRefModel = (docToSearch: any, refValue: string, visited: string[]) => {
     if (visited.includes(refValue)) {
       throw new Error("Found circle reference: " + visited.join("->"))
     }
@@ -32,7 +32,7 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
       if (inventory && refSlices[0]) {
         doc = inventory.getDocuments(refSlices[0])
       }
-      schema = getRefModel(doc,`#${refSlices[1]}`, [])
+      schema = getRefModel(doc, `#${refSlices[1]}`, [])
       return followReference(doc, schema, inventory)
     }
     return schema
@@ -40,8 +40,8 @@ export function followReference(doc: any, schema: any, inventory?: ISwaggerInven
   return undefined
 }
 
-export function isUriAbsolute(url:string) {
-    return /^[a-z]+:\/\//.test(url);
+export function isUriAbsolute(url: string) {
+  return /^[a-z]+:\/\//.test(url)
 }
 
 export const normalizePath = (path: string) => {
@@ -55,7 +55,13 @@ export const parseJsonRef = (ref: string): string[] => {
   return ref.split("#")
 }
 
-export function traverse(obj: unknown, path: string[], visited: Set<any>, options: any, visitor: (obj:any, path:string[], context:any) => boolean) {
+export function traverse(
+  obj: unknown,
+  path: string[],
+  visited: Set<any>,
+  options: any,
+  visitor: (obj: any, path: string[], context: any) => boolean
+) {
   if (!obj) {
     return
   }
@@ -104,12 +110,12 @@ export function getOpenapiType(type: string) {
 }
 
 export const defaultFileSystem = {
-  read:async (uri:string)=>{
-      return await readUri(uri)
-    }
+  read: async (uri: string) => {
+    return await readUri(uri)
+  },
 }
 
-export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPath) {
+export function getRange(inventory: SwaggerInventory, specPath: string, path: JsonPath) {
   const document = inventory.getInternalDocument(specPath)
   if (path && path[0] === "$") {
     path = path.slice(1)
@@ -117,15 +123,15 @@ export function getRange(inventory:SwaggerInventory,specPath:string,path:JsonPat
   return document?.getPositionFromJsonPath(path)
 }
 
-export function convertJsonPath(doc:any, paths:string[]) {
+export function convertJsonPath(doc: any, paths: string[]) {
   if (paths && doc) {
-    const convertedPaths:JsonPath = []
+    const convertedPaths: JsonPath = []
     paths = paths[0] === "$" ? paths.slice(1) : paths
     for (const path of paths) {
       if (!doc || typeof doc !== "object") {
         return convertedPaths
       }
-      convertedPaths.push(Array.isArray(doc) ? Number.parseInt(path):path)
+      convertedPaths.push(Array.isArray(doc) ? Number.parseInt(path) : path)
       doc = doc[path]
     }
     return convertedPaths

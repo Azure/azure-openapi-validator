@@ -1,51 +1,51 @@
 {
-    "definitions": {
-        "ErrorResponse": {
-            "allOf": [
+  "definitions": {
+    "ErrorResponse": {
+      "allOf": [
+        {
+          "properties": {
+            "error": {
+              "allOf": [
                 {
-                    "properties": {
-                        "error": {
-                            "allOf": [
-                                {
-                                    "readOnly": true
-                                },
-                                {
-                                    "$ref": "#/definitions/Error"
-                                }
-                            ]
-                        }
-                    },
-                    "description": "The key vault error exception."
-                }
-            ]
-        },
-        "Error": {
-            "properties": {
-                "code": {
-                    "type": "string",
-                    "readOnly": true,
-                    "description": "The error code."
+                  "readOnly": true
                 },
-                "message": {
-                    "type": "string",
-                    "readOnly": true,
-                    "description": "The error message."
+                {
+                  "$ref": "#/definitions/Error"
                 }
+              ]
             }
-        },
-        "Error1": {
-            "properties": {
-                "message": {
-                    "type": "string",
-                    "readOnly": true,
-                    "description": "The error message."
-                },
-                "innererror": {
-                    "x-ms-client-name": "innerError",
-                    "readOnly": true,
-                    "$ref": "#/definitions/Error1"
-                }
-            }
+          },
+          "description": "The key vault error exception."
         }
+      ]
+    },
+    "Error": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The error code."
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The error message."
+        }
+      }
+    },
+    "Error1": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The error message."
+        },
+        "innererror": {
+          "x-ms-client-name": "innerError",
+          "readOnly": true,
+          "$ref": "#/definitions/Error1"
+        }
+      }
     }
+  }
 }

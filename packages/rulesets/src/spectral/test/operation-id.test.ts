@@ -1,188 +1,184 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('OperationId');
-  return linter;
-});
+  linter = await linterForRule("OperationId")
+  return linter
+})
 
-test('OperationId should find operationId not Noun_Verb', () => {
+test("OperationId should find operationId not Noun_Verb", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/api/test1': {
+      "/api/test1": {
         post: {
-          operationId: 'fooBarBaz',
+          operationId: "fooBarBaz",
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results).toHaveLength(1);
-    expect(results[0].path.join('.')).toBe('paths./api/test1.post.operationId');
-    results.forEach((result) => expect(result.message).toContain(
-      'OperationId should be of the form "Noun_Verb"',
-    ));
-  });
-});
+    expect(results).toHaveLength(1)
+    expect(results[0].path.join(".")).toBe("paths./api/test1.post.operationId")
+    results.forEach((result) => expect(result.message).toContain('OperationId should be of the form "Noun_Verb"'))
+  })
+})
 
-test('OperationId should find operationId without standard verb', () => {
+test("OperationId should find operationId without standard verb", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/api/test2': {
+      "/api/test2": {
         get: {
-          operationId: 'Noun_Verb',
+          operationId: "Noun_Verb",
         },
         put: {
-          operationId: 'Noun_Put',
+          operationId: "Noun_Put",
         },
         patch: {
-          operationId: 'Noun_Patch',
+          operationId: "Noun_Patch",
         },
         delete: {
-          operationId: 'Noun_Remove',
+          operationId: "Noun_Remove",
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results).toHaveLength(4);
-    expect(results[0].path.join('.')).toBe('paths./api/test2.get.operationId');
-    expect(results[1].path.join('.')).toBe('paths./api/test2.put.operationId');
-    expect(results[2].path.join('.')).toBe('paths./api/test2.patch.operationId');
-    expect(results[3].path.join('.')).toBe('paths./api/test2.delete.operationId');
-    results.forEach((result) => expect(result.message).toMatch(
-      /OperationId for (get|put|patch|delete) method should contain/,
-    ));
-  });
-});
+    expect(results).toHaveLength(4)
+    expect(results[0].path.join(".")).toBe("paths./api/test2.get.operationId")
+    expect(results[1].path.join(".")).toBe("paths./api/test2.put.operationId")
+    expect(results[2].path.join(".")).toBe("paths./api/test2.patch.operationId")
+    expect(results[3].path.join(".")).toBe("paths./api/test2.delete.operationId")
+    results.forEach((result) => expect(result.message).toMatch(/OperationId for (get|put|patch|delete) method should contain/))
+  })
+})
 
-test('OperationId should find operationId without standard verb again', () => {
+test("OperationId should find operationId without standard verb again", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/api/test3': {
+      "/api/test3": {
         get: {
-          operationId: 'Noun_Get',
-          'x-ms-pageable': {
-            nextLinkName: 'nextLink',
+          operationId: "Noun_Get",
+          "x-ms-pageable": {
+            nextLinkName: "nextLink",
           },
         },
         put: {
-          operationId: 'Noun_Create',
+          operationId: "Noun_Create",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
             },
             201: {
-              description: 'Created',
+              description: "Created",
             },
           },
         },
         patch: {
-          operationId: 'Noun_Update',
+          operationId: "Noun_Update",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
             },
             201: {
-              description: 'Created',
+              description: "Created",
             },
           },
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results).toHaveLength(3);
-    expect(results[0].path.join('.')).toBe('paths./api/test3.get.operationId');
-    expect(results[0].message).toBe('OperationId for get method on a collection should contain "List"');
-    expect(results[1].path.join('.')).toBe('paths./api/test3.put.operationId');
-    expect(results[1].message).toBe('OperationId for put method should contain both "Create" and "Update"');
-    expect(results[2].path.join('.')).toBe('paths./api/test3.patch.operationId');
-    expect(results[2].message).toBe('OperationId for patch method should contain both "Create" and "Update"');
-  });
-});
+    expect(results).toHaveLength(3)
+    expect(results[0].path.join(".")).toBe("paths./api/test3.get.operationId")
+    expect(results[0].message).toBe('OperationId for get method on a collection should contain "List"')
+    expect(results[1].path.join(".")).toBe("paths./api/test3.put.operationId")
+    expect(results[1].message).toBe('OperationId for put method should contain both "Create" and "Update"')
+    expect(results[2].path.join(".")).toBe("paths./api/test3.patch.operationId")
+    expect(results[2].message).toBe('OperationId for patch method should contain both "Create" and "Update"')
+  })
+})
 
-test('OperationId should find no errors', () => {
+test("OperationId should find no errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/api/test3': {
+      "/api/test3": {
         get: {
-          operationId: 'Noun_Get',
+          operationId: "Noun_Get",
         },
         put: {
-          operationId: 'Noun_Create',
+          operationId: "Noun_Create",
         },
         patch: {
-          operationId: 'Noun_Update',
+          operationId: "Noun_Update",
         },
         delete: {
-          operationId: 'Noun_Delete',
+          operationId: "Noun_Delete",
         },
         post: {
-          operationId: 'Noun_Anything',
+          operationId: "Noun_Anything",
         },
       },
-      '/api/test4': {
+      "/api/test4": {
         get: {
-          operationId: 'Noun_List',
-          'x-ms-pageable': {
-            nextLinkName: 'nextLink',
+          operationId: "Noun_List",
+          "x-ms-pageable": {
+            nextLinkName: "nextLink",
           },
         },
         put: {
-          operationId: 'Noun_CreateOrUpdate',
+          operationId: "Noun_CreateOrUpdate",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
             },
             201: {
-              description: 'Created',
+              description: "Created",
             },
           },
         },
         patch: {
-          operationId: 'Noun_CreateOrUpdate',
+          operationId: "Noun_CreateOrUpdate",
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
             },
             201: {
-              description: 'Created',
+              description: "Created",
             },
           },
         },
       },
-      '/api/test5': {
+      "/api/test5": {
         get: {
-          operationId: 'noun_get',
+          operationId: "noun_get",
         },
         put: {
-          operationId: 'noun_create',
+          operationId: "noun_create",
         },
         patch: {
-          operationId: 'noun_update',
+          operationId: "noun_update",
         },
         delete: {
-          operationId: 'noun_delete',
+          operationId: "noun_delete",
         },
       },
-      '/api/test6': {
+      "/api/test6": {
         put: {
-          operationId: 'noun_update',
+          operationId: "noun_update",
           200: {
-            description: 'Success',
+            description: "Success",
           },
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

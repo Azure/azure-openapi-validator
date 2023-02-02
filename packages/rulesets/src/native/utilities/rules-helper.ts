@@ -56,7 +56,7 @@ export function getAllResourceProvidersFromPath(path: string): string[] {
   return Array.from(matchAll(path, resourceProviderRegex), (m: any) => m[1])
 }
 
-export function getProviderNamespace(apiPath:string) {
+export function getProviderNamespace(apiPath: string) {
   const matches = getAllResourceProvidersFromPath(apiPath)
   if (matches.length) {
     return matches.pop()
@@ -64,18 +64,17 @@ export function getProviderNamespace(apiPath:string) {
   return undefined
 }
 
-export function getProviderNamespaceFromPath(filePath:string) {
+export function getProviderNamespaceFromPath(filePath: string) {
   if (!filePath) {
     return undefined
   }
   const resourceProviderRegex = new RegExp(/\/(Microsoft\.\w+)\//i, "g")
-  const match = Array.from(matchAll(filePath.replace(/\\/g,"/"),resourceProviderRegex), (m: any) => m[1])
+  const match = Array.from(matchAll(filePath.replace(/\\/g, "/"), resourceProviderRegex), (m: any) => m[1])
   if (match) {
     return match[0]
   }
   return undefined
 }
-
 
 export function getAllWordsFromPath(path: string): string[] {
   const wordRegex = new RegExp(/([\w.]+)/, "g")
@@ -138,14 +137,14 @@ export function stringify(path: string[]) {
   return JSONPath.toPathString(pathWithRoot)
 }
 
-export function getResourceProvider(inventory:ISwaggerInventory) {
+export function getResourceProvider(inventory: ISwaggerInventory) {
   const walker = new SwaggerWalker(inventory)
-    let result: string[] = []
-    walker.warkAll(["$.paths.*"], (path: string[]) => {
-        const apiPath = path[2] as string
-        if (result.length === 0) {
-          result = [...getAllResourceProvidersFromPath(apiPath)]
-        }
-    })
-    return result.length ? result.pop() || "" : ""
+  let result: string[] = []
+  walker.warkAll(["$.paths.*"], (path: string[]) => {
+    const apiPath = path[2] as string
+    if (result.length === 0) {
+      result = [...getAllResourceProvidersFromPath(apiPath)]
+    }
+  })
+  return result.length ? result.pop() || "" : ""
 }

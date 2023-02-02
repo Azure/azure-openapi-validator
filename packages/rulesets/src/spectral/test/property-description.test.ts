@@ -1,12 +1,12 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('PropertyDescription');
-  return linter;
-});
+  linter = await linterForRule("PropertyDescription")
+  return linter
+})
 
 // Test for missing property description in
 // - inline body parameter schema
@@ -14,27 +14,27 @@ beforeAll(async () => {
 // - top-level schema in definitions
 // - inner schema in definitions
 
-test('PropertyDescription should find errors', () => {
+test("PropertyDescription should find errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/test1': {
+      "/test1": {
         post: {
           parameters: [
             {
-              name: 'version',
-              in: 'body',
+              name: "version",
+              in: "body",
               schema: {
-                type: 'object',
+                type: "object",
                 properties: {
                   prop1: {
-                    type: 'string',
+                    type: "string",
                   },
                   prop2: {
-                    type: 'object',
+                    type: "object",
                     properties: {
                       prop3: {
-                        type: 'string',
+                        type: "string",
                       },
                     },
                   },
@@ -44,18 +44,18 @@ test('PropertyDescription should find errors', () => {
           ],
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                type: 'object',
+                type: "object",
                 properties: {
                   propA: {
-                    type: 'string',
+                    type: "string",
                   },
                   propB: {
-                    type: 'object',
+                    type: "object",
                     properties: {
                       propC: {
-                        type: 'string',
+                        type: "string",
                       },
                     },
                   },
@@ -68,67 +68,67 @@ test('PropertyDescription should find errors', () => {
     },
     definitions: {
       Model1: {
-        type: 'object',
+        type: "object",
         properties: {
           propW: {
-            type: 'string',
+            type: "string",
           },
           propX: {
-            type: 'object',
+            type: "object",
             properties: {
               propY: {
-                type: 'string',
+                type: "string",
               },
             },
           },
           propZ: {
-            $ref: '#/definitions/PropZ',
+            $ref: "#/definitions/PropZ",
           },
         },
       },
       PropZ: {
-        type: 'string',
+        type: "string",
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(9);
-    expect(results[0].path.join('.')).toBe('paths./test1.post.parameters.0.schema.properties.prop1');
-    expect(results[1].path.join('.')).toBe('paths./test1.post.parameters.0.schema.properties.prop2');
-    expect(results[2].path.join('.')).toBe('paths./test1.post.parameters.0.schema.properties.prop2.properties.prop3');
-    expect(results[3].path.join('.')).toBe('paths./test1.post.responses.200.schema.properties.propA');
-    expect(results[4].path.join('.')).toBe('paths./test1.post.responses.200.schema.properties.propB');
-    expect(results[5].path.join('.')).toBe('paths./test1.post.responses.200.schema.properties.propB.properties.propC');
-    expect(results[6].path.join('.')).toBe('definitions.Model1.properties.propW');
-    expect(results[7].path.join('.')).toBe('definitions.Model1.properties.propX');
-    expect(results[8].path.join('.')).toBe('definitions.Model1.properties.propX.properties.propY');
-  });
-});
+    expect(results.length).toBe(9)
+    expect(results[0].path.join(".")).toBe("paths./test1.post.parameters.0.schema.properties.prop1")
+    expect(results[1].path.join(".")).toBe("paths./test1.post.parameters.0.schema.properties.prop2")
+    expect(results[2].path.join(".")).toBe("paths./test1.post.parameters.0.schema.properties.prop2.properties.prop3")
+    expect(results[3].path.join(".")).toBe("paths./test1.post.responses.200.schema.properties.propA")
+    expect(results[4].path.join(".")).toBe("paths./test1.post.responses.200.schema.properties.propB")
+    expect(results[5].path.join(".")).toBe("paths./test1.post.responses.200.schema.properties.propB.properties.propC")
+    expect(results[6].path.join(".")).toBe("definitions.Model1.properties.propW")
+    expect(results[7].path.join(".")).toBe("definitions.Model1.properties.propX")
+    expect(results[8].path.join(".")).toBe("definitions.Model1.properties.propX.properties.propY")
+  })
+})
 
-test('PropertyDescription should find no errors', () => {
+test("PropertyDescription should find no errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/test1': {
+      "/test1": {
         post: {
           parameters: [
             {
-              name: 'version',
-              in: 'body',
+              name: "version",
+              in: "body",
               schema: {
-                type: 'object',
+                type: "object",
                 properties: {
                   prop1: {
-                    type: 'string',
-                    description: 'prop1',
+                    type: "string",
+                    description: "prop1",
                   },
                   prop2: {
-                    type: 'object',
-                    description: 'prop2',
+                    type: "object",
+                    description: "prop2",
                     properties: {
                       prop3: {
-                        type: 'string',
-                        description: 'prop3',
+                        type: "string",
+                        description: "prop3",
                       },
                     },
                   },
@@ -138,21 +138,21 @@ test('PropertyDescription should find no errors', () => {
           ],
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                type: 'object',
+                type: "object",
                 properties: {
                   propA: {
-                    type: 'string',
-                    description: 'propA',
+                    type: "string",
+                    description: "propA",
                   },
                   propB: {
-                    type: 'object',
-                    description: 'propB',
+                    type: "object",
+                    description: "propB",
                     properties: {
                       propC: {
-                        type: 'string',
-                        description: 'propC',
+                        type: "string",
+                        description: "propC",
                       },
                     },
                   },
@@ -165,33 +165,33 @@ test('PropertyDescription should find no errors', () => {
     },
     definitions: {
       Model1: {
-        type: 'object',
+        type: "object",
         properties: {
           propW: {
-            type: 'string',
-            description: 'propW',
+            type: "string",
+            description: "propW",
           },
           propX: {
-            type: 'object',
-            description: 'propX',
+            type: "object",
+            description: "propX",
             properties: {
               propY: {
-                type: 'string',
-                description: 'propY',
+                type: "string",
+                description: "propY",
               },
             },
           },
           propZ: {
-            $ref: '#/definitions/PropZ',
+            $ref: "#/definitions/PropZ",
           },
         },
       },
       PropZ: {
-        type: 'string',
+        type: "string",
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

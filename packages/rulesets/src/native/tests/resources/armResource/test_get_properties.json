@@ -72,7 +72,7 @@
       "required": ["code", "message"]
     },
     "Display": {
-        "description": "a ref"
+      "description": "a ref"
     },
     "Operation": {
       "description": "Azure Machine Learning Studio REST API operation",
@@ -83,9 +83,9 @@
           "type": "string"
         },
         "display": {
-            "$ref":"#/definitions/Display"
-          }
+          "$ref": "#/definitions/Display"
         }
+      }
     },
     "OperationListResult": {
       "description": "An array of operations supported by the resource provider.",
@@ -136,8 +136,8 @@
       "allOf": [
         {
           "properties": {
-            "p1":{
-              "type":"string",
+            "p1": {
+              "type": "string",
               "description": "p1"
             }
           }
@@ -154,13 +154,13 @@
         }
       ],
       "properties": {
-        "p1":{
-          "type":"object",
-           "properties": {
-             "pp1": {
-               "type":"string"
-             }
-           }
+        "p1": {
+          "type": "object",
+          "properties": {
+            "pp1": {
+              "type": "string"
+            }
+          }
         }
       }
     }

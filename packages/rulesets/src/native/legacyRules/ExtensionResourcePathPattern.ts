@@ -14,5 +14,5 @@ rules.push({
     for (const apiPath of Object.keys(node)) {
       if (apiPath.indexOf("/providers/") !== apiPath.lastIndexOf("/providers/")) yield { message: msg, location: path.concat(apiPath) }
     }
-  }
+  },
 })

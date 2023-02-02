@@ -60,7 +60,7 @@
         },
         "produces": ["application/json"],
         "consumes": ["application/json"]
-      }, 
+      },
       "get": {
         "tags": ["Clusters"],
         "operationId": "Clusters_Get",

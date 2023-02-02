@@ -15,10 +15,10 @@ rules.push({
     for (const key of Object.keys(node)) {
       const model = models.get(key.toLowerCase())
       if (model) {
-        yield { message: msg.replace("{0}", key).replace("{1}",model), location: path.concat(key) }
+        yield { message: msg.replace("{0}", key).replace("{1}", model), location: path.concat(key) }
       } else {
         models.set(key.toLowerCase(), key)
       }
     }
-  }
+  },
 })

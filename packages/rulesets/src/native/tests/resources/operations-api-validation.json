@@ -6,18 +6,14 @@
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [ "application/json" ],
-  "consumes": [ "application/json" ],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}": {
       "delete": {
-        "tags": [
-          "Redis"
-        ],
+        "tags": ["Redis"],
         "operationId": "Redis_Delete",
         "description": "Deletes a Redis cache.",
         "x-ms-long-running-operation": true,
@@ -51,7 +47,6 @@
             "description": ""
           }
         }
-
       }
     }
   },
@@ -86,9 +81,7 @@
           "description": "Resource tags"
         }
       },
-      "required": [
-        "location"
-      ],
+      "required": ["location"],
       "x-ms-azure-resource": true
     }
   },

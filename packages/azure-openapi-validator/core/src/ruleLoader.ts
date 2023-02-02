@@ -7,8 +7,7 @@ export class BuiltInRuleLoader {
   getRuleSet(): IRuleSet {
     return {
       documentationUrl: "",
-      rules: {
-      }
+      rules: {},
     }
   }
 }

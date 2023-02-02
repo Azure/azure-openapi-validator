@@ -1,67 +1,65 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('DefinitionsPropertiesNamesCamelCase');
-  return linter;
-});
+  linter = await linterForRule("DefinitionsPropertiesNamesCamelCase")
+  return linter
+})
 
-test('DefinitionsPropertiesNamesCamelCase should find errors', () => {
+test("DefinitionsPropertiesNamesCamelCase should find errors", () => {
   const oasDoc = {
-    swagger: '2.0',
-    paths: {
-    },
+    swagger: "2.0",
+    paths: {},
     definitions: {
-      TestModelA:{
-        type:"object",
+      TestModelA: {
+        type: "object",
         properties: {
-          validCamelCAS:{
-            type: "string"
+          validCamelCAS: {
+            type: "string",
           },
-          validCamelCAseABC:{
-            type: "string"
+          validCamelCAseABC: {
+            type: "string",
           },
           InvalidCamelCase: {
-            type: "string"
+            type: "string",
           },
           invalidCAMElCase: {
-            type: "string"
-          }
-        }
-      }
-    }
-  };
-  return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2);
-    expect(results[0].path.join('.')).toBe('definitions.TestModelA.properties.InvalidCamelCase');
-    expect(results[0].message).toBe('Property name should be camel case.');
-    expect(results[1].path.join('.')).toBe('definitions.TestModelA.properties.invalidCAMElCase');
-    expect(results[1].message).toBe('Property name should be camel case.');
-  });
-});
-
-test('DefinitionsPropertiesNamesCamelCase should find no errors', () => {
-  const oasDoc = {
-    swagger: '2.0',
-    paths: {
-    },
-    definitions: {
-      TestModelA:{
-        type:"object",
-        properties: {
-          validCamelCAS:{
-            type: "string"
+            type: "string",
           },
-          validCamelCAseABC:{
-            type: "string"
-          }
-        }
-      }
-    }
-  };
+        },
+      },
+    },
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("definitions.TestModelA.properties.InvalidCamelCase")
+    expect(results[0].message).toBe("Property name should be camel case.")
+    expect(results[1].path.join(".")).toBe("definitions.TestModelA.properties.invalidCAMElCase")
+    expect(results[1].message).toBe("Property name should be camel case.")
+  })
+})
+
+test("DefinitionsPropertiesNamesCamelCase should find no errors", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      TestModelA: {
+        type: "object",
+        properties: {
+          validCamelCAS: {
+            type: "string",
+          },
+          validCamelCAseABC: {
+            type: "string",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})

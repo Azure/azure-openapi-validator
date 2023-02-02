@@ -18,5 +18,5 @@ rules.push({
     if (!Object.keys(node).length) {
       yield { message: `${msg}`, location: path }
     }
-  }
+  },
 })

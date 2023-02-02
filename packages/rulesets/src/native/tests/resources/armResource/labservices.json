@@ -6,15 +6,11 @@
     "description": "The Managed Labs Client."
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/providers/Microsoft.LabServices/operations": {
       "get": {
-        "tags": [
-          "ProviderOperations"
-        ],
+        "tags": ["ProviderOperations"],
         "description": "Result of the request to list REST API operations",
         "operationId": "ProviderOperations_List",
         "parameters": [
@@ -32,27 +28,19 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/getEnvironment": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Gets the virtual machine details",
         "operationId": "GlobalUsers_GetEnvironment",
         "parameters": [
@@ -99,24 +87,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/getOperationBatchStatus": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Get batch operation status",
         "operationId": "GlobalUsers_GetOperationBatchStatus",
         "parameters": [
@@ -156,24 +136,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/getOperationStatus": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Gets the status of long running operation",
         "operationId": "GlobalUsers_GetOperationStatus",
         "parameters": [
@@ -213,24 +185,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/getPersonalPreferences": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Get personal preferences for a user",
         "operationId": "GlobalUsers_GetPersonalPreferences",
         "parameters": [
@@ -270,24 +234,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/listEnvironments": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "List Environments for the user",
         "operationId": "GlobalUsers_ListEnvironments",
         "parameters": [
@@ -327,24 +283,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/listLabs": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "List labs for the user.",
         "operationId": "GlobalUsers_ListLabs",
         "parameters": [
@@ -375,24 +323,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/register": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Register a user to a managed lab",
         "operationId": "GlobalUsers_Register",
         "parameters": [
@@ -429,24 +369,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/resetPassword": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Resets the user password on an environment This operation can take a while to complete",
         "operationId": "GlobalUsers_ResetPassword",
         "parameters": [
@@ -486,25 +418,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/startEnvironment": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Starts an environment by starting all resources inside the environment. This operation can take a while to complete",
         "operationId": "GlobalUsers_StartEnvironment",
         "parameters": [
@@ -544,25 +468,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.LabServices/users/{userName}/stopEnvironment": {
       "post": {
-        "tags": [
-          "GlobalUsers"
-        ],
+        "tags": ["GlobalUsers"],
         "description": "Stops an environment by stopping all resources inside the environment This operation can take a while to complete",
         "operationId": "GlobalUsers_StopEnvironment",
         "parameters": [
@@ -602,25 +518,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labaccounts": {
       "get": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "List lab accounts in a subscription.",
         "operationId": "LabAccounts_ListBySubscription",
         "parameters": [
@@ -676,28 +584,20 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
         "x-ms-odata": "#/definitions/LabAccount",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/locations/{locationName}/operations/{operationName}": {
       "get": {
-        "tags": [
-          "Operations"
-        ],
+        "tags": ["Operations"],
         "description": "Get operation",
         "operationId": "Operations_Get",
         "parameters": [
@@ -734,24 +634,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts": {
       "get": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "List lab accounts in a resource group.",
         "operationId": "LabAccounts_ListByResourceGroup",
         "parameters": [
@@ -810,28 +702,20 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
         "x-ms-odata": "#/definitions/LabAccount",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}": {
       "get": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "Get lab account",
         "operationId": "LabAccounts_Get",
         "parameters": [
@@ -875,22 +759,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "Create or replace an existing Lab Account.",
         "operationId": "LabAccounts_CreateOrUpdate",
         "parameters": [
@@ -942,22 +818,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "Delete lab account. This operation can take a while to complete",
         "operationId": "LabAccounts_Delete",
         "parameters": [
@@ -994,23 +862,15 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "Modify properties of lab accounts.",
         "operationId": "LabAccounts_Update",
         "parameters": [
@@ -1056,24 +916,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/createLab": {
       "post": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "Create a lab in a lab account.",
         "operationId": "LabAccounts_CreateLab",
         "parameters": [
@@ -1116,24 +968,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/galleryimages": {
       "get": {
-        "tags": [
-          "GalleryImages"
-        ],
+        "tags": ["GalleryImages"],
         "description": "List gallery images in a given lab account.",
         "operationId": "GalleryImages_List",
         "parameters": [
@@ -1199,28 +1043,20 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
         "x-ms-odata": "#/definitions/GalleryImage",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/galleryimages/{galleryImageName}": {
       "get": {
-        "tags": [
-          "GalleryImages"
-        ],
+        "tags": ["GalleryImages"],
         "description": "Get gallery image",
         "operationId": "GalleryImages_Get",
         "parameters": [
@@ -1271,22 +1107,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "GalleryImages"
-        ],
+        "tags": ["GalleryImages"],
         "description": "Create or replace an existing Gallery Image.",
         "operationId": "GalleryImages_CreateOrUpdate",
         "parameters": [
@@ -1345,22 +1173,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "GalleryImages"
-        ],
+        "tags": ["GalleryImages"],
         "description": "Delete gallery image.",
         "operationId": "GalleryImages_Delete",
         "parameters": [
@@ -1404,22 +1224,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "GalleryImages"
-        ],
+        "tags": ["GalleryImages"],
         "description": "Modify properties of gallery images.",
         "operationId": "GalleryImages_Update",
         "parameters": [
@@ -1472,24 +1284,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/getRegionalAvailability": {
       "post": {
-        "tags": [
-          "LabAccounts"
-        ],
+        "tags": ["LabAccounts"],
         "description": "Get regional availability information for each size category configured under a lab account",
         "operationId": "LabAccounts_GetRegionalAvailability",
         "parameters": [
@@ -1526,24 +1330,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs": {
       "get": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "List labs in a given lab account.",
         "operationId": "Labs_List",
         "parameters": [
@@ -1609,9 +1405,7 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
@@ -1619,19 +1413,13 @@
         },
         "x-ms-odata": "#/definitions/Lab",
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}": {
       "get": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "Get lab",
         "operationId": "Labs_Get",
         "parameters": [
@@ -1682,22 +1470,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "Create or replace an existing Lab.",
         "operationId": "Labs_CreateOrUpdate",
         "parameters": [
@@ -1756,22 +1536,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "Delete lab. This operation can take a while to complete",
         "operationId": "Labs_Delete",
         "parameters": [
@@ -1815,23 +1587,15 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "Modify properties of labs.",
         "operationId": "Labs_Update",
         "parameters": [
@@ -1884,24 +1648,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/addUsers": {
       "post": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "Add users to a lab",
         "operationId": "Labs_AddUsers",
         "parameters": [
@@ -1951,24 +1707,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings": {
       "get": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "List environment setting in a given lab.",
         "operationId": "EnvironmentSettings_List",
         "parameters": [
@@ -2041,28 +1789,20 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
         "x-ms-odata": "#/definitions/EnvironmentSetting",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}": {
       "get": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Get environment setting",
         "operationId": "EnvironmentSettings_Get",
         "parameters": [
@@ -2120,22 +1860,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Create or replace an existing Environment Setting. This operation can take a while to complete",
         "operationId": "EnvironmentSettings_CreateOrUpdate",
         "parameters": [
@@ -2201,23 +1933,15 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Delete environment setting. This operation can take a while to complete",
         "operationId": "EnvironmentSettings_Delete",
         "parameters": [
@@ -2268,23 +1992,15 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Modify properties of environment setting.",
         "operationId": "EnvironmentSettings_Update",
         "parameters": [
@@ -2344,24 +2060,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/claimAny": {
       "post": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Claims a random environment for a user in an environment settings",
         "operationId": "EnvironmentSettings_ClaimAny",
         "parameters": [
@@ -2409,24 +2117,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/environments": {
       "get": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "List environments in a given environment setting.",
         "operationId": "Environments_List",
         "parameters": [
@@ -2506,28 +2206,20 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
         "x-ms-odata": "#/definitions/Environment",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/environments/{environmentName}": {
       "get": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Get environment",
         "operationId": "Environments_Get",
         "parameters": [
@@ -2592,22 +2284,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Create or replace an existing Environment.",
         "operationId": "Environments_CreateOrUpdate",
         "parameters": [
@@ -2680,22 +2364,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Delete environment. This operation can take a while to complete",
         "operationId": "Environments_Delete",
         "parameters": [
@@ -2753,23 +2429,15 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Modify properties of environments.",
         "operationId": "Environments_Update",
         "parameters": [
@@ -2836,24 +2504,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/environments/{environmentName}/claim": {
       "post": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Claims the environment and assigns it to the user",
         "operationId": "Environments_Claim",
         "parameters": [
@@ -2908,24 +2568,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/environments/{environmentName}/resetPassword": {
       "post": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Resets the user password on an environment This operation can take a while to complete",
         "operationId": "Environments_ResetPassword",
         "parameters": [
@@ -2992,25 +2644,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/environments/{environmentName}/start": {
       "post": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Starts an environment by starting all resources inside the environment. This operation can take a while to complete",
         "operationId": "Environments_Start",
         "parameters": [
@@ -3068,25 +2712,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/environments/{environmentName}/stop": {
       "post": {
-        "tags": [
-          "Environments"
-        ],
+        "tags": ["Environments"],
         "description": "Stops an environment by stopping all resources inside the environment This operation can take a while to complete",
         "operationId": "Environments_Stop",
         "parameters": [
@@ -3144,25 +2780,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/publish": {
       "post": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Provisions/deprovisions required resources for an environment setting based on current state of the lab/environment setting.",
         "operationId": "EnvironmentSettings_Publish",
         "parameters": [
@@ -3219,24 +2847,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/start": {
       "post": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Starts a template by starting all resources inside the template. This operation can take a while to complete",
         "operationId": "EnvironmentSettings_Start",
         "parameters": [
@@ -3287,25 +2907,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/environmentsettings/{environmentSettingName}/stop": {
       "post": {
-        "tags": [
-          "EnvironmentSettings"
-        ],
+        "tags": ["EnvironmentSettings"],
         "description": "Starts a template by starting all resources inside the template. This operation can take a while to complete",
         "operationId": "EnvironmentSettings_Stop",
         "parameters": [
@@ -3356,25 +2968,17 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/register": {
       "post": {
-        "tags": [
-          "Labs"
-        ],
+        "tags": ["Labs"],
         "description": "Register to managed lab.",
         "operationId": "Labs_Register",
         "parameters": [
@@ -3415,24 +3019,16 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/users": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "List users in a given lab.",
         "operationId": "Users_List",
         "parameters": [
@@ -3505,28 +3101,20 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
         "x-ms-odata": "#/definitions/User",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labaccounts/{labAccountName}/labs/{labName}/users/{userName}": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "Get user",
         "operationId": "Users_Get",
         "parameters": [
@@ -3584,22 +3172,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "Create or replace an existing User.",
         "operationId": "Users_CreateOrUpdate",
         "parameters": [
@@ -3665,22 +3245,14 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "Delete user. This operation can take a while to complete",
         "operationId": "Users_Delete",
         "parameters": [
@@ -3731,23 +3303,15 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
         "x-ms-long-running-operation": true,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "Modify properties of users.",
         "operationId": "Users_Update",
         "parameters": [
@@ -3807,26 +3371,18 @@
         },
         "security": [
           {
-            "azure_auth": [
-              "user_impersonation"
-            ]
+            "azure_auth": ["user_impersonation"]
           }
         ],
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     }
   },
   "definitions": {
     "AddUsersPayload": {
       "description": "Payload for Add Users operation on a Lab.",
-      "required": [
-        "emailAddresses"
-      ],
+      "required": ["emailAddresses"],
       "type": "object",
       "properties": {
         "emailAddresses": {
@@ -3873,10 +3429,7 @@
     },
     "CreateLabProperties": {
       "description": "Properties for creating a managed lab and a default environment setting",
-      "required": [
-        "labCreationParameters",
-        "name"
-      ],
+      "required": ["labCreationParameters", "name"],
       "type": "object",
       "properties": {
         "environmentSettingCreationParameters": {
@@ -3991,9 +3544,7 @@
     },
     "EnvironmentOperationsPayload": {
       "description": "Represents payload for any Environment operations like get, start, stop, connect",
-      "required": [
-        "environmentId"
-      ],
+      "required": ["environmentId"],
       "type": "object",
       "properties": {
         "environmentId": {
@@ -4103,9 +3654,7 @@
     },
     "EnvironmentSettingCreationParameters": {
       "description": "Settings related to creating an environment setting",
-      "required": [
-        "resourceSettingCreationParameters"
-      ],
+      "required": ["resourceSettingCreationParameters"],
       "type": "object",
       "properties": {
         "resourceSettingCreationParameters": {
@@ -4132,20 +3681,12 @@
     },
     "EnvironmentSettingProperties": {
       "description": "Properties of an environment setting",
-      "required": [
-        "resourceSettings"
-      ],
+      "required": ["resourceSettings"],
       "type": "object",
       "properties": {
         "publishingState": {
           "description": "Describes the readiness of this environment setting",
-          "enum": [
-            "Draft",
-            "Publishing",
-            "Published",
-            "PublishFailed",
-            "Scaling"
-          ],
+          "enum": ["Draft", "Publishing", "Published", "PublishFailed", "Scaling"],
           "type": "string",
           "readOnly": true,
           "x-ms-enum": {
@@ -4177,10 +3718,7 @@
         },
         "configurationState": {
           "description": "Describes the user's progress in configuring their environment setting",
-          "enum": [
-            "NotApplicable",
-            "Completed"
-          ],
+          "enum": ["NotApplicable", "Completed"],
           "type": "string",
           "x-ms-enum": {
             "name": "ConfigurationState",
@@ -4242,10 +3780,7 @@
       "properties": {
         "configurationState": {
           "description": "Describes the user's progress in configuring their environment setting",
-          "enum": [
-            "NotApplicable",
-            "Completed"
-          ],
+          "enum": ["NotApplicable", "Completed"],
           "type": "string",
           "x-ms-enum": {
             "name": "ConfigurationState",
@@ -4290,11 +3825,7 @@
       "properties": {
         "name": {
           "description": "The size category",
-          "enum": [
-            "Basic",
-            "Standard",
-            "Performance"
-          ],
+          "enum": ["Basic", "Standard", "Performance"],
           "type": "string",
           "x-ms-enum": {
             "name": "ManagedLabVmSize",
@@ -4348,11 +3879,7 @@
       "properties": {
         "name": {
           "description": "The size category",
-          "enum": [
-            "Basic",
-            "Standard",
-            "Performance"
-          ],
+          "enum": ["Basic", "Standard", "Performance"],
           "type": "string",
           "x-ms-enum": {
             "name": "ManagedLabVmSize",
@@ -4772,10 +4299,7 @@
         },
         "userAccessMode": {
           "description": "Lab user access mode (open to all vs. restricted to those listed on the lab).",
-          "enum": [
-            "Restricted",
-            "Open"
-          ],
+          "enum": ["Restricted", "Open"],
           "type": "string",
           "x-ms-enum": {
             "name": "LabUserAccessMode",
@@ -4834,10 +4358,7 @@
         },
         "userAccessMode": {
           "description": "Lab user access mode (open to all vs. restricted to those listed on the lab).",
-          "enum": [
-            "Restricted",
-            "Open"
-          ],
+          "enum": ["Restricted", "Open"],
           "type": "string",
           "x-ms-enum": {
             "name": "LabUserAccessMode",
@@ -4974,9 +4495,7 @@
     },
     "OperationBatchStatusPayload": {
       "description": "Payload to get the status of an operation",
-      "required": [
-        "urls"
-      ],
+      "required": ["urls"],
       "type": "object",
       "properties": {
         "urls": {
@@ -5084,9 +4603,7 @@
     },
     "OperationStatusPayload": {
       "description": "Payload to get the status of an operation",
-      "required": [
-        "operationUrl"
-      ],
+      "required": ["operationUrl"],
       "type": "object",
       "properties": {
         "operationUrl": {
@@ -5116,10 +4633,7 @@
         },
         "addRemove": {
           "description": "Enum indicating if user is adding or removing a favorite lab",
-          "enum": [
-            "Add",
-            "Remove"
-          ],
+          "enum": ["Add", "Remove"],
           "type": "string",
           "x-ms-enum": {
             "name": "AddRemove",
@@ -5172,9 +4686,7 @@
     },
     "ReferenceVm": {
       "description": "Details of a Reference Vm",
-      "required": [
-        "userName"
-      ],
+      "required": ["userName"],
       "type": "object",
       "properties": {
         "userName": {
@@ -5199,10 +4711,7 @@
     },
     "ReferenceVmCreationParameters": {
       "description": "Creation parameters for Reference Vm",
-      "required": [
-        "userName",
-        "password"
-      ],
+      "required": ["userName", "password"],
       "type": "object",
       "properties": {
         "userName": {
@@ -5258,9 +4767,7 @@
     },
     "ResetPasswordPayload": {
       "description": "Represents the payload for resetting passwords.",
-      "required": [
-        "environmentId"
-      ],
+      "required": ["environmentId"],
       "type": "object",
       "properties": {
         "environmentId": {
@@ -5340,10 +4847,7 @@
     },
     "ResourceSettingCreationParameters": {
       "description": "Represents resource specific settings",
-      "required": [
-        "galleryImageResourceId",
-        "referenceVmCreationParameters"
-      ],
+      "required": ["galleryImageResourceId", "referenceVmCreationParameters"],
       "type": "object",
       "properties": {
         "location": {
@@ -5360,11 +4864,7 @@
         },
         "size": {
           "description": "The size of the virtual machine",
-          "enum": [
-            "Basic",
-            "Standard",
-            "Performance"
-          ],
+          "enum": ["Basic", "Standard", "Performance"],
           "type": "string",
           "x-ms-enum": {
             "name": "ManagedLabVmSize",
@@ -5393,9 +4893,7 @@
     },
     "ResourceSettings": {
       "description": "Represents resource specific settings",
-      "required": [
-        "referenceVm"
-      ],
+      "required": ["referenceVm"],
       "type": "object",
       "properties": {
         "id": {
@@ -5414,11 +4912,7 @@
         },
         "size": {
           "description": "The size of the virtual machine",
-          "enum": [
-            "Basic",
-            "Standard",
-            "Performance"
-          ],
+          "enum": ["Basic", "Standard", "Performance"],
           "type": "string",
           "x-ms-enum": {
             "name": "ManagedLabVmSize",
@@ -5461,11 +4955,7 @@
         },
         "size": {
           "description": "The size of the virtual machine",
-          "enum": [
-            "Basic",
-            "Standard",
-            "Performance"
-          ],
+          "enum": ["Basic", "Standard", "Performance"],
           "type": "string",
           "x-ms-enum": {
             "name": "ManagedLabVmSize",
@@ -5600,11 +5090,7 @@
       "properties": {
         "sizeCategory": {
           "description": "The category of the size (Basic, Standard, Performance).",
-          "enum": [
-            "Basic",
-            "Standard",
-            "Performance"
-          ],
+          "enum": ["Basic", "Standard", "Performance"],
           "type": "string",
           "x-ms-enum": {
             "name": "ManagedLabVmSize",
@@ -5912,9 +5398,7 @@
   },
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ]
 }

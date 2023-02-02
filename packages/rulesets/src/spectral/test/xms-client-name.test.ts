@@ -1,12 +1,12 @@
-import { Spectral } from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("XmsClientName");
-  return linter;
-});
+  linter = await linterForRule("XmsClientName")
+  return linter
+})
 
 test("XmsClientName should find errors", () => {
   const myOpenApiDocument = {
@@ -62,15 +62,15 @@ test("XmsClientName should find errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2);
-    expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters.1");
-    expect(results[1].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'length' Property/Model.`);
-    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.responses.200.schema.properties.length");
-  });
-});
+    expect(results.length).toBe(2)
+    expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters.1")
+    expect(results[1].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'length' Property/Model.`)
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.responses.200.schema.properties.length")
+  })
+})
 
 test("XmsClientName should find no errors", () => {
   const myOpenApiDocument = {
@@ -126,8 +126,8 @@ test("XmsClientName should find no errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

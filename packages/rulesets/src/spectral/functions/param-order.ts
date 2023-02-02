@@ -4,28 +4,28 @@
 // NOTE: Missing path parameters will be flagged by the Spectral path-params rule
 
 // `given` is the paths object
-export const paramOrder = (paths:any) => {
-  if (paths === null || typeof paths !== 'object') {
-    return [];
+export const paramOrder = (paths: any) => {
+  if (paths === null || typeof paths !== "object") {
+    return []
   }
 
-  const inPath = (p:any) => p.in === 'path';
-  const paramName = (p:any) => p.name;
-  const methods = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];
+  const inPath = (p: any) => p.in === "path"
+  const paramName = (p: any) => p.name
+  const methods = ["get", "post", "put", "patch", "delete", "options", "head"]
 
-  const errors = [];
+  const errors = []
 
   // eslint-disable-next-line no-restricted-syntax
   for (const pathKey of Object.keys(paths)) {
     // find all the path parameters in pathKey
-    const paramsInPath = pathKey.match(/[^{}]+(?=})/g) ?? [];
+    const paramsInPath = pathKey.match(/[^{}]+(?=})/g) ?? []
     if (paramsInPath.length > 0) {
-      const pathItem = paths[pathKey];
-      const pathItemPathParams = pathItem.parameters?.filter(inPath).map(paramName) ?? [];
+      const pathItem = paths[pathKey]
+      const pathItemPathParams = pathItem.parameters?.filter(inPath).map(paramName) ?? []
 
       // find the first index where in-consistency observed or offset till no in-consistency
       // observed to validate further
-      const indx = pathItemPathParams.findIndex((v:any, i:number) => v !== paramsInPath[i]);
+      const indx = pathItemPathParams.findIndex((v: any, i: number) => v !== paramsInPath[i])
       // If path params exists and are not in expected order then raise the error
       if (indx >= 0 && indx < paramsInPath.length) {
         // NOTE: we do not include `indx` in the path because if the parameter is a ref then
@@ -33,26 +33,29 @@ export const paramOrder = (paths:any) => {
         // improper ordering
         errors.push({
           message: `Path parameter "${paramsInPath[indx]}" should appear before "${pathItemPathParams[indx]}".`,
-          path: ['paths', pathKey, 'parameters'], // no index in path
-        });
-      } else { // this will be a case when few path params are defined in respective methods
-        const offset = pathItemPathParams.length;
-        methods.filter((m) => pathItem[m]).forEach((method) => {
-          const opPathParams = pathItem[method].parameters?.filter(inPath).map(paramName) ?? [];
+          path: ["paths", pathKey, "parameters"], // no index in path
+        })
+      } else {
+        // this will be a case when few path params are defined in respective methods
+        const offset = pathItemPathParams.length
+        methods
+          .filter((m) => pathItem[m])
+          .forEach((method) => {
+            const opPathParams = pathItem[method].parameters?.filter(inPath).map(paramName) ?? []
 
-          const indx2 = opPathParams.findIndex((v:any, i:number) => v !== paramsInPath[offset + i]);
-          if (indx2 >= 0 && (offset + indx2) < paramsInPath.length) {
-            errors.push({
-              message: `Path parameter "${paramsInPath[offset + indx2]}" should appear before "${opPathParams[indx2]}".`,
-              path: ['paths', pathKey, method, 'parameters'], // no index in path
-            });
-          }
-        });
+            const indx2 = opPathParams.findIndex((v: any, i: number) => v !== paramsInPath[offset + i])
+            if (indx2 >= 0 && offset + indx2 < paramsInPath.length) {
+              errors.push({
+                message: `Path parameter "${paramsInPath[offset + indx2]}" should appear before "${opPathParams[indx2]}".`,
+                path: ["paths", pathKey, method, "parameters"], // no index in path
+              })
+            }
+          })
       }
     }
   }
 
-  return errors;
-};
+  return errors
+}
 
 export default paramOrder

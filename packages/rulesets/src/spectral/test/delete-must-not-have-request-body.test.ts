@@ -1,12 +1,12 @@
-import {Spectral} from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("DeleteMustNotHaveRequestBody");
-  return linter;
-});
+  linter = await linterForRule("DeleteMustNotHaveRequestBody")
+  return linter
+})
 
 test("DeleteMustNotHaveRequestBody should find errors when body is specified with a delete", () => {
   const myOpenApiDocument = {
@@ -17,9 +17,9 @@ test("DeleteMustNotHaveRequestBody should find errors when body is specified wit
           operationId: "Noun_Delete",
           parameters: [
             {
-              name: 'body',
-              in: 'body',
-              type: 'string',
+              name: "body",
+              in: "body",
+              type: "string",
               required: true,
             },
           ],
@@ -31,12 +31,12 @@ test("DeleteMustNotHaveRequestBody should find errors when body is specified wit
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.delete.parameters.0");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.delete.parameters.0")
+  })
+})
 
 test("DeleteMustNotHaveRequestBody should find no errors when body is not specified with a delete", () => {
   const myOpenApiDocument = {
@@ -53,8 +53,8 @@ test("DeleteMustNotHaveRequestBody should find no errors when body is not specif
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

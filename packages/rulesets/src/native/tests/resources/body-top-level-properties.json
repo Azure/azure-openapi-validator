@@ -6,16 +6,10 @@
     "version": "2017-02-08"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
   "paths": {
     "/foo": {
       "put": {
@@ -75,10 +69,7 @@
         "extraProperty": {
           "type": "string",
           "description": "Required. Indicates the type of account.",
-          "enum": [
-            "Storage",
-            "BlobStorage"
-          ],
+          "enum": ["Storage", "BlobStorage"],
           "x-ms-enum": {
             "name": "extraProperty",
             "modelAsString": false
@@ -108,10 +99,7 @@
           }
         }
       },
-      "required": [
-        "kind",
-        "location"
-      ],
+      "required": ["kind", "location"],
       "allOf": [
         {
           "$ref": "#/definitions/Resource"

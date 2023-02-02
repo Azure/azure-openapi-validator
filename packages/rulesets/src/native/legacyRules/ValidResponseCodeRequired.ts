@@ -20,9 +20,9 @@ rules.push({
     if (response.default && Object.keys(response).length === 1) {
       yield { message: `${msg}`, location: path }
     } else {
-      if (!Object.keys(response).some(v => v.startsWith("20"))) {
+      if (!Object.keys(response).some((v) => v.startsWith("20"))) {
         yield { message: `${msg}`, location: path }
       }
     }
-  }
+  },
 })

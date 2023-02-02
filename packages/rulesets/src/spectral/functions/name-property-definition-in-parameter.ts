@@ -2,25 +2,25 @@
 
 export const namePropertyDefinitionInParameter = (parameters: any, _opts: any, ctx: any) => {
   if (parameters === null || typeof parameters !== "object") {
-    return [];
+    return []
   }
-  const path = ctx.path || [];
-  const errors: any = [];
-  const propsParameters = Object.getOwnPropertyNames(parameters);
+  const path = ctx.path || []
+  const errors: any = []
+  const propsParameters = Object.getOwnPropertyNames(parameters)
   if (propsParameters.length === 0) {
-    return [];
+    return []
   }
   for (const propsParameter of propsParameters) {
     if (propsParameter === "length") {
-      continue;
+      continue
     }
-    const parameter = parameters[propsParameter];
+    const parameter = parameters[propsParameter]
     if (!parameter.name || parameter.name === "") {
       errors.push({
         message: `Parameter Must have the "name" property defined with non-empty string as its value`,
         path: [...path],
-      });
+      })
     }
   }
-  return errors;
-};
+  return errors
+}

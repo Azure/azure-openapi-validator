@@ -2,8 +2,7 @@ parser: "@typescript-eslint/parser"
 extends:
   - "../../.eslintrc.yaml"
 overrides:
-  - files: 
-    - "**/legacyRules/*.ts"
+  - files:
+      - "**/legacyRules/*.ts"
     rules:
       unicorn/filename-case: off
-

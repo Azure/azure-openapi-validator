@@ -6,16 +6,10 @@
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}": {
       "get": {
@@ -34,14 +28,14 @@
         "responses": {
           "200": {
             "description": "Created",
-            "schema":{
+            "schema": {
               "$ref": "#/definitions/TestResource"
             }
           },
           "default": {
             "description": "Unexpected error"
           }
-        }        
+        }
       }
     }
   },
@@ -62,46 +56,44 @@
     }
   },
   "definitions": {
-      "Resource": {
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Resource ID."
-          },
-          "name": {
-            "readOnly": true,
-            "type": "string",
-            "description": "Resource name."
-          },
-          "type": {
-            "readOnly": true,
-            "type": "string",
-            "description": "Resource type."
-          },
-          "tags": {
-            "type":"object",
-           "description": "Resource tag."
-          }
+    "Resource": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
         },
-        "description": "Common resource representation.",
-        "x-ms-azure-resource": true
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type."
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tag."
+        }
       },
-      "TestResource": {
-        "description": "test",
-        "allOf": [
-          {"$ref": "#/definitions/Resource"}
-        ],
+      "description": "Common resource representation.",
+      "x-ms-azure-resource": true
+    },
+    "TestResource": {
+      "description": "test",
+      "allOf": [{ "$ref": "#/definitions/Resource" }],
+      "properties": {
         "properties": {
-          "properties":{
-            "type":"object",
-            "description": "properties",
-            "properties": {
-              "provisioningState":{
-                "type":"string"
-              }
+          "type": "object",
+          "description": "properties",
+          "properties": {
+            "provisioningState": {
+              "type": "string"
             }
           }
         }
       }
+    }
   }
 }

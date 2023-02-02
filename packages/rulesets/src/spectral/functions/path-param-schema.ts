@@ -1,58 +1,58 @@
-const URL_MAX_LENGTH = 2083;
+const URL_MAX_LENGTH = 2083
 
 // `given` is a (resolved) parameter entry at the path or operation level
-export const pathParamSchema = (param:any, _opts:any, paths: any) => {
-  if (param === null || typeof param !== 'object') {
-    return [];
+export const pathParamSchema = (param: any, _opts: any, paths: any) => {
+  if (param === null || typeof param !== "object") {
+    return []
   }
 
-  const path = paths.path || [];
+  const path = paths.path || []
 
   // These errors will be caught elsewhere, so silently ignore here
   if (!param.in || !param.name) {
-    return [];
+    return []
   }
 
-  const errors = [];
+  const errors = []
 
   // If the parameter contains a schema, then this must be oas3
-  const isOas3 = !!param.schema;
+  const isOas3 = !!param.schema
 
-  const schema = isOas3 ? param.schema : param;
+  const schema = isOas3 ? param.schema : param
   if (isOas3) {
-    path.push('schema');
+    path.push("schema")
   }
 
-  if (schema.type !== 'string') {
+  if (schema.type !== "string") {
     errors.push({
-      message: 'Path parameter should be defined as type: string.',
-      path: [...path, 'type'],
-    });
+      message: "Path parameter should be defined as type: string.",
+      path: [...path, "type"],
+    })
   }
 
   if (!schema.maxLength && !schema.pattern) {
     errors.push({
-      message: 'Path parameter should specify a maximum length (maxLength) and characters allowed (pattern).',
+      message: "Path parameter should specify a maximum length (maxLength) and characters allowed (pattern).",
       path,
-    });
+    })
   } else if (!schema.maxLength) {
     errors.push({
-      message: 'Path parameter should specify a maximum length (maxLength).',
+      message: "Path parameter should specify a maximum length (maxLength).",
       path,
-    });
+    })
   } else if (schema.maxLength && schema.maxLength >= URL_MAX_LENGTH) {
     errors.push({
       message: `Path parameter maximum length should be less than ${URL_MAX_LENGTH}`,
       path,
-    });
+    })
   } else if (!schema.pattern) {
     errors.push({
-      message: 'Path parameter should specify characters allowed (pattern).',
+      message: "Path parameter should specify characters allowed (pattern).",
       path,
-    });
+    })
   }
 
-  return errors;
-};
+  return errors
+}
 
 export default pathParamSchema

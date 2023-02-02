@@ -2,46 +2,46 @@
 // - path and query parameters must be camel case
 // - header parameters must be kebab-case
 
-export const paramNames = (targetVal:any, _opts:any, paths:any) => {
-  if (targetVal === null || typeof targetVal !== 'object') {
-    return [];
+export const paramNames = (targetVal: any, _opts: any, paths: any) => {
+  if (targetVal === null || typeof targetVal !== "object") {
+    return []
   }
 
-  const path = paths.path || [];
+  const path = paths.path || []
 
   // These errors will be caught elsewhere, so silently ignore here
   if (!targetVal.in || !targetVal.name) {
-    return [];
+    return []
   }
 
   if (targetVal.name.match(/^[$@]/)) {
     return [
       {
         message: `Parameter name "${targetVal.name}" should not begin with '$' or '@'.`,
-        path: [...path, 'name'],
+        path: [...path, "name"],
       },
-    ];
+    ]
   }
-  if (['path', 'query'].includes(targetVal.in) && targetVal.name !== 'api-version') {
+  if (["path", "query"].includes(targetVal.in) && targetVal.name !== "api-version") {
     if (!targetVal.name.match(/^[a-z][a-z0-9]*([A-Z][a-z0-9]+)*$/)) {
       return [
         {
           message: `Parameter name "${targetVal.name}" should be camel case.`,
-          path: [...path, 'name'],
+          path: [...path, "name"],
         },
-      ];
+      ]
     }
-  } else if (targetVal.in === 'header') {
+  } else if (targetVal.in === "header") {
     if (!targetVal.name.match(/^[A-Za-z][a-z0-9]*(-[A-Za-z][a-z0-9]*)*$/)) {
       return [
         {
           message: `header parameter name "${targetVal.name}" should be kebab case.`,
-          path: [...path, 'name'],
+          path: [...path, "name"],
         },
-      ];
+      ]
     }
   }
-  return [];
-};
+  return []
+}
 
 export default paramNames

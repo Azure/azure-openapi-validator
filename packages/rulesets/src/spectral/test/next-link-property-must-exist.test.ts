@@ -1,12 +1,12 @@
-import {Spectral} from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("NextLinkPropertyMustExist");
-  return linter;
-});
+  linter = await linterForRule("NextLinkPropertyMustExist")
+  return linter
+})
 
 test("NextLinkPropertyMustExist should find errors", () => {
   const myOpenApiDocument = {
@@ -42,13 +42,15 @@ test("NextLinkPropertyMustExist should find errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].message).toBe(`The property 'nextLinks' specified by nextLinkName does not exist in the 200 response schema. Please, specify the name of the property that provides the nextLink. If the model does not have the nextLink property then specify null.`);
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].message).toBe(
+      `The property 'nextLinks' specified by nextLinkName does not exist in the 200 response schema. Please, specify the name of the property that provides the nextLink. If the model does not have the nextLink property then specify null.`
+    )
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.put")
+  })
+})
 
 test("NextLinkPropertyMustExist should find no errors", () => {
   const myOpenApiDocument = {
@@ -84,8 +86,8 @@ test("NextLinkPropertyMustExist should find no errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

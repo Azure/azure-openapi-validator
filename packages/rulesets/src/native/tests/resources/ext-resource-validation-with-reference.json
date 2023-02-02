@@ -6,22 +6,14 @@
     "version": "2014-04-01-preview"
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "basePath": "/",
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}": {
       "put": {
-        "tags": [
-          "Redis"
-        ],
+        "tags": ["Redis"],
         "operationId": "Redis_CreateOrUpdate",
         "x-ms-long-running-operation": true,
         "parameters": [

@@ -11,14 +11,14 @@ function getRelativePath(issuePath: string) {
   return issuePath.substring(issuePath.indexOf("specification/"))
 }
 
-function getJsonPathFromRef(jsonRef:string) {
-  const index = jsonRef.indexOf(" ");
-  return jsonRef.substring(index + 2,jsonRef.length -1)
+function getJsonPathFromRef(jsonRef: string) {
+  const index = jsonRef.indexOf(" ")
+  return jsonRef.substring(index + 2, jsonRef.length - 1)
 }
 
-function getSourcePathFromRef(jsonRef:string) {
-  const index = jsonRef.indexOf(" ");
-  return jsonRef.substring(0,index)
+function getSourcePathFromRef(jsonRef: string) {
+  const index = jsonRef.indexOf(" ")
+  return jsonRef.substring(0, index)
 }
 
 export async function runLinter(readme: string) {
@@ -28,16 +28,15 @@ export async function runLinter(readme: string) {
     if (linterErrors.indexOf('{\n  "type": "') !== -1) {
       linterErrors = cleanUpContent(linterErrors)
       const errorJsonStr = "[" + linterErrors + "]"
-      const errorJson = JSON.parse(errorJsonStr)
-        .map((issue:any) => {
-          if (issue.sources) {
-            issue.source =  getSourcePathFromRef(getRelativePath(issue.sources[0]))
-          }
-          if (issue["json-path"]) {
-            issue["jsonpath"] = getJsonPathFromRef(getRelativePath(issue["json-path"]))
-          }
-          return _.pick(issue,["code","message","jsonpath","source"])
-        })
+      const errorJson = JSON.parse(errorJsonStr).map((issue: any) => {
+        if (issue.sources) {
+          issue.source = getSourcePathFromRef(getRelativePath(issue.sources[0]))
+        }
+        if (issue["json-path"]) {
+          issue["jsonpath"] = getJsonPathFromRef(getRelativePath(issue["json-path"]))
+        }
+        return _.pick(issue, ["code", "message", "jsonpath", "source"])
+      })
       toMatchSnapshotForEachCode(errorJson)
     } else {
       expect(linterErrors).toMatchSnapshot("returned empty results")
@@ -48,8 +47,8 @@ export async function runLinter(readme: string) {
 }
 
 // runs the command on a given swagger spec.
-async function runCmd(cmd:string) {
-  const { stdout, stderr } = await new Promise(res =>
+async function runCmd(cmd: string) {
+  const { stdout, stderr } = await new Promise((res) =>
     exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err, stdout, stderr) => res({ stdout, stderr }))
   )
   let resultString = ""
@@ -65,7 +64,7 @@ async function runCmd(cmd:string) {
   return resultString
 }
 
-function stripCharsBeforeAfterJson(s:string) {
+function stripCharsBeforeAfterJson(s: string) {
   let resultString = ""
   resultString = s
     .substring(s.indexOf('{\n  "type": "'))
@@ -80,13 +79,12 @@ function stripCharsBeforeAfterJson(s:string) {
   return resultString
 }
 
-function cleanUpContent(s:string) {
-
-  const start = s.indexOf('{\n  "type": "');
+function cleanUpContent(s: string) {
+  const start = s.indexOf('{\n  "type": "')
   let resultString = s.substring(start)
   resultString = resultString.replace(/}\nProcessing batch task - {"package-(.*).\n{/g, "},{")
   resultString = resultString.replace(/{"package-(.*)} .\n/, "")
-  resultString = resultString.replace(/AutoRest core version selected from configuration/,"")
+  resultString = resultString.replace(/AutoRest core version selected from configuration/, "")
   resultString = resultString.replace(/\nProcessing batch task(.*)./g, "")
   resultString = resultString.replace(/}{/, "},{")
   resultString = resultString.replace(/}\n{/, "},{")
@@ -96,9 +94,6 @@ function cleanUpContent(s:string) {
 /**
  * reverse a string.
  */
-function reverse(s:string) {
-  return s
-    .split("")
-    .reverse()
-    .join("")
+function reverse(s: string) {
+  return s.split("").reverse().join("")
 }

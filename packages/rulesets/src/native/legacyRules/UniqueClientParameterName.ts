@@ -22,7 +22,7 @@ rules.push({
         return undefined
       }
     }
-    const checkParameterNameUnique = (parameter:any) => {
+    const checkParameterNameUnique = (parameter: any) => {
       if (parameter) {
         const ref = (parameter as any).$ref
         if (ref === undefined) {
@@ -59,7 +59,7 @@ rules.push({
           )}.`
           yield {
             location: path.concat(it.path.slice(1)),
-            message: msg + conflictMsg
+            message: msg + conflictMsg,
           }
         }
       }
@@ -74,10 +74,10 @@ rules.push({
           )}.`
           yield {
             location: path.concat(it.path.slice(1)),
-            message: msg + conflictMsg
+            message: msg + conflictMsg,
           }
         }
       }
     }
-  }
+  },
 })

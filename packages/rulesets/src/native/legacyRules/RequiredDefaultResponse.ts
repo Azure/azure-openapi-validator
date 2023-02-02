@@ -17,8 +17,8 @@ rules.push({
     if (!node.default) {
       yield {
         message: `The response is defined but without a default error response implementation.Consider adding it.'`,
-        location: path
+        location: path,
       }
     }
-  }
+  },
 })

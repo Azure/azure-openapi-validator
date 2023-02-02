@@ -103,7 +103,9 @@ test("InvalidSkuModel should find errors when missing 'name'", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("definitions.Sku")
-    expect(results[0].message).toContain("A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.")
+    expect(results[0].message).toContain(
+      "A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties."
+    )
   })
 })
 
@@ -205,7 +207,9 @@ test("InvalidSkuModel should find errors when exists extra property", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("definitions.Sku")
-    expect(results[0].message).toContain("A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties.")
+    expect(results[0].message).toContain(
+      "A Sku model must have 'name' property. It can also have 'tier', 'size', 'family', 'capacity' as optional properties."
+    )
   })
 })
 

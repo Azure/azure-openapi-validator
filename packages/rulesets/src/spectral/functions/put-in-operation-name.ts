@@ -5,18 +5,18 @@
 
 export const putInOperationName = (operationId: any, _opts: any, ctx: any) => {
   if (operationId === "" || typeof operationId !== "string") {
-    return [];
+    return []
   }
   if (!operationId.includes("_")) {
-    return [];
+    return []
   }
-  const path = ctx.path || [];
-  const errors: any = [];
+  const path = ctx.path || []
+  const errors: any = []
   if (!operationId.match(/^(\w+)_(Create)/) && !operationId.match(/^(Create)/)) {
     errors.push({
       message: `'PUT' operation '${operationId}' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
       path: [...path],
-    });
+    })
   }
-  return errors;
-};
+  return errors
+}

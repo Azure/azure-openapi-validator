@@ -10,9 +10,7 @@
     "description": "Migrate your workloads to Azure."
   },
   "host": "management.azure.com",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "parameters": {
     "subscriptionId": {
       "name": "subscriptionId",
@@ -99,9 +97,7 @@
       "type": "string",
       "in": "query",
       "required": true,
-      "enum": [
-        "2018-09-01-preview"
-      ]
+      "enum": ["2018-09-01-preview"]
     },
     "acceptLanguage": {
       "description": "Standard request header. Used by service to respond to client in appropriate language.",
@@ -124,17 +120,13 @@
   },
   "security": [
     {
-      "azure_auth": [
-        "user_impersonation"
-      ]
+      "azure_auth": ["user_impersonation"]
     }
   ],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances": {
       "get": {
-        "tags": [
-          "DatabaseInstances"
-        ],
+        "tags": ["DatabaseInstances"],
         "summary": "Gets a list of database instances in the migrate project.",
         "operationId": "DatabaseInstances_EnumerateDatabaseInstances",
         "parameters": [
@@ -170,19 +162,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances/{databaseInstanceName}": {
       "get": {
-        "tags": [
-          "DatabaseInstances"
-        ],
+        "tags": ["DatabaseInstances"],
         "summary": "Gets a database instance in the migrate project.",
         "operationId": "DatabaseInstances_GetDatabaseInstance",
         "parameters": [
@@ -215,19 +201,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases": {
       "get": {
-        "tags": [
-          "Databases"
-        ],
+        "tags": ["Databases"],
         "summary": "Gets a list of databases in the migrate project.",
         "operationId": "Databases_EnumerateDatabases",
         "parameters": [
@@ -263,19 +243,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases/{databaseName}": {
       "get": {
-        "tags": [
-          "Databases"
-        ],
+        "tags": ["Databases"],
         "summary": "Gets a database in the migrate project.",
         "operationId": "Databases_GetDatabase",
         "parameters": [
@@ -308,19 +282,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents": {
       "get": {
-        "tags": [
-          "Events"
-        ],
+        "tags": ["Events"],
         "summary": "Gets a list of events in the migrate project.",
         "operationId": "Events_EnumerateEvents",
         "parameters": [
@@ -356,19 +324,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}": {
       "get": {
-        "tags": [
-          "Events"
-        ],
+        "tags": ["Events"],
         "summary": "Gets an event in the migrate project.",
         "operationId": "Events_GetEvent",
         "parameters": [
@@ -398,17 +360,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Events"
-        ],
+        "tags": ["Events"],
         "summary": "Delete the migrate event",
         "description": "Delete the migrate event. Deleting non-existent migrate event is a no-operation.",
         "operationId": "Events_DeleteEvent",
@@ -436,19 +392,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines": {
       "get": {
-        "tags": [
-          "Machines"
-        ],
+        "tags": ["Machines"],
         "summary": "Gets a list of machines in the migrate project.",
         "operationId": "Machines_EnumerateMachines",
         "parameters": [
@@ -481,19 +431,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines/{machineName}": {
       "get": {
-        "tags": [
-          "Machines"
-        ],
+        "tags": ["Machines"],
         "summary": "Gets a machine in the migrate project.",
         "operationId": "Machines_GetMachine",
         "parameters": [
@@ -523,19 +467,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}": {
       "get": {
-        "tags": [
-          "MigrateProjects"
-        ],
+        "tags": ["MigrateProjects"],
         "summary": "Method to get a migrate project.",
         "operationId": "MigrateProjects_GetMigrateProject",
         "parameters": [
@@ -562,17 +500,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "MigrateProjects"
-        ],
+        "tags": ["MigrateProjects"],
         "summary": "Method to create or update a migrate project.",
         "operationId": "MigrateProjects_PutMigrateProject",
         "parameters": [
@@ -617,17 +549,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "MigrateProjects"
-        ],
+        "tags": ["MigrateProjects"],
         "summary": "Update migrate project.",
         "description": "Update a migrate project with specified name. Supports partial updates, for example only tags can be provided.",
         "operationId": "MigrateProjects_PatchMigrateProject",
@@ -667,17 +593,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "MigrateProjects"
-        ],
+        "tags": ["MigrateProjects"],
         "summary": "Delete the migrate project",
         "description": "Delete the migrate project. Deleting non-existent project is a no-operation.",
         "operationId": "MigrateProjects_DeleteMigrateProject",
@@ -705,19 +625,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registerTool": {
       "post": {
-        "tags": [
-          "MigrateProjects"
-        ],
+        "tags": ["MigrateProjects"],
         "summary": "Registers a tool with the migrate project.",
         "operationId": "MigrateProjects_RegisterTool",
         "parameters": [
@@ -756,19 +670,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/refreshSummary": {
       "post": {
-        "tags": [
-          "MigrateProjects"
-        ],
+        "tags": ["MigrateProjects"],
         "summary": "Refresh the summary of the migrate project.",
         "operationId": "MigrateProjects_RefreshMigrateProjectSummary",
         "parameters": [
@@ -804,19 +712,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}": {
       "get": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Gets a solution in the migrate project.",
         "operationId": "Solutions_GetSolution",
         "parameters": [
@@ -846,17 +748,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "put": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Creates a solution in the migrate project.",
         "operationId": "Solutions_PutSolution",
         "parameters": [
@@ -901,17 +797,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "patch": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Update solution.",
         "description": "Update a solution with specified name. Supports partial updates, for example only tags can be provided.",
         "operationId": "Solutions_PatchSolution",
@@ -951,17 +841,11 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       },
       "delete": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Delete the solution",
         "description": "Delete the solution. Deleting non-existent project is a no-operation.",
         "operationId": "Solutions_DeleteSolution",
@@ -992,19 +876,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions": {
       "get": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Gets the list of solutions in the migrate project.",
         "operationId": "Solutions_EnumerateSolutions",
         "parameters": [
@@ -1031,19 +909,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/getConfig": {
       "post": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Gets the config for the solution in the migrate project.",
         "operationId": "Solutions_GetConfig",
         "parameters": [
@@ -1073,19 +945,13 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/cleanupData": {
       "post": {
-        "tags": [
-          "Solutions"
-        ],
+        "tags": ["Solutions"],
         "summary": "Cleanup the solution data in the migrate project.",
         "operationId": "Solutions_CleanupSolutionData",
         "parameters": [
@@ -1112,12 +978,8 @@
         },
         "deprecated": false,
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     },
     "/providers/Microsoft.Migrate/operations": {
@@ -1137,12 +999,8 @@
           "nextLinkName": null
         },
         "x-ms-examples": null,
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ]
+        "produces": ["application/json"],
+        "consumes": ["application/json"]
       }
     }
   },
@@ -1634,18 +1492,7 @@
       "type": "object",
       "properties": {
         "typeKind": {
-          "enum": [
-            "None",
-            "Primitive",
-            "Entity",
-            "Complex",
-            "Collection",
-            "EntityReference",
-            "Enum",
-            "TypeDefinition",
-            "Untyped",
-            "Path"
-          ],
+          "enum": ["None", "Primitive", "Entity", "Complex", "Collection", "EntityReference", "Enum", "TypeDefinition", "Untyped", "Path"],
           "type": "string",
           "readOnly": true
         }
@@ -1767,14 +1614,7 @@
       "type": "object",
       "properties": {
         "schemaElementKind": {
-          "enum": [
-            "None",
-            "TypeDefinition",
-            "Term",
-            "Action",
-            "EntityContainer",
-            "Function"
-          ],
+          "enum": ["None", "TypeDefinition", "Term", "Action", "EntityContainer", "Function"],
           "type": "string",
           "readOnly": true
         },
@@ -1824,14 +1664,7 @@
           "readOnly": true
         },
         "schemaElementKind": {
-          "enum": [
-            "None",
-            "TypeDefinition",
-            "Term",
-            "Action",
-            "EntityContainer",
-            "Function"
-          ],
+          "enum": ["None", "TypeDefinition", "Term", "Action", "EntityContainer", "Function"],
           "type": "string",
           "readOnly": true
         },
@@ -1930,12 +1763,7 @@
       "type": "object",
       "properties": {
         "kind": {
-          "enum": [
-            "Aggregate",
-            "GroupBy",
-            "Filter",
-            "Compute"
-          ],
+          "enum": ["Aggregate", "GroupBy", "Filter", "Compute"],
           "type": "string",
           "readOnly": true
         }
@@ -2037,14 +1865,7 @@
           "readOnly": true
         },
         "schemaElementKind": {
-          "enum": [
-            "None",
-            "TypeDefinition",
-            "Term",
-            "Action",
-            "EntityContainer",
-            "Function"
-          ],
+          "enum": ["None", "TypeDefinition", "Term", "Action", "EntityContainer", "Function"],
           "type": "string",
           "readOnly": true
         },
@@ -2103,13 +1924,7 @@
       "type": "object",
       "properties": {
         "containerElementKind": {
-          "enum": [
-            "None",
-            "EntitySet",
-            "ActionImport",
-            "FunctionImport",
-            "Singleton"
-          ],
+          "enum": ["None", "EntitySet", "ActionImport", "FunctionImport", "Singleton"],
           "type": "string",
           "readOnly": true
         },
@@ -2131,10 +1946,7 @@
           "readOnly": true
         },
         "onDelete": {
-          "enum": [
-            "None",
-            "Cascade"
-          ],
+          "enum": ["None", "Cascade"],
           "type": "string",
           "readOnly": true
         },
@@ -2147,11 +1959,7 @@
           "readOnly": true
         },
         "propertyKind": {
-          "enum": [
-            "None",
-            "Structural",
-            "Navigation"
-          ],
+          "enum": ["None", "Structural", "Navigation"],
           "type": "string",
           "readOnly": true
         },
@@ -2204,18 +2012,7 @@
           "readOnly": true
         },
         "typeKind": {
-          "enum": [
-            "None",
-            "Primitive",
-            "Entity",
-            "Complex",
-            "Collection",
-            "EntityReference",
-            "Enum",
-            "TypeDefinition",
-            "Untyped",
-            "Path"
-          ],
+          "enum": ["None", "Primitive", "Entity", "Complex", "Collection", "EntityReference", "Enum", "TypeDefinition", "Untyped", "Path"],
           "type": "string",
           "readOnly": true
         }
@@ -2238,11 +2035,7 @@
       "type": "object",
       "properties": {
         "propertyKind": {
-          "enum": [
-            "None",
-            "Structural",
-            "Navigation"
-          ],
+          "enum": ["None", "Structural", "Navigation"],
           "type": "string",
           "readOnly": true
         },
@@ -2268,11 +2061,7 @@
           "readOnly": true
         },
         "propertyKind": {
-          "enum": [
-            "None",
-            "Structural",
-            "Navigation"
-          ],
+          "enum": ["None", "Structural", "Navigation"],
           "type": "string",
           "readOnly": true
         },
@@ -2686,25 +2475,13 @@
         },
         "refreshSummaryState": {
           "description": "Gets the refresh summary state.",
-          "enum": [
-            "Started",
-            "InProgress",
-            "Completed",
-            "Failed"
-          ],
+          "enum": ["Started", "InProgress", "Completed", "Failed"],
           "type": "string",
           "readOnly": true
         },
         "provisioningState": {
           "type": "string",
-          "enum": [
-            "Accepted",
-            "Creating",
-            "Deleting",
-            "Failed",
-            "Moving",
-            "Succeeded"
-          ],
+          "enum": ["Accepted", "Creating", "Deleting", "Failed", "Moving", "Succeeded"],
           "description": "Provisioning state of the migrate project.",
           "x-ms-enum": {
             "name": "ProvisioningState",
@@ -2724,12 +2501,7 @@
         },
         "refreshSummaryState": {
           "description": "Gets or sets the state of refresh summary.",
-          "enum": [
-            "Started",
-            "InProgress",
-            "Completed",
-            "Failed"
-          ],
+          "enum": ["Started", "InProgress", "Completed", "Failed"],
           "type": "string"
         },
         "lastSummaryRefreshedTime": {
@@ -2797,10 +2569,7 @@
       "properties": {
         "goal": {
           "description": "Gets or sets the goal for which summary needs to be refreshed.",
-          "enum": [
-            "Servers",
-            "Databases"
-          ],
+          "enum": ["Servers", "Databases"],
           "type": "string"
         }
       }
@@ -2859,38 +2628,22 @@
         },
         "purpose": {
           "description": "Gets or sets the purpose of the solution.",
-          "enum": [
-            "Discovery",
-            "Assessment",
-            "Migration"
-          ],
+          "enum": ["Discovery", "Assessment", "Migration"],
           "type": "string"
         },
         "goal": {
           "description": "Gets or sets the goal of the solution.",
-          "enum": [
-            "Servers",
-            "Databases"
-          ],
+          "enum": ["Servers", "Databases"],
           "type": "string"
         },
         "status": {
           "description": "Gets or sets the current status of the solution.",
-          "enum": [
-            "Inactive",
-            "Active"
-          ],
+          "enum": ["Inactive", "Active"],
           "type": "string"
         },
         "cleanupState": {
           "description": "Gets or sets the cleanup state of the solution.",
-          "enum": [
-            "None",
-            "Started",
-            "InProgress",
-            "Completed",
-            "Failed"
-          ],
+          "enum": ["None", "Started", "InProgress", "Completed", "Failed"],
           "type": "string"
         },
         "summary": {

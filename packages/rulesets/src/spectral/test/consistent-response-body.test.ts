@@ -1,29 +1,29 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('ConsistentResponseBody');
-  return linter;
-});
+  linter = await linterForRule("ConsistentResponseBody")
+  return linter
+})
 
-test('ConsistentResponseBody should find errors', () => {
+test("ConsistentResponseBody should find errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/test1/{id}': {
+      "/test1/{id}": {
         parameters: {
-          name: 'id',
-          in: 'path',
-          type: 'string',
+          name: "id",
+          in: "path",
+          type: "string",
         },
         put: {
           responses: {
             201: {
-              description: 'Created',
+              description: "Created",
               schema: {
-                $ref: '#/definitions/This',
+                $ref: "#/definitions/This",
               },
             },
           },
@@ -31,9 +31,9 @@ test('ConsistentResponseBody should find errors', () => {
         patch: {
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                $ref: '#/definitions/That',
+                $ref: "#/definitions/That",
               },
             },
           },
@@ -41,9 +41,9 @@ test('ConsistentResponseBody should find errors', () => {
         get: {
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                $ref: '#/definitions/ThaOther',
+                $ref: "#/definitions/ThaOther",
               },
             },
           },
@@ -52,50 +52,50 @@ test('ConsistentResponseBody should find errors', () => {
     },
     definitions: {
       This: {
-        description: 'This',
-        type: 'object',
+        description: "This",
+        type: "object",
       },
       That: {
-        description: 'That',
-        type: 'object',
+        description: "That",
+        type: "object",
       },
       ThaOther: {
-        description: 'ThaOther',
-        type: 'object',
+        description: "ThaOther",
+        type: "object",
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2);
-    expect(results[0].path.join('.')).toBe('paths./test1/{id}.patch.responses.200.schema');
-    expect(results[0].message).toBe('Response body schema does not match create response body schema.');
-    expect(results[1].path.join('.')).toBe('paths./test1/{id}.get.responses.200.schema');
-    expect(results[1].message).toBe('Response body schema does not match create response body schema.');
-  });
-});
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./test1/{id}.patch.responses.200.schema")
+    expect(results[0].message).toBe("Response body schema does not match create response body schema.")
+    expect(results[1].path.join(".")).toBe("paths./test1/{id}.get.responses.200.schema")
+    expect(results[1].message).toBe("Response body schema does not match create response body schema.")
+  })
+})
 
-test('ConsistentResponseBody should find no errors', () => {
+test("ConsistentResponseBody should find no errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/test1/{id}': {
+      "/test1/{id}": {
         parameters: {
-          name: 'id',
-          in: 'path',
-          type: 'string',
+          name: "id",
+          in: "path",
+          type: "string",
         },
         put: {
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                $ref: '#/definitions/This',
+                $ref: "#/definitions/This",
               },
             },
             201: {
-              description: 'Created',
+              description: "Created",
               schema: {
-                $ref: '#/definitions/This',
+                $ref: "#/definitions/This",
               },
             },
           },
@@ -103,9 +103,9 @@ test('ConsistentResponseBody should find no errors', () => {
         post: {
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                $ref: '#/definitions/This',
+                $ref: "#/definitions/This",
               },
             },
           },
@@ -113,9 +113,9 @@ test('ConsistentResponseBody should find no errors', () => {
         get: {
           responses: {
             200: {
-              description: 'Success',
+              description: "Success",
               schema: {
-                $ref: '#/definitions/This',
+                $ref: "#/definitions/This",
               },
             },
           },
@@ -124,12 +124,12 @@ test('ConsistentResponseBody should find no errors', () => {
     },
     definitions: {
       This: {
-        description: 'This',
-        type: 'object',
+        description: "This",
+        type: "object",
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

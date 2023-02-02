@@ -1,29 +1,29 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "title": "SwaggerInventoryTests",
-        "description": "Use this swagger to test the inventory to detect response types with arrays as possible pageable operations",
-        "version": "2016-10-10"
-    },
-    "host": "management.azure.com",
-    "paths": {
-        "/plants": {
-            "get": {
-                "description": "Get a list of plants.",
-                "operationId": "Plants_List",
-                "x-ms-pageable": {
-                    "nextLinkName": "nextLink"
-                },
-                "parameters": [],
-                "responses": {
-                    "default": {
-                        "description": "Failed.",
-                        "schema": {}
-                    }
-                }
-            }
+  "swagger": "2.0",
+  "info": {
+    "title": "SwaggerInventoryTests",
+    "description": "Use this swagger to test the inventory to detect response types with arrays as possible pageable operations",
+    "version": "2016-10-10"
+  },
+  "host": "management.azure.com",
+  "paths": {
+    "/plants": {
+      "get": {
+        "description": "Get a list of plants.",
+        "operationId": "Plants_List",
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Failed.",
+            "schema": {}
+          }
         }
-    },
-    "definitions": {},
-    "parameters": {}
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {}
 }

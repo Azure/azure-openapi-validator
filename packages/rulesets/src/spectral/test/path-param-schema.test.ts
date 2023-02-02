@@ -1,46 +1,46 @@
-import { Spectral } from '@stoplight/spectral-core';
-import linterForRule from './utils';
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter:Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule('PathParameterSchema');
-  return linter;
-});
+  linter = await linterForRule("PathParameterSchema")
+  return linter
+})
 
-test('PathParameterSchema should find errors', () => {
+test("PathParameterSchema should find errors", () => {
   // Test path parameter in 3 different places:
   // 1. parameter at path level
   // 2. inline parameter at operation level
   // 3. referenced parameter at operation level
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/foo/{p1}': {
+      "/foo/{p1}": {
         parameters: [
           {
-            name: 'p1',
-            in: 'path',
-            type: 'integer',
+            name: "p1",
+            in: "path",
+            type: "integer",
           },
         ],
       },
-      '/bar/{p2}/baz/{p3}/foo/{p4}': {
+      "/bar/{p2}/baz/{p3}/foo/{p4}": {
         get: {
           parameters: [
             {
-              $ref: '#/parameters/Param2',
+              $ref: "#/parameters/Param2",
             },
             {
-              name: 'p3',
-              in: 'path',
-              type: 'string',
+              name: "p3",
+              in: "path",
+              type: "string",
               maxLength: 50,
             },
             {
-              name: 'p4',
-              in: 'path',
-              type: 'string',
+              name: "p4",
+              in: "path",
+              type: "string",
               maxLength: 2083,
             },
           ],
@@ -49,55 +49,55 @@ test('PathParameterSchema should find errors', () => {
     },
     parameters: {
       Param2: {
-        name: 'p2',
-        in: 'path',
-        type: 'string',
+        name: "p2",
+        in: "path",
+        type: "string",
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(5);
-    expect(results[0].path.join('.')).toBe('paths./foo/{p1}.parameters.0');
-    expect(results[0].message).toContain('should specify a maximum length');
-    expect(results[0].message).toContain('and characters allowed');
-    expect(results[1].path.join('.')).toBe('paths./foo/{p1}.parameters.0.type');
-    expect(results[1].message).toContain('should be defined as type: string');
-    expect(results[2].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}/foo/{p4}.get.parameters.0');
-    expect(results[2].message).toContain('should specify a maximum length');
-    expect(results[3].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}/foo/{p4}.get.parameters.1');
-    expect(results[3].message).toContain('should specify characters allowed');
-    expect(results[4].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}/foo/{p4}.get.parameters.2');
-    expect(results[4].message).toContain('should be less than');
-  });
-});
+    expect(results.length).toBe(5)
+    expect(results[0].path.join(".")).toBe("paths./foo/{p1}.parameters.0")
+    expect(results[0].message).toContain("should specify a maximum length")
+    expect(results[0].message).toContain("and characters allowed")
+    expect(results[1].path.join(".")).toBe("paths./foo/{p1}.parameters.0.type")
+    expect(results[1].message).toContain("should be defined as type: string")
+    expect(results[2].path.join(".")).toBe("paths./bar/{p2}/baz/{p3}/foo/{p4}.get.parameters.0")
+    expect(results[2].message).toContain("should specify a maximum length")
+    expect(results[3].path.join(".")).toBe("paths./bar/{p2}/baz/{p3}/foo/{p4}.get.parameters.1")
+    expect(results[3].message).toContain("should specify characters allowed")
+    expect(results[4].path.join(".")).toBe("paths./bar/{p2}/baz/{p3}/foo/{p4}.get.parameters.2")
+    expect(results[4].message).toContain("should be less than")
+  })
+})
 
-test('PathParameterSchema should find no errors', () => {
+test("PathParameterSchema should find no errors", () => {
   const oasDoc = {
-    swagger: '2.0',
+    swagger: "2.0",
     paths: {
-      '/foo/{p1}': {
+      "/foo/{p1}": {
         parameters: [
           {
-            name: 'p1',
-            in: 'path',
-            type: 'string',
+            name: "p1",
+            in: "path",
+            type: "string",
             maxLength: 50,
-            pattern: '/[a-z]+/',
+            pattern: "/[a-z]+/",
           },
         ],
       },
-      '/bar/{p2}/baz/{p3}': {
+      "/bar/{p2}/baz/{p3}": {
         get: {
           parameters: [
             {
-              $ref: '#/parameters/Param2',
+              $ref: "#/parameters/Param2",
             },
             {
-              name: 'p3',
-              in: 'path',
-              type: 'string',
+              name: "p3",
+              in: "path",
+              type: "string",
               maxLength: 50,
-              pattern: '/[a-z]+/',
+              pattern: "/[a-z]+/",
             },
           ],
         },
@@ -105,45 +105,45 @@ test('PathParameterSchema should find no errors', () => {
     },
     parameters: {
       Param2: {
-        name: 'p2',
-        in: 'path',
-        type: 'string',
+        name: "p2",
+        in: "path",
+        type: "string",
         maxLength: 50,
-        pattern: '/[a-z]+/',
+        pattern: "/[a-z]+/",
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})
 
-test('PathParameterSchema should find oas3 errors', () => {
+test("PathParameterSchema should find oas3 errors", () => {
   const oasDoc = {
-    openapi: '3.0',
+    openapi: "3.0",
     paths: {
-      '/foo/{p1}': {
+      "/foo/{p1}": {
         parameters: [
           {
-            name: 'p1',
-            in: 'path',
+            name: "p1",
+            in: "path",
             schema: {
-              type: 'integer',
+              type: "integer",
             },
           },
         ],
       },
-      '/bar/{p2}/baz/{p3}': {
+      "/bar/{p2}/baz/{p3}": {
         get: {
           parameters: [
             {
-              $ref: '#/components/parameters/Param2',
+              $ref: "#/components/parameters/Param2",
             },
             {
-              name: 'p3',
-              in: 'path',
+              name: "p3",
+              in: "path",
               schema: {
-                type: 'string',
+                type: "string",
                 maxLength: 50,
               },
             },
@@ -154,59 +154,59 @@ test('PathParameterSchema should find oas3 errors', () => {
     components: {
       parameters: {
         Param2: {
-          name: 'p2',
-          in: 'path',
+          name: "p2",
+          in: "path",
           schema: {
-            type: 'string',
+            type: "string",
           },
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(4);
-    expect(results[0].path.join('.')).toBe('paths./foo/{p1}.parameters.0.schema');
-    expect(results[0].message).toContain('should specify a maximum length');
-    expect(results[0].message).toContain('and characters allowed');
-    expect(results[1].path.join('.')).toBe('paths./foo/{p1}.parameters.0.schema.type');
-    expect(results[1].message).toContain('should be defined as type: string');
-    expect(results[2].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}.get.parameters.0.schema');
-    expect(results[2].message).toContain('should specify a maximum length');
-    expect(results[3].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}.get.parameters.1.schema');
-    expect(results[3].message).toContain('should specify characters allowed');
-  });
-});
+    expect(results.length).toBe(4)
+    expect(results[0].path.join(".")).toBe("paths./foo/{p1}.parameters.0.schema")
+    expect(results[0].message).toContain("should specify a maximum length")
+    expect(results[0].message).toContain("and characters allowed")
+    expect(results[1].path.join(".")).toBe("paths./foo/{p1}.parameters.0.schema.type")
+    expect(results[1].message).toContain("should be defined as type: string")
+    expect(results[2].path.join(".")).toBe("paths./bar/{p2}/baz/{p3}.get.parameters.0.schema")
+    expect(results[2].message).toContain("should specify a maximum length")
+    expect(results[3].path.join(".")).toBe("paths./bar/{p2}/baz/{p3}.get.parameters.1.schema")
+    expect(results[3].message).toContain("should specify characters allowed")
+  })
+})
 
-test('PathParameterSchema should find no oas3 errors', () => {
+test("PathParameterSchema should find no oas3 errors", () => {
   const oasDoc = {
-    openapi: '3.0',
+    openapi: "3.0",
     paths: {
-      '/foo/{p1}': {
+      "/foo/{p1}": {
         parameters: [
           {
-            name: 'p1',
-            in: 'path',
+            name: "p1",
+            in: "path",
             schema: {
-              type: 'string',
+              type: "string",
               maxLength: 50,
-              pattern: '/[a-z]+/',
+              pattern: "/[a-z]+/",
             },
           },
         ],
       },
-      '/bar/{p2}/baz/{p3}': {
+      "/bar/{p2}/baz/{p3}": {
         get: {
           parameters: [
             {
-              $ref: '#/components/parameters/Param2',
+              $ref: "#/components/parameters/Param2",
             },
             {
-              name: 'p3',
-              in: 'path',
+              name: "p3",
+              in: "path",
               schema: {
-                type: 'string',
+                type: "string",
                 maxLength: 50,
-                pattern: '/[a-z]+/',
+                pattern: "/[a-z]+/",
               },
             },
           ],
@@ -216,18 +216,18 @@ test('PathParameterSchema should find no oas3 errors', () => {
     components: {
       parameters: {
         Param2: {
-          name: 'p2',
-          in: 'path',
+          name: "p2",
+          in: "path",
           schema: {
-            type: 'string',
+            type: "string",
             maxLength: 50,
-            pattern: '/[a-z]+/',
+            pattern: "/[a-z]+/",
           },
         },
       },
     },
-  };
+  }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

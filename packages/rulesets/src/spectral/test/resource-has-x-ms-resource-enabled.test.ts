@@ -1,12 +1,12 @@
-import { Spectral } from "@stoplight/spectral-core";
-import linterForRule from "./utils";
+import { Spectral } from "@stoplight/spectral-core"
+import linterForRule from "./utils"
 
-let linter: Spectral;
+let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("ResourceHasXMsResourceEnabled");
-  return linter;
-});
+  linter = await linterForRule("ResourceHasXMsResourceEnabled")
+  return linter
+})
 
 test("ResourceHasXMsResourceEnabled should find errors when there's no x-ms-azure-resource extension", () => {
   const myOpenApiDocument = {
@@ -53,15 +53,13 @@ test("ResourceHasXMsResourceEnabled should find errors when there's no x-ms-azur
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].message).toBe(
-      `A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.`
-    );
-    expect(results[0].path.join(".")).toBe("definitions.Resource");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].message).toBe(`A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.`)
+    expect(results[0].path.join(".")).toBe("definitions.Resource")
+  })
+})
 
 test("ResourceHasXMsResourceEnabled should find errors when x-ms-azure-resource is false", () => {
   const myOpenApiDocument = {
@@ -109,15 +107,13 @@ test("ResourceHasXMsResourceEnabled should find errors when x-ms-azure-resource 
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1);
-    expect(results[0].message).toBe(
-      `A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.`
-    );
-    expect(results[0].path.join(".")).toBe("definitions.Resource.x-ms-azure-resource");
-  });
-});
+    expect(results.length).toBe(1)
+    expect(results[0].message).toBe(`A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true.`)
+    expect(results[0].path.join(".")).toBe("definitions.Resource.x-ms-azure-resource")
+  })
+})
 
 test("ResourceHasXMsResourceEnabled should find no errors", () => {
   const myOpenApiDocument = {
@@ -165,8 +161,8 @@ test("ResourceHasXMsResourceEnabled should find no errors", () => {
         },
       },
     },
-  };
+  }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0);
-  });
-});
+    expect(results.length).toBe(0)
+  })
+})

@@ -22,6 +22,9 @@ jobs:
 
       - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
         displayName: 'rush regen rule index'
+      
+      - script: 'node common/scripts/install-run-rush.js prettier-check'
+        displayName: 'prettier'
 
       - script: node common/scripts/install-run-rush.js change -v
         condition: and(succeeded(), not(or(startsWith(variables['System.PullRequest.SourceBranch'], 'publish/'), startsWith(variables['System.PullRequest.SourceBranch'], 'backmerge/'))))
