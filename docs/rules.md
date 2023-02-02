@@ -661,6 +661,12 @@ Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it
 
 Please refer to [parameter-not-defined-in-global-parameters.md](./parameter-not-defined-in-global-parameters.md) for details.
 
+### ParameterNotUsingCommonTypes
+
+Some commonly used parameters are defined in the common-types directory. These parameters should be referenced instead of explicitly redefining them.
+
+Please refer to [parameter-not-using-common-types.md](./parameter-not-using-common-types.md) for details.
+
 ### ParameterOrder
 
 Path parameters must be in the same order as in the path.
