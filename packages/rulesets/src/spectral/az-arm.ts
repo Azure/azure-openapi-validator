@@ -13,16 +13,20 @@ import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
+import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
+import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import resourceNameRestriction from "./functions/resource-name-restriction"
+import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 const ruleset: any = {
@@ -68,6 +72,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
       then: {
         function: longRunningResponseStatusCodeArm,
+      },
+    },
+    // RPC Code: RPC-Async-V1-02
+    ProvisioningStateSpecified: {
+      description: 'A LRO PUT and PATCH operations response schema must have "ProvisioningState" property specified.',
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^^",
+      then: {
+        function: provisioningStateSpecified,
       },
     },
     // https://github.com/Azure/azure-openapi-validator/issues/332
@@ -297,6 +313,19 @@ const ruleset: any = {
         function: bodyParamRepeatedInfo,
       },
     },
+    // RPC Code: RPC-Put-V1-07
+    RequestSchemaForTrackedResourcesMustHaveTags: {
+      description: "A tracked resource MUST always have tags as a top level optional property",
+      message: "{{description}}. {{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^",
+      then: {
+        function: trackedResourceTagsPropertyInRequest,
+      },
+    },
+
     // RPC Code: RPC-Put-V1-12
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
@@ -330,6 +359,18 @@ const ruleset: any = {
       given: ["$.definitions[*].properties.location"],
       then: {
         function: locationMustHaveXmsMutability,
+      },
+    },
+    // RPC Code: RPC-Put-V1-24
+    ResponseSchemaSpecifiedForSuccessStatusCode: {
+      description: "The 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.put"],
+      then: {
+        function: responseSchemaSpecifiedForSuccessStatusCode,
       },
     },
 
@@ -521,6 +562,17 @@ const ruleset: any = {
         function: parameterNotDefinedInGlobalParameters,
       },
     },
+    ParameterNotUsingCommonTypes: {
+      description: "This rule checks for parameters defined in common-types that are not using the common-types definition.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: false,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+      then: {
+        function: parameterNotUsingCommonTypes,
+      },
+    },
     CollectionObjectPropertiesNaming: {
       description:
         "Per ARM guidelines, a model returned by an `x-ms-pageable` operation must have a property named `value`. This property indicates what type of array the object is.",
@@ -621,6 +673,16 @@ const ruleset: any = {
       given: ["$.schemes"],
       then: {
         function: httpsSupportedScheme,
+      },
+    },
+    MissingDefaultResponse: {
+      description: "All operations should have a default (error) response.",
+      message: "Operation is missing a default response.",
+      severity: "error",
+      given: "$.paths.*.*.responses",
+      then: {
+        field: "default",
+        function: truthy,
       },
     },
   },
