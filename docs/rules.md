@@ -538,21 +538,6 @@ Please refer to [next-link-property-must-exist.md](./next-link-property-must-exi
 ### NoDuplicatePathsForScopeParameter
 
 Swagger authors that use the `scope` parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group), must not include API paths with explicitly defined scopes (e.g. subscription API path).
-"subscriptions/{subscriptionId}",
-"subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
-"providers/Microsoft.Billing/billingAccounts/{billingAccountId}",
-"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}",
-"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}",
-"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}",
-"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}",
-"providers/Microsoft.Management/managementGroups/{managementGroupId}",
-"providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}",
-"providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}",
-For example,
-```json
-"paths": {
-}
-```
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
@@ -1108,6 +1093,12 @@ Verifies if a tracked resource has a corresponding PATCH operation.
 What's a tracked resource? A Tracked Resource is an ARM Resource with "location" as a required property.
 
 Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-operation.md) for details.
+
+### TrackedResourceSchemaTags
+
+Every tracked resource MUST support tags as an optional property.
+
+Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 
 ### TrackedResourcesMustHavePut
 

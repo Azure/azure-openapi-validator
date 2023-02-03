@@ -113,3 +113,18 @@ test("NoDuplicatePathsForScopeParameter should find no errors with explicitly de
     expect(results.length).toBe(0)
   })
 })
+
+// To do, add tests for some of these
+
+/*
+"subscriptions/{subscriptionId}",
+"subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}",
+"providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}",
+"providers/Microsoft.Management/managementGroups/{managementGroupId}",
+"providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}",
+"providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}",
+*/
