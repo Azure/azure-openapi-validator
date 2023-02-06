@@ -486,6 +486,12 @@ The long running operation with final-state-via:original-uri should have a sibli
 
 Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
 
+### MissingDefaultResponse
+
+All operations should have a default (error) response.
+
+Please refer to [missing-default-response.md](./missing-default-response.md) for details.
+
 ### MissingTypeObject
 
 The rule should apply to any schema with "properties" or "additionalProperties". It is to ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object.
@@ -654,6 +660,12 @@ Please refer to [parameter-names-unique.md](./parameter-names-unique.md) for det
 Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it must always be defined as global parameter. `api-version` is almost always an input parameter in any ARM spec and must also be defined as a global parameter.
 
 Please refer to [parameter-not-defined-in-global-parameters.md](./parameter-not-defined-in-global-parameters.md) for details.
+
+### ParameterNotUsingCommonTypes
+
+Some commonly used parameters are defined in the common-types directory. These parameters should be referenced instead of explicitly redefining them.
+
+Please refer to [parameter-not-using-common-types.md](./parameter-not-using-common-types.md) for details.
 
 ### ParameterOrder
 

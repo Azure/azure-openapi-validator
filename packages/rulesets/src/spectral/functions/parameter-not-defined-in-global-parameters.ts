@@ -36,8 +36,6 @@ export const parameterNotDefinedInGlobalParameters = (parameters: any, _opts: an
     if (!globalParametersList.includes("api-version") && !parameters.some((p) => p.$ref && commonTypeApiVersionReg.test(p.$ref))) {
       pushToError(errors, "api-version", path)
     }
-  } else {
-    pushToError(errors, "api-version", path)
   }
 
   return errors
