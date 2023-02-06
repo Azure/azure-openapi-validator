@@ -496,7 +496,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+      given: ["$..[?(@object() && @.properties)].properties[?(@object() && @.properties)].properties^"],
       then: {
         field: "x-ms-client-flatten",
         function: truthy,

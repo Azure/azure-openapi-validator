@@ -20,17 +20,22 @@ rules.push({
       "the default error response schema does not correspond to the schema documented at https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content."
 
     const response: any = node
-    if (response.default && response.default.schema) {
+    if (response.default) {
       const paths = path.concat(["default"])
-
-      const schema: any = Workspace.jsonPath(paths.concat("schema"), doc)
-      if (schema) {
-        const errorDefinition = Workspace.getProperty({ file: ctx?.specPath!, value: schema }, "error", ctx?.inventory! as SwaggerInventory)
-        if (errorDefinition && errorDefinition.value) {
-          const code = Workspace.getProperty(errorDefinition, "code", ctx?.inventory! as SwaggerInventory)
-          const message = Workspace.getProperty(errorDefinition, "message", ctx?.inventory! as SwaggerInventory)
-          if (code && message) {
-            return
+      if (response.default.schema) {
+        const schema: any = Workspace.jsonPath(paths.concat("schema"), doc)
+        if (schema) {
+          const errorDefinition = Workspace.getProperty(
+            { file: ctx?.specPath!, value: schema },
+            "error",
+            ctx?.inventory! as SwaggerInventory
+          )
+          if (errorDefinition && errorDefinition.value) {
+            const code = Workspace.getProperty(errorDefinition, "code", ctx?.inventory! as SwaggerInventory)
+            const message = Workspace.getProperty(errorDefinition, "message", ctx?.inventory! as SwaggerInventory)
+            if (code && message) {
+              return
+            }
           }
         }
       }
