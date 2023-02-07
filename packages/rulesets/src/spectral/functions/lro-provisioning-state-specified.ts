@@ -21,8 +21,8 @@ export const provisioningStateSpecified = (pathItem: any, _opts: any, ctx: any) 
       }
 
       for (const code of codes) {
-        var allProperties = getProperties(pathItem[verb].responses[code]?.schema)
-        var provisioningStateProperty = getProperty(allProperties?.properties, "provisioningState")
+        const allProperties = getProperties(pathItem[verb].responses[code]?.schema)
+        const provisioningStateProperty = getProperty(allProperties?.properties, "provisioningState")
         if (Object.keys(provisioningStateProperty).length === 0) {
           errors.push({
             message: `${code} response schema in long running ${verb} operation is missing ProvisioningState property. A LRO PUT and PATCH operations response schema must have ProvisioningState specified.`,
