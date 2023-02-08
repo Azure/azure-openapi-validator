@@ -537,7 +537,7 @@ Please refer to [next-link-property-must-exist.md](./next-link-property-must-exi
 
 ### NoDuplicatePathsForScopeParameter
 
-Swagger authors that use the `scope` parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group), must not include API paths with explicitly defined scopes (e.g. subscription API path).
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
