@@ -20,7 +20,7 @@ const noDuplicatePathsForScopeParameter = (path: any, _opts: any, ctx: any) => {
 
   const errors = matches.map((match: string) => {
     return {
-      message: `Path with explicitly defined scope "${match}" is a duplicate of path "${path}" that has the scope parameter.".`,
+      message: `Path "${match}" with explicitly defined scope is a duplicate of path "${path}" that has the scope parameter.".`,
       path: ctx.path,
     }
   })
