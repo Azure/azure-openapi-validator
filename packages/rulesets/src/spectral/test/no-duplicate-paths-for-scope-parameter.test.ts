@@ -123,7 +123,7 @@ test("NoDuplicatePathsForScopeParameter should find no errors with explicitly de
   })
 })
 
-test("NoDuplicatePathsForScopeParameter test billing scope", () => {
+test("NoDuplicatePathsForScopeParameter should find errors for billing scope", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -199,25 +199,25 @@ test("NoDuplicatePathsForScopeParameter test billing scope", () => {
     // explicitly not using a loop here to keep the test logic basic
     const paths = Object.keys(oasDoc.paths)
     // path 1
-    expect(results[1].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[1].message).toContain(`"${paths[1]}" with explicitly defined scope`)
-    expect(results[1].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[0].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[0].message).toContain(`"${paths[1]}" with explicitly defined scope`)
+    expect(results[0].message).toContain(`"${paths[0]}" that has the scope parameter`)
     // path 2
-    expect(results[2].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[2].message).toContain(`"${paths[2]}" with explicitly defined scope`)
-    expect(results[2].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[1].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[1].message).toContain(`"${paths[2]}" with explicitly defined scope`)
+    expect(results[1].message).toContain(`"${paths[0]}" that has the scope parameter`)
     // path 3
-    expect(results[3].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[3].message).toContain(`"${paths[3]}" with explicitly defined scope`)
-    expect(results[3].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[2].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[2].message).toContain(`"${paths[3]}" with explicitly defined scope`)
+    expect(results[2].message).toContain(`"${paths[0]}" that has the scope parameter`)
     // path 4
-    expect(results[4].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[4].message).toContain(`"${paths[4]}" with explicitly defined scope`)
-    expect(results[4].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[3].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[3].message).toContain(`"${paths[4]}" with explicitly defined scope`)
+    expect(results[3].message).toContain(`"${paths[0]}" that has the scope parameter`)
     // path 5
-    expect(results[5].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[5].message).toContain(`"${paths[5]}" with explicitly defined scope`)
-    expect(results[5].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[4].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[4].message).toContain(`"${paths[5]}" with explicitly defined scope`)
+    expect(results[4].message).toContain(`"${paths[0]}" that has the scope parameter`)
   })
 })
 
@@ -296,17 +296,17 @@ test("NoDuplicatePathsForScopeParameter should find errors for other scopes", ()
           parameters: [{ $ref: "#/parameters/ScopeParameter" }],
         },
       },
-      "providers/Microsoft.Management/managementGroups/{managementGroupId}": {
+      "providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Bakery/breads": {
         get: {
           parameters: [{ $ref: "#/parameters/ManagementGroupIdParameter" }],
         },
       },
-      "providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}": {
+      "providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}/providers/Microsoft.Bakery/breads": {
         get: {
           parameters: [{ $ref: "#/parameters/ExternalBillingAccountNameParameter" }],
         },
       },
-      "providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}": {
+      "providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}/providers/Microsoft.Bakery/breads": {
         get: {
           parameters: [{ $ref: "#/parameters/ExternalSubscriptionNameParameter" }],
         },
@@ -340,16 +340,16 @@ test("NoDuplicatePathsForScopeParameter should find errors for other scopes", ()
     // explicitly not using a loop here to keep the test logic basic
     const paths = Object.keys(oasDoc.paths)
     // path 1
-    expect(results[1].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[1].message).toContain(`"${paths[1]}" with explicitly defined scope`)
-    expect(results[1].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[0].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[0].message).toContain(`"${paths[1]}" with explicitly defined scope`)
+    expect(results[0].message).toContain(`"${paths[0]}" that has the scope parameter`)
     // path 2
-    expect(results[2].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[2].message).toContain(`"${paths[2]}" with explicitly defined scope`)
-    expect(results[2].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[1].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[1].message).toContain(`"${paths[2]}" with explicitly defined scope`)
+    expect(results[1].message).toContain(`"${paths[0]}" that has the scope parameter`)
     // path 3
-    expect(results[3].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    expect(results[3].message).toContain(`"${paths[3]}" with explicitly defined scope`)
-    expect(results[3].message).toContain(`"${paths[2]}" that has the scope parameter`)
+    expect(results[2].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
+    expect(results[2].message).toContain(`"${paths[3]}" with explicitly defined scope`)
+    expect(results[2].message).toContain(`"${paths[0]}" that has the scope parameter`)
   })
 })
