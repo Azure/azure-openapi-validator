@@ -470,7 +470,7 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 
 ### ProvisioningStateSpecified
 
-This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+This is a rule introduced to validate if a LRO PUT, PATCH and DELETE operations response schema has "ProvisioningState" property specified.
 
 Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
 

@@ -14,7 +14,9 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-`${code} response in long running ${verb} operation is missing ProvisioningState property. A LRO PUT and PATCH operations response schema must have ProvisioningState specified.
+${code} response schema in long running PATCH operation is missing ProvisioningState property. A LRO PATCH operations 200 response schema must have ProvisioningState specified.
+${code} response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified.
+200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.
 
 ## Description
 
