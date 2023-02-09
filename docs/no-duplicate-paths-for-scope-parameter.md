@@ -19,3 +19,16 @@ Swagger authors that use the `scope` path parameter to indicate that an API is a
 ## How to fix
 
 Either remove the path with the `scope` parameter, or remove all explicitly-scoped paths that duplicate the path with the `scope` parameter.
+
+Example of duplicate paths:
+
+1. Path with scope parameter:
+   **`/{scope}`**`/providers/Microsoft.Bakery/breads`
+
+2. Explicitly-scoped path (by subscription)
+   **`/subscriptions/{subscriptionId}`**`/providers/Microsoft.Bakery/breads`
+
+3. Explicitly-scoped path (by resource group):
+   **`/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}`**`/providers/Microsoft.Bakery/breads`
+
+Either path 1 must be removed or both paths 2 and 3 must be removed.
