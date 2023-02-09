@@ -20,8 +20,9 @@ ${code} response schema in long running PUT operation is missing ProvisioningSta
 
 ## Description
 
-This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+This is a rule introduced to validate if a LRO PUT, PATCH and DELETE operations response schema has "ProvisioningState" property specified.
 
 ## How to fix the violation
 
-For a LRO PUT and PATCH operations, add "ProvisioningState" property to the response schema.
+For a LRO PUT add "ProvisioningState" property to the response schema.
+For a 200 response schema of LRO PATCH & DELETE add "ProvisioningState" property.
