@@ -290,7 +290,7 @@ test("ProvisioningStateSpecifiedForLRODelete should find no errors", () => {
   })
 })
 
-test("ProvisioningStateSpecifiedForLRODelete should find no errors", () => {
+test("ProvisioningStateSpecifiedForRegularDelete should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
