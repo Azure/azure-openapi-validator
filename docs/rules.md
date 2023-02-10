@@ -18,7 +18,7 @@ Please refer to [additional-properties-object.md](./additional-properties-object
 
 ### AllResourcesMustHaveDelete
 
-All top level proxy and (tracked at all levels) resources MUST support delete.
+All proxy and tracked resources MUST support delete.
 
 Please refer to [all-resources-must-have-delete.md](./all-resources-must-have-delete.md) for details.
 
