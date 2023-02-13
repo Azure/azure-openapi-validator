@@ -128,6 +128,16 @@ const ruleset: any = {
         },
       },
     },
+    // RPC Code: RPC-Common-V1-05
+    LroErrorContent: {
+      description:
+        "Error response content of Long running operation MUST contain code and message properties and follow the error schema listed in the common types",
+      message: "{{error}}",
+      severity: "error",
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+      then: {},
+    },
 
     ///
     /// ARM RPC rules for Delete patterns
@@ -314,8 +324,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Put-V1-07
     RequestSchemaForTrackedResourcesMustHaveTags: {
-      description:
-        "A tracked resource MUST always have tags as a top level optional property",
+      description: "A tracked resource MUST always have tags as a top level optional property",
       message: "{{description}}. {{error}}",
       severity: "error",
       resolved: true,
