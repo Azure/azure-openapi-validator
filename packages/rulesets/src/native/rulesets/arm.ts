@@ -32,8 +32,8 @@ export const armRuleset: IRuleSet = {
         },
       },
     },
-    // RPC Code: RPC-Delete-V1-03
-    AllProxyResourcesMustHaveDelete: {
+    // RPC Code: RPC-Delete-V1-05
+    AllProxyResourcesShouldHaveDelete: {
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "warning",

@@ -408,20 +408,20 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 1)
   })
 
-  test("no delete in for proxy resource", async () => {
-    const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
-    const ruleName = "AllProxyResourcesMustHaveDelete"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
-    assertValidationRuleCount(messages, ruleName, 1)
-    getWarningMessages(messages)
-  })
-
   test("no delete in for tracked resource", async () => {
     const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
     const ruleName = "AllTrackedResourcesMustHaveDelete"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
     getErrorMessages(messages)
+  })
+
+  test("no delete in for proxy resource", async () => {
+    const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "AllProxyResourcesShouldHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+    getWarningMessages(messages)
   })
 
   test("tracked resource beyonds third level", async () => {

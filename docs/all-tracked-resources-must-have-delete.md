@@ -1,4 +1,4 @@
-# AllResourcesMustHaveDelete
+# AllTrackedResourcesMustHaveDelete
 
 ## Category
 
@@ -18,7 +18,7 @@ The resource {resourceName} does not have a corresponding delete operation.
 
 ## Description
 
-All proxy and tracked resources MUST support delete.
+All tracked resources MUST support delete.
 
 ## CreatedAt
 
