@@ -79,7 +79,8 @@ const ruleset: any = {
     // RPC Code: RPC-Async-V1-02
     //PUT
     ProvisioningStateSpecifiedForLROPut: {
-      description: 'A LRO PUT operations response schema must have "ProvisioningState" property specified.',
+      description:
+        'A LRO PUT operations response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -91,21 +92,25 @@ const ruleset: any = {
     },
     //Patch
     ProvisioningStateSpecifiedForLROPatch: {
-      description: 'A LRO PATCH operations 200 response schema must have "ProvisioningState" property specified.',
+      description:
+        'A long running Patch operation response schema must have "ProvisioningState" property specified for the 200 status codes.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+      given: [
+        "$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
+      ],
       then: {
         function: provisioningStateSpecifiedForLROPatch,
       },
     },
     //Delete
     ProvisioningStateSpecifiedForLRODelete: {
-      description: 'A LRO DELETE operations 200 response schema must have "ProvisioningState" property specified.',
+      description:
+        'A long running Delete operation response schema must have "ProvisioningState" property specified for the 200 status codes.',
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: [

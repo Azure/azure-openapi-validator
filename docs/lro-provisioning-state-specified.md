@@ -24,5 +24,5 @@ This is a rule introduced to validate if a LRO PUT, PATCH and DELETE operations 
 
 ## How to fix the violation
 
-For a LRO PUT add "ProvisioningState" property to the response schema.
-For a 200 response schema of LRO PATCH & DELETE add "ProvisioningState" property.
+For an LRO PUT add "ProvisioningState" property to the response schema of 200 and 201 status codes.
+For an LRO PATCH & DELETE add "ProvisioningState" property to the response schema of 200 status code.

@@ -10,7 +10,7 @@ export const provisioningStateSpecifiedForLRODelete = (deleteOp: any, _opts: any
 
   const allProperties = getProperties(deleteOp.schema)
   const provisioningStateProperty = getProperty(allProperties?.properties, "provisioningState")
-  if (Object.keys(provisioningStateProperty).length === 0) {
+  if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
     errors.push({
       message: `200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.`,
       path,
