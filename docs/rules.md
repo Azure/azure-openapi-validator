@@ -795,6 +795,19 @@ For more detail, pls refer to https://github.com/microsoft/api-guidelines/blob/v
 
 Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-name-camel-case.md) for details.
 
+### SyncPostReturn
+
+A synchronous Post operation should return 200 with response schema or 204 without response schema.
+
+Please refer to [post-201-response.md](./post-201-response.md) for details.
+
+### LroPostReturn
+
+A long running Post operation should return 200 with response schema and 202 without response schema.
+
+Please refer to [post-201-response.md](./post-201-response.md) for details.
+
+
 ### Post201Response
 
 Using post for a create operation is discouraged.
