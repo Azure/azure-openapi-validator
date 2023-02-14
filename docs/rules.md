@@ -535,6 +535,12 @@ Per definition of AutoRest [x-ms-pageable extension](https://github.com/Azure/au
 
 Please refer to [next-link-property-must-exist.md](./next-link-property-must-exist.md) for details.
 
+### NoDuplicatePathsForScopeParameter
+
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
+
+Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
+
 ### NonApplicationJsonType
 
 Verifies whether operation supports "application/json" as consumes or produces section.
@@ -1087,6 +1093,12 @@ Verifies if a tracked resource has a corresponding PATCH operation.
 What's a tracked resource? A Tracked Resource is an ARM Resource with "location" as a required property.
 
 Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-operation.md) for details.
+
+### TrackedResourceSchemaTags
+
+Every tracked resource MUST support tags as an optional property.
+
+Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 
 ### TrackedResourcesMustHavePut
 
