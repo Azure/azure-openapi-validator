@@ -432,3 +432,75 @@ test("SyncPostReturn with 204 response code & no schema specified should find no
     expect(results.length).toBe(0)
   })
 })
+
+test("SyncPostReturn for lro post should find no errors", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_post",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "201": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "204": {
+              description: "Success-No content",
+            },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation",
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResourceUpdate: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})

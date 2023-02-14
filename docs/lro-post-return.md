@@ -20,8 +20,8 @@ Schema defined in 202 response code. 202 response for a LRO POST operation must 
 
 ## Description
 
-A synchronous Post operation should return 200 with response schema or 204 without response schema.
+A long running Post operation should return 200 with response schema and 202 without response schema.
 
 ## How to fix the violation
 
-Ensure that, for a synchronous POST 200 with response schema or 204 without response schema are specified.
+Ensure that, for a lro POST 200 with response schema and 202 without response schema are specified.
