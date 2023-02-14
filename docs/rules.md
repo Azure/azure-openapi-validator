@@ -470,6 +470,12 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
+### LroPostReturn
+
+A long running Post operation should return 200 with response schema and 202 without response schema.
+
+Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
 ### ProvisioningStateSpecified
 
 This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
@@ -798,18 +804,6 @@ For more detail, pls refer to https://github.com/microsoft/api-guidelines/blob/v
 
 Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-name-camel-case.md) for details.
 
-### SyncPostReturn
-
-A synchronous Post operation should return 200 with response schema or 204 without response schema.
-
-Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
-
-### LroPostReturn
-
-A long running Post operation should return 200 with response schema and 202 without response schema.
-
-Please refer to [lro-post-return.md](./lro-post-return.md) for details.
-
 ### Post201Response
 
 Using post for a create operation is discouraged.
@@ -1051,6 +1045,12 @@ Each operation has a summary and description values. They must not be same.
 
 Please refer to [summary-and-description-must-not-be-same.md](./summary-and-description-must-not-be-same.md) for details.
 
+### SyncPostReturn
+
+A synchronous Post operation should return 200 with response schema or 204 without response schema.
+
+Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
+
 ### TopLevelResourcesListByResourceGroup
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), all the top-level resources must have a list by resource group operation which returns the collection of the resource.
@@ -1103,6 +1103,12 @@ Verifies if a tracked resource has a corresponding PATCH operation.
 What's a tracked resource? A Tracked Resource is an ARM Resource with "location" as a required property.
 
 Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-operation.md) for details.
+
+### TrackedResourceSchemaTags
+
+Every tracked resource MUST support tags as an optional property.
+
+Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 
 ### TrackedResourcesMustHavePut
 
