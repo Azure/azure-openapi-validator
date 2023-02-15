@@ -128,15 +128,35 @@ const ruleset: any = {
         },
       },
     },
+    // LroErrorHasSchema: {
+    //   description: "Error responses for long running operations must have an error schema.",
+    //   message: "{{description}}",
+    //   severity: "error",
+    //   resolved: false,
+    //   formats: [oas2],
+    //   given:
+    //     "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))]",
+    //   then: {
+    //     field: schema,
+    //     function: defined
+    //   },
+    // }
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
-      description:
-        "Error response content of Long running operation MUST contain code and message properties and follow the error schema listed in the common types",
-      message: "{{error}}",
+      description: "Error response content of long running operations must follow the error schema provided in the common types.",
+      message: "{{description}}",
       severity: "error",
+      resolved: false,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-      then: {},
+      given:
+        "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v3/types.json#/definitions/ErrorResponse",
+        },
+        // function: falsy,
+      },
     },
 
     ///
