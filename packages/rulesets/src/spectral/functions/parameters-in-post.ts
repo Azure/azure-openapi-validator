@@ -11,7 +11,7 @@ export const ParametersInPost = (postParameters: any, _opts: any, ctx: any) => {
   const queryParams = postParameters.filter((param) => param.in === "query" && param.name !== "api-version")
   const errors = queryParams.map((param) => {
     return {
-      message: `${param.name} is a query parameter. Post operation must not contain query parameters.`,
+      message: `${param.name} is a query parameter. Post operation must not contain any query parameter other than api-version.`,
       path: path,
     }
   })

@@ -53,11 +53,13 @@ test("ParametersInPost should find errors", () => {
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post.parameters")
-    expect(results[0].message).toContain("quotaBucketName is a query parameter. Post operation must not contain query parameters.")
+    expect(results[0].message).toContain(
+      "quotaBucketName is a query parameter. Post operation must not contain any query parameter other than api-version."
+    )
   })
 })
 
-test("ParametersInPost should not flag error or api-version type param", () => {
+test("ParametersInPost should not flag error for api-version param", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -102,7 +104,9 @@ test("ParametersInPost should not flag error or api-version type param", () => {
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post.parameters")
-    expect(results[0].message).toContain("quotaBucketName is a query parameter. Post operation must not contain query parameters.")
+    expect(results[0].message).toContain(
+      "quotaBucketName is a query parameter. Post operation must not contain any query parameter other than api-version."
+    )
   })
 })
 

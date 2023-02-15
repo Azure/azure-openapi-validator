@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-{param.name} is a query parameter. Post operation must not contain query parameters.
+{param.name} is a query parameter. Post operation must not contain any query parameter other than api-version.
 
 ## Description
 
