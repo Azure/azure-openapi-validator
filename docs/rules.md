@@ -438,6 +438,12 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### LroErrorContent
+
+Error response content of long running operations must follow the error schema provided in the common types.
+
+Please refer to [lro-error-response.md](./lro-error-response.md) for details.
+
 ### LroExtension
 
 Operations with a 202 response should specify `x-ms-long-running-operation: true`.
@@ -1087,6 +1093,12 @@ Verifies if a tracked resource has a corresponding PATCH operation.
 What's a tracked resource? A Tracked Resource is an ARM Resource with "location" as a required property.
 
 Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-operation.md) for details.
+
+### TrackedResourceSchemaTags
+
+Every tracked resource MUST support tags as an optional property.
+
+Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 
 ### TrackedResourcesMustHavePut
 

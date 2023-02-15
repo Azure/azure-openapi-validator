@@ -2180,12 +2180,18 @@ const ruleset = {
             },
         },
         LroErrorContent: {
-            description: "Error response content of Long running operation MUST contain code and message properties and follow the error schema listed in the common types",
-            message: "{{error}}",
+            description: "Error response content of long running operations must follow the error schema provided in the common types.",
+            message: "{{description}}",
             severity: "error",
+            resolved: false,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-            then: {},
+            given: "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
+                },
+            },
         },
         DeleteMustNotHaveRequestBody: {
             description: "The delete operation must not have a request body.",
