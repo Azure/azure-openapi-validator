@@ -140,7 +140,7 @@ const ruleset: any = {
       then: {
         function: pattern,
         functionOptions: {
-          match: ".*/common-types/resource-management/v3/types.json#/definitions/ErrorResponse",
+          match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
         },
         // function: falsy,
       },
