@@ -18,6 +18,7 @@ import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-fo
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
@@ -374,6 +375,19 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-POST-V1-05
+    ParametersInPost: {
+      description: "For a POST action parameters MUST be in the payload and not in the URI.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post][parameters]",
+      then: {
+        function: ParametersInPost,
+      },
+    },
+
     ///
     /// ARM RPC rules for Uri path patterns
     ///
@@ -687,5 +701,4 @@ const ruleset: any = {
     },
   },
 }
-
 export default ruleset
