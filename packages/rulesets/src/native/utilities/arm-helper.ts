@@ -402,7 +402,6 @@ export class ArmHelper {
   }
 
   /**
-   * Return the schema for 200 response for GET /providers/.../operations if it exists
    * return [{operationPath}:{Workspace.EnhancedSchema}]
    */
   public getOperationApi() {
