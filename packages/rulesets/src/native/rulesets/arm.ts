@@ -116,6 +116,8 @@ export const armRuleset: IRuleSet = {
     ///
 
     // RPC-Operations-V1-01: RPs MUST expose a GET for the RP's set of available operations
+    // RPC-Operations-V1-02: GET operations API MUST be scoped tenant-wide (operations should *not* vary per subscription)
+    // This rule checks for a path formatted like ^/providers/[^/]+/operations$, so the above two rules are covered
     OperationsAPIImplementation: {
       description:
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), each RP must expose an operations API that returns information about all the operations available with the service.",
