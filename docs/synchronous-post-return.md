@@ -15,8 +15,8 @@ ARM OpenAPI(swagger) specs
 ## Output Message
 
 A synchronous POST operation must have either 200 or 204 return codes.
-The 200 response code has missing schema. 200 response for a synchronous POST operation must have a response schema specified.
-Schema defined in 204 response code. 204 response for a synchronous POST operation must not have a response schema specified.
+200 response for a synchronous POST operation must have a response schema specified.
+204 response for a synchronous POST operation must not have a response schema specified.
 
 ## Description
 

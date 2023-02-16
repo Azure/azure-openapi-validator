@@ -84,7 +84,7 @@ test("LroPostReturn should find errors if both 200 & 204 aren't specified", () =
   })
 })
 
-test("LroPostReturn should find errors if both 200 isn't specified", () => {
+test("LroPostReturn should find errors if 200 isn't specified", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -158,7 +158,7 @@ test("LroPostReturn should find errors if both 200 isn't specified", () => {
   })
 })
 
-test("LroPostReturn should find errors if both 202 isn't specified", () => {
+test("LroPostReturn should find errors if 202 isn't specified", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -299,9 +299,7 @@ test("LroPostReturn should find errors if 200 response code is specified without
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "The 200 response code has missing schema. 200 response for a LRO POST operation must have a response schema specified."
-    )
+    expect(results[0].message).toContain("200 response for a LRO POST operation must have a response schema specified.")
   })
 })
 
@@ -377,9 +375,7 @@ test("LroPostReturn should find errors if 202 response code is specified with sc
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "Schema defined in 202 response code. 202 response for a LRO POST operation must not have a response schema specified."
-    )
+    expect(results[0].message).toContain("202 response for a LRO POST operation must not have a response schema specified.")
   })
 })
 

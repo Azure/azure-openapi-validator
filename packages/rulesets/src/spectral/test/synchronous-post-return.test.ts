@@ -216,7 +216,7 @@ test("SyncPostReturn should find errors if 200 response code is specified withou
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(
-      "The 200 response code has missing schema. 200 response for a synchronous POST operation must have a response schema specified."
+      "200 response for a synchronous POST operation must have a response schema specified."
     )
   })
 })
@@ -290,7 +290,7 @@ test("SyncPostReturn should find errors if 204 response code is specified with s
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(
-      "Schema defined in 204 response code. 204 response for a synchronous POST operation must not have a response schema specified."
+      "204 response for a synchronous POST operation must not have a response schema specified."
     )
   })
 })

@@ -16,14 +16,14 @@ export const lroPostReturn = (postOp: any, _opts: any, ctx: any) => {
 
   if (responses["200"] && !responses["200"].schema) {
     errors.push({
-      message: "The 200 response code has missing schema. 200 response for a LRO POST operation must have a response schema specified.",
+      message: "200 response for a LRO POST operation must have a response schema specified.",
       path,
     })
   }
 
   if (responses["202"] && responses["202"].schema) {
     errors.push({
-      message: "Schema defined in 202 response code. 202 response for a LRO POST operation must not have a response schema specified.",
+      message: "202 response for a LRO POST operation must not have a response schema specified.",
       path,
     })
   }

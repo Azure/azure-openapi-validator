@@ -20,7 +20,7 @@ export const SyncPostReturn = (postOp: any, _opts: any, ctx: any) => {
   if (responses["200"] && !responses["200"].schema) {
     errors.push({
       message:
-        "The 200 response code has missing schema. 200 response for a synchronous POST operation must have a response schema specified.",
+        "200 response for a synchronous POST operation must have a response schema specified.",
       path,
     })
   }
@@ -28,7 +28,7 @@ export const SyncPostReturn = (postOp: any, _opts: any, ctx: any) => {
   if (responses["204"] && responses["204"].schema) {
     errors.push({
       message:
-        "Schema defined in 204 response code. 204 response for a synchronous POST operation must not have a response schema specified.",
+        "204 response for a synchronous POST operation must not have a response schema specified.",
       path,
     })
   }
