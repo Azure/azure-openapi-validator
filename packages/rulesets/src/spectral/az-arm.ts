@@ -14,6 +14,7 @@ import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mu
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
+import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
@@ -493,6 +494,18 @@ const ruleset: any = {
         functionOptions: {
           methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
         },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-10
+    NoDuplicatePathsForScopeParameter: {
+      description: 'Paths with explicitly defined scope should not be present if there is an equivalent path with the "scope" parameter.',
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
+      then: {
+        function: noDuplicatePathsForScopeParameter,
       },
     },
 
