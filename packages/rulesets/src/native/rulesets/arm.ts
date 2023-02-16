@@ -14,7 +14,6 @@ import { providerNamespace } from "../functions/provider-namespace"
 export const armRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
   rules: {
-
     ///
     /// ARM RPC rules for Delete patterns
     ///
@@ -113,8 +112,10 @@ export const armRuleset: IRuleSet = {
     },
 
     ///
-    /// ARM rules wthout an RPC code
+    /// ARM RPC rules for operations API
     ///
+
+    // RPC-Operations-V1-01: RPs MUST expose a GET for the RP's set of available operations
     OperationsAPIImplementation: {
       description:
         "Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), each RP must expose an operations API that returns information about all the operations available with the service.",
@@ -127,6 +128,10 @@ export const armRuleset: IRuleSet = {
         execute: operationsAPIImplementation,
       },
     },
+
+    ///
+    /// ARM rules wthout an RPC code
+    ///
     // https://github.com/Azure/azure-openapi-validator/issues/329
     TrackedResourcePatchOperation: {
       category: "ARMViolation",
