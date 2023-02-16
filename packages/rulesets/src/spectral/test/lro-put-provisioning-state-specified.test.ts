@@ -499,7 +499,7 @@ test("ProvisioningStateSpecifiedForSyncPut should find no errors", () => {
             "200": {
               description: "Success",
               schema: {
-                $ref: "#/definitions/FooRule",
+                $ref: "#/definitions/FooRequestParams",
               },
             },
             "201": {

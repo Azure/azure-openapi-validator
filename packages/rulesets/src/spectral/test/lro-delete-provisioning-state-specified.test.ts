@@ -430,7 +430,8 @@ test("ProvisioningStateSpecifiedForLRODelete should find no errors", () => {
   })
 })
 
-test("ProvisioningStateSpecifiedForSyncDelete should find no errors", () => {
+
+test("ProvisioningStateSpecifiedForLRODelete without schema should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -450,9 +451,6 @@ test("ProvisioningStateSpecifiedForSyncDelete should find no errors", () => {
           responses: {
             "200": {
               description: "Success",
-              schema: {
-                $ref: "#/definitions/FooProps",
-              },
             },
           },
         },
@@ -507,7 +505,7 @@ test("ProvisioningStateSpecifiedForSyncDelete should find no errors", () => {
   })
 })
 
-test("ProvisioningStateSpecifiedForLRODelete without schema should find no errors", () => {
+test("ProvisioningStateSpecifiedForSyncDelete should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -527,6 +525,9 @@ test("ProvisioningStateSpecifiedForLRODelete without schema should find no error
           responses: {
             "200": {
               description: "Success",
+              schema: {
+                $ref: "#/definitions/FooProps",
+              },
             },
           },
         },

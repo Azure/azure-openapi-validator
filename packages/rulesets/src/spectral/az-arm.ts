@@ -80,7 +80,7 @@ const ruleset: any = {
     //PUT
     ProvisioningStateSpecifiedForLROPut: {
       description:
-        'A LRO PUT operations response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
+        'A LRO PUT operation\'s response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -93,7 +93,7 @@ const ruleset: any = {
     //Patch
     ProvisioningStateSpecifiedForLROPatch: {
       description:
-        'A long running Patch operation response schema must have "ProvisioningState" property specified for the 200 status codes.',
+        'A long running Patch operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
       message: "{{error}}",
       severity: "error",
       resolved: true,
@@ -108,7 +108,7 @@ const ruleset: any = {
     //Delete
     ProvisioningStateSpecifiedForLRODelete: {
       description:
-        'A long running Delete operation response schema must have "ProvisioningState" property specified for the 200 status codes.',
+        'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
       message: "{{error}}",
       severity: "warn",
       resolved: true,
