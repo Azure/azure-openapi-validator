@@ -404,6 +404,7 @@ export class ArmHelper {
   /**
    * return [{operationPath}:{Workspace.EnhancedSchema}]
    */
+
   public getOperationApi() {
     const walker = new SwaggerWalker(this.inventory)
     let result: any = undefined
