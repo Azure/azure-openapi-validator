@@ -42,6 +42,20 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 1)
   })
 
+  test("operation api implementation for valid operations api", async () => {
+    const fileNames = ["operations-api-validation-no-errors.json"]
+    const ruleName = "OperationsAPIImplementation"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 0)
+  })
+
+  test("operation api implementation should have error for only a subscription level operations path", async () => {
+    const fileNames = ["operations-api-validation-subscription-level.json"]
+    const ruleName = "OperationsAPIImplementation"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
   test("resource property bag multiple level violations", async () => {
     const fileNames = ["arm-resource-properties-bag-multiple-level-violations.json"]
     const ruleName = "ArmResourcePropertiesBag"
