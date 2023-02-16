@@ -20,13 +20,29 @@ export const armRuleset: IRuleSet = {
 
     // https://github.com/Azure/azure-openapi-validator/issues/329
     // RPC Code: RPC-Delete-V1-03
-    AllResourcesMustHaveDelete: {
+    AllTrackedResourcesMustHaveDelete: {
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
       given: "$",
       then: {
         execute: allResourcesHaveDelete,
+        options: {
+          isTrackedResource: true,
+        },
+      },
+    },
+    // RPC Code: RPC-Delete-V1-05
+    AllProxyResourcesShouldHaveDelete: {
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "warning",
+      given: "$",
+      then: {
+        execute: allResourcesHaveDelete,
+        options: {
+          isTrackedResource: false,
+        },
       },
     },
 
