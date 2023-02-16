@@ -142,7 +142,6 @@ const ruleset: any = {
         functionOptions: {
           match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
         },
-        // function: falsy,
       },
     },
 
