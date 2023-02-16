@@ -59,6 +59,61 @@ test("ParametersInPost should find errors", () => {
   })
 })
 
+test("ParametersInPost should find errors for more than one query param", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "foo_post",
+          parameters: [
+            {
+              $ref: "#/parameters/LoadTestNameParameter",
+            },
+            {
+              $ref: "#/parameters/QuotaBucketNameParameter",
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      LoadTestNameParameter: {
+        in: "query",
+        name: "loadTestName",
+        description: "Load Test name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+      QuotaBucketNameParameter: {
+        in: "query",
+        name: "quotaBucketName",
+        description: "Quota Bucket name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./foo.post.parameters")
+    expect(results[0].message).toContain(
+      "loadTestName is a query parameter. Post operation must not contain any query parameter other than api-version."
+    )
+    expect(results[1].path.join(".")).toBe("paths./foo.post.parameters")
+    expect(results[1].message).toContain(
+      "quotaBucketName is a query parameter. Post operation must not contain any query parameter other than api-version."
+    )
+  })
+})
+
 test("ParametersInPost should not flag error for api-version param", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
@@ -107,6 +162,50 @@ test("ParametersInPost should not flag error for api-version param", () => {
     expect(results[0].message).toContain(
       "quotaBucketName is a query parameter. Post operation must not contain any query parameter other than api-version."
     )
+  })
+})
+
+test("ParametersInPost should not flag error with only api-version param", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "foo_post",
+          parameters: [
+            {
+              $ref: "src/spectral/test/resources/types.json#/parameters/ApiVersionParameter",
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      LoadTestNameParameter: {
+        in: "path",
+        name: "loadTestName",
+        description: "Load Test name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+      QuotaBucketNameParameter: {
+        in: "query",
+        name: "quotaBucketName",
+        description: "Quota Bucket name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
   })
 })
 
