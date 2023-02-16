@@ -72,3 +72,68 @@ test("LroErrorContent should not find errors", () => {
     expect(results.length).toBe(0)
   })
 })
+
+test("LroErrorContent should find errors for outdated common types.json", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        delete: {
+          "x-ms-long-running-operation": true,
+          responses: {
+            500: {
+              description: "An error",
+              schema: {
+                $ref: "../../../../../common-types/resource-management/v1/types.json#/definitions/ErrorResponse",
+              },
+            },
+            202: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      ErrorResponse: {
+        description: "an error response",
+      },
+    },
+  }
+  return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.delete.responses.500.schema.$ref")
+  })
+})
+
+test("LroErrorContent should not find errors for future common types.json", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        delete: {
+          "x-ms-long-running-operation": true,
+          responses: {
+            500: {
+              description: "An error",
+              schema: {
+                $ref: "../../../../../common-types/resource-management/v10/types.json#/definitions/ErrorResponse",
+              },
+            },
+            202: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      ErrorResponse: {
+        description: "an error response",
+      },
+    },
+  }
+  return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
