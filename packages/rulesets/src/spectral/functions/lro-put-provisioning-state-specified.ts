@@ -14,7 +14,7 @@ export const provisioningStateSpecifiedForLROPut = (putOp: any, _opts: any, ctx:
     const provisioningStateProperty = getProperty(allProperties?.properties, "provisioningState")
     if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
       errors.push({
-        message: `${code} response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified.`,
+        message: `${code} response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified for the 200 and 201 status codes.`,
         path,
       })
     }

@@ -94,7 +94,7 @@ test("ProvisioningStateSpecifiedForLROPut referencing definitions from same swag
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.put")
     expect(results[0].message).toContain(
-      "200 response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified."
+      "200 response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified for the 200 and 201 status codes."
     )
   })
 })
@@ -182,7 +182,7 @@ test("ProvisioningStateSpecifiedForLROPut with a properties property but no prov
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.put")
     expect(results[0].message).toContain(
-      "200 response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified."
+      "200 response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified for the 200 and 201 status codes."
     )
   })
 })
@@ -299,7 +299,7 @@ test("ProvisioningStateSpecified referencing definitions from different swagger 
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.put")
     expect(results[0].message).toContain(
-      "200 response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified."
+      "200 response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified for the 200 and 201 status codes."
     )
   })
 })
