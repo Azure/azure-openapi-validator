@@ -494,6 +494,25 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM rules for operations API
+    ///
+
+    OperationsApiSchemaUsesCommonTypes: {
+      description: "Operations API path must follow the schema provided in the common types.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given:
+        "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v\d+/types.json#/definitions/OperationListResult",
+        },
+    },
+
+    ///
     /// ARM rules without an RPC code
     ///
 
