@@ -197,6 +197,22 @@ const ruleset: any = {
     /// ARM RPC rules for Patch patterns
     ///
 
+    // RPC Code: RPC-Patch-V1-01
+    PatchPropertiesInNormalResourceDefinition: {
+      description: "Patch request body MUST contain atleast one or more properties present in the normal resource definition.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.patch"],
+      then: {
+        function: validatePatchBodyParamProperties,
+        functionOptions: {
+          putOp: ["$[paths,'x-ms-paths'].*.put"],
+        },
+      },
+    },
+
     // RPC Code: RPC-Patch-V1-02
     UnSupportedPatchProperties: {
       description: "Patch may not change the name, location, or type of the resource.",
