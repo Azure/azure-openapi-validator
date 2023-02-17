@@ -114,7 +114,7 @@ test("ParametersInPost should find errors for more than one query param", () => 
   })
 })
 
-test("ParametersInPost should not flag error for api-version param", () => {
+test("ParametersInPost should flag error for other query params but should not flag error for api-version param", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -165,7 +165,7 @@ test("ParametersInPost should not flag error for api-version param", () => {
   })
 })
 
-test("ParametersInPost should not flag error with only api-version param", () => {
+test("ParametersInPost should not flag error when api-version param is only specified", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
