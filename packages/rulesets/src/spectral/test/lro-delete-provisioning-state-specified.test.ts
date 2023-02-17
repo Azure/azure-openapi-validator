@@ -505,7 +505,7 @@ test("ProvisioningStateSpecifiedForLRODelete without schema should find no error
   })
 })
 
-test("ProvisioningStateSpecifiedForSyncDelete should find no errors", () => {
+test("ProvisioningStateSpecifiedForSyncDelete- without provisioning state should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -527,6 +527,83 @@ test("ProvisioningStateSpecifiedForSyncDelete should find no errors", () => {
               description: "Success",
               schema: {
                 $ref: "#/definitions/FooProps",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+          id: {
+            type: "string",
+          },
+        },
+      },
+      FooResource: {
+        "x-ms-azure-resource": true,
+        properties: {
+          provisioningState: {
+            type: "string",
+            enum: ["Creating", "Canceled", "Deleting", "Failed"],
+          },
+        },
+      },
+      FooRule: {
+        type: "object",
+        properties: {
+          properties: {
+            $ref: "#/definitions/FooResource",
+            "x-ms-client-flatten": true,
+          },
+        },
+        required: ["properties"],
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("ProvisioningStateSpecifiedForSyncDelete- with provisioning state should find no errors", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        delete: {
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_delete",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooRule",
               },
             },
           },
