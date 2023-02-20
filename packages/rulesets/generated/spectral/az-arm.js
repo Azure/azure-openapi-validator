@@ -443,7 +443,7 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
     Object.values(responseList).some((response) => {
         var _a, _b;
         if (response.schema) {
-            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array" && Object.keys(response.schema.properties).length === 1) {
+            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array" && Object.keys(response.schema.properties).length <= 2) {
                 if (!listRegex.test(swaggerObj["operationId"])) {
                     gotArray = true;
                     return true;
@@ -1633,6 +1633,75 @@ const lroPatch202 = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+const provisioningStateSpecified = (pathItem, _opts, ctx) => {
+    var _a;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const neededHttpVerbs = ["put", "patch"];
+    const putCodes = ["200", "201"];
+    const patchCodes = ["200"];
+    const path = ctx.path || [];
+    const errors = [];
+    for (const verb of neededHttpVerbs) {
+        if (pathItem[verb]) {
+            let codes = [];
+            if (verb === "patch") {
+                codes = patchCodes;
+            }
+            else {
+                codes = putCodes;
+            }
+            for (const code of codes) {
+                if (!getProperty((_a = pathItem[verb].responses[code]) === null || _a === void 0 ? void 0 : _a.schema, "provisioningState")) {
+                    errors.push({
+                        message: `${code} response in long running ${verb} operation is missing ProvisioningState property. A LRO PUT and PATCH operations response schema must have ProvisioningState specified.`,
+                        path,
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
+const lroPutReturn = (putOp, _opts, ctx) => {
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    if (!putOp["x-ms-long-running-operation"]) {
+        return [];
+    }
+    const errors = [];
+    if ((putOp === null || putOp === void 0 ? void 0 : putOp.responses) && !((putOp === null || putOp === void 0 ? void 0 : putOp.responses["201"]) && (putOp === null || putOp === void 0 ? void 0 : putOp.responses["200"]))) {
+        errors.push({
+            message: "The async put operation must have both 200 and 201 response code.",
+            path: [...path, "responses"],
+        });
+    }
+    return errors;
+};
+
+const scopeParameter = "{scope}";
+const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
+        return [];
+    }
+    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
+    const matches = otherPaths.filter((p) => pathRegEx.test(p));
+    const errors = matches.map((match) => {
+        return {
+            message: `Path "${match}" with explicitly defined scope is a duplicate of path "${path}" that has the scope parameter.".`,
+            path: ctx.path,
+        };
+    });
+    return errors;
+};
+
 function operationsApiSchema(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -1699,6 +1768,40 @@ const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
             pushToError(errors, "api-version", path);
         }
     }
+    return errors;
+};
+
+const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
+    var _a, _b;
+    if (parameters === null || !Array.isArray(parameters)) {
+        return [];
+    }
+    if (parameters.length === 0) {
+        return [];
+    }
+    const commonTypesParametersNames = new Set([
+        "subscriptionId",
+        "api-version",
+        "resourceGroupName",
+        "operationId",
+        "location",
+        "managementGroupName",
+        "scope",
+        "tenantId",
+        "ifMatch",
+        "ifNoneMatch",
+    ]);
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    const allParams = parameters.concat(Object.values((_b = swagger === null || swagger === void 0 ? void 0 : swagger.parameters) !== null && _b !== void 0 ? _b : []));
+    const paramsWithNameProperty = allParams.filter((param) => Object.keys(param).includes("name"));
+    const paramNames = paramsWithNameProperty.map((param) => param.name);
+    const paramsFromCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.has(pName));
+    const errors = paramsFromCommonTypes.map((pName) => {
+        return {
+            message: `Not using the common-types defined parameter "${pName}".`,
+            path: ctx.path,
+        };
+    });
     return errors;
 };
 
@@ -1844,6 +1947,24 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
     return errors;
 };
 
+const responseSchemaSpecifiedForSuccessStatusCode = (putOperation, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const successCodes = ["200", "201"];
+    for (const code of successCodes) {
+        if (putOperation.responses[code]) {
+            const response = putOperation.responses[code];
+            if (!response.schema) {
+                errors.push({
+                    message: `The ${code} success status code has missing response schema. 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.`,
+                    path,
+                });
+            }
+        }
+    }
+    return errors;
+};
+
 const securityDefinitionsStructure = (swagger, _opts) => {
     var _a, _b, _c, _d, _e, _f;
     if (swagger === "" || typeof swagger !== "object") {
@@ -1899,6 +2020,40 @@ const skuValidation = (skuSchema, opts, paths) => {
         if (prop[0].toLowerCase() === "name") {
             if (prop[1].type !== "string") {
                 errors.push(message);
+            }
+        }
+    }
+    return errors;
+};
+
+const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const pathParams = pathItem.parameters || [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const bodyParam = allParams.find((p) => p.in === "body");
+        if (bodyParam) {
+            const properties = getProperties(bodyParam.schema);
+            const requiredProperties = getRequiredProperties(bodyParam.schema);
+            if ("location" in properties) {
+                if ("tags" in properties) {
+                    if (requiredProperties.includes("tags")) {
+                        errors.push({
+                            message: `Tags must not be a required property.`,
+                            path: [...path, "put"]
+                        });
+                    }
+                }
+                else {
+                    errors.push({
+                        message: `Tracked resource does not have tags in the request schema.`,
+                        path: [...path, "put"],
+                    });
+                }
             }
         }
     }
@@ -1975,40 +2130,6 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
-const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
-    if (pathItem === null || typeof pathItem !== "object") {
-        return [];
-    }
-    const path = paths.path || [];
-    const errors = [];
-    const pathParams = pathItem.parameters || [];
-    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
-        const allParams = [...pathParams, ...pathItem["put"].parameters];
-        const bodyParam = allParams.find((p) => p.in === "body");
-        if (bodyParam) {
-            const properties = getProperties(bodyParam.schema);
-            const requiredProperties = getRequiredProperties(bodyParam.schema);
-            if ("location" in properties) {
-                if ("tags" in properties) {
-                    if (requiredProperties.includes("tags")) {
-                        errors.push({
-                            message: `Tags must not be a required property.`,
-                            path: [...path, "put"]
-                        });
-                    }
-                }
-                else {
-                    errors.push({
-                        message: `Tracked resource does not have tags in the request schema.`,
-                        path: [...path, "put"],
-                    });
-                }
-            }
-        }
-    }
-    return errors;
-};
-
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2046,6 +2167,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
             then: {
                 function: longRunningResponseStatusCodeArm,
+            },
+        },
+        ProvisioningStateSpecified: {
+            description: 'A LRO PUT and PATCH operations response schema must have "ProvisioningState" property specified.',
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^^",
+            then: {
+                function: provisioningStateSpecified,
             },
         },
         ProvisioningStateValidation: {
@@ -2270,6 +2402,17 @@ const ruleset = {
                 function: locationMustHaveXmsMutability,
             },
         },
+        ResponseSchemaSpecifiedForSuccessStatusCode: {
+            description: "The 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.put"],
+            then: {
+                function: responseSchemaSpecifiedForSuccessStatusCode,
+            },
+        },
         PathContainsSubscriptionId: {
             description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
             message: "{{error}}",
@@ -2365,6 +2508,17 @@ const ruleset = {
                 },
             },
         },
+        NoDuplicatePathsForScopeParameter: {
+            description: 'Paths with explicitly defined scope should not be present if there is an equivalent path with the "scope" parameter.',
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
+            then: {
+                function: noDuplicatePathsForScopeParameter,
+            },
+        },
         ArrayMustHaveType: {
             description: "Array type must have a type except for any type.",
             message: "{{error}}",
@@ -2426,6 +2580,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
             then: {
                 function: parameterNotDefinedInGlobalParameters,
+            },
+        },
+        ParameterNotUsingCommonTypes: {
+            description: "This rule checks for parameters defined in common-types that are not using the common-types definition.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: false,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+            then: {
+                function: parameterNotUsingCommonTypes,
             },
         },
         CollectionObjectPropertiesNaming: {
@@ -2533,6 +2698,17 @@ const ruleset = {
             then: {
                 field: "default",
                 function: truthy,
+            },
+        },
+        LroPutReturn: {
+            description: ".",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[put].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+            then: {
+                function: lroPutReturn,
             },
         },
     },

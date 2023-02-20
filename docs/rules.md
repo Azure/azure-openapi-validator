@@ -480,6 +480,12 @@ This is a rule introduced to validate if a LRO PUT and PATCH operations response
 
 Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
 
+### LroPutReturn
+
+A long running put operation should have 201(Created) or 200 OK (per normal guidance) response code.
+
+Please refer to [lro-put-return.md](./lro-put-return.md) for details.
+
 ### LROStatusCodesReturnTypeSchema
 
 The '200'/'201' responses of the long running operation must have a schema definition.

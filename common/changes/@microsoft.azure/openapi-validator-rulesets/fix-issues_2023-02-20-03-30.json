@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "re-implement RPC-ASYNC-V1-01",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
