@@ -9,7 +9,7 @@ export function* trackedResourcesMustHavePut(openapiSection: any, options: {}, c
   for (const re of allTrackedResources) {
     if (!re.operations.some((op) => op.httpMethod === "put")) {
       yield {
-        location: ["defintions", re.modelName],
+        location: ["definitions", re.modelName],
         message: `The tracked resource ${re.modelName} does not have a corresponding put operation.`,
       }
     }
@@ -23,7 +23,7 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
   for (const re of allTrackedResources) {
     if (re.operations.some((op) => regex.test(op.apiPath))) {
       yield {
-        location: ["defintions", re.modelName],
+        location: ["definitions", re.modelName],
         message: `The tracked resource ${re.modelName} is beyond third level of nesting.`,
       }
     }
@@ -39,7 +39,7 @@ export function* allResourcesHaveDelete(openapiSection: any, options: { isTracke
     if (apiPath) {
       if (armHelper.findOperation(apiPath, "put") && !armHelper.findOperation(apiPath, "delete")) {
         yield {
-          location: ["defintions", re.modelName],
+          location: ["definitions", re.modelName],
           message: `The resource ${re.modelName} does not have a corresponding delete operation.`,
         }
       }
