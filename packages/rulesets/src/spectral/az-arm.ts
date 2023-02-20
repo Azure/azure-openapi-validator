@@ -14,6 +14,7 @@ import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mu
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
+import { lroPutReturn } from "./functions/lro-put-return"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
@@ -683,6 +684,18 @@ const ruleset: any = {
       then: {
         field: "default",
         function: truthy,
+      },
+    },
+    // RPC Code: RPC-ASYNC-V1-01
+    LroPutReturn: {
+      description: ".",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+      then: {
+        function: lroPutReturn,
       },
     },
   },
