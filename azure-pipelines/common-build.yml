@@ -1,0 +1,16 @@
+parameters:
+- name: 'NodeVersion'
+  default: '12.x'
+  type: string
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '${{ parameters.NodeVersion }}'
+    displayName: 'Install Node.js ${{ parameters.NodeVersion }}'
+
+  - script: 'node common/scripts/install-run-rush.js install'
+    displayName: 'rush install'
+
+  - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
+    displayName: 'rush build'

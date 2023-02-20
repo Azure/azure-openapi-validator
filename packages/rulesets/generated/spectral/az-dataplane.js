@@ -308,10 +308,12 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
     const path = paths.path;
     if (swaggerObj["x-ms-pageable"] !== undefined) {
         if (!listRegex.test(swaggerObj.operationId)) {
-            return [{
-                    message: 'Since operation \'${swaggerObj.operationId}\' response has model definition \'x-ms-pageable\', it should be of the form \\"*_list*\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.',
-                    path: [...path, path[path.length - 1], 'operationId'],
-                }];
+            return [
+                {
+                    message: "Since operation '${swaggerObj.operationId}' response has model definition 'x-ms-pageable', it should be of the form \\\"*_list*\\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+                    path: [...path, path[path.length - 1], "operationId"],
+                },
+            ];
         }
         else {
             return [];
@@ -324,8 +326,8 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
     Object.values(responseList).some((response) => {
         var _a, _b;
         if (response.schema) {
-            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array") {
-                if (!listRegex.test(swaggerObj['operationId'])) {
+            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array" && Object.keys(response.schema.properties).length === 1) {
+                if (!listRegex.test(swaggerObj["operationId"])) {
                     gotArray = true;
                     return true;
                 }
@@ -334,10 +336,12 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
         return false;
     });
     if (gotArray)
-        return [{
-                message: 'Since operation `${swaggerObj.operationId}` response has model definition \'array\', it should be of the form "_\\_list_".',
-                path: [...path, path[path.length - 1], 'operationId'],
-            }];
+        return [
+            {
+                message: "Since operation `${swaggerObj.operationId}` response has model definition 'array', it should be of the form \"_\\_list_\".",
+                path: [...path, path[path.length - 1], "operationId"],
+            },
+        ];
     return [];
 };
 
@@ -577,6 +581,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "int64",
         "float",
         "double",
+        "unixtime",
         "byte",
         "binary",
         "date",
@@ -1121,7 +1126,7 @@ const ruleset$1 = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+            given: ["$..[?(@object() && @.properties)].properties[?(@object() && @.properties)].properties^"],
             then: {
                 field: "x-ms-client-flatten",
                 function: truthy,
@@ -1335,14 +1340,12 @@ const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesL
         const responseCodes = Object.keys((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
         const validResponseCodes = validResponseCodesList[method];
         const validResponseCodeString = validResponseCodes.join(" or ");
-        for (const responseCode of responseCodes) {
-            if ((responseCodes.length === 1 && !validResponseCodes.includes(responseCode)) ||
-                (responseCode !== "default" && !validResponseCodes.includes(responseCode))) {
-                errors.push({
-                    message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
-                    path: [...path, method],
-                });
-            }
+        const withTerminalCode = validResponseCodes.some((code) => responseCodes.includes(code));
+        if (!withTerminalCode) {
+            errors.push({
+                message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
+                path: [...path, method],
+            });
         }
     }
     return errors;

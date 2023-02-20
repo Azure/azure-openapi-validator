@@ -299,6 +299,21 @@ export class ArmHelper {
     return allTrackedResources
   }
 
+  public getProxyResources() {
+    const isProxyResource = (schema: any) => {
+      const enhancedSchema = this.enhancedSchema(schema)
+      return !this.getProperty(enhancedSchema, "location")
+    }
+    const allProxyResources = this.getAllResources().filter((re) => {
+      const schema = re.operations.find((op) => op.responseSchema)
+      if (schema) {
+        return isProxyResource(schema.responseSchema)
+      }
+      return false
+    })
+    return allProxyResources
+  }
+
   public getAllResourceNames() {
     const fullResources = this.getAllResources()
     const resources = new Set<string>()

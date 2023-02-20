@@ -16,17 +16,23 @@ Specifying `additionalProperties` with `type: object` is a common error.
 
 Please refer to [additional-properties-object.md](./additional-properties-object.md) for details.
 
-### AllResourcesMustHaveDelete
+### AllProxyResourcesShouldHaveDelete
 
-All top level proxy and (tracked at all levels) resources MUST support delete.
+All proxy resources SHOULD support delete.
 
-Please refer to [all-resources-must-have-delete.md](./all-resources-must-have-delete.md) for details.
+Please refer to [all-proxy-resources-should-have-delete.md](./all-proxy-resources-should-have-delete.md) for details.
 
 ### AllResourcesMustHaveGetOperation
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md) ,all the resources ,including top-level and nested resources, must have a get operation.
 
 Please refer to [all-resources-must-have-get-operation.md](./all-resources-must-have-get-operation.md) for details.
+
+### AllTrackedResourcesMustHaveDelete
+
+All tracked resources MUST support delete.
+
+Please refer to [all-tracked-resources-must-have-delete.md](./all-tracked-resources-must-have-delete.md) for details.
 
 ### AnonymousBodyParameter
 
@@ -50,7 +56,7 @@ Please refer to [api-version-enum.md](./api-version-enum.md) for details.
 
 ### ApiVersionParameterRequired
 
-This rule applies when the 'api-version' parameter is missing in any operations.
+Operation is missing the 'api-version' parameter.
 
 Please refer to [api-version-parameter-required.md](./api-version-parameter-required.md) for details.
 
@@ -59,10 +65,6 @@ Please refer to [api-version-parameter-required.md](./api-version-parameter-requ
 The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
 * -preview - Indicates the API version is in (public) preview
-* -alpha
-* -beta
-* -rc (release candidate)
-* -privatepreview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -472,6 +474,12 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
+### ProvisioningStateSpecified
+
+This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+
+Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
+
 ### LROStatusCodesReturnTypeSchema
 
 The '200'/'201' responses of the long running operation must have a schema definition.
@@ -483,6 +491,12 @@ Please refer to [lro-status-codes-return-type-schema.md](./lro-status-codes-retu
 The long running operation with final-state-via:original-uri should have a sibling 'get' operation.
 
 Please refer to [lro-with-original-url-as-final-state.md](./lro-with-original-url-as-final-state.md) for details.
+
+### MissingDefaultResponse
+
+All operations should have a default (error) response.
+
+Please refer to [missing-default-response.md](./missing-default-response.md) for details.
 
 ### MissingTypeObject
 
@@ -526,6 +540,12 @@ Please refer to [nested-resources-must-have-list-operation.md](./nested-resource
 Per definition of AutoRest [x-ms-pageable extension](https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-pageable), the property specified by nextLinkName must exist in the 200 response schema.
 
 Please refer to [next-link-property-must-exist.md](./next-link-property-must-exist.md) for details.
+
+### NoDuplicatePathsForScopeParameter
+
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
+
+Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
 ### NonApplicationJsonType
 
@@ -653,6 +673,12 @@ Per ARM guidelines, if `subscriptionId` is used anywhere as a path parameter, it
 
 Please refer to [parameter-not-defined-in-global-parameters.md](./parameter-not-defined-in-global-parameters.md) for details.
 
+### ParameterNotUsingCommonTypes
+
+Some commonly used parameters are defined in the common-types directory. These parameters should be referenced instead of explicitly redefining them.
+
+Please refer to [parameter-not-using-common-types.md](./parameter-not-using-common-types.md) for details.
+
 ### ParameterOrder
 
 Path parameters must be in the same order as in the path.
@@ -763,7 +789,7 @@ Please refer to [path-parameter-schema.md](./path-parameter-schema.md) for detai
 
 ### PathResourceProviderMatchNamespace
 
-Verifies whether the last resource provider matches namespace or not. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if Microsoft.Insights matches the namespace (Microsoft.Insights).
+Verifies whether the resource provider namespace in the last segment of the path matches the namespace to which the specification file belongs. E.g the path /providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/extResource/{extType}' is allowed only if the segment /Microsoft.Insights matches the namespace name to which the specification file belongs (Microsoft.Insights).
 
 Please refer to [path-resource-provider-match-namespace.md](./path-resource-provider-match-namespace.md) for details.
 
@@ -920,6 +946,12 @@ This rule ensures that the authors explicitly define these restrictions as a reg
 
 Please refer to [resource-name-restriction.md](./resource-name-restriction.md) for details.
 
+### ResponseSchemaSpecifiedForSuccessStatusCode
+
+Validates if 200 & 201 success status codes for an ARM PUT operation has a response schema specified.
+
+Please refer to [response-schema-specified-for-success-status-code.md](./response-schema-specified-for-success-status-code.md) for details.
+
 ### RPaasResourceProvisioningState
 
 Verifies if a Azure resource has a corresponding 'provisioningState' property. If the 'provisioningState' is not defining explicitly , the client will drop the state when the service does return it.
@@ -1067,6 +1099,12 @@ Verifies if a tracked resource has a corresponding PATCH operation.
 What's a tracked resource? A Tracked Resource is an ARM Resource with "location" as a required property.
 
 Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-operation.md) for details.
+
+### TrackedResourceSchemaTags
+
+Every tracked resource MUST support tags as an optional property.
+
+Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 
 ### TrackedResourcesMustHavePut
 

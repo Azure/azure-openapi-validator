@@ -1,6 +1,6 @@
 
 trigger:
-  - master
+  - main
 
 pr:
   branches:
@@ -10,29 +10,17 @@ jobs:
 - job: regression_test
   timeoutInMinutes: 0
   pool:
-    vmImage: "Ubuntu 18.04"
+    name: "azsdk-pool-mms-ubuntu-2204-general"
+    vmImage: "ubuntu-22.04"
 
   variables:
     NODE_OPTIONS: '--max-old-space-size=8192'
-    NodeVersion: '12.x'
   steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '$(NodeVersion)'
-      displayName: 'Install Node.js $(NodeVersion)'
-      
+    - template: common-build.yml
+
     - script: git submodule update --init
       displayName: Init submodule
       condition: always()
-
-    - script: 'node common/scripts/install-run-rush.js install'
-      displayName: 'rush install'
-
-    - script: 'node common/scripts/install-run-rush.js install'
-      displayName: 'rush install'
-
-    - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
-      displayName: 'rush build'
 
     - script: 'node common/scripts/install-run-rush.js regression-test'
       displayName: 'regression test'

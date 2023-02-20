@@ -425,10 +425,12 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
     const path = paths.path;
     if (swaggerObj["x-ms-pageable"] !== undefined) {
         if (!listRegex.test(swaggerObj.operationId)) {
-            return [{
-                    message: 'Since operation \'${swaggerObj.operationId}\' response has model definition \'x-ms-pageable\', it should be of the form \\"*_list*\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.',
-                    path: [...path, path[path.length - 1], 'operationId'],
-                }];
+            return [
+                {
+                    message: "Since operation '${swaggerObj.operationId}' response has model definition 'x-ms-pageable', it should be of the form \\\"*_list*\\\". Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.",
+                    path: [...path, path[path.length - 1], "operationId"],
+                },
+            ];
         }
         else {
             return [];
@@ -441,8 +443,8 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
     Object.values(responseList).some((response) => {
         var _a, _b;
         if (response.schema) {
-            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array") {
-                if (!listRegex.test(swaggerObj['operationId'])) {
+            if (((_b = (_a = response.schema.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.type) === "array" && Object.keys(response.schema.properties).length === 1) {
+                if (!listRegex.test(swaggerObj["operationId"])) {
                     gotArray = true;
                     return true;
                 }
@@ -451,10 +453,12 @@ const listInOperationName = (swaggerObj, _opts, paths) => {
         return false;
     });
     if (gotArray)
-        return [{
-                message: 'Since operation `${swaggerObj.operationId}` response has model definition \'array\', it should be of the form "_\\_list_".',
-                path: [...path, path[path.length - 1], 'operationId'],
-            }];
+        return [
+            {
+                message: "Since operation `${swaggerObj.operationId}` response has model definition 'array', it should be of the form \"_\\_list_\".",
+                path: [...path, path[path.length - 1], "operationId"],
+            },
+        ];
     return [];
 };
 
@@ -694,6 +698,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "int64",
         "float",
         "double",
+        "unixtime",
         "byte",
         "binary",
         "date",
@@ -1238,7 +1243,7 @@ const ruleset$1 = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$..[?(@object() && @.properties)][?(@object() && @.properties)].properties"],
+            given: ["$..[?(@object() && @.properties)].properties[?(@object() && @.properties)].properties^"],
             then: {
                 field: "x-ms-client-flatten",
                 function: truthy,
@@ -1482,14 +1487,12 @@ const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesL
         const responseCodes = Object.keys((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
         const validResponseCodes = validResponseCodesList[method];
         const validResponseCodeString = validResponseCodes.join(" or ");
-        for (const responseCode of responseCodes) {
-            if ((responseCodes.length === 1 && !validResponseCodes.includes(responseCode)) ||
-                (responseCode !== "default" && !validResponseCodes.includes(responseCode))) {
-                errors.push({
-                    message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
-                    path: [...path, method],
-                });
-            }
+        const withTerminalCode = validResponseCodes.some((code) => responseCodes.includes(code));
+        if (!withTerminalCode) {
+            errors.push({
+                message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
+                path: [...path, method],
+            });
         }
     }
     return errors;
@@ -1695,9 +1698,6 @@ const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
         if (!globalParametersList.includes("api-version") && !parameters.some((p) => p.$ref && commonTypeApiVersionReg.test(p.$ref))) {
             pushToError(errors, "api-version", path);
         }
-    }
-    else {
-        pushToError(errors, "api-version", path);
     }
     return errors;
 };
@@ -1975,6 +1975,40 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const pathParams = pathItem.parameters || [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const bodyParam = allParams.find((p) => p.in === "body");
+        if (bodyParam) {
+            const properties = getProperties(bodyParam.schema);
+            const requiredProperties = getRequiredProperties(bodyParam.schema);
+            if ("location" in properties) {
+                if ("tags" in properties) {
+                    if (requiredProperties.includes("tags")) {
+                        errors.push({
+                            message: `Tags must not be a required property.`,
+                            path: [...path, "put"]
+                        });
+                    }
+                }
+                else {
+                    errors.push({
+                        message: `Tracked resource does not have tags in the request schema.`,
+                        path: [...path, "put"],
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2194,6 +2228,17 @@ const ruleset = {
                 function: bodyParamRepeatedInfo,
             },
         },
+        RequestSchemaForTrackedResourcesMustHaveTags: {
+            description: "A tracked resource MUST always have tags as a top level optional property",
+            message: "{{description}}. {{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^",
+            then: {
+                function: trackedResourceTagsPropertyInRequest,
+            },
+        },
         PutGetPatchResponseSchema: {
             description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
             message: "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
@@ -2368,7 +2413,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview|alpha|beta|rc|privatepreview))?$",
+                    match: "^(20\\d{2})-(0[1-9]|1[0-2])-((0[1-9])|[12][0-9]|3[01])(-(preview))?$",
                 },
             },
         },
@@ -2478,6 +2523,16 @@ const ruleset = {
             given: ["$.schemes"],
             then: {
                 function: httpsSupportedScheme,
+            },
+        },
+        MissingDefaultResponse: {
+            description: "All operations should have a default (error) response.",
+            message: "Operation is missing a default response.",
+            severity: "error",
+            given: "$.paths.*.*.responses",
+            then: {
+                field: "default",
+                function: truthy,
             },
         },
     },
