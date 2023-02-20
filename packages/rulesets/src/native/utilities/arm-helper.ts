@@ -29,8 +29,8 @@ type Operation = {
 type ResourceInfo = {
   modelName: string
   specPath: string
-  resourceType?: string
   operations: Operation[]
+  resourceType?: string
 }
 
 function* jsonPathIt(doc: any, jsonPath: string): Iterable<any> {
@@ -170,7 +170,14 @@ export class ArmHelper {
     if (!modelName) {
       return undefined
     }
-    return Workspace.createEnhancedSchema(this.innerDoc?.definitions?.[modelName], this.specPath!)
+    const resourceInfo = this.resources.find((re) => re.modelName === modelName)
+    if (!resourceInfo) {
+      return undefined
+    }
+    return Workspace.createEnhancedSchema(
+      this.inventory.getDocuments(resourceInfo.specPath).definitions?.[resourceInfo.modelName],
+      resourceInfo.specPath!
+    )
   }
 
   /**
@@ -271,14 +278,14 @@ export class ArmHelper {
     const resWithXmsRes = localResourceModels.filter(
       (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase())
     )
-    const resWithPutOrPath = localResourceModels.filter((re) =>
+    const resWithPutOrPatch = localResourceModels.filter((re) =>
       re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
     )
     const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
 
     //  remove the resource only return by post , and add the resources return by put or patch
     this.armResources = _.uniqWith(
-      resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPath),
+      resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPatch),
       _.isEqual
     )
     return this.armResources
@@ -542,26 +549,6 @@ export class ArmHelper {
       }
     }
     return resourceCollectMap
-  }
-
-  public getCollectionModels() {
-    const collectionModels = new Map<string, string>()
-    const doc = this.innerDoc
-    const allResources = [...this.XmsResources.keys()]
-
-    for (const resourceNode of nodes(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode.value, "$..[?(@property === 'type' && @ === 'array')]^")) {
-        const arrayObj = arrayNode.value
-        const items = arrayObj?.items
-        if (items && items.$ref) {
-          const itemsModel = this.stripDefinitionPath(items.$ref)
-          if (itemsModel && allResources.indexOf(itemsModel) !== -1) {
-            collectionModels.set(resourceNode.path[2] as string, itemsModel)
-          }
-        }
-      }
-    }
-    return collectionModels
   }
 
   public isPathBySubscription(path: string) {
