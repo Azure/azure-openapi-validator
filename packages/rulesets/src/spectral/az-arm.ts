@@ -19,6 +19,7 @@ import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
@@ -225,6 +226,20 @@ const ruleset: any = {
         function: consistentPatchProperties,
       },
     },
+
+    // RPC Code: RPC-Patch-V1-06
+    PatchResponseCode: {
+      description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[patch]"],
+      then: {
+        function: PatchResponseCode,
+      },
+    },
+
     //https://github.com/Azure/azure-openapi-validator/issues/335
     // RPC Code: RPC-Patch-V1-06, RPC-Async-V1-08
     LroPatch202: {
