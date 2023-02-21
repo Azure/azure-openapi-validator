@@ -130,7 +130,7 @@ export class ArmHelper {
 
   private getXmsResources() {
     for (const name of Object.keys(this.innerDoc.definitions || {})) {
-      const model = this.getResourceByName(name)
+      const model = this.getInternalModel(name)
       for (const extension of jsonPathIt(model?.value, `$..['x-ms-azure-resource']`)) {
         if (extension === true) {
           this.XmsResources.add(name as string)
@@ -164,6 +164,13 @@ export class ArmHelper {
       }
     }, [])
     return AllResources
+  }
+
+  public getInternalModel(modelName: string) {
+    if (!modelName) {
+      return undefined
+    }
+    return Workspace.createEnhancedSchema(this.innerDoc?.definitions?.[modelName], this.specPath!)
   }
 
   public getResourceByName(modelName: string) {
@@ -377,7 +384,7 @@ export class ArmHelper {
    */
   private getResourceHierarchy(model: string | Workspace.EnhancedSchema) {
     let hierarchy: string[] = []
-    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
+    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getInternalModel(model)! : model
 
     if (!enhancedModel) {
       return hierarchy
@@ -415,7 +422,7 @@ export class ArmHelper {
   public containsDiscriminator(modelName: string) {
     let model
     if (typeof modelName === "string") {
-      model = this.getResourceByName(modelName)
+      model = this.getInternalModel(modelName)
     }
     if (model) {
       return this.containsDiscriminatorInternal(model)

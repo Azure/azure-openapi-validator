@@ -24,7 +24,7 @@ export function* implementPrivateEndpointApis(pathsNode: any, options: {}, ctx: 
   }
   const walk = new SwaggerWalker(ctx.inventory!)
   walk.warkAll(["$.paths.*"], (apiPaths) => {
-    const apiPath = apiPaths[1]
+    const apiPath = apiPaths[2]
     if (privateEndpointConnectionPattern.test(apiPath)) {
       setMap(apiPath.split("/").slice(0, -2).join("/"), { PathForPrivateConnection: apiPath })
     }

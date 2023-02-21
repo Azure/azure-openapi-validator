@@ -162,7 +162,7 @@ export const armRuleset: IRuleSet = {
         execute: xmsPageableListByRGAndSubscriptions,
       },
     },
-    ImplementPrivateEndpointApis: {
+    ImplementPrivateEndpointAPIs: {
       description: "This rule is to check if all the APIs for private endpoint are implemented.",
       severity: "error",
       category: "SDKViolation",
