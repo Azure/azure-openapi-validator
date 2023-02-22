@@ -503,13 +503,13 @@ const ruleset: any = {
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given:
-        "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
+      given: "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
       then: {
         function: pattern,
         functionOptions: {
-          match: ".*/common-types/resource-management/v\d+/types.json#/definitions/OperationListResult",
+          match: ".*/common-types/resource-management/vd+/types.json#/definitions/OperationListResult",
         },
+      },
     },
 
     ///
