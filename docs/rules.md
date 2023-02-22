@@ -208,6 +208,12 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [delete-in-operation-name.md](./delete-in-operation-name.md) for details.
 
+### DeleteResponseCodes
+
+Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.
+
+Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
+
 ### DeleteMustNotHaveRequestBody
 
 The request body of a delete operation must be empty.
