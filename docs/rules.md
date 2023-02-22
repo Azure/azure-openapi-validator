@@ -619,6 +619,12 @@ The operations API should have a response body schema consistent with the [contr
 
 Please refer to [operations-api-response-schema.md](./operations-api-response-schema.md) for details.
 
+### OperationsApiSchemaUsesCommonTypes
+
+Response content of operations API must follow the error schema provided in the common types.
+
+Please refer to [operations-api-schema-uses-common-types.md](./operations-api-schema-uses-common-types.md) for details.
+
 ### PageableOperation
 
 This rule was introduced to check if a pageable operation has x-ms-pageable enabled.
