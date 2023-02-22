@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Add test for ",
+      "comment": "Add test for RPC-POST-V1-01",
       "type": "patch"
     }
   ],
