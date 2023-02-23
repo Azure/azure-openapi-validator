@@ -19,6 +19,7 @@ import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { PatchPropertiesInNormalResourceDefinition } from "./functions/patch-properties-in-normal-resource-definition"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
@@ -199,17 +200,14 @@ const ruleset: any = {
 
     // RPC Code: RPC-Patch-V1-01
     PatchPropertiesInNormalResourceDefinition: {
-      description: "Patch request body MUST contain atleast one or more properties present in the normal resource definition.",
+      description: "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation).",
       message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.patch"],
+      given: ["$[paths,'x-ms-paths'].*.[patch]^"],
       then: {
-        function: validatePatchBodyParamProperties,
-        functionOptions: {
-          putOp: ["$[paths,'x-ms-paths'].*.put"],
-        },
+        function: PatchPropertiesInNormalResourceDefinition,
       },
     },
 
