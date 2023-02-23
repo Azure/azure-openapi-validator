@@ -31,11 +31,9 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
 }
 
 // support delete operation for all tracked resource , and all top level proxy resources.
-export function* allResourcesHaveDelete(openapiSection: any, options: {}, ctx: RuleContext) {
+export function* allResourcesHaveDelete(openapiSection: any, options: { isTrackedResource: boolean }, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allTrackedResources = armHelper.getTrackedResources()
-  const allTopLevelResource = armHelper.getTopLevelResources()
-  const allResources = _.uniq(allTrackedResources.concat(allTopLevelResource))
+  const allResources = options.isTrackedResource ? armHelper.getTrackedResources() : armHelper.getProxyResources()
   for (const re of allResources) {
     const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
     if (apiPath) {

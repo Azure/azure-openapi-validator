@@ -35,7 +35,7 @@ import { XmsIdentifierValidation } from "../legacyRules/XmsIdentifierValidation"
 import { XmsPageableMustHaveCorrespondingResponse } from "../legacyRules/XmsPageableMustHaveCorrespondingResponse"
 import { PathResourceProviderNamePascalCase } from "./../legacyRules/PathResourceProviderNamePascalCase"
 import { PathResourceTypeNameCamelCase } from "./../legacyRules/PathResourceTypeNameCamelCase"
-import { assertValidationRuleCount, collectTestMessagesFromValidator } from "./utilities/tests-helper"
+import { assertValidationRuleCount, collectTestMessagesFromValidator, getWarningMessages, getErrorMessages } from "./utilities/tests-helper"
 
 describe("IndividualAzureTests", () => {
   test("control characters not allowed test", async () => {
@@ -410,9 +410,18 @@ describe("IndividualAzureTests", () => {
 
   test("no delete in for tracked resource", async () => {
     const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
-    const ruleName = "AllResourcesMustHaveDelete"
+    const ruleName = "AllTrackedResourcesMustHaveDelete"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
+    getErrorMessages(messages)
+  })
+
+  test("no delete in for proxy resource", async () => {
+    const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "AllProxyResourcesShouldHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+    getWarningMessages(messages)
   })
 
   test("tracked resource beyonds third level", async () => {
