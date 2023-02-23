@@ -18,18 +18,27 @@ export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: 
 
   const patchProperties = []
   const putProperties = []
-
   const patchResponses = pathItem["patch"].responses
   const putResponses = pathItem["put"].responses
 
   for (const res in patchResponses) {
     const value = patchResponses[res]
-    patchProperties.push(getProperties(value.schema))
+    const properties = getProperties(value.schema)
+    if (Object.entries(properties).length > 0) {
+      patchProperties.push(properties)
+    }
+  }
+
+  if (patchProperties.length === 0) {
+    return []
   }
 
   for (const res in putResponses) {
     const value = putResponses[res]
-    putProperties.push(getProperties(value.schema))
+    const properties = getProperties(value.schema)
+    if (Object.entries(properties).length > 0) {
+      putProperties.push(properties)
+    }
   }
 
   for (const patchProp of patchProperties) {
@@ -39,9 +48,6 @@ export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: 
       }
     }
   }
-  // if (putProperties.includes(patchProp)) {
-  //   return []
-  // }
 
   errors.push({
     message: "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation).",
