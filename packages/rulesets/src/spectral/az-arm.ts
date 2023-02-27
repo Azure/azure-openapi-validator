@@ -494,6 +494,26 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM RPC rules for operations API
+    ///
+
+    // RPC Code: RPC-Operations-V1-02
+    OperationsApiTenantLevelOnly: {
+      description: "The operations API must only be at the tenant level.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$.[paths,'x-ms-paths'][?(@property.includes('operations'))]~",
+      then: {
+        function: pattern,
+        functionOptions: {
+          notMatch: ".*(?!^)/providers/[^/]+/operations",
+        },
+      },
+    },
+
+    ///
     /// ARM rules without an RPC code
     ///
 
