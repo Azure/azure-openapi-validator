@@ -22,6 +22,7 @@ import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -323,6 +324,18 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*.put^",
       then: {
         function: trackedResourceTagsPropertyInRequest,
+      },
+    },
+
+    // RPC Code: RPC-Put-V1-11
+    PutResponseSchemaDescription: {
+      description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      given: ["$[paths,'x-ms-paths'].*.put.responses"],
+      then: {
+        function: PutResponseSchemaDescription,
       },
     },
 
