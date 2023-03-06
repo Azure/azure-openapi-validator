@@ -104,4 +104,11 @@ describe("IndividualAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
+
+  test("private link apis missing", async () => {
+    const fileName = "PrivateLinkAPIsMissing.json"
+    const ruleName = "ImplementPrivateEndpointAPIs"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
 })
