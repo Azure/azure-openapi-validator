@@ -10,6 +10,7 @@ import {
   trackedResourcesMustHavePut,
   xmsPageableListByRGAndSubscriptions,
 } from "../functions/arm-resource-validation"
+import { implementPrivateEndpointApis } from "../functions/implement-private-endpoint-apis"
 import { providerNamespace } from "../functions/provider-namespace"
 export const armRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
@@ -159,6 +160,17 @@ export const armRuleset: IRuleSet = {
       openapiType: OpenApiTypes.arm,
       then: {
         execute: xmsPageableListByRGAndSubscriptions,
+      },
+    },
+    ImplementPrivateEndpointAPIs: {
+      description: "This rule is to check if all the APIs for private endpoint are implemented.",
+      severity: "error",
+      category: "SDKViolation",
+      scope: "Global",
+      given: "$.paths",
+      openapiType: OpenApiTypes.arm,
+      then: {
+        execute: implementPrivateEndpointApis,
       },
     },
   },
