@@ -34,8 +34,8 @@ jobs:
   - job: Windows
     displayName: credentialScan
     pool:
-      name: "azsdk-pool-mms-win-2019-general"
-      vmImage: "windows-2019"
+      name: azsdk-pool-mms-win-2022-general
+      vmImage: windows-2022
 
     steps:
       - task: ea576cd4-c61f-48f8-97e7-a3cb07b90a6f@2 # CredScan@2  

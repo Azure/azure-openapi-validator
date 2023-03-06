@@ -2485,6 +2485,17 @@ const ruleset = {
                 },
             },
         },
+        NoDuplicatePathsForScopeParameter: {
+            description: 'Paths with explicitly defined scope should not be present if there is an equivalent path with the "scope" parameter.',
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
+            then: {
+                function: noDuplicatePathsForScopeParameter,
+            },
+        },
         ArrayMustHaveType: {
             description: "Array type must have a type except for any type.",
             message: "{{error}}",

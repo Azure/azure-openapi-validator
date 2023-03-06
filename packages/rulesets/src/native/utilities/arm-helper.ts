@@ -29,8 +29,8 @@ type Operation = {
 type ResourceInfo = {
   modelName: string
   specPath: string
-  resourceType?: string
   operations: Operation[]
+  resourceType?: string
 }
 
 function* jsonPathIt(doc: any, jsonPath: string): Iterable<any> {
@@ -130,7 +130,7 @@ export class ArmHelper {
 
   private getXmsResources() {
     for (const name of Object.keys(this.innerDoc.definitions || {})) {
-      const model = this.getResourceByName(name)
+      const model = this.getInternalModel(name)
       for (const extension of jsonPathIt(model?.value, `$..['x-ms-azure-resource']`)) {
         if (extension === true) {
           this.XmsResources.add(name as string)
@@ -166,11 +166,25 @@ export class ArmHelper {
     return AllResources
   }
 
-  public getResourceByName(modelName: string) {
+  public getInternalModel(modelName: string) {
     if (!modelName) {
       return undefined
     }
     return Workspace.createEnhancedSchema(this.innerDoc?.definitions?.[modelName], this.specPath!)
+  }
+
+  public getResourceByName(modelName: string) {
+    if (!modelName) {
+      return undefined
+    }
+    const resourceInfo = this.resources.find((re) => re.modelName === modelName)
+    if (!resourceInfo) {
+      return undefined
+    }
+    return Workspace.createEnhancedSchema(
+      this.inventory.getDocuments(resourceInfo.specPath).definitions?.[resourceInfo.modelName],
+      resourceInfo.specPath!
+    )
   }
 
   /**
@@ -271,14 +285,14 @@ export class ArmHelper {
     const resWithXmsRes = localResourceModels.filter(
       (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase())
     )
-    const resWithPutOrPath = localResourceModels.filter((re) =>
+    const resWithPutOrPatch = localResourceModels.filter((re) =>
       re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
     )
     const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
 
     //  remove the resource only return by post , and add the resources return by put or patch
     this.armResources = _.uniqWith(
-      resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPath),
+      resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPatch),
       _.isEqual
     )
     return this.armResources
@@ -370,7 +384,7 @@ export class ArmHelper {
    */
   private getResourceHierarchy(model: string | Workspace.EnhancedSchema) {
     let hierarchy: string[] = []
-    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getResourceByName(model)! : model
+    const enhancedModel: Workspace.EnhancedSchema = typeof model === "string" ? this.getInternalModel(model)! : model
 
     if (!enhancedModel) {
       return hierarchy
@@ -408,7 +422,7 @@ export class ArmHelper {
   public containsDiscriminator(modelName: string) {
     let model
     if (typeof modelName === "string") {
-      model = this.getResourceByName(modelName)
+      model = this.getInternalModel(modelName)
     }
     if (model) {
       return this.containsDiscriminatorInternal(model)
@@ -542,26 +556,6 @@ export class ArmHelper {
       }
     }
     return resourceCollectMap
-  }
-
-  public getCollectionModels() {
-    const collectionModels = new Map<string, string>()
-    const doc = this.innerDoc
-    const allResources = [...this.XmsResources.keys()]
-
-    for (const resourceNode of nodes(doc, "$.definitions.*")) {
-      for (const arrayNode of nodes(resourceNode.value, "$..[?(@property === 'type' && @ === 'array')]^")) {
-        const arrayObj = arrayNode.value
-        const items = arrayObj?.items
-        if (items && items.$ref) {
-          const itemsModel = this.stripDefinitionPath(items.$ref)
-          if (itemsModel && allResources.indexOf(itemsModel) !== -1) {
-            collectionModels.set(resourceNode.path[2] as string, itemsModel)
-          }
-        }
-      }
-    }
-    return collectionModels
   }
 
   public isPathBySubscription(path: string) {
