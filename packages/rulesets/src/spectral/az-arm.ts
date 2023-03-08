@@ -193,7 +193,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
-    // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01
+    // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
     GetCollectionOnlyHasValueAndNextLink: {
       description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
       message: "{{description}}",
