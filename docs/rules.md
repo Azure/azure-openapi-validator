@@ -318,6 +318,12 @@ Instead, consider defining a `body` parameter with `type: string, format: binary
 
 Please refer to [formdata.md](./formdata.md) for details.
 
+### GetCollectionOnlyHasValueAndNextLink
+
+List GET endpoints (collection GET) must only have `value` and `nextLink` in `properties`.
+
+Please refer to [get-collection-only-has-value-nextlink.md](./get-collection-only-has-value-nextlink.md) for details.
+
 ### GetCollectionResponseSchema
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#get-resource), for all resources (top-level and nested), collection GETs should have a response definition with a property "value" containing an array of the "resource" schema.The definition returned in the collection "value" array should be the same as the response body for the individual GET.
