@@ -141,7 +141,7 @@ test("PatchResponseCode should find errors for lro patch", () => {
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch")
-    expect(results[0].message).toContain("LRO PATCH must have 200 and 202 return code.")
+    expect(results[0].message).toContain("LRO PATCH must have 200 and 202 return codes.")
   })
 })
 
