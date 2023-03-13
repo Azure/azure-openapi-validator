@@ -494,6 +494,47 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM RPC rules for SystemData
+    ///
+    // RPC Code: RPC-SystemData-V1-01
+    // Note that this rule is normally already covered when the common types Resource is used.
+    // Here we are still checking for usage of common types system data for the scenarios where
+    // RP teams have already defined Resource and are unable to switch to the common types resource
+    // because it would cause breaking changes.
+    SystemDataDefinitionsCommonTypes: {
+      description: "Must use the schema provided in the common types for SystemData.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$.definitions.*.properties.systemData",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/vd+/types.json#/definitions/systemData",
+        },
+      },
+    },
+    // RPC Code: RPC-SystemData-V1-01
+    SystemDataUsesCommonTypes: {
+      description: "Must use the schema provided in the common types for SystemData.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.[get,put,patch].[parameters,responses].*.schema.",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/vd+/types.json#/definitions/OperationListResult",
+        },
+      },
+    },
+    // RPC Code: RPC-SystemData-V1-01
+    SystemDataNotInPropertiesBag: {},
+    SystemDataNot
+
+    ///
     /// ARM rules without an RPC code
     ///
 
