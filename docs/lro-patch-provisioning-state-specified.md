@@ -22,4 +22,4 @@ This is a rule introduced to validate if a LRO PATCH operations response schema 
 
 ## How to fix the violation
 
-For an LRO PATCH add "ProvisioningState" property to the response schema of 200 status code.
+For an LRO PATCH add "provisioningState" property to the response schema of 200 status code.

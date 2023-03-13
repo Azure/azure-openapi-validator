@@ -22,4 +22,4 @@ This is a rule introduced to validate if a LRO DELETE operations response schema
 
 ## How to fix the violation
 
-For an LRO DELETE add "ProvisioningState" property to the response schema of 200 status code.
+For an LRO DELETE add "provisioningState" property to the response schema of 200 status code.

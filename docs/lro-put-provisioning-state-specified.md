@@ -22,4 +22,4 @@ This is a rule introduced to validate if a LRO PUT operations response schema ha
 
 ## How to fix the violation
 
-For an LRO PUT add "ProvisioningState" property to the response schema of 200 and 201 status codes.
+For an LRO PUT add "provisioningState" property to the response schema of 200 and 201 status codes.
