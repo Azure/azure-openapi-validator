@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "implement ",
+      "comment": "implement RPC_delete_v1_01",
       "type": "patch"
     }
   ],
