@@ -1819,6 +1819,31 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
+const PatchResponseCode = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    if (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) {
+        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"]) && (patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"]))) {
+            errors.push({
+                message: "LRO PATCH must have 200 and 202 return codes.",
+                path: path,
+            });
+        }
+    }
+    else {
+        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"])) {
+            errors.push({
+                message: "Synchronous PATCH must have 200 return code.",
+                path: path,
+            });
+        }
+    }
+    return errors;
+};
+
 const pathSegmentCasing = (apiPaths, _opts, paths) => {
     if (apiPaths === null || typeof apiPaths !== 'object') {
         return [];
@@ -1886,6 +1911,35 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
             });
             break;
         }
+    }
+    return errors;
+};
+
+const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
+    var _a, _b;
+    if (putResponseSchema === null || typeof putResponseSchema !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    if (!putResponseSchema["200"] || !putResponseSchema["201"]) {
+        errors.push({
+            message: "Any Put MUST contain 200 and 201 return codes.",
+            path: path,
+        });
+        return errors;
+    }
+    if (!((_a = putResponseSchema["200"].description) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes("update"))) {
+        errors.push({
+            message: 'Description of 200 response code of a PUT operation MUST include term "update".',
+            path: path,
+        });
+    }
+    if (!((_b = putResponseSchema["201"].description) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes("create"))) {
+        errors.push({
+            message: 'Description of 201 response code of a PUT operation MUST include term "create".',
+            path: path,
+        });
     }
     return errors;
 };
@@ -2267,6 +2321,17 @@ const ruleset = {
                 function: consistentPatchProperties,
             },
         },
+        PatchResponseCode: {
+            description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[patch]"],
+            then: {
+                function: PatchResponseCode,
+            },
+        },
         LroPatch202: {
             description: "Async PATCH should return 202.",
             message: "{{error}}",
@@ -2351,6 +2416,16 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: trackedResourceTagsPropertyInRequest,
+            },
+        },
+        PutResponseSchemaDescription: {
+            description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            given: ["$[paths,'x-ms-paths'].*.put.responses"],
+            then: {
+                function: PutResponseSchemaDescription,
             },
         },
         PutGetPatchResponseSchema: {
