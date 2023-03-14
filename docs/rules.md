@@ -474,6 +474,12 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
+### LROPostFinalStateViaProperty
+
+For a LRO POST long-running-operation-options must have location header in the final-state-via property.
+
+Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
+
 ### ProvisioningStateSpecified
 
 This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
