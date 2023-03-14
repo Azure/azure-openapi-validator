@@ -468,6 +468,12 @@ Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 
+### PatchResponseCode
+
+Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
+
+Please refer to [patch-response-code.md](./patch-response-code.md) for details.
+
 ### LroPostMustNotUseOriginalUriAsFinalState
 
 The long running post operation must not use final-stat-via:original-uri.
