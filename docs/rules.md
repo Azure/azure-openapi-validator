@@ -873,6 +873,12 @@ Per ARM guideline, provisioningState must have terminal states: Succeeded, Faile
 
 Please refer to [provisioning-state-validation.md](./provisioning-state-validation.md) for details.
 
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-get-patch-response-schema.md](./put-get-patch-response-schema.md) for details.
+
 ### PutGetPatchResponseSchema
 
 For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.
