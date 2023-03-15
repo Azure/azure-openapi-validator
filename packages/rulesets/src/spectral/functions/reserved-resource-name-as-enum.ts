@@ -22,21 +22,13 @@ export const reservedResourceNamesAsEnum = (pathItem: any, _opts: any, ctx: any)
   // relevant operations for constrained resource collections
   const includedOperations = ["get", "put", "delete", "patch"]
 
-  const operations: { [key: string]: any } = {}
+  const errors = []
 
   for (let op in includedOperations) {
     if (pathItem[pathName][op]) {
-      operations[op] = pathItem[pathName][op]
-    }
-  }
-
-  const errors = []
-
-  for (const [opName, op] of Object.entries(operations)) {
-    if (op["parameters"]?.["x-ms-enum"]?.["modelAsString"] !== true) {
       errors.push({
         message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\``,
-        path: [...path, opName],
+        path: [...path, op],
       })
     }
   }
