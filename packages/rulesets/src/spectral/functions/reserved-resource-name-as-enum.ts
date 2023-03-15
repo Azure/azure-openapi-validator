@@ -14,7 +14,7 @@ export const reservedResourceNamesAsEnum = (pathItem: any, _opts: any, ctx: any)
   // e.g., /Microsoft.Abc/wordOne/wordTwo
   const pathName = keys[0]
   // match paths that end with /wordEndingWithSs/word or /wordEndingWithS/{word}. E.g., /resourceTypes/resourceName or /resourceTypes/{resourceName}
-  if (!pathName.match(/.*\/\w+s\/[\}\{\w]+$/)) {
+  if (!pathName.match(/.*\/\w+s\/\w+$/)) {
     return []
   }
   // last word of the path name. e.g., /Microsoft.Abc/wordOne/wordTwo -> wordTwo
@@ -33,12 +33,9 @@ export const reservedResourceNamesAsEnum = (pathItem: any, _opts: any, ctx: any)
   const errors = []
 
   for (const [opName, op] of Object.entries(operations)) {
-    if (
-      op["parameters"]?.["x-ms-enum"]?.["modelAsString"] !== true ||
-      (lastPathWord.endsWith("}") && !op["parameters"]["x-ms-enum"][lastPathWord])
-    ) {
+    if (op["parameters"]?.["x-ms-enum"]?.["modelAsString"] !== true) {
       errors.push({
-        message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as an enum with \`modelAsString\` set to \`true\``,
+        message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\``,
         path: [...path, opName],
       })
     }

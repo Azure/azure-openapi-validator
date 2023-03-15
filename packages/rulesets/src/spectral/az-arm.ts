@@ -539,20 +539,6 @@ const ruleset: any = {
         function: reservedResourceNamesAsEnum,
       },
     },
-    // [?(@property.match(/.*\\/\\w+\\/\\w+$/))]^",
-    //"$[?(@property.match(/.*\\/\\w+\\/\\{\\w+\\}$/))][get,put,patch].parameters.*[?(@property === 'x-ms-enum')]^^^^^^^^
-    // ReservedResourceNamesModelAsString: {
-    //   description:
-    //     "modelAsString must be set to true for service-defined (reserved) resource names.",
-    //   message: "{{description}}",
-    //   severity: "error",
-    //   resolved: true,
-    //   formats: [oas2],
-    //   given: ["$[?(@property.match(/.*\/\w+\/\{\w+\}$/))][get,put,patch].parameters.*[?(@property === 'x-ms-enum')]^^^^^^^^"],
-    //   then: {
-    //     function: reservedResourceNamesModelAsString
-    //   },
-    // }
 
     ///
     /// ARM rules without an RPC code
