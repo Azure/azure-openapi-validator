@@ -31,6 +31,7 @@ import skuValidation from "./functions/sku-validation"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { reservedResourceNamesAsEnum } from "./functions/reserved-resource-name-as-enum"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -520,6 +521,38 @@ const ruleset: any = {
         function: noDuplicatePathsForScopeParameter,
       },
     },
+
+    ///
+    /// ARM RPC rules for constrained resource collections
+    ///
+
+    // RPC Code: RPC-ConstrainedCollections-V1-04
+    ReservedResourceNamesAsEnum: {
+      description:
+        "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']"],
+      then: {
+        function: reservedResourceNamesAsEnum,
+      },
+    },
+    // [?(@property.match(/.*\\/\\w+\\/\\w+$/))]^",
+    //"$[?(@property.match(/.*\\/\\w+\\/\\{\\w+\\}$/))][get,put,patch].parameters.*[?(@property === 'x-ms-enum')]^^^^^^^^
+    // ReservedResourceNamesModelAsString: {
+    //   description:
+    //     "modelAsString must be set to true for service-defined (reserved) resource names.",
+    //   message: "{{description}}",
+    //   severity: "error",
+    //   resolved: true,
+    //   formats: [oas2],
+    //   given: ["$[?(@property.match(/.*\/\w+\/\{\w+\}$/))][get,put,patch].parameters.*[?(@property === 'x-ms-enum')]^^^^^^^^"],
+    //   then: {
+    //     function: reservedResourceNamesModelAsString
+    //   },
+    // }
 
     ///
     /// ARM rules without an RPC code
