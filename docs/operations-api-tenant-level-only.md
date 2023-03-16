@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-GET operations API MUST be scoped tenant-wide. Operations should _not_ vary per subscription.
+Get operation for operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
 
 ## How to fix the violation
 

@@ -619,6 +619,12 @@ The operations API should have a response body schema consistent with the [contr
 
 Please refer to [operations-api-response-schema.md](./operations-api-response-schema.md) for details.
 
+### OperationsApiTenantLevelOnly
+
+Get operation for operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
+
+Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
+
 ### PageableOperation
 
 This rule was introduced to check if a pageable operation has x-ms-pageable enabled.
