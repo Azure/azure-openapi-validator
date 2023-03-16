@@ -530,7 +530,7 @@ const ruleset: any = {
     ReservedResourceNamesAsEnum: {
       description:
         "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
-      message: "{{description}}",
+      message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
