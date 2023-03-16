@@ -10,11 +10,11 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-Not using common types json ref for long running operation error response
+Error response content of long running operations must follow the error schema provided in the common types v2 and above.
 
 ## Description
 
-Error response content of long running operations must follow the error schema provided in the common types.
+Error response content of long running operations must follow the error schema provided in the common types v2 and above.
 
 ## Why the rule is important
 

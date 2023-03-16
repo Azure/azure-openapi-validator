@@ -131,7 +131,8 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
-      description: "Error response content of long running operations must follow the error schema provided in the common types.",
+      description:
+        "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
       message: "{{description}}",
       severity: "error",
       resolved: false,
