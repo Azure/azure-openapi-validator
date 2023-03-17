@@ -74,9 +74,9 @@ export class SwaggerInventory implements ISwaggerInventory {
     for (const ref of references) {
       if (!this.allDocs.has(ref)) {
         this.inventory.addNode(ref)
-        this.inventory.addDependency(specPath, ref)
         await this.cacheDocument(ref)
       }
+      this.inventory.addDependency(specPath, ref)
     }
     return document
   }
