@@ -14,12 +14,13 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation).
+Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).
 
 ## Description
 
-Validates if Patch request body contains atleast one or more properties present in the normal resource definition(PUT operation).
+Validates if Patch request body contains at least one or more properties present in the normal resource definition (PUT operation).
 
 ## How to fix the violation
 
-Ensure that, Patch request body contains atleast one or more properties present in the normal resource definition(PUT operation).
+Ensure that, Patch request body contains at least one or more properties present in the normal resource definition (PUT operation).
+

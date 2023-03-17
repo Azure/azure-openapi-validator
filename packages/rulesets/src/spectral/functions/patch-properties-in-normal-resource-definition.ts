@@ -7,19 +7,10 @@ export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: 
 
   const path = ctx.path
   const errors: any = []
-
-  if (!pathItem["put"]) {
-    errors.push({
-      message: "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation).",
-      path: path,
-    })
-    return errors
-  }
-
   const patchProperties = []
   const putProperties = []
   const patchResponses = pathItem["patch"].responses
-  const putResponses = pathItem["put"].responses
+
 
   for (const res in patchResponses) {
     const value = patchResponses[res]
@@ -33,6 +24,16 @@ export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: 
     return []
   }
 
+  if (!pathItem["put"]) {
+    errors.push({
+      message:
+        "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
+      path: path,
+    })
+    return errors
+  }
+
+  const putResponses = pathItem["put"].responses
   for (const res in putResponses) {
     const value = putResponses[res]
     const properties = getProperties(value.schema)
@@ -41,16 +42,24 @@ export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: 
     }
   }
 
+  const patchPropertiesSet = new Set()
+  const putPropertiesSet = new Set()
   for (const patchProp of patchProperties) {
-    for (const putProp of putProperties) {
-      if (JSON.stringify(putProp) === JSON.stringify(patchProp)) {
-        return []
-      }
+    patchPropertiesSet.add(JSON.stringify(patchProp))
+  }
+
+  for (const putProp of putProperties) {
+    putPropertiesSet.add(JSON.stringify(putProp))
+  }
+
+  for (const patchProp of patchPropertiesSet) {
+    if (putPropertiesSet.has(patchProp)) {
+      return []
     }
   }
 
   errors.push({
-    message: "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation).",
+    message: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
     path: path,
   })
 

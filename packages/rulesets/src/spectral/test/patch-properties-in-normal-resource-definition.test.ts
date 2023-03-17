@@ -103,7 +103,7 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if none of th
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].message).toContain(
-      "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation)"
+      "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
     )
   })
 })
@@ -175,7 +175,7 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if put is not
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].message).toContain(
-      "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation)"
+      "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
     )
   })
 })
@@ -357,6 +357,9 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if patch has 
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
+    expect(results[0].message).toContain(
+      "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
+    )
   })
 })
 

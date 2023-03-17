@@ -200,7 +200,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Patch-V1-01
     PatchPropertiesInNormalResourceDefinition: {
-      description: "Patch request body MUST contain atleast one or more properties present in the normal resource definition(PUT operation).",
+      description: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
       message: "{{error}}",
       severity: "error",
       resolved: true,

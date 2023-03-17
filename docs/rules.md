@@ -1120,7 +1120,7 @@ Please refer to [un-supported-patch-properties.md](./un-supported-patch-properti
 
 ### PatchPropertiesInNormalResourceDefinition
 
-Validates if Patch request body contains atleast one or more properties present in the normal resource definition(PUT operation).
+Validates if Patch request body contains at least one or more properties present in the normal resource definition (PUT operation).
 
 Please refer to [patch-properties-in-normal-resource-definition.md](./patch-properties-in-normal-resource-definition.md) for details.
 
