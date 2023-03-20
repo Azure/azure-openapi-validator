@@ -2,6 +2,8 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 let nonResolvingLinter: Spectral
+const errorMessage =
+  "Error response content of long running operations must follow the error schema provided in the common types v2 and above."
 
 beforeAll(async () => {
   nonResolvingLinter = await linterForRule("LroErrorContent", true)
@@ -38,6 +40,7 @@ test("LroErrorContent should find errors for ErrorResponse in same file", () => 
   return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.delete.responses.500.schema.$ref")
+    expect(results[0].message).toEqual(errorMessage)
   })
 })
 
@@ -103,6 +106,7 @@ test("LroErrorContent should find errors for outdated common types.json", () => 
   return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.delete.responses.500.schema.$ref")
+    expect(results[0].message).toEqual(errorMessage)
   })
 })
 
