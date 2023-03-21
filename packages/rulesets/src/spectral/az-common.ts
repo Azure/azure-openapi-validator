@@ -21,7 +21,6 @@ import { operationIdNounVerb } from "./functions/operation-id-noun-verb"
 import paramLocation from "./functions/parameter-location"
 import { patchInOperationName } from "./functions/patch-in-operation-name"
 import { putInOperationName } from "./functions/put-in-operation-name"
-import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { requiredReadOnlyProperties } from "./functions/required-read-only-properties"
 import checkSchemaFormat from "./functions/schema-format"
 import checkSummaryAndDescription from "./functions/summary-description-must-not-be-same"
@@ -203,17 +202,6 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
       then: {
         function: deleteInOperationName,
-      },
-    },
-    PutRequestResponseScheme: {
-      description: "The request & response('200') schema of the PUT operation must be same.",
-      message: "{{error}}",
-      severity: "warn",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
-      then: {
-        function: putRequestResponseScheme,
       },
     },
     RequiredReadOnlyProperties: {

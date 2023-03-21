@@ -22,6 +22,7 @@ import pathBodyParameters from "./functions/patch-body-parameters"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -325,7 +326,6 @@ const ruleset: any = {
         function: trackedResourceTagsPropertyInRequest,
       },
     },
-
     // RPC Code: RPC-Put-V1-12
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
@@ -371,6 +371,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.put"],
       then: {
         function: responseSchemaSpecifiedForSuccessStatusCode,
+      },
+    },
+    // RPC Code: RPC-Put-V1-25
+    PutRequestResponseSchemeArm: {
+      description: "The request & response('200') schema of the PUT operation must be same.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+      then: {
+        function: putRequestResponseScheme,
       },
     },
 

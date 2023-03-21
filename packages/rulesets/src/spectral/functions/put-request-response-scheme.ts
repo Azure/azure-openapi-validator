@@ -1,5 +1,4 @@
 // Verifies if a PUT operation request and response schemas match.
-
 import { isSchemaEqual } from "./utils";
 
 export const putRequestResponseScheme = (putOp: any, _opts: any, ctx: any) => {
