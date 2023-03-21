@@ -1,12 +1,12 @@
 import linterForRule from "./utils"
 
-let linter: any
+let nonResolvingLinter: any
 
 beforeAll(async () => {
-  linter = await linterForRule("OperationsApiResponseSchema")
+  nonResolvingLinter = await linterForRule("OperationsApiSchemaUsesCommonTypes", true)
 })
 
-test("OperationsApiResponseSchema should find errors for invalid path", () => {
+test("OperationsApiSchemaUsesCommonTypes should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -43,60 +43,22 @@ test("OperationsApiResponseSchema should find errors for invalid path", () => {
         description: "The List Compute Operation operation response.",
       },
       ComputeOperationValue: {
-        properties: {
-          origin: {
-            type: "string",
-            readOnly: true,
-            description: "The origin of the compute operation.",
-          },
-          name: {
-            type: "string",
-            readOnly: true,
-            description: "The name of the compute operation.",
-          },
-          display: {
-            "x-ms-client-flatten": true,
-            $ref: "#/definitions/ComputeOperationValueDisplay",
-          },
-        },
+        properties: {},
         description: "Describes the properties of a Compute Operation value.",
       },
       ComputeOperationValueDisplay: {
-        properties: {
-          operation: {
-            type: "string",
-            readOnly: true,
-            description: "The display name of the compute operation.",
-          },
-          resource: {
-            type: "string",
-            readOnly: true,
-            description: "The display name of the resource the operation applies to.",
-          },
-          description: {
-            type: "string",
-            readOnly: true,
-            description: "The description of the operation.",
-          },
-          provider: {
-            type: "string",
-            readOnly: true,
-            description: "The resource provider for the operation.",
-          },
-        },
+        properties: {},
         description: "Describes the properties of a Compute Operation Value Display.",
       },
     },
   }
-  return linter.run(oasDoc).then((results: any) => {
+  return nonResolvingLinter.run(oasDoc).then((results: any) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.MyNs/operations.get.responses.200.schema")
-    expect(results[0].message).toContain(
-      "The response schema of operations API '/providers/Microsoft.MyNs/operations' does not match the ARM specification. Please standardize the schema."
-    )
+    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.MyNs/operations.get.responses.200.schema.$ref")
+    expect(results[0].message).toContain("Operations API path must follow the schema provided in the common types.")
   })
 })
-test("OperationsApiResponseSchema should find no errors", () => {
+test("OperationsApiSchemaUsesCommonTypes should find no errors", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -112,76 +74,15 @@ test("OperationsApiResponseSchema should find no errors", () => {
           parameters: [],
           responses: {
             "200": {
-              schema: { $ref: "#/definitions/ComputeOperationListResult" },
+              schema: { $ref: "../../../../../common-types/resource-management/v4/types.json#/definitions/OperationListResult" },
             },
           },
         },
-      },
-    },
-    definitions: {
-      ComputeOperationListResult: {
-        properties: {
-          value: {
-            type: "array",
-            readOnly: true,
-            items: {
-              $ref: "#/definitions/ComputeOperationValue",
-            },
-            description: "The list of compute operations",
-          },
-        },
-        description: "The List Compute Operation operation response.",
-      },
-      ComputeOperationValue: {
-        properties: {
-          origin: {
-            type: "string",
-            readOnly: true,
-            description: "The origin of the compute operation.",
-          },
-          name: {
-            type: "string",
-            readOnly: true,
-            description: "The name of the compute operation.",
-          },
-          display: {
-            "x-ms-client-flatten": true,
-            $ref: "#/definitions/ComputeOperationValueDisplay",
-          },
-          isDataAction: {
-            type: "boolean",
-          },
-        },
-        description: "Describes the properties of a Compute Operation value.",
-      },
-      ComputeOperationValueDisplay: {
-        properties: {
-          operation: {
-            type: "string",
-            readOnly: true,
-            description: "The display name of the compute operation.",
-          },
-          resource: {
-            type: "string",
-            readOnly: true,
-            description: "The display name of the resource the operation applies to.",
-          },
-          description: {
-            type: "string",
-            readOnly: true,
-            description: "The description of the operation.",
-          },
-          provider: {
-            type: "string",
-            readOnly: true,
-            description: "The resource provider for the operation.",
-          },
-        },
-        description: "Describes the properties of a Compute Operation Value Display.",
       },
     },
   }
-  return linter.run(oasDoc).then((results: any) => {
+  return nonResolvingLinter.run(oasDoc).then((results: any) => {
+    console.log(results)
     expect(results.length).toBe(0)
   })
 })

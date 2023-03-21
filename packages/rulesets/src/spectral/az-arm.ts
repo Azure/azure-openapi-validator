@@ -507,7 +507,7 @@ const ruleset: any = {
       then: {
         function: pattern,
         functionOptions: {
-          match: ".*/common-types/resource-management/vd+/types.json#/definitions/OperationListResult",
+          match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
         },
       },
     },
