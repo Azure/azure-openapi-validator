@@ -29,6 +29,7 @@ import skuValidation from "./functions/sku-validation"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { operationsApiTenantLevelOnly } from "./functions/operations-api-tenant-level-only"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -500,16 +501,13 @@ const ruleset: any = {
     // RPC Code: RPC-Operations-V1-02
     OperationsApiTenantLevelOnly: {
       description: "The operations API must only be at the tenant level.",
-      message: "{{description}}",
+      message: "{{error}}",
       severity: "error",
-      resolved: false,
+      resolved: true,
       formats: [oas2],
-      given: "$.[paths,'x-ms-paths'][?(@property.toString().endsWith('operations'))]~",
+      given: "$.[paths,'x-ms-paths']",
       then: {
-        function: pattern,
-        functionOptions: {
-          match: "^/providers/[^/]+/operations",
-        },
+        function: operationsApiTenantLevelOnly,
       },
     },
 
