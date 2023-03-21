@@ -504,11 +504,11 @@ const ruleset: any = {
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given: "$.[paths,'x-ms-paths'][?(@property.includes('operations'))]~",
+      given: "$.[paths,'x-ms-paths'][?(@property.toString().endsWith('operations'))]~",
       then: {
         function: pattern,
         functionOptions: {
-          notMatch: ".*(?!^)/providers/[^/]+/operations",
+          match: "^/providers/[^/]+/operations",
         },
       },
     },

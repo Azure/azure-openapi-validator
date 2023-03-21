@@ -41,9 +41,11 @@ test("OperationsApiTenantLevelOnly should find no errors", () => {
       "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/loadTests": {},
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests": {},
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}": {},
+      "/providers/Microsoft.Communication/locations/{location}/operationStatuses/{operationId}": {},
     },
   }
   return linter.run(oasDoc).then((results) => {
+    console.log(results)
     expect(results.length).toBe(0)
   })
 })
