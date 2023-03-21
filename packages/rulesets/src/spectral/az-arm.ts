@@ -193,6 +193,19 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-08
+    GetQueryParams: {
+      description: "Point Get's MUST not have query parameters other than api version.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get][parameters]",
+      then: {
+        function: QueryParametersInGet,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
