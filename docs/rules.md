@@ -885,18 +885,17 @@ The put method should be used for resource create or replace, which generally re
 
 Please refer to [put-path.md](./put-path.md) for details.
 
-### PutRequestResponseScheme
-
-The request & response('200') schema of the PUT operation must be same.
-
-Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
-
-
 ### PutRequestResponseSchemeArm
 
 The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme-arm.md](./put-request-response-scheme-arm.md) for details.
+
+### PutRequestResponseScheme
+
+The request & response('200') schema of the PUT operation must be same.
+
+Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
 
 ### RepeatedPathInfo
 
@@ -1124,12 +1123,6 @@ Please refer to [tracked-resources-must-have-put.md](./tracked-resources-must-ha
 Patch may not change the name, location, or type of the resource.
 
 Please refer to [un-supported-patch-properties.md](./un-supported-patch-properties.md) for details.
-
-### PatchPropertiesInNormalResourceDefinition
-
-Validates if Patch request body contains atleast one or more properties present in the normal resource definition(PUT operation).
-
-Please refer to [patch-properties-in-normal-resource-definition.md](./patch-properties-in-normal-resource-definition.md) for details.
 
 ### UniqueClientParameterName
 
