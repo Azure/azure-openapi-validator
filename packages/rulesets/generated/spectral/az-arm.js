@@ -1665,25 +1665,6 @@ const provisioningStateSpecified = (pathItem, _opts, ctx) => {
     return errors;
 };
 
-const scopeParameter = "{scope}";
-const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
-    var _a;
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
-        return [];
-    }
-    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
-    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
-    const matches = otherPaths.filter((p) => pathRegEx.test(p));
-    const errors = matches.map((match) => {
-        return {
-            message: `Path "${match}" with explicitly defined scope is a duplicate of path "${path}" that has the scope parameter.".`,
-            path: ctx.path,
-        };
-    });
-    return errors;
-};
-
 function operationsApiSchema(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -2249,6 +2230,20 @@ const ruleset = {
                 function: hasHeader,
                 functionOptions: {
                     name: "Location",
+                },
+            },
+        },
+        LroErrorContent: {
+            description: "Error response content of long running operations must follow the error schema provided in the common types.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
                 },
             },
         },

@@ -444,6 +444,12 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### LroErrorContent
+
+Error response content of long running operations must follow the error schema provided in the common types.
+
+Please refer to [lro-error-response.md](./lro-error-response.md) for details.
+
 ### LroExtension
 
 Operations with a 202 response should specify `x-ms-long-running-operation: true`.

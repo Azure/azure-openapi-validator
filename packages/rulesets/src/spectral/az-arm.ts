@@ -131,6 +131,23 @@ const ruleset: any = {
         },
       },
     },
+    // RPC Code: RPC-Common-V1-05
+    LroErrorContent: {
+      description:
+        "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given:
+        "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v(([1-9]\\d+)|[2-9])/types.json#/definitions/ErrorResponse",
+        },
+      },
+    },
 
     ///
     /// ARM RPC rules for Delete patterns
