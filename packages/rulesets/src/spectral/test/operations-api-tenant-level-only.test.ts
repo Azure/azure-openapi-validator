@@ -108,7 +108,6 @@ test("OperationsApiTenantLevelOnly should find no errors", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    console.log(results)
     expect(results.length).toBe(0)
   })
 })

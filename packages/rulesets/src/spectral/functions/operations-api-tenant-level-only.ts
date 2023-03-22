@@ -16,8 +16,8 @@ export const operationsApiTenantLevelOnly = (pathItem: any, _opts: any, ctx: any
 
   const errors = []
 
-  for (let pathName of keys) {
-    if (pathName.toString().endsWith(OPERATIONS) && pathItem[pathName][GET] && !pathName.match(/^\/providers\/[^\/]+\/operations/)) {
+  for (const pathName of keys) {
+    if (pathName.toString().endsWith(OPERATIONS) && pathItem[pathName][GET] && !pathName.match(/^\/providers\/[^/]+\/operations/)) {
       errors.push({ message: "The operations API must only be at the tenant level.", path: [...path, pathName, GET] })
     }
   }
