@@ -444,6 +444,12 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### LroErrorContent
+
+Error response content of long running operations must follow the error schema provided in the common types.
+
+Please refer to [lro-error-response.md](./lro-error-response.md) for details.
+
 ### LroExtension
 
 Operations with a 202 response should specify `x-ms-long-running-operation: true`.
@@ -467,6 +473,12 @@ Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
+
+### PatchResponseCode
+
+Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
+
+Please refer to [patch-response-code.md](./patch-response-code.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -866,6 +878,12 @@ Please refer to [property-type.md](./property-type.md) for details.
 Per ARM guideline, provisioningState must have terminal states: Succeeded, Failed and Canceled.
 
 Please refer to [provisioning-state-validation.md](./provisioning-state-validation.md) for details.
+
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-get-patch-response-schema.md](./put-get-patch-response-schema.md) for details.
 
 ### PutGetPatchResponseSchema
 
