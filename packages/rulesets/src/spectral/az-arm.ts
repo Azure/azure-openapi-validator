@@ -20,9 +20,11 @@ import { operationsApiTenantLevelOnly } from "./functions/operations-api-tenant-
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -130,6 +132,23 @@ const ruleset: any = {
         },
       },
     },
+    // RPC Code: RPC-Common-V1-05
+    LroErrorContent: {
+      description:
+        "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given:
+        "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v(([1-9]\\d+)|[2-9])/types.json#/definitions/ErrorResponse",
+        },
+      },
+    },
 
     ///
     /// ARM RPC rules for Delete patterns
@@ -226,6 +245,20 @@ const ruleset: any = {
         function: consistentPatchProperties,
       },
     },
+
+    // RPC Code: RPC-Patch-V1-06
+    PatchResponseCode: {
+      description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[patch]"],
+      then: {
+        function: PatchResponseCode,
+      },
+    },
+
     //https://github.com/Azure/azure-openapi-validator/issues/335
     // RPC Code: RPC-Patch-V1-06, RPC-Async-V1-08
     LroPatch202: {
@@ -324,6 +357,18 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*.put^",
       then: {
         function: trackedResourceTagsPropertyInRequest,
+      },
+    },
+
+    // RPC Code: RPC-Put-V1-11
+    PutResponseSchemaDescription: {
+      description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      given: ["$[paths,'x-ms-paths'].*.put.responses"],
+      then: {
+        function: PutResponseSchemaDescription,
       },
     },
 

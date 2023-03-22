@@ -2,7 +2,7 @@
 
 ## Category
 
-ARM Error
+RPaaS Error
 
 ## Applies to
 
