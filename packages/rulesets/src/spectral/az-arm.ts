@@ -542,6 +542,7 @@ const ruleset: any = {
     /// ARM rules for operations API
     ///
 
+    // RPC Code: RPC-Operations-V1-01
     OperationsApiSchemaUsesCommonTypes: {
       description: "Operations API path must follow the schema provided in the common types.",
       message: "{{description}}",
