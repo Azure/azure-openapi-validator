@@ -13,6 +13,7 @@ import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
+import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -28,6 +29,7 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -416,6 +418,36 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.put"],
       then: {
         function: responseSchemaSpecifiedForSuccessStatusCode,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Post patterns
+    ///
+
+    // RPC Code: RPC-POST-V1-02
+    SyncPostReturn: {
+      description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post]",
+      then: {
+        function: SyncPostReturn,
+      },
+    },
+
+    // RPC Code: RPC-POST-V1-03
+    LroPostReturn: {
+      description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+      then: {
+        function: lroPostReturn,
       },
     },
 
