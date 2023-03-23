@@ -834,6 +834,12 @@ Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
 
+### ParametersInPost
+
+For a POST action parameters MUST be in the payload and not in the URI.
+
+Please refer to [parameters-in-post.md](./parameters-in-post.md) for details.
+
 ### PostOperationAsyncResponseValidation
 
 An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
