@@ -485,7 +485,7 @@ const ruleset: any = {
         },
       },
     },
-    // RPC Code: RPC-Uri-V1-07
+    // RPC Code: RPC-Uri-V1-07, RPC-POST-V1-01
     PathForResourceAction: {
       description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
       message: "{{description}}",
@@ -513,6 +513,18 @@ const ruleset: any = {
         functionOptions: {
           methods: ["get", "put", "patch", "post", "delete", "options", "head", "trace"],
         },
+      },
+    },
+    // RPC Code: RPC-Uri-V1-10
+    NoDuplicatePathsForScopeParameter: {
+      description: 'Paths with explicitly defined scope should not be present if there is an equivalent path with the "scope" parameter.',
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
+      then: {
+        function: noDuplicatePathsForScopeParameter,
       },
     },
 

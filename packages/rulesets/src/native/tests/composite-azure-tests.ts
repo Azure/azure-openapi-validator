@@ -6,7 +6,6 @@ import { LintResultMessage, OpenApiTypes } from "@microsoft.azure/openapi-valida
 import { AllResourcesMustHaveGetOperation } from "../legacyRules/AllResourcesMustHaveGetOperation"
 import { DescriptionMustNotBeNodeName } from "../legacyRules/DescriptionMustNotBeNodeName"
 import { GetCollectionResponseSchema } from "../legacyRules/GetCollectionResponseSchema"
-import { ImplementPrivateEndpointAPIs } from "../legacyRules/ImplementPrivateEndpointAPIs"
 import { NestedResourcesMustHaveListOperation } from "../legacyRules/NestedResourcesMustHaveListOperation"
 import { PageableOperation } from "../legacyRules/PageableOperation"
 import { PrivateEndpointResourceSchemaValidation } from "../legacyRules/PrivateEndpointResourceSchemaValidation"
@@ -154,12 +153,6 @@ describe("CompositeAzureTests", () => {
     const fileName = "UniqueModelName.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, UniqueModelName)
     assertValidationRuleCount(messages, UniqueModelName, 1)
-  })
-
-  test("private link apis missing", async () => {
-    const fileName = "PrivateLinkAPIsMissing.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, ImplementPrivateEndpointAPIs)
-    assertValidationRuleCount(messages, ImplementPrivateEndpointAPIs, 1)
   })
 
   test("private link resource schema unmatch", async () => {

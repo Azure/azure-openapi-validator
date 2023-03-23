@@ -10,24 +10,40 @@ import {
   trackedResourcesMustHavePut,
   xmsPageableListByRGAndSubscriptions,
 } from "../functions/arm-resource-validation"
+import { implementPrivateEndpointApis } from "../functions/implement-private-endpoint-apis"
 import { providerNamespace } from "../functions/provider-namespace"
 export const armRuleset: IRuleSet = {
   documentationUrl: "https://github.com/Azure/azure-openapi-validator/blob/develop/docs/rules.md",
   rules: {
-
     ///
     /// ARM RPC rules for Delete patterns
     ///
 
     // https://github.com/Azure/azure-openapi-validator/issues/329
     // RPC Code: RPC-Delete-V1-03
-    AllResourcesMustHaveDelete: {
+    AllTrackedResourcesMustHaveDelete: {
       category: "ARMViolation",
       openapiType: OpenApiTypes.arm,
       severity: "error",
       given: "$",
       then: {
         execute: allResourcesHaveDelete,
+        options: {
+          isTrackedResource: true,
+        },
+      },
+    },
+    // RPC Code: RPC-Delete-V1-05
+    AllProxyResourcesShouldHaveDelete: {
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "warning",
+      given: "$",
+      then: {
+        execute: allResourcesHaveDelete,
+        options: {
+          isTrackedResource: false,
+        },
       },
     },
 
@@ -144,6 +160,17 @@ export const armRuleset: IRuleSet = {
       openapiType: OpenApiTypes.arm,
       then: {
         execute: xmsPageableListByRGAndSubscriptions,
+      },
+    },
+    ImplementPrivateEndpointAPIs: {
+      description: "This rule is to check if all the APIs for private endpoint are implemented.",
+      severity: "error",
+      category: "SDKViolation",
+      scope: "Global",
+      given: "$.paths",
+      openapiType: OpenApiTypes.arm,
+      then: {
+        execute: implementPrivateEndpointApis,
       },
     },
   },

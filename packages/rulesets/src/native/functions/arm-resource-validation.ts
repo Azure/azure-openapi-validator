@@ -9,7 +9,7 @@ export function* trackedResourcesMustHavePut(openapiSection: any, options: {}, c
   for (const re of allTrackedResources) {
     if (!re.operations.some((op) => op.httpMethod === "put")) {
       yield {
-        location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath, "put"],
+        location: ["definitions", re.modelName],
         message: `The tracked resource ${re.modelName} does not have a corresponding put operation.`,
       }
     }
@@ -23,7 +23,7 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
   for (const re of allTrackedResources) {
     if (re.operations.some((op) => regex.test(op.apiPath))) {
       yield {
-        location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
+        location: ["definitions", re.modelName],
         message: `The tracked resource ${re.modelName} is beyond third level of nesting.`,
       }
     }
@@ -31,17 +31,15 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
 }
 
 // support delete operation for all tracked resource , and all top level proxy resources.
-export function* allResourcesHaveDelete(openapiSection: any, options: {}, ctx: RuleContext) {
+export function* allResourcesHaveDelete(openapiSection: any, options: { isTrackedResource: boolean }, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allTrackedResources = armHelper.getTrackedResources()
-  const allTopLevelResource = armHelper.getTopLevelResources()
-  const allResources = _.uniq(allTrackedResources.concat(allTopLevelResource))
+  const allResources = options.isTrackedResource ? armHelper.getTrackedResources() : armHelper.getProxyResources()
   for (const re of allResources) {
     const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
     if (apiPath) {
       if (armHelper.findOperation(apiPath, "put") && !armHelper.findOperation(apiPath, "delete")) {
         yield {
-          location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
+          location: ["definitions", re.modelName],
           message: `The resource ${re.modelName} does not have a corresponding delete operation.`,
         }
       }
@@ -58,7 +56,7 @@ export function* trackedResourcesHavePatch(openapiSection: any, options: {}, ctx
     if (apiPath) {
       if (!armHelper.findOperation(apiPath, "patch")) {
         yield {
-          location: ["paths", re.operations.find((op) => op.apiPath)!.apiPath],
+          location: ["definitions", re.modelName],
           message: `Tracked resource '${re.modelName}' must have patch operation that at least supports the update of tags.`,
         }
       }

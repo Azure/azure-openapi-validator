@@ -16,17 +16,23 @@ Specifying `additionalProperties` with `type: object` is a common error.
 
 Please refer to [additional-properties-object.md](./additional-properties-object.md) for details.
 
-### AllResourcesMustHaveDelete
+### AllProxyResourcesShouldHaveDelete
 
-All top level proxy and (tracked at all levels) resources MUST support delete.
+All proxy resources SHOULD support delete.
 
-Please refer to [all-resources-must-have-delete.md](./all-resources-must-have-delete.md) for details.
+Please refer to [all-proxy-resources-should-have-delete.md](./all-proxy-resources-should-have-delete.md) for details.
 
 ### AllResourcesMustHaveGetOperation
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md) ,all the resources ,including top-level and nested resources, must have a get operation.
 
 Please refer to [all-resources-must-have-get-operation.md](./all-resources-must-have-get-operation.md) for details.
+
+### AllTrackedResourcesMustHaveDelete
+
+All tracked resources MUST support delete.
+
+Please refer to [all-tracked-resources-must-have-delete.md](./all-tracked-resources-must-have-delete.md) for details.
 
 ### AnonymousBodyParameter
 
@@ -546,6 +552,12 @@ Please refer to [nested-resources-must-have-list-operation.md](./nested-resource
 Per definition of AutoRest [x-ms-pageable extension](https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-pageable), the property specified by nextLinkName must exist in the 200 response schema.
 
 Please refer to [next-link-property-must-exist.md](./next-link-property-must-exist.md) for details.
+
+### NoDuplicatePathsForScopeParameter
+
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
+
+Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
 ### NonApplicationJsonType
 
