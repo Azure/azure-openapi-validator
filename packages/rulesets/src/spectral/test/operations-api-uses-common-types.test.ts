@@ -98,6 +98,124 @@ test("OperationsApiSchemaUsesCommonTypes should find no errors", () => {
           },
         },
       },
+      // check regex
+      "/providers/Microsoft.MyNs/locations/operationStatuses": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/locations/operations": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/locations/asyncOperations": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/operationsResources": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/myResourceTypeEndingWithOperations": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/cooperations": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/cooperations/{cooperationName}": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/myRts": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
+      "/providers/Microsoft.MyNs/myRts/{rtName}": {
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {
+            "200": {
+              schema: { $ref: "x" },
+            },
+          },
+        },
+      },
     },
   }
   return nonResolvingLinter.run(oasDoc).then((results: any) => {
