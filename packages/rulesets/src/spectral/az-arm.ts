@@ -194,7 +194,7 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Get-V1-08
-    GetQueryParams: {
+    PointGetQueryParams: {
       description: "Point Get's MUST not have query parameters other than api version.",
       severity: "error",
       message: "{{error}}",
@@ -202,7 +202,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[get][parameters]",
       then: {
-        function: QueryParametersInGet,
+        function: PointGetQueryParams,
       },
     },
 
