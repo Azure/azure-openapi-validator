@@ -11,7 +11,7 @@ rules.push({
   severity: "error",
   category: "RPaaSViolation",
   mergeState: MergeStates.individual,
-  openapiType: OpenApiTypes.arm,
+  openapiType: OpenApiTypes.rpaas,
   appliesTo_JsonQuery: "$.paths.*.put",
   *run(doc, node, path) {
     if (node.responses["202"]) {
