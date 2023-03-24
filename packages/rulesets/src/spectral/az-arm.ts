@@ -561,23 +561,18 @@ const ruleset: any = {
       },
     },
     // RPC Code: RPC-SystemData-V1-01
-    SystemDataUsesCommonTypes: {
+    // Ensure systemData is not in the properties bag
+    SystemDataNotInPropertiesBag: {
       description: "Must use the schema provided in the common types for SystemData.",
       message: "{{description}}",
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*.[get,put,patch].[parameters,responses].*.schema.",
+      given: "$.definitions.*.properties.properties.systemData",
       then: {
-        function: pattern,
-        functionOptions: {
-          match: ".*/common-types/resource-management/vd+/types.json#/definitions/OperationListResult",
-        },
+        function: falsy,
       },
     },
-    // RPC Code: RPC-SystemData-V1-01
-    SystemDataNotInPropertiesBag: {},
-    SystemDataNot
 
     ///
     /// ARM rules without an RPC code
