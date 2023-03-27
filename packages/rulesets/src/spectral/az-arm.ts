@@ -552,17 +552,17 @@ const ruleset: any = {
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given: "$.definitions.*.properties.systemData",
+      given: "$.definitions.*.properties.[systemData,SystemData].$ref",
       then: {
         function: pattern,
         functionOptions: {
-          match: ".*/common-types/resource-management/vd+/types.json#/definitions/systemData",
+          match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/systemData",
         },
       },
     },
     // RPC Code: RPC-SystemData-V1-01
     // Ensure systemData is not in the properties bag
-    SystemDataNotInPropertiesBag: {
+    SystemDataInPropertiesBag: {
       description: "Must use the schema provided in the common types for SystemData.",
       message: "{{description}}",
       severity: "error",
