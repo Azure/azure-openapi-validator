@@ -563,12 +563,12 @@ const ruleset: any = {
     // RPC Code: RPC-SystemData-V1-01
     // Ensure systemData is not in the properties bag
     SystemDataInPropertiesBag: {
-      description: "Must use the schema provided in the common types for SystemData.",
+      description: "System Data must be defined as a top-level property, not in the properties bag.",
       message: "{{description}}",
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given: "$.definitions.*.properties.properties.systemData",
+      given: ["$.definitions.*.properties.properties.systemData", "$.definitions.*.properties.properties.SystemData"],
       then: {
         function: falsy,
       },

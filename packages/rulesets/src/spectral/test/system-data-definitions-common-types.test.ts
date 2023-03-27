@@ -46,14 +46,13 @@ test("SystemDataDefinitionsCommonTypes should find no errors", async () => {
             $ref: "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
           },
           SystemData: {
-            $ref: "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
+            $ref: "../../../../../common-types/resource-management/v13/types.json#/definitions/systemData",
           },
         },
       },
     },
   }
   return nonResolvingLinter.run(oasDoc).then((results) => {
-    console.log(results)
     expect(results.length).toBe(0)
   })
 })
