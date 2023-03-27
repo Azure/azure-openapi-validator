@@ -13,11 +13,13 @@ import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
+import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
@@ -28,6 +30,7 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -419,6 +422,49 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-POST-V1-05
+    ParametersInPost: {
+      description: "For a POST action parameters MUST be in the payload and not in the URI.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post][parameters]",
+      then: {
+        function: ParametersInPost,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Post patterns
+    ///
+
+    // RPC Code: RPC-POST-V1-02
+    SyncPostReturn: {
+      description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post]",
+      then: {
+        function: SyncPostReturn,
+      },
+    },
+
+    // RPC Code: RPC-POST-V1-03
+    LroPostReturn: {
+      description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+      then: {
+        function: lroPostReturn,
+      },
+    },
+
     ///
     /// ARM RPC rules for Uri path patterns
     ///
@@ -571,6 +617,26 @@ const ruleset: any = {
       given: ["$.definitions.*.properties.properties.systemData", "$.definitions.*.properties.properties.SystemData"],
       then: {
         function: falsy,
+      },
+    },
+
+    ///
+    /// ARM rules for operations API
+    ///
+
+    // RPC Code: RPC-Operations-V1-01
+    OperationsApiSchemaUsesCommonTypes: {
+      description: "Operations API path must follow the schema provided in the common types.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
+        },
       },
     },
 
@@ -768,5 +834,4 @@ const ruleset: any = {
     },
   },
 }
-
 export default ruleset
