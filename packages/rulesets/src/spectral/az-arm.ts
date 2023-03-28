@@ -34,6 +34,7 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -216,15 +217,15 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Get-V1-08
-    PointGetQueryParams: {
+    ParametersInPointGet: {
       description: "Point Get's MUST not have query parameters other than api version.",
       severity: "error",
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[get][parameters]",
+      given: "$[paths,'x-ms-paths']",
       then: {
-        function: PointGetQueryParams,
+        function: ParametersInPointGet,
       },
     },
 

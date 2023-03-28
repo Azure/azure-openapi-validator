@@ -152,25 +152,47 @@ export function isXmsResource(schema: any) {
 
 export function isSchemaEqual(a: any, b: any): boolean {
   if (a && b) {
-    const propsA = Object.getOwnPropertyNames(a);
-    const propsB = Object.getOwnPropertyNames(b);
+    const propsA = Object.getOwnPropertyNames(a)
+    const propsB = Object.getOwnPropertyNames(b)
     if (propsA.length === propsB.length) {
       for (let i = 0; i < propsA.length; i++) {
-        const propsAName = propsA[i];
-        const [propA, propB] = [a[propsAName], b[propsAName]];
+        const propsAName = propsA[i]
+        const [propA, propB] = [a[propsAName], b[propsAName]]
         if (typeof propA === "object") {
           if (!isSchemaEqual(propA, propB)) {
-            return false;
+            return false
           } else if (i === propsA.length - 1) {
-            return true;
+            return true
           }
         } else if (propA !== propB) {
-          return false;
+          return false
         } else if (propA === propB && i === propsA.length - 1) {
-          return true;
+          return true
         }
       }
     }
   }
-  return false;
+  return false
+}
+
+const SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+(?:\\?\\w+)?$", "gi")
+export function getResourcesTypeHierarchy(path: string) {
+  const index = path.lastIndexOf("/providers/")
+  if (index === -1) {
+    return []
+  }
+  const lastProvider = path.substr(index)
+  const result = []
+  const matches = lastProvider.match(SpecificResourcePathRegEx)
+  if (matches && matches.length) {
+    const match = matches[0]
+    const segments = match.split("/").slice(3)
+    for (const segment of segments) {
+      if (segment.startsWith("{") || segment === "default") {
+        continue
+      }
+      result.push(segment)
+    }
+  }
+  return result
 }
