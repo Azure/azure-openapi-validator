@@ -11,7 +11,7 @@ export const ParametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
     return []
   }
   const GET = "get"
-  const errors = new Array()
+  const errors: any[] = []
 
   for (const uri of uris) {
     const hierarchy = getResourcesTypeHierarchy(uri)
