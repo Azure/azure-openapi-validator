@@ -6,14 +6,14 @@ export const ParametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
   }
 
   const path = ctx.path || []
-  const keys = Object.keys(pathItem)
-  if (keys.length < 1) {
+  const uris = Object.keys(pathItem)
+  if (uris.length < 1) {
     return []
   }
   const GET = "get"
   const errors = new Array()
 
-  for (const uri of keys) {
+  for (const uri of uris) {
     const hierarchy = getResourcesTypeHierarchy(uri)
     if (hierarchy.length >= 1 && pathItem[uri][GET]) {
       const params = pathItem[uri][GET]["parameters"]

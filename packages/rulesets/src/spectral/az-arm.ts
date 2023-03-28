@@ -19,6 +19,7 @@ import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-fo
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
@@ -34,7 +35,6 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
-import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 const ruleset: any = {
   extends: [common],
   rules: {
