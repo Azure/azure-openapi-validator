@@ -34,6 +34,7 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -608,6 +609,17 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    ResourceMustReferenceCommonTypes: {
+      description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
+      then: {
+        function: resourceMustReferenceCommonTypes,
+      },
+    },
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",
