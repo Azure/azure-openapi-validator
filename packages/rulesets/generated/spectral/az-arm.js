@@ -1633,6 +1633,34 @@ const lroPatch202 = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+const lroPostReturn = (postOp, _opts, ctx) => {
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const responses = postOp.responses;
+    if (responses && (!responses["200"] || !responses["202"])) {
+        errors.push({
+            message: "A LRO POST operation must have both 200 & 202 return codes.",
+            path: path,
+        });
+    }
+    if (responses["200"] && !responses["200"].schema) {
+        errors.push({
+            message: "200 response for a LRO POST operation must have a response schema specified.",
+            path,
+        });
+    }
+    if (responses["202"] && responses["202"].schema) {
+        errors.push({
+            message: "202 response for a LRO POST operation must not have a response schema specified.",
+            path,
+        });
+    }
+    return errors;
+};
+
 const provisioningStateSpecified = (pathItem, _opts, ctx) => {
     var _a;
     if (pathItem === null || typeof pathItem !== "object") {
@@ -1662,6 +1690,25 @@ const provisioningStateSpecified = (pathItem, _opts, ctx) => {
             }
         }
     }
+    return errors;
+};
+
+const scopeParameter = "{scope}";
+const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
+        return [];
+    }
+    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
+    const matches = otherPaths.filter((p) => pathRegEx.test(p));
+    const errors = matches.map((match) => {
+        return {
+            message: `Path "${match}" with explicitly defined scope is a duplicate of path "${path}" that has the scope parameter.".`,
+            path: ctx.path,
+        };
+    });
     return errors;
 };
 
@@ -1763,6 +1810,24 @@ const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
         return {
             message: `Not using the common-types defined parameter "${pName}".`,
             path: ctx.path,
+        };
+    });
+    return errors;
+};
+
+const ParametersInPost = (postParameters, _opts, ctx) => {
+    if (postParameters === null || !Array.isArray(postParameters)) {
+        return [];
+    }
+    if (postParameters.length === 0) {
+        return [];
+    }
+    const path = ctx.path;
+    const queryParams = postParameters.filter((param) => param.in === "query" && param.name !== "api-version");
+    const errors = queryParams.map((param) => {
+        return {
+            message: `${param.name} is a query parameter. Post operation must not contain any query parameter other than api-version.`,
+            path: path,
         };
     });
     return errors;
@@ -1925,6 +1990,42 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
     return errors;
 };
 
+const RESOURCE_COMMON_TYPES_REGEX = /.*common-types\/resource-management\/v\d+\/types.json#\/definitions\/(Proxy|Tracked)Resource/;
+const resourceMustReferenceCommonTypes = (ref, _opts, ctx) => {
+    var _a, _b, _c, _d;
+    console.log("ref: " + ref.toString());
+    if (!ref) {
+        return [];
+    }
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    const definitions = swagger === null || swagger === void 0 ? void 0 : swagger.definitions;
+    console.log("definitions: " + definitions.toString());
+    if (!definitions) {
+        return [];
+    }
+    const resourceName = ref.toString().split("/").pop();
+    console.log("resourceName: " + (resourceName === null || resourceName === void 0 ? void 0 : resourceName.toString()));
+    const allOfRef = (_c = (_b = definitions[resourceName]) === null || _b === void 0 ? void 0 : _b.properties) === null || _c === void 0 ? void 0 : _c.allOf;
+    const path = ["definitions", resourceName];
+    const error = [
+        {
+            message: `Resource definition '${resourceName}' must reference the common types resource definition for ProxyResource or TrackedResource.`,
+            path: path,
+        },
+    ];
+    console.log("allOfRef: " + (allOfRef === null || allOfRef === void 0 ? void 0 : allOfRef.toString()));
+    if (!allOfRef) {
+        return error;
+    }
+    for (const refObj of allOfRef) {
+        console.log("refObj: " + refObj.toString());
+        if ((_d = refObj.$ref) === null || _d === void 0 ? void 0 : _d.match(RESOURCE_COMMON_TYPES_REGEX)) {
+            return [];
+        }
+    }
+    return error;
+};
+
 const resourceNameRestriction = (paths, _opts, ctx) => {
     if (paths === null || typeof paths !== "object") {
         return [];
@@ -2039,6 +2140,37 @@ const skuValidation = (skuSchema, opts, paths) => {
                 errors.push(message);
             }
         }
+    }
+    return errors;
+};
+
+const SyncPostReturn = (postOp, _opts, ctx) => {
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    if (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const responses = postOp.responses;
+    if (responses && (!(responses["200"] || responses["204"]) || !!(responses["200"] && responses["204"]))) {
+        errors.push({
+            message: "A synchronous POST operation must have either 200 or 204 return codes.",
+            path: path,
+        });
+    }
+    if (responses["200"] && !responses["200"].schema) {
+        errors.push({
+            message: "200 response for a synchronous POST operation must have a response schema specified.",
+            path,
+        });
+    }
+    if (responses["204"] && responses["204"].schema) {
+        errors.push({
+            message: "204 response for a synchronous POST operation must not have a response schema specified.",
+            path,
+        });
     }
     return errors;
 };
@@ -2234,7 +2366,7 @@ const ruleset = {
             },
         },
         LroErrorContent: {
-            description: "Error response content of long running operations must follow the error schema provided in the common types.",
+            description: "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
             message: "{{description}}",
             severity: "error",
             resolved: false,
@@ -2243,7 +2375,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
+                    match: ".*/common-types/resource-management/v(([1-9]\\d+)|[2-9])/types.json#/definitions/ErrorResponse",
                 },
             },
         },
@@ -2465,6 +2597,39 @@ const ruleset = {
                 function: responseSchemaSpecifiedForSuccessStatusCode,
             },
         },
+        ParametersInPost: {
+            description: "For a POST action parameters MUST be in the payload and not in the URI.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[post][parameters]",
+            then: {
+                function: ParametersInPost,
+            },
+        },
+        SyncPostReturn: {
+            description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[post]",
+            then: {
+                function: SyncPostReturn,
+            },
+        },
+        LroPostReturn: {
+            description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+            then: {
+                function: lroPostReturn,
+            },
+        },
         PathContainsSubscriptionId: {
             description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
             message: "{{error}}",
@@ -2569,6 +2734,31 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        OperationsApiSchemaUsesCommonTypes: {
+            description: "Operations API path must follow the schema provided in the common types.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
+                },
+            },
+        },
+        ResourceMustReferenceCommonTypes: {
+            description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
+            then: {
+                function: resourceMustReferenceCommonTypes,
             },
         },
         ArrayMustHaveType: {

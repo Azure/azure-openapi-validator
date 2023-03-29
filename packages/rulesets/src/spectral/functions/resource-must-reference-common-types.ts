@@ -52,7 +52,7 @@ export const resourceMustReferenceCommonTypes = (ref: any, _opts: any, ctx: any)
   }
 
   // if any of the refs under the resource definition match the common types regex, return no errors
-  for (let refObj of allOfRef) {
+  for (const refObj of allOfRef) {
     console.log("refObj: " + refObj.toString())
     if (refObj.$ref?.match(RESOURCE_COMMON_TYPES_REGEX)) {
       return []
