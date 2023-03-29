@@ -34,6 +34,7 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -618,6 +619,17 @@ const ruleset: any = {
       then: {
         function: truthy,
         field: "type",
+      },
+    },
+    NoErrorCodeResponses: {
+      description: "Responses must not have error codes. All errors must be surfaced using `default`.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*.*.responses.*~"],
+      then: {
+        function: noErrorCodeResponses,
       },
     },
     LroWithOriginalUriAsFinalState: {
