@@ -53,6 +53,36 @@ test(`${RULE} should find errors`, async () => {
             },
           },
         },
+        delete: {
+          responses: {
+            401: {
+              description: "an error response",
+              schema: {
+                properties: {},
+              },
+            },
+          },
+        },
+        patch: {
+          responses: {
+            400: {
+              description: "an error response",
+              schema: {
+                properties: {},
+              },
+            },
+          },
+        },
+        head: {
+          responses: {
+            302: {
+              description: "an error response",
+              schema: {
+                properties: {},
+              },
+            },
+          },
+        },
       },
     },
     definitions: {
@@ -69,8 +99,15 @@ test(`${RULE} should find errors`, async () => {
   }
 
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(4)
     expect(results[0].message).toBe(ERROR_MESSAGE)
+    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.Bakery/breads/{breadName}.put.responses.500")
+    expect(results[1].message).toBe(ERROR_MESSAGE)
+    expect(results[1].path.join(".")).toBe("paths./providers/Microsoft.Bakery/breads/{breadName}.delete.responses.401")
+    expect(results[2].message).toBe(ERROR_MESSAGE)
+    expect(results[2].path.join(".")).toBe("paths./providers/Microsoft.Bakery/breads/{breadName}.patch.responses.400")
+    expect(results[3].message).toBe(ERROR_MESSAGE)
+    expect(results[3].path.join(".")).toBe("paths./providers/Microsoft.Bakery/breads/{breadName}.head.responses.302")
   })
 })
 
