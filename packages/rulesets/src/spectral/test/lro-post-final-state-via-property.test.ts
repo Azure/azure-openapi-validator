@@ -240,3 +240,75 @@ test("LROPostFinalStateViaProperty should find no errors", () => {
     expect(results.length).toBe(0)
   })
 })
+
+test("LROPostFinalStateViaProperty should find no errors for sync post", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_post",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "202": {
+              description: "accepted",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResourceUpdate: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})

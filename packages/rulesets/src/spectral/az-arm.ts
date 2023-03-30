@@ -383,7 +383,7 @@ const ruleset: any = {
       severity: "error",
       resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[post][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
+      given: ["$[paths,'x-ms-paths'].*[post]"],
       then: {
         function: LROPostFinalStateViaProperty,
       },
