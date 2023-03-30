@@ -18,7 +18,7 @@ import provisioningStateSpecified from "./functions/lro-provisioning-state-speci
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
-import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
@@ -34,6 +34,7 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -588,6 +589,17 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    LatestVersionOfCommonTypesMustBeUsed: {
+      description: "This rule checks for references that aren't using latest version of common-types.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$..['$ref']",
+      then: {
+        function: latestVersionOfCommonTypesMustBeUsed,
+      },
+    },
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",

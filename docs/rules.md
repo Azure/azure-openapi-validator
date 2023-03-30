@@ -75,6 +75,12 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.md) for details.
 
+### LatestVersionOfCommonTypesMustBeUsed
+
+This rule checks for references that aren't using latest version of common-types.
+
+Please refer to [latest-version-of-common-types-must-be-used.md](./latest-version-of-common-types-must-be-used.md) for details.
+
 ### ArrayMustHaveType
 
 An array must claim "type:'array'" explicitly.
