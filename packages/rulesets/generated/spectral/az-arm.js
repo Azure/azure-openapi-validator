@@ -1665,25 +1665,6 @@ const provisioningStateSpecified = (pathItem, _opts, ctx) => {
     return errors;
 };
 
-const scopeParameter = "{scope}";
-const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
-    var _a;
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
-        return [];
-    }
-    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
-    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
-    const matches = otherPaths.filter((p) => pathRegEx.test(p));
-    const errors = matches.map((match) => {
-        return {
-            message: `Path "${match}" with explicitly defined scope is a duplicate of path "${path}" that has the scope parameter.".`,
-            path: ctx.path,
-        };
-    });
-    return errors;
-};
-
 function operationsApiSchema(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -1819,6 +1800,31 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
+const PatchResponseCode = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    if (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) {
+        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"]) && (patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"]))) {
+            errors.push({
+                message: "LRO PATCH must have 200 and 202 return codes.",
+                path: path,
+            });
+        }
+    }
+    else {
+        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"])) {
+            errors.push({
+                message: "Synchronous PATCH must have 200 return code.",
+                path: path,
+            });
+        }
+    }
+    return errors;
+};
+
 const pathSegmentCasing = (apiPaths, _opts, paths) => {
     if (apiPaths === null || typeof apiPaths !== 'object') {
         return [];
@@ -1886,6 +1892,35 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
             });
             break;
         }
+    }
+    return errors;
+};
+
+const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
+    var _a, _b;
+    if (putResponseSchema === null || typeof putResponseSchema !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    if (!putResponseSchema["200"] || !putResponseSchema["201"]) {
+        errors.push({
+            message: "Any Put MUST contain 200 and 201 return codes.",
+            path: path,
+        });
+        return errors;
+    }
+    if (!((_a = putResponseSchema["200"].description) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes("update"))) {
+        errors.push({
+            message: 'Description of 200 response code of a PUT operation MUST include term "update".',
+            path: path,
+        });
+    }
+    if (!((_b = putResponseSchema["201"].description) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes("create"))) {
+        errors.push({
+            message: 'Description of 201 response code of a PUT operation MUST include term "create".',
+            path: path,
+        });
     }
     return errors;
 };
@@ -2198,6 +2233,20 @@ const ruleset = {
                 },
             },
         },
+        LroErrorContent: {
+            description: "Error response content of long running operations must follow the error schema provided in the common types.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
+                },
+            },
+        },
         DeleteMustNotHaveRequestBody: {
             description: "The delete operation must not have a request body.",
             severity: "error",
@@ -2265,6 +2314,17 @@ const ruleset = {
             given: ["$.paths.*.patch"],
             then: {
                 function: consistentPatchProperties,
+            },
+        },
+        PatchResponseCode: {
+            description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[patch]"],
+            then: {
+                function: PatchResponseCode,
             },
         },
         LroPatch202: {
@@ -2351,6 +2411,16 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: trackedResourceTagsPropertyInRequest,
+            },
+        },
+        PutResponseSchemaDescription: {
+            description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            given: ["$[paths,'x-ms-paths'].*.put.responses"],
+            then: {
+                function: PutResponseSchemaDescription,
             },
         },
         PutGetPatchResponseSchema: {

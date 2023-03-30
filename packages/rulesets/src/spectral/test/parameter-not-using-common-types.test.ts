@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
-let linter: Spectral
+let nonResolvingLinter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("ParameterNotUsingCommonTypes")
-  return linter
+  nonResolvingLinter = await linterForRule("ParameterNotUsingCommonTypes", true)
+  return nonResolvingLinter
 })
 
 test("ParameterNotUsingCommonTypes should find errors path parameters", () => {
@@ -49,7 +49,7 @@ test("ParameterNotUsingCommonTypes should find errors path parameters", () => {
       },
     },
   }
-  const ret = linter.run(myOpenApiDocument).then((results) => {
+  const ret = nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
     expect(results[0].message).toContain("location")
@@ -99,7 +99,7 @@ test("ParameterNotUsingCommonTypes should find errors global parameters", () => 
       },
     },
   }
-  return linter.run(myOpenApiDocument).then((results) => {
+  return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
     expect(results[0].message).toContain("subscriptionId")
@@ -144,9 +144,6 @@ test("ParameterNotUsingCommonTypes should find no errors", () => {
       },
     },
   }
-
-  const nonResolvingLinter = linterForRule("ParameterNotUsingCommonTypes", true)
-
   return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(0)
   })
