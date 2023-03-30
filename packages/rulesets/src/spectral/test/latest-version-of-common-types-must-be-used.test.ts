@@ -111,3 +111,47 @@ test("ParametersInPointGet should find no errors", () => {
     expect(desiredResults.length).toBe(0)
   })
 })
+test("ParametersInPointGet should find no errors when ref is not present", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        get: {
+          operationId: "foo_post",
+          parameters: [
+            {
+              $ref: "#/parameters/LoadTestNameParameter",
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      LoadTestNameParameter: {
+        in: "query",
+        name: "loadTestName",
+        description: "Load Test name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+      QuotaBucketNameParameter: {
+        in: "query",
+        name: "quotaBucketName",
+        description: "Quota Bucket name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    const desiredResults = results.filter((result) => result.message.includes("Use the latest version"))
+    expect(desiredResults.length).toBe(0)
+  })
+})
