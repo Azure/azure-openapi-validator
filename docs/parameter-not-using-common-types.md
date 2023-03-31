@@ -2,7 +2,7 @@
 
 ## Category
 
-SDK Warning
+ARM Warning
 
 ## Applies to
 
@@ -18,8 +18,8 @@ Some commonly used parameters are defined in the common-types directory. These p
 
 ## Why the rule is important
 
-To reduce duplication, maintain consistent structure in ARM specifications.
+To reduce duplication and maintain consistent structure in ARM specifications.
 
 ## How to fix the violation
 
-Ensure any paramaters that share a name with those in common-types are declared using a JSON reference (e.g. `"$ref": ./path/to/file#/parameters/CommonParameter`). Common-types parameters are defined [here](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v4/types.json#L624).
+Ensure any parameters that share a name with those in common-types are declared using a JSON reference (e.g. `"$ref": ./path/to/file#/parameters/CommonParameter`) to common types. Common-types parameters are defined in types.json [here](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v4/types.json#L624).
