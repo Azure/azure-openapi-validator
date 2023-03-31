@@ -4,24 +4,25 @@ export const LROPostFinalStateViaProperty = (postOp: any, _opts: any, ctx: any) 
   }
   const path = ctx.path
   const errors = []
-  if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true){
+  const errorMessage =
+    "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'."
+
+  if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
     return []
   }
 
   if (!postOp["x-ms-long-running-operation-options"]) {
     errors.push({
-      message:
-        "A LRO POST MUST have long-running-operation-options specified and MUST have location header in the final-state-via property.",
+      message: errorMessage,
       path: path,
     })
     return errors
   }
   const finalStateViaProperty = postOp["x-ms-long-running-operation-options"]["final-state-via"]
 
-  if (!finalStateViaProperty || finalStateViaProperty !== "location") {
+  if (!finalStateViaProperty || finalStateViaProperty !== "azure-async-operation") {
     errors.push({
-      message:
-        "A LRO POST MUST have long-running-operation-options specified and MUST have location header in the final-state-via property.",
+      message: errorMessage,
       path: path,
     })
   }

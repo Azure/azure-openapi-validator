@@ -13,8 +13,8 @@ import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
-import { lroPostReturn } from "./functions/lro-post-return"
 import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property" 
+import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -468,8 +468,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-POST-V1-09
     LROPostFinalStateViaProperty: {
-      description:
-        "A LRO POST MUST have long-running-operation-options specified and MUST have location header in the final-state-via property.",
+      description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
       message: "{{error}}",
       severity: "error",
       resolved: false,

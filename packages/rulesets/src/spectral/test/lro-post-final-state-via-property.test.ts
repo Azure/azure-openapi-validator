@@ -7,6 +7,8 @@ beforeAll(async () => {
   linter = await linterForRule("LROPostFinalStateViaProperty")
   return linter
 })
+const errorMessage =
+  "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'."
 
 test("LROPostFinalStateViaProperty should find errors for missing long-running-operation-options", () => {
   const myOpenApiDocument = {
@@ -79,13 +81,11 @@ test("LROPostFinalStateViaProperty should find errors for missing long-running-o
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "A LRO POST MUST have long-running-operation-options specified and MUST have location header in the final-state-via property."
-    )
+    expect(results[0].message).toContain(errorMessage)
   })
 })
 
-test("LROPostFinalStateViaProperty should find errors for missing location header in the final-state-via property in long-running-operation-options", () => {
+test("LROPostFinalStateViaProperty should find errors for missing azure-async-operation header in the final-state-via property in long-running-operation-options", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -159,9 +159,7 @@ test("LROPostFinalStateViaProperty should find errors for missing location heade
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "A LRO POST MUST have long-running-operation-options specified and MUST have location header in the final-state-via property."
-    )
+    expect(results[0].message).toContain(errorMessage)
   })
 })
 
@@ -199,7 +197,7 @@ test("LROPostFinalStateViaProperty should find no errors", () => {
           },
           "x-ms-long-running-operation": true,
           "x-ms-long-running-operation-options": {
-            "final-state-via": "location",
+            "final-state-via": "azure-async-operation",
           },
         },
       },
