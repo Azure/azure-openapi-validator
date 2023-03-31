@@ -25,6 +25,7 @@ import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -422,19 +423,6 @@ const ruleset: any = {
       },
     },
 
-    // RPC Code: RPC-POST-V1-05
-    ParametersInPost: {
-      description: "For a POST action parameters MUST be in the payload and not in the URI.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[post][parameters]",
-      then: {
-        function: ParametersInPost,
-      },
-    },
-
     ///
     /// ARM RPC rules for Post patterns
     ///
@@ -451,7 +439,6 @@ const ruleset: any = {
         function: SyncPostReturn,
       },
     },
-
     // RPC Code: RPC-POST-V1-03
     LroPostReturn: {
       description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
@@ -462,6 +449,30 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
       then: {
         function: lroPostReturn,
+      },
+    },
+    // RPC Code: RPC-POST-V1-05
+    ParametersInPost: {
+      description: "For a POST action parameters MUST be in the payload and not in the URI.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post][parameters]",
+      then: {
+        function: ParametersInPost,
+      },
+    },
+    // RPC Code: RPC-Put-V1-25
+    PutRequestResponseSchemeArm: {
+      description: "The request & response('200') schema of the PUT operation must be same.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+      then: {
+        function: putRequestResponseScheme,
       },
     },
 
