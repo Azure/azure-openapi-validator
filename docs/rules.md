@@ -75,6 +75,12 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.md) for details.
 
+### ProvisioningStateMustBeReadOnly
+
+This is a rule introduced to validate if provisioningState property is set to readOnly or not.
+
+Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
+
 ### ArrayMustHaveType
 
 An array must claim "type:'array'" explicitly.
