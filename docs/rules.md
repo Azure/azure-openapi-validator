@@ -77,7 +77,7 @@ Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.m
 
 ### ProvisioningStateMustBeReadOnly
 
-This is a rule introduced to validate if provisioningState property is set to readOnly or not.
+This is a rule introduced to validate if provisioningState property is set to readOnly.
 
 Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
 

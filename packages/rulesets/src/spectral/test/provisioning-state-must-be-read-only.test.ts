@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("ProvisioningStateMustBeReadOnly referencing definitions from same swagger should find errors", () => {
+test("ProvisioningStateMustBeReadOnly should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
