@@ -74,6 +74,12 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.md) for details.
 
+### ProvisioningStateMustBeReadOnly
+
+This is a rule introduced to validate if provisioningState property is set to readOnly.
+
+Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
+
 ### ArrayMustHaveType
 
 An array must claim "type:'array'" explicitly.
@@ -352,6 +358,12 @@ Please refer to [get-must-not-have-request-body.md](./get-must-not-have-request-
 The get operation should only return 200, also it should not be a long running operation.
 
 Please refer to [get-operation200.md](./get-operation200.md) for details.
+
+### ParametersInPointGet
+
+Point Get's MUST not have query parameters other than api version.
+
+Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
 
 ### GuidUsage
 
