@@ -24,7 +24,6 @@ test("ReservedResourceNamesAsEnum should find errors on path level", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    console.log(results)
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/fooName.get"

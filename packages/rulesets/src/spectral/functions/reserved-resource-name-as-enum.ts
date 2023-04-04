@@ -24,7 +24,7 @@ export const reservedResourceNamesAsEnum = (pathItem: any, _opts: any, ctx: any)
 
   const errors = []
 
-  for (let op of includedOperations) {
+  for (const op of includedOperations) {
     if (pathItem[pathName][op]) {
       errors.push({
         message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,

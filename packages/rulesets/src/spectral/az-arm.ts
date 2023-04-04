@@ -24,6 +24,7 @@ import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
+import { reservedResourceNamesAsEnum } from "./functions/reserved-resource-name-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -31,7 +32,6 @@ import skuValidation from "./functions/sku-validation"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
-import { reservedResourceNamesAsEnum } from "./functions/reserved-resource-name-as-enum"
 const ruleset: any = {
   extends: [common],
   rules: {
