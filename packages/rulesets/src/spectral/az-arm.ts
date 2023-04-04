@@ -439,7 +439,6 @@ const ruleset: any = {
         function: SyncPostReturn,
       },
     },
-
     // RPC Code: RPC-POST-V1-03
     LroPostReturn: {
       description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
@@ -452,7 +451,6 @@ const ruleset: any = {
         function: lroPostReturn,
       },
     },
-
     // RPC Code: RPC-POST-V1-05
     ParametersInPost: {
       description: "For a POST action parameters MUST be in the payload and not in the URI.",
@@ -465,7 +463,6 @@ const ruleset: any = {
         function: ParametersInPost,
       },
     },
-
     // RPC Code: RPC-POST-V1-09
     LROPostFinalStateViaProperty: {
       description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
