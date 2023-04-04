@@ -16,6 +16,7 @@ import { lroPatch202 } from "./functions/lro-patch-202"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecified from "./functions/lro-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
+import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
@@ -34,7 +35,6 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
-import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 const ruleset: any = {
   extends: [common],
   rules: {
