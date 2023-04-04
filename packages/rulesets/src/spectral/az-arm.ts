@@ -15,6 +15,7 @@ import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provi
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
+import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property" 
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
@@ -458,6 +459,18 @@ const ruleset: any = {
         function: responseSchemaSpecifiedForSuccessStatusCode,
       },
     },
+    // RPC Code: RPC-Put-V1-25
+    PutRequestResponseSchemeArm: {
+      description: "The request & response('200') schema of the PUT operation must be same.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+      then: {
+        function: putRequestResponseScheme,
+      },
+    },
 
     ///
     /// ARM RPC rules for Post patterns
@@ -499,16 +512,17 @@ const ruleset: any = {
         function: ParametersInPost,
       },
     },
-    // RPC Code: RPC-Put-V1-25
-    PutRequestResponseSchemeArm: {
-      description: "The request & response('200') schema of the PUT operation must be same.",
+    // RPC Code: RPC-POST-V1-09
+    LROPostFinalStateViaProperty: {
+      description:
+        "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
       message: "{{error}}",
       severity: "error",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+      given: ["$[paths,'x-ms-paths'].*[post]"],
       then: {
-        function: putRequestResponseScheme,
+        function: LROPostFinalStateViaProperty,
       },
     },
 

@@ -721,6 +721,12 @@ For a POST action parameters MUST be in the payload and not in the URI.
 
 Please refer to [parameters-in-post.md](./parameters-in-post.md) for details.
 
+### LROPostFinalStateViaProperty
+
+For a LRO POST long-running-operation-options must have location header in the final-state-via property.
+
+Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
+
 ### ParametersOrder
 
 The rule is to ensure the parameters in the same order as they are ranked in the path. Since it can introduce a breaking change when updating parameter order, for services that have already shipped public versions, you may request to suppress the rule following the process documented here: https://dev.azure.com/azure-sdk/internal/_wiki/wikis/internal.wiki/85/Swagger-Suppression-Process
