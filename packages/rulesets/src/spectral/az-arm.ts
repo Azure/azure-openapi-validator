@@ -15,18 +15,24 @@ import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provi
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
+import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
+import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
+import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -164,6 +170,23 @@ const ruleset: any = {
         },
       },
     },
+    // RPC Code: RPC-Common-V1-05
+    LroErrorContent: {
+      description:
+        "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given:
+        "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property === 'default' || @property.startsWith('5') || @property.startsWith('4'))].schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v(([1-9]\\d+)|[2-9])/types.json#/definitions/ErrorResponse",
+        },
+      },
+    },
 
     ///
     /// ARM RPC rules for Delete patterns
@@ -260,6 +283,20 @@ const ruleset: any = {
         function: consistentPatchProperties,
       },
     },
+
+    // RPC Code: RPC-Patch-V1-06
+    PatchResponseCode: {
+      description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[patch]"],
+      then: {
+        function: PatchResponseCode,
+      },
+    },
+
     //https://github.com/Azure/azure-openapi-validator/issues/335
     // RPC Code: RPC-Patch-V1-06, RPC-Async-V1-08
     LroPatch202: {
@@ -361,6 +398,18 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Put-V1-11
+    PutResponseSchemaDescription: {
+      description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      given: ["$[paths,'x-ms-paths'].*.put.responses"],
+      then: {
+        function: PutResponseSchemaDescription,
+      },
+    },
+
     // RPC Code: RPC-Put-V1-12
     PutGetPatchResponseSchema: {
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
@@ -406,6 +455,49 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.put"],
       then: {
         function: responseSchemaSpecifiedForSuccessStatusCode,
+      },
+    },
+
+    // RPC Code: RPC-POST-V1-05
+    ParametersInPost: {
+      description: "For a POST action parameters MUST be in the payload and not in the URI.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post][parameters]",
+      then: {
+        function: ParametersInPost,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Post patterns
+    ///
+
+    // RPC Code: RPC-POST-V1-02
+    SyncPostReturn: {
+      description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post]",
+      then: {
+        function: SyncPostReturn,
+      },
+    },
+
+    // RPC Code: RPC-POST-V1-03
+    LroPostReturn: {
+      description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+      then: {
+        function: lroPostReturn,
       },
     },
 
@@ -525,6 +617,26 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+
+    ///
+    /// ARM rules for operations API
+    ///
+
+    // RPC Code: RPC-Operations-V1-01
+    OperationsApiSchemaUsesCommonTypes: {
+      description: "Operations API path must follow the schema provided in the common types.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
+        },
       },
     },
 
@@ -722,5 +834,4 @@ const ruleset: any = {
     },
   },
 }
-
 export default ruleset
