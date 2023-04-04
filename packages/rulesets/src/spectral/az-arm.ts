@@ -78,7 +78,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
+      given: ["$[paths,'x-ms-paths'].*"],
       then: {
         function: longRunningResponseStatusCodeArm,
       },
