@@ -615,7 +615,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*.responses[*].schema"],
+      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
       then: {
         function: provisioningStateMustBeReadOnly,
       },
