@@ -18,6 +18,6 @@ This is a rule introduced to validate if provisioningState property is set to re
 
 ## How to fix the violation
 
-provisioningState property must be set to readOnly.
-i.e, "readOnly": true
+Set the `provisioningState` property `readOnly`.
+I.e., `"readOnly": true`
 should be added to "provisioningState" property.
