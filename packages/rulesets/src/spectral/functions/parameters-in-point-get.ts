@@ -1,4 +1,4 @@
-import { getResourcesTypeHierarchy } from "./utils"
+import { getResourcesPathHierarchyBasedOnResourceType } from "./utils"
 
 export const ParametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
@@ -14,13 +14,13 @@ export const ParametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
   const errors: any[] = []
 
   for (const uri of uris) {
-    const hierarchy = getResourcesTypeHierarchy(uri)
+    const hierarchy = getResourcesPathHierarchyBasedOnResourceType(uri)
     if (hierarchy.length >= 1 && pathItem[uri][GET]) {
       const params = pathItem[uri][GET]["parameters"]
       const queryParams = params.filter((param: { in: string; name: string }) => param.in === "query" && param.name !== "api-version")
       queryParams.map((param: { name: any }) => {
         errors.push({
-          message: `${param.name} is a query parameter. Point Get's MUST not have query parameters other than api version.`,
+          message: `Query parameter ${param.name} should be removed. Point Get's MUST not have query parameters other than api version.`,
           path: [path, uri, GET, "parameters"],
         })
       })

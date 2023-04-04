@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-{param.name} is a query parameter. Point Get's MUST not have query parameters other than api version
+Query parameter {0} should be removed. Point gets MUST not have query parameters other than API version
 
 ## Description
 
@@ -22,4 +22,4 @@ Point Get's MUST not have query parameters other than api version.
 
 ## How to fix the violation
 
-Ensure that, for a point GET no other query parameters except api-version are present.
+Ensure that no query parameters are present for point get operations, except for api-version.

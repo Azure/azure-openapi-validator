@@ -175,23 +175,28 @@ export function isSchemaEqual(a: any, b: any): boolean {
   return false
 }
 
-const SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+(?:\\?\\w+)?$", "gi")
-export function getResourcesTypeHierarchy(path: string) {
+//const SingleResourceInstancePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+(?:\\?\\w+)?$", "gi")
+const providerAndNamespace = "/providers/[^/]+"
+const resourceTypeAndResourceName = "(?:/\\w+/default|/\\w+/{[^/]+})"
+const queryParam = "(?:\\?\\w+)"
+const resourcePathRegEx = new RegExp(`${providerAndNamespace}${resourceTypeAndResourceName}+${queryParam}?$`, "gi")
+export function getResourcesPathHierarchyBasedOnResourceType(path: string) {
   const index = path.lastIndexOf("/providers/")
   if (index === -1) {
     return []
   }
   const lastProvider = path.substr(index)
   const result = []
-  const matches = lastProvider.match(SpecificResourcePathRegEx)
+  const matches = lastProvider.match(resourcePathRegEx)
   if (matches && matches.length) {
     const match = matches[0]
-    const segments = match.split("/").slice(3)
-    for (const segment of segments) {
-      if (segment.startsWith("{") || segment === "default") {
+    // slice the array to remove 'providers', provider namespace
+    const resourcePathSegments = match.split("/").slice(3)
+    for (const resourcePathSegment of resourcePathSegments) {
+      if (resourcePathSegment.startsWith("{") || resourcePathSegment === "default") {
         continue
       }
-      result.push(segment)
+      result.push(resourcePathSegment)
     }
   }
   return result

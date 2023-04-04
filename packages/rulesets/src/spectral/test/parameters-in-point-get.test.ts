@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("ParametersInPointGet should find errors", () => {
+test("ParametersInPointGet should find errors for nested path", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -54,7 +54,55 @@ test("ParametersInPointGet should find errors", () => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.Music/songs/{unstoppable}/artist/{sia}.get.parameters")
     expect(results[0].message).toContain(
-      "quotaBucketName is a query parameter. Point Get's MUST not have query parameters other than api version."
+      "Query parameter quotaBucketName should be removed. Point Get's MUST not have query parameters other than api version."
+    )
+  })
+})
+
+test("ParametersInPointGet should find errors for top level path", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/providers/Microsoft.Music/songs/{unstoppable}": {
+        get: {
+          operationId: "foo_post",
+          parameters: [
+            {
+              $ref: "#/parameters/QuotaBucketNameParameter",
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      LoadTestNameParameter: {
+        in: "path",
+        name: "loadTestName",
+        description: "Load Test name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+      QuotaBucketNameParameter: {
+        in: "query",
+        name: "quotaBucketName",
+        description: "Quota Bucket name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.Music/songs/{unstoppable}.get.parameters")
+    expect(results[0].message).toContain(
+      "Query parameter quotaBucketName should be removed. Point Get's MUST not have query parameters other than api version."
     )
   })
 })
@@ -105,11 +153,11 @@ test("ParametersInPointGet should find errors for more than one query param", ()
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.Music/songs/{unstoppable}/artist/{sia}.get.parameters")
     expect(results[0].message).toContain(
-      "loadTestName is a query parameter. Point Get's MUST not have query parameters other than api version."
+      "Query parameter loadTestName should be removed. Point Get's MUST not have query parameters other than api version."
     )
     expect(results[1].path.join(".")).toBe("paths./providers/Microsoft.Music/songs/{unstoppable}/artist/{sia}.get.parameters")
     expect(results[1].message).toContain(
-      "quotaBucketName is a query parameter. Point Get's MUST not have query parameters other than api version."
+      "Query parameter quotaBucketName should be removed. Point Get's MUST not have query parameters other than api version."
     )
   })
 })
@@ -160,7 +208,7 @@ test("ParametersInPointGet should flag error for other query params but should n
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.Music/songs/{unstoppable}/artist/{sia}.get.parameters")
     expect(results[0].message).toContain(
-      "quotaBucketName is a query parameter. Point Get's MUST not have query parameters other than api version."
+      "Query parameter quotaBucketName should be removed. Point Get's MUST not have query parameters other than api version."
     )
   })
 })
@@ -414,7 +462,7 @@ test("ParametersInPointGet should find errors for x-ms-paths", () => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("x-ms-paths./providers/Microsoft.Music/songs/{unstoppable}?disambiguation_dummy.get.parameters")
     expect(results[0].message).toContain(
-      "quotaBucketName is a query parameter. Point Get's MUST not have query parameters other than api version."
+      "Query parameter quotaBucketName should be removed. Point Get's MUST not have query parameters other than api version."
     )
   })
 })
