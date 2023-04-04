@@ -208,12 +208,6 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [delete-in-operation-name.md](./delete-in-operation-name.md) for details.
 
-### DeleteResponseCodes
-
-Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.
-
-Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
-
 ### DeleteMustNotHaveRequestBody
 
 The request body of a delete operation must be empty.
@@ -237,6 +231,12 @@ Please refer to [delete-operation-responses.md](./delete-operation-responses.md)
 The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
+
+### DeleteResponseCodes
+
+Synchronous delete operations must have 200 & 204 return code responses and long-running (LRO) delete operations must have 202 & 204 return code responses.
+
+Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
 
 ### Delete204Response
 
@@ -273,6 +273,11 @@ Please refer to [descriptive-description-required.md](./descriptive-description-
 This rule is to ensure the documentation link in the description does not contains any locale.
 
 Please refer to [doc-link-locale.md](./doc-link-locale.md) for details.
+
+### ResourceMustReferenceCommonTypes
+
+
+Please refer to [DOCS_TEMPLATE.md](./DOCS_TEMPLATE.md) for details.
 
 ### EnumInsteadOfBoolean
 
@@ -450,18 +455,6 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
-### ProvisioningStateSpecifiedForLROPut
-
-This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
-
-Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
-
-### ProvisioningStateSpecifiedForLROPatch
-
-This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
-
-Please refer to [lro-patch-provisioning-state-specified.md](./lro-patch-provisioning-state-specified.md) for details.
-
 ### ProvisioningStateSpecifiedForLRODelete
 
 This is a rule introduced to validate if a LRO DELETE operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -492,11 +485,21 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### ProvisioningStateSpecifiedForLROPatch
+
+This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
+
+Please refer to [lro-patch-provisioning-state-specified.md](./lro-patch-provisioning-state-specified.md) for details.
+
 ### LroPatch202
 
 Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
+
+For long running (LRO) post operations, 'long-running-operation-options' must be present and have the 'final-state-via' property set to 'azure-async-operation'.
+
+Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -509,6 +512,12 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
+### ProvisioningStateSpecifiedForLROPut
+
+This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
+
+Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
 
 ### LROStatusCodesReturnTypeSchema
 
@@ -726,12 +735,6 @@ Please refer to [parameter-order.md](./parameter-order.md) for details.
 For a POST action parameters MUST be in the payload and not in the URI.
 
 Please refer to [parameters-in-post.md](./parameters-in-post.md) for details.
-
-### LROPostFinalStateViaProperty
-
-For a LRO POST long-running-operation-options must have location header in the final-state-via property.
-
-Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
 
 ### ParametersOrder
 
@@ -956,6 +959,12 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
+
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
 
 ### RepeatedPathInfo
 

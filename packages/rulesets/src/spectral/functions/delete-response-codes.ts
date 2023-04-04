@@ -9,7 +9,7 @@ export const DeleteResponseCodes = (deleteOp: any, _opts: any, ctx: any) => {
     return []
   }
 
-  if (deleteOp["x-ms-long-running-operation"] && deleteOp["x-ms-long-running-operation"] == true) {
+  if (deleteOp["x-ms-long-running-operation"] && deleteOp["x-ms-long-running-operation"] === true) {
     if (!deleteOp.responses["202"] || !deleteOp.responses["204"]) {
       errors.push({
         message: "LRO DELETE must have 202 and 204 return code.",
