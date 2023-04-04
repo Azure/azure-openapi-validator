@@ -1,5 +1,6 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
+import { LATEST_VERSION_BY_COMMON_TYPES_FILENAME } from "../functions/utils"
 
 let linter: Spectral
 
@@ -55,11 +56,11 @@ test("LatestVersionOfCommonTypesMustBeUsed should find errors for obsolete versi
     const desiredResults = results.filter((result) => result.message.includes("Use the latest version"))
     expect(desiredResults.length).toBe(3)
     expect(desiredResults[0].path.join(".")).toBe("paths./foo.get.parameters.0.$ref")
-    expect(desiredResults[0].message).toContain("Use the latest version v4 of customermanagedkeys.json available under common-types.")
+    expect(desiredResults[0].message).toContain("Use the latest version v4 of customermanagedkeys.json.")
     expect(desiredResults[1].path.join(".")).toBe("paths./foo.get.parameters.1.$ref")
-    expect(desiredResults[1].message).toContain("Use the latest version v5 of managedidentity.json available under common-types.")
+    expect(desiredResults[1].message).toContain("Use the latest version v5 of managedidentity.json.")
     expect(desiredResults[2].path.join(".")).toBe("paths./foo.get.responses.200.$ref")
-    expect(desiredResults[2].message).toContain("Use the latest version v5 of types.json available under common-types.")
+    expect(desiredResults[2].message).toContain("Use the latest version v5 of types.json.")
   })
 })
 
@@ -72,16 +73,22 @@ test("ParametersInPointGet should find no errors", () => {
           operationId: "foo_post",
           parameters: [
             {
-              $ref: "../../../../../common-types/resource-management/v4/customermanagedkeys.json#/parameters/ApiVersionParameter",
+              $ref: `../../../../../common-types/resource-management/${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(
+                "customermanagedkeys.json"
+              )}/customermanagedkeys.json#/parameters/ApiVersionParameter`,
             },
             {
-              $ref: "../../../../../common-types/resource-management/v5/managedidentity.json#/parameters/ApiVersionParameter",
+              $ref: `../../../../../common-types/resource-management/${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(
+                "managedidentity.json"
+              )}/managedidentity.json#/parameters/ApiVersionParameter`,
             },
           ],
           responses: {
             200: {
               description: "Success",
-              $ref: "../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter",
+              $ref: `../../../../../common-types/resource-management/${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(
+                "types.json"
+              )}/types.json#/parameters/ApiVersionParameter`,
             },
           },
         },
@@ -111,7 +118,7 @@ test("ParametersInPointGet should find no errors", () => {
     expect(desiredResults.length).toBe(0)
   })
 })
-test("ParametersInPointGet should find no errors when ref is not present", () => {
+test("ParametersInPointGet should find no errors when common-types ref is not present", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
