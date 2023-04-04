@@ -188,7 +188,7 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when nextLink is m
   })
 })
 
-test("GetCollectionOnlyHasValueAndNextLink should find errors when nextLink is missing", () => {
+test("GetCollectionOnlyHasValueAndNextLink should find errors when value is missing", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
