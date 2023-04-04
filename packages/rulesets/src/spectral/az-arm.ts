@@ -22,6 +22,7 @@ import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-fo
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
@@ -250,6 +251,19 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Get-V1-08
+    ParametersInPointGet: {
+      description: "Point Get's MUST not have query parameters other than api version.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: ParametersInPointGet,
       },
     },
 

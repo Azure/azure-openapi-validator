@@ -342,6 +342,12 @@ The get operation should only return 200, also it should not be a long running o
 
 Please refer to [get-operation200.md](./get-operation200.md) for details.
 
+### ParametersInPointGet
+
+Point Get's MUST not have query parameters other than api version.
+
+Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
+
 ### GuidUsage
 
 Verifies whether format is specified as "uuid" or not.
