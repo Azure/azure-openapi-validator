@@ -24,6 +24,7 @@ import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { PatchPropertiesInNormalResourceDefinition } from "./functions/patch-properties-in-normal-resource-definition"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
@@ -256,6 +257,19 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for Patch patterns
     ///
+
+    // RPC Code: RPC-Patch-V1-01
+    PatchPropertiesInNormalResourceDefinition: {
+      description: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.[patch]^"],
+      then: {
+        function: PatchPropertiesInNormalResourceDefinition,
+      },
+    },
 
     // RPC Code: RPC-Patch-V1-02
     UnSupportedPatchProperties: {

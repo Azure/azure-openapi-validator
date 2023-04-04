@@ -1184,6 +1184,12 @@ Patch may not change the name, location, or type of the resource.
 
 Please refer to [un-supported-patch-properties.md](./un-supported-patch-properties.md) for details.
 
+### PatchPropertiesInNormalResourceDefinition
+
+Validates if Patch request body contains at least one or more properties present in the normal resource definition (PUT operation).
+
+Please refer to [patch-properties-in-normal-resource-definition.md](./patch-properties-in-normal-resource-definition.md) for details.
+
 ### UniqueClientParameterName
 
 This may cause a problem when different swagger files come together. If two APIs with different client name have the same client parameter subscriptionId, but with different reference name in swaggers, the generated model will also have two clients with two client parameters subscriptionId and subscriptionId1 (the latter one has been renamed to avoid collision). We should ensure that the client parameters are all unique in the same API version.
