@@ -175,7 +175,6 @@ export function isSchemaEqual(a: any, b: any): boolean {
   return false
 }
 
-//const SingleResourceInstancePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+(?:\\?\\w+)?$", "gi")
 const providerAndNamespace = "/providers/[^/]+"
 const resourceTypeAndResourceName = "(?:/\\w+/default|/\\w+/{[^/]+})"
 const queryParam = "(?:\\?\\w+)"
