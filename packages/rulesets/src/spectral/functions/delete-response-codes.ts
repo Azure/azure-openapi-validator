@@ -12,14 +12,14 @@ export const DeleteResponseCodes = (deleteOp: any, _opts: any, ctx: any) => {
   if (deleteOp["x-ms-long-running-operation"] && deleteOp["x-ms-long-running-operation"] === true) {
     if (!deleteOp.responses["202"] || !deleteOp.responses["204"]) {
       errors.push({
-        message: "LRO DELETE must have 202 and 204 return code.",
+        message: "Long-running (LRO) delete operations must have responses with 202 and 204 return codes.",
         path: path,
       })
     }
   } else {
     if (!deleteOp.responses["200"] || !deleteOp.responses["204"]) {
       errors.push({
-        message: "Synchronous DELETE must have 200 and 204 return code.",
+        message: "Synchronous delete operations must have responses with 200 and 204 return codes.",
         path: path,
       })
     }

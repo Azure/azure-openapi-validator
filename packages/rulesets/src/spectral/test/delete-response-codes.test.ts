@@ -72,7 +72,7 @@ test("DeleteResponseCodes should find errors for sync delete with only 200", () 
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Synchronous DELETE must have 200 and 204 return code.")
+    expect(results[0].message).toContain("Synchronous delete operations must have responses with 200 and 204 return codes.")
   })
 })
 
@@ -140,7 +140,7 @@ test("DeleteResponseCodes should find errors for sync delete with only 204", () 
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Synchronous DELETE must have 200 and 204 return code.")
+    expect(results[0].message).toContain("Synchronous delete operations must have responses with 200 and 204 return codes.")
   })
 })
 
@@ -281,7 +281,7 @@ test("DeleteResponseCodes should find errors for lro delete with only 202", () =
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("LRO DELETE must have 202 and 204 return code.")
+    expect(results[0].message).toContain("Long-running (LRO) delete operations must have responses with 202 and 204 return codes.")
   })
 })
 
@@ -350,7 +350,7 @@ test("DeleteResponseCodes should find errors for lro delete with only 204", () =
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("LRO DELETE must have 202 and 204 return code.")
+    expect(results[0].message).toContain("Long-running (LRO) delete operations must have responses with 202 and 204 return codes.")
   })
 })
 
