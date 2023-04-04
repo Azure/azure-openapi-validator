@@ -1,3 +1,16 @@
+export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME= new Map([
+["types.json", "v5"],
+["managedidentity.json", "v5"],
+["privatelinks.json", "v4"],
+["customermanagedkeys.json", "v4"],
+["managedidentitywithdelegation.json", "v4"]
+])
+
+export function isLatestCommonTypesVersionForFile(version: string, fileName: string) {
+  return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase()
+}
+
+
 /**
  * get all properties as array
  */
@@ -152,25 +165,25 @@ export function isXmsResource(schema: any) {
 
 export function isSchemaEqual(a: any, b: any): boolean {
   if (a && b) {
-    const propsA = Object.getOwnPropertyNames(a);
-    const propsB = Object.getOwnPropertyNames(b);
+    const propsA = Object.getOwnPropertyNames(a)
+    const propsB = Object.getOwnPropertyNames(b)
     if (propsA.length === propsB.length) {
       for (let i = 0; i < propsA.length; i++) {
-        const propsAName = propsA[i];
-        const [propA, propB] = [a[propsAName], b[propsAName]];
+        const propsAName = propsA[i]
+        const [propA, propB] = [a[propsAName], b[propsAName]]
         if (typeof propA === "object") {
           if (!isSchemaEqual(propA, propB)) {
-            return false;
+            return false
           } else if (i === propsA.length - 1) {
-            return true;
+            return true
           }
         } else if (propA !== propB) {
-          return false;
+          return false
         } else if (propA === propB && i === propsA.length - 1) {
-          return true;
+          return true
         }
       }
     }
   }
-  return false;
+  return false
 }

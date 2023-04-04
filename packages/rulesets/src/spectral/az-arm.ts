@@ -10,6 +10,7 @@ import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-ru
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
+import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provisioning-state-specified"
 import validateOriginalUri from "./functions/lro-original-uri"
@@ -669,6 +670,17 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    LatestVersionOfCommonTypesMustBeUsed: {
+      description: "This rule checks for references that aren't using latest version of common-types.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$..['$ref']",
+      then: {
+        function: latestVersionOfCommonTypesMustBeUsed,
+      },
+    },
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",
