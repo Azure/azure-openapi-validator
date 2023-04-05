@@ -15,7 +15,7 @@ import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provi
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property" 
+import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
@@ -260,12 +260,13 @@ const ruleset: any = {
 
     // RPC Code: RPC-Patch-V1-01
     PatchPropertiesInNormalResourceDefinition: {
-      description: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
+      description:
+        "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
       message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.[patch]^"],
+      given: ["$[paths,'x-ms-paths'].*"],
       then: {
         function: PatchPropertiesInNormalResourceDefinition,
       },
