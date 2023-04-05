@@ -6,7 +6,7 @@ ARM Error
 
 ## Applies to
 
-ARM OpenAPI(swagger) specs
+ARM OpenAPI (Swagger) specs
 
 ## Related ARM Guideline Code
 
