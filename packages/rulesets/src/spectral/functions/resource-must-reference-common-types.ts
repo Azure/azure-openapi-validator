@@ -17,17 +17,6 @@ export const resourceMustReferenceCommonTypes = (ref: any, _opts: any, ctx: any)
     return []
   }
 
-  // check the ref for each 200 response of get, put, patch
-  // e.g.
-  // "responses": {
-  //   "200": {
-  //     "description": "Successfully updated the PrincipalAssignment.",
-  //     "schema": {
-  //       "$ref": "#/definitions/ClusterPrincipalAssignment"
-  //     }
-  //   }
-  // },
-
   // get the resource name using the last word of the ref path
   const resourceName = ref.toString().split("/").pop()
   // find the resource definition by name, get the references under it
