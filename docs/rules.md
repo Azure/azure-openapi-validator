@@ -268,11 +268,6 @@ This rule is to ensure the documentation link in the description does not contai
 
 Please refer to [doc-link-locale.md](./doc-link-locale.md) for details.
 
-### ResourceMustReferenceCommonTypes
-
-
-Please refer to [DOCS_TEMPLATE.md](./DOCS_TEMPLATE.md) for details.
-
 ### EnumInsteadOfBoolean
 
 Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.

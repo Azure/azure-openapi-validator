@@ -8,8 +8,6 @@ ARM Error
 
 ARM OpenAPI (Swagger) specs
 
-## Related ARM Guideline Code
-
 ## Description
 
 Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
