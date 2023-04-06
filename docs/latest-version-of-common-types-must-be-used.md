@@ -6,7 +6,7 @@ ARM Error
 
 ## Applies to
 
-ARM OpenAPI(swagger) specs
+ARM OpenAPI (swagger) specs
 
 ## Output Message
 
