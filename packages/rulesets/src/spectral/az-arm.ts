@@ -16,18 +16,20 @@ import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provi
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property" 
+import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
+import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
@@ -251,6 +253,19 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Get-V1-08
+    ParametersInPointGet: {
+      description: "Point Get's MUST not have query parameters other than api version.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: ParametersInPointGet,
       },
     },
 
@@ -679,6 +694,17 @@ const ruleset: any = {
       given: "$..['$ref']",
       then: {
         function: latestVersionOfCommonTypesMustBeUsed,
+      },
+    },
+    ProvisioningStateMustBeReadOnly: {
+      description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
+      then: {
+        function: provisioningStateMustBeReadOnly,
       },
     },
     ArrayMustHaveType: {

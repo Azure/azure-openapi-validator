@@ -62,9 +62,10 @@ Please refer to [api-version-parameter-required.md](./api-version-parameter-requ
 
 ### APIVersionPattern
 
-The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.)  NOTE that this is the en-US ordering of month and date.
+The API Version parameter MUST be in the Year-Month-Date format (i.e. 2016-07-04.) NOTE that this is the en-US ordering of month and date.
 The date MAY optionally be followed by one of:
-* -preview - Indicates the API version is in (public) preview
+
+- -preview - Indicates the API version is in (public) preview
 
 Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 
@@ -73,12 +74,6 @@ Please refer to [api-version-pattern.md](./api-version-pattern.md) for details.
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties should not be repeated inside the properties bag for ARM resources.
 
 Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.md) for details.
-
-### LatestVersionOfCommonTypesMustBeUsed
-
-This rule checks for references that aren't using latest version of common-types.
-
-Please refer to [latest-version-of-common-types-must-be-used.md](./latest-version-of-common-types-must-be-used.md) for details.
 
 ### ArrayMustHaveType
 
@@ -201,10 +196,10 @@ Please refer to [default-response.md](./default-response.md) for details.
 ### DefinitionsPropertiesNamesCamelCase
 
 Property names must use lowerCamelCase style.
-If the property is a single word (ex: foo, bar, etc.) it will be all lowercase. 
-Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized. 
-Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.) 
-For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx)
+If the property is a single word (ex: foo, bar, etc.) it will be all lowercase.
+Two-letter acronyms (ex: ID, IO, IP, etc.) should be capitalized.
+Three-letter acronyms (ex: API, URL, etc.) should only have the first letter capitalized (ex: Api, Url, etc.)
+For more capitalization guidance, see: [https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx](<https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx>)
 
 Please refer to [definitions-properties-names-camel-case.md](./definitions-properties-names-camel-case.md) for details.
 
@@ -363,6 +358,7 @@ Please refer to [header-disallowed.md](./header-disallowed.md) for details.
 ### HostParametersValidation
 
 This is to validate if parameters in the 'x-ms-parameterized-host' follow the following rules::
+
 1. If a parameter matches belows, therefore it must be called 'endpoint' and be typed 'type:string, format:url'.
    - Client level (x-ms-parameter-location: client)
    - A path component (in: path)
@@ -403,6 +399,12 @@ Please refer to [invalid-sku-model.md](./invalid-sku-model.md) for details.
 Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PATCH/HEAD/OPTIONS/POST/TRACE.
 
 Please refer to [invalid-verb-used.md](./invalid-verb-used.md) for details.
+
+### LatestVersionOfCommonTypesMustBeUsed
+
+This rule checks for references that aren't using the latest version of common-types.
+
+Please refer to [latest-version-of-common-types-must-be-used.md](./latest-version-of-common-types-must-be-used.md) for details.
 
 ### LicenseHeaderMustNotBeSpecified
 
@@ -450,18 +452,6 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
-### ProvisioningStateSpecifiedForLROPut
-
-This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
-
-Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
-
-### ProvisioningStateSpecifiedForLROPatch
-
-This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
-
-Please refer to [lro-patch-provisioning-state-specified.md](./lro-patch-provisioning-state-specified.md) for details.
-
 ### ProvisioningStateSpecifiedForLRODelete
 
 This is a rule introduced to validate if a LRO DELETE operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -492,11 +482,21 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### ProvisioningStateSpecifiedForLROPatch
+
+This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
+
+Please refer to [lro-patch-provisioning-state-specified.md](./lro-patch-provisioning-state-specified.md) for details.
+
 ### LroPatch202
 
 Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
+
+For long running (LRO) post operations, 'long-running-operation-options' must be present and have the 'final-state-via' property set to 'azure-async-operation'.
+
+Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -509,6 +509,12 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
+### ProvisioningStateSpecifiedForLROPut
+
+This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
+
+Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
 
 ### LROStatusCodesReturnTypeSchema
 
@@ -721,17 +727,17 @@ Path parameters must be in the same order as in the path.
 
 Please refer to [parameter-order.md](./parameter-order.md) for details.
 
+### ParametersInPointGet
+
+Point Get's MUST not have query parameters other than api version.
+
+Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
+
 ### ParametersInPost
 
 For a POST action parameters MUST be in the payload and not in the URI.
 
 Please refer to [parameters-in-post.md](./parameters-in-post.md) for details.
-
-### LROPostFinalStateViaProperty
-
-For a LRO POST long-running-operation-options must have location header in the final-state-via property.
-
-Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
 
 ### ParametersOrder
 
@@ -778,7 +784,7 @@ Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 ### PathCharacters
 
 Path should contain only recommended characters.
-The recommended characters are 0-9, A-Z, a-z, -, ., _, ~, and :.
+The recommended characters are 0-9, A-Z, a-z, -, ., \_, ~, and :.
 
 Please refer to [path-characters.md](./path-characters.md) for details.
 
@@ -792,6 +798,7 @@ Please refer to [path-contains-resource-group.md](./path-contains-resource-group
 
 Per ARM RPC,Uri for resource CRUD methods MUST contain a resource type.
 Uri path starts with \<scope\>/providers/\<namespace\>/\<resourcetype\> format, where
+
 - \<scope\> is one of:
   1.  Tenant/Global: '/'
   2.  Subscription: "/subscriptions/{subscriptionId}"
@@ -888,6 +895,7 @@ Please refer to [preview-version-over-one-year.md](./preview-version-over-one-ye
 ### PrivateEndpointResourceSchemaValidation
 
 This rule is to check if the schemas used by private endpoint conform to the common [privateLink](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v1/privatelinks.json). The rule will check the schemas of following models and their properties:
+
 1. PrivateEndpointConnection
 2. PrivateEndpointConnectionProperties
 3. PrivateEndpointConnectionListResult
@@ -914,6 +922,12 @@ Please refer to [property-names-convention.md](./property-names-convention.md) f
 Schema property should have a defined type.
 
 Please refer to [property-type.md](./property-type.md) for details.
+
+### ProvisioningStateMustBeReadOnly
+
+This is a rule introduced to validate if provisioningState property is set to readOnly.
+
+Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
 
 ### ProvisioningStateValidation
 
@@ -956,6 +970,12 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
+
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
 
 ### RepeatedPathInfo
 
@@ -1043,34 +1063,34 @@ Every schema should specify a well-defined combination of `type` and `format`.
 and not allowed for any other types.
 The well-defined type/format combinations are:
 **type: integer**
-| format   | description     | comments                  |
+| format | description | comments |
 | -------- | --------------- | ------------------------- |
-| int32    | signed 32 bits  | from [oas2][oas2]         |
-| int64    | signed 64 bits  | from [oas2][oas2]         |
+| int32 | signed 32 bits | from [oas2][oas2] |
+| int64 | signed 64 bits | from [oas2][oas2] |
 | unixtime | Unix time stamp | from [autorest][autorest] |
 **type: number**
-| format  | description            | comments                  |
+| format | description | comments |
 | ------- | ---------------------- | ------------------------- |
-| float   | 32 bit floating point  | from [oas2][oas2]         |
-| int64   | 64 bit floating point  | from [oas2][oas2]         |
+| float | 32 bit floating point | from [oas2][oas2] |
+| int64 | 64 bit floating point | from [oas2][oas2] |
 | decimal | 128 bit floating point | from [autorest][autorest] |
 **type: string**
-| format            | description                  | comments                  |
+| format | description | comments |
 | ----------------- | ---------------------------- | ------------------------- |
-| byte              | base64 encoded characters    | from [oas2][oas2]         |
-| binary            | any sequence of octets       | from [oas2][oas2]         |
-| date              | [RFC3339][rfc3339] full-date | from [oas2][oas2]         |
-| date-time         | [RFC3339][rfc3339] date-time | from [oas2][oas2]         |
-| password          | sensitive value              | from [oas2][oas2]         |
-| char              |                              | from [autorest][autorest] |
-| time              |                              | from [autorest][autorest] |
-| date-time-rfc1123 |                              | from [autorest][autorest] |
-| duration          |                              | from [autorest][autorest] |
-| uuid              |                              | from [autorest][autorest] |
-| base64url         |                              | from [autorest][autorest] |
-| url               |                              | from [autorest][autorest] |
-| odata-query       |                              | from [autorest][autorest] |
-| certificate       |                              | from [autorest][autorest] |
+| byte | base64 encoded characters | from [oas2][oas2] |
+| binary | any sequence of octets | from [oas2][oas2] |
+| date | [RFC3339][rfc3339] full-date | from [oas2][oas2] |
+| date-time | [RFC3339][rfc3339] date-time | from [oas2][oas2] |
+| password | sensitive value | from [oas2][oas2] |
+| char | | from [autorest][autorest] |
+| time | | from [autorest][autorest] |
+| date-time-rfc1123 | | from [autorest][autorest] |
+| duration | | from [autorest][autorest] |
+| uuid | | from [autorest][autorest] |
+| base64url | | from [autorest][autorest] |
+| url | | from [autorest][autorest] |
+| odata-query | | from [autorest][autorest] |
+| certificate | | from [autorest][autorest] |
 oas2: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
 autorest: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
 rfc3339: https://xml2rfc.tools.ietf.org/public/rfc/
@@ -1206,6 +1226,7 @@ Please refer to [unique-model-name.md](./unique-model-name.md) for details.
 
 This rule will check all the swagger files with the same api-version, and ensure there is no duplicate x-ms-enum name.
 The following cases are deemed as violation:
+
 1. if two enums have the same x-ms-enum name , but types are different.
 2. if two enums have the same x-ms-enum name , but 'modelAsString' are different.
 3. if two enums have the same x-ms-enum name , but include different values.

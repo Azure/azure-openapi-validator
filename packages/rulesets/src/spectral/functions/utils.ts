@@ -1,15 +1,14 @@
-export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME= new Map([
-["types.json", "v5"],
-["managedidentity.json", "v5"],
-["privatelinks.json", "v4"],
-["customermanagedkeys.json", "v4"],
-["managedidentitywithdelegation.json", "v4"]
+export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
+  ["types.json", "v5"],
+  ["managedidentity.json", "v5"],
+  ["privatelinks.json", "v4"],
+  ["customermanagedkeys.json", "v4"],
+  ["managedidentitywithdelegation.json", "v4"],
 ])
 
 export function isLatestCommonTypesVersionForFile(version: string, fileName: string) {
   return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase()
 }
-
 
 /**
  * get all properties as array
@@ -186,4 +185,30 @@ export function isSchemaEqual(a: any, b: any): boolean {
     }
   }
   return false
+}
+
+const providerAndNamespace = "/providers/[^/]+"
+const resourceTypeAndResourceName = "(?:/\\w+/default|/\\w+/{[^/]+})"
+const queryParam = "(?:\\?\\w+)"
+const resourcePathRegEx = new RegExp(`${providerAndNamespace}${resourceTypeAndResourceName}+${queryParam}?$`, "gi")
+export function getResourcesPathHierarchyBasedOnResourceType(path: string) {
+  const index = path.lastIndexOf("/providers/")
+  if (index === -1) {
+    return []
+  }
+  const lastProvider = path.substr(index)
+  const result = []
+  const matches = lastProvider.match(resourcePathRegEx)
+  if (matches && matches.length) {
+    const match = matches[0]
+    // slice the array to remove 'providers', provider namespace
+    const resourcePathSegments = match.split("/").slice(3)
+    for (const resourcePathSegment of resourcePathSegments) {
+      if (resourcePathSegment.startsWith("{") || resourcePathSegment === "default") {
+        continue
+      }
+      result.push(resourcePathSegment)
+    }
+  }
+  return result
 }
