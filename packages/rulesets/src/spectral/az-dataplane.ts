@@ -15,6 +15,7 @@ import paramorder from "./functions/param-order"
 import patchcontenttype from "./functions/patch-content-type"
 import pathparamnames from "./functions/path-param-names"
 import pathparamschema from "./functions/path-param-schema"
+import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import schematypeandformat from "./functions/schema-type-and-format"
 import versionpolicy from "./functions/version-policy"
 
@@ -416,6 +417,17 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
       then: {
         function: longRunningResponseStatusCodeDataPlane,
+      },
+    },
+    PutRequestResponseScheme: {
+      description: "The request & response('200') schema of the PUT operation must be same.",
+      message: "{{error}}",
+      severity: "warn",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+      then: {
+        function: putRequestResponseScheme,
       },
     },
   },
