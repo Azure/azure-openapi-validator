@@ -440,19 +440,19 @@ Please refer to [long-running-response-status-code-data-plane.md](./long-running
 ### LongRunningResponseStatusCode
 
 For **ARM (Control Plane) specs**, valid response status codes for long-running (LRO) operations are as follows:
-| Operation Name | Valid Response Codes           |
-| -------------- | ------------------------------ |
-| Delete         | `200` and `204`                |
-| Post           | `200`, `201` ,`202`, and `204` |
-| Put            | `200` and `201`                |
-| Patch          | `200` and `201`                |
+| Operation Name | Valid Response Codes          |
+| -------------- | ----------------------------- |
+| Delete         | `200` and `204`               |
+| Post           | `200`, `201`,`202`, and `204` |
+| Put            | `200` and `201`               |
+| Patch          | `200` and `201`               |
 For **Data Plane specs**, valid response status codes for long-running (LRO) operations are as follows:
-| Operation Name | Valid Response Codes           |
-| -------------- | ------------------------------ |
-| Delete         | `200`,`202`, and `204`         |
-| Post           | `200`, `201` ,`202`, and `204` |
-| Put            | `200`, `201`, and `202`        |
-| Patch          | `200`, `201`, and `202`        |
+| Operation Name | Valid Response Codes          |
+| -------------- | ----------------------------- |
+| Delete         | `200`,`202`, and `204`        |
+| Post           | `200`, `201`,`202`, and `204` |
+| Put            | `200`, `201`, and `202`       |
+| Patch          | `200`, `201`, and `202`       |
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
