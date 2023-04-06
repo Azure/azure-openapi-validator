@@ -5,63 +5,47 @@ export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: 
     return []
   }
 
-  const path = ctx.path
-  const errors: any = []
-  const patchProperties = []
-  const putProperties = []
-  const patchResponses = pathItem["patch"].responses
+  const error = [
+    {
+      message: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
+      path: ctx.path,
+    },
+  ]
+  const patchResponses = pathItem["patch"]?.responses
+  const putResponses = pathItem["put"]?.responses
 
+  if (!patchResponses && !putResponses) {
+    return []
+  }
+  if (patchResponses && !putResponses) {
+    return error
+  }
 
-  for (const res in patchResponses) {
-    const value = patchResponses[res]
-    const properties = getProperties(value.schema)
-    if (Object.entries(properties).length > 0) {
-      patchProperties.push(properties)
+  // set of all the property names for successful patch responses
+  const patchPropertyNames = new Set()
+  // defined success response codes for the patch operation
+  const patchResponseCodes = Object.keys(patchResponses).filter((statusCode) => statusCode.startsWith("2"))
+
+  // add all the properties of patch responses to a set
+  for (const responseStatusCode of patchResponseCodes) {
+    const propertyNames = Object.keys(getProperties(patchResponses[responseStatusCode].schema))
+    for (const name of propertyNames) {
+      patchPropertyNames.add(name)
     }
   }
 
-  if (patchProperties.length === 0) {
+  if (patchPropertyNames.size < 1) {
     return []
   }
 
-  if (!pathItem["put"]) {
-    errors.push({
-      message:
-        "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
-      path: path,
-    })
-    return errors
-  }
-
-  const putResponses = pathItem["put"].responses
-  for (const res in putResponses) {
-    const value = putResponses[res]
-    const properties = getProperties(value.schema)
-    if (Object.entries(properties).length > 0) {
-      putProperties.push(properties)
-    }
-  }
-
-  const patchPropertiesSet = new Set()
-  const putPropertiesSet = new Set()
-  for (const patchProp of patchProperties) {
-    patchPropertiesSet.add(JSON.stringify(patchProp))
-  }
-
-  for (const putProp of putProperties) {
-    putPropertiesSet.add(JSON.stringify(putProp))
-  }
-
-  for (const patchProp of patchPropertiesSet) {
-    if (putPropertiesSet.has(patchProp)) {
+  // defined success response codes for the put operation
+  const putResponseCodes = Object.keys(putResponses).filter((statusCode) => statusCode.startsWith("2"))
+  for (const responseStatusCode of putResponseCodes) {
+    const propertyNames = Object.keys(getProperties(putResponses[responseStatusCode].schema))
+    if (propertyNames.some((name) => patchPropertyNames.has(name))) {
       return []
     }
   }
 
-  errors.push({
-    message: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
-    path: path,
-  })
-
-  return errors
+  return error
 }

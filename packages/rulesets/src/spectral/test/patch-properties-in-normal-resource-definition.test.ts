@@ -8,6 +8,9 @@ beforeAll(async () => {
   return linter
 })
 
+const ERROR_MESSAGE =
+  "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
+
 test("PatchPropertiesInNormalResourceDefinition should find errors if none of the patch properties are in put", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
@@ -102,9 +105,8 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if none of th
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain(
-      "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
-    )
+    expect(results[0].message).toContain(ERROR_MESSAGE)
+    expect(results[0].path.join(".")).toBe("paths./foo")
   })
 })
 
@@ -174,13 +176,12 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if put is not
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain(
-      "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
-    )
+    expect(results[0].message).toContain(ERROR_MESSAGE)
+    expect(results[0].path.join(".")).toBe("paths./foo")
   })
 })
 
-test("PatchPropertiesInNormalResourceDefinition should not find errors if patch doesnt have properties", () => {
+test("PatchPropertiesInNormalResourceDefinition should not find errors if patch does not have properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -270,7 +271,7 @@ test("PatchPropertiesInNormalResourceDefinition should not find errors if patch 
   })
 })
 
-test("PatchPropertiesInNormalResourceDefinition should find errors if patch has properties and put doesnt have properties", () => {
+test("PatchPropertiesInNormalResourceDefinition should find errors if patch has properties and put does not have properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -357,9 +358,8 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if patch has 
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain(
-      "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
-    )
+    expect(results[0].message).toContain(ERROR_MESSAGE)
+    expect(results[0].path.join(".")).toBe("paths./foo")
   })
 })
 
