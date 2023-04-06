@@ -1,29 +1,50 @@
 // An x-ms-long-running-operation extension passes this rule if the operation that this extension has a valid response defined.
-const longRunningResponseStatusCode = (methodOp: any, _opts: any, ctx: any, validResponseCodesList: any) => {
-  if (methodOp === null || typeof methodOp !== "object") {
+
+// operations that this rule evaluates
+const RULE_OPERATION_NAMES = ["delete", "put", "patch", "post"]
+// extension to indicate a long-running operation (LRO)
+const LRO_EXTENSION = "x-ms-long-running-operation"
+// valid response codes for long-running (LRO) ARM (Control Plane) operations
+const ARM_LRO_RESPONSE_CODES_BY_OPERATION: any = {
+  delete: ["200", "204"],
+  post: ["200", "201", "202", "204"],
+  put: ["200", "201"],
+  patch: ["200", "201", "202"],
+}
+// valid response codes for long-running (LRO) Data Plane operations
+const DATA_PLANE_LRO_RESPONSE_CODES_BY_OPERATION: any = {
+  delete: ["200", "204", "202"],
+  post: ["200", "201", "202", "204"],
+  put: ["200", "201", "202"],
+  patch: ["200", "201", "202"],
+}
+
+const longRunningResponseStatusCode = (pathObject: any, _opts: any, ctx: any, validResponseCodesList: any) => {
+  if (pathObject === null || typeof pathObject !== "object") {
     return []
   }
   const path = ctx.path || []
   const errors: any = []
-  const methods = Object.keys(methodOp)
+  const operationNames = Object.keys(pathObject)
 
-  for (const method of methods) {
-    if (!["delete", "put", "patch", "post"].includes(method)) {
+  for (const operationName of operationNames) {
+    const operation = pathObject?.[operationName]
+    if (!operation?.[LRO_EXTENSION]) {
       continue
     }
-    if (!methodOp?.[method]?.["x-ms-long-running-operation"]) {
+    if (!RULE_OPERATION_NAMES.includes(operationName)) {
       continue
     }
-    const operationId = methodOp?.[method]?.operationId || ""
-    if (methodOp?.[method]?.responses) {
-      const responseCodes = Object.keys(methodOp?.[method]?.responses)
-      const validResponseCodes = validResponseCodesList[method]
-      const validResponseCodeString = validResponseCodes.join(" or ")
+    const operationId = operation.operationId || ""
+    if (operation.responses) {
+      const responseCodes = Object.keys(operation.responses)
+      const validResponseCodes = validResponseCodesList[operationName]
+      const validResponseCodeString = arrayToOrList(validResponseCodes)
       const withTerminalCode = validResponseCodes.some((code: string) => responseCodes.includes(code))
       if (!withTerminalCode) {
         errors.push({
-          message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
-          path: [...path, method],
+          message: `A '${operationName}' operation '${operationId}' with extension '${LRO_EXTENSION}' must have a valid terminal success status code: ${validResponseCodeString}.`,
+          path: [...path, operationName],
         })
       }
     }
@@ -32,22 +53,24 @@ const longRunningResponseStatusCode = (methodOp: any, _opts: any, ctx: any, vali
   return errors
 }
 
-export const longRunningResponseStatusCodeArm = (methodOp: any, _opts: any, ctx: any) => {
-  const validResponseCodesList: any = {
-    delete: ["200", "204"],
-    post: ["200", "201", "202", "204"],
-    put: ["200", "201"],
-    patch: ["200", "201", "202"],
-  }
-  return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList)
+export const longRunningResponseStatusCodeArm = (pathObject: any, _opts: any, ctx: any) => {
+  return longRunningResponseStatusCode(pathObject, _opts, ctx, ARM_LRO_RESPONSE_CODES_BY_OPERATION)
 }
 
-export const longRunningResponseStatusCodeDataPlane = (methodOp: any, _opts: any, ctx: any) => {
-  const validResponseCodesList: any = {
-    delete: ["200", "204", "202"],
-    post: ["200", "201", "202", "204"],
-    put: ["200", "201", "202"],
-    patch: ["200", "201", "202"],
+export const longRunningResponseStatusCodeDataPlane = (pathObject: any, _opts: any, ctx: any) => {
+  return longRunningResponseStatusCode(pathObject, _opts, ctx, DATA_PLANE_LRO_RESPONSE_CODES_BY_OPERATION)
+}
+
+// from an array of strings, return a string that separates the array elements as a list
+const arrayToOrList = (array: string[]) => {
+  if (array.length === 0) {
+    return ""
   }
-  return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList)
+  if (array.length === 1) {
+    return `'${array[0]}'`
+  }
+  if (array.length === 2) {
+    return `'${array[0]}' or '${array[1]}'`
+  }
+  return `'${array.slice(0, -1).join(", ")}' or '${array[array.length - 1]}'`
 }
