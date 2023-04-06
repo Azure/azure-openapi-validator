@@ -22,11 +22,13 @@ import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-fo
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
+import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
+import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
@@ -250,6 +252,19 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Get-V1-08
+    ParametersInPointGet: {
+      description: "Point Get's MUST not have query parameters other than api version.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: ParametersInPointGet,
       },
     },
 
@@ -669,6 +684,17 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    ProvisioningStateMustBeReadOnly: {
+      description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
+      then: {
+        function: provisioningStateMustBeReadOnly,
+      },
+    },
     ArrayMustHaveType: {
       description: "Array type must have a type except for any type.",
       message: "{{error}}",
