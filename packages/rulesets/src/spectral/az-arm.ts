@@ -32,7 +32,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
-import { reservedResourceNamesAsEnum } from "./functions/reserved-resource-name-as-enum"
+import { reservedResourceNamesAsEnum as reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -666,7 +666,7 @@ const ruleset: any = {
     ///
 
     // RPC Code: RPC-ConstrainedCollections-V1-04
-    ReservedResourceNamesAsEnum: {
+    ReservedResourceNamesModelAsEnum: {
       description:
         "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
       message: "{{error}}",
@@ -675,7 +675,7 @@ const ruleset: any = {
       formats: [oas2],
       given: ["$[paths,'x-ms-paths']"],
       then: {
-        function: reservedResourceNamesAsEnum,
+        function: reservedResourceNamesModelAsEnum,
       },
     },
 
