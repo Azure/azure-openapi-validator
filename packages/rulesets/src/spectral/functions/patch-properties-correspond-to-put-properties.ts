@@ -1,13 +1,13 @@
 import { getProperties } from "./utils"
 
-export const PatchPropertiesInNormalResourceDefinition = (pathItem: any, _opts: any, ctx: any) => {
+export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
     return []
   }
 
   const error = [
     {
-      message: "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
+      message: "A patch request body must contain at least one of the properties present in the corresponding put request body.",
       path: ctx.path,
     },
   ]

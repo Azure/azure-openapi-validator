@@ -25,7 +25,7 @@ import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-co
 import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
-import { PatchPropertiesInNormalResourceDefinition } from "./functions/patch-properties-in-normal-resource-definition"
+import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import provisioningState from "./functions/provisioning-state"
@@ -274,7 +274,7 @@ const ruleset: any = {
     ///
 
     // RPC Code: RPC-Patch-V1-01
-    PatchPropertiesInNormalResourceDefinition: {
+    PatchPropertiesCorrespondToPutProperties: {
       description:
         "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
       message: "{{error}}",
@@ -283,7 +283,7 @@ const ruleset: any = {
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
       then: {
-        function: PatchPropertiesInNormalResourceDefinition,
+        function: patchPropertiesCorrespondToPutProperties,
       },
     },
 

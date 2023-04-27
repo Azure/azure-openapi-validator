@@ -4,14 +4,13 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("PatchPropertiesInNormalResourceDefinition")
+  linter = await linterForRule("PatchPropertiesCorrespondToPutProperties")
   return linter
 })
 
-const ERROR_MESSAGE =
-  "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation)"
+const ERROR_MESSAGE = "A patch request body must contain at least one of the properties present in the corresponding put request body."
 
-test("PatchPropertiesInNormalResourceDefinition should find errors if none of the patch properties are in put", () => {
+test("PatchPropertiesCorrespondToPutProperties should find errors if none of the patch properties are in put", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -110,7 +109,7 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if none of th
   })
 })
 
-test("PatchPropertiesInNormalResourceDefinition should find errors if put is not defined", () => {
+test("PatchPropertiesCorrespondToPutProperties should find errors if put is not defined", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -181,7 +180,7 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if put is not
   })
 })
 
-test("PatchPropertiesInNormalResourceDefinition should not find errors if patch does not have properties", () => {
+test("PatchPropertiesCorrespondToPutProperties should not find errors if patch does not have properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -271,7 +270,7 @@ test("PatchPropertiesInNormalResourceDefinition should not find errors if patch 
   })
 })
 
-test("PatchPropertiesInNormalResourceDefinition should find errors if patch has properties and put does not have properties", () => {
+test("PatchPropertiesCorrespondToPutProperties should find errors if patch has properties and put does not have properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -363,7 +362,7 @@ test("PatchPropertiesInNormalResourceDefinition should find errors if patch has 
   })
 })
 
-test("PatchPropertiesInNormalResourceDefinition should find no errors", () => {
+test("PatchPropertiesCorrespondToPutProperties should find no errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
