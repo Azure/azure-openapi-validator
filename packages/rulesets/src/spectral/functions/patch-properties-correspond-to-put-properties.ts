@@ -1,4 +1,6 @@
-import { getProperties } from "./utils"
+import _ from "lodash"
+
+const PARAM_IN_BODY = (paramObject: any) => paramObject.in === "body"
 
 export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
@@ -7,45 +9,28 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
 
   const error = [
     {
-      message: "A patch request body must contain at least one of the properties present in the corresponding put request body.",
+      message:
+        "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.",
       path: ctx.path,
     },
   ]
-  const patchResponses = pathItem["patch"]?.responses
-  const putResponses = pathItem["put"]?.responses
+  const patchBodyParameters: any[] = pathItem["patch"]?.parameters?.filter(PARAM_IN_BODY)
+  const putBodyParameters: any[] = pathItem["put"]?.parameters?.filter(PARAM_IN_BODY)
 
-  if (!patchResponses && !putResponses) {
+  // neither patch nor put present => ignore
+  if (!patchBodyParameters && !putBodyParameters) {
     return []
   }
-  if (patchResponses && !putResponses) {
+  // patch present but put not present => error
+  if (patchBodyParameters && !putBodyParameters) {
     return error
   }
 
-  // set of all the property names for successful patch responses
-  const patchPropertyNames = new Set()
-  // defined success response codes for the patch operation
-  const patchResponseCodes = Object.keys(patchResponses).filter((statusCode) => statusCode.startsWith("2"))
+  const patchBodyParametersNotInPutBody = _.differenceWith(patchBodyParameters, putBodyParameters, _.isEqual)
 
-  // add all the properties of patch responses to a set
-  for (const responseStatusCode of patchResponseCodes) {
-    const propertyNames = Object.keys(getProperties(patchResponses[responseStatusCode].schema))
-    for (const name of propertyNames) {
-      patchPropertyNames.add(name)
-    }
+  if (patchBodyParametersNotInPutBody.length > 0) {
+    return error
   }
 
-  if (patchPropertyNames.size < 1) {
-    return []
-  }
-
-  // defined success response codes for the put operation
-  const putResponseCodes = Object.keys(putResponses).filter((statusCode) => statusCode.startsWith("2"))
-  for (const responseStatusCode of putResponseCodes) {
-    const propertyNames = Object.keys(getProperties(putResponses[responseStatusCode].schema))
-    if (propertyNames.some((name) => patchPropertyNames.has(name))) {
-      return []
-    }
-  }
-
-  return error
+  return []
 }

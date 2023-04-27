@@ -8,7 +8,8 @@ beforeAll(async () => {
   return linter
 })
 
-const ERROR_MESSAGE = "A patch request body must contain at least one of the properties present in the corresponding put request body."
+const ERROR_MESSAGE =
+  "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
 
 test("PatchPropertiesCorrespondToPutProperties should find errors if none of the patch properties are in put", () => {
   const myOpenApiDocument = {
