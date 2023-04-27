@@ -15,7 +15,7 @@ import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provi
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property" 
+import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
@@ -32,6 +32,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
+import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -684,6 +685,17 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    ResourceMustReferenceCommonTypes: {
+      description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
+      then: {
+        function: resourceMustReferenceCommonTypes,
+      },
+    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
