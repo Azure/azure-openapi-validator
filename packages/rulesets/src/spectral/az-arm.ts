@@ -622,7 +622,7 @@ const ruleset: any = {
       },
     },
     NoErrorCodeResponses: {
-      description: "Responses must not have error codes. All errors must be surfaced using `default`.",
+      description: "Invalid status code specified. Please refer to the documentation for the allowed set.",
       message: "{{description}}",
       severity: "error",
       resolved: false,

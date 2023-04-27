@@ -3,7 +3,7 @@ import linterForRule from "./utils"
 
 let linter: Spectral
 const RULE = "NoErrorCodeResponses"
-const ERROR_MESSAGE = "Responses must not have error codes. All errors must be surfaced using `default`."
+const ERROR_MESSAGE = "Invalid status code specified. Please refer to the documentation for the allowed set."
 
 beforeAll(async () => {
   linter = linterForRule(RULE)
