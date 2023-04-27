@@ -587,6 +587,7 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for SystemData
     ///
+
     // RPC Code: RPC-SystemData-V1-01
     // Note that this rule is normally already covered when the common types Resource is used.
     // Here we are still checking for usage of common types system data for the scenarios where
@@ -606,6 +607,7 @@ const ruleset: any = {
         },
       },
     },
+
     // RPC Code: RPC-SystemData-V1-01
     // Ensure systemData is not in the properties bag
     SystemDataInPropertiesBag: {
