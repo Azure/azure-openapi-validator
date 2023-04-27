@@ -1,6 +1,9 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
+const LR_ERROR = "Long-running (LRO) delete operations must have responses with 202 and 204 return codes, and no other response codes."
+const SYNC_ERROR = "Synchronous delete operations must have responses with 200 and 204 return codes, and no other response codes."
+
 let linter: Spectral
 
 beforeAll(async () => {
@@ -72,7 +75,7 @@ test("DeleteResponseCodes should find errors for sync delete with only 200", () 
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Synchronous delete operations must have responses with 200 and 204 return codes.")
+    expect(results[0].message).toContain(SYNC_ERROR)
   })
 })
 
@@ -140,7 +143,7 @@ test("DeleteResponseCodes should find errors for sync delete with only 204", () 
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Synchronous delete operations must have responses with 200 and 204 return codes.")
+    expect(results[0].message).toContain(SYNC_ERROR)
   })
 })
 
@@ -281,7 +284,7 @@ test("DeleteResponseCodes should find errors for lro delete with only 202", () =
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Long-running (LRO) delete operations must have responses with 202 and 204 return codes.")
+    expect(results[0].message).toContain(LR_ERROR)
   })
 })
 
@@ -350,7 +353,7 @@ test("DeleteResponseCodes should find errors for lro delete with only 204", () =
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Long-running (LRO) delete operations must have responses with 202 and 204 return codes.")
+    expect(results[0].message).toContain(LR_ERROR)
   })
 })
 
