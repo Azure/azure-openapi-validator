@@ -7,6 +7,7 @@ import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
+import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -253,6 +254,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
+      },
+    },
+    // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
+    GetCollectionOnlyHasValueAndNextLink: {
+      description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+      then: {
+        function: getCollectionOnlyHasValueAndNextLink,
       },
     },
 
