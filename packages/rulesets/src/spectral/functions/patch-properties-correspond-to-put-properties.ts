@@ -1,5 +1,11 @@
+// Validates that each patch request body contains one or more properties present in the corresponding put request body,
+// and contains only properties present in the put request body.
+// RPC Code: RPC-Patch-V1-01
+
 import _ from "lodash"
 
+const ERROR_MESSAGE =
+  "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
 const PARAM_IN_BODY = (paramObject: any) => paramObject.in === "body"
 
 export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
@@ -7,24 +13,24 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
     return []
   }
 
-  const error = [
-    {
-      message:
-        "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.",
-      path: ctx.path,
-    },
-  ]
-  // array of all the patch body parameters
-  const patchBodyParameters: any[] = pathItem["patch"]?.parameters?.filter(PARAM_IN_BODY)
-  // array of all the put body parameters
-  const putBodyParameters: any[] = pathItem["put"]?.parameters?.filter(PARAM_IN_BODY)
+  const error = [{ message: ERROR_MESSAGE, path: ctx.path }]
 
-  // neither patch nor put present => ignore
-  if (!patchBodyParameters && !putBodyParameters) {
+  // array of all the patch body parameters
+  const patchBodyParameters: any[] = pathItem["patch"]?.parameters?.filter(PARAM_IN_BODY) ?? []
+  // array of all the put body parameters
+  const putBodyParameters: any[] = pathItem["put"]?.parameters?.filter(PARAM_IN_BODY) ?? []
+
+  const patchBodyEmpty = patchBodyParameters.length < 1
+  const putBodyEmpty = putBodyParameters.length < 1
+
+  // both the patch body and put body are empty => ignore
+  if (patchBodyEmpty && putBodyEmpty) {
     return []
   }
-  // patch present but put not present or there are no patch body parameters => error
-  if ((patchBodyParameters && !putBodyParameters) || patchBodyParameters?.length < 1) {
+
+  // patch body is empty while put body nonempty
+  // or patch body nonempty while put body empty => error
+  if (patchBodyEmpty != putBodyEmpty) {
     return error
   }
 
