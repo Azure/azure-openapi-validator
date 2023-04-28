@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "refactor longRunningResponeStatusCode custom function to consider multiple verbs in a path",
+      "comment": "Refactor LongRunningResponeStatusCode rule and docs for clarity and to check for the appropriate ARM LRO response codes.",
       "type": "patch"
     }
   ],
