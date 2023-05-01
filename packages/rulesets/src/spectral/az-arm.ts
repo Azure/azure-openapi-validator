@@ -225,6 +225,22 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM RPC rules for Policy Guidelines
+    ///
+
+    // RPC Code: RPC-Policy-V1-03
+    AvoidAdditionalProperties: {
+      description: "The Additional Properties is not allowed except for tags.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$..[?(@property == 'additionalProperties')]",
+      then: {
+        function: falsy,
+      },
+    },
+    ///
     /// ARM RPC rules for Get patterns
     ///
 
