@@ -4,7 +4,7 @@
 
 In preparation for deployment of pending ruleset changes to production,
 affixed package `@microsoft.azure/openapi-validator-rulesets` version used by `@microsoft.azure/openapi-validator`
-to be exactly `1.0.1`.
+to be exactly `1.0.1`. Also updated `@microsoft.azure/openapi-validator-core` to be `1.0.1`.
 
 For details, see:  
   Deploy pending azure-openapi-validator (LintDiff) changes from staging to prod #6071
