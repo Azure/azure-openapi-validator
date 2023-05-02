@@ -14,11 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The properties of type "Addiotinal Properties" are not allowed
+Definitions must not have properties named "additionalProperties".
 
 ## Description
 
-If a property is of type additionalProperties then this should be flagged as an error
+Definitions must not have properties named "additionalProperties".
 
 ## CreatedAt
 
@@ -26,13 +26,13 @@ May 1, 2023
 
 ## LastModifiedAt
 
-May 1, 2023
+May 2, 2023
 
 ## How to fix the violation
 
 Remove the additionalProperties type from the payload.
 
-The following would be invalid:
+The following would be invalid because there is a property named "additionalProperties":
 
 ```json
 ...
