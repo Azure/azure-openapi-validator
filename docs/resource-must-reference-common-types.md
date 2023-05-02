@@ -15,3 +15,13 @@ Validates that any resource definitions use the definitions for ProxyResource or
 ## How to fix the violation
 
 Ensure that all resource definitions reference the ProxyResource or TrackedResource definitions in the common types.
+
+E.g.,
+
+```json
+"allOf": [
+  {
+    "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ProxyResource"
+  }
+],
+```

@@ -20,7 +20,7 @@ export const resourceMustReferenceCommonTypes = (ref: any, _opts: any, ctx: any)
   // get the resource name using the last word of the ref path
   const resourceName = ref.toString().split("/").pop()
   // find the resource definition by name, get the references under it
-  const allOfRef = definitions[resourceName]?.properties?.allOf
+  const allOfRef = definitions[resourceName]?.allOf
   const path = ["definitions", resourceName]
   const error = [
     {
