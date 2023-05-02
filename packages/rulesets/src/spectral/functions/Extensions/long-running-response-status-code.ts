@@ -6,10 +6,10 @@ const RULE_OPERATION_NAMES = ["delete", "put", "patch", "post"]
 const LRO_EXTENSION = "x-ms-long-running-operation"
 // valid response codes for long-running (LRO) ARM (Control Plane) operations
 const ARM_LRO_RESPONSE_CODES_BY_OPERATION: any = {
-  delete: ["200", "204"],
-  post: ["200", "201", "202", "204"],
+  delete: ["200", "202", "204"],
+  post: ["200", "202", "204"],
   put: ["200", "201"],
-  patch: ["200", "201", "202"],
+  patch: ["200", "202"],
 }
 // valid response codes for long-running (LRO) Data Plane operations
 const DATA_PLANE_LRO_RESPONSE_CODES_BY_OPERATION: any = {

@@ -20,12 +20,12 @@ A '{0}' operation '{1}' with x-ms-long-running-operation extension must have a v
 
 For **ARM (Control Plane) specs**, valid response status codes for long-running (LRO) operations are as follows:
 
-| Operation Name | Valid Response Codes           |
-| -------------- | ------------------------------ |
-| Delete         | `200` and `204`                |
-| Post           | `200`, `201`, `202`, and `204` |
-| Put            | `200` and `201`                |
-| Patch          | `200` and `201`                |
+| Operation Name | Valid Response Codes    |
+| -------------- | ----------------------- |
+| LRO Delete     | `200`, `202`, and `204` |
+| LRO Post       | `200`, `202`, and `204` |
+| LRO Put        | `200` and `201`         |
+| LRO Patch      | `200` and `202`         |
 
 For **Data Plane specs**, valid response status codes for long-running (LRO) operations are as follows:
 
