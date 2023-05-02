@@ -1,5 +1,13 @@
 # Changelog
 
+## What's New (05/02/2023)
+
+Continuing the work from yesterday, updated the ruleset to `1.1.0`.
+
+For details, see:  
+  Deploy pending azure-openapi-validator (LintDiff) changes from staging to prod #6071
+  https://github.com/Azure/azure-sdk-tools/issues/6071
+
 ## What's New (05/01/2023)
 
 In preparation for deployment of pending ruleset changes to production,
