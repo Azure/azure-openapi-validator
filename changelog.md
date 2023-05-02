@@ -1,5 +1,15 @@
 # Changelog
 
+## What's New (05/01/2023)
+
+In preparation for deployment of pending ruleset changes to production,
+affixed package `@microsoft.azure/openapi-validator-rulesets` version used by `@microsoft.azure/openapi-validator`
+to be exactly `1.0.1`. Also updated `@microsoft.azure/openapi-validator-core` to be `1.0.1`.
+
+For details, see:  
+  Deploy pending azure-openapi-validator (LintDiff) changes from staging to prod #6071
+  https://github.com/Azure/azure-sdk-tools/issues/6071
+
 ## What's New (09/26/2022)
 
 ### Changed Rule

@@ -329,6 +329,30 @@ function isSchemaEqual(a, b) {
     }
     return false;
 }
+const providerAndNamespace = "/providers/[^/]+";
+const resourceTypeAndResourceName = "(?:/\\w+/default|/\\w+/{[^/]+})";
+const queryParam = "(?:\\?\\w+)";
+const resourcePathRegEx = new RegExp(`${providerAndNamespace}${resourceTypeAndResourceName}+${queryParam}?$`, "gi");
+function getResourcesPathHierarchyBasedOnResourceType(path) {
+    const index = path.lastIndexOf("/providers/");
+    if (index === -1) {
+        return [];
+    }
+    const lastProvider = path.substr(index);
+    const result = [];
+    const matches = lastProvider.match(resourcePathRegEx);
+    if (matches && matches.length) {
+        const match = matches[0];
+        const resourcePathSegments = match.split("/").slice(3);
+        for (const resourcePathSegment of resourcePathSegments) {
+            if (resourcePathSegment.startsWith("{") || resourcePathSegment === "default") {
+                continue;
+            }
+            result.push(resourcePathSegment);
+        }
+    }
+    return result;
+}
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     var _a, _b, _c;
@@ -619,43 +643,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     if (!operationId.match(/^(\w+)_(Create)/) && !operationId.match(/^(Create)/)) {
         errors.push({
             message: `'PUT' operation '${operationId}' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
-            path: [...path],
-        });
-    }
-    return errors;
-};
-
-const putRequestResponseScheme = (putOp, _opts, ctx) => {
-    var _a;
-    if (putOp === null || typeof putOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    if (!putOp.parameters) {
-        return [];
-    }
-    let reqBodySchema = {};
-    let reqBodySchemaPath = "";
-    for (let i = 0; i < putOp.parameters.length; i++) {
-        const parameter = putOp.parameters[i];
-        if (parameter.in === "body") {
-            reqBodySchemaPath = `parameters[${i}].schema`;
-            reqBodySchema = parameter.schema ? parameter.schema : {};
-            break;
-        }
-    }
-    if (Object.keys(reqBodySchema).length === 0) {
-        return [];
-    }
-    const responseCode = putOp.responses["200"] ? "200" : "201";
-    const respModelPath = `responses[${responseCode}].schema`;
-    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
-        ? putOp.responses[responseCode].schema
-        : {};
-    if (!isSchemaEqual(reqBodySchema, respModel)) {
-        errors.push({
-            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
             path: [...path],
         });
     }
@@ -970,17 +957,6 @@ const ruleset$1 = {
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
             then: {
                 function: deleteInOperationName,
-            },
-        },
-        PutRequestResponseScheme: {
-            description: "The request & response('200') schema of the PUT operation must be same.",
-            message: "{{error}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
-            then: {
-                function: putRequestResponseScheme,
             },
         },
         RequiredReadOnlyProperties: {
@@ -1300,6 +1276,7 @@ function verifyNestResourceType(path) {
         /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
         /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
         /^.*\/providers\/microsoft\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
     return notMatchPatterns(patterns, path);
 }
@@ -1599,6 +1576,23 @@ const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
         }];
 };
 
+const provisioningStateSpecifiedForLRODelete = (deleteOp, _opts, ctx) => {
+    if (deleteOp === null || typeof deleteOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const allProperties = getProperties(deleteOp.schema);
+    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
+    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
+        errors.push({
+            message: `200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.`,
+            path,
+        });
+    }
+    return errors;
+};
+
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
         return [];
@@ -1633,35 +1627,115 @@ const lroPatch202 = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const provisioningStateSpecified = (pathItem, _opts, ctx) => {
-    var _a;
-    if (pathItem === null || typeof pathItem !== "object") {
+const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
+    if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
-    const neededHttpVerbs = ["put", "patch"];
-    const putCodes = ["200", "201"];
-    const patchCodes = ["200"];
     const path = ctx.path || [];
     const errors = [];
-    for (const verb of neededHttpVerbs) {
-        if (pathItem[verb]) {
-            let codes = [];
-            if (verb === "patch") {
-                codes = patchCodes;
-            }
-            else {
-                codes = putCodes;
-            }
-            for (const code of codes) {
-                if (!getProperty((_a = pathItem[verb].responses[code]) === null || _a === void 0 ? void 0 : _a.schema, "provisioningState")) {
-                    errors.push({
-                        message: `${code} response in long running ${verb} operation is missing ProvisioningState property. A LRO PUT and PATCH operations response schema must have ProvisioningState specified.`,
-                        path,
-                    });
-                }
-            }
+    const allProperties = getProperties(patchOp.schema);
+    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
+    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
+        errors.push({
+            message: `200 response schema in long running PATCH operation is missing ProvisioningState property. A LRO PATCH operations 200 response schema must have ProvisioningState specified.`,
+            path,
+        });
+    }
+    return errors;
+};
+
+const LROPostFinalStateViaProperty = (postOp, _opts, ctx) => {
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const errorMessage = "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.";
+    if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
+        return [];
+    }
+    if (!postOp["x-ms-long-running-operation-options"]) {
+        errors.push({
+            message: errorMessage,
+            path: path,
+        });
+        return errors;
+    }
+    const finalStateViaProperty = postOp["x-ms-long-running-operation-options"]["final-state-via"];
+    if (!finalStateViaProperty || finalStateViaProperty !== "azure-async-operation") {
+        errors.push({
+            message: errorMessage,
+            path: path,
+        });
+    }
+    return errors;
+};
+
+const lroPostReturn = (postOp, _opts, ctx) => {
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const responses = postOp.responses;
+    if (responses && (!responses["200"] || !responses["202"])) {
+        errors.push({
+            message: "A LRO POST operation must have both 200 & 202 return codes.",
+            path: path,
+        });
+    }
+    if (responses["200"] && !responses["200"].schema) {
+        errors.push({
+            message: "200 response for a LRO POST operation must have a response schema specified.",
+            path,
+        });
+    }
+    if (responses["202"] && responses["202"].schema) {
+        errors.push({
+            message: "202 response for a LRO POST operation must not have a response schema specified.",
+            path,
+        });
+    }
+    return errors;
+};
+
+const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
+    var _a;
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const putCodes = ["200", "201"];
+    const path = ctx.path || [];
+    const errors = [];
+    for (const code of putCodes) {
+        const allProperties = getProperties((_a = putOp.responses[code]) === null || _a === void 0 ? void 0 : _a.schema);
+        const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
+        if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
+            errors.push({
+                message: `${code} response schema in long running PUT operation is missing ProvisioningState property. A LRO PUT operations response schema must have ProvisioningState specified for the 200 and 201 status codes.`,
+                path,
+            });
         }
     }
+    return errors;
+};
+
+const scopeParameter = "{scope}";
+const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
+        return [];
+    }
+    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
+    const matches = otherPaths.filter((p) => pathRegEx.test(p));
+    const errors = matches.map((match) => {
+        return {
+            message: `Path "${match}" with explicitly defined scope is a duplicate of path "${path}" that has the scope parameter.".`,
+            path: ctx.path,
+        };
+    });
     return errors;
 };
 
@@ -1763,6 +1837,51 @@ const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
         return {
             message: `Not using the common-types defined parameter "${pName}".`,
             path: ctx.path,
+        };
+    });
+    return errors;
+};
+
+const ParametersInPointGet = (pathItem, _opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const uris = Object.keys(pathItem);
+    if (uris.length < 1) {
+        return [];
+    }
+    const GET = "get";
+    const errors = [];
+    for (const uri of uris) {
+        const hierarchy = getResourcesPathHierarchyBasedOnResourceType(uri);
+        if (hierarchy.length >= 1 && pathItem[uri][GET]) {
+            const params = pathItem[uri][GET]["parameters"];
+            const queryParams = params.filter((param) => param.in === "query" && param.name !== "api-version");
+            queryParams.map((param) => {
+                errors.push({
+                    message: `Query parameter ${param.name} should be removed. Point Get's MUST not have query parameters other than api version.`,
+                    path: [path, uri, GET, "parameters"],
+                });
+            });
+        }
+    }
+    return errors;
+};
+
+const ParametersInPost = (postParameters, _opts, ctx) => {
+    if (postParameters === null || !Array.isArray(postParameters)) {
+        return [];
+    }
+    if (postParameters.length === 0) {
+        return [];
+    }
+    const path = ctx.path;
+    const queryParams = postParameters.filter((param) => param.in === "query" && param.name !== "api-version");
+    const errors = queryParams.map((param) => {
+        return {
+            message: `${param.name} is a query parameter. Post operation must not contain any query parameter other than api-version.`,
+            path: path,
         };
     });
     return errors;
@@ -1873,6 +1992,27 @@ const provisioningState = (swaggerObj, _opts, paths) => {
     return [];
 };
 
+const provisioningStateMustBeReadOnly = (schema, _opts, ctx) => {
+    if (schema === null || typeof schema !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const allProperties = getProperties(schema);
+    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
+    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
+        return [];
+    }
+    const provisioningStatePropertyReadOnly = provisioningStateProperty["readOnly"];
+    if (!provisioningStatePropertyReadOnly || provisioningStatePropertyReadOnly !== true) {
+        errors.push({
+            message: "provisioningState property must be set to readOnly.",
+            path,
+        });
+    }
+    return errors;
+};
+
 const putGetPatchScehma = (pathItem, opts, ctx) => {
     if (pathItem === null || typeof pathItem !== 'object') {
         return [];
@@ -1892,6 +2032,43 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
             });
             break;
         }
+    }
+    return errors;
+};
+
+const putRequestResponseScheme = (putOp, _opts, ctx) => {
+    var _a;
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!putOp.parameters) {
+        return [];
+    }
+    let reqBodySchema = {};
+    let reqBodySchemaPath = "";
+    for (let i = 0; i < putOp.parameters.length; i++) {
+        const parameter = putOp.parameters[i];
+        if (parameter.in === "body") {
+            reqBodySchemaPath = `parameters[${i}].schema`;
+            reqBodySchema = parameter.schema ? parameter.schema : {};
+            break;
+        }
+    }
+    if (Object.keys(reqBodySchema).length === 0) {
+        return [];
+    }
+    const responseCode = putOp.responses["200"] ? "200" : "201";
+    const respModelPath = `responses[${responseCode}].schema`;
+    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
+        ? putOp.responses[responseCode].schema
+        : {};
+    if (!isSchemaEqual(reqBodySchema, respModel)) {
+        errors.push({
+            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
+            path: [...path],
+        });
     }
     return errors;
 };
@@ -1923,6 +2100,37 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
         });
     }
     return errors;
+};
+
+const RESOURCE_COMMON_TYPES_REGEX = /.*common-types\/resource-management\/v\d+\/types.json#\/definitions\/(Proxy|Tracked)Resource/;
+const resourceMustReferenceCommonTypes = (ref, _opts, ctx) => {
+    var _a, _b, _c, _d;
+    if (!ref) {
+        return [];
+    }
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    const definitions = swagger === null || swagger === void 0 ? void 0 : swagger.definitions;
+    if (!definitions) {
+        return [];
+    }
+    const resourceName = ref.toString().split("/").pop();
+    const allOfRef = (_c = (_b = definitions[resourceName]) === null || _b === void 0 ? void 0 : _b.properties) === null || _c === void 0 ? void 0 : _c.allOf;
+    const path = ["definitions", resourceName];
+    const error = [
+        {
+            message: `Resource definition '${resourceName}' must reference the common types resource definition for ProxyResource or TrackedResource.`,
+            path: path,
+        },
+    ];
+    if (!allOfRef) {
+        return error;
+    }
+    for (const refObj of allOfRef) {
+        if ((_d = refObj.$ref) === null || _d === void 0 ? void 0 : _d.match(RESOURCE_COMMON_TYPES_REGEX)) {
+            return [];
+        }
+    }
+    return error;
 };
 
 const resourceNameRestriction = (paths, _opts, ctx) => {
@@ -2039,6 +2247,37 @@ const skuValidation = (skuSchema, opts, paths) => {
                 errors.push(message);
             }
         }
+    }
+    return errors;
+};
+
+const SyncPostReturn = (postOp, _opts, ctx) => {
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    if (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const responses = postOp.responses;
+    if (responses && (!(responses["200"] || responses["204"]) || !!(responses["200"] && responses["204"]))) {
+        errors.push({
+            message: "A synchronous POST operation must have either 200 or 204 return codes.",
+            path: path,
+        });
+    }
+    if (responses["200"] && !responses["200"].schema) {
+        errors.push({
+            message: "200 response for a synchronous POST operation must have a response schema specified.",
+            path,
+        });
+    }
+    if (responses["204"] && responses["204"].schema) {
+        errors.push({
+            message: "204 response for a synchronous POST operation must not have a response schema specified.",
+            path,
+        });
     }
     return errors;
 };
@@ -2186,15 +2425,41 @@ const ruleset = {
                 function: longRunningResponseStatusCodeArm,
             },
         },
-        ProvisioningStateSpecified: {
-            description: 'A LRO PUT and PATCH operations response schema must have "ProvisioningState" property specified.',
+        ProvisioningStateSpecifiedForLROPut: {
+            description: 'A LRO PUT operation\'s response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
             message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[put,patch].[?(@property === 'x-ms-long-running-operation' && @ === true)]^^",
+            given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
             then: {
-                function: provisioningStateSpecified,
+                function: provisioningStateSpecifiedForLROPut,
+            },
+        },
+        ProvisioningStateSpecifiedForLROPatch: {
+            description: 'A long running Patch operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: [
+                "$[paths,'x-ms-paths'].*[patch][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
+            ],
+            then: {
+                function: provisioningStateSpecifiedForLROPatch,
+            },
+        },
+        ProvisioningStateSpecifiedForLRODelete: {
+            description: 'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: [
+                "$[paths,'x-ms-paths'].*[delete][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
+            ],
+            then: {
+                function: provisioningStateSpecifiedForLRODelete,
             },
         },
         ProvisioningStateValidation: {
@@ -2234,7 +2499,7 @@ const ruleset = {
             },
         },
         LroErrorContent: {
-            description: "Error response content of long running operations must follow the error schema provided in the common types.",
+            description: "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
             message: "{{description}}",
             severity: "error",
             resolved: false,
@@ -2243,7 +2508,7 @@ const ruleset = {
             then: {
                 function: pattern,
                 functionOptions: {
-                    match: ".*/common-types/resource-management/v[0-9]+/types.json#/definitions/ErrorResponse",
+                    match: ".*/common-types/resource-management/v(([1-9]\\d+)|[2-9])/types.json#/definitions/ErrorResponse",
                 },
             },
         },
@@ -2289,6 +2554,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
             then: {
                 function: falsy,
+            },
+        },
+        ParametersInPointGet: {
+            description: "Point Get's MUST not have query parameters other than api version.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths']",
+            then: {
+                function: ParametersInPointGet,
             },
         },
         UnSupportedPatchProperties: {
@@ -2465,6 +2741,61 @@ const ruleset = {
                 function: responseSchemaSpecifiedForSuccessStatusCode,
             },
         },
+        PutRequestResponseSchemeArm: {
+            description: "The request & response('200') schema of the PUT operation must be same.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+            then: {
+                function: putRequestResponseScheme,
+            },
+        },
+        SyncPostReturn: {
+            description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[post]",
+            then: {
+                function: SyncPostReturn,
+            },
+        },
+        LroPostReturn: {
+            description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
+            then: {
+                function: lroPostReturn,
+            },
+        },
+        ParametersInPost: {
+            description: "For a POST action parameters MUST be in the payload and not in the URI.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[post][parameters]",
+            then: {
+                function: ParametersInPost,
+            },
+        },
+        LROPostFinalStateViaProperty: {
+            description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[post]"],
+            then: {
+                function: LROPostFinalStateViaProperty,
+            },
+        },
         PathContainsSubscriptionId: {
             description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
             message: "{{error}}",
@@ -2569,6 +2900,42 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        OperationsApiSchemaUsesCommonTypes: {
+            description: "Operations API path must follow the schema provided in the common types.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'][?(@property.match(/\\/providers\\/\\w+\\.\\w+\\/operations$/i))].get.responses.200.schema.$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
+                },
+            },
+        },
+        ResourceMustReferenceCommonTypes: {
+            description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
+            then: {
+                function: resourceMustReferenceCommonTypes,
+            },
+        },
+        ProvisioningStateMustBeReadOnly: {
+            description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
+            then: {
+                function: provisioningStateMustBeReadOnly,
             },
         },
         ArrayMustHaveType: {

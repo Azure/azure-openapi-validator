@@ -268,11 +268,6 @@ This rule is to ensure the documentation link in the description does not contai
 
 Please refer to [doc-link-locale.md](./doc-link-locale.md) for details.
 
-### ResourceMustReferenceCommonTypes
-
-
-Please refer to [DOCS_TEMPLATE.md](./DOCS_TEMPLATE.md) for details.
-
 ### EnumInsteadOfBoolean
 
 Booleans properties are not descriptive in all cases and can make them to use, evaluate whether is makes sense to keep the property as boolean or turn it into an enum.
@@ -322,6 +317,12 @@ But it is usually unnecessary and can be overly complicated to use formData when
 Instead, consider defining a `body` parameter with `type: string, format: binary` and use content-type `application/octet-stream`.
 
 Please refer to [formdata.md](./formdata.md) for details.
+
+### GetCollectionOnlyHasValueAndNextLink
+
+List GET endpoints (collection GET) must only have `value` and `nextLink` in `properties`.
+
+Please refer to [get-collection-only-has-value-nextlink.md](./get-collection-only-has-value-nextlink.md) for details.
 
 ### GetCollectionResponseSchema
 
@@ -449,6 +450,12 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### ProvisioningStateSpecifiedForLRODelete
+
+This is a rule introduced to validate if a LRO DELETE operations response schema has "ProvisioningState" property specified for the 200 status code.
+
+Please refer to [lro-delete-provisioning-state-specified.md](./lro-delete-provisioning-state-specified.md) for details.
+
 ### LroErrorContent
 
 Error response content of long running operations must follow the error schema provided in the common types v2 and above.
@@ -473,11 +480,21 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### ProvisioningStateSpecifiedForLROPatch
+
+This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
+
+Please refer to [lro-patch-provisioning-state-specified.md](./lro-patch-provisioning-state-specified.md) for details.
+
 ### LroPatch202
 
 Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
+
+For long running (LRO) post operations, 'long-running-operation-options' must be present and have the 'final-state-via' property set to 'azure-async-operation'.
+
+Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -491,11 +508,11 @@ A long running Post operation should return 200 with response schema and 202 wit
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
 
-### ProvisioningStateSpecified
+### ProvisioningStateSpecifiedForLROPut
 
-This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
 
-Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
+Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
 
 ### LROStatusCodesReturnTypeSchema
 
@@ -714,6 +731,12 @@ Path parameters must be in the same order as in the path.
 
 Please refer to [parameter-order.md](./parameter-order.md) for details.
 
+### ParametersInPointGet
+
+Point Get's MUST not have query parameters other than api version.
+
+Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
+
 ### ParametersInPost
 
 For a POST action parameters MUST be in the payload and not in the URI.
@@ -902,6 +925,12 @@ Schema property should have a defined type.
 
 Please refer to [property-type.md](./property-type.md) for details.
 
+### ProvisioningStateMustBeReadOnly
+
+This is a rule introduced to validate if provisioningState property is set to readOnly.
+
+Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
+
 ### ProvisioningStateValidation
 
 Per ARM guideline, provisioningState must have terminal states: Succeeded, Failed and Canceled.
@@ -926,6 +955,12 @@ The put method should be used for resource create or replace, which generally re
 
 Please refer to [put-path.md](./put-path.md) for details.
 
+### PutRequestResponseSchemeArm
+
+The request & response('200') schema of the PUT operation must be same.
+
+Please refer to [put-request-response-scheme-arm.md](./put-request-response-scheme-arm.md) for details.
+
 ### PutRequestResponseScheme
 
 The request & response('200') schema of the PUT operation must be same.
@@ -937,6 +972,12 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
+
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
 
 ### RepeatedPathInfo
 
@@ -986,6 +1027,12 @@ Please refer to [required-read-only-system-data.md](./required-read-only-system-
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
+
+### ResourceMustReferenceCommonTypes
+
+Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
+
+Please refer to [resource-must-reference-common-types.md](./resource-must-reference-common-types.md) for details.
 
 ### ResourceNameRestriction
 
