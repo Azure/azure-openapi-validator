@@ -2,7 +2,10 @@
 
 ## What's New (05/02/2023)
 
-Continuing the work from yesterday, updated the ruleset to `1.1.0`.
+Continuing the work from 05/01/2023, updated the `@microsoft.azure/openapi-validator-rulesets` to `1.1.0` 
+in preparation to publish few last months of changes to the ruleset.
+Also updated `@microsoft.azure/openapi-validator` to `2.0.2`. `2.0.2` now depends on rulesets `1.1.0`, not `1.0.1`.
+That is the only difference.
 
 For details, see:  
   Deploy pending azure-openapi-validator (LintDiff) changes from staging to prod #6071
