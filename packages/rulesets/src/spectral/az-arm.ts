@@ -7,6 +7,7 @@ import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
+import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -20,6 +21,7 @@ import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-v
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
+import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
@@ -33,6 +35,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
+import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -253,6 +256,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
       then: {
         function: falsy,
+      },
+    },
+    // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
+    GetCollectionOnlyHasValueAndNextLink: {
+      description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+      then: {
+        function: getCollectionOnlyHasValueAndNextLink,
       },
     },
 
@@ -696,6 +711,17 @@ const ruleset: any = {
         function: latestVersionOfCommonTypesMustBeUsed,
       },
     },
+    ResourceMustReferenceCommonTypes: {
+      description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
+      then: {
+        function: resourceMustReferenceCommonTypes,
+      },
+    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
@@ -717,6 +743,17 @@ const ruleset: any = {
       then: {
         function: truthy,
         field: "type",
+      },
+    },
+    NoErrorCodeResponses: {
+      description: "Invalid status code specified. Please refer to the documentation for the allowed set.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*.*.responses.*~"],
+      then: {
+        function: noErrorCodeResponses,
       },
     },
     LroWithOriginalUriAsFinalState: {
