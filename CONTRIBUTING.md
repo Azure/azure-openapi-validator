@@ -4,7 +4,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact
 [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Prerequisites
+## Prerequisites to build locally
 
 - [Node.js](https://nodejs.org/) (14.x or higher)
 - [@Microsoft/Rush](https://rushjs.io/) (5.x or hider)
@@ -26,7 +26,7 @@ cleaned/cloned.
 Note that `rush update` must be done before building in VS Code or
 using the command line.
 
-## How to prepare for PR submission after you made changes
+## How to prepare for PR submission after you made changes locally
 
 1. Run ```rush update``` to ensure all the required modules are installed.
 2. Run ```rush build``` to regenerate relevant files that need to be checked-in.
@@ -168,3 +168,52 @@ Use latest published lint version:
 autorest --v3 --spectral --azure-validator --input-file=<path-to-spec>  --use=@microsoft.azure/openapi-validator@latest
 autorest --v3 --spectral --azure-validator  --use=@microsoft.azure/openapi-validator@latest [--tag=<readme tag>] <path-to-readme>
 ```
+
+## How to use the Spectral ruleset
+
+### Dependencies
+
+The Spectral ruleset requires Node version 14 or later.
+
+### Install Spectral
+
+`npm i @stoplight/spectral-cli -g`
+
+### Usage
+
+Azure-openapi-validator currently defines three Spectral ruleset configurations:
+
+  1. az-common.ts : for rules that apply to all Azure REST APIs
+  1. az-arm.ts: for rules that only apply to ARM REST APIs
+  1. az-dataplane.ts: for rules that only apply to dataplane REST APIs
+
+All rulesets reside in the `packages/rulesets/generated/spectral` folder of the repo.
+
+You can specify the ruleset directly on the command line:
+
+`spectral lint -r https://raw.githubusercontent.com/Azure/azure-openapi-validator/develop/packages/rulesets/generated/spectral/az-dataplane.js <api definition file>`
+
+Or you can create a Spectral configuration file (`.spectral.yaml`) that references the ruleset:
+
+```yaml
+extends:
+  - https://raw.githubusercontent.com/Azure/azure-openapi-validator/develop/packages/rulesets/generated/spectral/az-dataplane.js
+```
+
+### Example
+
+```bash
+spectral lint -r https://raw.githubusercontent.com/Azure/azure-openapi-validator/develop/packages/rulesets/generated/spectral/az-dataplane.js petstore.yaml
+```
+
+### Using the Spectral VSCode extension
+
+There is a [Spectral VSCode extension](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) that will run the Spectral linter on an open API definition file and show errors right within VSCode.  You can use this ruleset with the Spectral VSCode extension.
+
+1. Install the Spectral VSCode extension from the extensions tab in VSCode.
+2. Create a Spectral configuration file (`.spectral.yaml`) in the root directory of your project as shown above.
+3. Set `spectral.rulesetFile` to the name of this configuration file in your VSCode settings.
+
+Now when you open an API definition in this project, it should highlight lines with errors.
+You can also get a full list of problems in the file by opening the "Problems panel" with "View / Problems".
+In the Problems panel you can filter to show or hide errors, warnings, or infos.
