@@ -1,6 +1,6 @@
 # azure-openapi-validator
 
-For deep-dive on this tool, please see https://aka.ms/lintdiff.
+For a deep-dive on this tool, please see https://aka.ms/lintdiff.
 
 `azure-openapi-validator`, aka `LintDiff`, is a linter for Azure OpenAPI specifications.
 It is an extension of [autorest](https://github.com/Azure/autorest) and supports [spectral](https://github.com/stoplightio/spectral)
