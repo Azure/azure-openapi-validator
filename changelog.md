@@ -1,11 +1,22 @@
 # Changelog
 
+## What's New (05/03/2023)
+
+Continuing the work from 05/02/2023, updated the `@microsoft.azure/openapi-validator`
+dependency on  `@microsoft.azure/openapi-validator-rulesets` from `1.0.1` to `1.1.0`,
+As a result, updated the package version from `2.0.1` to `2.1.0`.
+in preparation to publish few last months of changes to the ruleset.
+
+For details, see:  
+  Deploy pending azure-openapi-validator (LintDiff) changes from staging to prod #6071
+  https://github.com/Azure/azure-sdk-tools/issues/6071
+
 ## What's New (05/02/2023)
 
 Continuing the work from 05/01/2023, updated the `@microsoft.azure/openapi-validator-rulesets` to `1.1.0`
 in preparation to publish few last months of changes to the ruleset.
 
-Also ran "rush update", "rush build", and commited the resulting changes.
+Also committed pending changes from "rush build".
 
 For details, see:  
   Deploy pending azure-openapi-validator (LintDiff) changes from staging to prod #6071
