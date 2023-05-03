@@ -1,6 +1,8 @@
 # Contributing
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact
+[opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Prerequisites
 
@@ -24,15 +26,11 @@ cleaned/cloned.
 Note that `rush update` must be done before building in VS Code or
 using the command line.
 
-## How to build
+## How to prepare for PR submission after you made changes
 
-The first step would be to run ```rush update``` so we have all the required modules installed.
-
-### How to build the whole repo
-
-``` bash
-rush build
-```
+1. Run ```rush update``` to ensure all the required modules are installed.
+2. Run ```rush build``` to regenerate relevant files that need to be checked-in.
+3. If you changed the ruleset, see `How to refresh the index of rules documentation`
 
 ## How to test
 
@@ -133,33 +131,40 @@ Follow below steps to add a native rule:
 ## How to run regression test
 
 1. Init sub module.
-```
-git update submodule --init
-```
-2. run test
-```
-rush regression-test
-```
 
-## How refresh the index of rules documentation
+   ``` bash
+   git update submodule --init
+   ```
+
+2. run test
+
+   ``` bash
+   rush regression-test
+   ```
+
+## How to refresh the index of rules documentation
 
 the [doc index](./docs/rules.md) is an index for searching any rule documentation provided in this repo.
-you can run below command to regen it after you added or updated some rules in the 'docs'.
+you can run below command to regenerate it after you added or updated some rules in the 'docs'.
+
 ```bash
 rush regen-ruleindex
 ```
 
-## How to run locally
+## How to run LintDiff locally
 
 Run the linter via autorest:
 
-1. use local lint version:
-```
+Use local lint version:
+
+``` bash
 autorest --v3 --spectral --azure-validator --input-file=<path-to-spec>  --use=packages/azure-openapi-valdiator/autorest
 autorest --v3 --spectral --azure-validator  --use=--use=packages/azure-openapi-valdiator/autorest
 ```
-2. use latest published lint version:
-```
+
+Use latest published lint version:
+
+``` bash
 autorest --v3 --spectral --azure-validator --input-file=<path-to-spec>  --use=@microsoft.azure/openapi-validator@latest
 autorest --v3 --spectral --azure-validator  --use=@microsoft.azure/openapi-validator@latest [--tag=<readme tag>] <path-to-readme>
 ```
