@@ -13,12 +13,13 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 npm install -g @microsoft/rush
 ```
 
-## How to prepare for PR submission after you made changes locally
+## How to prepare for a PR submission after you made changes locally
 
 1. Run ```rush update``` to ensure all the required modules are installed.
 2. Run ```rush build``` to regenerate relevant files that need to be checked-in.
 3. Run ```rush test``` to run the unit tests. They should all pass.
 4. If you changed the ruleset, see `How to refresh the index of rules documentation`.
+5. You are now ready to submit your PR.
 
 ## Installing NPM dependencies
 
