@@ -508,43 +508,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const putRequestResponseScheme = (putOp, _opts, ctx) => {
-    var _a;
-    if (putOp === null || typeof putOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    if (!putOp.parameters) {
-        return [];
-    }
-    let reqBodySchema = {};
-    let reqBodySchemaPath = "";
-    for (let i = 0; i < putOp.parameters.length; i++) {
-        const parameter = putOp.parameters[i];
-        if (parameter.in === "body") {
-            reqBodySchemaPath = `parameters[${i}].schema`;
-            reqBodySchema = parameter.schema ? parameter.schema : {};
-            break;
-        }
-    }
-    if (Object.keys(reqBodySchema).length === 0) {
-        return [];
-    }
-    const responseCode = putOp.responses["200"] ? "200" : "201";
-    const respModelPath = `responses[${responseCode}].schema`;
-    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
-        ? putOp.responses[responseCode].schema
-        : {};
-    if (!isSchemaEqual(reqBodySchema, respModel)) {
-        errors.push({
-            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
-            path: [...path],
-        });
-    }
-    return errors;
-};
-
 const requiredReadOnlyProperties = (definition, _opts, ctx) => {
     if (definition === null || typeof definition !== "object") {
         return [];
@@ -853,17 +816,6 @@ const ruleset$1 = {
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
             then: {
                 function: deleteInOperationName,
-            },
-        },
-        PutRequestResponseScheme: {
-            description: "The request & response('200') schema of the PUT operation must be same.",
-            message: "{{error}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
-            then: {
-                function: putRequestResponseScheme,
             },
         },
         RequiredReadOnlyProperties: {
@@ -1802,6 +1754,43 @@ const pathParamSchema = (param, _opts, paths) => {
     return errors;
 };
 
+const putRequestResponseScheme = (putOp, _opts, ctx) => {
+    var _a;
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    if (!putOp.parameters) {
+        return [];
+    }
+    let reqBodySchema = {};
+    let reqBodySchemaPath = "";
+    for (let i = 0; i < putOp.parameters.length; i++) {
+        const parameter = putOp.parameters[i];
+        if (parameter.in === "body") {
+            reqBodySchemaPath = `parameters[${i}].schema`;
+            reqBodySchema = parameter.schema ? parameter.schema : {};
+            break;
+        }
+    }
+    if (Object.keys(reqBodySchema).length === 0) {
+        return [];
+    }
+    const responseCode = putOp.responses["200"] ? "200" : "201";
+    const respModelPath = `responses[${responseCode}].schema`;
+    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
+        ? putOp.responses[responseCode].schema
+        : {};
+    if (!isSchemaEqual(reqBodySchema, respModel)) {
+        errors.push({
+            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
+            path: [...path],
+        });
+    }
+    return errors;
+};
+
 function checkSchemaTypeAndFormat(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -2375,6 +2364,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
             then: {
                 function: longRunningResponseStatusCodeDataPlane,
+            },
+        },
+        PutRequestResponseScheme: {
+            description: "The request & response('200') schema of the PUT operation must be same.",
+            message: "{{error}}",
+            severity: "warn",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
+            then: {
+                function: putRequestResponseScheme,
             },
         },
     },
