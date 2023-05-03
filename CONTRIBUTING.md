@@ -13,6 +13,13 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 npm install -g @microsoft/rush
 ```
 
+## How to prepare for PR submission after you made changes locally
+
+1. Run ```rush update``` to ensure all the required modules are installed.
+2. Run ```rush build``` to regenerate relevant files that need to be checked-in.
+3. Run ```rush test``` to run the unit tests. They should all pass.
+4. If you changed the ruleset, see `How to refresh the index of rules documentation`.
+
 ## Installing NPM dependencies
 
 ```bash
@@ -25,12 +32,6 @@ cleaned/cloned.
 
 Note that `rush update` must be done before building in VS Code or
 using the command line.
-
-## How to prepare for PR submission after you made changes locally
-
-1. Run ```rush update``` to ensure all the required modules are installed.
-2. Run ```rush build``` to regenerate relevant files that need to be checked-in.
-3. If you changed the ruleset, see `How to refresh the index of rules documentation`
 
 ## How to test
 
