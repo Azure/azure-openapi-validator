@@ -17,7 +17,7 @@ Please refer to [rules.md](./docs/rules.md).
 
 - If you want to submit changes to this repository, including contributing new linter rules, check out [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## Building, testing, running locally
+## Submitting PRs, building, testing, running locally
 
 Please see the `Contributing` section above.
 
