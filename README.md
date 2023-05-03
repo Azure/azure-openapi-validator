@@ -19,7 +19,7 @@ Please refer to [rules.md](./docs/rules.md).
 
 ## Building, testing, running locally
 
-Please see `Contributing` section above.
+Please see the `Contributing` section above.
 
 ## Packages
 
