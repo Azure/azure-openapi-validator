@@ -15,7 +15,7 @@ Please refer to [rules.md](./docs/rules.md).
 
 - If you want to submit a new rule request or bug, please file an [issue](https://github.com/Azure/azure-sdk-tools). Prefix the title with `[LintDiff]`.
 
-- If you want to submit changes tot his repository, including contributing new linter rules, check out [CONTRIBUTING.md](./CONTRIBUTING.md).
+- If you want to submit changes to this repository, including contributing new linter rules, check out [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Building, testing, running locally
 
