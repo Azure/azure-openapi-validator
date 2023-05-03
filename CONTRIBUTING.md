@@ -18,7 +18,7 @@ npm install -g @microsoft/rush
 1. Run ```rush update``` to ensure all the required modules are installed.
 2. Run ```rush build``` to regenerate relevant files that need to be checked-in.
 3. Run ```rush test``` to run the unit tests. They should all pass.
-4. If you changed the ruleset, run ```rush regen-ruleindex```.
+4. If you changed the ruleset, run ```rush regen-ruleindex``` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
 5. You are now ready to submit your PR.
 
