@@ -185,33 +185,6 @@ function getProperties(schema) {
     }
     return properties;
 }
-function isSchemaEqual(a, b) {
-    if (a && b) {
-        const propsA = Object.getOwnPropertyNames(a);
-        const propsB = Object.getOwnPropertyNames(b);
-        if (propsA.length === propsB.length) {
-            for (let i = 0; i < propsA.length; i++) {
-                const propsAName = propsA[i];
-                const [propA, propB] = [a[propsAName], b[propsAName]];
-                if (typeof propA === "object") {
-                    if (!isSchemaEqual(propA, propB)) {
-                        return false;
-                    }
-                    else if (i === propsA.length - 1) {
-                        return true;
-                    }
-                }
-                else if (propA !== propB) {
-                    return false;
-                }
-                else if (propA === propB && i === propsA.length - 1) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     var _a, _b, _c;
@@ -502,43 +475,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     if (!operationId.match(/^(\w+)_(Create)/) && !operationId.match(/^(Create)/)) {
         errors.push({
             message: `'PUT' operation '${operationId}' should use method name 'Create'. Note: If you have already shipped an SDK on top of this spec, fixing this warning may introduce a breaking change.`,
-            path: [...path],
-        });
-    }
-    return errors;
-};
-
-const putRequestResponseScheme = (putOp, _opts, ctx) => {
-    var _a;
-    if (putOp === null || typeof putOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    if (!putOp.parameters) {
-        return [];
-    }
-    let reqBodySchema = {};
-    let reqBodySchemaPath = "";
-    for (let i = 0; i < putOp.parameters.length; i++) {
-        const parameter = putOp.parameters[i];
-        if (parameter.in === "body") {
-            reqBodySchemaPath = `parameters[${i}].schema`;
-            reqBodySchema = parameter.schema ? parameter.schema : {};
-            break;
-        }
-    }
-    if (Object.keys(reqBodySchema).length === 0) {
-        return [];
-    }
-    const responseCode = putOp.responses["200"] ? "200" : "201";
-    const respModelPath = `responses[${responseCode}].schema`;
-    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
-        ? putOp.responses[responseCode].schema
-        : {};
-    if (!isSchemaEqual(reqBodySchema, respModel)) {
-        errors.push({
-            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
             path: [...path],
         });
     }
@@ -853,17 +789,6 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
             then: {
                 function: deleteInOperationName,
-            },
-        },
-        PutRequestResponseScheme: {
-            description: "The request & response('200') schema of the PUT operation must be same.",
-            message: "{{error}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
-            then: {
-                function: putRequestResponseScheme,
             },
         },
         RequiredReadOnlyProperties: {
