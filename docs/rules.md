@@ -901,6 +901,12 @@ This rule is to check if the schemas used by private endpoint conform to the com
 
 Please refer to [private-endpoint-resource-schema-validation.md](./private-endpoint-resource-schema-validation.md) for details.
 
+### PropertiesTypeObjectNoDefinition
+
+If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types instead of type:object
+
+Please refer to [properties-type-object-no-definition.md](./properties-type-object-no-definition.md) for details.
+
 ### PropertyDescription
 
 Property should have a description.
