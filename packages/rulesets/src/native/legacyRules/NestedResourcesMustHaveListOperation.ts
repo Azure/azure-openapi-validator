@@ -2,6 +2,7 @@ import { JsonPath, rules, MergeStates, OpenApiTypes } from "@microsoft.azure/ope
 
 import { ArmHelper } from "../utilities/arm-helper"
 
+// This function aslo covers RPC-Policy-V1-04
 export const NestedResourcesMustHaveListOperation = "NestedResourcesMustHaveListOperation"
 
 rules.push({
