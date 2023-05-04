@@ -42,6 +42,7 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -221,6 +222,20 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
       then: {
         function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Policy-V1-03
+    PropertiesTypeObjectNoDefinition: {
+      description:
+        "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$..[?(@property === 'type' && @ === 'object' && @.properties === undefined)]^",
+      then: {
+        function: propertiesTypeObjectNoDefinition,
       },
     },
 
