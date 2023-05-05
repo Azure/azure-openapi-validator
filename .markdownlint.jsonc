@@ -1,0 +1,17 @@
+{
+    // MD013 - Line length
+    // https://github.com/DavidAnson/markdownlint/blob/main/doc/md013.md
+    "MD013": { "line_length": 120, "code_blocks": false, "headings": false, "tables": false },
+    // MD025 - Multiple top-level headings in the same document
+    // https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md
+    "MD025": false,
+    // MD029 - Ordered list item prefix
+    // https://github.com/DavidAnson/markdownlint/blob/main/doc/md029.md
+    "MD029": false,
+    // MD031 - Fenced code blocks should be surrounded by blank lines
+    // https://github.com/DavidAnson/markdownlint/blob/v0.27.0/doc/md031.md
+    "MD031": { "list_items": false },
+    // MD034 - Bare URL used
+    // https://github.com/DavidAnson/markdownlint/blob/main/doc/md034.md
+    "MD034": false
+}
