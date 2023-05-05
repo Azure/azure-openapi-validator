@@ -233,7 +233,7 @@ const ruleset: any = {
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
-      given: "$..[?(@property === 'type' && @ === 'object' && @.properties === undefined)]^",
+      given: "$..[?(@property === 'type' && @ === 'object')]^*",
       then: {
         function: propertiesTypeObjectNoDefinition,
       },

@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-Policy-V1-03
+
 ## Output Message
 
 Properties with type:object should have definition of a reference model
