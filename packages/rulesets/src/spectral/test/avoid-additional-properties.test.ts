@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 let linter: Spectral
-
+const errorMessage = "The field of type additionalProperties is not allowed except for tags."
 beforeAll(async () => {
   linter = await linterForRule("AvoidAdditionalProperties")
   return linter
@@ -18,7 +18,13 @@ test("AvoidAdditionalProperties should find errors", () => {
         properties: {
           type: "object",
           tags: {
-            type: "string",
+            type: "object",
+            additionalProperties: {
+              type: "object",
+              params: {
+                type: "boolean",
+              },
+            },
           },
         },
         additionalProperties: {
@@ -29,7 +35,7 @@ test("AvoidAdditionalProperties should find errors", () => {
         description: "That",
         type: "object",
         properties: {
-          tags: {
+          nonTags: {
             type: "object",
             additionalProperties: {
               type: "object",
@@ -68,10 +74,39 @@ test("AvoidAdditionalProperties should find errors", () => {
           },
         },
       },
+      ThisOther: {
+        description: "This",
+        type: "object",
+        properties: {
+          type: "object",
+          tags: {
+            type: "object",
+            nonTags: {
+              type: "object",
+              additionalProperties: {
+                type: "object",
+                params: {
+                  type: "boolean",
+                },
+              },
+            },
+          },
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(4)
+    expect(results.length).toBe(5)
+    expect(results[0].path.join(".")).toBe("definitions.This")
+    expect(results[1].path.join(".")).toBe("definitions.That.properties.nonTags")
+    expect(results[2].path.join(".")).toBe("definitions.ThaOther.properties")
+    expect(results[3].path.join(".")).toBe("definitions.Other.properties")
+    expect(results[4].path.join(".")).toBe("definitions.ThisOther.properties.tags.nonTags")
+    expect(results[0].message).toBe(errorMessage)
+    expect(results[1].message).toBe(errorMessage)
+    expect(results[2].message).toBe(errorMessage)
+    expect(results[3].message).toBe(errorMessage)
+    expect(results[4].message).toBe(errorMessage)
   })
 })
 
@@ -86,6 +121,12 @@ test("AvoidAdditionalProperties should find no errors", () => {
           type: "object",
           tags: {
             type: "object",
+            additionalProperties: {
+              type: "object",
+              params: {
+                type: "boolean",
+              },
+            },
           },
         },
       },
@@ -95,6 +136,9 @@ test("AvoidAdditionalProperties should find no errors", () => {
         properties: {
           tags: {
             type: "object",
+            additionalProperties: {
+              type: "boolean",
+            },
           },
           params: {
             type: "boolean",

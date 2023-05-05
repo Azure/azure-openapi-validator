@@ -228,14 +228,14 @@ const ruleset: any = {
     /// ARM RPC rules for Policy Guidelines
     ///
 
-    // RPC Code: RPC-Policy-V1-03
+    // RPC Code: RPC-Policy-V1-05
     AvoidAdditionalProperties: {
-      description: "The Additional Properties is not allowed except for tags.",
+      description: "The field of type additionalProperties is not allowed except for tags.",
       severity: "error",
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
-      given: "$..[?(@property == 'additionalProperties')]",
+      given: "$..[?(@property != 'tags' && @.additionalProperties)]*",
       then: {
         function: falsy,
       },
