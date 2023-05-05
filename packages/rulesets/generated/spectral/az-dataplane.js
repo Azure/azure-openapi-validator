@@ -746,8 +746,8 @@ const ruleset$1 = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
             severity: "warn",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^^",

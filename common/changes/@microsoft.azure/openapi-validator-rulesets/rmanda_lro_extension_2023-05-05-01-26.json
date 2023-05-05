@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Modified ctegory from warning to error for linter rules LroExtension, LroStatusCodesReturnTypeSchema, DescriptiveDescriptionRequired, ParameterDescriptionRequired",
+      "comment": "Modified category from warning to error for linter rules LroExtension, LroStatusCodesReturnTypeSchema, DescriptiveDescriptionRequired, ParameterDescriptionRequired",
       "type": "patch"
     }
   ],
