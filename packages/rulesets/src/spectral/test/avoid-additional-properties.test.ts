@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 let linter: Spectral
-const errorMessage = "The field of type additionalProperties is not allowed except for tags."
+const errorMessage = "The use of additionalProperties is not allowed except for user defined tags on tracked resources."
 beforeAll(async () => {
   linter = await linterForRule("AvoidAdditionalProperties")
   return linter

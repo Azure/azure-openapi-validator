@@ -230,7 +230,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Policy-V1-05
     AvoidAdditionalProperties: {
-      description: "The field of type additionalProperties is not allowed except for tags.",
+      description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
       severity: "error",
       message: "{{description}}",
       resolved: true,
