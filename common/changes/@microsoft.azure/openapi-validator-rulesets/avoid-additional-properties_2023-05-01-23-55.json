@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Added rule to detect additionalProperties(RPC-Policy-V1-03)",
+      "comment": "Added rule to detect additionalProperties(RPC-Policy-V1-05)",
       "type": "none"
     }
   ],
