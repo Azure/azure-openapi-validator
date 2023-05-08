@@ -6,12 +6,11 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 # Prerequisites to build locally
 
-- [Node.js](https://nodejs.org/) (14.x or higher)
-- [@Microsoft/Rush](https://rushjs.io/) (5.x or hider)
-
-```bash
-npm install -g @microsoft/rush
-```
+1. Install `Node.js`, version 14.x or higher. This will also install `npm`. [Instructions for Windows](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#os-x-or-windows-node-installers). Then [verify](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#checking-your-version-of-npm-and-nodejs) the installation.
+2. Install [@Microsoft/Rush](https://rushjs.io/), version 5.x or higher:
+   ```bash
+   npm install -g @microsoft/rush
+   ```
 
 # How to prepare for a PR submission after you made changes locally
 
@@ -164,7 +163,7 @@ in one o the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/az
 
 ## Setup
 
-1. Install node.js and npm. [Instructions for Windows](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#os-x-or-windows-node-installers). Then [verify](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#checking-your-version-of-npm-and-nodejs) the installation.
+1. Ensure you meet the `Prerequisites to build locally`
 2. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
    ```bash
    # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
