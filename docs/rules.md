@@ -86,6 +86,12 @@ A schema of `array` type must always contain an `items` property. without it, Au
 
 Please refer to [array-schema-must-have-items.md](./array-schema-must-have-items.md) for details.
 
+### AvoidAdditionalProperties
+
+If a property is of type additionalProperties then this should be flagged as an error
+
+Please refer to [avoid-additional-properties.md](./avoid-additional-properties.md) for details.
+
 ### AvoidAnonymousTypes
 
 This rule appears when you define a model type inline, rather than in the definitions section. If the model represents the same type as another parameter in a different operation, then it becomes impossible to reuse that same class for both operations.
