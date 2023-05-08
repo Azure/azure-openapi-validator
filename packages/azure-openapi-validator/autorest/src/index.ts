@@ -11,7 +11,7 @@ export const cachedFiles = new Map<string, any>()
 
 async function main() {
   const pluginHost = new AutoRestPluginHost()
-  pluginHost.Add("openapi-validator", openapiValidatorPluginFunc())
+  pluginHost.Add("openapi-validator", openapiValidatorPluginFunc)
   pluginHost.Add("spectral", spectralPluginFunc)
 
   await pluginHost.Run()
