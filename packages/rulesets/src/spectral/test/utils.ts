@@ -1,8 +1,8 @@
 import { Resolver } from "@stoplight/json-ref-resolver"
 import { Spectral } from "@stoplight/spectral-core"
+import { DiagnosticSeverity } from "@stoplight/types"
 import _ from "lodash"
 import { spectralRulesets } from "../../index"
-import { DiagnosticSeverity } from "@stoplight/types"
 
 export function buildLinter(ruleset: any, rule: string, useNoopResolver = false) {
   const omitRule = (extend: any, ruleName: string) => {
