@@ -20,7 +20,10 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 4. Run `rush test` to run the unit tests. They should all pass.
 5. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
-6. You are now ready to submit your PR.
+6. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
+   You can edit the added files later. If you don't add the right entries, the CI build will fail.
+8. If the change is siginficant, you might consider manually adding appropriate entry to `changelog.md`.
+9. You are now ready to submit your PR.
 
 # Installing NPM dependencies
 
