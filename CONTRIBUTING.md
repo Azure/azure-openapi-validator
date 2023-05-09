@@ -15,11 +15,12 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 # How to prepare for a PR submission after you made changes locally
 
 1. Run `rush update` to ensure all the required modules are installed.
-2. Run `rush build` to regenerate relevant files that need to be checked-in.
-3. Run `rush test` to run the unit tests. They should all pass.
-4. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
+2. Run `rush lint`.
+3. Run `rush build` to regenerate relevant files that need to be checked-in.
+4. Run `rush test` to run the unit tests. They should all pass.
+5. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
-5. You are now ready to submit your PR.
+6. You are now ready to submit your PR.
 
 # Installing NPM dependencies
 
