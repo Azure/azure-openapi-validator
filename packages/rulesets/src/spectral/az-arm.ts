@@ -547,7 +547,7 @@ const ruleset: any = {
       description:
         "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
       message: "{{error}}",
-      severity: "error",
+      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
       resolved: false,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[post]"],
@@ -702,7 +702,7 @@ const ruleset: any = {
     ResourceMustReferenceCommonTypes: {
       description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
       message: "{{error}}",
-      severity: "error",
+      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
       resolved: false,
       formats: [oas2],
       given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
@@ -713,7 +713,7 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "error",
+      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
