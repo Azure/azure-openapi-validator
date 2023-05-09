@@ -14,13 +14,14 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 # How to prepare for a PR submission after you made changes locally
 
-1. Run `rush update` to ensure all the required modules are installed.
-2. Run `rush build` to regenerate relevant files that need to be checked-in.
-3. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
-4. Run `rush test` to run the unit tests. They should all pass.
-5. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
+1. Ensure your local clone branch is up-to-date with `main`. If you are using a fork, ensure your local fork branch is based on origin repo `main`.
+2. Run `rush update` to ensure all the required modules are installed.
+3. Run `rush build` to regenerate relevant files that need to be checked-in.
+4. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
+5. Run `rush test` to run the unit tests. They should all pass.
+6. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
-6. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
+7. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
 8. If the change is siginficant, you might consider manually adding appropriate entry to `changelog.md`.
 9. You are now ready to submit your PR.
@@ -167,7 +168,7 @@ in one o the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/az
 
 ## Setup
 
-1. Ensure you meet the `Prerequisites to build locally`
+1. Ensure you meet the `Prerequisites to build locally` **up to and including** `rush build`.
 2. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
    ```bash
    # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
