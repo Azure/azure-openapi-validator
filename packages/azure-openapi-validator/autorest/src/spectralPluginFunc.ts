@@ -13,7 +13,7 @@ import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from ".
 import { cachedFiles } from "."
 
 export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
-  const files = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
+  const files: string[] = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
   const openapiType: string = await getOpenapiTypeStr(initiator)
 
   const readFile = async (fileUri: string) => {
@@ -28,7 +28,22 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     return file
   }
 
-  const rules = await getRuleSet(getOpenapiType(openapiType))
+  const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
+  const ruleset: Ruleset = await getRuleSet(resolvedOpenapiType)
+
+  const ruleNames: string[] = Object.keys(ruleset.rules).sort(Intl.Collator().compare)
+
+  initiator.Message({
+    Channel: "information",
+    Text: `Loaded following spectral rules, for OpenAPI type '${OpenApiTypes[resolvedOpenapiType]}':`,
+  })
+  for (const ruleName of ruleNames) {
+    initiator.Message({
+      Channel: "information",
+      Text: `Spectral rule: '${ruleName}'`,
+    })
+  }
+
   for (const file of files) {
     if (file.includes("common-types/resource-management")) {
       continue
@@ -54,10 +69,10 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
       },
     })
     const spectral = new Spectral({ resolver })
-    spectral.setRuleset(rules)
+    spectral.setRuleset(ruleset)
 
     initiator.Message({
-      Channel: "verbose",
+      Channel: "information",
       Text: `Validating '${file}'`,
     })
 
@@ -134,7 +149,7 @@ async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message)
   return mergedResults
 }
 
-export async function getRuleSet(openapiType: OpenApiTypes) {
+export async function getRuleSet(openapiType: OpenApiTypes): Promise<Ruleset> {
   let ruleset
   switch (openapiType) {
     case OpenApiTypes.arm: {
