@@ -1,7 +1,7 @@
 import { lint, getOpenapiType, LintResultMessage, isExample, IRuleSet } from "@microsoft.azure/openapi-validator-core"
 import { nativeRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
-import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./pluginCommon"
+import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./plugin-common"
 import { cachedFiles } from "."
 
 export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {

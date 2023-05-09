@@ -10,7 +10,7 @@ import { DiagnosticSeverity } from "@stoplight/types"
 import { safeLoad } from "js-yaml"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
 import { JsonPath, Message } from "./jsonrpc/types"
-import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./pluginCommon"
+import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./plugin-common"
 import { cachedFiles } from "."
 
 export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {

@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
-import { openapiValidatorPluginFunc } from "./openapiValidatorPluginFunc"
-import { spectralPluginFunc } from "./spectralPluginFunc"
+import { openapiValidatorPluginFunc } from "./openapi-validator-plugin-func"
+import { spectralPluginFunc } from "./spectral-plugin-func"
 
 export const cachedFiles = new Map<string, any>()
 

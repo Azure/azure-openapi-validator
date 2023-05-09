@@ -1,6 +1,6 @@
 import { LintResultMessage } from "@microsoft.azure/openapi-validator-core"
-import { Message } from "./jsonrpc/types"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
+import { Message } from "./jsonrpc/types"
 
 export function convertLintMsgToAutoRestMsg(message: LintResultMessage): Message {
   // try to extract provider namespace and resource type
