@@ -31,18 +31,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
   const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
   const ruleset: Ruleset = await getRuleSet(resolvedOpenapiType)
 
-  const ruleNames: string[] = Object.keys(ruleset.rules).sort(Intl.Collator().compare)
-
-  initiator.Message({
-    Channel: "information",
-    Text: `Loaded following spectral rules, for OpenAPI type '${OpenApiTypes[resolvedOpenapiType]}':`,
-  })
-  for (const ruleName of ruleNames) {
-    initiator.Message({
-      Channel: "information",
-      Text: `Spectral rule: '${ruleName}'`,
-    })
-  }
+  printRuleNames(initiator, ruleset, resolvedOpenapiType)
 
   for (const file of files) {
     if (file.includes("common-types/resource-management")) {
@@ -87,6 +76,24 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
         Text: `Failed validating: '${file}', error encountered: ` + e,
       })
     }
+  }
+}
+
+function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, resolvedOpenapiType: OpenApiTypes) {
+  const ruleNames: string[] = Object.keys(ruleset.rules)
+    // Case-insensitive sort.
+    // Source: https://stackoverflow.com/a/60922998/986533
+    .sort(Intl.Collator().compare)
+
+  initiator.Message({
+    Channel: "information",
+    Text: `Loaded ${ruleNames.length} spectral rules, for OpenAPI type '${OpenApiTypes[resolvedOpenapiType]}':`,
+  })
+  for (const ruleName of ruleNames) {
+    initiator.Message({
+      Channel: "information",
+      Text: `Spectral rule: '${ruleName}'`,
+    })
   }
 }
 
