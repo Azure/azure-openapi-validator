@@ -2,7 +2,7 @@
 
 ## Category
 
-SDK Warning
+SDK Error
 
 ## Applies to
 

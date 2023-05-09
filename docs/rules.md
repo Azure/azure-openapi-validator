@@ -587,6 +587,12 @@ Swagger authors that use the `scope` path parameter to indicate that an API is a
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
+### NoErrorCodeResponses
+
+Responses must only be specified for success (`200`, `201`, `202`, `204`) response codes and the `default` response. Any errors must only be surfaced by using the `default` response.
+
+Please refer to [no-error-code-responses.md](./no-error-code-responses.md) for details.
+
 ### NonApplicationJsonType
 
 Verifies whether operation supports "application/json" as consumes or produces section.

@@ -20,6 +20,7 @@ import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-v
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
+import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
@@ -746,6 +747,17 @@ const ruleset: any = {
       then: {
         function: truthy,
         field: "type",
+      },
+    },
+    NoErrorCodeResponses: {
+      description: "Invalid status code specified. Please refer to the documentation for the allowed set.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: ["$.paths.*.*.responses.*~"],
+      then: {
+        function: noErrorCodeResponses,
       },
     },
     LroWithOriginalUriAsFinalState: {
