@@ -1,12 +1,14 @@
+/* eslint-disable import/no-duplicates */
 import { fileURLToPath } from "url"
 import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri"
 import { getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
+import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { Resolver } from "@stoplight/json-ref-resolver"
-import { Spectral } from "@stoplight/spectral-core"
+import { Spectral, Ruleset } from "@stoplight/spectral-core"
 import { safeLoad } from "js-yaml"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
 import { JsonPath, Message } from "./jsonrpc/types"
-import { getRuleSet } from "./loader"
 import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./pluginCommon"
 import { cachedFiles } from "."
 
@@ -73,7 +75,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
   }
 }
 
-export async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
+async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
   const mergedResults = []
   const convertSeverity = (severity: number) => {
     switch (severity) {
@@ -130,4 +132,32 @@ export async function runSpectral(doc: any, filePath: string, sendMessage: (m: M
   }
 
   return mergedResults
+}
+
+export async function getRuleSet(openapiType: OpenApiTypes) {
+  let ruleset
+  switch (openapiType) {
+    case OpenApiTypes.arm: {
+      ruleset = spectralRulesets.azARM
+      break
+    }
+    case OpenApiTypes.dataplane: {
+      ruleset = spectralRulesets.azDataplane
+      break
+    }
+    default: {
+      ruleset = spectralRulesets.azCommon
+    }
+  }
+
+  return new Ruleset(ruleset, { severity: "recommended" })
+  /*const ruleset = await bundleRuleset(rulesetFile, {
+        target: 'node',
+        format: 'commonjs',
+        plugins: [builtins(), commonjs(), ...node({ fs, fetch })],
+      });
+  return  new Ruleset(load(ruleset,rulesetFile), {
+    severity: 'recommended',
+    source: rulesetFile,
+  }); */
 }

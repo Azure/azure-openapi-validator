@@ -1,7 +1,6 @@
-import { lint, getOpenapiType, LintResultMessage, isExample } from "@microsoft.azure/openapi-validator-core"
+import { lint, getOpenapiType, LintResultMessage, isExample, IRuleSet } from "@microsoft.azure/openapi-validator-core"
 import { nativeRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
-import { mergeRulesets } from "./loader"
 import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./pluginCommon"
 import { cachedFiles } from "."
 
@@ -43,4 +42,19 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
       Text: `Failed validating:` + e,
     })
   }
+}
+
+const mergeRulesets = (rulesets: IRuleSet[]): IRuleSet => {
+  let rules = {}
+  rulesets.forEach((set) => {
+    rules = {
+      ...rules,
+      ...set.rules,
+    }
+  })
+  const mergedRuleSet: IRuleSet = {
+    documentationUrl: "",
+    rules,
+  }
+  return mergedRuleSet
 }
