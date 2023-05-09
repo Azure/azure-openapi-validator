@@ -16,7 +16,7 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 1. Run `rush update` to ensure all the required modules are installed.
 2. Run `rush build` to regenerate relevant files that need to be checked-in.
-3. Run `rush lint`.
+3. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
 4. Run `rush test` to run the unit tests. They should all pass.
 5. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
