@@ -2,13 +2,13 @@ import { fileURLToPath } from "url"
 import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri"
 import { getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
 import { Resolver } from "@stoplight/json-ref-resolver"
+import { Spectral } from "@stoplight/spectral-core"
 import { safeLoad } from "js-yaml"
-import { getRuleSet } from "./loader"
-const { Spectral } = require("@stoplight/spectral-core")
-import { cachedFiles } from "."
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
 import { JsonPath, Message } from "./jsonrpc/types"
+import { getRuleSet } from "./loader"
 import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./pluginCommon"
+import { cachedFiles } from "."
 
 export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
   const files = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))

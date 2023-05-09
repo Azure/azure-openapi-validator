@@ -1,9 +1,9 @@
 import { lint, getOpenapiType, LintResultMessage, isExample } from "@microsoft.azure/openapi-validator-core"
 import { nativeRulesets } from "@microsoft.azure/openapi-validator-rulesets"
-import { mergeRulesets } from "./loader"
-import { cachedFiles } from "."
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
+import { mergeRulesets } from "./loader"
 import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./pluginCommon"
+import { cachedFiles } from "."
 
 export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
   const files = await (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
