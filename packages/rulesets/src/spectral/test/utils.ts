@@ -2,6 +2,7 @@ import { Resolver } from "@stoplight/json-ref-resolver"
 import { Spectral } from "@stoplight/spectral-core"
 import _ from "lodash"
 import { spectralRulesets } from "../../index"
+import { DiagnosticSeverity } from "@stoplight/types"
 
 export function buildLinter(ruleset: any, rule: string, useNoopResolver = false) {
   const omitRule = (extend: any, ruleName: string) => {
@@ -24,6 +25,13 @@ export function buildLinter(ruleset: any, rule: string, useNoopResolver = false)
     : new Spectral()
 
   linter.setRuleset(ruleset)
+
+  // Here we ensure the rule-to-be-unit-tested severity is set to 'error',
+  // to ensure its unit tests will correctly execute.
+  // Without this, if the rule is disabled in its definition by having
+  // 'severity' set to 'off', then its unit tests would likely fail.
+  linter.ruleset!.rules[rule].severity = DiagnosticSeverity.Error
+
   return linter
 }
 
