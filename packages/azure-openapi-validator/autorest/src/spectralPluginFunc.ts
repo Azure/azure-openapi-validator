@@ -6,6 +6,7 @@ import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { Resolver } from "@stoplight/json-ref-resolver"
 import { Spectral, Ruleset } from "@stoplight/spectral-core"
+import { DiagnosticSeverity } from "@stoplight/types"
 import { safeLoad } from "js-yaml"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
 import { JsonPath, Message } from "./jsonrpc/types"
@@ -90,9 +91,11 @@ function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, r
     Text: `Loaded ${ruleNames.length} spectral rules, for OpenAPI type '${OpenApiTypes[resolvedOpenapiType]}':`,
   })
   for (const ruleName of ruleNames) {
+    const severity: DiagnosticSeverity = ruleset.rules[ruleName].severity
+    const sevStr: string = Number(severity) == -1 ? "DISABLED" : DiagnosticSeverity[severity]
     initiator.Message({
-      Channel: "information",
-      Text: `Spectral rule: '${ruleName}'`,
+      Channel: sevStr == "DISABLED" ? "warning" : "information",
+      Text: (sevStr == "DISABLED" ? "DISABLED " : "").concat(`Spectral rule, severity '${sevStr}': '${ruleName}'`),
     })
   }
 }
