@@ -164,7 +164,7 @@ rush regen-ruleindex
 # How to run LintDiff locally
 
 Instructions in this section use an example that assumes you are trying to locally reproduce a LintDiff failure
-in one o the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
+in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
 
 ## Setup
 
