@@ -1,5 +1,6 @@
 import { LintResultMessage } from "@microsoft.azure/openapi-validator-core"
 import { Message } from "./jsonrpc/types"
+import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
 
 export function convertLintMsgToAutoRestMsg(message: LintResultMessage): Message {
   // try to extract provider namespace and resource type
@@ -34,7 +35,7 @@ export function convertLintMsgToAutoRestMsg(message: LintResultMessage): Message
   return msg
 }
 
-export async function getOpenapiTypeStr(initiator: any) {
+export async function getOpenapiTypeStr(initiator: IAutoRestPluginInitiator) {
   let openapiType: string = await initiator.GetValue("openapi-type")
   let subType: string = await initiator.GetValue("openapi-subtype")
   subType = subType === "providerHub" ? "rpaas" : subType
