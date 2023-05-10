@@ -850,9 +850,9 @@ const ruleset$1 = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            severity: "warn",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            severity: "error",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^^",
             then: {
@@ -863,7 +863,7 @@ const ruleset$1 = {
         LroStatusCodesReturnTypeSchema: {
             description: "The '200'/'201' responses of the long running operation must have a schema definition.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -1002,7 +1002,7 @@ const ruleset$1 = {
             },
         },
         LongRunningOperationsOptionsValidator: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
+            description: 'A LRO Post operation with return schema should have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "warn",
             resolved: true,
@@ -1146,7 +1146,7 @@ const ruleset$1 = {
         DescriptiveDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.description)].description"],
@@ -1157,7 +1157,7 @@ const ruleset$1 = {
         ParameterDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
@@ -1484,6 +1484,21 @@ const longRunningResponseStatusCodeArm = (methodOp, _opts, ctx) => {
     return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList);
 };
 
+const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
+    if (!properties || typeof properties !== "object") {
+        return [];
+    }
+    const keys = Object.keys(properties);
+    if (keys.length != 2 || !keys.includes("value") || !keys.includes("nextLink")) {
+        return [
+            {
+                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+            },
+        ];
+    }
+    return [];
+};
+
 function checkApiVersion(param) {
     if (param.in !== "query") {
         return false;
@@ -1737,6 +1752,23 @@ const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
         };
     });
     return errors;
+};
+
+const ALLOWED_RESPONSE_CODES = ["200", "201", "202", "204", "default"];
+const noErrorCodeResponses = (responseCode, _opts, ctx) => {
+    var _a;
+    if (!responseCode || typeof responseCode !== "string") {
+        return [];
+    }
+    if (ALLOWED_RESPONSE_CODES.some((allowedCode) => responseCode === allowedCode)) {
+        return [];
+    }
+    return [
+        {
+            message: "",
+            path: (_a = ctx.path) !== null && _a !== void 0 ? _a : [],
+        },
+    ];
 };
 
 function operationsApiSchema(schema, options, { path }) {
@@ -2556,6 +2588,17 @@ const ruleset = {
                 function: falsy,
             },
         },
+        GetCollectionOnlyHasValueAndNextLink: {
+            description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+            then: {
+                function: getCollectionOnlyHasValueAndNextLink,
+            },
+        },
         ParametersInPointGet: {
             description: "Point Get's MUST not have query parameters other than api version.",
             severity: "error",
@@ -2788,7 +2831,7 @@ const ruleset = {
         LROPostFinalStateViaProperty: {
             description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
             message: "{{error}}",
-            severity: "error",
+            severity: "off",
             resolved: false,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[post]"],
@@ -2919,7 +2962,7 @@ const ruleset = {
         ResourceMustReferenceCommonTypes: {
             description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
             message: "{{error}}",
-            severity: "error",
+            severity: "off",
             resolved: false,
             formats: [oas2],
             given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
@@ -2930,7 +2973,7 @@ const ruleset = {
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
-            severity: "error",
+            severity: "off",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
@@ -2948,6 +2991,17 @@ const ruleset = {
             then: {
                 function: truthy,
                 field: "type",
+            },
+        },
+        NoErrorCodeResponses: {
+            description: "Invalid status code specified. Please refer to the documentation for the allowed set.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*.*.responses.*~"],
+            then: {
+                function: noErrorCodeResponses,
             },
         },
         LroWithOriginalUriAsFinalState: {
