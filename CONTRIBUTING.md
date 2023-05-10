@@ -189,19 +189,13 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
 6. Execute following command:
 
    ```bash
-   autorest --v3 --spectral --azure-validator
-   --use=./packages/azure-openapi-validator/autorest
-   --tag=<api-version>
-   <path-to-autorest-config-file>
+   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=<api-version> <path-to-autorest-config-file>
    ```
 
    For example, if you are trying to reproduce [azure-rest-api-specs-pr PR 12357 Staging LintDiff failure], but using local LintDiff code, you would use:
 
    ```bash
-   autorest --v3 --spectral --azure-validator
-   --use=./packages/azure-openapi-validator/autorest
-   --tag=package-2022-09-preview
-   ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
+   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
    ```
 
    Note that there maybe over 1 minute long breaks before anything is output to the console.
@@ -217,19 +211,13 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
    Continuing our example for PR 12357, we can observe that version `2.0.1`, which as of this writing (5/5/2023) runs in production, produces only `warning | IgnoredPropertyNextToRef`:
 
    ```bash
-   autorest --v3 --spectral --azure-validator
-   --use=@microsoft.azure/openapi-validator@2.0.1
-   --tag=package-2022-09-preview
-   ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
+   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.0.1 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
    ```
 
    On the other hand, version `2.2.0-beta.3` which as of this writing corresponds to `beta`, does produce significantly more warnings, which match the failures observed in the [Staging LintDiff CI check][azure-rest-api-specs-pr PR 12357 Staging LintDiff failure]:
 
    ```bash
-   autorest --v3 --spectral --azure-validator
-   --use=@microsoft.azure/openapi-validator@2.2.0-beta.3
-   --tag=package-2022-09-preview
-   ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
+   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.2.0-beta.3 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
    ```
 
    You can find example outputs of these commands in the `Appendix` section at the end of this document.
