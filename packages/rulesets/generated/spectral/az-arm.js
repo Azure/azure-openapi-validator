@@ -2572,7 +2572,7 @@ const ruleset = {
             message: "{{description}}",
             resolved: true,
             formats: [oas2],
-            given: "$..[?(@property != 'tags' && @.additionalProperties)]*",
+            given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
             then: {
                 function: falsy,
             },
