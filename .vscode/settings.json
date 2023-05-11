@@ -29,7 +29,7 @@
     "packages/rulesets/spectral/functions/*.js":false,
   },
   "[markdown]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.formatOnPaste": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,

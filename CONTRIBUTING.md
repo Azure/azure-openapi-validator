@@ -6,25 +6,43 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 # Prerequisites to build locally
 
-1. Install `Node.js`, version 14.x or higher. This will also install `npm`. [Instructions for Windows](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#os-x-or-windows-node-installers). Then [verify](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#checking-your-version-of-npm-and-nodejs) the installation.
-2. Install [@Microsoft/Rush](https://rushjs.io/), version 5.x or higher:
+1. Install [nvm] ([nvm for Windows]), a tool to manage `Node.js` versions.
+2. Restart your terminal so that `nvm` command is recognized.
+3. Using `nvm`, install `Node.js` version `12.22.12`. This is the version used by the [PR CI pipeline] to build `LintDiff`.
+   - `nvm install 12.22.12`
+   - `nvm use 12.22.12`
+   - `node --version`, to confirm.
+4. Note that installing `Node.js` will also install `npm`.
+5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want to switch to it in case you run into unexpected issues later on.
    ```bash
+   # Install latest rush, globally
    npm install -g @microsoft/rush
+
+   # OR Install specific version, to the local node_modules folder
+   cd "this_repo_local_clone_dir"
+   npm install @microsoft/rush@5.26.1
    ```
+
+[nvm]: https://github.com/nvm-sh/nvm#installing-and-updating
+[nvm for Windows]: https://github.com/coreybutler/nvm-windows
+[PR CI pipeline]: https://dev.azure.com/azure-sdk/public/_build?definitionId=5261&_a=summary
 
 # How to prepare for a PR submission after you made changes locally
 
+We will be replicating locally what [PR CI pipeline] is doing, and more.
+
+1. Ensure you have fulfilled `Prerequisites to build locally`.
 1. Ensure your local clone branch is up-to-date with `main`. If you are using a fork, ensure your local fork branch is based on origin repo `main`.
-2. Run `rush update` to ensure all the required modules are installed.
-3. Run `rush build` to regenerate relevant files that need to be checked-in.
-4. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
-5. Run `rush test` to run the unit tests. They should all pass.
-6. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
+1. Run `rush update` to ensure all the required modules are installed.
+1. Run `rush build` to regenerate relevant files that need to be checked-in.
+1. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
+1. Run `rush test` to run the unit tests. They should all pass.
+1. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
-7. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
+1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
-8. If the change is siginficant, you might consider manually adding appropriate entry to `changelog.md`.
-9. You are now ready to submit your PR.
+1. If the change is significant, you might consider manually adding appropriate entry to `changelog.md`.
+1. You are now ready to submit your PR.
 
 # Installing NPM dependencies
 
@@ -182,10 +200,10 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
    - `git clone https://github.com/Azure/azure-rest-api-specs-pr.git`
    - `git checkout containerservice/official/fleet-api-release`
 4. `cd repos/azure-openapi-validator` // Here we assume this is your local clone of LintDiff.
+5. Ensure your local LintDiff is prepped for execution. See `How to prepare for a PR submission after you made changes locally`.
 
 ## Execute your local LintDiff code
 
-5. Ensure your local LintDiff is prepped for execution. See `How to prepare for a PR submission after you made changes locally`.
 6. Execute following command:
 
    ```bash
@@ -206,7 +224,7 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
 
 ## Execute locally LintDiff version published to npm
 
-5. Familiarize yourself with instructions for `Execute your local LintDiff code`. The only difference is that instead of passing `--use=./packages/azure-openapi-validator/autorest` you will pass `-use=@microsoft.azure/openapi-validator@<version-tag>` where you can obtain `<version-tag>` from [npm package @microsoft.azure/openapi-validator](https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions).
+6. Familiarize yourself with instructions for `Execute your local LintDiff code`. The only difference is that instead of passing `--use=./packages/azure-openapi-validator/autorest` you will pass `-use=@microsoft.azure/openapi-validator@<version-tag>` where you can obtain `<version-tag>` from [npm package @microsoft.azure/openapi-validator](https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions).
 
    Continuing our example for PR 12357, we can observe that version `2.0.1`, which as of this writing (5/5/2023) runs in production, produces only `warning | IgnoredPropertyNextToRef`:
 

@@ -30,7 +30,7 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
     read: readFile,
   }
   initiator.Message({
-    Channel: "verbose",
+    Channel: "information",
     Text: `Validating '${files.join("\n")}'`,
   })
   try {
