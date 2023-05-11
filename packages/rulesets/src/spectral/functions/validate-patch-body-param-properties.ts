@@ -54,11 +54,31 @@ export const validatePatchBodyParamProperties = createRulesetFunction<unknown, O
       }
       if (_opts.shouldNot) {
         _opts.shouldNot.forEach((p: string) => {
-          if (getProperties(bodyParameter)?.[p]) {
-            errors.push({
-              message: `The patch operation body parameter schema should not contains property ${p}.`,
-              path: [...path, "parameters", index],
-            })
+          const property = getProperties(bodyParameter)?.[p];
+          if (property) {
+            var isPropertyBoolean = false;
+            var isPropertyImmutable = false;
+
+            if (property["readOnly"] && property["readOnly"] === true)
+            {
+              isPropertyBoolean = true;
+            }
+
+            if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+                const schemeArray = property["x-ms-mutability"];
+                if (!schemeArray.includes("update"))
+                {
+                    isPropertyImmutable = true;
+                }
+            }
+
+            if (!isPropertyBoolean && !isPropertyImmutable)
+            {
+              errors.push({
+                message: `The patch operation body parameter schema should not contains property ${p}.`,
+                path: [...path, "parameters", index],
+              })
+            }
           }
         })
       }

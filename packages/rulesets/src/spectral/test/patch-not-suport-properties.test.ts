@@ -89,6 +89,183 @@ test("UnSupportedPatchProperties should find errors", () => {
   })
 })
 
+test("UnSupportedPatchProperties should find errors when the top level properties are mentioned with x-ms-mutability (create, update, read) ", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        patch: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/Resource",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          name: {
+            type: "string"
+          },
+        },
+      },
+      Resource: {
+        "x-ms-azure-resource": true,
+        description: "Test Description",
+        properties: {
+          id: {
+            type: "string",
+            readOnly: true,
+          },
+          name: {
+            type: "string",
+            readOnly: true,
+          },
+          type: {
+            type: "string",
+            readOnly: true,
+          },
+          location: {
+            type: "string",
+            "x-ms-mutability": [
+              "read",
+              "update",
+              "create"
+            ],
+            "description": "The geo-location where the resource lives"            
+          },          
+        },
+      },
+      FooResource: {
+        "x-ms-azure-resource": true,
+        allOf: [{ $ref: "#/definitions/Resource" }],
+        properties: {
+          provisioningState: {
+            type: "string",
+            enum: ["Creating", "Canceled", "Deleting", "Failed"],
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
+    expect(results[0].message).toContain("The patch operation body parameter schema should not contains property location.")
+  })
+})
+
+test("UnSupportedPatchProperties should find no errors when the top level properties are mentioned as readOnly or with x-ms-mutability (create, read) ", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        patch: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/Resource",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          name: {
+            type: "string"
+          },
+        },
+      },
+      Resource: {
+        "x-ms-azure-resource": true,
+        description: "Test Description",
+        properties: {
+          id: {
+            type: "string",
+            readOnly: true,
+          },
+          name: {
+            type: "string",
+            readOnly: true,
+          },
+          type: {
+            type: "string",
+            readOnly: true,
+          },
+          location: {
+            type: "string",
+            "x-ms-mutability": [
+              "read",
+              "create"
+            ],
+            "description": "The geo-location where the resource lives"            
+          },          
+        },
+      },
+      FooResource: {
+        "x-ms-azure-resource": true,
+        allOf: [{ $ref: "#/definitions/Resource" }],
+        properties: {
+          provisioningState: {
+            type: "string",
+            enum: ["Creating", "Canceled", "Deleting", "Failed"],
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
 test("UnSupportedPatchProperties should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",

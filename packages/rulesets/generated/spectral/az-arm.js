@@ -2393,11 +2393,25 @@ const validatePatchBodyParamProperties = createRulesetFunction({
         if (_opts.shouldNot) {
             _opts.shouldNot.forEach((p) => {
                 var _a;
-                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
-                    errors.push({
-                        message: `The patch operation body parameter schema should not contains property ${p}.`,
-                        path: [...path, "parameters", index],
-                    });
+                const property = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p];
+                if (property) {
+                    var isPropertyBoolean = false;
+                    var isPropertyImmutable = false;
+                    if (property["readOnly"] && property["readOnly"] === true) {
+                        isPropertyBoolean = true;
+                    }
+                    if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+                        const schemeArray = property["x-ms-mutability"];
+                        if (!schemeArray.includes("update")) {
+                            isPropertyImmutable = true;
+                        }
+                    }
+                    if (!isPropertyBoolean && !isPropertyImmutable) {
+                        errors.push({
+                            message: `The patch operation body parameter schema should not contains property ${p}.`,
+                            path: [...path, "parameters", index],
+                        });
+                    }
                 }
             });
         }
