@@ -85,11 +85,11 @@ test("UnSupportedPatchProperties should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
-    expect(results[0].message).toContain("The patch operation body parameter schema should not contains property name.")
+    expect(results[0].message).toContain("The patch operation body parameter schema should not contain property name.")
   })
 })
 
-test("UnSupportedPatchProperties should find errors when the top level properties are mentioned with x-ms-mutability (create, update, read) ", () => {
+test("UnSupportedPatchProperties should find errors when the top level properties are mentioned with x-ms-mutability (create, update, read)", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -175,11 +175,11 @@ test("UnSupportedPatchProperties should find errors when the top level propertie
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
-    expect(results[0].message).toContain("The patch operation body parameter schema should not contains property location.")
+    expect(results[0].message).toContain("The patch operation body parameter schema should not contain property location.")
   })
 })
 
-test("UnSupportedPatchProperties should find no errors when the top level properties are mentioned as readOnly or with x-ms-mutability (create, read) ", () => {
+test("UnSupportedPatchProperties should find no errors when the top level properties are mentioned as readOnly or with x-ms-mutability (create, read)", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

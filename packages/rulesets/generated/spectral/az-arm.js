@@ -2384,7 +2384,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
                     errors.push({
-                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        message: `The patch operation body parameter schema should contain property '${p}'.`,
                         path: [...path, "parameters", index],
                     });
                 }
@@ -2395,8 +2395,8 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                 var _a;
                 const property = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p];
                 if (property) {
-                    var isPropertyBoolean = false;
-                    var isPropertyImmutable = false;
+                    let isPropertyBoolean = false;
+                    let isPropertyImmutable = false;
                     if (property["readOnly"] && property["readOnly"] === true) {
                         isPropertyBoolean = true;
                     }
@@ -2408,7 +2408,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                     }
                     if (!isPropertyBoolean && !isPropertyImmutable) {
                         errors.push({
-                            message: `The patch operation body parameter schema should not contains property ${p}.`,
+                            message: `The patch operation body parameter schema should not contain property ${p}.`,
                             path: [...path, "parameters", index],
                         });
                     }
