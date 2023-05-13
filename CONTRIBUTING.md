@@ -6,7 +6,7 @@
 - [How to deploy your changes](#how-to-deploy-your-changes)
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
-  * [Verification of the deployed changes](#verification-of-the-deployed-changes)
+  * [Verify the deployed changes](#verify-the-deployed-changes)
 - [How to run LintDiff locally](#how-to-run-lintdiff-locally)
   * [Setup](#setup)
   * [Execute your local LintDiff code](#execute-your-local-lintdiff-code)
