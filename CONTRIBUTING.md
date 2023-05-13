@@ -28,7 +28,6 @@
 - [Appendix](#appendix)
   * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for-execute-locally-lintdiff-version-published-to-npm)
 
-
 # Contributing
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
