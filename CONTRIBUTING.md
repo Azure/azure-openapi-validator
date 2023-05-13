@@ -26,7 +26,7 @@
   * [Example](#example)
   * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
 - [Appendix](#appendix)
-  * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for--execute-locally-lintdiff-version-published-to-npm-)
+  * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for-execute-locally-lintdiff-version-published-to-npm)
 
 
 # Contributing
