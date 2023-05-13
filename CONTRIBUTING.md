@@ -63,7 +63,7 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 A lot of the instructions below replicate what the [PR CI pipeline] is doing.
 
-1. Ensure you have fulfilled `Prerequisites to build locally`.
+1. Ensure you have fulfilled [`Prerequisites to build locally`](#prerequisites-to-build-locally).
 1. Ensure your local clone branch is based on an up-to-date `main` branch.
     - If you are using a fork, ensure your fork `main` branch is up-to-date with
     the origin `main` branch and that your branch is based on your fork `main` branch.
@@ -81,13 +81,13 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
 1. If the change is significant, you might consider manually adding appropriate entry to `changelog.md`.
 1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
-  given in `How to deploy your changes`.
+  given in [`How to deploy your changes`](#how-to-deploy-your-changes).
 1. You are now ready to submit your PR.
-1. After your PR ise merged, most likely you will want to read `How to deploy your changes` to verify they got deployed.
+1. After your PR ise merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
 
 # How to deploy your changes
 
-Let's assume you followed most of the instructions given in `How to prepare for a PR submission after you made changes locally`.
+Let's assume you followed most of the instructions given in [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally).
 You are about to submit your PR, but you want to ensure the changes in your PR will end up correctly deployed.
 
 ## Deploy to Staging LintDiff
@@ -108,7 +108,7 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
   - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
 - Once your PR is merged and [relevant build](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary) completed, approve an [npm release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80) from the build.
-  - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first time. You can verify your updated npm packages were published by reviewing your
+  - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first try. You can verify your updated npm packages were published by reviewing your
   version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
 
 ## Verify the deployed changes
@@ -123,7 +123,7 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
 
 ## Setup
 
-1. Ensure you meet the `How to prepare for a PR submission after you made changes locally` **up to and including** `rush build`.
+1. Ensure you meet the [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally) **up to and including** `rush build`.
 1. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
    ```bash
    # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
@@ -181,7 +181,7 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
 
 - Set the Spectral rule severity to `off` to disable it. Revert that to enable it back.
   - For an example of 3 rules being disabled, see [this file diff](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-4c1382203db84bcd9df61a5bbf90823d0e1f39a833e8eaa1a5be96ca4a4e9b61).
-- Follow the instructions given in the `How to deploy your changes` section.
+- Follow the instructions given in the [`How to deploy your changes`](#how-to-deploy-your-changes) section.
 
 # How to verify which Spectral rules are running in Production and Staging LintDiff
 
