@@ -48,8 +48,36 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
 1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
 1. If the change is significant, you might consider manually adding appropriate entry to `changelog.md`.
+1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
+  given in `How to deploy your changes`.
 1. You are now ready to submit your PR.
+1. After your PR ise merged, most likely you will want to read `How to deploy your changes` to verify they got deployed.
 
+# How to deploy your changes
+
+Let's assume you followed most of the instructions given in `How to prepare for a PR submission after you made changes locally`.
+You are about to submit your PR, but you want to ensure the changes in your PR will end up correctly deployed.
+
+## Deploy to Staging LintDiff
+
+If you want your changes to be deployed only to the [staging pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=3268)
+and hence Staging LintDiff, you don't need to change anything in your PR.
+
+Once your PR is merged, you just need to verify the [Staging release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108) with your changes succeeded.
+It should trigger automatically, publishing new `beta` versions of relevant packages to npm.
+
+## Deploy to Prod LintDiff
+
+If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary) and hence Production LintDiff, you need to do the following:
+
+- In the PR with your changes increase the version number of the packages you changed.
+  - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30) is an example version increase for the ruleset.
+  - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf) for changes made to the  AutoRest extension.
+  - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
+  ensure the tool owner reviewed your PR.
+- Once your PR is merged and [relevant build](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary) completed, approve an [npm release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80) from the build.
+  - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first time. You can verify your updated npm packages were published by reviewing your
+  version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
 
 # How to run LintDiff locally
 
@@ -111,6 +139,13 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
    ```
 
    You can find example outputs of these commands in the `Appendix` section at the end of this document.
+
+# How to disable or enable existing Spectral rules
+
+- Set the Spectral rule severity to `off` to disable it. Revert that to enable it back.
+  - For an example of 3 rules being disabled, see [this file diff](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-4c1382203db84bcd9df61a5bbf90823d0e1f39a833e8eaa1a5be96ca4a4e9b61).
+- Follow the instructions given in the `How to deploy your changes` section.
+
 
 # Installing NPM dependencies
 
