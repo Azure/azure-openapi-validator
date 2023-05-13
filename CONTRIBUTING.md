@@ -90,7 +90,7 @@ You are about to submit your PR, but you want to ensure the changes in your PR w
 
 ## Deploy to Staging LintDiff
 
-If you want your changes to be deployed only to the [staging pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=3268)
+If you want your changes to be deployed only to the [Staging pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=3268)
 and hence Staging LintDiff, you don't need to change anything in your PR.
 
 Once your PR is merged, you just need to verify the [Staging release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108) with your changes succeeded.
