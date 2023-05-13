@@ -6,11 +6,13 @@
 - [How to deploy your changes](#how-to-deploy-your-changes)
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+  * [Verification of the deployed changes](#verification-of-the-deployed-changes)
 - [How to run LintDiff locally](#how-to-run-lintdiff-locally)
   * [Setup](#setup)
   * [Execute your local LintDiff code](#execute-your-local-lintdiff-code)
   * [Execute locally LintDiff version published to npm](#execute-locally-lintdiff-version-published-to-npm)
 - [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules)
+- [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
 - [How to test](#how-to-test)
 - [How to write a new validation rule using typescript](#how-to-write-a-new-validation-rule-using-typescript)
@@ -109,6 +111,11 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
   - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first time. You can verify your updated npm packages were published by reviewing your
   version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
 
+## Verification of the deployed changes
+
+If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
+the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
+
 # How to run LintDiff locally
 
 Instructions in this section use an example that assumes you are trying to locally reproduce a LintDiff failure
@@ -176,6 +183,12 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
   - For an example of 3 rules being disabled, see [this file diff](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-4c1382203db84bcd9df61a5bbf90823d0e1f39a833e8eaa1a5be96ca4a4e9b61).
 - Follow the instructions given in the `How to deploy your changes` section.
 
+# How to verify which Spectral rules are running in Production and Staging LintDiff
+
+You can look at the relevant build logs, as they output list of running Spectral rules, and if they are disabled.
+
+- An example for [Production LintDiff run](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2773189&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7&l=88).
+- An example for [Staging LintDiff run](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2773190&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=89).
 
 # Installing NPM dependencies
 
