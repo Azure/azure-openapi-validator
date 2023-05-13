@@ -111,7 +111,7 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
   - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first time. You can verify your updated npm packages were published by reviewing your
   version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
 
-## Verification of the deployed changes
+## Verify the deployed changes
 
 If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
 the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
