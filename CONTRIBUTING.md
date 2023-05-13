@@ -1,3 +1,34 @@
+# Table of Contents
+
+- [Contributing](#contributing)
+- [Prerequisites to build locally](#prerequisites-to-build-locally)
+- [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
+- [How to deploy your changes](#how-to-deploy-your-changes)
+  * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
+  * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+- [How to run LintDiff locally](#how-to-run-lintdiff-locally)
+  * [Setup](#setup)
+  * [Execute your local LintDiff code](#execute-your-local-lintdiff-code)
+  * [Execute locally LintDiff version published to npm](#execute-locally-lintdiff-version-published-to-npm)
+- [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules)
+- [Installing NPM dependencies](#installing-npm-dependencies)
+- [How to test](#how-to-test)
+- [How to write a new validation rule using typescript](#how-to-write-a-new-validation-rule-using-typescript)
+  * [Spectral rule](#spectral-rule)
+  * [Native rule](#native-rule)
+  * [Rule properties](#rule-properties)
+- [How to run regression test](#how-to-run-regression-test)
+- [How to refresh the index of rules documentation](#how-to-refresh-the-index-of-rules-documentation)
+- [How to use the Spectral ruleset](#how-to-use-the-spectral-ruleset)
+  * [Dependencies](#dependencies)
+  * [Install Spectral](#install-spectral)
+  * [Usage](#usage)
+  * [Example](#example)
+  * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
+- [Appendix](#appendix)
+  * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for--execute-locally-lintdiff-version-published-to-npm-)
+
+
 # Contributing
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
@@ -333,7 +364,7 @@ In the Problems panel you can filter to show or hide errors, warnings, or infos.
 
 # Appendix
 
-## Appendix for `Execute locally LintDiff version to npm`
+## Appendix for `Execute locally LintDiff version published to npm`
 
 This command:
 
