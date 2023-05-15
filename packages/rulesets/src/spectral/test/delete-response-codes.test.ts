@@ -1,8 +1,10 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
-const LR_ERROR = "Long-running (LRO) delete operations must have responses with 202 and 204 return codes, and no other response codes."
-const SYNC_ERROR = "Synchronous delete operations must have responses with 200 and 204 return codes, and no other response codes."
+const LR_ERROR =
+  "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes."
+const SYNC_ERROR =
+  "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes."
 
 let linter: Spectral
 
@@ -221,7 +223,91 @@ test("DeleteResponseCodes should find errors for sync delete without default res
   })
 })
 
-test("DeleteResponseCodes should find no errors for sync delete", () => {
+test("DeleteResponseCodes should find errors for sync delete with extra response code", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        delete: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_delete",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "204": {
+              description: "No content",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "202": {
+              description: "accepted",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            default: {
+              description: "Error",
+              schema: {},
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResourceUpdate: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.delete")
+    expect(results[0].message).toContain(SYNC_ERROR)
+  })
+})
+
+test("DeleteResponseCodes should find no errors for sync delete when all required codes are provided", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -510,7 +596,92 @@ test("DeleteResponseCodes should find errors for lro delete without default resp
   })
 })
 
-test("DeleteResponseCodes should find no errors for lro delete", () => {
+test("DeleteResponseCodes should find errors for lro delete with extra response code", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        delete: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_delete",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "202": {
+              description: "accepted",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "204": {
+              description: "No content",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "403": {
+              description: "error",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            default: {
+              description: "Error",
+              schema: {},
+            },
+          },
+          "x-ms-long-running-operation": true,
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResourceUpdate: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.delete")
+    expect(results[0].message).toContain(LR_ERROR)
+  })
+})
+
+test("DeleteResponseCodes should find no errors for lro delete when all required codes are provided", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {

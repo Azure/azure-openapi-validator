@@ -1461,7 +1461,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     if (deleteOp["x-ms-long-running-operation"] === true) {
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Long-running (LRO) delete operations must have responses with 202 and 204 return codes, and no other response codes.",
+                message: "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.",
                 path: path,
             });
         }
@@ -1469,7 +1469,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     else {
         if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Synchronous delete operations must have responses with 200 and 204 return codes, and no other response codes.",
+                message: "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.",
                 path: path,
             });
         }
