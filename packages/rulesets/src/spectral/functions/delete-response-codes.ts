@@ -15,7 +15,6 @@ export const DeleteResponseCodes = (deleteOp: any, _opts: any, ctx: any) => {
     return []
   }
 
-  //const responses = deleteOp?.responses ? Object.keys(deleteOp.responses) : undefined
   const responses = Object.keys(deleteOp?.responses ?? {})
 
   if (deleteOp["x-ms-long-running-operation"] === true) {
