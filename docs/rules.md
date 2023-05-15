@@ -74,12 +74,6 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [arm-resource-properties-bag.md](./arm-resource-properties-bag.md) for details.
 
-### ProvisioningStateMustBeReadOnly
-
-This is a rule introduced to validate if provisioningState property is set to readOnly.
-
-Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
-
 ### ArrayMustHaveType
 
 An array must claim "type:'array'" explicitly.
@@ -240,7 +234,7 @@ Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md)
 
 ### DeleteResponseCodes
 
-Synchronous delete operations must have 200 & 204 return code responses and long-running (LRO) delete operations must have 202 & 204 return code responses.
+Synchronous delete operations must have 200, 204, and default responses and long-running (LRO) delete operations must have 202, 204, and default responses. They must not have any other responses.
 
 Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
 
@@ -279,11 +273,6 @@ Please refer to [descriptive-description-required.md](./descriptive-description-
 This rule is to ensure the documentation link in the description does not contains any locale.
 
 Please refer to [doc-link-locale.md](./doc-link-locale.md) for details.
-
-### ResourceMustReferenceCommonTypes
-
-
-Please refer to [DOCS_TEMPLATE.md](./DOCS_TEMPLATE.md) for details.
 
 ### EnumInsteadOfBoolean
 
@@ -358,12 +347,6 @@ Please refer to [get-must-not-have-request-body.md](./get-must-not-have-request-
 The get operation should only return 200, also it should not be a long running operation.
 
 Please refer to [get-operation200.md](./get-operation200.md) for details.
-
-### ParametersInPointGet
-
-Point Get's MUST not have query parameters other than api version.
-
-Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
 
 ### GuidUsage
 
@@ -742,6 +725,12 @@ Path parameters must be in the same order as in the path.
 
 Please refer to [parameter-order.md](./parameter-order.md) for details.
 
+### ParametersInPointGet
+
+Point Get's MUST not have query parameters other than api version.
+
+Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
+
 ### ParametersInPost
 
 For a POST action parameters MUST be in the payload and not in the URI.
@@ -929,6 +918,12 @@ Please refer to [property-names-convention.md](./property-names-convention.md) f
 Schema property should have a defined type.
 
 Please refer to [property-type.md](./property-type.md) for details.
+
+### ProvisioningStateMustBeReadOnly
+
+This is a rule introduced to validate if provisioningState property is set to readOnly.
+
+Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
 
 ### ProvisioningStateValidation
 
