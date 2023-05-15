@@ -324,6 +324,12 @@ Instead, consider defining a `body` parameter with `type: string, format: binary
 
 Please refer to [formdata.md](./formdata.md) for details.
 
+### GetCollectionOnlyHasValueAndNextLink
+
+List GET endpoints (collection GET) must only have `value` and `nextLink` in `properties`.
+
+Please refer to [get-collection-only-has-value-nextlink.md](./get-collection-only-has-value-nextlink.md) for details.
+
 ### GetCollectionResponseSchema
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#get-resource), for all resources (top-level and nested), collection GETs should have a response definition with a property "value" containing an array of the "resource" schema.The definition returned in the collection "value" array should be the same as the response body for the individual GET.
@@ -580,6 +586,12 @@ Please refer to [next-link-property-must-exist.md](./next-link-property-must-exi
 Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
+
+### NoErrorCodeResponses
+
+Responses must only be specified for success (`200`, `201`, `202`, `204`) response codes and the `default` response. Any errors must only be surfaced by using the `default` response.
+
+Please refer to [no-error-code-responses.md](./no-error-code-responses.md) for details.
 
 ### NonApplicationJsonType
 
@@ -1021,6 +1033,12 @@ Please refer to [required-read-only-system-data.md](./required-read-only-system-
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
+
+### ResourceMustReferenceCommonTypes
+
+Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
+
+Please refer to [resource-must-reference-common-types.md](./resource-must-reference-common-types.md) for details.
 
 ### ResourceNameRestriction
 

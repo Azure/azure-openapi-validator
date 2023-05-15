@@ -682,9 +682,9 @@ const ruleset = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            severity: "warn",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            severity: "error",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^^",
             then: {
@@ -695,7 +695,7 @@ const ruleset = {
         LroStatusCodesReturnTypeSchema: {
             description: "The '200'/'201' responses of the long running operation must have a schema definition.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -834,7 +834,7 @@ const ruleset = {
             },
         },
         LongRunningOperationsOptionsValidator: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
+            description: 'A LRO Post operation with return schema should have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "warn",
             resolved: true,
@@ -978,7 +978,7 @@ const ruleset = {
         DescriptiveDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.description)].description"],
@@ -989,7 +989,7 @@ const ruleset = {
         ParameterDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],

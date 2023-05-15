@@ -2,7 +2,7 @@
 
 ## Category
 
-ARM & Data Plane Warning
+ARM & Data Plane Error
 
 ## Applies to
 
