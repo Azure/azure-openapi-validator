@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Added a linter rule for RPC-Operations-V1-01 and RPC-Operations-V1-02 to check for operations API at levels other than tenant level (e.g., susbcription level).",
+      "comment": "Add a linter rule for RPC-Operations-V1-01 and RPC-Operations-V1-02 to check for operations API at levels other than tenant level (e.g., subscription level).",
       "type": "patch"
     }
   ],
