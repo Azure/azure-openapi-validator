@@ -163,10 +163,62 @@ test("AvoidAdditionalProperties should find no errors", () => {
         properties: {
           type: "string",
         },
+        tags: {
+          type: "object",
+          additionalProperties: {
+            type: "object",
+            params: {
+              type: "boolean",
+            },
+          },
+        },
       },
     },
   }
   return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("AvoidAdditionalProperties should find no errors", () => {
+  const oasDoc1 = {
+    swagger: "2.0",
+    definitions: {
+      type: "object",
+      source: {
+        type: "object",
+        properties: {
+          type: "object",
+          x: {
+            type: "object",
+            $ref: "#/definitions/info",
+          },
+        },
+      },
+      info: {
+        type: "object",
+        tags: {
+          type: "object",
+          additionalProperties: {
+            type: "object",
+            params: {
+              type: "boolean",
+            },
+          },
+        },
+      },
+      tags: {
+        type: "object",
+        additionalProperties: {
+          type: "object",
+          params: {
+            type: "boolean",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc1).then((results) => {
     expect(results.length).toBe(0)
   })
 })

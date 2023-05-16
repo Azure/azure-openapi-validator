@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-Definitions must not have properties named "additionalProperties" exept for user defined tags.
+Definitions must not have properties named "additionalProperties" except for user defined tags.
 
 ## Description
 
