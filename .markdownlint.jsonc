@@ -1,4 +1,9 @@
 {
+    // MD004 - Unordered list style
+    // https://github.com/DavidAnson/markdownlint/blob/main/doc/md004.md
+    // Disabled because it warns on TOC generated with
+    // https://ecotrust-canada.github.io/markdown-toc/
+    "MD004": false,
     // MD013 - Line length
     // https://github.com/DavidAnson/markdownlint/blob/main/doc/md013.md
     "MD013": { "line_length": 120, "code_blocks": false, "headings": false, "tables": false },
