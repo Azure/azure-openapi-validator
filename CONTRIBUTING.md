@@ -123,7 +123,7 @@ in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/a
 
 ## Setup
 
-1. Ensure you meet the [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally) **up to and including** `rush build`.
+1. Ensure you meet the [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally) requirements **up to and including** `rush build`.
 1. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
    ```bash
    # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
