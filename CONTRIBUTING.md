@@ -3,6 +3,7 @@
 - [Contributing](#contributing)
 - [Prerequisites to build locally](#prerequisites-to-build-locally)
 - [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
+- [New linter rule promotion strategy](#new-linter-rule-promotion-strategy)
 - [How to deploy your changes](#how-to-deploy-your-changes)
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
@@ -84,6 +85,13 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
   given in [`How to deploy your changes`](#how-to-deploy-your-changes).
 1. You are now ready to submit your PR.
 1. After your PR ise merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
+
+# New linter rule promotion strategy
+
+1. Merge new rules to main. As a result, they show up in the Staging LintDiff pipeline.
+1. Review Staging LintDiff pipeline build logs to see if the rules work correctly.
+1. Once you verify the rules work correctly, roll them out to the production pipeline following the process defined in [How to deploy your changes](#how-to-deploy-your-changes).
+1. If after promoting the rule you find it is not behaving correctly, disable it via the process defined in [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules).
 
 # How to deploy your changes
 
