@@ -83,7 +83,7 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
 1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
   given in [`How to deploy your changes`](#how-to-deploy-your-changes).
 1. You are now ready to submit your PR.
-1. After your PR ise merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
+1. After your PR is merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
 
 # How to deploy your changes
 
