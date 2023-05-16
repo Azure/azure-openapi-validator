@@ -44,6 +44,7 @@ import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-ta
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
+//import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -234,7 +235,13 @@ const ruleset: any = {
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
-      given: "$..[?(@property === 'type' && @ === 'object')]^*",
+      given: [
+        "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
+        // "$.definitions..[?(@property === 'type' && @ ==='' && @ !== 'string' && @ !== 'boolean' && @ !== 'integer')]^",
+        // "$.definitions..[?(@property === 'type' && @ === undefined && @ !== 'string' && @ !== 'boolean' && @ !== 'integer')]^",
+      ],
+      //"$.definitions..[?(@property === 'type' && @ === 'object' && @.@property === undefined)]^",
+      // "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[[?(@property === 'type' && @ === 'object' || @ === '')]]^", //"$.definitions..[?(@property === 'type' && @ === 'object')]^.properties", //"$.definitions..[?(@property === 'type' && @ === 'object')]^*",
       then: {
         function: propertiesTypeObjectNoDefinition,
       },
@@ -842,7 +849,8 @@ const ruleset: any = {
       message: "Property name should be camel case.",
       severity: "error",
       resolved: false,
-      given: "$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
+      given: "$.definitions..[?(@property === 'type' && @.@property === undefined)]^",
+      //"$.definitions..[?(@property === 'type' && @ === 'object')]^.properties[?(@property.match(/^[^@].+$/))]~",
       then: {
         function: camelCase,
       },

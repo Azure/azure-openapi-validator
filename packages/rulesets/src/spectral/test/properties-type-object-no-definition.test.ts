@@ -8,7 +8,6 @@ beforeAll(async () => {
   linter = await linterForRule("PropertiesTypeObjectNoDefinition")
   return linter
 })
-
 test("PropertiesTypeObjectNoDefinition should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
@@ -23,7 +22,9 @@ test("PropertiesTypeObjectNoDefinition should find errors", () => {
           type: "object",
           additionalProperties: {
             type: "object",
-            info: {},
+            info: {
+              type: "string",
+            },
           },
         },
         properties: {
@@ -69,22 +70,19 @@ test("PropertiesTypeObjectNoDefinition should find errors", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(6)
+    expect(results.length).toBe(5)
     expect(results[0].path.join(".")).toBe("definitions.This.additionalProperties")
-    expect(results[1].path.join(".")).toBe("definitions.This.tags.additionalProperties.info")
-    expect(results[2].path.join(".")).toBe("definitions.This.properties")
-    expect(results[3].path.join(".")).toBe("definitions.That.properties.params")
-    expect(results[4].path.join(".")).toBe("definitions.ThaOther.params")
-    expect(results[5].path.join(".")).toBe("definitions.Other.properties.params.params")
+    expect(results[1].path.join(".")).toBe("definitions.This.properties")
+    expect(results[2].path.join(".")).toBe("definitions.That.properties.params")
+    expect(results[3].path.join(".")).toBe("definitions.ThaOther.params")
+    expect(results[4].path.join(".")).toBe("definitions.Other.properties.params.params")
     expect(results[0].message).toBe(errorMessage)
     expect(results[1].message).toBe(errorMessage)
     expect(results[2].message).toBe(errorMessage)
     expect(results[3].message).toBe(errorMessage)
     expect(results[4].message).toBe(errorMessage)
-    expect(results[5].message).toBe(errorMessage)
   })
 })
-
 test("PropertiesTypeObjectNoDefinition should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
@@ -100,6 +98,7 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
         description: "That",
         type: "object",
         properties: {
+          type: "object",
           params: {
             type: "boolean",
           },
@@ -109,12 +108,42 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
         description: "ThaOther",
         type: "object",
         properties: {
-          params: {
+          type: "object",
+          info: {
             type: "string",
+            description: "ThaOther",
+            readOnly: true,
           },
         },
         params: {
           type: "string",
+        },
+        ErrorAdditionalInfo: {
+          type: "object",
+          properties: {
+            type: {
+              readOnly: true,
+              type: "string",
+              description: "The additional info type.",
+            },
+          },
+          description: "The resource management error additional info.",
+        },
+        ErrorAdditionalInfo1: {
+          type: "object",
+          properties: {
+            type: "object",
+            properties: {
+              readOnly: true,
+              type: "string",
+              description: "The additional info type.",
+            },
+            info1: {
+              readOnly: true,
+              type: "string",
+            },
+          },
+          description: "The resource management error additional info.",
         },
       },
     },

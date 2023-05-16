@@ -2418,6 +2418,18 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+const errorMessage = "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.";
+const propertiesTypeObjectNoDefinition = (definitionObject, _opts, ctx) => {
+    const values = Object.values(definitionObject);
+    if ((values.length == 1 && values[0] === "object") || values[0] === "") {
+        return [{ message: errorMessage, path: ctx.path }];
+    }
+    else if (values.length == 0) {
+        return [{ message: errorMessage, path: ctx.path }];
+    }
+    return [];
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2564,6 +2576,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
             then: {
                 function: falsy,
+            },
+        },
+        PropertiesTypeObjectNoDefinition: {
+            description: "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$..[?(@property === 'type' && @ === 'object')]^*",
+            then: {
+                function: propertiesTypeObjectNoDefinition,
             },
         },
         GetMustNotHaveRequestBody: {
