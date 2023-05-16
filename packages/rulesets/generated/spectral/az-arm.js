@@ -2418,6 +2418,21 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+const errorMessage = "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.";
+const propertiesTypeObjectNoDefinition = (definitionObject, _opts, ctx) => {
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
+        return [{ message: errorMessage, path: ctx.path }];
+    }
+    const valuess = Object.values(definitionObject);
+    for (const val of valuess) {
+        if (typeof val === "object")
+            return [];
+        else
+            continue;
+    }
+    return [{ message: errorMessage, path: ctx.path }];
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2608,6 +2623,17 @@ const ruleset = {
             given: "$[paths,'x-ms-paths']",
             then: {
                 function: ParametersInPointGet,
+            },
+        },
+        PropertiesTypeObjectNoDefinition: {
+            description: "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
+            then: {
+                function: propertiesTypeObjectNoDefinition,
             },
         },
         UnSupportedPatchProperties: {

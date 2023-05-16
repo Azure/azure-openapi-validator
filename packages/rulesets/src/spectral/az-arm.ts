@@ -29,6 +29,7 @@ import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
@@ -280,6 +281,20 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths']",
       then: {
         function: ParametersInPointGet,
+      },
+    },
+
+    // RPC Code: RPC-Policy-V1-03
+    PropertiesTypeObjectNoDefinition: {
+      description:
+        "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
+      then: {
+        function: propertiesTypeObjectNoDefinition,
       },
     },
 
