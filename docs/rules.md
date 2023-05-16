@@ -232,6 +232,12 @@ The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
 
+### DeleteResponseCodes
+
+Synchronous delete operations must have 200, 204, and default responses and long-running (LRO) delete operations must have 202, 204, and default responses. They must not have any other responses.
+
+Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
+
 ### Delete204Response
 
 A delete operation should have a 204 response.

@@ -1445,6 +1445,38 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
+const LR_DELETE_RESPONSES = ["202", "204", "default"];
+const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
+    var _a;
+    if (deleteOp === null || typeof deleteOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    if (!(deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses)) {
+        return [];
+    }
+    const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (deleteOp["x-ms-long-running-operation"] === true) {
+        if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.",
+                path: path,
+            });
+        }
+    }
+    else {
+        if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.",
+                path: path,
+            });
+        }
+    }
+    return errors;
+};
+
 const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesList) => {
     var _a, _b, _c, _d;
     if (methodOp === null || typeof methodOp !== "object") {
@@ -2542,6 +2574,17 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/common-types/resource-management/v(([1-9]\\d+)|[2-9])/types.json#/definitions/ErrorResponse",
                 },
+            },
+        },
+        DeleteResponseCodes: {
+            description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[delete]"],
+            then: {
+                function: DeleteResponseCodes,
             },
         },
         DeleteMustNotHaveRequestBody: {
