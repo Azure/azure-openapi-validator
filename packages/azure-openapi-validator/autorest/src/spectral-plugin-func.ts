@@ -94,7 +94,7 @@ function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, r
     const severity: DiagnosticSeverity = ruleset.rules[ruleName].severity
     const sevStr: string = Number(severity) == -1 ? "DISABLED" : DiagnosticSeverity[severity]
     initiator.Message({
-      Channel: sevStr == "DISABLED" ? "warning" : "information",
+      Channel: "information",
       Text: (sevStr == "DISABLED" ? "DISABLED " : "").concat(`Spectral rule, severity '${sevStr}': '${ruleName}'`),
     })
   }

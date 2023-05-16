@@ -1,3 +1,35 @@
+# Table of Contents
+
+- [Contributing](#contributing)
+- [Prerequisites to build locally](#prerequisites-to-build-locally)
+- [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
+- [How to deploy your changes](#how-to-deploy-your-changes)
+  * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
+  * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+  * [Verify the deployed changes](#verify-the-deployed-changes)
+- [How to run LintDiff locally](#how-to-run-lintdiff-locally)
+  * [Setup](#setup)
+  * [Execute your local LintDiff code](#execute-your-local-lintdiff-code)
+  * [Execute locally LintDiff version published to npm](#execute-locally-lintdiff-version-published-to-npm)
+- [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules)
+- [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
+- [Installing NPM dependencies](#installing-npm-dependencies)
+- [How to test](#how-to-test)
+- [How to write a new validation rule using typescript](#how-to-write-a-new-validation-rule-using-typescript)
+  * [Spectral rule](#spectral-rule)
+  * [Native rule](#native-rule)
+  * [Rule properties](#rule-properties)
+- [How to run regression test](#how-to-run-regression-test)
+- [How to refresh the index of rules documentation](#how-to-refresh-the-index-of-rules-documentation)
+- [How to use the Spectral ruleset](#how-to-use-the-spectral-ruleset)
+  * [Dependencies](#dependencies)
+  * [Install Spectral](#install-spectral)
+  * [Usage](#usage)
+  * [Example](#example)
+  * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
+- [Appendix](#appendix)
+  * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for-execute-locally-lintdiff-version-published-to-npm)
+
 # Contributing
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
@@ -6,25 +38,157 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 # Prerequisites to build locally
 
-1. Install `Node.js`, version 14.x or higher. This will also install `npm`. [Instructions for Windows](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#os-x-or-windows-node-installers). Then [verify](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#checking-your-version-of-npm-and-nodejs) the installation.
-2. Install [@Microsoft/Rush](https://rushjs.io/), version 5.x or higher:
+1. Install [nvm] ([nvm for Windows]), a tool to manage `Node.js` versions.
+2. Restart your terminal so that `nvm` command is recognized.
+3. Using `nvm`, install `Node.js` version `12.22.12`. This is the version used by the [PR CI pipeline] to build `LintDiff`.
+   - `nvm install 12.22.12`
+   - `nvm use 12.22.12`
+   - `node --version`, to confirm.
+4. Note that installing `Node.js` will also install `npm`.
+5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want to switch to it in case you run into unexpected issues later on.
    ```bash
+   # Install latest rush, globally
    npm install -g @microsoft/rush
+
+   # OR Install specific version, to the local node_modules folder
+   cd "this_repo_local_clone_dir"
+   npm install @microsoft/rush@5.26.1
    ```
+
+[nvm]: https://github.com/nvm-sh/nvm#installing-and-updating
+[nvm for Windows]: https://github.com/coreybutler/nvm-windows
+[PR CI pipeline]: https://dev.azure.com/azure-sdk/public/_build?definitionId=5261&_a=summary
 
 # How to prepare for a PR submission after you made changes locally
 
-1. Ensure your local clone branch is up-to-date with `main`. If you are using a fork, ensure your local fork branch is based on origin repo `main`.
-2. Run `rush update` to ensure all the required modules are installed.
-3. Run `rush build` to regenerate relevant files that need to be checked-in.
-4. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
-5. Run `rush test` to run the unit tests. They should all pass.
-6. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
+A lot of the instructions below replicate what the [PR CI pipeline] is doing.
+
+1. Ensure you have fulfilled [`Prerequisites to build locally`](#prerequisites-to-build-locally).
+1. Ensure your local clone branch is based on an up-to-date `main` branch.
+    - If you are using a fork, ensure your fork `main` branch is up-to-date with
+    the origin `main` branch and that your branch is based on your fork `main` branch.
+1. Run `rush update` to ensure all the required modules are installed.
+1. Run `rush build` to regenerate relevant files that need to be checked-in.
+    - Sometimes this will result in pending changes that will disappear once you do `git commit`.
+    This presumably is caused by line ending differences that get smoothed-over by git upon commit.
+1. Run `rush lint`. It must pass. If it doesn't, you can debug with `rush lint --verbose`.
+    > **TIP**: this repository has [prettier configured as auto-formatter](https://github.com/Azure/azure-openapi-validator/blob/aa7c987f73d163cb5f2810a5323a61bb869bb4e5/.vscode/settings.json#LL8C17-L8C17).
+    Consider taking advantage of it.
+1. Run `rush test` to run the unit tests. They should all pass.
+1. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
-7. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
+1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
-8. If the change is siginficant, you might consider manually adding appropriate entry to `changelog.md`.
-9. You are now ready to submit your PR.
+1. If the change is significant, you might consider manually adding appropriate entry to `changelog.md`.
+1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
+  given in [`How to deploy your changes`](#how-to-deploy-your-changes).
+1. You are now ready to submit your PR.
+1. After your PR ise merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
+
+# How to deploy your changes
+
+Let's assume you followed most of the instructions given in [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally).
+You are about to submit your PR, but you want to ensure the changes in your PR will end up correctly deployed.
+
+## Deploy to Staging LintDiff
+
+If you want your changes to be deployed only to the [Staging pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=3268)
+and hence Staging LintDiff, you don't need to change anything in your PR.
+
+Once your PR is merged, you just need to verify the [Staging release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108) with your changes succeeded.
+It should trigger automatically, publishing new `beta` versions of relevant packages to npm.
+
+## Deploy to Prod LintDiff
+
+If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary) and hence Production LintDiff, you need to do the following:
+
+- In the PR with your changes increase the version number of the packages you changed.
+  - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30) is an example version increase for the ruleset.
+  - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf) for changes made to the  AutoRest extension.
+  - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
+  ensure the tool owner reviewed your PR.
+- Once your PR is merged and [relevant build](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary) completed, approve an [npm release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80) from the build.
+  - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first try. You can verify your updated npm packages were published by reviewing your
+  version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
+
+## Verify the deployed changes
+
+If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
+the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
+
+# How to run LintDiff locally
+
+Instructions in this section use an example that assumes you are trying to locally reproduce a LintDiff failure
+in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
+
+## Setup
+
+1. Ensure you meet the [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally) requirements **up to and including** `rush build`.
+1. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
+   ```bash
+   # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
+   npm install -g autorest
+   # run using command 'autorest' to check if installation worked
+   autorest --help
+   ```
+   Note that the exact AutoRest version used by the LintDiff pipelines is [3.6.1](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps?path=/common/config/rush/pnpm-lock.yaml&version=GBmain&line=109&lineEnd=109&lineStartColumn=13&lineEndColumn=18&lineStyle=plain&_a=contents). You can install it with `npm install -g autorest@3.6.1`.
+1. Clone the repo that has the specification on which you are trying to run LintDiff, and check out appropriate branch.
+   - As an example, let's say you are trying to reproduce LintDiff run for [azure-rest-api-specs-pr PR 12357](https://github.com/Azure/azure-rest-api-specs-pr/pull/12357). Do the following:
+   - `cd repos` // Here we assume your local git clones are in `repos` dir.
+   - `git clone https://github.com/Azure/azure-rest-api-specs-pr.git`
+   - `git checkout containerservice/official/fleet-api-release`
+1. `cd repos/azure-openapi-validator` // Here we assume this is your local git clone of LintDiff.
+
+## Execute your local LintDiff code
+
+5. Execute the following command:
+
+   ```bash
+   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=<api-version> <path-to-autorest-config-file>
+   ```
+
+   For example, if you are trying to reproduce [azure-rest-api-specs-pr PR 12357 Staging LintDiff failure], but using local LintDiff code, you would use:
+
+   ```bash
+   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
+   ```
+
+   Note that there maybe over 1 minute long breaks before anything is output to the console.
+
+   Note that the [readme.md](https://github.com/Azure/azure-rest-api-specs-pr/blob/53353cc286fc2d89b21927c80f3f3078e8af989f/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md) we pass here is indeed an AutoRest config file and it has [package-2022-09-preview](https://github.com/Azure/azure-rest-api-specs-pr/blob/53353cc286fc2d89b21927c80f3f3078e8af989f/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md#tag-package-2022-09-preview) section that points to the input file of `preview/2022-09-02-preview/fleets.json`.
+
+   > **Troubleshooting**: if you get `error   |   Error: Can only create file URIs from absolute paths. Got 'packages\azure-openapi-validator\autorest\readme.md'` then ensure you passed `--use=./packages/azure-openapi-validator/autorest` and not `--use=packages/azure-openapi-validator/autorest`.
+
+## Execute locally LintDiff version published to npm
+
+5. Familiarize yourself with instructions for `Execute your local LintDiff code`. The only difference is that instead of passing `--use=./packages/azure-openapi-validator/autorest` you will pass `-use=@microsoft.azure/openapi-validator@<version-tag>` where you can obtain `<version-tag>` from [npm package @microsoft.azure/openapi-validator](https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions).
+
+   Continuing our example for PR 12357, we can observe that version `2.0.1`, which as of this writing (5/5/2023) runs in production, produces only `warning | IgnoredPropertyNextToRef`:
+
+   ```bash
+   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.0.1 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
+   ```
+
+   On the other hand, version `2.2.0-beta.3` which as of this writing corresponds to `beta`, does produce significantly more warnings, which match the failures observed in the [Staging LintDiff CI check][azure-rest-api-specs-pr PR 12357 Staging LintDiff failure]:
+
+   ```bash
+   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.2.0-beta.3 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
+   ```
+
+   You can find example outputs of these commands in the `Appendix` section at the end of this document.
+
+# How to disable or enable existing Spectral rules
+
+- Set the Spectral rule severity to `off` to disable it. Revert that to enable it back.
+  - For an example of 3 rules being disabled, see [this file diff](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-4c1382203db84bcd9df61a5bbf90823d0e1f39a833e8eaa1a5be96ca4a4e9b61).
+- Follow the instructions given in the [`How to deploy your changes`](#how-to-deploy-your-changes) section.
+
+# How to verify which Spectral rules are running in Production and Staging LintDiff
+
+You can look at the relevant build logs, as they output list of running Spectral rules, and if they are disabled.
+
+- An example for [Production LintDiff run](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2773189&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7&l=88).
+- An example for [Staging LintDiff run](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2773190&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=89).
 
 # Installing NPM dependencies
 
@@ -161,67 +325,6 @@ you can run below command to regenerate it after you added or updated some rules
 rush regen-ruleindex
 ```
 
-# How to run LintDiff locally
-
-Instructions in this section use an example that assumes you are trying to locally reproduce a LintDiff failure
-in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
-
-## Setup
-
-1. Ensure you meet the `Prerequisites to build locally` **up to and including** `rush build`.
-2. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
-   ```bash
-   # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
-   npm install -g autorest
-   # run using command 'autorest' to check if installation worked
-   autorest --help
-   ```
-3. Clone the repo that has the specification on which you are trying to run LintDiff, and check out appropriate branch.
-   - As an example, let's say you are trying to reproduce LintDiff run for [azure-rest-api-specs-pr PR 12357](https://github.com/Azure/azure-rest-api-specs-pr/pull/12357). Do the following:
-   - `cd repos` // Here we assume your local clones are in `repos` dir.
-   - `git clone https://github.com/Azure/azure-rest-api-specs-pr.git`
-   - `git checkout containerservice/official/fleet-api-release`
-4. `cd repos/azure-openapi-validator` // Here we assume this is your local clone of LintDiff.
-
-## Execute your local LintDiff code
-
-5. Ensure your local LintDiff is prepped for execution. See `How to prepare for a PR submission after you made changes locally`.
-6. Execute following command:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=<api-version> <path-to-autorest-config-file>
-   ```
-
-   For example, if you are trying to reproduce [azure-rest-api-specs-pr PR 12357 Staging LintDiff failure], but using local LintDiff code, you would use:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-   ```
-
-   Note that there maybe over 1 minute long breaks before anything is output to the console.
-
-   Note that the [readme.md](https://github.com/Azure/azure-rest-api-specs-pr/blob/53353cc286fc2d89b21927c80f3f3078e8af989f/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md) we pass here is indeed an AutoRest config file and it has [package-2022-09-preview](https://github.com/Azure/azure-rest-api-specs-pr/blob/53353cc286fc2d89b21927c80f3f3078e8af989f/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md#tag-package-2022-09-preview) section that points to input file of `preview/2022-09-02-preview/fleets.json`.
-
-7. Troubleshooting: if in step 6. you get `error   |   Error: Can only create file URIs from absolute paths. Got 'packages\azure-openapi-validator\autorest\readme.md'` then ensure you passed `--use=./packages/azure-openapi-validator/autorest` and not `--use=packages/azure-openapi-validator/autorest`.
-
-## Execute locally LintDiff version published to npm
-
-5. Familiarize yourself with instructions for `Execute your local LintDiff code`. The only difference is that instead of passing `--use=./packages/azure-openapi-validator/autorest` you will pass `-use=@microsoft.azure/openapi-validator@<version-tag>` where you can obtain `<version-tag>` from [npm package @microsoft.azure/openapi-validator](https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions).
-
-   Continuing our example for PR 12357, we can observe that version `2.0.1`, which as of this writing (5/5/2023) runs in production, produces only `warning | IgnoredPropertyNextToRef`:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.0.1 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-   ```
-
-   On the other hand, version `2.2.0-beta.3` which as of this writing corresponds to `beta`, does produce significantly more warnings, which match the failures observed in the [Staging LintDiff CI check][azure-rest-api-specs-pr PR 12357 Staging LintDiff failure]:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.2.0-beta.3 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-   ```
-
-   You can find example outputs of these commands in the `Appendix` section at the end of this document.
-
 # How to use the Spectral ruleset
 
 ## Dependencies
@@ -273,7 +376,7 @@ In the Problems panel you can filter to show or hide errors, warnings, or infos.
 
 # Appendix
 
-## Appendix for `Execute locally LintDiff version to npm`
+## Appendix for `Execute locally LintDiff version published to npm`
 
 This command:
 
