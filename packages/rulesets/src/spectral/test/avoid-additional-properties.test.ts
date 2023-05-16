@@ -180,7 +180,7 @@ test("AvoidAdditionalProperties should find no errors", () => {
   })
 })
 
-test("AvoidAdditionalProperties should find no errors", () => {
+test("AvoidAdditionalProperties similar to swagger should find no errors", () => {
   const oasDoc1 = {
     swagger: "2.0",
     definitions: {
