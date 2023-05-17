@@ -712,7 +712,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Operations-V1-02
     OperationsApiTenantLevelOnly: {
-      description: "The operations API must only be at the tenant level.",
+      description: "The get operations endpoint must only be at the tenant level.",
       message: "{{error}}",
       severity: "error",
       resolved: true,

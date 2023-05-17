@@ -1,6 +1,8 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
+let ERROR_MESSAGE = "The get operations endpoint for the operations API must only be at the tenant level."
+
 let linter: Spectral
 
 beforeAll(async () => {
@@ -50,11 +52,11 @@ test("OperationsApiTenantLevelOnly should find errors", () => {
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(3)
-    expect(results[0].message).toBe("The operations API must only be at the tenant level.")
+    expect(results[0].message).toBe(ERROR_MESSAGE)
     expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/operations.get")
-    expect(results[1].message).toBe("The operations API must only be at the tenant level.")
+    expect(results[1].message).toBe(ERROR_MESSAGE)
     expect(results[1].path.join(".")).toBe("paths./providers/Microsoft.LoadTestService/subscriptions/{subscriptionId}/operations.get")
-    expect(results[2].message).toBe("The operations API must only be at the tenant level.")
+    expect(results[2].message).toBe(ERROR_MESSAGE)
     expect(results[2].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.LoadTestService/operations.get"
     )
