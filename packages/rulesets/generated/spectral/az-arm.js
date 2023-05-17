@@ -1840,6 +1840,7 @@ function operationsApiSchema(schema, options, { path }) {
 
 const OPERATIONS = "/operations";
 const GET = "get";
+const NOT_TENANT_LEVEL_REGEX = /\/subscriptions\/\{.*\}\/(?:resourceGroups\/\{.*\}\/)?providers\/[^/]+\/operations/;
 const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -1851,7 +1852,7 @@ const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
     }
     const errors = [];
     for (const pathName of keys) {
-        if (pathName.toString().endsWith(OPERATIONS) && pathItem[pathName][GET] && !pathName.match(/^\/providers\/[^/]+\/operations/)) {
+        if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
             errors.push({
                 message: "The get operations endpoint for the operations API must only be at the tenant level.",
                 path: [...path, pathName, GET],
