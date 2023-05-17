@@ -2416,7 +2416,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
                     errors.push({
-                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        message: `The patch operation body parameter schema should contain property '${p}'.`,
                         path: [...path, "parameters", index],
                     });
                 }
@@ -2425,11 +2425,25 @@ const validatePatchBodyParamProperties = createRulesetFunction({
         if (_opts.shouldNot) {
             _opts.shouldNot.forEach((p) => {
                 var _a;
-                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
-                    errors.push({
-                        message: `The patch operation body parameter schema should not contains property ${p}.`,
-                        path: [...path, "parameters", index],
-                    });
+                const property = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p];
+                if (property) {
+                    let isPropertyReadOnly = false;
+                    let isPropertyImmutable = false;
+                    if (property["readOnly"] && property["readOnly"] === true) {
+                        isPropertyReadOnly = true;
+                    }
+                    if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+                        const schemaArray = property["x-ms-mutability"];
+                        if (!schemaArray.includes("update")) {
+                            isPropertyImmutable = true;
+                        }
+                    }
+                    if (!(isPropertyReadOnly || isPropertyImmutable)) {
+                        errors.push({
+                            message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.`,
+                            path: [...path, "parameters", index],
+                        });
+                    }
                 }
             });
         }
@@ -2663,7 +2677,7 @@ const ruleset = {
             then: {
                 function: validatePatchBodyParamProperties,
                 functionOptions: {
-                    shouldNot: ["name", "type", "location"],
+                    shouldNot: ["id", "name", "type", "location"],
                 },
             },
         },

@@ -312,7 +312,7 @@ const ruleset: any = {
       then: {
         function: validatePatchBodyParamProperties,
         functionOptions: {
-          shouldNot: ["name", "type", "location"],
+          shouldNot: ["id", "name", "type", "location"],
         },
       },
     },
