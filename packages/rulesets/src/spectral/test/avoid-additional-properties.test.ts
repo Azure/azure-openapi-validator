@@ -197,12 +197,15 @@ test("AvoidAdditionalProperties similar to swagger should find no errors", () =>
       },
       info: {
         type: "object",
-        tags: {
+        properties: {
           type: "object",
-          additionalProperties: {
+          tags: {
             type: "object",
-            params: {
-              type: "boolean",
+            additionalProperties: {
+              type: "object",
+              params: {
+                type: "boolean",
+              },
             },
           },
         },
