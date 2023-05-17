@@ -85,7 +85,7 @@ test("UnSupportedPatchProperties should find errors when name is specified but n
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
-    expect(results[0].message).toContain("Mark the top level property - name specified in the patch operation body as readOnly or immutable. These properties are not patchable.")
+    expect(results[0].message).toContain("Mark the top-level property \"name\", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.")
   })
 })
 
@@ -175,7 +175,7 @@ test("UnSupportedPatchProperties should find errors when the top level propertie
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
-    expect(results[0].message).toContain("Mark the top level property - location specified in the patch operation body as readOnly or immutable. These properties are not patchable.")
+    expect(results[0].message).toContain("Mark the top-level property \"location\", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.")
   })
 })
 

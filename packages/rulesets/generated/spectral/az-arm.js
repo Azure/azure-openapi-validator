@@ -2408,7 +2408,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                     }
                     if (!(isPropertyReadOnly || isPropertyImmutable)) {
                         errors.push({
-                            message: `Mark the top level property - ${p} specified in the patch operation body as readOnly or immutable. These properties are not patchable.`,
+                            message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.`,
                             path: [...path, "parameters", index],
                         });
                     }
