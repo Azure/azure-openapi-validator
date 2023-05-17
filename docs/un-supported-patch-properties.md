@@ -30,4 +30,4 @@ July 07, 2022
 
 ## How to fix the violation
 
-Consider either removing the top level properties - id, name and type, from the patch request body or mark them as readOnly. For the top level location property for tracked resources, consider either removing it from the request body of the Patch operation or mark it as immutable using the x-ms-mutability property and values as "create" and "read".
+Consider either removing the top-level properties - "id", "name" and "type", from the patch request body parameter schema, or mark them as readOnly. For the top-level "location" property (that is specified for tracked resources), consider either removing it from the request body of the Patch operation or mark it as immutable using the x-ms-mutability property and values as "create" and "read".

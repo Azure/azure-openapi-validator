@@ -2395,20 +2395,20 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                 var _a;
                 const property = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p];
                 if (property) {
-                    let isPropertyBoolean = false;
+                    let isPropertyReadOnly = false;
                     let isPropertyImmutable = false;
                     if (property["readOnly"] && property["readOnly"] === true) {
-                        isPropertyBoolean = true;
+                        isPropertyReadOnly = true;
                     }
                     if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
-                        const schemeArray = property["x-ms-mutability"];
-                        if (!schemeArray.includes("update")) {
+                        const schemaArray = property["x-ms-mutability"];
+                        if (!schemaArray.includes("update")) {
                             isPropertyImmutable = true;
                         }
                     }
-                    if (!isPropertyBoolean && !isPropertyImmutable) {
+                    if (!(isPropertyReadOnly || isPropertyImmutable)) {
                         errors.push({
-                            message: `The patch operation body parameter schema should not contain property ${p}.`,
+                            message: `Mark the top level property - ${p} specified in the patch operation body as readOnly or immutable. These properties are not patchable.`,
                             path: [...path, "parameters", index],
                         });
                     }
@@ -2634,7 +2634,7 @@ const ruleset = {
             then: {
                 function: validatePatchBodyParamProperties,
                 functionOptions: {
-                    shouldNot: ["name", "type", "location"],
+                    shouldNot: ["id", "name", "type", "location"],
                 },
             },
         },

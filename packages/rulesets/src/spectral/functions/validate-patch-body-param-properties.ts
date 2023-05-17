@@ -56,26 +56,23 @@ export const validatePatchBodyParamProperties = createRulesetFunction<unknown, O
         _opts.shouldNot.forEach((p: string) => {
           const property = getProperties(bodyParameter)?.[p];
           if (property) {
-            let isPropertyBoolean = false;
+            let isPropertyReadOnly = false;
             let isPropertyImmutable = false;
 
-            if (property["readOnly"] && property["readOnly"] === true)
-            {
-              isPropertyBoolean = true;
+            if (property["readOnly"] && property["readOnly"] === true) {
+              isPropertyReadOnly = true;
             }
 
             if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
-                const schemeArray = property["x-ms-mutability"];
-                if (!schemeArray.includes("update"))
-                {
-                    isPropertyImmutable = true;
-                }
+              const schemaArray = property["x-ms-mutability"];
+              if (!schemaArray.includes("update")) {
+                isPropertyImmutable = true;
+              }
             }
 
-            if (!isPropertyBoolean && !isPropertyImmutable)
-            {
+            if (!(isPropertyReadOnly || isPropertyImmutable)) {
               errors.push({
-                message: `The patch operation body parameter schema should not contain property ${p}.`,
+                message: `Mark the top level property - ${p} specified in the patch operation body as readOnly or immutable. These properties are not patchable.`,
                 path: [...path, "parameters", index],
               })
             }
