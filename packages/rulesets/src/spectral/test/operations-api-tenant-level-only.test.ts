@@ -1,7 +1,7 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
-let ERROR_MESSAGE = "The get operations endpoint for the operations API must only be at the tenant level."
+const ERROR_MESSAGE = "The get operations endpoint for the operations API must only be at the tenant level."
 
 let linter: Spectral
 
