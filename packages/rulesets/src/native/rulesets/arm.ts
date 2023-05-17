@@ -149,7 +149,7 @@ export const armRuleset: IRuleSet = {
     },
 
     ///
-    /// ARM rules wthout an RPC code
+    /// ARM rules without an RPC code
     ///
     // https://github.com/Azure/azure-openapi-validator/issues/329
     TrackedResourcePatchOperation: {
