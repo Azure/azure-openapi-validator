@@ -8,7 +8,7 @@
 
 const OPERATIONS = "/operations"
 const GET = "get"
-const NOT_TENANT_LEVEL_REGEX = /\/subscriptions\/\{.*\}\/(?:resourceGroups\/\{.*\}\/)?providers\/[^\/]+\/operations/
+const NOT_TENANT_LEVEL_REGEX = /\/subscriptions\/\{.*\}\/(?:resourceGroups\/\{.*\}\/)?providers\/[^/]+\/operations/
 
 export const operationsApiTenantLevelOnly = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
