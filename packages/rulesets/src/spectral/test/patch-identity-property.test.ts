@@ -113,7 +113,7 @@ test("PatchIdentityProperty should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0")
-    expect(results[0].message).toContain("The patch operation body parameter schema should contains property 'identity'.")
+    expect(results[0].message).toContain("The patch operation body parameter schema should contain property 'identity'.")
   })
 })
 

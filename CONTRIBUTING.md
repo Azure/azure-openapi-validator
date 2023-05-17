@@ -83,7 +83,7 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
 1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
   given in [`How to deploy your changes`](#how-to-deploy-your-changes).
 1. You are now ready to submit your PR.
-1. After your PR ise merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
+1. After your PR is merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
 
 # How to deploy your changes
 
@@ -107,9 +107,11 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
   - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf) for changes made to the  AutoRest extension.
   - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
-- Once your PR is merged and [relevant build](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary) completed, approve an [npm release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80) from the build.
+- Once your PR is merged and [relevant build](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary) completed, get an approval for an [npm release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80) from the build.
   - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first try. You can verify your updated npm packages were published by reviewing your
   version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
+- **IMPORTANT**: changes to the AutoRest extension package require additional code updates to `openapi-alps` ADO repository, and deployment of them. Work with this tool owner to apply these steps. 
+  Example of such past deployments is given [here](https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1530128107).
 
 ## Verify the deployed changes
 
