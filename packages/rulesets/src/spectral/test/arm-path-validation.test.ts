@@ -184,14 +184,26 @@ test("PathForNestedResource should find errors for invalid path", () => {
           responses: {},
         },
       },
+      "/{scope}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/autoscalehistory/limit/{limit}": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
     },
   }
   return linters.PathForNestedResource.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(3)
     expect(results[0].message).toContain("The path for nested resource doest not meet the valid resource pattern.")
     expect(results[0].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}/disk/diskList")
     expect(results[1].path.join(".")).toBe(
       "paths./{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}/disk/{diskName}/DiskSize/list"
+    )
+    expect(results[2].path.join(".")).toBe(
+      "paths./{scope}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/autoscalehistory/limit/{limit}"
     )
   })
 })

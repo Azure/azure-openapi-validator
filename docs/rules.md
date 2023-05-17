@@ -232,6 +232,12 @@ The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
 
+### DeleteResponseCodes
+
+Synchronous delete operations must have 200, 204, and default responses and long-running (LRO) delete operations must have 202, 204, and default responses. They must not have any other responses.
+
+Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
+
 ### Delete204Response
 
 A delete operation should have a 204 response.
@@ -317,6 +323,12 @@ But it is usually unnecessary and can be overly complicated to use formData when
 Instead, consider defining a `body` parameter with `type: string, format: binary` and use content-type `application/octet-stream`.
 
 Please refer to [formdata.md](./formdata.md) for details.
+
+### GetCollectionOnlyHasValueAndNextLink
+
+List GET endpoints (collection GET) must only have `value` and `nextLink` in `properties`.
+
+Please refer to [get-collection-only-has-value-nextlink.md](./get-collection-only-has-value-nextlink.md) for details.
 
 ### GetCollectionResponseSchema
 
@@ -444,11 +456,17 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
+### ProvisioningStateSpecifiedForLRODelete
+
+This is a rule introduced to validate if a LRO DELETE operations response schema has "ProvisioningState" property specified for the 200 status code.
+
+Please refer to [lro-delete-provisioning-state-specified.md](./lro-delete-provisioning-state-specified.md) for details.
+
 ### LroErrorContent
 
-Error response content of long running operations must follow the error schema provided in the common types.
+Error response content of long running operations must follow the error schema provided in the common types v2 and above.
 
-Please refer to [lro-error-response.md](./lro-error-response.md) for details.
+Please refer to [lro-error-content.md](./lro-error-content.md) for details.
 
 ### LroExtension
 
@@ -468,17 +486,21 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### ProvisioningStateSpecifiedForLROPatch
+
+This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
+
+Please refer to [lro-patch-provisioning-state-specified.md](./lro-patch-provisioning-state-specified.md) for details.
+
 ### LroPatch202
 
 Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 
-### PatchResponseCode
+For long running (LRO) post operations, 'long-running-operation-options' must be present and have the 'final-state-via' property set to 'azure-async-operation'.
 
-Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
-
-Please refer to [patch-response-code.md](./patch-response-code.md) for details.
+Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
 
 ### LroPostMustNotUseOriginalUriAsFinalState
 
@@ -486,11 +508,17 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
-### ProvisioningStateSpecified
+### LroPostReturn
 
-This is a rule introduced to validate if a LRO PUT and PATCH operations response schema has "ProvisioningState" property specified.
+A long running Post operation should return 200 with response schema and 202 without response schema.
 
-Please refer to [lro-provisioning-state-specified.md](./lro-provisioning-state-specified.md) for details.
+Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
+### ProvisioningStateSpecifiedForLROPut
+
+This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
+
+Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
 
 ### LROStatusCodesReturnTypeSchema
 
@@ -558,6 +586,12 @@ Please refer to [next-link-property-must-exist.md](./next-link-property-must-exi
 Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
+
+### NoErrorCodeResponses
+
+Responses must only be specified for success (`200`, `201`, `202`, `204`) response codes and the `default` response. Any errors must only be surfaced by using the `default` response.
+
+Please refer to [no-error-code-responses.md](./no-error-code-responses.md) for details.
 
 ### NonApplicationJsonType
 
@@ -631,6 +665,12 @@ The operations API should have a response body schema consistent with the [contr
 
 Please refer to [operations-api-response-schema.md](./operations-api-response-schema.md) for details.
 
+### OperationsApiSchemaUsesCommonTypes
+
+Response content of operations API must follow the error schema provided in the common types.
+
+Please refer to [operations-api-schema-uses-common-types.md](./operations-api-schema-uses-common-types.md) for details.
+
 ### OperationsApiTenantLevelOnly
 
 Get operation for operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
@@ -703,6 +743,18 @@ Path parameters must be in the same order as in the path.
 
 Please refer to [parameter-order.md](./parameter-order.md) for details.
 
+### ParametersInPointGet
+
+Point Get's MUST not have query parameters other than api version.
+
+Please refer to [parameters-in-point-get.md](./parameters-in-point-get.md) for details.
+
+### ParametersInPost
+
+For a POST action parameters MUST be in the payload and not in the URI.
+
+Please refer to [parameters-in-post.md](./parameters-in-post.md) for details.
+
 ### ParametersOrder
 
 The rule is to ensure the parameters in the same order as they are ranked in the path. Since it can introduce a breaking change when updating parameter order, for services that have already shipped public versions, you may request to suppress the rule following the process documented here: https://dev.azure.com/azure-sdk/internal/_wiki/wikis/internal.wiki/85/Swagger-Suppression-Process
@@ -732,6 +784,12 @@ Please refer to [patch-identity-property.md](./patch-identity-property.md) for d
 Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
+
+### PatchResponseCode
+
+Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
+
+Please refer to [patch-response-code.md](./patch-response-code.md) for details.
 
 ### PatchSkuProperty
 
@@ -879,17 +937,17 @@ Schema property should have a defined type.
 
 Please refer to [property-type.md](./property-type.md) for details.
 
+### ProvisioningStateMustBeReadOnly
+
+This is a rule introduced to validate if provisioningState property is set to readOnly.
+
+Please refer to [provisioning-state-must-be-read-only.md](./provisioning-state-must-be-read-only.md) for details.
+
 ### ProvisioningStateValidation
 
 Per ARM guideline, provisioningState must have terminal states: Succeeded, Failed and Canceled.
 
 Please refer to [provisioning-state-validation.md](./provisioning-state-validation.md) for details.
-
-### PutResponseSchemaDescription
-
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
-
-Please refer to [put-get-patch-response-schema.md](./put-get-patch-response-schema.md) for details.
 
 ### PutGetPatchResponseSchema
 
@@ -909,11 +967,29 @@ The put method should be used for resource create or replace, which generally re
 
 Please refer to [put-path.md](./put-path.md) for details.
 
+### PutRequestResponseSchemeArm
+
+The request & response('200') schema of the PUT operation must be same.
+
+Please refer to [put-request-response-scheme-arm.md](./put-request-response-scheme-arm.md) for details.
+
 ### PutRequestResponseScheme
 
 The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
+
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
+
+### PutResponseSchemaDescription
+
+For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+
+Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
 
 ### RepeatedPathInfo
 
@@ -963,6 +1039,12 @@ Please refer to [required-read-only-system-data.md](./required-read-only-system-
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
+
+### ResourceMustReferenceCommonTypes
+
+Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
+
+Please refer to [resource-must-reference-common-types.md](./resource-must-reference-common-types.md) for details.
 
 ### ResourceNameRestriction
 
@@ -1070,6 +1152,12 @@ Please refer to [success-response-body.md](./success-response-body.md) for detai
 Each operation has a summary and description values. They must not be same.
 
 Please refer to [summary-and-description-must-not-be-same.md](./summary-and-description-must-not-be-same.md) for details.
+
+### SyncPostReturn
+
+A synchronous Post operation should return 200 with response schema or 204 without response schema.
+
+Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
 
 ### TopLevelResourcesListByResourceGroup
 
