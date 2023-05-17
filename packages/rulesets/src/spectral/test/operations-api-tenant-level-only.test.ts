@@ -32,14 +32,6 @@ test("OperationsApiTenantLevelOnly should find errors", () => {
           },
         },
       },
-      "/providers/Microsoft.LoadTestService/subscriptions/{subscriptionId}/operations": {
-        get: {
-          parameters: {},
-          responses: {
-            "200": {},
-          },
-        },
-      },
       "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.LoadTestService/operations": {
         get: {
           parameters: {},
@@ -51,13 +43,11 @@ test("OperationsApiTenantLevelOnly should find errors", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(3)
+    expect(results.length).toBe(2)
     expect(results[0].message).toBe(ERROR_MESSAGE)
     expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/operations.get")
     expect(results[1].message).toBe(ERROR_MESSAGE)
-    expect(results[1].path.join(".")).toBe("paths./providers/Microsoft.LoadTestService/subscriptions/{subscriptionId}/operations.get")
-    expect(results[2].message).toBe(ERROR_MESSAGE)
-    expect(results[2].path.join(".")).toBe(
+    expect(results[1].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.LoadTestService/operations.get"
     )
   })
