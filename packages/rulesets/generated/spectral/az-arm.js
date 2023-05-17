@@ -1447,6 +1447,8 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
 
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
+const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.";
+const LR_ERROR = "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1461,7 +1463,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     if (deleteOp["x-ms-long-running-operation"] === true) {
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.",
+                message: LR_ERROR,
                 path: path,
             });
         }
@@ -1469,7 +1471,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     else {
         if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.",
+                message: SYNC_ERROR,
                 path: path,
             });
         }
@@ -1835,6 +1837,29 @@ function operationsApiSchema(schema, options, { path }) {
     }
     return errors;
 }
+
+const OPERATIONS = "/operations";
+const GET = "get";
+const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const keys = Object.keys(pathItem);
+    if (keys.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const pathName of keys) {
+        if (pathName.toString().endsWith(OPERATIONS) && pathItem[pathName][GET] && !pathName.match(/^\/providers\/[^/]+\/operations/)) {
+            errors.push({
+                message: "The get operations endpoint for the operations API must only be at the tenant level.",
+                path: [...path, pathName, GET],
+            });
+        }
+    }
+    return errors;
+};
 
 const pushToError = (errors, parameter, path) => {
     errors.push({
@@ -3000,6 +3025,17 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
                 },
+            },
+        },
+        OperationsApiTenantLevelOnly: {
+            description: "The get operations endpoint must only be at the tenant level.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$.[paths,'x-ms-paths']",
+            then: {
+                function: operationsApiTenantLevelOnly,
             },
         },
         ResourceMustReferenceCommonTypes: {
