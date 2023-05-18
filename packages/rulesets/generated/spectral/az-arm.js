@@ -2038,7 +2038,7 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
 };
 
 const errorMessageObject = "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.";
-const errorMessageNull = "Properties with type NULL is not allowed.";
+const errorMessageNull = "Properties with type NULL are not allowed. Either specify the type as object and reference a model or specify a primitive type.";
 const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
     const path = ctx.path || [];
     const errors = [];

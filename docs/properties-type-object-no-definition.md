@@ -36,37 +36,59 @@ The following would be invalid:
 
 ```json
 ...
-"properties": {
+{
+  "definitions": {
     "type": "object",
-    "info": {
+    "properties": {
+      "type": {
+        "readOnly": true,
         "type": "object",
+        "description": "The additional info type."
+      }
     }
+  }
 }
 ...
 ```
 
-The valid example of reference model:
+A valid example of reference model:
+
 ```json
 ...
-"properties": {
+{
+  "definitions": {
     "type": "object",
-    "info": {
+    "properties": {
+      "type": {
+        "readOnly": true,
         "type": "object",
-        "params": {
-        "type": "string",
-        }
+        "info": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "description": "The properties type."
+      }
     }
+  }
 }
 ...
 ```
-The valid example of primitve data type:
+
+A valid example of primitve data type:
+
 ```json
 ...
-"properties": {
+{
+  "definitions": {
     "type": "object",
-    "info": {
+    "properties": {
+      "type": {
+        "readOnly": true,
         "type": "string",
+      },
+      "description": "The properties type."
     }
+  }
 }
 ...
 ```
