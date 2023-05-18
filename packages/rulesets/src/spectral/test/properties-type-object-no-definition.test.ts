@@ -1,64 +1,34 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 let linter: Spectral
-const errorMessage =
+const errorMessageObject =
   "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience."
+const errorMessageNull = "Properties with type NULL is not allowed."
+
 beforeAll(async () => {
   linter = await linterForRule("PropertiesTypeObjectNoDefinition")
   return linter
 })
-test("PropertiesTypeObjectNoDefinition should find errors", () => {
-  const oasDoc = {
+
+test("PropertiesTypeObjectNoDefinition similar to swagger should find errors", () => {
+  const oasDoc1 = {
     swagger: "2.0",
     definitions: {
-      This: {
-        description: "This",
-        type: "object",
-        additionalProperties: {
-          type: "",
-        },
-        tags: {
-          type: "object",
-          additionalProperties: {
-            type: "object",
-            info: {
-              type: "  ",
-            },
-          },
-        },
-        properties: {
-          type: "object",
-        },
-      },
-      That: {
-        description: "That",
+      type: "object",
+      source: {
         type: "object",
         properties: {
           type: "object",
-          params: {
-            type: "object",
+          info: {
+            type: "",
           },
         },
       },
-      ThaOther: {
-        description: "ThaOther",
+      info: {
         type: "object",
         properties: {
           type: "object",
-          params: {
-            type: "string",
-          },
-        },
-        params: {
-          type: "object",
-        },
-      },
-      Other: {
-        description: "Other",
-        type: "object",
-        properties: {
-          type: "object",
-          params: {
+          info: {
             type: "object",
             params: {
               type: "object",
@@ -66,83 +36,66 @@ test("PropertiesTypeObjectNoDefinition should find errors", () => {
           },
         },
       },
+      tags: {
+        type: "object",
+        params: {
+          type: "object",
+        },
+      },
+      resource: {
+        type: "object",
+      },
     },
   }
-  return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(5)
-    expect(results[0].path.join(".")).toBe("definitions.This.additionalProperties")
-    expect(results[1].path.join(".")).toBe("definitions.This.properties")
-    expect(results[2].path.join(".")).toBe("definitions.That.properties.params")
-    expect(results[3].path.join(".")).toBe("definitions.ThaOther.params")
-    expect(results[4].path.join(".")).toBe("definitions.Other.properties.params.params")
-    expect(results[0].message).toBe(errorMessage)
-    expect(results[1].message).toBe(errorMessage)
-    expect(results[2].message).toBe(errorMessage)
-    expect(results[3].message).toBe(errorMessage)
-    expect(results[4].message).toBe(errorMessage)
+  return linter.run(oasDoc1).then((results) => {
+    expect(results.length).toBe(4)
+    expect(results[0].path.join(".")).toBe("definitions.source.properties.info")
+    expect(results[1].path.join(".")).toBe("definitions.info.properties.info.params")
+    expect(results[2].path.join(".")).toBe("definitions.tags.params")
+    expect(results[3].path.join(".")).toBe("definitions.resource")
+    expect(results[0].message).toBe(errorMessageNull)
+    expect(results[1].message).toBe(errorMessageObject)
+    expect(results[2].message).toBe(errorMessageObject)
+    expect(results[3].message).toBe(errorMessageObject)
   })
 })
+
 test("PropertiesTypeObjectNoDefinition should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     definitions: {
-      This: {
-        description: "This",
-        type: "object",
-        properties: {
-          type: "string",
-        },
-      },
-      That: {
-        description: "That",
-        type: "object",
-        properties: {
-          type: "object",
-          params: {
-            type: "boolean",
-          },
-        },
-      },
-      ThaOther: {
-        description: "ThaOther",
+      type: "object",
+      source: {
         type: "object",
         properties: {
           type: "object",
           info: {
             type: "string",
-            description: "ThaOther",
-            readOnly: true,
           },
         },
+      },
+      info: {
+        type: "object",
+        properties: {
+          type: "object",
+          info: {
+            type: "object",
+            params: {
+              type: "boolean",
+            },
+          },
+        },
+      },
+      tags: {
+        type: "object",
+        params: {
+          type: "int",
+        },
+      },
+      resource: {
+        type: "object",
         params: {
           type: "string",
-        },
-        ErrorAdditionalInfo: {
-          type: "object",
-          properties: {
-            type: {
-              readOnly: true,
-              type: "string",
-              description: "The additional info type.",
-            },
-          },
-          description: "The resource management error additional info.",
-        },
-        ErrorAdditionalInfo1: {
-          type: "object",
-          properties: {
-            type: "object",
-            properties: {
-              readOnly: true,
-              type: "string",
-              description: "The additional info type.",
-            },
-            info1: {
-              readOnly: true,
-              type: "string",
-            },
-          },
-          description: "The resource management error additional info.",
         },
       },
     },

@@ -1447,6 +1447,8 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
 
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
+const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.";
+const LR_ERROR = "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1461,7 +1463,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     if (deleteOp["x-ms-long-running-operation"] === true) {
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.",
+                message: LR_ERROR,
                 path: path,
             });
         }
@@ -1469,7 +1471,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     else {
         if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.",
+                message: SYNC_ERROR,
                 path: path,
             });
         }
@@ -2035,6 +2037,27 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const errorMessageObject = "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.";
+const errorMessageNull = "Properties with type NULL is not allowed.";
+const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
+    const path = ctx.path || [];
+    const errors = [];
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
+        errors.push({ message: errorMessageNull, path });
+    }
+    const values = Object.values(definitionObject);
+    for (const val of values) {
+        if (typeof val === "object")
+            return [];
+        else
+            continue;
+    }
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "object") {
+        errors.push({ message: errorMessageObject, path });
+    }
+    return errors;
+};
+
 const provisioningState = (swaggerObj, _opts, paths) => {
     const enumValue = swaggerObj.enum;
     if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
@@ -2464,21 +2487,6 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
-const errorMessage = "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.";
-const propertiesTypeObjectNoDefinition = (definitionObject, _opts, ctx) => {
-    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
-        return [{ message: errorMessage, path: ctx.path }];
-    }
-    const valuess = Object.values(definitionObject);
-    for (const val of valuess) {
-        if (typeof val === "object")
-            return [];
-        else
-            continue;
-    }
-    return [{ message: errorMessage, path: ctx.path }];
-};
-
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2649,6 +2657,17 @@ const ruleset = {
                 function: falsy,
             },
         },
+        PropertiesTypeObjectNoDefinition: {
+            description: "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
+            then: {
+                function: propertiesTypeObjectNoDefinition,
+            },
+        },
         GetMustNotHaveRequestBody: {
             description: "The Get operation must not have a request body.",
             severity: "error",
@@ -2691,17 +2710,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths']",
             then: {
                 function: ParametersInPointGet,
-            },
-        },
-        PropertiesTypeObjectNoDefinition: {
-            description: "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.",
-            severity: "error",
-            message: "{{description}}",
-            resolved: true,
-            formats: [oas2],
-            given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
-            then: {
-                function: propertiesTypeObjectNoDefinition,
             },
         },
         UnSupportedPatchProperties: {

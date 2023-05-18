@@ -257,6 +257,20 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Policy-V1-03
+    PropertiesTypeObjectNoDefinition: {
+      description:
+        "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
+      then: {
+        function: propertiesTypeObjectNoDefinition,
+      },
+    },
+
     ///
     /// ARM RPC rules for Get patterns
     ///
@@ -312,20 +326,6 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths']",
       then: {
         function: ParametersInPointGet,
-      },
-    },
-
-    // RPC Code: RPC-Policy-V1-03
-    PropertiesTypeObjectNoDefinition: {
-      description:
-        "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.",
-      severity: "error",
-      message: "{{description}}",
-      resolved: true,
-      formats: [oas2],
-      given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
-      then: {
-        function: propertiesTypeObjectNoDefinition,
       },
     },
 
