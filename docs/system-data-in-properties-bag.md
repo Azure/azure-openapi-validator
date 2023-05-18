@@ -19,3 +19,29 @@ Validates that system data is not defined in the properties bag, but rather as a
 ## How to fix the violation
 
 Ensure that any system data definitions are as top-level properties, not in the properties bag.
+
+### Correct Example
+
+```json
+"Resource": {
+  "properties": {
+    "systemData": {
+      "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
+    }
+  }
+}
+```
+
+### Incorrect Example
+
+```json
+"Resource": {
+  "properties": {
+    "properties": {
+      "systemData": {
+        "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
+      }
+    }
+  }
+}
+```
