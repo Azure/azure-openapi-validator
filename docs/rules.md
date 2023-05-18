@@ -472,7 +472,7 @@ Please refer to [lro-delete-provisioning-state-specified.md](./lro-delete-provis
 
 Error response content of long running operations must follow the error schema provided in the common types v2 and above.
 
-Please refer to [lro-error-response.md](./lro-error-response.md) for details.
+Please refer to [lro-error-content.md](./lro-error-content.md) for details.
 
 ### LroExtension
 
@@ -676,6 +676,12 @@ Please refer to [operations-api-response-schema.md](./operations-api-response-sc
 Response content of operations API must follow the error schema provided in the common types.
 
 Please refer to [operations-api-schema-uses-common-types.md](./operations-api-schema-uses-common-types.md) for details.
+
+### OperationsApiTenantLevelOnly
+
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
+
+Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
 
 ### PageableOperation
 

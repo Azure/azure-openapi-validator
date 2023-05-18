@@ -1838,6 +1838,30 @@ function operationsApiSchema(schema, options, { path }) {
     return errors;
 }
 
+const OPERATIONS = "/operations";
+const GET = "get";
+const NOT_TENANT_LEVEL_REGEX = /\/subscriptions\/\{.*\}\/(?:resourceGroups\/\{.*\}\/)?providers\/[^/]+\/operations/;
+const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const keys = Object.keys(pathItem);
+    if (keys.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const pathName of keys) {
+        if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
+            errors.push({
+                message: "The get operations endpoint for the operations API must only be at the tenant level.",
+                path: [...path, pathName, GET],
+            });
+        }
+    }
+    return errors;
+};
+
 const pushToError = (errors, parameter, path) => {
     errors.push({
         message: `Parameter "${parameter}" is referenced but not defined in the global parameters section of Service Definition`,
@@ -3059,6 +3083,17 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
                 },
+            },
+        },
+        OperationsApiTenantLevelOnly: {
+            description: "The get operations endpoint must only be at the tenant level.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$.[paths,'x-ms-paths']",
+            then: {
+                function: operationsApiTenantLevelOnly,
             },
         },
         ResourceMustReferenceCommonTypes: {
