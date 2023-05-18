@@ -1447,6 +1447,8 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
 
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
+const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.";
+const LR_ERROR = "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1461,7 +1463,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     if (deleteOp["x-ms-long-running-operation"] === true) {
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.",
+                message: LR_ERROR,
                 path: path,
             });
         }
@@ -1469,7 +1471,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     else {
         if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.",
+                message: SYNC_ERROR,
                 path: path,
             });
         }
@@ -3011,6 +3013,31 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        SystemDataDefinitionsCommonTypes: {
+            description: "Must use the schema provided in the common types for SystemData.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$.definitions.*.properties.[systemData,SystemData].$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/systemData",
+                },
+            },
+        },
+        SystemDataInPropertiesBag: {
+            description: "System Data must be defined as a top-level property, not in the properties bag.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.definitions.*.properties.properties.systemData", "$.definitions.*.properties.properties.SystemData"],
+            then: {
+                function: falsy,
             },
         },
         OperationsApiSchemaUsesCommonTypes: {
