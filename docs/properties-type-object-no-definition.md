@@ -18,7 +18,7 @@ Properties with type:object must have definition of a reference model.
 
 ## Description
 
-Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.
+Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.
 
 ## CreatedAt
 
@@ -38,13 +38,15 @@ The following would be invalid:
 ...
 {
   "definitions": {
-    "type": "object",
-    "properties": {
+    "Resource": {
       "type": "object",
-      "info": {
-        "readOnly": true,
-        "description": "The additional info type.",
-        "type": "object"
+      "properties": {
+        "description": "The properties type.",
+        "info": {
+          "readOnly": true,
+          "description": "The info type.",
+          "type": "object"
+        }
       }
     }
   }
@@ -58,15 +60,18 @@ A valid example of reference model:
 ...
 {
   "definitions": {
-    "type": "object",
-    "properties": {
-      "info": {
-        "readOnly": true,
-        "type": "object",
+    "Resource": {
+      "type": "object",
+      "properties": {
         "description": "The properties type.",
-        "details": {
+        "info": {
           "readOnly": true,
-          "type": "string"
+          "type": "object",
+          "description": "The info type.",
+          "details": {
+            "readOnly": true,
+            "type": "string"
+          }
         }
       }
     }
@@ -81,12 +86,14 @@ A valid example of primitve data type:
 ...
 {
   "definitions": {
-    "type": "object",
-    "properties": {
-      "description": "The properties type.",
-      "info": {
-        "readOnly": true,
-        "type": "string"
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "description": "The properties type.",
+        "info": {
+          "readOnly": true,
+          "type": "string"
+        }
       }
     }
   }

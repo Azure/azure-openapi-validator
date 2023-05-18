@@ -261,12 +261,12 @@ const ruleset: any = {
     // RPC Code: RPC-Policy-V1-03
     PropertiesTypeObjectNoDefinition: {
       description:
-        "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.",
+        "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: "$.definitions..[?((@property === 'type' && @ ==='object' || @ ===''))]^",
+      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
       then: {
         function: propertiesTypeObjectNoDefinition,
       },
