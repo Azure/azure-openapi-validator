@@ -34847,511 +34847,596 @@ Array [
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ApplicationGateway",
-    "message": "Model definition 'ApplicationGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ApplicationGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:2954:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ApplicationGatewayAvailableSslOptions",
-    "message": "Model definition 'ApplicationGatewayAvailableSslOptions' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ApplicationGatewayAvailableSslOptions' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:3351:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ApplicationGatewayPrivateEndpointConnection",
-    "message": "Model definition 'ApplicationGatewayPrivateEndpointConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ApplicationGatewayPrivateEndpointConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationGateway.json:2678:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ApplicationSecurityGroup",
-    "message": "Model definition 'ApplicationSecurityGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ApplicationSecurityGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/applicationSecurityGroup.json:353:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.AzureFirewall",
-    "message": "Model definition 'AzureFirewall' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'AzureFirewall' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/azureFirewall.json:573:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.BackendAddressPool",
-    "message": "Model definition 'BackendAddressPool' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'BackendAddressPool' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:1812:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.BastionHost",
-    "message": "Model definition 'BastionHost' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'BastionHost' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/bastionHost.json:706:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.BgpConnection",
-    "message": "Model definition 'BgpConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'BgpConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6082:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.Cache",
-    "message": "Model definition 'Cache' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'Cache' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:1507:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ConnectionSharedKey",
-    "message": "Model definition 'ConnectionSharedKey' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ConnectionSharedKey' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3550:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.CustomIpPrefix",
-    "message": "Model definition 'CustomIpPrefix' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'CustomIpPrefix' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/customIpPrefix.json:428:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.DdosCustomPolicy",
-    "message": "Model definition 'DdosCustomPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'DdosCustomPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ddosCustomPolicy.json:268:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.DscpConfiguration",
-    "message": "Model definition 'DscpConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'DscpConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/dscpConfiguration.json:296:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteCircuit",
-    "message": "Model definition 'ExpressRouteCircuit' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteCircuit' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:2246:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteCircuitAuthorization",
-    "message": "Model definition 'ExpressRouteCircuitAuthorization' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteCircuitAuthorization' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1631:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteCircuitConnection",
-    "message": "Model definition 'ExpressRouteCircuitConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteCircuitConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1999:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteCircuitPeering",
-    "message": "Model definition 'ExpressRouteCircuitPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteCircuitPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCircuit.json:1881:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteConnection",
-    "message": "Model definition 'ExpressRouteConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7944:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteCrossConnection",
-    "message": "Model definition 'ExpressRouteCrossConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteCrossConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:854:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteCrossConnectionPeering",
-    "message": "Model definition 'ExpressRouteCrossConnectionPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteCrossConnectionPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRouteCrossConnection.json:966:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRouteGateway",
-    "message": "Model definition 'ExpressRouteGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRouteGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7875:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRoutePort",
-    "message": "Model definition 'ExpressRoutePort' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRoutePort' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:899:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ExpressRoutePortsLocation",
-    "message": "Model definition 'ExpressRoutePortsLocation' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ExpressRoutePortsLocation' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/expressRoutePort.json:651:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.FirewallPolicy",
-    "message": "Model definition 'FirewallPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'FirewallPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:867:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.FirewallPolicyRuleCollectionGroup",
-    "message": "Model definition 'FirewallPolicyRuleCollectionGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'FirewallPolicyRuleCollectionGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:970:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.FirewallRule",
-    "message": "Model definition 'FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:308:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.FlowLog",
-    "message": "Model definition 'FlowLog' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'FlowLog' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:3070:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.HubIpConfiguration",
-    "message": "Model definition 'HubIpConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'HubIpConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6207:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.HubRouteTable",
-    "message": "Model definition 'HubRouteTable' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'HubRouteTable' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7010:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.HubVirtualNetworkConnection",
-    "message": "Model definition 'HubVirtualNetworkConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'HubVirtualNetworkConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6930:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions[\\"IPv6 FirewallRule\\"]",
-    "message": "Model definition 'IPv6 FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'IPv6 FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:215:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.InboundNatRule",
-    "message": "Model definition 'InboundNatRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'InboundNatRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:2090:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.InboundSecurityRule",
-    "message": "Model definition 'InboundSecurityRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'InboundSecurityRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:1099:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.IpAllocation",
-    "message": "Model definition 'IpAllocation' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'IpAllocation' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipAllocation.json:405:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.IpGroup",
-    "message": "Model definition 'IpGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'IpGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/ipGroups.json:360:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.LoadBalancer",
-    "message": "Model definition 'LoadBalancer' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'LoadBalancer' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/loadBalancer.json:2345:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.LocalNetworkGateway",
-    "message": "Model definition 'LocalNetworkGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'LocalNetworkGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3731:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NatGateway",
-    "message": "Model definition 'NatGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NatGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json:421:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkInterface",
-    "message": "Model definition 'NetworkInterface' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkInterface' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:1211:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkInterfaceTapConfiguration",
-    "message": "Model definition 'NetworkInterfaceTapConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkInterfaceTapConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkInterface.json:886:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkProfile",
-    "message": "Model definition 'NetworkProfile' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkProfile' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkProfile.json:390:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkSecurityGroup",
-    "message": "Model definition 'NetworkSecurityGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkSecurityGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:925:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkVirtualAppliance",
-    "message": "Model definition 'NetworkVirtualAppliance' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkVirtualAppliance' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:761:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkVirtualApplianceSku",
-    "message": "Model definition 'NetworkVirtualApplianceSku' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkVirtualApplianceSku' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:987:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.NetworkWatcher",
-    "message": "Model definition 'NetworkWatcher' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'NetworkWatcher' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2354:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.P2SVpnGateway",
-    "message": "Model definition 'P2SVpnGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'P2SVpnGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7518:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PacketCaptureResult",
-    "message": "Model definition 'PacketCaptureResult' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PacketCaptureResult' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkWatcher.json:2836:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PrivateDnsZoneGroup",
-    "message": "Model definition 'PrivateDnsZoneGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PrivateDnsZoneGroup' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:889:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PrivateEndpoint",
-    "message": "Model definition 'PrivateEndpoint' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PrivateEndpoint' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateEndpoint.json:654:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PrivateEndpointConnection",
-    "message": "Model definition 'PrivateEndpointConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PrivateEndpointConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:937:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PrivateLinkService",
-    "message": "Model definition 'PrivateLinkService' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PrivateLinkService' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/privateLinkService.json:770:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PublicIPAddress",
-    "message": "Model definition 'PublicIPAddress' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PublicIPAddress' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpAddress.json:490:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.PublicIPPrefix",
-    "message": "Model definition 'PublicIPPrefix' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'PublicIPPrefix' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/publicIpPrefix.json:448:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.Route",
-    "message": "Model definition 'Route' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'Route' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:638:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.RouteFilter",
-    "message": "Model definition 'RouteFilter' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'RouteFilter' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:729:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.RouteFilterRule",
-    "message": "Model definition 'RouteFilterRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'RouteFilterRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeFilter.json:643:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.RouteTable",
-    "message": "Model definition 'RouteTable' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'RouteTable' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/routeTable.json:700:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.RoutingIntent",
-    "message": "Model definition 'RoutingIntent' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'RoutingIntent' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:8189:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.SecurityPartnerProvider",
-    "message": "Model definition 'SecurityPartnerProvider' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'SecurityPartnerProvider' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/securityPartnerProvider.json:376:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.SecurityRule",
-    "message": "Model definition 'SecurityRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'SecurityRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkSecurityGroup.json:827:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ServiceEndpointPolicy",
-    "message": "Model definition 'ServiceEndpointPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ServiceEndpointPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:719:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ServiceEndpointPolicyDefinition",
-    "message": "Model definition 'ServiceEndpointPolicyDefinition' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ServiceEndpointPolicyDefinition' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/serviceEndpointPolicy.json:634:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.SignaturesOverrides",
-    "message": "Model definition 'SignaturesOverrides' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'SignaturesOverrides' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/firewallPolicy.json:1954:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.StorageTarget",
-    "message": "Model definition 'StorageTarget' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'StorageTarget' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-01-01/storagecache.json:2168:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.Subnet",
-    "message": "Model definition 'Subnet' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'Subnet' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1672:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualApplianceSite",
-    "message": "Model definition 'VirtualApplianceSite' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualApplianceSite' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/networkVirtualAppliance.json:908:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualHub",
-    "message": "Model definition 'VirtualHub' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualHub' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6290:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualHubRouteTableV2",
-    "message": "Model definition 'VirtualHubRouteTableV2' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualHubRouteTableV2' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7725:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualMachineImage",
-    "message": "Model definition 'VirtualMachineImage' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualMachineImage' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:11908:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualMachineScaleSetExtension",
-    "message": "Model definition 'VirtualMachineScaleSetExtension' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualMachineScaleSetExtension' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/compute.json:15206:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualNetwork",
-    "message": "Model definition 'VirtualNetwork' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualNetwork' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1868:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualNetworkGateway",
-    "message": "Model definition 'VirtualNetworkGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualNetworkGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3213:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualNetworkGatewayConnection",
-    "message": "Model definition 'VirtualNetworkGatewayConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualNetworkGatewayConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:3495:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualNetworkGatewayNatRule",
-    "message": "Model definition 'VirtualNetworkGatewayNatRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualNetworkGatewayNatRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkGateway.json:2674:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualNetworkPeering",
-    "message": "Model definition 'VirtualNetworkPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualNetworkPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetwork.json:1700:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualNetworkTap",
-    "message": "Model definition 'VirtualNetworkTap' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualNetworkTap' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualNetworkTap.json:353:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualRouter",
-    "message": "Model definition 'VirtualRouter' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualRouter' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:549:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualRouterPeering",
-    "message": "Model definition 'VirtualRouterPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualRouterPeering' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualRouter.json:613:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VirtualWAN",
-    "message": "Model definition 'VirtualWAN' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VirtualWAN' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5734:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VpnConnection",
-    "message": "Model definition 'VpnConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VpnConnection' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6667:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VpnGateway",
-    "message": "Model definition 'VpnGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VpnGateway' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6387:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VpnGatewayNatRule",
-    "message": "Model definition 'VpnGatewayNatRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VpnGatewayNatRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:6524:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VpnServerConfiguration",
-    "message": "Model definition 'VpnServerConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VpnServerConfiguration' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:7403:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.VpnSite",
-    "message": "Model definition 'VpnSite' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'VpnSite' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/virtualWan.json:5823:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.WebApplicationFirewallPolicy",
-    "message": "Model definition 'WebApplicationFirewallPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'WebApplicationFirewallPolicy' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/webapplicationfirewall.json:295:4",
   },
 ]

@@ -16144,19 +16144,22 @@ Array [
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.FirewallRule",
-    "message": "Model definition 'FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FirewallRules.json:308:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions[\\"IPv6 FirewallRule\\"]",
-    "message": "Model definition 'IPv6 FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'IPv6 FirewallRule' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:215:4",
   },
   Object {
     "code": "RequiredPropertiesMissingInResourceModel",
     "jsonpath": "$.definitions.ProxyResourceWithWritableName",
-    "message": "Model definition 'ProxyResourceWithWritableName' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.",
+    "message": "Model definition 'ProxyResourceWithWritableName' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.",
     "source": "specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json:264:4",
   },
 ]

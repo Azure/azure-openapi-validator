@@ -158,7 +158,8 @@ export function* resourcesHaveRequiredProperties(openapiSection: any, options: {
       if (!prop || armHelper.getAttribute(prop, "readOnly")?.value !== true) {
         yield {
           location: ["definitions", re.modelName],
-          message: `Model definition '${re.modelName}' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.`,
+          message: `Model definition '${re.modelName}' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.`,
         }
         break
       }
