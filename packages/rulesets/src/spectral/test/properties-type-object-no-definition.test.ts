@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 let linter: Spectral
 const errorMessage =
-  "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types."
+  "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience."
 beforeAll(async () => {
   linter = await linterForRule("PropertiesTypeObjectNoDefinition")
   return linter
@@ -22,7 +22,7 @@ test("PropertiesTypeObjectNoDefinition should find errors", () => {
           additionalProperties: {
             type: "object",
             info: {
-              type: "string",
+              type: "  ",
             },
           },
         },

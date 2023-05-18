@@ -318,7 +318,7 @@ const ruleset: any = {
     // RPC Code: RPC-Policy-V1-03
     PropertiesTypeObjectNoDefinition: {
       description:
-        "If Properties with type:object dont have a reference model defined, then the allowed types can only be primitive data types.",
+        "Properties with type:object that dont reference a model definition are not allowed. ARM doesnt allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
       message: "{{description}}",
       resolved: true,

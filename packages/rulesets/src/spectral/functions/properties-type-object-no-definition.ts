@@ -6,8 +6,8 @@ export const propertiesTypeObjectNoDefinition: any = (definitionObject: any, _op
   if (definitionObject?.type === "") {
     return [{ message: errorMessage, path: ctx.path }]
   }
-  const valuess = Object.values(definitionObject)
-  for (const val of valuess) {
+  const values = Object.values(definitionObject)
+  for (const val of values) {
     if (typeof val === "object") return []
     else continue
   }
