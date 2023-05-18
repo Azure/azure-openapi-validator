@@ -23,6 +23,7 @@ import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisionin
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
+import { operationsApiTenantLevelOnly } from "./functions/operations-api-tenant-level-only"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import { ParametersInPointGet } from "./functions/parameters-in-point-get"
@@ -707,7 +708,7 @@ const ruleset: any = {
     },
 
     ///
-    /// ARM rules for operations API
+    /// ARM RPC rules for operations API
     ///
 
     // RPC Code: RPC-Operations-V1-01
@@ -723,6 +724,19 @@ const ruleset: any = {
         functionOptions: {
           match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
         },
+      },
+    },
+
+    // RPC Code: RPC-Operations-V1-02
+    OperationsApiTenantLevelOnly: {
+      description: "The get operations endpoint must only be at the tenant level.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$.[paths,'x-ms-paths']",
+      then: {
+        function: operationsApiTenantLevelOnly,
       },
     },
 
