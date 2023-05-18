@@ -6,6 +6,7 @@ import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
+import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
@@ -200,6 +201,19 @@ const ruleset: any = {
     /// ARM RPC rules for Delete patterns
     ///
 
+    // RPC Code: RPC-Delete-V1-01
+    DeleteResponseCodes: {
+      description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[delete]"],
+      then: {
+        function: DeleteResponseCodes,
+      },
+    },
+
     // RPC Code: RPC-Delete-V1-02
     DeleteMustNotHaveRequestBody: {
       description: "The delete operation must not have a request body.",
@@ -221,6 +235,23 @@ const ruleset: any = {
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
+      then: {
+        function: falsy,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Policy Guidelines
+    ///
+
+    // RPC Code: RPC-Policy-V1-05
+    AvoidAdditionalProperties: {
+      description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
       then: {
         function: falsy,
       },
@@ -313,7 +344,7 @@ const ruleset: any = {
       then: {
         function: validatePatchBodyParamProperties,
         functionOptions: {
-          shouldNot: ["name", "type", "location"],
+          shouldNot: ["id", "name", "type", "location"],
         },
       },
     },

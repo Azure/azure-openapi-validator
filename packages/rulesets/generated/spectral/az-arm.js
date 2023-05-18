@@ -1445,6 +1445,38 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
+const LR_DELETE_RESPONSES = ["202", "204", "default"];
+const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
+    var _a;
+    if (deleteOp === null || typeof deleteOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    if (!(deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses)) {
+        return [];
+    }
+    const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (deleteOp["x-ms-long-running-operation"] === true) {
+        if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.",
+                path: path,
+            });
+        }
+    }
+    else {
+        if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.",
+                path: path,
+            });
+        }
+    }
+    return errors;
+};
+
 const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesList) => {
     var _a, _b, _c, _d;
     if (methodOp === null || typeof methodOp !== "object") {
@@ -2384,7 +2416,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
                     errors.push({
-                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        message: `The patch operation body parameter schema should contain property '${p}'.`,
                         path: [...path, "parameters", index],
                     });
                 }
@@ -2393,11 +2425,25 @@ const validatePatchBodyParamProperties = createRulesetFunction({
         if (_opts.shouldNot) {
             _opts.shouldNot.forEach((p) => {
                 var _a;
-                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
-                    errors.push({
-                        message: `The patch operation body parameter schema should not contains property ${p}.`,
-                        path: [...path, "parameters", index],
-                    });
+                const property = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p];
+                if (property) {
+                    let isPropertyReadOnly = false;
+                    let isPropertyImmutable = false;
+                    if (property["readOnly"] && property["readOnly"] === true) {
+                        isPropertyReadOnly = true;
+                    }
+                    if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+                        const schemaArray = property["x-ms-mutability"];
+                        if (!schemaArray.includes("update")) {
+                            isPropertyImmutable = true;
+                        }
+                    }
+                    if (!(isPropertyReadOnly || isPropertyImmutable)) {
+                        errors.push({
+                            message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.`,
+                            path: [...path, "parameters", index],
+                        });
+                    }
                 }
             });
         }
@@ -2559,6 +2605,17 @@ const ruleset = {
                 },
             },
         },
+        DeleteResponseCodes: {
+            description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[delete]"],
+            then: {
+                function: DeleteResponseCodes,
+            },
+        },
         DeleteMustNotHaveRequestBody: {
             description: "The delete operation must not have a request body.",
             severity: "error",
@@ -2577,6 +2634,17 @@ const ruleset = {
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
+            then: {
+                function: falsy,
+            },
+        },
+        AvoidAdditionalProperties: {
+            description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
             then: {
                 function: falsy,
             },
@@ -2646,7 +2714,7 @@ const ruleset = {
             then: {
                 function: validatePatchBodyParamProperties,
                 functionOptions: {
-                    shouldNot: ["name", "type", "location"],
+                    shouldNot: ["id", "name", "type", "location"],
                 },
             },
         },

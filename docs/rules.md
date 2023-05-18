@@ -86,6 +86,12 @@ A schema of `array` type must always contain an `items` property. without it, Au
 
 Please refer to [array-schema-must-have-items.md](./array-schema-must-have-items.md) for details.
 
+### AvoidAdditionalProperties
+
+Definitions must not have properties named "additionalProperties" except for user defined tags.
+
+Please refer to [avoid-additional-properties.md](./avoid-additional-properties.md) for details.
+
 ### AvoidAnonymousTypes
 
 This rule appears when you define a model type inline, rather than in the definitions section. If the model represents the same type as another parameter in a different operation, then it becomes impossible to reuse that same class for both operations.
@@ -231,6 +237,12 @@ Please refer to [delete-operation-responses.md](./delete-operation-responses.md)
 The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
+
+### DeleteResponseCodes
+
+Synchronous delete operations must have 200, 204, and default responses and long-running (LRO) delete operations must have 202, 204, and default responses. They must not have any other responses.
+
+Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
 
 ### Delete204Response
 

@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The patch operation body parameter schema should not contains property {propertyName}.
+The patch operation body parameter schema should not contain top level "id", "name", "type", "location" as writable properties. This is because these properties are not patchable. To fix this, either remove the offending properties from the request payload of the Patch operation, or mark them as readOnly or immutable.
 
 ## Description
 
@@ -30,4 +30,4 @@ July 07, 2022
 
 ## How to fix the violation
 
-Considering removing the name, location, or type in the patch request body.
+Consider either removing the top-level properties - "id", "name" and "type", from the patch request body parameter schema, or mark them as readOnly. For the top-level "location" property (that is specified for tracked resources), consider either removing it from the request body of the Patch operation or mark it as immutable using the x-ms-mutability property and values as "create" and "read".

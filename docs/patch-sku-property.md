@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The patch operation body parameter schema should contains property 'sku'.
+The patch operation body parameter schema should contain property 'sku'.
 
 ## Description
 
