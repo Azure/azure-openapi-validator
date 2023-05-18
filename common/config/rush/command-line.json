@@ -62,7 +62,7 @@
       "commandKind": "global",
       "name": "prep",
       "summary": "Run the various commands needed to generate files before merging a pull request.",
-      "shellCommand": "rush update && rush build && rush lint && rush test && rush regen-ruleindex && rush change",
+      "shellCommand": "rush lint && rush update && rush build && rush test && rush regen-ruleindex && rush change",
       "safeForSimultaneousRushProcesses": true
     }
   ]
