@@ -185,33 +185,6 @@ function getProperties(schema) {
     }
     return properties;
 }
-function isSchemaEqual(a, b) {
-    if (a && b) {
-        const propsA = Object.getOwnPropertyNames(a);
-        const propsB = Object.getOwnPropertyNames(b);
-        if (propsA.length === propsB.length) {
-            for (let i = 0; i < propsA.length; i++) {
-                const propsAName = propsA[i];
-                const [propA, propB] = [a[propsAName], b[propsAName]];
-                if (typeof propA === "object") {
-                    if (!isSchemaEqual(propA, propB)) {
-                        return false;
-                    }
-                    else if (i === propsA.length - 1) {
-                        return true;
-                    }
-                }
-                else if (propA !== propB) {
-                    return false;
-                }
-                else if (propA === propB && i === propsA.length - 1) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
     var _a, _b, _c;
@@ -508,43 +481,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const putRequestResponseScheme = (putOp, _opts, ctx) => {
-    var _a;
-    if (putOp === null || typeof putOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    if (!putOp.parameters) {
-        return [];
-    }
-    let reqBodySchema = {};
-    let reqBodySchemaPath = "";
-    for (let i = 0; i < putOp.parameters.length; i++) {
-        const parameter = putOp.parameters[i];
-        if (parameter.in === "body") {
-            reqBodySchemaPath = `parameters[${i}].schema`;
-            reqBodySchema = parameter.schema ? parameter.schema : {};
-            break;
-        }
-    }
-    if (Object.keys(reqBodySchema).length === 0) {
-        return [];
-    }
-    const responseCode = putOp.responses["200"] ? "200" : "201";
-    const respModelPath = `responses[${responseCode}].schema`;
-    const respModel = ((_a = putOp.responses[responseCode]) === null || _a === void 0 ? void 0 : _a.schema)
-        ? putOp.responses[responseCode].schema
-        : {};
-    if (!isSchemaEqual(reqBodySchema, respModel)) {
-        errors.push({
-            message: `A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '${putOp.operationId}' Request Model: '${reqBodySchemaPath}' Response Model: '${respModelPath}'`,
-            path: [...path],
-        });
-    }
-    return errors;
-};
-
 const requiredReadOnlyProperties = (definition, _opts, ctx) => {
     if (definition === null || typeof definition !== "object") {
         return [];
@@ -746,9 +682,9 @@ const ruleset = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            severity: "warn",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            severity: "error",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^^",
             then: {
@@ -759,7 +695,7 @@ const ruleset = {
         LroStatusCodesReturnTypeSchema: {
             description: "The '200'/'201' responses of the long running operation must have a schema definition.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -855,17 +791,6 @@ const ruleset = {
                 function: deleteInOperationName,
             },
         },
-        PutRequestResponseScheme: {
-            description: "The request & response('200') schema of the PUT operation must be same.",
-            message: "{{error}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
-            then: {
-                function: putRequestResponseScheme,
-            },
-        },
         RequiredReadOnlyProperties: {
             description: "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
             message: "{{error}}",
@@ -909,7 +834,7 @@ const ruleset = {
             },
         },
         LongRunningOperationsOptionsValidator: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
+            description: 'A LRO Post operation with return schema should have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "warn",
             resolved: true,
@@ -1053,7 +978,7 @@ const ruleset = {
         DescriptiveDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.description)].description"],
@@ -1064,7 +989,7 @@ const ruleset = {
         ParameterDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],

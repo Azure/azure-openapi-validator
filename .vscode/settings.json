@@ -29,7 +29,7 @@
     "packages/rulesets/spectral/functions/*.js":false,
   },
   "[markdown]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.formatOnPaste": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -46,5 +46,8 @@
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "cSpell.words": [
+    "ruleset"
+  ]
 }
