@@ -4,7 +4,7 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("ReservedResourceNamesAsEnum")
+  linter = await linterForRule("ReservedResourceNamesModelAsEnum")
   return linter
 })
 
@@ -28,13 +28,13 @@ test("ReservedResourceNamesAsEnum should find errors on path level", () => {
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/fooName.get"
     )
-    expect(results[0].message).toContain(
+    expect(results[0].message).toBe(
       'The service-defined (reserved name) resource "fooName" must be represented as a path parameter enum with `modelAsString` set to `true`.'
     )
     expect(results[1].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/fooName.put"
     )
-    expect(results[1].message).toContain(
+    expect(results[1].message).toBe(
       'The service-defined (reserved name) resource "fooName" must be represented as a path parameter enum with `modelAsString` set to `true`.'
     )
   })

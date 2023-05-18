@@ -36,7 +36,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
-import { reservedResourceNamesAsEnum as reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
+import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"

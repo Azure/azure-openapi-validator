@@ -679,7 +679,7 @@ Please refer to [operations-api-schema-uses-common-types.md](./operations-api-sc
 
 ### OperationsApiTenantLevelOnly
 
-The get operation endpoint for the operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations **must not** vary per subscription.
 
 Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
 
@@ -1039,6 +1039,12 @@ Please refer to [required-read-only-properties.md](./required-read-only-properti
 Per [common-api-contracts](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources), all Azure resources should implement the `systemData` object property in new api-version. The systemData should be readonly.
 
 Please refer to [required-read-only-system-data.md](./required-read-only-system-data.md) for details.
+
+### ReservedResourceNamesModelAsEnum
+
+Service-defined (reserved) resource names must be represented as an `enum` type with `modelAsString` set to `true`, not as a static string in the path.
+
+Please refer to [reserved-resource-names-model-as-enum.md](./reserved-resource-names-model-as-enum.md) for details.
 
 ### ResourceHasXMsResourceEnabled
 

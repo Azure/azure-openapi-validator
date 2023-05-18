@@ -1,7 +1,7 @@
 // Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.
 // RPC Code: RPC-ConstrainedCollections-V1-04
 
-export const reservedResourceNamesAsEnum = (pathItem: any, _opts: any, ctx: any) => {
+export const reservedResourceNamesModelAsEnum = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
     return []
   }
