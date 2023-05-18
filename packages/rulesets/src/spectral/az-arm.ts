@@ -240,6 +240,23 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM RPC rules for Policy Guidelines
+    ///
+
+    // RPC Code: RPC-Policy-V1-05
+    AvoidAdditionalProperties: {
+      description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+      then: {
+        function: falsy,
+      },
+    },
+
+    ///
     /// ARM RPC rules for Get patterns
     ///
 

@@ -2623,6 +2623,17 @@ const ruleset = {
                 function: falsy,
             },
         },
+        AvoidAdditionalProperties: {
+            description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+            severity: "error",
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+            then: {
+                function: falsy,
+            },
+        },
         GetMustNotHaveRequestBody: {
             description: "The Get operation must not have a request body.",
             severity: "error",
