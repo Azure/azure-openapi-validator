@@ -2192,6 +2192,8 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
     return errors;
 };
 
+const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
+const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     var _a;
     if (pathItem === null || typeof pathItem !== "object") {
@@ -2207,9 +2209,11 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
         return [];
     }
     const lastPathWord = (_a = pathName.split("/").pop()) !== null && _a !== void 0 ? _a : "";
-    const includedOperations = ["get", "put", "delete", "patch"];
+    if (ARM_ALLOWED_RESERVED_NAMES.includes(lastPathWord)) {
+        return [];
+    }
     const errors = [];
-    for (const op of includedOperations) {
+    for (const op of INCLUDED_OPERATIONS) {
         if (pathItem[pathName][op]) {
             errors.push({
                 message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,

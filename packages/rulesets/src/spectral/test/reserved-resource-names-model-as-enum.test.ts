@@ -93,3 +93,21 @@ test("ReservedResourceNamesAsEnum should find no errors when second-to-last path
     expect(results.length).toBe(0)
   })
 })
+
+test("ReservedResourceNamesAsEnum should find no errors for 'operations' endpoint", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/providers/My.NS/foo/operations": {
+        parameters: [],
+        get: {
+          parameters: [],
+          responses: {},
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
