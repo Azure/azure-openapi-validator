@@ -40,10 +40,11 @@ The following would be invalid:
   "definitions": {
     "type": "object",
     "properties": {
-      "type": {
+      "type": "object",
+      "info": {
         "readOnly": true,
-        "type": "object",
-        "description": "The additional info type."
+        "description": "The additional info type.",
+        "type": "object"
       }
     }
   }
@@ -59,14 +60,14 @@ A valid example of reference model:
   "definitions": {
     "type": "object",
     "properties": {
-      "type": {
+      "info": {
         "readOnly": true,
         "type": "object",
-        "info": {
+        "description": "The properties type.",
+        "details": {
           "readOnly": true,
           "type": "string"
-        },
-        "description": "The properties type."
+        }
       }
     }
   }
@@ -82,11 +83,11 @@ A valid example of primitve data type:
   "definitions": {
     "type": "object",
     "properties": {
-      "type": {
+      "description": "The properties type.",
+      "info": {
         "readOnly": true,
-        "type": "string",
-      },
-      "description": "The properties type."
+        "type": "string"
+      }
     }
   }
 }
