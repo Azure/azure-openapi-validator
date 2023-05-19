@@ -36,7 +36,6 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
-import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -744,17 +743,6 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
-    ResourceMustReferenceCommonTypes: {
-      description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
-      message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
-      then: {
-        function: resourceMustReferenceCommonTypes,
-      },
-    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
