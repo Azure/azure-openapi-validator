@@ -679,7 +679,7 @@ Please refer to [operations-api-schema-uses-common-types.md](./operations-api-sc
 
 ### OperationsApiTenantLevelOnly
 
-The get operation endpoint for the operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations **must not** vary per subscription.
 
 Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
 
@@ -1045,12 +1045,6 @@ Please refer to [required-read-only-system-data.md](./required-read-only-system-
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
-
-### ResourceMustReferenceCommonTypes
-
-Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
-
-Please refer to [resource-must-reference-common-types.md](./resource-must-reference-common-types.md) for details.
 
 ### ResourceNameRestriction
 
