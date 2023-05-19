@@ -677,6 +677,12 @@ Response content of operations API must follow the error schema provided in the 
 
 Please refer to [operations-api-schema-uses-common-types.md](./operations-api-schema-uses-common-types.md) for details.
 
+### OperationsApiTenantLevelOnly
+
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations **must not** vary per subscription.
+
+Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
+
 ### PageableOperation
 
 This rule was introduced to check if a pageable operation has x-ms-pageable enabled.
