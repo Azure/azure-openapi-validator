@@ -11,6 +11,7 @@ ARM OpenAPI(swagger) specs
 ## Related ARM Guideline Code
 
 - RPC-SystemData-V1-01
+- RPC-SystemData-V1-02
 
 ## Description
 
@@ -20,7 +21,7 @@ Validates that system data is not defined in the properties bag, but rather as a
 
 Ensure that any system data definitions are as top-level properties, not in the properties bag.
 
-### Correct Example
+### Valid/Good Example
 
 ```json
 "Resource": {
@@ -32,7 +33,7 @@ Ensure that any system data definitions are as top-level properties, not in the 
 }
 ```
 
-### Incorrect Example
+### Invalid/Bad Example
 
 ```json
 "Resource": {

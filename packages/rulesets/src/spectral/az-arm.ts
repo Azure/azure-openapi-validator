@@ -711,7 +711,7 @@ const ruleset: any = {
     /// ARM RPC rules for SystemData
     ///
 
-    // RPC Code: RPC-SystemData-V1-01
+    // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
     // Note that this rule is normally already covered when the common types Resource is used.
     // Here we are still checking for usage of common types system data for the scenarios where
     // RP teams have already defined Resource and are unable to switch to the common types resource
@@ -731,7 +731,7 @@ const ruleset: any = {
       },
     },
 
-    // RPC Code: RPC-SystemData-V1-01
+    // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
     // Ensure systemData is not in the properties bag
     SystemDataInPropertiesBag: {
       description: "System Data must be defined as a top-level property, not in the properties bag.",

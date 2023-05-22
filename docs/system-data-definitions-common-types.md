@@ -11,6 +11,7 @@ ARM OpenAPI(swagger) specs
 ## Related ARM Guideline Code
 
 - RPC-SystemData-V1-01
+- RPC-SystemData-V1-02
 
 ## Description
 
