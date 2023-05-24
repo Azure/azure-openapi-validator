@@ -1,4 +1,4 @@
-# GetCollectionResponseSchema
+# GetCollectionOnlyHasValueAndNextLink
 
 ## Category
 
@@ -18,10 +18,8 @@ List GET endpoints (collection GET) must only have `value` and `nextLink` in `pr
 
 ## Why the rule is important
 
-This rule is important to retain consistency between ARM APIs. Furthermore, not adhering to this rule will cause issues
-with Azure Resource Graph (ARG) integration.
+This rule is important to retain consistency between ARM APIs. Furthermore, not adhering to this rule will cause issues with Azure Resource Graph (ARG) integration.
 
 ## How to fix the violation
 
-Under `properties` in the schema for GET endpoints, ensure the fields `value` and `nextLink` are present, and no other
-fields are present.
+Under `properties` in the schema for GET endpoints, ensure the fields `value` and `nextLink` are present, and no other fields are present.

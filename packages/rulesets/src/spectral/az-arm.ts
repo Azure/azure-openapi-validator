@@ -8,7 +8,7 @@ import collectionObjectPropertiesNaming from "./functions/collection-object-prop
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
-import { getCollectionResponseSchema } from "./functions/get-collection-response-schema"
+import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -305,16 +305,15 @@ const ruleset: any = {
       },
     },
     // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
-    GetCollectionResponseSchema: {
+    GetCollectionOnlyHasValueAndNextLink: {
       description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
       message: "{{description}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given:
-        "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && @property.endsWith('s') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+      given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
       then: {
-        function: getCollectionResponseSchema,
+        function: getCollectionOnlyHasValueAndNextLink,
       },
     },
 

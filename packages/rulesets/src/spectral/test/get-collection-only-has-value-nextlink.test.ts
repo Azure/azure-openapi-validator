@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("GetCollectionResponseSchema")
+  linter = await linterForRule("GetCollectionOnlyHasValueAndNextLink")
   return linter
 })
 
-test("GetCollectionResponseSchema should find no errors when get collection schema has only value and nextLink properties", () => {
+test("GetCollectionOnlyHasValueAndNextLink should find no errors when get collection schema has only value and nextLink properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -66,7 +66,7 @@ test("GetCollectionResponseSchema should find no errors when get collection sche
   })
 })
 
-test("GetCollectionResponseSchema should find errors when get collection schema has properties other than value and nextLink", () => {
+test("GetCollectionOnlyHasValueAndNextLink should find errors when get collection schema has properties other than value and nextLink", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -131,7 +131,7 @@ test("GetCollectionResponseSchema should find errors when get collection schema 
   })
 })
 
-test("GetCollectionResponseSchema should find errors when nextLink is missing", () => {
+test("GetCollectionOnlyHasValueAndNextLink should find errors when nextLink is missing", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -188,7 +188,7 @@ test("GetCollectionResponseSchema should find errors when nextLink is missing", 
   })
 })
 
-test("GetCollectionResponseSchema should find errors when value is missing", () => {
+test("GetCollectionOnlyHasValueAndNextLink should find errors when value is missing", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {

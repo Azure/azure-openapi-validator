@@ -330,7 +330,7 @@ Instead, consider defining a `body` parameter with `type: string, format: binary
 
 Please refer to [formdata.md](./formdata.md) for details.
 
-### GetCollectionResponseSchema
+### GetCollectionOnlyHasValueAndNextLink
 
 List GET endpoints (collection GET) must only have `value` and `nextLink` in `properties`.
 

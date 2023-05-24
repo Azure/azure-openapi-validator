@@ -2714,7 +2714,7 @@ const ruleset = {
                 function: falsy,
             },
         },
-        GetCollectionResponseSchema: {
+        GetCollectionOnlyHasValueAndNextLink: {
             description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
             message: "{{description}}",
             severity: "error",
