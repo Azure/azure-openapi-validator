@@ -86,12 +86,47 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
 1. You are now ready to submit your PR.
 1. After your PR ise merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
 
-# New linter rule promotion strategy
+# (WIP) New linter rule promotion strategy
 
-1. Merge new rules to main. As a result, they show up in the Staging LintDiff pipeline.
+1. __MAYBE__: run the new rule (only the new rule) locally for all of the existing swagger specs and aggregate the results
+1. Merge new rules to main
+    1. As a result, they show up in the Staging LintDiff pipeline.
+    1. __MAYBE__: pipeline automatically runs the linter on all the existing API specs for new linter rule merges to main.
 1. Review Staging LintDiff pipeline build logs to see if the rules work correctly.
-1. Once you verify the rules work correctly, roll them out to the production pipeline following the process defined in [How to deploy your changes](#how-to-deploy-your-changes).
-1. If after promoting the rule you find it is not behaving correctly, disable it via the process defined in [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules).
+    1. This can be done via Kusto (__TODO__: write a query).
+    1. __TODO__: decide how to determine a rule is working correctly
+1. Once you verify the rules work correctly, roll them out to the production pipeline following the process defined in How to deploy your changes.
+1. If after promoting the rule you find it is not behaving correctly, disable it via the process defined in How to disable or enable existing Spectral rules.
+
+## (WIP) Strategy Discussion
+
+### Defining when a rule is working correctly
+
+#### How many swagger specs does the rule need to run on?
+
+#### How many times does it need to run?
+
+#### Do we need to consider how the rule impacts existing swagger specs, or only new PRs (LintDiff vs. baseline lint)
+
+### Running a new rule against all existing swagger specs
+
+#### Locally
+
+This takes a lot of work. Is it worth it?
+
+E.g.,
+
+> One would have to find all the specs README files and run LintDiff against all API versions present in all the README files.
+
+#### As part of a pipeline
+
+If we decide to find a way to run locally
+
+### Suppressing recently promoted rules
+
+Use the process in CONTRIBUTING.md
+
+Easy, but requires a new package release and approval from the SDK team.
 
 # How to deploy your changes
 
