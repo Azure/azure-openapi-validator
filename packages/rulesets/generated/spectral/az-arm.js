@@ -2061,6 +2061,27 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const errorMessageObject = "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.";
+const errorMessageNull = "Properties with type NULL are not allowed. Either specify the type as object and reference a model or specify a primitive type.";
+const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
+    const path = ctx.path || [];
+    const errors = [];
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
+        errors.push({ message: errorMessageNull, path });
+    }
+    const values = Object.values(definitionObject);
+    for (const val of values) {
+        if (typeof val === "object")
+            return [];
+        else
+            continue;
+    }
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "object") {
+        errors.push({ message: errorMessageObject, path });
+    }
+    return errors;
+};
+
 const provisioningState = (swaggerObj, _opts, paths) => {
     const enumValue = swaggerObj.enum;
     if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
@@ -2658,6 +2679,17 @@ const ruleset = {
             given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
             then: {
                 function: falsy,
+            },
+        },
+        PropertiesTypeObjectNoDefinition: {
+            description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+            then: {
+                function: propertiesTypeObjectNoDefinition,
             },
         },
         GetMustNotHaveRequestBody: {
