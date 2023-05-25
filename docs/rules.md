@@ -679,7 +679,7 @@ Please refer to [operations-api-schema-uses-common-types.md](./operations-api-sc
 
 ### OperationsApiTenantLevelOnly
 
-The get operation endpoint for the operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations **must not** vary per subscription.
 
 Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
 
@@ -924,6 +924,12 @@ This rule is to check if the schemas used by private endpoint conform to the com
 6. PrivateLinkResourceListResult
 
 Please refer to [private-endpoint-resource-schema-validation.md](./private-endpoint-resource-schema-validation.md) for details.
+
+### PropertiesTypeObjectNoDefinition
+
+Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.
+
+Please refer to [properties-type-object-no-definition.md](./properties-type-object-no-definition.md) for details.
 
 ### PropertyDescription
 
@@ -1318,12 +1324,6 @@ Please refer to [xms-examples-required.md](./xms-examples-required.md) for detai
 This rule is to check the `id` property or identifier of objects in the array. See more here: [x-ms-identifiers](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-identifiers).
 
 Please refer to [xms-identifier-validation.md](./xms-identifier-validation.md) for details.
-
-### XmsLongRunningOperationOptions
-
-The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
-
-Please refer to [xms-long-running-operation-options.md](./xms-long-running-operation-options.md) for details.
 
 ### XmsPageableListByRGAndSubscriptions
 

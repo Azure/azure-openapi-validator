@@ -150,22 +150,6 @@ const ruleset: any = {
         function: provisioningState,
       },
     },
-    // x-ms-long-running-operation-options should indicate the type of response header to track the async operation
-    //https://github.com/Azure/azure-openapi-validator/issues/324
-    // RPC Code: RPC-Async-V1-06
-    XmsLongRunningOperationOptions: {
-      description:
-        "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
-      message: "{{description}}",
-      severity: "warn",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
-      then: {
-        field: "x-ms-long-running-operation-options",
-        function: truthy,
-      },
-    },
     // RPC Code: RPC-Async-V1-07
     LroLocationHeader: {
       description: "Location header must be supported for all async operations that return 202.",
