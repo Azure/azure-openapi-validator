@@ -67,6 +67,18 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
 1. Ensure your local clone branch is based on an up-to-date `main` branch.
     - If you are using a fork, ensure your fork `main` branch is up-to-date with
     the origin `main` branch and that your branch is based on your fork `main` branch.
+1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
+  given in [`How to deploy your changes`](#how-to-deploy-your-changes).
+1. Run [`rush prep`](https://github.com/bdefoy/azure-openapi-validator/blob/b70f43e4ef0182daa8445ae641f7f43dac675789/common/config/rush/command-line.json#LL63C16-L63C20).
+It may require some interactivity from you to update changelog. All steps must succeed.
+1. If the change is significant, you might consider manually adding appropriate entry to [`changelog.md`](https://github.com/bdefoy/azure-openapi-validator/blob/main/changelog.md?plain=1).
+1. You are now ready to submit your PR.
+1. After your PR is merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes)
+to verify they got deployed.
+
+The `rush prep` script is going to execute following commands. You can run them one by one instead of `rush prep` to
+have more control over the process and debug any issues.
+
 1. Run `rush update` to ensure all the required modules are installed.
 1. Run `rush build` to regenerate relevant files that need to be checked-in.
     - Sometimes this will result in pending changes that will disappear once you do `git commit`.
@@ -79,11 +91,7 @@ A lot of the instructions below replicate what the [PR CI pipeline] is doing.
    For details, see `How to refresh the index of rules documentation`.
 1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
-1. If the change is significant, you might consider manually adding appropriate entry to `changelog.md`.
-1. If you want for your changes to be deployed to production LintDiff, not only Staging LintDiff, follow the instructions
-  given in [`How to deploy your changes`](#how-to-deploy-your-changes).
-1. You are now ready to submit your PR.
-1. After your PR is merged, most likely you will want to read [`How to deploy your changes`](#how-to-deploy-your-changes) to verify they got deployed.
+
 
 # How to deploy your changes
 
