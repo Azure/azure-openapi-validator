@@ -1124,6 +1124,7 @@ The well-defined type/format combinations are:
 | url               |                              | from [AutoRest][autorest] |
 | odata-query       |                              | from [AutoRest][autorest] |
 | certificate       |                              | from [AutoRest][autorest] |
+
 [oas2]: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
 [autorest]: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
 [rfc3339]: https://xml2rfc.tools.ietf.org/public/rfc/
