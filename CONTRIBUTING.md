@@ -92,7 +92,6 @@ have more control over the process and debug any issues.
 1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
 
-
 # How to deploy your changes
 
 Let's assume you followed most of the instructions given in [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally).
