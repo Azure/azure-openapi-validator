@@ -694,6 +694,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "char",
         "time",
         "date-time-rfc1123",
+        "date-time-rfc7231",
         "duration",
         "uuid",
         "base64url",

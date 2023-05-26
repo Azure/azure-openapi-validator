@@ -679,7 +679,7 @@ Please refer to [operations-api-schema-uses-common-types.md](./operations-api-sc
 
 ### OperationsApiTenantLevelOnly
 
-The get operation endpoint for the operations API must be scoped tenant-wide. Operations should _not_ vary per subscription.
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations **must not** vary per subscription.
 
 Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
 
@@ -925,6 +925,12 @@ This rule is to check if the schemas used by private endpoint conform to the com
 
 Please refer to [private-endpoint-resource-schema-validation.md](./private-endpoint-resource-schema-validation.md) for details.
 
+### PropertiesTypeObjectNoDefinition
+
+Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.
+
+Please refer to [properties-type-object-no-definition.md](./properties-type-object-no-definition.md) for details.
+
 ### PropertyDescription
 
 Property should have a description.
@@ -1093,13 +1099,13 @@ The well-defined type/format combinations are:
 | -------- | --------------- | ------------------------- |
 | int32    | signed 32 bits  | from [oas2][oas2]         |
 | int64    | signed 64 bits  | from [oas2][oas2]         |
-| unixtime | Unix time stamp | from [autorest][autorest] |
+| unixtime | Unix time stamp | from [AutoRest][autorest] |
 **type: number**
 | format  | description            | comments                  |
 | ------- | ---------------------- | ------------------------- |
 | float   | 32 bit floating point  | from [oas2][oas2]         |
 | int64   | 64 bit floating point  | from [oas2][oas2]         |
-| decimal | 128 bit floating point | from [autorest][autorest] |
+| decimal | 128 bit floating point | from [AutoRest][autorest] |
 **type: string**
 | format            | description                  | comments                  |
 | ----------------- | ---------------------------- | ------------------------- |
@@ -1108,18 +1114,20 @@ The well-defined type/format combinations are:
 | date              | [RFC3339][rfc3339] full-date | from [oas2][oas2]         |
 | date-time         | [RFC3339][rfc3339] date-time | from [oas2][oas2]         |
 | password          | sensitive value              | from [oas2][oas2]         |
-| char              |                              | from [autorest][autorest] |
-| time              |                              | from [autorest][autorest] |
-| date-time-rfc1123 |                              | from [autorest][autorest] |
-| duration          |                              | from [autorest][autorest] |
-| uuid              |                              | from [autorest][autorest] |
-| base64url         |                              | from [autorest][autorest] |
-| url               |                              | from [autorest][autorest] |
-| odata-query       |                              | from [autorest][autorest] |
-| certificate       |                              | from [autorest][autorest] |
-oas2: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
-autorest: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
-rfc3339: https://xml2rfc.tools.ietf.org/public/rfc/
+| char              |                              | from [AutoRest][autorest] |
+| time              |                              | from [AutoRest][autorest] |
+| date-time-rfc1123 |                              | from [AutoRest][autorest] |
+| date-time-rfc7231 |                              | from [AutoRest][autorest] |
+| duration          |                              | from [AutoRest][autorest] |
+| uuid              |                              | from [AutoRest][autorest] |
+| base64url         |                              | from [AutoRest][autorest] |
+| url               |                              | from [AutoRest][autorest] |
+| odata-query       |                              | from [AutoRest][autorest] |
+| certificate       |                              | from [AutoRest][autorest] |
+
+[oas2]: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
+[autorest]: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
+[rfc3339]: https://xml2rfc.tools.ietf.org/public/rfc/
 
 Please refer to [schema-type-and-format.md](./schema-type-and-format.md) for details.
 
