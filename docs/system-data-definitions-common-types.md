@@ -15,7 +15,7 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-Validates that system data references utilize the common types.
+System data references must utilize common types.
 
 ## How to fix the violation
 

@@ -731,7 +731,7 @@ const ruleset: any = {
     // This rule is only applicable for specs that are not using the common-types resource definition.
     // However, we need this rule because not all RP teams can switch to the common-types resource definition.
     SystemDataDefinitionsCommonTypes: {
-      description: "Must use the schema provided in the common types for SystemData.",
+      description: "System data references must utilize common types.",
       message: "{{description}}",
       severity: "error",
       resolved: false,
