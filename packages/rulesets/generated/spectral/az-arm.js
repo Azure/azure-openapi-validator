@@ -694,6 +694,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "char",
         "time",
         "date-time-rfc1123",
+        "date-time-rfc7231",
         "duration",
         "uuid",
         "base64url",
@@ -2061,6 +2062,27 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const errorMessageObject = "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.";
+const errorMessageNull = "Properties with type NULL are not allowed. Either specify the type as object and reference a model or specify a primitive type.";
+const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
+    const path = ctx.path || [];
+    const errors = [];
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
+        errors.push({ message: errorMessageNull, path });
+    }
+    const values = Object.values(definitionObject);
+    for (const val of values) {
+        if (typeof val === "object")
+            return [];
+        else
+            continue;
+    }
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "object") {
+        errors.push({ message: errorMessageObject, path });
+    }
+    return errors;
+};
+
 const provisioningState = (swaggerObj, _opts, paths) => {
     const enumValue = swaggerObj.enum;
     if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
@@ -2188,6 +2210,38 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
             message: 'Description of 201 response code of a PUT operation MUST include term "create".',
             path: path,
         });
+    }
+    return errors;
+};
+
+const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
+const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
+const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
+    var _a;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const keys = Object.keys(pathItem);
+    if (keys.length < 1) {
+        return [];
+    }
+    const pathName = keys[0];
+    if (!pathName.match(/.*\/\w+s\/\w+$/)) {
+        return [];
+    }
+    const lastPathWord = (_a = pathName.split("/").pop()) !== null && _a !== void 0 ? _a : "";
+    if (ARM_ALLOWED_RESERVED_NAMES.includes(lastPathWord)) {
+        return [];
+    }
+    const errors = [];
+    for (const op of INCLUDED_OPERATIONS) {
+        if (pathItem[pathName][op]) {
+            errors.push({
+                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName, op],
+            });
+        }
     }
     return errors;
 };
@@ -2660,6 +2714,17 @@ const ruleset = {
                 function: falsy,
             },
         },
+        PropertiesTypeObjectNoDefinition: {
+            description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+            then: {
+                function: propertiesTypeObjectNoDefinition,
+            },
+        },
         GetMustNotHaveRequestBody: {
             description: "The Get operation must not have a request body.",
             severity: "error",
@@ -3062,6 +3127,17 @@ const ruleset = {
             given: ["$.definitions.*.properties.properties.systemData", "$.definitions.*.properties.properties.SystemData"],
             then: {
                 function: falsy,
+            },
+        },
+        ReservedResourceNamesModelAsEnum: {
+            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']"],
+            then: {
+                function: reservedResourceNamesModelAsEnum,
             },
         },
         OperationsApiSchemaUsesCommonTypes: {

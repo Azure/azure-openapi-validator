@@ -31,11 +31,13 @@ import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
+import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -254,6 +256,20 @@ const ruleset: any = {
       given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
       then: {
         function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Policy-V1-03
+    PropertiesTypeObjectNoDefinition: {
+      description:
+        "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+      then: {
+        function: propertiesTypeObjectNoDefinition,
       },
     },
 
@@ -742,6 +758,24 @@ const ruleset: any = {
       given: ["$.definitions.*.properties.properties.systemData", "$.definitions.*.properties.properties.SystemData"],
       then: {
         function: falsy,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for constrained resource collections
+    ///
+
+    // RPC Code: RPC-ConstrainedCollections-V1-04
+    ReservedResourceNamesModelAsEnum: {
+      description:
+        "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']"],
+      then: {
+        function: reservedResourceNamesModelAsEnum,
       },
     },
 

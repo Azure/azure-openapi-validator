@@ -32,6 +32,7 @@ function checkSchemaTypeAndFormat(schema: Oas2Schema, options: any, { path }: { 
     "char",
     "time",
     "date-time-rfc1123",
+    "date-time-rfc7231", // Support for https://github.com/Azure/autorest/issues/4740
     "duration",
     "uuid",
     "base64url",
