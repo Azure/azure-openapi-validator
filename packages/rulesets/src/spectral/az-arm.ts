@@ -748,7 +748,7 @@ const ruleset: any = {
     // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
     // Ensure systemData is not in the properties bag
     SystemDataInPropertiesBag: {
-      description: "System Data must be defined as a top-level property, not in the properties bag.",
+      description: "System data must be defined as a top-level property, not in the properties bag.",
       message: "{{description}}",
       severity: "error",
       resolved: false,
