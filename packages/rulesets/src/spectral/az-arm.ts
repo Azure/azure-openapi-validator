@@ -728,10 +728,8 @@ const ruleset: any = {
     ///
 
     // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
-    // Note that this rule is normally already covered when the common types Resource is used.
-    // Here we are still checking for usage of common types system data for the scenarios where
-    // RP teams have already defined Resource and are unable to switch to the common types Resource
-    // because it would cause breaking changes.
+    // This rule is only applicable for specs that are not using the common-types resource definition.
+    // However, we need this rule because not all RP teams can switch to the common-types resource definition.
     SystemDataDefinitionsCommonTypes: {
       description: "Must use the schema provided in the common types for SystemData.",
       message: "{{description}}",
