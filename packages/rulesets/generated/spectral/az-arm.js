@@ -2214,6 +2214,38 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
     return errors;
 };
 
+const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
+const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
+const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
+    var _a;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const keys = Object.keys(pathItem);
+    if (keys.length < 1) {
+        return [];
+    }
+    const pathName = keys[0];
+    if (!pathName.match(/.*\/\w+s\/\w+$/)) {
+        return [];
+    }
+    const lastPathWord = (_a = pathName.split("/").pop()) !== null && _a !== void 0 ? _a : "";
+    if (ARM_ALLOWED_RESERVED_NAMES.includes(lastPathWord)) {
+        return [];
+    }
+    const errors = [];
+    for (const op of INCLUDED_OPERATIONS) {
+        if (pathItem[pathName][op]) {
+            errors.push({
+                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName, op],
+            });
+        }
+    }
+    return errors;
+};
+
 const RESOURCE_COMMON_TYPES_REGEX = /.*common-types\/resource-management\/v\d+\/types.json#\/definitions\/(Proxy|Tracked)Resource/;
 const resourceMustReferenceCommonTypes = (ref, _opts, ctx) => {
     var _a, _b, _c, _d;
@@ -3070,6 +3102,17 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        ReservedResourceNamesModelAsEnum: {
+            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']"],
+            then: {
+                function: reservedResourceNamesModelAsEnum,
             },
         },
         OperationsApiSchemaUsesCommonTypes: {

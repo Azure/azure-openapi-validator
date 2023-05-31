@@ -1046,6 +1046,16 @@ Per [common-api-contracts](https://github.com/Azure/azure-resource-manager-rpc/b
 
 Please refer to [required-read-only-system-data.md](./required-read-only-system-data.md) for details.
 
+### ReservedResourceNamesModelAsEnum
+
+Service-defined (reserved) resource names must be represented as an `enum` type with `modelAsString` set to `true`, not
+as a static string in the path. This is to allow for expansion of the resource collection to include more service
+defined instances in future if necessary. Changing the representation of the path in swagger to an enum does not require
+you to change the implementation of the API in the service. Adhering to this best practice helps with forward
+compatibility and avoids potential breaking changes in future revisions of the API.
+
+Please refer to [reserved-resource-names-model-as-enum.md](./reserved-resource-names-model-as-enum.md) for details.
+
 ### ResourceHasXMsResourceEnabled
 
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
