@@ -38,13 +38,6 @@ rules.push({
           location: path,
         }
       }
-
-      if (!node["x-ms-long-running-operation-options"]) {
-        yield {
-          message: `An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'`,
-          location: path,
-        }
-      }
     }
   },
 })
