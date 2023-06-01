@@ -2610,7 +2610,7 @@ const ruleset = {
         ProvisioningStateSpecifiedForLRODelete: {
             description: 'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
             message: "{{error}}",
-            severity: "warn",
+            severity: "off",
             resolved: true,
             formats: [oas2],
             given: [
