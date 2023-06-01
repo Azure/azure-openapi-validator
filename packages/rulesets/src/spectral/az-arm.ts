@@ -31,7 +31,7 @@ import pathSegmentCasing from "./functions/path-segment-casing"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
-import putGetPatchScehma from "./functions/put-get-patch-schema"
+import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
@@ -452,7 +452,7 @@ const ruleset: any = {
       resolved: false,
       given: ["$[paths,'x-ms-paths'].*.put^"],
       then: {
-        function: putGetPatchScehma,
+        function: putGetPatchSchema,
       },
     },
     // RPC Code: RPC-Put-V1-12

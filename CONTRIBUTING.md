@@ -13,7 +13,7 @@
     + [Production LintDiff CI check](#production-lintdiff-ci-check)
     + [Staging LintDiff CI check](#staging-lintdiff-ci-check)
 - [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-sources)
-- [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules)
+- [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 - [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
 - [How to test](#how-to-test)
@@ -225,11 +225,18 @@ but instead of `--use=<api-version>` use `--use=./packages/azure-openapi-validat
 
    > **Troubleshooting**: if you get `error   |   Error: Can only create file URIs from absolute paths. Got 'packages\azure-openapi-validator\autorest\readme.md'` then ensure you passed `--use=./packages/azure-openapi-validator/autorest` and not `--use=packages/azure-openapi-validator/autorest`.
 
-# How to disable or enable existing Spectral rules
+# How to set a Spectral rule to run only in staging
 
-- Set the Spectral rule severity to `off` to disable it. Revert that to enable it back.
-  - For an example of 3 rules being disabled, see [this file diff](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-4c1382203db84bcd9df61a5bbf90823d0e1f39a833e8eaa1a5be96ca4a4e9b61).
-- Follow the instructions given in the [`How to deploy your changes`](#how-to-deploy-your-changes) section.
+1. Given a Spectral rule definition. e.g. [ProvisioningStateSpecifiedForLROPut in az-arm.ts](https://github.com/Azure/azure-openapi-validator/blob/225d507ede59ab5371dd84328422c9f525dca21c/packages/rulesets/src/spectral/az-arm.ts#LL82C5-L82C40),
+you can disable it from running in production by adding `stagingOnly: true` property.
+Don't forget to add a comma at the end!
+   - The rules are disabled only for production runs. Staging LintDiff runs always run all enabled Spectral rules.
+   - For an example of few rules being set to `stagingOnly`, see [this file diff](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-4c1382203db84bcd9df61a5bbf90823d0e1f39a833e8eaa1a5be96ca4a4e9b61).
+2. Follow the instructions given in the [`How to deploy your changes`](#how-to-deploy-your-changes) section.
+
+To re-enable the rule for production runs, delete the property and re-deploy the rule.
+
+If you want to completely disable a rule then change its severity to `"off"`.
 
 # How to verify which Spectral rules are running in Production and Staging LintDiff
 

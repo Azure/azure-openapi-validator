@@ -5,7 +5,7 @@ import azARM from "./spectral/az-arm"
 import azCommon from "./spectral/az-common"
 import azDataplane from "./spectral/az-dataplane"
 
-const spectralRulesetDir = join (__dirname,"spectral")
+const spectralRulesetDir = join(__dirname, "spectral")
 export const spectralCommonRulesetFile = join(spectralRulesetDir, "az-common.js")
 export const spectralArmRulesetFile = join(spectralRulesetDir, "az-arm.js")
 export const spectralDataplaneRulesetFile = join(spectralRulesetDir, "az-dataplane.js")
@@ -13,9 +13,9 @@ export const spectralDataplaneRulesetFile = join(spectralRulesetDir, "az-datapla
 export const spectralRulesets = {
   azARM,
   azCommon,
-  azDataplane
+  azDataplane,
 }
 export const nativeRulesets = {
-  azCommon:commonRuleset,
-  azArm:armRuleset
+  azCommon: commonRuleset,
+  azArm: armRuleset,
 }
