@@ -38,24 +38,6 @@ rules.push({
           location: path,
         }
       }
-
-      if (!node["x-ms-long-running-operation-options"]) {
-        yield {
-          message: `An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'`,
-          location: path,
-        }
-      }
-
-      if (
-        node["x-ms-long-running-operation-options"] &&
-        (!node["x-ms-long-running-operation-options"]["final-state-via"] ||
-          node["x-ms-long-running-operation-options"]["final-state-via"] != "azure-async-operation")
-      ) {
-        yield {
-          message: `An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'`,
-          location: path,
-        }
-      }
     }
   },
 })

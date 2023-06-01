@@ -1337,12 +1337,6 @@ This rule is to check the `id` property or identifier of objects in the array. S
 
 Please refer to [xms-identifier-validation.md](./xms-identifier-validation.md) for details.
 
-### XmsLongRunningOperationOptions
-
-The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
-
-Please refer to [xms-long-running-operation-options.md](./xms-long-running-operation-options.md) for details.
-
 ### XmsPageableListByRGAndSubscriptions
 
 When a tracked resource has list by resource group and subscription operations, the x-ms-pageable extension values must be same for both operations. A tracked resource is a resource with a 'location' property as required. If this rule flags a resource which does not have a 'location' property, then it might be a false positive.

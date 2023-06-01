@@ -216,7 +216,7 @@ describe("IndividualAzureTests", () => {
       OpenApiTypes.rpaas,
       CreateOperationAsyncResponseValidation
     )
-    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 2)
+    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 1)
   })
 
   // Valid 201 response for RPaaS

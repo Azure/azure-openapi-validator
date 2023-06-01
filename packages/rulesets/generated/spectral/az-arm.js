@@ -2631,18 +2631,6 @@ const ruleset = {
                 function: provisioningState,
             },
         },
-        XmsLongRunningOperationOptions: {
-            description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
-            message: "{{description}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
-            then: {
-                field: "x-ms-long-running-operation-options",
-                function: truthy,
-            },
-        },
         LroLocationHeader: {
             description: "Location header must be supported for all async operations that return 202.",
             message: "A 202 response should include an Location response header.",
