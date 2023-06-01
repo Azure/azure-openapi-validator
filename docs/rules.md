@@ -462,12 +462,6 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
-### ProvisioningStateSpecifiedForLRODelete
-
-This is a rule introduced to validate if a LRO DELETE operations response schema has "ProvisioningState" property specified for the 200 status code.
-
-Please refer to [lro-delete-provisioning-state-specified.md](./lro-delete-provisioning-state-specified.md) for details.
-
 ### LroErrorContent
 
 Error response content of long running operations must follow the error schema provided in the common types v2 and above.
