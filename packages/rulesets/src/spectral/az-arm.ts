@@ -127,7 +127,7 @@ const ruleset: any = {
       description:
         'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
       message: "{{error}}",
-      severity: "off",
+      severity: "off", // incorrect rule. see Task 22895741: Fix ProvisioningStateSpecifiedForLRODelete https://msazure.visualstudio.com/One/_workitems/edit/22895741
       resolved: true,
       formats: [oas2],
       given: [
