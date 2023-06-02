@@ -1626,23 +1626,6 @@ const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
         }];
 };
 
-const provisioningStateSpecifiedForLRODelete = (deleteOp, _opts, ctx) => {
-    if (deleteOp === null || typeof deleteOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const allProperties = getProperties(deleteOp.schema);
-    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
-    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
-        errors.push({
-            message: `200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.`,
-            path,
-        });
-    }
-    return errors;
-};
-
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
         return [];
@@ -2605,19 +2588,6 @@ const ruleset = {
             ],
             then: {
                 function: provisioningStateSpecifiedForLROPatch,
-            },
-        },
-        ProvisioningStateSpecifiedForLRODelete: {
-            description: 'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
-            message: "{{error}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: [
-                "$[paths,'x-ms-paths'].*[delete][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
-            ],
-            then: {
-                function: provisioningStateSpecifiedForLRODelete,
             },
         },
         ProvisioningStateValidation: {

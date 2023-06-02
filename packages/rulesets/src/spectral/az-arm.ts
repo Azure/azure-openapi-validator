@@ -13,7 +13,6 @@ import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
-import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provisioning-state-specified"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
@@ -120,21 +119,6 @@ const ruleset: any = {
       ],
       then: {
         function: provisioningStateSpecifiedForLROPatch,
-      },
-    },
-    //Delete
-    ProvisioningStateSpecifiedForLRODelete: {
-      description:
-        'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
-      message: "{{error}}",
-      severity: "warn",
-      resolved: true,
-      formats: [oas2],
-      given: [
-        "$[paths,'x-ms-paths'].*[delete][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
-      ],
-      then: {
-        function: provisioningStateSpecifiedForLRODelete,
       },
     },
 
