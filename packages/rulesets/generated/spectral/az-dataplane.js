@@ -1811,6 +1811,7 @@ function checkSchemaTypeAndFormat(schema, options, { path }) {
         "uuid",
         "base64url",
         "url",
+        "uri",
         "odata-query",
         "certificate",
     ];
