@@ -47,6 +47,7 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -751,11 +752,12 @@ const ruleset: any = {
       description: "System data must be defined as a top-level property, not in the properties bag.",
       message: "{{description}}",
       severity: "error",
-      resolved: false,
+      resolved: true,
       formats: [oas2],
-      given: ["$.definitions.*.properties.properties.systemData", "$.definitions.*.properties.properties.SystemData"],
+      // given definitions that have the properties bag
+      given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
       then: {
-        function: falsy,
+        function: systemDataInPropertiesBag,
       },
     },
 
