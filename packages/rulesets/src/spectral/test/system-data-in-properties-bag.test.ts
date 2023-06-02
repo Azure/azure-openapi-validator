@@ -21,6 +21,26 @@ test(`${RULE} should find errors for system data in inline properties bag`, asyn
             systemData: {
               propertyOrRef: "test",
             },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.systemData")
+    expect(results[0].message).toBe(ERROR_MESSAGE)
+  })
+})
+
+test(`${RULE} should find errors for system data in inline properties bag and with capital S`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
             SystemData: {
               propertyOrRef: "test",
             },
@@ -30,11 +50,9 @@ test(`${RULE} should find errors for system data in inline properties bag`, asyn
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2)
-    // expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.systemData")
-    // expect(results[0].message).toBe(ERROR_MESSAGE)
-    // expect(results[1].path.join(".")).toBe("definitions.Resource.properties.properties.SystemData")
-    // expect(results[1].message).toBe(ERROR_MESSAGE)
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.SystemData")
+    expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
 
@@ -50,9 +68,6 @@ test(`${RULE} should find errors for system data in inline nested properties bag
               systemData: {
                 propertyOrRef: "test",
               },
-              SystemData: {
-                propertyOrRef: "test",
-              },
             },
           },
         },
@@ -60,38 +75,36 @@ test(`${RULE} should find errors for system data in inline nested properties bag
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2)
-    // expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.systemData")
-    // expect(results[0].message).toBe(ERROR_MESSAGE)
-    // expect(results[1].path.join(".")).toBe("definitions.Resource.properties.properties.properties.SystemData")
-    // expect(results[1].message).toBe(ERROR_MESSAGE)
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.systemData")
+    expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
 
-// test(`${RULE} should find no errors`, async () => {
-//   const oasDoc = {
-//     swagger: "2.0",
-//     paths: {},
-//     definitions: {
-//       Resource: {
-//         properties: {
-//           properties: {},
-//           systemData: {
-//             $ref: "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
-//           },
-//           SystemData: {
-//             $ref: "../../../../../common-types/resource-management/v13/types.json#/definitions/systemData",
-//           },
-//         },
-//       },
-//     },
-//   }
-//   return linter.run(oasDoc).then((results) => {
-//     expect(results.length).toBe(0)
-//   })
-// })
+test(`${RULE} should find no errors`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {},
+          systemData: {
+            propertyOrRef: "test",
+          },
+          SystemData: {
+            propertyOrRef: "test",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
 
-test(`${RULE} should find errors one level nesting`, async () => {
+test(`${RULE} should find errors one level nesting with system data defined as a reference`, async () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {},
@@ -117,6 +130,8 @@ test(`${RULE} should find errors one level nesting`, async () => {
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.systemData")
+    expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
 
@@ -155,9 +170,10 @@ test(`${RULE} should find errors for nested system data defined as a reference`,
     },
   }
   return linter.run(oasDoc).then((results) => {
-    console.log(ERROR_MESSAGE)
     expect(results.length).toBe(1)
-    // expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.sysData")
-    // expect(results[0].message).toBe(ERROR_MESSAGE)
+    expect(results[0].path.join(".")).toBe(
+      "definitions.Resource.properties.properties.sysData.properties.propertyThatHasSystemData.properties.systemData"
+    )
+    expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })

@@ -5,22 +5,31 @@
 import _ from "lodash"
 import { deepFindObjectKeyPath, getProperties } from "./utils"
 
-const SYSTEM_DATA = "systemData"
+const SYSTEM_DATA_CAMEL = "systemData"
+const SYSTEM_DATA_UPPER_CAMEL = "SystemData"
 const PROPERTIES = "properties"
 const ERROR_MESSAGE = "System data must be defined as a top-level property, not in the properties bag."
 
 export const systemDataInPropertiesBag = (definition: any, _opts: any, ctx: any) => {
   const properties = getProperties(definition)
-  const path = deepFindObjectKeyPath(properties, SYSTEM_DATA)
-  // const pathToTopLevelProperty = _.dropRightWhile(path, (item) => SYSTEM_DATA !== item && PROPERTIES !== item)
-  // console.log("ctx path: " + ctx.path)
-  // console.log("path: " + path)
-  // console.log("pathToTopLevel: " + pathToTopLevelProperty + "\n\n\n")
+  const path = deepFindObjectKeyPath(properties, SYSTEM_DATA_CAMEL)
+
   if (path.length > 0) {
     return [
       {
         message: ERROR_MESSAGE,
         path: _.concat(ctx.path, PROPERTIES, path),
+      },
+    ]
+  }
+
+  const pathForUpperCamelCase = deepFindObjectKeyPath(properties, SYSTEM_DATA_UPPER_CAMEL)
+
+  if (pathForUpperCamelCase.length > 0) {
+    return [
+      {
+        message: ERROR_MESSAGE,
+        path: _.concat(ctx.path, PROPERTIES, pathForUpperCamelCase),
       },
     ]
   }
