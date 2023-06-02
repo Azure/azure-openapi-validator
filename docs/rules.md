@@ -220,12 +220,6 @@ The request body of a delete operation must be empty.
 
 Please refer to [delete-must-not-have-request-body.md](./delete-must-not-have-request-body.md) for details.
 
-### DeleteOperationAsyncResponseValidation
-
-An async DELETE operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Must support 204 (resource doesn't exists). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [delete-operation-async-response-validation.md](./delete-operation-async-response-validation.md) for details.
-
 ### DeleteOperationResponses
 
 Per ARM Specs, all DELETE methods (non-async) must have responses code implementation: 200, 204.
