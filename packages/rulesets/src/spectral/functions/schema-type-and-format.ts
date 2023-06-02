@@ -37,6 +37,7 @@ function checkSchemaTypeAndFormat(schema: Oas2Schema, options: any, { path }: { 
     "uuid",
     "base64url",
     "url",
+    "uri",
     "odata-query",
     "certificate",
   ]
