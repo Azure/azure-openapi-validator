@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 let nonResolvingLinter: Spectral
-const ERROR_MESSAGE = "Must use the schema provided in the common types for SystemData."
+const ERROR_MESSAGE = "System data references must utilize common types."
 
 beforeAll(async () => {
   nonResolvingLinter = await linterForRule("SystemDataDefinitionsCommonTypes", true)

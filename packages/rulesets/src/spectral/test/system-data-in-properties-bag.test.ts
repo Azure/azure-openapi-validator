@@ -76,7 +76,7 @@ test(`${RULE} should find errors for system data in inline nested properties bag
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.systemData")
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties")
     expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
@@ -171,9 +171,7 @@ test(`${RULE} should find errors for nested system data defined as a reference`,
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe(
-      "definitions.Resource.properties.properties.sysData.properties.propertyThatHasSystemData.properties.systemData"
-    )
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.sysData")
     expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })

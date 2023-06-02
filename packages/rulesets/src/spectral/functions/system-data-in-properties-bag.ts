@@ -18,7 +18,7 @@ export const systemDataInPropertiesBag = (definition: any, _opts: any, ctx: any)
     return [
       {
         message: ERROR_MESSAGE,
-        path: _.concat(ctx.path, PROPERTIES, path),
+        path: _.concat(ctx.path, PROPERTIES, path[0]),
       },
     ]
   }
@@ -29,7 +29,7 @@ export const systemDataInPropertiesBag = (definition: any, _opts: any, ctx: any)
     return [
       {
         message: ERROR_MESSAGE,
-        path: _.concat(ctx.path, PROPERTIES, pathForUpperCamelCase),
+        path: _.concat(ctx.path, PROPERTIES, pathForUpperCamelCase[0]),
       },
     ]
   }

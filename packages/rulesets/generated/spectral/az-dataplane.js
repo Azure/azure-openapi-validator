@@ -1,5 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy, undefined as undefined$1, casing } from '@stoplight/spectral-functions';
+import 'lodash';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
     if (schema === null || schema["x-ms-client-name"] !== undefined) {
