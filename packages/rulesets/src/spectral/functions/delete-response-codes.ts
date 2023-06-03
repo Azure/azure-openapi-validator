@@ -6,9 +6,9 @@ const LR_DELETE_RESPONSES = ["202", "204", "default"]
 const SYNC_ERROR =
   "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes."
 const LR_ERROR =
-  "Long-running (LRO) delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes."
+  "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes."
 const EmptyResponse_ERROR =
-  "Delete operation response codes MUST be non-empty. It MUST have response codes 200, 204 and default if it is sync OR 202, 204 and default if it is long running."
+  "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running."
 
 export const DeleteResponseCodes = (deleteOp: any, _opts: any, ctx: any) => {
   if (deleteOp === null || typeof deleteOp !== "object") {
@@ -16,14 +16,6 @@ export const DeleteResponseCodes = (deleteOp: any, _opts: any, ctx: any) => {
   }
   const path = ctx.path
   const errors = []
-
-  if (!deleteOp?.responses || deleteOp?.responses.length == 0) {
-    errors.push({
-      message: EmptyResponse_ERROR,
-      path: path,
-    })
-    return errors
-  }
 
   const responses = Object.keys(deleteOp?.responses ?? {})
 

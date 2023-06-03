@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 const LR_ERROR =
-  "Long-running (LRO) delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes."
+  "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes."
 const SYNC_ERROR =
   "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes."
 
@@ -363,7 +363,7 @@ test("DeleteResponseCodes should find errors for delete with no responses define
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Delete operation response codes MUST be non-empty.")
+    expect(results[0].message).toContain("Delete operation response codes must be non-empty.")
   })
 })
 
@@ -424,7 +424,7 @@ test("DeleteResponseCodes should find errors for delete with no responses specif
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
-    expect(results[0].message).toContain("Delete operation response codes MUST be non-empty.")
+    expect(results[0].message).toContain("Delete operation response codes must be non-empty.")
   })
 })
 
