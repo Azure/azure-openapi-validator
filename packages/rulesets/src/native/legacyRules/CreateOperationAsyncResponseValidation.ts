@@ -16,7 +16,7 @@ rules.push({
   *run(doc, node, path) {
     if (node.responses["202"]) {
       yield {
-        message: `202 is not a supported response code for PUT async response.`,
+        message: `202 is not a supported response code for PUT async response. Please use 201 instead.`,
         location: path.concat(["responses", "202"]),
       }
     }
