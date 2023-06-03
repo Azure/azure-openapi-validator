@@ -14,11 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-Only 201 is the supported response code for PUT async response
+202 is not a supported response code for PUT async response
 
 ## Description
 
-An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
+An async PUT operation response must include status code 201 for creates. It must also support status code 200, for replace. The operation must also add "x-ms-long-running-operation" to mark that it is a long running operation.
 
 ## CreatedAt
 
@@ -60,9 +60,6 @@ The following would be valid:
         }
       }
     },
-    "x-ms-long-running-operation": true,
-    "x-ms-long-running-operation-options": {
-      "final-state-via": "azure-async-operation"
-  }
+    "x-ms-long-running-operation": true
 ...
 ```
