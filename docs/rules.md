@@ -1184,7 +1184,7 @@ Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for d
 
 ### SystemDataDefinitionsCommonTypes
 
-Validates that system data references utilize the common types.
+System data references must utilize common types.
 
 Please refer to [system-data-definitions-common-types.md](./system-data-definitions-common-types.md) for details.
 
