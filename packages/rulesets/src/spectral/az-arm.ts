@@ -43,6 +43,7 @@ import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-sc
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { SyncPostReturn } from "./functions/synchronous-post-return"
+import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -688,6 +689,43 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for SystemData
+    ///
+
+    // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
+    // This rule is only applicable for specs that are not using the common-types resource definition.
+    // However, we need this rule because not all RP teams can switch to the common-types resource definition.
+    SystemDataDefinitionsCommonTypes: {
+      description: "System data references must utilize common types.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$.definitions.*.properties.[systemData,SystemData].$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/systemData",
+        },
+      },
+    },
+
+    // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
+    // Ensure systemData is not in the properties bag
+    SystemDataInPropertiesBag: {
+      description: "System data must be defined as a top-level property, not in the properties bag.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      // given definitions that have the properties bag
+      given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+      then: {
+        function: systemDataInPropertiesBag,
       },
     },
 

@@ -1176,6 +1176,18 @@ A synchronous Post operation should return 200 with response schema or 204 witho
 
 Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
 
+### SystemDataDefinitionsCommonTypes
+
+System data references must utilize common types.
+
+Please refer to [system-data-definitions-common-types.md](./system-data-definitions-common-types.md) for details.
+
+### SystemDataInPropertiesBag
+
+Validates that system data is not defined in the properties bag, but rather as a top-level property.
+
+Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
+
 ### TopLevelResourcesListByResourceGroup
 
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), all the top-level resources must have a list by resource group operation which returns the collection of the resource.

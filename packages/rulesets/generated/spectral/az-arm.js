@@ -1,5 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
+import _ from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -352,6 +353,21 @@ function getResourcesPathHierarchyBasedOnResourceType(path) {
         }
     }
     return result;
+}
+function deepFindObjectKeyPath(object, keyName, path = []) {
+    if (!_.isObject(object)) {
+        return [];
+    }
+    if (_.has(object, keyName)) {
+        return _.concat(path, keyName);
+    }
+    for (const [key, value] of Object.entries(object)) {
+        const result = deepFindObjectKeyPath(value, keyName, _.concat(path, key));
+        if (result) {
+            return result;
+        }
+    }
+    return [];
 }
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
@@ -2409,6 +2425,33 @@ const SyncPostReturn = (postOp, _opts, ctx) => {
     return errors;
 };
 
+const SYSTEM_DATA_CAMEL = "systemData";
+const SYSTEM_DATA_UPPER_CAMEL = "SystemData";
+const PROPERTIES = "properties";
+const ERROR_MESSAGE = "System data must be defined as a top-level property, not in the properties bag.";
+const systemDataInPropertiesBag = (definition, _opts, ctx) => {
+    const properties = getProperties(definition);
+    const path = deepFindObjectKeyPath(properties, SYSTEM_DATA_CAMEL);
+    if (path.length > 0) {
+        return [
+            {
+                message: ERROR_MESSAGE,
+                path: _.concat(ctx.path, PROPERTIES, path[0]),
+            },
+        ];
+    }
+    const pathForUpperCamelCase = deepFindObjectKeyPath(properties, SYSTEM_DATA_UPPER_CAMEL);
+    if (pathForUpperCamelCase.length > 0) {
+        return [
+            {
+                message: ERROR_MESSAGE,
+                path: _.concat(ctx.path, PROPERTIES, pathForUpperCamelCase[0]),
+            },
+        ];
+    }
+    return [];
+};
+
 const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -3060,6 +3103,31 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        SystemDataDefinitionsCommonTypes: {
+            description: "System data references must utilize common types.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$.definitions.*.properties.[systemData,SystemData].$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/systemData",
+                },
+            },
+        },
+        SystemDataInPropertiesBag: {
+            description: "System data must be defined as a top-level property, not in the properties bag.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+            then: {
+                function: systemDataInPropertiesBag,
             },
         },
         ReservedResourceNamesModelAsEnum: {
