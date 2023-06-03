@@ -444,17 +444,9 @@ Please refer to [long-running-operations-with-long-running-extension.md](./long-
 
 ### LongRunningResponseStatusCode
 
-For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
 For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
 
 Please refer to [long-running-response-status-code-data-plane.md](./long-running-response-status-code-data-plane.md) for details.
-
-### LongRunningResponseStatusCode
-
-For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
-For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
-
-Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
 ### LroErrorContent
 
