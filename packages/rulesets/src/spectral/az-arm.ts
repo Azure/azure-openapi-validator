@@ -16,7 +16,6 @@ import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mu
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
@@ -37,7 +36,6 @@ import putGetPatchScehma from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
-import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
@@ -559,19 +557,6 @@ const ruleset: any = {
         function: ParametersInPost,
       },
     },
-    // RPC Code: RPC-POST-V1-09
-    LROPostFinalStateViaProperty: {
-      description:
-        "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
-      message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
-      resolved: false,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[post]"],
-      then: {
-        function: LROPostFinalStateViaProperty,
-      },
-    },
 
     ///
     /// ARM RPC rules for Uri path patterns
@@ -784,17 +769,6 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
-    ResourceMustReferenceCommonTypes: {
-      description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
-      message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
-      then: {
-        function: resourceMustReferenceCommonTypes,
-      },
-    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
