@@ -498,10 +498,6 @@ Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 
-For long running (LRO) post operations, 'long-running-operation-options' must be present and have the 'final-state-via' property set to 'azure-async-operation'.
-
-Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
-
 ### LroPostMustNotUseOriginalUriAsFinalState
 
 The long running post operation must not use final-stat-via:original-uri.
@@ -1055,12 +1051,6 @@ Please refer to [reserved-resource-names-model-as-enum.md](./reserved-resource-n
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
-
-### ResourceMustReferenceCommonTypes
-
-Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
-
-Please refer to [resource-must-reference-common-types.md](./resource-must-reference-common-types.md) for details.
 
 ### ResourceNameRestriction
 
