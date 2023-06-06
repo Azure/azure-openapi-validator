@@ -147,13 +147,13 @@ autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-valida
 
 where:
 
-- You must install locally the **correct version** of the `autorest` command. See `How to install AutoRest` for details.
+- You must install locally the **correct version** of the `autorest` command. See `How to install AutoRest` below for details.
 - You must clone locally your PR git branch. The path to your local clone will be the prefix of `<path-to-autorest-config-file>`.
 - You can obtain `<version-tag>`, `<api-version>` and suffix of `<path-to-autorest-config-file>`, relative to your local
 clone, from the runtime build log of the LintDiff check that failed your PR. See `How to obtain PR LintDiff check
-AutoRest command invocation details` for details and examples.
+AutoRest command invocation details` below for details and examples.
 
-Note tha once you execute the command, it may take over a minute before anything is output to the console.
+Note that once you execute the command, it may take over a minute before anything is output to the console.
 
 ## How to install AutoRest
 
@@ -205,7 +205,8 @@ The process for determining the command for `~[Staging] Swagger LintDiff` is the
 
 - You must drill down into `~[Staging] Swagger LintDiff` check instead of `Swagger LintDiff`.
 - The AutoRest invocation will be slightly different. Here: [`Executing: npx autorest --v3 --version:next --spectral --validation --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@beta --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824971&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=60)
-- You should expect exactly the same command, with one difference: the `<version-tag>` is going to be always `beta` for staging.
+- You should expect exactly the same command, with one difference: for staging, the `<version-tag>`
+  is always going to be `beta`.
 
 # How to run LintDiff locally from sources
 
