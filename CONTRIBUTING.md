@@ -204,8 +204,7 @@ The process for determining the command for `~[Staging] Swagger LintDiff` is the
 `Production LintDiff CI check`, except:
 
 - You must drill down into `~[Staging] Swagger LintDiff` check instead of `Swagger LintDiff`.
-- The AutoRest invocation will be slightly different. Here: [`Executing: npx autorest --v3 --version:next --spectral --validation --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@beta --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md
-`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824971&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=60).
+- The AutoRest invocation will be slightly different. Here: [`Executing: npx autorest --v3 --version:next --spectral --validation --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@beta --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824971&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=60)
 - You should expect exactly the same command, with one difference: the `<version-tag>` is going to be always `beta` for staging.
 
 # How to run LintDiff locally from source
