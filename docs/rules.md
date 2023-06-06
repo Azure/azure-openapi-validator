@@ -170,7 +170,7 @@ Please refer to [control-characters-not-allowed.md](./control-characters-not-all
 
 ### CreateOperationAsyncResponseValidation
 
-An async PUT operation response must include status code 201 for creates. It must also support status code 200, for replace. The operation must also add "x-ms-long-running-operation" to mark that it is a long running operation.
+An async PUT operation response must include status code 201 for creation. It must also support status code 200, for replacement. The operation must also add "x-ms-long-running-operation" to mark that it is a long running operation.
 
 Please refer to [create-operation-async-response-validation.md](./create-operation-async-response-validation.md) for details.
 
