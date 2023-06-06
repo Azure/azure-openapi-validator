@@ -220,12 +220,6 @@ The request body of a delete operation must be empty.
 
 Please refer to [delete-must-not-have-request-body.md](./delete-must-not-have-request-body.md) for details.
 
-### DeleteOperationAsyncResponseValidation
-
-An async DELETE operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Must support 204 (resource doesn't exists). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [delete-operation-async-response-validation.md](./delete-operation-async-response-validation.md) for details.
-
 ### DeleteOperationResponses
 
 Per ARM Specs, all DELETE methods (non-async) must have responses code implementation: 200, 204.
@@ -450,17 +444,9 @@ Please refer to [long-running-operations-with-long-running-extension.md](./long-
 
 ### LongRunningResponseStatusCode
 
-For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
 For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
 
 Please refer to [long-running-response-status-code-data-plane.md](./long-running-response-status-code-data-plane.md) for details.
-
-### LongRunningResponseStatusCode
-
-For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
-For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
-
-Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
 
 ### LroErrorContent
 

@@ -7,7 +7,6 @@ import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
-import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
@@ -77,19 +76,6 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for Async patterns
     ///
-
-    // RPC Code: RPC-Async-V1-01
-    LongRunningResponseStatusCode: {
-      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
-      then: {
-        function: longRunningResponseStatusCodeArm,
-      },
-    },
 
     // RPC Code: RPC-Async-V1-02
     //PUT

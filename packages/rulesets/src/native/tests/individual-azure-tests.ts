@@ -10,7 +10,6 @@ import { AzureResourceTagsSchema } from "../legacyRules/AzureResourceTagsSchema"
 import { ControlCharactersAreNotAllowed } from "../legacyRules/ControlCharactersAreNotAllowed"
 import { CreateOperationAsyncResponseValidation } from "../legacyRules/CreateOperationAsyncResponseValidation"
 import { DefaultErrorResponseSchema } from "../legacyRules/DefaultErrorResponseSchema"
-import { DeleteOperationAsyncResponseValidation } from "../legacyRules/DeleteOperationAsyncResponseValidation"
 import { DeleteOperationResponses } from "../legacyRules/DeleteOperationResponses"
 import { DeprecatedXmsCodeGenerationSetting } from "../legacyRules/DeprecatedXmsCodeGenerationSetting"
 import { EnumMustHaveType } from "../legacyRules/EnumMustHaveType"
@@ -234,52 +233,6 @@ describe("IndividualAzureTests", () => {
     const fileName = "PreviewVersionOverOneYear.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PreviewVersionOverOneYear)
     assertValidationRuleCount(messages, PreviewVersionOverOneYear, 1)
-  })
-
-  // Failure #1 : RPaaS DELETE async response supports 202 only. 201 is not supported.
-  test("Raas DELETE async operation doesn't support 201", async () => {
-    const fileName = "RpaasDeleteAsyncOperationResponseCodeValidation.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      DeleteOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 1)
-  })
-
-  // Failure #1 : 'x-ms-long-running-operation' is missing
-  // Failure #2: 'x-ms-long-running-operation-options' is missing
-  test("Raas DELETE async operation missing x-ms* async extensions", async () => {
-    const fileName = "RpaasDeleteAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      DeleteOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 2)
-  })
-
-  // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 202 (implies async)
-  // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
-  test("Raas DELETE async operation is tracked using Auzre-AsyncOperation header", async () => {
-    const fileName = "RpaasDeleteAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      DeleteOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 2)
-  })
-
-  // Valid 202 response for DELETE operation in RPaaS
-  test("Raas DELETE async operation is defined correctly", async () => {
-    const fileName = "RpaasValidDeleteAsyncOperationResponse.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      DeleteOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, DeleteOperationAsyncResponseValidation, 0)
   })
 
   // Failure #1 : RPaaS POST async response supports 202 only. 201 is not supported.

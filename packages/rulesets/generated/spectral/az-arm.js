@@ -1464,8 +1464,9 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
 
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
-const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204, and default return codes. They also must have no other response codes.";
-const LR_ERROR = "Long-running (LRO) delete operations must have responses with 202, 204, and default return codes. They also must have no other response codes.";
+const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
+const LR_ERROR = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
+const EmptyResponse_ERROR = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1473,11 +1474,25 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     }
     const path = ctx.path;
     const errors = [];
-    if (!(deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses)) {
-        return [];
-    }
     const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
-    if (deleteOp["x-ms-long-running-operation"] === true) {
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = deleteOp.responses["202"] ||
+        (deleteOp["x-ms-long-running-operation"] && deleteOp["x-ms-long-running-operation"] === true) ||
+        deleteOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        if (!deleteOp["x-ms-long-running-operation"]) {
+            errors.push({
+                message: "An async DELETE operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
                 message: LR_ERROR,
@@ -1494,45 +1509,6 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
         }
     }
     return errors;
-};
-
-const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesList) => {
-    var _a, _b, _c, _d;
-    if (methodOp === null || typeof methodOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const method = Object.keys(methodOp)[0];
-    if (!["delete", "put", "patch", "post"].includes(method)) {
-        return [];
-    }
-    const operationId = ((_a = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _a === void 0 ? void 0 : _a.operationId) || "";
-    if (!((_b = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _b === void 0 ? void 0 : _b["x-ms-long-running-operation"])) {
-        return [];
-    }
-    if ((_c = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _c === void 0 ? void 0 : _c.responses) {
-        const responseCodes = Object.keys((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
-        const validResponseCodes = validResponseCodesList[method];
-        const validResponseCodeString = validResponseCodes.join(" or ");
-        const withTerminalCode = validResponseCodes.some((code) => responseCodes.includes(code));
-        if (!withTerminalCode) {
-            errors.push({
-                message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
-                path: [...path, method],
-            });
-        }
-    }
-    return errors;
-};
-const longRunningResponseStatusCodeArm = (methodOp, _opts, ctx) => {
-    const validResponseCodesList = {
-        delete: ["200", "204"],
-        post: ["200", "201", "202", "204"],
-        put: ["200", "201"],
-        patch: ["200", "201", "202"],
-    };
-    return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList);
 };
 
 const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
@@ -2596,17 +2572,6 @@ const ruleset = {
                 functionOptions: {
                     segments: ["resourceGroups", "subscriptions"],
                 },
-            },
-        },
-        LongRunningResponseStatusCode: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
-            then: {
-                function: longRunningResponseStatusCodeArm,
             },
         },
         ProvisioningStateSpecifiedForLROPut: {
