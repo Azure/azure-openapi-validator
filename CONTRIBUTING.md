@@ -7,10 +7,12 @@
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
   * [Verify the deployed changes](#verify-the-deployed-changes)
-- [How to run LintDiff locally](#how-to-run-lintdiff-locally)
-  * [Setup](#setup)
-  * [Execute your local LintDiff code](#execute-your-local-lintdiff-code)
-  * [Execute locally LintDiff version published to npm](#execute-locally-lintdiff-version-published-to-npm)
+- [How to locally reproduce a LintDiff failure occurring on a PR](#how-to-locally-reproduce-a-lintdiff-failure-occurring-on-a-pr)
+  * [How to install AutoRest](#how-to-install-autorest)
+  * [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
+    + [Production LintDiff CI check](#production-lintdiff-ci-check)
+    + [Staging LintDiff CI check](#staging-lintdiff-ci-check)
+- [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-source)
 - [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules)
 - [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
@@ -27,8 +29,9 @@
   * [Usage](#usage)
   * [Example](#example)
   * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
-- [Appendix](#appendix)
-  * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for-execute-locally-lintdiff-version-published-to-npm)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # Contributing
 
@@ -171,7 +174,7 @@ You can install it with `npm install -g autorest@3.6.1`.
 Using [PR 24311] as an example, we will determine what is the exact AutoRest command invocation used both by the
 production LintDiff check of `Swagger LintDiff`, and the staging LintDiff check of `~[Staging] Swagger LintDiff`.
 
-### Production LintDiff CI check AutoRest command invocation
+### Production LintDiff CI check
 
 To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation, follow these steps:
 
@@ -195,9 +198,10 @@ As a result, this information can be used to build the following example local e
 autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
 ```
 
-### Staging LintDiff CI check AutoRest command invocation
+### Staging LintDiff CI check
 
-The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in `Production LintDiff CI check AutoRest command invocation`, except:
+The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in 
+`Production LintDiff CI check`, except:
 
 - You must drill down into `~[Staging] Swagger LintDiff` check instead of `Swagger LintDiff`.
 - The AutoRest invocation will be slightly different. Here: [`Executing: npx autorest --v3 --version:next --spectral --validation --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@beta --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md
