@@ -125,10 +125,83 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
 If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
 the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
 
-# How to run LintDiff locally
+# How to locally reproduce a LintDiff failure occurring on a PR
 
-Instructions in this section use an example that assumes you are trying to locally reproduce a LintDiff failure
-in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
+This section explains how to locally reproduce a LintDiff failure in one of the PRs
+submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs)
+or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
+
+This allows you to locally iterate on your spec changes and keep rerunning LintDiff
+quickly until it passes.
+
+LintDiff is running as an extension of the `autorest` command and the npm package name of LintDiff is 
+`@microsoft.azure/openapi-validator`.  
+As such, you can reproduce the failure locally by running following command:
+
+```bash
+autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@<version-tag> --tag=<api-version> <path-to-autorest-config-file>
+```
+
+where:
+
+- You must install locally the **correct version** of the `autorest` command. See `How to install AutoRest` for details.
+- You must clone locally your PR git branch. The path to your local clone will be the prefix of `<path-to-autorest-config-file>`.
+- You can obtain `<version-tag>`, `<api-version>` and suffix of `<path-to-autorest-config-file>`, relative to your local
+clone, from the runtime build log of the LintDiff check that failed your PR. See `How to obtain PR LintDiff check
+AutoRest command invocation details` for details and examples.
+
+Note tha once you execute the command, it may take over a minute before anything is output to the console.
+
+## How to install AutoRest
+
+[Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md)
+
+```bash
+# Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
+npm install -g autorest@<currently_used_version>
+# run using command 'autorest' to check if installation worked
+autorest --help
+```
+
+Note that as of 6/5/2023 the exact `<currently_used_version>` of AutoRest by the LintDiff pipelines is [3.6.1](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps?path=/common/config/rush/pnpm-lock.yaml&version=GCbd88a10303709fd617f57b914671647d4ca63eb8&line=109&lineEnd=109&lineStartColumn=13&lineEndColumn=18&lineStyle=plain&_a=contents).
+You can install it with `npm install -g autorest@3.6.1`.
+
+## How to obtain PR LintDiff check AutoRest command invocation details
+
+Using [PR 24311] as an example, we will determine what is the exact AutoRest command invocation used both by the production LintDiff check of `Swagger LintDiff`, and the staging LintDiff check of `~[Staging] Swagger LintDiff`.
+
+### Production LintDiff CI check AutoRest command invocation
+
+To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation, follow these steps:
+
+- Open the [PR 24311] page.
+- Click on [`checks`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks).
+- Click on [`Swagger LintDiff`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks?check_run_id=14029092663)
+  - Observe the page says `compared tags (via openapi-validator `[`v2.1.2`](https://www.npmjs.com/package/@microsoft.azure/openapi-validator/v/2.1.2)`)`, which foreshadows what we are looking for.
+- Click on [`View more details on Swagger Pipeline`](https://dev.azure.com/azure-sdk//internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2).
+- Expand the `LintDiff` job and click on the [`LintDiff` task](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7).
+- Observe the line: [`Executing: node /mnt/vss/_work/_tasks/AzureApiValidation_5654d05d-82c1-48da-ad8f-161b817f6d41/0.0.54/private/azure-swagger-validation/azureSwaggerValidation/node_modules/autorest/dist/app.js --v3 --spectral --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7&l=59)
+  - Observe the line has, using the variables from `How to locally reproduce a LintDiff failure occurring on a PR`:
+  - `<version-tag>` of `2.1.2`,
+  - `<api-version>` of `package-2023-07`,
+  - and `<path-to-autorest-config-file>` of `/mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`
+    - you must replace `/mnt/vss/_work/1/azure-rest-api-specs/` with your local repo clone path for local execution.
+
+As a result, this information can be used to build the following example local execution command, using the template from `How to locally reproduce a LintDiff failure occurring on a PR`:
+
+``` bash
+autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
+```
+
+### Staging LintDiff CI check AutoRest command invocation
+
+The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in `Production LintDiff CI check AutoRest command invocation`, except:
+- You must drill down into `~[Staging] Swagger LintDiff` check instead of `Swagger LintDiff`. 
+- The AutoRest invocation will be slightly different. Here: [`Executing: npx autorest --v3 --version:next --spectral --validation --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@beta --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md
+`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824971&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=60)
+- You should expect exactly the same command, with one difference: the `<version-tag>` is going to be always `beta` for staging.
+
+xxx
 
 ## Setup
 
@@ -464,3 +537,7 @@ info    | Autorest completed in 135.35s. 0 files generated.
 ```
 
 [azure-rest-api-specs-pr PR 12357 Staging LintDiff failure]: https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2753856&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=81
+
+[PR 24311]: https://github.com/Azure/azure-rest-api-specs/pull/24311/
+
+[PR 24311 prod LintDiff AutoRest invocation]: https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7&l=59
