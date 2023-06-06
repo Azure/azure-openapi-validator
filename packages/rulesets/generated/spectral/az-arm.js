@@ -1669,33 +1669,6 @@ const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const LROPostFinalStateViaProperty = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    const path = ctx.path;
-    const errors = [];
-    const errorMessage = "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.";
-    if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
-        return [];
-    }
-    if (!postOp["x-ms-long-running-operation-options"]) {
-        errors.push({
-            message: errorMessage,
-            path: path,
-        });
-        return errors;
-    }
-    const finalStateViaProperty = postOp["x-ms-long-running-operation-options"]["final-state-via"];
-    if (!finalStateViaProperty || finalStateViaProperty !== "azure-async-operation") {
-        errors.push({
-            message: errorMessage,
-            path: path,
-        });
-    }
-    return errors;
-};
-
 const lroPostReturn = (postOp, _opts, ctx) => {
     if (postOp === null || typeof postOp !== "object") {
         return [];
@@ -2219,37 +2192,6 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
         }
     }
     return errors;
-};
-
-const RESOURCE_COMMON_TYPES_REGEX = /.*common-types\/resource-management\/v\d+\/types.json#\/definitions\/(Proxy|Tracked)Resource/;
-const resourceMustReferenceCommonTypes = (ref, _opts, ctx) => {
-    var _a, _b, _c, _d;
-    if (!ref) {
-        return [];
-    }
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    const definitions = swagger === null || swagger === void 0 ? void 0 : swagger.definitions;
-    if (!definitions) {
-        return [];
-    }
-    const resourceName = ref.toString().split("/").pop();
-    const allOfRef = (_c = (_b = definitions[resourceName]) === null || _b === void 0 ? void 0 : _b.properties) === null || _c === void 0 ? void 0 : _c.allOf;
-    const path = ["definitions", resourceName];
-    const error = [
-        {
-            message: `Resource definition '${resourceName}' must reference the common types resource definition for ProxyResource or TrackedResource.`,
-            path: path,
-        },
-    ];
-    if (!allOfRef) {
-        return error;
-    }
-    for (const refObj of allOfRef) {
-        if ((_d = refObj.$ref) === null || _d === void 0 ? void 0 : _d.match(RESOURCE_COMMON_TYPES_REGEX)) {
-            return [];
-        }
-    }
-    return error;
 };
 
 const resourceNameRestriction = (paths, _opts, ctx) => {
@@ -2953,17 +2895,6 @@ const ruleset = {
                 function: ParametersInPost,
             },
         },
-        LROPostFinalStateViaProperty: {
-            description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
-            message: "{{error}}",
-            severity: "off",
-            resolved: false,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[post]"],
-            then: {
-                function: LROPostFinalStateViaProperty,
-            },
-        },
         PathContainsSubscriptionId: {
             description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
             message: "{{error}}",
@@ -3129,17 +3060,6 @@ const ruleset = {
             given: "$.[paths,'x-ms-paths']",
             then: {
                 function: operationsApiTenantLevelOnly,
-            },
-        },
-        ResourceMustReferenceCommonTypes: {
-            description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
-            message: "{{error}}",
-            severity: "off",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
-            then: {
-                function: resourceMustReferenceCommonTypes,
             },
         },
         ProvisioningStateMustBeReadOnly: {
