@@ -200,7 +200,7 @@ autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-valida
 
 ### Staging LintDiff CI check
 
-The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in 
+The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in
 `Production LintDiff CI check`, except:
 
 - You must drill down into `~[Staging] Swagger LintDiff` check instead of `Swagger LintDiff`.
