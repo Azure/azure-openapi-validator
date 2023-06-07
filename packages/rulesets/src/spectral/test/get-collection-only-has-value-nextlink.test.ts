@@ -12,21 +12,54 @@ test("GetCollectionOnlyHasValueAndNextLink should find no errors when get collec
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
-      "/api/Paths": {
-        get: {
-          operationId: "Noun_Get",
-          responses: {
-            "200": {
-              schema: {
-                $ref: "#/definitions/ListResult",
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/default":
+        {
+          get: {
+            operationId: "Noun_Get",
+            responses: {
+              "200": {
+                schema: {
+                  $ref: "#/definitions/ListResult",
+                },
               },
-            },
-            default: {
-              description: "Unexpected error",
+              default: {
+                description: "Unexpected error",
+              },
             },
           },
         },
-      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/operations":
+        {
+          get: {
+            operationId: "Noun_Get",
+            responses: {
+              "200": {
+                schema: {
+                  $ref: "#/definitions/ListResult",
+                },
+              },
+              default: {
+                description: "Unexpected error",
+              },
+            },
+          },
+        },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/{dnssecConfigsName}":
+        {
+          get: {
+            operationId: "Noun_Get",
+            responses: {
+              "200": {
+                schema: {
+                  $ref: "#/definitions/ListResult",
+                },
+              },
+              default: {
+                description: "Unexpected error",
+              },
+            },
+          },
+        },
     },
     definitions: {
       ListResult: {
@@ -70,7 +103,7 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when get collectio
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
-      "/api/Paths": {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs": {
         get: {
           operationId: "Noun_Get",
           responses: {
@@ -124,7 +157,9 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when get collectio
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.responses.200.schema.properties")
+    expect(results[0].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs.get.responses.200.schema.properties"
+    )
     expect(results[0].message).toBe(
       "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model."
     )
@@ -135,7 +170,7 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when nextLink is m
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
-      "/api/Paths": {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs": {
         get: {
           operationId: "Noun_Get",
           responses: {
@@ -181,7 +216,9 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when nextLink is m
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.responses.200.schema.properties")
+    expect(results[0].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs.get.responses.200.schema.properties"
+    )
     expect(results[0].message).toBe(
       "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model."
     )
@@ -192,7 +229,7 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when value is miss
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
-      "/api/Paths": {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs": {
         get: {
           operationId: "Noun_Get",
           responses: {
@@ -236,7 +273,9 @@ test("GetCollectionOnlyHasValueAndNextLink should find errors when value is miss
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.responses.200.schema.properties")
+    expect(results[0].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs.get.responses.200.schema.properties"
+    )
     expect(results[0].message).toBe(
       "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model."
     )
