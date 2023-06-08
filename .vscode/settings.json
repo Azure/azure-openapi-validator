@@ -48,6 +48,7 @@
     "source.fixAll.eslint": true
   },
   "cSpell.words": [
-    "ruleset"
+    "ruleset",
+    "rulesets"
   ]
 }

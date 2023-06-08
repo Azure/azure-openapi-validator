@@ -54,6 +54,7 @@ The well-defined type/format combinations are:
 | uuid              |                              | from [AutoRest][autorest] |
 | base64url         |                              | from [AutoRest][autorest] |
 | url               |                              | from [AutoRest][autorest] |
+| uri               |                              | from [AutoRest][autorest] |
 | odata-query       |                              | from [AutoRest][autorest] |
 | certificate       |                              | from [AutoRest][autorest] |
 

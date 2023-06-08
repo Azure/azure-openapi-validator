@@ -1669,33 +1669,6 @@ const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const LROPostFinalStateViaProperty = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    const path = ctx.path;
-    const errors = [];
-    const errorMessage = "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.";
-    if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
-        return [];
-    }
-    if (!postOp["x-ms-long-running-operation-options"]) {
-        errors.push({
-            message: errorMessage,
-            path: path,
-        });
-        return errors;
-    }
-    const finalStateViaProperty = postOp["x-ms-long-running-operation-options"]["final-state-via"];
-    if (!finalStateViaProperty || finalStateViaProperty !== "azure-async-operation") {
-        errors.push({
-            message: errorMessage,
-            path: path,
-        });
-    }
-    return errors;
-};
-
 const lroPostReturn = (postOp, _opts, ctx) => {
     if (postOp === null || typeof postOp !== "object") {
         return [];
@@ -2100,8 +2073,8 @@ const provisioningStateMustBeReadOnly = (schema, _opts, ctx) => {
     return errors;
 };
 
-const putGetPatchScehma = (pathItem, opts, ctx) => {
-    if (pathItem === null || typeof pathItem !== 'object') {
+const putGetPatchSchema = (pathItem, opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
         return [];
     }
     const neededHttpVerbs = ["put", "get", "patch"];
@@ -2115,7 +2088,7 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
         if (models.size > 1) {
             errors.push({
                 message: "",
-                path
+                path,
             });
             break;
         }
@@ -2219,37 +2192,6 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
         }
     }
     return errors;
-};
-
-const RESOURCE_COMMON_TYPES_REGEX = /.*common-types\/resource-management\/v\d+\/types.json#\/definitions\/(Proxy|Tracked)Resource/;
-const resourceMustReferenceCommonTypes = (ref, _opts, ctx) => {
-    var _a, _b, _c, _d;
-    if (!ref) {
-        return [];
-    }
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    const definitions = swagger === null || swagger === void 0 ? void 0 : swagger.definitions;
-    if (!definitions) {
-        return [];
-    }
-    const resourceName = ref.toString().split("/").pop();
-    const allOfRef = (_c = (_b = definitions[resourceName]) === null || _b === void 0 ? void 0 : _b.properties) === null || _c === void 0 ? void 0 : _c.allOf;
-    const path = ["definitions", resourceName];
-    const error = [
-        {
-            message: `Resource definition '${resourceName}' must reference the common types resource definition for ProxyResource or TrackedResource.`,
-            path: path,
-        },
-    ];
-    if (!allOfRef) {
-        return error;
-    }
-    for (const refObj of allOfRef) {
-        if ((_d = refObj.$ref) === null || _d === void 0 ? void 0 : _d.match(RESOURCE_COMMON_TYPES_REGEX)) {
-            return [];
-        }
-    }
-    return error;
 };
 
 const resourceNameRestriction = (paths, _opts, ctx) => {
@@ -2639,6 +2581,7 @@ const ruleset = {
         DeleteResponseCodes: {
             description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
             severity: "error",
+            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2672,6 +2615,7 @@ const ruleset = {
         AvoidAdditionalProperties: {
             description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
             severity: "error",
+            stagingOnly: true,
             message: "{{description}}",
             resolved: true,
             formats: [oas2],
@@ -2683,6 +2627,7 @@ const ruleset = {
         PropertiesTypeObjectNoDefinition: {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
+            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2874,7 +2819,7 @@ const ruleset = {
             resolved: false,
             given: ["$[paths,'x-ms-paths'].*.put^"],
             then: {
-                function: putGetPatchScehma,
+                function: putGetPatchSchema,
             },
         },
         XmsResourceInPutResponse: {
@@ -2951,17 +2896,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[post][parameters]",
             then: {
                 function: ParametersInPost,
-            },
-        },
-        LROPostFinalStateViaProperty: {
-            description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
-            message: "{{error}}",
-            severity: "off",
-            resolved: false,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[post]"],
-            then: {
-                function: LROPostFinalStateViaProperty,
             },
         },
         PathContainsSubscriptionId: {
@@ -3099,6 +3033,7 @@ const ruleset = {
             description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths']"],
@@ -3124,6 +3059,7 @@ const ruleset = {
             description: "The get operations endpoint must only be at the tenant level.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$.[paths,'x-ms-paths']",
@@ -3131,21 +3067,11 @@ const ruleset = {
                 function: operationsApiTenantLevelOnly,
             },
         },
-        ResourceMustReferenceCommonTypes: {
-            description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
-            message: "{{error}}",
-            severity: "off",
-            resolved: false,
-            formats: [oas2],
-            given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
-            then: {
-                function: resourceMustReferenceCommonTypes,
-            },
-        },
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
             severity: "off",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],

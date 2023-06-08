@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Allow format: uri in dataplane",
+      "comment": "Fix leftover changes for 'rush build' and 'rush regen-ruleindex'",
       "type": "patch"
     }
   ],
