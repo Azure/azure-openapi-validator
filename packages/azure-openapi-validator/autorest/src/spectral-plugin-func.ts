@@ -16,6 +16,7 @@ import { cachedFiles } from "."
 export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
   const files: string[] = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
   const openapiType: string = await getOpenapiTypeStr(initiator)
+  const isStagingRun: boolean = await initiator.GetValue("is-staging-run")
 
   const readFile = async (fileUri: string) => {
     let file = cachedFiles.get(fileUri)
@@ -30,7 +31,9 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
   }
 
   const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
-  const ruleset: Ruleset = await getRuleSet(resolvedOpenapiType)
+  const [ruleset, namesOfRulesInStagingOnly]: [Ruleset, string[]] = await getRuleSet(resolvedOpenapiType)
+
+  ifNotStagingRunThenDisableStagingOnlyRules(isStagingRun, initiator, ruleset, namesOfRulesInStagingOnly)
 
   printRuleNames(initiator, ruleset, resolvedOpenapiType)
 
@@ -69,14 +72,45 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     try {
       const openapiDefinitionDocument = await readFile(file)
       const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-      const normolizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
-      await runSpectral(openapiDefinitionObject, normolizedFile, initiator.Message.bind(initiator), spectral)
+      const normalizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
+      await runSpectral(openapiDefinitionObject, normalizedFile, initiator.Message.bind(initiator), spectral)
     } catch (e) {
       initiator.Message({
         Channel: "fatal",
         Text: `Failed validating: '${file}', error encountered: ` + e,
       })
     }
+  }
+}
+
+function ifNotStagingRunThenDisableStagingOnlyRules(
+  isStagingRun: boolean,
+  initiator: IAutoRestPluginInitiator,
+  ruleset: Ruleset,
+  namesOfRulesInStagingOnly: string[]
+) {
+  if (isStagingRun) {
+    initiator.Message({
+      Channel: "information",
+      Text: "Detected staging run. Running all enabled rules.",
+    })
+  } else {
+    initiator.Message({
+      Channel: "information",
+      Text:
+        "Detected production run. As a result, disabling all Spectral rules that are denoted to run only in staging. Names of rules being disabled: " +
+        namesOfRulesInStagingOnly.join(", ") +
+        ".",
+    })
+    Object.values(ruleset.rules).forEach((rule) => {
+      if (namesOfRulesInStagingOnly.some((name) => rule.name == name)) {
+        // This assignment will invoke the setter defined here:
+        // https://github.com/stoplightio/spectral/blob/44c40e2b7c9ea6222054da8700049b0307cc5f8b/packages/core/src/ruleset/rule.ts#L121
+        // Resulting in value of -1, as defined here:
+        // https://github.com/stoplightio/spectral/blob/44c40e2b7c9ea6222054da8700049b0307cc5f8b/packages/ruleset-migrator/src/transformers/rules.ts#L39
+        rule.severity = "off"
+      }
+    })
   }
 }
 
@@ -159,8 +193,8 @@ async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message)
   return mergedResults
 }
 
-export async function getRuleSet(openapiType: OpenApiTypes): Promise<Ruleset> {
-  let ruleset
+export async function getRuleSet(openapiType: OpenApiTypes): Promise<[ruleset: Ruleset, namesOfRulesInStagingOnly: string[]]> {
+  let ruleset: any
   switch (openapiType) {
     case OpenApiTypes.arm: {
       ruleset = spectralRulesets.azARM
@@ -175,14 +209,17 @@ export async function getRuleSet(openapiType: OpenApiTypes): Promise<Ruleset> {
     }
   }
 
-  return new Ruleset(ruleset, { severity: "recommended" })
-  /*const ruleset = await bundleRuleset(rulesetFile, {
-        target: 'node',
-        format: 'commonjs',
-        plugins: [builtins(), commonjs(), ...node({ fs, fetch })],
-      });
-  return  new Ruleset(load(ruleset,rulesetFile), {
-    severity: 'recommended',
-    source: rulesetFile,
-  }); */
+  const namesOfRulesInStagingOnly: string[] = processRulesInStagingOnly(ruleset.rules)
+
+  return [new Ruleset(ruleset, { severity: "recommended" }), namesOfRulesInStagingOnly]
+
+  function processRulesInStagingOnly(rules: any) {
+    const rulesByName: [string, any][] = Object.entries(rules)
+    const rulesInStagingOnlyByName: [string, any][] = rulesByName.filter(([_, rule]) => rule?.stagingOnly === true)
+    const namesOfRulesInStagingOnly: string[] = rulesInStagingOnlyByName.map(([name, _]) => name)
+    // Here we delete the "stagingOnly" property because it is a custom property added by this source code,
+    // and thus would fail validation when constructing @stoplight/spectral-core Ruleset downstream.
+    rulesInStagingOnlyByName.forEach(([_, rule]) => delete rule.stagingOnly)
+    return namesOfRulesInStagingOnly
+  }
 }

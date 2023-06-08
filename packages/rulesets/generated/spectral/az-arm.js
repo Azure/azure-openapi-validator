@@ -2073,8 +2073,8 @@ const provisioningStateMustBeReadOnly = (schema, _opts, ctx) => {
     return errors;
 };
 
-const putGetPatchScehma = (pathItem, opts, ctx) => {
-    if (pathItem === null || typeof pathItem !== 'object') {
+const putGetPatchSchema = (pathItem, opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
         return [];
     }
     const neededHttpVerbs = ["put", "get", "patch"];
@@ -2088,7 +2088,7 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
         if (models.size > 1) {
             errors.push({
                 message: "",
-                path
+                path,
             });
             break;
         }
@@ -2816,7 +2816,7 @@ const ruleset = {
             resolved: false,
             given: ["$[paths,'x-ms-paths'].*.put^"],
             then: {
-                function: putGetPatchScehma,
+                function: putGetPatchSchema,
             },
         },
         XmsResourceInPutResponse: {
