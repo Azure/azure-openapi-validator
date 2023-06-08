@@ -1512,9 +1512,6 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
 };
 
 const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
-    if (!properties || typeof properties !== "object") {
-        return [];
-    }
     const keys = Object.keys(properties);
     if (keys.length != 2 || !keys.includes("value") || !keys.includes("nextLink")) {
         return [
