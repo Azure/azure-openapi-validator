@@ -96,6 +96,7 @@ have more control over the process and debug any issues.
 # (WIP) New linter rule promotion strategy
 
 1. __MAYBE__: run the new rule (only the new rule) locally for all of the existing swagger specs and aggregate the results
+1. Ensure the new rule is set to run [only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 1. Merge new rules to main
     1. As a result, they show up in the Staging LintDiff pipeline.
     1. __MAYBE__: pipeline automatically runs the linter on all the existing API specs for new linter rule merges to main.
