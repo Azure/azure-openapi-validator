@@ -7,10 +7,12 @@
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
   * [Verify the deployed changes](#verify-the-deployed-changes)
-- [How to run LintDiff locally](#how-to-run-lintdiff-locally)
-  * [Setup](#setup)
-  * [Execute your local LintDiff code](#execute-your-local-lintdiff-code)
-  * [Execute locally LintDiff version published to npm](#execute-locally-lintdiff-version-published-to-npm)
+- [How to locally reproduce a LintDiff failure occurring on a PR](#how-to-locally-reproduce-a-lintdiff-failure-occurring-on-a-pr)
+  * [How to install AutoRest](#how-to-install-autorest)
+  * [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
+    + [Production LintDiff CI check](#production-lintdiff-ci-check)
+    + [Staging LintDiff CI check](#staging-lintdiff-ci-check)
+- [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-sources)
 - [How to disable or enable existing Spectral rules](#how-to-disable-or-enable-existing-spectral-rules)
 - [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
@@ -27,8 +29,9 @@
   * [Usage](#usage)
   * [Example](#example)
   * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
-- [Appendix](#appendix)
-  * [Appendix for `Execute locally LintDiff version published to npm`](#appendix-for-execute-locally-lintdiff-version-published-to-npm)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # Contributing
 
@@ -125,66 +128,102 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
 If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
 the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
 
-# How to run LintDiff locally
+# How to locally reproduce a LintDiff failure occurring on a PR
 
-Instructions in this section use an example that assumes you are trying to locally reproduce a LintDiff failure
-in one of the PRs submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
+This section explains how to locally reproduce a LintDiff failure in one of the PRs
+submitted to [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs)
+or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) repos.
 
-## Setup
+Reproducing failure locally allows you to locally iterate on your spec changes
+and keep rerunning LintDiff quickly until it passes.
+
+LintDiff is running as an extension of the `autorest` command and the npm package name of LintDiff is 
+[`@microsoft.azure/openapi-validator`].
+As such, you can reproduce the failure locally by running following command:
+
+```bash
+autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@<version-tag> --tag=<api-version> <path-to-autorest-config-file>
+```
+
+where:
+
+- You must install locally the **correct version** of the `autorest` command. See `How to install AutoRest` below for details.
+- You must clone locally your PR git branch. The path to your local clone will be the prefix of `<path-to-autorest-config-file>`.
+- You can obtain `<version-tag>`, `<api-version>` and suffix of `<path-to-autorest-config-file>`, relative to your local
+clone, from the runtime build log of the LintDiff check that failed your PR. See `How to obtain PR LintDiff check
+AutoRest command invocation details` below for details and examples.
+
+Note that once you execute the command, it may take over a minute before anything is output to the console.
+
+## How to install AutoRest
+
+[Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md)
+
+```bash
+# Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
+npm install -g autorest@<currently_used_version>
+# run using command 'autorest' to check if installation worked
+autorest --help
+```
+
+Note that as of 6/5/2023 the exact `<currently_used_version>` of AutoRest by the LintDiff pipelines is [3.6.1](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps?path=/common/config/rush/pnpm-lock.yaml&version=GCbd88a10303709fd617f57b914671647d4ca63eb8&line=109&lineEnd=109&lineStartColumn=13&lineEndColumn=18&lineStyle=plain&_a=contents).
+You can install it with `npm install -g autorest@3.6.1`.
+
+## How to obtain PR LintDiff check AutoRest command invocation details
+
+Using [PR 24311] as an example, we will determine what is the exact AutoRest command invocation used both by the
+production LintDiff check of `Swagger LintDiff`, and the staging LintDiff check of `~[Staging] Swagger LintDiff`.
+
+### Production LintDiff CI check
+
+To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation for the [PR 24311] (our example), follow these steps:
+
+- Open the [PR 24311] page.
+- Click on [`Checks`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks) and expand `openapi-pipeline-app`.
+- Click on [`Swagger LintDiff`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks?check_run_id=14029092663).
+  - Observe the page says `compared tags (via openapi-validator `[`v2.1.2`](https://www.npmjs.com/package/@microsoft.azure/openapi-validator/v/2.1.2)`)`, which foreshadows what we are looking for.
+- Click on [`View more details on Swagger Pipeline`](https://dev.azure.com/azure-sdk//internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2).
+- Expand the `LintDiff` job and click on the [`LintDiff` task](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7).
+- Observe the line: [`Executing: node /mnt/vss/_work/_tasks/AzureApiValidation_5654d05d-82c1-48da-ad8f-161b817f6d41/0.0.54/private/azure-swagger-validation/azureSwaggerValidation/node_modules/autorest/dist/app.js --v3 --spectral --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7&l=59)
+  - Here, `node /mnt/vss/_work/_tasks/AzureApiValidation_5654d05d-82c1-48da-ad8f-161b817f6d41/0.0.54/private/azure-swagger-validation/azureSwaggerValidation/node_modules/autorest/dist/app.js` corresponds to the command `autorest`.
+  - Observe the line has, using the variables from `How to locally reproduce a LintDiff failure occurring on a PR`:
+    - `<version-tag>` of `2.1.2`,
+    - `<api-version>` of `package-2023-07`,
+    - and `<path-to-autorest-config-file>` of `/mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`.
+      - You must replace `/mnt/vss/_work/1/azure-rest-api-specs/` with your local repo clone path for local execution.
+
+As a result, this information can be used to build the following example local execution command, using the template from `How to locally reproduce a LintDiff failure occurring on a PR`:
+
+``` bash
+autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
+```
+
+### Staging LintDiff CI check
+
+The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in
+`Production LintDiff CI check`, except:
+
+- You must drill down into `~[Staging] Swagger LintDiff` check instead of `Swagger LintDiff`.
+- The AutoRest invocation will be slightly different. Here: [`Executing: npx autorest --v3 --version:next --spectral --validation --azure-validator --semantic-validator=false --model-validator=false --message-format=json --openapi-type=arm --use=@microsoft.azure/openapi-validator@beta --tag=package-2023-07 /mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824971&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=60)
+- You should expect exactly the same command, with one difference: for staging, the `<version-tag>`
+  is always going to be `beta`.
+
+# How to run LintDiff locally from sources
+
+To run LintDiff locally from sources, you should follow the guidance given in
+`How to locally reproduce a LintDiff failure occurring on a PR`
+but with one major difference: instead of using `<version-tag>`, you will point to your local LintDiff installation.
+
+This will allow you to not only reproduce any failures occurring in the CI, but also rapidly iterate changes to LintDiff
+itself.
+
+Steps:
 
 1. Ensure you meet the [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally) requirements **up to and including** `rush build`.
-1. [Install AutoRest using npm](https://github.com/Azure/autorest/blob/main/docs/install/readme.md):
-   ```bash
-   # Depending on your configuration you may need to be elevated or root to run this. (on OSX/Linux use 'sudo' )
-   npm install -g autorest
-   # run using command 'autorest' to check if installation worked
-   autorest --help
-   ```
-   Note that the exact AutoRest version used by the LintDiff pipelines is [3.6.1](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps?path=/common/config/rush/pnpm-lock.yaml&version=GBmain&line=109&lineEnd=109&lineStartColumn=13&lineEndColumn=18&lineStyle=plain&_a=contents). You can install it with `npm install -g autorest@3.6.1`.
-1. Clone the repo that has the specification on which you are trying to run LintDiff, and check out appropriate branch.
-   - As an example, let's say you are trying to reproduce LintDiff run for [azure-rest-api-specs-pr PR 12357](https://github.com/Azure/azure-rest-api-specs-pr/pull/12357). Do the following:
-   - `cd repos` // Here we assume your local git clones are in `repos` dir.
-   - `git clone https://github.com/Azure/azure-rest-api-specs-pr.git`
-   - `git checkout containerservice/official/fleet-api-release`
-1. `cd repos/azure-openapi-validator` // Here we assume this is your local git clone of LintDiff.
-
-## Execute your local LintDiff code
-
-5. Execute the following command:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=<api-version> <path-to-autorest-config-file>
-   ```
-
-   For example, if you are trying to reproduce [azure-rest-api-specs-pr PR 12357 Staging LintDiff failure], but using local LintDiff code, you would use:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=./packages/azure-openapi-validator/autorest --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-   ```
-
-   Note that there maybe over 1 minute long breaks before anything is output to the console.
-
-   Note that the [readme.md](https://github.com/Azure/azure-rest-api-specs-pr/blob/53353cc286fc2d89b21927c80f3f3078e8af989f/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md) we pass here is indeed an AutoRest config file and it has [package-2022-09-preview](https://github.com/Azure/azure-rest-api-specs-pr/blob/53353cc286fc2d89b21927c80f3f3078e8af989f/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md#tag-package-2022-09-preview) section that points to the input file of `preview/2022-09-02-preview/fleets.json`.
+1. Prepare the `autorest` invocation command as described in `How to locally reproduce a LintDiff failure occurring on a PR`,
+but instead of `--use=<api-version>` use `--use=./packages/azure-openapi-validator/autorest`, where `.` denotes path to your local clone of [`azure-openapi-validator` repository](https://github.com/Azure/azure-openapi-validator).
 
    > **Troubleshooting**: if you get `error   |   Error: Can only create file URIs from absolute paths. Got 'packages\azure-openapi-validator\autorest\readme.md'` then ensure you passed `--use=./packages/azure-openapi-validator/autorest` and not `--use=packages/azure-openapi-validator/autorest`.
-
-## Execute locally LintDiff version published to npm
-
-5. Familiarize yourself with instructions for `Execute your local LintDiff code`. The only difference is that instead of passing `--use=./packages/azure-openapi-validator/autorest` you will pass `-use=@microsoft.azure/openapi-validator@<version-tag>` where you can obtain `<version-tag>` from [npm package @microsoft.azure/openapi-validator](https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions).
-
-   Continuing our example for PR 12357, we can observe that version `2.0.1`, which as of this writing (5/5/2023) runs in production, produces only `warning | IgnoredPropertyNextToRef`:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.0.1 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-   ```
-
-   On the other hand, version `2.2.0-beta.3` which as of this writing corresponds to `beta`, does produce significantly more warnings, which match the failures observed in the [Staging LintDiff CI check][azure-rest-api-specs-pr PR 12357 Staging LintDiff failure]:
-
-   ```bash
-   autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.2.0-beta.3 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-   ```
-
-   You can find example outputs of these commands in the `Appendix` section at the end of this document.
 
 # How to disable or enable existing Spectral rules
 
@@ -383,84 +422,5 @@ Now when you open an API definition in this project, it should highlight lines w
 You can also get a full list of problems in the file by opening the "Problems panel" with "View / Problems".
 In the Problems panel you can filter to show or hide errors, warnings, or infos.
 
-# Appendix
-
-## Appendix for `Execute locally LintDiff version published to npm`
-
-This command:
-
-```bash
-repos\azure-openapi-validator> autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.0.1 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-```
-
-Results in:
-
-```bash
-AutoRest code generation utility [cli version: 3.6.3; node: v19.1.0]
-(C) 2018 Microsoft Corporation.
-https://aka.ms/autorest
-info    | AutoRest core version selected from configuration: ^3.2.0.
-info    |    Loading AutoRest core      '<home_dir>\.autorest\@autorestcore@3.9.5\nodemodules\@autorest\core\dist' (3.9.5)
-info    |    Installing AutoRest extension '@microsoft.azure/openapi-validator' (2.0.1 -> 2.0.1)
-installing... [========================================] 100% | 547/547
-info    |    Installed AutoRest extension '@microsoft.azure/openapi-validator' (2.0.1->2.0.1)
-warning | IgnoredPropertyNextToRef | Semantic violation: Sibling values alongside $ref will be ignored. See https://github.com/Azure/autorest/blob/main/docs/openapi/howto/$ref-siblings.md for allowed values (components > schemas > Resource > properties > systemData)
-  keys: [ 'type' ]
-info    | Autorest completed in 89.91s. 0 files generated.
-```
-
-This command:
-
-```bash
-repos\azure-openapi-validator>autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.2.0-beta.3 --tag=package-2022-09-preview ../azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-```
-
-results in:
-
-```bash
-AutoRest code generation utility [cli version: 3.6.3; node: v19.1.0]
-(C) 2018 Microsoft Corporation.
-https://aka.ms/autorest
-info    | AutoRest core version selected from configuration: ^3.2.0.
-info    |    Loading AutoRest core      '<home_dir>\.autorest\@autorestcore@3.9.5\nodemodules\@autorest\core\dist' (3.9.5)
-info    |    Installing AutoRest extension '@microsoft.azure/openapi-validator' (2.2.0-beta.3 -> 2.2.0-beta.3)
-installing... [========================================] 100% | 547/547
-info    |    Installed AutoRest extension '@microsoft.azure/openapi-validator' (2.2.0-beta.3->2.2.0-beta.3)
-warning | IgnoredPropertyNextToRef | Semantic violation: Sibling values alongside $ref will be ignored. See https://github.com/Azure/autorest/blob/main/docs/openapi/howto/$ref-siblings.md for allowed values (components > schemas > Resource > properties > systemData)
-  keys: [ 'type' ]
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:201:13
-error   | PutResponseSchemaDescription | Description of 200 response code of a PUT operation MUST include term "update".
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:270:9
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:273:13
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:286:13
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:354:13
-warning | ProvisioningStateSpecifiedForLRODelete | 200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:407:11
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:587:13
-error   | PutResponseSchemaDescription | Description of 200 response code of a PUT operation MUST include term "update".
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:666:9
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:669:13
-error   | ProvisioningStateMustBeReadOnly | provisioningState property must be set to readOnly.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:682:13
-warning | ProvisioningStateSpecifiedForLRODelete | 200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:749:11
-error   | ResourceMustReferenceCommonTypes | Resource definition 'OperationListResult' must reference the common types resource definition for ProxyResource or TrackedResource.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:788:3
-error   | ResourceMustReferenceCommonTypes | Resource definition 'Fleet' must reference the common types resource definition for ProxyResource or TrackedResource.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:801:5
-error   | ResourceMustReferenceCommonTypes | Resource definition 'FleetListResult' must reference the common types resource definition for ProxyResource or TrackedResource.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:888:5
-error   | ResourceMustReferenceCommonTypes | Resource definition 'FleetMember' must reference the common types resource definition for ProxyResource or TrackedResource.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:911:5
-error   | ResourceMustReferenceCommonTypes | Resource definition 'FleetMemberListResult' must reference the common types resource definition for ProxyResource or TrackedResource.
-    - file:///<home_dir>/repos/azure-rest-api-specs-pr/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2022-09-02-preview/fleets.json:936:5
-info    | Autorest completed in 135.35s. 0 files generated.
-```
-
-[azure-rest-api-specs-pr PR 12357 Staging LintDiff failure]: https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2753856&view=logs&j=688669d0-441c-57c3-cf6d-f89a22ccfa5d&t=b91b1e88-b042-5e18-36d8-34e4fb3a9b3b&l=81
+[PR 24311]: https://github.com/Azure/azure-rest-api-specs/pull/24311/
+[`@microsoft.azure/openapi-validator`]: https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions
