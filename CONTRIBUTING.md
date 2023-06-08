@@ -138,7 +138,7 @@ Reproducing failure locally allows you to locally iterate on your spec changes
 and keep rerunning LintDiff quickly until it passes.
 
 LintDiff is running as an extension of the `autorest` command and the npm package name of LintDiff is 
-`@microsoft.azure/openapi-validator`.
+[`@microsoft.azure/openapi-validator`].
 As such, you can reproduce the failure locally by running following command:
 
 ```bash
@@ -423,3 +423,4 @@ You can also get a full list of problems in the file by opening the "Problems pa
 In the Problems panel you can filter to show or hide errors, warnings, or infos.
 
 [PR 24311]: https://github.com/Azure/azure-rest-api-specs/pull/24311/
+[`@microsoft.azure/openapi-validator`]: https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions
