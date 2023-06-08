@@ -179,8 +179,8 @@ production LintDiff check of `Swagger LintDiff`, and the staging LintDiff check 
 To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation for the [PR 24311] (our example), follow these steps:
 
 - Open the [PR 24311] page.
-- Click on [`Checks`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks).
-- Click on [`Swagger LintDiff`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks?check_run_id=14029092663)
+- Click on [`Checks`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks) and expand `openapi-pipeline-app`.
+- Click on [`Swagger LintDiff`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks?check_run_id=14029092663).
   - Observe the page says `compared tags (via openapi-validator `[`v2.1.2`](https://www.npmjs.com/package/@microsoft.azure/openapi-validator/v/2.1.2)`)`, which foreshadows what we are looking for.
 - Click on [`View more details on Swagger Pipeline`](https://dev.azure.com/azure-sdk//internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2).
 - Expand the `LintDiff` job and click on the [`LintDiff` task](https://dev.azure.com/azure-sdk/internal/_build/results?buildId=2824970&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7).
