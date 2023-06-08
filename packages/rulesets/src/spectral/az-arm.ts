@@ -160,6 +160,7 @@ const ruleset: any = {
     DeleteResponseCodes: {
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
+      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -203,6 +204,7 @@ const ruleset: any = {
     AvoidAdditionalProperties: {
       description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
       severity: "error",
+      stagingOnly: true,
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
@@ -217,6 +219,7 @@ const ruleset: any = {
       description:
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
+      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -710,6 +713,7 @@ const ruleset: any = {
         "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths']"],
@@ -743,6 +747,7 @@ const ruleset: any = {
       description: "The get operations endpoint must only be at the tenant level.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$.[paths,'x-ms-paths']",
@@ -758,7 +763,8 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1535560188
+      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6191#issuecomment-1571334585
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
