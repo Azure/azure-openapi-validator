@@ -3071,6 +3071,7 @@ const ruleset = {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
             severity: "off",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
