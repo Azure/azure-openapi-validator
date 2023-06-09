@@ -96,6 +96,11 @@ test("GetCollectionOnlyHasValueAndNextLink should find no errors when get collec
             type: "string",
             readOnly: true,
           },
+          nextLink1: {
+            description: "URI to fetch the next section of the paginated response.",
+            type: "string",
+            readOnly: true,
+          },
         },
       },
       Resource: {

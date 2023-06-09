@@ -1,11 +1,12 @@
 // Verifies that collection get schemas have only the `value` and `nextLink` properties in their models.
 
+// These if conditions checks each path if it has any static strings defined by customer and skips that path
 export const getCollectionOnlyHasValueAndNextLink = (prop: any, _opts: any, ctx: any) => {
   for (let path of ctx.path) {
     if (path.includes(".")) {
       // Splitting the path by Provider namespace
       let splitNamespace = path.split(".")
-      // finiding number of segments after namespace
+      // finding number of segments after namespace
       if (path.includes("/")) {
         let segments = splitNamespace[1].split("/")
         if (segments.length % 2 !== 0) {
