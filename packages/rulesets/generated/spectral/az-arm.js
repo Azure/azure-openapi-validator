@@ -1511,14 +1511,27 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     return errors;
 };
 
-const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
-    const keys = Object.keys(properties);
-    if (keys.length != 2 || !keys.includes("value") || !keys.includes("nextLink")) {
-        return [
-            {
-                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
-            },
-        ];
+const getCollectionOnlyHasValueAndNextLink = (prop, _opts, ctx) => {
+    for (let path of ctx.path) {
+        if (path.includes(".")) {
+            let splitNamespace = path.split(".");
+            if (path.includes("/")) {
+                let segments = splitNamespace[1].split("/");
+                if (segments.length % 2 !== 0) {
+                    return [];
+                }
+                else {
+                    const key = Object.keys(prop);
+                    if (key.length != 2 || !key.includes("value") || !key.includes("nextLink")) {
+                        return [
+                            {
+                                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+                            },
+                        ];
+                    }
+                }
+            }
+        }
     }
     return [];
 };

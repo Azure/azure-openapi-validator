@@ -44,6 +44,22 @@ test("GetCollectionOnlyHasValueAndNextLink should find no errors when get collec
             },
           },
         },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/anystring":
+        {
+          get: {
+            operationId: "Noun_Get",
+            responses: {
+              "200": {
+                schema: {
+                  $ref: "#/definitions/ListResult",
+                },
+              },
+              default: {
+                description: "Unexpected error",
+              },
+            },
+          },
+        },
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/{dnssecConfigsName}":
         {
           get: {
