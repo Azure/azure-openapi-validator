@@ -171,7 +171,7 @@ verify the rule is running with the instructions in [Verify the deployed changes
       | where ViolationCode == ruleName
       )
       on BuildId
-    | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildId
+    | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
     | sort by count_ desc 
     ```
     where the rule was incorrectly marked as violated.
