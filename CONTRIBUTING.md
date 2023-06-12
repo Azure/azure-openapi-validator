@@ -99,7 +99,8 @@ have more control over the process and debug any issues.
 # New linter rule promotion strategy
 
 1. Ensure the new rule is set to run [only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
-1. Merge the new rule to the main branch. Once merged, your new rule will start running in the staging pipeline.
+1. Merge the new rule to the main branch. Once merged, your new rule will start running in the staging pipeline. You can
+verify the rule is running with the instructions in [Verify the deployed changes](#verify-the-deployed-changes).
 1. Review Staging LintDiff pipeline build logs to see if the rules work correctly.
     1. Use Kusto to find PRs that ran your new rule:
     ```kusto
