@@ -1511,17 +1511,20 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     return errors;
 };
 
-const getCollectionOnlyHasValueAndNextLink = (prop, _opts, ctx) => {
+const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
+    if (!properties || typeof properties !== "object") {
+        return [];
+    }
     for (let path of ctx.path) {
         if (path.includes(".")) {
             let splitNamespace = path.split(".");
             if (path.includes("/")) {
-                let segments = splitNamespace[1].split("/");
+                let segments = splitNamespace[splitNamespace.length - 1].split("/");
                 if (segments.length % 2 !== 0) {
                     return [];
                 }
                 else {
-                    const key = Object.keys(prop);
+                    const key = Object.keys(properties);
                     if (key.length != 2 || !key.includes("value") || !key.includes("nextLink")) {
                         return [
                             {

@@ -60,6 +60,22 @@ test("GetCollectionOnlyHasValueAndNextLink should find no errors when get collec
             },
           },
         },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/Microsoft.Other/otherZones/{otherzoneName}/otherdnssec/anystring":
+        {
+          get: {
+            operationId: "Noun_Get",
+            responses: {
+              "200": {
+                schema: {
+                  $ref: "#/definitions/ListResult",
+                },
+              },
+              default: {
+                description: "Unexpected error",
+              },
+            },
+          },
+        },
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/{dnssecConfigsName}":
         {
           get: {
@@ -121,6 +137,73 @@ test("GetCollectionOnlyHasValueAndNextLink should find no errors when get collec
 })
 
 test("GetCollectionOnlyHasValueAndNextLink should find errors when get collection schema has properties other than value and nextLink", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs": {
+        get: {
+          operationId: "Noun_Get",
+          responses: {
+            "200": {
+              schema: {
+                $ref: "#/definitions/ListResult",
+              },
+            },
+            default: {
+              description: "Unexpected error",
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      ListResult: {
+        type: "object",
+        required: ["value"],
+        description: "List of resources",
+        additionalProperties: false,
+        properties: {
+          value: {
+            description: "An array of resources.",
+            type: "array",
+            items: {
+              $ref: "#/definitions/Resource",
+            },
+          },
+          nextLink: {
+            description: "URI to fetch the next section of the paginated response.",
+            type: "string",
+            readOnly: true,
+          },
+          somethingElse: {
+            description: "This should not be here.",
+          },
+        },
+      },
+      Resource: {
+        "x-ms-azure-resource": true,
+        properties: {
+          id: {
+            type: "string",
+            readOnly: true,
+            description: "Resource Id",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs.get.responses.200.schema.properties"
+    )
+    expect(results[0].message).toBe(
+      "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model."
+    )
+  })
+})
+
+test("GetCollectionOnlyHasValueAndNextLink should find errors when get collection schema has two provider namespaces", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
