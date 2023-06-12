@@ -6,13 +6,13 @@ export const getCollectionOnlyHasValueAndNextLink = (properties: any, _opts: any
     return []
   }
 
-  for (let path of ctx.path) {
+  for (const path of ctx.path) {
     if (path.includes(".")) {
       // Splitting the path by Provider namespace
-      let splitNamespace = path.split(".")
+      const splitNamespace = path.split(".")
       // finding number of segments after namespace
       if (path.includes("/")) {
-        let segments = splitNamespace[splitNamespace.length - 1].split("/")
+        const segments = splitNamespace[splitNamespace.length - 1].split("/")
         if (segments.length % 2 !== 0) {
           return []
         } else {

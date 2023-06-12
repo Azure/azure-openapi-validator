@@ -1515,11 +1515,11 @@ const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
     if (!properties || typeof properties !== "object") {
         return [];
     }
-    for (let path of ctx.path) {
+    for (const path of ctx.path) {
         if (path.includes(".")) {
-            let splitNamespace = path.split(".");
+            const splitNamespace = path.split(".");
             if (path.includes("/")) {
-                let segments = splitNamespace[splitNamespace.length - 1].split("/");
+                const segments = splitNamespace[splitNamespace.length - 1].split("/");
                 if (segments.length % 2 !== 0) {
                     return [];
                 }
