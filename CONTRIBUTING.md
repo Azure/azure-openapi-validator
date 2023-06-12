@@ -104,32 +104,76 @@ verify the rule is running with the instructions in [Verify the deployed changes
 1. Review Staging LintDiff pipeline build logs to see if the rules work correctly.
     1. Use Kusto to find PRs that ran your new rule:
     ```kusto
-    let beginTime = ago(7d)
+    // edit these as desired
+    let beginTime = ago(7d);
+    let violationTimeBin = 10m;
+    let includeStagingPipeline = true;
+    let includeProdPipeline = false;
+    let ruleName = "ReservedResourceNamesModelAsEnum";
+    // do not edit these
+    let prodPipelineName = "Azure.azure-rest-api-specs-pipeline";
+    let stagingPipelineName = "Azure.azure-rest-api-specs-pipeline-staging";
+    let lintDiffLogId = 62;
+    let lintDiffLogMessageStart = '[{"type":"Result"';
     Build
     | where StartTime > beginTime
     | extend PipelineName = parse_json(Data).definition.name
-    | where PipelineName == "Azure.azure-rest-api-specs-pipeline-staging"
+    | where PipelineName in (iff(includeStagingPipeline, stagingPipelineName, prodPipelineName), iff(includeProdPipeline, prodPipelineName, stagingPipelineName))
     | extend SplitBranch = split(SourceBranch, "/")
     | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
     | extend BuildLink = tostring(parse_json(Data)._links.web.href)
     | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
     | join kind=inner
-    (
+      (
       BuildLogLine
-        | where Timestamp > beginTime
-        //| summarize take_any(LogId) by Message, BuildId
-        | where LogId == 62 // 62 is the LintDiff log
-        | where Message startswith_cs '[{"type":"Result"'
-        | extend LintDiffViolations = parse_json(Message)
-        | mv-expand LintDiffViolations
-        | extend ViolationCode = tostring(LintDiffViolations.code)
-        | where ViolationCode == ruleName
-    )
-    on BuildId
-    | summarize count() by Time=bin(Timestamp, 10m), ViolationCode, PullRequestLink, BuildLink
-    | sort by count_ desc 
+      | where Timestamp > beginTime
+      | where LogId == lintDiffLogId
+      | where Message startswith_cs lintDiffLogMessageStart
+      | extend LintDiffViolations = parse_json(Message)
+      | mv-expand LintDiffViolations
+      | extend ViolationCode = tostring(LintDiffViolations.code)
+      | where ViolationCode == ruleName
+      )
+      on BuildId
+    | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
+    | sort by count_ desc
     ```
     1. Wait until your rule has run on at least (**TODO**) different PRs and you have verified there are no false positives
+    1. It might also be helpful to view more than only the LintDiff results. You can use this Kusto query to see violations
+    of your new rule for an API spec without taking into account the previous version of the spec:
+    ```kusto
+    // edit these as desired
+    let beginTime = ago(7d);
+    let violationTimeBin = 10m;
+    let includeStagingPipeline = true;
+    let includeProdPipeline = false;
+    let ruleName = "ReservedResourceNamesModelAsEnum";
+    // do not edit these
+    let prodPipelineName = "Azure.azure-rest-api-specs-pipeline";
+    let stagingPipelineName = "Azure.azure-rest-api-specs-pipeline-staging";
+    let lintDiffLogId = 62;
+    let lintDiffLogMessageStart = "          \"code\":";
+    Build
+    | where StartTime > beginTime
+    | extend PipelineName = parse_json(Data).definition.name
+    | where PipelineName in (iff(includeStagingPipeline, stagingPipelineName, prodPipelineName), iff(includeProdPipeline, prodPipelineName, stagingPipelineName))
+    | extend SplitBranch = split(SourceBranch, "/")
+    | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
+    | extend BuildLink = tostring(parse_json(Data)._links.web.href)
+    | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
+    | join kind=inner 
+      (
+      BuildLogLine
+      | where Timestamp > beginTime
+      | where LogId == lintDiffLogId
+      | where Message startswith_cs lintDiffLogMessageStart
+      | extend ViolationCode=trim_end('",', substring(Message, indexof(Message, ': "')+3))
+      | where ViolationCode == ruleName
+      )
+      on BuildId
+    | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildId
+    | sort by count_ desc 
+    ```
     where the rule was incorrectly marked as violated.
 1. Once you verify the rules work correctly, roll them out to the production pipeline following the process defined in
 [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
