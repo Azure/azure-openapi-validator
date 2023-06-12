@@ -132,38 +132,8 @@ have more control over the process and debug any issues.
     where the rule was incorrectly marked as violated.
 1. Once you verify the rules work correctly, roll them out to the production pipeline following the process defined in
 [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
-1. If after promoting the rule you find it is not behaving correctly, disable it via the process defined in How to
-disable or enable existing Spectral rules.
-
-## (WIP) Strategy Discussion
-
-### Defining when a rule is working correctly
-
-#### How many swagger specs does the rule need to run on?
-
-#### How many times does it need to run?
-
-#### Do we need to consider how the rule impacts existing swagger specs, or only new PRs (LintDiff vs. baseline lint)
-
-### Running a new rule against all existing swagger specs
-
-#### Locally
-
-This takes a lot of work. Is it worth it?
-
-E.g.,
-
-> One would have to find all the specs README files and run LintDiff against all API versions present in all the README files.
-
-#### As part of a pipeline
-
-If we decide to find a way to run locally
-
-### Suppressing recently promoted rules
-
-Use the process in CONTRIBUTING.md
-
-Easy, but requires a new package release and approval from the SDK team.
+1. If after promoting the rule you find it is not behaving correctly, move it back to the staging pipeline while you fix
+it.
 
 # How to deploy your changes
 
