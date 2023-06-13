@@ -1515,13 +1515,26 @@ const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
     if (!properties || typeof properties !== "object") {
         return [];
     }
-    const keys = Object.keys(properties);
-    if (keys.length != 2 || !keys.includes("value") || !keys.includes("nextLink")) {
-        return [
-            {
-                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
-            },
-        ];
+    for (const path of ctx.path) {
+        if (path.includes(".")) {
+            const splitNamespace = path.split(".");
+            if (path.includes("/")) {
+                const segments = splitNamespace[splitNamespace.length - 1].split("/");
+                if (segments.length % 2 !== 0) {
+                    return [];
+                }
+                else {
+                    const key = Object.keys(properties);
+                    if (key.length != 2 || !key.includes("value") || !key.includes("nextLink")) {
+                        return [
+                            {
+                                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+                            },
+                        ];
+                    }
+                }
+            }
+        }
     }
     return [];
 };
@@ -2664,7 +2677,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations') && !@property.endsWith('default'))][get].responses.200.schema.properties",
             then: {
                 function: getCollectionOnlyHasValueAndNextLink,
             },
