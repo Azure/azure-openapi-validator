@@ -149,7 +149,7 @@ verify the rule is running with the instructions in [Verify the deployed changes
     This will give you a list of the builds where the spec violated your rule and the count of violations for that build.
     It includes a link to the PR as well. Using this list, visit the build page, click on LintDiff to view the logs, and
     see where the rule was violated, you can then find that line in the spec by viewing the PR.
-    1. Wait until your rule has run on at least 7 different PRs and you have verified there are no false positives
+    1. Wait until your rule has run on at least 10 different PRs and you have verified there are no false positives
     1. It might also be helpful to view more than only the LintDiff results. You can use this Kusto query to see violations
     of your new rule for an API spec without taking into account the previous version of the spec:
     ```kusto
