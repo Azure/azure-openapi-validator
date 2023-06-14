@@ -96,7 +96,13 @@ have more control over the process and debug any issues.
 1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
 
-# New linter rule promotion strategy
+# How to add and roll out new linter rules
+
+This section describes the process for adding a new rule to a ruleset. The rule will first be added to
+the staging pipeline, where it will not affect the ability to merge a PR. While the rule is in the
+staging pipeline, the author can verify that the rule is working correctly and not incorrectly marking
+violations. After verifying, the author can add the rule to the production pipeline so that the specs repo
+pipeline will block specs that violate the new rule from merging into any of the main/production branches.
 
 1. Ensure the new rule is set to run [only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 1. Merge the new rule to the main branch. Once merged, your new rule will start running in the staging pipeline. You can
@@ -138,7 +144,10 @@ verify the rule is running with the instructions in [Verify the deployed changes
     | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
     | sort by count_ desc
     ```
-    1. Wait until your rule has run on at least (**TODO**) different PRs and you have verified there are no false positives
+    This will give you a list of the builds where the spec violated your rule and the count of violations for that build.
+    It includes a link to the PR as well. Using this list, visit the build page, click on LintDiff to view the logs, and
+    see where the rule was violated, you can then find that line in the spec by viewing the PR.
+    1. Wait until your rule has run on at least 7 different PRs and you have verified there are no false positives
     1. It might also be helpful to view more than only the LintDiff results. You can use this Kusto query to see violations
     of your new rule for an API spec without taking into account the previous version of the spec:
     ```kusto
@@ -174,9 +183,8 @@ verify the rule is running with the instructions in [Verify the deployed changes
     | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
     | sort by count_ desc 
     ```
-    where the rule was incorrectly marked as violated.
-1. Once you verify the rules work correctly, roll them out to the production pipeline following the process defined in
-[Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
+1. Once you verify the rules work correctly, roll them out to the production pipeline by undoing the staging-only setting
+from [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff).
 1. If after promoting the rule you find it is not behaving correctly, move it back to the staging pipeline while you fix
 it.
 
