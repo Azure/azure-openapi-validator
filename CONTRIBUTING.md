@@ -3,7 +3,7 @@
 - [Contributing](#contributing)
 - [Prerequisites to build locally](#prerequisites-to-build-locally)
 - [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
-- [New linter rule promotion strategy](#new-linter-rule-promotion-strategy)
+- [How to add and roll out new linter rules](#how-to-add-and-roll-out-new-linter-rules)
 - [How to deploy your changes](#how-to-deploy-your-changes)
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
@@ -108,6 +108,8 @@ pipeline will block specs that violate the new rule from merging into any of the
 1. Merge the new rule to the main branch. Once merged, your new rule will start running in the staging pipeline. You can
 verify the rule is running with the instructions in [Verify the deployed changes](#verify-the-deployed-changes).
 1. Review Staging LintDiff pipeline build logs to see if the rules work correctly.
+    1. [Get access to CloudMine](https://dev.azure.com/azure-sdk/internal/_wiki/wikis/internal.wiki/621/Telemetry)
+    to see the build logs for the public and private API specs repos
     1. Use Kusto to find PRs that ran your new rule:
     ```kusto
     // edit these as desired
@@ -185,8 +187,9 @@ verify the rule is running with the instructions in [Verify the deployed changes
     ```
 1. Once you verify the rules work correctly, roll them out to the production pipeline by undoing the staging-only setting
 from [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff).
-1. If after promoting the rule you find it is not behaving correctly, move it back to the staging pipeline while you fix
-it.
+1. If after deploying the rule to production you find it is not behaving correctly, move it back to the staging pipeline
+while you fix it. This requires you to follow the steps for setting the rule to staging-only with [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
+and then make a release to prod with [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
 
 # How to deploy your changes
 
