@@ -185,6 +185,15 @@ verify the rule is running with the instructions in [Verify the deployed changes
     | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
     | sort by count_ desc 
     ```
+    1. Additionally, you should look for any violations of your rule that come from TypeSpec-generated API specs. You can
+    determine that an API spec is TypeSpec-generated if it has the following under the `info` property:
+    ```json
+    "x-typespec-generated": [
+      {
+        "emitter": "@azure-tools/typespec-autorest"
+      }
+    ]
+    ```
 1. Once you verify the rules work correctly, roll them out to the production pipeline by removing the staging-only setting
 from step one and creating a release with the steps in [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
 1. If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
