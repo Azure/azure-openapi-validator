@@ -207,7 +207,8 @@ verify the rule is running with the instructions in [Verify the deployed changes
         ```
 
 3. Communicate the addition of your rule to all relevant stakeholders. This includes RP developers, the TypeSpec team, and
-API reviewers. You should work with a PM to determine the timeline for communication and addition of the new rule.
+API reviewers. Ensure that the TypeSpec team approves of the new rule, as TypeSpec needs to be in sync with the rules. You
+should work with a PM to determine the timeline for communication and addition of the new rule.
 
 4. Once you have verified the rule works correctly and communicated its addition to stakeholders, roll it out to the
 production pipeline by removing the staging-only setting from step one and creating a release with the steps in
