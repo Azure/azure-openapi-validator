@@ -350,59 +350,6 @@ test("PutRequestResponseScheme for json property with empty value in swagger sho
       },
     },
     definitions: {
-      systemData: {
-        description: "Metadata pertaining to creation and last modification of the resource.",
-        type: "object",
-        readOnly: true,
-        properties: {
-          createdBy: {
-            type: "string",
-            description: "The identity that created the resource.",
-          },
-          createdByType: {
-            type: "string",
-            description: "The type of identity that created the resource.",
-            enum: ["User", "Application", "ManagedIdentity", "Key"],
-            "x-ms-enum": {
-              name: "createdByType",
-              modelAsString: true,
-            },
-          },
-          createdAt: {
-            type: "string",
-            format: "date-time",
-            description: "The timestamp of resource creation (UTC).",
-          },
-          lastModifiedBy: {
-            type: "string",
-            description: "The identity that last modified the resource.",
-          },
-          lastModifiedByType: {
-            type: "string",
-            description: "The type of identity that last modified the resource.",
-            enum: ["User", "Application", "ManagedIdentity", "Key"],
-            "x-ms-enum": {
-              name: "createdByType",
-              modelAsString: true,
-            },
-          },
-          lastModifiedAt: {
-            type: "string",
-            format: "date-time",
-            description: "The timestamp of resource last modification (UTC)",
-          },
-        },
-      },
-      SkuTier: {
-        type: "string",
-        enum: ["Free", "Basic", "Standard", "Premium"],
-        "x-ms-enum": {
-          name: "SkuTier",
-          modelAsString: false,
-        },
-        description:
-          "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
-      },
       Sku: {
         description: "The resource model definition representing SKU",
         type: "object",
@@ -411,198 +358,17 @@ test("PutRequestResponseScheme for json property with empty value in swagger sho
             type: "string",
             description: "The name of the SKU. E.g. P3. It is typically a letter+number code",
           },
-          tier: {
-            $ref: "#/definitions/SkuTier",
-          },
-          size: {
-            type: "string",
-            description:
-              "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
-          },
-          family: {
-            type: "string",
-            description: "If the service has different generations of hardware, for the same SKU, then that can be captured here.",
-          },
-          capacity: {
-            type: "integer",
-            format: "int32",
-            description:
-              "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
-          },
         },
         required: ["name"],
-      },
-      Resource: {
-        title: "Resource",
-        description: "Common fields that are returned in the response for all Azure Resource Manager resources",
-        type: "object",
-        properties: {
-          id: {
-            readOnly: true,
-            type: "string",
-            description:
-              'Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"',
-          },
-          name: {
-            readOnly: true,
-            type: "string",
-            description: "The name of the resource",
-          },
-          type: {
-            readOnly: true,
-            type: "string",
-            description: 'The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"',
-          },
-          systemData: {
-            readOnly: true,
-            type: "object",
-            description: "Azure Resource Manager metadata containing createdBy and modifiedBy information.",
-            $ref: "#/definitions/systemData",
-          },
-        },
-        "x-ms-azure-resource": true,
-      },
-      TrackedResource: {
-        title: "Tracked Resource",
-        description:
-          "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'",
-        type: "object",
-        properties: {
-          tags: {
-            type: "object",
-            additionalProperties: {
-              type: "string",
-            },
-            "x-ms-mutability": ["read", "create", "update"],
-            description: "Resource tags.",
-          },
-          location: {
-            type: "string",
-            "x-ms-mutability": ["read", "create"],
-            description: "The geo-location where the resource lives",
-          },
-        },
-        required: ["location"],
-        allOf: [
-          {
-            $ref: "#/definitions/Resource",
-          },
-        ],
       },
       JobAgent: {
         "x-ms-arm-id-details": {},
         description: "An Azure SQL job agent.",
-        required: ["location"],
         type: "object",
-        allOf: [
-          {
-            $ref: "#/definitions/TrackedResource",
-          },
-        ],
         properties: {
           sku: {
             $ref: "#/definitions/Sku",
             description: "The name and tier of the SKU.",
-          },
-          identity: {
-            $ref: "#/definitions/JobAgentIdentity",
-            description: "The identity of the job agent.",
-          },
-          properties: {
-            $ref: "#/definitions/JobAgentProperties",
-            description: "Resource properties.",
-          },
-        },
-      },
-      JobAgentProperties: {
-        description: "Properties of a job agent.",
-        required: ["databaseId"],
-        type: "object",
-        properties: {
-          databaseId: {
-            description: "Resource ID of the database to store job metadata in.",
-            type: "string",
-            format: "arm-id",
-          },
-          state: {
-            description: "The state of the job agent.",
-            enum: ["Creating", "Ready", "Updating", "Deleting", "Disabled"],
-            type: "string",
-            "x-ms-enum": {
-              name: "JobAgentState",
-              modelAsString: true,
-            },
-          },
-        },
-      },
-      JobAgentUserAssignedIdentity: {
-        description: "Azure Active Directory identity configuration for a resource.",
-        type: "object",
-        properties: {
-          principalId: {
-            format: "uuid",
-            description: "The Azure Active Directory principal id.",
-            type: "string",
-            readOnly: true,
-          },
-          clientId: {
-            format: "uuid",
-            description: "The Azure Active Directory client id.",
-            type: "string",
-            readOnly: true,
-          },
-        },
-      },
-      JobAgentIdentity: {
-        description: "Azure Active Directory identity configuration for a resource.",
-        required: ["type"],
-        type: "object",
-        properties: {
-          tenantId: {
-            format: "uuid",
-            description: "The job agent identity tenant id",
-            type: "string",
-          },
-          type: {
-            description: "The job agent identity type",
-            enum: ["None", "SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned"],
-            type: "string",
-            "x-ms-enum": {
-              name: "JobAgentIdentityType",
-              modelAsString: true,
-            },
-          },
-        },
-      },
-      ConfigServerResource: {
-        description: "Config Server resource",
-        type: "object",
-        properties: {
-          provisioningState: {
-            description: "State of the config server.",
-            enum: ["NotAvailable", "Deleted", "Failed", "Succeeded", "Updating"],
-            type: "string",
-            readOnly: true,
-            "x-ms-enum": {
-              name: "ConfigServerState",
-              modelAsString: true,
-            },
-          },
-        },
-      },
-      ConfigServerResources: {
-        description: "Config Server resources",
-        type: "object",
-        properties: {
-          provisioningStates: {
-            description: "State of the config server.",
-            enum: ["NotAvailable", "Deleted", "Failed", "Succeeded", "Updating"],
-            type: "string",
-            readOnly: true,
-            "x-ms-enum": {
-              name: "ConfigServerState",
-              modelAsString: true,
-            },
           },
         },
       },
@@ -623,15 +389,6 @@ test("PutRequestResponseScheme for json property with empty value in swagger sho
           "Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         required: true,
         type: "string",
-      },
-      PathResourceParameter: {
-        name: "pathResource",
-        in: "body",
-        description: "Parameters for the update operation",
-        required: true,
-        schema: {
-          $ref: "#/definitions/ConfigServerResource",
-        },
       },
     },
   }
