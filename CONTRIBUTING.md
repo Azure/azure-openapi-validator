@@ -188,10 +188,10 @@ verify the rule is running with the instructions in [Verify the deployed changes
 1. Once you verify the rules work correctly, roll them out to the production pipeline by removing the staging-only setting
 from step one and creating a release with the steps in [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
 1. If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
-while you fix it, by doing the following:
-    1. Follow the steps for setting the rule to staging-only in [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff).
-    1. Follow the steps to make a release to prod in [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff) in order to
-    stop the rule from running in prod.
+while you fix it by following the steps in [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging).
+Make sure to follow the step for deploying your changes to ensure the rule stops running in production. You should then validate
+the rule is not running in production with as described in
+[How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 
 # How to deploy your changes
 
