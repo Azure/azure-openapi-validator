@@ -206,10 +206,14 @@ verify the rule is running with the instructions in [Verify the deployed changes
         ]
         ```
 
-3. Once you verify the rules work correctly, roll them out to the production pipeline by removing the staging-only setting
-from step one and creating a release with the steps in [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
+3. Communicate the addition of your rule to all relevant stakeholders. This includes RP developers, the TypeSpec team, and
+API reviewers. You should work with a PM to determine the timeline for communication and addition of the new rule.
 
-4. If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
+4. Once you have verified the rule works correctly and communicated its addition to stakeholders, roll it out to the
+production pipeline by removing the staging-only setting from step one and creating a release with the steps in
+[Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
+
+5. If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
 while you fix it by following the steps in [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging).
 Make sure to follow the step for deploying your changes to ensure the rule stops running in production. You should then validate
 the rule is not running in production with as described in
