@@ -185,11 +185,13 @@ verify the rule is running with the instructions in [Verify the deployed changes
     | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
     | sort by count_ desc 
     ```
-1. Once you verify the rules work correctly, roll them out to the production pipeline by undoing the staging-only setting
-from [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff).
-1. If after deploying the rule to production you find it is not behaving correctly, move it back to the staging pipeline
-while you fix it. This requires you to follow the steps for setting the rule to staging-only with [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
-and then make a release to prod with [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+1. Once you verify the rules work correctly, roll them out to the production pipeline by removing the staging-only setting
+from step one and creating a release with the steps in [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
+1. If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
+while you fix it, by doing the following:
+    1. Follow the steps for setting the rule to staging-only in [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff).
+    1. Follow the steps to make a release to prod in [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff) in order to
+    stop the rule from running in prod.
 
 # How to deploy your changes
 
