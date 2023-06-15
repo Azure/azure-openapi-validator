@@ -151,10 +151,10 @@ verify the rule is running with the instructions in [Verify the deployed changes
         | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
         | sort by count_ desc
         ```
-
-    This will give you a list of the builds where the spec violated your rule and the count of violations for that build.
-    It includes a link to the PR as well. Using this list, visit the build page, click on LintDiff to view the logs, and
-    see where the rule was violated, you can then find that line in the spec by viewing the PR.
+    
+        This will give you a list of the builds where the spec violated your rule and the count of violations for that build.
+        It includes a link to the PR as well. Using this list, visit the build page, click on LintDiff to view the logs, and
+        see where the rule was violated, you can then find that line in the spec by viewing the PR.
 
     3. Wait until your rule has run on at least 10 different PRs and you have verified there are no false positives
 
