@@ -157,6 +157,10 @@ export function isSchemaEqual(a: any, b: any): boolean {
     const propsA = Object.getOwnPropertyNames(a)
     const propsB = Object.getOwnPropertyNames(b)
     if (propsA.length === propsB.length) {
+      if (propsA.length === 0) {
+        return true
+      }
+
       for (let i = 0; i < propsA.length; i++) {
         const propsAName = propsA[i]
         const [propA, propB] = [a[propsAName], b[propsAName]]

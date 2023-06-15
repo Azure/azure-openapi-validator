@@ -32,7 +32,7 @@ Please see the `Contributing` section above.
 | ruleset
 |[openapi-validator-rulesets][openapi-validator-rulesets-src]|![](https://img.shields.io/npm/v/@microsoft.azure/openapi-validator-rulesets) https://www.npmjs.com/package/@microsoft.azure/openapi-validator-rulesets |
 
-[openapi-validator-src]: packages/packages/azure-openapi-validator/autorest
+[openapi-validator-src]: packages/azure-openapi-validator/autorest
 [openapi-validator-core-src]: packages/azure-openapi-validator/core
 [openapi-validator-rulesets-src]: packages/rulesets
 

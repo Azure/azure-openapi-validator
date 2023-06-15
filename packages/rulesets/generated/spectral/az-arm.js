@@ -308,6 +308,9 @@ function isSchemaEqual(a, b) {
         const propsA = Object.getOwnPropertyNames(a);
         const propsB = Object.getOwnPropertyNames(b);
         if (propsA.length === propsB.length) {
+            if (propsA.length === 0) {
+                return true;
+            }
             for (let i = 0; i < propsA.length; i++) {
                 const propsAName = propsA[i];
                 const [propA, propB] = [a[propsAName], b[propsAName]];
@@ -1285,15 +1288,15 @@ function verifyResourceGroupScope(path) {
     return matchAnyPatterns(patterns, path);
 }
 function verifyResourceType(path) {
-    const patterns = [/^.*\/providers\/microsoft\.\w+\/\w+.*/gi];
+    const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
     return matchAnyPatterns(patterns, path);
 }
 function verifyNestResourceType(path) {
     const patterns = [
-        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
-        /^.*\/providers\/microsoft\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
     return notMatchPatterns(patterns, path);
 }
@@ -1515,13 +1518,26 @@ const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
     if (!properties || typeof properties !== "object") {
         return [];
     }
-    const keys = Object.keys(properties);
-    if (keys.length != 2 || !keys.includes("value") || !keys.includes("nextLink")) {
-        return [
-            {
-                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
-            },
-        ];
+    for (const path of ctx.path) {
+        if (path.includes(".")) {
+            const splitNamespace = path.split(".");
+            if (path.includes("/")) {
+                const segments = splitNamespace[splitNamespace.length - 1].split("/");
+                if (segments.length % 2 !== 0) {
+                    return [];
+                }
+                else {
+                    const key = Object.keys(properties);
+                    if (key.length != 2 || !key.includes("value") || !key.includes("nextLink")) {
+                        return [
+                            {
+                                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+                            },
+                        ];
+                    }
+                }
+            }
+        }
     }
     return [];
 };
@@ -2664,7 +2680,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations') && !@property.endsWith('default'))][get].responses.200.schema.properties",
             then: {
                 function: getCollectionOnlyHasValueAndNextLink,
             },
