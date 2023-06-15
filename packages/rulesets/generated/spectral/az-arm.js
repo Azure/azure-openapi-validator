@@ -1285,15 +1285,15 @@ function verifyResourceGroupScope(path) {
     return matchAnyPatterns(patterns, path);
 }
 function verifyResourceType(path) {
-    const patterns = [/^.*\/providers\/microsoft\.\w+\/\w+.*/gi];
+    const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
     return matchAnyPatterns(patterns, path);
 }
 function verifyNestResourceType(path) {
     const patterns = [
-        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
-        /^.*\/providers\/microsoft\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
     return notMatchPatterns(patterns, path);
 }
