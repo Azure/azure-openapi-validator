@@ -120,9 +120,9 @@ test("PatchPropertiesCorrespondToPutProperties should find errors if the patch b
   return linter.run(myOpenApiDocument).then((res) => {
     expect(res.length).toBe(2)
     expect(res[0].message).toContain(ERROR_MESSAGE)
-    //expect(res[0].path.join(".")).toBe("paths./foo.patch.parameters.properties.servicePrecedence")
+    expect(res[0].path.join(".")).toBe("paths./foo.patch.parameters")
     expect(res[1].message).toContain(ERROR_MESSAGE)
-    //expect(res[1].path.join(".")).toBe("paths./foo.patch.parameters.properties.id")
+    expect(res[1].path.join(".")).toBe("paths./foo.patch.parameters")
   })
 })
 
@@ -250,7 +250,7 @@ test("PatchPropertiesCorrespondToPutProperties should find errors if the patch b
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].message).toContain(ERROR_MESSAGE)
-    //expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.properties.id")
+    expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters")
   })
 })
 

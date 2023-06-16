@@ -11,7 +11,6 @@ const PARAM_IN_BODY = (paramObject: any) => paramObject.in === "body"
 const PATCH = "patch"
 const PUT = "put"
 const PARAMETERS = "parameters"
-const PROPERTIES = "properties"
 
 export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
@@ -55,7 +54,7 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
       Object.keys(missingProperty).forEach((key) => {
         errors.push({
           message: `${key} property in patch body is not present in the corresponding put body.` + ERROR_MESSAGE,
-          path: path.concat([PROPERTIES, key]),
+          path: path,
         })
       })
     )
