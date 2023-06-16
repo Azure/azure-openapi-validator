@@ -3,6 +3,7 @@
 // RPC Code: RPC-Patch-V1-01
 
 import _ from "lodash"
+import { getProperties } from "./utils"
 
 const ERROR_MESSAGE =
   "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
@@ -10,6 +11,7 @@ const PARAM_IN_BODY = (paramObject: any) => paramObject.in === "body"
 const PATCH = "patch"
 const PUT = "put"
 const PARAMETERS = "parameters"
+const PROPERTIES = "properties"
 
 export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
@@ -17,37 +19,47 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   }
 
   const path = ctx.path.concat([PATCH, PARAMETERS])
-
   const error = [{ message: ERROR_MESSAGE, path: path }]
+  const errors: any = []
 
-  // array of all the patch body parameters
-  const patchBodyParameters: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((p) => p.schema) ?? []
-  // array of all the put body parameters
-  const putBodyParameters: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY) ?? []
+  // array of all the patch body param properties
+  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
+  // array of all the put body param properties
+  const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
 
-  const patchBodyEmpty = patchBodyParameters.length < 1
-  const putBodyEmpty = putBodyParameters.length < 1
+  const patchBodyPropertiesEmpty = patchBodyProperties.length < 1
+  const putBodyPropertiesEmpty = putBodyProperties.length < 1 
 
-  // both the patch body and put body are empty => ignore
-  if (patchBodyEmpty && putBodyEmpty) {
-    return []
+  //patch without at least one body properties => error
+  if (patchBodyPropertiesEmpty) {
+    return [
+      {
+        message: "Patch operations body cannot be empty.",
+        path: path,
+      },
+    ]
   }
 
   // patch body is empty while put body nonempty
   // or patch body nonempty while put body empty => error
-  if (patchBodyEmpty != putBodyEmpty) {
+  if (patchBodyPropertiesEmpty != putBodyPropertiesEmpty) {
     return error
   }
 
-  // array of all the patch body parameters that are not present in the put body (if any)
-  const patchBodyParametersNotInPutBody = _.differenceWith(patchBodyParameters, putBodyParameters, _.isEqual)
+  // array of all the patch body properties that are not present in the put body (if any)
+  const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties, putBodyProperties, _.isEqual)
 
-  // there is at least one parameter present in the patch body that is not present in the the put body => error
-  if (patchBodyParametersNotInPutBody.length > 0) {
-    return patchBodyParametersNotInPutBody.map((param) => ({
-      message: `Parameter${param.name ? ` with name '${param.name}'` : ""} in patch body is not present in the corresponding put body.`,
-      path: param.name ? path.push(param.name) : path,
-    }))
+  // there is at least one property present in the patch body that is not present in the the put body => error
+  if (patchBodyPropertiesNotInPutBody.length > 0) {
+    patchBodyPropertiesNotInPutBody.forEach((missingProperty) =>
+      Object.keys(missingProperty).forEach((key) => {
+        errors.push({
+          message: `${key} property in patch body is not present in the corresponding put body.` + ERROR_MESSAGE,
+          path: path.concat([PROPERTIES, key]),
+        })
+      })
+    )
+    return errors
   }
 
   return []
