@@ -292,7 +292,6 @@ const ruleset: any = {
       description: "Patch may not change the name, location, or type of the resource.",
       message: "{{error}}",
       severity: "error",
-      staging: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.patch"],
