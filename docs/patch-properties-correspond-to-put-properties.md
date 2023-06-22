@@ -14,12 +14,12 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.
+A patch request body must only contain properties present in the corresponding put request body, and must contain at least one property.
 
 ## Description
 
-Validates that each patch request body contains one or more properties present in the corresponding put request body, and contains only properties present in the put request body.
+Validates that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
 
 ## How to fix the violation
 
-Ensure that each patch request body contains one or more properties present in the corresponding put request body, and contains only properties present in the put request body.
+Ensure that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.

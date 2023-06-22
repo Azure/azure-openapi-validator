@@ -276,9 +276,10 @@ const ruleset: any = {
     // RPC Code: RPC-Patch-V1-01
     PatchPropertiesCorrespondToPutProperties: {
       description:
-        "Patch request body MUST contain at least one or more properties present in the normal resource definition (PUT operation).",
+        "Patch request body must only contain properties present in the corresponding put request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
+      staging: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],

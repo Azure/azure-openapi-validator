@@ -1202,9 +1202,9 @@ Please refer to [un-supported-patch-properties.md](./un-supported-patch-properti
 
 ### PatchPropertiesCorrespondToPutProperties
 
-Validates if Patch request body contains at least one or more properties present in the normal resource definition (PUT operation).
+Validates that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
 
-Please refer to [patch-properties-in-normal-resource-definition.md](./patch-properties-in-normal-resource-definition.md) for details.
+Please refer to [patch-properties-correspond-to-put-properties.md](./patch-properties-correspond-to-put-properties.md) for details.
 
 ### UniqueClientParameterName
 

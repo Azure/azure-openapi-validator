@@ -18,7 +18,6 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   }
 
   const path = ctx.path.concat([PATCH, PARAMETERS])
-  const error = [{ message: ERROR_MESSAGE, path: path }]
   const errors: any = []
 
   // array of all the patch body param properties
@@ -39,10 +38,14 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
     ]
   }
 
-  // patch body is empty while put body nonempty
-  // or patch body nonempty while put body empty => error
-  if (patchBodyPropertiesEmpty != putBodyPropertiesEmpty) {
-    return error
+  //patch body nonempty while put body empty => error
+  if (!patchBodyPropertiesEmpty && putBodyPropertiesEmpty) {
+    return [
+      {
+        message: "Non empty patch body with an empty put body is not valid.",
+        path: path,
+      },
+    ]
   }
 
   // array of all the patch body properties that are not present in the put body (if any)
