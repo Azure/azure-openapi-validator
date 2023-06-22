@@ -25,8 +25,8 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   // array of all the put body param properties
   const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
 
-  const patchBodyPropertiesEmpty = patchBodyProperties.length < 1
-  const putBodyPropertiesEmpty = putBodyProperties.length < 1 
+  const patchBodyPropertiesEmpty: boolean = patchBodyProperties.length < 1
+  const putBodyPropertiesEmpty: boolean = putBodyProperties.length < 1
 
   //patch without at least one body properties => error
   if (patchBodyPropertiesEmpty) {

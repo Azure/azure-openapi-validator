@@ -437,7 +437,7 @@ test("PatchPropertiesCorrespondToPutProperties should find errors if patch has p
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain(ERROR_MESSAGE)
+    expect(results[0].message).toContain("Non empty patch body with an empty put body is not valid")
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters")
   })
 })
