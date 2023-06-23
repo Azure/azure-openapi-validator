@@ -2,14 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {
-  createMessageConnection,
-  NotificationType2,
-  NotificationType4,
-  RequestType0,
-  RequestType1,
-  RequestType2
-} from "vscode-jsonrpc"
+import { createMessageConnection, NotificationType2, NotificationType4, RequestType0, RequestType1, RequestType2 } from "vscode-jsonrpc"
 import { Mapping, Message, RawSourceMap } from "./types"
 
 namespace IAutoRestPluginTarget_Types {
@@ -24,7 +17,7 @@ namespace IAutoRestPluginInitiator_Types {
   export const WriteFile = new NotificationType4<string, string, string, Mapping[] | RawSourceMap | undefined, void>("WriteFile")
   export const Message = new NotificationType2<string, Message, void>("Message")
 }
-interface IAutoRestPluginInitiator {
+export interface IAutoRestPluginInitiator {
   ReadFile(filename: string): Promise<string>
   GetValue(key: string): Promise<any>
   ListInputs(): Promise<string[]>
@@ -56,7 +49,7 @@ export class AutoRestPluginHost {
       },
       warn(message) {
         console.error("warn: ", message)
-      }
+      },
     })
 
     channel.onRequest(IAutoRestPluginTarget_Types.GetPluginNames, async () => Object.keys(this.plugins))
@@ -82,14 +75,14 @@ export class AutoRestPluginHost {
           },
           Message(message: Message): void {
             channel.sendNotification(IAutoRestPluginInitiator_Types.Message, sessionId, message)
-          }
+          },
         })
         return true
       } catch (e) {
         channel.sendNotification(IAutoRestPluginInitiator_Types.Message, sessionId, {
           Channel: "fatal" as any,
           Text: "" + e,
-          Details: e
+          Details: e,
         } as Message)
         return false
       }

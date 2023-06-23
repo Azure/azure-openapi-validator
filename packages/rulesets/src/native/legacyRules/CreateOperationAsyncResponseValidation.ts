@@ -16,7 +16,7 @@ rules.push({
   *run(doc, node, path) {
     if (node.responses["202"]) {
       yield {
-        message: `Only 201 is the supported response code for PUT async response.`,
+        message: `202 is not a supported response code for PUT async response. Please use 201 instead.`,
         location: path.concat(["responses", "202"]),
       }
     }
@@ -35,24 +35,6 @@ rules.push({
       if (!node["x-ms-long-running-operation"] || node["x-ms-long-running-operation"] !== true) {
         yield {
           message: `An async PUT operation must set '"x-ms-long-running-operation" : true''.`,
-          location: path,
-        }
-      }
-
-      if (!node["x-ms-long-running-operation-options"]) {
-        yield {
-          message: `An async PUT operation must set long running operation options 'x-ms-long-running-operation-options'`,
-          location: path,
-        }
-      }
-
-      if (
-        node["x-ms-long-running-operation-options"] &&
-        (!node["x-ms-long-running-operation-options"]["final-state-via"] ||
-          node["x-ms-long-running-operation-options"]["final-state-via"] != "azure-async-operation")
-      ) {
-        yield {
-          message: `An async PUT operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'azure-async-operation' on 'x-ms-long-running-operation-options'`,
           location: path,
         }
       }

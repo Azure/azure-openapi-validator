@@ -1,3 +1,5 @@
+import _ from "lodash"
+
 /**
  * get all properties as array
  */
@@ -155,6 +157,10 @@ export function isSchemaEqual(a: any, b: any): boolean {
     const propsA = Object.getOwnPropertyNames(a)
     const propsB = Object.getOwnPropertyNames(b)
     if (propsA.length === propsB.length) {
+      if (propsA.length === 0) {
+        return true
+      }
+
       for (let i = 0; i < propsA.length; i++) {
         const propsAName = propsA[i]
         const [propA, propB] = [a[propsAName], b[propsAName]]
@@ -199,4 +205,29 @@ export function getResourcesPathHierarchyBasedOnResourceType(path: string) {
     }
   }
   return result
+}
+
+/**
+ * Recursively searches an object for a key with the given name, returning the full path to the object.
+ * @param object the object to search
+ * @param keyName the key to look for
+ * @param path optional path parameter used for the recursion and to optionally add a prefix to the found path
+ * @returns full path to the key as an array, or an empty array if the key could not be found
+ */
+export function deepFindObjectKeyPath(object: any, keyName: string, path: string[] = []) {
+  if (!_.isObject(object)) {
+    return []
+  }
+  if (_.has(object, keyName)) {
+    return _.concat(path, keyName)
+  }
+
+  for (const [key, value] of Object.entries(object)) {
+    const result: any = deepFindObjectKeyPath(value, keyName, _.concat(path, key))
+    if (result) {
+      return result
+    }
+  }
+
+  return []
 }
