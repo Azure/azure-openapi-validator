@@ -502,12 +502,6 @@ This is a rule introduced to validate if a LRO PUT operations response schema ha
 
 Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
 
-### ProvisioningStateSpecifiedForLROPut
-
-This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
-
-Please refer to [lro-put-provisioning-state-specified.md](./lro-put-provisioning-state-specified.md) for details.
-
 ### LROStatusCodesReturnTypeSchema
 
 The '200'/'201' responses of the long running operation must have a schema definition.

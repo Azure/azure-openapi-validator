@@ -56,7 +56,7 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
     patchBodyPropertiesNotInPutBody.forEach((missingProperty) =>
       Object.keys(missingProperty).forEach((key) => {
         errors.push({
-          message: `${key} property in patch body is not present in the corresponding put body.` + ERROR_MESSAGE,
+          message: `${key} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,
           path: path,
         })
       })

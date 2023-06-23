@@ -14,15 +14,15 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-A patch request body must only contain properties present in the corresponding put request body, and must contain at least one property.
+A PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.
 
 ## Description
 
-Validates that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
+Validates that each PATCH request body contains properties present in the corresponding PUT request body, and must contain at least one property.
 
 ## How to fix the violation
 
-Ensure that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
+Ensure that each PATCH request body contains properties present in the corresponding PUT request body, and must contain at least one property.
 
 ## Good Example
 
@@ -60,6 +60,10 @@ Ensure that each patch request body contains properties present in the correspon
 
 ## Bad Example
 
+### Patch body parameters not found in put body
+
+In the following example, the PATCH request has properties that are not present in the PUT request (#/definitions/FooRequestParams).
+
 ```json
   "patch": {
     "parameters": [
@@ -92,6 +96,10 @@ Ensure that each patch request body contains properties present in the correspon
   }
 ```
 
+### Patch body empty
+
+In the following example, the PATCH request has no body.
+
 ```json
   "patch": {
     "parameters": [
@@ -120,6 +128,10 @@ Ensure that each patch request body contains properties present in the correspon
     ]
   }
 ```
+
+### Put body empty
+
+In the following example, the PATCH request has non-empty body with an empty PUT body.
 
 ```json
  "patch": {

@@ -8,9 +8,6 @@ beforeAll(async () => {
   return linter
 })
 
-const ERROR_MESSAGE =
-  "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
-
 test("PatchPropertiesCorrespondToPutProperties should find errors if the patch body parameters are not in the put body", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
@@ -119,9 +116,13 @@ test("PatchPropertiesCorrespondToPutProperties should find errors if the patch b
   }
   return linter.run(myOpenApiDocument).then((res) => {
     expect(res.length).toBe(2)
-    expect(res[0].message).toContain(ERROR_MESSAGE)
+    expect(res[0].message).toContain(
+      "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
+    )
     expect(res[0].path.join(".")).toBe("paths./foo.patch.parameters")
-    expect(res[1].message).toContain(ERROR_MESSAGE)
+    expect(res[1].message).toContain(
+      "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
+    )
     expect(res[1].path.join(".")).toBe("paths./foo.patch.parameters")
   })
 })
@@ -249,7 +250,9 @@ test("PatchPropertiesCorrespondToPutProperties should find errors if the patch b
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain(ERROR_MESSAGE)
+    expect(results[0].message).toContain(
+      "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
+    )
     expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters")
   })
 })
@@ -442,7 +445,7 @@ test("PatchPropertiesCorrespondToPutProperties should find errors if patch has p
   })
 })
 
-test("PatchPropertiesCorrespondToPutProperties should find no errors when patch has one of the put properties", () => {
+test("PatchPropertiesCorrespondToPutProperties should find no errors when patch has only put properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -564,7 +567,6 @@ test("PatchPropertiesCorrespondToPutProperties should find no errors when patch 
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    console.log(results)
     expect(results.length).toBe(0)
   })
 })
