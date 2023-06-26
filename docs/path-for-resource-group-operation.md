@@ -1,4 +1,4 @@
-# PathForPutOperation
+# PathForResourceGroupOperation
 
 ## Category
 
@@ -10,15 +10,15 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-Put-V1-01
+- RPC-Put-V1-01, RPC-Get-V1-11  
 
 ## Output Message
 
-The path for 'put' operation must be under a subscription and resource group.
+The path must be under a subscription and resource group.
 
 ## Description
 
-For a PUT operation, If a uri segment has subscription, it needs to have a resource group segment as well.
+For a operation, If a uri segment has subscription, it needs to have a resource group segment as well.
 
 ## CreatedAt
 

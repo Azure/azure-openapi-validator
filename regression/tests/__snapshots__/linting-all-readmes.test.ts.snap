@@ -31239,12 +31239,12 @@ Array [
 ]
 `;
 
-exports[`linting result group by rule: rule PathForPutOperation result 1`] = `
+exports[`linting result group by rule: rule PathForResourceGroupOperation result 1`] = `
 Array [
   Object {
-    "code": "PathForPutOperation",
+    "code": "PathForResourceGroupOperation",
     "jsonpath": "$.paths[\\"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/logprofiles/{logProfileName}\\"]",
-    "message": "The path for 'put' operation must be under a subscription and resource group.",
+    "message": "The path must be under a subscription and resource group.",
     "source": "specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json:39:4",
   },
 ]

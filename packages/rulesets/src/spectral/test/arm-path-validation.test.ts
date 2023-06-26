@@ -7,7 +7,7 @@ beforeAll(async () => {
   linters.PathContainsResourceType = await linterForRule("PathContainsResourceType")
   linters.PathContainsResourceGroup = await linterForRule("PathContainsResourceGroup")
   linters.PathContainsSubscriptionId = await linterForRule("PathContainsSubscriptionId")
-  linters.PathForPutOperation = await linterForRule("PathForPutOperation")
+  linters.PathForResourceGroupOperation = await linterForRule("PathForResourceGroupOperation")
   linters.PathForNestedResource = await linterForRule("PathForNestedResource")
   linters.PathForResourceAction = await linterForRule("PathForResourceAction")
 })
@@ -304,7 +304,7 @@ test("PathContainsSubscription should find errors for invalid path for thirs par
   })
 })
 
-test("PathForPutOperation should find errors for invalid path", () => {
+test("PathForResourceGroupOperation should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
   //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
@@ -314,6 +314,18 @@ test("PathForPutOperation should find errors for invalid path", () => {
     paths: {
       "/{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}": {
         put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+        get: {
+          description: "Test Get Description",
+        },
+      },
+      "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName1}": {
+        get: {
           tags: ["SampleTag"],
           operationId: "Foo_CreateOrUpdate",
           description: "Test Description",
@@ -332,14 +344,16 @@ test("PathForPutOperation should find errors for invalid path", () => {
       },
     },
   }
-  return linters.PathForPutOperation.run(oasDoc).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The path for 'put' operation must be under a subscription and resource group.")
-    expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}")
+  return linters.PathForResourceGroupOperation.run(oasDoc).then((results) => {
+    expect(results.length).toBe(2)
+    expect(results[0].message).toContain("The path must be under a subscription and resource group.")
+    expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName1}")
+    expect(results[1].message).toContain("The path must be under a subscription and resource group.")
+    expect(results[1].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}")
   })
 })
 
-test("PathForPutOperation should find errors for invalid path for thirs party RPs", () => {
+test("PathForResourceGroupOperation should find errors for invalid path for thirs party RPs", () => {
   // invalid paths:
   //  1 <scope>/providers/PureStorage.Krypton/{vmName}
   //  2 <scope>/providers/{resourceName}/PureStorage.Krypton...
@@ -367,9 +381,9 @@ test("PathForPutOperation should find errors for invalid path for thirs party RP
       },
     },
   }
-  return linters.PathForPutOperation.run(oasDoc).then((results) => {
+  return linters.PathForResourceGroupOperation.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The path for 'put' operation must be under a subscription and resource group.")
+    expect(results[0].message).toContain("The path must be under a subscription and resource group.")
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/providers/PureStorage.Krypton/resourceType/{resourceName}"
     )

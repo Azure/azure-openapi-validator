@@ -1259,7 +1259,7 @@ const ruleset$1 = {
     },
 };
 
-function matchAnyPatterns(patterns, path) {
+function matchAnyPatterns$1(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns(patterns, path) {
@@ -1285,13 +1285,13 @@ function verifyResourceGroupScope(path) {
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
-function verifyResourceType(path) {
+function verifyResourceType$1(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
-function verifyNestResourceType(path) {
+function verifyNestResourceType$1(path) {
     const patterns = [
         /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
         /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
@@ -1331,7 +1331,7 @@ const verifyArmPath = createRulesetFunction({
     const errors = [];
     const optionsHandlers = {
         resourceType: (fullPath) => {
-            if (!verifyResourceType(fullPath)) {
+            if (!verifyResourceType$1(fullPath)) {
                 errors.push({
                     message: `The path for the CURD methods do not contain a resource type.`,
                     path,
@@ -1339,7 +1339,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         nestedResourceType: (fullPath) => {
-            if (!verifyNestResourceType(fullPath)) {
+            if (!verifyNestResourceType$1(fullPath)) {
                 errors.push({
                     message: `The path for nested resource doest not meet the valid resource pattern.`,
                     path,
@@ -2504,6 +2504,44 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+function matchAnyPatterns(patterns, path) {
+    return patterns.every((p) => p.test(path));
+}
+function verifyNestResourceType(path) {
+    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
+    return matchAnyPatterns(patterns, path);
+}
+function verifyResourceType(path) {
+    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
+    return matchAnyPatterns(patterns, path);
+}
+const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
+        return [];
+    }
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
+    if (verifyNestResourceType(fullPath)) {
+        let count = 0;
+        for (const apiPath of Object.values(otherPaths)) {
+            if (verifyResourceType(apiPath)) {
+                if (fullPath.includes(apiPath))
+                    count++;
+            }
+        }
+        if (count === 0) {
+            return [
+                {
+                    message: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
+                    ctx,
+                },
+            ];
+        }
+    }
+    return [];
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2696,6 +2734,17 @@ const ruleset = {
                 function: ParametersInPointGet,
             },
         },
+        AllowNestedIfParentExist: {
+            description: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[get]^~",
+            then: {
+                function: allowNestedIfParentExist,
+            },
+        },
         UnSupportedPatchProperties: {
             description: "Patch may not change the name, location, or type of the resource.",
             message: "{{error}}",
@@ -2782,13 +2831,13 @@ const ruleset = {
                 },
             },
         },
-        PathForPutOperation: {
-            description: "The path for 'put' operation must be under a subscription and resource group.",
+        PathForResourceGroupOperation: {
+            description: "The path must be under a subscription and resource group.",
             message: "{{description}}",
             severity: "error",
             resolved: false,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[put]^~",
+            given: "$[paths,'x-ms-paths'].*[put,get]^~",
             then: {
                 function: verifyArmPath,
                 functionOptions: {
