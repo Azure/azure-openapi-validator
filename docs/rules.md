@@ -472,6 +472,12 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### PostResponseCodes
+
+Synchronous POST must have 200 & 204 return codes and LRO POST must have 200 & 202 return codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
 ### ProvisioningStateSpecifiedForLROPatch
 
 This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -870,12 +876,6 @@ Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-nam
 Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
-
-### PostOperationAsyncResponseValidation
-
-An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [post-operation-async-response-validation.md](./post-operation-async-response-validation.md) for details.
 
 ### PostOperationIdContainsUrlVerb
 
