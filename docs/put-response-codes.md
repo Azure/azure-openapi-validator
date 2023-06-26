@@ -1,12 +1,12 @@
-# CreateOperationAsyncResponseValidation
+# PutResponseCodes
 
 ## Category
 
-RPaaS Error
+ARM Error
 
 ## Applies to
 
-ARM OpenAPI(swagger) specs
+ARM OpenAPI (swagger) specs
 
 ## Related ARM Guideline Code
 
@@ -14,27 +14,19 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-202 is not a supported response code for PUT async response
+Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
 
 ## Description
 
-An async PUT operation response must include status code 201 for creation. It must also support status code 200, for replacement. The operation must also add "x-ms-long-running-operation" to mark that it is a long running operation.
-
-## CreatedAt
-
-August 10, 2020
-
-## LastModifiedAt
-
-August 10, 2020
-
-## Why this rule is important
-
-RPaaS only supports 201 for async PUT operations. This is enforced at runtime via swagger validation.
+Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
 
 ## How to fix the violation
 
-Add the following for async PUT operations.
+For synchronous and long-running (LRO) PUT operations, specify responses with 200 & 201 return codes.
+
+### Example
+
+Add the following to PUT operations.
 
 The following would be valid:
 

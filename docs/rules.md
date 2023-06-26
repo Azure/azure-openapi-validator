@@ -168,12 +168,6 @@ Control characters are not allowed in a specification.
 
 Please refer to [control-characters-not-allowed.md](./control-characters-not-allowed.md) for details.
 
-### CreateOperationAsyncResponseValidation
-
-An async PUT operation response must include status code 201 for creation. It must also support status code 200, for replacement. The operation must also add "x-ms-long-running-operation" to mark that it is a long running operation.
-
-Please refer to [create-operation-async-response-validation.md](./create-operation-async-response-validation.md) for details.
-
 ### DefaultErrorResponseSchema
 
 The default error response schema SHOULD correspond to the schema documented at [common-api-details](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content).
@@ -495,6 +489,12 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
+### PutResponseCodes
+
+Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
+
+Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPut
 
