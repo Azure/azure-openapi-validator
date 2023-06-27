@@ -767,11 +767,11 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
-### PatchResponseCode
+### PatchResponseCodes
 
-Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
+Synchronous PATCH must have 200 return code and LRO PATCH must have 200, 202 return codes.
 
-Please refer to [patch-response-code.md](./patch-response-code.md) for details.
+Please refer to [patch-response-codes.md](./patch-response-codes.md) for details.
 
 ### PatchSkuProperty
 
