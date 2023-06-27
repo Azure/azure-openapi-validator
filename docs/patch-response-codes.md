@@ -33,17 +33,19 @@ The following would be a valid SYNC PATCH:
 
 ```json
 ...
+patch {
   "responses": {
-      "200": {
-        "description": "Operation completed"
-      },
-      "default": {
-        "description": "Error response describing why the operation failed.",
-        "schema": {
-          "$ref": "#/definitions/ErrorResponse"
-        }
+    "200": {
+      "description": "Operation completed"
+    },
+    "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
       }
     }
+  }
+}  
 ...
 ```
 
@@ -51,6 +53,7 @@ The following would be a valid ASYNC PATCH:
 
 ```json
 ...
+patch{
   "responses": {
       "202": {
         "description": "Operation accepted",
@@ -65,9 +68,7 @@ The following would be a valid ASYNC PATCH:
         }
       }
     },
-    "x-ms-long-running-operation": true,
-    "x-ms-long-running-operation-options": {
-      "final-state-via": "location"
-  }
+  "x-ms-long-running-operation": true,
+}
 ...
 ```
