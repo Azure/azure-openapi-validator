@@ -1010,12 +1010,6 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [required-properties-missing-in-resource-model.md](./required-properties-missing-in-resource-model.md) for details.
 
-### RequiredReadOnlyProperties
-
-A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.
-
-Please refer to [required-read-only-properties.md](./required-read-only-properties.md) for details.
-
 ### RequiredReadOnlySystemData
 
 Per [common-api-contracts](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources), all Azure resources should implement the `systemData` object property in new api-version. The systemData should be readonly.
