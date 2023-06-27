@@ -26,3 +26,48 @@ Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 
 
 For an Synchronous PATCH add 200 and default return codes and make sure they don't have other response codes.
 For LRO PATCH add 200, 202 and default return codes and make sure they don't have other response codes.
+
+### Example
+
+The following would be a valid SYNC PATCH:
+
+```json
+...
+  "responses": {
+      "200": {
+        "description": "Operation completed"
+      },
+      "default": {
+        "description": "Error response describing why the operation failed.",
+        "schema": {
+          "$ref": "#/definitions/ErrorResponse"
+        }
+      }
+    }
+...
+```
+
+The following would be a valid ASYNC PATCH:
+
+```json
+...
+  "responses": {
+      "202": {
+        "description": "Operation accepted",
+      },
+      "200": {
+        "description": "Operation completed"
+      },
+      "default": {
+        "description": "Error response describing why the operation failed.",
+        "schema": {
+          "$ref": "#/definitions/ErrorResponse"
+        }
+      }
+    },
+    "x-ms-long-running-operation": true,
+    "x-ms-long-running-operation-options": {
+      "final-state-via": "location"
+  }
+...
+```

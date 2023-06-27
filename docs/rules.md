@@ -769,7 +769,7 @@ Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for d
 
 ### PatchResponseCodes
 
-Synchronous PATCH must have 200 return code and LRO PATCH must have 200, 202 return codes.
+Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
 
 Please refer to [patch-response-codes.md](./patch-response-codes.md) for details.
 
