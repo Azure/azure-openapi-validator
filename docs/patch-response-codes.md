@@ -24,7 +24,7 @@ Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 
 
 ## How to fix the violation
 
-For an Synchronous PATCH add 200 and default return codes and make sure they don't have other response codes.
+For a Synchronous PATCH add 200 and default return codes and make sure they don't have other response codes.
 For LRO PATCH add 200, 202 and default return codes and make sure they don't have other response codes.
 
 ### Example
@@ -36,7 +36,10 @@ The following would be a valid SYNC PATCH:
 patch {
   "responses": {
     "200": {
-      "description": "Operation completed"
+      "description": "Operation completed",
+      "schema": {
+        "$ref": "#/definitions/FooResource",
+      },
     },
     "default": {
       "description": "Error response describing why the operation failed.",
@@ -57,9 +60,15 @@ patch{
   "responses": {
       "202": {
         "description": "Operation accepted",
+        "schema": {
+          "$ref": "#/definitions/FooResource",
+        },
       },
       "200": {
-        "description": "Operation completed"
+        "description": "Operation completed",
+        "schema": {
+          "$ref": "#/definitions/FooResource",
+        },
       },
       "default": {
         "description": "Error response describing why the operation failed.",
