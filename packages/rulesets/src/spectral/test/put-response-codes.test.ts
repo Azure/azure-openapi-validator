@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 const LR_AND_SYNC_ERROR =
-  "Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes."
+  "Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes."
 
 let linter: Spectral
 
