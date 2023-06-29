@@ -14,13 +14,18 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.
+When the parent resource is scoped under a resource group, the path for the list calls of its child resources must also be scoped under a resource group
 
 ## How to fix
 
-Nested List call without parent call is invalid, ensure to add Parent Resource get call as below valid example or remove the Nested get call from the paths.
+To fix this, ensure that the LIST call for the child resource has a resource group segment.
 
 ### Invalid example
+
+Following are the patterns for the invalid examples
+GET /subscriptions/{sub1}/providers/{ProviderName}/resourceType1/{resourceTypeName}/nestedResourceType
+GET /subscriptions/{sub1}/providers/{ProviderName}/nestedResourceType
+GET /subscriptions/{sub1}/resourcegroups/{rgname}/providers/{ProviderName}/nestedResourceType
 
 ```json
 "paths": {
