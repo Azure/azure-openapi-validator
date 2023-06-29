@@ -138,7 +138,8 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-11
     PostResponseCodes: {
-      description: "Synchronous POST must have 200 & 204 return codes and LRO POST must have 200 & 202 return codes.",
+      description:
+        "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code and should also have a 200 return code only if the final response is intended to have a schema.",
       severity: "error",
       stagingOnly: true,
       message: "{{error}}",

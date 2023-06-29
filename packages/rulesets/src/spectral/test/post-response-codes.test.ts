@@ -1,10 +1,10 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
-const LR_ERROR =
-  "Long-running POST operations must have responses with 200, 202 and default return codes. They also must not have other response codes."
 const SYNC_ERROR =
-  "Synchronous POST operations must have responses with 200, 204 and default return codes. They also must not have other response codes."
+  "Synchronous POST operations must have responses with 200, default or  204, default return codes. They also must not have other response codes."
+const LR_ERROR =
+  "Long-running POST operations must have responses with 202, default return codes and should also have a 200 return code only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes."
 
 let linter: Spectral
 
@@ -254,12 +254,6 @@ test("PostResponseCodes should find errors for sync post with extra response cod
                 $ref: "#/definitions/FooResource",
               },
             },
-            "201": {
-              description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
             default: {
               description: "Error",
               schema: {},
@@ -428,7 +422,7 @@ test("PostResponseCodes should find errors for post with no responses specified"
   })
 })
 
-test("PostResponseCodes should find no errors for sync post when all required codes are provided", () => {
+test("PostResponseCodes should find no errors for sync post when 200, default required codes are provided", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -453,8 +447,72 @@ test("PostResponseCodes should find no errors for sync post when all required co
                 $ref: "#/definitions/FooResource",
               },
             },
+            default: {
+              description: "Error",
+              schema: {},
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResourceUpdate: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("PostResponseCodes should find no errors for sync post when 204, default required codes are provided", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_post",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
             "204": {
-              description: "No content",
+              description: "No-Content",
               schema: {
                 $ref: "#/definitions/FooResource",
               },
@@ -531,9 +589,6 @@ test("PostResponseCodes should find errors for lro post with only 202", () => {
             },
           },
           "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "location",
-          },
         },
       },
     },
@@ -603,9 +658,6 @@ test("PostResponseCodes should find errors for lro post with only 200", () => {
             },
           },
           "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "location",
-          },
         },
       },
     },
@@ -681,9 +733,6 @@ test("PostResponseCodes should find errors for lro post without default response
             },
           },
           "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "location",
-          },
         },
       },
     },
@@ -745,12 +794,6 @@ test("PostResponseCodes should find errors for lro post with extra response code
             },
           ],
           responses: {
-            "202": {
-              description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
             "200": {
               description: "No content",
               schema: {
@@ -769,9 +812,82 @@ test("PostResponseCodes should find errors for lro post with extra response code
             },
           },
           "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "location",
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
           },
+        ],
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooResourceUpdate: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LR_ERROR)
+  })
+})
+
+test("PostResponseCodes should find errors for lro post with empty schema in 200 response code", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_post",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "202": {
+              description: "accepted",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+            "200": {
+              description: "No content",
+            },
+            default: {
+              description: "Error",
+              schema: {},
+            },
+          },
+          "x-ms-long-running-operation": true,
         },
       },
     },
@@ -839,12 +955,6 @@ test("PostResponseCodes should find errors for async post with 202 but no x-ms-l
                 $ref: "#/definitions/FooResource",
               },
             },
-            "204": {
-              description: "No content",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
             "202": {
               description: "accepted",
               schema: {
@@ -898,7 +1008,8 @@ test("PostResponseCodes should find errors for async post with 202 but no x-ms-l
   })
 })
 
-test("PostResponseCodes should find errors for async post without x-ms-long-running-operation-options", () => {
+
+test("PostResponseCodes should find no errors for lro post when 200 with schema, 202, default codes are provided", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -917,14 +1028,14 @@ test("PostResponseCodes should find errors for async post without x-ms-long-runn
             },
           ],
           responses: {
-            "200": {
-              description: "success",
+            "202": {
+              description: "accepted",
               schema: {
                 $ref: "#/definitions/FooResource",
               },
             },
-            "204": {
-              description: "No content",
+            "200": {
+              description: "created",
               schema: {
                 $ref: "#/definitions/FooResource",
               },
@@ -971,15 +1082,11 @@ test("PostResponseCodes should find errors for async post without x-ms-long-runn
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "An async POST operation must set long running operation options 'x-ms-long-running-operation-options'."
-    )
+    expect(results.length).toBe(0)
   })
 })
 
-test("PostResponseCodes should find errors for lro post final-state-via property is not set", () => {
+test("PostResponseCodes should find no errors for lro post when 202, default codes are provided", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -1004,187 +1111,12 @@ test("PostResponseCodes should find errors for lro post final-state-via property
                 $ref: "#/definitions/FooResource",
               },
             },
-            "200": {
-              description: "created",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
             default: {
               description: "Error",
               schema: {},
             },
           },
           "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {},
-        },
-      },
-    },
-    definitions: {
-      FooRequestParams: {
-        allOf: [
-          {
-            $ref: "#/definitions/FooProps",
-          },
-        ],
-      },
-      FooResource: {
-        allOf: [
-          {
-            $ref: "#/definitions/FooProps",
-          },
-        ],
-      },
-      FooResourceUpdate: {
-        allOf: [
-          {
-            $ref: "#/definitions/FooProps",
-          },
-        ],
-      },
-      FooProps: {
-        properties: {
-          prop0: {
-            type: "string",
-            default: "my def val",
-          },
-        },
-      },
-    },
-  }
-  return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' in 'x-ms-long-running-operation-options."
-    )
-  })
-})
-
-test("PostResponseCodes should find errors for lro post final-state-via property is not set to location", () => {
-  const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
-      "/foo": {
-        post: {
-          tags: ["SampleTag"],
-          operationId: "Foo_Update",
-          description: "Test Description",
-          parameters: [
-            {
-              name: "foo_post",
-              in: "body",
-              schema: {
-                $ref: "#/definitions/FooRequestParams",
-              },
-            },
-          ],
-          responses: {
-            "202": {
-              description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
-            "200": {
-              description: "created",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
-            default: {
-              description: "Error",
-              schema: {},
-            },
-          },
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "azure-async-operation",
-          },
-        },
-      },
-    },
-    definitions: {
-      FooRequestParams: {
-        allOf: [
-          {
-            $ref: "#/definitions/FooProps",
-          },
-        ],
-      },
-      FooResource: {
-        allOf: [
-          {
-            $ref: "#/definitions/FooProps",
-          },
-        ],
-      },
-      FooResourceUpdate: {
-        allOf: [
-          {
-            $ref: "#/definitions/FooProps",
-          },
-        ],
-      },
-      FooProps: {
-        properties: {
-          prop0: {
-            type: "string",
-            default: "my def val",
-          },
-        },
-      },
-    },
-  }
-  return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(
-      "An async POST operation is tracked via Azure-AsyncOperation header. Set 'final-state-via' property to 'location' in 'x-ms-long-running-operation-options."
-    )
-  })
-})
-
-test("PostResponseCodes should find no errors for lro post when all required codes are provided, xms fields are present & final-state-via property is location", () => {
-  const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
-      "/foo": {
-        post: {
-          tags: ["SampleTag"],
-          operationId: "Foo_Update",
-          description: "Test Description",
-          parameters: [
-            {
-              name: "foo_post",
-              in: "body",
-              schema: {
-                $ref: "#/definitions/FooRequestParams",
-              },
-            },
-          ],
-          responses: {
-            "202": {
-              description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
-            "200": {
-              description: "created",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
-            },
-            default: {
-              description: "Error",
-              schema: {},
-            },
-          },
-          "x-ms-long-running-operation": true,
-          "x-ms-long-running-operation-options": {
-            "final-state-via": "location",
-          },
         },
       },
     },

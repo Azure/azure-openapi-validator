@@ -474,7 +474,8 @@ Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
 ### PostResponseCodes
 
-Synchronous POST must have 200 & 204 return codes and LRO POST must have 200 & 202 return codes.
+Synchronous POST must have either 200 or 204 return codes.
+LRO POST must have 202 return code. They also should have a 200 return code to indicate the schema for the final response if the final response is intended to have a schema. If the final response schema is empty the 200 return code must not be specified. They also must not have other response codes.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
 
