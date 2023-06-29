@@ -1,6 +1,5 @@
 // Synchronous POST must have 200 & 204 return codes and LRO POST must have 200 & 202 return codes.
 // RPC Code: RPC-Async-V1-11
-import _ from "lodash"
 
 const SYNC_POST_RESPONSES_CASE1 = ["200", "default"]
 const SYNC_POST_RESPONSES_CASE2 = ["204", "default"]
