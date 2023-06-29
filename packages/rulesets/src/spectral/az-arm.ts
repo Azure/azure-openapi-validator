@@ -294,6 +294,7 @@ const ruleset: any = {
       description:
         "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
       severity: "error",
+      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
