@@ -2,9 +2,11 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 const SYNC_ERROR =
-  "Synchronous POST operations must have responses with 200, default or  204, default return codes. They also must not have other response codes."
+  "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes."
 const LR_ERROR =
-  "Long-running POST operations must have responses with 202, default return codes and should also have a 200 return code only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes."
+  "Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes."
+const LR_NO_SCHEMA_ERROR =
+  "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
 
 let linter: Spectral
 
@@ -926,7 +928,7 @@ test("PostResponseCodes should find errors for lro post with empty schema in 200
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(LR_ERROR)
+    expect(results[0].message).toContain(LR_NO_SCHEMA_ERROR)
   })
 })
 
@@ -1007,7 +1009,6 @@ test("PostResponseCodes should find errors for async post with 202 but no x-ms-l
     expect(results[0].message).toContain("An async POST operation must set '\"x-ms-long-running-operation\" : true'.")
   })
 })
-
 
 test("PostResponseCodes should find no errors for lro post when 200 with schema, 202, default codes are provided", () => {
   const myOpenApiDocument = {
