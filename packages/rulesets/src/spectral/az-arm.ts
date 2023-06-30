@@ -703,7 +703,8 @@ const ruleset: any = {
     LatestVersionOfCommonTypesMustBeUsed: {
       description: "This rule checks for references that aren't using latest version of common-types.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
+      stagingOnly: true,
       resolved: false,
       formats: [oas2],
       given: "$..['$ref']",
