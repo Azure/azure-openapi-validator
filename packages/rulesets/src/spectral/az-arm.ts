@@ -426,10 +426,11 @@ const ruleset: any = {
     ///
 
     // RPC Code: RPC-Put-V1-01, RPC-Get-V1-11
-    PathForResourceGroupOperation: {
-      description: "The path must be under a subscription and resource group.",
+    PathForTrackedResourceTypes: {
+      description: "The path must be under a subscription and resource group for tracked resource types.",
       message: "{{description}}",
       severity: "error",
+      stagingOnly: true,
       resolved: false,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[put,get]^~",

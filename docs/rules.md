@@ -833,11 +833,11 @@ Path for 'post' method on a resource type MUST follow valid resource naming, lik
 
 Please refer to [path-for-resource-action.md](./path-for-resource-action.md) for details.
 
-### PathForResourceGroupOperation
+### PathForTrackedResourceTypes
 
 For a operation, If a uri segment has subscription, it needs to have a resource group segment as well.
 
-Please refer to [path-for-resource-group-operation.md](./path-for-resource-group-operation.md) for details.
+Please refer to [path-for-tracked-resource-types.md](./path-for-tracked-resource-types.md) for details.
 
 ### PathParameterNames
 

@@ -1,4 +1,4 @@
-# PathForResourceGroupOperation
+# PathForTrackedResourceTypes
 
 ## Category
 
@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The path must be under a subscription and resource group.
+The path must be under a subscription and resource group for tracked resource types..
 
 ## Description
 
@@ -30,4 +30,4 @@ June 21, 2022
 
 ## How to fix the violation
 
-Adding the missing resource group or subscriptionId segment to the uri.
+Add the missing resource group or subscriptionId segment to the uri.

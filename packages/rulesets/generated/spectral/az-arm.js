@@ -1223,6 +1223,44 @@ const ruleset$1 = {
 };
 
 function matchAnyPatterns$1(patterns, path) {
+    return patterns.every((p) => p.test(path));
+}
+function verifyNestResourceType$1(path) {
+    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+function verifyResourceType$1(path) {
+    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
+        return [];
+    }
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
+    if (verifyNestResourceType$1(fullPath)) {
+        let count = 0;
+        for (const apiPath of Object.values(otherPaths)) {
+            if (verifyResourceType$1(apiPath)) {
+                if (fullPath.includes(apiPath))
+                    count++;
+            }
+        }
+        if (count === 0) {
+            return [
+                {
+                    message: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
+                    ctx,
+                },
+            ];
+        }
+    }
+    return [];
+};
+
+function matchAnyPatterns(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns(patterns, path) {
@@ -1248,13 +1286,13 @@ function verifyResourceGroupScope(path) {
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns(patterns, path);
 }
-function verifyResourceType$1(path) {
+function verifyResourceType(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns(patterns, path);
 }
-function verifyNestResourceType$1(path) {
+function verifyNestResourceType(path) {
     const patterns = [
         /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
         /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
@@ -1294,7 +1332,7 @@ const verifyArmPath = createRulesetFunction({
     const errors = [];
     const optionsHandlers = {
         resourceType: (fullPath) => {
-            if (!verifyResourceType$1(fullPath)) {
+            if (!verifyResourceType(fullPath)) {
                 errors.push({
                     message: `The path for the CURD methods do not contain a resource type.`,
                     path,
@@ -1302,7 +1340,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         nestedResourceType: (fullPath) => {
-            if (!verifyNestResourceType$1(fullPath)) {
+            if (!verifyNestResourceType(fullPath)) {
                 errors.push({
                     message: `The path for nested resource doest not meet the valid resource pattern.`,
                     path,
@@ -1432,7 +1470,7 @@ const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
 const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
 const LR_ERROR = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
-const EmptyResponse_ERROR = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
+const EmptyResponse_ERROR$1 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1443,7 +1481,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
     if (responses.length == 0) {
         errors.push({
-            message: EmptyResponse_ERROR,
+            message: EmptyResponse_ERROR$1,
             path: path,
         });
         return errors;
@@ -2112,6 +2150,43 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const LR_AND_SYNC_RESPONSES = ["200", "201", "default"];
+const LR_AND_SYNC_ERROR = "Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.";
+const EmptyResponse_ERROR = "PUT operation response codes must be non-empty. It must have response codes 200, 201 and default for both synchronous and long running.";
+const PutResponseCodes = (putOp, _opts, ctx) => {
+    var _a;
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const responses = Object.keys((_a = putOp === null || putOp === void 0 ? void 0 : putOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = (putOp["x-ms-long-running-operation"] && putOp["x-ms-long-running-operation"] === true) || putOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        if (!putOp["x-ms-long-running-operation"]) {
+            errors.push({
+                message: "An async PUT operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+    }
+    if (responses.length !== LR_AND_SYNC_RESPONSES.length || !LR_AND_SYNC_RESPONSES.every((value) => responses.includes(value))) {
+        errors.push({
+            message: LR_AND_SYNC_ERROR,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
     var _a, _b;
     if (putResponseSchema === null || typeof putResponseSchema !== "object") {
@@ -2467,44 +2542,6 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns(patterns, path) {
-    return patterns.every((p) => p.test(path));
-}
-function verifyNestResourceType(path) {
-    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns(patterns, path);
-}
-function verifyResourceType(path) {
-    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns(patterns, path);
-}
-const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
-    var _a;
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
-        return [];
-    }
-    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
-    if (verifyNestResourceType(fullPath)) {
-        let count = 0;
-        for (const apiPath of Object.values(otherPaths)) {
-            if (verifyResourceType(apiPath)) {
-                if (fullPath.includes(apiPath))
-                    count++;
-            }
-        }
-        if (count === 0) {
-            return [
-                {
-                    message: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
-                    ctx,
-                },
-            ];
-        }
-    }
-    return [];
-};
-
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2531,6 +2568,18 @@ const ruleset = {
                 functionOptions: {
                     segments: ["resourceGroups", "subscriptions"],
                 },
+            },
+        },
+        PutResponseCodes: {
+            description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put]"],
+            then: {
+                function: PutResponseCodes,
             },
         },
         ProvisioningStateSpecifiedForLROPut: {
@@ -2700,6 +2749,7 @@ const ruleset = {
         AllowNestedIfParentExist: {
             description: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
             severity: "error",
+            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2794,8 +2844,8 @@ const ruleset = {
                 },
             },
         },
-        PathForResourceGroupOperation: {
-            description: "The path must be under a subscription and resource group.",
+        PathForTrackedResourceTypes: {
+            description: "The path must be under a subscription and resource group for tracked resource types.",
             message: "{{description}}",
             severity: "error",
             resolved: false,
