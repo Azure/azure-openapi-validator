@@ -440,9 +440,6 @@ test("PatchResponseCodes should find errors for lro patch with only 202", () => 
           responses: {
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
           },
           "x-ms-long-running-operation": true,
@@ -515,9 +512,6 @@ test("PatchResponseCodes should find errors for lro patch without default respon
             },
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
           },
           "x-ms-long-running-operation": true,
@@ -669,9 +663,6 @@ test("PatchResponseCodes should find no errors for lro patch", () => {
             },
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooRequestParams",
-              },
             },
             default: {
               description: "Error",
@@ -746,9 +737,6 @@ test("PatchResponseCodes should find errors for async patch without x-ms-long-ru
             },
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             default: {
               description: "Error",

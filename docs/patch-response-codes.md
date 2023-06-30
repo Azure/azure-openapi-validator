@@ -14,9 +14,8 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-Synchronous PATCH must have 200 and default return codes. They also must not have other response codes.
-LRO PATCH must have 200 and 202 and default return codes. They also must not have other response codes.
-
+Synchronous PATCH operations must have `200` and `default` return codes. They also must not have other response codes.
+LRO PATCH operations must have `200`, `202`, and `default` return codes. They also must not have other response codes.
 
 ## Description
 
@@ -24,7 +23,7 @@ Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 
 
 ## How to fix the violation
 
-For a Synchronous PATCH add 200 and default return codes and make sure they don't have other response codes.
+For a synchronous PATCH add 200 and default return codes and make sure they don't have other response codes.
 For LRO PATCH add 200, 202 and default return codes and make sure they don't have other response codes.
 
 ### Example
@@ -60,9 +59,6 @@ patch{
   "responses": {
       "202": {
         "description": "Operation accepted",
-        "schema": {
-          "$ref": "#/definitions/FooResource",
-        },
       },
       "200": {
         "description": "Operation completed",
