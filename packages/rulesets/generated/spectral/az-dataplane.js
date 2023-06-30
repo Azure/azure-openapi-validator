@@ -512,32 +512,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const requiredReadOnlyProperties = (definition, _opts, ctx) => {
-    if (definition === null || typeof definition !== "object") {
-        return [];
-    }
-    if (!Array.isArray(definition.required) ||
-        (Array.isArray(definition.required) && definition.required.length === 0)) {
-        return [];
-    }
-    if (!definition.properties) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const required = definition.required;
-    const properties = definition.properties;
-    for (const property in properties) {
-        if (properties[property].readOnly === true && required.includes(property)) {
-            errors.push({
-                message: `Property '${property}' is a required property. It should not be marked as 'readonly'`,
-                path: [...path],
-            });
-        }
-    }
-    return errors;
-};
-
 function checkSchemaFormat(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -821,17 +795,6 @@ const ruleset$1 = {
             given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
             then: {
                 function: deleteInOperationName,
-            },
-        },
-        RequiredReadOnlyProperties: {
-            description: "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: ["$..?(@property === 'required')^"],
-            then: {
-                function: requiredReadOnlyProperties,
             },
         },
         SummaryAndDescriptionMustNotBeSame: {

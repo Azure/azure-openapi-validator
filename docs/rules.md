@@ -168,12 +168,6 @@ Control characters are not allowed in a specification.
 
 Please refer to [control-characters-not-allowed.md](./control-characters-not-allowed.md) for details.
 
-### CreateOperationAsyncResponseValidation
-
-An async PUT operation response must include status code 201 for creation. It must also support status code 200, for replacement. The operation must also add "x-ms-long-running-operation" to mark that it is a long running operation.
-
-Please refer to [create-operation-async-response-validation.md](./create-operation-async-response-validation.md) for details.
-
 ### DefaultErrorResponseSchema
 
 The default error response schema SHOULD correspond to the schema documented at [common-api-details](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content).
@@ -502,6 +496,12 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
+### PutResponseCodes
+
+Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
+
+Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPut
 
@@ -1010,12 +1010,6 @@ Please refer to [required-default-response.md](./required-default-response.md) f
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), a `Resource` model must have the `name`, `id` and `type` properties defined as `readOnly` in its hierarchy.
 
 Please refer to [required-properties-missing-in-resource-model.md](./required-properties-missing-in-resource-model.md) for details.
-
-### RequiredReadOnlyProperties
-
-A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.
-
-Please refer to [required-read-only-properties.md](./required-read-only-properties.md) for details.
 
 ### RequiredReadOnlySystemData
 
