@@ -34,6 +34,7 @@ import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
+import { PutResponseCodes } from "./functions/put-response-codes"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
@@ -77,6 +78,20 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for Async patterns
     ///
+
+    // RPC Code: RPC-Async-V1-01
+    PutResponseCodes: {
+      description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put]"],
+      then: {
+        function: PutResponseCodes,
+      },
+    },
 
     // RPC Code: RPC-Async-V1-02
     //PUT
