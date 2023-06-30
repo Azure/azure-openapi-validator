@@ -21,10 +21,12 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   const errors: any = []
 
   // array of all the patch body param properties
+  // let patchBodyPropertiesList: any = []
+  // let putBodyPropertiesList: any = []
   const patchBodyProperties: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
-  // array of all the put body param properties
   const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
 
+  //putBodyProperties.forEach((prop: any) => putBodyProperties.add(prop))
   const patchBodyPropertiesEmpty: boolean = patchBodyProperties.length < 1
   const putBodyPropertiesEmpty: boolean = putBodyProperties.length < 1
 
@@ -49,16 +51,14 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   }
 
   // array of all the patch body properties that are not present in the put body (if any)
-  const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties, putBodyProperties, _.isEqual)
-
+  //considering only the first element of patchBodyProperties & putBodyProperties is because there will only be one body param
+  const patchBodyPropertiesNotInPutBody = _.differenceWith(Object.entries(patchBodyProperties[0]), Object.entries(putBodyProperties[0]), _.isEqual)
   // there is at least one property present in the patch body that is not present in the the put body => error
   if (patchBodyPropertiesNotInPutBody.length > 0) {
     patchBodyPropertiesNotInPutBody.forEach((missingProperty) =>
-      Object.keys(missingProperty).forEach((key) => {
-        errors.push({
-          message: `${key} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,
-          path: path,
-        })
+      errors.push({
+        message: `${missingProperty[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,
+        path: path,
       })
     )
     return errors
