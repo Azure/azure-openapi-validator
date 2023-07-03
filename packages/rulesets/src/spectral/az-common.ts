@@ -21,7 +21,6 @@ import { operationIdNounVerb } from "./functions/operation-id-noun-verb"
 import paramLocation from "./functions/parameter-location"
 import { patchInOperationName } from "./functions/patch-in-operation-name"
 import { putInOperationName } from "./functions/put-in-operation-name"
-import { requiredReadOnlyProperties } from "./functions/required-read-only-properties"
 import checkSchemaFormat from "./functions/schema-format"
 import checkSummaryAndDescription from "./functions/summary-description-must-not-be-same"
 import xmsClientNameParameter from "./functions/xms-client-name-parameter"
@@ -94,9 +93,9 @@ const ruleset: any = {
       },
     },
     LroExtension: {
-      description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-      message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-      severity: "warn",
+      description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+      message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+      severity: "error",
       formats: [oas2],
       given: "$.paths[*][*].responses[?(@property == '202')]^^",
       then: {
@@ -107,7 +106,7 @@ const ruleset: any = {
     LroStatusCodesReturnTypeSchema: {
       description: "The '200'/'201' responses of the long running operation must have a schema definition.",
       message: "{{error}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -204,18 +203,6 @@ const ruleset: any = {
         function: deleteInOperationName,
       },
     },
-    RequiredReadOnlyProperties: {
-      description:
-        "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$..?(@property === 'required')^"],
-      then: {
-        function: requiredReadOnlyProperties,
-      },
-    },
     SummaryAndDescriptionMustNotBeSame: {
       description: `Each operation has a summary and description values. They must not be same.`,
       message: "The summary and description values should not be same.",
@@ -249,7 +236,7 @@ const ruleset: any = {
       },
     },
     LongRunningOperationsOptionsValidator: {
-      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
+      description: 'A LRO Post operation with return schema should have "x-ms-long-running-operation-options" extension enabled.',
       message: "{{error}}",
       severity: "warn",
       resolved: true,
@@ -402,7 +389,7 @@ const ruleset: any = {
       description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
       message:
         "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: ["$..[?(@object() && @.description)].description"],
@@ -414,7 +401,7 @@ const ruleset: any = {
       description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
       message:
         "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-      severity: "warn",
+      severity: "error",
       resolved: false,
       formats: [oas2],
       given: ["$.parameters.*"],

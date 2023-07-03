@@ -57,6 +57,13 @@
       "name": "lint",
       "summary": "Lint projects. Runs `npm run lint` on all projects.",
       "enableParallelism": true
+    },
+    {
+      "commandKind": "global",
+      "name": "prep",
+      "summary": "Run the various commands needed to generate files before merging a pull request.",
+      "shellCommand": "rush update && rush build && rush lint && rush test && rush regen-ruleindex && rush change",
+      "safeForSimultaneousRushProcesses": true
     }
   ]
 }

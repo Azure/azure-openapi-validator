@@ -29,16 +29,6 @@ const longRunningResponseStatusCode = (methodOp: any, _opts: any, ctx: any, vali
   return errors
 }
 
-export const longRunningResponseStatusCodeArm = (methodOp: any, _opts: any, ctx: any) => {
-  const validResponseCodesList: any = {
-    delete: ["200", "204"],
-    post: ["200", "201", "202", "204"],
-    put: ["200", "201"],
-    patch: ["200", "201", "202"],
-  }
-  return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList)
-}
-
 export const longRunningResponseStatusCodeDataPlane = (methodOp: any, _opts: any, ctx: any) => {
   const validResponseCodesList: any = {
     delete: ["200", "204", "202"],

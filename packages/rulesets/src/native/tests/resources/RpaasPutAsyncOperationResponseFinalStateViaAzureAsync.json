@@ -24,7 +24,7 @@
         "description": "Foo operation",
         "x-ms-long-running-operation": false,
         "x-ms-long-running-operation-options": {
-          "final-state-via": "location"
+          "final-state-via": "any"
         },
         "responses": {
           "201": {
@@ -33,7 +33,7 @@
           "default": {
             "description": "Unexpected error"
           }
-        }        
+        }
       }
     }
   },

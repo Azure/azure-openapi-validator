@@ -5,6 +5,7 @@ specifiers:
   '@azure-tools/openapi': ^3.3.0
   '@azure-tools/uri': 3.1.1
   '@jest/test-sequencer': 27.5.1
+  '@microsoft.azure/openapi-validator-rulesets': 1.0.1
   '@rollup/plugin-commonjs': ^21.0.2
   '@rollup/plugin-json': ^4.1.0
   '@rollup/plugin-node-resolve': ^13.1.3
@@ -72,6 +73,7 @@ dependencies:
   '@azure-tools/openapi': 3.3.0
   '@azure-tools/uri': 3.1.1
   '@jest/test-sequencer': 27.5.1
+  '@microsoft.azure/openapi-validator-rulesets': 1.0.1
   '@rollup/plugin-commonjs': 21.0.2_rollup@2.70.1
   '@rollup/plugin-json': 4.1.0_rollup@2.70.1
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.70.1
@@ -806,6 +808,17 @@ packages:
       jsep: ^0.4.0||^1.0.0
     dependencies:
       jsep: 1.3.0
+    dev: false
+
+  /@microsoft.azure/openapi-validator-rulesets/1.0.1:
+    resolution: {integrity: sha512-DXDneeuJDMxDT6wfu6TIE4VzR95cAevKG+dyohMwzjD7s8dxUfc2CLvZwUjaPJwmgGcyk1GYh3W9G8vBM3v7Fg==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@apidevtools/json-schema-ref-parser': 9.0.9
+      jsonpath-plus: 6.0.1
+      lodash: 4.17.21
+      string.prototype.matchall: 4.0.7
+      tslib: 2.3.1
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -5286,7 +5299,7 @@ packages:
     dev: false
 
   /lodash.topath/4.5.2:
-    resolution: {integrity: sha1-NhY1Hzu6YZlKCTGYlmC9AyVP0Ak=}
+    resolution: {integrity: sha512-1/W4dM+35DwvE/iEd1M9ekewOSTlpFekhw9mhAtrwjVqUr83/ilQiyAvmg4tVX7Unkcfl1KC+i9WdaT4B6aQcg==}
     dev: false
 
   /lodash/4.17.21:
@@ -7869,13 +7882,14 @@ packages:
     dev: false
 
   file:projects/openapi-validator.tgz:
-    resolution: {integrity: sha512-bkmsrsHQuYWsUMafs0tiRRhNFZHM6uLZEOlcDkbNifs2WnZmB/R6jTTbre/0lmXZf0NJqGfyVuRYRL9o9TpnaA==, tarball: file:projects/openapi-validator.tgz}
+    resolution: {integrity: sha512-vcfUOPFvsbS81a6s+0WVlBce89IYOeDMql9u/40ZNCxlXQgWliBbA9BYdyrGEa5vYycYZQkx1eLeJ9WR7uuomQ==, tarball: file:projects/openapi-validator.tgz}
     name: '@rush-temp/openapi-validator'
     version: 0.0.0
     dependencies:
       '@apidevtools/json-schema-ref-parser': 9.0.9
       '@azure-tools/openapi': 3.3.0
       '@azure-tools/uri': 3.1.1
+      '@microsoft.azure/openapi-validator-rulesets': 1.0.1
       '@stoplight/better-ajv-errors': 1.0.1_ajv@8.10.0
       '@stoplight/json': 3.17.2
       '@stoplight/json-ref-resolver': 3.1.3

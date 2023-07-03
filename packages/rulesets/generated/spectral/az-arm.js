@@ -1,5 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
+import _ from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -307,6 +308,9 @@ function isSchemaEqual(a, b) {
         const propsA = Object.getOwnPropertyNames(a);
         const propsB = Object.getOwnPropertyNames(b);
         if (propsA.length === propsB.length) {
+            if (propsA.length === 0) {
+                return true;
+            }
             for (let i = 0; i < propsA.length; i++) {
                 const propsAName = propsA[i];
                 const [propA, propB] = [a[propsAName], b[propsAName]];
@@ -352,6 +356,21 @@ function getResourcesPathHierarchyBasedOnResourceType(path) {
         }
     }
     return result;
+}
+function deepFindObjectKeyPath(object, keyName, path = []) {
+    if (!_.isObject(object)) {
+        return [];
+    }
+    if (_.has(object, keyName)) {
+        return _.concat(path, keyName);
+    }
+    for (const [key, value] of Object.entries(object)) {
+        const result = deepFindObjectKeyPath(value, keyName, _.concat(path, key));
+        if (result) {
+            return result;
+        }
+    }
+    return [];
 }
 
 const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
@@ -649,32 +668,6 @@ const putInOperationName = (operationId, _opts, ctx) => {
     return errors;
 };
 
-const requiredReadOnlyProperties = (definition, _opts, ctx) => {
-    if (definition === null || typeof definition !== "object") {
-        return [];
-    }
-    if (!Array.isArray(definition.required) ||
-        (Array.isArray(definition.required) && definition.required.length === 0)) {
-        return [];
-    }
-    if (!definition.properties) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const required = definition.required;
-    const properties = definition.properties;
-    for (const property in properties) {
-        if (properties[property].readOnly === true && required.includes(property)) {
-            errors.push({
-                message: `Property '${property}' is a required property. It should not be marked as 'readonly'`,
-                path: [...path],
-            });
-        }
-    }
-    return errors;
-};
-
 function checkSchemaFormat(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -694,6 +687,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "char",
         "time",
         "date-time-rfc1123",
+        "date-time-rfc7231",
         "duration",
         "uuid",
         "base64url",
@@ -850,9 +844,9 @@ const ruleset$1 = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response should specify `x-ms-long-running-operation: true`.",
-            severity: "warn",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            severity: "error",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]^^",
             then: {
@@ -863,7 +857,7 @@ const ruleset$1 = {
         LroStatusCodesReturnTypeSchema: {
             description: "The '200'/'201' responses of the long running operation must have a schema definition.",
             message: "{{error}}",
-            severity: "warn",
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[put][?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
@@ -959,17 +953,6 @@ const ruleset$1 = {
                 function: deleteInOperationName,
             },
         },
-        RequiredReadOnlyProperties: {
-            description: "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: ["$..?(@property === 'required')^"],
-            then: {
-                function: requiredReadOnlyProperties,
-            },
-        },
         SummaryAndDescriptionMustNotBeSame: {
             description: `Each operation has a summary and description values. They must not be same.`,
             message: "The summary and description values should not be same.",
@@ -1002,7 +985,7 @@ const ruleset$1 = {
             },
         },
         LongRunningOperationsOptionsValidator: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
+            description: 'A LRO Post operation with return schema should have "x-ms-long-running-operation-options" extension enabled.',
             message: "{{error}}",
             severity: "warn",
             resolved: true,
@@ -1146,7 +1129,7 @@ const ruleset$1 = {
         DescriptiveDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "The value provided for description is not descriptive enough. Accurate and descriptive description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$..[?(@object() && @.description)].description"],
@@ -1157,7 +1140,7 @@ const ruleset$1 = {
         ParameterDescriptionRequired: {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
-            severity: "warn",
+            severity: "error",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
@@ -1268,15 +1251,15 @@ function verifyResourceGroupScope(path) {
     return matchAnyPatterns(patterns, path);
 }
 function verifyResourceType(path) {
-    const patterns = [/^.*\/providers\/microsoft\.\w+\/\w+.*/gi];
+    const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
     return matchAnyPatterns(patterns, path);
 }
 function verifyNestResourceType(path) {
     const patterns = [
-        /^.*\/providers\/microsoft\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
-        /^.*\/providers\/microsoft\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
-        /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
     return notMatchPatterns(patterns, path);
 }
@@ -1445,43 +1428,81 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const longRunningResponseStatusCode = (methodOp, _opts, ctx, validResponseCodesList) => {
-    var _a, _b, _c, _d;
-    if (methodOp === null || typeof methodOp !== "object") {
+const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
+const LR_DELETE_RESPONSES = ["202", "204", "default"];
+const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
+const LR_ERROR = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
+const EmptyResponse_ERROR = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
+const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
+    var _a;
+    if (deleteOp === null || typeof deleteOp !== "object") {
         return [];
     }
-    const path = ctx.path || [];
+    const path = ctx.path;
     const errors = [];
-    const method = Object.keys(methodOp)[0];
-    if (!["delete", "put", "patch", "post"].includes(method)) {
-        return [];
+    const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR,
+            path: path,
+        });
+        return errors;
     }
-    const operationId = ((_a = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _a === void 0 ? void 0 : _a.operationId) || "";
-    if (!((_b = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _b === void 0 ? void 0 : _b["x-ms-long-running-operation"])) {
-        return [];
-    }
-    if ((_c = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _c === void 0 ? void 0 : _c.responses) {
-        const responseCodes = Object.keys((_d = methodOp === null || methodOp === void 0 ? void 0 : methodOp[method]) === null || _d === void 0 ? void 0 : _d.responses);
-        const validResponseCodes = validResponseCodesList[method];
-        const validResponseCodeString = validResponseCodes.join(" or ");
-        const withTerminalCode = validResponseCodes.some((code) => responseCodes.includes(code));
-        if (!withTerminalCode) {
+    const isAsyncOperation = deleteOp.responses["202"] ||
+        (deleteOp["x-ms-long-running-operation"] && deleteOp["x-ms-long-running-operation"] === true) ||
+        deleteOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        if (!deleteOp["x-ms-long-running-operation"]) {
             errors.push({
-                message: `A '${method}' operation '${operationId}' with x-ms-long-running-operation extension must have a valid terminal success status code ${validResponseCodeString}.`,
-                path: [...path, method],
+                message: "An async DELETE operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+        if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: LR_ERROR,
+                path: path,
+            });
+        }
+    }
+    else {
+        if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: SYNC_ERROR,
+                path: path,
             });
         }
     }
     return errors;
 };
-const longRunningResponseStatusCodeArm = (methodOp, _opts, ctx) => {
-    const validResponseCodesList = {
-        delete: ["200", "204"],
-        post: ["200", "201", "202", "204"],
-        put: ["200", "201"],
-        patch: ["200", "201", "202"],
-    };
-    return longRunningResponseStatusCode(methodOp, _opts, ctx, validResponseCodesList);
+
+const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
+    if (!properties || typeof properties !== "object") {
+        return [];
+    }
+    for (const path of ctx.path) {
+        if (path.includes(".")) {
+            const splitNamespace = path.split(".");
+            if (path.includes("/")) {
+                const segments = splitNamespace[splitNamespace.length - 1].split("/");
+                if (segments.length % 2 !== 0) {
+                    return [];
+                }
+                else {
+                    const key = Object.keys(properties);
+                    if (key.length != 2 || !key.includes("value") || !key.includes("nextLink")) {
+                        return [
+                            {
+                                message: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+                            },
+                        ];
+                    }
+                }
+            }
+        }
+    }
+    return [];
 };
 
 function checkApiVersion(param) {
@@ -1576,23 +1597,6 @@ const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
         }];
 };
 
-const provisioningStateSpecifiedForLRODelete = (deleteOp, _opts, ctx) => {
-    if (deleteOp === null || typeof deleteOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const allProperties = getProperties(deleteOp.schema);
-    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
-    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
-        errors.push({
-            message: `200 response schema in long running DELETE operation is missing ProvisioningState property. A LRO DELETE operations 200 response schema must have ProvisioningState specified.`,
-            path,
-        });
-    }
-    return errors;
-};
-
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
         return [];
@@ -1639,33 +1643,6 @@ const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
         errors.push({
             message: `200 response schema in long running PATCH operation is missing ProvisioningState property. A LRO PATCH operations 200 response schema must have ProvisioningState specified.`,
             path,
-        });
-    }
-    return errors;
-};
-
-const LROPostFinalStateViaProperty = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    const path = ctx.path;
-    const errors = [];
-    const errorMessage = "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.";
-    if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
-        return [];
-    }
-    if (!postOp["x-ms-long-running-operation-options"]) {
-        errors.push({
-            message: errorMessage,
-            path: path,
-        });
-        return errors;
-    }
-    const finalStateViaProperty = postOp["x-ms-long-running-operation-options"]["final-state-via"];
-    if (!finalStateViaProperty || finalStateViaProperty !== "azure-async-operation") {
-        errors.push({
-            message: errorMessage,
-            path: path,
         });
     }
     return errors;
@@ -1739,6 +1716,23 @@ const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
     return errors;
 };
 
+const ALLOWED_RESPONSE_CODES = ["200", "201", "202", "204", "default"];
+const noErrorCodeResponses = (responseCode, _opts, ctx) => {
+    var _a;
+    if (!responseCode || typeof responseCode !== "string") {
+        return [];
+    }
+    if (ALLOWED_RESPONSE_CODES.some((allowedCode) => responseCode === allowedCode)) {
+        return [];
+    }
+    return [
+        {
+            message: "",
+            path: (_a = ctx.path) !== null && _a !== void 0 ? _a : [],
+        },
+    ];
+};
+
 function operationsApiSchema(schema, options, { path }) {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -1771,6 +1765,30 @@ function operationsApiSchema(schema, options, { path }) {
     }
     return errors;
 }
+
+const OPERATIONS = "/operations";
+const GET = "get";
+const NOT_TENANT_LEVEL_REGEX = /\/subscriptions\/\{.*\}\/(?:resourceGroups\/\{.*\}\/)?providers\/[^/]+\/operations/;
+const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const keys = Object.keys(pathItem);
+    if (keys.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const pathName of keys) {
+        if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
+            errors.push({
+                message: "The get operations endpoint for the operations API must only be at the tenant level.",
+                path: [...path, pathName, GET],
+            });
+        }
+    }
+    return errors;
+};
 
 const pushToError = (errors, parameter, path) => {
     errors.push({
@@ -1971,6 +1989,27 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
     return errors;
 };
 
+const errorMessageObject = "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.";
+const errorMessageNull = "Properties with type NULL are not allowed. Either specify the type as object and reference a model or specify a primitive type.";
+const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
+    const path = ctx.path || [];
+    const errors = [];
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
+        errors.push({ message: errorMessageNull, path });
+    }
+    const values = Object.values(definitionObject);
+    for (const val of values) {
+        if (typeof val === "object")
+            return [];
+        else
+            continue;
+    }
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "object") {
+        errors.push({ message: errorMessageObject, path });
+    }
+    return errors;
+};
+
 const provisioningState = (swaggerObj, _opts, paths) => {
     const enumValue = swaggerObj.enum;
     if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
@@ -2013,8 +2052,8 @@ const provisioningStateMustBeReadOnly = (schema, _opts, ctx) => {
     return errors;
 };
 
-const putGetPatchScehma = (pathItem, opts, ctx) => {
-    if (pathItem === null || typeof pathItem !== 'object') {
+const putGetPatchSchema = (pathItem, opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
         return [];
     }
     const neededHttpVerbs = ["put", "get", "patch"];
@@ -2028,7 +2067,7 @@ const putGetPatchScehma = (pathItem, opts, ctx) => {
         if (models.size > 1) {
             errors.push({
                 message: "",
-                path
+                path,
             });
             break;
         }
@@ -2102,35 +2141,36 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
     return errors;
 };
 
-const RESOURCE_COMMON_TYPES_REGEX = /.*common-types\/resource-management\/v\d+\/types.json#\/definitions\/(Proxy|Tracked)Resource/;
-const resourceMustReferenceCommonTypes = (ref, _opts, ctx) => {
-    var _a, _b, _c, _d;
-    if (!ref) {
+const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
+const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
+const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
+    var _a;
+    if (pathItem === null || typeof pathItem !== "object") {
         return [];
     }
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    const definitions = swagger === null || swagger === void 0 ? void 0 : swagger.definitions;
-    if (!definitions) {
+    const path = ctx.path || [];
+    const keys = Object.keys(pathItem);
+    if (keys.length < 1) {
         return [];
     }
-    const resourceName = ref.toString().split("/").pop();
-    const allOfRef = (_c = (_b = definitions[resourceName]) === null || _b === void 0 ? void 0 : _b.properties) === null || _c === void 0 ? void 0 : _c.allOf;
-    const path = ["definitions", resourceName];
-    const error = [
-        {
-            message: `Resource definition '${resourceName}' must reference the common types resource definition for ProxyResource or TrackedResource.`,
-            path: path,
-        },
-    ];
-    if (!allOfRef) {
-        return error;
+    const pathName = keys[0];
+    if (!pathName.match(/.*\/\w+s\/\w+$/)) {
+        return [];
     }
-    for (const refObj of allOfRef) {
-        if ((_d = refObj.$ref) === null || _d === void 0 ? void 0 : _d.match(RESOURCE_COMMON_TYPES_REGEX)) {
-            return [];
+    const lastPathWord = (_a = pathName.split("/").pop()) !== null && _a !== void 0 ? _a : "";
+    if (ARM_ALLOWED_RESERVED_NAMES.includes(lastPathWord)) {
+        return [];
+    }
+    const errors = [];
+    for (const op of INCLUDED_OPERATIONS) {
+        if (pathItem[pathName][op]) {
+            errors.push({
+                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName, op],
+            });
         }
     }
-    return error;
+    return errors;
 };
 
 const resourceNameRestriction = (paths, _opts, ctx) => {
@@ -2282,6 +2322,33 @@ const SyncPostReturn = (postOp, _opts, ctx) => {
     return errors;
 };
 
+const SYSTEM_DATA_CAMEL = "systemData";
+const SYSTEM_DATA_UPPER_CAMEL = "SystemData";
+const PROPERTIES = "properties";
+const ERROR_MESSAGE = "System data must be defined as a top-level property, not in the properties bag.";
+const systemDataInPropertiesBag = (definition, _opts, ctx) => {
+    const properties = getProperties(definition);
+    const path = deepFindObjectKeyPath(properties, SYSTEM_DATA_CAMEL);
+    if (path.length > 0) {
+        return [
+            {
+                message: ERROR_MESSAGE,
+                path: _.concat(ctx.path, PROPERTIES, path[0]),
+            },
+        ];
+    }
+    const pathForUpperCamelCase = deepFindObjectKeyPath(properties, SYSTEM_DATA_UPPER_CAMEL);
+    if (pathForUpperCamelCase.length > 0) {
+        return [
+            {
+                message: ERROR_MESSAGE,
+                path: _.concat(ctx.path, PROPERTIES, pathForUpperCamelCase[0]),
+            },
+        ];
+    }
+    return [];
+};
+
 const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -2352,7 +2419,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
                     errors.push({
-                        message: `The patch operation body parameter schema should contains property '${p}'.`,
+                        message: `The patch operation body parameter schema should contain property '${p}'.`,
                         path: [...path, "parameters", index],
                     });
                 }
@@ -2361,11 +2428,25 @@ const validatePatchBodyParamProperties = createRulesetFunction({
         if (_opts.shouldNot) {
             _opts.shouldNot.forEach((p) => {
                 var _a;
-                if ((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) {
-                    errors.push({
-                        message: `The patch operation body parameter schema should not contains property ${p}.`,
-                        path: [...path, "parameters", index],
-                    });
+                const property = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p];
+                if (property) {
+                    let isPropertyReadOnly = false;
+                    let isPropertyImmutable = false;
+                    if (property["readOnly"] && property["readOnly"] === true) {
+                        isPropertyReadOnly = true;
+                    }
+                    if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+                        const schemaArray = property["x-ms-mutability"];
+                        if (!schemaArray.includes("update")) {
+                            isPropertyImmutable = true;
+                        }
+                    }
+                    if (!(isPropertyReadOnly || isPropertyImmutable)) {
+                        errors.push({
+                            message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.`,
+                            path: [...path, "parameters", index],
+                        });
+                    }
                 }
             });
         }
@@ -2414,17 +2495,6 @@ const ruleset = {
                 },
             },
         },
-        LongRunningResponseStatusCode: {
-            description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
-            then: {
-                function: longRunningResponseStatusCodeArm,
-            },
-        },
         ProvisioningStateSpecifiedForLROPut: {
             description: 'A LRO PUT operation\'s response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
             message: "{{error}}",
@@ -2449,19 +2519,6 @@ const ruleset = {
                 function: provisioningStateSpecifiedForLROPatch,
             },
         },
-        ProvisioningStateSpecifiedForLRODelete: {
-            description: 'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
-            message: "{{error}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: [
-                "$[paths,'x-ms-paths'].*[delete][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
-            ],
-            then: {
-                function: provisioningStateSpecifiedForLRODelete,
-            },
-        },
         ProvisioningStateValidation: {
             description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
             message: "{{error}}",
@@ -2471,18 +2528,6 @@ const ruleset = {
             given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
             then: {
                 function: provisioningState,
-            },
-        },
-        XmsLongRunningOperationOptions: {
-            description: "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
-            message: "{{description}}",
-            severity: "warn",
-            resolved: true,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
-            then: {
-                field: "x-ms-long-running-operation-options",
-                function: truthy,
             },
         },
         LroLocationHeader: {
@@ -2512,6 +2557,18 @@ const ruleset = {
                 },
             },
         },
+        DeleteResponseCodes: {
+            description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[delete]"],
+            then: {
+                function: DeleteResponseCodes,
+            },
+        },
         DeleteMustNotHaveRequestBody: {
             description: "The delete operation must not have a request body.",
             severity: "error",
@@ -2532,6 +2589,30 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
             then: {
                 function: falsy,
+            },
+        },
+        AvoidAdditionalProperties: {
+            description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{description}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+            then: {
+                function: falsy,
+            },
+        },
+        PropertiesTypeObjectNoDefinition: {
+            description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+            then: {
+                function: propertiesTypeObjectNoDefinition,
             },
         },
         GetMustNotHaveRequestBody: {
@@ -2556,6 +2637,17 @@ const ruleset = {
                 function: falsy,
             },
         },
+        GetCollectionOnlyHasValueAndNextLink: {
+            description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations') && !@property.endsWith('default'))][get].responses.200.schema.properties",
+            then: {
+                function: getCollectionOnlyHasValueAndNextLink,
+            },
+        },
         ParametersInPointGet: {
             description: "Point Get's MUST not have query parameters other than api version.",
             severity: "error",
@@ -2577,7 +2669,7 @@ const ruleset = {
             then: {
                 function: validatePatchBodyParamProperties,
                 functionOptions: {
-                    shouldNot: ["name", "type", "location"],
+                    shouldNot: ["id", "name", "type", "location"],
                 },
             },
         },
@@ -2706,7 +2798,7 @@ const ruleset = {
             resolved: false,
             given: ["$[paths,'x-ms-paths'].*.put^"],
             then: {
-                function: putGetPatchScehma,
+                function: putGetPatchSchema,
             },
         },
         XmsResourceInPutResponse: {
@@ -2783,17 +2875,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[post][parameters]",
             then: {
                 function: ParametersInPost,
-            },
-        },
-        LROPostFinalStateViaProperty: {
-            description: "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[post]"],
-            then: {
-                function: LROPostFinalStateViaProperty,
             },
         },
         PathContainsSubscriptionId: {
@@ -2902,6 +2983,43 @@ const ruleset = {
                 function: noDuplicatePathsForScopeParameter,
             },
         },
+        SystemDataDefinitionsCommonTypes: {
+            description: "System data references must utilize common types.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: "$.definitions.*.properties.[systemData,SystemData].$ref",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/systemData",
+                },
+            },
+        },
+        SystemDataInPropertiesBag: {
+            description: "System data must be defined as a top-level property, not in the properties bag.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+            then: {
+                function: systemDataInPropertiesBag,
+            },
+        },
+        ReservedResourceNamesModelAsEnum: {
+            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths']"],
+            then: {
+                function: reservedResourceNamesModelAsEnum,
+            },
+        },
         OperationsApiSchemaUsesCommonTypes: {
             description: "Operations API path must follow the schema provided in the common types.",
             message: "{{description}}",
@@ -2916,21 +3034,23 @@ const ruleset = {
                 },
             },
         },
-        ResourceMustReferenceCommonTypes: {
-            description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
+        OperationsApiTenantLevelOnly: {
+            description: "The get operations endpoint must only be at the tenant level.",
             message: "{{error}}",
             severity: "error",
-            resolved: false,
+            stagingOnly: true,
+            resolved: true,
             formats: [oas2],
-            given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
+            given: "$.[paths,'x-ms-paths']",
             then: {
-                function: resourceMustReferenceCommonTypes,
+                function: operationsApiTenantLevelOnly,
             },
         },
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
-            severity: "error",
+            severity: "off",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
@@ -2948,6 +3068,17 @@ const ruleset = {
             then: {
                 function: truthy,
                 field: "type",
+            },
+        },
+        NoErrorCodeResponses: {
+            description: "Invalid status code specified. Please refer to the documentation for the allowed set.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: false,
+            formats: [oas2],
+            given: ["$.paths.*.*.responses.*~"],
+            then: {
+                function: noErrorCodeResponses,
             },
         },
         LroWithOriginalUriAsFinalState: {

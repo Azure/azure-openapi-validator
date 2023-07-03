@@ -46,7 +46,7 @@ export const validatePatchBodyParamProperties = createRulesetFunction<unknown, O
         _opts.should.forEach((p: string) => {
           if (!getProperties(bodyParameter)?.[p] && getProperties(responseSchema)?.[p]) {
             errors.push({
-              message: `The patch operation body parameter schema should contains property '${p}'.`,
+              message: `The patch operation body parameter schema should contain property '${p}'.`,
               path: [...path, "parameters", index],
             })
           }
@@ -54,11 +54,28 @@ export const validatePatchBodyParamProperties = createRulesetFunction<unknown, O
       }
       if (_opts.shouldNot) {
         _opts.shouldNot.forEach((p: string) => {
-          if (getProperties(bodyParameter)?.[p]) {
-            errors.push({
-              message: `The patch operation body parameter schema should not contains property ${p}.`,
-              path: [...path, "parameters", index],
-            })
+          const property = getProperties(bodyParameter)?.[p]
+          if (property) {
+            let isPropertyReadOnly = false
+            let isPropertyImmutable = false
+
+            if (property["readOnly"] && property["readOnly"] === true) {
+              isPropertyReadOnly = true
+            }
+
+            if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+              const schemaArray = property["x-ms-mutability"]
+              if (!schemaArray.includes("update")) {
+                isPropertyImmutable = true
+              }
+            }
+
+            if (!(isPropertyReadOnly || isPropertyImmutable)) {
+              errors.push({
+                message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.`,
+                path: [...path, "parameters", index],
+              })
+            }
           }
         })
       }

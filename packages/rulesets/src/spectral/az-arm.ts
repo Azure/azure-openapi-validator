@@ -6,41 +6,44 @@ import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
-import { longRunningResponseStatusCodeArm } from "./functions/Extensions/long-running-response-status-code"
+import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
 import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
-import provisioningStateSpecifiedForLRODelete from "./functions/lro-delete-provisioning-state-specified"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { LROPostFinalStateViaProperty } from "./functions/lro-post-final-state-via-property"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
+import { operationsApiTenantLevelOnly } from "./functions/operations-api-tenant-level-only"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
-import { PatchResponseCode } from "./functions/patch-response-code"
+import { PatchResponseCodes } from "./functions/patch-response-codes"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import { PostResponseCodes } from "./functions/post-response-codes"
+import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
-import putGetPatchScehma from "./functions/put-get-patch-schema"
+import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
+import { PutResponseCodes } from "./functions/put-response-codes"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
-import { resourceMustReferenceCommonTypes } from "./functions/resource-must-reference-common-types"
+import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { SyncPostReturn } from "./functions/synchronous-post-return"
+import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -78,15 +81,16 @@ const ruleset: any = {
     ///
 
     // RPC Code: RPC-Async-V1-01
-    LongRunningResponseStatusCode: {
-      description: 'A LRO Post operation with return schema must have "x-ms-long-running-operation-options" extension enabled.',
-      message: "{{error}}",
+    PutResponseCodes: {
+      description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^^"],
+      given: ["$[paths,'x-ms-paths'].*[put]"],
       then: {
-        function: longRunningResponseStatusCodeArm,
+        function: PutResponseCodes,
       },
     },
 
@@ -119,21 +123,6 @@ const ruleset: any = {
         function: provisioningStateSpecifiedForLROPatch,
       },
     },
-    //Delete
-    ProvisioningStateSpecifiedForLRODelete: {
-      description:
-        'A long running Delete operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
-      message: "{{error}}",
-      severity: "warn",
-      resolved: true,
-      formats: [oas2],
-      given: [
-        "$[paths,'x-ms-paths'].*[delete][?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses[?(@property == '200')]",
-      ],
-      then: {
-        function: provisioningStateSpecifiedForLRODelete,
-      },
-    },
 
     // https://github.com/Azure/azure-openapi-validator/issues/332
     // RPC Code: RPC-Async-V1-03
@@ -146,22 +135,6 @@ const ruleset: any = {
       given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
       then: {
         function: provisioningState,
-      },
-    },
-    // x-ms-long-running-operation-options should indicate the type of response header to track the async operation
-    //https://github.com/Azure/azure-openapi-validator/issues/324
-    // RPC Code: RPC-Async-V1-06
-    XmsLongRunningOperationOptions: {
-      description:
-        "The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation.",
-      message: "{{description}}",
-      severity: "warn",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^"],
-      then: {
-        field: "x-ms-long-running-operation-options",
-        function: truthy,
       },
     },
     // RPC Code: RPC-Async-V1-07
@@ -178,6 +151,22 @@ const ruleset: any = {
         },
       },
     },
+
+    // RPC Code: RPC-Async-V1-11
+    PostResponseCodes: {
+      description:
+        "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[post]"],
+      then: {
+        function: PostResponseCodes,
+      },
+    },
+
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
       description:
@@ -199,6 +188,20 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for Delete patterns
     ///
+
+    // RPC Code: RPC-Delete-V1-01
+    DeleteResponseCodes: {
+      description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[delete]"],
+      then: {
+        function: DeleteResponseCodes,
+      },
+    },
 
     // RPC Code: RPC-Delete-V1-02
     DeleteMustNotHaveRequestBody: {
@@ -223,6 +226,39 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[delete].responses['200','204'].schema"],
       then: {
         function: falsy,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for Policy Guidelines
+    ///
+
+    // RPC Code: RPC-Policy-V1-05
+    AvoidAdditionalProperties: {
+      description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+      then: {
+        function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Policy-V1-03
+    PropertiesTypeObjectNoDefinition: {
+      description:
+        "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+      then: {
+        function: propertiesTypeObjectNoDefinition,
       },
     },
 
@@ -265,7 +301,8 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations'))][get].responses.200.schema.properties",
+      given:
+        "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('operations') && !@property.endsWith('default'))][get].responses.200.schema.properties",
       then: {
         function: getCollectionOnlyHasValueAndNextLink,
       },
@@ -299,7 +336,7 @@ const ruleset: any = {
       then: {
         function: validatePatchBodyParamProperties,
         functionOptions: {
-          shouldNot: ["name", "type", "location"],
+          shouldNot: ["id", "name", "type", "location"],
         },
       },
     },
@@ -318,15 +355,16 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Patch-V1-06
-    PatchResponseCode: {
+    PatchResponseCodes: {
       description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch]"],
       then: {
-        function: PatchResponseCode,
+        function: PatchResponseCodes,
       },
     },
 
@@ -452,7 +490,7 @@ const ruleset: any = {
       resolved: false,
       given: ["$[paths,'x-ms-paths'].*.put^"],
       then: {
-        function: putGetPatchScehma,
+        function: putGetPatchSchema,
       },
     },
     // RPC Code: RPC-Put-V1-12
@@ -541,19 +579,6 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*[post][parameters]",
       then: {
         function: ParametersInPost,
-      },
-    },
-    // RPC Code: RPC-POST-V1-09
-    LROPostFinalStateViaProperty: {
-      description:
-        "A long running operation (LRO) post MUST have 'long-running-operation-options' specified and MUST have the 'final-state-via' property set to 'azure-async-operation'.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[post]"],
-      then: {
-        function: LROPostFinalStateViaProperty,
       },
     },
 
@@ -677,7 +702,63 @@ const ruleset: any = {
     },
 
     ///
-    /// ARM rules for operations API
+    /// ARM RPC rules for SystemData
+    ///
+
+    // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
+    // This rule is only applicable for specs that are not using the common-types resource definition.
+    // However, we need this rule because not all RP teams can switch to the common-types resource definition.
+    SystemDataDefinitionsCommonTypes: {
+      description: "System data references must utilize common types.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: false,
+      formats: [oas2],
+      given: "$.definitions.*.properties.[systemData,SystemData].$ref",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/systemData",
+        },
+      },
+    },
+
+    // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
+    // Ensure systemData is not in the properties bag
+    SystemDataInPropertiesBag: {
+      description: "System data must be defined as a top-level property, not in the properties bag.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      // given definitions that have the properties bag
+      given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+      then: {
+        function: systemDataInPropertiesBag,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for constrained resource collections
+    ///
+
+    // RPC Code: RPC-ConstrainedCollections-V1-04
+    ReservedResourceNamesModelAsEnum: {
+      description:
+        "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths']"],
+      then: {
+        function: reservedResourceNamesModelAsEnum,
+      },
+    },
+
+    ///
+    /// ARM RPC rules for operations API
     ///
 
     // RPC Code: RPC-Operations-V1-01
@@ -693,6 +774,20 @@ const ruleset: any = {
         functionOptions: {
           match: ".*/common-types/resource-management/v\\d+/types.json#/definitions/OperationListResult",
         },
+      },
+    },
+
+    // RPC Code: RPC-Operations-V1-02
+    OperationsApiTenantLevelOnly: {
+      description: "The get operations endpoint must only be at the tenant level.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$.[paths,'x-ms-paths']",
+      then: {
+        function: operationsApiTenantLevelOnly,
       },
     },
 
@@ -712,21 +807,11 @@ const ruleset: any = {
         function: latestVersionOfCommonTypesMustBeUsed,
       },
     },
-    ResourceMustReferenceCommonTypes: {
-      description: "Resource definitions must use the common types TrackedResource or ProxyResource definitions.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$.paths.*.[get,put,patch].responses.200.schema.$ref"],
-      then: {
-        function: resourceMustReferenceCommonTypes,
-      },
-    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "error",
+      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6191#issuecomment-1571334585
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],

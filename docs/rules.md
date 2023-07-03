@@ -86,6 +86,12 @@ A schema of `array` type must always contain an `items` property. without it, Au
 
 Please refer to [array-schema-must-have-items.md](./array-schema-must-have-items.md) for details.
 
+### AvoidAdditionalProperties
+
+Definitions must not have properties named "additionalProperties" except for user defined tags.
+
+Please refer to [avoid-additional-properties.md](./avoid-additional-properties.md) for details.
+
 ### AvoidAnonymousTypes
 
 This rule appears when you define a model type inline, rather than in the definitions section. If the model represents the same type as another parameter in a different operation, then it becomes impossible to reuse that same class for both operations.
@@ -162,12 +168,6 @@ Control characters are not allowed in a specification.
 
 Please refer to [control-characters-not-allowed.md](./control-characters-not-allowed.md) for details.
 
-### CreateOperationAsyncResponseValidation
-
-An async PUT operation response include status code 201 with 'Azure-async-operation' header. Must also support status code 200, for simple updates that can be completed synchronously (ex: tags). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 201) and how it is tracked (Azure-async-operation header).
-
-Please refer to [create-operation-async-response-validation.md](./create-operation-async-response-validation.md) for details.
-
 ### DefaultErrorResponseSchema
 
 The default error response schema SHOULD correspond to the schema documented at [common-api-details](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-details.md#error-response-content).
@@ -214,12 +214,6 @@ The request body of a delete operation must be empty.
 
 Please refer to [delete-must-not-have-request-body.md](./delete-must-not-have-request-body.md) for details.
 
-### DeleteOperationAsyncResponseValidation
-
-An async DELETE operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Must support 204 (resource doesn't exists). Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [delete-operation-async-response-validation.md](./delete-operation-async-response-validation.md) for details.
-
 ### DeleteOperationResponses
 
 Per ARM Specs, all DELETE methods (non-async) must have responses code implementation: 200, 204.
@@ -231,6 +225,12 @@ Please refer to [delete-operation-responses.md](./delete-operation-responses.md)
 The delete response body must be empty.
 
 Please refer to [delete-response-body-empty.md](./delete-response-body-empty.md) for details.
+
+### DeleteResponseCodes
+
+Synchronous delete operations must have 200, 204, and default responses and long-running (LRO) delete operations must have 202, 204, and default responses. They must not have any other responses.
+
+Please refer to [delete-response-codes.md](./delete-response-codes.md) for details.
 
 ### Delete204Response
 
@@ -444,29 +444,15 @@ Please refer to [long-running-operations-with-long-running-extension.md](./long-
 
 ### LongRunningResponseStatusCode
 
-For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
 For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
 
 Please refer to [long-running-response-status-code-data-plane.md](./long-running-response-status-code-data-plane.md) for details.
-
-### LongRunningResponseStatusCode
-
-For ARM spec, the allowed response status codes for a long DELETE operation are "200" & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200" & "201".
-For Data plane spec, the allowed response status codes for a long DELETE operation are "200","202", & "204"; the allowed response status codes for a POST operation are "200", "201" ,"202", & "204"; the allowed response status codes for a PUT/PATCH operation are "200","201", & "202".
-
-Please refer to [long-running-response-status-code.md](./long-running-response-status-code.md) for details.
-
-### ProvisioningStateSpecifiedForLRODelete
-
-This is a rule introduced to validate if a LRO DELETE operations response schema has "ProvisioningState" property specified for the 200 status code.
-
-Please refer to [lro-delete-provisioning-state-specified.md](./lro-delete-provisioning-state-specified.md) for details.
 
 ### LroErrorContent
 
 Error response content of long running operations must follow the error schema provided in the common types v2 and above.
 
-Please refer to [lro-error-response.md](./lro-error-response.md) for details.
+Please refer to [lro-error-content.md](./lro-error-content.md) for details.
 
 ### LroExtension
 
@@ -486,6 +472,13 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### PostResponseCodes
+
+Synchronous POST must have either 200 or 204 return codes.
+LRO POST must have 202 return code. They also should have a 200 return code to indicate the schema for the final response if the final response is intended to have a schema. If the final response schema is empty the 200 return code must not be specified. They also must not have other response codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
 ### ProvisioningStateSpecifiedForLROPatch
 
 This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -498,10 +491,6 @@ Async PATCH should return 202.
 
 Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 
-For long running (LRO) post operations, 'long-running-operation-options' must be present and have the 'final-state-via' property set to 'azure-async-operation'.
-
-Please refer to [lro-post-final-state-via-property.md](./lro-post-final-state-via-property.md) for details.
-
 ### LroPostMustNotUseOriginalUriAsFinalState
 
 The long running post operation must not use final-stat-via:original-uri.
@@ -513,6 +502,12 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
+
+### PutResponseCodes
+
+Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
+
+Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPut
 
@@ -671,6 +666,12 @@ Response content of operations API must follow the error schema provided in the 
 
 Please refer to [operations-api-schema-uses-common-types.md](./operations-api-schema-uses-common-types.md) for details.
 
+### OperationsApiTenantLevelOnly
+
+The get operation endpoint for the operations API must be scoped tenant-wide. Operations **must not** vary per subscription.
+
+Please refer to [operations-api-tenant-level-only.md](./operations-api-tenant-level-only.md) for details.
+
 ### PageableOperation
 
 This rule was introduced to check if a pageable operation has x-ms-pageable enabled.
@@ -779,11 +780,11 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
-### PatchResponseCode
+### PatchResponseCodes
 
 Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
 
-Please refer to [patch-response-code.md](./patch-response-code.md) for details.
+Please refer to [patch-response-codes.md](./patch-response-codes.md) for details.
 
 ### PatchSkuProperty
 
@@ -883,12 +884,6 @@ Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
 
-### PostOperationAsyncResponseValidation
-
-An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [post-operation-async-response-validation.md](./post-operation-async-response-validation.md) for details.
-
 ### PostOperationIdContainsUrlVerb
 
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
@@ -912,6 +907,12 @@ This rule is to check if the schemas used by private endpoint conform to the com
 6. PrivateLinkResourceListResult
 
 Please refer to [private-endpoint-resource-schema-validation.md](./private-endpoint-resource-schema-validation.md) for details.
+
+### PropertiesTypeObjectNoDefinition
+
+Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.
+
+Please refer to [properties-type-object-no-definition.md](./properties-type-object-no-definition.md) for details.
 
 ### PropertyDescription
 
@@ -1016,29 +1017,27 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [required-properties-missing-in-resource-model.md](./required-properties-missing-in-resource-model.md) for details.
 
-### RequiredReadOnlyProperties
-
-A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.
-
-Please refer to [required-read-only-properties.md](./required-read-only-properties.md) for details.
-
 ### RequiredReadOnlySystemData
 
 Per [common-api-contracts](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources), all Azure resources should implement the `systemData` object property in new api-version. The systemData should be readonly.
 
 Please refer to [required-read-only-system-data.md](./required-read-only-system-data.md) for details.
 
+### ReservedResourceNamesModelAsEnum
+
+Service-defined (reserved) resource names must be represented as an `enum` type with `modelAsString` set to `true`, not
+as a static string in the path. This is to allow for expansion of the resource collection to include more service
+defined instances in future if necessary. Changing the representation of the path in swagger to an enum does not require
+you to change the implementation of the API in the service. Adhering to this best practice helps with forward
+compatibility and avoids potential breaking changes in future revisions of the API.
+
+Please refer to [reserved-resource-names-model-as-enum.md](./reserved-resource-names-model-as-enum.md) for details.
+
 ### ResourceHasXMsResourceEnabled
 
 A 'Resource' definition must have x-ms-azure-resource extension enabled and set to true. This will indicate that the model is an Azure resource.
 
 Please refer to [resource-has-x-ms-resource-enabled.md](./resource-has-x-ms-resource-enabled.md) for details.
-
-### ResourceMustReferenceCommonTypes
-
-Validates that any resource definitions use the definitions for ProxyResource or TrackedResource already defined in the common types.
-
-Please refer to [resource-must-reference-common-types.md](./resource-must-reference-common-types.md) for details.
 
 ### ResourceNameRestriction
 
@@ -1081,13 +1080,13 @@ The well-defined type/format combinations are:
 | -------- | --------------- | ------------------------- |
 | int32    | signed 32 bits  | from [oas2][oas2]         |
 | int64    | signed 64 bits  | from [oas2][oas2]         |
-| unixtime | Unix time stamp | from [autorest][autorest] |
+| unixtime | Unix time stamp | from [AutoRest][autorest] |
 **type: number**
 | format  | description            | comments                  |
 | ------- | ---------------------- | ------------------------- |
 | float   | 32 bit floating point  | from [oas2][oas2]         |
 | int64   | 64 bit floating point  | from [oas2][oas2]         |
-| decimal | 128 bit floating point | from [autorest][autorest] |
+| decimal | 128 bit floating point | from [AutoRest][autorest] |
 **type: string**
 | format            | description                  | comments                  |
 | ----------------- | ---------------------------- | ------------------------- |
@@ -1096,18 +1095,20 @@ The well-defined type/format combinations are:
 | date              | [RFC3339][rfc3339] full-date | from [oas2][oas2]         |
 | date-time         | [RFC3339][rfc3339] date-time | from [oas2][oas2]         |
 | password          | sensitive value              | from [oas2][oas2]         |
-| char              |                              | from [autorest][autorest] |
-| time              |                              | from [autorest][autorest] |
-| date-time-rfc1123 |                              | from [autorest][autorest] |
-| duration          |                              | from [autorest][autorest] |
-| uuid              |                              | from [autorest][autorest] |
-| base64url         |                              | from [autorest][autorest] |
-| url               |                              | from [autorest][autorest] |
-| odata-query       |                              | from [autorest][autorest] |
-| certificate       |                              | from [autorest][autorest] |
-oas2: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
-autorest: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
-rfc3339: https://xml2rfc.tools.ietf.org/public/rfc/
+| char              |                              | from [AutoRest][autorest] |
+| time              |                              | from [AutoRest][autorest] |
+| date-time-rfc1123 |                              | from [AutoRest][autorest] |
+| date-time-rfc7231 |                              | from [AutoRest][autorest] |
+| duration          |                              | from [AutoRest][autorest] |
+| uuid              |                              | from [AutoRest][autorest] |
+| base64url         |                              | from [AutoRest][autorest] |
+| url               |                              | from [AutoRest][autorest] |
+| uri               |                              | from [AutoRest][autorest] |
+| odata-query       |                              | from [AutoRest][autorest] |
+| certificate       |                              | from [AutoRest][autorest] |
+[oas2]: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#data-types
+[autorest]: https://github.com/Azure/autorest/blob/main/packages/libs/openapi/src/v3/formats.ts
+[rfc3339]: https://xml2rfc.tools.ietf.org/public/rfc/
 
 Please refer to [schema-type-and-format.md](./schema-type-and-format.md) for details.
 
@@ -1152,6 +1153,18 @@ Please refer to [summary-and-description-must-not-be-same.md](./summary-and-desc
 A synchronous Post operation should return 200 with response schema or 204 without response schema.
 
 Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
+
+### SystemDataDefinitionsCommonTypes
+
+System data references must utilize common types.
+
+Please refer to [system-data-definitions-common-types.md](./system-data-definitions-common-types.md) for details.
+
+### SystemDataInPropertiesBag
+
+Validates that system data is not defined in the properties bag, but rather as a top-level property.
+
+Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
 
 ### TopLevelResourcesListByResourceGroup
 
@@ -1306,12 +1319,6 @@ Please refer to [xms-examples-required.md](./xms-examples-required.md) for detai
 This rule is to check the `id` property or identifier of objects in the array. See more here: [x-ms-identifiers](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-identifiers).
 
 Please refer to [xms-identifier-validation.md](./xms-identifier-validation.md) for details.
-
-### XmsLongRunningOperationOptions
-
-The x-ms-long-running-operation-options should be specified explicitly to indicate the type of response header to track the async operation, see [x-ms-long-running-operation-options](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-long-running-operation-options)
-
-Please refer to [xms-long-running-operation-options.md](./xms-long-running-operation-options.md) for details.
 
 ### XmsPageableListByRGAndSubscriptions
 
