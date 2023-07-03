@@ -51,10 +51,10 @@ export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
     if (responses.length === LR_POST_RESPONSES_WITH_FINAL_SCHEMA.length) {
       if (!LR_POST_RESPONSES_WITH_FINAL_SCHEMA.every((value) => responses.includes(value))) {
         wrongResponseCodes = true
-      }else if(!postOp.responses["200"]?.schema){
+      } else if(!postOp.responses["200"]?.schema){
         okResponseCodeNoSchema = true
       }
-    }else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+    } else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
       wrongResponseCodes = true
     }
 
@@ -63,7 +63,7 @@ export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
         message: LR_ERROR,
         path: path,
       })
-    }else if(okResponseCodeNoSchema){
+    } else if(okResponseCodeNoSchema){
        errors.push({
          message: LR_NO_SCHEMA_ERROR,
          path: path,
