@@ -26,7 +26,7 @@ import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-co
 import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
-import { PatchResponseCode } from "./functions/patch-response-code"
+import { PatchResponseCodes } from "./functions/patch-response-codes"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
@@ -353,15 +353,16 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Patch-V1-06
-    PatchResponseCode: {
+    PatchResponseCodes: {
       description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch]"],
       then: {
-        function: PatchResponseCode,
+        function: PatchResponseCodes,
       },
     },
 
