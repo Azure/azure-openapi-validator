@@ -11,6 +11,7 @@ import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
+import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
@@ -153,7 +154,8 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-11
     PostResponseCodes: {
-      description: "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+      description:
+        "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
       severity: "error",
       stagingOnly: true,
       message: "{{error}}",
@@ -793,6 +795,18 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    LatestVersionOfCommonTypesMustBeUsed: {
+      description: "This rule checks for references that aren't using latest version of common-types.",
+      message: "{{error}}",
+      severity: "warn",
+      stagingOnly: true,
+      resolved: false,
+      formats: [oas2],
+      given: "$..['$ref']",
+      then: {
+        function: latestVersionOfCommonTypesMustBeUsed,
+      },
+    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",

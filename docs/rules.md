@@ -404,6 +404,12 @@ Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PA
 
 Please refer to [invalid-verb-used.md](./invalid-verb-used.md) for details.
 
+### LatestVersionOfCommonTypesMustBeUsed
+
+This rule checks for references that aren't using the latest version of common-types.
+
+Please refer to [latest-version-of-common-types-must-be-used.md](./latest-version-of-common-types-must-be-used.md) for details.
+
 ### LicenseHeaderMustNotBeSpecified
 
 `x-ms-code-generation-settings` must not have the license section specified in the OpenAPI documents since each generated SDK can have a different licensing header. This information must be provided either from the command line or the configuration file when actually generating the sdk.
