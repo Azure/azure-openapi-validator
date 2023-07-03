@@ -28,6 +28,7 @@ import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { PatchResponseCodes } from "./functions/patch-response-codes"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import { PostResponseCodes } from "./functions/post-response-codes"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
@@ -149,6 +150,21 @@ const ruleset: any = {
         },
       },
     },
+
+    // RPC Code: RPC-Async-V1-11
+    PostResponseCodes: {
+      description: "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[post]"],
+      then: {
+        function: PostResponseCodes,
+      },
+    },
+
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
       description:
