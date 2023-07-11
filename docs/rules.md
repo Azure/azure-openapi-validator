@@ -410,6 +410,12 @@ Each operation definition must have a HTTP verb and it must be DELETE/GET/PUT/PA
 
 Please refer to [invalid-verb-used.md](./invalid-verb-used.md) for details.
 
+### LatestVersionOfCommonTypesMustBeUsed
+
+This rule checks for references that aren't using the latest version of common-types.
+
+Please refer to [latest-version-of-common-types-must-be-used.md](./latest-version-of-common-types-must-be-used.md) for details.
+
 ### LicenseHeaderMustNotBeSpecified
 
 `x-ms-code-generation-settings` must not have the license section specified in the OpenAPI documents since each generated SDK can have a different licensing header. This information must be provided either from the command line or the configuration file when actually generating the sdk.
@@ -471,6 +477,13 @@ Please refer to [lro-headers.md](./lro-headers.md) for details.
 Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
+
+### PostResponseCodes
+
+Synchronous POST must have either 200 or 204 return codes.
+LRO POST must have 202 return code. They also should have a 200 return code to indicate the schema for the final response if the final response is intended to have a schema. If the final response schema is empty the 200 return code must not be specified. They also must not have other response codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPatch
 
@@ -773,11 +786,11 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
-### PatchResponseCode
+### PatchResponseCodes
 
 Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
 
-Please refer to [patch-response-code.md](./patch-response-code.md) for details.
+Please refer to [patch-response-codes.md](./patch-response-codes.md) for details.
 
 ### PatchSkuProperty
 
@@ -876,12 +889,6 @@ Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-nam
 Using post for a create operation is discouraged.
 
 Please refer to [post-201-response.md](./post-201-response.md) for details.
-
-### PostOperationAsyncResponseValidation
-
-An async POST operation response include status code 202 with 'Location' header. Must support status code 200 if operation can be completed synchronously. Operation must also add "x-ms-long-running-operation and x-ms-long-running-operation-options" to mark that it is a long running operation (in case of 202) and how it is tracked (Location header).
-
-Please refer to [post-operation-async-response-validation.md](./post-operation-async-response-validation.md) for details.
 
 ### PostOperationIdContainsUrlVerb
 
