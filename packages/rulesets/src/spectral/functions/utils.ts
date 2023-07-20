@@ -36,7 +36,7 @@ export function getAllPropertiesIncludingDeeplyNestedProperties(schema: any, pro
     })
   }
   if (schema.properties) {
-    let props = schema.properties
+    const props = schema.properties
     //for each property check if it references other definition(basically, check for deeply nested properties)
     Object.entries(props).forEach(([key, value]: any) => {
       if (!value.properties) {
