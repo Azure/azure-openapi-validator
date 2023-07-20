@@ -316,7 +316,6 @@ To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command
     - `<api-version>` of `package-2023-07`,
     - and `<path-to-autorest-config-file>` of `/mnt/vss/_work/1/azure-rest-api-specs/specification/deviceupdate/resource-manager/readme.md`.
       - You must replace `/mnt/vss/_work/1/azure-rest-api-specs/` with your local repo clone path for local execution.
-      - **IMPORTANT**: the path must be relative to current directory and start with a dot. For example, if you are in `/mnt/vss/_work/1/azure-rest-api-specs/specification`, use `./deviceupdate/resource-manager/readme.md`.
 
 As a result, this information can be used to build the following example local execution command, using the template from `How to locally reproduce a LintDiff failure occurring on a PR`:
 
@@ -324,7 +323,7 @@ As a result, this information can be used to build the following example local e
 autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
 ```
 
-   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` then please read the "IMPORTANT" note about relative paths for `<path-to-autorest-config-file>`.
+   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<pat-to-autorest-config-file>` is correct, then please ensure the `<version-tag>` you used exists within the file.
 
 ### Staging LintDiff CI check
 
