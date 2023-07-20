@@ -326,7 +326,7 @@ const ruleset: any = {
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/324
-    // RPC Code: RPC-Patch-V1-03
+    // RPC Code: RPC-Patch-V1-01
     ConsistentPatchProperties: {
       description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
       message: "{{error}}",

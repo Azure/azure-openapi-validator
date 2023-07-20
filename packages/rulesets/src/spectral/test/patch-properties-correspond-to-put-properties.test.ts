@@ -373,11 +373,22 @@ test("PatchPropertiesCorrespondToPutProperties should find errors when patch has
         ],
       },
       BarRequestParams: {
-        allOf: [
-          {
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+          id: {
+            type: "string",
+          },
+          testBarParams: {
             $ref: "#/definitions/BarProps",
           },
-        ],
+        },
       },
       FooProps: {
         properties: {
@@ -395,14 +406,141 @@ test("PatchPropertiesCorrespondToPutProperties should find errors when patch has
         },
       },
       BarProps: {
+        properties: {
+          testBarProps: {
+            $ref: "#/definitions/FooTest",
+          },
+        },
+      },
+      FooResource: {
         allOf: [
           {
-            $ref: "#/definitions/FooResource",
+            $ref: "#/definitions/FooTest",
+          },
+        ],
+        "x-ms-azure-resource": true,
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+        },
+      },
+      FooTest: {
+        properties: {
+          provisioningState: {
+            type: "string",
+            description: "Provisioning state of the foo rule.",
+            enum: ["Creating", "Canceled", "Deleting", "Failed"],
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].message).toContain(ERROR_MESSAGE)
+    expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters")
+  })
+})
+
+test("PatchPropertiesCorrespondToPutProperties should find errors when patch has additional property in deeply nested structure including allOf", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        patch: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/BarRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_put",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooProps",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "success",
+              schema: {
+                $ref: "#/definitions/FooProps",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      BarRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooRequestParams",
           },
         ],
         properties: {
           id: {
             type: "string",
+          },
+          testBarParams: {
+            $ref: "#/definitions/BarProps",
+          },
+        },
+      },
+      FooProps: {
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+          id: {
+            type: "string",
+          },
+        },
+      },
+      BarProps: {
+        properties: {
+          testBarProps: {
+            $ref: "#/definitions/FooTest",
           },
         },
       },
@@ -574,6 +712,136 @@ test("PatchPropertiesCorrespondToPutProperties should find errors when patch has
   })
 })
 
+test("PatchPropertiesCorrespondToPutProperties should not find errors when patch has put property at a different level", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        patch: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/BarRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "success",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_put",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooProps",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "success",
+              schema: {
+                $ref: "#/definitions/FooProps",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooProps",
+          },
+        ],
+      },
+      BarRequestParams: {
+        allOf: [
+          {
+            $ref: "#/definitions/BarProps",
+          },
+        ],
+      },
+      FooProps: {
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+          id: {
+            type: "string",
+          },
+        },
+      },
+      BarProps: {
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+          id: {
+            type: "string",
+          },
+        },
+      },
+      FooResource: {
+        allOf: [
+          {
+            $ref: "#/definitions/FooTest",
+          },
+        ],
+        "x-ms-azure-resource": true,
+        properties: {
+          servicePrecedence: {
+            description:
+              "A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all services configured in the mobile network.",
+            type: "integer",
+            format: "int32",
+            minimum: 0,
+            maximum: 255,
+          },
+        },
+      },
+      FooTest: {
+        properties: {
+          provisioningState: {
+            type: "string",
+            description: "Provisioning state of the foo rule.",
+            enum: ["Creating", "Canceled", "Deleting", "Failed"],
+          },
+        },
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
 test("PatchPropertiesCorrespondToPutProperties should find no errors when patch has only put properties", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
@@ -615,16 +883,9 @@ test("PatchPropertiesCorrespondToPutProperties should find no errors when patch 
             },
             {
               name: "foo1_put",
-              in: "body",
+              in: "path",
               schema: {
                 $ref: "#/definitions/FooRequestParams",
-              },
-            },
-            {
-              name: "foo2_put",
-              in: "body",
-              schema: {
-                $ref: "#/definitions/BarRequestParams",
               },
             },
           ],
@@ -692,4 +953,3 @@ test("PatchPropertiesCorrespondToPutProperties should find no errors when patch 
     expect(results.length).toBe(0)
   })
 })
-

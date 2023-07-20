@@ -6,6 +6,7 @@ import _ from "lodash"
 export function getProperties(schema: any) {
   if (!schema) {
     return {}
+
   }
   let properties: any = {}
   if (schema.allOf && Array.isArray(schema.allOf)) {
@@ -16,6 +17,36 @@ export function getProperties(schema: any) {
   if (schema.properties) {
     properties = { ...properties, ...schema.properties }
   }
+
+  return properties
+}
+
+
+/**
+ * get all properties including deeply nested properties as array
+ */
+export function getAllPropertiesIncludingDeeplyNestedProperties(schema: any, properties: any[]) {
+  if (!schema) {
+    return {}
+
+  }
+  if (schema.allOf && Array.isArray(schema.allOf)) {
+    schema.allOf.forEach((base: any) => {
+      getAllPropertiesIncludingDeeplyNestedProperties(base, properties)
+    })
+  }
+  if (schema.properties) {
+    let props = schema.properties
+    //for each property check if it references other definition(basically, check for deeply nested properties)
+    Object.entries(props).forEach(([key, value]: any) => {
+      if (!value.properties) {
+        properties.push(Object.fromEntries([[key, value]]))
+      }else{
+        getAllPropertiesIncludingDeeplyNestedProperties(props[key], properties)
+      }
+    })
+  }
+
   return properties
 }
 

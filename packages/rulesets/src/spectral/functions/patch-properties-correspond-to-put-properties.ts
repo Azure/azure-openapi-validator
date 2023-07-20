@@ -3,7 +3,7 @@
 // RPC Code: RPC-Patch-V1-01
 
 import _ from "lodash"
-import { getProperties } from "./utils"
+import { getAllPropertiesIncludingDeeplyNestedProperties } from "./utils"
 
 const ERROR_MESSAGE =
   "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties."
@@ -23,10 +23,9 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   // array of all the patch body param properties
   // let patchBodyPropertiesList: any = []
   // let putBodyPropertiesList: any = []
-  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
-  const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getProperties(param.schema))
+  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema,[]))
+  const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema,[]))
 
-  //putBodyProperties.forEach((prop: any) => putBodyProperties.add(prop))
   const patchBodyPropertiesEmpty: boolean = patchBodyProperties.length < 1
   const putBodyPropertiesEmpty: boolean = putBodyProperties.length < 1
 
@@ -52,12 +51,12 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
 
   // array of all the patch body properties that are not present in the put body (if any)
   //considering only the first element of patchBodyProperties & putBodyProperties is because there will only be one body param
-  const patchBodyPropertiesNotInPutBody = _.differenceWith(Object.entries(patchBodyProperties[0]), Object.entries(putBodyProperties[0]), _.isEqual)
+  const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual)
   // there is at least one property present in the patch body that is not present in the the put body => error
   if (patchBodyPropertiesNotInPutBody.length > 0) {
     patchBodyPropertiesNotInPutBody.forEach((missingProperty) =>
       errors.push({
-        message: `${missingProperty[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,
+        message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,
         path: path,
       })
     )
