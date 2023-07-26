@@ -472,13 +472,6 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
-### PostResponseCodes
-
-Synchronous POST must have either 200 or 204 return codes.
-LRO POST must have 202 return code. They also should have a 200 return code to indicate the schema for the final response if the final response is intended to have a schema. If the final response schema is empty the 200 return code must not be specified. They also must not have other response codes.
-
-Please refer to [post-response-codes.md](./post-response-codes.md) for details.
-
 ### ProvisioningStateSpecifiedForLROPatch
 
 This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -502,12 +495,6 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
-
-### PutResponseCodes
-
-Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
-Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPut
 
@@ -890,6 +877,13 @@ A POST operation's operationId should contain the verb indicated at the end of t
 
 Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-contains-url-verb.md) for details.
 
+### PostResponseCodes
+
+Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
+Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
 ### PreviewVersionOverOneYear
 
 Per [Retirement-of-Previews](https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/37683/Retirement-of-Previews), service, feature, API, and SKU in preview for over one year need to move to GA or retire.
@@ -979,6 +973,12 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
+
+### PutResponseCodes
+
+Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
+
+Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### PutResponseSchemaDescription
 

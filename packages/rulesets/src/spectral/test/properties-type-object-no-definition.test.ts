@@ -159,6 +159,29 @@ test("PropertiesTypeObjectNoDefinition if type is null should find errors", () =
   })
 })
 
+test("PropertiesTypeObjectNoDefinition should find errors if there are any empty properties", () => {
+  const oasDoc1 = {
+    swagger: "2.0",
+    info: {
+      version: "4.0",
+      title: "Common types",
+    },
+    paths: {},
+    definitions: {
+      ErrorDetail: {
+        description: "The error detail.",
+        type: "object",
+        properties: {},
+      },
+    },
+  }
+  return linter.run(oasDoc1).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.ErrorDetail")
+    expect(results[0].message).toBe(errorMessageObject)
+  })
+})
+
 test("PropertiesTypeObjectNoDefinition should find no errors", () => {
   const oasDoc1 = {
     swagger: "2.0",
@@ -211,11 +234,6 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
             readOnly: true,
             type: "string",
             description: "The additional info type.",
-          },
-          info: {
-            readOnly: true,
-            type: "string",
-            description: "The additional info.",
           },
         },
         description: "The resource management error additional info.",
