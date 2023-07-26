@@ -235,6 +235,11 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
             type: "string",
             description: "The additional info type.",
           },
+          info: {
+            readOnly: true,
+            type: "string",
+            description: "The additional info.",
+          },
         },
         description: "The resource management error additional info.",
       },
