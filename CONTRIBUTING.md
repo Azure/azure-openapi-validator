@@ -323,7 +323,10 @@ As a result, this information can be used to build the following example local e
 autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
 ```
 
-   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please ensure the `<version-tag>` you used exists within the file.
+   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please:
+   > - double check you have cloned the correct repo (fork, if applicable)
+   > - double check your clone has the correct branch checked out
+   > - ensure the `<version-tag>` you used exists within the file.
 
 ### Staging LintDiff CI check
 
