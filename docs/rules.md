@@ -780,17 +780,13 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
-<<<<<<< HEAD
 ### PatchPropertiesCorrespondToPutProperties
 
 Validates that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
 
 Please refer to [patch-properties-correspond-to-put-properties.md](./patch-properties-correspond-to-put-properties.md) for details.
 
-### PatchResponseCode
-=======
 ### PatchResponseCodes
->>>>>>> f28c372da5c789ce10799b8e38175f2a16c4e6fe
 
 Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
 
