@@ -1,5 +1,17 @@
 import _ from "lodash"
 
+export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
+  ["types.json", "v5"],
+  ["managedidentity.json", "v5"],
+  ["privatelinks.json", "v4"],
+  ["customermanagedkeys.json", "v4"],
+  ["managedidentitywithdelegation.json", "v4"],
+])
+
+export function isLatestCommonTypesVersionForFile(version: string, fileName: string) {
+  return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase()
+}
+
 /**
  * get all properties as array
  */

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Remove RequiredReadOnlyProperties rule",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

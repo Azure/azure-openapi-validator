@@ -11,6 +11,7 @@ import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
+import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
@@ -29,11 +30,13 @@ import pathBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { PatchResponseCode } from "./functions/patch-response-code"
 import pathSegmentCasing from "./functions/path-segment-casing"
+import { PostResponseCodes } from "./functions/post-response-codes"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
 import provisioningState from "./functions/provisioning-state"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
+import { PutResponseCodes } from "./functions/put-response-codes"
 import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
@@ -77,6 +80,20 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for Async patterns
     ///
+
+    // RPC Code: RPC-Async-V1-01
+    PutResponseCodes: {
+      description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[put]"],
+      then: {
+        function: PutResponseCodes,
+      },
+    },
 
     // RPC Code: RPC-Async-V1-02
     //PUT
@@ -136,6 +153,22 @@ const ruleset: any = {
         },
       },
     },
+
+    // RPC Code: RPC-Async-V1-11
+    PostResponseCodes: {
+      description:
+        "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*[post]"],
+      then: {
+        function: PostResponseCodes,
+      },
+    },
+
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
       description:
@@ -340,15 +373,16 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Patch-V1-06
-    PatchResponseCode: {
+    PatchResponseCodes: {
       description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch]"],
       then: {
-        function: PatchResponseCode,
+        function: PatchResponseCodes,
       },
     },
 
@@ -779,10 +813,22 @@ const ruleset: any = {
     /// ARM rules without an RPC code
     ///
 
+    LatestVersionOfCommonTypesMustBeUsed: {
+      description: "This rule checks for references that aren't using latest version of common-types.",
+      message: "{{error}}",
+      severity: "warn",
+      stagingOnly: true,
+      resolved: false,
+      formats: [oas2],
+      given: "$..['$ref']",
+      then: {
+        function: latestVersionOfCommonTypesMustBeUsed,
+      },
+    },
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6191#issuecomment-1571334585
+      severity: "warn",
       stagingOnly: true,
       resolved: true,
       formats: [oas2],

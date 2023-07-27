@@ -21,7 +21,6 @@ import { operationIdNounVerb } from "./functions/operation-id-noun-verb"
 import paramLocation from "./functions/parameter-location"
 import { patchInOperationName } from "./functions/patch-in-operation-name"
 import { putInOperationName } from "./functions/put-in-operation-name"
-import { requiredReadOnlyProperties } from "./functions/required-read-only-properties"
 import checkSchemaFormat from "./functions/schema-format"
 import checkSummaryAndDescription from "./functions/summary-description-must-not-be-same"
 import xmsClientNameParameter from "./functions/xms-client-name-parameter"
@@ -202,18 +201,6 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[delete][?(@property === 'operationId')]"],
       then: {
         function: deleteInOperationName,
-      },
-    },
-    RequiredReadOnlyProperties: {
-      description:
-        "A model property cannot be both `readOnly` and `required`. A `readOnly` property is something that the server sets when returning the model object while `required` is a property to be set when sending it as a part of the request body.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      formats: [oas2],
-      given: ["$..?(@property === 'required')^"],
-      then: {
-        function: requiredReadOnlyProperties,
       },
     },
     SummaryAndDescriptionMustNotBeSame: {

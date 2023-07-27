@@ -8,7 +8,6 @@ import { LintResultMessage, OpenApiTypes } from "@microsoft.azure/openapi-valida
 import { AvoidEmptyResponseSchema } from "../legacyRules/AvoidEmptyResponseSchema"
 import { AzureResourceTagsSchema } from "../legacyRules/AzureResourceTagsSchema"
 import { ControlCharactersAreNotAllowed } from "../legacyRules/ControlCharactersAreNotAllowed"
-import { CreateOperationAsyncResponseValidation } from "../legacyRules/CreateOperationAsyncResponseValidation"
 import { DefaultErrorResponseSchema } from "../legacyRules/DefaultErrorResponseSchema"
 import { DeleteOperationResponses } from "../legacyRules/DeleteOperationResponses"
 import { DeprecatedXmsCodeGenerationSetting } from "../legacyRules/DeprecatedXmsCodeGenerationSetting"
@@ -23,7 +22,6 @@ import { MissingTypeObject } from "../legacyRules/MissingTypeObject"
 import { MissingXmsErrorResponse } from "../legacyRules/MissingXmsErrorResponse"
 import { OperationIdRequired } from "../legacyRules/OperationIdRequired"
 import { ParametersOrder } from "../legacyRules/ParametersOrder"
-import { PostOperationAsyncResponseValidation } from "../legacyRules/PostOperationAsyncResponseValidation"
 import { PostOperationIdContainsUrlVerb } from "../legacyRules/PostOperationIdContainsUrlVerb"
 import { PreviewVersionOverOneYear } from "../legacyRules/PreviewVersionOverOneYear"
 import { RequiredDefaultResponse } from "../legacyRules/RequiredDefaultResponse"
@@ -183,102 +181,11 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   })
 
-  // Failure #1 : RPaaS async response supports 201 only. 202 is not supported.
-  test("Put async operation doesn't support 202", async () => {
-    const fileName = "RpaasPutAsyncOperationResponseCodeValidation.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      CreateOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 1)
-  })
-
-  // Failure #1 : 'x-ms-long-running-operation' is missing
-  // Failure #2: 'x-ms-long-running-operation-options' is missing
-  test.skip("Put async operation missing x-ms* async extensions", async () => {
-    const fileName = "RpaasPutAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      CreateOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 2)
-  })
-
-  // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 201 (implies async)
-  // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
-  test("Raas Put async operation is tracked using Auzre-AsyncOperation header", async () => {
-    const fileName = "RpaasPutAsyncOperationResponseFinalStateViaAzureAsync.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      CreateOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 1)
-  })
-
-  // Valid 201 response for RPaaS
-  test("Raas Put async operation is defined correctly", async () => {
-    const fileName = "RpaasValidPutAsyncOperationResponse.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      CreateOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, CreateOperationAsyncResponseValidation, 0)
-  })
 
   test("Preview version over a year", async () => {
     const fileName = "PreviewVersionOverOneYear.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PreviewVersionOverOneYear)
     assertValidationRuleCount(messages, PreviewVersionOverOneYear, 1)
-  })
-
-  // Failure #1 : RPaaS POST async response supports 202 only. 201 is not supported.
-  test("Raas POST async operation doesn't support 201", async () => {
-    const fileName = "RpaasPostAsyncOperationResponseCodeValidation.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      PostOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 1)
-  })
-
-  // Failure #1 : 'x-ms-long-running-operation' is missing
-  // Failure #2: 'x-ms-long-running-operation-options' is missing
-  test("Raas POST async operation missing x-ms* async extensions", async () => {
-    const fileName = "RpaasPostAsyncOperationResponseMsCustomExtensionsMissing.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      PostOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 2)
-  })
-
-  // Failure #1 : 'x-ms-long-running-operation' must be true as operation supports 202 (implies async)
-  // Failure #2: 'final-state-via' must be set to 'azure-async-operation'
-  test("Raas POST async operation is tracked using Auzre-AsyncOperation header", async () => {
-    const fileName = "RpaasPostAsyncOperationResponseFinalStateViaLocation.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      PostOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 2)
-  })
-
-  // Valid 202 response for POST operation in RPaaS
-  test("Raas POST async operation is defined correctly", async () => {
-    const fileName = "RpaasValidPostAsyncOperationResponse.json"
-    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
-      fileName,
-      OpenApiTypes.rpaas,
-      PostOperationAsyncResponseValidation
-    )
-    assertValidationRuleCount(messages, PostOperationAsyncResponseValidation, 0)
   })
 
   test("Raas resource is defined with empty properties", async () => {
