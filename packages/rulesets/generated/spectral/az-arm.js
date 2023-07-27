@@ -172,6 +172,16 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     return errors;
 };
 
+const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
+    ["types.json", "v5"],
+    ["managedidentity.json", "v5"],
+    ["privatelinks.json", "v4"],
+    ["customermanagedkeys.json", "v4"],
+    ["managedidentitywithdelegation.json", "v4"],
+]);
+function isLatestCommonTypesVersionForFile(version, fileName) {
+    return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
+}
 function getProperties(schema) {
     if (!schema) {
         return {};
@@ -1430,9 +1440,9 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
 
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
-const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
-const LR_ERROR = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
-const EmptyResponse_ERROR = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
+const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
+const LR_ERROR$2 = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
+const EmptyResponse_ERROR$3 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1443,7 +1453,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
     if (responses.length == 0) {
         errors.push({
-            message: EmptyResponse_ERROR,
+            message: EmptyResponse_ERROR$3,
             path: path,
         });
         return errors;
@@ -1461,7 +1471,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
         }
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: LR_ERROR,
+                message: LR_ERROR$2,
                 path: path,
             });
         }
@@ -1469,7 +1479,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     else {
         if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: SYNC_ERROR,
+                message: SYNC_ERROR$2,
                 path: path,
             });
         }
@@ -1580,6 +1590,23 @@ const httpsSupportedScheme = (scheme, _opts, paths) => {
             message: 'Azure Resource Management only supports HTTPS scheme.',
             path,
         }];
+};
+
+const latestVersionOfCommonTypesMustBeUsed = (ref, _opts, ctx) => {
+    const REF_COMMON_TYPES_REGEX = new RegExp("/common-types/resource-management/v\\d+/\\w+.json#", "gi");
+    if (ref !== null && !ref.match(REF_COMMON_TYPES_REGEX)) {
+        return [];
+    }
+    const errors = [];
+    const path = ctx.path;
+    const versionAndFile = ref.split("/common-types/resource-management/")[1].split("#")[0].split("/");
+    if (!isLatestCommonTypesVersionForFile(versionAndFile[0], versionAndFile[1])) {
+        errors.push({
+            message: `Use the latest version ${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(versionAndFile[1])} of ${versionAndFile[1]}.`,
+            path: path,
+        });
+    }
+    return errors;
 };
 
 const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
@@ -1937,24 +1964,46 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
-const PatchResponseCode = (patchOp, _opts, ctx) => {
+const SYNC_PATCH_RESPONSES = ["200", "default"];
+const LR_PATCH_RESPONSES = ["200", "202", "default"];
+const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 and default return codes. They also must not have other response codes.";
+const LR_ERROR$1 = "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes.";
+const EmptyResponse_ERROR$2 = "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running.";
+const PatchResponseCodes = (patchOp, _opts, ctx) => {
+    var _a;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
     const path = ctx.path;
     const errors = [];
-    if (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) {
-        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"]) && (patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"]))) {
+    const responses = Object.keys((_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR$2,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) || patchOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        if (!patchOp["x-ms-long-running-operation"] || patchOp["x-ms-long-running-operation"] !== true) {
             errors.push({
-                message: "LRO PATCH must have 200 and 202 return codes.",
+                message: "An async PATCH operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+        if (responses.length !== LR_PATCH_RESPONSES.length || !LR_PATCH_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: LR_ERROR$1,
                 path: path,
             });
         }
     }
     else {
-        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"])) {
+        if (responses.length !== SYNC_PATCH_RESPONSES.length || !SYNC_PATCH_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Synchronous PATCH must have 200 return code.",
+                message: SYNC_ERROR$1,
                 path: path,
             });
         }
@@ -1985,6 +2034,80 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
                 }
             }
         });
+    }
+    return errors;
+};
+
+const SYNC_POST_RESPONSES_OK = ["200", "default"];
+const SYNC_POST_RESPONSES_NO_CONTENT = ["204", "default"];
+const LR_POST_RESPONSES_WITH_FINAL_SCHEMA = ["200", "202", "default"];
+const LR_POST_RESPONSES_NO_FINAL_SCHEMA = ["202", "default"];
+const SYNC_ERROR = "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.";
+const LR_ERROR = "Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.";
+const LR_NO_SCHEMA_ERROR = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
+const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
+const PostResponseCodes = (postOp, _opts, ctx) => {
+    var _a, _b;
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const responses = Object.keys((_a = postOp === null || postOp === void 0 ? void 0 : postOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR$1,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = postOp.responses["202"] ||
+        (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) ||
+        postOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        let wrongResponseCodes = false;
+        let okResponseCodeNoSchema = false;
+        if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
+            errors.push({
+                message: "An async POST operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+        if (responses.length === LR_POST_RESPONSES_WITH_FINAL_SCHEMA.length) {
+            if (!LR_POST_RESPONSES_WITH_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+                wrongResponseCodes = true;
+            }
+            else if (!((_b = postOp.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema)) {
+                okResponseCodeNoSchema = true;
+            }
+        }
+        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+            wrongResponseCodes = true;
+        }
+        if (wrongResponseCodes) {
+            errors.push({
+                message: LR_ERROR,
+                path: path,
+            });
+        }
+        else if (okResponseCodeNoSchema) {
+            errors.push({
+                message: LR_NO_SCHEMA_ERROR,
+                path: path,
+            });
+        }
+        return errors;
+    }
+    else {
+        if (responses.length !== SYNC_POST_RESPONSES_OK.length ||
+            (!SYNC_POST_RESPONSES_OK.every((value) => responses.includes(value)) &&
+                !SYNC_POST_RESPONSES_NO_CONTENT.every((value) => responses.includes(value)))) {
+            errors.push({
+                message: SYNC_ERROR,
+                path: path,
+            });
+        }
     }
     return errors;
 };
@@ -2112,6 +2235,43 @@ const putRequestResponseScheme = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const LR_AND_SYNC_RESPONSES = ["200", "201", "default"];
+const LR_AND_SYNC_ERROR = "Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.";
+const EmptyResponse_ERROR = "PUT operation response codes must be non-empty. It must have response codes 200, 201 and default for both synchronous and long running.";
+const PutResponseCodes = (putOp, _opts, ctx) => {
+    var _a;
+    if (putOp === null || typeof putOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const responses = Object.keys((_a = putOp === null || putOp === void 0 ? void 0 : putOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = (putOp["x-ms-long-running-operation"] && putOp["x-ms-long-running-operation"] === true) || putOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        if (!putOp["x-ms-long-running-operation"]) {
+            errors.push({
+                message: "An async PUT operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+    }
+    if (responses.length !== LR_AND_SYNC_RESPONSES.length || !LR_AND_SYNC_RESPONSES.every((value) => responses.includes(value))) {
+        errors.push({
+            message: LR_AND_SYNC_ERROR,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
     var _a, _b;
     if (putResponseSchema === null || typeof putResponseSchema !== "object") {
@@ -2126,9 +2286,9 @@ const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
         });
         return errors;
     }
-    if (!((_a = putResponseSchema["200"].description) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes("update"))) {
+    if (!((_a = putResponseSchema["200"].description) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes("replace"))) {
         errors.push({
-            message: 'Description of 200 response code of a PUT operation MUST include term "update".',
+            message: 'Description of 200 response code of a PUT operation MUST include term "replace".',
             path: path,
         });
     }
@@ -2495,6 +2655,18 @@ const ruleset = {
                 },
             },
         },
+        PutResponseCodes: {
+            description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[put]"],
+            then: {
+                function: PutResponseCodes,
+            },
+        },
         ProvisioningStateSpecifiedForLROPut: {
             description: 'A LRO PUT operation\'s response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
             message: "{{error}}",
@@ -2541,6 +2713,18 @@ const ruleset = {
                 functionOptions: {
                     name: "Location",
                 },
+            },
+        },
+        PostResponseCodes: {
+            description: "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[post]"],
+            then: {
+                function: PostResponseCodes,
             },
         },
         LroErrorContent: {
@@ -2684,15 +2868,16 @@ const ruleset = {
                 function: consistentPatchProperties,
             },
         },
-        PatchResponseCode: {
+        PatchResponseCodes: {
             description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch]"],
             then: {
-                function: PatchResponseCode,
+                function: PatchResponseCodes,
             },
         },
         LroPatch202: {
@@ -2782,7 +2967,7 @@ const ruleset = {
             },
         },
         PutResponseSchemaDescription: {
-            description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+            description: `For any PUT, response code should be 201 if resource was newly created and 200 if replaced.`,
             message: "{{error}}",
             severity: "error",
             resolved: false,
@@ -3046,10 +3231,22 @@ const ruleset = {
                 function: operationsApiTenantLevelOnly,
             },
         },
+        LatestVersionOfCommonTypesMustBeUsed: {
+            description: "This rule checks for references that aren't using latest version of common-types.",
+            message: "{{error}}",
+            severity: "warn",
+            stagingOnly: true,
+            resolved: false,
+            formats: [oas2],
+            given: "$..['$ref']",
+            then: {
+                function: latestVersionOfCommonTypesMustBeUsed,
+            },
+        },
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
-            severity: "off",
+            severity: "warn",
             stagingOnly: true,
             resolved: true,
             formats: [oas2],

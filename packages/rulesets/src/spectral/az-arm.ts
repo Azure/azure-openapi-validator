@@ -471,7 +471,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-11
     PutResponseSchemaDescription: {
-      description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
+      description: `For any PUT, response code should be 201 if resource was newly created and 200 if replaced.`,
       message: "{{error}}",
       severity: "error",
       resolved: false,

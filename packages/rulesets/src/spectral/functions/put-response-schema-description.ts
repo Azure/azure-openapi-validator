@@ -14,9 +14,9 @@ export const PutResponseSchemaDescription: any = (putResponseSchema: any, opts: 
     return errors
   }
 
-  if (!putResponseSchema["200"].description?.toLowerCase().includes("update")) {
+  if (!putResponseSchema["200"].description?.toLowerCase().includes("replace")) {
     errors.push({
-      message: 'Description of 200 response code of a PUT operation MUST include term "update".',
+      message: 'Description of 200 response code of a PUT operation MUST include term "replace".',
       path: path,
     })
   }

@@ -14,7 +14,7 @@ test("PutResponseSchemaDescription should find errors if response schema doesn't
     paths: {
       "/foo": {
         put: {
-          operationId: "Foo_Update",
+          operationId: "Foo_Replace",
           description: "Test Description",
           parameters: [
             {
@@ -50,7 +50,7 @@ test("PutResponseSchemaDescription should find errors if response schema doesn't
           },
         ],
       },
-      FooResourceUpdate: {
+      FooResourceReplace: {
         allOf: [
           {
             $ref: "#/definitions/FooProps",
@@ -80,7 +80,7 @@ test("PutResponseSchemaDescription should find errors if response schema doesn't
     paths: {
       "/foo": {
         put: {
-          operationId: "Foo_Update",
+          operationId: "Foo_Replace",
           description: "Test Description",
           parameters: [
             {
@@ -116,7 +116,7 @@ test("PutResponseSchemaDescription should find errors if response schema doesn't
           },
         ],
       },
-      FooResourceUpdate: {
+      FooResourceReplace: {
         allOf: [
           {
             $ref: "#/definitions/FooProps",
@@ -140,13 +140,13 @@ test("PutResponseSchemaDescription should find errors if response schema doesn't
   })
 })
 
-test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 200 response code doesnt have update in description", () => {
+test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 200 response code doesnt have replace in description", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
       "/foo": {
         put: {
-          operationId: "Foo_Update",
+          operationId: "Foo_Replace",
           description: "Test Description",
           parameters: [
             {
@@ -189,7 +189,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 200 re
           },
         ],
       },
-      FooResourceUpdate: {
+      FooResourceReplace: {
         allOf: [
           {
             $ref: "#/definitions/FooProps",
@@ -209,7 +209,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 200 re
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./foo.put.responses")
-    expect(results[0].message).toContain('Description of 200 response code of a PUT operation MUST include term "update".')
+    expect(results[0].message).toContain('Description of 200 response code of a PUT operation MUST include term "replace".')
   })
 })
 
@@ -219,7 +219,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 201 re
     paths: {
       "/foo": {
         put: {
-          operationId: "Foo_Update",
+          operationId: "Foo_Replace",
           description: "Test Description",
           parameters: [
             {
@@ -232,7 +232,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 201 re
           ],
           responses: {
             "200": {
-              description: "Successfully Updated",
+              description: "Successfully Replaced",
               schema: {
                 $ref: "#/definitions/FooRequestParams",
               },
@@ -262,7 +262,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find errors when 201 re
           },
         ],
       },
-      FooResourceUpdate: {
+      FooResourceReplace: {
         allOf: [
           {
             $ref: "#/definitions/FooProps",
@@ -292,7 +292,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find no errors", () => 
     paths: {
       "/foo": {
         put: {
-          operationId: "Foo_Update",
+          operationId: "Foo_Replace",
           description: "Test Description",
           parameters: [
             {
@@ -305,7 +305,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find no errors", () => 
           ],
           responses: {
             "200": {
-              description: "Successfully updated",
+              description: "Successfully Replaced",
               schema: {
                 $ref: "#/definitions/FooRequestParams",
               },
@@ -335,7 +335,7 @@ test("ResponseSchemaSpecifiedForSuccessStatusCode should find no errors", () => 
           },
         ],
       },
-      FooResourceUpdate: {
+      FooResourceReplace: {
         allOf: [
           {
             $ref: "#/definitions/FooProps",
