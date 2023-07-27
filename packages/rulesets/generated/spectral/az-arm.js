@@ -197,6 +197,28 @@ function getProperties(schema) {
     }
     return properties;
 }
+function getAllPropertiesIncludingDeeplyNestedProperties(schema, properties) {
+    if (!schema) {
+        return {};
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            getAllPropertiesIncludingDeeplyNestedProperties(base, properties);
+        });
+    }
+    if (schema.properties) {
+        const props = schema.properties;
+        Object.entries(props).forEach(([key, value]) => {
+            if (!value.properties) {
+                properties.push(Object.fromEntries([[key, value]]));
+            }
+            else {
+                getAllPropertiesIncludingDeeplyNestedProperties(props[key], properties);
+            }
+        });
+    }
+    return properties;
+}
 function getProperty(schema, propName) {
     if (!schema) {
         return {};
@@ -1964,6 +1986,49 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
+const ERROR_MESSAGE$1 = "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.";
+const PARAM_IN_BODY = (paramObject) => paramObject.in === "body";
+const PATCH = "patch";
+const PUT = "put";
+const PARAMETERS = "parameters";
+const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
+    var _a, _b, _c, _d;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path.concat([PATCH, PARAMETERS]);
+    const errors = [];
+    const patchBodyProperties = (_b = (_a = pathItem[PATCH]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter(PARAM_IN_BODY).map((param) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []));
+    const putBodyProperties = (_d = (_c = pathItem[PUT]) === null || _c === void 0 ? void 0 : _c.parameters) === null || _d === void 0 ? void 0 : _d.filter(PARAM_IN_BODY).map((param) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []));
+    const patchBodyPropertiesEmpty = patchBodyProperties.length < 1;
+    const putBodyPropertiesEmpty = putBodyProperties.length < 1;
+    if (patchBodyPropertiesEmpty) {
+        return [
+            {
+                message: "Patch operations body cannot be empty.",
+                path: path,
+            },
+        ];
+    }
+    if (!patchBodyPropertiesEmpty && putBodyPropertiesEmpty) {
+        return [
+            {
+                message: "Non empty patch body with an empty put body is not valid.",
+                path: path,
+            },
+        ];
+    }
+    const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual);
+    if (patchBodyPropertiesNotInPutBody.length > 0) {
+        patchBodyPropertiesNotInPutBody.forEach((missingProperty) => errors.push({
+            message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE$1,
+            path: path,
+        }));
+        return errors;
+    }
+    return [];
+};
+
 const SYNC_PATCH_RESPONSES = ["200", "default"];
 const LR_PATCH_RESPONSES = ["200", "202", "default"];
 const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 and default return codes. They also must not have other response codes.";
@@ -2841,6 +2906,18 @@ const ruleset = {
             given: "$[paths,'x-ms-paths']",
             then: {
                 function: ParametersInPointGet,
+            },
+        },
+        PatchPropertiesCorrespondToPutProperties: {
+            description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*"],
+            then: {
+                function: patchPropertiesCorrespondToPutProperties,
             },
         },
         UnSupportedPatchProperties: {
