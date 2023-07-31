@@ -323,6 +323,11 @@ As a result, this information can be used to build the following example local e
 autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
 ```
 
+   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please:
+   > - double check you have cloned the correct repo (fork, if applicable)
+   > - double check your clone has the correct branch checked out
+   > - ensure the `<version-tag>` you used exists within the file.
+
 ### Staging LintDiff CI check
 
 The process for determining the command for `~[Staging] Swagger LintDiff` is the same, as explained in
@@ -346,7 +351,7 @@ Steps:
 
 1. Ensure you meet the [`How to prepare for a PR submission after you made changes locally`](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally) requirements **up to and including** `rush build`.
 1. Prepare the `autorest` invocation command as described in `How to locally reproduce a LintDiff failure occurring on a PR`,
-but instead of `--use=<api-version>` use `--use=./packages/azure-openapi-validator/autorest`, where `.` denotes path to your local clone of [`azure-openapi-validator` repository](https://github.com/Azure/azure-openapi-validator).
+but instead of `--use=@microsoft.azure/openapi-validator@<version-tag>` use `--use=./packages/azure-openapi-validator/autorest`, where `.` denotes path to your local clone of [`azure-openapi-validator` repository](https://github.com/Azure/azure-openapi-validator).
 
    > **Troubleshooting**: if you get `error   |   Error: Can only create file URIs from absolute paths. Got 'packages\azure-openapi-validator\autorest\readme.md'` then ensure you passed `--use=./packages/azure-openapi-validator/autorest` and not `--use=packages/azure-openapi-validator/autorest`.
 

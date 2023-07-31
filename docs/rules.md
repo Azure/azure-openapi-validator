@@ -472,6 +472,13 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
+### PostResponseCodes
+
+Synchronous POST must have either 200 or 204 return codes.
+LRO POST must have 202 return code. They also should have a 200 return code to indicate the schema for the final response if the final response is intended to have a schema. If the final response schema is empty the 200 return code must not be specified. They also must not have other response codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
 ### ProvisioningStateSpecifiedForLROPatch
 
 This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -767,6 +774,12 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
+### PatchPropertiesCorrespondToPutProperties
+
+Validates that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
+
+Please refer to [patch-properties-correspond-to-put-properties.md](./patch-properties-correspond-to-put-properties.md) for details.
+
 ### PatchResponseCodes
 
 Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
@@ -973,18 +986,6 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
-
-### PutResponseCodes
-
-Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
-Please refer to [put-response-codes.md](./put-response-codes.md) for details.
-
-### PutResponseSchemaDescription
-
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
-
-Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
 
 ### RepeatedPathInfo
 
