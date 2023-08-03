@@ -342,7 +342,7 @@ The process for determining the command for `~[Staging] Swagger LintDiff` is the
 
 To run LintDiff locally from sources, you should follow the guidance given in
 `How to locally reproduce a LintDiff failure occurring on a PR`
-but with one major difference: instead of using `<version-tag>`, you will point to your local LintDiff installation.
+but with one major difference: instead of passing as `--use=` the value of `@microsoft.azure/openapi-validator@<version-tag>`, you will point to your local LintDiff installation.
 
 This will allow you to not only reproduce any failures occurring in the CI, but also rapidly iterate changes to LintDiff
 itself.
