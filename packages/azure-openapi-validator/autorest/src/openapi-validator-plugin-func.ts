@@ -5,6 +5,11 @@ import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from ".
 import { cachedFiles } from "."
 
 export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
+  initiator.Message({
+    Channel: "information",
+    Text: `openapiValidatorPluginFunc: Enter`,
+  })
+
   const files = await (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
   const openapiType: string = await getOpenapiTypeStr(initiator)
   const sendMessage = (msg: LintResultMessage) => {
@@ -31,7 +36,7 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   }
   initiator.Message({
     Channel: "information",
-    Text: `Validating '${files.join("\n")}'`,
+    Text: `openapiValidatorPluginFunc: Validating '${files.join("\n")}'`,
   })
   try {
     const mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
@@ -44,9 +49,14 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   } catch (e) {
     initiator.Message({
       Channel: "fatal",
-      Text: `Failed validating:` + e,
+      Text: `openapiValidatorPluginFunc: Failed validating:` + e,
     })
   }
+
+  initiator.Message({
+    Channel: "information",
+    Text: `openapiValidatorPluginFunc: Return`,
+  })
 }
 
 const mergeRulesets = (rulesets: IRuleSet[]): IRuleSet => {
