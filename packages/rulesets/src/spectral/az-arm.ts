@@ -37,7 +37,6 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseCodes } from "./functions/put-response-codes"
-import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -484,18 +483,6 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*.put^",
       then: {
         function: trackedResourceTagsPropertyInRequest,
-      },
-    },
-
-    // RPC Code: RPC-Put-V1-11
-    PutResponseSchemaDescription: {
-      description: `For any PUT, response code should be 201 if resource was newly created and 200 if replaced.`,
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      given: ["$[paths,'x-ms-paths'].*.put.responses"],
-      then: {
-        function: PutResponseSchemaDescription,
       },
     },
 
