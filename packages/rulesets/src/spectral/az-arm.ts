@@ -28,6 +28,7 @@ import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-co
 import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { PatchResponseCodes } from "./functions/patch-response-codes"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
@@ -139,6 +140,7 @@ const ruleset: any = {
         function: provisioningState,
       },
     },
+
     // RPC Code: RPC-Async-V1-07
     LroLocationHeader: {
       description: "Location header must be supported for all async operations that return 202.",
@@ -296,6 +298,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
+
     // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
     GetCollectionOnlyHasValueAndNextLink: {
       description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
@@ -342,6 +345,21 @@ const ruleset: any = {
     /// ARM RPC rules for Patch patterns
     ///
 
+    // RPC Code: RPC-Patch-V1-01
+    PatchPropertiesCorrespondToPutProperties: {
+      description:
+        "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*"],
+      then: {
+        function: patchPropertiesCorrespondToPutProperties,
+      },
+    },
+
     // RPC Code: RPC-Patch-V1-02
     UnSupportedPatchProperties: {
       description: "Patch may not change the name, location, or type of the resource.",
@@ -358,7 +376,7 @@ const ruleset: any = {
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/324
-    // RPC Code: RPC-Patch-V1-03
+    // RPC Code: RPC-Patch-V1-01
     ConsistentPatchProperties: {
       description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
       message: "{{error}}",
@@ -825,7 +843,7 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6191#issuecomment-1571334585
+      severity: "warn",
       stagingOnly: true,
       resolved: true,
       formats: [oas2],
