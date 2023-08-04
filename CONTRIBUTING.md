@@ -230,23 +230,45 @@ You are about to submit your PR, but you want to ensure the changes in your PR w
 If you want your changes to be deployed only to the [Staging pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=3268)
 and hence Staging LintDiff, you don't need to change anything in your PR.
 
-Once your PR is merged, you just need to verify the [Staging release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108) with your changes succeeded.
-It should trigger automatically, publishing new `beta` versions of relevant packages to npm.
+Once your PR is merged, do the following:
+
+- Ensure the [Staging build] triggered. The build also triggers on schedule once a day.
+  If it didn't trigger, trigger it manually.
+- Once the build is complete, verify the [Staging npm release] triggered for that build.
+  If it didn't trigger, trigger it manually.
+- Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to
+  publish package twice and succeeds only on the first try.
+- Verify the release worked by the `beta` versions of appropriate packages being released to npm.
+  See [README `packages` section]. You can also look at the release build log.
 
 ## Deploy to Prod LintDiff
 
-If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary) and hence Production LintDiff, you need to do the following:
+If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
+and hence Production LintDiff, you need to do the following:
 
 - In the PR with your changes increase the version number of the packages you changed.
-  - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30) is an example version increase for the ruleset.
-  - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf) for changes made to the  AutoRest extension.
+  - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30)
+    is an example version increase for the ruleset.
+  - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
+    for changes made to the  AutoRest extension.
   - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
-- Once your PR is merged and [relevant build](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary) completed, get an approval for an [npm release](https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80) from the build.
-  - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to publish package twice and succeeds only on the first try. You can verify your updated npm packages were published by reviewing your
-  version is on npm. See [README `packages` section](https://github.com/Azure/azure-openapi-validator#packages). You can also look at the release build log.
-- **IMPORTANT**: changes to the AutoRest extension package require additional code updates to `openapi-alps` ADO repository, and deployment of them. Work with this tool owner to apply these steps. 
-  Example of such past deployments is given [here](https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1530128107).
+
+Once your PR is merged:
+
+- Schedule a [Prod build] from the `main` branch.
+- Once the build is complete, schedule a [Prod npm release] from that build.
+  You may need to get an approval for the release from the appropriate Azure SDK EngSys team members.
+- Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to
+  publish package twice and succeeds only on the first try.
+- Verify the release worked by new versions of the appropriate packages being released to npm.
+  See [README `packages` section]. You can also look at the release build log.
+
+**IMPORTANT**: Changes to the AutoRest extension package, used by Production LintDiff,  require additional code
+  updates to `openapi-alps` ADO repository, and deployment of them. Work with this tool owner to apply these steps.
+  Example of such past deployment is given [here](https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1530128107),
+  with [this PR](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps/pullrequest/468946?_a=files)
+  updating the `LINT_DIFF` version.
 
 ## Verify the deployed changes
 
@@ -323,7 +345,10 @@ As a result, this information can be used to build the following example local e
 autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-validator@2.1.2 --tag=package-2023-07 /path_to_local_specs_repo_clone/specification/deviceupdate/resource-manager/readme.md
 ```
 
-   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please ensure the `<version-tag>` you used exists within the file.
+   > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please:
+   > - double check you have cloned the correct repo (fork, if applicable)
+   > - double check your clone has the correct branch checked out
+   > - ensure the `<version-tag>` you used exists within the file.
 
 ### Staging LintDiff CI check
 
@@ -339,7 +364,7 @@ The process for determining the command for `~[Staging] Swagger LintDiff` is the
 
 To run LintDiff locally from sources, you should follow the guidance given in
 `How to locally reproduce a LintDiff failure occurring on a PR`
-but with one major difference: instead of using `<version-tag>`, you will point to your local LintDiff installation.
+but with one major difference: instead of passing as `--use=` the value of `@microsoft.azure/openapi-validator@<version-tag>`, you will point to your local LintDiff installation.
 
 This will allow you to not only reproduce any failures occurring in the CI, but also rapidly iterate changes to LintDiff
 itself.
@@ -558,3 +583,9 @@ In the Problems panel you can filter to show or hide errors, warnings, or infos.
 
 [PR 24311]: https://github.com/Azure/azure-rest-api-specs/pull/24311/
 [`@microsoft.azure/openapi-validator`]: https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions
+
+[Staging build]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=5797&_a=summary  
+[Prod build]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary
+[Staging npm release]: https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108  
+[Prod npm release]: https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80
+[README `packages` section]: https://github.com/Azure/azure-openapi-validator#packages  
