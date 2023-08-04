@@ -7,7 +7,6 @@ beforeAll(async () => {
   linters.PathContainsResourceType = await linterForRule("PathContainsResourceType")
   linters.PathContainsResourceGroup = await linterForRule("PathContainsResourceGroup")
   linters.PathContainsSubscriptionId = await linterForRule("PathContainsSubscriptionId")
-  linters.PathForTrackedResourceTypes = await linterForRule("PathForTrackedResourceTypes")
   linters.PathForNestedResource = await linterForRule("PathForNestedResource")
   linters.PathForResourceAction = await linterForRule("PathForResourceAction")
 })
@@ -301,92 +300,6 @@ test("PathContainsSubscription should find errors for invalid path for thirs par
     expect(results.length).toBe(1)
     expect(results[0].message).toContain("The path for the subscriptions scoped CRUD methods do not contain the subscriptionId parameter.")
     expect(results[0].path.join(".")).toBe("paths./subscriptions/resourceGroups/providers/PureStorage.Krypton/{resourceName}/resourceType")
-  })
-})
-
-test("PathForTrackedResourceTypes should find errors for invalid path", () => {
-  // invalid paths:
-  //  1 <scope>/providers/Microsoft.Compute/{vmName}
-  //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
-  //  3 <scope>/providers/ResourceType/Microsoft.MyNs...
-  const oasDoc = {
-    swagger: "2.0",
-    paths: {
-      "/{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-        get: {
-          description: "Test Get Description",
-        },
-      },
-      "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName1}": {
-        get: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-      "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-    },
-  }
-  return linters.PathForTrackedResourceTypes.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2)
-    expect(results[0].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName1}")
-    expect(results[1].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[1].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}")
-  })
-})
-
-test("PathForTrackedResourceTypes should find errors for invalid path for thirs party RPs", () => {
-  // invalid paths:
-  //  1 <scope>/providers/PureStorage.Krypton/{vmName}
-  //  2 <scope>/providers/{resourceName}/PureStorage.Krypton...
-  //  3 <scope>/providers/ResourceType/PureStorage.Krypton...
-  const oasDoc = {
-    swagger: "2.0",
-    paths: {
-      "/{scope}/providers/PureStorage.Krypton/virtualMachine/{vmName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-      "/subscriptions/{subscriptionId}/providers/PureStorage.Krypton/resourceType/{resourceName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-    },
-  }
-  return linters.PathForTrackedResourceTypes.run(oasDoc).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[0].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/providers/PureStorage.Krypton/resourceType/{resourceName}"
-    )
   })
 })
 

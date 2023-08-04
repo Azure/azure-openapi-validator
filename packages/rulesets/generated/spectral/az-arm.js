@@ -172,6 +172,16 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     return errors;
 };
 
+const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
+    ["types.json", "v5"],
+    ["managedidentity.json", "v5"],
+    ["privatelinks.json", "v4"],
+    ["customermanagedkeys.json", "v4"],
+    ["managedidentitywithdelegation.json", "v4"],
+]);
+function isLatestCommonTypesVersionForFile(version, fileName) {
+    return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
+}
 function getProperties(schema) {
     if (!schema) {
         return {};
@@ -184,6 +194,28 @@ function getProperties(schema) {
     }
     if (schema.properties) {
         properties = { ...properties, ...schema.properties };
+    }
+    return properties;
+}
+function getAllPropertiesIncludingDeeplyNestedProperties(schema, properties) {
+    if (!schema) {
+        return {};
+    }
+    if (schema.allOf && Array.isArray(schema.allOf)) {
+        schema.allOf.forEach((base) => {
+            getAllPropertiesIncludingDeeplyNestedProperties(base, properties);
+        });
+    }
+    if (schema.properties) {
+        const props = schema.properties;
+        Object.entries(props).forEach(([key, value]) => {
+            if (!value.properties) {
+                properties.push(Object.fromEntries([[key, value]]));
+            }
+            else {
+                getAllPropertiesIncludingDeeplyNestedProperties(props[key], properties);
+            }
+        });
     }
     return properties;
 }
@@ -1222,16 +1254,16 @@ const ruleset$1 = {
     },
 };
 
-function matchAnyPatterns$1(patterns, path) {
+function matchAnyPatterns$2(patterns, path) {
     return patterns.every((p) => p.test(path));
 }
 function verifyNestResourceType$1(path) {
     const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 function verifyResourceType$1(path) {
     const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
     var _a;
@@ -1260,10 +1292,10 @@ const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
     return [];
 };
 
-function matchAnyPatterns(patterns, path) {
+function matchAnyPatterns$1(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
-function notMatchPatterns(patterns, path) {
+function notMatchPatterns$1(patterns, path) {
     return patterns.every((p) => !p.test(path));
 }
 function verifyResourceGroup(path) {
@@ -1280,17 +1312,17 @@ function verifySubscriptionId(path) {
     }
     return true;
 }
-function verifyResourceGroupScope(path) {
+function verifyResourceGroupScope$1(path) {
     const patterns = [
         /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
 function verifyResourceType(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
 function verifyNestResourceType(path) {
     const patterns = [
@@ -1299,7 +1331,7 @@ function verifyNestResourceType(path) {
         /^.*\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
         /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
-    return notMatchPatterns(patterns, path);
+    return notMatchPatterns$1(patterns, path);
 }
 const verifyArmPath = createRulesetFunction({
     input: null,
@@ -1364,7 +1396,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         resourceGroupScope: (fullPath) => {
-            if (!verifyResourceGroupScope(fullPath)) {
+            if (!verifyResourceGroupScope$1(fullPath)) {
                 errors.push({
                     message: "",
                     path,
@@ -1468,9 +1500,9 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
 
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
-const SYNC_ERROR = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
-const LR_ERROR = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
-const EmptyResponse_ERROR$1 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
+const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
+const LR_ERROR$2 = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
+const EmptyResponse_ERROR$3 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1481,7 +1513,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
     if (responses.length == 0) {
         errors.push({
-            message: EmptyResponse_ERROR$1,
+            message: EmptyResponse_ERROR$3,
             path: path,
         });
         return errors;
@@ -1499,7 +1531,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
         }
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: LR_ERROR,
+                message: LR_ERROR$2,
                 path: path,
             });
         }
@@ -1507,7 +1539,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     else {
         if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: SYNC_ERROR,
+                message: SYNC_ERROR$2,
                 path: path,
             });
         }
@@ -1618,6 +1650,23 @@ const httpsSupportedScheme = (scheme, _opts, paths) => {
             message: 'Azure Resource Management only supports HTTPS scheme.',
             path,
         }];
+};
+
+const latestVersionOfCommonTypesMustBeUsed = (ref, _opts, ctx) => {
+    const REF_COMMON_TYPES_REGEX = new RegExp("/common-types/resource-management/v\\d+/\\w+.json#", "gi");
+    if (ref !== null && !ref.match(REF_COMMON_TYPES_REGEX)) {
+        return [];
+    }
+    const errors = [];
+    const path = ctx.path;
+    const versionAndFile = ref.split("/common-types/resource-management/")[1].split("#")[0].split("/");
+    if (!isLatestCommonTypesVersionForFile(versionAndFile[0], versionAndFile[1])) {
+        errors.push({
+            message: `Use the latest version ${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(versionAndFile[1])} of ${versionAndFile[1]}.`,
+            path: path,
+        });
+    }
+    return errors;
 };
 
 const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
@@ -1975,24 +2024,89 @@ const pathBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
-const PatchResponseCode = (patchOp, _opts, ctx) => {
+const ERROR_MESSAGE$1 = "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.";
+const PARAM_IN_BODY = (paramObject) => paramObject.in === "body";
+const PATCH = "patch";
+const PUT = "put";
+const PARAMETERS = "parameters";
+const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
+    var _a, _b, _c, _d;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path.concat([PATCH, PARAMETERS]);
+    const errors = [];
+    const patchBodyProperties = (_b = (_a = pathItem[PATCH]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter(PARAM_IN_BODY).map((param) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []));
+    const putBodyProperties = (_d = (_c = pathItem[PUT]) === null || _c === void 0 ? void 0 : _c.parameters) === null || _d === void 0 ? void 0 : _d.filter(PARAM_IN_BODY).map((param) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []));
+    const patchBodyPropertiesEmpty = patchBodyProperties.length < 1;
+    const putBodyPropertiesEmpty = putBodyProperties.length < 1;
+    if (patchBodyPropertiesEmpty) {
+        return [
+            {
+                message: "Patch operations body cannot be empty.",
+                path: path,
+            },
+        ];
+    }
+    if (!patchBodyPropertiesEmpty && putBodyPropertiesEmpty) {
+        return [
+            {
+                message: "Non empty patch body with an empty put body is not valid.",
+                path: path,
+            },
+        ];
+    }
+    const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual);
+    if (patchBodyPropertiesNotInPutBody.length > 0) {
+        patchBodyPropertiesNotInPutBody.forEach((missingProperty) => errors.push({
+            message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE$1,
+            path: path,
+        }));
+        return errors;
+    }
+    return [];
+};
+
+const SYNC_PATCH_RESPONSES = ["200", "default"];
+const LR_PATCH_RESPONSES = ["200", "202", "default"];
+const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 and default return codes. They also must not have other response codes.";
+const LR_ERROR$1 = "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes.";
+const EmptyResponse_ERROR$2 = "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running.";
+const PatchResponseCodes = (patchOp, _opts, ctx) => {
+    var _a;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
     const path = ctx.path;
     const errors = [];
-    if (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) {
-        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"]) && (patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["202"]))) {
+    const responses = Object.keys((_a = patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR$2,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) || patchOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        if (!patchOp["x-ms-long-running-operation"] || patchOp["x-ms-long-running-operation"] !== true) {
             errors.push({
-                message: "LRO PATCH must have 200 and 202 return codes.",
+                message: "An async PATCH operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+        if (responses.length !== LR_PATCH_RESPONSES.length || !LR_PATCH_RESPONSES.every((value) => responses.includes(value))) {
+            errors.push({
+                message: LR_ERROR$1,
                 path: path,
             });
         }
     }
     else {
-        if ((patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses) && !(patchOp === null || patchOp === void 0 ? void 0 : patchOp.responses["200"])) {
+        if (responses.length !== SYNC_PATCH_RESPONSES.length || !SYNC_PATCH_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
-                message: "Synchronous PATCH must have 200 return code.",
+                message: SYNC_ERROR$1,
                 path: path,
             });
         }
@@ -2023,6 +2137,80 @@ const pathSegmentCasing = (apiPaths, _opts, paths) => {
                 }
             }
         });
+    }
+    return errors;
+};
+
+const SYNC_POST_RESPONSES_OK = ["200", "default"];
+const SYNC_POST_RESPONSES_NO_CONTENT = ["204", "default"];
+const LR_POST_RESPONSES_WITH_FINAL_SCHEMA = ["200", "202", "default"];
+const LR_POST_RESPONSES_NO_FINAL_SCHEMA = ["202", "default"];
+const SYNC_ERROR = "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.";
+const LR_ERROR = "Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.";
+const LR_NO_SCHEMA_ERROR = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
+const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
+const PostResponseCodes = (postOp, _opts, ctx) => {
+    var _a, _b;
+    if (postOp === null || typeof postOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const responses = Object.keys((_a = postOp === null || postOp === void 0 ? void 0 : postOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR$1,
+            path: path,
+        });
+        return errors;
+    }
+    const isAsyncOperation = postOp.responses["202"] ||
+        (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) ||
+        postOp["x-ms-long-running-operation-options"];
+    if (isAsyncOperation) {
+        let wrongResponseCodes = false;
+        let okResponseCodeNoSchema = false;
+        if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
+            errors.push({
+                message: "An async POST operation must set '\"x-ms-long-running-operation\" : true'.",
+                path: path,
+            });
+            return errors;
+        }
+        if (responses.length === LR_POST_RESPONSES_WITH_FINAL_SCHEMA.length) {
+            if (!LR_POST_RESPONSES_WITH_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+                wrongResponseCodes = true;
+            }
+            else if (!((_b = postOp.responses["200"]) === null || _b === void 0 ? void 0 : _b.schema)) {
+                okResponseCodeNoSchema = true;
+            }
+        }
+        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+            wrongResponseCodes = true;
+        }
+        if (wrongResponseCodes) {
+            errors.push({
+                message: LR_ERROR,
+                path: path,
+            });
+        }
+        else if (okResponseCodeNoSchema) {
+            errors.push({
+                message: LR_NO_SCHEMA_ERROR,
+                path: path,
+            });
+        }
+        return errors;
+    }
+    else {
+        if (responses.length !== SYNC_POST_RESPONSES_OK.length ||
+            (!SYNC_POST_RESPONSES_OK.every((value) => responses.includes(value)) &&
+                !SYNC_POST_RESPONSES_NO_CONTENT.every((value) => responses.includes(value)))) {
+            errors.push({
+                message: SYNC_ERROR,
+                path: path,
+            });
+        }
     }
     return errors;
 };
@@ -2542,6 +2730,53 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+function matchAnyPatterns(patterns, path) {
+    return patterns.some((p) => p.test(path));
+}
+function notMatchPatterns(invalidPatterns, path) {
+    return invalidPatterns.every((p) => !p.test(path));
+}
+function verifyResourceGroupScope(path) {
+    const patterns = [
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+.*/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
+}
+function verifyNestResourceGroupScope(path) {
+    const invalidPatterns = [
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
+    ];
+    return notMatchPatterns(invalidPatterns, path);
+}
+const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const pathParams = pathItem.parameters || [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const bodyParam = allParams.find((p) => p.in === "body");
+        if (bodyParam) {
+            const properties = getProperties(bodyParam.schema);
+            if ("location" in properties) {
+                if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+                    errors.push({
+                        message: "The path must be under a subscription and resource group for tracked resource types.",
+                        path,
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2628,6 +2863,18 @@ const ruleset = {
                 functionOptions: {
                     name: "Location",
                 },
+            },
+        },
+        PostResponseCodes: {
+            description: "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*[post]"],
+            then: {
+                function: PostResponseCodes,
             },
         },
         LroErrorContent: {
@@ -2758,6 +3005,18 @@ const ruleset = {
                 function: allowNestedIfParentExist,
             },
         },
+        PatchPropertiesCorrespondToPutProperties: {
+            description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: ["$[paths,'x-ms-paths'].*"],
+            then: {
+                function: patchPropertiesCorrespondToPutProperties,
+            },
+        },
         UnSupportedPatchProperties: {
             description: "Patch may not change the name, location, or type of the resource.",
             message: "{{error}}",
@@ -2783,15 +3042,16 @@ const ruleset = {
                 function: consistentPatchProperties,
             },
         },
-        PatchResponseCode: {
+        PatchResponseCodes: {
             description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch]"],
             then: {
-                function: PatchResponseCode,
+                function: PatchResponseCodes,
             },
         },
         LroPatch202: {
@@ -2848,14 +3108,12 @@ const ruleset = {
             description: "The path must be under a subscription and resource group for tracked resource types.",
             message: "{{description}}",
             severity: "error",
-            resolved: false,
+            stagingOnly: true,
+            resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[put,get]^~",
+            given: ["$[paths,'x-ms-paths'].*.[put,get]^"],
             then: {
-                function: verifyArmPath,
-                functionOptions: {
-                    segmentToCheck: "resourceGroupScope",
-                },
+                function: pathForTrackedResourceTypes,
             },
         },
         RepeatedPathInfo: {
@@ -3145,10 +3403,22 @@ const ruleset = {
                 function: operationsApiTenantLevelOnly,
             },
         },
+        LatestVersionOfCommonTypesMustBeUsed: {
+            description: "This rule checks for references that aren't using latest version of common-types.",
+            message: "{{error}}",
+            severity: "warn",
+            stagingOnly: true,
+            resolved: false,
+            formats: [oas2],
+            given: "$..['$ref']",
+            then: {
+                function: latestVersionOfCommonTypesMustBeUsed,
+            },
+        },
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
-            severity: "off",
+            severity: "warn",
             stagingOnly: true,
             resolved: true,
             formats: [oas2],

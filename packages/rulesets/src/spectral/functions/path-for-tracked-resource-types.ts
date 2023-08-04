@@ -1,7 +1,5 @@
 import { getProperties } from "./utils"
 
-// Check that the body parameter for put operation includes a top level property for tags when its a tracked resource and that it is specified as an optional property.
-// The code assumes it is running on a resolved doc
 function matchAnyPatterns(patterns: RegExp[], path: string) {
   return patterns.some((p) => p.test(path))
 }
