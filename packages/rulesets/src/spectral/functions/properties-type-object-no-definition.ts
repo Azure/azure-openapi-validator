@@ -3,7 +3,7 @@
 const errorMessageObject =
   "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience."
 const errorMessageNull =
-  "Properties with type NULL are not allowed. Either specify the type as object and reference a model or specify a primitive type."
+  "Properties with 'type' NULL are not allowed, please specify the 'type' as 'Primitive' or 'Object' referring a model."
 export const propertiesTypeObjectNoDefinition: any = (definitionObject: any, opts: any, ctx: any) => {
   const path = ctx.path || []
 
