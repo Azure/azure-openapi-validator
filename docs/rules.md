@@ -767,6 +767,12 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
+### PatchPropertiesCorrespondToPutProperties
+
+Validates that each patch request body contains properties present in the corresponding put request body, and must contain at least one property.
+
+Please refer to [patch-properties-correspond-to-put-properties.md](./patch-properties-correspond-to-put-properties.md) for details.
+
 ### PatchResponseCodes
 
 Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
@@ -973,12 +979,6 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
-
-### PutResponseSchemaDescription
-
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
-
-Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
 
 ### RepeatedPathInfo
 
