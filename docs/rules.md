@@ -974,12 +974,6 @@ For any PUT, response code should be 201 if resource was newly created and 200 i
 
 Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
 
-### PutResponseCodes
-
-Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
-Please refer to [put-response-codes.md](./put-response-codes.md) for details.
-
 ### PutResponseSchemaDescription
 
 For any PUT, response code should be 201 if resource was newly created and 200 if updated.
