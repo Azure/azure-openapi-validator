@@ -48,6 +48,7 @@ import { systemDataInPropertiesBag } from "./functions/system-data-in-properties
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -450,14 +451,11 @@ const ruleset: any = {
       message: "{{description}}",
       severity: "error",
       stagingOnly: true,
-      resolved: false,
+      resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[put,get]^~",
+      given: ["$[paths,'x-ms-paths'].*.[put,get]^"], //, "$[paths,'x-ms-paths'].*.get^"],
       then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "resourceGroupScope",
-        },
+        function: pathForTrackedResourceTypes,
       },
     },
     // RPC Code: RPC-Put-V1-05
