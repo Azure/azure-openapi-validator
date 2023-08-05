@@ -268,7 +268,7 @@ Once your PR is merged:
   updates to `openapi-alps` ADO repository, and deployment of them. Work with this tool owner to apply these steps.
   Example of such past deployment is given [here](https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1530128107),
   with [this PR](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps/pullrequest/468946?_a=files)
-  updating the `LINT_DIFF` version.
+  updating the `LINT_VERSION` value.
 
 ## Verify the deployed changes
 
