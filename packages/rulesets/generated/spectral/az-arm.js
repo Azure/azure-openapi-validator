@@ -2348,35 +2348,6 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
-const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
-    var _a, _b;
-    if (putResponseSchema === null || typeof putResponseSchema !== "object") {
-        return [];
-    }
-    const path = ctx.path;
-    const errors = [];
-    if (!putResponseSchema["200"] || !putResponseSchema["201"]) {
-        errors.push({
-            message: "Any Put MUST contain 200 and 201 return codes.",
-            path: path,
-        });
-        return errors;
-    }
-    if (!((_a = putResponseSchema["200"].description) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes("update"))) {
-        errors.push({
-            message: 'Description of 200 response code of a PUT operation MUST include term "update".',
-            path: path,
-        });
-    }
-    if (!((_b = putResponseSchema["201"].description) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes("create"))) {
-        errors.push({
-            message: 'Description of 201 response code of a PUT operation MUST include term "create".',
-            path: path,
-        });
-    }
-    return errors;
-};
-
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -3052,16 +3023,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: trackedResourceTagsPropertyInRequest,
-            },
-        },
-        PutResponseSchemaDescription: {
-            description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            given: ["$[paths,'x-ms-paths'].*.put.responses"],
-            then: {
-                function: PutResponseSchemaDescription,
             },
         },
         PutGetPatchResponseSchema: {
