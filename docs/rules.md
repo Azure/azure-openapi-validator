@@ -503,12 +503,6 @@ A long running Post operation should return 200 with response schema and 202 wit
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
 
-### PutResponseCodes
-
-Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
-Please refer to [put-response-codes.md](./put-response-codes.md) for details.
-
 ### ProvisioningStateSpecifiedForLROPut
 
 This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
@@ -895,6 +889,13 @@ Please refer to [post-201-response.md](./post-201-response.md) for details.
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
 
 Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-contains-url-verb.md) for details.
+
+### PostResponseCodes
+
+Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
+Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
 
 ### PreviewVersionOverOneYear
 

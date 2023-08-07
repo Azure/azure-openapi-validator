@@ -258,7 +258,7 @@ const ruleset: any = {
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
       then: {
         function: propertiesTypeObjectNoDefinition,
       },
