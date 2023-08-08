@@ -34,6 +34,12 @@ All tracked resources MUST support delete.
 
 Please refer to [all-tracked-resources-must-have-delete.md](./all-tracked-resources-must-have-delete.md) for details.
 
+### AllowNestedIfParentExist
+
+When the parent resource is scoped under a resource group, the path for the list calls of its child resources must also be scoped under a resource group
+
+Please refer to [allow-nested-if-parent-exist.md](./allow-nested-if-parent-exist.md) for details.
+
 ### AnonymousBodyParameter
 
 This rule appears if in the parameter definition you have anonymous types.
@@ -827,17 +833,17 @@ Path for CRUD methods on a nested resource type MUST follow valid resource namin
 
 Please refer to [path-for-nested-resource.md](./path-for-nested-resource.md) for details.
 
-### PathForPutOperation
-
-For a PUT operation, If a uri segment has subscription, it needs to have a resource group segment as well.
-
-Please refer to [path-for-put-operation.md](./path-for-put-operation.md) for details.
-
 ### PathForResourceAction
 
 Path for 'post' method on a resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/Action'.
 
 Please refer to [path-for-resource-action.md](./path-for-resource-action.md) for details.
+
+### PathForTrackedResourceTypes
+
+For a operation, If a uri segment has subscription, it needs to have a resource group segment as well.
+
+Please refer to [path-for-tracked-resource-types.md](./path-for-tracked-resource-types.md) for details.
 
 ### PathParameterNames
 

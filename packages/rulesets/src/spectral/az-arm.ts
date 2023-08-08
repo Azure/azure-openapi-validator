@@ -1,6 +1,7 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
+import { allowNestedIfParentExist } from "./functions/allow-nested-if-parent-exist"
 import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
@@ -29,6 +30,7 @@ import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { PatchResponseCodes } from "./functions/patch-response-codes"
+import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
@@ -323,6 +325,21 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-11
+    AllowNestedIfParentExist: {
+      description:
+        "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get]^~",
+      then: {
+        function: allowNestedIfParentExist,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
@@ -445,21 +462,20 @@ const ruleset: any = {
     /// ARM RPC rules for Put patterns
     ///
 
-    // RPC Code: RPC-Put-V1-01
-    PathForPutOperation: {
-      description: "The path for 'put' operation must be under a subscription and resource group.",
+    // RPC Code: RPC-Put-V1-01, RPC-Get-V1-11
+    PathForTrackedResourceTypes: {
+      description: "The path must be under a subscription and resource group for tracked resource types.",
       message: "{{description}}",
       severity: "error",
-      resolved: false,
+      stagingOnly: true,
+      resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[put]^~",
+      given: ["$[paths,'x-ms-paths'].*.[put,get]^"],
       then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "resourceGroupScope",
-        },
+        function: pathForTrackedResourceTypes,
       },
     },
+
     // RPC Code: RPC-Put-V1-05
     RepeatedPathInfo: {
       description:
