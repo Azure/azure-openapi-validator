@@ -2160,13 +2160,12 @@ const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
     }
     const path = paths.path || [];
     const errors = [];
-    const pathParams = pathItem.parameters || [];
     if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
-        const allParams = [...pathParams, ...pathItem["put"].parameters];
+        const allParams = [...pathItem["put"].parameters];
         return checkTracked(allParams, path);
     }
     else if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
-        const allParams = [...pathParams, ...pathItem["get"].parameters];
+        const allParams = [...pathItem["get"].parameters];
         return checkTracked(allParams, path);
     }
     return errors;
