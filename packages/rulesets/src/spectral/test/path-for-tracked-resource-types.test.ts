@@ -263,6 +263,18 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
     expect(results.length).toBe(5)
     expect(results[0].path.join(".")).toContain("put")
     expect(results[0].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
+    expect(results[1].path.join(".")).toContain("put")
+    expect(results[1].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
+    expect(results[2].path.join(".")).toContain(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/{vmName}/nestedResourceType/actions"
+    )
+    expect(results[2].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
+    expect(results[3].path.join(".")).toContain(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/providers/virtualMachine/{vmName}/{nestedResourceType}"
+    )
+    expect(results[3].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
+    expect(results[4].path.join(".")).toContain("put")
+    expect(results[4].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
   })
 })
 

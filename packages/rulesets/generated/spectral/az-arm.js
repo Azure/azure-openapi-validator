@@ -2136,6 +2136,22 @@ function verifyNestResourceGroupScope(path) {
     ];
     return notMatchPatterns(invalidPatterns, path);
 }
+function checkTracked(allParams, path) {
+    const errors = [];
+    const bodyParam = allParams.find((p) => p.in === "body");
+    if (bodyParam) {
+        const properties = getProperties(bodyParam.schema);
+        if ("location" in properties) {
+            if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+                errors.push({
+                    message: "The path must be under a subscription and resource group for tracked resource types.",
+                    path,
+                });
+            }
+        }
+    }
+    return errors;
+}
 const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -2145,18 +2161,11 @@ const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
     const pathParams = pathItem.parameters || [];
     if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
         const allParams = [...pathParams, ...pathItem["put"].parameters];
-        const bodyParam = allParams.find((p) => p.in === "body");
-        if (bodyParam) {
-            const properties = getProperties(bodyParam.schema);
-            if ("location" in properties) {
-                if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
-                    errors.push({
-                        message: "The path must be under a subscription and resource group for tracked resource types.",
-                        path,
-                    });
-                }
-            }
-        }
+        return checkTracked(allParams, path);
+    }
+    else if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
+        const allParams = [...pathParams, ...pathItem["get"].parameters];
+        return checkTracked(allParams, path);
     }
     return errors;
 };
