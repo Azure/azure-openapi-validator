@@ -30,7 +30,10 @@ export const allowNestedIfParentExist: any = (fullPath: any, _opts: any, ctx: an
 
     for (const apiPath of Object.values(otherPaths)) {
       if (verifyResourceType(apiPath)) {
-        if (fullPath.includes(apiPath)) count++
+        if (fullPath.includes(apiPath)) {
+          count++
+          break
+        }
       }
     }
 

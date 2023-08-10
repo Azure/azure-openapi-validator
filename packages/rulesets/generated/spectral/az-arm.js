@@ -1276,8 +1276,10 @@ const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
         let count = 0;
         for (const apiPath of Object.values(otherPaths)) {
             if (verifyResourceType$1(apiPath)) {
-                if (fullPath.includes(apiPath))
+                if (fullPath.includes(apiPath)) {
                     count++;
+                    break;
+                }
             }
         }
         if (count === 0) {
