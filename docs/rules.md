@@ -841,7 +841,7 @@ Please refer to [path-for-resource-action.md](./path-for-resource-action.md) for
 
 ### PathForTrackedResourceTypes
 
-For a operation, If a uri segment has subscription, it needs to have a resource group segment as well.
+For a operation, If the URI segment has a subscription, then the URI needs to have a resource group segment as well.
 
 Please refer to [path-for-tracked-resource-types.md](./path-for-tracked-resource-types.md) for details.
 

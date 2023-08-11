@@ -14,11 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The path must be under a subscription and resource group for tracked resource types..
+The path must be under a subscription and resource group for tracked resource types.
 
 ## Description
 
-For a operation, If a uri segment has subscription, it needs to have a resource group segment as well.
+For a operation, If the URI segment has a subscription, then the URI needs to have a resource group segment as well.
 
 ## CreatedAt
 
