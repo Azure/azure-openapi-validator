@@ -59,7 +59,8 @@ const pathForTrackedResourceTypes = (pathItem: any, _opts: any, paths: any) => {
   if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
     const allParams = [...pathItem["put"].parameters]
     return checkTracked(allParams, path)
-  } else if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
+  }
+  if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
     const allParams = [...pathItem["get"].parameters]
     return checkTracked(allParams, path)
   }

@@ -1255,46 +1255,6 @@ const ruleset$1 = {
 };
 
 function matchAnyPatterns$2(patterns, path) {
-    return patterns.every((p) => p.test(path));
-}
-function verifyNestResourceType$1(path) {
-    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns$2(patterns, path);
-}
-function verifyResourceType$1(path) {
-    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns$2(patterns, path);
-}
-const allowNestedIfParentExist = (fullPath, _opts, ctx) => {
-    var _a;
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
-        return [];
-    }
-    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
-    if (verifyNestResourceType$1(fullPath)) {
-        let count = 0;
-        for (const apiPath of Object.values(otherPaths)) {
-            if (verifyResourceType$1(apiPath)) {
-                if (fullPath.includes(apiPath)) {
-                    count++;
-                    break;
-                }
-            }
-        }
-        if (count === 0) {
-            return [
-                {
-                    message: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
-                    ctx,
-                },
-            ];
-        }
-    }
-    return [];
-};
-
-function matchAnyPatterns$1(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns$1(patterns, path) {
@@ -1320,13 +1280,13 @@ function verifyResourceGroupScope$1(path) {
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
-function verifyResourceType(path) {
+function verifyResourceType$1(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
-function verifyNestResourceType(path) {
+function verifyNestResourceType$1(path) {
     const patterns = [
         /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
         /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
@@ -1366,7 +1326,7 @@ const verifyArmPath = createRulesetFunction({
     const errors = [];
     const optionsHandlers = {
         resourceType: (fullPath) => {
-            if (!verifyResourceType(fullPath)) {
+            if (!verifyResourceType$1(fullPath)) {
                 errors.push({
                     message: `The path for the CURD methods do not contain a resource type.`,
                     path,
@@ -1374,7 +1334,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         nestedResourceType: (fullPath) => {
-            if (!verifyNestResourceType(fullPath)) {
+            if (!verifyNestResourceType$1(fullPath)) {
                 errors.push({
                     message: `The path for nested resource doest not meet the valid resource pattern.`,
                     path,
@@ -1786,6 +1746,46 @@ const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     return errors;
 };
 
+function matchAnyPatterns$1(patterns, path) {
+    return patterns.every((p) => p.test(path));
+}
+function verifyNestResourceType(path) {
+    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+function verifyResourceType(path) {
+    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+const validateSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
+        return [];
+    }
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
+    if (verifyNestResourceType(fullPath)) {
+        let count = 0;
+        for (const apiPath of Object.values(otherPaths)) {
+            if (verifyResourceType(apiPath)) {
+                if (fullPath.includes(apiPath)) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        if (count === 0) {
+            return [
+                {
+                    message: "A nested resource type's List operation must include all the parent segments in its api path.",
+                    ctx,
+                },
+            ];
+        }
+    }
+    return [];
+};
+
 const scopeParameter = "{scope}";
 const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
     var _a;
@@ -2164,7 +2164,7 @@ const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
         const allParams = [...pathItem["put"].parameters];
         return checkTracked(allParams, path);
     }
-    else if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
+    if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
         const allParams = [...pathItem["get"].parameters];
         return checkTracked(allParams, path);
     }
@@ -2985,8 +2985,8 @@ const ruleset = {
                 function: ParametersInPointGet,
             },
         },
-        AllowNestedIfParentExist: {
-            description: "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
+        ValidateSegmentsInNestedResourceListOperation: {
+            description: "A nested resource type's List operation must include all the parent segments in its api path.",
             severity: "error",
             stagingOnly: true,
             message: "{{error}}",
@@ -2994,7 +2994,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[get]^~",
             then: {
-                function: allowNestedIfParentExist,
+                function: validateSegmentsInNestedResourceListOperation,
             },
         },
         PatchPropertiesCorrespondToPutProperties: {

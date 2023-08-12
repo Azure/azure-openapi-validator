@@ -34,12 +34,6 @@ All tracked resources MUST support delete.
 
 Please refer to [all-tracked-resources-must-have-delete.md](./all-tracked-resources-must-have-delete.md) for details.
 
-### AllowNestedIfParentExist
-
-When the parent resource is scoped under a resource group, the path for the list calls of its child resources must also be scoped under a resource group
-
-Please refer to [allow-nested-if-parent-exist.md](./allow-nested-if-parent-exist.md) for details.
-
 ### AnonymousBodyParameter
 
 This rule appears if in the parameter definition you have anonymous types.
@@ -526,6 +520,12 @@ All operations should have a default (error) response.
 
 Please refer to [missing-default-response.md](./missing-default-response.md) for details.
 
+### AllowNestedIfParentExist
+
+When the parent resource is scoped under a resource group, the path for the list calls of its child resources must also be scoped under a resource group
+
+Please refer to [missing-segments-in-nested-resource-list-operation.md](./missing-segments-in-nested-resource-list-operation.md) for details.
+
 ### MissingTypeObject
 
 The rule should apply to any schema with "properties" or "additionalProperties". It is to ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object.
@@ -841,7 +841,7 @@ Please refer to [path-for-resource-action.md](./path-for-resource-action.md) for
 
 ### PathForTrackedResourceTypes
 
-For a operation, If the URI segment has a subscription, then the URI needs to have a resource group segment as well.
+A tracked resource is supported only under a resource group scope, so all API paths for a tracked resource must contain the subscriptions and resourceGroups segments
 
 Please refer to [path-for-tracked-resource-types.md](./path-for-tracked-resource-types.md) for details.
 

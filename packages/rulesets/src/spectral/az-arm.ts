@@ -1,7 +1,6 @@
 import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
-import { allowNestedIfParentExist } from "./functions/allow-nested-if-parent-exist"
 import verifyArmPath from "./functions/arm-path-validation"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
@@ -19,6 +18,7 @@ import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
+import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -326,9 +326,8 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Get-V1-11
-    AllowNestedIfParentExist: {
-      description:
-        "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
+    ValidateSegmentsInNestedResourceListOperation: {
+      description: "A nested resource type's List operation must include all the parent segments in its api path.",
       severity: "error",
       stagingOnly: true,
       message: "{{error}}",
@@ -336,7 +335,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[get]^~",
       then: {
-        function: allowNestedIfParentExist,
+        function: validateSegmentsInNestedResourceListOperation,
       },
     },
 

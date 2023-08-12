@@ -3,15 +3,14 @@ import linterForRule from "./utils"
 
 let linter: Spectral
 
-const errorMessage =
-  "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist."
+const errorMessage = "A nested resource type's List operation must include all the parent segments in its api path."
 
 beforeAll(async () => {
-  linter = await linterForRule("AllowNestedIfParentExist")
+  linter = await linterForRule("ValidateSegmentsInNestedResourceListOperation")
   return linter
 })
 
-test("AllowNestedIfParentExist should find errors", () => {
+test("ValidateSegmentsInNestedResourceListOperation should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -40,7 +39,7 @@ test("AllowNestedIfParentExist should find errors", () => {
   })
 })
 
-test("AllowNestedIfParentExist should find errors if Nested exists and no Parent Resource Type", () => {
+test("ValidateSegmentsInNestedResourceListOperation should find errors if Nested exists and no Parent Resource Type", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -61,7 +60,7 @@ test("AllowNestedIfParentExist should find errors if Nested exists and no Parent
   })
 })
 
-test("AllowNestedIfParentExist should find no errors", () => {
+test("ValidateSegmentsInNestedResourceListOperation should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

@@ -16,7 +16,7 @@ function verifyResourceType(path: string) {
   return matchAnyPatterns(patterns, path)
 }
 
-export const allowNestedIfParentExist: any = (fullPath: any, _opts: any, ctx: any) => {
+export const validateSegmentsInNestedResourceListOperation: any = (fullPath: any, _opts: any, ctx: any) => {
   const swagger = ctx?.documentInventory?.resolved
 
   if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
@@ -40,9 +40,7 @@ export const allowNestedIfParentExist: any = (fullPath: any, _opts: any, ctx: an
     if (count === 0) {
       return [
         {
-          message:
-            "List calls for nested children under the resource group segment is allowed only if parent resource under the resource group exist.",
-
+          message: "A nested resource type's List operation must include all the parent segments in its api path.",
           ctx,
         },
       ]

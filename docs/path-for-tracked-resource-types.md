@@ -18,7 +18,7 @@ The path must be under a subscription and resource group for tracked resource ty
 
 ## Description
 
-For a operation, If the URI segment has a subscription, then the URI needs to have a resource group segment as well.
+A tracked resource is supported only under a resource group scope, so all API paths for a tracked resource must contain the subscriptions and resourceGroups segments
 
 ## CreatedAt
 
