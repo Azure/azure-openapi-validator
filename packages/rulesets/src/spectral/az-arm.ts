@@ -750,9 +750,9 @@ const ruleset: any = {
     // RPC Code: RPC-ConstrainedCollections-V1-04
     ReservedResourceNamesModelAsEnum: {
       description:
-        "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+        "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warning",
       stagingOnly: true,
       resolved: true,
       formats: [oas2],

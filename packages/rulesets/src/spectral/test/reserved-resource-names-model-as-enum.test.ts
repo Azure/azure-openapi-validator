@@ -29,13 +29,13 @@ test("ReservedResourceNamesAsEnum should find errors on path level", () => {
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/fooName.get"
     )
     expect(results[0].message).toBe(
-      'The service-defined (reserved name) resource "fooName" must be represented as a path parameter enum with `modelAsString` set to `true`.'
+      'The service-defined (reserved name) resource "fooName" should be represented as a path parameter enum with `modelAsString` set to `true`.'
     )
     expect(results[1].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/fooName.put"
     )
     expect(results[1].message).toBe(
-      'The service-defined (reserved name) resource "fooName" must be represented as a path parameter enum with `modelAsString` set to `true`.'
+      'The service-defined (reserved name) resource "fooName" should be represented as a path parameter enum with `modelAsString` set to `true`.'
     )
   })
 })
