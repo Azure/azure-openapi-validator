@@ -2372,8 +2372,8 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     for (const op of INCLUDED_OPERATIONS) {
         if (pathItem[pathName][op]) {
             errors.push({
-                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
-                path: [...path, pathName, op],
+                message: `The service-defined (reserved name) resource "${lastPathWord}" should be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName],
             });
         }
     }
@@ -3243,9 +3243,9 @@ const ruleset = {
             },
         },
         ReservedResourceNamesModelAsEnum: {
-            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            description: "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             stagingOnly: true,
             resolved: true,
             formats: [oas2],
