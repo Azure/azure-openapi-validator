@@ -105,3 +105,27 @@ test("ReservedResourceNamesAsEnum should find no errors for 'operations' endpoin
     expect(results.length).toBe(0)
   })
 })
+
+test("ReservedResourceNamesAsEnum should find errors for 'default' endpoint", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/default": {
+        parameters: [],
+        get: {
+          parameters: [],
+          responses: {},
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foos/default"
+    )
+    expect(results[0].message).toBe(
+      'The service-defined (reserved name) resource "default" should be represented as a path parameter enum with `modelAsString` set to `true`.'
+    )
+  })
+})
