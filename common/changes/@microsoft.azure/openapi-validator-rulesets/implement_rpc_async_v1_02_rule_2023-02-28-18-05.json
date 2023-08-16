@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Implement RPC-Async-V1-02",
+      "comment": "Add rules ProvisioningStateSpecifiedForLRO_ to ensure async operations have ProvisioningState specified (RPC-Async-V1-02)",
       "type": "patch"
     }
   ],
