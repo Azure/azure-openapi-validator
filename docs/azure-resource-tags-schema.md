@@ -1,4 +1,4 @@
-# AzureResourceTagsSchemaValidation
+# AzureResourceTagsSchema
 
 ## Category
 

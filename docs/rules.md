@@ -116,11 +116,11 @@ Nested properties can result into bad user experience especially when creating r
 
 Please refer to [avoid-nested-properties.md](./avoid-nested-properties.md) for details.
 
-### AzureResourceTagsSchemaValidation
+### AzureResourceTagsSchema
 
 This rule is to check if the tags definition of a resource conforms to the common tags definition.
 
-Please refer to [azure-resource-tags-schema-validation.md](./azure-resource-tags-schema-validation.md) for details.
+Please refer to [azure-resource-tags-schema.md](./azure-resource-tags-schema.md) for details.
 
 ### BodyPropertiesNamesCamelCase
 
