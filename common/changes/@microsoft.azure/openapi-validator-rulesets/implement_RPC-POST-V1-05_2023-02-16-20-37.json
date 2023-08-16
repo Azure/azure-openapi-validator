@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "implement RPC-POST-V1-05",
+      "comment": "Add rule ParametersInPost to ensure post operations do not contain any query parameters other than api-version (RPC-POST-V1-05)",
       "type": "patch"
     }
   ],
