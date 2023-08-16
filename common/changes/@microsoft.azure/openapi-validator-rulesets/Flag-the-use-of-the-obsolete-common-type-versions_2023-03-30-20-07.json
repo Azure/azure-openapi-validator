@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "implement rule to flag usage of obsolete versions of common-types",
+      "comment": "Add rule LatestVersionOfCommonTypesMustBeUsed to flag usage of obsolete versions of common-types",
       "type": "patch"
     }
   ],
