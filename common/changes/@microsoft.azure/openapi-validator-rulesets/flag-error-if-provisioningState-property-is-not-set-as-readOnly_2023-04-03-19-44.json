@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "implement rule to validate if provisioingState is readOnly",
+      "comment": "Add rule ProvisioningStateMustBeReadOnly to validate if provisioingState is readOnly",
       "type": "patch"
     }
   ],
