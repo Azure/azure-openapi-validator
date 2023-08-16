@@ -5,7 +5,7 @@ export const requestBodyMustExistForPutPatch = (putPatchOperationParameters: any
 
   const bodyParam = findBodyParam(putPatchOperationParameters)
 
-  // Throw an error if the request body parameter doe snot exist OR if it exists but does not contain thge schema property
+  // Throw an error if the request body parameter does not exist or if it exists but does not contain the schema property
   if (bodyParam == undefined || bodyParam["schema"] == undefined) {
     errors.push({
       message: error,
