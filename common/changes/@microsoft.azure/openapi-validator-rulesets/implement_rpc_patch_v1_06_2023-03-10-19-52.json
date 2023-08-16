@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "implement rpc_patch_v1_06",
+      "comment": "Add rule PatchResponseCode to check the response codes of sync & async patch operations (rpc_patch_v1_06)",
       "type": "patch"
     }
   ],
