@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "implement RPC_delete_v1_01",
+      "comment": "Add rule DeleteResponseCodes to validate the response codes of delete operations (RPC_delete_v1_01)",
       "type": "patch"
     }
   ],
