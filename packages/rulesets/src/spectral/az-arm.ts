@@ -400,9 +400,10 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Patch-V1-09
     PatchSkuProperty: {
-      description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+      description:
+        "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.patch"],
