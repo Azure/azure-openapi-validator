@@ -2690,6 +2690,27 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     return errors;
 });
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+function findBodyParam(params) {
+    const isBody = (elem) => elem.name === "body" && elem.in === "body";
+    if (params && Array.isArray(params)) {
+        return params.filter(isBody).shift();
+    }
+    return undefined;
+}
+
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
     const path = ctx.path;
@@ -3115,6 +3136,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
             then: {
                 function: putRequestResponseScheme,
+            },
+        },
+        RequestBodyMustExistForPutPatch: {
+            description: "Every Put operation must have a request body",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
+            then: {
+                function: requestBodyMustExistForPutPatch,
             },
         },
         SyncPostReturn: {
