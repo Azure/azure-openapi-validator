@@ -45,10 +45,10 @@ test("OperationsApiTenantLevelOnly should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].message).toBe(ERROR_MESSAGE)
-    expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/operations.get")
+    expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/operations")
     expect(results[1].message).toBe(ERROR_MESSAGE)
     expect(results[1].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.LoadTestService/operations.get"
+      "paths./subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.LoadTestService/operations"
     )
   })
 })
