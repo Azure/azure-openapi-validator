@@ -3,7 +3,7 @@
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
       "comment": "Added rule to check that parameters already defined in common-types are not being redefined.",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "@microsoft.azure/openapi-validator-rulesets"
