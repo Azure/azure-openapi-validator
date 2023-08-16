@@ -757,7 +757,7 @@ Please refer to [patch-content-type.md](./patch-content-type.md) for details.
 
 ### PatchIdentityProperty
 
-RP must implement PATCH for the 'identity' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'identity' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the identity property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-identity-property.md](./patch-identity-property.md) for details.
 
@@ -781,7 +781,7 @@ Please refer to [patch-response-codes.md](./patch-response-codes.md) for details
 
 ### PatchSkuProperty
 
-RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the Sku property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 

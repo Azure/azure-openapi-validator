@@ -42,7 +42,7 @@ export const validatePatchBodyParamProperties = createRulesetFunction<unknown, O
       const index = patchOp.parameters.findIndex((p: any) => p.in === "body")
       if (_opts.should) {
         const responseSchema =
-          patchOp.responses?.["200"]?.schema || patchOp.responses?.["201"]?.schema || getGetOperationSchema(path.slice(0, -1), ctx)
+          patchOp.responses?.["200"]?.schema || patchOp.responses?.["202"]?.schema || getGetOperationSchema(path.slice(0, -1), ctx)
         _opts.should.forEach((p: string) => {
           if (!getProperties(bodyParameter)?.[p] && getProperties(responseSchema)?.[p]) {
             errors.push({
