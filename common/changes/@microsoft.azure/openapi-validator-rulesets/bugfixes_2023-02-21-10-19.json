@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "re-implement rule ImplementPrivateEndpointApis",
+      "comment": "Re-implement rule ImplementPrivateEndpointApis",
       "type": "patch"
     }
   ],
