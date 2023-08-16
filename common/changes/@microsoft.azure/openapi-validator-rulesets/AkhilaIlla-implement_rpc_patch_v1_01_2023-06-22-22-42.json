@@ -2,9 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Add rule PatchPropertiesCorrespondToPutProperties that validates each patch request body contains one or more properties present in the corresponding put request body, and contains only properties present in the put request body.
-
-",
+      "comment": "Add rule PatchPropertiesCorrespondToPutProperties that validates each patch request body contains one or more properties present in the corresponding put request body, and contains only properties present in the put request body.",
       "type": "patch"
     }
   ],
