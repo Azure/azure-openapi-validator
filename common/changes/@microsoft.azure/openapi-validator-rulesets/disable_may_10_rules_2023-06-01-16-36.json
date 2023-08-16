@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "disable recent unverified rules (since 5/10/2023) from running in production",
+      "comment": "Disable recent unverified rules (since 5/10/2023) from running in production",
       "type": "patch"
     }
   ],
