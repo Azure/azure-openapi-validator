@@ -238,6 +238,13 @@ function getProperty(schema, propName) {
     }
     return undefined;
 }
+function findBodyParam(params) {
+    const isBody = (elem) => elem.name === "body" && elem.in === "body";
+    if (params && Array.isArray(params)) {
+        return params.filter(isBody).shift();
+    }
+    return undefined;
+}
 function getRequiredProperties(schema) {
     if (!schema) {
         return [];
@@ -2666,9 +2673,7 @@ const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx
     const path = ctx.path;
     const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
     const bodyParam = findBodyParam(putPatchOperationParameters);
-    if (bodyParam == undefined ||
-        bodyParam["schema"] == undefined ||
-        isEmpty(bodyParam["schema"])) {
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
         errors.push({
             message: error,
             path: path,
@@ -2676,13 +2681,6 @@ const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx
     }
     return errors;
 };
-function findBodyParam(params) {
-    const isBody = (elem) => elem.name === "body" && elem.in === "body";
-    if (params && Array.isArray(params)) {
-        return params.filter(isBody).shift();
-    }
-    return undefined;
-}
 
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
