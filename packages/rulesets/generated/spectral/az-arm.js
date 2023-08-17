@@ -1832,7 +1832,7 @@ const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
         if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
             errors.push({
                 message: "The get operations endpoint for the operations API must only be at the tenant level.",
-                path: [...path, pathName, GET],
+                path: [...path, pathName],
             });
         }
     }
@@ -2348,35 +2348,6 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
-const PutResponseSchemaDescription = (putResponseSchema, opts, ctx) => {
-    var _a, _b;
-    if (putResponseSchema === null || typeof putResponseSchema !== "object") {
-        return [];
-    }
-    const path = ctx.path;
-    const errors = [];
-    if (!putResponseSchema["200"] || !putResponseSchema["201"]) {
-        errors.push({
-            message: "Any Put MUST contain 200 and 201 return codes.",
-            path: path,
-        });
-        return errors;
-    }
-    if (!((_a = putResponseSchema["200"].description) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes("update"))) {
-        errors.push({
-            message: 'Description of 200 response code of a PUT operation MUST include term "update".',
-            path: path,
-        });
-    }
-    if (!((_b = putResponseSchema["201"].description) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes("create"))) {
-        errors.push({
-            message: 'Description of 201 response code of a PUT operation MUST include term "create".',
-            path: path,
-        });
-    }
-    return errors;
-};
-
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -2401,8 +2372,8 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     for (const op of INCLUDED_OPERATIONS) {
         if (pathItem[pathName][op]) {
             errors.push({
-                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
-                path: [...path, pathName, op],
+                message: `The service-defined (reserved name) resource "${lastPathWord}" should be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName],
             });
         }
     }
@@ -2650,7 +2621,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     if (bodyParameter) {
         const index = patchOp.parameters.findIndex((p) => p.in === "body");
         if (_opts.should) {
-            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["202"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
             _opts.should.forEach((p) => {
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
@@ -3001,9 +2972,9 @@ const ruleset = {
             },
         },
         PatchSkuProperty: {
-            description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+            description: "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.patch"],
@@ -3073,16 +3044,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*.put^",
             then: {
                 function: trackedResourceTagsPropertyInRequest,
-            },
-        },
-        PutResponseSchemaDescription: {
-            description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
-            message: "{{error}}",
-            severity: "error",
-            resolved: false,
-            given: ["$[paths,'x-ms-paths'].*.put.responses"],
-            then: {
-                function: PutResponseSchemaDescription,
             },
         },
         PutGetPatchResponseSchema: {
@@ -3314,9 +3275,9 @@ const ruleset = {
             },
         },
         ReservedResourceNamesModelAsEnum: {
-            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            description: "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             stagingOnly: true,
             resolved: true,
             formats: [oas2],

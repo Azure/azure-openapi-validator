@@ -37,7 +37,6 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseCodes } from "./functions/put-response-codes"
-import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -402,9 +401,10 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Patch-V1-09
     PatchSkuProperty: {
-      description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+      description:
+        "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.patch"],
@@ -485,18 +485,6 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*.put^",
       then: {
         function: trackedResourceTagsPropertyInRequest,
-      },
-    },
-
-    // RPC Code: RPC-Put-V1-11
-    PutResponseSchemaDescription: {
-      description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      given: ["$[paths,'x-ms-paths'].*.put.responses"],
-      then: {
-        function: PutResponseSchemaDescription,
       },
     },
 
@@ -778,9 +766,9 @@ const ruleset: any = {
     // RPC Code: RPC-ConstrainedCollections-V1-04
     ReservedResourceNamesModelAsEnum: {
       description:
-        "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+        "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       stagingOnly: true,
       resolved: true,
       formats: [oas2],

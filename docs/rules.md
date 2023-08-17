@@ -116,11 +116,11 @@ Nested properties can result into bad user experience especially when creating r
 
 Please refer to [avoid-nested-properties.md](./avoid-nested-properties.md) for details.
 
-### AzureResourceTagsSchemaValidation
+### AzureResourceTagsSchema
 
 This rule is to check if the tags definition of a resource conforms to the common tags definition.
 
-Please refer to [azure-resource-tags-schema-validation.md](./azure-resource-tags-schema-validation.md) for details.
+Please refer to [azure-resource-tags-schema.md](./azure-resource-tags-schema.md) for details.
 
 ### BodyPropertiesNamesCamelCase
 
@@ -757,7 +757,7 @@ Please refer to [patch-content-type.md](./patch-content-type.md) for details.
 
 ### PatchIdentityProperty
 
-RP must implement PATCH for the 'identity' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'identity' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the identity property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-identity-property.md](./patch-identity-property.md) for details.
 
@@ -781,7 +781,7 @@ Please refer to [patch-response-codes.md](./patch-response-codes.md) for details
 
 ### PatchSkuProperty
 
-RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the Sku property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 
@@ -974,11 +974,11 @@ The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
 
-### PutResponseSchemaDescription
+### PutResponseCodes
 
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
 
-Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
+Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### PutResponseCodes
 
