@@ -23,7 +23,7 @@ This rule applies for tracked as well as proxy resources. This applies even in t
 
 ## Why the rule is important
 
-Making the request body mandatory for the Put or Patch request is to ensure that the output of the Get request may be passed in to the Put request and that can be achieved only if the Put has a request body defined. For Patch, it does not make sense to patch an empty payload.
+Making the request body mandatory for the Put request is to ensure that the output of the Get request may be passed in to the Put request and that can be achieved only if the Put has a request body defined. For Patch, it does not make sense to patch an empty payload.
 
 ## How to fix the violation
 

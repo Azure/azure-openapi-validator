@@ -562,9 +562,10 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-28, RPC-Patch-V1-12
     RequestBodyMustExistForPutPatch: {
-      description: "Every Put operation must have a request body",
+      description: "Every Put and Patch operation must have a request body",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[put,patch].parameters",

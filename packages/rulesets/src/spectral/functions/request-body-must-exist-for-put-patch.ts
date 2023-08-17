@@ -1,3 +1,5 @@
+import { isEmpty } from "lodash"
+
 export const requestBodyMustExistForPutPatch = (putPatchOperationParameters: any, _opts: any, ctx: any) => {
   const errors = []
   const path = ctx.path
@@ -5,8 +7,12 @@ export const requestBodyMustExistForPutPatch = (putPatchOperationParameters: any
 
   const bodyParam = findBodyParam(putPatchOperationParameters)
 
-  // Throw an error if the request body parameter does not exist or if it exists but does not contain the schema property
-  if (bodyParam == undefined || bodyParam["schema"] == undefined) {
+  // Throw an error under various conditions where the schema of the request body may be undefined
+  if (
+    bodyParam == undefined ||
+    bodyParam["schema"] == undefined ||
+    isEmpty(bodyParam["schema"])
+  ) {
     errors.push({
       message: error,
       path: path,
