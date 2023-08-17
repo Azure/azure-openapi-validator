@@ -1,6 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
-import _ from 'lodash';
+import _, { isEmpty } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -2666,7 +2666,9 @@ const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx
     const path = ctx.path;
     const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
     const bodyParam = findBodyParam(putPatchOperationParameters);
-    if (bodyParam == undefined || bodyParam["schema"] == undefined) {
+    if (bodyParam == undefined ||
+        bodyParam["schema"] == undefined ||
+        isEmpty(bodyParam["schema"])) {
         errors.push({
             message: error,
             path: path,
@@ -3100,9 +3102,10 @@ const ruleset = {
             },
         },
         RequestBodyMustExistForPutPatch: {
-            description: "Every Put operation must have a request body",
+            description: "Every Put and Patch operation must have a request body",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",

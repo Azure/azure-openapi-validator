@@ -980,18 +980,6 @@ Synchronous and long-running PUT operations must have responses with 200, 201 an
 
 Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
-### PutResponseCodes
-
-Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
-Please refer to [put-response-codes.md](./put-response-codes.md) for details.
-
-### PutResponseSchemaDescription
-
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
-
-Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
-
 ### RepeatedPathInfo
 
 Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
