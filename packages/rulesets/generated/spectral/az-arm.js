@@ -1832,7 +1832,7 @@ const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
         if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
             errors.push({
                 message: "The get operations endpoint for the operations API must only be at the tenant level.",
-                path: [...path, pathName, GET],
+                path: [...path, pathName],
             });
         }
     }
@@ -2372,8 +2372,8 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     for (const op of INCLUDED_OPERATIONS) {
         if (pathItem[pathName][op]) {
             errors.push({
-                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
-                path: [...path, pathName, op],
+                message: `The service-defined (reserved name) resource "${lastPathWord}" should be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName],
             });
         }
     }
@@ -2621,7 +2621,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     if (bodyParameter) {
         const index = patchOp.parameters.findIndex((p) => p.in === "body");
         if (_opts.should) {
-            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["202"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
             _opts.should.forEach((p) => {
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
@@ -2951,9 +2951,9 @@ const ruleset = {
             },
         },
         PatchSkuProperty: {
-            description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+            description: "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.patch"],
@@ -3243,9 +3243,9 @@ const ruleset = {
             },
         },
         ReservedResourceNamesModelAsEnum: {
-            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            description: "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             stagingOnly: true,
             resolved: true,
             formats: [oas2],
