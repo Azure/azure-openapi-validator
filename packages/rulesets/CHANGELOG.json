@@ -2,6 +2,202 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
+      "version": "1.2.0",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.2.0",
+      "date": "Wed, 16 Aug 2023 22:39:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support for rfc7231 datetime"
+          },
+          {
+            "comment": "Add test for RPC-POST-V1-01"
+          },
+          {
+            "comment": "test"
+          },
+          {
+            "comment": "fix wrong changes from a merge conflict"
+          },
+          {
+            "comment": "implement RPC-PATCH-V1-01"
+          },
+          {
+            "comment": "Added rule to detect additionalProperties(RPC-Policy-V1-05)"
+          },
+          {
+            "comment": "re-implement rule ImplementPrivateEndpointApis"
+          },
+          {
+            "comment": "disable recent unverified rules (since 5/10/2023) from running in production"
+          },
+          {
+            "comment": "Disable few rules known to be buggy: ResourceMustReferenceCommonTypes, LROPostFinalStateViaProperty, ProvisioningStateMustBeReadOnly"
+          },
+          {
+            "comment": "Add test for ProvisioingStateMustBeReadOnly "
+          },
+          {
+            "comment": "Fix leftover changes for 'rush build' and 'rush regen-ruleindex'"
+          },
+          {
+            "comment": "implement rule to validate if provisioingState is readOnly"
+          },
+          {
+            "comment": "implement rule to flag usage of obsolete versions of common-types"
+          },
+          {
+            "comment": "Implement RPC-Async-V1-02"
+          },
+          {
+            "comment": "implement rpc_patch_v1_06"
+          },
+          {
+            "comment": "implement RPC-POST-V1-05"
+          },
+          {
+            "comment": "implement RPC_delete_v1_01"
+          },
+          {
+            "comment": "implement RPC-GET-V1-08"
+          },
+          {
+            "comment": "impelement rpc-post-v1-09"
+          },
+          {
+            "comment": "Implement RPC-PUT-V1-11"
+          },
+          {
+            "comment": "Added rule to detect non-default error codes."
+          },
+          {
+            "comment": "update PatchResponseCodes"
+          },
+          {
+            "comment": "Implement PostResponseCodes(RPC-ASYNC-V1-11)"
+          },
+          {
+            "comment": "Implement PutResponseCodes(RPC-Async-V1-01) "
+          },
+          {
+            "comment": "Make RPC-Put-V1-25 as an Error for ARM"
+          },
+          {
+            "comment": "Add rule to check that resource definitions are using the common types references for ProxyResource or TrackedResource"
+          },
+          {
+            "comment": "Revert PR 494"
+          },
+          {
+            "comment": "merging linter rules DeleteOperationAsyncResponseValidation and delete-response-codes and removing the checks from long-running-response-status-code as they have conflicting implementations"
+          },
+          {
+            "comment": "fixing documenation and error message for CreateOperationAsyncResponseValidation to be in sync with the implementation"
+          },
+          {
+            "comment": "fixing PutRequestResponseSchemeArm for the case where a model has a property that is empty"
+          },
+          {
+            "comment": "fixing rush build inconsistency"
+          },
+          {
+            "comment": "fix verifyArmPath to account for third party RP namespaces"
+          },
+          {
+            "comment": "removing all code related to ProvisioningStateSpecifiedForLRODelete"
+          },
+          {
+            "comment": "removing dead code for ResourceMustReferenceCommonTypes and LROPostFinalStateViaProperty"
+          },
+          {
+            "comment": "Modified category from warning to error for linter rules LroExtension, LroStatusCodesReturnTypeSchema, DescriptiveDescriptionRequired, ParameterDescriptionRequired"
+          },
+          {
+            "comment": "fixing rpc_patch_v1_02"
+          },
+          {
+            "comment": "fixing generated files due to missed prior rush build"
+          },
+          {
+            "comment": "Added linter rule for RPC-Common-V1-05 and updated documentation for parameter common types rule."
+          },
+          {
+            "comment": "Add rule that checks for service-defined resource names and ensures they are represented as an enum type with modelAsString set to true, not as a static string in the path"
+          },
+          {
+            "comment": "Added linter rule for RPC-Get-V1-09 that ensures collection GET endpoints have properties `value` and `nextLink`, and no other properties."
+          },
+          {
+            "comment": "Add a linter rule for RPC-Operations-V1-01 and RPC-Operations-V1-02 to check for operations API at levels other than tenant level (e.g., subscription level)."
+          },
+          {
+            "comment": "Added a linter rule for using the common types operations API response."
+          },
+          {
+            "comment": "implement RPC-POST-V1-02 and RPC-POST-V1-03 rules\""
+          },
+          {
+            "comment": "Add rt1/rt2/{resourceName} to invalid patterns for RPC-URI-V1-06/RPC-Put-V1-02"
+          },
+          {
+            "comment": "Adding ARM RPC rule RPC-Put-V1-07"
+          },
+          {
+            "comment": "implement rpc-v1-11"
+          },
+          {
+            "comment": "Add linter rule for RPC-SystemData-V1-01"
+          },
+          {
+            "comment": "Add linter rule for RPC-Uri-V1-10 to detect path duplication when using the scope parameter."
+          },
+          {
+            "comment": "update APIVersionPattern & ValidFormat"
+          },
+          {
+            "comment": "bugfix for 4 rules"
+          },
+          {
+            "comment": "refactor internal names"
+          },
+          {
+            "comment": "Added rule to detect additionalProperties(RPC-Policy-V1-05)"
+          },
+          {
+            "comment": "Added rule to detect PropertiesTypeObjectNoDefinition (RPC-Policy-V1-03)"
+          },
+          {
+            "comment": "Deleted files and context related to rule RPC-Put-V1-11"
+          },
+          {
+            "comment": "Updated linter rule for RPC-Get-V1-09 that ensures collection GET endpoints have properties `value` and `nextLink`, and no other properties."
+          },
+          {
+            "comment": "Removed the check which is not required as the part of \"CreateOperationAsyncResponseValidation\" amd removed the RPC-Async-V1-06 rule"
+          },
+          {
+            "comment": "updated existing rule to address FPS RPC-Policy-V1-03"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added rule to check that parameters already defined in common-types are not being redefined."
+          },
+          {
+            "comment": "Remove RequiredReadOnlyProperties rule"
+          },
+          {
+            "comment": "Update to 1.1.0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft.azure/openapi-validator-core\" from `~1.0.0` to `~1.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.0.1",
       "date": "Thu, 24 Nov 2022 04:00:42 GMT",

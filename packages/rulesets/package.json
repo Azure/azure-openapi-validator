@@ -1,6 +1,6 @@
 {
   "name": "@microsoft.azure/openapi-validator-rulesets",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "description": "Azure OpenAPI Validator",
   "main": "dist/index.js",
   "scripts": {
