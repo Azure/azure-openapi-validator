@@ -4,7 +4,7 @@ let linter: Spectral
 const errorMessageObject =
   "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience."
 const errorMessageNull =
-  "Properties with type NULL are not allowed. Either specify the type as object and reference a model or specify a primitive type."
+  "Properties with 'type' NULL are not allowed, please specify the 'type' as 'Primitive' or 'Object' referring a model."
 
 beforeAll(async () => {
   linter = await linterForRule("PropertiesTypeObjectNoDefinition")
@@ -156,6 +156,29 @@ test("PropertiesTypeObjectNoDefinition if type is null should find errors", () =
     expect(results[0].message).toBe(errorMessageNull)
     expect(results[1].message).toBe(errorMessageNull)
     expect(results[2].message).toBe(errorMessageNull)
+  })
+})
+
+test("PropertiesTypeObjectNoDefinition should find errors if there are any empty properties", () => {
+  const oasDoc1 = {
+    swagger: "2.0",
+    info: {
+      version: "4.0",
+      title: "Common types",
+    },
+    paths: {},
+    definitions: {
+      ErrorDetail: {
+        description: "The error detail.",
+        type: "object",
+        properties: {},
+      },
+    },
+  }
+  return linter.run(oasDoc1).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.ErrorDetail")
+    expect(results[0].message).toBe(errorMessageObject)
   })
 })
 

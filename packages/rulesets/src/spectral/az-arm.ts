@@ -27,6 +27,7 @@ import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-co
 import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
+import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { PatchResponseCodes } from "./functions/patch-response-codes"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
@@ -36,7 +37,6 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseCodes } from "./functions/put-response-codes"
-import { PutResponseSchemaDescription } from "./functions/put-response-schema-description"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -84,7 +84,6 @@ const ruleset: any = {
     PutResponseCodes: {
       description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -137,6 +136,7 @@ const ruleset: any = {
         function: provisioningState,
       },
     },
+
     // RPC Code: RPC-Async-V1-07
     LroLocationHeader: {
       description: "Location header must be supported for all async operations that return 202.",
@@ -157,7 +157,6 @@ const ruleset: any = {
       description:
         "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
       severity: "error",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -193,7 +192,6 @@ const ruleset: any = {
     DeleteResponseCodes: {
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -252,11 +250,10 @@ const ruleset: any = {
       description:
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='')]^",
+      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
       then: {
         function: propertiesTypeObjectNoDefinition,
       },
@@ -294,6 +291,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
+
     // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
     GetCollectionOnlyHasValueAndNextLink: {
       description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
@@ -325,6 +323,20 @@ const ruleset: any = {
     /// ARM RPC rules for Patch patterns
     ///
 
+    // RPC Code: RPC-Patch-V1-01
+    PatchPropertiesCorrespondToPutProperties: {
+      description:
+        "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*"],
+      then: {
+        function: patchPropertiesCorrespondToPutProperties,
+      },
+    },
+
     // RPC Code: RPC-Patch-V1-02
     UnSupportedPatchProperties: {
       description: "Patch may not change the name, location, or type of the resource.",
@@ -341,7 +353,7 @@ const ruleset: any = {
       },
     },
     //https://github.com/Azure/azure-openapi-validator/issues/324
-    // RPC Code: RPC-Patch-V1-03
+    // RPC Code: RPC-Patch-V1-01
     ConsistentPatchProperties: {
       description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
       message: "{{error}}",
@@ -359,7 +371,6 @@ const ruleset: any = {
       description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch]"],
@@ -383,9 +394,10 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Patch-V1-09
     PatchSkuProperty: {
-      description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+      description:
+        "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.patch"],
@@ -466,18 +478,6 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*.put^",
       then: {
         function: trackedResourceTagsPropertyInRequest,
-      },
-    },
-
-    // RPC Code: RPC-Put-V1-11
-    PutResponseSchemaDescription: {
-      description: `For any PUT, response code should be 201 if resource was newly created and 200 if updated.`,
-      message: "{{error}}",
-      severity: "error",
-      resolved: false,
-      given: ["$[paths,'x-ms-paths'].*.put.responses"],
-      then: {
-        function: PutResponseSchemaDescription,
       },
     },
 
@@ -745,10 +745,9 @@ const ruleset: any = {
     // RPC Code: RPC-ConstrainedCollections-V1-04
     ReservedResourceNamesModelAsEnum: {
       description:
-        "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+        "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
       message: "{{error}}",
-      severity: "error",
-      stagingOnly: true,
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths']"],
@@ -782,7 +781,6 @@ const ruleset: any = {
       description: "The get operations endpoint must only be at the tenant level.",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$.[paths,'x-ms-paths']",
@@ -799,7 +797,6 @@ const ruleset: any = {
       description: "This rule checks for references that aren't using latest version of common-types.",
       message: "{{error}}",
       severity: "warn",
-      stagingOnly: true,
       resolved: false,
       formats: [oas2],
       given: "$..['$ref']",
@@ -810,7 +807,7 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "off", // See https://github.com/Azure/azure-sdk-tools/issues/6191#issuecomment-1571334585
+      severity: "warn",
       stagingOnly: true,
       resolved: true,
       formats: [oas2],

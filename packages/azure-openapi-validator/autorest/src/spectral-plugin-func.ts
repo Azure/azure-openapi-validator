@@ -14,6 +14,11 @@ import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from ".
 import { cachedFiles } from "."
 
 export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
+  initiator.Message({
+    Channel: "information",
+    Text: `spectralPluginFunc: Enter`,
+  })
+
   const files: string[] = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
   const openapiType: string = await getOpenapiTypeStr(initiator)
   const isStagingRun: boolean = await initiator.GetValue("is-staging-run")
@@ -66,7 +71,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
 
     initiator.Message({
       Channel: "information",
-      Text: `Validating '${file}'`,
+      Text: `spectralPluginFunc: Validating '${file}'`,
     })
 
     try {
@@ -77,10 +82,15 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     } catch (e) {
       initiator.Message({
         Channel: "fatal",
-        Text: `Failed validating: '${file}', error encountered: ` + e,
+        Text: `spectralPluginFunc: Failed validating: '${file}', error encountered: ` + e,
       })
     }
   }
+
+  initiator.Message({
+    Channel: "information",
+    Text: `spectralPluginFunc: Return`,
+  })
 }
 
 function ifNotStagingRunThenDisableStagingOnlyRules(

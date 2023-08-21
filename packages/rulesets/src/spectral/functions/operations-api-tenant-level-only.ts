@@ -26,7 +26,7 @@ export const operationsApiTenantLevelOnly = (pathItem: any, _opts: any, ctx: any
     if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
       errors.push({
         message: "The get operations endpoint for the operations API must only be at the tenant level.",
-        path: [...path, pathName, GET],
+        path: [...path, pathName],
       })
     }
   }

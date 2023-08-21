@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Implement RPC-Async-V1-02",
+      "comment": "Change severity of PatchSkuProperty and PatchIdentityProperty to warning",
       "type": "patch"
     }
   ],

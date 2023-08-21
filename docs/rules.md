@@ -116,11 +116,11 @@ Nested properties can result into bad user experience especially when creating r
 
 Please refer to [avoid-nested-properties.md](./avoid-nested-properties.md) for details.
 
-### AzureResourceTagsSchemaValidation
+### AzureResourceTagsSchema
 
 This rule is to check if the tags definition of a resource conforms to the common tags definition.
 
-Please refer to [azure-resource-tags-schema-validation.md](./azure-resource-tags-schema-validation.md) for details.
+Please refer to [azure-resource-tags-schema.md](./azure-resource-tags-schema.md) for details.
 
 ### BodyPropertiesNamesCamelCase
 
@@ -472,13 +472,6 @@ Location header must be supported for all async operations that return 202.
 
 Please refer to [lro-location-header.md](./lro-location-header.md) for details.
 
-### PostResponseCodes
-
-Synchronous POST must have either 200 or 204 return codes.
-LRO POST must have 202 return code. They also should have a 200 return code to indicate the schema for the final response if the final response is intended to have a schema. If the final response schema is empty the 200 return code must not be specified. They also must not have other response codes.
-
-Please refer to [post-response-codes.md](./post-response-codes.md) for details.
-
 ### ProvisioningStateSpecifiedForLROPatch
 
 This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.
@@ -502,12 +495,6 @@ Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-pos
 A long running Post operation should return 200 with response schema and 202 without response schema.
 
 Please refer to [lro-post-return.md](./lro-post-return.md) for details.
-
-### PutResponseCodes
-
-Synchronous and Long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
-Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPut
 
@@ -770,7 +757,7 @@ Please refer to [patch-content-type.md](./patch-content-type.md) for details.
 
 ### PatchIdentityProperty
 
-RP must implement PATCH for the 'identity' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'identity' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the identity property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-identity-property.md](./patch-identity-property.md) for details.
 
@@ -780,6 +767,12 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [patch-in-operation-name.md](./patch-in-operation-name.md) for details.
 
+### PatchPropertiesCorrespondToPutProperties
+
+Validates that each PATCH request body contains properties present in the corresponding PUT request body, and must contain at least one property.
+
+Please refer to [patch-properties-correspond-to-put-properties.md](./patch-properties-correspond-to-put-properties.md) for details.
+
 ### PatchResponseCodes
 
 Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.
@@ -788,7 +781,7 @@ Please refer to [patch-response-codes.md](./patch-response-codes.md) for details
 
 ### PatchSkuProperty
 
-RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the Sku property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 
@@ -890,6 +883,13 @@ A POST operation's operationId should contain the verb indicated at the end of t
 
 Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-contains-url-verb.md) for details.
 
+### PostResponseCodes
+
+Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
+Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+
+Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
 ### PreviewVersionOverOneYear
 
 Per [Retirement-of-Previews](https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/37683/Retirement-of-Previews), service, feature, API, and SKU in preview for over one year need to move to GA or retire.
@@ -974,17 +974,11 @@ The request & response('200') schema of the PUT operation must be same.
 
 Please refer to [put-request-response-scheme.md](./put-request-response-scheme.md) for details.
 
-### PutResponseSchemaDescription
+### PutResponseCodes
 
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
+Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
 
-Please refer to [put-resonse-schema-description.md](./put-resonse-schema-description.md) for details.
-
-### PutResponseSchemaDescription
-
-For any PUT, response code should be 201 if resource was newly created and 200 if updated.
-
-Please refer to [put-response-schema-description.md](./put-response-schema-description.md) for details.
+Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### RepeatedPathInfo
 
