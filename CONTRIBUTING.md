@@ -257,7 +257,7 @@ and hence Production LintDiff, you need to do the following:
   not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
   - Rush will also generate a changelog from the individual change files, deleting the individual files in the process.
-  - Note: `rush version --bump` *will update all of the changed packages*. If you wish only to update one package (e.g.,
+  - Note: `rush version --bump` will update *all* of the changed packages. If you wish only to update one package (e.g.,
    `@microsoft.azure/openapi-validator-rulesets`), discard all of the changes Rush generated for the other packages.
    Make sure to revert the version number(s) for those packages you do not intend to update in the dependencies/devDependencies
    of the `package.json` for the package you are updating.
