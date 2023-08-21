@@ -247,17 +247,24 @@ Once your PR is merged, do the following:
 If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
 and hence Production LintDiff, you need to do the following:
 
-- Run [`rush publish`](https://rushjs.io/pages/commands/rush_publish/). This will
+- Run [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/). This will
     - Increase the version number of the packages that were changed since the last publish.
     - Generate a changelog
 
-- In the PR with your changes increase the version number of the packages you changed.
+- In the PR with your changes, increase the version number of the changed packages using [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/).
   - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30)
     is an example version increase for the ruleset.
   - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
     for changes made to the  AutoRest extension.
-  - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
+  - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
+  update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. Do
+  not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
+  - Rush will also generate a changelog from the individual change files, deleting the individual files in the process.
+  - NOTE: `rush version --bump` will update all of the changed packages. If you wish only to update one package (e.g., `@microsoft.azure/openapi-validator-rulesets`),
+  discard all of the changes Rush generated for the other packages. Make sure to revert the version number(s) for those
+  packages you do not intend to update in the dependencies/devDependencies of the `package.json` for the package you are
+  updating.
 
 Once your PR is merged:
 
