@@ -247,10 +247,6 @@ Once your PR is merged, do the following:
 If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
 and hence Production LintDiff, you need to do the following:
 
-- Run [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/). This will
-    - Increase the version number of the packages that were changed since the last publish.
-    - Generate a changelog
-
 - In the PR with your changes, increase the version number of the changed packages using [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/).
   - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30)
     is an example version increase for the ruleset.
