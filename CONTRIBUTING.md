@@ -94,7 +94,7 @@ have more control over the process and debug any issues.
 1. If you changed the ruleset, run `rush regen-ruleindex` to update contents of `docs/rules.md`.
    For details, see `How to refresh the index of rules documentation`.
 1. Run `rush change` to generate changelog. You will need to follow the interactive prompts.
-   Ensure to follow the [guidelines for authoring Rush changelogs]([Title](https://rushjs.io/pages/best_practices/change_logs/)).
+   Ensure to follow the [guidelines for authoring Rush changelogs](https://rushjs.io/pages/best_practices/change_logs/).
    You can edit the added files later. If you don't add the right entries, the CI build will fail.
 
 # How to add and roll out new linter rules
