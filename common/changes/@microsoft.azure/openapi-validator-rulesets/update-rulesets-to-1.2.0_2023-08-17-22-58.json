@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "updated existing rule to address FPS RPC-Policy-V1-03",
-      "type": "patch"
+      "comment": "Activate rules and update version to 1.2.0",
+      "type": "none"
     }
   ],
   "packageName": "@microsoft.azure/openapi-validator-rulesets"
