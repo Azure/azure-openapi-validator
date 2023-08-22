@@ -1,4 +1,4 @@
-// Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.
+// Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.
 // RPC Code: RPC-ConstrainedCollections-V1-04
 
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"]
@@ -33,8 +33,8 @@ export const reservedResourceNamesModelAsEnum = (pathItem: any, _opts: any, ctx:
   for (const op of INCLUDED_OPERATIONS) {
     if (pathItem[pathName][op]) {
       errors.push({
-        message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
-        path: [...path, pathName, op],
+        message: `The service-defined (reserved name) resource "${lastPathWord}" should be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+        path: [...path, pathName],
       })
     }
   }

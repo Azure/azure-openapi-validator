@@ -1,6 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
-import _ from 'lodash';
+import _, { isEmpty } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -235,6 +235,13 @@ function getProperty(schema, propName) {
         if (propName in schema.properties) {
             return schema.properties[propName];
         }
+    }
+    return undefined;
+}
+function findBodyParam(params) {
+    const isBody = (elem) => elem.name === "body" && elem.in === "body";
+    if (params && Array.isArray(params)) {
+        return params.filter(isBody).shift();
     }
     return undefined;
 }
@@ -1872,7 +1879,7 @@ const operationsApiTenantLevelOnly = (pathItem, _opts, ctx) => {
         if (pathItem[pathName][GET] && pathName.toString().endsWith(OPERATIONS) && pathName.match(NOT_TENANT_LEVEL_REGEX)) {
             errors.push({
                 message: "The get operations endpoint for the operations API must only be at the tenant level.",
-                path: [...path, pathName, GET],
+                path: [...path, pathName],
             });
         }
     }
@@ -2486,8 +2493,8 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     for (const op of INCLUDED_OPERATIONS) {
         if (pathItem[pathName][op]) {
             errors.push({
-                message: `The service-defined (reserved name) resource "${lastPathWord}" must be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
-                path: [...path, pathName, op],
+                message: `The service-defined (reserved name) resource "${lastPathWord}" should be represented as a path parameter enum with \`modelAsString\` set to \`true\`.`,
+                path: [...path, pathName],
             });
         }
     }
@@ -2735,7 +2742,7 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     if (bodyParameter) {
         const index = patchOp.parameters.findIndex((p) => p.in === "body");
         if (_opts.should) {
-            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["201"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
+            const responseSchema = ((_d = (_c = patchOp.responses) === null || _c === void 0 ? void 0 : _c["200"]) === null || _d === void 0 ? void 0 : _d.schema) || ((_f = (_e = patchOp.responses) === null || _e === void 0 ? void 0 : _e["202"]) === null || _f === void 0 ? void 0 : _f.schema) || getGetOperationSchema(path.slice(0, -1), ctx);
             _opts.should.forEach((p) => {
                 var _a, _b;
                 if (!((_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a[p]) && ((_b = getProperties(responseSchema)) === null || _b === void 0 ? void 0 : _b[p])) {
@@ -2774,6 +2781,20 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     }
     return errors;
 });
+
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
 
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
@@ -2819,7 +2840,6 @@ const ruleset = {
         PutResponseCodes: {
             description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2879,7 +2899,6 @@ const ruleset = {
         PostResponseCodes: {
             description: "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2905,7 +2924,6 @@ const ruleset = {
         DeleteResponseCodes: {
             description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2951,7 +2969,6 @@ const ruleset = {
         PropertiesTypeObjectNoDefinition: {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3020,7 +3037,6 @@ const ruleset = {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3057,7 +3073,6 @@ const ruleset = {
             description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch]"],
@@ -3077,9 +3092,9 @@ const ruleset = {
             },
         },
         PatchSkuProperty: {
-            description: "RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.",
+            description: "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
             message: "{{error}}",
-            severity: "error",
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.patch"],
@@ -3200,6 +3215,18 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
             then: {
                 function: putRequestResponseScheme,
+            },
+        },
+        RequestBodyMustExistForPutPatch: {
+            description: "Every Put and Patch operation must have a request body",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
+            then: {
+                function: requestBodyMustExistForPutPatch,
             },
         },
         SyncPostReturn: {
@@ -3367,10 +3394,9 @@ const ruleset = {
             },
         },
         ReservedResourceNamesModelAsEnum: {
-            description: "Service-defined (reserved) resource names must be represented as an enum type with modelAsString set to true, not as a static string in the path.",
+            description: "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
             message: "{{error}}",
-            severity: "error",
-            stagingOnly: true,
+            severity: "warn",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths']"],
@@ -3396,7 +3422,6 @@ const ruleset = {
             description: "The get operations endpoint must only be at the tenant level.",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$.[paths,'x-ms-paths']",
@@ -3408,7 +3433,6 @@ const ruleset = {
             description: "This rule checks for references that aren't using latest version of common-types.",
             message: "{{error}}",
             severity: "warn",
-            stagingOnly: true,
             resolved: false,
             formats: [oas2],
             given: "$..['$ref']",

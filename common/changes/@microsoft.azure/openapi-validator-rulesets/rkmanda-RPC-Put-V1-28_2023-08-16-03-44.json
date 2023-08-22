@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Updated linter rule for RPC-Get-V1-09 that ensures collection GET endpoints have properties `value` and `nextLink`, and no other properties.",
+      "comment": "Add a new rule RequestBodyMustExistForPutPatch that checks for the existence of a request body for a put or a patch operation.",
       "type": "patch"
     }
   ],

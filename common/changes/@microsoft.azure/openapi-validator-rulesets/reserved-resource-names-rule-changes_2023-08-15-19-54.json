@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "removing all code related to ProvisioningStateSpecifiedForLRODelete",
+      "comment": "Change ReservedResourceNamesAsEnum from an error to a warning and make it warn for the path level instead of the operation level (#575)",
       "type": "patch"
     }
   ],

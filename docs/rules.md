@@ -116,11 +116,11 @@ Nested properties can result into bad user experience especially when creating r
 
 Please refer to [avoid-nested-properties.md](./avoid-nested-properties.md) for details.
 
-### AzureResourceTagsSchemaValidation
+### AzureResourceTagsSchema
 
 This rule is to check if the tags definition of a resource conforms to the common tags definition.
 
-Please refer to [azure-resource-tags-schema-validation.md](./azure-resource-tags-schema-validation.md) for details.
+Please refer to [azure-resource-tags-schema.md](./azure-resource-tags-schema.md) for details.
 
 ### BodyPropertiesNamesCamelCase
 
@@ -763,7 +763,7 @@ Please refer to [patch-content-type.md](./patch-content-type.md) for details.
 
 ### PatchIdentityProperty
 
-RP must implement PATCH for the 'identity' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'identity' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the identity property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-identity-property.md](./patch-identity-property.md) for details.
 
@@ -787,7 +787,7 @@ Please refer to [patch-response-codes.md](./patch-response-codes.md) for details
 
 ### PatchSkuProperty
 
-RP must implement PATCH for the 'SKU' envelope property if it's defined in the resource model.
+RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model. You may ignore this violation if your service does not allow updation of the Sku property once it is set. In such a case the property must be marked with x-ms-mutability [create, read]
 
 Please refer to [patch-sku-property.md](./patch-sku-property.md) for details.
 
@@ -991,6 +991,12 @@ Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
 Please refer to [repeated-path-info.md](./repeated-path-info.md) for details.
+
+### RequestBodyMustExistForPutPatch
+
+This rule applies for tracked as well as proxy resources. This applies even in the case where there are no properties defined in the properties bag. 
+
+Please refer to [request-body-must-exist-for-put-patch.md](./request-body-must-exist-for-put-patch.md) for details.
 
 ### RequestBodyNotAllowed
 
