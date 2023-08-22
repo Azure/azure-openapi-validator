@@ -2138,21 +2138,26 @@ function verifyNestResourceGroupScope(path) {
     ];
     return notMatchPatterns(invalidPatterns, path);
 }
-function checkTracked(allParams, path) {
-    const errors = [];
+function checkTrackedForPut(allParams, path) {
     const bodyParam = allParams.find((p) => p.in === "body");
     if (bodyParam) {
         const properties = getProperties(bodyParam.schema);
         if ("location" in properties) {
             if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
-                errors.push({
-                    message: "The path must be under a subscription and resource group for tracked resource types.",
-                    path,
-                });
+                return true;
             }
         }
     }
-    return errors;
+    return false;
+}
+function checkTrackedForGet(allParams, path) {
+    const properties = getProperties(allParams);
+    if ("location" in properties) {
+        if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+            return true;
+        }
+    }
+    return false;
 }
 const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
@@ -2162,11 +2167,25 @@ const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
     const errors = [];
     if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
         const allParams = [...pathItem["put"].parameters];
-        return checkTracked(allParams, path);
+        if (checkTrackedForPut(allParams, path)) {
+            errors.push({
+                message: "The path must be under a subscription and resource group for tracked resource types.",
+                path,
+            });
+        }
     }
-    if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
-        const allParams = [...pathItem["get"].parameters];
-        return checkTracked(allParams, path);
+    if (pathItem["get"]) {
+        const resp = Object.keys(pathItem.get.responses).find((code) => code.startsWith("2"));
+        if (!resp) {
+            return [];
+        }
+        const responseSchema = pathItem.get.responses[resp].schema || {};
+        if (checkTrackedForGet(responseSchema, path)) {
+            errors.push({
+                message: "The path must be under a subscription and resource group for tracked resource types.",
+                path,
+            });
+        }
     }
     return errors;
 };
@@ -3103,7 +3122,7 @@ const ruleset = {
             stagingOnly: true,
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.[put,get]^"],
+            given: ["$[paths,'x-ms-paths'].*[get,put]^"],
             then: {
                 function: pathForTrackedResourceTypes,
             },

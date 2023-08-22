@@ -17,15 +17,6 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
           tags: ["SampleTag"],
           operationId: "Foo_Update",
           description: "Test Description",
-          parameters: [
-            {
-              name: "foo_patch",
-              in: "body",
-              schema: {
-                $ref: "#/definitions/FooRequestParams",
-              },
-            },
-          ],
           responses: {
             "200": {
               schema: {
@@ -43,7 +34,7 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
               name: "foo_patch",
               in: "body",
               schema: {
-                $ref: "#/definitions/FooRequestParams",
+                $ref: "#/definitions/NoLocation",
               },
             },
           ],
@@ -229,6 +220,13 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
         },
     },
     definitions: {
+      NoLocation: {
+        properties: {
+          noLocation: {
+            type: "string",
+          },
+        },
+      },
       FooRequestParams: {
         allOf: [
           {
@@ -261,19 +259,25 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(5)
-    expect(results[0].path.join(".")).toContain("put")
+    expect(results[0].path.join(".")).toBe(
+      "paths./subscriptions/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/{vmName}"
+    )
     expect(results[0].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[1].path.join(".")).toContain("put")
+    expect(results[1].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/providers/Microsoft.Compute/virtualMachine/{vmName}/providers/Microsoft.Billing/extensions/{extensionName}"
+    )
     expect(results[1].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[2].path.join(".")).toContain(
+    expect(results[2].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/{vmName}/nestedResourceType/actions"
     )
     expect(results[2].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[3].path.join(".")).toContain(
+    expect(results[3].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/providers/virtualMachine/{vmName}/{nestedResourceType}"
     )
     expect(results[3].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
-    expect(results[4].path.join(".")).toContain("put")
+    expect(results[4].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/nestedResourceType/{nestedResourceType}"
+    )
     expect(results[4].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
   })
 })

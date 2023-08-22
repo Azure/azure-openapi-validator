@@ -31,21 +31,27 @@ function verifyNestResourceGroupScope(path: string) {
   return notMatchPatterns(invalidPatterns, path)
 }
 
-function checkTracked(allParams: any, path: any) {
-  const errors: any[] = []
+function checkTrackedForPut(allParams: any, path: any) {
   const bodyParam = allParams.find((p: any) => p.in === "body")
   if (bodyParam) {
     const properties = getProperties(bodyParam.schema)
     if ("location" in properties) {
       if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
-        errors.push({
-          message: "The path must be under a subscription and resource group for tracked resource types.",
-          path,
-        })
+        return true
       }
     }
   }
-  return errors
+  return false
+}
+
+function checkTrackedForGet(allParams: any, path: any) {
+  const properties = getProperties(allParams)
+  if ("location" in properties) {
+    if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+      return true
+    }
+  }
+  return false
 }
 
 const pathForTrackedResourceTypes = (pathItem: any, _opts: any, paths: any) => {
@@ -58,11 +64,25 @@ const pathForTrackedResourceTypes = (pathItem: any, _opts: any, paths: any) => {
 
   if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
     const allParams = [...pathItem["put"].parameters]
-    return checkTracked(allParams, path)
+    if (checkTrackedForPut(allParams, path)) {
+      errors.push({
+        message: "The path must be under a subscription and resource group for tracked resource types.",
+        path,
+      })
+    }
   }
-  if (pathItem["get"] && Array.isArray(pathItem["get"].parameters)) {
-    const allParams = [...pathItem["get"].parameters]
-    return checkTracked(allParams, path)
+  if (pathItem["get"]) {
+    const resp = Object.keys(pathItem.get.responses).find((code) => code.startsWith("2"))
+    if (!resp) {
+      return []
+    }
+    const responseSchema = pathItem.get.responses[resp].schema || {}
+    if (checkTrackedForGet(responseSchema, path)) {
+      errors.push({
+        message: "The path must be under a subscription and resource group for tracked resource types.",
+        path,
+      })
+    }
   }
   return errors
 }

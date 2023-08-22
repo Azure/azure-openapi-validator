@@ -469,7 +469,7 @@ const ruleset: any = {
       stagingOnly: true,
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.[put,get]^"],
+      given: ["$[paths,'x-ms-paths'].*[get,put]^"],
       then: {
         function: pathForTrackedResourceTypes,
       },

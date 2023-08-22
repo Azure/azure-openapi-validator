@@ -520,9 +520,9 @@ All operations should have a default (error) response.
 
 Please refer to [missing-default-response.md](./missing-default-response.md) for details.
 
-### AllowNestedIfParentExist
+### MissingSegmentsInNestedResourceListOperation
 
-When the parent resource is scoped under a resource group, the path for the list calls of its child resources must also be scoped under a resource group
+A nested resource type's List operation must include all the parent segments in its api path.
 
 Please refer to [missing-segments-in-nested-resource-list-operation.md](./missing-segments-in-nested-resource-list-operation.md) for details.
 
