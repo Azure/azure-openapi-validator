@@ -37,6 +37,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseCodes } from "./functions/put-response-codes"
+import { requestBodyMustExistForPutPatch } from "./functions/request-body-must-exist-for-put-patch"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -538,6 +539,20 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
       then: {
         function: putRequestResponseScheme,
+      },
+    },
+
+    // RPC Code: RPC-Put-V1-28, RPC-Patch-V1-12
+    RequestBodyMustExistForPutPatch: {
+      description: "Every Put and Patch operation must have a request body",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
+      then: {
+        function: requestBodyMustExistForPutPatch,
       },
     },
 

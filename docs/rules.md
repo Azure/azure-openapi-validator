@@ -986,6 +986,12 @@ Information in the URI should not be repeated in the request body (i.e. subscrip
 
 Please refer to [repeated-path-info.md](./repeated-path-info.md) for details.
 
+### RequestBodyMustExistForPutPatch
+
+This rule applies for tracked as well as proxy resources. This applies even in the case where there are no properties defined in the properties bag. 
+
+Please refer to [request-body-must-exist-for-put-patch.md](./request-body-must-exist-for-put-patch.md) for details.
+
 ### RequestBodyNotAllowed
 
 A get or delete operation must not accept a body parameter.

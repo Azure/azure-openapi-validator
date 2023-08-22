@@ -1,6 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
-import _ from 'lodash';
+import _, { isEmpty } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -235,6 +235,13 @@ function getProperty(schema, propName) {
         if (propName in schema.properties) {
             return schema.properties[propName];
         }
+    }
+    return undefined;
+}
+function findBodyParam(params) {
+    const isBody = (elem) => elem.name === "body" && elem.in === "body";
+    if (params && Array.isArray(params)) {
+        return params.filter(isBody).shift();
     }
     return undefined;
 }
@@ -2661,6 +2668,20 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     return errors;
 });
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
     const path = ctx.path;
@@ -2789,7 +2810,6 @@ const ruleset = {
         DeleteResponseCodes: {
             description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3071,6 +3091,18 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[put][responses][?(@property === '200' || @property === '201')]^^"],
             then: {
                 function: putRequestResponseScheme,
+            },
+        },
+        RequestBodyMustExistForPutPatch: {
+            description: "Every Put and Patch operation must have a request body",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
+            then: {
+                function: requestBodyMustExistForPutPatch,
             },
         },
         SyncPostReturn: {

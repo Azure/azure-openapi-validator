@@ -18,7 +18,6 @@ export function isLatestCommonTypesVersionForFile(version: string, fileName: str
 export function getProperties(schema: any) {
   if (!schema) {
     return {}
-
   }
   let properties: any = {}
   if (schema.allOf && Array.isArray(schema.allOf)) {
@@ -33,14 +32,12 @@ export function getProperties(schema: any) {
   return properties
 }
 
-
 /**
  * get all properties including deeply nested properties as array
  */
 export function getAllPropertiesIncludingDeeplyNestedProperties(schema: any, properties: any[]) {
   if (!schema) {
     return {}
-
   }
   if (schema.allOf && Array.isArray(schema.allOf)) {
     schema.allOf.forEach((base: any) => {
@@ -53,7 +50,7 @@ export function getAllPropertiesIncludingDeeplyNestedProperties(schema: any, pro
     Object.entries(props).forEach(([key, value]: any) => {
       if (!value.properties) {
         properties.push(Object.fromEntries([[key, value]]))
-      }else{
+      } else {
         getAllPropertiesIncludingDeeplyNestedProperties(props[key], properties)
       }
     })
@@ -81,6 +78,14 @@ export function getProperty(schema: any, propName: string): any {
     if (propName in schema.properties) {
       return schema.properties[propName]
     }
+  }
+  return undefined
+}
+
+export function findBodyParam(params: any) {
+  const isBody = (elem: any) => elem.name === "body" && elem.in === "body"
+  if (params && Array.isArray(params)) {
+    return params.filter(isBody).shift()
   }
   return undefined
 }
