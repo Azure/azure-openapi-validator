@@ -2,6 +2,7 @@ import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
+import avoidAdditionalProperties from "./functions/avoid-additional-properties"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
@@ -238,11 +239,11 @@ const ruleset: any = {
       severity: "error",
       stagingOnly: true,
       message: "{{description}}",
-      resolved: true,
+      resolved: false,
       formats: [oas2],
-      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+      given: "$.definitions..[?(@property === 'additionalProperties')]^",
       then: {
-        function: falsy,
+        function: avoidAdditionalProperties,
       },
     },
 

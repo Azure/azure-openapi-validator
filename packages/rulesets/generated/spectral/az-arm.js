@@ -1380,6 +1380,25 @@ const verifyArmPath = createRulesetFunction({
     return errors;
 });
 
+const avoidAdditionalProperties = (schema, _opts, paths) => {
+    if (schema === null) {
+        return [];
+    }
+    const path = paths.path || {};
+    if ("tags" === path[path.length - 1] && "additionalProperties" in schema) {
+        return;
+    }
+    else if ("tags" !== path[path.length - 1] && "additionalProperties" in schema) {
+        return [
+            {
+                message: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+                path,
+            },
+        ];
+    }
+    return;
+};
+
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -2355,6 +2374,20 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -2668,20 +2701,6 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     return errors;
 });
 
-const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
-    const errors = [];
-    const path = ctx.path;
-    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
-    const bodyParam = findBodyParam(putPatchOperationParameters);
-    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
-        errors.push({
-            message: error,
-            path: path,
-        });
-    }
-    return errors;
-};
-
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
     const path = ctx.path;
@@ -2845,11 +2864,11 @@ const ruleset = {
             severity: "error",
             stagingOnly: true,
             message: "{{description}}",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
-            given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+            given: "$.definitions..[?(@property === 'additionalProperties')]^",
             then: {
-                function: falsy,
+                function: avoidAdditionalProperties,
             },
         },
         PropertiesTypeObjectNoDefinition: {

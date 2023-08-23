@@ -38,6 +38,9 @@
           },
           "readOnly": true
         },
+        "additionalProperties": {
+          "type": "string"
+        },
         "privateEndpoint": {
           "$ref": "#/definitions/PrivateEndpoint",
           "description": "The private endpoint resource."
