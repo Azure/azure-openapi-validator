@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Fix an issue where RPC-Policy-V1-05 rule reported as FPS and this rule from now on will not check the additionalProperties defined from common-types or other predefined references.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
