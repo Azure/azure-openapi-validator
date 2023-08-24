@@ -14,7 +14,7 @@ test("ValidateSegmentsInNestedResourceListOperation should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers/{customerName}/enterpriseMccCacheNodes":
+      "/subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers/{customerName}/enterpriseMccCacheNodes":
         {
           get: {
             description: "Nested Resource Type with resourceGroups and other Parent Resource Type",
@@ -33,7 +33,7 @@ test("ValidateSegmentsInNestedResourceListOperation should find errors", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers/{customerName}/enterpriseMccCacheNodes"
+      "paths./subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers/{customerName}/enterpriseMccCacheNodes"
     )
     expect(results[0].message).toBe(errorMessage)
   })

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Add new rule RPC-Get-V1-11, this rules needs some update in RPC-Put-V1-01 rule",
+      "comment": "Add new rule MissingSegmentsInNestedResourceListOperation, this rules checks if the nested resource type's List operation includes all the parent segments in its api path.",
       "type": "patch"
     }
   ],

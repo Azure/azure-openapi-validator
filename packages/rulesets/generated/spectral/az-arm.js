@@ -1757,11 +1757,11 @@ function matchAnyPatterns$1(patterns, path) {
     return patterns.every((p) => p.test(path));
 }
 function verifyNestResourceType(path) {
-    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
+    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
     return matchAnyPatterns$1(patterns, path);
 }
 function verifyResourceType(path) {
-    const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
+    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
     return matchAnyPatterns$1(patterns, path);
 }
 const validateSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
@@ -2131,17 +2131,17 @@ function notMatchPatterns(invalidPatterns, path) {
 }
 function verifyResourceGroupScope(path) {
     const patterns = [
-        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
-        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+.*/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
     ];
     return matchAnyPatterns(patterns, path);
 }
 function verifyNestResourceGroupScope(path) {
     const invalidPatterns = [
-        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
-        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
-        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
-        /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
     return notMatchPatterns(invalidPatterns, path);
 }
@@ -2469,6 +2469,20 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -2781,20 +2795,6 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     }
     return errors;
 });
-
-const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
-    const errors = [];
-    const path = ctx.path;
-    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
-    const bodyParam = findBodyParam(putPatchOperationParameters);
-    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
-        errors.push({
-            message: error,
-            path: path,
-        });
-    }
-    return errors;
-};
 
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];

@@ -5,13 +5,13 @@ function matchAnyPatterns(patterns: RegExp[], path: string) {
 }
 
 function verifyNestResourceType(path: string) {
-  const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi]
+  const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi]
 
   return matchAnyPatterns(patterns, path)
 }
 
 function verifyResourceType(path: string) {
-  const patterns = [/^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi]
+  const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi]
 
   return matchAnyPatterns(patterns, path)
 }
