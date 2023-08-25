@@ -31,7 +31,7 @@ The below path is invalid because there is no Parent path definition for the Nes
 
 //Nested Resource Type Get Call definition
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}/nestedResourceType": {
-    "get/put/delete/post": {
+    "get": {
     },
   }
 }
@@ -43,12 +43,12 @@ For the above Nested call to be valid add the Parent path definition provided in
 "paths": {
 //Parent Resource Get Call definition
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}": {
-    "get/put/delete/post": {
+    "get": {
     },
   },
 //Nested Resource Type Get Call definition
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}/nestedResourceType": {
-    "get/put/delete/post": {
+    "get": {
     },
   }
 }
@@ -58,24 +58,49 @@ Few more patterns
 
 ```json
 "paths": {
-//Following is invalid because Resource Group Name is missing
+//Following Nested Resource Type Path is invalid because Resource Group Name is missing
+//Parent Resource Get Call definition
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}": {
+    "get": {
+    },
+  },
+//Nested Resource Type Get Call definition
   "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderNamespace/resourceType/{instance}": {
-    "get/put/delete/post": {
+    "get": {
     },
   },
-//Add missing Resource Group as mentioned below after {subscriptionId}/
-  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/resourceType/{instance}": {
-    "get/put/delete/post": {
+//Add missing Resource Group as mentioned below after {subscriptionId}/ on Nested Resource Type Path
+//Parent Resource GetCall definition
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}": {
+    "get": {
     },
   },
-//Following is invalid because SubscriptionId is missing
+//Nested Resource Type Get Call definition  
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/resourceType/{instance}": {
+    "get": {
+    },
+  },
+
+//Following Nested Resource Type Path is invalid because SubscriptionId is missing
+//Parent Resource Get Call definition
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}": {
+    "get": {
+    },
+  },
+//Nested Resource Type Get Call definition
   "/subscriptions/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/resourceType/{instance}": {
-    "get/put/delete/post": {
+    "get": {
     },
   },
-//Add missing SubscriptionId as mentioned below after {subscriptions}/
+//Add missing SubscriptionId as mentioned below after {subscriptions}/ on Nested Resource Type Path
+//Parent Resource Get Call definition
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/parentResourceType/{parentInstance}": {
+    "get": {
+    },
+  },
+//Nested Resource Type Get Call definition
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderNamespace/resourceType/{instance}": {
-    "get/put/delete/post": {
+    "get": {
     },
   }
 }
