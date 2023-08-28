@@ -2,7 +2,6 @@ import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
-import avoidAdditionalProperties from "./functions/avoid-additional-properties"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
@@ -235,15 +234,15 @@ const ruleset: any = {
 
     // RPC Code: RPC-Policy-V1-05
     AvoidAdditionalProperties: {
-      description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+      description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
       stagingOnly: true,
       message: "{{description}}",
       resolved: false,
       formats: [oas2],
-      given: "$.definitions..[?(@property === 'additionalProperties')]^",
+      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
       then: {
-        function: avoidAdditionalProperties,
+        function: falsy,
       },
     },
 

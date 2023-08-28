@@ -1380,25 +1380,6 @@ const verifyArmPath = createRulesetFunction({
     return errors;
 });
 
-const avoidAdditionalProperties = (schema, _opts, paths) => {
-    if (schema === null) {
-        return [];
-    }
-    const path = paths.path || {};
-    if ("tags" === path[path.length - 1] && "additionalProperties" in schema) {
-        return;
-    }
-    else if ("tags" !== path[path.length - 1] && "additionalProperties" in schema) {
-        return [
-            {
-                message: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
-                path,
-            },
-        ];
-    }
-    return;
-};
-
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -2860,15 +2841,15 @@ const ruleset = {
             },
         },
         AvoidAdditionalProperties: {
-            description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+            description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
             severity: "error",
             stagingOnly: true,
             message: "{{description}}",
             resolved: false,
             formats: [oas2],
-            given: "$.definitions..[?(@property === 'additionalProperties')]^",
+            given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
             then: {
-                function: avoidAdditionalProperties,
+                function: falsy,
             },
         },
         PropertiesTypeObjectNoDefinition: {

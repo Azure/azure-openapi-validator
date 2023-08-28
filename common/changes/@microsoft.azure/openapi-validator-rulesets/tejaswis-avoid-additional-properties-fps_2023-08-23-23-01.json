@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Fix an issue where AvoidAdditionalProperties rule reported as FPS and this rule from now on will not check the additionalProperties defined from common-types or other predefined references.",
+      "comment": "Fix an issue with AvoidAdditionalProperties rule. This rule is checking the additionalProperties defined from common-types or other predefined references, when it shouldn't.",
       "type": "patch"
     }
   ],

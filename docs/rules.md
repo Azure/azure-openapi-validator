@@ -88,7 +88,30 @@ Please refer to [array-schema-must-have-items.md](./array-schema-must-have-items
 
 ### AvoidAdditionalProperties
 
-Definitions must not have properties named "additionalProperties" except for user defined tags.
+Definitions must not have properties named "additionalProperties".
+The following are the only scenarios where "additionalProperties" are allowed
+ 1. User defined tags.
+```json
+...
+"properties": {
+    "tags": {
+        "additionalProperties": {
+            "type": "object"
+        }
+    }
+}
+...
+```
+ 2. Predefined refrences such as common-types.
+```json
+...
+"properties": {
+    "identity": {
+        "$ref": "../../../../../common-types/resource-management/v5/managedidentity.json#/definitions/ManagedServiceIdentity"
+    },
+}
+...
+```
 
 Please refer to [avoid-additional-properties.md](./avoid-additional-properties.md) for details.
 
