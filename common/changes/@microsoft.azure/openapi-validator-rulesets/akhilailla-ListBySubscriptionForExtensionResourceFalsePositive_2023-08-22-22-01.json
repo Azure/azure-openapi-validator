@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "update extensionResourceRegex to also include unqualified paths",
+      "comment": "Exclude not fully qualified extension resource paths in TopLevelResourcesListBySubscription linter rule",
       "type": "patch"
     }
   ],
