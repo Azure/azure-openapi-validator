@@ -413,7 +413,7 @@ test("PathForTrackedResourceTypes should not find errors for tracked resources",
     expect(results.length).toBe(0)
   })
 })
-test("PathForTrackedResourceTypes should not find errors for other resources", () => {
+test("PathForTrackedResourceTypes should not find errors for other resource types like extension and proxy types.", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
