@@ -2355,6 +2355,20 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -2668,20 +2682,6 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     return errors;
 });
 
-const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
-    const errors = [];
-    const path = ctx.path;
-    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
-    const bodyParam = findBodyParam(putPatchOperationParameters);
-    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
-        errors.push({
-            message: error,
-            path: path,
-        });
-    }
-    return errors;
-};
-
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
     const path = ctx.path;
@@ -2693,6 +2693,32 @@ const withXmsResource = (putOperation, _opts, ctx) => {
         });
     }
     return errors;
+};
+
+const errorMessage = "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`";
+const responsesCodes = ["200", "201", "202", "204"];
+const verifyXMSLongRunningOperationProperty = (pathItem, _opts, paths) => {
+    var _a;
+    if (pathItem === null || typeof pathItem !== "object" || pathItem["x-ms-long-running-operation"] === true) {
+        return [];
+    }
+    const path = paths.path || [];
+    for (const code of responsesCodes) {
+        const headers = (_a = pathItem.responses[code]) === null || _a === void 0 ? void 0 : _a.headers;
+        if (headers) {
+            for (const headerValue of Object.keys(headers)) {
+                if (headerValue.toLowerCase() === "location" || headerValue.toLowerCase() === "azure-asyncoperation") {
+                    return [
+                        {
+                            message: errorMessage,
+                            path: path.concat(["responses", code, "headers", headerValue]),
+                        },
+                    ];
+                }
+            }
+        }
+    }
+    return;
 };
 
 const ruleset = {
@@ -2791,6 +2817,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*[post]"],
             then: {
                 function: PostResponseCodes,
+            },
+        },
+        XMSLongRunningOperationProperty: {
+            description: "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
+            message: "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
+            severity: "error",
+            formats: [oas2],
+            resolved: true,
+            given: "$[paths,'x-ms-paths'].*[put,patch,post,delete]",
+            then: {
+                function: verifyXMSLongRunningOperationProperty,
             },
         },
         LroErrorContent: {
