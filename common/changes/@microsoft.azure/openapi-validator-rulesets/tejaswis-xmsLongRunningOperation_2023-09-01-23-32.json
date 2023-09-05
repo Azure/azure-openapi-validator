@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Add XmsLongRunningOperationProperty as new rule. This rules checks if any reponses headers have Location or Azure-AsyncOperation properties, then it must have x-ms-long-running-operation set to true.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

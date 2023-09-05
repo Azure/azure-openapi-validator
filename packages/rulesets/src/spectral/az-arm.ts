@@ -48,6 +48,7 @@ import { systemDataInPropertiesBag } from "./functions/system-data-in-properties
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
+import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -164,6 +165,21 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*[post]"],
       then: {
         function: PostResponseCodes,
+      },
+    },
+
+    // RPC Code: RPC-Async-V1-15
+    XMSLongRunningOperationProperty: {
+      description:
+        "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
+      message:
+        "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
+      severity: "error",
+      formats: [oas2],
+      resolved: true,
+      given: "$[paths,'x-ms-paths'].*[put,patch,post,delete]",
+      then: {
+        function: verifyXMSLongRunningOperationProperty,
       },
     },
 
