@@ -23,8 +23,8 @@ If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-As
 ## How to fix the violation
 
 You can do either of the following:
-- Set the property `x-ms-long-running-operation` to `true`.
-- If `x-ms-long-running-operation` is set to `false` then remove `Location` and `Azure-AsyncOperation` headers from the response.
+- If the operation is intended to be a long running operation, set the property `x-ms-long-running-operation` to `true`.
+- If the operation is not intended to be a long running operation, `x-ms-long-running-operation` MUST be set to `false` and the `Location` and `Azure-AsyncOperation` headers MUST not be specified in the response.
 
 ### Valid Examples
 
