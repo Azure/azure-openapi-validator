@@ -18,6 +18,7 @@ import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
 import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
+import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -29,6 +30,7 @@ import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { PatchResponseCodes } from "./functions/patch-response-codes"
+import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
@@ -336,6 +338,20 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-11
+    ValidateSegmentsInNestedResourceListOperation: {
+      description: "A nested resource type's List operation must include all the parent segments in its api path.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*[get]^~",
+      then: {
+        function: validateSegmentsInNestedResourceListOperation,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
@@ -457,21 +473,20 @@ const ruleset: any = {
     /// ARM RPC rules for Put patterns
     ///
 
-    // RPC Code: RPC-Put-V1-01
-    PathForPutOperation: {
-      description: "The path for 'put' operation must be under a subscription and resource group.",
+    // RPC Code: RPC-Put-V1-01, RPC-Get-V1-11
+    PathForTrackedResourceTypes: {
+      description: "The path must be under a subscription and resource group for tracked resource types.",
       message: "{{description}}",
       severity: "error",
-      resolved: false,
+      stagingOnly: true,
+      resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[put]^~",
+      given: ["$[paths,'x-ms-paths'].*[get,put]^"],
       then: {
-        function: verifyArmPath,
-        functionOptions: {
-          segmentToCheck: "resourceGroupScope",
-        },
+        function: pathForTrackedResourceTypes,
       },
     },
+
     // RPC Code: RPC-Put-V1-05
     RepeatedPathInfo: {
       description:
