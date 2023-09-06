@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Removed LRO-POST-RETURN - RPC-POST-V1-03 rule and updated PostResponseCodes rule with the logic to check if POST 202 response code has schema ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
