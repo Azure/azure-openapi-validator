@@ -55,7 +55,9 @@ export class ArmHelper {
 
   private SpecificResourcePathRegEx = new RegExp("/providers/[^/]+(?:/\\w+/default|/\\w+/{[^/]+})+$", "gi")
 
-  private ExtensionResourceReg = new RegExp(".+/providers/.+/providers/.+$", "gi")
+  private ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi")
+  private ExtensionResourceReg = new RegExp("^/{\\w+}/providers/.+$", "gi")
+
   //  resource model with 'x-ms-resource' or allOfing 'Resource' or 'TrackedResource' for ProxyResource
   private XmsResources = new Set<string>()
   resources: ResourceInfo[] = []
@@ -567,7 +569,7 @@ export class ArmHelper {
   }
 
   public isPathOfExtensionResource(path: string) {
-    return !!path.match(this.ExtensionResourceReg)
+    return !!path.match(this.ExtensionResourceFullyQualifiedPathReg) || !!path.match(this.ExtensionResourceReg)
   }
 
   /**

@@ -543,6 +543,12 @@ All operations should have a default (error) response.
 
 Please refer to [missing-default-response.md](./missing-default-response.md) for details.
 
+### MissingSegmentsInNestedResourceListOperation
+
+A nested resource type's List operation must include all the parent segments in its api path.
+
+Please refer to [missing-segments-in-nested-resource-list-operation.md](./missing-segments-in-nested-resource-list-operation.md) for details.
+
 ### MissingTypeObject
 
 The rule should apply to any schema with "properties" or "additionalProperties". It is to ensure a schema with "properties" or "additionalProperties" must have explicit "type:object" statement, which means a schema is an object.
@@ -850,17 +856,17 @@ Path for CRUD methods on a nested resource type MUST follow valid resource namin
 
 Please refer to [path-for-nested-resource.md](./path-for-nested-resource.md) for details.
 
-### PathForPutOperation
-
-For a PUT operation, If a uri segment has subscription, it needs to have a resource group segment as well.
-
-Please refer to [path-for-put-operation.md](./path-for-put-operation.md) for details.
-
 ### PathForResourceAction
 
 Path for 'post' method on a resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/Action'.
 
 Please refer to [path-for-resource-action.md](./path-for-resource-action.md) for details.
+
+### PathForTrackedResourceTypes
+
+A tracked resource is supported only under a resource group scope, so all API paths for a tracked resource must contain the subscriptions and resourceGroups segments
+
+Please refer to [path-for-tracked-resource-types.md](./path-for-tracked-resource-types.md) for details.
 
 ### PathParameterNames
 
@@ -1342,6 +1348,12 @@ Please refer to [xms-examples-required.md](./xms-examples-required.md) for detai
 This rule is to check the `id` property or identifier of objects in the array. See more here: [x-ms-identifiers](https://github.com/Azure/autorest/tree/main/docs/extensions#x-ms-identifiers).
 
 Please refer to [xms-identifier-validation.md](./xms-identifier-validation.md) for details.
+
+### XmsLongRunningOperationProperty
+
+If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`.
+
+Please refer to [xms-long-running-operation-property.md](./xms-long-running-operation-property.md) for details.
 
 ### XmsPageableListByRGAndSubscriptions
 
