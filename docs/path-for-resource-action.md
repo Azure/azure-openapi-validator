@@ -30,7 +30,7 @@ June 21, 2022
 
 ## How to fix the violation
 
-Fix the path for resource action as one of the following patterns:
+Fix the path for resource action to match one of the following patterns:
 
 ```json
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/Action"
