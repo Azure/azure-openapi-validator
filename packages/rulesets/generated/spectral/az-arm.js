@@ -2355,6 +2355,20 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -2667,20 +2681,6 @@ const validatePatchBodyParamProperties = createRulesetFunction({
     }
     return errors;
 });
-
-const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
-    const errors = [];
-    const path = ctx.path;
-    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
-    const bodyParam = findBodyParam(putPatchOperationParameters);
-    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
-        errors.push({
-            message: error,
-            path: path,
-        });
-    }
-    return errors;
-};
 
 const withXmsResource = (putOperation, _opts, ctx) => {
     const errors = [];
