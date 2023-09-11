@@ -704,7 +704,7 @@ const ruleset: any = {
         },
       },
     },
-    // RPC Code: RPC-Uri-V1-07, RPC-POST-V1-01
+    // RPC Code: RPC-Uri-V1-07, RPC-POST-V1-01, RPC-POST-V1-07
     PathForResourceAction: {
       description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
       message: "{{description}}",
