@@ -12,6 +12,13 @@ export function isLatestCommonTypesVersionForFile(version: string, fileName: str
   return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase()
 }
 
+const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi")
+const ExtensionResourceReg = new RegExp("^/{\\w+}/providers/.+$", "gi")
+
+export function isPathOfExtensionResource(path: string) {
+  return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg)
+}
+
 /**
  * get all properties as array
  */
