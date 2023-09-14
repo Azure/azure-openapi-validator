@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Remove RPC-POST-V1-02 implementation as it is covered by RPC-Async-V1-11",
+      "comment": "Deleted RPC-POST-V1-02(SyncPostReturn) linter rule as it is covered by RPC-Async-V1-11(PostReturnCodes)",
       "type": "patch"
     }
   ],
