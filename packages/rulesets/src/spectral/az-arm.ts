@@ -47,11 +47,11 @@ import { securityDefinitionsStructure } from "./functions/security-definitions-s
 import skuValidation from "./functions/sku-validation"
 import { SyncPostReturn } from "./functions/synchronous-post-return"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
-import {trackedExtensionResourcesAreNotAllowed} from "./functions/tracked-extension-resources-are-not-allowed"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -754,7 +754,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*",
+      given: "$[paths,'x-ms-paths'].*~",
       then: {
         function: trackedExtensionResourcesAreNotAllowed,
       },
