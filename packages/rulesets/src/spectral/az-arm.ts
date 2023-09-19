@@ -351,6 +351,22 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-14
+    GetMustNotBeLRO: {
+      description: "The Get call cannot be Long Running Operation and it must not have x-ms-long-running-operation property.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: [
+        "$[paths,'x-ms-paths'].*[get].x-ms-long-running-operation-options",
+        "$[paths,'x-ms-paths'].*[get][?(@property === 'x-ms-long-running-operation' && @ === true)]",
+      ],
+      then: {
+        function: falsy,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///

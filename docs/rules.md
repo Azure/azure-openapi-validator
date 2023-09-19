@@ -336,6 +336,15 @@ Verifies whether value for `operationId` is named as per ARM guidelines.
 
 Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for details.
 
+### GetMustNotBeLRO
+
+Only asynchronous(i.e. Long Running Operation) can have `x-ms-long-running-operation-options` property.
+The Get calls are synchronous and it MUST NOT have
+    - `x-ms-long-running-operation-options` property block
+    - `x-ms-long-running-operation-options` set to `true`
+
+Please refer to [get-must-not-be-lro.md](./get-must-not-be-lro.md) for details.
+
 ### GetMustNotHaveRequestBody
 
 The request body of a get operation must be empty.
