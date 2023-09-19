@@ -18,8 +18,8 @@ ARM OpenAPI (swagger) specs
 
 ## Description
 
-Extension resources cannot be of type tracked.
+Extension resources are always considered to be proxy and must not be of the type tracked.
 
 ## How to fix the violation
 
-Remove "location" property from the property bag of an extension resource.
+Remove the top level "location" property from the model of the extension resource.

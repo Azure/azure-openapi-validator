@@ -1,4 +1,4 @@
-import { isPathOfExtensionResource, getProperty, getProperties } from "./utils"
+import { isPathOfExtensionResource, getProperty } from "./utils"
 
 export const trackedExtensionResourcesAreNotAllowed = (apiPath: any, _opts: any, ctx: any) => {
   if (apiPath === null || typeof apiPath !== "string") {
@@ -19,11 +19,10 @@ export const trackedExtensionResourcesAreNotAllowed = (apiPath: any, _opts: any,
         for (const responseCode of responseCodes) {
           const responseSchema = operationPaths[verb].responses[responseCode]?.schema
           if (responseSchema) {
-            const allProperties = getProperties(responseSchema)
-            const locationProperty = getProperty(allProperties, "location")
-            if (locationProperty !== undefined) {
+            const locationProperty = getProperty(responseSchema, "location")
+            if (locationProperty) {
               errors.push({
-                message: `${apiPath} is an extension resource and the response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
+                message: `${apiPath} is an extension resource and ${responseCode} response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
                 path: [...path, verb, responseCode],
               })
             }

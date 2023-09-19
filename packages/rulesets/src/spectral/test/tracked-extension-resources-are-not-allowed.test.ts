@@ -152,10 +152,10 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for tracked exte
         type: "object",
         description: "The provisioning state of a device.",
         properties: {
+          location: {
+            type: "string",
+          },
           properties: {
-            location: {
-              type: "string",
-            },
             description: "The resource-specific properties for this resource.",
             "x-ms-client-flatten": true,
             "x-ms-mutability": ["read", "create"],
@@ -189,6 +189,328 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for tracked exte
     expect(results[0].message).toContain("Extension resources of type tracked are not allowed.")
     expect(results[1].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default.put")
     expect(results[1].message).toContain("Extension resources of type tracked are not allowed.")
+  })
+})
+
+test("trackedExtensionResourcesAreNotAllowed should find errors for various extension resources apiPaths", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default": {
+        get: {
+          operationId: "DeviceProvisioningStates_List",
+          tags: ["DeviceProvisioningStates"],
+          description: "List DeviceProvisioningState resources by parent",
+          parameters: [
+            {
+              name: "api-version",
+              in: "query",
+              required: true,
+              type: "string",
+              description: "Client Api Version.",
+              enum: ["2020-06-01"],
+            },
+          ],
+          responses: {
+            "200": {
+              description: "ARM operation completed successfully.",
+              schema: {
+                $ref: "#/definitions/DeviceProvisioningState",
+              },
+            },
+            default: {
+              description: "An unexpected error response.",
+              schema: {
+                $ref: "#/definitions/ErrorResponse",
+              },
+            },
+          },
+          "x-ms-examples": null,
+          "x-ms-pageable": {
+            nextLinkName: "nextLink",
+          },
+        },
+      },
+      "/subscriptions/{subscription1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Foo/resourceType/{resourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates":
+        {
+          put: {
+            operationId: "DeviceProvisioningStates_CreateOrUpdate",
+            tags: ["DeviceProvisioningStates"],
+            description: "Create a DeviceProvisioningState",
+            parameters: [
+              {
+                name: "api-version",
+                in: "query",
+                required: true,
+                type: "string",
+                description: "Client Api Version.",
+                enum: ["2020-06-01"],
+              },
+              {
+                name: "resource",
+                in: "body",
+                description: "Resource create parameters.",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+              },
+            ],
+            responses: {
+              "200": {
+                description: "Resource create or update operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                },
+              },
+              "201": {
+                description: "ARM create operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+                headers: {
+                  "Retry-After": {
+                    type: "integer",
+                    format: "int32",
+                    description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  },
+                },
+              },
+              default: {
+                description: "An unexpected error response.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+            "x-ms-examples": null,
+            "x-ms-long-running-operation-options": {
+              "final-state-via": "azure-async-operation",
+            },
+            "x-ms-long-running-operation": true,
+          },
+        },
+      "/subscriptions/{subscription1}/providers/Microsoft.Foo/resourceType/{resourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates":
+        {
+          put: {
+            operationId: "DeviceProvisioningStates_CreateOrUpdate",
+            tags: ["DeviceProvisioningStates"],
+            description: "Create a DeviceProvisioningState",
+            parameters: [
+              {
+                name: "api-version",
+                in: "query",
+                required: true,
+                type: "string",
+                description: "Client Api Version.",
+                enum: ["2020-06-01"],
+              },
+              {
+                name: "resource",
+                in: "body",
+                description: "Resource create parameters.",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+              },
+            ],
+            responses: {
+              "200": {
+                description: "Resource create or update operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                },
+              },
+              "201": {
+                description: "ARM create operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                },
+                headers: {
+                  "Retry-After": {
+                    type: "integer",
+                    format: "int32",
+                    description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  },
+                },
+              },
+              default: {
+                description: "An unexpected error response.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+            "x-ms-examples": null,
+            "x-ms-long-running-operation-options": {
+              "final-state-via": "azure-async-operation",
+            },
+            "x-ms-long-running-operation": true,
+          },
+          patch: {
+            operationId: "DeviceProvisioningStates_CreateOrUpdate",
+            tags: ["DeviceProvisioningStates"],
+            description: "Create a DeviceProvisioningState",
+            parameters: [
+              {
+                name: "api-version",
+                in: "query",
+                required: true,
+                type: "string",
+                description: "Client Api Version.",
+                enum: ["2020-06-01"],
+              },
+              {
+                name: "resource",
+                in: "body",
+                description: "Resource create parameters.",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+              },
+            ],
+            responses: {
+              "200": {
+                description: "Resource create or update operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                },
+              },
+              "202": {
+                description: "ARM accept operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+              },
+              default: {
+                description: "An unexpected error response.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+            "x-ms-examples": null,
+            "x-ms-long-running-operation-options": {
+              "final-state-via": "azure-async-operation",
+            },
+            "x-ms-long-running-operation": true,
+          },
+        },
+      "/subscriptions/{subscription1}/providers/Microsoft.Foo/resourceType/{fooResourceType1}/providers/Microsoft.Bar/resourceType/{barResourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates":
+        {
+          put: {
+            operationId: "DeviceProvisioningStates_CreateOrUpdate",
+            tags: ["DeviceProvisioningStates"],
+            description: "Create a DeviceProvisioningState",
+            parameters: [
+              {
+                name: "api-version",
+                in: "query",
+                required: true,
+                type: "string",
+                description: "Client Api Version.",
+                enum: ["2020-06-01"],
+              },
+              {
+                name: "resource",
+                in: "body",
+                description: "Resource create parameters.",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+              },
+            ],
+            responses: {
+              "200": {
+                description: "Resource create or update operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningState",
+                },
+              },
+              "201": {
+                description: "ARM create operation completed successfully.",
+                schema: {
+                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                },
+              },
+              default: {
+                description: "An unexpected error response.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+            "x-ms-examples": null,
+            "x-ms-long-running-operation-options": {
+              "final-state-via": "azure-async-operation",
+            },
+            "x-ms-long-running-operation": true,
+          },
+        },
+    },
+    definitions: {
+      ErrorResponse: {
+        title: "Error response",
+        description:
+          "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
+        type: "object",
+        properties: {
+          error: {
+            description: "The error object.",
+          },
+        },
+      },
+      DeviceProvisioningState: {
+        type: "object",
+        description: "The provisioning state of a device.",
+        properties: {
+          location: {
+            type: "string",
+          },
+          properties: {
+            description: "The resource-specific properties for this resource.",
+            "x-ms-client-flatten": true,
+            "x-ms-mutability": ["read", "create"],
+          },
+        },
+      },
+      DeviceProvisioningStateListResult: {
+        type: "object",
+        description: "The response of a DeviceProvisioningState list operation.",
+        properties: {
+          value: {
+            type: "array",
+            description: "The DeviceProvisioningState items on this page",
+            items: {
+              $ref: "#/definitions/DeviceProvisioningState",
+            },
+          },
+          nextLink: {
+            type: "string",
+            format: "uri",
+            description: "The link to the next page of items",
+          },
+        },
+        required: ["value"],
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(4)
+    expect(results[0].path.join(".")).toBe("paths.{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default.get")
+    expect(results[0].message).toContain("Extension resources of type tracked are not allowed.")
+    expect(results[1].path.join(".")).toBe(
+      "paths./subscriptions/{subscription1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Foo/resourceType/{resourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates.put"
+    )
+    expect(results[2].path.join(".")).toBe(
+      "paths./subscriptions/{subscription1}/providers/Microsoft.Foo/resourceType/{resourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates.patch"
+    )
+    expect(results[3].path.join(".")).toBe(
+      "paths./subscriptions/{subscription1}/providers/Microsoft.Foo/resourceType/{fooResourceType1}/providers/Microsoft.Bar/resourceType/{barResourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates.put"
+    )
   })
 })
 

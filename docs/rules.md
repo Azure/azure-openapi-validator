@@ -575,12 +575,6 @@ Swagger authors that use the `scope` path parameter to indicate that an API is a
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
-### trackedExtensionResourcesAreNotAllowed
-
-Extension resources cannot be of type tracked.
-
-Please refer to [tracked-extension-resources-are-not-allowed.md](./tracked-extension-resources-are-not-allowed.md) for details.
-
 ### NoErrorCodeResponses
 
 Responses must only be specified for success (`200`, `201`, `202`, `204`) response codes and the `default` response. Any errors must only be surfaced by using the `default` response.
@@ -1189,6 +1183,12 @@ Please refer to [top-level-resources-list-by-resource-group.md](./top-level-reso
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), all the top-level resources must have a list by subscription operation which returns the collection of the resource.
 
 Please refer to [top-level-resources-list-by-subscription.md](./top-level-resources-list-by-subscription.md) for details.
+
+### trackedExtensionResourcesAreNotAllowed
+
+Extension resources are always considered to be proxy and must not be of the type tracked.
+
+Please refer to [tracked-extension-resources-are-not-allowed.md](./tracked-extension-resources-are-not-allowed.md) for details.
 
 ### TrackedResourceBeyondsThirdLevel
 

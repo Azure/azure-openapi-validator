@@ -183,7 +183,7 @@ function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
 }
 const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi");
-const ExtensionResourceReg = new RegExp("^/{\\w+}/providers/.+$", "gi");
+const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi");
 function isPathOfExtensionResource(path) {
     return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg);
 }
@@ -2712,11 +2712,10 @@ const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
                 for (const responseCode of responseCodes) {
                     const responseSchema = (_c = operationPaths[verb].responses[responseCode]) === null || _c === void 0 ? void 0 : _c.schema;
                     if (responseSchema) {
-                        const allProperties = getProperties(responseSchema);
-                        const locationProperty = getProperty(allProperties, "location");
-                        if (locationProperty !== undefined) {
+                        const locationProperty = getProperty(responseSchema, "location");
+                        if (locationProperty) {
                             errors.push({
-                                message: `${apiPath} is an extension resource and the response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
+                                message: `${apiPath} is an extension resource and ${responseCode} response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
                                 path: [...path, verb, responseCode],
                             });
                         }
@@ -3443,7 +3442,7 @@ const ruleset = {
             },
         },
         trackedExtensionResourcesAreNotAllowed: {
-            description: "Extension resources cannot be of type tracked",
+            description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
             message: "{{error}}",
             severity: "error",
             resolved: true,
