@@ -3179,6 +3179,21 @@ const ruleset = {
                 function: pathForTrackedResourceTypes,
             },
         },
+        EvenSegmentedPathForPutOperation: {
+            description: "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+            message: "{{description}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^~",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+                },
+            }
+        },
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
             message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",

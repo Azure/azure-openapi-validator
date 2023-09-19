@@ -1,4 +1,4 @@
-# PathForNestedResource
+# EvenSegmentedPathForPutOperation
 
 ## Category
 
@@ -10,28 +10,24 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-Uri-V1-06
+- RPC-Put-V1-02
 
 ## Output Message
 
-The path for nested resource doest not meet the valid resource pattern.
+API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).
 
 ## Description
 
-Path for CRUD methods on a nested resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/NestedResourceType/{nestedResourceName}'.
-
-## CreatedAt
-
-June 21, 2022
-
-## LastModifiedAt
-
-June 21, 2022
+API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).
 
 ## How to fix the violation
 
-Fix the path for nested resource as below pattern:
+Fix the path with PUT defined as one of the below patterns:
 
 ```json
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}/NestedResourceType/{nestedResourceName}": {
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}:
+```
+
+```json
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}/NestedResourceType/{nestedResourceName}":
 ```

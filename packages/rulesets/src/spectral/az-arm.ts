@@ -49,7 +49,6 @@ import { SyncPostReturn } from "./functions/synchronous-post-return"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
-import { evenSegmentedPathForPutOperation } from "./functions/even-segmented-path-for-put-operation"
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 const ruleset: any = {
@@ -497,10 +496,13 @@ const ruleset: any = {
       stagingOnly: true,
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[put]^~"],
+      given: "$[paths,'x-ms-paths'].*.put^~",
       then: {
-        function: evenSegmentedPathForPutOperation,
-      },
+        function: pattern,
+        functionOptions: {
+          match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+        },
+      }
     },
 
     // RPC Code: RPC-Put-V1-05
