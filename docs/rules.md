@@ -1158,12 +1158,6 @@ Each operation has a summary and description values. They must not be same.
 
 Please refer to [summary-and-description-must-not-be-same.md](./summary-and-description-must-not-be-same.md) for details.
 
-### SyncPostReturn
-
-A synchronous Post operation should return 200 with response schema or 204 without response schema.
-
-Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
-
 ### SystemDataDefinitionsCommonTypes
 
 System data references must utilize common types.

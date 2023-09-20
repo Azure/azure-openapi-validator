@@ -44,7 +44,6 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
-import { SyncPostReturn } from "./functions/synchronous-post-return"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
@@ -606,19 +605,6 @@ const ruleset: any = {
     ///
     /// ARM RPC rules for Post patterns
     ///
-
-    // RPC Code: RPC-POST-V1-02
-    SyncPostReturn: {
-      description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[post]",
-      then: {
-        function: SyncPostReturn,
-      },
-    },
 
     // RPC Code: RPC-POST-V1-05
     ParametersInPost: {
