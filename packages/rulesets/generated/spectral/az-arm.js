@@ -3019,7 +3019,7 @@ const ruleset = {
             },
         },
         GetOperationMustNotBeLongRunning: {
-            description: "The GET operation cannot be Long Running and it MUST NOT have `x-ms-long-running-operation-options` property block defined.",
+            description: "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
             severity: "error",
             message: "{{description}}",
             resolved: true,

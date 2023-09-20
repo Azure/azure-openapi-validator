@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The GET operation cannot be Long Running and it MUST NOT have `x-ms-long-running-operation-options` property block defined.
+The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.
 
 ## Description
 
@@ -25,7 +25,7 @@ The GET calls are synchronous and it MUST NOT have
 
 ## How to fix the violation
 
-Ensure that the GET operation `x-ms-long-running-operation` property set to `false` and MUST NOT contain `x-ms-long-running-operation-options` property block defined.
+Ensure that the GET operation does not have `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.
 
 Please remove the following invalid block:
 
@@ -40,7 +40,7 @@ Please remove the following invalid block:
             ...
             }
           }
-      // Remove or set to false
+      // Remove
       "x-ms-long-running-operation": true,
       // Remove this block
       "x-ms-long-running-operation-options": {

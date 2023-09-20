@@ -4,7 +4,7 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 const errorMessage =
-  "The GET operation cannot be Long Running and it MUST NOT have `x-ms-long-running-operation-options` property block defined."
+  "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined."
 
 beforeAll(async () => {
   linter = await linterForRule("GetOperationMustNotBeLongRunning")
