@@ -80,10 +80,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
       const normalizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
       await runSpectral(openapiDefinitionObject, normalizedFile, initiator.Message.bind(initiator), spectral)
     } catch (e) {
-      initiator.Message({
-        Channel: "fatal",
-        Text: `spectralPluginFunc: Failed validating: '${file}', error encountered: ` + e,
-      })
+      catchSpectralRunErrors(file, e, initiator)
     }
   }
 
@@ -232,4 +229,30 @@ export async function getRuleSet(openapiType: OpenApiTypes): Promise<[ruleset: R
     rulesInStagingOnlyByName.forEach(([_, rule]) => delete rule.stagingOnly)
     return namesOfRulesInStagingOnly
   }
+}
+
+/** Spectral (from "@stoplight/spectral-core") may throw https://www.npmjs.com/package/es-aggregate-error
+ * If so, we print out all the constituent errors.
+ * For additional context, see: https://github.com/Azure/azure-sdk-tools/issues/6856
+ */
+function catchSpectralRunErrors(file: string, e: any, initiator: any) {
+  // Initialize an array to collect error messages
+  const errorMessages: string[] = [e]
+
+  // Check if "e" contains the "errors" property
+  if (e && e.errors && Array.isArray(e.errors)) {
+    e.errors.forEach((error: any, index: number) => {
+      // Push each error message into the array
+      errorMessages.push(`Error ${index + 1}: ${error.message}`)
+    })
+  }
+
+  // Combine all error messages with newlines
+  const combinedErrorMessages = errorMessages.join("\n")
+
+  // Call initiator.Message with the combined error message
+  initiator.Message({
+    Channel: "fatal",
+    Text: `spectralPluginFunc: Failed validating: '${file}'. Errors encountered:\n${combinedErrorMessages}`,
+  })
 }
