@@ -1,4 +1,4 @@
-# GetMustNotBeLRO
+# GetOperationMustNotBeLongRunning
 
 ## Category
 
@@ -14,18 +14,18 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-The Get call cannot be Long Running Operation and it must not have `x-ms-long-running-operation-options` property block.
+The GET operation cannot be Long Running and it MUST NOT have `x-ms-long-running-operation-options` property block defined.
 
 ## Description
 
 Only asynchronous(i.e. Long Running Operation) can have `x-ms-long-running-operation-options` property.
-The Get calls are synchronous and it MUST NOT have
+The GET calls are synchronous and it MUST NOT have
     - `x-ms-long-running-operation-options` property block
-    - `x-ms-long-running-operation-options` set to `true`
+    - `x-ms-long-running-operation` set to `true`
 
 ## How to fix the violation
 
-Ensure that the get operation `x-ms-long-running-operation` property set to `false` and MUST NOT contain `x-ms-long-running-operation-options` property block.
+Ensure that the GET operation `x-ms-long-running-operation` property set to `false` and MUST NOT contain `x-ms-long-running-operation-options` property block defined.
 
 Please remove the following invalid block:
 
@@ -40,8 +40,9 @@ Please remove the following invalid block:
             ...
             }
           }
-      // Remove this block
+      // Remove or set to false
       "x-ms-long-running-operation": true,
+      // Remove this block
       "x-ms-long-running-operation-options": {
         "final-state-via": "azure-async-operation",
       },

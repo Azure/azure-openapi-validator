@@ -3049,8 +3049,8 @@ const ruleset = {
                 function: validateSegmentsInNestedResourceListOperation,
             },
         },
-        GetMustNotBeLRO: {
-            description: "The Get call cannot be Long Running Operation and it must not have x-ms-long-running-operation property.",
+        GetOperationMustNotBeLongRunning: {
+            description: "The GET operation cannot be Long Running and it MUST NOT have `x-ms-long-running-operation-options` property block defined.",
             severity: "error",
             message: "{{description}}",
             resolved: true,

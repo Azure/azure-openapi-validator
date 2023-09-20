@@ -3,12 +3,15 @@ import linterForRule from "./utils"
 
 let linter: Spectral
 
+const errorMessage =
+  "The GET operation cannot be Long Running and it MUST NOT have `x-ms-long-running-operation-options` property block defined."
+
 beforeAll(async () => {
-  linter = await linterForRule("GetMustNotBeLRO")
+  linter = await linterForRule("GetOperationMustNotBeLongRunning")
   return linter
 })
 
-test("GetMustNotBeLRO should find errors when x-ms-long-running-operation-options is specified with a get call", () => {
+test("GetOperationMustNotBeLongRunning should find errors when x-ms-long-running-operation-options is specified with a GET call", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -39,17 +42,13 @@ test("GetMustNotBeLRO should find errors when x-ms-long-running-operation-option
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.get.x-ms-long-running-operation")
-    expect(results[0].message).toContain(
-      "The Get call cannot be Long Running Operation and it must not have x-ms-long-running-operation property."
-    )
+    expect(results[0].message).toContain(errorMessage)
     expect(results[1].path.join(".")).toBe("paths./api/Paths.get.x-ms-long-running-operation-options")
-    expect(results[1].message).toContain(
-      "The Get call cannot be Long Running Operation and it must not have x-ms-long-running-operation property."
-    )
+    expect(results[1].message).toContain(errorMessage)
   })
 })
 
-test("GetMustNotBeLRO should find no errors", () => {
+test("GetOperationMustNotBeLongRunning should find no errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
