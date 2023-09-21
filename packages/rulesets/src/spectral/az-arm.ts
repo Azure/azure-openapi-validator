@@ -45,6 +45,7 @@ import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-sc
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -82,7 +83,7 @@ const ruleset: any = {
     /// ARM RPC rules for Async patterns
     ///
 
-    // RPC Code: RPC-Async-V1-01
+    // RPC Code: RPC-Async-V1-01, RPC-Put-V1-11
     PutResponseCodes: {
       description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
@@ -205,7 +206,7 @@ const ruleset: any = {
     /// ARM RPC rules for Delete patterns
     ///
 
-    // RPC Code: RPC-Delete-V1-01
+    // RPC Code: RPC-Delete-V1-01, RPC-Async-V1-09
     DeleteResponseCodes: {
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
@@ -248,7 +249,7 @@ const ruleset: any = {
     /// ARM RPC rules for Policy Guidelines
     ///
 
-    // RPC Code: RPC-Policy-V1-05
+    // RPC Code: RPC-Policy-V1-05, RPC-Put-V1-23
     AvoidAdditionalProperties: {
       description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
       severity: "error",
@@ -735,6 +736,19 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-12
+    trackedExtensionResourcesAreNotAllowed: {
+      description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*~",
+      then: {
+        function: trackedExtensionResourcesAreNotAllowed,
       },
     },
 

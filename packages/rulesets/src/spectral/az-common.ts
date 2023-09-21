@@ -92,6 +92,7 @@ const ruleset: any = {
         function: falsy,
       },
     },
+    // RPC Code: RPC-Post-V1-09
     LroExtension: {
       description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
       message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",

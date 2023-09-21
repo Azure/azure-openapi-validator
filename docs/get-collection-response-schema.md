@@ -8,6 +8,9 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+- RPC-Get-V1-10
+
 ## Output Message
 
 The response model in the GET collection operation "{0}" does not match with the response model in the individual GET operation "{1}".

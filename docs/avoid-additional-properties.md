@@ -10,7 +10,7 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-Policy-V1-05
+- RPC-Policy-V1-05, RPC-Put-V1-23
 
 ## Output Message
 

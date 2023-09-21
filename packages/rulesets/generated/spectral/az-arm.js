@@ -182,6 +182,11 @@ const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
 function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
 }
+const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi");
+const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi");
+function isPathOfExtensionResource(path) {
+    return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg);
+}
 function getProperties(schema) {
     if (!schema) {
         return {};
@@ -2639,6 +2644,37 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
     return [];
 };
 
+const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
+    var _a, _b, _c;
+    if (apiPath === null || typeof apiPath !== "string") {
+        return [];
+    }
+    const verbs = ["get", "put", "patch"];
+    const responseCodes = ["200", "201", "202"];
+    const path = ctx.path || [];
+    const errors = [];
+    if (isPathOfExtensionResource(apiPath)) {
+        const operationPaths = (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved) === null || _b === void 0 ? void 0 : _b.paths[apiPath];
+        for (const verb of verbs) {
+            if (operationPaths[verb]) {
+                for (const responseCode of responseCodes) {
+                    const responseSchema = (_c = operationPaths[verb].responses[responseCode]) === null || _c === void 0 ? void 0 : _c.schema;
+                    if (responseSchema) {
+                        const locationProperty = getProperty(responseSchema, "location");
+                        if (locationProperty) {
+                            errors.push({
+                                message: `${apiPath} is an extension resource and ${responseCode} response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
+                                path: [...path, verb, responseCode],
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -3343,6 +3379,17 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        trackedExtensionResourcesAreNotAllowed: {
+            description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*~",
+            then: {
+                function: trackedExtensionResourcesAreNotAllowed,
             },
         },
         SystemDataDefinitionsCommonTypes: {
