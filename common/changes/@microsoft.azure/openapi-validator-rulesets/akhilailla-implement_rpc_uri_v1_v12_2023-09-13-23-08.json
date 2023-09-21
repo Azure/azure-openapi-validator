@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Added trackedExtensionResourcesAreNotAllowed rule that flags tracked extension resources, as extension resources may only be proxy",
+      "comment": "Add trackedExtensionResourcesAreNotAllowed rule that flags tracked extension resources, as extension resources may only be proxy",
       "type": "patch"
     }
   ],
