@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator",
+      "comment": "Bump ruleset and autorest version ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator"
+}
