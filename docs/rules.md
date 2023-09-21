@@ -496,12 +496,6 @@ The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
 
-### LroPostReturn
-
-A long running Post operation should return 200 with response schema and 202 without response schema.
-
-Please refer to [lro-post-return.md](./lro-post-return.md) for details.
-
 ### ProvisioningStateSpecifiedForLROPut
 
 This is a rule introduced to validate if a LRO PUT operations response schema has "ProvisioningState" property specified for the 200 and 201 status codes.
@@ -899,6 +893,7 @@ Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-con
 
 Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
 Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+202 response for a LRO POST operation must not have a response schema specified.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
 
@@ -1159,12 +1154,6 @@ Please refer to [success-response-body.md](./success-response-body.md) for detai
 Each operation has a summary and description values. They must not be same.
 
 Please refer to [summary-and-description-must-not-be-same.md](./summary-and-description-must-not-be-same.md) for details.
-
-### SyncPostReturn
-
-A synchronous Post operation should return 200 with response schema or 204 without response schema.
-
-Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
 
 ### SystemDataDefinitionsCommonTypes
 

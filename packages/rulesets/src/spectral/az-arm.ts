@@ -17,7 +17,6 @@ import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mu
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
@@ -46,7 +45,6 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
-import { SyncPostReturn } from "./functions/synchronous-post-return"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
@@ -157,7 +155,7 @@ const ruleset: any = {
       },
     },
 
-    // RPC Code: RPC-Async-V1-11
+    // RPC Code: RPC-Async-V1-11, RPC-Async-V1-14
     PostResponseCodes: {
       description:
         "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
@@ -606,30 +604,6 @@ const ruleset: any = {
     /// ARM RPC rules for Post patterns
     ///
 
-    // RPC Code: RPC-POST-V1-02
-    SyncPostReturn: {
-      description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[post]",
-      then: {
-        function: SyncPostReturn,
-      },
-    },
-    // RPC Code: RPC-POST-V1-03
-    LroPostReturn: {
-      description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-      then: {
-        function: lroPostReturn,
-      },
-    },
     // RPC Code: RPC-POST-V1-05
     ParametersInPost: {
       description: "For a POST action parameters MUST be in the payload and not in the URI.",
