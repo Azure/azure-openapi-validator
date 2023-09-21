@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Added XmsPageableForGetListCalls (RPC-Get-V1-13) rule to ensure that all GET LIST APIs contain the ‘x-ms-pageable’ property",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
