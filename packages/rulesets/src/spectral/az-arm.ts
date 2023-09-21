@@ -31,9 +31,9 @@ import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-prop
 import { PatchResponseCodes } from "./functions/patch-response-codes"
 import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
 import pathSegmentCasing from "./functions/path-segment-casing"
-import { PostResponseCodes } from "./functions/post-response-codes"
+import { postResponseCodes } from "./functions/post-response-codes"
 import { propertiesTypeObjectNoDefinition } from "./functions/properties-type-object-no-definition"
-import provisioningState from "./functions/provisioning-state"
+import { provisioningStateValidation } from "./functions/provisioning-state-validation"
 import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-must-be-read-only"
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
@@ -132,11 +132,12 @@ const ruleset: any = {
       description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
-      resolved: false,
+      stagingOnly: true,
+      resolved: true,
       formats: [oas2],
-      given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
+      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
       then: {
-        function: provisioningState,
+        function: provisioningStateValidation,
       },
     },
 
@@ -165,7 +166,7 @@ const ruleset: any = {
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[post]"],
       then: {
-        function: PostResponseCodes,
+        function: postResponseCodes,
       },
     },
 

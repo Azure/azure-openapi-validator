@@ -15,7 +15,7 @@ const LR_NO_SCHEMA_ERROR =
 const EmptyResponse_ERROR =
   "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
 
-export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
+export const postResponseCodes = (postOp: any, _opts: any, ctx: any) => {
   if (postOp === null || typeof postOp !== "object") {
     return []
   }

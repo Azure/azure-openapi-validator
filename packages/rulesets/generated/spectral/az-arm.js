@@ -2204,7 +2204,7 @@ const SYNC_ERROR = "Synchronous POST operations must have one of the following c
 const LR_ERROR = "Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.";
 const LR_NO_SCHEMA_ERROR = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
-const PostResponseCodes = (postOp, _opts, ctx) => {
+const postResponseCodes = (postOp, _opts, ctx) => {
     var _a, _b, _c;
     if (postOp === null || typeof postOp !== "object") {
         return [];
@@ -2309,16 +2309,18 @@ const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
     return [];
 };
 
-const provisioningState = (swaggerObj, _opts, paths) => {
-    const enumValue = swaggerObj.enum;
-    if (swaggerObj === null || typeof swaggerObj !== "object" || enumValue === null || enumValue === undefined) {
+const validateProvisioningState = (schema, _opts, ctx) => {
+    if (schema === null || typeof schema !== "object") {
         return [];
     }
-    if (!Array.isArray(enumValue)) {
-        return [];
-    }
-    const path = paths.path || [];
+    const path = ctx.path || [];
     const valuesMustHave = ["succeeded", "failed", "canceled"];
+    const allProperties = getProperties(schema);
+    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
+    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
+        return [];
+    }
+    const enumValue = provisioningStateProperty["enum"];
     if (enumValue && valuesMustHave.some((v) => !enumValue.some((ev) => ev.toLowerCase() === v))) {
         return [
             {
@@ -2881,11 +2883,12 @@ const ruleset = {
             description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
             message: "{{error}}",
             severity: "error",
-            resolved: false,
+            stagingOnly: true,
+            resolved: true,
             formats: [oas2],
-            given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
+            given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
             then: {
-                function: provisioningState,
+                function: validateProvisioningState,
             },
         },
         LroLocationHeader: {
@@ -2909,7 +2912,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[post]"],
             then: {
-                function: PostResponseCodes,
+                function: postResponseCodes,
             },
         },
         XMSLongRunningOperationProperty: {
