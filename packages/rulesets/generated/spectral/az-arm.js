@@ -1709,34 +1709,6 @@ const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const lroPostReturn = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const responses = postOp.responses;
-    if (responses && (!responses["200"] || !responses["202"])) {
-        errors.push({
-            message: "A LRO POST operation must have both 200 & 202 return codes.",
-            path: path,
-        });
-    }
-    if (responses["200"] && !responses["200"].schema) {
-        errors.push({
-            message: "200 response for a LRO POST operation must have a response schema specified.",
-            path,
-        });
-    }
-    if (responses["202"] && responses["202"].schema) {
-        errors.push({
-            message: "202 response for a LRO POST operation must not have a response schema specified.",
-            path,
-        });
-    }
-    return errors;
-};
-
 const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -2238,7 +2210,7 @@ const LR_ERROR = "Long-running POST operations must have responses with 202 and 
 const LR_NO_SCHEMA_ERROR = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const PostResponseCodes = (postOp, _opts, ctx) => {
-    var _a, _b;
+    var _a, _b, _c;
     if (postOp === null || typeof postOp !== "object") {
         return [];
     }
@@ -2273,8 +2245,15 @@ const PostResponseCodes = (postOp, _opts, ctx) => {
                 okResponseCodeNoSchema = true;
             }
         }
-        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length ||
+            !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
             wrongResponseCodes = true;
+        }
+        if ((_c = postOp.responses["202"]) === null || _c === void 0 ? void 0 : _c.schema) {
+            errors.push({
+                message: "202 response for a LRO POST operation must not have a response schema specified.",
+                path: path,
+            });
         }
         if (wrongResponseCodes) {
             errors.push({
@@ -2634,37 +2613,6 @@ const skuValidation = (skuSchema, opts, paths) => {
                 errors.push(message);
             }
         }
-    }
-    return errors;
-};
-
-const SyncPostReturn = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    if (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const responses = postOp.responses;
-    if (responses && (!(responses["200"] || responses["204"]) || !!(responses["200"] && responses["204"]))) {
-        errors.push({
-            message: "A synchronous POST operation must have either 200 or 204 return codes.",
-            path: path,
-        });
-    }
-    if (responses["200"] && !responses["200"].schema) {
-        errors.push({
-            message: "200 response for a synchronous POST operation must have a response schema specified.",
-            path,
-        });
-    }
-    if (responses["204"] && responses["204"].schema) {
-        errors.push({
-            message: "204 response for a synchronous POST operation must not have a response schema specified.",
-            path,
-        });
     }
     return errors;
 };
@@ -3300,28 +3248,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
             then: {
                 function: requestBodyMustExistForPutPatch,
-            },
-        },
-        SyncPostReturn: {
-            description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post]",
-            then: {
-                function: SyncPostReturn,
-            },
-        },
-        LroPostReturn: {
-            description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-            then: {
-                function: lroPostReturn,
             },
         },
         ParametersInPost: {
