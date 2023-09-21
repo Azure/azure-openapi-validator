@@ -138,6 +138,34 @@ test("PathForResourceAction should not find errors for valid path", () => {
           responses: {},
         },
       },
+      "/{resourceUri}/providers/Microsoft.Music/Songs/{songName}": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/providers/Microsoft.Album/Albums/{albumName}":
+        {
+          put: {
+            tags: ["SampleTag"],
+            operationId: "Foo_CreateOrUpdate",
+            description: "Test Description",
+            parameters: [],
+            responses: {},
+          },
+        },
     },
   }
   return linter.run(oasDoc).then((results) => {
