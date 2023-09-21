@@ -2309,29 +2309,6 @@ const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
     return [];
 };
 
-const validateProvisioningState = (schema, _opts, ctx) => {
-    if (schema === null || typeof schema !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const valuesMustHave = ["succeeded", "failed", "canceled"];
-    const allProperties = getProperties(schema);
-    const provisioningStateProperty = getProperty(allProperties === null || allProperties === void 0 ? void 0 : allProperties.properties, "provisioningState");
-    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
-        return [];
-    }
-    const enumValue = provisioningStateProperty["enum"];
-    if (enumValue && valuesMustHave.some((v) => !enumValue.some((ev) => ev.toLowerCase() === v))) {
-        return [
-            {
-                message: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
-                path,
-            },
-        ];
-    }
-    return [];
-};
-
 const provisioningStateMustBeReadOnly = (schema, _opts, ctx) => {
     if (schema === null || typeof schema !== "object") {
         return [];
@@ -2351,6 +2328,28 @@ const provisioningStateMustBeReadOnly = (schema, _opts, ctx) => {
         });
     }
     return errors;
+};
+
+const provisioningStateValidation = (schema, _opts, ctx) => {
+    if (schema === null || typeof schema !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const mustHaveValues = ["succeeded", "failed", "canceled"];
+    const provisioningStateProperty = getProperty(schema, "provisioningState");
+    if (provisioningStateProperty === undefined || Object.keys(provisioningStateProperty).length === 0) {
+        return [];
+    }
+    const enumValue = provisioningStateProperty["enum"];
+    if (!enumValue || mustHaveValues.some((value) => !enumValue.some((ev) => ev.toLowerCase() === value))) {
+        return [
+            {
+                message: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
+                path,
+            },
+        ];
+    }
+    return [];
 };
 
 const putGetPatchSchema = (pathItem, opts, ctx) => {
@@ -2888,7 +2887,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
             then: {
-                function: validateProvisioningState,
+                function: provisioningStateValidation,
             },
         },
         LroLocationHeader: {
