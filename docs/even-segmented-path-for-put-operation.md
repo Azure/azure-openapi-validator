@@ -22,12 +22,12 @@ API path with PUT operation defined MUST have even number of segments (i.e. end 
 
 ## How to fix the violation
 
-Fix the path with PUT defined as one of the below patterns:
+Fix the path with PUT defined to,match one of the below patterns:
 
 ```json
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}:
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}
 ```
 
 ```json
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}/NestedResourceType/{nestedResourceName}":
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}/NestedResourceType/{nestedResourceName}"
 ```

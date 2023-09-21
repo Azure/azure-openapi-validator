@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Added EvenSegmentedPathForPutOperation rule that flags paths with PUT operation defined that do not end in {resourceType}/{resourceName}",
+      "comment": "Add EvenSegmentedPathForPutOperation rule that flags paths with PUT operation defined that do not end in {resourceType}/{resourceName}",
       "type": "patch"
     }
   ],

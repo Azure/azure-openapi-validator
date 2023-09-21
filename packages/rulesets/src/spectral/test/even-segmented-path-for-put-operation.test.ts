@@ -60,10 +60,38 @@ test("PathForResourceAction should find errors for invalid paths", () => {
             responses: {},
           },
         },
+      "{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/providers/Microsoft.Album/Albums":
+        {
+          put: {
+            tags: ["SampleTag"],
+            operationId: "Foo_CreateOrUpdate",
+            description: "Test Description",
+            parameters: [],
+            responses: {},
+          },
+        },
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(5)
+    expect(results.length).toBe(8)
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music"
     )
@@ -78,6 +106,11 @@ test("PathForResourceAction should find errors for invalid paths", () => {
     )
     expect(results[4].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong"
+    )
+    expect(results[5].path.join(".")).toBe("paths.{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong")
+    expect(results[6].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong")
+    expect(results[7].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/providers/Microsoft.Album/Albums"
     )
   })
 })
