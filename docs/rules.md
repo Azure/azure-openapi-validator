@@ -1173,6 +1173,12 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [top-level-resources-list-by-subscription.md](./top-level-resources-list-by-subscription.md) for details.
 
+### trackedExtensionResourcesAreNotAllowed
+
+Extension resources are always considered to be proxy and must not be of the type tracked.
+
+Please refer to [tracked-extension-resources-are-not-allowed.md](./tracked-extension-resources-are-not-allowed.md) for details.
+
 ### TrackedResourceBeyondsThirdLevel
 
 Tracked resources must not be used beyond the third level of nesting.

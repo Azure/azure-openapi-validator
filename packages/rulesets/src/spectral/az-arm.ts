@@ -45,6 +45,7 @@ import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-sc
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -718,6 +719,19 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-12
+    trackedExtensionResourcesAreNotAllowed: {
+      description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*~",
+      then: {
+        function: trackedExtensionResourcesAreNotAllowed,
       },
     },
 
