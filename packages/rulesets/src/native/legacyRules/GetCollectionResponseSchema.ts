@@ -4,6 +4,7 @@ import { ArmHelper } from "../utilities/arm-helper"
 export const GetCollectionResponseSchema = "GetCollectionResponseSchema"
 
 rules.push({
+  // RPC code: RPC-Get-V1-10
   id: "R4019",
   name: GetCollectionResponseSchema,
   severity: "error",

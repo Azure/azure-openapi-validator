@@ -83,7 +83,7 @@ const ruleset: any = {
     /// ARM RPC rules for Async patterns
     ///
 
-    // RPC Code: RPC-Async-V1-01
+    // RPC Code: RPC-Async-V1-01, RPC-Put-V1-11
     PutResponseCodes: {
       description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
@@ -206,7 +206,7 @@ const ruleset: any = {
     /// ARM RPC rules for Delete patterns
     ///
 
-    // RPC Code: RPC-Delete-V1-01
+    // RPC Code: RPC-Delete-V1-01, RPC-Async-V1-09
     DeleteResponseCodes: {
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
@@ -249,7 +249,7 @@ const ruleset: any = {
     /// ARM RPC rules for Policy Guidelines
     ///
 
-    // RPC Code: RPC-Policy-V1-05
+    // RPC Code: RPC-Policy-V1-05, RPC-Put-V1-23
     AvoidAdditionalProperties: {
       description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
       severity: "error",
