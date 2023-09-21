@@ -10,7 +10,7 @@ ARM OpenAPI (swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-Async-V1-11
+- RPC-Async-V1-11, RPC-Async-V1-14
 
 ## Output Message
 
@@ -21,6 +21,7 @@ Long-running POST operations must have responses with 202 and default return cod
 
 Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
 Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+202 response for a LRO POST operation must not have a response schema specified.
 
 ## How to fix the violation
 
@@ -31,6 +32,7 @@ For Long-running POST operations:
 2. Add 200 response code if only if the final response is intended to have a schema.
 3. Ensure no other response codes are specified.
 4. Make sure to define "x-ms-long-running-operation".
+5. 202 response for a LRO POST operation must not have a response schema specified.
 
 ### Example
 
@@ -81,9 +83,6 @@ The following would be a valid ASYNC POST:
   "responses": {
     "202": {
       "description": "Operation accepted",
-      "schema": {
-        "$ref": "#/definitions/FooResource"
-      }
     },
     "200": {
       "description": "Operation completed",
@@ -107,9 +106,6 @@ The following would be a valid ASYNC POST:
   "responses": {
     "202": {
       "description": "Operation accepted",
-      "schema": {
-        "$ref": "#/definitions/FooResource"
-      }
     },
     "default": {
       "description": "Error response describing why the operation failed.",

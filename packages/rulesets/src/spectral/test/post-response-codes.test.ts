@@ -7,6 +7,7 @@ const LR_ERROR =
   "Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes."
 const LR_NO_SCHEMA_ERROR =
   "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
+const LRO_SCHEMA_ERROR = "202 response for a LRO POST operation must not have a response schema specified."
 
 let linter: Spectral
 
@@ -627,9 +628,11 @@ test("PostResponseCodes should find errors for lro post with only 202", () => {
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LRO_SCHEMA_ERROR)
+    expect(results[1].message).toContain(LR_ERROR)
   })
 })
 
@@ -702,7 +705,7 @@ test("PostResponseCodes should find errors for lro post with only 200", () => {
   })
 })
 
-test("PostResponseCodes should find errors for lro post without default response", () => {
+test("PostResponseCodes should find errors for lro post without default response and 202 schema", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -771,9 +774,11 @@ test("PostResponseCodes should find errors for lro post without default response
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LRO_SCHEMA_ERROR)
+    expect(results[1].message).toContain(LR_ERROR)
   })
 })
 
@@ -856,7 +861,7 @@ test("PostResponseCodes should find errors for lro post with extra response code
   })
 })
 
-test("PostResponseCodes should find errors for lro post with empty schema in 200 response code", () => {
+test("PostResponseCodes should find errors for lro post with empty schema in 200 response code and with schema in 202", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -926,9 +931,11 @@ test("PostResponseCodes should find errors for lro post with empty schema in 200
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(LR_NO_SCHEMA_ERROR)
+    expect(results[0].message).toContain(LRO_SCHEMA_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[1].message).toContain(LR_NO_SCHEMA_ERROR)
   })
 })
 
@@ -1031,9 +1038,6 @@ test("PostResponseCodes should find no errors for lro post when 200 with schema,
           responses: {
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             "200": {
               description: "created",
@@ -1108,9 +1112,6 @@ test("PostResponseCodes should find no errors for lro post when 202, default cod
           responses: {
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             default: {
               description: "Error",
