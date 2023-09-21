@@ -1467,6 +1467,27 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+const consistentputresponsebody = (pathItem, _opts, paths) => {
+    var _a, _b, _c;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const createResponseSchema = (op) => { var _a, _b; return (_b = (_a = op === null || op === void 0 ? void 0 : op.responses) === null || _a === void 0 ? void 0 : _a["201"]) === null || _b === void 0 ? void 0 : _b.schema; };
+    const resourceSchema = createResponseSchema(pathItem.put) || createResponseSchema(pathItem.patch);
+    if (resourceSchema) {
+        const responseSchema = (_c = (_b = (_a = pathItem["put"]) === null || _a === void 0 ? void 0 : _a.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema;
+        if (responseSchema && responseSchema !== resourceSchema) {
+            errors.push({
+                message: "Response body schema does not match create response body schema.",
+                path: [...path, "put", "responses", "200", "schema"],
+            });
+        }
+    }
+    return errors;
+};
+
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
 const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
@@ -3266,6 +3287,18 @@ const ruleset = {
                 function: requestBodyMustExistForPutPatch,
             },
         },
+        ConsistentResponseSchemaForPut: {
+            description: "A Put operation must return the same schema for 200 and 201 response codes",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$.paths.*",
+            then: {
+                function: consistentputresponsebody,
+            },
+        },
         SyncPostReturn: {
             description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
             message: "{{error}}",
@@ -3675,7 +3708,7 @@ const ruleset = {
             description: "All operations should have a default (error) response.",
             message: "Operation is missing a default response.",
             severity: "error",
-            given: "$.paths.*.*.responses",
+            given: "$.paths.*.*.responses.*~",
             then: {
                 field: "default",
                 function: truthy,

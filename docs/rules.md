@@ -161,6 +161,12 @@ should have the same response body schema as the create operation 201 response.
 
 Please refer to [consistent-response-body.md](./consistent-response-body.md) for details.
 
+### ConsistentResponseSchemaForPut
+
+The response schema must not vary between the initial put and the subsequent reputs. 
+
+Please refer to [consistent-response-schema-for-put.md](./consistent-response-schema-for-put.md) for details.
+
 ### ControlCharactersNotAllowed
 
 Verifies whether if a specification does not have any control characters in it.
