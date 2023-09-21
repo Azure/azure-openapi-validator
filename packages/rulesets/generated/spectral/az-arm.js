@@ -2819,6 +2819,22 @@ const verifyXMSLongRunningOperationProperty = (pathItem, _opts, paths) => {
     return;
 };
 
+const xmsPageableForGetListCalls = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (swaggerObj["x-ms-pageable"])
+        return [];
+    else
+        return [
+            {
+                message: "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.",
+                path: path,
+            },
+        ];
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -3052,6 +3068,18 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[get]^~",
             then: {
                 function: validateSegmentsInNestedResourceListOperation,
+            },
+        },
+        XmsPageableForGetListCalls: {
+            description: "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}'))].get",
+            then: {
+                function: xmsPageableForGetListCalls,
             },
         },
         PatchPropertiesCorrespondToPutProperties: {
@@ -3371,6 +3399,7 @@ const ruleset = {
             description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*~",

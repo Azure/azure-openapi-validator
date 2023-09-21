@@ -50,6 +50,7 @@ import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-ta
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
+import xmsPageableForGetListCalls from "./functions/xms-pageable-for-get-list-calls"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -348,6 +349,20 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*[get]^~",
       then: {
         function: validateSegmentsInNestedResourceListOperation,
+      },
+    },
+
+    // RPC Code: RPC-Get-V1-11
+    XmsPageableForGetListCalls: {
+      description: "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}'))].get",
+      then: {
+        function: xmsPageableForGetListCalls,
       },
     },
 

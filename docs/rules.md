@@ -1327,6 +1327,12 @@ If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-As
 
 Please refer to [xms-long-running-operation-property.md](./xms-long-running-operation-property.md) for details.
 
+### XmsPageableForGetListCalls
+
+`x-ms-pageable` indicates that the results of a GET call may be paginated. All LIST APIs (a.k.a collection GETs) should include this annotation.
+
+Please refer to [xms-pageable-for-get-list-calls.md](./xms-pageable-for-get-list-calls.md) for details.
+
 ### XmsPageableListByRGAndSubscriptions
 
 When a tracked resource has list by resource group and subscription operations, the x-ms-pageable extension values must be same for both operations. A tracked resource is a resource with a 'location' property as required. If this rule flags a resource which does not have a 'location' property, then it might be a false positive.
