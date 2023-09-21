@@ -357,6 +357,7 @@ const ruleset: any = {
         "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
       severity: "error",
       message: "{{description}}",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: [

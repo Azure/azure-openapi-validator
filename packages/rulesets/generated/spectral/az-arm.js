@@ -3058,6 +3058,7 @@ const ruleset = {
             description: "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
             severity: "error",
             message: "{{description}}",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: [
@@ -3385,6 +3386,7 @@ const ruleset = {
             description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*~",
