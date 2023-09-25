@@ -247,12 +247,11 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
 and hence Production LintDiff, you need to do the following:
 
 - In the PR with your changes increase the version number of the packages you changed.
-  - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30)
-    is an example version increase for the ruleset.
-  - And [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
-    for changes made to the  AutoRest extension.
+  - Bump the version in **package.json** under ruleset folder only if you made changes to Ruleset extension(i.e, changes made are under ruleset folder). Example [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30)
+  - Bump the version in **package.json** under autorest folder only if you made changes to AutoRest extension(i.e, changes made are under autorest folder). Example [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
   - Do not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
+  - Make sure to bump the version in the appropriate package files based on the changes  
 
 Once your PR is merged:
 
