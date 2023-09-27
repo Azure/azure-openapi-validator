@@ -304,6 +304,12 @@ Error response body should conform to [Azure API Guidelines](https://github.com/
 
 Please refer to [error-response.md](./error-response.md) for details.
 
+### EvenSegmentedPathForPutOperation
+
+API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).
+
+Please refer to [even-segmented-path-for-put-operation.md](./even-segmented-path-for-put-operation.md) for details.
+
 ### ExtensionResourcePathPattern
 
 Path (operation) for 'extension routing type' (that has additional /providers/ segment in parent scope) must be of the form '{scope}/provider/RPNamespace/resourceTypeName' (shouldn't include parent scope)
