@@ -22,10 +22,10 @@ API path with PUT operation defined MUST have even number of segments (i.e. end 
 
 ## How to fix the violation
 
-Fix the path with PUT defined to,match one of the below patterns:
+Fix the PUT path to have an even number of path segments. The following examples show paths with even segments:
 
 ```json
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{ResourceName}"
 ```
 
 ```json
