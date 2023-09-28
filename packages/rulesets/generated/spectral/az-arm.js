@@ -2819,7 +2819,7 @@ const verifyXMSLongRunningOperationProperty = (pathItem, _opts, paths) => {
     return;
 };
 
-const xmsPageableForGetListCalls = (swaggerObj, _opts, paths) => {
+const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
@@ -2829,7 +2829,7 @@ const xmsPageableForGetListCalls = (swaggerObj, _opts, paths) => {
     else
         return [
             {
-                message: "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.",
+                message: "`x-ms-pageable` extension must be specified for LIST APIs.",
                 path: path,
             },
         ];
@@ -3070,8 +3070,8 @@ const ruleset = {
                 function: validateSegmentsInNestedResourceListOperation,
             },
         },
-        XmsPageableForGetListCalls: {
-            description: "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.",
+        XmsPageableForListCalls: {
+            description: "`x-ms-pageable` extension must be specified for LIST APIs.",
             severity: "error",
             stagingOnly: true,
             message: "{{error}}",
@@ -3079,7 +3079,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}'))].get",
             then: {
-                function: xmsPageableForGetListCalls,
+                function: xmsPageableForListCalls,
             },
         },
         PatchPropertiesCorrespondToPutProperties: {
@@ -3205,7 +3205,7 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
                 },
-            }
+            },
         },
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",

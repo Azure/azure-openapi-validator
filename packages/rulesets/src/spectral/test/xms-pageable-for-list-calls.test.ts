@@ -3,14 +3,14 @@ import linterForRule from "./utils"
 
 let linter: Spectral
 
-const errorMessage = "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property."
+const errorMessage = "`x-ms-pageable` extension must be specified for LIST APIs."
 
 beforeAll(async () => {
-  linter = await linterForRule("XmsPageableForGetListCalls")
+  linter = await linterForRule("XmsPageableForListCalls")
   return linter
 })
 
-test("XmsPageableForGetListCalls should find errors if x-ms-pagebale property is not defined.", () => {
+test("XmsPageableForListCalls should find errors if x-ms-pagebale property is not defined.", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

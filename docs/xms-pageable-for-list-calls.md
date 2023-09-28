@@ -1,4 +1,4 @@
-# XmsPageableForGetListCalls
+# XmsPageableForListCalls
 
 ## Category
 
@@ -14,15 +14,15 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.
+`x-ms-pageable` extension must be specified for LIST APIs.
 
 ## Description
 
-`x-ms-pageable` indicates that the results of a GET call may be paginated. All LIST APIs (a.k.a collection GETs) should include this annotation.
+`x-ms-pageable` indicates that the results of a GET call may be paginated. All LIST APIs (a.k.a collection GETs) should include this annotation. Specifying this extension does not mean that the service must implement paging at runtime. The service may implement this when such a requirement arises. Specifying the extension upfront future proofs the API and avoids the breaking changes that may be flagged if the extension were to be introduced in future.
 
 ## How to fix the violation
 
-Please include `x-ms-pageable` property to the collection GET calls.
+Please include `x-ms-pageable` extension to the collection GET calls.
 
 ### Valid Example
 

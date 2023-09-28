@@ -50,7 +50,7 @@ import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-ta
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
-import xmsPageableForGetListCalls from "./functions/xms-pageable-for-get-list-calls"
+import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -353,8 +353,8 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Get-V1-11
-    XmsPageableForGetListCalls: {
-      description: "For all LIST APIs (a.k.a collection GETs), it is important to include the `x-ms-pageable` property.",
+    XmsPageableForListCalls: {
+      description: "`x-ms-pageable` extension must be specified for LIST APIs.",
       severity: "error",
       stagingOnly: true,
       message: "{{error}}",
@@ -362,7 +362,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}'))].get",
       then: {
-        function: xmsPageableForGetListCalls,
+        function: xmsPageableForListCalls,
       },
     },
 
@@ -517,7 +517,7 @@ const ruleset: any = {
         functionOptions: {
           match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
         },
-      }
+      },
     },
 
     // RPC Code: RPC-Put-V1-05
