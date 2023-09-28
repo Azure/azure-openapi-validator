@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Added GetOperationMustNotBeLongRunning, this rule makes sure GET calls must not have LRO properties as GET calls are synchronous",
+      "comment": "Add GetOperationMustNotBeLongRunning, this rule makes sure GET calls must not have LRO properties as GET calls are synchronous",
       "type": "patch"
     }
   ],
