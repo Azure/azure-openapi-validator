@@ -379,6 +379,7 @@ const ruleset: any = {
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
@@ -502,6 +503,24 @@ const ruleset: any = {
       then: {
         function: pathForTrackedResourceTypes,
       },
+    },
+
+    // RPC Code: RPC-Put-V1-02
+    EvenSegmentedPathForPutOperation: {
+      description:
+        "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+      message: "{{description}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^~",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+        },
+      }
     },
 
     // RPC Code: RPC-Put-V1-05
@@ -682,7 +701,7 @@ const ruleset: any = {
         function: resourceNameRestriction,
       },
     },
-    // RPC Code: RPC-Uri-V1-06, RPC-Put-V1-02
+    // RPC Code: RPC-Uri-V1-06
     PathForNestedResource: {
       description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
       message: "{{error}}",
