@@ -3086,6 +3086,7 @@ const ruleset = {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3190,6 +3191,21 @@ const ruleset = {
             then: {
                 function: pathForTrackedResourceTypes,
             },
+        },
+        EvenSegmentedPathForPutOperation: {
+            description: "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+            message: "{{description}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^~",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+                },
+            }
         },
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
