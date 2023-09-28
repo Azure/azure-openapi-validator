@@ -4,6 +4,22 @@ parameters:
   type: string
 
 steps:
+  - task: AzureCLI@2
+    displayName: Test Azure CLI
+    inputs:
+      azureSubscription: Azure
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        az account show
+  - task: AzureCLI@2
+    displayName: Test Azure CLI2
+    inputs:
+      azureSubscription: Azure
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        az get-access-token
   - task: NodeTool@0
     inputs:
       versionSpec: '${{ parameters.NodeVersion }}'
