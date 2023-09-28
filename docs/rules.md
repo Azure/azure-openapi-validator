@@ -348,6 +348,15 @@ The request body of a get operation must be empty.
 
 Please refer to [get-must-not-have-request-body.md](./get-must-not-have-request-body.md) for details.
 
+### GetOperationMustNotBeLongRunning
+
+Only asynchronous(i.e. Long Running Operation) can have `x-ms-long-running-operation-options` property.
+The GET calls are synchronous and it MUST NOT have
+    - `x-ms-long-running-operation-options` property block
+    - `x-ms-long-running-operation` set to `true`
+
+Please refer to [get-operation-must-not-be-long-running.md](./get-operation-must-not-be-long-running.md) for details.
+
 ### GetOperation200
 
 The get operation should only return 200, also it should not be a long running operation.
