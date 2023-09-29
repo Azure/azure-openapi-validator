@@ -351,6 +351,24 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-14
+    GetOperationMustNotBeLongRunning: {
+      description:
+        "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
+      severity: "error",
+      message: "{{description}}",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: [
+        "$[paths,'x-ms-paths'].*[get].x-ms-long-running-operation-options",
+        "$[paths,'x-ms-paths'].*[get][?(@property === 'x-ms-long-running-operation' && @ === true)]",
+      ],
+      then: {
+        function: falsy,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
@@ -485,6 +503,24 @@ const ruleset: any = {
       then: {
         function: pathForTrackedResourceTypes,
       },
+    },
+
+    // RPC Code: RPC-Put-V1-02
+    EvenSegmentedPathForPutOperation: {
+      description:
+        "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+      message: "{{description}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^~",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+        },
+      }
     },
 
     // RPC Code: RPC-Put-V1-05
@@ -665,7 +701,7 @@ const ruleset: any = {
         function: resourceNameRestriction,
       },
     },
-    // RPC Code: RPC-Uri-V1-06, RPC-Put-V1-02
+    // RPC Code: RPC-Uri-V1-06
     PathForNestedResource: {
       description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
       message: "{{error}}",

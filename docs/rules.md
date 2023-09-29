@@ -304,6 +304,12 @@ Error response body should conform to [Azure API Guidelines](https://github.com/
 
 Please refer to [error-response.md](./error-response.md) for details.
 
+### EvenSegmentedPathForPutOperation
+
+API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).
+
+Please refer to [even-segmented-path-for-put-operation.md](./even-segmented-path-for-put-operation.md) for details.
+
 ### ExtensionResourcePathPattern
 
 Path (operation) for 'extension routing type' (that has additional /providers/ segment in parent scope) must be of the form '{scope}/provider/RPNamespace/resourceTypeName' (shouldn't include parent scope)
@@ -341,6 +347,15 @@ Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for detai
 The request body of a get operation must be empty.
 
 Please refer to [get-must-not-have-request-body.md](./get-must-not-have-request-body.md) for details.
+
+### GetOperationMustNotBeLongRunning
+
+Only asynchronous(i.e. Long Running Operation) can have `x-ms-long-running-operation-options` property.
+The GET calls are synchronous and it MUST NOT have
+    - `x-ms-long-running-operation-options` property block
+    - `x-ms-long-running-operation` set to `true`
+
+Please refer to [get-operation-must-not-be-long-running.md](./get-operation-must-not-be-long-running.md) for details.
 
 ### GetOperation200
 
