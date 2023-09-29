@@ -366,6 +366,24 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-14
+    GetOperationMustNotBeLongRunning: {
+      description:
+        "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
+      severity: "error",
+      message: "{{description}}",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: [
+        "$[paths,'x-ms-paths'].*[get].x-ms-long-running-operation-options",
+        "$[paths,'x-ms-paths'].*[get][?(@property === 'x-ms-long-running-operation' && @ === true)]",
+      ],
+      then: {
+        function: falsy,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
