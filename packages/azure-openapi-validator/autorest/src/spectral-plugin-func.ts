@@ -1,11 +1,11 @@
 /* eslint-disable import/no-duplicates */
 import { fileURLToPath } from "url"
 import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri"
-import { getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
+import { LintResultMessage, getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
 import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { Resolver } from "@stoplight/json-ref-resolver"
-import { Spectral, Ruleset } from "@stoplight/spectral-core"
+import { Spectral, Ruleset, ISpectralDiagnostic } from "@stoplight/spectral-core"
 import { DiagnosticSeverity } from "@stoplight/types"
 import { safeLoad } from "js-yaml"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
@@ -66,7 +66,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
         },
       },
     })
-    const spectral = new Spectral({ resolver })
+    const spectral: Spectral = new Spectral({ resolver })
     spectral.setRuleset(ruleset)
 
     initiator.Message({
@@ -153,8 +153,9 @@ function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, r
   }
 }
 
-async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
+async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: Spectral) {
   const mergedResults = []
+
   const convertSeverity = (severity: number) => {
     switch (severity) {
       case 0:
@@ -167,6 +168,7 @@ async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message)
         return "info"
     }
   }
+
   const convertRange = (range: any) => {
     return {
       start: {
@@ -189,22 +191,29 @@ async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message)
     return paths
   }
 
-  const format = (result: any, spec: string) => {
+  const formatAsLintResultMessage = (result: ISpectralDiagnostic, spec: string): LintResultMessage => {
     return {
+      type: convertSeverity(result.severity),
       code: result.code,
       message: result.message,
-      type: convertSeverity(result.severity),
       jsonpath: result.path && result.path.length ? removeXmsExampleFromPath(result.path) : [],
-      range: convertRange(result.range),
+      category: "",
       sources: [`${spec}`],
       location: {
         line: result.range.start.line + 1,
         column: result.range.start.character,
       },
-    }
+      range: convertRange(result.range),
+    } as LintResultMessage
   }
-  const results = await spectral.run(doc)
-  mergedResults.push(...results.map((result: any) => format(result, createFileOrFolderUri(filePath))))
+
+  // Newest source of spectral.run as of 9/28/2023
+  // https://github.com/stoplightio/spectral/blob/6d0991572f185ce5cf4031dc1d8eb4035b5eaf1d/packages/core/src/spectral.ts#L79
+  // Note: version used in this code is likely older than newest.
+  const results: ISpectralDiagnostic[] = await spectral.run(doc)
+
+  mergedResults.push(...results.map((result: ISpectralDiagnostic) => formatAsLintResultMessage(result, createFileOrFolderUri(filePath))))
+
   for (const message of mergedResults) {
     sendMessage(convertLintMsgToAutoRestMsg(message))
   }
