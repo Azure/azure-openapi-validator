@@ -89,7 +89,7 @@ Please include `x-ms-pageable` extension to the collection GET calls.
 
 ### Invalid Example
 
-```json
+```json5
 ...
 // Parent list call with no `x-ms-pageable`
 "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
