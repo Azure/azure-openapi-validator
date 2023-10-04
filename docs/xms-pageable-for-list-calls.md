@@ -26,7 +26,7 @@ Please include `x-ms-pageable` extension to the collection GET calls.
 
 ### Valid Example
 
-```json
+```json5
 ...
 // Parent list call with `x-ms-pageable`
 "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
