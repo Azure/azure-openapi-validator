@@ -2991,6 +2991,7 @@ const ruleset = {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
             message: "{{error}}",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
@@ -3192,7 +3193,7 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
                 },
-            }
+            },
         },
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
