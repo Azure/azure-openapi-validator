@@ -2,6 +2,76 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
+      "version": "1.2.2",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.2.2",
+      "date": "Wed, 04 Oct 2023 17:01:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add EvenSegmentedPathForPutOperation rule that flags paths with PUT operation defined that do not end in {resourceType}/{resourceName}"
+          },
+          {
+            "comment": "Add test cases for path-for-resource-action rule"
+          },
+          {
+            "comment": "Add trackedExtensionResourcesAreNotAllowed rule that flags tracked extension resources, as extension resources may only be proxy"
+          },
+          {
+            "comment": "Exclude not fully qualified extension resource paths in TopLevelResourcesListBySubscription linter rule"
+          },
+          {
+            "comment": "Update PatchPropertiesCorrespondsToPutProperties to run in staging only"
+          },
+          {
+            "comment": "Delete RPC-POST-V1-02(SyncPostReturn) linter rule as it is covered by RPC-Async-V1-11(PostReturnCodes)"
+          },
+          {
+            "comment": "Change OperationsApiTenantLevelOnly to error for the path level instead of the operation level (#577)"
+          },
+          {
+            "comment": "Change ReservedResourceNamesAsEnum from an error to a warning and make it warn for the path level instead of the operation level (#575)"
+          },
+          {
+            "comment": "Add RPC codes to some existing rules"
+          },
+          {
+            "comment": "Change severity of PatchSkuProperty and PatchIdentityProperty to warning"
+          },
+          {
+            "comment": "Add a new rule RequestBodyMustExistForPutPatch that checks for the existence of a request body for a put or a patch operation."
+          },
+          {
+            "comment": "Add new rule MissingSegmentsInNestedResourceListOperation, this rules checks if the nested resource type's List operation includes all the parent segments in its api path."
+          },
+          {
+            "comment": "Modify PathForTrackedResourceTypes, this rule will check the path must be under a subscription and resource group for tracked resource types only."
+          },
+          {
+            "comment": "Disable rule PropertiesTypeObjectNoDefinition in production pipeline"
+          },
+          {
+            "comment": "Add GetOperationMustNotBeLongRunning, this rule makes sure GET calls must not have LRO properties as GET calls are synchronous"
+          },
+          {
+            "comment": "Removed LroPostReturn (RPC-Post-V1-03) rule and updated PostResponseCodes rule with logic to flag POST 202 responses that have schemas"
+          },
+          {
+            "comment": "Add XmsLongRunningOperationProperty as new rule. This rules checks if any reponses headers have Location or Azure-AsyncOperation properties, then it must have x-ms-long-running-operation set to true."
+          }
+        ],
+        "none": [
+          {
+            "comment": "Activate rules and update version to 1.2.0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft.azure/openapi-validator-core\" from `~1.0.0` to `~1.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.2.0",
       "date": "Wed, 16 Aug 2023 22:39:14 GMT",
