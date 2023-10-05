@@ -76,6 +76,22 @@ export const armRuleset: IRuleSet = {
     },
 
     ///
+    /// ARM RPC rules for Patch patterns
+    ///
+
+    /// RPC-Patch-V1-03
+    // https://github.com/Azure/azure-openapi-validator/issues/329
+    TrackedResourcePatchOperation: {
+      category: "ARMViolation",
+      openapiType: OpenApiTypes.arm,
+      severity: "error",
+      given: "$",
+      then: {
+        execute: trackedResourcesHavePatch,
+      },
+    },
+
+    ///
     /// ARM RPC rules for Put patterns
     ///
 
@@ -151,16 +167,7 @@ export const armRuleset: IRuleSet = {
     ///
     /// ARM rules without an RPC code
     ///
-    // https://github.com/Azure/azure-openapi-validator/issues/329
-    TrackedResourcePatchOperation: {
-      category: "ARMViolation",
-      openapiType: OpenApiTypes.arm,
-      severity: "error",
-      given: "$",
-      then: {
-        execute: trackedResourcesHavePatch,
-      },
-    },
+
     XmsPageableListByRGAndSubscriptions: {
       description: `When a tracked resource has list by resource group and subscription operations, the x-ms-pageable extension values must be same for both operations. A tracked resource is a resource with a 'location' property as required. If this rule flags a resource which does not have a 'location' property, then it might be a false positive.`,
       severity: "warning",

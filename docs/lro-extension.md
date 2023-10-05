@@ -8,6 +8,9 @@ ARM & Data Plane Error
 
 ARM & Data Plane OpenAPI specs
 
+## Related ARM Guideline Code
+- RPC-Post-V1-09
+
 ## Output Message
 
 Operations with a 202 response should specify `x-ms-long-running-operation: true`.

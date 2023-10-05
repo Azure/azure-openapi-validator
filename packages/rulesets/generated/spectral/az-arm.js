@@ -182,6 +182,11 @@ const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
 function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
 }
+const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi");
+const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi");
+function isPathOfExtensionResource(path) {
+    return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg);
+}
 function getProperties(schema) {
     if (!schema) {
         return {};
@@ -1704,34 +1709,6 @@ const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const lroPostReturn = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const responses = postOp.responses;
-    if (responses && (!responses["200"] || !responses["202"])) {
-        errors.push({
-            message: "A LRO POST operation must have both 200 & 202 return codes.",
-            path: path,
-        });
-    }
-    if (responses["200"] && !responses["200"].schema) {
-        errors.push({
-            message: "200 response for a LRO POST operation must have a response schema specified.",
-            path,
-        });
-    }
-    if (responses["202"] && responses["202"].schema) {
-        errors.push({
-            message: "202 response for a LRO POST operation must not have a response schema specified.",
-            path,
-        });
-    }
-    return errors;
-};
-
 const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -2233,7 +2210,7 @@ const LR_ERROR = "Long-running POST operations must have responses with 202 and 
 const LR_NO_SCHEMA_ERROR = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const PostResponseCodes = (postOp, _opts, ctx) => {
-    var _a, _b;
+    var _a, _b, _c;
     if (postOp === null || typeof postOp !== "object") {
         return [];
     }
@@ -2268,8 +2245,15 @@ const PostResponseCodes = (postOp, _opts, ctx) => {
                 okResponseCodeNoSchema = true;
             }
         }
-        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length ||
+            !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
             wrongResponseCodes = true;
+        }
+        if ((_c = postOp.responses["202"]) === null || _c === void 0 ? void 0 : _c.schema) {
+            errors.push({
+                message: "202 response for a LRO POST operation must not have a response schema specified.",
+                path: path,
+            });
         }
         if (wrongResponseCodes) {
             errors.push({
@@ -2633,37 +2617,6 @@ const skuValidation = (skuSchema, opts, paths) => {
     return errors;
 };
 
-const SyncPostReturn = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    if (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const responses = postOp.responses;
-    if (responses && (!(responses["200"] || responses["204"]) || !!(responses["200"] && responses["204"]))) {
-        errors.push({
-            message: "A synchronous POST operation must have either 200 or 204 return codes.",
-            path: path,
-        });
-    }
-    if (responses["200"] && !responses["200"].schema) {
-        errors.push({
-            message: "200 response for a synchronous POST operation must have a response schema specified.",
-            path,
-        });
-    }
-    if (responses["204"] && responses["204"].schema) {
-        errors.push({
-            message: "204 response for a synchronous POST operation must not have a response schema specified.",
-            path,
-        });
-    }
-    return errors;
-};
-
 const SYSTEM_DATA_CAMEL = "systemData";
 const SYSTEM_DATA_UPPER_CAMEL = "SystemData";
 const PROPERTIES = "properties";
@@ -2689,6 +2642,37 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
         ];
     }
     return [];
+};
+
+const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
+    var _a, _b, _c;
+    if (apiPath === null || typeof apiPath !== "string") {
+        return [];
+    }
+    const verbs = ["get", "put", "patch"];
+    const responseCodes = ["200", "201", "202"];
+    const path = ctx.path || [];
+    const errors = [];
+    if (isPathOfExtensionResource(apiPath)) {
+        const operationPaths = (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved) === null || _b === void 0 ? void 0 : _b.paths[apiPath];
+        for (const verb of verbs) {
+            if (operationPaths[verb]) {
+                for (const responseCode of responseCodes) {
+                    const responseSchema = (_c = operationPaths[verb].responses[responseCode]) === null || _c === void 0 ? void 0 : _c.schema;
+                    if (responseSchema) {
+                        const locationProperty = getProperty(responseSchema, "location");
+                        if (locationProperty) {
+                            errors.push({
+                                message: `${apiPath} is an extension resource and ${responseCode} response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
+                                path: [...path, verb, responseCode],
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return errors;
 };
 
 const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
@@ -3007,6 +2991,7 @@ const ruleset = {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
             message: "{{error}}",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
@@ -3070,10 +3055,26 @@ const ruleset = {
                 function: validateSegmentsInNestedResourceListOperation,
             },
         },
+        GetOperationMustNotBeLongRunning: {
+            description: "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
+            severity: "error",
+            message: "{{description}}",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: [
+                "$[paths,'x-ms-paths'].*[get].x-ms-long-running-operation-options",
+                "$[paths,'x-ms-paths'].*[get][?(@property === 'x-ms-long-running-operation' && @ === true)]",
+            ],
+            then: {
+                function: falsy,
+            },
+        },
         PatchPropertiesCorrespondToPutProperties: {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3179,6 +3180,21 @@ const ruleset = {
                 function: pathForTrackedResourceTypes,
             },
         },
+        EvenSegmentedPathForPutOperation: {
+            description: "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+            message: "{{description}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^~",
+            then: {
+                function: pattern,
+                functionOptions: {
+                    match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+                },
+            },
+        },
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
             message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
@@ -3264,28 +3280,6 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
             then: {
                 function: requestBodyMustExistForPutPatch,
-            },
-        },
-        SyncPostReturn: {
-            description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post]",
-            then: {
-                function: SyncPostReturn,
-            },
-        },
-        LroPostReturn: {
-            description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-            then: {
-                function: lroPostReturn,
             },
         },
         ParametersInPost: {
@@ -3403,6 +3397,18 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        trackedExtensionResourcesAreNotAllowed: {
+            description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*~",
+            then: {
+                function: trackedExtensionResourcesAreNotAllowed,
             },
         },
         SystemDataDefinitionsCommonTypes: {

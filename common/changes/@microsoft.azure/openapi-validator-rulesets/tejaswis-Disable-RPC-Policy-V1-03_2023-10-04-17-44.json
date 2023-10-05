@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Change OperationsApiTenantLevelOnly to error for the path level instead of the operation level (#577)",
+      "comment": "Upgrade version to 1.2.2",
       "type": "patch"
     }
   ],

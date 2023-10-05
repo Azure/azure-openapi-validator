@@ -327,6 +327,12 @@ Error response body should conform to [Azure API Guidelines](https://github.com/
 
 Please refer to [error-response.md](./error-response.md) for details.
 
+### EvenSegmentedPathForPutOperation
+
+API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).
+
+Please refer to [even-segmented-path-for-put-operation.md](./even-segmented-path-for-put-operation.md) for details.
+
 ### ExtensionResourcePathPattern
 
 Path (operation) for 'extension routing type' (that has additional /providers/ segment in parent scope) must be of the form '{scope}/provider/RPNamespace/resourceTypeName' (shouldn't include parent scope)
@@ -364,6 +370,15 @@ Please refer to [get-in-operation-name.md](./get-in-operation-name.md) for detai
 The request body of a get operation must be empty.
 
 Please refer to [get-must-not-have-request-body.md](./get-must-not-have-request-body.md) for details.
+
+### GetOperationMustNotBeLongRunning
+
+Only asynchronous(i.e. Long Running Operation) can have `x-ms-long-running-operation-options` property.
+The GET calls are synchronous and it MUST NOT have
+    - `x-ms-long-running-operation-options` property block
+    - `x-ms-long-running-operation` set to `true`
+
+Please refer to [get-operation-must-not-be-long-running.md](./get-operation-must-not-be-long-running.md) for details.
 
 ### GetOperation200
 
@@ -512,12 +527,6 @@ Please refer to [lro-patch202.md](./lro-patch202.md) for details.
 The long running post operation must not use final-stat-via:original-uri.
 
 Please refer to [lro-post-must-not-use-original-url-as-final-state.md](./lro-post-must-not-use-original-url-as-final-state.md) for details.
-
-### LroPostReturn
-
-A long running Post operation should return 200 with response schema and 202 without response schema.
-
-Please refer to [lro-post-return.md](./lro-post-return.md) for details.
 
 ### ProvisioningStateSpecifiedForLROPut
 
@@ -916,6 +925,7 @@ Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-con
 
 Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
 Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+202 response for a LRO POST operation must not have a response schema specified.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
 
@@ -1177,12 +1187,6 @@ Each operation has a summary and description values. They must not be same.
 
 Please refer to [summary-and-description-must-not-be-same.md](./summary-and-description-must-not-be-same.md) for details.
 
-### SyncPostReturn
-
-A synchronous Post operation should return 200 with response schema or 204 without response schema.
-
-Please refer to [synchronous-post-return.md](./synchronous-post-return.md) for details.
-
 ### SystemDataDefinitionsCommonTypes
 
 System data references must utilize common types.
@@ -1206,6 +1210,12 @@ Please refer to [top-level-resources-list-by-resource-group.md](./top-level-reso
 Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), all the top-level resources must have a list by subscription operation which returns the collection of the resource.
 
 Please refer to [top-level-resources-list-by-subscription.md](./top-level-resources-list-by-subscription.md) for details.
+
+### trackedExtensionResourcesAreNotAllowed
+
+Extension resources are always considered to be proxy and must not be of the type tracked.
+
+Please refer to [tracked-extension-resources-are-not-allowed.md](./tracked-extension-resources-are-not-allowed.md) for details.
 
 ### TrackedResourceBeyondsThirdLevel
 

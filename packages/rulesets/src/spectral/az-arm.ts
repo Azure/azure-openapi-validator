@@ -16,7 +16,6 @@ import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mu
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
-import { lroPostReturn } from "./functions/lro-post-return"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
 import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
@@ -45,8 +44,8 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
-import { SyncPostReturn } from "./functions/synchronous-post-return"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -84,7 +83,7 @@ const ruleset: any = {
     /// ARM RPC rules for Async patterns
     ///
 
-    // RPC Code: RPC-Async-V1-01
+    // RPC Code: RPC-Async-V1-01, RPC-Put-V1-11
     PutResponseCodes: {
       description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
@@ -156,7 +155,7 @@ const ruleset: any = {
       },
     },
 
-    // RPC Code: RPC-Async-V1-11
+    // RPC Code: RPC-Async-V1-11, RPC-Async-V1-14
     PostResponseCodes: {
       description:
         "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
@@ -207,7 +206,7 @@ const ruleset: any = {
     /// ARM RPC rules for Delete patterns
     ///
 
-    // RPC Code: RPC-Delete-V1-01
+    // RPC Code: RPC-Delete-V1-01, RPC-Async-V1-09
     DeleteResponseCodes: {
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
@@ -250,7 +249,7 @@ const ruleset: any = {
     /// ARM RPC rules for Policy Guidelines
     ///
 
-    // RPC Code: RPC-Policy-V1-05
+    // RPC Code: RPC-Policy-V1-05, RPC-Put-V1-23
     AvoidAdditionalProperties: {
       description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
@@ -270,6 +269,7 @@ const ruleset: any = {
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
       message: "{{error}}",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
@@ -352,6 +352,24 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-14
+    GetOperationMustNotBeLongRunning: {
+      description:
+        "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
+      severity: "error",
+      message: "{{description}}",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: [
+        "$[paths,'x-ms-paths'].*[get].x-ms-long-running-operation-options",
+        "$[paths,'x-ms-paths'].*[get][?(@property === 'x-ms-long-running-operation' && @ === true)]",
+      ],
+      then: {
+        function: falsy,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
@@ -362,6 +380,7 @@ const ruleset: any = {
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
@@ -487,6 +506,24 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Put-V1-02
+    EvenSegmentedPathForPutOperation: {
+      description:
+        "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+      message: "{{description}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.put^~",
+      then: {
+        function: pattern,
+        functionOptions: {
+          match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
+        },
+      },
+    },
+
     // RPC Code: RPC-Put-V1-05
     RepeatedPathInfo: {
       description:
@@ -591,30 +628,6 @@ const ruleset: any = {
     /// ARM RPC rules for Post patterns
     ///
 
-    // RPC Code: RPC-POST-V1-02
-    SyncPostReturn: {
-      description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[post]",
-      then: {
-        function: SyncPostReturn,
-      },
-    },
-    // RPC Code: RPC-POST-V1-03
-    LroPostReturn: {
-      description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-      then: {
-        function: lroPostReturn,
-      },
-    },
     // RPC Code: RPC-POST-V1-05
     ParametersInPost: {
       description: "For a POST action parameters MUST be in the payload and not in the URI.",
@@ -689,7 +702,7 @@ const ruleset: any = {
         function: resourceNameRestriction,
       },
     },
-    // RPC Code: RPC-Uri-V1-06, RPC-Put-V1-02
+    // RPC Code: RPC-Uri-V1-06
     PathForNestedResource: {
       description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
       message: "{{error}}",
@@ -704,7 +717,7 @@ const ruleset: any = {
         },
       },
     },
-    // RPC Code: RPC-Uri-V1-07, RPC-POST-V1-01
+    // RPC Code: RPC-Uri-V1-07, RPC-POST-V1-01, RPC-POST-V1-07
     PathForResourceAction: {
       description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
       message: "{{description}}",
@@ -744,6 +757,19 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-12
+    trackedExtensionResourcesAreNotAllowed: {
+      description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*~",
+      then: {
+        function: trackedExtensionResourcesAreNotAllowed,
       },
     },
 
