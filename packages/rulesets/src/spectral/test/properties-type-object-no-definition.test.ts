@@ -264,6 +264,29 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
         },
         description: "The resource management error additional info.",
       },
+      PropertiesAndAdditionalProperties: {
+        type: "object",
+        properties: {
+          additionalInfo: {
+            readOnly: true,
+            type: "array",
+            items: {
+              $ref: "#/definitions/ErrorAdditionalInfo",
+            },
+            "x-ms-identifiers": [],
+            description: "The error additional info.",
+          },
+        },
+        additionalProperties: {
+          readOnly: true,
+          type: "array",
+          items: {
+            type: "string",
+          },
+          description: "The additional info.",
+        },
+        description: "The resource management error additional info.",
+      },
     },
   }
   return linter.run(oasDoc1).then((results) => {

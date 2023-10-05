@@ -2296,8 +2296,11 @@ const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
         return [{ message: errorMessageNull, path }];
     }
     if (typeof definitionObject === "object") {
-        if (definitionObject.properties === undefined && definitionObject.additionalProperties === undefined)
-            return [{ message: errorMessageObject, path }];
+        if (definitionObject.properties === undefined) {
+            if (definitionObject.additionalProperties === undefined) {
+                return [{ message: errorMessageObject, path }];
+            }
+        }
     }
     for (const val of values) {
         if (typeof val === "object") {
@@ -2993,7 +2996,11 @@ const ruleset = {
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
-            given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
+            given: [
+                "$.definitions..[?(@property === 'type' && @ ==='object')]^",
+                "$.definitions..[?(@property === 'type' && @ === '')]^",
+                "$.definitions..[?(@property === 'undefined')]^",
+            ],
             then: {
                 function: propertiesTypeObjectNoDefinition,
             },
@@ -3192,7 +3199,7 @@ const ruleset = {
                 functionOptions: {
                     match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
                 },
-            }
+            },
         },
         RepeatedPathInfo: {
             description: "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",

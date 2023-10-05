@@ -271,7 +271,11 @@ const ruleset: any = {
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
+      given: [
+        "$.definitions..[?(@property === 'type' && @ ==='object')]^",
+        "$.definitions..[?(@property === 'type' && @ === '')]^",
+        "$.definitions..[?(@property === 'undefined')]^",
+      ],
       then: {
         function: propertiesTypeObjectNoDefinition,
       },
@@ -520,7 +524,7 @@ const ruleset: any = {
         functionOptions: {
           match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
         },
-      }
+      },
     },
 
     // RPC Code: RPC-Put-V1-05
