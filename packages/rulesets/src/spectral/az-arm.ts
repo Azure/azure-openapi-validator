@@ -269,6 +269,7 @@ const ruleset: any = {
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
       message: "{{error}}",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: [

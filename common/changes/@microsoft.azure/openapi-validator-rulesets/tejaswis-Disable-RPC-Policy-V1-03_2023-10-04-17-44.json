@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Update PatchPropertiesCorrespondsToPutProperties to run in staging only",
+      "comment": "Upgrade version to 1.2.2",
       "type": "patch"
     }
   ],
