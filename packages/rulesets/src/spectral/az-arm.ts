@@ -257,7 +257,8 @@ const ruleset: any = {
       message: "{{description}}",
       resolved: false,
       formats: [oas2],
-      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+      given:
+        "$.definitions..[?(@property !== 'tags' && @property !== 'DelegatedResources' && @property !== 'UserAssignedIdentities'&& @.additionalProperties)]",
       then: {
         function: falsy,
       },

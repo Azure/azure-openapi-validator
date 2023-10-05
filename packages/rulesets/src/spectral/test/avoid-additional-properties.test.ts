@@ -295,6 +295,34 @@ test("AvoidAdditionalProperties similar to swagger should find no errors", () =>
           },
         },
       },
+      UserAssignedIdentities: {
+        title: "User-Assigned Identities",
+        description:
+          "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        type: "object",
+        additionalProperties: {
+          $ref: "#/definitions/UserAssignedIdentity",
+          "x-nullable": true,
+        },
+      },
+      UserAssignedIdentity: {
+        type: "object",
+        description: "User assigned identity properties",
+        properties: {
+          principalId: {
+            description: "The principal ID of the assigned identity.",
+            format: "uuid",
+            type: "string",
+            readOnly: true,
+          },
+          clientId: {
+            description: "The client ID of the assigned identity.",
+            format: "uuid",
+            type: "string",
+            readOnly: true,
+          },
+        },
+      },
     },
   }
   return linter.run(oasDoc1).then((results) => {
