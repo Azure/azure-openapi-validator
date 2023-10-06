@@ -295,33 +295,29 @@ test("AvoidAdditionalProperties similar to swagger should find no errors", () =>
           },
         },
       },
-      UserAssignedIdentities: {
-        title: "User-Assigned Identities",
-        description:
-          "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+      ManagedServiceIdentity: {
+        description: "Managed service identity (system assigned and/or user assigned identities)",
         type: "object",
-        additionalProperties: {
-          $ref: "#/definitions/UserAssignedIdentity",
-          "x-nullable": true,
-        },
-      },
-      UserAssignedIdentity: {
-        type: "object",
-        description: "User assigned identity properties",
         properties: {
           principalId: {
-            description: "The principal ID of the assigned identity.",
+            readOnly: true,
             format: "uuid",
             type: "string",
-            readOnly: true,
+            description:
+              "The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
           },
-          clientId: {
-            description: "The client ID of the assigned identity.",
+          tenantId: {
+            readOnly: true,
             format: "uuid",
             type: "string",
-            readOnly: true,
+            description:
+              "The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+          },
+          type: {
+            $ref: "src/spectral/test/resources/lro-provisioning-state-specified.json#/definitions/ManagedServiceIdentityWithDelegation",
           },
         },
+        required: ["type"],
       },
     },
   }

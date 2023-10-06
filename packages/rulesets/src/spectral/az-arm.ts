@@ -255,10 +255,10 @@ const ruleset: any = {
       severity: "error",
       stagingOnly: true,
       message: "{{description}}",
-      resolved: false,
+      resolved: true,
       formats: [oas2],
       given:
-        "$.definitions..[?(@property !== 'tags' && @property !== 'DelegatedResources' && @property !== 'UserAssignedIdentities'&& @.additionalProperties)]",
+        "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @.additionalProperties)]",
       then: {
         function: falsy,
       },

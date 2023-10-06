@@ -2980,9 +2980,9 @@ const ruleset = {
             severity: "error",
             stagingOnly: true,
             message: "{{description}}",
-            resolved: false,
+            resolved: true,
             formats: [oas2],
-            given: "$.definitions..[?(@property !== 'tags' && @property !== 'DelegatedResources' && @property !== 'UserAssignedIdentities'&& @.additionalProperties)]",
+            given: "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @.additionalProperties)]",
             then: {
                 function: falsy,
             },
