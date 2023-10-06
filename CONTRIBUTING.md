@@ -436,13 +436,35 @@ and follow below steps to add a rule for azure rest api specs.
 - add a doc for the rule in 'docs', the rule doc file name is following kebab-case, contains following content:
 
 ```md
-# RuleName
+# <add RuleName>
+
+## Category
+
+ARM Error
+
+## Applies to
+
+ARM OpenAPI(swagger) specs
+
+## Related ARM Guideline Code
+
+-<add code, example: "-RPC-Uri-V1-04">
 
 ## Description
 
 <add the description for the rule.>
+
 ## How to fix
+
 <describe how to fix the violations.>
+
+## Good Examples
+
+<add valid json snippet>
+
+## Bad Examples
+
+<add invalid json snippet>
 ```
 
 ## Native rule
