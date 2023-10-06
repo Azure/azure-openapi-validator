@@ -448,7 +448,7 @@ ARM OpenAPI(swagger) specs
 
 ## Related ARM Guideline Code
 
--<add code, example: "-RPC-Uri-V1-04">
+-<add RPC code, example: "-RPC-Uri-V1-04">
 
 ## Description
 
