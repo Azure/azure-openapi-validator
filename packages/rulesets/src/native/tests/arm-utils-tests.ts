@@ -25,7 +25,7 @@ describe("ArmHelperTests", () => {
 
     assert.equal(allNestedResource.length, 8)
     assert.equal(allTopLevelResource.length, 13)
-    assert.equal(allCollectionInfo.length, 23)
-    assert.equal(allCollectionModel.size, 21)
+    assert.equal(allCollectionInfo.length, 24)
+    assert.equal(allCollectionModel.size, 22)
   })
 })

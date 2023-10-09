@@ -1,6 +1,29 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Wed, 16 Aug 2023 22:39:14 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2023 17:01:43 GMT and should not be manually modified.
+
+## 1.2.2
+Wed, 04 Oct 2023 17:01:43 GMT
+
+### Patches
+
+- Add EvenSegmentedPathForPutOperation rule that flags paths with PUT operation defined that do not end in {resourceType}/{resourceName}
+- Add test cases for path-for-resource-action rule
+- Add trackedExtensionResourcesAreNotAllowed rule that flags tracked extension resources, as extension resources may only be proxy
+- Exclude not fully qualified extension resource paths in TopLevelResourcesListBySubscription linter rule
+- Update PatchPropertiesCorrespondsToPutProperties to run in staging only
+- Delete RPC-POST-V1-02(SyncPostReturn) linter rule as it is covered by RPC-Async-V1-11(PostReturnCodes)
+- Change OperationsApiTenantLevelOnly to error for the path level instead of the operation level (#577)
+- Change ReservedResourceNamesAsEnum from an error to a warning and make it warn for the path level instead of the operation level (#575)
+- Add RPC codes to some existing rules
+- Change severity of PatchSkuProperty and PatchIdentityProperty to warning
+- Add a new rule RequestBodyMustExistForPutPatch that checks for the existence of a request body for a put or a patch operation.
+- Add new rule MissingSegmentsInNestedResourceListOperation, this rules checks if the nested resource type's List operation includes all the parent segments in its api path.
+- Modify PathForTrackedResourceTypes, this rule will check the path must be under a subscription and resource group for tracked resource types only.
+- Disable rule PropertiesTypeObjectNoDefinition in production pipeline
+- Add GetOperationMustNotBeLongRunning, this rule makes sure GET calls must not have LRO properties as GET calls are synchronous
+- Removed LroPostReturn (RPC-Post-V1-03) rule and updated PostResponseCodes rule with logic to flag POST 202 responses that have schemas
+- Add XmsLongRunningOperationProperty as new rule. This rules checks if any reponses headers have Location or Azure-AsyncOperation properties, then it must have x-ms-long-running-operation set to true.
 
 ## 1.2.0
 Wed, 16 Aug 2023 22:39:14 GMT

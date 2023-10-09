@@ -30,8 +30,15 @@ June 21, 2022
 
 ## How to fix the violation
 
-Fix the path for resource action as follow below pattern:
+Fix the path for resource action to match one of the following patterns:
+
+```json
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/Action"
+```
 
 ```json
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/Action"
+
+```json
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/nestedResourceType/{nestedResourceName}/Action"
 ```

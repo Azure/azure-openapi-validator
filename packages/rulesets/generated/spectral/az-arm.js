@@ -1,6 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
-import _ from 'lodash';
+import _, { isEmpty } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -182,6 +182,11 @@ const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
 function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
 }
+const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi");
+const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi");
+function isPathOfExtensionResource(path) {
+    return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg);
+}
 function getProperties(schema) {
     if (!schema) {
         return {};
@@ -235,6 +240,13 @@ function getProperty(schema, propName) {
         if (propName in schema.properties) {
             return schema.properties[propName];
         }
+    }
+    return undefined;
+}
+function findBodyParam(params) {
+    const isBody = (elem) => elem.name === "body" && elem.in === "body";
+    if (params && Array.isArray(params)) {
+        return params.filter(isBody).shift();
     }
     return undefined;
 }
@@ -1254,10 +1266,10 @@ const ruleset$1 = {
     },
 };
 
-function matchAnyPatterns(patterns, path) {
+function matchAnyPatterns$2(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
-function notMatchPatterns(patterns, path) {
+function notMatchPatterns$1(patterns, path) {
     return patterns.every((p) => !p.test(path));
 }
 function verifyResourceGroup(path) {
@@ -1274,26 +1286,26 @@ function verifySubscriptionId(path) {
     }
     return true;
 }
-function verifyResourceGroupScope(path) {
+function verifyResourceGroupScope$1(path) {
     const patterns = [
         /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
-function verifyResourceType(path) {
+function verifyResourceType$1(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
-function verifyNestResourceType(path) {
+function verifyNestResourceType$1(path) {
     const patterns = [
         /^.*\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
         /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
         /^.*\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
         /^.*\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
     ];
-    return notMatchPatterns(patterns, path);
+    return notMatchPatterns$1(patterns, path);
 }
 const verifyArmPath = createRulesetFunction({
     input: null,
@@ -1326,7 +1338,7 @@ const verifyArmPath = createRulesetFunction({
     const errors = [];
     const optionsHandlers = {
         resourceType: (fullPath) => {
-            if (!verifyResourceType(fullPath)) {
+            if (!verifyResourceType$1(fullPath)) {
                 errors.push({
                     message: `The path for the CURD methods do not contain a resource type.`,
                     path,
@@ -1334,7 +1346,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         nestedResourceType: (fullPath) => {
-            if (!verifyNestResourceType(fullPath)) {
+            if (!verifyNestResourceType$1(fullPath)) {
                 errors.push({
                     message: `The path for nested resource doest not meet the valid resource pattern.`,
                     path,
@@ -1358,7 +1370,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         resourceGroupScope: (fullPath) => {
-            if (!verifyResourceGroupScope(fullPath)) {
+            if (!verifyResourceGroupScope$1(fullPath)) {
                 errors.push({
                     message: "",
                     path,
@@ -1697,34 +1709,6 @@ const provisioningStateSpecifiedForLROPatch = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const lroPostReturn = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const responses = postOp.responses;
-    if (responses && (!responses["200"] || !responses["202"])) {
-        errors.push({
-            message: "A LRO POST operation must have both 200 & 202 return codes.",
-            path: path,
-        });
-    }
-    if (responses["200"] && !responses["200"].schema) {
-        errors.push({
-            message: "200 response for a LRO POST operation must have a response schema specified.",
-            path,
-        });
-    }
-    if (responses["202"] && responses["202"].schema) {
-        errors.push({
-            message: "202 response for a LRO POST operation must not have a response schema specified.",
-            path,
-        });
-    }
-    return errors;
-};
-
 const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     var _a;
     if (putOp === null || typeof putOp !== "object") {
@@ -1744,6 +1728,46 @@ const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
         }
     }
     return errors;
+};
+
+function matchAnyPatterns$1(patterns, path) {
+    return patterns.every((p) => p.test(path));
+}
+function verifyNestResourceType(path) {
+    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+function verifyResourceType(path) {
+    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+const validateSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
+        return [];
+    }
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
+    if (verifyNestResourceType(fullPath)) {
+        let count = 0;
+        for (const apiPath of Object.values(otherPaths)) {
+            if (verifyResourceType(apiPath)) {
+                if (fullPath.includes(apiPath)) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        if (count === 0) {
+            return [
+                {
+                    message: "A nested resource type's List operation must include all the parent segments in its api path.",
+                    ctx,
+                },
+            ];
+        }
+    }
+    return [];
 };
 
 const scopeParameter = "{scope}";
@@ -2076,6 +2100,80 @@ const PatchResponseCodes = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+function matchAnyPatterns(patterns, path) {
+    return patterns.some((p) => p.test(path));
+}
+function notMatchPatterns(invalidPatterns, path) {
+    return invalidPatterns.every((p) => !p.test(path));
+}
+function verifyResourceGroupScope(path) {
+    const patterns = [
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
+}
+function verifyNestResourceGroupScope(path) {
+    const invalidPatterns = [
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}(?:\/\w+\/(?!default)\w+){1,2}$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){1,2}(?:\/\w+\/(?!default)\w+)+$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/(?:\/\w+\/(default|{\w+})){0,3}{\w+}(?:\/{\w+})+.*$/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+(?:\/\w+\/(default|{\w+})){0,2}(?:\/\w+\/(?!default)\w+)+\/{\w+}.*$/gi,
+    ];
+    return notMatchPatterns(invalidPatterns, path);
+}
+function checkTrackedForPut(allParams, path) {
+    const bodyParam = allParams.find((p) => p.in === "body");
+    if (bodyParam) {
+        const properties = getProperties(bodyParam.schema);
+        if ("location" in properties) {
+            if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+function checkTrackedForGet(allParams, path) {
+    const properties = getProperties(allParams);
+    if ("location" in properties) {
+        if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+            return true;
+        }
+    }
+    return false;
+}
+const pathForTrackedResourceTypes = (pathItem, _opts, paths) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    if (pathItem["put"] && Array.isArray(pathItem["put"].parameters)) {
+        const allParams = [...pathItem["put"].parameters];
+        if (checkTrackedForPut(allParams, path)) {
+            errors.push({
+                message: "The path must be under a subscription and resource group for tracked resource types.",
+                path,
+            });
+        }
+    }
+    if (pathItem["get"]) {
+        const resp = Object.keys(pathItem.get.responses).find((code) => code.startsWith("2"));
+        if (!resp) {
+            return [];
+        }
+        const responseSchema = pathItem.get.responses[resp].schema || {};
+        if (checkTrackedForGet(responseSchema, path)) {
+            errors.push({
+                message: "The path must be under a subscription and resource group for tracked resource types.",
+                path,
+            });
+        }
+    }
+    return errors;
+};
+
 const pathSegmentCasing = (apiPaths, _opts, paths) => {
     if (apiPaths === null || typeof apiPaths !== 'object') {
         return [];
@@ -2112,7 +2210,7 @@ const LR_ERROR = "Long-running POST operations must have responses with 202 and 
 const LR_NO_SCHEMA_ERROR = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const PostResponseCodes = (postOp, _opts, ctx) => {
-    var _a, _b;
+    var _a, _b, _c;
     if (postOp === null || typeof postOp !== "object") {
         return [];
     }
@@ -2147,8 +2245,15 @@ const PostResponseCodes = (postOp, _opts, ctx) => {
                 okResponseCodeNoSchema = true;
             }
         }
-        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length || !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
+        else if (responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length ||
+            !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))) {
             wrongResponseCodes = true;
+        }
+        if ((_c = postOp.responses["202"]) === null || _c === void 0 ? void 0 : _c.schema) {
+            errors.push({
+                message: "202 response for a LRO POST operation must not have a response schema specified.",
+                path: path,
+            });
         }
         if (wrongResponseCodes) {
             errors.push({
@@ -2348,6 +2453,20 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
+    const errors = [];
+    const path = ctx.path;
+    const error = `The put or patch operation does not have a request body defined. This is not allowed. Please specify a request body for this operation.`;
+    const bodyParam = findBodyParam(putPatchOperationParameters);
+    if (bodyParam == undefined || bodyParam["schema"] == undefined || isEmpty(bodyParam["schema"])) {
+        errors.push({
+            message: error,
+            path: path,
+        });
+    }
+    return errors;
+};
+
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -2498,37 +2617,6 @@ const skuValidation = (skuSchema, opts, paths) => {
     return errors;
 };
 
-const SyncPostReturn = (postOp, _opts, ctx) => {
-    if (postOp === null || typeof postOp !== "object") {
-        return [];
-    }
-    if (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) {
-        return [];
-    }
-    const path = ctx.path || [];
-    const errors = [];
-    const responses = postOp.responses;
-    if (responses && (!(responses["200"] || responses["204"]) || !!(responses["200"] && responses["204"]))) {
-        errors.push({
-            message: "A synchronous POST operation must have either 200 or 204 return codes.",
-            path: path,
-        });
-    }
-    if (responses["200"] && !responses["200"].schema) {
-        errors.push({
-            message: "200 response for a synchronous POST operation must have a response schema specified.",
-            path,
-        });
-    }
-    if (responses["204"] && responses["204"].schema) {
-        errors.push({
-            message: "204 response for a synchronous POST operation must not have a response schema specified.",
-            path,
-        });
-    }
-    return errors;
-};
-
 const SYSTEM_DATA_CAMEL = "systemData";
 const SYSTEM_DATA_UPPER_CAMEL = "SystemData";
 const PROPERTIES = "properties";
@@ -2554,6 +2642,37 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
         ];
     }
     return [];
+};
+
+const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
+    var _a, _b, _c;
+    if (apiPath === null || typeof apiPath !== "string") {
+        return [];
+    }
+    const verbs = ["get", "put", "patch"];
+    const responseCodes = ["200", "201", "202"];
+    const path = ctx.path || [];
+    const errors = [];
+    if (isPathOfExtensionResource(apiPath)) {
+        const operationPaths = (_b = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved) === null || _b === void 0 ? void 0 : _b.paths[apiPath];
+        for (const verb of verbs) {
+            if (operationPaths[verb]) {
+                for (const responseCode of responseCodes) {
+                    const responseSchema = (_c = operationPaths[verb].responses[responseCode]) === null || _c === void 0 ? void 0 : _c.schema;
+                    if (responseSchema) {
+                        const locationProperty = getProperty(responseSchema, "location");
+                        if (locationProperty) {
+                            errors.push({
+                                message: `${apiPath} is an extension resource and ${responseCode} response schema in ${verb} operation includes location property. Extension resources of type tracked are not allowed.`,
+                                path: [...path, verb, responseCode],
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return errors;
 };
 
 const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
@@ -2674,6 +2793,32 @@ const withXmsResource = (putOperation, _opts, ctx) => {
     return errors;
 };
 
+const errorMessage = "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`";
+const responsesCodes = ["200", "201", "202", "204"];
+const verifyXMSLongRunningOperationProperty = (pathItem, _opts, paths) => {
+    var _a;
+    if (pathItem === null || typeof pathItem !== "object" || pathItem["x-ms-long-running-operation"] === true) {
+        return [];
+    }
+    const path = paths.path || [];
+    for (const code of responsesCodes) {
+        const headers = (_a = pathItem.responses[code]) === null || _a === void 0 ? void 0 : _a.headers;
+        if (headers) {
+            for (const headerValue of Object.keys(headers)) {
+                if (headerValue.toLowerCase() === "location" || headerValue.toLowerCase() === "azure-asyncoperation") {
+                    return [
+                        {
+                            message: errorMessage,
+                            path: path.concat(["responses", code, "headers", headerValue]),
+                        },
+                    ];
+                }
+            }
+        }
+    }
+    return;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -2772,6 +2917,17 @@ const ruleset = {
                 function: PostResponseCodes,
             },
         },
+        XMSLongRunningOperationProperty: {
+            description: "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
+            message: "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
+            severity: "error",
+            formats: [oas2],
+            resolved: true,
+            given: "$[paths,'x-ms-paths'].*[put,patch,post,delete]",
+            then: {
+                function: verifyXMSLongRunningOperationProperty,
+            },
+        },
         LroErrorContent: {
             description: "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
             message: "{{description}}",
@@ -2789,7 +2945,6 @@ const ruleset = {
         DeleteResponseCodes: {
             description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -2836,6 +2991,7 @@ const ruleset = {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
             message: "{{error}}",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
@@ -2887,10 +3043,38 @@ const ruleset = {
                 function: ParametersInPointGet,
             },
         },
+        ValidateSegmentsInNestedResourceListOperation: {
+            description: "A nested resource type's List operation must include all the parent segments in its api path.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*[get]^~",
+            then: {
+                function: validateSegmentsInNestedResourceListOperation,
+            },
+        },
+        GetOperationMustNotBeLongRunning: {
+            description: "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
+            severity: "error",
+            message: "{{description}}",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: [
+                "$[paths,'x-ms-paths'].*[get].x-ms-long-running-operation-options",
+                "$[paths,'x-ms-paths'].*[get][?(@property === 'x-ms-long-running-operation' && @ === true)]",
+            ],
+            then: {
+                function: falsy,
+            },
+        },
         PatchPropertiesCorrespondToPutProperties: {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -2984,17 +3168,30 @@ const ruleset = {
                 },
             },
         },
-        PathForPutOperation: {
-            description: "The path for 'put' operation must be under a subscription and resource group.",
+        PathForTrackedResourceTypes: {
+            description: "The path must be under a subscription and resource group for tracked resource types.",
             message: "{{description}}",
             severity: "error",
-            resolved: false,
+            stagingOnly: true,
+            resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[put]^~",
+            given: ["$[paths,'x-ms-paths'].*[get,put]^"],
             then: {
-                function: verifyArmPath,
+                function: pathForTrackedResourceTypes,
+            },
+        },
+        EvenSegmentedPathForPutOperation: {
+            description: "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
+            message: "{{description}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.put^~",
+            then: {
+                function: pattern,
                 functionOptions: {
-                    segmentToCheck: "resourceGroupScope",
+                    match: ".*/providers/\\w+.\\w+(/\\w+/{\\w+})+$",
                 },
             },
         },
@@ -3073,26 +3270,16 @@ const ruleset = {
                 function: putRequestResponseScheme,
             },
         },
-        SyncPostReturn: {
-            description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
+        RequestBodyMustExistForPutPatch: {
+            description: "Every Put and Patch operation must have a request body",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post]",
+            given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
             then: {
-                function: SyncPostReturn,
-            },
-        },
-        LroPostReturn: {
-            description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-            then: {
-                function: lroPostReturn,
+                function: requestBodyMustExistForPutPatch,
             },
         },
         ParametersInPost: {
@@ -3210,6 +3397,18 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        trackedExtensionResourcesAreNotAllowed: {
+            description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*~",
+            then: {
+                function: trackedExtensionResourcesAreNotAllowed,
             },
         },
         SystemDataDefinitionsCommonTypes: {

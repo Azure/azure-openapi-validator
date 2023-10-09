@@ -7,7 +7,6 @@ beforeAll(async () => {
   linters.PathContainsResourceType = await linterForRule("PathContainsResourceType")
   linters.PathContainsResourceGroup = await linterForRule("PathContainsResourceGroup")
   linters.PathContainsSubscriptionId = await linterForRule("PathContainsSubscriptionId")
-  linters.PathForPutOperation = await linterForRule("PathForPutOperation")
   linters.PathForNestedResource = await linterForRule("PathForNestedResource")
   linters.PathForResourceAction = await linterForRule("PathForResourceAction")
 })
@@ -304,78 +303,6 @@ test("PathContainsSubscription should find errors for invalid path for thirs par
   })
 })
 
-test("PathForPutOperation should find errors for invalid path", () => {
-  // invalid paths:
-  //  1 <scope>/providers/Microsoft.Compute/{vmName}
-  //  2 <scope>/providers/{resourceName}/Microsoft.MyNs...
-  //  3 <scope>/providers/ResourceType/Microsoft.MyNs...
-  const oasDoc = {
-    swagger: "2.0",
-    paths: {
-      "/{scope}/providers/Microsoft.Compute/virtualMachine/{vmName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-      "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-    },
-  }
-  return linters.PathForPutOperation.run(oasDoc).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The path for 'put' operation must be under a subscription and resource group.")
-    expect(results[0].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.MyNs/resourceType/{resourceName}")
-  })
-})
-
-test("PathForPutOperation should find errors for invalid path for thirs party RPs", () => {
-  // invalid paths:
-  //  1 <scope>/providers/PureStorage.Krypton/{vmName}
-  //  2 <scope>/providers/{resourceName}/PureStorage.Krypton...
-  //  3 <scope>/providers/ResourceType/PureStorage.Krypton...
-  const oasDoc = {
-    swagger: "2.0",
-    paths: {
-      "/{scope}/providers/PureStorage.Krypton/virtualMachine/{vmName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-      "/subscriptions/{subscriptionId}/providers/PureStorage.Krypton/resourceType/{resourceName}": {
-        put: {
-          tags: ["SampleTag"],
-          operationId: "Foo_CreateOrUpdate",
-          description: "Test Description",
-          parameters: [],
-          responses: {},
-        },
-      },
-    },
-  }
-  return linters.PathForPutOperation.run(oasDoc).then((results) => {
-    expect(results.length).toBe(1)
-    expect(results[0].message).toContain("The path for 'put' operation must be under a subscription and resource group.")
-    expect(results[0].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/providers/PureStorage.Krypton/resourceType/{resourceName}"
-    )
-  })
-})
-
 test("PathForNestedResource should find errors for invalid path", () => {
   // invalid paths:
   //  1 <scope>/providers/Microsoft.Compute/{vmName}
@@ -540,6 +467,36 @@ test("PathForResourceAction should find errors for invalid path and no errors fo
   const oasDoc = {
     swagger: "2.0",
     paths: {
+      //valid uri's
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/addSong": {
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/addSong": {
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addArtistName":
+        {
+          post: {
+            tags: ["SampleTag"],
+            operationId: "Foo_CreateOrUpdate",
+            description: "Test Description",
+            parameters: [],
+            responses: {},
+          },
+        },
+      //invalid uri's
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music": {
         post: {
           tags: ["SampleTag"],
@@ -558,7 +515,7 @@ test("PathForResourceAction should find errors for invalid path and no errors fo
           responses: {},
         },
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/addSong": {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/addSong": {
         post: {
           tags: ["SampleTag"],
           operationId: "Foo_CreateOrUpdate",
@@ -567,10 +524,20 @@ test("PathForResourceAction should find errors for invalid path and no errors fo
           responses: {},
         },
       },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/addArtistName":
+        {
+          post: {
+            tags: ["SampleTag"],
+            operationId: "Foo_CreateOrUpdate",
+            description: "Test Description",
+            parameters: [],
+            responses: {},
+          },
+        },
     },
   }
   return linters.PathForResourceAction.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(4)
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music"
     )
@@ -579,6 +546,14 @@ test("PathForResourceAction should find errors for invalid path and no errors fo
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}"
     )
     expect(results[1].message).toContain("Path for 'post' method on a resource type MUST follow valid resource naming.")
+    expect(results[2].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/addSong"
+    )
+    expect(results[2].message).toContain("Path for 'post' method on a resource type MUST follow valid resource naming.")
+    expect(results[3].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/addArtistName"
+    )
+    expect(results[3].message).toContain("Path for 'post' method on a resource type MUST follow valid resource naming.")
   })
 })
 
