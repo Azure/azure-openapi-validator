@@ -247,23 +247,27 @@ Once your PR is merged, do the following:
 If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
 and hence Production LintDiff, you need to do the following:
 
-- In the PR with your changes, increase the version number of the changed packages using [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/).
-  - A package encompasses a directory in which the **package.json** is located: see [npm doc on package.json](https://docs.npmjs.com/cli/v10/configuring-npm/package-json).
-  If your changes are made to the files under [packages/rulesets](https://github.com/Azure/azure-openapi-validator/tree/main/packages/rulesets),
-  then you need to update/bump the version in [packages/rulesets/package.json](https://github.com/Azure/azure-openapi-validator/blob/main/packages/rulesets/package.json#L3).
+- In the PR with your changes, increase the version number of the *changed packages* using [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/).
+  - A *package* encompasses a directory in which a **`package.json`** file is located (see the [npm docs on package.json](https://docs.npmjs.com/cli/v10/configuring-npm/package-json)
+  for more info). The package version is defined in this file.
+  - Only update the version number for the relevant package(s) you want to deploy. For example, if your changes are made
+  to the files under the [packages/rulesets](https://github.com/Azure/azure-openapi-validator/tree/main/packages/rulesets)
+  directory, then update the version in [packages/rulesets/package.json](https://github.com/Azure/azure-openapi-validator/blob/main/packages/rulesets/package.json#L3).
   The same applies to all the other package directories in [packages directory](https://github.com/Azure/azure-openapi-validator/tree/main/packages).
     - Example for changes made to files under rulesets folder - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
     - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest)
     [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
   - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
-  update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. Do
-  not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
+  update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. **Do
+  not increase the major version.** Only patch or minor, as applicable. If your change justifies major version change,
   ensure the tool owner reviewed your PR.
   - Rush will also generate a changelog from the individual change files, deleting the individual files in the process.
   - Note: `rush version --bump` will update *all* of the changed packages. If you wish only to update one package (e.g.,
    `@microsoft.azure/openapi-validator-rulesets`), discard all of the changes Rush generated for the other packages.
-   Make sure to revert the version number(s) for those packages you do not intend to update in the dependencies/devDependencies
-   of the `package.json` for the package you are updating.
+   Make sure to **revert the version number(s) for packages you do not intend to update** in `dependencies` and/or `devDependencies`
+   of the **`package.json`** for the package you are updating.
+    - You can use [`git restore`](https://git-scm.com/docs/git-restore) to quickly discard changes. For example,
+    `git restore packages/azure-openapi-validator/autorest/*` would restore all the files in the autorest package directory.
 
 Once your PR is merged:
 
