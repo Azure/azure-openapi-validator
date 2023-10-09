@@ -248,9 +248,13 @@ If you want your changes to be deployed to [production pipeline](https://dev.azu
 and hence Production LintDiff, you need to do the following:
 
 - In the PR with your changes, increase the version number of the changed packages using [`rush version --bump`](https://rushjs.io/pages/commands/rush_version/).
-  - A package encompasses a directory in which the **package.json** is located: see [npm doc on package.json](https://docs.npmjs.com/cli/v10/configuring-npm/package-json). If your changes are made to the files under [packages/rulesets](https://github.com/Azure/azure-openapi-validator/tree/d7f944602773bd2006970dec4167860b5dc21cf5/packages/rulesets), then you need to update/bump the version in [packages/rulesets/package.json](https://github.com/Azure/azure-openapi-validator/blob/d7f944602773bd2006970dec4167860b5dc21cf5/packages/rulesets/package.json#L3). The same applies to all the other package directories in [packages directory](https://github.com/Azure/azure-openapi-validator/tree/d7f944602773bd2006970dec4167860b5dc21cf5/packages).
-      - Example for changes made to files under rulesets folder - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
-      - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/d7f944602773bd2006970dec4167860b5dc21cf5/packages/azure-openapi-validator/autorest) - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
+  - A package encompasses a directory in which the **package.json** is located: see [npm doc on package.json](https://docs.npmjs.com/cli/v10/configuring-npm/package-json).
+  If your changes are made to the files under [packages/rulesets](https://github.com/Azure/azure-openapi-validator/tree/main/packages/rulesets),
+  then you need to update/bump the version in [packages/rulesets/package.json](https://github.com/Azure/azure-openapi-validator/blob/main/packages/rulesets/package.json#L3).
+  The same applies to all the other package directories in [packages directory](https://github.com/Azure/azure-openapi-validator/tree/main/packages).
+    - Example for changes made to files under rulesets folder - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
+    - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest)
+    [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
   - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
   update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. Do
   not increase the major version. Only patch or minor, as applicable. If your change justifies major version change,
