@@ -5,7 +5,7 @@ import { ISwaggerInventory, IFileSystem } from "./types"
 import { defaultFileSystem, normalizePath } from "./utils"
 const DepGraph = require("dependency-graph").DepGraph
 export class SwaggerInventory implements ISwaggerInventory {
-  private inventory = new DepGraph()
+  private inventory = new DepGraph({ circular: true })
   private referenceCache = new Map<string, OpenapiDocument>()
   private allDocs = new Map<string, any>()
   private docRecords: Record<string, any> | undefined = undefined
@@ -76,11 +76,7 @@ export class SwaggerInventory implements ISwaggerInventory {
         this.inventory.addNode(ref)
         await this.cacheDocument(ref)
       }
-      // If a spec references itself we don't need to add it as a dependency and
-      // cause the dependency graph to fail because it thinks there is a cycle.
-      if (specPath != ref) {
-        this.inventory.addDependency(specPath, ref)
-      }
+      this.inventory.addDependency(specPath, ref)
     }
     return document
   }
