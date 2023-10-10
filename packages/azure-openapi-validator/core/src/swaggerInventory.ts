@@ -76,7 +76,11 @@ export class SwaggerInventory implements ISwaggerInventory {
         this.inventory.addNode(ref)
         await this.cacheDocument(ref)
       }
-      this.inventory.addDependency(specPath, ref)
+      // If a spec references itself we don't need to add it as a dependency and
+      // cause the dependency graph to fail because it thinks there is a cycle.
+      if (specPath != ref) {
+        this.inventory.addDependency(specPath, ref)
+      }
     }
     return document
   }
