@@ -456,15 +456,28 @@ and follow below steps to add a rule for azure rest api specs.
 
 ## Category
 
+<add one of the following>
+SDK Error
+SDK Warning
+RPaaS Error
+RPaaS Warning
 ARM Error
+ARM Warning
+Data Plane Error
+Data Plane Warning
+ARM & Data Plane Error
+ARM & Data Plane Warning
 
 ## Applies to
 
+<add one of the following>
 ARM OpenAPI(swagger) specs
+Data Plane OpenAPI specs
+ARM & Data Plane OpenAPI specs
 
 ## Related ARM Guideline Code
 
--<add RPC code, example: "-RPC-Uri-V1-04">
+<add RPC code for ARM linter rules, example: "-RPC-Uri-V1-04". This is not required for data plane linter rules>
 
 ## Description
 
