@@ -87,6 +87,21 @@ test("ResourceNameRestriction should find no errors", () => {
           responses: {},
         },
       },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/bar/{barName}": {
+        parameters: [
+          {
+            name: "fooName",
+            in: "path",
+            required: true,
+            type: "string",
+            pattern: "[a-zA-Z_0-9]+",
+            "x-ms-parameter-location": "method",
+          },
+        ],
+        get: {
+          responses: {},
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {

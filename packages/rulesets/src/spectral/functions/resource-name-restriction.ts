@@ -12,7 +12,7 @@ export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
     let parameters: any[] = []
     const method = Object.keys(pathItem).find((k) => k !== "parameters")
     if (method) {
-      const operationParameters = pathItem[method].parameters
+      const operationParameters = pathItem[method].parameters || []
       parameters = parameters.concat(operationParameters)
     }
     if (pathItem.parameters) {
