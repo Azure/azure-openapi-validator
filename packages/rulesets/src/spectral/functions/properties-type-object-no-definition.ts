@@ -19,7 +19,11 @@ export const propertiesTypeObjectNoDefinition: any = (definitionObject: any, opt
   }
 
   if (typeof definitionObject === "object") {
-    if (definitionObject.properties === undefined) return [{ message: errorMessageObject, path }]
+    if (definitionObject.properties === undefined) {
+      if (definitionObject.additionalProperties === undefined) {
+        return [{ message: errorMessageObject, path }]
+      }
+    }
   }
 
   for (const val of values) {

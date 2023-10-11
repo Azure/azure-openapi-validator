@@ -274,7 +274,11 @@ const ruleset: any = {
       stagingOnly: true,
       resolved: true,
       formats: [oas2],
-      given: "$.definitions..[?(@property === 'type' && @ ==='object' || @ ==='' || @property === 'undefined')]^",
+      given: [
+        "$.definitions..[?(@property === 'type' && @ ==='object')]^",
+        "$.definitions..[?(@property === 'type' && @ === '')]^",
+        "$.definitions..[?(@property === 'undefined')]^",
+      ],
       then: {
         function: propertiesTypeObjectNoDefinition,
       },
