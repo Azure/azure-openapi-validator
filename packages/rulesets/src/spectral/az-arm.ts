@@ -251,13 +251,14 @@ const ruleset: any = {
 
     // RPC Code: RPC-Policy-V1-05, RPC-Put-V1-23
     AvoidAdditionalProperties: {
-      description: "The use of additionalProperties is not allowed except for user defined tags on tracked resources.",
+      description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
       stagingOnly: true,
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
-      given: "$.definitions..[?(@property !== 'tags' && @.additionalProperties)]",
+      given:
+        "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @.additionalProperties)]",
       then: {
         function: falsy,
       },
