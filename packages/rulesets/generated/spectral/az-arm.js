@@ -2819,6 +2819,22 @@ const verifyXMSLongRunningOperationProperty = (pathItem, _opts, paths) => {
     return;
 };
 
+const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
+    if (swaggerObj === null) {
+        return [];
+    }
+    const path = paths.path || [];
+    if (swaggerObj["x-ms-pageable"])
+        return [];
+    else
+        return [
+            {
+                message: "`x-ms-pageable` extension must be specified for LIST APIs.",
+                path: path,
+            },
+        ];
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -3053,6 +3069,18 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*[get]^~",
             then: {
                 function: validateSegmentsInNestedResourceListOperation,
+            },
+        },
+        XmsPageableForListCalls: {
+            description: "`x-ms-pageable` extension must be specified for LIST APIs.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}'))].get",
+            then: {
+                function: xmsPageableForListCalls,
             },
         },
         GetOperationMustNotBeLongRunning: {
