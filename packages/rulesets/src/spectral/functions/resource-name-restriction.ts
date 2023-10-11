@@ -10,14 +10,22 @@ export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
 
   function getPathParameter(pathItem: any, paramName: string) {
     let parameters: any[] = []
-    const method = Object.keys(pathItem).find((k) => k !== "parameters")
-    if (method) {
+    // Get all the methods defined 
+    const methods = Object.keys(pathItem).filter((k) => k !== "parameters")
+
+    for (const method of methods) {
       const operationParameters = pathItem[method].parameters
-      parameters = parameters.concat(operationParameters)
+      // Add parameters if exists
+      if (operationParameters) {
+        parameters = parameters.concat(operationParameters)
+      }
     }
+    // Concatenate path parameters if exists
     if (pathItem.parameters) {
       parameters = parameters.concat(pathItem.parameters)
     }
+
+    // Filter down to desired path parameter
     return parameters.find((p) => p.in === "path" && p.name === paramName)
   }
 

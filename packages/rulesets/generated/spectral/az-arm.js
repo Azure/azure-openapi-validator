@@ -2510,10 +2510,12 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
     const errors = [];
     function getPathParameter(pathItem, paramName) {
         let parameters = [];
-        const method = Object.keys(pathItem).find((k) => k !== "parameters");
-        if (method) {
+        const methods = Object.keys(pathItem).filter((k) => k !== "parameters");
+        for (const method of methods) {
             const operationParameters = pathItem[method].parameters;
-            parameters = parameters.concat(operationParameters);
+            if (operationParameters) {
+                parameters = parameters.concat(operationParameters);
+            }
         }
         if (pathItem.parameters) {
             parameters = parameters.concat(pathItem.parameters);
