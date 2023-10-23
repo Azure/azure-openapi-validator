@@ -24,7 +24,7 @@
   * [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
     + [Production LintDiff CI check](#production-lintdiff-ci-check)
     + [Staging LintDiff CI check](#staging-lintdiff-ci-check)
-- [How to run LintDiff locally from sources](#how-to-run-lintdiff-locally-from-sources)
+- [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-source)
 - [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 - [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
@@ -469,9 +469,9 @@ The process for determining the command for `~[Staging] Swagger LintDiff` is the
 - You should expect exactly the same command, with one difference: for staging, the `<version-tag>`
   is always going to be `beta`.
 
-# How to run LintDiff locally from sources
+# How to run LintDiff locally from source
 
-To run LintDiff locally from sources, you should follow the guidance given in
+To run LintDiff locally from source, you should follow the guidance given in
 `How to locally reproduce a LintDiff failure occurring on a PR`
 but with one major difference: instead of passing as `--use=` the value of `@microsoft.azure/openapi-validator@<version-tag>`, you will point to your local LintDiff installation.
 
