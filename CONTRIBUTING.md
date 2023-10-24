@@ -4,16 +4,27 @@
 - [Prerequisites to build locally](#prerequisites-to-build-locally)
 - [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
 - [How to add and roll out new linter rules](#how-to-add-and-roll-out-new-linter-rules)
+  * [Communicate the addition of a rule to API reviewers](#communicate-the-addition-of-a-rule-to-api-reviewers)
+  * [Ensure TypeSpec supports the new rule](#ensure-typespec-supports-the-new-rule)
+  * [Add a new rule to the staging pipeline](#add-a-new-rule-to-the-staging-pipeline)
+  * [Determine which rules are ready for release](#determine-which-rules-are-ready-for-release)
+  * [Create a release PR and generate the changelog](#create-a-release-pr-and-generate-the-changelog)
+  * [Create a release tag](#create-a-release-tag)
+  * [Build and publish the release](#build-and-publish-the-release)
+  * [Send the changelog out to partners](#send-the-changelog-out-to-partners)
+  * [Monitor the new rules and roll forward to disable bad rules](#monitor-the-new-rules-and-roll-forward-to-disable-bad-rules)
 - [How to deploy your changes](#how-to-deploy-your-changes)
   * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
   * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+    + [Create a release PR](#create-a-release-pr)
+    + [Build and publish the release to npm](#build-and-publish-the-release-to-npm)
   * [Verify the deployed changes](#verify-the-deployed-changes)
 - [How to locally reproduce a LintDiff failure occurring on a PR](#how-to-locally-reproduce-a-lintdiff-failure-occurring-on-a-pr)
   * [How to install AutoRest](#how-to-install-autorest)
   * [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
     + [Production LintDiff CI check](#production-lintdiff-ci-check)
     + [Staging LintDiff CI check](#staging-lintdiff-ci-check)
-- [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-sources)
+- [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-source)
 - [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 - [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
@@ -32,7 +43,6 @@
   * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 # Contributing
 
@@ -99,123 +109,203 @@ have more control over the process and debug any issues.
 
 # How to add and roll out new linter rules
 
-This section describes the process for adding a new rule to a ruleset. The rule will first be added to
-the staging pipeline, where it will not affect the ability to merge a PR. While the rule is in the
-staging pipeline, the author can verify that the rule is working correctly and not incorrectly marking
-violations. After verifying, the author can add the rule to the production pipeline so that the specs repo
-pipeline will block specs that violate the new rule from merging into any of the main/production branches.
+This section describes the process for adding a new rule to a ruleset.
+
+## Communicate the addition of a rule to API reviewers
+
+If you are adding a new ARM (control plane) rule, use the [ARM linter rules teams channel](https://teams.microsoft.com/l/channel/19%3a4f661242c446452e895359cc3ef45125%40thread.tacv2/ARM%2520linter%2520rules?groupId=0cab4ce9-7691-42ae-82e3-460d4346a710&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47)
+to discuss the rule.
+
+## Ensure TypeSpec supports the new rule
+
+Before a rule is implemented (especially any error-severity rules), TypeSpec should support creating specs that follow
+the rule. Reach out to the TypeSpec team via the [TypeSpec teams channel](https://aka.ms/typespec/discussions).
+
+## Add a new rule to the staging pipeline
+
+You should first add the rule to the staging pipeline of the API specs repos, where it will not block API specs from
+being merged to production. While the rule is in the staging pipeline, you can verify the rule is correctly
+marking violations.
+
+To add a rule to the staging pipeline:
 
 1. Ensure the new rule is set to run [only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 
 2. Merge the new rule to the main branch. Once merged, your new rule will start running in the staging pipeline. You can
 verify the rule is running with the instructions in [Verify the deployed changes](#verify-the-deployed-changes).
 
-3. Review Staging LintDiff pipeline build logs to see if the rules work correctly.
+## Determine which rules are ready for release
 
-    1. [Get access to CloudMine](https://dev.azure.com/azure-sdk/internal/_wiki/wikis/internal.wiki/621/Telemetry)
-    to see the build logs for the public and private API specs repos
+Use data from staging pipeline runs to determine if a rule is ready for release.
 
-    2. Use Kusto to find PRs that ran your new rule:
+To review Staging LintDiff pipeline build logs to see if the rules work correctly,
 
-        ```kusto
-        // edit these as desired
-        let beginTime = ago(7d);
-        let violationTimeBin = 10m;
-        let includeStagingPipeline = true;
-        let includeProdPipeline = false;
-        let ruleName = "ReservedResourceNamesModelAsEnum";
-        // do not edit these
-        let prodPipelineName = "Azure.azure-rest-api-specs-pipeline";
-        let stagingPipelineName = "Azure.azure-rest-api-specs-pipeline-staging";
-        let lintDiffLogId = 62;
-        let lintDiffLogMessageStart = '[{"type":"Result"';
-        Build
-        | where StartTime > beginTime
-        | extend PipelineName = parse_json(Data).definition.name
-        | where PipelineName in (iff(includeStagingPipeline, stagingPipelineName, prodPipelineName), iff(includeProdPipeline, prodPipelineName, stagingPipelineName))
-        | extend SplitBranch = split(SourceBranch, "/")
-        | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
-        | extend BuildLink = tostring(parse_json(Data)._links.web.href)
-        | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
-        | join kind=inner
-          (
-          BuildLogLine
-          | where Timestamp > beginTime
-          | where LogId == lintDiffLogId
-          | where Message startswith_cs lintDiffLogMessageStart
-          | extend LintDiffViolations = parse_json(Message)
-          | mv-expand LintDiffViolations
-          | extend ViolationCode = tostring(LintDiffViolations.code)
-          | where ViolationCode == ruleName
-          )
-          on BuildId
-        | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
-        | sort by count_ desc
-        ```
+1. [Get access to CloudMine](https://dev.azure.com/azure-sdk/internal/_wiki/wikis/internal.wiki/621/Telemetry)
+to see the build logs for the public and private API specs repos
 
-        This will give you a list of the builds where the spec violated your rule and the count of violations for that build.
-        It includes a link to the PR as well. Using this list, visit the build page, click on LintDiff to view the logs, and
-        see where the rule was violated, you can then find that line in the spec by viewing the PR.
+2. Use Kusto to find PRs that ran your new rule:
 
-    3. Wait until your rule has run on at least 10 different PRs and you have verified there are no false positives
+    ```kusto
+    // edit these as desired
+    let beginTime = ago(7d);
+    let violationTimeBin = 10m;
+    let includeStagingPipeline = true;
+    let includeProdPipeline = false;
+    let ruleName = "ReservedResourceNamesModelAsEnum";
+    // do not edit these
+    let prodPipelineName = "Azure.azure-rest-api-specs-pipeline";
+    let stagingPipelineName = "Azure.azure-rest-api-specs-pipeline-staging";
+    let lintDiffLogId = 62;
+    let lintDiffLogMessageStart = '[{"type":"Result"';
+    Build
+    | where StartTime > beginTime
+    | extend PipelineName = parse_json(Data).definition.name
+    | where PipelineName in (iff(includeStagingPipeline, stagingPipelineName, prodPipelineName), iff(includeProdPipeline, prodPipelineName, stagingPipelineName))
+    | extend SplitBranch = split(SourceBranch, "/")
+    | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
+    | extend BuildLink = tostring(parse_json(Data)._links.web.href)
+    | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
+    | join kind=inner
+      (
+      BuildLogLine
+      | where Timestamp > beginTime
+      | where LogId == lintDiffLogId
+      | where Message startswith_cs lintDiffLogMessageStart
+      | extend LintDiffViolations = parse_json(Message)
+      | mv-expand LintDiffViolations
+      | extend ViolationCode = tostring(LintDiffViolations.code)
+      | where ViolationCode == ruleName
+      )
+      on BuildId
+    | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
+    | sort by count_ desc
+    ```
 
-    4. It might also be helpful to view more than only the LintDiff results. You can use this Kusto query to see violations
-    of your new rule for an API spec without taking into account the previous version of the spec:
+    This will give you a list of the builds where the spec violated your rule and the count of violations for that build.
+    It includes a link to the PR as well. Using this list, visit the build page, click on LintDiff to view the logs, and
+    see where the rule was violated, you can then find that line in the spec by viewing the PR.
 
-        ```kusto
-        // edit these as desired
-        let beginTime = ago(7d);
-        let violationTimeBin = 10m;
-        let includeStagingPipeline = true;
-        let includeProdPipeline = false;
-        let ruleName = "ReservedResourceNamesModelAsEnum";
-        // do not edit these
-        let prodPipelineName = "Azure.azure-rest-api-specs-pipeline";
-        let stagingPipelineName = "Azure.azure-rest-api-specs-pipeline-staging";
-        let lintDiffLogId = 62;
-        let lintDiffLogMessageStart = "          \"code\":";
-        Build
-        | where StartTime > beginTime
-        | extend PipelineName = parse_json(Data).definition.name
-        | where PipelineName in (iff(includeStagingPipeline, stagingPipelineName, prodPipelineName), iff(includeProdPipeline, prodPipelineName, stagingPipelineName))
-        | extend SplitBranch = split(SourceBranch, "/")
-        | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
-        | extend BuildLink = tostring(parse_json(Data)._links.web.href)
-        | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
-        | join kind=inner 
-          (
-          BuildLogLine
-          | where Timestamp > beginTime
-          | where LogId == lintDiffLogId
-          | where Message startswith_cs lintDiffLogMessageStart
-          | extend ViolationCode=trim_end('",', substring(Message, indexof(Message, ': "')+3))
-          | where ViolationCode == ruleName
-          )
-          on BuildId
-        | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
-        | sort by count_ desc 
-        ```
+3. Wait until your rule has run on **at least 10 different PRs** and you have verified there are no false positives
 
-    5. Additionally, look for any violations of your rule that come from TypeSpec-generated API specs. You can
-    determine that an API spec is TypeSpec-generated if it has the following under the `info` property:
+4. It might also be helpful to view more than only the LintDiff results. You can use this Kusto query to see violations
+of your new rule for an API spec without taking into account the previous version of the spec:
 
-        ```json
-        "x-typespec-generated": [
-          {
-            "emitter": "@azure-tools/typespec-autorest"
-          }
-        ]
-        ```
+    ```kusto
+    // edit these as desired
+    let beginTime = ago(7d);
+    let violationTimeBin = 10m;
+    let includeStagingPipeline = true;
+    let includeProdPipeline = false;
+    let ruleName = "ReservedResourceNamesModelAsEnum";
+    // do not edit these
+    let prodPipelineName = "Azure.azure-rest-api-specs-pipeline";
+    let stagingPipelineName = "Azure.azure-rest-api-specs-pipeline-staging";
+    let lintDiffLogId = 62;
+    let lintDiffLogMessageStart = "          \"code\":";
+    Build
+    | where StartTime > beginTime
+    | extend PipelineName = parse_json(Data).definition.name
+    | where PipelineName in (iff(includeStagingPipeline, stagingPipelineName, prodPipelineName), iff(includeProdPipeline, prodPipelineName, stagingPipelineName))
+    | extend SplitBranch = split(SourceBranch, "/")
+    | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
+    | extend BuildLink = tostring(parse_json(Data)._links.web.href)
+    | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
+    | join kind=inner 
+      (
+      BuildLogLine
+      | where Timestamp > beginTime
+      | where LogId == lintDiffLogId
+      | where Message startswith_cs lintDiffLogMessageStart
+      | extend ViolationCode=trim_end('",', substring(Message, indexof(Message, ': "')+3))
+      | where ViolationCode == ruleName
+      )
+      on BuildId
+    | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
+    | sort by count_ desc 
+    ```
 
-3. Communicate the addition of your rule to all relevant stakeholders. This includes RP developers, the TypeSpec team, and
-API reviewers. Ensure that the TypeSpec team approves of the new rule, as TypeSpec needs to be in sync with the rules. You
-should work with a PM to determine the timeline for communication and addition of the new rule.
+5. Additionally, look for any violations of your rule that come from TypeSpec-generated API specs. You can
+determine that an API spec is TypeSpec-generated if it has the following under the `info` property:
 
-4. Once you have verified the rule works correctly and communicated its addition to stakeholders, roll it out to the
-production pipeline by removing the staging-only setting from step one and creating a release with the steps in
-[Deploy to Prod LintDiff](#deploy-to-prod-lintdiff).
+    ```json
+    "x-typespec-generated": [
+      {
+        "emitter": "@azure-tools/typespec-autorest"
+      }
+    ]
+    ```
 
-5. If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
+## Create a release PR and generate the changelog
+
+After verifying the rule is working as intended, add the rule to the production pipeline so that API specs that violate
+the rule will be blocked from merging into production branches.
+
+Follow the steps under [Create a release PR](#create-a-release-pr) to create a PR for your release.
+
+## Create a release tag
+
+Once your release PR is merged, you can create a release tag in GitHub. This will make it easier to look up what changes
+were part of the release in the future.
+
+From GitHub, [create a new release](https://github.com/Azure/azure-openapi-validator/releases/new) of **`azure-openapi-validator`**.
+Make sure to put the changelog in for the release notes.
+
+## Build and publish the release
+
+Once you have verified the rule works correctly, follow the steps under [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+to build and publish the release.
+
+## Send the changelog out to partners
+
+Draft an email with all the release notes for ARM partners. Have a team member review the email, and send it out. Below
+is a sample email:
+
+> Hello ARM Partners,
+>
+> We are excited to announce a new release of the Azure OpenAPI validator, a tool that helps you validate your OpenAPI
+> specifications for Azure Resource Manager (ARM) APIs. This tool is automatically run as part of the “Swagger LintDiff”
+> pipeline for ARM API specifications in the public and private Azure REST API Specifications repositories. This release
+> includes new linter rules and updates/fixes to existing linter rules that will help you improve the quality and
+> consistency of your APIs.
+>
+> The new linter rules are as follows:
+>
+> - PutResponseCodes
+> - PostResponseCodes
+> - LatestVersionOfCommonTypesMustBeUsed
+> - PatchPropertiesCorrespondToPutProperties
+> - DeleteResponseCodes
+> - AvoidAdditionalProperties
+> - ReservedResourceNamesModelAsEnum
+> - OperationsApiTenantLevelOnly
+>
+> The updates/fixes to existing linter rules address the following issues:
+>
+> - False positives and false negatives
+> - Rule severity levels
+> - Rule documentation
+> - Rule messages
+>
+> Please note that the changes in this release do not introduce any new requirements that were not already there. They
+> should have previously been caught by the ARM API reviewers but now are being enforced via the linter rules. This update
+> means that you may see some new validation errors or warnings when you run the validator on your existing OpenAPI
+> specifications. We recommend that you fix these issues as soon as possible to ensure that your APIs comply with the ARM
+> API standards and best practices.
+>
+> You can find more details about the linter rules in the documentation. The full changelog is attached to this message.
+> You can also access the validator online here.
+>
+> We appreciate your feedback and suggestions on how to improve the Azure OpenAPI validator. Please feel free to reach
+> out to us in the API Spec Review channel, ask general questions with the ‘arm-api’ tag on Stack Overflow, or open an
+> issue in the sdk-tools repo with the prefix ‘[LintDiff]’ in the title.
+>
+> Thank you for your continued partnership and collaboration,
+>
+> The ARM RPC (Resource Provider Contract) Governance team
+
+## Monitor the new rules and roll forward to disable bad rules
+
+If, after deploying to production, you find the rule is not behaving correctly, move it back to the staging pipeline
 while you fix it by following the steps in [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging).
 Make sure to follow the step for deploying your changes to ensure the rule stops running in production. You should then validate
 the rule is not running in production with as described in
@@ -244,6 +334,8 @@ Once your PR is merged, do the following:
 
 ## Deploy to Prod LintDiff
 
+### Create a release PR
+
 If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
 and hence Production LintDiff, you need to do the following:
 
@@ -268,6 +360,8 @@ and hence Production LintDiff, you need to do the following:
    of the **`package.json`** for the package you are updating.
     - You can use [`git restore`](https://git-scm.com/docs/git-restore) to quickly discard changes. For example,
     `git restore packages/azure-openapi-validator/autorest/*` would restore all the files in the autorest package directory.
+
+### Build and publish the release to npm
 
 Once your PR is merged:
 
@@ -375,9 +469,9 @@ The process for determining the command for `~[Staging] Swagger LintDiff` is the
 - You should expect exactly the same command, with one difference: for staging, the `<version-tag>`
   is always going to be `beta`.
 
-# How to run LintDiff locally from sources
+# How to run LintDiff locally from source
 
-To run LintDiff locally from sources, you should follow the guidance given in
+To run LintDiff locally from source, you should follow the guidance given in
 `How to locally reproduce a LintDiff failure occurring on a PR`
 but with one major difference: instead of passing as `--use=` the value of `@microsoft.azure/openapi-validator@<version-tag>`, you will point to your local LintDiff installation.
 
