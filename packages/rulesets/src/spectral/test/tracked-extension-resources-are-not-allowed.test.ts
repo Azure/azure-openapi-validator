@@ -4,7 +4,7 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("trackedExtensionResourcesAreNotAllowed")
+  linter = await linterForRule("TrackedExtensionResourcesAreNotAllowed")
   return linter
 })
 

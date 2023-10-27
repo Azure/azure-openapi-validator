@@ -3434,7 +3434,7 @@ const ruleset = {
                 function: noDuplicatePathsForScopeParameter,
             },
         },
-        trackedExtensionResourcesAreNotAllowed: {
+        TrackedExtensionResourcesAreNotAllowed: {
             description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
             message: "{{error}}",
             severity: "error",
