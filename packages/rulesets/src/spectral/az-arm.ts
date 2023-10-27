@@ -7,7 +7,7 @@ import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
-import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
+import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -46,6 +46,7 @@ import { securityDefinitionsStructure } from "./functions/security-definitions-s
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
+import { tenantLevelApiShouldGetException } from "./functions/tenant-level-api-should-get-exception"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
@@ -779,8 +780,21 @@ const ruleset: any = {
         function: noDuplicatePathsForScopeParameter,
       },
     },
+    // RPC Code: RPC-Uri-V1-11
+    TenantLevelApiShouldGetException: {
+      description: "For every namespace the first implementation of a tenant level API MUST get an exception approved by the PAS team.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*~",
+      then: {
+        function: tenantLevelApiShouldGetException,
+      },
+    },
     // RPC Code: RPC-Uri-V1-12
-    trackedExtensionResourcesAreNotAllowed: {
+    TrackedExtensionResourcesAreNotAllowed: {
       description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
       message: "{{error}}",
       severity: "error",
