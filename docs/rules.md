@@ -351,7 +351,7 @@ Please refer to [formdata.md](./formdata.md) for details.
 
 List GET endpoints (collection GET) must only have `value` and `nextLink` in `properties`.
 
-Please refer to [get-collection-only-has-value-nextlink.md](./get-collection-only-has-value-nextlink.md) for details.
+Please refer to [get-collection-only-has-value-and-next-link.md](./get-collection-only-has-value-and-next-link.md) for details.
 
 ### GetCollectionResponseSchema
 

@@ -7,7 +7,7 @@ import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
-import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
+import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -780,7 +780,7 @@ const ruleset: any = {
       },
     },
     // RPC Code: RPC-Uri-V1-12
-    trackedExtensionResourcesAreNotAllowed: {
+    TrackedExtensionResourcesAreNotAllowed: {
       description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
       message: "{{error}}",
       severity: "error",
