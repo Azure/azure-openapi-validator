@@ -98,7 +98,7 @@ const ruleset: any = {
       message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
       severity: "error",
       formats: [oas2],
-      given: "$.paths[*][*].responses[?(@property == '202')]^^",
+      given: "$.paths[*][put,patch,post,delete].responses[?(@property == '202')]^^",
       then: {
         field: "x-ms-long-running-operation",
         function: truthy,
