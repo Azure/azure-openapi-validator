@@ -1348,7 +1348,7 @@ const verifyArmPath = createRulesetFunction({
         nestedResourceType: (fullPath) => {
             if (!verifyNestResourceType$1(fullPath)) {
                 errors.push({
-                    message: `The path for nested resource doest not meet the valid resource pattern.`,
+                    message: `The path for nested resource doest not meet the valid resource pattern. There is one exception for extension resources with fully qualified path and the author can go ahead and suppress the error(look at https://github.com/Azure/azure-openapi-validator/blob/main/docs/path-for-nested-resource.md#pathfornestedresource for more details) `,
                     path,
                 });
             }
