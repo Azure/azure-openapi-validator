@@ -380,11 +380,12 @@ The GET calls are synchronous and it MUST NOT have
 
 Please refer to [get-operation-must-not-be-long-running.md](./get-operation-must-not-be-long-running.md) for details.
 
-### GetOperation200
+### GetResponseCodes
 
 The get operation should only return 200, also it should not be a long running operation.
+In addition, it can return 202 only if it has location header defined (i.e, if it is a polling action).
 
-Please refer to [get-operation200.md](./get-operation200.md) for details.
+Please refer to [get-response-codes.md](./get-response-codes.md) for details.
 
 ### GuidUsage
 

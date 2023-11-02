@@ -892,7 +892,7 @@ const ruleset$1 = {
             message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
             severity: "error",
             formats: [oas2],
-            given: "$.paths[*][*].responses[?(@property == '202')]^^",
+            given: "$.paths[*][put,patch,post,delete].responses[?(@property == '202')]^^",
             then: {
                 field: "x-ms-long-running-operation",
                 function: truthy,
@@ -2058,7 +2058,7 @@ const LR_PATCH_RESPONSES = ["200", "202", "default"];
 const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 and default return codes. They also must not have other response codes.";
 const LR_ERROR$1 = "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes.";
 const EmptyResponse_ERROR$2 = "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running.";
-const PatchResponseCodes = (patchOp, _opts, ctx) => {
+const patchResponseCodes = (patchOp, _opts, ctx) => {
     var _a;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
@@ -3033,13 +3033,13 @@ const ruleset = {
                 function: falsy,
             },
         },
-        GetOperation200: {
-            description: "The get operation should only return 200.",
+        GetResponseCodes: {
+            description: "The GET operation should only return 200. In addition, it can return 202 only if it has \"Location\" header defined",
             message: "{{description}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
+            given: ["$[paths,'x-ms-paths'].*[get].responses['201','203','204']"],
             then: {
                 function: falsy,
             },
@@ -3150,7 +3150,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch]"],
             then: {
-                function: PatchResponseCodes,
+                function: patchResponseCodes,
             },
         },
         LroPatch202: {

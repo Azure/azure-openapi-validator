@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Update RPC-GET-V1-01(GetOperation200) to allow GET with 202 response code and RPC-Post-V1-09(LroExtension) to exclude GET from x-ms-long-running-operation presence validation",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
