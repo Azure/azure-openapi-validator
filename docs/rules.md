@@ -862,8 +862,9 @@ Please refer to [path-contains-subscription-id.md](./path-contains-subscription-
 ### PathForNestedResource
 
 Path for CRUD methods on a nested resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/NestedResourceType/{nestedResourceName}'.
+
 There is one exception where extension resources with fully qualified path of the below format can exist
-"/providers/Microsoft.Management/managementGroups/{mgId}/{resourceProviderScope}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/groupQuotaRequests/{requestId}"
+"/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/{resourceProviderScope}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/groupQuotaRequests/{requestId}"
 In such cases the author would need to suppress the error being flagged using https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
 
 Please refer to [path-for-nested-resource.md](./path-for-nested-resource.md) for details.
