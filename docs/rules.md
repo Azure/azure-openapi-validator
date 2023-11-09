@@ -495,7 +495,8 @@ Please refer to [lro-error-content.md](./lro-error-content.md) for details.
 
 ### LroExtension
 
-Operations with a 202 response should specify `x-ms-long-running-operation: true`.
+Operations with a 202 response should specify `x-ms-long-running-operation: true`. 
+GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined
 
 Please refer to [lro-extension.md](./lro-extension.md) for details.
 

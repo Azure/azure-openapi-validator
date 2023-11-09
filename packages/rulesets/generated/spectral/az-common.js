@@ -658,8 +658,8 @@ const ruleset = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`. GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.  GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined",
             severity: "error",
             formats: [oas2],
             given: "$.paths[*][put,patch,post,delete].responses[?(@property == '202')]^^",

@@ -888,8 +888,8 @@ const ruleset$1 = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`. GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.  GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined",
             severity: "error",
             formats: [oas2],
             given: "$.paths[*][put,patch,post,delete].responses[?(@property == '202')]^^",
@@ -1476,7 +1476,7 @@ const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
 const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
 const LR_ERROR$2 = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
-const EmptyResponse_ERROR$3 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
+const EmptyResponse_ERROR$4 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1487,7 +1487,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
     if (responses.length == 0) {
         errors.push({
-            message: EmptyResponse_ERROR$3,
+            message: EmptyResponse_ERROR$4,
             path: path,
         });
         return errors;
@@ -1547,6 +1547,40 @@ const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
         }
     }
     return [];
+};
+
+const GET_RESPONSES = ["200", "202", "default"];
+const GET_RESPONSE_ERROR = "GET operation must have response codes 200 and default. In addition, can have 202 if the GET represents the location header polling url.";
+const EmptyResponse_ERROR$3 = "GET operation response codes must be non-empty. It must have response codes 200 and default. In addition, can have 202 if the GET represents the location header polling url.";
+const getResponseCodes = (getOp, _opts, ctx) => {
+    var _a;
+    if (getOp === null || typeof getOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const responses = Object.keys((_a = getOp === null || getOp === void 0 ? void 0 : getOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR$3,
+            path: path,
+        });
+        return errors;
+    }
+    if (!responses.includes("200")) {
+        errors.push({
+            message: GET_RESPONSE_ERROR,
+            path: path,
+        });
+        return errors;
+    }
+    if (!responses.every((response) => GET_RESPONSES.includes(response))) {
+        errors.push({
+            message: GET_RESPONSE_ERROR,
+            path: path,
+        });
+    }
+    return errors;
 };
 
 function checkApiVersion(param) {
@@ -3034,14 +3068,14 @@ const ruleset = {
             },
         },
         GetResponseCodes: {
-            description: "The GET operation should only return 200. In addition, it can return 202 only if it has \"Location\" header defined",
-            message: "{{description}}",
+            description: 'The GET operation should only return 200. In addition, it can return 202 only if it has "Location" header defined',
+            message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get].responses['201','203','204']"],
+            given: ["$[paths,'x-ms-paths'].*[get]"],
             then: {
-                function: falsy,
+                function: getResponseCodes,
             },
         },
         GetCollectionOnlyHasValueAndNextLink: {
