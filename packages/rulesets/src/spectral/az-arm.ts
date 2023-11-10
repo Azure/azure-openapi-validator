@@ -8,6 +8,7 @@ import collectionObjectPropertiesNaming from "./functions/collection-object-prop
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
+import { getResponseCodes } from "./functions/get-response-codes"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -28,7 +29,7 @@ import { ParametersInPointGet } from "./functions/parameters-in-point-get"
 import { ParametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
-import { PatchResponseCodes } from "./functions/patch-response-codes"
+import { patchResponseCodes } from "./functions/patch-response-codes"
 import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
@@ -302,18 +303,20 @@ const ruleset: any = {
     },
     // github issue https://github.com/Azure/azure-openapi-validator/issues/331
     // Get operation should return 200
-    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
-    // so here on check if the 200 return '201','202','203'
+    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly
+    // https://github.com/Azure/azure-openapi-validator/issues/549
+    // GET can return 202 only if it is a polling action & has Location header defined. LroLocationHeader rule already checks if 202 response has Location header
+    // so here just check for non 200, 202 response codes i.e, '201','203','204'
     // RPC Code: RPC-Get-V1-01
-    GetOperation200: {
-      description: "The get operation should only return 200.",
-      message: "{{description}}",
+    GetResponseCodes: {
+      description: 'The GET operation should only return 200. In addition, it can return 202 only if it has "Location" header defined',
+      message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
+      given: ["$[paths,'x-ms-paths'].*[get]"],
       then: {
-        function: falsy,
+        function: getResponseCodes,
       },
     },
 
@@ -447,7 +450,7 @@ const ruleset: any = {
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch]"],
       then: {
-        function: PatchResponseCodes,
+        function: patchResponseCodes,
       },
     },
 

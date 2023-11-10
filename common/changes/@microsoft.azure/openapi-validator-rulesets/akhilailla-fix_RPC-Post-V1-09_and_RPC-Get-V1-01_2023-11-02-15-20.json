@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Update RPC-GET-V1-01(GetResponseCodes) to allow GET with 202 response code if the GET represents the location header polling url. Update RPC-Post-V1-09(LroExtension) to exclude GET from x-ms-long-running-operation presence validation",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

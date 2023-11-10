@@ -10,7 +10,7 @@ const LR_ERROR =
 const EmptyResponse_ERROR =
   "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running."
   
-export const PatchResponseCodes = (patchOp: any, _opts: any, ctx: any) => {
+export const patchResponseCodes = (patchOp: any, _opts: any, ctx: any) => {
   if (patchOp === null || typeof patchOp !== "object") {
     return []
   }
