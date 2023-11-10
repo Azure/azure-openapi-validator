@@ -380,11 +380,12 @@ The GET calls are synchronous and it MUST NOT have
 
 Please refer to [get-operation-must-not-be-long-running.md](./get-operation-must-not-be-long-running.md) for details.
 
-### GetOperation200
+### GetResponseCodes
 
 The get operation should only return 200, also it should not be a long running operation.
+In addition, it can return 202 only if it has location header defined (i.e, if it is a polling action).
 
-Please refer to [get-operation200.md](./get-operation200.md) for details.
+Please refer to [get-response-codes.md](./get-response-codes.md) for details.
 
 ### GuidUsage
 
@@ -494,7 +495,8 @@ Please refer to [lro-error-content.md](./lro-error-content.md) for details.
 
 ### LroExtension
 
-Operations with a 202 response should specify `x-ms-long-running-operation: true`.
+Operations with a 202 response should specify `x-ms-long-running-operation: true`. 
+GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined
 
 Please refer to [lro-extension.md](./lro-extension.md) for details.
 
