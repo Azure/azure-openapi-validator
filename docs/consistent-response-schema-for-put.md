@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 - RPC-Put-V1-29
 
 ## Description
-A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial put and the subsequent reputs. The schema represented by the response must always represent the same resource. 
+A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial PUT and the subsequent rePUTs. The schema represented by the response must always represent the same resource. 
 
 ## How to fix
 
