@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Add RPC-Put-V1-29. The response schema of the 200 and 201 status codes of Put operation must be the same.",
+      "comment": "Add ConsistentResponseSchemaForPut (RPC-Put-V1-29) rule. The response schema of the 200 and 201 status codes of Put operation must be the same.",
       "type": "patch"
     }
   ],

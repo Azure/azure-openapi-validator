@@ -1467,7 +1467,7 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-const consistentputresponsebody = (pathItem, _opts, paths) => {
+const consistentResponseSchemaForPut = (pathItem, _opts, paths) => {
     var _a, _b, _c;
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -1475,7 +1475,7 @@ const consistentputresponsebody = (pathItem, _opts, paths) => {
     const path = paths.path || [];
     const errors = [];
     const createResponseSchema = (op) => { var _a, _b; return (_b = (_a = op === null || op === void 0 ? void 0 : op.responses) === null || _a === void 0 ? void 0 : _a["201"]) === null || _b === void 0 ? void 0 : _b.schema; };
-    const resourceSchema = createResponseSchema(pathItem.put) || createResponseSchema(pathItem.patch);
+    const resourceSchema = createResponseSchema(pathItem.put);
     if (resourceSchema) {
         const responseSchema = (_c = (_b = (_a = pathItem["put"]) === null || _a === void 0 ? void 0 : _a.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema;
         if (responseSchema && responseSchema !== resourceSchema) {
@@ -3244,29 +3244,7 @@ const ruleset = {
             formats: [oas2],
             given: "$.paths.*",
             then: {
-                function: consistentputresponsebody,
-            },
-        },
-        SyncPostReturn: {
-            description: "A synchronous Post operation should return 200 with response schema or 204 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post]",
-            then: {
-                function: SyncPostReturn,
-            },
-        },
-        LroPostReturn: {
-            description: "A long running Post operation should return 200 with response schema and 202 without response schema.",
-            message: "{{error}}",
-            severity: "error",
-            resolved: true,
-            formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*[post].[?(@property === 'x-ms-long-running-operation' && @ === true)]^",
-            then: {
-                function: lroPostReturn,
+                function: consistentResponseSchemaForPut,
             },
         },
         ParametersInPost: {

@@ -163,7 +163,7 @@ Please refer to [consistent-response-body.md](./consistent-response-body.md) for
 
 ### ConsistentResponseSchemaForPut
 
-The response schema must not vary between the initial put and the subsequent reputs. 
+A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial put and the subsequent reputs. The schema represented by the response must always represent the same resource. 
 
 Please refer to [consistent-response-schema-for-put.md](./consistent-response-schema-for-put.md) for details.
 

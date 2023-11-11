@@ -6,7 +6,7 @@ import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
-import consistentputresponsebody from "./functions/consistent-put-response-body"
+import consistentResponseSchemaForPut from "./functions/consistent-response-schema-for-put"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-nextlink"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
@@ -596,7 +596,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$.paths.*",
       then: {
-        function: consistentputresponsebody,
+        function: consistentResponseSchemaForPut,
       },
     },
 
