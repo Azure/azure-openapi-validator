@@ -13,7 +13,7 @@ const PUT = "put"
 const PARAMETERS = "parameters"
 
 export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
-  if (pathItem === null || typeof pathItem !== "object") {
+  if (pathItem === null || typeof pathItem !== "object" || pathItem[PATCH] === undefined || pathItem[PUT] === undefined) {
     return []
   }
 
@@ -23,11 +23,15 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   // array of all the patch body param properties
   // let patchBodyPropertiesList: any = []
   // let putBodyPropertiesList: any = []
-  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema,[]))
-  const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema,[]))
+  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters
+    ?.filter(PARAM_IN_BODY)
+    .map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []))
+  const putBodyProperties: any[] = pathItem[PUT]?.parameters
+    ?.filter(PARAM_IN_BODY)
+    .map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []))
 
-  const patchBodyPropertiesEmpty: boolean = patchBodyProperties.length < 1
-  const putBodyPropertiesEmpty: boolean = putBodyProperties.length < 1
+  const patchBodyPropertiesEmpty: boolean = patchBodyProperties?.length < 1
+  const putBodyPropertiesEmpty: boolean = putBodyProperties?.length < 1
 
   //patch without at least one body properties => error
   if (patchBodyPropertiesEmpty) {
@@ -53,7 +57,7 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   //considering only the first element of patchBodyProperties & putBodyProperties is because there will only be one body param
   const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual)
   // there is at least one property present in the patch body that is not present in the the put body => error
-  if (patchBodyPropertiesNotInPutBody.length > 0) {
+  if (patchBodyPropertiesNotInPutBody?.length > 0) {
     patchBodyPropertiesNotInPutBody.forEach((missingProperty) =>
       errors.push({
         message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,

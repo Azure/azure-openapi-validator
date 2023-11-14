@@ -953,3 +953,165 @@ test("PatchPropertiesCorrespondToPutProperties should find no errors when patch 
     expect(results.length).toBe(0)
   })
 })
+
+test("PatchPropertiesCorrespondToPutProperties should not find error when patch doesnt exist", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}":
+        {
+          put: {
+            tags: ["NetworkWatchers"],
+            operationId: "NetworkWatchers_CreateOrUpdate",
+            description: "Creates or updates a network watcher in the specified resource group.",
+            parameters: [
+              {
+                name: "parameters",
+                in: "body",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+                description: "Parameters that define the network watcher resource.",
+              },
+            ],
+            responses: {
+              "200": {
+                description: "Update successful. The operation returns the resulting network watcher resource.",
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+              },
+              "201": {
+                description: "Create successful. The operation returns the resulting network watcher resource.",
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+              },
+              default: {
+                description: "Error response describing why the operation failed.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+          },
+          patch: {
+            tags: ["NetworkWatchers"],
+            operationId: "NetworkWatchers_UpdateTags",
+            description: "Updates a network watcher tags.",
+            parameters: [
+              {
+                name: "parameters",
+                in: "body",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+                description: "Parameters supplied to update network watcher tags.",
+              },
+            ],
+            responses: {
+              "200": {
+                description: "Update successful. The operation returns the resulting network watcher resource.",
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+              },
+              default: {
+                description: "Error response describing why the operation failed.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+          },
+        },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}":
+        {
+          put: {
+            tags: ["PacketCaptures"],
+            operationId: "PacketCaptures_Create",
+            description: "Create and start a packet capture on the specified VM.",
+            parameters: [
+              {
+                name: "parameters",
+                in: "body",
+                required: true,
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+                description: "Parameters that define the create packet capture operation.",
+              },
+            ],
+            responses: {
+              "201": {
+                description: "Request successful. The operation returns the resulting packet capture session.",
+                schema: {
+                  $ref: "#/definitions/PacketCapture",
+                },
+              },
+              default: {
+                description: "Error response describing why the operation failed.",
+                schema: {
+                  $ref: "#/definitions/ErrorResponse",
+                },
+              },
+            },
+            "x-ms-long-running-operation": true,
+            "x-ms-long-running-operation-options": {
+              "final-state-via": "azure-async-operation",
+            },
+          },
+        },
+    },
+    definitions: {
+      ErrorResponse: {
+        description: "The error object.",
+        properties: {
+          error: {
+            title: "Error",
+            description: "The error details object.",
+          },
+        },
+      },
+      PacketCapture: {
+        properties: {
+          properties: {
+            "x-ms-client-flatten": true,
+            $ref: "#/definitions/PacketCaptureParameters",
+            description: "Properties of the packet capture.",
+          },
+        },
+        required: ["properties"],
+        description: "Parameters that define the create packet capture operation.",
+      },
+      PacketCaptureParameters: {
+        properties: {
+          scope: {
+            $ref: "#/definitions/PacketCaptureMachineScope",
+            description: "A list of AzureVMSS instances",
+          },
+        },
+        required: ["target", "storageLocation"],
+        description: "Parameters that define the create packet capture operation.",
+      },
+      PacketCaptureMachineScope: {
+        type: "object",
+        properties: {
+          include: {
+            type: "array",
+            description: "List of AzureVMSS instances to run packet capture on.",
+            items: {
+              type: "string",
+            },
+          },
+        },
+        description: "A list of AzureVMSS",
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
