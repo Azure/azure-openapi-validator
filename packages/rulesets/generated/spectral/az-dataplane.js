@@ -643,6 +643,8 @@ const ruleset$1 = {
             description: "Operation should have a summary or description.",
             message: "Operation should have a summary or description.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "TODO",
             given: [
                 "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
                 "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -661,6 +663,8 @@ const ruleset$1 = {
             description: "All schemas should have a description or title.",
             message: "Schema should have a description or title.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "covered by TSP's 'documentation-required' rule",
             formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
@@ -671,6 +675,8 @@ const ruleset$1 = {
             description: "All parameters should have a description.",
             message: "Parameter should have a description.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "covered by TSP's 'documentation-required' rule",
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",
@@ -985,6 +991,8 @@ const ruleset$1 = {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
             severity: "error",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "TODO",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
@@ -1942,6 +1950,8 @@ const ruleset = {
     rules: {
         AdditionalPropertiesAndProperties: {
             description: "Don't specify additionalProperties as a sibling of properties.",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "TODO",
             severity: "warn",
             formats: [oas2, oas3],
             given: "$..[?(@object() && @.type === 'object' && @.properties)]",
@@ -2064,6 +2074,8 @@ const ruleset = {
         Nullable: {
             description: "Avoid the use of x-nullable.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "TODO",
             formats: [oas2, oas3],
             resolved: false,
             given: "$..x-nullable",
@@ -2190,6 +2202,8 @@ const ruleset = {
             description: "All schema properties should have a description.",
             message: "Property should have a description.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "TODO",
             resolved: false,
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
@@ -2201,6 +2215,8 @@ const ruleset = {
             description: "All schema properties should have a defined type.",
             message: "Property should have a defined type.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "TODO",
             resolved: false,
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
@@ -2249,6 +2265,8 @@ const ruleset = {
             description: "Schema names should be Pascal case.",
             message: "Schema name should be Pascal case.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "covered by TSP's 'casing-style' rule",
             formats: [oas2],
             given: "$.definitions.*~",
             then: {

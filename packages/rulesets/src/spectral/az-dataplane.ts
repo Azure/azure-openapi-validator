@@ -24,6 +24,8 @@ const ruleset: any = {
   rules: {
     AdditionalPropertiesAndProperties: {
       description: "Don't specify additionalProperties as a sibling of properties.",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "TODO",
       severity: "warn",
       formats: [oas2, oas3],
       given: "$..[?(@object() && @.type === 'object' && @.properties)]",
@@ -146,6 +148,8 @@ const ruleset: any = {
     Nullable: {
       description: "Avoid the use of x-nullable.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "TODO",
       formats: [oas2, oas3],
       resolved: false,
       given: "$..x-nullable",
@@ -272,6 +276,8 @@ const ruleset: any = {
       description: "All schema properties should have a description.",
       message: "Property should have a description.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "TODO",
       resolved: false,
       given: "$..properties[?(@object() && @.$ref == undefined)]",
       then: {
@@ -284,6 +290,8 @@ const ruleset: any = {
       description: "All schema properties should have a defined type.",
       message: "Property should have a defined type.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "TODO",
       resolved: false,
       given: "$..properties[?(@object() && @.$ref == undefined)]",
       then: {
@@ -332,6 +340,8 @@ const ruleset: any = {
       description: "Schema names should be Pascal case.",
       message: "Schema name should be Pascal case.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "covered by TSP's 'casing-style' rule",
       formats: [oas2],
       given: "$.definitions.*~",
       then: {

@@ -1,16 +1,26 @@
-/* eslint-disable import/no-duplicates */
 import { fileURLToPath } from "url"
-import { createFileOrFolderUri, resolveUri } from "@azure-tools/uri"
-import { getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
-import { OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
-import { spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
+import { resolveUri } from "@azure-tools/uri"
+import { OpenApiTypes, getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
+import {
+  SpectralRulesetPayload,
+  deleteRulesPropertiesInPayloadNotValidForSpectralRules,
+  disableRulesInRuleset,
+  getNamesOfRulesInPayloadWithPropertySetToTrue,
+  // spectralRulesets,
+} from "@microsoft.azure/openapi-validator-rulesets"
 import { Resolver } from "@stoplight/json-ref-resolver"
-import { Spectral, Ruleset } from "@stoplight/spectral-core"
-import { DiagnosticSeverity } from "@stoplight/types"
+import { IResolver } from "@stoplight/json-ref-resolver/types"
+import { Ruleset, Spectral } from "@stoplight/spectral-core"
 import { safeLoad } from "js-yaml"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
-import { JsonPath, Message } from "./jsonrpc/types"
-import { convertLintMsgToAutoRestMsg, getOpenapiTypeStr, isCommonTypes } from "./plugin-common"
+import { getOpenapiTypeStr, isCommonTypes } from "./plugin-common"
+import {
+  catchSpectralRunErrors,
+  getRulesetPayload,
+  ifNotStagingRunDisableRulesInStagingOnly,
+  printRuleNames,
+  runSpectral,
+} from "./spectral-plugin-utils"
 import { cachedFiles } from "."
 
 export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): Promise<void> {
@@ -19,69 +29,34 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     Text: `spectralPluginFunc: Enter`,
   })
 
-  const files: string[] = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
+  // openApiSpecFiles is an array of 'input-file' paths originating from given AutoRest README API version tag, for example:
+  // https://github.com/Azure/azure-rest-api-specs/blob/b273d97aa44a84088bab144a8bcebeb07f827238/specification/storage/resource-manager/readme.md#tag-package-2023-01
+  // Example value of suffix of one entry in openApiSpecFiles:
+  // specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
+  const openApiSpecFiles: string[] = (await initiator.ListInputs()).filter((f) => !isCommonTypes(f))
   const openapiType: string = await getOpenapiTypeStr(initiator)
   const isStagingRun: boolean = await initiator.GetValue("is-staging-run")
 
-  const readFile = async (fileUri: string) => {
-    let file = cachedFiles.get(fileUri)
-    if (!file) {
-      file = await initiator.ReadFile(fileUri)
-      if (!file) {
-        throw new Error(`Could not read file: ${fileUri} .`)
-      }
-      cachedFiles.set(fileUri, file)
-    }
-    return file
-  }
-
   const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
-  const [ruleset, rulesetWithRpcGuidelineCode, namesOfRulesInStagingOnly]: [Ruleset, any, string[]] = await getRuleSet(resolvedOpenapiType)
 
-  ifNotStagingRunThenDisableStagingOnlyRules(isStagingRun, initiator, ruleset, namesOfRulesInStagingOnly)
+  const {
+    rulesetPayload,
+    rulesetForManualSpecs,
+    rulesetForTypeSpecGeneratedSpecs,
+  }: {
+    rulesetPayload: SpectralRulesetPayload
+    rulesetForManualSpecs: Ruleset
+    rulesetForTypeSpecGeneratedSpecs: Ruleset
+  } = await getRulesets(initiator, resolvedOpenapiType, isStagingRun)
 
-  printRuleNames(initiator, ruleset, resolvedOpenapiType)
-
-  for (const file of files) {
-    if (file.includes("common-types/resource-management")) {
-      continue
-    }
-
-    const resolveFile = (uri: any) => {
-      const ref = uri.href()
-      const fileUri = isUriAbsolute(ref) ? ref : resolveUri(file, ref)
-      const content = readFile(fileUri)
-      return content
-    }
-    const resolver = new Resolver({
-      resolvers: {
-        file: {
-          resolve: resolveFile,
-        },
-        http: {
-          resolve: resolveFile,
-        },
-        https: {
-          resolve: resolveFile,
-        },
-      },
-    })
-    const spectral = new Spectral({ resolver })
-    spectral.setRuleset(ruleset)
-
-    initiator.Message({
-      Channel: "information",
-      Text: `spectralPluginFunc: Validating '${file}'`,
-    })
-
-    try {
-      const openapiDefinitionDocument = await readFile(file)
-      const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
-      const normalizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
-      await runSpectral(rulesetWithRpcGuidelineCode, openapiDefinitionObject, normalizedFile, initiator.Message.bind(initiator), spectral)
-    } catch (e) {
-      catchSpectralRunErrors(file, e, initiator)
-    }
+  for (const openApiSpecFile of openApiSpecFiles) {
+    await validateOpenApiSpecFileUsingSpectral(
+      initiator,
+      rulesetPayload,
+      rulesetForManualSpecs,
+      rulesetForTypeSpecGeneratedSpecs,
+      openApiSpecFile
+    )
   }
 
   initiator.Message({
@@ -90,189 +65,114 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
   })
 }
 
-function ifNotStagingRunThenDisableStagingOnlyRules(
-  isStagingRun: boolean,
+async function getRulesets(
   initiator: IAutoRestPluginInitiator,
-  ruleset: Ruleset,
-  namesOfRulesInStagingOnly: string[]
+  resolvedOpenapiType: OpenApiTypes,
+  isStagingRun: boolean
+): Promise<{
+  rulesetPayload: SpectralRulesetPayload
+  rulesetForManualSpecs: Ruleset
+  rulesetForTypeSpecGeneratedSpecs: Ruleset
+}> {
+  const rulesetPayload: SpectralRulesetPayload = await getRulesetPayload(initiator, resolvedOpenapiType)
+  const namesOfRulesInStagingOnly: string[] = getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "stagingOnly")
+  const namesOfRulesDisabledForTypespec: string[] = getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "disableForTypeSpec")
+
+  // We need two of rulesetPayloads:
+  // - The original, to prepare it as argument for spectral Rulesets. See deletePropertiesNotValidForSpectralRules for more.
+  // - A copy, with all properties on it, so we can access the rpcGuidelineCode property of each rule when post-processing
+  //   Spectral run results.
+  // Note: the original, not copy, must be used as input to Ruleset constructor, as the way we
+  // obtain the copy here makes it not suitable for use as input to Ruleset constructor.
+  const rulesetPayloadCopy: SpectralRulesetPayload = JSON.parse(JSON.stringify(rulesetPayload))
+  deleteRulesPropertiesInPayloadNotValidForSpectralRules(rulesetPayload)
+
+  const rulesetForManualSpecs = new Ruleset(rulesetPayload, { severity: "recommended" })
+  ifNotStagingRunDisableRulesInStagingOnly(initiator, namesOfRulesInStagingOnly, isStagingRun, rulesetForManualSpecs)
+  printRuleNames(initiator, rulesetForManualSpecs, resolvedOpenapiType, "manually written OpenAPI specs")
+
+  const rulesetForTypeSpecGeneratedSpecs = new Ruleset(rulesetPayload, { severity: "recommended" })
+  ifNotStagingRunDisableRulesInStagingOnly(initiator, namesOfRulesInStagingOnly, isStagingRun, rulesetForTypeSpecGeneratedSpecs)
+  disableRulesInRuleset(rulesetForTypeSpecGeneratedSpecs, namesOfRulesDisabledForTypespec)
+  printRuleNames(initiator, rulesetForTypeSpecGeneratedSpecs, resolvedOpenapiType, "TypeSpec-generated OpenAPI specs")
+
+  return {
+    rulesetPayload: rulesetPayloadCopy,
+    rulesetForManualSpecs: rulesetForManualSpecs,
+    rulesetForTypeSpecGeneratedSpecs,
+  }
+}
+
+async function validateOpenApiSpecFileUsingSpectral(
+  initiator: IAutoRestPluginInitiator,
+  rulesetPayload: SpectralRulesetPayload,
+  rulesetForManualSpecs: Ruleset,
+  rulesetForTypeSpecGeneratedSpecs: Ruleset,
+  openApiSpecFile: string
 ) {
-  if (isStagingRun) {
+  if (openApiSpecFile.includes("common-types/resource-management")) {
     initiator.Message({
       Channel: "information",
-      Text: "Detected staging run. Running all enabled rules.",
+      Text: `spectralPluginFunc: Ignoring file matching to 'common-types/resource-management': '${openApiSpecFile}'`,
     })
-  } else {
+    return
+  }
+
+  try {
+    const openApiSpecFilePath = openApiSpecFile.startsWith("file:///") ? fileURLToPath(openApiSpecFile) : openApiSpecFile
+    const openApiSpecContent: string = await readFileUsingCache(initiator, openApiSpecFile)
+    // safeLoad() documented at: https://github.com/nodeca/js-yaml/tree/v3?tab=readme-ov-file#safeload-string---options-
+    // Empirically confirmed the returned value type is object, not string.
+    const openApiSpecYml: any = safeLoad(openApiSpecContent)
+    // "x-typespec-generated" is expected to be found at JSONPath of $.info.x-typespec-generated.
+    // Example: https://github.com/Azure/azure-rest-api-specs/blob/fca48bec19cc5aab0a45c0769bfca0f667164dbf/specification/edgemarketplace/resource-manager/Microsoft.EdgeMarketplace/stable/2023-08-01/operations.json#L7
+    const specIsGeneratedFromTypeSpec = Boolean(openApiSpecYml.info["x-typespec-generated"]) // JSON.stringify(openApiSpecYml).includes("x-typespec-generated")
+
     initiator.Message({
       Channel: "information",
-      Text:
-        "Detected production run. As a result, disabling all Spectral rules that are denoted to run only in staging. Names of rules being disabled: " +
-        namesOfRulesInStagingOnly.join(", ") +
-        ".",
+      Text: `spectralPluginFunc: Validating OpenAPI spec. TypeSpec-generated: ${specIsGeneratedFromTypeSpec}. Path: '${openApiSpecFile}'`,
     })
-    Object.values(ruleset.rules).forEach((rule) => {
-      if (namesOfRulesInStagingOnly.some((name) => rule.name == name)) {
-        // This assignment will invoke the setter defined here:
-        // https://github.com/stoplightio/spectral/blob/44c40e2b7c9ea6222054da8700049b0307cc5f8b/packages/core/src/ruleset/rule.ts#L121
-        // Resulting in value of -1, as defined here:
-        // https://github.com/stoplightio/spectral/blob/44c40e2b7c9ea6222054da8700049b0307cc5f8b/packages/ruleset-migrator/src/transformers/rules.ts#L39
-        rule.severity = "off"
-        // We must disable the rule to ensure it is not run at all. Spectral source for that is in [1].
-        // Otherwise, if it throws due to a bug in rule implementation, it will result in fatal error.
-        // Example of how a rule can thrown is given in [2].
-        // Example where we disable a rule from running in production so it doesn't throw is given in [3].
-        // Without this line, the fix in [3] doesn't help. For a proof of that, see [4] and its log, [5],
-        // showing that a rule that is supposed to run in stagingOnly, still throws in production.
-        // [1] https://github.com/stoplightio/spectral/blob/6d0991572f185ce5cf4031dc1d8eb4035b5eaf1d/packages/core/src/runner/runner.ts#L39
-        // [2] https://github.com/Azure/azure-openapi-validator/pull/595
-        // [3] https://github.com/Azure/azure-openapi-validator/pull/596
-        // [4] https://github.com/Azure/azure-rest-api-specs/pull/26024
-        // [5] https://dev.azure.com/azure-sdk/internal/_build/results?buildId=3125612&view=logs&j=0574a2a6-2d0a-5ec6-40e4-4c6e2f70bea2&t=80c3e782-49f0-5d1c-70dd-cbee57bdd0c7&l=252
-        rule.enabled = false
-      }
-    })
+
+    const spectral = newSpectral(initiator, openApiSpecFile)
+    spectral.setRuleset(specIsGeneratedFromTypeSpec ? rulesetForTypeSpecGeneratedSpecs : rulesetForManualSpecs)
+
+    const sendMessage = initiator.Message.bind(initiator)
+
+    await runSpectral(sendMessage, spectral, rulesetPayload, openApiSpecFilePath, openApiSpecYml)
+  } catch (error: unknown) {
+    catchSpectralRunErrors(openApiSpecFile, error, initiator)
   }
 }
 
-function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, resolvedOpenapiType: OpenApiTypes) {
-  const ruleNames: string[] = Object.keys(ruleset.rules)
-    // Case-insensitive sort.
-    // Source: https://stackoverflow.com/a/60922998/986533
-    .sort(Intl.Collator().compare)
+function newSpectral(initiator: IAutoRestPluginInitiator, openApiSpecFile: string) {
+  const resolveFile: IResolver = {
+    resolve: (ref: URI, ctx: any) => {
+      const href = ref.href()
+      const openApiSpecFileUri = isUriAbsolute(href) ? href : resolveUri(openApiSpecFile, href)
+      const openApiSpecContent = readFileUsingCache(initiator, openApiSpecFileUri)
+      return openApiSpecContent
+    },
+  }
 
-  initiator.Message({
-    Channel: "information",
-    Text: `Loaded ${ruleNames.length} spectral rules, for OpenAPI type '${OpenApiTypes[resolvedOpenapiType]}':`,
+  const jsonRefResolver = new Resolver({
+    resolvers: {
+      file: resolveFile,
+      http: resolveFile,
+      https: resolveFile,
+    },
   })
-  for (const ruleName of ruleNames) {
-    const severity: DiagnosticSeverity = ruleset.rules[ruleName].severity
-    const sevStr: string = Number(severity) == -1 ? "DISABLED" : DiagnosticSeverity[severity]
-    initiator.Message({
-      Channel: "information",
-      Text: (sevStr == "DISABLED" ? "DISABLED " : "").concat(`Spectral rule, severity '${sevStr}': '${ruleName}'`),
-    })
-  }
+  const spectral = new Spectral({ resolver: jsonRefResolver })
+  return spectral
 }
 
-async function runSpectral(rulesetWithRpcGuidelineCode: any, doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
-  const mergedResults = []
-  const convertSeverity = (severity: number) => {
-    switch (severity) {
-      case 0:
-        return "error"
-      case 1:
-        return "warning"
-      case 2:
-        return "info"
-      default:
-        return "info"
+async function readFileUsingCache(initiator: IAutoRestPluginInitiator, fileUri: string): Promise<string> {
+  let file: string | undefined = cachedFiles.get(fileUri)
+  if (!file) {
+    file = await initiator.ReadFile(fileUri)
+    if (!file) {
+      throw new Error(`Could not read file: ${fileUri} .`)
     }
+    cachedFiles.set(fileUri, file)
   }
-  const convertRange = (range: any) => {
-    return {
-      start: {
-        line: range.start.line + 1,
-        column: range.start.character,
-      },
-      end: {
-        line: range.end.line + 1,
-        column: range.end.character,
-      },
-    }
-  }
-
-  // this function is added temporarily , should be remove after the autorest fix this issues.
-  const removeXmsExampleFromPath = (paths: JsonPath) => {
-    const index = paths.findIndex((item) => item === "x-ms-examples")
-    if (index !== -1 && paths.length > index + 2) {
-      return paths.slice(0, index + 2)
-    }
-    return paths
-  }
-
-  const format = (result: any, spec: string) => {
-    return {
-      rpcGuidelineCode: rulesetWithRpcGuidelineCode.rules[result.code]?.rpcGuidelineCode ?? "",
-      code: result.code,
-      message: result.message,
-      type: convertSeverity(result.severity),
-      jsonpath: result.path && result.path.length ? removeXmsExampleFromPath(result.path) : [],
-      range: convertRange(result.range),
-      sources: [`${spec}`],
-      location: {
-        line: result.range.start.line + 1,
-        column: result.range.start.character,
-      },
-    }
-  }
-  const results = await spectral.run(doc)
-  mergedResults.push(...results.map((result: any) => format(result, createFileOrFolderUri(filePath))))
-  for (const message of mergedResults) {
-    sendMessage(convertLintMsgToAutoRestMsg(message))
-  }
-
-  return mergedResults
-}
-
-export async function getRuleSet(
-  openapiType: OpenApiTypes
-): Promise<[ruleset: Ruleset, rulesetWithRpcGuidelineCode: any, namesOfRulesInStagingOnly: string[]]> {
-  let ruleset: any
-  switch (openapiType) {
-    case OpenApiTypes.arm: {
-      ruleset = spectralRulesets.azARM
-      break
-    }
-    case OpenApiTypes.dataplane: {
-      ruleset = spectralRulesets.azDataplane
-      break
-    }
-    default: {
-      ruleset = spectralRulesets.azCommon
-    }
-  }
-  // Creating a copy of ruleset with rpcGuidelineCode field as we need it later to be included in the output
-  const rulesetWithRpcGuidelineCode = JSON.parse(JSON.stringify(ruleset))
-  // Delete "rpcGuidelineCode" custom property added by this source code
-  // as it would fail validation when constructing @stoplight/spectral-core Ruleset downstream.
-  Object.values(ruleset.rules).forEach((rule: any) => delete rule.rpcGuidelineCode)
-
-  const namesOfRulesInStagingOnly: string[] = processRulesInStagingOnly(ruleset.rules)
-
-  return [new Ruleset(ruleset, { severity: "recommended" }), rulesetWithRpcGuidelineCode, namesOfRulesInStagingOnly]
-
-  function processRulesInStagingOnly(rules: any) {
-    const rulesByName: [string, any][] = Object.entries(rules)
-    const rulesInStagingOnlyByName: [string, any][] = rulesByName.filter(([_, rule]) => rule?.stagingOnly === true)
-    const namesOfRulesInStagingOnly: string[] = rulesInStagingOnlyByName.map(([name, _]) => name)
-    // Here we delete the "stagingOnly" property because it is a custom property added by this source code,
-    // and thus would fail validation when constructing @stoplight/spectral-core Ruleset downstream.
-    rulesInStagingOnlyByName.forEach(([_, rule]) => delete rule.stagingOnly)
-    return namesOfRulesInStagingOnly
-  }
-}
-
-/** Spectral (from "@stoplight/spectral-core") may throw https://www.npmjs.com/package/es-aggregate-error
- * If so, we print out all the constituent errors.
- * For additional context, see: https://github.com/Azure/azure-sdk-tools/issues/6856
- */
-function catchSpectralRunErrors(file: string, e: any, initiator: any) {
-  // Initialize an array to collect error messages
-  const errorMessages: string[] = [e]
-
-  // Check if "e" contains the "errors" property
-  if (e && e.errors && Array.isArray(e.errors)) {
-    e.errors.forEach((error: any, index: number) => {
-      // Push each error message into the array
-      errorMessages.push(`Error ${index + 1}: ${error.message}`)
-    })
-  }
-
-  // Combine all error messages with newlines
-  const combinedErrorMessages = errorMessages.join("\n")
-
-  // Call initiator.Message with the combined error message
-  initiator.Message({
-    Channel: "fatal",
-    Text: `spectralPluginFunc: Failed validating: '${file}'. Errors encountered:\n${combinedErrorMessages}`,
-  })
+  return file
 }

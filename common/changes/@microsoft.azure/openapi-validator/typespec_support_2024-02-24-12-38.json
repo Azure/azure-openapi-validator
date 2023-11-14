@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator",
+      "comment": "Add support for disabling select rules for TypeSpec https://github.com/Azure/azure-sdk-tools/issues/7732",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator"
+}

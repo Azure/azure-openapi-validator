@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Fix PatchBodyParametersSchema https://github.com/Azure/azure-openapi-validator/pull/661",
-      "type": "patch"
+      "comment": "Add support for disabling select rules for TypeSpec https://github.com/Azure",
+      "type": "major"
     }
   ],
   "packageName": "@microsoft.azure/openapi-validator-rulesets"

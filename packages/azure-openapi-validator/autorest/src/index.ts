@@ -7,7 +7,7 @@ import { AutoRestPluginHost } from "./jsonrpc/plugin-host"
 import { openapiValidatorPluginFunc } from "./openapi-validator-plugin-func"
 import { spectralPluginFunc } from "./spectral-plugin-func"
 
-export const cachedFiles = new Map<string, any>()
+export const cachedFiles = new Map<string, string>()
 
 async function main() {
   const pluginHost = new AutoRestPluginHost()

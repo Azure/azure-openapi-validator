@@ -19,3 +19,10 @@ export const nativeRulesets = {
   azCommon: commonRuleset,
   azArm: armRuleset,
 }
+
+export {
+  SpectralRulesetPayload,
+  getNamesOfRulesInPayloadWithPropertySetToTrue,
+  deleteRulesPropertiesInPayloadNotValidForSpectralRules,
+  disableRulesInRuleset,
+} from "./spectral/utils"
