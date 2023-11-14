@@ -2058,8 +2058,8 @@ const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
     const errors = [];
     const patchBodyProperties = (_b = (_a = pathItem[PATCH]) === null || _a === void 0 ? void 0 : _a.parameters) === null || _b === void 0 ? void 0 : _b.filter(PARAM_IN_BODY).map((param) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []));
     const putBodyProperties = (_d = (_c = pathItem[PUT]) === null || _c === void 0 ? void 0 : _c.parameters) === null || _d === void 0 ? void 0 : _d.filter(PARAM_IN_BODY).map((param) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []));
-    const patchBodyPropertiesEmpty = (patchBodyProperties === null || patchBodyProperties === void 0 ? void 0 : patchBodyProperties.length) < 1;
-    const putBodyPropertiesEmpty = (putBodyProperties === null || putBodyProperties === void 0 ? void 0 : putBodyProperties.length) < 1;
+    const patchBodyPropertiesEmpty = patchBodyProperties.length < 1;
+    const putBodyPropertiesEmpty = putBodyProperties.length < 1;
     if (patchBodyPropertiesEmpty) {
         return [
             {
@@ -2077,7 +2077,7 @@ const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
         ];
     }
     const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual);
-    if ((patchBodyPropertiesNotInPutBody === null || patchBodyPropertiesNotInPutBody === void 0 ? void 0 : patchBodyPropertiesNotInPutBody.length) > 0) {
+    if (patchBodyPropertiesNotInPutBody.length > 0) {
         patchBodyPropertiesNotInPutBody.forEach((missingProperty) => errors.push({
             message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE$1,
             path: path,
