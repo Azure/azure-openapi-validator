@@ -21,6 +21,9 @@
     "validation",
     "validator"
   ],
+  "engines": {
+    "node": ">=12"
+  },
   "author": "Microsoft Corporation",
   "license": "MIT",
   "bugs": {

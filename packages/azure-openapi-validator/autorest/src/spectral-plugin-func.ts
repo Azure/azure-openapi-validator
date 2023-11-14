@@ -36,6 +36,9 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
   }
 
   const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
+  
+  // TODO verify this works
+  const isTypespecGenerated: boolean = await initiator.GetValue("is-typespec-generated")
   const [ruleset, rulesetWithRpcGuidelineCode, namesOfRulesInStagingOnly]: [Ruleset, any, string[]] = await getRuleSet(resolvedOpenapiType)
 
   ifNotStagingRunThenDisableStagingOnlyRules(isStagingRun, initiator, ruleset, namesOfRulesInStagingOnly)
@@ -214,7 +217,8 @@ async function runSpectral(rulesetWithRpcGuidelineCode: any, doc: any, filePath:
 }
 
 export async function getRuleSet(
-  openapiType: OpenApiTypes
+  openapiType: OpenApiTypes,
+  isTypespecGenerated: boolean
 ): Promise<[ruleset: Ruleset, rulesetWithRpcGuidelineCode: any, namesOfRulesInStagingOnly: string[]]> {
   let ruleset: any
   switch (openapiType) {
@@ -236,9 +240,28 @@ export async function getRuleSet(
   // as it would fail validation when constructing @stoplight/spectral-core Ruleset downstream.
   Object.values(ruleset.rules).forEach((rule: any) => delete rule.rpcGuidelineCode)
 
+  if (isTypespecGenerated) {
+    ruleset = deleteRulesIgnoredByTypespec(ruleset)
+  }
+
   const namesOfRulesInStagingOnly: string[] = processRulesInStagingOnly(ruleset.rules)
 
   return [new Ruleset(ruleset, { severity: "recommended" }), rulesetWithRpcGuidelineCode, namesOfRulesInStagingOnly]
+
+  /**
+   * Deletes rules from a ruleset that are deemed irrelevant to Typespec-generated Swagger.
+   * @param ruleset The ruleset to be filtered.
+   * @returns The ruleset with rules that are not applicable to Typespec removed.
+   */
+  function deleteRulesIgnoredByTypespec(ruleset: any) {
+    const rulesByName: [string, any][] = Object.entries(ruleset.rules)
+    const rulesApplicableToTypespecByName: [string, any][] = rulesByName.filter(([_, rule]) => rule?.ignoreForTypespec === false)
+    // Here we delete the "ignoreForTypespec" property because it is a custom property added by this source code,
+    // and thus would fail validation when constructing @stoplight/spectral-core Ruleset downstream.
+    rulesApplicableToTypespecByName.forEach(([_, rule]) => delete rule.ignoreForTypespec)
+    ruleset.rules = Object.fromEntries(rulesApplicableToTypespecByName)
+    return ruleset
+  }
 
   function processRulesInStagingOnly(rules: any) {
     const rulesByName: [string, any][] = Object.entries(rules)

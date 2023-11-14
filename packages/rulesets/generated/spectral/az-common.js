@@ -613,6 +613,7 @@ const ruleset = {
             description: "Operation should have a summary or description.",
             message: "Operation should have a summary or description.",
             severity: "warn",
+            ignoreForTypespec: true,
             given: [
                 "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
                 "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -631,6 +632,7 @@ const ruleset = {
             description: "All schemas should have a description or title.",
             message: "Schema should have a description or title.",
             severity: "warn",
+            ignoreForTypespec: true,
             formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
@@ -641,6 +643,7 @@ const ruleset = {
             description: "All parameters should have a description.",
             message: "Parameter should have a description.",
             severity: "warn",
+            ignoreForTypespec: true,
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",
@@ -955,6 +958,7 @@ const ruleset = {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
             severity: "error",
+            ignoreForTypespec: true,
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
