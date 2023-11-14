@@ -30,8 +30,8 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
     ?.filter(PARAM_IN_BODY)
     .map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []))
 
-  const patchBodyPropertiesEmpty: boolean = patchBodyProperties?.length < 1
-  const putBodyPropertiesEmpty: boolean = putBodyProperties?.length < 1
+  const patchBodyPropertiesEmpty: boolean = patchBodyProperties.length < 1
+  const putBodyPropertiesEmpty: boolean = putBodyProperties.length < 1
 
   //patch without at least one body properties => error
   if (patchBodyPropertiesEmpty) {
@@ -57,7 +57,7 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   //considering only the first element of patchBodyProperties & putBodyProperties is because there will only be one body param
   const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual)
   // there is at least one property present in the patch body that is not present in the the put body => error
-  if (patchBodyPropertiesNotInPutBody?.length > 0) {
+  if (patchBodyPropertiesNotInPutBody.length > 0) {
     patchBodyPropertiesNotInPutBody.forEach((missingProperty) =>
       errors.push({
         message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE,
