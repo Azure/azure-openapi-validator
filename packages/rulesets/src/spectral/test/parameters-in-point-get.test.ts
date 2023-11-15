@@ -316,7 +316,7 @@ test("ParametersInPointGet should find no errors for a list operation", () => {
               $ref: "src/spectral/test/resources/types.json#/parameters/ResourceGroupNameParameter",
             },
             {
-              $ref: "#/parameters/LoadTestNameParameter",
+              $ref: "#/parameters/QuotaBucketNameParameter",
             },
           ],
           responses: {
@@ -334,7 +334,7 @@ test("ParametersInPointGet should find no errors for a list operation", () => {
               $ref: "src/spectral/test/resources/types.json#/parameters/ResourceGroupNameParameter",
             },
             {
-              $ref: "#/parameters/LoadTestNameParameter",
+              $ref: "#/parameters/QuotaBucketNameParameter",
             },
           ],
           responses: {
@@ -381,7 +381,7 @@ test("ParametersInPointGet should find no errors for a non get operation", () =>
               $ref: "src/spectral/test/resources/types.json#/parameters/ResourceGroupNameParameter",
             },
             {
-              $ref: "#/parameters/LoadTestNameParameter",
+              $ref: "#/parameters/QuotaBucketNameParameter",
             },
           ],
           responses: {
@@ -464,5 +464,44 @@ test("ParametersInPointGet should find errors for x-ms-paths", () => {
     expect(results[0].message).toContain(
       "Query parameter quotaBucketName should be removed. Point Get's MUST not have query parameters other than api version."
     )
+  })
+})
+
+test("ParametersInPointGet should find no errors if parameters is not defined", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/providers/Microsoft.Music/songs/{unstoppable}/artist/{sia}": {
+        get: {
+          operationId: "foo_post",
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      LoadTestNameParameter: {
+        in: "path",
+        name: "loadTestName",
+        description: "Load Test name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+      QuotaBucketNameParameter: {
+        in: "query",
+        name: "quotaBucketName",
+        description: "Quota Bucket name.",
+        required: true,
+        "x-ms-parameter-location": "method",
+        type: "string",
+      },
+    },
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
   })
 })
