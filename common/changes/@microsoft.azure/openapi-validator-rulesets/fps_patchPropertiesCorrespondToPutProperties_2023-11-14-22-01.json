@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Fix an issue where PatchPropertiesCorrespondToPutProperties rule checks if the path has both PUT and PATCH calls.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

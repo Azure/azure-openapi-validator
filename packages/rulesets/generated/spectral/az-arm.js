@@ -2051,7 +2051,7 @@ const PUT = "put";
 const PARAMETERS = "parameters";
 const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
     var _a, _b, _c, _d;
-    if (pathItem === null || typeof pathItem !== "object") {
+    if (pathItem === null || typeof pathItem !== "object" || pathItem[PATCH] === undefined || pathItem[PUT] === undefined) {
         return [];
     }
     const path = ctx.path.concat([PATCH, PARAMETERS]);
