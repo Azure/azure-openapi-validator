@@ -77,7 +77,7 @@ test("ConsistentResponseSchemaForPut should find errors when response schema for
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe("paths./api/Paths.put.responses.200.schema")
-    expect(results[0].message).toContain("Response body schema does not match create response body schema.")
+    expect(results[0].message).toContain("200 response schema does not match 201 response schema. A PUT API must always return the same response schema for both the 200 and 201 status codes.")
   })
 })
 

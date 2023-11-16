@@ -16,7 +16,7 @@ const consistentResponseSchemaForPut = (pathItem: any, _opts: any, paths: any) =
     const responseSchema = pathItem["put"]?.responses?.["200"]?.schema
     if (responseSchema && responseSchema !== resourceSchema) {
       errors.push({
-        message: "Response body schema does not match create response body schema.",
+        message: "200 response schema does not match 201 response schema. A PUT API must always return the same response schema for both the 200 and 201 status codes.",
         path: [...path, "put", "responses", "200", "schema"],
       })
     }
