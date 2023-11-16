@@ -6,6 +6,7 @@ import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
+import consistentResponseSchemaForPut from "./functions/consistent-response-schema-for-put"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
 import { getResponseCodes } from "./functions/get-response-codes"
@@ -647,6 +648,20 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Put-V1-29
+    ConsistentResponseSchemaForPut: {
+      description: "A Put operation must return the same schema for 200 and 201 response codes",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$.paths.*",
+      then: {
+        function: consistentResponseSchemaForPut,
+      },
+    },
+
     ///
     /// ARM RPC rules for Post patterns
     ///
@@ -1104,7 +1119,7 @@ const ruleset: any = {
       description: "All operations should have a default (error) response.",
       message: "Operation is missing a default response.",
       severity: "error",
-      given: "$.paths.*.*.responses",
+      given: "$.paths.*.*.responses.*~",
       then: {
         field: "default",
         function: truthy,
