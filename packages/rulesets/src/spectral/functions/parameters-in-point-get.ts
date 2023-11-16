@@ -17,8 +17,8 @@ export const ParametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
     const hierarchy = getResourcesPathHierarchyBasedOnResourceType(uri)
     if (hierarchy.length >= 1 && pathItem[uri][GET]) {
       const params = pathItem[uri][GET]["parameters"]
-      const queryParams = params.filter((param: { in: string; name: string }) => param.in === "query" && param.name !== "api-version")
-      queryParams.map((param: { name: any }) => {
+      const queryParams = params?.filter((param: { in: string; name: string }) => param.in === "query" && param.name !== "api-version")
+      queryParams?.map((param: { name: any }) => {
         errors.push({
           message: `Query parameter ${param.name} should be removed. Point Get's MUST not have query parameters other than api version.`,
           path: [path, uri, GET, "parameters"],
