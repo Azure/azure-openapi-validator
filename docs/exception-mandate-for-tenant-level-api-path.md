@@ -21,7 +21,7 @@ Once the exception is granted author would need to suppress the error being flag
 
 The error can be fixed by one of the following ways:
 1. Do not define tenant level api's for PUT operation
-1. If  tenant level PUT operation is mandatory, get exception from PAS team and then apply supression to the error
+1. If tenant level PUT operation is mandatory, get exception from PAS team and then apply supression to the error
 
 
 ## Good Examples
