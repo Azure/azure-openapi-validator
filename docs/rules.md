@@ -186,7 +186,7 @@ Please refer to [consistent-response-body.md](./consistent-response-body.md) for
 
 ### ConsistentResponseSchemaForPut
 
-A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial put and the subsequent reputs. The schema represented by the response must always represent the same resource. 
+A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial PUT and the subsequent rePUTs. The schema represented by the response must always represent the same resource. 
 
 Please refer to [consistent-response-schema-for-put.md](./consistent-response-schema-for-put.md) for details.
 
@@ -338,6 +338,13 @@ Please refer to [error-response.md](./error-response.md) for details.
 API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).
 
 Please refer to [even-segmented-path-for-put-operation.md](./even-segmented-path-for-put-operation.md) for details.
+
+### ExceptionMandateForTenantLevelApiPath
+
+Tenant level API's are not allowed for a PUT operation. Exception from PAS team is mandatory for the very first implementation. 
+Once the exception is granted author would need to suppress the error being flagged using https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
+
+Please refer to [exception-mandate-for-tenant-level-api-path.md](./exception-mandate-for-tenant-level-api-path.md) for details.
 
 ### ExtensionResourcePathPattern
 

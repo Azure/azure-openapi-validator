@@ -8,6 +8,7 @@ import collectionObjectPropertiesNaming from "./functions/collection-object-prop
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
 import consistentResponseSchemaForPut from "./functions/consistent-response-schema-for-put"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
+import { exceptionMandateForTenantLevelApiPath } from "./functions/exception-mandate-for-tenant-level-api-path"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
 import { getResponseCodes } from "./functions/get-response-codes"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
@@ -26,8 +27,8 @@ import operationsApiSchema from "./functions/operations-api-schema"
 import { operationsApiTenantLevelOnly } from "./functions/operations-api-tenant-level-only"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
-import { ParametersInPointGet } from "./functions/parameters-in-point-get"
-import { ParametersInPost } from "./functions/parameters-in-post"
+import { parametersInPointGet } from "./functions/parameters-in-point-get"
+import { parametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { patchResponseCodes } from "./functions/patch-response-codes"
@@ -53,6 +54,7 @@ import { validatePatchBodyParamProperties } from "./functions/validate-patch-bod
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
+
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -344,7 +346,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths']",
       then: {
-        function: ParametersInPointGet,
+        function: parametersInPointGet,
       },
     },
 
@@ -675,7 +677,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[post][parameters]",
       then: {
-        function: ParametersInPost,
+        function: parametersInPost,
       },
     },
 
@@ -795,6 +797,19 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-11
+    ExceptionMandateForTenantLevelApiPath: {
+      description: "Exception from PAS team is mandatory for Tenant level PUT operation.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: exceptionMandateForTenantLevelApiPath,
       },
     },
     // RPC Code: RPC-Uri-V1-12
