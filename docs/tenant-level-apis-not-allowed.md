@@ -23,7 +23,7 @@ Once the exception is granted author would need to suppress the error being flag
 
 The error can be fixed by one of the following ways:
 1. Do not define tenant level api's for PUT operation
-1. If tenant level write operations cannot be avoided, get an exception from PAS team. Please reach out to the following contacts to do a design review - SARBACRev, prasnal@microsoft.com, ARM Auth Team <armrbac@microsoft.com>. Apply a suppression for this error providing an evidence of a sign-off to the API reviewer over email
+1. If tenant level write operations cannot be avoided, get an exception from PAS team. Please reach out to the following contacts to do a design review - [SARBACRev], [prasnal@microsoft.com], (ARM Auth Team)[armrbac@microsoft.com]. Apply a suppression for this error providing an evidence of a sign-off to the API reviewer over email
 
 
 ## Good Examples
