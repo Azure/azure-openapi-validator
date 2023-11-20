@@ -1485,7 +1485,7 @@ const consistentResponseSchemaForPut = (pathItem, _opts, paths) => {
         const responseSchema = (_c = (_b = (_a = pathItem["put"]) === null || _a === void 0 ? void 0 : _a.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema;
         if (responseSchema && responseSchema !== resourceSchema) {
             errors.push({
-                message: "Response body schema does not match create response body schema.",
+                message: "200 response schema does not match 201 response schema. A PUT API must always return the same response schema for both the 200 and 201 status codes.",
                 path: [...path, "put", "responses", "200", "schema"],
             });
         }
@@ -1988,7 +1988,7 @@ const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
     return errors;
 };
 
-const ParametersInPointGet = (pathItem, _opts, ctx) => {
+const parametersInPointGet = (pathItem, _opts, ctx) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
     }
@@ -2015,7 +2015,7 @@ const ParametersInPointGet = (pathItem, _opts, ctx) => {
     return errors;
 };
 
-const ParametersInPost = (postParameters, _opts, ctx) => {
+const parametersInPost = (postParameters, _opts, ctx) => {
     if (postParameters === null || !Array.isArray(postParameters)) {
         return [];
     }
@@ -2702,6 +2702,28 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
     return [];
 };
 
+const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
+    if (pathItems === null || typeof pathItems !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const apiPaths = Object.keys(pathItems);
+    if (apiPaths.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const apiPath of apiPaths) {
+        if (pathItems[apiPath]["put"] && !apiPath.endsWith("/operations") && apiPath.startsWith("/providers")) {
+            errors.push({
+                message: `${apiPath} is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. If you cannot model your APIs at these levels, you will need to present your design and get an exception from PAS team.`,
+                path: [...path, apiPath],
+            });
+            break;
+        }
+    }
+    return errors;
+};
+
 const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
     var _a, _b, _c;
     if (apiPath === null || typeof apiPath !== "string") {
@@ -3118,7 +3140,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths']",
             then: {
-                function: ParametersInPointGet,
+                function: parametersInPointGet,
             },
         },
         ValidateSegmentsInNestedResourceListOperation: {
@@ -3392,7 +3414,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[post][parameters]",
             then: {
-                function: ParametersInPost,
+                function: parametersInPost,
             },
         },
         PathContainsSubscriptionId: {
@@ -3499,6 +3521,18 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        TenantLevelAPIsNotAllowed: {
+            description: "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths']",
+            then: {
+                function: tenantLevelAPIsNotAllowed,
             },
         },
         TrackedExtensionResourcesAreNotAllowed: {

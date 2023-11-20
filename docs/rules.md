@@ -186,7 +186,7 @@ Please refer to [consistent-response-body.md](./consistent-response-body.md) for
 
 ### ConsistentResponseSchemaForPut
 
-A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial put and the subsequent reputs. The schema represented by the response must always represent the same resource. 
+A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial PUT and the subsequent rePUTs. The schema represented by the response must always represent the same resource. 
 
 Please refer to [consistent-response-schema-for-put.md](./consistent-response-schema-for-put.md) for details.
 
@@ -1209,6 +1209,14 @@ Please refer to [system-data-definitions-common-types.md](./system-data-definiti
 Validates that system data is not defined in the properties bag, but rather as a top-level property.
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
+
+### TenantLevelAPIsNotAllowed
+
+Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead.
+If you cannot model your APIs at these levels, you will need to present your design and get an exception from the PAS team.
+Once the exception is granted author would need to suppress the error being flagged by following steps mentioned in https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
+
+Please refer to [tenant-level-apis-not-allowed.md](./tenant-level-apis-not-allowed.md) for details.
 
 ### TopLevelResourcesListByResourceGroup
 

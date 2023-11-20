@@ -1,6 +1,6 @@
 import { getResourcesPathHierarchyBasedOnResourceType } from "./utils"
 
-export const ParametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
+export const parametersInPointGet = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
     return []
   }
