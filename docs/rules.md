@@ -339,13 +339,6 @@ API path with PUT operation defined MUST have even number of segments (i.e. end 
 
 Please refer to [even-segmented-path-for-put-operation.md](./even-segmented-path-for-put-operation.md) for details.
 
-### ExceptionMandateForTenantLevelApiPath
-
-Tenant level API's are not allowed for a PUT operation. Exception from PAS team is mandatory for the very first implementation. 
-Once the exception is granted author would need to suppress the error being flagged using https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
-
-Please refer to [exception-mandate-for-tenant-level-api-path.md](./exception-mandate-for-tenant-level-api-path.md) for details.
-
 ### ExtensionResourcePathPattern
 
 Path (operation) for 'extension routing type' (that has additional /providers/ segment in parent scope) must be of the form '{scope}/provider/RPNamespace/resourceTypeName' (shouldn't include parent scope)
@@ -1216,6 +1209,14 @@ Please refer to [system-data-definitions-common-types.md](./system-data-definiti
 Validates that system data is not defined in the properties bag, but rather as a top-level property.
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
+
+### TenantLevelAPIsNotAllowed
+
+Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead.
+If you cannot model your APIs at these levels, you will need to present your design and get an exception from the PAS team.
+Once the exception is granted author would need to suppress the error being flagged by following steps mentioned in https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
+
+Please refer to [tenant-level-apis-not-allowed.md](./tenant-level-apis-not-allowed.md) for details.
 
 ### TopLevelResourcesListByResourceGroup
 

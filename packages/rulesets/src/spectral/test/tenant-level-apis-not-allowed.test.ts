@@ -1,16 +1,17 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
-const ERROR_MESSAGE = "is a tenant level api and will need exception from PAS team."
+const ERROR_MESSAGE =
+  "is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. If you cannot model your APIs at these levels, you will need to present your design and get an exception from PAS team."
 
 let linter: Spectral
 
 beforeAll(async () => {
-  linter = await linterForRule("ExceptionMandateForTenantLevelApiPath")
+  linter = await linterForRule("TenantLevelAPIsNotAllowed")
   return linter
 })
 
-test("ExceptionMandateForTenantLevelApiPath should find no errors for non tenant level api paths and operations api-path", () => {
+test("TenantLevelAPIsNotAllowed should find no errors for non tenant level api paths and operations api-path", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -45,7 +46,7 @@ test("ExceptionMandateForTenantLevelApiPath should find no errors for non tenant
   })
 })
 
-test("ExceptionMandateForTenantLevelApiPath should find no errors for extension resources", () => {
+test("TenantLevelAPIsNotAllowed should find no errors for extension resources", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -73,7 +74,7 @@ test("ExceptionMandateForTenantLevelApiPath should find no errors for extension 
   })
 })
 
-test("ExceptionMandateForTenantLevelApiPath should find no errors for non put teant-level api paths", () => {
+test("TenantLevelAPIsNotAllowed should find no errors for non put teant-level api paths", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -92,7 +93,7 @@ test("ExceptionMandateForTenantLevelApiPath should find no errors for non put te
   })
 })
 
-test("ExceptionMandateForTenantLevelApiPath should find errors for tenant level api path for put operation", () => {
+test("TenantLevelAPIsNotAllowed should find errors for tenant level api path for put operation", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {

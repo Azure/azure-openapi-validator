@@ -1542,28 +1542,6 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     return errors;
 };
 
-const exceptionMandateForTenantLevelApiPath = (pathItems, _opts, ctx) => {
-    if (pathItems === null || typeof pathItems !== "object") {
-        return [];
-    }
-    const path = ctx.path || [];
-    const apiPaths = Object.keys(pathItems);
-    if (apiPaths.length < 1) {
-        return [];
-    }
-    const errors = [];
-    for (const apiPath of apiPaths) {
-        if (pathItems[apiPath]["put"] && !apiPath.endsWith("/operations") && apiPath.startsWith("/providers")) {
-            errors.push({
-                message: `${apiPath} is a tenant level api and will need exception from PAS team.`,
-                path: [...path, apiPath],
-            });
-            break;
-        }
-    }
-    return errors;
-};
-
 const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
     if (!properties || typeof properties !== "object") {
         return [];
@@ -2724,6 +2702,28 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
     return [];
 };
 
+const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
+    if (pathItems === null || typeof pathItems !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const apiPaths = Object.keys(pathItems);
+    if (apiPaths.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const apiPath of apiPaths) {
+        if (pathItems[apiPath]["put"] && !apiPath.endsWith("/operations") && apiPath.startsWith("/providers")) {
+            errors.push({
+                message: `${apiPath} is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. If you cannot model your APIs at these levels, you will need to present your design and get an exception from PAS team.`,
+                path: [...path, apiPath],
+            });
+            break;
+        }
+    }
+    return errors;
+};
+
 const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
     var _a, _b, _c;
     if (apiPath === null || typeof apiPath !== "string") {
@@ -3523,8 +3523,8 @@ const ruleset = {
                 function: noDuplicatePathsForScopeParameter,
             },
         },
-        ExceptionMandateForTenantLevelApiPath: {
-            description: "Exception from PAS team is mandatory for Tenant level PUT operation.",
+        TenantLevelAPIsNotAllowed: {
+            description: "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
             message: "{{error}}",
             severity: "error",
             stagingOnly: true,
@@ -3532,7 +3532,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths']",
             then: {
-                function: exceptionMandateForTenantLevelApiPath,
+                function: tenantLevelAPIsNotAllowed,
             },
         },
         TrackedExtensionResourcesAreNotAllowed: {
