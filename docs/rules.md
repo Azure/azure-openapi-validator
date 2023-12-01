@@ -1291,7 +1291,7 @@ Please refer to [tracked-resources-must-have-put.md](./tracked-resources-must-ha
 
 ### UnSupportedPatchProperties
 
-Patch may not change the name, location, or type of the resource.
+A Patch operation may not change the id, name, type, location, or properties.provisioningState of the resource.
 
 Please refer to [un-supported-patch-properties.md](./un-supported-patch-properties.md) for details.
 

@@ -2806,6 +2806,12 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                     type: "string",
                 },
             },
+            propertiesThatMustNotBeInPropertiesBagAsWritable: {
+                type: "array",
+                items: {
+                    type: "string",
+                },
+            },
         },
         additionalProperties: false,
     },
@@ -2849,7 +2855,33 @@ const validatePatchBodyParamProperties = createRulesetFunction({
                     }
                     if (!(isPropertyReadOnly || isPropertyImmutable)) {
                         errors.push({
-                            message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. These properties are not patchable.`,
+                            message: `Mark the top-level property "${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. This property is not patchable.`,
+                            path: [...path, "parameters", index],
+                        });
+                    }
+                }
+            });
+        }
+        if (_opts.propertiesThatMustNotBeInPropertiesBagAsWritable) {
+            _opts.propertiesThatMustNotBeInPropertiesBagAsWritable.forEach((p) => {
+                var _a, _b;
+                const propertiesProperty = (_a = getProperties(bodyParameter)) === null || _a === void 0 ? void 0 : _a["properties"];
+                const property = (_b = getProperties(propertiesProperty)) === null || _b === void 0 ? void 0 : _b[p];
+                if (property) {
+                    let isPropertyReadOnly = false;
+                    let isPropertyImmutable = false;
+                    if (property["readOnly"] && property["readOnly"] === true) {
+                        isPropertyReadOnly = true;
+                    }
+                    if (property["x-ms-mutability"] && Array.isArray(property["x-ms-mutability"])) {
+                        const schemaArray = property["x-ms-mutability"];
+                        if (!schemaArray.includes("update")) {
+                            isPropertyImmutable = true;
+                        }
+                    }
+                    if (!(isPropertyReadOnly || isPropertyImmutable)) {
+                        errors.push({
+                            message: `Mark the property "properties.${p}", specified in the patch operation body, as readOnly or immutable. You could also choose to remove it from the request payload of the Patch operation. This property is not patchable.`,
                             path: [...path, "parameters", index],
                         });
                     }
@@ -3205,6 +3237,7 @@ const ruleset = {
                 function: validatePatchBodyParamProperties,
                 functionOptions: {
                     shouldNot: ["id", "name", "type", "location"],
+                    propertiesThatMustNotBeInPropertiesBagAsWritable: ["provisioningState"],
                 },
             },
         },

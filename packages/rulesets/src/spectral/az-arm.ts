@@ -427,6 +427,7 @@ const ruleset: any = {
         function: validatePatchBodyParamProperties,
         functionOptions: {
           shouldNot: ["id", "name", "type", "location"],
+          propertiesThatMustNotBeInPropertiesBagAsWritable: ["provisioningState"],
         },
       },
     },
