@@ -835,14 +835,12 @@ test("trackedExtensionResourcesAreNotAllowed should not find errors for tracked 
         type: "object",
         description: "The provisioning state of a device.",
         properties: {
-          properties: {
-            location: {
-              type: "string",
-            },
-            description: "The resource-specific properties for this resource.",
-            "x-ms-client-flatten": true,
-            "x-ms-mutability": ["read", "create"],
+          location: {
+            type: "string",
           },
+          description: "The resource-specific properties for this resource.",
+          "x-ms-client-flatten": true,
+          "x-ms-mutability": ["read", "create"],
         },
       },
       DeviceProvisioningStateListResult: {
