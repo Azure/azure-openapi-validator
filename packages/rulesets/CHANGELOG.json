@@ -2,6 +2,56 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
+      "version": "1.2.4",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.2.4",
+      "date": "Tue, 05 Dec 2023 19:01:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix fatal error caused by undefined parameters in ParametersInPointGet rule"
+          },
+          {
+            "comment": "Update get-collection-only-has-value-nextlink.md to get-collection-only-has-value-and-next-link.md in order to match the rule name getCollectionOnlyHasValueAndNextLink"
+          },
+          {
+            "comment": "Update docs and output message for PathForNestedResource rule to include details about the exception for extension resources and file a suppression request"
+          },
+          {
+            "comment": "Update RPC-GET-V1-01(GetResponseCodes) to allow GET with 202 response code if the GET represents the location header polling url. Update RPC-Post-V1-09(LroExtension) to exclude GET from x-ms-long-running-operation presence validation"
+          },
+          {
+            "comment": "Implement TenantLevelAPIsNotAllowed rule to check the existence of tenant level paths for PUT operation and guide through the process to get an exception "
+          },
+          {
+            "comment": "Fix resourceNameRestriction to handle missing operation parameters"
+          },
+          {
+            "comment": "Fix an issue where PatchPropertiesCorrespondToPutProperties rule checks if the path has both PUT and PATCH calls."
+          },
+          {
+            "comment": "Add ConsistentResponseSchemaForPut (RPC-Put-V1-29) rule. The response schema of the 200 and 201 status codes of Put operation must be the same."
+          },
+          {
+            "comment": "Fix an issue with AvoidAdditionalProperties rule. This rule is checking the additionalProperties defined from common-types or other predefined references, when it shouldn't."
+          },
+          {
+            "comment": "Upgrade version to 1.2.2"
+          },
+          {
+            "comment": "Fix an issue where propertiesTypeObjectNoDefinition rules needs to check additional properties."
+          },
+          {
+            "comment": "Add XmsPageableForListCalls (RPC-Get-V1-13) rule which ensures that all LIST APIs must contain the ‘x-ms-pageable’ extension"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft.azure/openapi-validator-core\" from `~1.0.0` to `~1.0.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.2",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.2.2",
       "date": "Wed, 04 Oct 2023 17:01:43 GMT",
