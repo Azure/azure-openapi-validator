@@ -1,6 +1,24 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Wed, 04 Oct 2023 17:01:43 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Dec 2023 20:03:59 GMT and should not be manually modified.
+
+## 1.3.0
+Tue, 05 Dec 2023 20:03:59 GMT
+
+### Patches
+
+- Fix fatal error caused by undefined parameters in ParametersInPointGet rule
+- Update get-collection-only-has-value-nextlink.md to get-collection-only-has-value-and-next-link.md in order to match the rule name getCollectionOnlyHasValueAndNextLink
+- Update docs and output message for PathForNestedResource rule to include details about the exception for extension resources and file a suppression request
+- Update RPC-GET-V1-01(GetResponseCodes) to allow GET with 202 response code if the GET represents the location header polling url. Update RPC-Post-V1-09(LroExtension) to exclude GET from x-ms-long-running-operation presence validation
+- Implement TenantLevelAPIsNotAllowed rule to check the existence of tenant level paths for PUT operation and guide through the process to get an exception 
+- Fix resourceNameRestriction to handle missing operation parameters
+- Fix an issue where PatchPropertiesCorrespondToPutProperties rule checks if the path has both PUT and PATCH calls.
+- Add ConsistentResponseSchemaForPut (RPC-Put-V1-29) rule. The response schema of the 200 and 201 status codes of Put operation must be the same.
+- Fix an issue with AvoidAdditionalProperties rule. This rule is checking the additionalProperties defined from common-types or other predefined references, when it shouldn't.
+- Upgrade version to 1.2.2
+- Fix an issue where propertiesTypeObjectNoDefinition rules needs to check additional properties.
+- Add XmsPageableForListCalls (RPC-Get-V1-13) rule which ensures that all LIST APIs must contain the ‘x-ms-pageable’ extension
 
 ## 1.2.2
 Wed, 04 Oct 2023 17:01:43 GMT
