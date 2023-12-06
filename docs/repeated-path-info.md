@@ -12,26 +12,15 @@ ARM OpenAPI(swagger) specs
 
 - RPC-Put-V1-05
 
-## Output Message
-
-The '{property name}' already appears in the URI, please don't repeat it in the request body.
-
 ## Description
 
-Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
+The '{property name}' already appears in the URI, please don't repeat it in the request body. Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
-## CreatedAt
+## How to fix
 
-June 21, 2022
+The violation can be fixed by removing the repeated properties in the request body schema.
 
-## LastModifiedAt
-
-June 21, 2022
-
-## How to fix the violation
-
-Removing the repeated properties in the request body schema.
-Bad example:
+## Good example
 
 ```
  "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/foo/{fooName}": {
@@ -40,6 +29,58 @@ Bad example:
           operationId: "Foo_CreateOrUpdate",
           description: "Test Description",
           parameters: [
+            {
+              name: "fooName",
+              in: "path",
+              required: true,
+              type: "string",
+            },
+            {
+            "name": "MyResource",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FooResource"
+            },
+          },
+          ],
+          responses: {},
+        },
+},
+"definitions":{
+  "FooResource": {
+    "properties": {
+      "properties": {
+        "type": "object",
+        "properties": {
+          // No repeated subscriptionId, fooName properties.
+          "friendlyName": {
+            "type": "string",
+            "description": "The friendly name of the resource",
+          },
+        },
+      },
+      },
+    },
+    "x-ms-azure-resource": true
+  },
+}
+```
+## Bad example
+
+```
+ "/subscriptions/{subscriptionId}/providers/Microsoft.MyNs/foo/{fooName}": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "fooName",
+              in: "path",
+              required: true,
+              type: "string",
+            },
             {
             "name": "MyResource",
             "in": "body",

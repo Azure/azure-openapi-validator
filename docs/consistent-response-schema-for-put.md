@@ -20,8 +20,6 @@ A PUT API must always return the same response schema for both the 200 and 201 s
 
 Ensure that the response schema for 201 and 200 status codes match. 
 
-## Examples
-
 ## Bad example 
 
 PUT with mismatch in response schemas between 200 and 201 status codes

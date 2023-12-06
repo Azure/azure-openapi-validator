@@ -12,18 +12,94 @@ ARM OpenAPI(swagger) specs
 
 - RPC-Put-V1-25
 
-## Output Message
-
-A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the same entity between GET and PUT. If the schema of the PUT request body is a superset of the GET response body, make sure you have a PATCH operation to make the resource updatable. Operation: '{0}' Request Model: '{1}' Response Model: '{2}'
-
 ## Description
 
-The request & response('200') schema of the PUT operation must be same.
+A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the response as a request to another PUT operation. This will provide a consistent experience to the user, i.e. the user could use the same model object to perform multiple operations. Also, within the SDK, this will encourage reuse of the same model objects.
 
-## Why the rule is important
+## How to fix
 
-This will provide a consistent experience to the user, i.e. the user could use the same model object to perform various operations. Also, within the SDK, this will encourage reuse of the same model objects.
+Ensure the request & response('200') schema of the PUT operation must be same.
 
-## How to fix the violation
+## Bad examples
 
-Ensure the request & response('200') schema of the PUT operation must be same. This might involve a service side change which will result cause a breaking change in the generated SDK.
+```json
+      "/api/configServers": {
+        put: {
+          operationId: "ConfigServers_Update",
+          parameters: [
+            {
+              $ref: "#/parameters/ApiVersionParameter",
+            },
+            {
+              $ref: "#/parameters/SubscriptionIdParameter",
+            },
+            {
+              $ref: "#/parameters/PathResourceParameter",
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/ConfigServerResource",
+              },
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      PathResourceParameter: {
+        name: "pathResource",
+        in: "body",
+        description: "Parameters for the update operation",
+        required: true,
+        schema: {
+          $ref: "#/definitions/ConfigServerResources", // Different from the response schema specified for 200 response
+        },
+      },
+    },
+
+```
+
+## Good examples
+
+```json
+      "/api/configServers": {
+        put: {
+          operationId: "ConfigServers_Update",
+          parameters: [
+            {
+              $ref: "#/parameters/ApiVersionParameter",
+            },
+            {
+              $ref: "#/parameters/SubscriptionIdParameter",
+            },
+            {
+              $ref: "#/parameters/PathResourceParameter",
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/ConfigServerResource",
+              },
+            },
+          },
+        },
+      },
+    },
+    parameters: {
+      PathResourceParameter: {
+        name: "pathResource",
+        in: "body",
+        description: "Parameters for the update operation",
+        required: true,
+        schema: {
+          $ref: "#/definitions/ConfigServerResource", // Same as the response schema specified for 200 response
+        },
+      },
+    },
+
+```

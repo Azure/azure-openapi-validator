@@ -218,6 +218,48 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
             },
           },
         },
+      "/providers/Microsoft.Billing/bills/{billingInstance}": {
+        get: {
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              schema: {
+                $ref: "#/definitions/FooResourceUpdate",
+              },
+            },
+          },
+        },
+        put: {
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+      },
     },
     definitions: {
       NoLocation: {
@@ -258,7 +300,7 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(5)
+    expect(results.length).toBe(6)
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/{vmName}"
     )
@@ -279,6 +321,8 @@ test("PathForTrackedResourceTypes should find errors for tracked resources havin
       "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/nestedResourceType/{nestedResourceType}"
     )
     expect(results[4].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
+    expect(results[5].path.join(".")).toBe("paths./providers/Microsoft.Billing/bills/{billingInstance}")
+    expect(results[5].message).toContain("The path must be under a subscription and resource group for tracked resource types.")
   })
 })
 
@@ -633,6 +677,48 @@ test("PathForTrackedResourceTypes should not find errors for other resource type
             },
           },
         },
+      "/providers/Microsoft.Billing/extensions/{extensionName}": {
+        get: {
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              schema: {
+                $ref: "#/definitions/FooResourceUpdate",
+              },
+            },
+          },
+        },
+        put: {
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          },
+        },
+      },
     },
     definitions: {
       FooRequestParams: {

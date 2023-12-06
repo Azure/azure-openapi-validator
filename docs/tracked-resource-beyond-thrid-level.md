@@ -12,22 +12,10 @@ ARM OpenAPI(swagger) specs
 
 - RPC-Put-V1-19
 
-## Output Message
-
-The tracked resource {resourceName} is beyond third level of nesting.
-
 ## Description
 
 Tracked resources must not be used beyond the third level of nesting.
 
-## CreatedAt
+## How to fix
 
-July 07, 2022
-
-## LastModifiedAt
-
-July 07, 2022
-
-## How to fix the violation
-
-Avoid the third level nested tracked resource, you should try to decrease the nested levels.
+Avoid the third level nested tracked resource. You may model such resources as proxy resources instead. Having a tracked resource beyond the third level may lead to a loss of functionality in ARM.
