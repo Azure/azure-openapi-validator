@@ -19,7 +19,7 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
-import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
+import { missingSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -351,7 +351,7 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Get-V1-11
-    ValidateSegmentsInNestedResourceListOperation: {
+    MissingSegmentsInNestedResourceListOperation: {
       description: "A nested resource type's List operation must include all the parent segments in its api path.",
       severity: "error",
       stagingOnly: true,
@@ -360,7 +360,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[get]^~",
       then: {
-        function: validateSegmentsInNestedResourceListOperation,
+        function: missingSegmentsInNestedResourceListOperation,
       },
     },
 
