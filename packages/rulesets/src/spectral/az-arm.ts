@@ -352,6 +352,7 @@ const ruleset: any = {
     ValidateSegmentsInNestedResourceListOperation: {
       description: "A nested resource type's List operation must include all the parent segments in its api path.",
       severity: "warn",
+      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -923,7 +924,7 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "warn",
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
