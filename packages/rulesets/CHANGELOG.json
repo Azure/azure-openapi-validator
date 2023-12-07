@@ -35,9 +35,6 @@
             "comment": "Fix an issue with AvoidAdditionalProperties rule. This rule is checking the additionalProperties defined from common-types or other predefined references, when it shouldn't."
           },
           {
-            "comment": "Upgrade version to 1.2.2"
-          },
-          {
             "comment": "Fix an issue where propertiesTypeObjectNoDefinition rules needs to check additional properties."
           },
           {

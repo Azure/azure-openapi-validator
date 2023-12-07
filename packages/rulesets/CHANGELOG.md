@@ -16,7 +16,6 @@ Tue, 05 Dec 2023 20:03:59 GMT
 - Fix an issue where PatchPropertiesCorrespondToPutProperties rule checks if the path has both PUT and PATCH calls.
 - Add ConsistentResponseSchemaForPut (RPC-Put-V1-29) rule. The response schema of the 200 and 201 status codes of Put operation must be the same.
 - Fix an issue with AvoidAdditionalProperties rule. This rule is checking the additionalProperties defined from common-types or other predefined references, when it shouldn't.
-- Upgrade version to 1.2.2
 - Fix an issue where propertiesTypeObjectNoDefinition rules needs to check additional properties.
 - Add XmsPageableForListCalls (RPC-Get-V1-13) rule which ensures that all LIST APIs must contain the ‘x-ms-pageable’ extension
 - Modify ValidateSegmentsInNestedResourceListOperation rule name to MissingSegmentsInNestedResourceListOperation
