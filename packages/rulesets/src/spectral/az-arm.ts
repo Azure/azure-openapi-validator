@@ -352,7 +352,6 @@ const ruleset: any = {
     MissingSegmentsInNestedResourceListOperation: {
       description: "A nested resource type's List operation must include all the parent segments in its api path.",
       severity: "warn",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
