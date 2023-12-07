@@ -42,6 +42,9 @@
           },
           {
             "comment": "Add XmsPageableForListCalls (RPC-Get-V1-13) rule which ensures that all LIST APIs must contain the ‘x-ms-pageable’ extension"
+          },
+          {
+            "comment": "Modify ValidateSegmentsInNestedResourceListOperation rule name to MissingSegmentsInNestedResourceListOperation"
           }
         ]
       }

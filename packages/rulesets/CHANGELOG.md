@@ -1,6 +1,6 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Tue, 05 Dec 2023 20:03:59 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Dec 2023 18:58:00 GMT and should not be manually modified.
 
 ## 1.3.0
 Tue, 05 Dec 2023 20:03:59 GMT
@@ -19,6 +19,7 @@ Tue, 05 Dec 2023 20:03:59 GMT
 - Upgrade version to 1.2.2
 - Fix an issue where propertiesTypeObjectNoDefinition rules needs to check additional properties.
 - Add XmsPageableForListCalls (RPC-Get-V1-13) rule which ensures that all LIST APIs must contain the ‘x-ms-pageable’ extension
+- Modify ValidateSegmentsInNestedResourceListOperation rule name to MissingSegmentsInNestedResourceListOperation
 
 ## 1.2.2
 Wed, 04 Oct 2023 17:01:43 GMT

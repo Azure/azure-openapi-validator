@@ -1785,6 +1785,46 @@ const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     return errors;
 };
 
+function matchAnyPatterns$1(patterns, path) {
+    return patterns.every((p) => p.test(path));
+}
+function verifyNestResourceType(path) {
+    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+function verifyResourceType(path) {
+    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
+    return matchAnyPatterns$1(patterns, path);
+}
+const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
+    var _a;
+    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
+    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
+        return [];
+    }
+    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
+    if (verifyNestResourceType(fullPath)) {
+        let count = 0;
+        for (const apiPath of Object.values(otherPaths)) {
+            if (verifyResourceType(apiPath)) {
+                if (fullPath.includes(apiPath)) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        if (count === 0) {
+            return [
+                {
+                    message: "A nested resource type's List operation must include all the parent segments in its api path.",
+                    ctx,
+                },
+            ];
+        }
+    }
+    return [];
+};
+
 const scopeParameter = "{scope}";
 const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
     var _a;
@@ -2115,7 +2155,7 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns$1(patterns, path) {
+function matchAnyPatterns(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns(invalidPatterns, path) {
@@ -2126,7 +2166,7 @@ function verifyResourceGroupScope(path) {
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
     ];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns(patterns, path);
 }
 function verifyNestResourceGroupScope(path) {
     const invalidPatterns = [
@@ -2873,46 +2913,6 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
                 path: path,
             },
         ];
-};
-
-function matchAnyPatterns(patterns, path) {
-    return patterns.every((p) => p.test(path));
-}
-function verifyNestResourceType(path) {
-    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns(patterns, path);
-}
-function verifyResourceType(path) {
-    const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns(patterns, path);
-}
-const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
-    var _a;
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
-        return [];
-    }
-    const otherPaths = Object.keys(swagger.paths).filter((p) => p !== fullPath);
-    if (verifyNestResourceType(fullPath)) {
-        let count = 0;
-        for (const apiPath of Object.values(otherPaths)) {
-            if (verifyResourceType(apiPath)) {
-                if (fullPath.includes(apiPath)) {
-                    count++;
-                    break;
-                }
-            }
-        }
-        if (count === 0) {
-            return [
-                {
-                    message: "A nested resource type's List operation must include all the parent segments in its api path.",
-                    ctx,
-                },
-            ];
-        }
-    }
-    return [];
 };
 
 const ruleset = {
