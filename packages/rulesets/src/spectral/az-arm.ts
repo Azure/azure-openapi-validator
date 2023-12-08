@@ -19,7 +19,7 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
-import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
+import { missingSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
@@ -258,7 +258,6 @@ const ruleset: any = {
     AvoidAdditionalProperties: {
       description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
-      stagingOnly: true,
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
@@ -275,7 +274,6 @@ const ruleset: any = {
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
       message: "{{error}}",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: [
@@ -351,16 +349,15 @@ const ruleset: any = {
     },
 
     // RPC Code: RPC-Get-V1-11
-    ValidateSegmentsInNestedResourceListOperation: {
+    MissingSegmentsInNestedResourceListOperation: {
       description: "A nested resource type's List operation must include all the parent segments in its api path.",
-      severity: "error",
-      stagingOnly: true,
+      severity: "warn",
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[get]^~",
       then: {
-        function: validateSegmentsInNestedResourceListOperation,
+        function: missingSegmentsInNestedResourceListOperation,
       },
     },
 
@@ -368,7 +365,6 @@ const ruleset: any = {
     XmsPageableForListCalls: {
       description: "`x-ms-pageable` extension must be specified for LIST APIs.",
       severity: "error",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -384,7 +380,6 @@ const ruleset: any = {
         "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
       severity: "error",
       message: "{{description}}",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: [
@@ -406,7 +401,6 @@ const ruleset: any = {
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
@@ -523,7 +517,6 @@ const ruleset: any = {
       description: "The path must be under a subscription and resource group for tracked resource types.",
       message: "{{description}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[get,put]^"],
@@ -538,7 +531,6 @@ const ruleset: any = {
         "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
       message: "{{description}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*.put^~",
@@ -641,7 +633,6 @@ const ruleset: any = {
       description: "Every Put and Patch operation must have a request body",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
@@ -805,7 +796,6 @@ const ruleset: any = {
         "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths']",
@@ -933,8 +923,7 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "warn",
-      stagingOnly: true,
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
