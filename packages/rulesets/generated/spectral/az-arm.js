@@ -1796,7 +1796,7 @@ function verifyResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
     return matchAnyPatterns$1(patterns, path);
 }
-const validateSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
+const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
     var _a;
     const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
     if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
@@ -3074,7 +3074,6 @@ const ruleset = {
         AvoidAdditionalProperties: {
             description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
             severity: "error",
-            stagingOnly: true,
             message: "{{description}}",
             resolved: true,
             formats: [oas2],
@@ -3087,7 +3086,6 @@ const ruleset = {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
             message: "{{error}}",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: [
@@ -3143,22 +3141,20 @@ const ruleset = {
                 function: parametersInPointGet,
             },
         },
-        ValidateSegmentsInNestedResourceListOperation: {
+        MissingSegmentsInNestedResourceListOperation: {
             description: "A nested resource type's List operation must include all the parent segments in its api path.",
-            severity: "error",
-            stagingOnly: true,
+            severity: "warn",
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[get]^~",
             then: {
-                function: validateSegmentsInNestedResourceListOperation,
+                function: missingSegmentsInNestedResourceListOperation,
             },
         },
         XmsPageableForListCalls: {
             description: "`x-ms-pageable` extension must be specified for LIST APIs.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3171,7 +3167,6 @@ const ruleset = {
             description: "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
             severity: "error",
             message: "{{description}}",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: [
@@ -3186,7 +3181,6 @@ const ruleset = {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3284,7 +3278,6 @@ const ruleset = {
             description: "The path must be under a subscription and resource group for tracked resource types.",
             message: "{{description}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[get,put]^"],
@@ -3296,7 +3289,6 @@ const ruleset = {
             description: "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
             message: "{{description}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*.put^~",
@@ -3386,7 +3378,6 @@ const ruleset = {
             description: "Every Put and Patch operation must have a request body",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
@@ -3527,7 +3518,6 @@ const ruleset = {
             description: "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths']",
@@ -3622,8 +3612,7 @@ const ruleset = {
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
-            severity: "warn",
-            stagingOnly: true,
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],

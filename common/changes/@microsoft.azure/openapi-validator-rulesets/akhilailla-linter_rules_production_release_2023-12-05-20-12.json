@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Add XmsPageableForListCalls (RPC-Get-V1-13) rule which ensures that all LIST APIs must contain the ‘x-ms-pageable’ extension",
+      "comment": "Add linter rules to production pipeline and update version to 1.3.0",
       "type": "patch"
     }
   ],

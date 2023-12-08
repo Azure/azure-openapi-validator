@@ -6,11 +6,11 @@ let linter: Spectral
 const errorMessage = "A nested resource type's List operation must include all the parent segments in its api path."
 
 beforeAll(async () => {
-  linter = await linterForRule("ValidateSegmentsInNestedResourceListOperation")
+  linter = await linterForRule("MissingSegmentsInNestedResourceListOperation")
   return linter
 })
 
-test("ValidateSegmentsInNestedResourceListOperation should find errors", () => {
+test("MissingSegmentsInNestedResourceListOperation should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -39,7 +39,7 @@ test("ValidateSegmentsInNestedResourceListOperation should find errors", () => {
   })
 })
 
-test("ValidateSegmentsInNestedResourceListOperation should find errors if Nested exists and no Parent Resource Type", () => {
+test("MissingSegmentsInNestedResourceListOperation should find errors if Nested exists and no Parent Resource Type", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -60,7 +60,7 @@ test("ValidateSegmentsInNestedResourceListOperation should find errors if Nested
   })
 })
 
-test("ValidateSegmentsInNestedResourceListOperation should find no errors", () => {
+test("MissingSegmentsInNestedResourceListOperation should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
