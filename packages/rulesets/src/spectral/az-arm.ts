@@ -6,8 +6,10 @@ import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
 import { consistentPatchProperties } from "./functions/consistent-patch-properties"
+import consistentResponseSchemaForPut from "./functions/consistent-response-schema-for-put"
 import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
+import { getResponseCodes } from "./functions/get-response-codes"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
 import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
@@ -17,18 +19,18 @@ import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
 import provisioningStateSpecifiedForLROPut from "./functions/lro-put-provisioning-state-specified"
-import { validateSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
+import { missingSegmentsInNestedResourceListOperation } from "./functions/missing-segments-in-nested-resource-list-operation"
 import noDuplicatePathsForScopeParameter from "./functions/no-duplicate-paths-for-scope-parameter"
 import { noErrorCodeResponses } from "./functions/no-error-code-responses"
 import operationsApiSchema from "./functions/operations-api-schema"
 import { operationsApiTenantLevelOnly } from "./functions/operations-api-tenant-level-only"
 import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not-defined-in-global-parameters"
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
-import { ParametersInPointGet } from "./functions/parameters-in-point-get"
-import { ParametersInPost } from "./functions/parameters-in-post"
+import { parametersInPointGet } from "./functions/parameters-in-point-get"
+import { parametersInPost } from "./functions/parameters-in-post"
 import pathBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
-import { PatchResponseCodes } from "./functions/patch-response-codes"
+import { patchResponseCodes } from "./functions/patch-response-codes"
 import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
 import pathSegmentCasing from "./functions/path-segment-casing"
 import { PostResponseCodes } from "./functions/post-response-codes"
@@ -45,12 +47,14 @@ import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-sc
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
 import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
+
 const ruleset: any = {
   extends: [common],
   rules: {
@@ -254,7 +258,6 @@ const ruleset: any = {
     AvoidAdditionalProperties: {
       description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
-      stagingOnly: true,
       message: "{{description}}",
       resolved: true,
       formats: [oas2],
@@ -271,7 +274,6 @@ const ruleset: any = {
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
       message: "{{error}}",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: [
@@ -302,18 +304,20 @@ const ruleset: any = {
     },
     // github issue https://github.com/Azure/azure-openapi-validator/issues/331
     // Get operation should return 200
-    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly,
-    // so here on check if the 200 return '201','202','203'
+    // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly
+    // https://github.com/Azure/azure-openapi-validator/issues/549
+    // GET can return 202 only if it is a polling action & has Location header defined. LroLocationHeader rule already checks if 202 response has Location header
+    // so here just check for non 200, 202 response codes i.e, '201','203','204'
     // RPC Code: RPC-Get-V1-01
-    GetOperation200: {
-      description: "The get operation should only return 200.",
-      message: "{{description}}",
+    GetResponseCodes: {
+      description: 'The GET operation should only return 200. In addition, it can return 202 only if it has "Location" header defined',
+      message: "{{error}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
+      given: ["$[paths,'x-ms-paths'].*[get]"],
       then: {
-        function: falsy,
+        function: getResponseCodes,
       },
     },
 
@@ -340,21 +344,20 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths']",
       then: {
-        function: ParametersInPointGet,
+        function: parametersInPointGet,
       },
     },
 
     // RPC Code: RPC-Get-V1-11
-    ValidateSegmentsInNestedResourceListOperation: {
+    MissingSegmentsInNestedResourceListOperation: {
       description: "A nested resource type's List operation must include all the parent segments in its api path.",
-      severity: "error",
-      stagingOnly: true,
+      severity: "warn",
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[get]^~",
       then: {
-        function: validateSegmentsInNestedResourceListOperation,
+        function: missingSegmentsInNestedResourceListOperation,
       },
     },
 
@@ -362,7 +365,6 @@ const ruleset: any = {
     XmsPageableForListCalls: {
       description: "`x-ms-pageable` extension must be specified for LIST APIs.",
       severity: "error",
-      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -378,7 +380,6 @@ const ruleset: any = {
         "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
       severity: "error",
       message: "{{description}}",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: [
@@ -400,7 +401,6 @@ const ruleset: any = {
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
@@ -447,7 +447,7 @@ const ruleset: any = {
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[patch]"],
       then: {
-        function: PatchResponseCodes,
+        function: patchResponseCodes,
       },
     },
 
@@ -517,7 +517,6 @@ const ruleset: any = {
       description: "The path must be under a subscription and resource group for tracked resource types.",
       message: "{{description}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[get,put]^"],
@@ -532,7 +531,6 @@ const ruleset: any = {
         "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
       message: "{{description}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*.put^~",
@@ -635,12 +633,25 @@ const ruleset: any = {
       description: "Every Put and Patch operation must have a request body",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
       then: {
         function: requestBodyMustExistForPutPatch,
+      },
+    },
+
+    // RPC Code: RPC-Put-V1-29
+    ConsistentResponseSchemaForPut: {
+      description: "A Put operation must return the same schema for 200 and 201 response codes",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$.paths.*",
+      then: {
+        function: consistentResponseSchemaForPut,
       },
     },
 
@@ -657,7 +668,7 @@ const ruleset: any = {
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[post][parameters]",
       then: {
-        function: ParametersInPost,
+        function: parametersInPost,
       },
     },
 
@@ -777,6 +788,19 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-11
+    TenantLevelAPIsNotAllowed: {
+      description:
+        "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: tenantLevelAPIsNotAllowed,
       },
     },
     // RPC Code: RPC-Uri-V1-12
@@ -899,8 +923,7 @@ const ruleset: any = {
     ProvisioningStateMustBeReadOnly: {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
-      severity: "warn",
-      stagingOnly: true,
+      severity: "error",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
@@ -1101,7 +1124,7 @@ const ruleset: any = {
       description: "All operations should have a default (error) response.",
       message: "Operation is missing a default response.",
       severity: "error",
-      given: "$.paths.*.*.responses",
+      given: "$.paths.*.*.responses.*~",
       then: {
         field: "default",
         function: truthy,

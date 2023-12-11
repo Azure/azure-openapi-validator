@@ -184,6 +184,12 @@ should have the same response body schema as the create operation 201 response.
 
 Please refer to [consistent-response-body.md](./consistent-response-body.md) for details.
 
+### ConsistentResponseSchemaForPut
+
+A PUT API must always return the same response schema for both the 200 and 201 status codes. The response schema must not vary between the initial PUT and the subsequent rePUTs. The schema represented by the response must always represent the same resource. 
+
+Please refer to [consistent-response-schema-for-put.md](./consistent-response-schema-for-put.md) for details.
+
 ### ControlCharactersNotAllowed
 
 Verifies whether if a specification does not have any control characters in it.
@@ -380,11 +386,12 @@ The GET calls are synchronous and it MUST NOT have
 
 Please refer to [get-operation-must-not-be-long-running.md](./get-operation-must-not-be-long-running.md) for details.
 
-### GetOperation200
+### GetResponseCodes
 
 The get operation should only return 200, also it should not be a long running operation.
+In addition, it can return 202 only if it has location header defined (i.e, if it is a polling action).
 
-Please refer to [get-operation200.md](./get-operation200.md) for details.
+Please refer to [get-response-codes.md](./get-response-codes.md) for details.
 
 ### GuidUsage
 
@@ -494,7 +501,8 @@ Please refer to [lro-error-content.md](./lro-error-content.md) for details.
 
 ### LroExtension
 
-Operations with a 202 response should specify `x-ms-long-running-operation: true`.
+Operations with a 202 response should specify `x-ms-long-running-operation: true`. 
+GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined
 
 Please refer to [lro-extension.md](./lro-extension.md) for details.
 
@@ -862,6 +870,9 @@ Please refer to [path-contains-subscription-id.md](./path-contains-subscription-
 ### PathForNestedResource
 
 Path for CRUD methods on a nested resource type MUST follow valid resource naming, like '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MyNameSpace/MyResourceType/{Name}/NestedResourceType/{nestedResourceName}'.
+There is one exception where extension resources with fully qualified path of the below format can exist
+"/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/{resourceProviderScope}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/groupQuotaRequests/{requestId}"
+In such cases the author would need to suppress the error being flagged using https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
 
 Please refer to [path-for-nested-resource.md](./path-for-nested-resource.md) for details.
 
@@ -1198,6 +1209,14 @@ Please refer to [system-data-definitions-common-types.md](./system-data-definiti
 Validates that system data is not defined in the properties bag, but rather as a top-level property.
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
+
+### TenantLevelAPIsNotAllowed
+
+Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead.
+If you cannot model your APIs at these levels, you will need to present your design and get an exception from the PAS team.
+Once the exception is granted author would need to suppress the error being flagged by following steps mentioned in https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
+
+Please refer to [tenant-level-apis-not-allowed.md](./tenant-level-apis-not-allowed.md) for details.
 
 ### TopLevelResourcesListByResourceGroup
 

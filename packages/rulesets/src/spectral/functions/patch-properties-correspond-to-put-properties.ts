@@ -13,7 +13,7 @@ const PUT = "put"
 const PARAMETERS = "parameters"
 
 export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: any, ctx: any) => {
-  if (pathItem === null || typeof pathItem !== "object") {
+  if (pathItem === null || typeof pathItem !== "object" || pathItem[PATCH] === undefined || pathItem[PUT] === undefined) {
     return []
   }
 
@@ -23,8 +23,12 @@ export const patchPropertiesCorrespondToPutProperties = (pathItem: any, _opts: a
   // array of all the patch body param properties
   // let patchBodyPropertiesList: any = []
   // let putBodyPropertiesList: any = []
-  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema,[]))
-  const putBodyProperties: any[] = pathItem[PUT]?.parameters?.filter(PARAM_IN_BODY).map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema,[]))
+  const patchBodyProperties: any[] = pathItem[PATCH]?.parameters
+    ?.filter(PARAM_IN_BODY)
+    .map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []))
+  const putBodyProperties: any[] = pathItem[PUT]?.parameters
+    ?.filter(PARAM_IN_BODY)
+    .map((param: any) => getAllPropertiesIncludingDeeplyNestedProperties(param.schema, []))
 
   const patchBodyPropertiesEmpty: boolean = patchBodyProperties.length < 1
   const putBodyPropertiesEmpty: boolean = putBodyProperties.length < 1

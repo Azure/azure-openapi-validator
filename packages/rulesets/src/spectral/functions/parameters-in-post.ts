@@ -1,4 +1,4 @@
-export const ParametersInPost = (postParameters: any, _opts: any, ctx: any) => {
+export const parametersInPost = (postParameters: any, _opts: any, ctx: any) => {
   if (postParameters === null || !Array.isArray(postParameters)) {
     return []
   }

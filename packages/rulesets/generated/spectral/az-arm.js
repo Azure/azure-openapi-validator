@@ -183,7 +183,7 @@ function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
 }
 const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi");
-const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi");
+const ExtensionResourceReg = new RegExp("^((/{\\w+})|({\\w+}))/providers/.+$", "gi");
 function isPathOfExtensionResource(path) {
     return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg);
 }
@@ -888,11 +888,11 @@ const ruleset$1 = {
             },
         },
         LroExtension: {
-            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
-            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.",
+            description: "Operations with a 202 response must specify `x-ms-long-running-operation: true`. GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined",
+            message: "Operations with a 202 response must specify `x-ms-long-running-operation: true`.  GET operation is excluded from the validation as GET will have 202 only if it is a polling action & hence x-ms-long-running-operation wouldn't be defined",
             severity: "error",
             formats: [oas2],
-            given: "$.paths[*][*].responses[?(@property == '202')]^^",
+            given: "$.paths[*][put,patch,post,delete].responses[?(@property == '202')]^^",
             then: {
                 field: "x-ms-long-running-operation",
                 function: truthy,
@@ -1348,7 +1348,7 @@ const verifyArmPath = createRulesetFunction({
         nestedResourceType: (fullPath) => {
             if (!verifyNestResourceType$1(fullPath)) {
                 errors.push({
-                    message: `The path for nested resource doest not meet the valid resource pattern.`,
+                    message: `The path for nested resource doest not meet the valid resource pattern. There is one exception for extension resources with fully qualified path and the author can go ahead and suppress the error(look at https://github.com/Azure/azure-openapi-validator/blob/main/docs/path-for-nested-resource.md#pathfornestedresource for more details) `,
                     path,
                 });
             }
@@ -1472,11 +1472,32 @@ const consistentPatchProperties = (patchOp, _opts, ctx) => {
     return errors;
 };
 
+const consistentResponseSchemaForPut = (pathItem, _opts, paths) => {
+    var _a, _b, _c;
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = paths.path || [];
+    const errors = [];
+    const createResponseSchema = (op) => { var _a, _b; return (_b = (_a = op === null || op === void 0 ? void 0 : op.responses) === null || _a === void 0 ? void 0 : _a["201"]) === null || _b === void 0 ? void 0 : _b.schema; };
+    const resourceSchema = createResponseSchema(pathItem.put);
+    if (resourceSchema) {
+        const responseSchema = (_c = (_b = (_a = pathItem["put"]) === null || _a === void 0 ? void 0 : _a.responses) === null || _b === void 0 ? void 0 : _b["200"]) === null || _c === void 0 ? void 0 : _c.schema;
+        if (responseSchema && responseSchema !== resourceSchema) {
+            errors.push({
+                message: "200 response schema does not match 201 response schema. A PUT API must always return the same response schema for both the 200 and 201 status codes.",
+                path: [...path, "put", "responses", "200", "schema"],
+            });
+        }
+    }
+    return errors;
+};
+
 const SYNC_DELETE_RESPONSES = ["200", "204", "default"];
 const LR_DELETE_RESPONSES = ["202", "204", "default"];
 const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes.";
 const LR_ERROR$2 = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
-const EmptyResponse_ERROR$3 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
+const EmptyResponse_ERROR$4 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     var _a;
     if (deleteOp === null || typeof deleteOp !== "object") {
@@ -1487,7 +1508,7 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
     const responses = Object.keys((_a = deleteOp === null || deleteOp === void 0 ? void 0 : deleteOp.responses) !== null && _a !== void 0 ? _a : {});
     if (responses.length == 0) {
         errors.push({
-            message: EmptyResponse_ERROR$3,
+            message: EmptyResponse_ERROR$4,
             path: path,
         });
         return errors;
@@ -1547,6 +1568,40 @@ const getCollectionOnlyHasValueAndNextLink = (properties, _opts, ctx) => {
         }
     }
     return [];
+};
+
+const GET_RESPONSES = ["200", "202", "default"];
+const GET_RESPONSE_ERROR = "GET operation must have response codes 200 and default. In addition, can have 202 if the GET represents the location header polling url.";
+const EmptyResponse_ERROR$3 = "GET operation response codes must be non-empty. It must have response codes 200 and default. In addition, can have 202 if the GET represents the location header polling url.";
+const getResponseCodes = (getOp, _opts, ctx) => {
+    var _a;
+    if (getOp === null || typeof getOp !== "object") {
+        return [];
+    }
+    const path = ctx.path;
+    const errors = [];
+    const responses = Object.keys((_a = getOp === null || getOp === void 0 ? void 0 : getOp.responses) !== null && _a !== void 0 ? _a : {});
+    if (responses.length == 0) {
+        errors.push({
+            message: EmptyResponse_ERROR$3,
+            path: path,
+        });
+        return errors;
+    }
+    if (!responses.includes("200")) {
+        errors.push({
+            message: GET_RESPONSE_ERROR,
+            path: path,
+        });
+        return errors;
+    }
+    if (!responses.every((response) => GET_RESPONSES.includes(response))) {
+        errors.push({
+            message: GET_RESPONSE_ERROR,
+            path: path,
+        });
+    }
+    return errors;
 };
 
 function checkApiVersion(param) {
@@ -1741,7 +1796,7 @@ function verifyResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
     return matchAnyPatterns$1(patterns, path);
 }
-const validateSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
+const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
     var _a;
     const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
     if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {
@@ -1933,7 +1988,7 @@ const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
     return errors;
 };
 
-const ParametersInPointGet = (pathItem, _opts, ctx) => {
+const parametersInPointGet = (pathItem, _opts, ctx) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
     }
@@ -1948,8 +2003,8 @@ const ParametersInPointGet = (pathItem, _opts, ctx) => {
         const hierarchy = getResourcesPathHierarchyBasedOnResourceType(uri);
         if (hierarchy.length >= 1 && pathItem[uri][GET]) {
             const params = pathItem[uri][GET]["parameters"];
-            const queryParams = params.filter((param) => param.in === "query" && param.name !== "api-version");
-            queryParams.map((param) => {
+            const queryParams = params === null || params === void 0 ? void 0 : params.filter((param) => param.in === "query" && param.name !== "api-version");
+            queryParams === null || queryParams === void 0 ? void 0 : queryParams.map((param) => {
                 errors.push({
                     message: `Query parameter ${param.name} should be removed. Point Get's MUST not have query parameters other than api version.`,
                     path: [path, uri, GET, "parameters"],
@@ -1960,7 +2015,7 @@ const ParametersInPointGet = (pathItem, _opts, ctx) => {
     return errors;
 };
 
-const ParametersInPost = (postParameters, _opts, ctx) => {
+const parametersInPost = (postParameters, _opts, ctx) => {
     if (postParameters === null || !Array.isArray(postParameters)) {
         return [];
     }
@@ -2017,7 +2072,7 @@ const PUT = "put";
 const PARAMETERS = "parameters";
 const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
     var _a, _b, _c, _d;
-    if (pathItem === null || typeof pathItem !== "object") {
+    if (pathItem === null || typeof pathItem !== "object" || pathItem[PATCH] === undefined || pathItem[PUT] === undefined) {
         return [];
     }
     const path = ctx.path.concat([PATCH, PARAMETERS]);
@@ -2058,7 +2113,7 @@ const LR_PATCH_RESPONSES = ["200", "202", "default"];
 const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 and default return codes. They also must not have other response codes.";
 const LR_ERROR$1 = "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes.";
 const EmptyResponse_ERROR$2 = "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running.";
-const PatchResponseCodes = (patchOp, _opts, ctx) => {
+const patchResponseCodes = (patchOp, _opts, ctx) => {
     var _a;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
@@ -2647,6 +2702,28 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
     return [];
 };
 
+const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
+    if (pathItems === null || typeof pathItems !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const apiPaths = Object.keys(pathItems);
+    if (apiPaths.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const apiPath of apiPaths) {
+        if (pathItems[apiPath]["put"] && !apiPath.endsWith("/operations") && apiPath.startsWith("/providers")) {
+            errors.push({
+                message: `${apiPath} is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. If you cannot model your APIs at these levels, you will need to present your design and get an exception from PAS team.`,
+                path: [...path, apiPath],
+            });
+            break;
+        }
+    }
+    return errors;
+};
+
 const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
     var _a, _b, _c;
     if (apiPath === null || typeof apiPath !== "string") {
@@ -2997,7 +3074,6 @@ const ruleset = {
         AvoidAdditionalProperties: {
             description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
             severity: "error",
-            stagingOnly: true,
             message: "{{description}}",
             resolved: true,
             formats: [oas2],
@@ -3010,7 +3086,6 @@ const ruleset = {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
             message: "{{error}}",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: [
@@ -3033,15 +3108,15 @@ const ruleset = {
                 function: falsy,
             },
         },
-        GetOperation200: {
-            description: "The get operation should only return 200.",
-            message: "{{description}}",
+        GetResponseCodes: {
+            description: 'The GET operation should only return 200. In addition, it can return 202 only if it has "Location" header defined',
+            message: "{{error}}",
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*[get].responses['201','202','203','204']"],
+            given: ["$[paths,'x-ms-paths'].*[get]"],
             then: {
-                function: falsy,
+                function: getResponseCodes,
             },
         },
         GetCollectionOnlyHasValueAndNextLink: {
@@ -3063,25 +3138,23 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths']",
             then: {
-                function: ParametersInPointGet,
+                function: parametersInPointGet,
             },
         },
-        ValidateSegmentsInNestedResourceListOperation: {
+        MissingSegmentsInNestedResourceListOperation: {
             description: "A nested resource type's List operation must include all the parent segments in its api path.",
-            severity: "error",
-            stagingOnly: true,
+            severity: "warn",
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[get]^~",
             then: {
-                function: validateSegmentsInNestedResourceListOperation,
+                function: missingSegmentsInNestedResourceListOperation,
             },
         },
         XmsPageableForListCalls: {
             description: "`x-ms-pageable` extension must be specified for LIST APIs.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3094,7 +3167,6 @@ const ruleset = {
             description: "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
             severity: "error",
             message: "{{description}}",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: [
@@ -3109,7 +3181,6 @@ const ruleset = {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3150,7 +3221,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[patch]"],
             then: {
-                function: PatchResponseCodes,
+                function: patchResponseCodes,
             },
         },
         LroPatch202: {
@@ -3207,7 +3278,6 @@ const ruleset = {
             description: "The path must be under a subscription and resource group for tracked resource types.",
             message: "{{description}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[get,put]^"],
@@ -3219,7 +3289,6 @@ const ruleset = {
             description: "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
             message: "{{description}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*.put^~",
@@ -3309,12 +3378,23 @@ const ruleset = {
             description: "Every Put and Patch operation must have a request body",
             message: "{{error}}",
             severity: "error",
-            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
             then: {
                 function: requestBodyMustExistForPutPatch,
+            },
+        },
+        ConsistentResponseSchemaForPut: {
+            description: "A Put operation must return the same schema for 200 and 201 response codes",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: "$.paths.*",
+            then: {
+                function: consistentResponseSchemaForPut,
             },
         },
         ParametersInPost: {
@@ -3325,7 +3405,7 @@ const ruleset = {
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[post][parameters]",
             then: {
-                function: ParametersInPost,
+                function: parametersInPost,
             },
         },
         PathContainsSubscriptionId: {
@@ -3434,6 +3514,17 @@ const ruleset = {
                 function: noDuplicatePathsForScopeParameter,
             },
         },
+        TenantLevelAPIsNotAllowed: {
+            description: "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths']",
+            then: {
+                function: tenantLevelAPIsNotAllowed,
+            },
+        },
         TrackedExtensionResourcesAreNotAllowed: {
             description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
             message: "{{error}}",
@@ -3521,8 +3612,7 @@ const ruleset = {
         ProvisioningStateMustBeReadOnly: {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
-            severity: "warn",
-            stagingOnly: true,
+            severity: "error",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
@@ -3716,7 +3806,7 @@ const ruleset = {
             description: "All operations should have a default (error) response.",
             message: "Operation is missing a default response.",
             severity: "error",
-            given: "$.paths.*.*.responses",
+            given: "$.paths.*.*.responses.*~",
             then: {
                 field: "default",
                 function: truthy,
