@@ -13,7 +13,7 @@ export function isLatestCommonTypesVersionForFile(version: string, fileName: str
 }
 
 const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi")
-const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi")
+const ExtensionResourceReg = new RegExp("^((/{\\w+})|({\\w+}))/providers/.+$", "gi")
 
 export function isPathOfExtensionResource(path: string) {
   return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg)

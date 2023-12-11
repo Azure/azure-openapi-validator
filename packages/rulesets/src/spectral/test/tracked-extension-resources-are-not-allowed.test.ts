@@ -10,121 +10,121 @@ beforeAll(async () => {
 
 test("trackedExtensionResourcesAreNotAllowed should find errors for tracked extension resources", () => {
   const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
+    "swagger": "2.0",
+    "paths": {
       "/{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates": {
-        get: {
-          operationId: "DeviceProvisioningStates_List",
-          tags: ["DeviceProvisioningStates"],
-          description: "List DeviceProvisioningState resources by parent",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_List",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "List DeviceProvisioningState resources by parent",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningStateListResult",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningStateListResult",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
           "x-ms-examples": null,
           "x-ms-pageable": {
-            nextLinkName: "nextLink",
+            "nextLinkName": "nextLink",
           },
         },
       },
       "/{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default": {
-        get: {
-          operationId: "DeviceProvisioningStates_Get",
-          tags: ["DeviceProvisioningStates"],
-          description: "Get a DeviceProvisioningState",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_Get",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "Get a DeviceProvisioningState",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
           "x-ms-examples": null,
         },
-        put: {
-          operationId: "DeviceProvisioningStates_CreateOrUpdate",
-          tags: ["DeviceProvisioningStates"],
-          description: "Create a DeviceProvisioningState",
-          parameters: [
+        "put": {
+          "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "Create a DeviceProvisioningState",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
             {
-              name: "resource",
-              in: "body",
-              description: "Resource create parameters.",
-              required: true,
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "name": "resource",
+              "in": "body",
+              "description": "Resource create parameters.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "Resource create or update operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningStateListResult",
+              "description": "Resource create or update operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningStateListResult",
               },
             },
             "201": {
-              description: "ARM create operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM create operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
-              headers: {
+              "headers": {
                 "Retry-After": {
-                  type: "integer",
-                  format: "int32",
-                  description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
                 },
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
@@ -136,50 +136,50 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for tracked exte
         },
       },
     },
-    definitions: {
-      ErrorResponse: {
-        title: "Error response",
-        description:
+    "definitions": {
+      "ErrorResponse": {
+        "title": "Error response",
+        "description":
           "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
-        type: "object",
-        properties: {
-          error: {
-            description: "The error object.",
+        "type": "object",
+        "properties": {
+          "error": {
+            "description": "The error object.",
           },
         },
       },
-      DeviceProvisioningState: {
-        type: "object",
-        description: "The provisioning state of a device.",
-        properties: {
-          location: {
-            type: "string",
+      "DeviceProvisioningState": {
+        "type": "object",
+        "description": "The provisioning state of a device.",
+        "properties": {
+          "location": {
+            "type": "string",
           },
-          properties: {
-            description: "The resource-specific properties for this resource.",
+          "properties": {
+            "description": "The resource-specific properties for this resource.",
             "x-ms-client-flatten": true,
             "x-ms-mutability": ["read", "create"],
           },
         },
       },
-      DeviceProvisioningStateListResult: {
-        type: "object",
-        description: "The response of a DeviceProvisioningState list operation.",
-        properties: {
-          value: {
-            type: "array",
-            description: "The DeviceProvisioningState items on this page",
-            items: {
-              $ref: "#/definitions/DeviceProvisioningState",
+      "DeviceProvisioningStateListResult": {
+        "type": "object",
+        "description": "The response of a DeviceProvisioningState list operation.",
+        "properties": {
+          "value": {
+            "type": "array",
+            "description": "The DeviceProvisioningState items on this page",
+            "items": {
+              "$ref": "#/definitions/DeviceProvisioningState",
             },
           },
-          nextLink: {
-            type: "string",
-            format: "uri",
-            description: "The link to the next page of items",
+          "nextLink": {
+            "type": "string",
+            "format": "uri",
+            "description": "The link to the next page of items",
           },
         },
-        required: ["value"],
+        "required": ["value"],
       },
     },
   }
@@ -194,92 +194,92 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for tracked exte
 
 test("trackedExtensionResourcesAreNotAllowed should find errors for various extension resources apiPaths", () => {
   const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
+    "swagger": "2.0",
+    "paths": {
       "{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default": {
-        get: {
-          operationId: "DeviceProvisioningStates_List",
-          tags: ["DeviceProvisioningStates"],
-          description: "List DeviceProvisioningState resources by parent",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_List",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "List DeviceProvisioningState resources by parent",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
           "x-ms-examples": null,
           "x-ms-pageable": {
-            nextLinkName: "nextLink",
+            "nextLinkName": "nextLink",
           },
         },
       },
       "/subscriptions/{subscription1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Foo/resourceType/{resourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates":
         {
-          put: {
-            operationId: "DeviceProvisioningStates_CreateOrUpdate",
-            tags: ["DeviceProvisioningStates"],
-            description: "Create a DeviceProvisioningState",
-            parameters: [
+          "put": {
+            "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+            "tags": ["DeviceProvisioningStates"],
+            "description": "Create a DeviceProvisioningState",
+            "parameters": [
               {
-                name: "api-version",
-                in: "query",
-                required: true,
-                type: "string",
-                description: "Client Api Version.",
-                enum: ["2020-06-01"],
+                "name": "api-version",
+                "in": "query",
+                "required": true,
+                "type": "string",
+                "description": "Client Api Version.",
+                "enum": ["2020-06-01"],
               },
               {
-                name: "resource",
-                in: "body",
-                description: "Resource create parameters.",
-                required: true,
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "name": "resource",
+                "in": "body",
+                "description": "Resource create parameters.",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
               },
             ],
-            responses: {
+            "responses": {
               "200": {
-                description: "Resource create or update operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                "description": "Resource create or update operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningStateListResult",
                 },
               },
               "201": {
-                description: "ARM create operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "description": "ARM create operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
-                headers: {
+                "headers": {
                   "Retry-After": {
-                    type: "integer",
-                    format: "int32",
-                    description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
                   },
                 },
               },
-              default: {
-                description: "An unexpected error response.",
-                schema: {
-                  $ref: "#/definitions/ErrorResponse",
+              "default": {
+                "description": "An unexpected error response.",
+                "schema": {
+                  "$ref": "#/definitions/ErrorResponse",
                 },
               },
             },
@@ -292,53 +292,53 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for various exte
         },
       "/subscriptions/{subscription1}/providers/Microsoft.Foo/resourceType/{resourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates":
         {
-          put: {
-            operationId: "DeviceProvisioningStates_CreateOrUpdate",
-            tags: ["DeviceProvisioningStates"],
-            description: "Create a DeviceProvisioningState",
-            parameters: [
+          "put": {
+            "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+            "tags": ["DeviceProvisioningStates"],
+            "description": "Create a DeviceProvisioningState",
+            "parameters": [
               {
-                name: "api-version",
-                in: "query",
-                required: true,
-                type: "string",
-                description: "Client Api Version.",
-                enum: ["2020-06-01"],
+                "name": "api-version",
+                "in": "query",
+                "required": true,
+                "type": "string",
+                "description": "Client Api Version.",
+                "enum": ["2020-06-01"],
               },
               {
-                name: "resource",
-                in: "body",
-                description: "Resource create parameters.",
-                required: true,
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "name": "resource",
+                "in": "body",
+                "description": "Resource create parameters.",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
               },
             ],
-            responses: {
+            "responses": {
               "200": {
-                description: "Resource create or update operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                "description": "Resource create or update operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningStateListResult",
                 },
               },
               "201": {
-                description: "ARM create operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                "description": "ARM create operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningStateListResult",
                 },
-                headers: {
+                "headers": {
                   "Retry-After": {
-                    type: "integer",
-                    format: "int32",
-                    description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
                   },
                 },
               },
-              default: {
-                description: "An unexpected error response.",
-                schema: {
-                  $ref: "#/definitions/ErrorResponse",
+              "default": {
+                "description": "An unexpected error response.",
+                "schema": {
+                  "$ref": "#/definitions/ErrorResponse",
                 },
               },
             },
@@ -348,46 +348,46 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for various exte
             },
             "x-ms-long-running-operation": true,
           },
-          patch: {
-            operationId: "DeviceProvisioningStates_CreateOrUpdate",
-            tags: ["DeviceProvisioningStates"],
-            description: "Create a DeviceProvisioningState",
-            parameters: [
+          "patch": {
+            "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+            "tags": ["DeviceProvisioningStates"],
+            "description": "Create a DeviceProvisioningState",
+            "parameters": [
               {
-                name: "api-version",
-                in: "query",
-                required: true,
-                type: "string",
-                description: "Client Api Version.",
-                enum: ["2020-06-01"],
+                "name": "api-version",
+                "in": "query",
+                "required": true,
+                "type": "string",
+                "description": "Client Api Version.",
+                "enum": ["2020-06-01"],
               },
               {
-                name: "resource",
-                in: "body",
-                description: "Resource create parameters.",
-                required: true,
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "name": "resource",
+                "in": "body",
+                "description": "Resource create parameters.",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
               },
             ],
-            responses: {
+            "responses": {
               "200": {
-                description: "Resource create or update operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                "description": "Resource create or update operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningStateListResult",
                 },
               },
               "202": {
-                description: "ARM accept operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "description": "ARM accept operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
               },
-              default: {
-                description: "An unexpected error response.",
-                schema: {
-                  $ref: "#/definitions/ErrorResponse",
+              "default": {
+                "description": "An unexpected error response.",
+                "schema": {
+                  "$ref": "#/definitions/ErrorResponse",
                 },
               },
             },
@@ -400,46 +400,46 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for various exte
         },
       "/subscriptions/{subscription1}/providers/Microsoft.Foo/resourceType/{fooResourceType1}/providers/Microsoft.Bar/resourceType/{barResourceType1}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates":
         {
-          put: {
-            operationId: "DeviceProvisioningStates_CreateOrUpdate",
-            tags: ["DeviceProvisioningStates"],
-            description: "Create a DeviceProvisioningState",
-            parameters: [
+          "put": {
+            "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+            "tags": ["DeviceProvisioningStates"],
+            "description": "Create a DeviceProvisioningState",
+            "parameters": [
               {
-                name: "api-version",
-                in: "query",
-                required: true,
-                type: "string",
-                description: "Client Api Version.",
-                enum: ["2020-06-01"],
+                "name": "api-version",
+                "in": "query",
+                "required": true,
+                "type": "string",
+                "description": "Client Api Version.",
+                "enum": ["2020-06-01"],
               },
               {
-                name: "resource",
-                in: "body",
-                description: "Resource create parameters.",
-                required: true,
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "name": "resource",
+                "in": "body",
+                "description": "Resource create parameters.",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
               },
             ],
-            responses: {
+            "responses": {
               "200": {
-                description: "Resource create or update operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningState",
+                "description": "Resource create or update operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningState",
                 },
               },
               "201": {
-                description: "ARM create operation completed successfully.",
-                schema: {
-                  $ref: "#/definitions/DeviceProvisioningStateListResult",
+                "description": "ARM create operation completed successfully.",
+                "schema": {
+                  "$ref": "#/definitions/DeviceProvisioningStateListResult",
                 },
               },
-              default: {
-                description: "An unexpected error response.",
-                schema: {
-                  $ref: "#/definitions/ErrorResponse",
+              "default": {
+                "description": "An unexpected error response.",
+                "schema": {
+                  "$ref": "#/definitions/ErrorResponse",
                 },
               },
             },
@@ -451,50 +451,50 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for various exte
           },
         },
     },
-    definitions: {
-      ErrorResponse: {
-        title: "Error response",
-        description:
+    "definitions": {
+      "ErrorResponse": {
+        "title": "Error response",
+        "description":
           "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
-        type: "object",
-        properties: {
-          error: {
-            description: "The error object.",
+        "type": "object",
+        "properties": {
+          "error": {
+            "description": "The error object.",
           },
         },
       },
-      DeviceProvisioningState: {
-        type: "object",
-        description: "The provisioning state of a device.",
-        properties: {
-          location: {
-            type: "string",
+      "DeviceProvisioningState": {
+        "type": "object",
+        "description": "The provisioning state of a device.",
+        "properties": {
+          "location": {
+            "type": "string",
           },
-          properties: {
-            description: "The resource-specific properties for this resource.",
+          "properties": {
+            "description": "The resource-specific properties for this resource.",
             "x-ms-client-flatten": true,
             "x-ms-mutability": ["read", "create"],
           },
         },
       },
-      DeviceProvisioningStateListResult: {
-        type: "object",
-        description: "The response of a DeviceProvisioningState list operation.",
-        properties: {
-          value: {
-            type: "array",
-            description: "The DeviceProvisioningState items on this page",
-            items: {
-              $ref: "#/definitions/DeviceProvisioningState",
+      "DeviceProvisioningStateListResult": {
+        "type": "object",
+        "description": "The response of a DeviceProvisioningState list operation.",
+        "properties": {
+          "value": {
+            "type": "array",
+            'description': "The DeviceProvisioningState items on this page",
+            "items": {
+              "$ref": "#/definitions/DeviceProvisioningState",
             },
           },
-          nextLink: {
-            type: "string",
-            format: "uri",
-            description: "The link to the next page of items",
+          "nextLink": {
+            "type": "string",
+            "format": "uri",
+            "description": "The link to the next page of items",
           },
         },
-        required: ["value"],
+        "required": ["value"],
       },
     },
   }
@@ -516,34 +516,34 @@ test("trackedExtensionResourcesAreNotAllowed should find errors for various exte
 
 test("trackedExtensionResourcesAreNotAllowed should not find errors for non tracked extension resources", () => {
   const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
+    "swagger": "2.0",
+    "paths": {
       "/{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates": {
-        get: {
-          operationId: "DeviceProvisioningStates_List",
-          tags: ["DeviceProvisioningStates"],
-          description: "List DeviceProvisioningState resources by parent",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_List",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "List DeviceProvisioningState resources by parent",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningStateListResult",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningStateListResult",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
@@ -554,83 +554,83 @@ test("trackedExtensionResourcesAreNotAllowed should not find errors for non trac
         },
       },
       "/{resourceUri}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default": {
-        get: {
-          operationId: "DeviceProvisioningStates_Get",
-          tags: ["DeviceProvisioningStates"],
-          description: "Get a DeviceProvisioningState",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_Get",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "Get a DeviceProvisioningState",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
           "x-ms-examples": null,
         },
-        put: {
-          operationId: "DeviceProvisioningStates_CreateOrUpdate",
-          tags: ["DeviceProvisioningStates"],
-          description: "Create a DeviceProvisioningState",
-          parameters: [
+        "put": {
+          "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "Create a DeviceProvisioningState",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
             {
-              name: "resource",
-              in: "body",
-              description: "Resource create parameters.",
-              required: true,
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "name": "resource",
+              "in": "body",
+              "description": "Resource create parameters.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "Resource create or update operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningStateListResult",
+              "description": "Resource create or update operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningStateListResult",
               },
             },
             "201": {
-              description: "ARM create operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM create operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
-              headers: {
+              "headers": {
                 "Retry-After": {
-                  type: "integer",
-                  format: "int32",
-                  description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
                 },
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
@@ -642,47 +642,47 @@ test("trackedExtensionResourcesAreNotAllowed should not find errors for non trac
         },
       },
     },
-    definitions: {
-      ErrorResponse: {
-        title: "Error response",
-        description:
+    "definitions": {
+      "ErrorResponse": {
+        "title": "Error response",
+        "description":
           "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
-        type: "object",
-        properties: {
-          error: {
-            description: "The error object.",
+        "type": "object",
+        "properties": {
+          "error": {
+            "description": "The error object.",
           },
         },
       },
-      DeviceProvisioningState: {
-        type: "object",
-        description: "The provisioning state of a device.",
-        properties: {
-          properties: {
-            description: "The resource-specific properties for this resource.",
+      "DeviceProvisioningState": {
+        "type": "object",
+        "description": "The provisioning state of a device.",
+        "properties": {
+          "properties": {
+            "description": "The resource-specific properties for this resource.",
             "x-ms-client-flatten": true,
             "x-ms-mutability": ["read", "create"],
           },
         },
       },
-      DeviceProvisioningStateListResult: {
-        type: "object",
-        description: "The response of a DeviceProvisioningState list operation.",
-        properties: {
-          value: {
-            type: "array",
-            description: "The DeviceProvisioningState items on this page",
-            items: {
-              $ref: "#/definitions/DeviceProvisioningState",
+      "DeviceProvisioningStateListResult": {
+        "type": "object",
+        "description": "The response of a DeviceProvisioningState list operation.",
+        "properties": {
+          "value": {
+            "type": "array",
+            "description": "The DeviceProvisioningState items on this page",
+            "items": {
+              "$ref": "#/definitions/DeviceProvisioningState",
             },
           },
-          nextLink: {
-            type: "string",
-            format: "uri",
-            description: "The link to the next page of items",
+          "nextLink": {
+            "type": "string",
+            "format": "uri",
+            "description": "The link to the next page of items",
           },
         },
-        required: ["value"],
+        "required": ["value"],
       },
     },
   }
@@ -693,121 +693,121 @@ test("trackedExtensionResourcesAreNotAllowed should not find errors for non trac
 
 test("trackedExtensionResourcesAreNotAllowed should not find errors for tracked non-extension resources", () => {
   const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
+    "swagger": "2.0",
+    "paths": {
       "/subscription/{subId}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates": {
-        get: {
-          operationId: "DeviceProvisioningStates_List",
-          tags: ["DeviceProvisioningStates"],
-          description: "List DeviceProvisioningState resources by parent",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_List",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "List DeviceProvisioningState resources by parent",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningStateListResult",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningStateListResult",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
           "x-ms-examples": null,
           "x-ms-pageable": {
-            nextLinkName: "nextLink",
+            "nextLinkName": "nextLink",
           },
         },
       },
       "/subscription/{subId}/providers/Microsoft.EdgeProvisioning/deviceProvisioningStates/default": {
-        get: {
-          operationId: "DeviceProvisioningStates_Get",
-          tags: ["DeviceProvisioningStates"],
-          description: "Get a DeviceProvisioningState",
-          parameters: [
+        "get": {
+          "operationId": "DeviceProvisioningStates_Get",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "Get a DeviceProvisioningState",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "ARM operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
           "x-ms-examples": null,
         },
-        put: {
-          operationId: "DeviceProvisioningStates_CreateOrUpdate",
-          tags: ["DeviceProvisioningStates"],
-          description: "Create a DeviceProvisioningState",
-          parameters: [
+        "put": {
+          "operationId": "DeviceProvisioningStates_CreateOrUpdate",
+          "tags": ["DeviceProvisioningStates"],
+          "description": "Create a DeviceProvisioningState",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query",
-              required: true,
-              type: "string",
-              description: "Client Api Version.",
-              enum: ["2020-06-01"],
+              "name": "api-version",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": "Client Api Version.",
+              "enum": ["2020-06-01"],
             },
             {
-              name: "resource",
-              in: "body",
-              description: "Resource create parameters.",
-              required: true,
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "name": "resource",
+              "in": "body",
+              "description": "Resource create parameters.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
             },
           ],
-          responses: {
+          "responses": {
             "200": {
-              description: "Resource create or update operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningStateListResult",
+              "description": "Resource create or update operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningStateListResult",
               },
             },
             "201": {
-              description: "ARM create operation completed successfully.",
-              schema: {
-                $ref: "#/definitions/DeviceProvisioningState",
+              "description": "ARM create operation completed successfully.",
+              "schema": {
+                "$ref": "#/definitions/DeviceProvisioningState",
               },
-              headers: {
+              "headers": {
                 "Retry-After": {
-                  type: "integer",
-                  format: "int32",
-                  description: "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
                 },
               },
             },
-            default: {
-              description: "An unexpected error response.",
-              schema: {
-                $ref: "#/definitions/ErrorResponse",
+            "default": {
+              "description": "An unexpected error response.",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse",
               },
             },
           },
@@ -819,50 +819,48 @@ test("trackedExtensionResourcesAreNotAllowed should not find errors for tracked 
         },
       },
     },
-    definitions: {
-      ErrorResponse: {
-        title: "Error response",
-        description:
+    "definitions": {
+      "ErrorResponse": {
+        "title": "Error response",
+        "description":
           "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
-        type: "object",
-        properties: {
-          error: {
-            description: "The error object.",
+        "type": "object",
+        "properties": {
+          "error": {
+            "description": "The error object.",
           },
         },
       },
-      DeviceProvisioningState: {
-        type: "object",
-        description: "The provisioning state of a device.",
-        properties: {
-          properties: {
-            location: {
-              type: "string",
-            },
-            description: "The resource-specific properties for this resource.",
-            "x-ms-client-flatten": true,
-            "x-ms-mutability": ["read", "create"],
+      "DeviceProvisioningState": {
+        "type": "object",
+        "description": "The provisioning state of a device.",
+        "properties": {
+          "location": {
+            "type": "string",
           },
+          "description": "The resource-specific properties for this resource.",
+          "x-ms-client-flatten": true,
+          "x-ms-mutability": ["read", "create"],
         },
       },
-      DeviceProvisioningStateListResult: {
-        type: "object",
-        description: "The response of a DeviceProvisioningState list operation.",
-        properties: {
-          value: {
-            type: "array",
-            description: "The DeviceProvisioningState items on this page",
-            items: {
-              $ref: "#/definitions/DeviceProvisioningState",
+      "DeviceProvisioningStateListResult": {
+        "type": "object",
+        "description": "The response of a DeviceProvisioningState list operation.",
+        "properties": {
+          "value": {
+            "type": "array",
+            "description": "The DeviceProvisioningState items on this page",
+            "items": {
+              "$ref": "#/definitions/DeviceProvisioningState",
             },
           },
-          nextLink: {
-            type: "string",
-            format: "uri",
-            description: "The link to the next page of items",
+          "nextLink": {
+            "type": "string",
+            "format": "uri",
+            "description": "The link to the next page of items",
           },
         },
-        required: ["value"],
+        "required": ["value"],
       },
     },
   }

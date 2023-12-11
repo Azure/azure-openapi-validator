@@ -183,7 +183,7 @@ function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
 }
 const ExtensionResourceFullyQualifiedPathReg = new RegExp(".+/providers/.+/providers/.+$", "gi");
-const ExtensionResourceReg = new RegExp("^(/{\\w+})|({\\w+})/providers/.+$", "gi");
+const ExtensionResourceReg = new RegExp("^((/{\\w+})|({\\w+}))/providers/.+$", "gi");
 function isPathOfExtensionResource(path) {
     return !!path.match(ExtensionResourceFullyQualifiedPathReg) || !!path.match(ExtensionResourceReg);
 }
