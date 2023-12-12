@@ -1683,7 +1683,7 @@ const httpsSupportedScheme = (scheme, _opts, paths) => {
 
 const latestVersionOfCommonTypesMustBeUsed = (ref, _opts, ctx) => {
     const REF_COMMON_TYPES_REGEX = new RegExp("/common-types/resource-management/v\\d+/\\w+.json#", "gi");
-    if (ref !== null && !ref.match(REF_COMMON_TYPES_REGEX)) {
+    if (ref === null || !ref.match(REF_COMMON_TYPES_REGEX)) {
         return [];
     }
     const errors = [];
