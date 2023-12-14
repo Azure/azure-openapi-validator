@@ -18,7 +18,7 @@ All proxy resources that have a put operation defined should also support a dele
 
 ## How to fix
 
-Add the delete operation for the proxy resource.
+Consider adding the delete operation for the proxy resource that has a PUT.
 
 ## Bad examples
 
@@ -50,7 +50,7 @@ A proxy resource having a put operation but no delete operation
           "200": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             }
           },
           "default": {
@@ -92,12 +92,12 @@ A proxy resource having a put operation but no delete operation
           "200": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             },
           "201": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             }
           },
           "default": {
@@ -150,7 +150,7 @@ A proxy resource having both put and delete operations
           "200": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             }
           },
           "default": {
@@ -192,12 +192,12 @@ A proxy resource having both put and delete operations
           "200": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             },
           "201": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             }
           },
           "default": {
@@ -289,7 +289,7 @@ A read only proxy resource having no put or delete operations
           "200": {
             "description": "OK response definition.",
             "schema": {
-              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a proxy resource
+              "$ref": "./proxyResourceCommon.json#/definitions/Node" // Node is a proxy resource
             }
           },
           "default": {
