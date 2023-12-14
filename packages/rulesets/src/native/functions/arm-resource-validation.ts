@@ -37,7 +37,7 @@ export function* allResourcesHaveDelete(openapiSection: any, options: { isTracke
   for (const re of allResources) {
     const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
     if (apiPath) {
-      if (armHelper.findOperation(apiPath, "put") && !armHelper.findOperation(apiPath, "delete")) {
+      if ((options.isTrackedResource || armHelper.findOperation(apiPath, "put")) && !armHelper.findOperation(apiPath, "delete")) {
         yield {
           location: ["definitions", re.modelName],
           message: `The resource ${re.modelName} does not have a corresponding delete operation.`,

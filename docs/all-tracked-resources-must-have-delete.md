@@ -12,22 +12,294 @@ ARM OpenAPI(swagger) specs
 
 - RPC-Delete-V1-03
 
-## Output Message
-
-The resource {resourceName} does not have a corresponding delete operation.
-
 ## Description
 
 All tracked resources MUST support delete.
 
-## CreatedAt
+## How to fix
 
-July 07, 2022
+Add the delete operation for the tracked resource.
 
-## LastModifiedAt
+## Bad examples
 
-Feb 10, 2023
+## Bad example 1
+```json
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/nodes/{nodeName}": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "Node_Get",
+        "description": "Get HDInsightnode",
+        "x-ms-examples": null,
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NodeNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+```
+## Bad example 2
+```json
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/nodes/{nodeName}": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "Node_Get",
+        "description": "Get HDInsightnode",
+        "x-ms-examples": null,
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NodeNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "Node_CreateOrUpdate",
+        "description": "Put HDInsightnode",
+        "x-ms-examples": null,
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NodeNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            },
+          "201": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+```
 
-## How to fix the violation
 
-Adding the put operation for tracked resource.
+## Good example
+
+```json
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/nodes/{nodeName}": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "Node_Get",
+        "description": "Get HDInsightnode",
+        "x-ms-examples": null,
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NodeNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "Node_CreateOrUpdate",
+        "description": "Put HDInsightnode",
+        "x-ms-examples": null,
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NodeNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            },
+          "201": {
+            "description": "OK response definition.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Node" // Node is a tracked resource
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "delete": {
+      "tags": [
+        "Nodes"
+      ],
+      "operationId": "Node_Delete",
+      "description": "Delete HDInsightnode",
+      "x-ms-examples": null,
+      "parameters": [
+        {
+          "$ref": "#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NodeNameParameter"
+        },
+        {
+          "$ref": "#/parameters/ApiVersionParameter"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Resource deleted successfully."
+        },
+        "204": {
+          "description": "Resource is already deleted.",
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/ErrorResponse"
+          }
+        }
+      },
+      "produces": [
+        "application/json"
+      ],
+      "consumes": [
+        "application/json"
+      ]
+    }
+  }    
+```

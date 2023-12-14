@@ -181,7 +181,6 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, XmsPageableMustHaveCorrespondingResponse, 0)
   })
 
-
   test("Preview version over a year", async () => {
     const fileName = "PreviewVersionOverOneYear.json"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileName, OpenApiTypes.arm, PreviewVersionOverOneYear)
@@ -268,7 +267,7 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 1)
   })
 
-  test("no delete in for tracked resource", async () => {
+  test("no delete in for tracked resource with put", async () => {
     const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
     const ruleName = "AllTrackedResourcesMustHaveDelete"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
@@ -276,12 +275,42 @@ describe("IndividualAzureTests", () => {
     getErrorMessages(messages)
   })
 
-  test("no delete in for proxy resource", async () => {
-    const fileNames = ["armResource/trackedResourceNoDelete.json", "armResource/trackedResourceCommon.json"]
-    const ruleName = "AllProxyResourcesShouldHaveDelete"
+  test("no delete in for tracked resource with no put", async () => {
+    const fileNames = ["armResource/trackedResourceNoDeleteNoPut.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "AllTrackedResourcesMustHaveDelete"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
+    getErrorMessages(messages)
+  })
+
+  test("Tracked resources with delete operations should not flag an error", async () => {
+    const fileNames = ["armResource/trackedResourceWithDelete.json", "armResource/trackedResourceCommon.json"]
+    const ruleName = "AllTrackedResourcesMustHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 0)
+    getErrorMessages(messages)
+  })
+
+  test("no delete in for proxy resource", async () => {
+    const fileNames = ["armResource/proxyResourceNoDelete.json", "armResource/proxyResourceCommon.json"]
+    const ruleName = "AllProxyResourcesShouldHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 2)
     getWarningMessages(messages)
+  })
+
+  test("no delete in for proxy resource with no put", async () => {
+    const fileNames = ["armResource/proxyResourceNoDeleteNoPut.json", "armResource/proxyResourceCommon.json"]
+    const ruleName = "AllProxyResourcesShouldHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 0)
+  })
+
+  test("Proxy resources with delete operations should not flag an error", async () => {
+    const fileNames = ["armResource/proxyResourceWithDelete.json", "armResource/proxyResourceCommon.json"]
+    const ruleName = "AllProxyResourcesShouldHaveDelete"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 0)
   })
 
   test("tracked resource beyonds third level", async () => {
