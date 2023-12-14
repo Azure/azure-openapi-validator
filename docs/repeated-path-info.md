@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-The '{property name}' already appears in the URI, please don't repeat it in the request body. Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
+Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
 ## How to fix
 

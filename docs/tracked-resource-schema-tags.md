@@ -14,7 +14,7 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-Every tracked resource MUST support tags as an optional property. The specified tracked resource either does not have tags mentioned as a property or it is mentioned but marked as required.
+Every tracked resource **must** support tags as an **optional** property. The specified tracked resource either does not have 'tags' as a property or has 'tags' marked as required.
 
 ## How to fix the violation
 

@@ -18,4 +18,4 @@ Tracked resources must have a PUT operation.
 
 ## How to fix
 
-Add the PUT operation for a tracked resource or make the resource proxy if it cannot be created by the end user.
+Add a PUT operation for the tracked resource or make the resource's routing type proxy if it cannot be created by the end user.

@@ -14,17 +14,18 @@ ARM OpenAPI(swagger) specs
 - RPC-Put-V1-28, RPC-Patch-V1-12
 
 ## Description
-A PUT or Patch request must always have a request body defined. This rule applies to all ARM resources (Tracked and proxy). PUT and patch operations using an empty payload is not allowed in ARM.
+A PUT or PATCH request must always have a request body defined. This rule applies to all ARM resources (Tracked and Proxy). PUT and PATCH operations using an empty payload is not allowed in ARM.
 
 ## How to fix
 
-Add a request body for every PUT or Patch operation defined in your swagger. This request body must also match the response body of the PUT or Patch operation.
+Add a request body for every PUT or PATCH operation defined in your swagger. This request body must also match the response body of the PUT or PATCH operation.
 
 ## Bad examples 
 
-PUT without a request body
+## Bad example 1
+PUT without a request body:
 
-```json5
+```json
  "put": {
         "tags": [
           "DataConnectors"
@@ -47,7 +48,8 @@ PUT without a request body
         ],
 ```
 
-Another Put operation without a request body
+## Bad example 2
+Another PUT operation without a request body:
 
 ```json5
  "put": {
