@@ -3,7 +3,7 @@ import { LATEST_VERSION_BY_COMMON_TYPES_FILENAME, isLatestCommonTypesVersionForF
 export const latestVersionOfCommonTypesMustBeUsed = (ref: any, _opts: any, ctx: any) => {
   const REF_COMMON_TYPES_REGEX = new RegExp("/common-types/resource-management/v\\d+/\\w+.json#", "gi")
 
-  if (ref !== null && !ref.match(REF_COMMON_TYPES_REGEX)) {
+  if (ref === null || !ref.match(REF_COMMON_TYPES_REGEX)) {
     return []
   }
   const errors = []

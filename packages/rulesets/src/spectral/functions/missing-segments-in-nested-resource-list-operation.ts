@@ -16,7 +16,7 @@ function verifyResourceType(path: string) {
   return matchAnyPatterns(patterns, path)
 }
 
-export const validateSegmentsInNestedResourceListOperation: any = (fullPath: any, _opts: any, ctx: any) => {
+export const missingSegmentsInNestedResourceListOperation: any = (fullPath: any, _opts: any, ctx: any) => {
   const swagger = ctx?.documentInventory?.resolved
 
   if (fullPath === null || typeof fullPath !== "string" || fullPath.length === 0 || swagger === null) {

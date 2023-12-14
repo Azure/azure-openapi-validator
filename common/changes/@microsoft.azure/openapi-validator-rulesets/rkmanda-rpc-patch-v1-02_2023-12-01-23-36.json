@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Update UnsupportedPatchProperties rule to include a check for properties.provisioningState property. The change is to ensure that provisioningState property is not updatable via a patch operation.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

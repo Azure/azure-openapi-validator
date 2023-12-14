@@ -9,7 +9,7 @@ export const XmsIdentifierValidation = "XmsIdentifierValidation"
 rules.push({
   id: "R4041",
   name: XmsIdentifierValidation,
-  severity: "error",
+  severity: "warning",
   category: "SDKViolation",
   mergeState: MergeStates.individual,
   openapiType: OpenApiTypes.arm,

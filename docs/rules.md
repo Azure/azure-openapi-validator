@@ -18,7 +18,7 @@ Please refer to [additional-properties-object.md](./additional-properties-object
 
 ### AllProxyResourcesShouldHaveDelete
 
-All proxy resources SHOULD support delete.
+All proxy resources that have a put operation defined should also support a delete operation. This makes the APIs intuitive for customers as they would expect every resource that they have the ability to create to also be deletable. There are rare sceanrios where a customer is allowed to create and replace a resource but never be able to delete them. In such cases it is ok to not implement a delete but such cases are very rare and should be avoided. 
 
 Please refer to [all-proxy-resources-should-have-delete.md](./all-proxy-resources-should-have-delete.md) for details.
 
@@ -135,7 +135,7 @@ Please refer to [avoid-msdn-references.md](./avoid-msdn-references.md) for detai
 
 ### AvoidNestedProperties
 
-Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.
+Consider using x-ms-client-flatten to provide a better end user experience. Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily. Overly nested properties (especially required ones) can result into a non optimal user experience.
 
 Please refer to [avoid-nested-properties.md](./avoid-nested-properties.md) for details.
 
@@ -1292,7 +1292,7 @@ Please refer to [tracked-resources-must-have-put.md](./tracked-resources-must-ha
 
 ### UnSupportedPatchProperties
 
-Patch may not change the name, location, or type of the resource.
+The patch operation body parameter schema must not contain top level "id", "name", "type", "location" as writable properties. The operation body parameter schema must also not contain provisioningState in the properties bag as a writable property. This is because these properties are not patchable. To fix this, either remove the offending properties from the request payload of the Patch operation, or mark them as readOnly or immutable. A Patch operation may not change the id, name, type, location, or properties.provisioningState of the resource.
 
 Please refer to [un-supported-patch-properties.md](./un-supported-patch-properties.md) for details.
 
