@@ -18,7 +18,7 @@ Please refer to [additional-properties-object.md](./additional-properties-object
 
 ### AllProxyResourcesShouldHaveDelete
 
-All proxy resources SHOULD support delete.
+All proxy resources that have a put operation defined should also support a delete operation. This makes the APIs intuitive for customers as they would expect every resource that they have the ability to create to also be deletable. There are rare sceanrios where a customer is allowed to create and replace a resource but never be able to delete them. In such cases it is ok to not implement a delete but such cases are very rare and should be avoided. 
 
 Please refer to [all-proxy-resources-should-have-delete.md](./all-proxy-resources-should-have-delete.md) for details.
 

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Update get-collection-only-has-value-nextlink.md to get-collection-only-has-value-and-next-link.md in order to match the rule name getCollectionOnlyHasValueAndNextLink",
+      "comment": "Modify the rule AllTrackedResourcesMustHaveDelete to flag an error even when a Put operation is not specified for Tracked resources",
       "type": "patch"
     }
   ],
