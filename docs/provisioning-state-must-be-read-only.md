@@ -8,6 +8,10 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
+## Related ARM Guideline Code
+
+- RPC-Async-V1-16
+
 ## Description
 
 This is a rule introduced to validate if provisioningState property is set to readOnly.
