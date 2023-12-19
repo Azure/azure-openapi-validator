@@ -70,7 +70,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
               description: "The name of the resource group",
             },
             {
-              in: "body",
+              in: "testBody",
               name: "body",
               description: "Body must be valid DataConnector request.",
               required: true,
@@ -116,7 +116,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
               description: "The name of the resource group",
             },
             {
-              in: "body",
+              in: "testBody",
               name: "body",
               description: "Body must be valid DataConnector request.",
               required: true,
@@ -162,7 +162,7 @@ test("RequestBodyMustExistForPutPatch should not find errors when the schema for
               description: "The name of the resource group",
             },
             {
-              in: "body",
+              in: "testBody",
               name: "body",
               description: "Body must be valid DataConnector request.",
               required: true,
@@ -257,7 +257,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
               description: "The name of the resource group",
             },
             {
-              in: "body",
+              in: "testBody",
               name: "body",
               description: "Body must be valid DataConnector request.",
               required: true,
@@ -303,7 +303,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
               description: "The name of the resource group",
             },
             {
-              in: "body",
+              in: "testBody",
               name: "body",
               description: "Body must be valid DataConnector request.",
               required: true,
@@ -349,7 +349,7 @@ test("RequestBodyMustExistForPutPatch should not find errors when the schema for
               description: "The name of the resource group",
             },
             {
-              in: "body",
+              in: "testBody",
               name: "body",
               description: "Body must be valid DataConnector request.",
               required: true,
