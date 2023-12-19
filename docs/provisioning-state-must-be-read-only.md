@@ -41,11 +41,13 @@ provisioningState without readOnly
     "FooProps": {
       "properties": {
         "provisioningState": {
-          "type": "string",
-          "description": "Provisioning state of the foo rule.",
-          "enum": ["Creating", "Canceled", "Deleting", "Failed"],
+            "$ref": "#/definitions/ProvisioningState"
         },
       },
+    },
+   "ProvisioningState": {
+      "type": "string",
+      "enum": ["Succeeded", "Failed", "Canceled"],
     },
 }
 ```
@@ -147,10 +149,6 @@ provisioningState with readOnly defined in the actual definition
       "type": "string",
       "readOnly": true,
       "enum": ["Succeeded", "Failed", "Canceled"],
-      "x-ms-enum": {
-        "name": "ProvisioningState",
-        "modelAsString": true,
-      },
     },
     "FooRule": {
       "type": "object",
