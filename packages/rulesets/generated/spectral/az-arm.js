@@ -244,7 +244,7 @@ function getProperty(schema, propName) {
     return undefined;
 }
 function findBodyParam(params) {
-    const isBody = (elem) => elem.name === "body" && elem.in === "body";
+    const isBody = (elem) => elem.name === "body";
     if (params && Array.isArray(params)) {
         return params.filter(isBody).shift();
     }
@@ -3117,6 +3117,7 @@ const ruleset = {
         PropertiesTypeObjectNoDefinition: {
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
+            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3213,6 +3214,7 @@ const ruleset = {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3411,6 +3413,7 @@ const ruleset = {
             description: "Every Put and Patch operation must have a request body",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
