@@ -41,13 +41,11 @@ provisioningState without readOnly
     "FooProps": {
       "properties": {
         "provisioningState": {
-            "$ref": "#/definitions/ProvisioningState"
+          "type": "string",
+          "description": "Provisioning state of the foo rule.",
+          "enum": ["Creating", "Canceled", "Deleting", "Failed"],
         },
       },
-    },
-   "ProvisioningState": {
-      "type": "string",
-      "enum": ["Succeeded", "Failed", "Canceled"],
     },
 }
 ```
@@ -89,11 +87,8 @@ provisioningState with readOnly defined in the envelope property and not in the 
     "FooProps": {
       "properties": {
         "provisioningState": {
-        "$ref": "#/definitions/ProvisioningState",
-        "readOnly": true,
-        "type": "string",
-        "description": "Provisioning state of the foo rule.",
-        "enum": ["Creating", "Canceled", "Deleting", "Failed"],
+            "$ref": "#/definitions/ProvisioningState",
+            "readOnly": true,
         },
       },
     }
@@ -147,6 +142,7 @@ provisioningState with readOnly defined in the actual definition
 "definitions": {
    "ProvisioningState": {
       "type": "string",
+      "description": "Provisioning state of the foo rule.",
       "readOnly": true,
       "enum": ["Succeeded", "Failed", "Canceled"],
     },
@@ -162,10 +158,7 @@ provisioningState with readOnly defined in the actual definition
     "FooProps": {
       "properties": {
         "provisioningState": {
-        "$ref": "#/definitions/ProvisioningState",
-        "type": "string",
-        "description": "Provisioning state of the foo rule.",
-        "enum": ["Creating", "Canceled", "Deleting", "Failed"],
+          "$ref": "#/definitions/ProvisioningState",
         },
       },
     }
