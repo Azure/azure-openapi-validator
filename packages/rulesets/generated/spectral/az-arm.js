@@ -244,7 +244,7 @@ function getProperty(schema, propName) {
     return undefined;
 }
 function findBodyParam(params) {
-    const isBody = (elem) => elem.name === "body";
+    const isBody = (elem) => elem.in === "body";
     if (params && Array.isArray(params)) {
         return params.filter(isBody).shift();
     }

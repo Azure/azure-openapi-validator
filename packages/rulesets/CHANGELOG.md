@@ -1,6 +1,21 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Thu, 07 Dec 2023 18:58:00 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Dec 2023 21:25:29 GMT and should not be manually modified.
+
+## 1.3.2
+Tue, 19 Dec 2023 21:25:29 GMT
+
+### Patches
+
+- Disable falsely flagging rules(RequestBodyMustExistForPutPatch, PatchPropertiesCorrespondToPutProperties, PropertiesTypeObjectNoDefinition) in PROD
+- Fix RequestBodyMustExistForPutPatch rule to not check the body param name to be 'body'
+- Fix null check for latestVersionOfCommonTypesMustBeUsed
+- Fix trackedExtensionResourcesAreNotAllowed from flagging false positives
+- Add linter rules to production pipeline and update version to 1.3.0
+- Make XmsIdentifierValidation a warning as it isn't truly blocking and there could be valid cases when 'x-ms-identifier' isn't present in the array.
+- Modify the rule AllTrackedResourcesMustHaveDelete to flag an error even when a Put operation is not specified for Tracked resources
+- Fix documentation and add tests for the AvoidNestedProperties rule
+- Update UnsupportedPatchProperties rule to include a check for properties.provisioningState property. The change is to ensure that provisioningState property is not updatable via a patch operation.
 
 ## 1.3.0
 Tue, 05 Dec 2023 20:03:59 GMT
