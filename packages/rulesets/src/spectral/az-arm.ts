@@ -189,6 +189,19 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Async-V1-16
+    ProvisioningStateMustBeReadOnly: {
+      description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
+      then: {
+        function: provisioningStateMustBeReadOnly,
+      },
+    },
+
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
       description:
@@ -919,17 +932,6 @@ const ruleset: any = {
       given: "$..['$ref']",
       then: {
         function: latestVersionOfCommonTypesMustBeUsed,
-      },
-    },
-    ProvisioningStateMustBeReadOnly: {
-      description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
-      then: {
-        function: provisioningStateMustBeReadOnly,
       },
     },
     ArrayMustHaveType: {
