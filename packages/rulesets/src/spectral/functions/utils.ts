@@ -90,7 +90,7 @@ export function getProperty(schema: any, propName: string): any {
 }
 
 export function findBodyParam(params: any) {
-  const isBody = (elem: any) => elem.name === "body" && elem.in === "body"
+  const isBody = (elem: any) => elem.in === "body"
   if (params && Array.isArray(params)) {
     return params.filter(isBody).shift()
   }

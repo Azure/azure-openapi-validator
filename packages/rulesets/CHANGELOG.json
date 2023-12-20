@@ -2,6 +2,42 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
+      "version": "1.3.2",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.2",
+      "date": "Tue, 19 Dec 2023 21:25:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Disable falsely flagging rules(RequestBodyMustExistForPutPatch, PatchPropertiesCorrespondToPutProperties, PropertiesTypeObjectNoDefinition) in PROD"
+          },
+          {
+            "comment": "Fix RequestBodyMustExistForPutPatch rule to not check the body param name to be 'body'"
+          },
+          {
+            "comment": "Fix null check for latestVersionOfCommonTypesMustBeUsed"
+          },
+          {
+            "comment": "Fix trackedExtensionResourcesAreNotAllowed from flagging false positives"
+          },
+          {
+            "comment": "Add linter rules to production pipeline and update version to 1.3.0"
+          },
+          {
+            "comment": "Make XmsIdentifierValidation a warning as it isn't truly blocking and there could be valid cases when 'x-ms-identifier' isn't present in the array."
+          },
+          {
+            "comment": "Modify the rule AllTrackedResourcesMustHaveDelete to flag an error even when a Put operation is not specified for Tracked resources"
+          },
+          {
+            "comment": "Fix documentation and add tests for the AvoidNestedProperties rule"
+          },
+          {
+            "comment": "Update UnsupportedPatchProperties rule to include a check for properties.provisioningState property. The change is to ensure that provisioningState property is not updatable via a patch operation."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.0",
       "date": "Tue, 05 Dec 2023 20:03:59 GMT",

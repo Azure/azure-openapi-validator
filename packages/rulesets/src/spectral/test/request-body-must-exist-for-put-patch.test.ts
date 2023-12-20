@@ -71,7 +71,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
             },
             {
               in: "body",
-              name: "body",
+              name: "testBody",
               description: "Body must be valid DataConnector request.",
               required: true,
               // No schema specified here....
@@ -117,7 +117,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
             },
             {
               in: "body",
-              name: "body",
+              name: "testBody",
               description: "Body must be valid DataConnector request.",
               required: true,
               schema: "",
@@ -163,7 +163,7 @@ test("RequestBodyMustExistForPutPatch should not find errors when the schema for
             },
             {
               in: "body",
-              name: "body",
+              name: "testBody",
               description: "Body must be valid DataConnector request.",
               required: true,
               schema: "#/definitions/FooRequestParams",
@@ -258,7 +258,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
             },
             {
               in: "body",
-              name: "body",
+              name: "testBody",
               description: "Body must be valid DataConnector request.",
               required: true,
               // No schema specified here....
@@ -304,7 +304,7 @@ test("RequestBodyMustExistForPutPatch should find errors when the schema for the
             },
             {
               in: "body",
-              name: "body",
+              name: "testBody",
               description: "Body must be valid DataConnector request.",
               required: true,
               schema: "",
@@ -350,7 +350,7 @@ test("RequestBodyMustExistForPutPatch should not find errors when the schema for
             },
             {
               in: "body",
-              name: "body",
+              name: "testBody",
               description: "Body must be valid DataConnector request.",
               required: true,
               schema: "#/definitions/FooRequestParams",
