@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Add suggestion to use common types to the output message of RequiredPropertiesMissingInResourceModel",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

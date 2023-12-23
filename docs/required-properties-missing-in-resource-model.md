@@ -14,7 +14,8 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-Model definition '{0}' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly.
+Model definition '{0}' must have the properties 'name', 'id' and 'type' in its hierarchy and these properties must be marked as readonly. ARM suggests to use the common-types
+resource definitions if possible.
 
 ## Description
 
