@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Make XmsIdentifierValidation a warning as it isn't truly blocking and there could be valid cases when 'x-ms-identifier' isn't present in the array.",
+      "comment": "Add RPC code to ProvisioningStateMustBeReadOnly and fix documentation",
       "type": "patch"
     }
   ],

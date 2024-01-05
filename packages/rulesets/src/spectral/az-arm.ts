@@ -189,6 +189,19 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Async-V1-16
+    ProvisioningStateMustBeReadOnly: {
+      description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
+      then: {
+        function: provisioningStateMustBeReadOnly,
+      },
+    },
+
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
       description:
@@ -273,6 +286,7 @@ const ruleset: any = {
       description:
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
+      stagingOnly: true,
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -401,6 +415,7 @@ const ruleset: any = {
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
@@ -634,6 +649,7 @@ const ruleset: any = {
       description: "Every Put and Patch operation must have a request body",
       message: "{{error}}",
       severity: "error",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
@@ -919,17 +935,6 @@ const ruleset: any = {
       given: "$..['$ref']",
       then: {
         function: latestVersionOfCommonTypesMustBeUsed,
-      },
-    },
-    ProvisioningStateMustBeReadOnly: {
-      description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
-      then: {
-        function: provisioningStateMustBeReadOnly,
       },
     },
     ArrayMustHaveType: {

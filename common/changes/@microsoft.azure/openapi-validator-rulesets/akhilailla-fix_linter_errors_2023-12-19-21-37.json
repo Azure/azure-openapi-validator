@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Add linter rules to production pipeline and update version to 1.3.0",
+      "comment": "Upgrade version to 1.3.2",
       "type": "patch"
     }
   ],
