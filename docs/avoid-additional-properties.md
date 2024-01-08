@@ -44,9 +44,9 @@ The following are the only scenarios where "additionalProperties" are allowed
 ...
 ```
 
-## How to fix the violation
+## How to fix
 
-Remove the additionalProperties type from the payload.
+Remove the additionalProperties type from the payload. If you believe you still need this, please book an API modeling office hours slot to go over your scenario and get an exception. Please visit aka.ms\armofficehoursinfo to book a meeting slot. 
 
 ```json
 ...
