@@ -1,6 +1,14 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Tue, 19 Dec 2023 21:25:29 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 21:39:10 GMT and should not be manually modified.
+
+## 1.3.3
+Wed, 10 Jan 2024 21:39:10 GMT
+
+### Patches
+
+- Upgrade version to 1.3.2
+- Add RPC code to ProvisioningStateMustBeReadOnly and fix documentation
 
 ## 1.3.2
 Tue, 19 Dec 2023 21:25:29 GMT

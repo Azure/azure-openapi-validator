@@ -1,0 +1,20 @@
+{
+  "name": "@microsoft.azure/openapi-validator-core",
+  "entries": [
+    {
+      "version": "1.0.4",
+      "tag": "@microsoft.azure/openapi-validator-core_v1.0.4",
+      "date": "Wed, 10 Jan 2024 21:39:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix invalid self-dependency cycle bug"
+          },
+          {
+            "comment": "Enable Dependency Cycles in the openapi documents"
+          }
+        ]
+      }
+    }
+  ]
+}

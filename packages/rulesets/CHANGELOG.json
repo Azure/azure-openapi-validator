@@ -2,6 +2,26 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
+      "version": "1.3.3",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.3",
+      "date": "Wed, 10 Jan 2024 21:39:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade version to 1.3.2"
+          },
+          {
+            "comment": "Add RPC code to ProvisioningStateMustBeReadOnly and fix documentation"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft.azure/openapi-validator-core\" from `~1.0.0` to `~1.0.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.2",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.2",
       "date": "Tue, 19 Dec 2023 21:25:29 GMT",
