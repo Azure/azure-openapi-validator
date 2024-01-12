@@ -14,11 +14,14 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant,
+Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a
+`subscription` path parameter).
 
 ## How to fix
 
-Either remove the path with the `scope` parameter, or remove all explicitly-scoped paths that duplicate the path with the `scope` parameter.
+Either remove the path with the `scope` parameter, or remove all explicitly-scoped paths that duplicate the path with
+the `scope` parameter.
 
 Example of duplicate paths:
 

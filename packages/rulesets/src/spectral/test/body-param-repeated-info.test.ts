@@ -77,3 +77,62 @@ test("RepeatedPathInfo should find errors", () => {
     expect(results[0].message).toBe("The 'fooName' already appears in the path, please don't repeat it in the request body.")
   })
 })
+
+test("RepeatedPathInfo should find errors for tenant level paths", () => {
+  // Test parameter names in 3 different places:
+  // 1. parameter at path level
+  // 2. inline parameter at operation level
+  // 3. referenced parameter at operation level
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/providers/Microsoft.MyNs/foo/{fooName}": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "fooName",
+              in: "path",
+              required: true,
+              type: "string",
+            },
+            {
+              name: "FooResource",
+              in: "body",
+              required: true,
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
+            },
+          ],
+          responses: {},
+        },
+      },
+    },
+    parameters: {},
+    definitions: {
+      FooResource: {
+        properties: {
+          properties: {
+            type: "object",
+            properties: {
+              // repeated 'fooName' property.
+              fooName: {
+                type: "string",
+                description: "The name of the foo resource",
+              },
+            },
+          },
+        },
+        "x-ms-azure-resource": true,
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.MyNs/foo/{fooName}.put.parameters.0")
+    expect(results[0].message).toBe("The 'fooName' already appears in the path, please don't repeat it in the request body.")
+  })
+})

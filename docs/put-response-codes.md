@@ -12,21 +12,17 @@ ARM OpenAPI (swagger) specs
 
 - RPC-Async-V1-11, RPC-Put-V1-11
 
-## Output Message
-
-Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
-
 ## Description
 
-Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
+Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They must not have any other response codes.
 
-## How to fix the violation
+## How to fix
 
 For synchronous and long-running (LRO) PUT operations, specify responses with 200 & 201 return codes.
 
-### Example
+### Good examples
 
-The following would be valid for SYNC PUT:
+The following would be valid for a synchronous PUT:
 
 ```json
 ...
@@ -53,7 +49,7 @@ The following would be valid for SYNC PUT:
 ...
 ```
 
-The following would be valid for ASYNC PUT:
+The following would be valid for an asynchronous PUT:
 
 ```json
 ...

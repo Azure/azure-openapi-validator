@@ -12,22 +12,10 @@ ARM OpenAPI(swagger) specs
 
 - RPC-Put-V1-22
 
-## Output Message
-
-The tracked resource {resourceName} does not have a corresponding put operation.
-
 ## Description
 
-Tracked resources must have put operation.
+Tracked resources must have a PUT operation.
 
-## CreatedAt
+## How to fix
 
-July 07, 2022
-
-## LastModifiedAt
-
-July 07, 2022
-
-## How to fix the violation
-
-Adding the put operation for tracked resource, or remove the resource definition if it's useless.
+Add a PUT operation for the tracked resource or make the resource's routing type proxy if it cannot be created by the end user.

@@ -353,3 +353,32 @@ test("NoDuplicatePathsForScopeParameter should find errors for other scopes", ()
     expect(results[2].message).toContain(`"${paths[0]}" that has the scope parameter`)
   })
 })
+
+test("NoDuplicatePathsForScopeParameter should not find errors for list and point get paths", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/{scope}/providers/Microsoft.Bakery/breads": {
+        get: {
+          parameters: [{ $ref: "#/parameters/ScopeParameter" }],
+        },
+      },
+      "/{scope}/providers/Microsoft.Bakery/breads/{breadName}": {
+        get: {
+          parameters: [{ $ref: "#/parameters/ScopeParameter" }],
+        },
+      },
+    },
+    parameters: {
+      ScopeParameter: {
+        name: "scope",
+        in: "path",
+        required: true,
+      },
+    },
+  }
+
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})

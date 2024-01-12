@@ -153,7 +153,8 @@ Please refer to [body-properties-names-camel-case.md](./body-properties-names-ca
 
 ### BodyTopLevelProperties
 
-Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties of a resource should be only ones from the allowed set.
+Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, systemData, extendedlocation.
+As per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties of a resource should be only ones from the allowed set.
 
 Please refer to [body-top-level-properties.md](./body-top-level-properties.md) for details.
 
@@ -469,7 +470,7 @@ Please refer to [list-in-operation-name.md](./list-in-operation-name.md) for det
 
 ### LocationMustHaveXmsMutability
 
-A tracked resource's `location` property must have the `x-ms-mutability` properties set as `read`, `create`.
+A tracked resource's `location` property must have the `x-ms-mutability` properties set as `read`, `create` ('\"x-ms-mutability\":[\"read\", \"create\"]'). Location is a property that is set once and non-updatable for a tracked resource. Hence, per ARM guidelines the only operations allowed are `read` and `create`.
 
 Please refer to [location-must-have-xms-mutability.md](./location-must-have-xms-mutability.md) for details.
 
@@ -611,7 +612,9 @@ Please refer to [next-link-property-must-exist.md](./next-link-property-must-exi
 
 ### NoDuplicatePathsForScopeParameter
 
-Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant,
+Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a
+`subscription` path parameter).
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
@@ -996,7 +999,7 @@ Please refer to [provisioning-state-validation.md](./provisioning-state-validati
 
 ### PutGetPatchResponseSchema
 
-For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.
+For a given path with PUT, GET and PATCH operations, the schema of the response must be the same. Having the same response will provide a consistent experience to the user, i.e. the user could use the same model object to perform various operations. Also, within the SDK, this will encourage reuse of the same model objects.
 
 Please refer to [put-get-patch-response-schema.md](./put-get-patch-response-schema.md) for details.
 
@@ -1014,7 +1017,7 @@ Please refer to [put-path.md](./put-path.md) for details.
 
 ### PutRequestResponseSchemeArm
 
-The request & response('200') schema of the PUT operation must be same.
+A PUT operation request body schema should be the same as its 200 response schema, to allow reusing the response as a request to another PUT operation. This will provide a consistent experience to the user, i.e. the user could use the same model object to perform multiple operations. Also, within the SDK, this will encourage reuse of the same model objects.
 
 Please refer to [put-request-response-scheme-arm.md](./put-request-response-scheme-arm.md) for details.
 
@@ -1026,19 +1029,19 @@ Please refer to [put-request-response-scheme.md](./put-request-response-scheme.m
 
 ### PutResponseCodes
 
-Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They also must not have other response codes.
+Synchronous and long-running PUT operations must have responses with 200, 201 and default return codes. They must not have any other response codes.
 
 Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### RepeatedPathInfo
 
-Information in the URI should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
+Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
 Please refer to [repeated-path-info.md](./repeated-path-info.md) for details.
 
 ### RequestBodyMustExistForPutPatch
 
-This rule applies for tracked as well as proxy resources. This applies even in the case where there are no properties defined in the properties bag. 
+A PUT or PATCH request must always have a request body defined. This rule applies to all ARM resources (Tracked and Proxy). PUT and PATCH operations using an empty payload is not allowed in ARM.
 
 Please refer to [request-body-must-exist-for-put-patch.md](./request-body-must-exist-for-put-patch.md) for details.
 
@@ -1063,7 +1066,7 @@ Please refer to [required-default-response.md](./required-default-response.md) f
 
 ### RequiredPropertiesMissingInResourceModel
 
-Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), a `Resource` model must have the `name`, `id` and `type` properties defined as `readOnly` in its hierarchy.
+As per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), a `Resource` model must have the `name`, `id` and `type` properties defined as `readOnly` in its hierarchy. `name`, `type` and `id` are readonly properties set by the service. 
 
 Please refer to [required-properties-missing-in-resource-model.md](./required-properties-missing-in-resource-model.md) for details.
 
@@ -1279,13 +1282,13 @@ Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-o
 
 ### TrackedResourceSchemaTags
 
-Every tracked resource MUST support tags as an optional property.
+Every tracked resource **must** support tags as an **optional** property. The specified tracked resource either does not have 'tags' as a property or has 'tags' marked as required.
 
 Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 
 ### TrackedResourcesMustHavePut
 
-Tracked resources must have put operation.
+Tracked resources must have a PUT operation.
 
 Please refer to [tracked-resources-must-have-put.md](./tracked-resources-must-have-put.md) for details.
 
