@@ -612,7 +612,9 @@ Please refer to [next-link-property-must-exist.md](./next-link-property-must-exi
 
 ### NoDuplicatePathsForScopeParameter
 
-Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant, Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a `subscription` path parameter).
+Swagger authors that use the `scope` path parameter to indicate that an API is applicable to various scopes (Tenant,
+Management Group, Subscription, Resource Group, etc.), must not include API paths with explicitly defined scopes (e.g. a
+`subscription` path parameter).
 
 Please refer to [no-duplicate-paths-for-scope-parameter.md](./no-duplicate-paths-for-scope-parameter.md) for details.
 
@@ -1033,13 +1035,13 @@ Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
 ### RepeatedPathInfo
 
-The '{property name}' already appears in the URI, please don't repeat it in the request body. Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
+Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).
 
 Please refer to [repeated-path-info.md](./repeated-path-info.md) for details.
 
 ### RequestBodyMustExistForPutPatch
 
-A PUT or Patch request must always have a request body defined. This rule applies to all ARM resources (Tracked and proxy). PUT and patch operations using an empty payload is not allowed in ARM.
+A PUT or PATCH request must always have a request body defined. This rule applies to all ARM resources (Tracked and Proxy). PUT and PATCH operations using an empty payload is not allowed in ARM.
 
 Please refer to [request-body-must-exist-for-put-patch.md](./request-body-must-exist-for-put-patch.md) for details.
 
@@ -1280,7 +1282,7 @@ Please refer to [tracked-resource-patch-operation.md](./tracked-resource-patch-o
 
 ### TrackedResourceSchemaTags
 
-Every tracked resource MUST support tags as an optional property. The specified tracked resource either does not have tags mentioned as a property or it is mentioned but marked as required.
+Every tracked resource **must** support tags as an **optional** property. The specified tracked resource either does not have 'tags' as a property or has 'tags' marked as required.
 
 Please refer to [tracked-resource-schema-tags.md](./tracked-resource-schema-tags.md) for details.
 

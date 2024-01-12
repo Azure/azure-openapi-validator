@@ -11,7 +11,7 @@ const noDuplicatePathsForScopeParameter = (path: any, _opts: any, ctx: any) => {
     return []
   }
 
-  const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"))
+  const pathRegEx = new RegExp(path.replace(scopeParameter, ".*").concat("$"))
 
   // check each explicitly-scoped path to see if it is already defined by the variably-scoped path
   const otherPaths = Object.keys(swagger.paths).filter((p: string) => p !== path)
