@@ -55,7 +55,7 @@ test("LatestVersionOfCommonTypesMustBeUsed should find errors for obsolete versi
   return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(3)
     expect(results[0].path.join(".")).toBe("paths./foo.get.parameters.0.$ref")
-    expect(results[0].message).toContain("Use the latest version v4 of customermanagedkeys.json.")
+    expect(results[0].message).toContain("Use the latest version v5 of customermanagedkeys.json.")
     expect(results[1].path.join(".")).toBe("paths./foo.get.parameters.1.$ref")
     expect(results[1].message).toContain("Use the latest version v5 of managedidentity.json.")
     expect(results[2].path.join(".")).toBe("paths./foo.get.responses.200.$ref")

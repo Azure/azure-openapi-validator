@@ -3,9 +3,10 @@ import _ from "lodash"
 export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
   ["types.json", "v5"],
   ["managedidentity.json", "v5"],
-  ["privatelinks.json", "v4"],
-  ["customermanagedkeys.json", "v4"],
-  ["managedidentitywithdelegation.json", "v4"],
+  ["privatelinks.json", "v5"],
+  ["customermanagedkeys.json", "v5"],
+  ["managedidentitywithdelegation.json", "v5"],
+  ["mobo.json", "v5"],
 ])
 
 export function isLatestCommonTypesVersionForFile(version: string, fileName: string) {
