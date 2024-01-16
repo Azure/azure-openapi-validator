@@ -175,9 +175,10 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
 const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
     ["types.json", "v5"],
     ["managedidentity.json", "v5"],
-    ["privatelinks.json", "v4"],
-    ["customermanagedkeys.json", "v4"],
-    ["managedidentitywithdelegation.json", "v4"],
+    ["privatelinks.json", "v5"],
+    ["customermanagedkeys.json", "v5"],
+    ["managedidentitywithdelegation.json", "v5"],
+    ["mobo.json", "v5"],
 ]);
 function isLatestCommonTypesVersionForFile(version, fileName) {
     return LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(fileName) === version.toLowerCase();
@@ -1832,7 +1833,7 @@ const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
     if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
         return [];
     }
-    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
+    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*").concat("$"));
     const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
     const matches = otherPaths.filter((p) => pathRegEx.test(p));
     const errors = matches.map((match) => {
@@ -2557,6 +2558,7 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     return errors;
 };
 
+const EXCEPTION_LIST = ["resourceGroupName", "privateEndpointConnectionName", "managementGroupName"];
 const resourceNameRestriction = (paths, _opts, ctx) => {
     if (paths === null || typeof paths !== "object") {
         return [];
@@ -2581,7 +2583,7 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
             var _a;
             if (v.includes("}")) {
                 const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
-                if ((param === null || param === void 0 ? void 0 : param.match(/^\w+Name+$/)) && param !== "resourceGroupName") {
+                if ((param === null || param === void 0 ? void 0 : param.match(/^\w+Name+$/)) && !EXCEPTION_LIST.includes(param)) {
                     const paramDefinition = getPathParameter(paths[pathKey], param);
                     if (paramDefinition && !paramDefinition.pattern) {
                         errors.push({

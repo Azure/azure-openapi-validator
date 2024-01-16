@@ -108,3 +108,39 @@ test("ResourceNameRestriction should find no errors", () => {
     expect(results.length).toBe(0)
   })
 })
+
+test("ResourceNameRestriction should find no errors for system-defined variables", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}/privateEndpointConnections/{privateEndpointConnectionName}":
+        {
+          parameters: [
+            {
+              name: "fooName",
+              in: "path",
+              required: true,
+              type: "string",
+              pattern: "[a-zA-Z_0-9]+",
+              "x-ms-parameter-location": "method",
+            },
+            {
+              name: "privateEndpointConnectionName",
+              in: "path",
+              required: true,
+              type: "string",
+              description: "The name of the private endpoint connection associated with the Azure resource.",
+              "x-ms-parameter-location": "method",
+            },
+          ],
+          get: {
+            parameters: [],
+            responses: {},
+          },
+        },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})

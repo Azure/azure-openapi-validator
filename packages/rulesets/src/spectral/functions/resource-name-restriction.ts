@@ -1,5 +1,7 @@
 // Check conformance to Azure parameter naming conventions:
 
+//system-defined parameters => needs to be excluded from validation
+const EXCEPTION_LIST = ["resourceGroupName", "privateEndpointConnectionName", "managementGroupName"]
 export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
   if (paths === null || typeof paths !== "object") {
     return []
@@ -27,7 +29,7 @@ export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
       if (v.includes("}")) {
         const param = v.match(/[^{}]+(?=})/)?.[0]
         // Get the preceding path segment
-        if (param?.match(/^\w+Name+$/) && param !== "resourceGroupName") {
+        if (param?.match(/^\w+Name+$/) && !EXCEPTION_LIST.includes(param)) {
           const paramDefinition = getPathParameter(paths[pathKey], param)
           if (paramDefinition && !paramDefinition.pattern) {
             errors.push({
