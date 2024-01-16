@@ -1833,7 +1833,7 @@ const noDuplicatePathsForScopeParameter = (path, _opts, ctx) => {
     if (path === null || typeof path !== "string" || path.length === 0 || swagger === null) {
         return [];
     }
-    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*"));
+    const pathRegEx = new RegExp(path.replace(scopeParameter, ".*").concat("$"));
     const otherPaths = Object.keys(swagger.paths).filter((p) => p !== path);
     const matches = otherPaths.filter((p) => pathRegEx.test(p));
     const errors = matches.map((match) => {
