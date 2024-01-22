@@ -220,12 +220,11 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
         description:
           "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
         type: "object",
-        properties: {
-          error: {
-            description: "The error object.",
-            $ref: "#/definitions/ErrorDetail",
+        allOf: [
+          {
+            $ref: "#/definitions/ErrorAdditionalInfo",
           },
-        },
+        ],
       },
       ErrorAdditionalInfo: {
         type: "object",
