@@ -2352,8 +2352,9 @@ const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
         return [{ message: errorMessageNull, path }];
     }
     if (typeof definitionObject === "object") {
-        if (definitionObject.allOf)
+        if (definitionObject.allOf) {
             return;
+        }
         if (definitionObject.properties === undefined) {
             if (definitionObject.additionalProperties === undefined) {
                 return [{ message: errorMessageObject, path }];

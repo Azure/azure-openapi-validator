@@ -220,11 +220,12 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
         description:
           "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
         type: "object",
-        allOf: [
-          {
-            $ref: "#/definitions/ErrorAdditionalInfo",
+        properties: {
+          error: {
+            description: "The error object.",
+            $ref: "#/definitions/ErrorDetail",
           },
-        ],
+        },
       },
       ErrorAdditionalInfo: {
         type: "object",
@@ -283,6 +284,49 @@ test("PropertiesTypeObjectNoDefinition should find no errors", () => {
             type: "string",
           },
           description: "The additional info.",
+        },
+        description: "The resource management error additional info.",
+      },
+    },
+  }
+  return linter.run(oasDoc1).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("PropertiesTypeObjectNoDefinition should find no errors for type allOf", () => {
+  const oasDoc1 = {
+    swagger: "2.0",
+    info: {
+      version: "4.0",
+      title: "Common types",
+    },
+    paths: {},
+    definitions: {
+      ErrorResponse: {
+        title: "Error response",
+        description:
+          "Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).",
+        type: "object",
+        allOf: [
+          {
+            $ref: "#/definitions/ErrorAdditionalInfo",
+          },
+        ],
+      },
+      ErrorAdditionalInfo: {
+        type: "object",
+        properties: {
+          type: {
+            readOnly: true,
+            type: "string",
+            description: "The additional info type.",
+          },
+          info: {
+            readOnly: true,
+            type: "string",
+            description: "The additional info.",
+          },
         },
         description: "The resource management error additional info.",
       },
