@@ -37,6 +37,23 @@ test("ParameterNotUsingCommonTypes should find errors path parameters", () => {
             },
           },
         },
+        put: {
+          operationId: "Path_Put",
+          parameters: [
+            {
+              name: "api-version",
+              in: "path",
+              required: true,
+              type: "string",
+              description: "test location",
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
       },
     },
     parameters: {
@@ -50,11 +67,13 @@ test("ParameterNotUsingCommonTypes should find errors path parameters", () => {
     },
   }
   const ret = nonResolvingLinter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
-    expect(results[0].message).toContain("location")
-    expect(results[1].path.join(".")).toBe("paths./api/Paths.get.parameters")
-    expect(results[1].message).toContain("scope")
+    expect(results.length).toBe(3)
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters.0.name")
+    expect(results[0].message).toContain('Not using the common-types defined parameter "location".')
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.get.parameters.1.name")
+    expect(results[1].message).toContain('Not using the common-types defined parameter "scope".')
+    expect(results[2].path.join(".")).toBe("paths./api/Paths.put.parameters.0.name")
+    expect(results[2].message).toContain('Not using the common-types defined parameter "api-version".')
   })
   return ret
 })
@@ -70,6 +89,19 @@ test("ParameterNotUsingCommonTypes should find errors global parameters", () => 
             {
               $ref: "#/parameters/SubscriptionIdParameter",
             },
+            {
+              $ref: "#/parameters/ApiVersionParameter",
+            },
+          ],
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+        put: {
+          operationId: "Path_Put",
+          parameters: [
             {
               $ref: "#/parameters/ApiVersionParameter",
             },
@@ -101,10 +133,10 @@ test("ParameterNotUsingCommonTypes should find errors global parameters", () => 
   }
   return nonResolvingLinter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.get.parameters")
-    expect(results[0].message).toContain("subscriptionId")
-    expect(results[1].path.join(".")).toBe("paths./api/Paths.get.parameters")
-    expect(results[1].message).toContain("api-version")
+    expect(results[0].path.join(".")).toBe("parameters.SubscriptionIdParameter.name")
+    expect(results[0].message).toContain('Not using the common-types defined parameter "subscriptionId".')
+    expect(results[1].path.join(".")).toBe("parameters.ApiVersionParameter.name")
+    expect(results[1].message).toContain('Not using the common-types defined parameter "api-version".')
   })
 })
 
@@ -124,6 +156,13 @@ test("ParameterNotUsingCommonTypes should find no errors", () => {
             },
             {
               $ref: "../../../../../common-types/resource-management/v4/types.json#/parameters/ResourceGroupNameParameter",
+            },
+            {
+              name: "testScope",
+              in: "path",
+              required: true,
+              type: "string",
+              description: "test scope",
             },
           ],
           responses: {
