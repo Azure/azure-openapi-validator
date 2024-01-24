@@ -78,7 +78,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
       const openapiDefinitionDocument = await readFile(file)
       const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
       const normalizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
-      await runSpectral(openapiDefinitionObject, normalizedFile, initiator.Message.bind(initiator), spectral)
+      await runSpectral(initiator, openapiDefinitionObject, normalizedFile, initiator.Message.bind(initiator), spectral)
     } catch (e) {
       catchSpectralRunErrors(file, e, initiator)
     }
@@ -153,7 +153,14 @@ function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, r
   }
 }
 
-async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
+const linterRuleNameToRPCGuidelineCodeMap = new Map<String, String>([
+  ["PostResponseCodes", "RPC-Async-V1-11, RPC-Async-V1-14"],
+  ["LroErrorContent", "RPC-Common-V1-05"],
+  ["LroLocationHeader", "RPC-Async-V1-07"],
+  ["DeleteResponseCodes", "RPC-Delete-V1-01, RPC-Async-V1-09"],
+])
+
+async function runSpectral(initiator: any, doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
   const mergedResults = []
   const convertSeverity = (severity: number) => {
     switch (severity) {
@@ -191,6 +198,7 @@ async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message)
 
   const format = (result: any, spec: string) => {
     return {
+      rpcGuidelineCode: linterRuleNameToRPCGuidelineCodeMap.get(result.code),
       code: result.code,
       message: result.message,
       type: convertSeverity(result.severity),
@@ -209,6 +217,10 @@ async function runSpectral(doc: any, filePath: string, sendMessage: (m: Message)
     sendMessage(convertLintMsgToAutoRestMsg(message))
   }
 
+  initiator.Message({
+    Channel: "information",
+    Text: `mergedResults:  ${mergedResults.length},  ${JSON.stringify(mergedResults, null, 2)}`,
+  })
   return mergedResults
 }
 
