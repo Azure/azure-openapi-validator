@@ -1,10 +1,7 @@
 // Verifies that parameters already defined in common-types are not being redefined.
 
-export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: any) => {
-  if (parameters === null || !Array.isArray(parameters)) {
-    return []
-  }
-  if (parameters.length === 0) {
+export const parameterNotUsingCommonTypes = (parametersName: any, _opts: any, ctx: any) => {
+  if (parametersName === null) {
     return []
   }
 
@@ -21,18 +18,15 @@ export const parameterNotUsingCommonTypes = (parameters: any, _opts: any, ctx: a
     "ifNoneMatch",
   ])
 
-  const swagger = ctx?.documentInventory?.resolved
+  const errors = []
+  const path = ctx.path
 
-  const allParams = parameters.concat(Object.values(swagger?.parameters ?? []))
-  const paramsWithNameProperty = allParams.filter((param) => Object.keys(param).includes("name"))
-  const paramNames = paramsWithNameProperty.map((param) => param.name)
-  const paramsFromCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.has(pName))
-  const errors = paramsFromCommonTypes.map((pName) => {
-    return {
-      message: `Not using the common-types defined parameter "${pName}".`,
-      path: ctx.path,
-    }
-  })
-
+  const checkCommonTypes = commonTypesParametersNames.has(parametersName)
+  if (checkCommonTypes) {
+    errors.push({
+      message: `Not using the common-types defined parameter "${parametersName}".`,
+      path: path,
+    })
+  }
   return errors
 }

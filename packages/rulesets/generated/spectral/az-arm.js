@@ -1955,12 +1955,8 @@ const parameterNotDefinedInGlobalParameters = (parameters, _opts, ctx) => {
     return errors;
 };
 
-const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
-    var _a, _b;
-    if (parameters === null || !Array.isArray(parameters)) {
-        return [];
-    }
-    if (parameters.length === 0) {
+const parameterNotUsingCommonTypes = (parametersName, _opts, ctx) => {
+    if (parametersName === null) {
         return [];
     }
     const commonTypesParametersNames = new Set([
@@ -1975,17 +1971,15 @@ const parameterNotUsingCommonTypes = (parameters, _opts, ctx) => {
         "ifMatch",
         "ifNoneMatch",
     ]);
-    const swagger = (_a = ctx === null || ctx === void 0 ? void 0 : ctx.documentInventory) === null || _a === void 0 ? void 0 : _a.resolved;
-    const allParams = parameters.concat(Object.values((_b = swagger === null || swagger === void 0 ? void 0 : swagger.parameters) !== null && _b !== void 0 ? _b : []));
-    const paramsWithNameProperty = allParams.filter((param) => Object.keys(param).includes("name"));
-    const paramNames = paramsWithNameProperty.map((param) => param.name);
-    const paramsFromCommonTypes = paramNames.filter((pName) => commonTypesParametersNames.has(pName));
-    const errors = paramsFromCommonTypes.map((pName) => {
-        return {
-            message: `Not using the common-types defined parameter "${pName}".`,
-            path: ctx.path,
-        };
-    });
+    const errors = [];
+    const path = ctx.path;
+    const checkCommonTypes = commonTypesParametersNames.has(parametersName);
+    if (checkCommonTypes) {
+        errors.push({
+            message: `Not using the common-types defined parameter "${parametersName}".`,
+            path: path,
+        });
+    }
     return errors;
 };
 
@@ -3741,7 +3735,7 @@ const ruleset = {
             severity: "warn",
             resolved: false,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+            given: ["$[paths,'x-ms-paths'].*.*.parameters.*.name", "$[parameters].*.name"],
             then: {
                 function: parameterNotUsingCommonTypes,
             },

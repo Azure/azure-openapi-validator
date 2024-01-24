@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Fix an issue where ParameterNotUsingCommonTypes rule concatenates all the calls on a path instead of verifying individual GET/POST/PUT/DELETE call, these changes modify the rule accordingly",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

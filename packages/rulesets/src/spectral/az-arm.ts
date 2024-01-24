@@ -1019,7 +1019,7 @@ const ruleset: any = {
       severity: "warn",
       resolved: false,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'parameters')]"],
+      given: ["$[paths,'x-ms-paths'].*.*.parameters.*.name", "$[parameters].*.name"],
       then: {
         function: parameterNotUsingCommonTypes,
       },
