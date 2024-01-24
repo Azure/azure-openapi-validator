@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator",
+      "comment": "Include RPC guideline code to linter output",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator"
+}
