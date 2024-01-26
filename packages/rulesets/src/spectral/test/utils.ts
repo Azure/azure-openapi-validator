@@ -14,10 +14,14 @@ export function buildLinter(rulesets: any[], testedRuleName: string, useNoopReso
     })
   })
 
-  // Delete the "stagingOnly" property for the same reasons as we do so in
+  // Delete "stagingOnly", "rpcGuidelineCode" property for the same reasons as we do so in
   // packages/azure-openapi-validator/autorest/src/spectral-plugin-func.ts/getRuleSet
   rulesets.forEach((ruleset: any) => {
     Object.values(ruleset.rules).forEach((rule: any) => delete rule.stagingOnly)
+  })
+
+  rulesets.forEach((ruleset: any) => {
+    Object.values(ruleset.rules).forEach((rule: any) => delete rule.rpcGuidelineCode)
   })
 
   const linter = useNoopResolver

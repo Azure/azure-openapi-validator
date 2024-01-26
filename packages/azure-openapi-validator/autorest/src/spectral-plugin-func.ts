@@ -36,7 +36,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
   }
 
   const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
-  const [ruleset, namesOfRulesInStagingOnly]: [Ruleset, string[]] = await getRuleSet(resolvedOpenapiType)
+  const [ruleset, ruleSetIncludingRPCGuidelineCode, namesOfRulesInStagingOnly]: [Ruleset, any, string[]] = await getRuleSet(resolvedOpenapiType)
 
   ifNotStagingRunThenDisableStagingOnlyRules(isStagingRun, initiator, ruleset, namesOfRulesInStagingOnly)
 
@@ -78,7 +78,14 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
       const openapiDefinitionDocument = await readFile(file)
       const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
       const normalizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
-      await runSpectral(initiator, openapiDefinitionObject, normalizedFile, initiator.Message.bind(initiator), spectral)
+      await runSpectral(
+        initiator,
+        ruleSetIncludingRPCGuidelineCode,
+        openapiDefinitionObject,
+        normalizedFile,
+        initiator.Message.bind(initiator),
+        spectral
+      )
     } catch (e) {
       catchSpectralRunErrors(file, e, initiator)
     }
@@ -153,14 +160,14 @@ function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, r
   }
 }
 
-const linterRuleNameToRPCGuidelineCodeMap = new Map<String, String>([
-  ["PostResponseCodes", "RPC-Async-V1-11, RPC-Async-V1-14"],
-  ["LroErrorContent", "RPC-Common-V1-05"],
-  ["LroLocationHeader", "RPC-Async-V1-07"],
-  ["DeleteResponseCodes", "RPC-Delete-V1-01, RPC-Async-V1-09"],
-])
-
-async function runSpectral(initiator: any, doc: any, filePath: string, sendMessage: (m: Message) => void, spectral: any) {
+async function runSpectral(
+  initiator: any,
+  ruleSetIncludingRPCGuidelineCode: any,
+  doc: any,
+  filePath: string,
+  sendMessage: (m: Message) => void,
+  spectral: any
+) {
   const mergedResults = []
   const convertSeverity = (severity: number) => {
     switch (severity) {
@@ -198,7 +205,7 @@ async function runSpectral(initiator: any, doc: any, filePath: string, sendMessa
 
   const format = (result: any, spec: string) => {
     return {
-      rpcGuidelineCode: linterRuleNameToRPCGuidelineCodeMap.get(result.code),
+      rpcGuidelineCode: ruleSetIncludingRPCGuidelineCode.rules[result.code]?.rpcGuidelineCode ? ruleSetIncludingRPCGuidelineCode.rules[result.code].rpcGuidelineCode : "",
       code: result.code,
       message: result.message,
       type: convertSeverity(result.severity),
@@ -216,15 +223,11 @@ async function runSpectral(initiator: any, doc: any, filePath: string, sendMessa
   for (const message of mergedResults) {
     sendMessage(convertLintMsgToAutoRestMsg(message))
   }
-
-  initiator.Message({
-    Channel: "information",
-    Text: `mergedResults:  ${mergedResults.length},  ${JSON.stringify(mergedResults, null, 2)}`,
-  })
+  
   return mergedResults
 }
 
-export async function getRuleSet(openapiType: OpenApiTypes): Promise<[ruleset: Ruleset, namesOfRulesInStagingOnly: string[]]> {
+export async function getRuleSet(openapiType: OpenApiTypes): Promise<[ruleset: Ruleset, ruleSetIncludingRPCGuidelineCode: any, namesOfRulesInStagingOnly: string[]]> {
   let ruleset: any
   switch (openapiType) {
     case OpenApiTypes.arm: {
@@ -239,10 +242,15 @@ export async function getRuleSet(openapiType: OpenApiTypes): Promise<[ruleset: R
       ruleset = spectralRulesets.azCommon
     }
   }
+  // Creating a copy of ruleset with rpcGuidelineCode field as we need it later to be included in the output
+  const ruleSetIncludingRPCGuidelineCode = JSON.parse(JSON.stringify(ruleset))
+  // Delete "rpcGuidelineCode" custom property added by this source code
+  // as it would fail validation when constructing @stoplight/spectral-core Ruleset downstream.
+  Object.values(ruleset.rules).forEach((rule: any) => delete rule.rpcGuidelineCode)
 
   const namesOfRulesInStagingOnly: string[] = processRulesInStagingOnly(ruleset.rules)
 
-  return [new Ruleset(ruleset, { severity: "recommended" }), namesOfRulesInStagingOnly]
+  return [new Ruleset(ruleset, { severity: "recommended" }), ruleSetIncludingRPCGuidelineCode, namesOfRulesInStagingOnly]
 
   function processRulesInStagingOnly(rules: any) {
     const rulesByName: [string, any][] = Object.entries(rules)
