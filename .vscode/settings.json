@@ -45,7 +45,7 @@
   },
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "cSpell.words": [
     "ruleset",

@@ -133,12 +133,6 @@ The documentation is being generated from the OpenAPI(swagger) and published at 
 
 Please refer to [avoid-msdn-references.md](./avoid-msdn-references.md) for details.
 
-### AvoidNestedProperties
-
-Consider using x-ms-client-flatten to provide a better end user experience. Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily. Overly nested properties (especially required ones) can result into a non optimal user experience.
-
-Please refer to [avoid-nested-properties.md](./avoid-nested-properties.md) for details.
-
 ### AzureResourceTagsSchema
 
 This rule is to check if the tags definition of a resource conforms to the common tags definition.

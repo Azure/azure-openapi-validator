@@ -1040,18 +1040,6 @@ const ruleset$1 = {
                 function: avoidAnonymousSchema,
             },
         },
-        AvoidNestedProperties: {
-            description: "Nested properties can result into bad user experience especially when creating request objects. `x-ms-client-flatten` flattens the model properties so that the users can analyze and set the properties much more easily.",
-            message: "Consider using x-ms-client-flatten to provide a better end user experience",
-            severity: "warn",
-            resolved: false,
-            formats: [oas2],
-            given: ["$..[?(@object() && @.properties)].properties[?(@object() && @.properties)].properties^"],
-            then: {
-                field: "x-ms-client-flatten",
-                function: truthy,
-            },
-        },
         AvoidMsdnReferences: {
             description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
             message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
