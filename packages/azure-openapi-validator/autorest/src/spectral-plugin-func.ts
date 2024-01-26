@@ -79,7 +79,6 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
       const openapiDefinitionObject = safeLoad(openapiDefinitionDocument)
       const normalizedFile = file.startsWith("file:///") ? fileURLToPath(file) : file
       await runSpectral(
-        initiator,
         ruleSetIncludingRPCGuidelineCode,
         openapiDefinitionObject,
         normalizedFile,
@@ -161,7 +160,6 @@ function printRuleNames(initiator: IAutoRestPluginInitiator, ruleset: Ruleset, r
 }
 
 async function runSpectral(
-  initiator: any,
   ruleSetIncludingRPCGuidelineCode: any,
   doc: any,
   filePath: string,
@@ -223,7 +221,7 @@ async function runSpectral(
   for (const message of mergedResults) {
     sendMessage(convertLintMsgToAutoRestMsg(message))
   }
-  
+
   return mergedResults
 }
 
