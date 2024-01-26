@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Remove the rule of avoid-nested-properties",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
