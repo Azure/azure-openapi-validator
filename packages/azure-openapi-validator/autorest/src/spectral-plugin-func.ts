@@ -215,7 +215,7 @@ async function runSpectral(rulesetWithRpcGuidelineCode: any, doc: any, filePath:
 
 export async function getRuleSet(
   openapiType: OpenApiTypes
-): Promise<[ruleset: Ruleset, c: any, namesOfRulesInStagingOnly: string[]]> {
+): Promise<[ruleset: Ruleset, ruleSetIncludingRpcGuidelineCode: any, namesOfRulesInStagingOnly: string[]]> {
   let ruleset: any
   switch (openapiType) {
     case OpenApiTypes.arm: {
