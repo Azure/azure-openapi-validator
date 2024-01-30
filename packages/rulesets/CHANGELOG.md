@@ -1,6 +1,18 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Tue, 19 Dec 2023 21:25:29 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2024 18:28:15 GMT and should not be manually modified.
+
+## 1.3.3
+Tue, 30 Jan 2024 18:28:15 GMT
+
+### Patches
+
+- Fix a false positive in NoDuplicatePathsForScopeParameter where the rule would flag list and point GETs as the same path
+- Add rpcGuidelineCode to linter rules in azARM rulesets
+- Fix ResourceNameRestriction rule to exclude validation for system-defined parameters
+- Update latestVersionOfCommonTypesMustBeUsed rule to check for latest version(V5) of all common types
+- Upgrade version to 1.3.2
+- Add RPC code to ProvisioningStateMustBeReadOnly and fix documentation
 
 ## 1.3.2
 Tue, 19 Dec 2023 21:25:29 GMT
