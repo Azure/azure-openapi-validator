@@ -13,14 +13,22 @@ export type LintOptions = {
   fileSystem?: IFileSystem
 }
 export type LintCallBack = (msg: LintResultMessage) => void
+export type LogCallBack = (msg: string) => void
 
-export async function lint(swaggerPaths: string[], options: LintOptions, cb?: LintCallBack): Promise<LintResultMessage[]> {
+export async function lint(swaggerPaths: string[], options: LintOptions, cb?: LintCallBack, log?: LogCallBack): Promise<LintResultMessage[]> {
+
+  log?.call(undefined, `kja get inventory`);
   const inventory = new SwaggerInventory(options?.fileSystem)
+  log?.call(undefined, `kja ruleLoader`)
   const ruleLoader = { getRuleSet: () => options.ruleSet }
+  log?.call(undefined, `kja new runner`)
   const runner = new LintRunner(ruleLoader, inventory)
+  log?.call(undefined, `kja execute`)
   const msgs = await runner.execute(swaggerPaths, options, cb)
+  log?.call(undefined, `kja msgs`)
   return msgs
 }
+
 
 export async function LintTester(
   sampleFilePath: string | string[],

@@ -15,6 +15,9 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   const sendMessage = (msg: LintResultMessage) => {
     initiator.Message(convertLintMsgToAutoRestMsg(msg))
   }
+  const log = (msg: string) => {
+    initiator.Message({ Channel: "information", Text: msg })
+  }
 
   const readFile = async (fileUri: string) => {
     if (isExample(fileUri)) {
@@ -45,7 +48,7 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
 
     printRuleNames(initiator, mergedRuleset, resolvedOpenapiType)
 
-    await lint(files, { ruleSet: mergedRuleset, fileSystem: defaultFileSystem, openapiType: resolvedOpenapiType }, sendMessage)
+    await lint(files, { ruleSet: mergedRuleset, fileSystem: defaultFileSystem, openapiType: resolvedOpenapiType }, sendMessage, log)
   } catch (e) {
     initiator.Message({
       Channel: "fatal",
