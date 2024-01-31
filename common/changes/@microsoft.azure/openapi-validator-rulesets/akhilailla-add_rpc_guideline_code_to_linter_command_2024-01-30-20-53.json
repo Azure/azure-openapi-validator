@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Update latestVersionOfCommonTypesMustBeUsed rule to check for latest version(V5) of all common types",
+      "comment": "Upgrade version to 1.3.3",
       "type": "patch"
     }
   ],

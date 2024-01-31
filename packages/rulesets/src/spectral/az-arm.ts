@@ -90,6 +90,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-01, RPC-Put-V1-11
     PutResponseCodes: {
+      rpcGuidelineCode: "RPC-Async-V1-01, RPC-Put-V1-11",
       description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
       message: "{{error}}",
@@ -104,6 +105,7 @@ const ruleset: any = {
     // RPC Code: RPC-Async-V1-02
     //PUT
     ProvisioningStateSpecifiedForLROPut: {
+      rpcGuidelineCode: "RPC-Async-V1-02",
       description:
         'A LRO PUT operation\'s response schema must have "ProvisioningState" property specified for the 200 and 201 status codes.',
       message: "{{error}}",
@@ -117,6 +119,7 @@ const ruleset: any = {
     },
     //Patch
     ProvisioningStateSpecifiedForLROPatch: {
+      rpcGuidelineCode: "RPC-Async-V1-02",
       description:
         'A long running Patch operation\'s response schema must have "ProvisioningState" property specified for the 200 status code.',
       message: "{{error}}",
@@ -134,6 +137,7 @@ const ruleset: any = {
     // https://github.com/Azure/azure-openapi-validator/issues/332
     // RPC Code: RPC-Async-V1-03
     ProvisioningStateValidation: {
+      rpcGuidelineCode: "RPC-Async-V1-03",
       description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
       message: "{{error}}",
       severity: "error",
@@ -147,6 +151,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-07
     LroLocationHeader: {
+      rpcGuidelineCode: "RPC-Async-V1-07",
       description: "Location header must be supported for all async operations that return 202.",
       message: "A 202 response should include an Location response header.",
       severity: "error",
@@ -162,6 +167,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-11, RPC-Async-V1-14
     PostResponseCodes: {
+      rpcGuidelineCode: "RPC-Async-V1-11, RPC-Async-V1-14",
       description:
         "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
       severity: "error",
@@ -176,6 +182,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-15
     XMSLongRunningOperationProperty: {
+      rpcGuidelineCode: "RPC-Async-V1-15",
       description:
         "If an operation's (PUT/POST/PATCH/DELETE) responses have `Location` or `Azure-AsyncOperation` headers then it MUST have the property `x-ms-long-running-operation` set to `true`",
       message:
@@ -191,6 +198,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-16
     ProvisioningStateMustBeReadOnly: {
+      rpcGuidelineCode: "RPC-Async-V1-16",
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
       severity: "error",
@@ -204,6 +212,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Common-V1-05
     LroErrorContent: {
+      rpcGuidelineCode: "RPC-Common-V1-05",
       description:
         "Error response content of long running operations must follow the error schema provided in the common types v2 and above.",
       message: "{{description}}",
@@ -226,6 +235,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Delete-V1-01, RPC-Async-V1-09
     DeleteResponseCodes: {
+      rpcGuidelineCode: "RPC-Delete-V1-01, RPC-Async-V1-09",
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
       message: "{{error}}",
@@ -239,6 +249,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Delete-V1-02
     DeleteMustNotHaveRequestBody: {
+      rpcGuidelineCode: "RPC-Delete-V1-02",
       description: "The delete operation must not have a request body.",
       severity: "error",
       message: "{{description}}",
@@ -252,6 +263,7 @@ const ruleset: any = {
     //https://github.com/Azure/azure-openapi-validator/issues/330
     // RPC Code: RPC-Delete-V1-04
     DeleteResponseBodyEmpty: {
+      rpcGuidelineCode: "RPC-Delete-V1-04",
       description: "The delete response body must be empty.",
       message: "{{description}}",
       severity: "error",
@@ -269,6 +281,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Policy-V1-05, RPC-Put-V1-23
     AvoidAdditionalProperties: {
+      rpcGuidelineCode: "RPC-Policy-V1-05, RPC-Put-V1-23",
       description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
       message: "{{description}}",
@@ -283,6 +296,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Policy-V1-03
     PropertiesTypeObjectNoDefinition: {
+      rpcGuidelineCode: "RPC-Policy-V1-03",
       description:
         "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
       severity: "error",
@@ -304,18 +318,6 @@ const ruleset: any = {
     /// ARM RPC rules for Get patterns
     ///
 
-    // RPC Code: RPC-Get-V1-02
-    GetMustNotHaveRequestBody: {
-      description: "The Get operation must not have a request body.",
-      severity: "error",
-      message: "{{description}}",
-      resolved: true,
-      formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*.get.parameters[?(@.in === 'body')]",
-      then: {
-        function: falsy,
-      },
-    },
     // github issue https://github.com/Azure/azure-openapi-validator/issues/331
     // Get operation should return 200
     // already have rule to check if operation returns non 2XX, it should mark it as 'x-ms-error-response' explicitly
@@ -324,6 +326,7 @@ const ruleset: any = {
     // so here just check for non 200, 202 response codes i.e, '201','203','204'
     // RPC Code: RPC-Get-V1-01
     GetResponseCodes: {
+      rpcGuidelineCode: "RPC-Get-V1-01",
       description: 'The GET operation should only return 200. In addition, it can return 202 only if it has "Location" header defined',
       message: "{{error}}",
       severity: "error",
@@ -335,8 +338,23 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-02
+    GetMustNotHaveRequestBody: {
+      rpcGuidelineCode: "RPC-Get-V1-02",
+      description: "The Get operation must not have a request body.",
+      severity: "error",
+      message: "{{description}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.get.parameters[?(@.in === 'body')]",
+      then: {
+        function: falsy,
+      },
+    },
+
     // RPC Codes: RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06
     GetCollectionOnlyHasValueAndNextLink: {
+      rpcGuidelineCode: "RPC-Get-V1-09, RPC-Arg-V1-01, RPC-Get-V1-06",
       description: "Get endpoints for collections of resources must only have the `value` and `nextLink` properties in their model.",
       message: "{{description}}",
       severity: "error",
@@ -351,6 +369,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Get-V1-08
     ParametersInPointGet: {
+      rpcGuidelineCode: "RPC-Get-V1-08",
       description: "Point Get's MUST not have query parameters other than api version.",
       severity: "error",
       message: "{{error}}",
@@ -364,6 +383,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Get-V1-11
     MissingSegmentsInNestedResourceListOperation: {
+      rpcGuidelineCode: "RPC-Get-V1-11",
       description: "A nested resource type's List operation must include all the parent segments in its api path.",
       severity: "warn",
       message: "{{error}}",
@@ -377,6 +397,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Get-V1-11
     XmsPageableForListCalls: {
+      rpcGuidelineCode: "RPC-Get-V1-11",
       description: "`x-ms-pageable` extension must be specified for LIST APIs.",
       severity: "error",
       message: "{{error}}",
@@ -390,6 +411,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Get-V1-14
     GetOperationMustNotBeLongRunning: {
+      rpcGuidelineCode: "RPC-Get-V1-14",
       description:
         "The GET operation cannot be long running. It must not have the `x-ms-long-running-operation` and `x-ms-long-running-operation-options` properties defined.",
       severity: "error",
@@ -411,6 +433,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Patch-V1-01
     PatchPropertiesCorrespondToPutProperties: {
+      rpcGuidelineCode: "RPC-Patch-V1-01",
       description:
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
@@ -424,8 +447,24 @@ const ruleset: any = {
       },
     },
 
+    //https://github.com/Azure/azure-openapi-validator/issues/324
+    // RPC Code: RPC-Patch-V1-01
+    ConsistentPatchProperties: {
+      rpcGuidelineCode: "RPC-Patch-V1-01",
+      description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths.*.patch"],
+      then: {
+        function: consistentPatchProperties,
+      },
+    },
+
     // RPC Code: RPC-Patch-V1-02
     UnSupportedPatchProperties: {
+      rpcGuidelineCode: "RPC-Patch-V1-02",
       description: "Patch may not change the name, location, or type of the resource.",
       message: "{{error}}",
       severity: "error",
@@ -440,22 +479,10 @@ const ruleset: any = {
         },
       },
     },
-    //https://github.com/Azure/azure-openapi-validator/issues/324
-    // RPC Code: RPC-Patch-V1-01
-    ConsistentPatchProperties: {
-      description: "The properties in the patch body must be present in the resource model and follow json merge patch.",
-      message: "{{error}}",
-      severity: "error",
-      resolved: true,
-      formats: [oas2],
-      given: ["$.paths.*.patch"],
-      then: {
-        function: consistentPatchProperties,
-      },
-    },
 
     // RPC Code: RPC-Patch-V1-06
     PatchResponseCodes: {
+      rpcGuidelineCode: "RPC-Patch-V1-06",
       description: "Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 return codes.",
       message: "{{error}}",
       severity: "error",
@@ -470,6 +497,7 @@ const ruleset: any = {
     //https://github.com/Azure/azure-openapi-validator/issues/335
     // RPC Code: RPC-Patch-V1-06, RPC-Async-V1-08
     LroPatch202: {
+      rpcGuidelineCode: "RPC-Patch-V1-06, RPC-Async-V1-08",
       description: "Async PATCH should return 202.",
       message: "{{error}}",
       severity: "error",
@@ -482,6 +510,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Patch-V1-09
     PatchSkuProperty: {
+      rpcGuidelineCode: "RPC-Patch-V1-09",
       description:
         "RP should consider implementing Patch for the 'SKU' envelope property if it's defined in the resource model and the service supports its updation.",
       message: "{{error}}",
@@ -498,6 +527,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Patch-V1-10
     PatchBodyParametersSchema: {
+      rpcGuidelineCode: "RPC-Patch-V1-10",
       description: "A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability: [\"create\"]' value.",
       message: "{{error}}",
       severity: "error",
@@ -510,6 +540,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Patch-V1-11
     PatchIdentityProperty: {
+      rpcGuidelineCode: "RPC-Patch-V1-11",
       description: "RP must implement PATCH for the 'identity' envelope property If it's defined in the resource model.",
       message: "{{error}}",
       severity: "error",
@@ -530,6 +561,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-01, RPC-Get-V1-11
     PathForTrackedResourceTypes: {
+      rpcGuidelineCode: "RPC-Put-V1-01, RPC-Get-V1-11",
       description: "The path must be under a subscription and resource group for tracked resource types.",
       message: "{{description}}",
       severity: "error",
@@ -543,6 +575,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-02
     EvenSegmentedPathForPutOperation: {
+      rpcGuidelineCode: "RPC-Put-V1-02",
       description:
         "API path with PUT operation defined MUST have even number of segments (i.e. end in {resourceType}/{resourceName} segments).",
       message: "{{description}}",
@@ -560,6 +593,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-05
     RepeatedPathInfo: {
+      rpcGuidelineCode: "RPC-Put-V1-05",
       description:
         "Information in the Path should not be repeated in the request body (i.e. subscription ID, resource group name, resource name).",
       message: "The '{{error}}' already appears in the path, please don't repeat it in the request body.",
@@ -573,6 +607,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Put-V1-07
     RequestSchemaForTrackedResourcesMustHaveTags: {
+      rpcGuidelineCode: "RPC-Put-V1-07",
       description: "A tracked resource MUST always have tags as a top level optional property",
       message: "{{description}}. {{error}}",
       severity: "error",
@@ -586,6 +621,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-12
     PutGetPatchResponseSchema: {
+      rpcGuidelineCode: "RPC-Put-V1-12",
       description: `For a given path with PUT, GET and PATCH operations, the schema of the response must be the same.`,
       message:
         "{{property}} has different responses for PUT/GET/PATCH operations. The PUT/GET/PATCH operations must have same schema response.",
@@ -598,6 +634,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Put-V1-12
     XmsResourceInPutResponse: {
+      rpcGuidelineCode: "RPC-Put-V1-12",
       description: `The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy.`,
       message: "{{error}}",
       severity: "error",
@@ -609,6 +646,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Put-V1-14
     LocationMustHaveXmsMutability: {
+      rpcGuidelineCode: "RPC-Put-V1-14",
       description: "A tracked resource's location property must have the x-ms-mutability properties set as read, create.",
       message: 'Property `location` must have `"x-ms-mutability":["read", "create"]` extension defined.',
       severity: "warn",
@@ -621,6 +659,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Put-V1-24
     ResponseSchemaSpecifiedForSuccessStatusCode: {
+      rpcGuidelineCode: "RPC-Put-V1-24",
       description: "The 200 and 201 success status codes for an ARM PUT operation must have a response schema specified.",
       message: "{{error}}",
       severity: "error",
@@ -633,6 +672,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Put-V1-25
     PutRequestResponseSchemeArm: {
+      rpcGuidelineCode: "RPC-Put-V1-25",
       description: "The request & response('200') schema of the PUT operation must be same.",
       message: "{{error}}",
       severity: "error",
@@ -646,6 +686,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-28, RPC-Patch-V1-12
     RequestBodyMustExistForPutPatch: {
+      rpcGuidelineCode: "RPC-Put-V1-28, RPC-Patch-V1-12",
       description: "Every Put and Patch operation must have a request body",
       message: "{{error}}",
       severity: "error",
@@ -660,6 +701,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Put-V1-29
     ConsistentResponseSchemaForPut: {
+      rpcGuidelineCode: "RPC-Put-V1-29",
       description: "A Put operation must return the same schema for 200 and 201 response codes",
       message: "{{error}}",
       severity: "error",
@@ -678,6 +720,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-POST-V1-05
     ParametersInPost: {
+      rpcGuidelineCode: "RPC-POST-V1-05",
       description: "For a POST action parameters MUST be in the payload and not in the URI.",
       message: "{{error}}",
       severity: "error",
@@ -695,6 +738,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Uri-V1-01
     PathContainsSubscriptionId: {
+      rpcGuidelineCode: "RPC-Uri-V1-01",
       description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
       message: "{{error}}",
       severity: "error",
@@ -710,6 +754,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-02
     PathContainsResourceGroup: {
+      rpcGuidelineCode: "RPC-Uri-V1-02",
       description: "Path for resource group scoped CRUD methods MUST contain a resourceGroupName parameter.",
       message: "{{error}}",
       severity: "error",
@@ -725,6 +770,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-04
     PathContainsResourceType: {
+      rpcGuidelineCode: "RPC-Uri-V1-04",
       description: "Path for resource CRUD methods MUST contain a resource type.",
       message: "{{error}}",
       severity: "error",
@@ -740,6 +786,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-05
     ResourceNameRestriction: {
+      rpcGuidelineCode: "RPC-Uri-V1-05",
       description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
       message: "{{error}}",
       severity: "error",
@@ -752,6 +799,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-06
     PathForNestedResource: {
+      rpcGuidelineCode: "RPC-Uri-V1-06",
       description: "Path for CRUD methods on a nested resource type MUST follow valid resource naming.",
       message: "{{error}}",
       severity: "error",
@@ -767,6 +815,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-07, RPC-POST-V1-01, RPC-POST-V1-07
     PathForResourceAction: {
+      rpcGuidelineCode: "RPC-Uri-V1-07, RPC-POST-V1-01, RPC-POST-V1-07",
       description: "Path for 'post' method on a resource type MUST follow valid resource naming.",
       message: "{{description}}",
       severity: "error",
@@ -782,6 +831,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-08
     ApiVersionParameterRequired: {
+      rpcGuidelineCode: "RPC-Uri-V1-08",
       description: "All operations should have api-version query parameter.",
       message: "{{error}}",
       severity: "error",
@@ -797,6 +847,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-10
     NoDuplicatePathsForScopeParameter: {
+      rpcGuidelineCode: "RPC-Uri-V1-10",
       description: 'Paths with explicitly defined scope should not be present if there is an equivalent path with the "scope" parameter.',
       message: "{{error}}",
       severity: "error",
@@ -809,6 +860,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-11
     TenantLevelAPIsNotAllowed: {
+      rpcGuidelineCode: "RPC-Uri-V1-11",
       description:
         "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
       message: "{{error}}",
@@ -822,6 +874,7 @@ const ruleset: any = {
     },
     // RPC Code: RPC-Uri-V1-12
     TrackedExtensionResourcesAreNotAllowed: {
+      rpcGuidelineCode: "RPC-Uri-V1-12",
       description: "Extension resources are always considered to be proxy and must not be of the type tracked.",
       message: "{{error}}",
       severity: "error",
@@ -842,6 +895,7 @@ const ruleset: any = {
     // This rule is only applicable for specs that are not using the common-types resource definition.
     // However, we need this rule because not all RP teams can switch to the common-types resource definition.
     SystemDataDefinitionsCommonTypes: {
+      rpcGuidelineCode: "RPC-SystemData-V1-01, RPC-SystemData-V1-02",
       description: "System data references must utilize common types.",
       message: "{{description}}",
       severity: "error",
@@ -859,6 +913,7 @@ const ruleset: any = {
     // RPC Code: RPC-SystemData-V1-01 and RPC-SystemData-V1-02
     // Ensure systemData is not in the properties bag
     SystemDataInPropertiesBag: {
+      rpcGuidelineCode: "RPC-SystemData-V1-01, RPC-SystemData-V1-02",
       description: "System data must be defined as a top-level property, not in the properties bag.",
       message: "{{description}}",
       severity: "error",
@@ -877,6 +932,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-ConstrainedCollections-V1-04
     ReservedResourceNamesModelAsEnum: {
+      rpcGuidelineCode: "RPC-ConstrainedCollections-V1-04",
       description:
         "Service-defined (reserved) resource names should be represented as an enum type with modelAsString set to true, not as a static string in the path.",
       message: "{{error}}",
@@ -895,6 +951,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Operations-V1-01
     OperationsApiSchemaUsesCommonTypes: {
+      rpcGuidelineCode: "RPC-Operations-V1-01",
       description: "Operations API path must follow the schema provided in the common types.",
       message: "{{description}}",
       severity: "error",
@@ -911,6 +968,7 @@ const ruleset: any = {
 
     // RPC Code: RPC-Operations-V1-02
     OperationsApiTenantLevelOnly: {
+      rpcGuidelineCode: "RPC-Operations-V1-02",
       description: "The get operations endpoint must only be at the tenant level.",
       message: "{{error}}",
       severity: "error",

@@ -29,6 +29,7 @@ export function convertLintMsgToAutoRestMsg(message: LintResultMessage): Message
       validationCategory: message.category,
       providerNamespace: pathComponentProviderNamespace,
       resourceType: pathComponentResourceType,
+      rpcGuidelineCode: message.rpcGuidelineCode,
       range: message.range,
     },
   }

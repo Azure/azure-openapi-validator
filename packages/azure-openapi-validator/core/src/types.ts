@@ -129,6 +129,7 @@ export interface LintResultMessage {
   jsonpath: JsonPath
   sources?: string[]
   range?: Range
+  rpcGuidelineCode?: string
 }
 
 export interface IFileSystem {
