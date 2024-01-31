@@ -1,4 +1,4 @@
-import { LintCallBack, LintOptions,  } from "./api"
+import { LintCallBack, LintOptions, LogCallBack,  } from "./api"
 import { OpenapiDocument } from "./document"
 import { nodes } from "./jsonpath"
 import { IRuleLoader} from "./ruleLoader"
@@ -21,8 +21,10 @@ export class LintRunner<T> {
     openapiType: OpenApiTypes,
     ruleset: IRuleSet,
     inventory: SwaggerInventory,
-    scope: RuleScope = "File"
+    scope: RuleScope = "File",
+    log: LogCallBack | undefined = undefined
   ) => {
+    log?.call(undefined, `kja ENTER runRules`);
     const rulesToRun = Object.entries(ruleset.rules).filter(rule => rule[1].openapiType & openapiType && (rule[1].scope || "File")  === scope)
     const getArgs = (rule: IRule<any>, section: any, doc: any, location: string[]) => {
       if (isLegacyRule(rule)) {
@@ -40,13 +42,17 @@ export class LintRunner<T> {
         ]
       }
     }
+    log?.call(undefined, `kja for (const [ruleName, rule] of rulesToRun) {`)
     for (const [ruleName, rule] of rulesToRun) {
+      log?.call(undefined, `kja ruleName: ${ruleName}`)
       let givens = rule.given || "$"
       if (!Array.isArray(givens)) {
         givens = [givens]
       }
       const targetDefinition = openapiDefinition
+      log?.call(undefined, `kja targetDefinition: ${targetDefinition}`)
       for (const given of givens) {
+        log?.call(undefined, `kja given: ${given}`)
         for (const section of nodes(targetDefinition, given)) {
           const fiieldMatch = rule.then.fieldMatch
           if (fiieldMatch) {
@@ -54,7 +60,7 @@ export class LintRunner<T> {
               const location = section.path.slice(1).concat(subSection.path.slice(1))
               const args = getArgs(rule, subSection.value, targetDefinition, location)
               for await (const message of (rule.then.execute as any)(...args)) {
-                emitResult(ruleName, rule, message)
+                emitResult(ruleName, rule, message, log)
               }
             }
           } else {
@@ -68,7 +74,8 @@ export class LintRunner<T> {
       }
     }
 
-    function emitResult(ruleName: string, rule: IRule<any>, message: ValidationMessage) {
+    function emitResult(ruleName: string, rule: IRule<any>, message: ValidationMessage, log?: LogCallBack) {
+      log?.call(undefined, `kja ENTER emitResult ruleName: ${ruleName}`);
       const readableCategory = rule.category
       const range = getRange(inventory,document,message.location)
       const msg:LintResultMessage = {
@@ -85,7 +92,8 @@ export class LintRunner<T> {
     }
   }
 
-  async execute(swaggerPaths: string[], options: LintOptions,cb?:LintCallBack) {
+  async execute(swaggerPaths: string[], options: LintOptions, cb?:LintCallBack, log?:LogCallBack) {
+    log?.call(undefined, `kja ENTER execute`);
     const specsPromises = []
     for (const spec of swaggerPaths) {
       specsPromises.push(this.inventory.loadDocument(spec))
@@ -108,13 +116,15 @@ export class LintRunner<T> {
         else {
           runGlobalRuleFlag = true
         }
+        log?.call(undefined, `kja running rules. Scope: ${scope}. docPath: ${doc.getDocumentPath()}`);
         const promise = this.runRules(
           doc.getDocumentPath(),
           doc.getObj(),
           sendMessage,
           options.openapiType,
           await this.loader.getRuleSet(),
-          this.inventory,scope as RuleScope
+          this.inventory,scope as RuleScope,
+          log
         )
         runPromises.push(promise)
       }

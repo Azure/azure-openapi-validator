@@ -24,7 +24,7 @@ export async function lint(swaggerPaths: string[], options: LintOptions, cb?: Li
   log?.call(undefined, `kja new runner`)
   const runner = new LintRunner(ruleLoader, inventory)
   log?.call(undefined, `kja execute`)
-  const msgs = await runner.execute(swaggerPaths, options, cb)
+  const msgs = await runner.execute(swaggerPaths, options, cb, log)
   log?.call(undefined, `kja msgs`)
   return msgs
 }
