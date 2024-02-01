@@ -17,11 +17,24 @@ rules.push({
   appliesTo_JsonQuery: "$.definitions",
   *run(doc, node, path) {
     const msg = `Must not have duplicate name of x-ms-enum extension , make sure every x-ms-enum name unique.`
+    // if (!msg.startsWith("xx"))
+    // {
+    //   yield {
+    //     message: `BS failure`,
+    //     location: path,
+    //   }
+    //   throw new Error("TEST ERROR2")
+    // }
     if (node) {
       const enumMap = new Map<string, any>()
       for (const section of nodes(node, "$..*[?(@property === 'enum')]^")) {
         if (section.value["x-ms-enum"] && isValidEnum(section.value)) {
-          const enumName = section.value["x-ms-enum"].name.toLowerCase()
+          // kja temp
+          // if (section.value != 3434) {
+          //   throw new Error("TEST ERROR");
+          // }
+          // kja temp namex
+          const enumName = section.value["x-ms-enum"].namex.toLowerCase()
           if (enumMap.has(enumName)) {
             const curEnum = section.value.enum
             const existingNode = enumMap.get(enumName)

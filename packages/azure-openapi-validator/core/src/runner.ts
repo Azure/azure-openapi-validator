@@ -44,34 +44,39 @@ export class LintRunner<T> {
     }
     log?.call(undefined, `kja for (const [ruleName, rule] of rulesToRun) {`)
     for (const [ruleName, rule] of rulesToRun) {
-      log?.call(undefined, `kja ruleName: ${ruleName}`)
-      let givens = rule.given || "$"
-      if (!Array.isArray(givens)) {
-        givens = [givens]
-      }
-      const targetDefinition = openapiDefinition
-      log?.call(undefined, `kja targetDefinition: ${targetDefinition}`)
-      for (const given of givens) {
-        log?.call(undefined, `kja given: ${given}`)
-        for (const section of nodes(targetDefinition, given)) {
-          const fiieldMatch = rule.then.fieldMatch
-          if (fiieldMatch) {
-            for (const subSection of nodes(section.value, fiieldMatch)) {
-              const location = section.path.slice(1).concat(subSection.path.slice(1))
-              const args = getArgs(rule, subSection.value, targetDefinition, location)
+      // try {
+        // kja for some reason wrapping this block in "runRule" function silences the error ???
+        log?.call(undefined, `kja for rule: ${ruleName}, Scope: ${scope}, Document: ${document}`)
+        let givens = rule.given || "$"
+        if (!Array.isArray(givens)) {
+          givens = [givens]
+        }
+        const targetDefinition = openapiDefinition
+        for (const given of givens) {
+          for (const section of nodes(targetDefinition, given)) {
+            const fiieldMatch = rule.then.fieldMatch
+            if (fiieldMatch) {
+              for (const subSection of nodes(section.value, fiieldMatch)) {
+                const location = section.path.slice(1).concat(subSection.path.slice(1))
+                const args = getArgs(rule, subSection.value, targetDefinition, location)
+                for await (const message of (rule.then.execute as any)(...args)) {
+                  emitResult(ruleName, rule, message, log)
+                }
+              }
+            } else {
+              const location = section.path.slice(1)
+              const args = getArgs(rule, section.value, targetDefinition, location)
               for await (const message of (rule.then.execute as any)(...args)) {
                 emitResult(ruleName, rule, message, log)
               }
             }
-          } else {
-            const location = section.path.slice(1)
-            const args = getArgs(rule, section.value, targetDefinition, location)
-            for await (const message of (rule.then.execute as any)(...args)) {
-              emitResult(ruleName, rule, message)
-            }
           }
         }
-      }
+        log?.call(undefined, `kja DONE for rule: ${ruleName}, Scope: ${scope}, Document: ${document}`)
+      // } catch (error) {
+      //   log?.call(undefined, `kja ERROR for rule: ${ruleName}, Scope: ${scope}, Document: ${document}`)
+      //   throw new Error(`Error executing rule: ${ruleName}, Scope: ${scope}, Document: ${document}. Error: ${error}`)
+      // }
     }
 
     function emitResult(ruleName: string, rule: IRule<any>, message: ValidationMessage, log?: LogCallBack) {
@@ -133,4 +138,39 @@ export class LintRunner<T> {
     return msgs
   }
 }
+
+// async function runRule(
+//   ruleName: string,
+//   rule: IRule<unknown>,
+//   openapiDefinition: any,
+//   getArgs: (rule: IRule<any>, section: any, doc: any, location: string[]) => any[],
+//   emitResult: (ruleName: string, rule: IRule<any>, message: ValidationMessage, log?: LogCallBack) => void,
+//   log?: LogCallBack
+// ) {
+//   let givens = rule.given || "$"
+//   if (!Array.isArray(givens)) {
+//     givens = [givens]
+//   }
+//   const targetDefinition = openapiDefinition
+//   for (const given of givens) {
+//     for (const section of nodes(targetDefinition, given)) {
+//       const fiieldMatch = rule.then.fieldMatch
+//       if (fiieldMatch) {
+//         for (const subSection of nodes(section.value, fiieldMatch)) {
+//           const location = section.path.slice(1).concat(subSection.path.slice(1))
+//           const args = getArgs(rule, subSection.value, targetDefinition, location)
+//           for await (const message of (rule.then.execute as any)(...args)) {
+//             emitResult(ruleName, rule, message, log)
+//           }
+//         }
+//       } else {
+//         const location = section.path.slice(1)
+//         const args = getArgs(rule, section.value, targetDefinition, location)
+//         for await (const message of (rule.then.execute as any)(...args)) {
+//           emitResult(ruleName, rule, message, log)
+//         }
+//       }
+//     }
+//   }
+// }
 
