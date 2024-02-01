@@ -21,6 +21,7 @@
     - [Synchronize with changes to `openapi-alps` repository](#synchronize-with-changes-to-openapi-alps-repository)
     - [Build and publish the release to npm](#build-and-publish-the-release-to-npm)
   - [Verify the deployed changes](#verify-the-deployed-changes)
+  - [Hotfix broken Production LintDiff (breakglass)](#hotfix-broken-production-lintdiff-breakglass)
 - [How to locally reproduce a LintDiff failure occurring on a PR](#how-to-locally-reproduce-a-lintdiff-failure-occurring-on-a-pr)
   - [How to install AutoRest](#how-to-install-autorest)
   - [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
@@ -44,6 +45,8 @@
   - [Example](#example)
   - [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
 
+<!-- One of the few situations where usage of HTML is justified and it is not sanitized away by GitHub -->
+<!-- markdownlint-disable MD033 -->
 <small><i><a href='https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one'>
 Table of contents generated with yzhang.markdown-all-in-one</a></i></small>
 
@@ -62,7 +65,8 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
    - `nvm use 12.22.12`
    - `node --version`, to confirm.
 4. Note that installing `Node.js` will also install `npm`.
-5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want to switch to it in case you run into unexpected issues later on.
+5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want
+   to switch to it in case you run into unexpected issues later on.
    ```bash
    # Install latest rush, globally
    npm install -g @microsoft/rush
@@ -300,7 +304,7 @@ is a sample email:
 >
 > We appreciate your feedback and suggestions on how to improve the Azure OpenAPI validator. Please feel free to reach
 > out to us in the API Spec Review channel, ask general questions with the ‘arm-api’ tag on Stack Overflow, or open an
-> issue in the sdk-tools repo with the prefix ‘[LintDiff]’ in the title.
+> issue in the sdk-tools repo with the prefix `[LintDiff]` in the title.
 >
 > Thank you for your continued partnership and collaboration,
 >
@@ -362,7 +366,7 @@ and hence Production LintDiff, you need to do the following:
     - Example for changes made to files under rulesets folder - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
     - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest)
     [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
-  - <span style="color:red">IMPORTANT</span> If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
+  - **!!! IMPORTANT !!!**: If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
   - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
   update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. **Do
   not increase the major version.** Only patch or minor, as applicable. If your change justifies major version change,
@@ -377,6 +381,10 @@ and hence Production LintDiff, you need to do the following:
 
 ### Synchronize with changes to `openapi-alps` repository
 
+> [!CAUTION]
+> Not following these steps will likely break production LintDiff.
+> See [iss #653] for an example.
+
 Changes to the AutoRest extension package, in [packages/azure-openapi-validator/autorest],
 used by Production LintDiff,  require additional code updates to `openapi-alps` ADO repository,
 and deployment of them **in the right order**. Work with this tool owner to apply these steps.
@@ -384,14 +392,12 @@ Example of such past deployment is given [here](https://github.com/Azure/azure-s
 with [this PR](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps/pullrequest/468946?_a=files)
 updating the `LINT_VERSION` value.
 
-<span style="color:red">IMPORTANT</span><br/>
-Not following these steps will likely break production LintDiff. See [iss #653] for an example.
-
 ### Build and publish the release to npm
 
 Once your PR is merged:
 
 - Schedule a [Prod build] from the `main` branch.
+- **!!! IMPORTANT !!!**: If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
 - Once the build is complete, schedule a [Prod npm release] from that build.
   You may need to get an approval for the release from the appropriate Azure SDK EngSys team members.
 - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to
@@ -403,6 +409,23 @@ Once your PR is merged:
 
 If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
 the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
+
+## Hotfix broken Production LintDiff (breakglass)
+
+In case a newly deployed update to Production LintDiff is causing issues,
+Azure SDK Engineering System team can hotfix this by updating the `latest`
+tag of the affected package(s) to the last known good version.
+
+This can be achieved by running the [`js - npm-admin-tasks`] pipeline whose
+source is [`npm-tasks.yml`]. Example config used to hotfix [iss #653]:
+
+``` powershell
+askType : "AddTag"
+PackageName : "\"@microsoft.azure/openapi-validator-rulesets\""
+PkgVersion : "1.3.2"
+TagName : "latest"
+Reason : "Regression analyzing TypeSpec-generated swagger"
+```
 
 # How to locally reproduce a LintDiff failure occurring on a PR
 
@@ -452,7 +475,8 @@ production LintDiff check of `Swagger LintDiff`, and the staging LintDiff check 
 
 ### Production LintDiff CI check
 
-To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation for the [PR 24311] (our example), follow these steps:
+To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation for the [PR 24311] (our example),
+follow these steps:
 
 - Open the [PR 24311] page.
 - Click on [`Checks`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks) and expand `openapi-pipeline-app`.
@@ -475,6 +499,7 @@ autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-valida
 ```
 
    > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please:
+   >
    > - double check you have cloned the correct repo (fork, if applicable)
    > - double check your clone has the correct branch checked out
    > - ensure the `<version-tag>` you used exists within the file.
@@ -554,11 +579,11 @@ rush test
 Please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
 and follow below steps to add a rule for azure rest api specs.
 
-- add a rule config to the proper ruleset configuaration in packages\rulesets\src\spectral.
+- add a rule config to the proper ruleset configuration in packages\rulesets\src\spectral.
   Currently we have 3 ruleset configurations:
   1. az-common.ts : for rule that apply to all Azure spec.
   1. az-arm.ts: for rules that only apply to ARM spec.
-  1. az-dataplane.ts: for rules that only apply to dataplane spec.
+  1. az-dataplane.ts: for rules that only apply to data-plane spec.
 - if needed, add a custom function in 'packages\rulesets\src\spectral\functions'
 
 - add a test case, usually every rule should have one test, the corresponding testing files is in 'packages\rulesets\src\spectral\test'
@@ -612,9 +637,12 @@ ARM & Data Plane OpenAPI specs
 
 ## Native rule
 
-Since the spectral rule can only process one swagger in its rule function, the native ruleset is for complicated rules which need to visit multiple swaggers. For example, if you want to have a rule to ensure two swaggers that does not have duplicated model.
+Since the spectral rule can only process one swagger in its rule function, the native ruleset is for complicated rules
+which need to visit multiple swaggers.For example, if you want to have a rule to ensure two swaggers that does not have
+duplicated model.
 
-Differentiating with spectral rule, there is a swagger inventory (see below definitions) will be present in the rule context to visit other swaggers different with current one.
+Differentiating with spectral rule, there is a swagger inventory (see below definitions) will be present in the rule
+context to visit other swaggers different with current one.
 
 ```ts
 export interface ISwaggerInventory {
@@ -712,7 +740,7 @@ Azure-openapi-validator currently defines three Spectral ruleset configurations:
 
 1. az-common.ts : for rules that apply to all Azure REST APIs
 1. az-arm.ts: for rules that only apply to ARM REST APIs
-1. az-dataplane.ts: for rules that only apply to dataplane REST APIs
+1. az-dataplane.ts: for rules that only apply to data-plane REST APIs
 
 All rulesets reside in the `packages/rulesets/generated/spectral` folder of the repo.
 
@@ -735,7 +763,9 @@ spectral lint -r https://raw.githubusercontent.com/Azure/azure-openapi-validator
 
 ## Using the Spectral VSCode extension
 
-There is a [Spectral VSCode extension](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) that will run the Spectral linter on an open API definition file and show errors right within VSCode. You can use this ruleset with the Spectral VSCode extension.
+There is a [Spectral VSCode extension](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) that will
+run the Spectral linter on an open API definition file and show errors right within VSCode.
+You can use this ruleset with the Spectral VSCode extension.
 
 1. Install the Spectral VSCode extension from the extensions tab in VSCode.
 2. Create a Spectral configuration file (`.spectral.yaml`) in the root directory of your project as shown above.
@@ -755,3 +785,5 @@ In the Problems panel you can filter to show or hide errors, warnings, or infos.
 [README `packages` section]: https://github.com/Azure/azure-openapi-validator#packages
 [packages/azure-openapi-validator/autorest]: https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest
 [iss #653]: https://github.com/Azure/azure-openapi-validator/issues/653#issuecomment-1922051282
+[`js - npm-admin-tasks`]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=2067&_a=summary
+[`npm-tasks.yml`]: https://github.com/Azure/azure-sdk-for-js/blob/main/eng/pipelines/npm-tasks.yml
