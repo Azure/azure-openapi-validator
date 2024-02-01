@@ -1,6 +1,13 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Tue, 30 Jan 2024 18:28:15 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Feb 2024 23:08:29 GMT and should not be manually modified.
+
+## 1.3.4
+Thu, 01 Feb 2024 23:08:29 GMT
+
+### Patches
+
+- Gracefully handle lack of section.value["x-ms-enum"].name in UniqueXmsEnumName. Solves https://github.com/Azure/azure-openapi-validator/issues/654
 
 ## 1.3.3
 Tue, 30 Jan 2024 18:28:15 GMT
@@ -13,6 +20,8 @@ Tue, 30 Jan 2024 18:28:15 GMT
 - Update latestVersionOfCommonTypesMustBeUsed rule to check for latest version(V5) of all common types
 - Upgrade version to 1.3.2
 - Add RPC code to ProvisioningStateMustBeReadOnly and fix documentation
+- Fix a false alarm with the ParameterNotUsingCommonTypes rule that resulted in errors being flagged even when common-types were being referenced correctly.
+- Fix an issue where PropertiesTypeObjectNoDefinition must verify the existence of the allOf property in the definition object.
 
 ## 1.3.2
 Tue, 19 Dec 2023 21:25:29 GMT
