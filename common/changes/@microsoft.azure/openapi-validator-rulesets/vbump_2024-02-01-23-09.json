@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@microsoft.azure/openapi-validator-rulesets",
-      "comment": "Upgrade version to 1.3.3",
-      "type": "patch"
+      "comment": "rush version --bump",
+      "type": "none"
     }
   ],
   "packageName": "@microsoft.azure/openapi-validator-rulesets"

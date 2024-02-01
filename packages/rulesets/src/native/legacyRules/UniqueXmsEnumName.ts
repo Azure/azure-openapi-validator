@@ -20,7 +20,7 @@ rules.push({
     if (node) {
       const enumMap = new Map<string, any>()
       for (const section of nodes(node, "$..*[?(@property === 'enum')]^")) {
-        if (section.value["x-ms-enum"] && isValidEnum(section.value)) {
+        if (isValidEnum(section.value) && section.value["x-ms-enum"] && section.value["x-ms-enum"].name) {
           const enumName = section.value["x-ms-enum"].name.toLowerCase()
           if (enumMap.has(enumName)) {
             const curEnum = section.value.enum

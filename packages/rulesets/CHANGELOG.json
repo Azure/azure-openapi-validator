@@ -2,6 +2,18 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
+      "version": "1.3.4",
+      "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.4",
+      "date": "Thu, 01 Feb 2024 23:08:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Gracefully handle lack of section.value[\"x-ms-enum\"].name in UniqueXmsEnumName. Solves https://github.com/Azure/azure-openapi-validator/issues/654"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.3",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.3",
       "date": "Tue, 30 Jan 2024 18:28:15 GMT",
@@ -24,6 +36,12 @@
           },
           {
             "comment": "Add RPC code to ProvisioningStateMustBeReadOnly and fix documentation"
+          },
+          {
+            "comment": "Fix a false alarm with the ParameterNotUsingCommonTypes rule that resulted in errors being flagged even when common-types were being referenced correctly."
+          },
+          {
+            "comment": "Fix an issue where PropertiesTypeObjectNoDefinition must verify the existence of the allOf property in the definition object."
           }
         ]
       }
