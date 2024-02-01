@@ -1,6 +1,5 @@
-# Table of Contents
+Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Contributing](#contributing)
 - [Prerequisites to build locally](#prerequisites-to-build-locally)
 - [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
@@ -21,6 +20,7 @@
     - [Synchronize with changes to `openapi-alps` repository](#synchronize-with-changes-to-openapi-alps-repository)
     - [Build and publish the release to npm](#build-and-publish-the-release-to-npm)
   - [Verify the deployed changes](#verify-the-deployed-changes)
+  - [Hotfix broken Production LintDiff (breakglass)](#hotfix-broken-production-lintdiff-breakglass)
 - [How to locally reproduce a LintDiff failure occurring on a PR](#how-to-locally-reproduce-a-lintdiff-failure-occurring-on-a-pr)
   - [How to install AutoRest](#how-to-install-autorest)
   - [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
@@ -362,7 +362,7 @@ and hence Production LintDiff, you need to do the following:
     - Example for changes made to files under rulesets folder - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
     - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest)
     [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
-  - <span style="color:red">IMPORTANT</span> If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
+  - **!!! IMPORTANT !!!**: If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
   - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
   update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. **Do
   not increase the major version.** Only patch or minor, as applicable. If your change justifies major version change,
@@ -377,6 +377,10 @@ and hence Production LintDiff, you need to do the following:
 
 ### Synchronize with changes to `openapi-alps` repository
 
+> [!CAUTION]
+> Not following these steps will likely break production LintDiff.
+> See [iss #653] for an example.
+
 Changes to the AutoRest extension package, in [packages/azure-openapi-validator/autorest],
 used by Production LintDiff,  require additional code updates to `openapi-alps` ADO repository,
 and deployment of them **in the right order**. Work with this tool owner to apply these steps.
@@ -384,14 +388,12 @@ Example of such past deployment is given [here](https://github.com/Azure/azure-s
 with [this PR](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps/pullrequest/468946?_a=files)
 updating the `LINT_VERSION` value.
 
-<span style="color:red">IMPORTANT</span><br/>
-Not following these steps will likely break production LintDiff. See [iss #653] for an example.
-
 ### Build and publish the release to npm
 
 Once your PR is merged:
 
 - Schedule a [Prod build] from the `main` branch.
+- **!!! IMPORTANT !!!**: If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
 - Once the build is complete, schedule a [Prod npm release] from that build.
   You may need to get an approval for the release from the appropriate Azure SDK EngSys team members.
 - Note that sometimes the npm release may report failure even when it succeeded. This is because sometimes it tries to
@@ -403,6 +405,23 @@ Once your PR is merged:
 
 If the changes you deployed include changes to the Spectral ruleset, you can verify the changes got deployed by following
 the guidance given in `How to verify which Spectral rules are running in Production and Staging LintDiff`.
+
+## Hotfix broken Production LintDiff (breakglass)
+
+In case a newly deployed update to Production LintDiff is causing issues,
+Azure SDK Engineering System team can hotfix this by updating the `latest`
+tag of the affected package(s) to the last known good version.
+
+This can be achieved by running the [`js - npm-admin-tasks`] pipeline whose
+source is [`npm-tasks.yml`]. Example config used to hotfix [iss #653]:
+
+```
+askType : "AddTag"
+PackageName : "\"@microsoft.azure/openapi-validator-rulesets\""
+PkgVersion : "1.3.2"
+TagName : "latest"
+Reason : "Regression analyzing TypeSpec-generated swagger"
+```
 
 # How to locally reproduce a LintDiff failure occurring on a PR
 
@@ -755,3 +774,5 @@ In the Problems panel you can filter to show or hide errors, warnings, or infos.
 [README `packages` section]: https://github.com/Azure/azure-openapi-validator#packages
 [packages/azure-openapi-validator/autorest]: https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest
 [iss #653]: https://github.com/Azure/azure-openapi-validator/issues/653#issuecomment-1922051282
+[`js - npm-admin-tasks`]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=2067&_a=summary
+[`npm-tasks.yml`]: https://github.com/Azure/azure-sdk-for-js/blob/main/eng/pipelines/npm-tasks.yml
