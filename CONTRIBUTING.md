@@ -1,48 +1,51 @@
 # Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Contributing](#contributing)
 - [Prerequisites to build locally](#prerequisites-to-build-locally)
 - [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
 - [How to add and roll out new linter rules](#how-to-add-and-roll-out-new-linter-rules)
-  * [Communicate the addition of a rule to API reviewers](#communicate-the-addition-of-a-rule-to-api-reviewers)
-  * [Ensure TypeSpec supports the new rule](#ensure-typespec-supports-the-new-rule)
-  * [Add a new rule to the staging pipeline](#add-a-new-rule-to-the-staging-pipeline)
-  * [Determine which rules are ready for release](#determine-which-rules-are-ready-for-release)
-  * [Create a release PR and generate the changelog](#create-a-release-pr-and-generate-the-changelog)
-  * [Create a release tag](#create-a-release-tag)
-  * [Build and publish the release](#build-and-publish-the-release)
-  * [Send the changelog out to partners](#send-the-changelog-out-to-partners)
-  * [Monitor the new rules and roll forward to disable bad rules](#monitor-the-new-rules-and-roll-forward-to-disable-bad-rules)
+  - [Communicate the addition of a rule to API reviewers](#communicate-the-addition-of-a-rule-to-api-reviewers)
+  - [Ensure TypeSpec supports the new rule](#ensure-typespec-supports-the-new-rule)
+  - [Add a new rule to the staging pipeline](#add-a-new-rule-to-the-staging-pipeline)
+  - [Determine which rules are ready for release](#determine-which-rules-are-ready-for-release)
+  - [Create a release PR and generate the changelog](#create-a-release-pr-and-generate-the-changelog)
+  - [Create a release tag](#create-a-release-tag)
+  - [Build and publish the release](#build-and-publish-the-release)
+  - [Send the changelog out to partners](#send-the-changelog-out-to-partners)
+  - [Monitor the new rules and roll forward to disable bad rules](#monitor-the-new-rules-and-roll-forward-to-disable-bad-rules)
 - [How to deploy your changes](#how-to-deploy-your-changes)
-  * [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
-  * [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
-    + [Create a release PR](#create-a-release-pr)
-    + [Build and publish the release to npm](#build-and-publish-the-release-to-npm)
-  * [Verify the deployed changes](#verify-the-deployed-changes)
+  - [Deploy to Staging LintDiff](#deploy-to-staging-lintdiff)
+  - [Deploy to Prod LintDiff](#deploy-to-prod-lintdiff)
+    - [Create a release PR](#create-a-release-pr)
+    - [Synchronize with changes to `openapi-alps` repository](#synchronize-with-changes-to-openapi-alps-repository)
+    - [Build and publish the release to npm](#build-and-publish-the-release-to-npm)
+  - [Verify the deployed changes](#verify-the-deployed-changes)
 - [How to locally reproduce a LintDiff failure occurring on a PR](#how-to-locally-reproduce-a-lintdiff-failure-occurring-on-a-pr)
-  * [How to install AutoRest](#how-to-install-autorest)
-  * [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
-    + [Production LintDiff CI check](#production-lintdiff-ci-check)
-    + [Staging LintDiff CI check](#staging-lintdiff-ci-check)
+  - [How to install AutoRest](#how-to-install-autorest)
+  - [How to obtain PR LintDiff check AutoRest command invocation details](#how-to-obtain-pr-lintdiff-check-autorest-command-invocation-details)
+    - [Production LintDiff CI check](#production-lintdiff-ci-check)
+    - [Staging LintDiff CI check](#staging-lintdiff-ci-check)
 - [How to run LintDiff locally from source](#how-to-run-lintdiff-locally-from-source)
 - [How to set a Spectral rule to run only in staging](#how-to-set-a-spectral-rule-to-run-only-in-staging)
 - [How to verify which Spectral rules are running in Production and Staging LintDiff](#how-to-verify-which-spectral-rules-are-running-in-production-and-staging-lintdiff)
 - [Installing NPM dependencies](#installing-npm-dependencies)
 - [How to test](#how-to-test)
 - [How to write a new validation rule using typescript](#how-to-write-a-new-validation-rule-using-typescript)
-  * [Spectral rule](#spectral-rule)
-  * [Native rule](#native-rule)
-  * [Rule properties](#rule-properties)
+  - [Spectral rule](#spectral-rule)
+  - [Native rule](#native-rule)
+  - [Rule properties](#rule-properties)
 - [How to run regression test](#how-to-run-regression-test)
 - [How to refresh the index of rules documentation](#how-to-refresh-the-index-of-rules-documentation)
 - [How to use the Spectral ruleset](#how-to-use-the-spectral-ruleset)
-  * [Dependencies](#dependencies)
-  * [Install Spectral](#install-spectral)
-  * [Usage](#usage)
-  * [Example](#example)
-  * [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
+  - [Dependencies](#dependencies)
+  - [Install Spectral](#install-spectral)
+  - [Usage](#usage)
+  - [Example](#example)
+  - [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+<small><i><a href='https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one'>
+Table of contents generated with yzhang.markdown-all-in-one</a></i></small>
 
 # Contributing
 
@@ -210,7 +213,7 @@ of your new rule for an API spec without taking into account the previous versio
     | extend PullRequestLink = strcat("https://github.com/", SplitBranch[3], "/", SplitBranch[4], "/pull/", SplitBranch[5])
     | extend BuildLink = tostring(parse_json(Data)._links.web.href)
     | project StartTime, BuildId, SourceBranch, SourceVersion, PipelineName, PullRequestLink, BuildLink
-    | join kind=inner 
+    | join kind=inner
       (
       BuildLogLine
       | where Timestamp > beginTime
@@ -221,7 +224,7 @@ of your new rule for an API spec without taking into account the previous versio
       )
       on BuildId
     | summarize count() by Time=bin(Timestamp, violationTimeBin), ViolationCode, PullRequestLink, BuildLink
-    | sort by count_ desc 
+    | sort by count_ desc
     ```
 
 5. Additionally, look for any violations of your rule that come from TypeSpec-generated API specs. You can
@@ -334,6 +337,16 @@ Once your PR is merged, do the following:
 
 ## Deploy to Prod LintDiff
 
+> [!CAUTION]
+> Any changes under [packages/azure-openapi-validator/autorest] require careful deployment in sync with updates to
+> `LINT_DIFF` in `openapi-alps` repository. Otherwise we risk breaking the production LintDiff. See e.g. [iss #653].
+
+If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
+you must ensure appropriate packages versions are updated.
+You can find the list of all packages in the [README `packages` section].
+
+Here is what you need to do, step by step:
+
 ### Create a release PR
 
 If you want your changes to be deployed to [production pipeline](https://dev.azure.com/azure-sdk/internal/_build?definitionId=1736&_a=summary)
@@ -349,6 +362,7 @@ and hence Production LintDiff, you need to do the following:
     - Example for changes made to files under rulesets folder - [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
     - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest)
     [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
+  - <span style="color:red">IMPORTANT</span> If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
   - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
   update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. **Do
   not increase the major version.** Only patch or minor, as applicable. If your change justifies major version change,
@@ -359,7 +373,19 @@ and hence Production LintDiff, you need to do the following:
    Make sure to **revert the version number(s) for packages you do not intend to update** in `dependencies` and/or `devDependencies`
    of the **`package.json`** for the package you are updating.
     - You can use [`git restore`](https://git-scm.com/docs/git-restore) to quickly discard changes. For example,
-    `git restore packages/azure-openapi-validator/autorest/*` would restore all the files in the autorest package directory.
+    `git restore packages/azure-openapi-validator/autorest/*` would restore all the files in the AutoRest package directory.
+
+### Synchronize with changes to `openapi-alps` repository
+
+Changes to the AutoRest extension package, in [packages/azure-openapi-validator/autorest],
+used by Production LintDiff,  require additional code updates to `openapi-alps` ADO repository,
+and deployment of them **in the right order**. Work with this tool owner to apply these steps.
+Example of such past deployment is given [here](https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1530128107),
+with [this PR](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps/pullrequest/468946?_a=files)
+updating the `LINT_VERSION` value.
+
+<span style="color:red">IMPORTANT</span><br/>
+Not following these steps will likely break production LintDiff. See [iss #653] for an example.
 
 ### Build and publish the release to npm
 
@@ -372,12 +398,6 @@ Once your PR is merged:
   publish package twice and succeeds only on the first try.
 - Verify the release worked by new versions of the appropriate packages being released to npm.
   See [README `packages` section]. You can also look at the release build log.
-
-**IMPORTANT**: Changes to the AutoRest extension package, used by Production LintDiff,  require additional code
-  updates to `openapi-alps` ADO repository, and deployment of them. Work with this tool owner to apply these steps.
-  Example of such past deployment is given [here](https://github.com/Azure/azure-sdk-tools/issues/6071#issuecomment-1530128107),
-  with [this PR](https://devdiv.visualstudio.com/DevDiv/_git/openapi-alps/pullrequest/468946?_a=files)
-  updating the `LINT_VERSION` value.
 
 ## Verify the deployed changes
 
@@ -393,7 +413,7 @@ or [azure-rest-api-specs-pr](https://github.com/Azure/azure-rest-api-specs-pr) r
 Reproducing failure locally allows you to locally iterate on your spec changes
 and keep rerunning LintDiff quickly until it passes.
 
-LintDiff is running as an extension of the `autorest` command and the npm package name of LintDiff is 
+LintDiff is running as an extension of the `autorest` command and the npm package name of LintDiff is
 [`@microsoft.azure/openapi-validator`].
 As such, you can reproduce the failure locally by running following command:
 
@@ -728,8 +748,10 @@ In the Problems panel you can filter to show or hide errors, warnings, or infos.
 [PR 24311]: https://github.com/Azure/azure-rest-api-specs/pull/24311/
 [`@microsoft.azure/openapi-validator`]: https://www.npmjs.com/package/@microsoft.azure/openapi-validator?activeTab=versions
 
-[Staging build]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=5797&_a=summary  
+[Staging build]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=5797&_a=summary
 [Prod build]: https://dev.azure.com/azure-sdk/internal/_build?definitionId=1580&_a=summary
-[Staging npm release]: https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108  
+[Staging npm release]: https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=108
 [Prod npm release]: https://dev.azure.com/azure-sdk/internal/_release?_a=releases&view=mine&definitionId=80
-[README `packages` section]: https://github.com/Azure/azure-openapi-validator#packages  
+[README `packages` section]: https://github.com/Azure/azure-openapi-validator#packages
+[packages/azure-openapi-validator/autorest]: https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest
+[iss #653]: https://github.com/Azure/azure-openapi-validator/issues/653#issuecomment-1922051282

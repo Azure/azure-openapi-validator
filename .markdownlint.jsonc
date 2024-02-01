@@ -16,6 +16,9 @@
     // MD031 - Fenced code blocks should be surrounded by blank lines
     // https://github.com/DavidAnson/markdownlint/blob/v0.27.0/doc/md031.md
     "MD031": { "list_items": false },
+    // MD033 - Inline HTML
+    // https://github.com/DavidAnson/markdownlint/blob/v0.33.0/doc/md033.md
+    "MD033": false,
     // MD034 - Bare URL used
     // https://github.com/DavidAnson/markdownlint/blob/main/doc/md034.md
     "MD034": false
