@@ -91,27 +91,3 @@ export function logWithTime(msg) {
   const time = new Date().toLocaleTimeString();
   console.log(`[${time}] ${msg}`);
 }
-
-export function checkForChangedFiles(cwd, comment = undefined, options = {}) {
-  if (comment && !options.silent) {
-    console.log();
-    console.log(comment);
-  }
-
-  const proc = run("git", ["status", "--porcelain"], {
-    encoding: "utf-8",
-    stdio: [null, "pipe", "pipe"],
-    cwd,
-    ...options,
-  });
-
-  if (proc.stdout && !options.silent) {
-    console.log(proc.stdout);
-  }
-
-  if (proc.stderr && !options.silent) {
-    console.error(proc.stderr);
-  }
-
-  return proc.stdout || proc.stderr;
-}
