@@ -363,9 +363,9 @@ and hence Production LintDiff, you need to do the following:
   to the files under the [packages/rulesets](https://github.com/Azure/azure-openapi-validator/tree/main/packages/rulesets)
   directory, then update the version in [packages/rulesets/package.json](https://github.com/Azure/azure-openapi-validator/blob/main/packages/rulesets/package.json#L3).
   The same applies to all the other package directories in [packages directory](https://github.com/Azure/azure-openapi-validator/tree/main/packages).
-    - Example for changes made to files under [rulesets folder](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
-    - Example for changes made to files under [autorest folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest)
-    [Here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf)
+    - Example for changes made to files under `rulesets` folder - [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-cad0ec93b3ac24499b20ae58530a4c3e7f369bde5ba1250dea8cad8201e75c30).
+    - Example for changes made to files under [`autorest` folder](https://github.com/Azure/azure-openapi-validator/tree/main/packages/azure-openapi-validator/autorest) -
+      [here](https://github.com/Azure/azure-openapi-validator/pull/506/files#diff-359645f2d25015199598e139bc9b03c9fec5d5b1a4a0ae1f1e4f7a651675e6bf).
   - **!!! IMPORTANT !!!**: If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
   - Rush should automatically determine if the changes call for a [patch or minor](https://semver.org/#summary) version
   update and modify the relevant files. Note that if you see a change in the major version, this is likely a mistake. **Do
