@@ -44,6 +44,8 @@ Table of Contents
   - [Example](#example)
   - [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
 
+<!-- One of the few situations where usage of HTML is justified and it is not sanitized away by GitHub -->
+<!-- markdownlint-disable MD033 -->
 <small><i><a href='https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one'>
 Table of contents generated with yzhang.markdown-all-in-one</a></i></small>
 
@@ -300,7 +302,7 @@ is a sample email:
 >
 > We appreciate your feedback and suggestions on how to improve the Azure OpenAPI validator. Please feel free to reach
 > out to us in the API Spec Review channel, ask general questions with the ‘arm-api’ tag on Stack Overflow, or open an
-> issue in the sdk-tools repo with the prefix ‘[LintDiff]’ in the title.
+> issue in the sdk-tools repo with the prefix `[LintDiff]` in the title.
 >
 > Thank you for your continued partnership and collaboration,
 >
@@ -415,7 +417,7 @@ tag of the affected package(s) to the last known good version.
 This can be achieved by running the [`js - npm-admin-tasks`] pipeline whose
 source is [`npm-tasks.yml`]. Example config used to hotfix [iss #653]:
 
-```
+``` powershell
 askType : "AddTag"
 PackageName : "\"@microsoft.azure/openapi-validator-rulesets\""
 PkgVersion : "1.3.2"
@@ -471,7 +473,8 @@ production LintDiff check of `Swagger LintDiff`, and the staging LintDiff check 
 
 ### Production LintDiff CI check
 
-To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation for the [PR 24311] (our example), follow these steps:
+To determine the production LintDiff check (`Swagger LintDiff`) AutoRest command invocation for the [PR 24311] (our example),
+follow these steps:
 
 - Open the [PR 24311] page.
 - Click on [`Checks`](https://github.com/Azure/azure-rest-api-specs/pull/24311/checks) and expand `openapi-pipeline-app`.
@@ -494,6 +497,7 @@ autorest --v3 --spectral --azure-validator --use=@microsoft.azure/openapi-valida
 ```
 
    > **Troubleshooting**: if you get `error   | [Exception] No input files provided.` and you are positive the `<path-to-autorest-config-file>` is correct, then please:
+   >
    > - double check you have cloned the correct repo (fork, if applicable)
    > - double check your clone has the correct branch checked out
    > - ensure the `<version-tag>` you used exists within the file.
@@ -573,11 +577,11 @@ rush test
 Please refer to https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets firstly.
 and follow below steps to add a rule for azure rest api specs.
 
-- add a rule config to the proper ruleset configuaration in packages\rulesets\src\spectral.
+- add a rule config to the proper ruleset configuration in packages\rulesets\src\spectral.
   Currently we have 3 ruleset configurations:
   1. az-common.ts : for rule that apply to all Azure spec.
   1. az-arm.ts: for rules that only apply to ARM spec.
-  1. az-dataplane.ts: for rules that only apply to dataplane spec.
+  1. az-dataplane.ts: for rules that only apply to data-plane spec.
 - if needed, add a custom function in 'packages\rulesets\src\spectral\functions'
 
 - add a test case, usually every rule should have one test, the corresponding testing files is in 'packages\rulesets\src\spectral\test'
@@ -631,9 +635,12 @@ ARM & Data Plane OpenAPI specs
 
 ## Native rule
 
-Since the spectral rule can only process one swagger in its rule function, the native ruleset is for complicated rules which need to visit multiple swaggers. For example, if you want to have a rule to ensure two swaggers that does not have duplicated model.
+Since the spectral rule can only process one swagger in its rule function, the native ruleset is for complicated rules
+which need to visit multiple swaggers.For example, if you want to have a rule to ensure two swaggers that does not have
+duplicated model.
 
-Differentiating with spectral rule, there is a swagger inventory (see below definitions) will be present in the rule context to visit other swaggers different with current one.
+Differentiating with spectral rule, there is a swagger inventory (see below definitions) will be present in the rule
+context to visit other swaggers different with current one.
 
 ```ts
 export interface ISwaggerInventory {
@@ -731,7 +738,7 @@ Azure-openapi-validator currently defines three Spectral ruleset configurations:
 
 1. az-common.ts : for rules that apply to all Azure REST APIs
 1. az-arm.ts: for rules that only apply to ARM REST APIs
-1. az-dataplane.ts: for rules that only apply to dataplane REST APIs
+1. az-dataplane.ts: for rules that only apply to data-plane REST APIs
 
 All rulesets reside in the `packages/rulesets/generated/spectral` folder of the repo.
 
@@ -754,7 +761,9 @@ spectral lint -r https://raw.githubusercontent.com/Azure/azure-openapi-validator
 
 ## Using the Spectral VSCode extension
 
-There is a [Spectral VSCode extension](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) that will run the Spectral linter on an open API definition file and show errors right within VSCode. You can use this ruleset with the Spectral VSCode extension.
+There is a [Spectral VSCode extension](https://marketplace.visualstudio.com/items?itemName=stoplight.spectral) that will
+run the Spectral linter on an open API definition file and show errors right within VSCode.
+You can use this ruleset with the Spectral VSCode extension.
 
 1. Install the Spectral VSCode extension from the extensions tab in VSCode.
 2. Create a Spectral configuration file (`.spectral.yaml`) in the root directory of your project as shown above.
