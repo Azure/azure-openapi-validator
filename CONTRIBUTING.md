@@ -44,7 +44,8 @@
   - [Example](#example)
   - [Using the Spectral VSCode extension](#using-the-spectral-vscode-extension)
 
-<small><i><a href='https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one'>Table of contents generated withyzhang.markdown-all-in-one</a></i></small>
+<small><i><a href='https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one'>
+Table of contents generated with yzhang.markdown-all-in-one</a></i></small>
 
 # Contributing
 
