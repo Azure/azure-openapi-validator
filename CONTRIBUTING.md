@@ -1,5 +1,6 @@
-Table of Contents
+# Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Contributing](#contributing)
 - [Prerequisites to build locally](#prerequisites-to-build-locally)
 - [How to prepare for a PR submission after you made changes locally](#how-to-prepare-for-a-pr-submission-after-you-made-changes-locally)
