@@ -65,7 +65,8 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
    - `nvm use 12.22.12`
    - `node --version`, to confirm.
 4. Note that installing `Node.js` will also install `npm`.
-5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want to switch to it in case you run into unexpected issues later on.
+5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want
+   to switch to it in case you run into unexpected issues later on.
    ```bash
    # Install latest rush, globally
    npm install -g @microsoft/rush
