@@ -1,7 +1,8 @@
+import type { IFunctionResult } from "@stoplight/spectral-core"
 import { getProperties, getRequiredProperties } from "./utils"
 
 //This rule appears if in the patch body parameters have properties which is marked as required or x-ms-mutability:["create"] or have default
-const patchBodyParameters = (parameters: any, _opts: any, paths: any) => {
+const patchBodyParameters = (parameters: any, _opts: any, paths: any): IFunctionResult[] => {
   if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
     return []
   }
@@ -29,6 +30,19 @@ const patchBodyParameters = (parameters: any, _opts: any, paths: any) => {
         message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
         path: [...path, "schema"],
       })
+    }
+    // recursive check on nested properties
+    if (properties[prop].type === "object" || (properties[prop].type === undefined && properties[prop].properties)) {
+      errors.push(
+        ...patchBodyParameters(
+          {
+            schema: properties[prop],
+            in: "body",
+          },
+          _opts,
+          { path: [...path, "schema", "properties", prop] }
+        )
+      )
     }
   }
   return errors

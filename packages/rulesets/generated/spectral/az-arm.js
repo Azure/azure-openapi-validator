@@ -2056,6 +2056,12 @@ const patchBodyParameters = (parameters, _opts, paths) => {
                 path: [...path, "schema"],
             });
         }
+        if (properties[prop].type === "object" || (properties[prop].type === undefined && properties[prop].properties)) {
+            errors.push(...patchBodyParameters({
+                schema: properties[prop],
+                in: "body",
+            }, _opts, { path: [...path, "schema", "properties", prop] }));
+        }
     }
     return errors;
 };
