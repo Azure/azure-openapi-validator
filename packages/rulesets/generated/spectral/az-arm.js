@@ -2028,7 +2028,7 @@ const parametersInPost = (postParameters, _opts, ctx) => {
     return errors;
 };
 
-const pathBodyParameters = (parameters, _opts, paths) => {
+const patchBodyParameters = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
         return [];
     }
@@ -2040,20 +2040,20 @@ const pathBodyParameters = (parameters, _opts, paths) => {
         if (properties[prop].default) {
             errors.push({
                 message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
-                path: [...path, "schema"]
+                path: [...path, "schema"],
             });
         }
         if (requiredProperties.includes(prop)) {
             errors.push({
                 message: `Properties of a PATCH request body must not be required, property:${prop}.`,
-                path: [...path, "schema"]
+                path: [...path, "schema"],
             });
         }
-        const xmsMutability = properties[prop]['x-ms-mutability'];
+        const xmsMutability = properties[prop]["x-ms-mutability"];
         if (xmsMutability && xmsMutability.length === 1 && xmsMutability[0] === "create") {
             errors.push({
                 message: `Properties of a PATCH request body must not be x-ms-mutability: ["create"], property:${prop}.`,
-                path: [...path, "schema"]
+                path: [...path, "schema"],
             });
         }
     }
@@ -3330,7 +3330,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
             then: {
-                function: pathBodyParameters,
+                function: patchBodyParameters,
             },
         },
         PatchIdentityProperty: {
