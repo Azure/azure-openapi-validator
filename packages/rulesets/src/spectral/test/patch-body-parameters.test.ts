@@ -108,6 +108,83 @@ test("PatchBodyParametersSchema should find errors for required/create value", (
   })
 })
 
+test("PatchBodyParametersSchema should find errors for default value in nested body parameter", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        patch: {
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {},
+        },
+      },
+      "/bar": {
+        patch: {
+          parameters: [
+            {
+              name: "bar_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/BarRequestParams",
+              },
+            },
+          ],
+          responses: {},
+        },
+      },
+    },
+    definitions: {
+      FooRequestParams: {
+        properties: {
+          type: "object",
+          properties: {
+            $ref: "#/definitions/FooProps",
+          },
+        },
+      },
+      FooProps: {
+        type: "object",
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+      BarRequestParams: {
+        properties: {
+          properties: {
+            $ref: "#/definitions/BarProps",
+          },
+        },
+      },
+      BarProps: {
+        properties: {
+          prop0: {
+            type: "string",
+            default: "my def val",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0.schema.properties.properties")
+    expect(results[0].message).toContain("Properties of a PATCH request body must not have default value, property:prop0.")
+    expect(results[1].path.join(".")).toBe("paths./bar.patch.parameters.0.schema.properties.properties")
+    expect(results[1].message).toContain("Properties of a PATCH request body must not have default value, property:prop0.")
+  })
+})
+
 test("PatchBodyParametersSchema should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
