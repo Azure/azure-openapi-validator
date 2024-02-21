@@ -72,7 +72,7 @@ async function appendPrereleaseSemverSuffix(changeCounts, packages) {
         const packageJsonPath = join(packageInfo.path, "package.json");
         const packageJsonContent = await readJsonFile(packageJsonPath);
         const newVersion = changeCount === 0
-            // As of [1] we no longer require running `rush change` or `rush publish`. 
+            // As of [1] we no longer require running `rush change`.
             // As a side-effect of this, the `changeCount` here is zero.
             // To work around the fact we don't know the change count, we append a timestamp to the version. 
             // This is temporary solution until the work item [2] is completed.
