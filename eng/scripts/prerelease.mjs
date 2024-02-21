@@ -79,10 +79,13 @@ async function appendPrereleaseSemverSuffix(changeCounts, packages) {
             // Note that if we would not append anything to packageInfo.version, we would end up 
             // inadvertently pushing prerelease bits to production packages as soon as LintDiff PR is merged.
             // Details on that in [2].
+            //
+            // The "-beta." infix is here to simulate the behavior of `rush publish --apply --partial-prerelease --prerelease-name="beta"`
+            // called upstream in this script. It does no-op when changeCount is zero, hence we mimic that behavior here.
             // 
             // [1] https://github.com/Azure/azure-openapi-validator/pull/659
             // [2] https://github.com/Azure/azure-sdk-tools/issues/7619
-            ? `${packageInfo.version}-${getIsoTime()}`
+            ? `${packageInfo.version}-beta.${getIsoTime()}`
             : `${packageJsonContent.version}.${changeCount}`;
         console.log(`Setting version for ${packageName} to '${newVersion}'`);
         updatedManifests[packageName] = {
