@@ -17,9 +17,9 @@ async function getChangeCountPerPackage(workspaceRoot) {
     const changeCounts = {};
     for (const change of changes) {
         if (!(change.packageName in changeCounts)) {
-            // Count all changes that are not "none"
             changeCounts[change.packageName] = 0;
         }
+        // Count all changes that are not "none"
         changeCounts[change.packageName] += change.changes.filter((x) => x.type !== "none").length;
     }
     return changeCounts;
@@ -64,15 +64,29 @@ function updateDependencyVersions(packageManifest, updatedPackages) {
     }
     return clone;
 }
-async function addPrereleaseNumber(changeCounts, packages) {
+async function appendPrereleaseSemverSuffix(changeCounts, packages) {
     var _a;
     const updatedManifests = {};
+    const timestamp = getIsoLikeTimestamp();
     for (const [packageName, packageInfo] of Object.entries(packages)) {
         const changeCount = (_a = changeCounts[packageName]) !== null && _a !== void 0 ? _a : 0;
         const packageJsonPath = join(packageInfo.path, "package.json");
         const packageJsonContent = await readJsonFile(packageJsonPath);
         const newVersion = changeCount === 0
-            ? packageInfo.version // Use existing version. Bug in rush --partial-prerelease not working
+            // As of [1] we no longer require running `rush change`.
+            // As a side-effect of this, the `changeCount` here is zero.
+            // To work around the fact we don't know the change count, we append a timestamp to the version.
+            // This is temporary solution until the work item [2] is completed.
+            // Note that if we would not append anything to packageInfo.version, we would end up
+            // inadvertently pushing prerelease bits to production packages as soon as LintDiff PR is merged.
+            // Details on that in [2].
+            //
+            // The "-beta." infix is here to simulate the behavior of `rush publish --apply --partial-prerelease --prerelease-name="beta"`
+            // called upstream in this script. It does no-op when changeCount is zero, hence we mimic that behavior here.
+            //
+            // [1] https://github.com/Azure/azure-openapi-validator/pull/659
+            // [2] https://github.com/Azure/azure-sdk-tools/issues/7619
+            ? `${packageInfo.version}-beta.${timestamp}`
             : `${packageJsonContent.version}.${changeCount}`;
         console.log(`Setting version for ${packageName} to '${newVersion}'`);
         updatedManifests[packageName] = {
@@ -90,6 +104,24 @@ async function addPrereleaseNumber(changeCounts, packages) {
         await writeFile(packageJsonPath, JSON.stringify(newManifest, null, 2));
     }
 }
+
+/**
+ * @returns Date in format "YYYY-MM-DD-hh-mm-ss"
+ */
+function getIsoLikeTimestamp() {
+    const date = new Date();
+
+    const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because getMonth() returns 0-11
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
+    return formattedDate;
+}
+
 export async function bumpVersionsForPrerelease(workspaceRoots) {
     let changeCounts = {};
     let packages = {};
@@ -103,15 +135,16 @@ export async function bumpVersionsForPrerelease(workspaceRoots) {
     // Bumping with rush publish so rush computes from the changes what will be the next non prerelease version.
     console.log("Bumping versions with rush publish");
     for (const workspaceRoot of workspaceRoots) {
-        execSync(`npx @microsoft/rush publish --apply --partial-prerelease --prerelease-name="${prerelease_type}"`, {
+        // https://rushjs.io/pages/commands/rush_publish/
+        const stdout = execSync(`npx @microsoft/rush publish --apply --partial-prerelease --prerelease-name="${prerelease_type}"`, {
             cwd: workspaceRoot,
         });
+        console.log(`npx @microsoft/rush publish --apply --partial-prerelease --prerelease-name="${prerelease_type} ` +
+            `cwd: "${workspaceRoot}" stdout: "${stdout.toString()}"`)
     }
-    console.log("Adding prerelease number");
-    await addPrereleaseNumber(changeCounts, packages);
-    if (Object.keys(changeCounts).length) {
-       updateOpenapiValidatorPck()
-    }
+    console.log(`Adding prerelease numbers to packages. changeCounts: ${changeCounts}`);
+    await appendPrereleaseSemverSuffix(changeCounts, packages);
+    updateOpenapiValidatorPck()
 }
 async function findAllFiles(dir) {
     const files = [];
