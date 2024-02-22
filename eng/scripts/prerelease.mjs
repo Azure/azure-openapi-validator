@@ -67,6 +67,7 @@ function updateDependencyVersions(packageManifest, updatedPackages) {
 async function appendPrereleaseSemverSuffix(changeCounts, packages) {
     var _a;
     const updatedManifests = {};
+    const timestamp = getIsoLikeTimestamp();
     for (const [packageName, packageInfo] of Object.entries(packages)) {
         const changeCount = (_a = changeCounts[packageName]) !== null && _a !== void 0 ? _a : 0;
         const packageJsonPath = join(packageInfo.path, "package.json");
@@ -74,18 +75,18 @@ async function appendPrereleaseSemverSuffix(changeCounts, packages) {
         const newVersion = changeCount === 0
             // As of [1] we no longer require running `rush change`.
             // As a side-effect of this, the `changeCount` here is zero.
-            // To work around the fact we don't know the change count, we append a timestamp to the version. 
+            // To work around the fact we don't know the change count, we append a timestamp to the version.
             // This is temporary solution until the work item [2] is completed.
-            // Note that if we would not append anything to packageInfo.version, we would end up 
+            // Note that if we would not append anything to packageInfo.version, we would end up
             // inadvertently pushing prerelease bits to production packages as soon as LintDiff PR is merged.
             // Details on that in [2].
             //
             // The "-beta." infix is here to simulate the behavior of `rush publish --apply --partial-prerelease --prerelease-name="beta"`
             // called upstream in this script. It does no-op when changeCount is zero, hence we mimic that behavior here.
-            // 
+            //
             // [1] https://github.com/Azure/azure-openapi-validator/pull/659
             // [2] https://github.com/Azure/azure-sdk-tools/issues/7619
-            ? `${packageInfo.version}-beta.${getIsoTime()}`
+            ? `${packageInfo.version}-beta.${timestamp}`
             : `${packageJsonContent.version}.${changeCount}`;
         console.log(`Setting version for ${packageName} to '${newVersion}'`);
         updatedManifests[packageName] = {
@@ -107,18 +108,18 @@ async function appendPrereleaseSemverSuffix(changeCounts, packages) {
 /**
  * @returns Date in format "YYYY-MM-DD-hh-mm-ss"
  */
-function getIsoTime() {
-    const date = new Date().toISOString();
+function getIsoLikeTimestamp() {
+    const date = new Date();
 
-    const year = date.slice(0, 4);
-    const month = date.slice(5, 7);
-    const day = date.slice(8, 10);
-    const hours = date.slice(11, 13);
-    const minutes = date.slice(14, 16);
-    const seconds = date.slice(17, 19);
-    
+    const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because getMonth() returns 0-11
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
     const formattedDate = `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
-    return formattedDate
+    return formattedDate;
 }
 
 export async function bumpVersionsForPrerelease(workspaceRoots) {
