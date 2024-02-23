@@ -28,7 +28,7 @@ import { parameterNotDefinedInGlobalParameters } from "./functions/parameter-not
 import { parameterNotUsingCommonTypes } from "./functions/parameter-not-using-common-types"
 import { parametersInPointGet } from "./functions/parameters-in-point-get"
 import { parametersInPost } from "./functions/parameters-in-post"
-import pathBodyParameters from "./functions/patch-body-parameters"
+import patchBodyParameters from "./functions/patch-body-parameters"
 import { patchPropertiesCorrespondToPutProperties } from "./functions/patch-properties-correspond-to-put-properties"
 import { patchResponseCodes } from "./functions/patch-response-codes"
 import pathForTrackedResourceTypes from "./functions/path-for-tracked-resource-types"
@@ -535,7 +535,7 @@ const ruleset: any = {
       formats: [oas2],
       given: ["$.paths.*.patch.parameters[?(@.in === 'body')]"],
       then: {
-        function: pathBodyParameters,
+        function: patchBodyParameters,
       },
     },
     // RPC Code: RPC-Patch-V1-11
