@@ -13,7 +13,9 @@ parserOptions:
   # https://github.com/typescript-eslint/typescript-eslint/issues/251#issuecomment-521142325
   #
   # For local development, you can also temporarily replace this:
-  # project: "./tsconfig.json"
+  # 
+  #  project: "./tsconfig.json"
+  #
   # with this:
   #
   #  project: "./tsconfig-base.json"
