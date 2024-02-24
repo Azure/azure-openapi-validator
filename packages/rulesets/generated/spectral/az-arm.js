@@ -865,7 +865,7 @@ const ruleset$1 = {
             message: "Schema should have a description or title.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "covered by TSP's 'documentation-required' rule",
+            disableForTypeSpecReason: "Covered by TSP's 'documentation-required' rule.",
             formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
@@ -877,7 +877,7 @@ const ruleset$1 = {
             message: "Parameter should have a description.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "covered by TSP's 'documentation-required' rule",
+            disableForTypeSpecReason: "Covered by TSP's 'documentation-required' rule.",
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",

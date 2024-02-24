@@ -341,7 +341,7 @@ const ruleset: any = {
       message: "Schema name should be Pascal case.",
       severity: "warn",
       disableForTypeSpec: true,
-      disableForTypeSpecReason: "covered by TSP's 'casing-style' rule",
+      disableForTypeSpecReason: "Covered by TSP's 'casing-style' rule.",
       formats: [oas2],
       given: "$.definitions.*~",
       then: {
