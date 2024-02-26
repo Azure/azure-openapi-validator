@@ -40,3 +40,6 @@ src/dotnet/**/[Rr]elease/
 **/.rush/**
 **/*.log
 **/*.html
+
+# Used in temporary local debugging, redirecting stdout to it
+out.txt

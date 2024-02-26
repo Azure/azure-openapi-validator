@@ -2,7 +2,7 @@ import { Resolver } from "@stoplight/json-ref-resolver"
 import { Spectral } from "@stoplight/spectral-core"
 import { DiagnosticSeverity } from "@stoplight/types"
 import _ from "lodash"
-import { spectralRulesets } from "../../index"
+import { deleteRulesPropertiesInPayloadNotValidForSpectralRules, spectralRulesets } from "../../index"
 
 export function buildLinter(rulesets: any[], testedRuleName: string, useNoopResolver = false) {
   // Delete all rules except the tested rule
@@ -14,14 +14,8 @@ export function buildLinter(rulesets: any[], testedRuleName: string, useNoopReso
     })
   })
 
-  // Delete "stagingOnly", "rpcGuidelineCode" property for the same reasons as we do so in
-  // packages/azure-openapi-validator/autorest/src/spectral-plugin-func.ts/getRuleSet
   rulesets.forEach((ruleset: any) => {
-    Object.values(ruleset.rules).forEach((rule: any) => delete rule.stagingOnly)
-  })
-
-  rulesets.forEach((ruleset: any) => {
-    Object.values(ruleset.rules).forEach((rule: any) => delete rule.rpcGuidelineCode)
+    deleteRulesPropertiesInPayloadNotValidForSpectralRules(ruleset)
   })
 
   const linter = useNoopResolver

@@ -24,6 +24,8 @@ const ruleset: any = {
   rules: {
     AdditionalPropertiesAndProperties: {
       description: "Don't specify additionalProperties as a sibling of properties.",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/bad-record-type' rule.",
       severity: "warn",
       formats: [oas2, oas3],
       given: "$..[?(@object() && @.type === 'object' && @.properties)]",
@@ -146,6 +148,8 @@ const ruleset: any = {
     Nullable: {
       description: "Avoid the use of x-nullable.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by Azure Core '@azure-tools/typespec-azure-core/no-nullable' rule",
       formats: [oas2, oas3],
       resolved: false,
       given: "$..x-nullable",
@@ -272,6 +276,8 @@ const ruleset: any = {
       description: "All schema properties should have a description.",
       message: "Property should have a description.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       resolved: false,
       given: "$..properties[?(@object() && @.$ref == undefined)]",
       then: {
@@ -332,6 +338,8 @@ const ruleset: any = {
       description: "Schema names should be Pascal case.",
       message: "Schema name should be Pascal case.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/casing-style' rule.",
       formats: [oas2],
       given: "$.definitions.*~",
       then: {

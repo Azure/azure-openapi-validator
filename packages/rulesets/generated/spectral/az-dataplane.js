@@ -643,6 +643,8 @@ const ruleset$1 = {
             description: "Operation should have a summary or description.",
             message: "Operation should have a summary or description.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: [
                 "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
                 "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -661,6 +663,8 @@ const ruleset$1 = {
             description: "All schemas should have a description or title.",
             message: "Schema should have a description or title.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
@@ -671,6 +675,8 @@ const ruleset$1 = {
             description: "All parameters should have a description.",
             message: "Parameter should have a description.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",
@@ -1942,6 +1948,8 @@ const ruleset = {
     rules: {
         AdditionalPropertiesAndProperties: {
             description: "Don't specify additionalProperties as a sibling of properties.",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/bad-record-type' rule.",
             severity: "warn",
             formats: [oas2, oas3],
             given: "$..[?(@object() && @.type === 'object' && @.properties)]",
@@ -2064,6 +2072,8 @@ const ruleset = {
         Nullable: {
             description: "Avoid the use of x-nullable.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by Azure Core '@azure-tools/typespec-azure-core/no-nullable' rule",
             formats: [oas2, oas3],
             resolved: false,
             given: "$..x-nullable",
@@ -2190,6 +2200,8 @@ const ruleset = {
             description: "All schema properties should have a description.",
             message: "Property should have a description.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             resolved: false,
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
@@ -2249,6 +2261,8 @@ const ruleset = {
             description: "Schema names should be Pascal case.",
             message: "Schema name should be Pascal case.",
             severity: "warn",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/casing-style' rule.",
             formats: [oas2],
             given: "$.definitions.*~",
             then: {

@@ -48,6 +48,8 @@ const ruleset: any = {
       description: "Operation should have a summary or description.",
       message: "Operation should have a summary or description.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       given: [
         "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
         "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -66,6 +68,8 @@ const ruleset: any = {
       description: "All schemas should have a description or title.",
       message: "Schema should have a description or title.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       formats: [oas2, oas3],
       given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
       then: {
@@ -76,6 +80,8 @@ const ruleset: any = {
       description: "All parameters should have a description.",
       message: "Parameter should have a description.",
       severity: "warn",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
       then: {
         field: "description",

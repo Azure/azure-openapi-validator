@@ -11,6 +11,16 @@ parserOptions:
   #  ],
   # This solution is based on:
   # https://github.com/typescript-eslint/typescript-eslint/issues/251#issuecomment-521142325
+  #
+  # For local development, you can also temporarily replace this:
+  # 
+  #  project: "./tsconfig.json"
+  #
+  # with this:
+  #
+  #  project: "./tsconfig-base.json"
+  #
+  # This will break 'rush lint', though, for reasons listed above.
   project: "./tsconfig.json"
   sourceType: "module"
 

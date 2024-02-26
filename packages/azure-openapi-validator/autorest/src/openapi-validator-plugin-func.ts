@@ -16,11 +16,11 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
     initiator.Message(convertLintMsgToAutoRestMsg(msg))
   }
 
-  const readFile = async (fileUri: string) => {
+  const readFile = async (fileUri: string): Promise<string> => {
     if (isExample(fileUri)) {
       return ""
     }
-    let file = cachedFiles.get(fileUri)
+    let file: string | undefined = cachedFiles.get(fileUri)
     if (!file) {
       file = await initiator.ReadFile(fileUri)
       if (!file) {
@@ -36,8 +36,15 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   }
   initiator.Message({
     Channel: "information",
-    Text: `openapiValidatorPluginFunc: Validating '${files.join("\n")}'`,
+    Text: `openapiValidatorPluginFunc: Validating files:`,
   })
+  for (const [index, file] of files.entries()) {
+    initiator.Message({
+      Channel: "information",
+      Text: `openapiValidatorPluginFunc: File ${index + 1}/${files.length}: '${file}'`,
+    })
+  }
+
   try {
     const mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
 
