@@ -644,7 +644,7 @@ const ruleset$1 = {
             message: "Operation should have a summary or description.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: [
                 "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
                 "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -664,7 +664,7 @@ const ruleset$1 = {
             message: "Schema should have a description or title.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "Covered by TSP's 'documentation-required' rule.",
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
@@ -676,7 +676,7 @@ const ruleset$1 = {
             message: "Parameter should have a description.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "Covered by TSP's 'documentation-required' rule.",
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",
@@ -991,8 +991,6 @@ const ruleset$1 = {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
             severity: "error",
-            disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
@@ -1951,7 +1949,7 @@ const ruleset = {
         AdditionalPropertiesAndProperties: {
             description: "Don't specify additionalProperties as a sibling of properties.",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/bad-record-type' rule.",
             severity: "warn",
             formats: [oas2, oas3],
             given: "$..[?(@object() && @.type === 'object' && @.properties)]",
@@ -2075,7 +2073,7 @@ const ruleset = {
             description: "Avoid the use of x-nullable.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
+            disableForTypeSpecReason: "Covered by Azure Core '@azure-tools/typespec-azure-core/no-nullable' rule",
             formats: [oas2, oas3],
             resolved: false,
             given: "$..x-nullable",
@@ -2203,7 +2201,7 @@ const ruleset = {
             message: "Property should have a description.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             resolved: false,
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
@@ -2215,8 +2213,6 @@ const ruleset = {
             description: "All schema properties should have a defined type.",
             message: "Property should have a defined type.",
             severity: "warn",
-            disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
             resolved: false,
             given: "$..properties[?(@object() && @.$ref == undefined)]",
             then: {
@@ -2266,7 +2262,7 @@ const ruleset = {
             message: "Schema name should be Pascal case.",
             severity: "warn",
             disableForTypeSpec: true,
-            disableForTypeSpecReason: "Covered by TSP's 'casing-style' rule.",
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/casing-style' rule.",
             formats: [oas2],
             given: "$.definitions.*~",
             then: {
