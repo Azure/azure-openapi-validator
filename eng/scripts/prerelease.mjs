@@ -87,7 +87,31 @@ async function appendPrereleaseSemverSuffix(changeCounts, packages) {
             // [1] https://github.com/Azure/azure-openapi-validator/pull/659
             // [2] https://github.com/Azure/azure-sdk-tools/issues/7619
             ? `${packageInfo.version}-beta.${timestamp}`
-            : `${packageJsonContent.version}.${changeCount}`;
+            // As of 2/26/2024 previously this line was 
+            //
+            //  `${packageJsonContent.version}.${changeCount}`;
+            //
+            // but now it is:
+            // 
+            //   `${packageInfo.version}.${changeCount}`;
+            //
+            // Effectively this means that if the code has package version of,
+            // say, "1.0.4", this logic will now release "1.0.4-beta.1" 
+            // instead of "1.0.5-beta.1".
+            // 
+            // The reason for this change is as follows:
+            // The ${packageJsonContent.version} is incremented by one a call to
+            // `npx @microsoft/rush publish --apply --partial-prerelease --prerelease-name=...` 
+            // done upstream. But we no longer want this.
+            // This is because previously we operated under the model that all the package.json versions are managed indirectly by running
+            // appropriate rush commands like `rush change` or `rush version --bump` or `rush publish`.
+            // Now we no longer do this. Now the developer is responsible for updating the package.json version
+            // in their PR manually.
+            //
+            // All of this is a hacky temporary solution until we cleanup this entire pre-release process. See [1].
+            //
+            // [1] https://github.com/Azure/azure-sdk-tools/issues/7619
+            : `${packageInfo.version}.${changeCount}`;
         console.log(`Setting version for ${packageName} to '${newVersion}'`);
         updatedManifests[packageName] = {
             packageJsonPath,
@@ -142,7 +166,7 @@ export async function bumpVersionsForPrerelease(workspaceRoots) {
         console.log(`npx @microsoft/rush publish --apply --partial-prerelease --prerelease-name="${prerelease_type} ` +
             `cwd: "${workspaceRoot}" stdout: "${stdout.toString()}"`)
     }
-    console.log(`Adding prerelease numbers to packages. changeCounts: ${changeCounts}`);
+    console.log(`Adding prerelease numbers to packages. changeCounts: ${changeCounts.length}`);
     await appendPrereleaseSemverSuffix(changeCounts, packages);
     updateOpenapiValidatorPck()
 }
