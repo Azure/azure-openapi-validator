@@ -1077,8 +1077,6 @@ const ruleset: any = {
       description: "This rule checks for parameters defined in common-types that are not using the common-types definition.",
       message: "{{error}}",
       severity: "warn",
-      disableForTypeSpec: true,
-      disableForTypeSpecReason: "TODO",
       resolved: false,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.parameters.*.name", "$[parameters].*.name"],

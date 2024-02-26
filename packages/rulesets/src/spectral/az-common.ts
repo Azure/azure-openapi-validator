@@ -49,7 +49,7 @@ const ruleset: any = {
       message: "Operation should have a summary or description.",
       severity: "warn",
       disableForTypeSpec: true,
-      disableForTypeSpecReason: "TODO",
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       given: [
         "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
         "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -69,7 +69,7 @@ const ruleset: any = {
       message: "Schema should have a description or title.",
       severity: "warn",
       disableForTypeSpec: true,
-      disableForTypeSpecReason: "Covered by TSP's 'documentation-required' rule.",
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       formats: [oas2, oas3],
       given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
       then: {
@@ -81,7 +81,7 @@ const ruleset: any = {
       message: "Parameter should have a description.",
       severity: "warn",
       disableForTypeSpec: true,
-      disableForTypeSpecReason: "Covered by TSP's 'documentation-required' rule.",
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
       given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
       then: {
         field: "description",
@@ -412,8 +412,6 @@ const ruleset: any = {
       message:
         "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
       severity: "error",
-      disableForTypeSpec: true,
-      disableForTypeSpecReason: "TODO",
       resolved: false,
       formats: [oas2],
       given: ["$.parameters.*"],
