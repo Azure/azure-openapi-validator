@@ -3716,8 +3716,6 @@ const ruleset = {
             description: "This rule checks for references that aren't using latest version of common-types.",
             message: "{{error}}",
             severity: "warn",
-            disableForTypeSpec: true,
-            disableForTypeSpecReason: "TODO",
             resolved: false,
             formats: [oas2],
             given: "$..['$ref']",
