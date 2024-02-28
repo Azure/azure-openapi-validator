@@ -202,6 +202,8 @@ const ruleset: any = {
       description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
       message: "{{error}}",
       severity: "error",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-provisioning-state' rule.",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
