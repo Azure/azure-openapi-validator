@@ -285,6 +285,8 @@ const ruleset: any = {
       description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
       severity: "error",
       message: "{{description}}",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/no-record' rule.",
       resolved: true,
       formats: [oas2],
       given:
