@@ -239,6 +239,8 @@ const ruleset: any = {
       description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
       severity: "error",
       message: "{{error}}",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes' rule.",
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*[delete]"],
