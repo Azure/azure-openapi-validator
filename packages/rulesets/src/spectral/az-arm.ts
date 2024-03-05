@@ -798,6 +798,8 @@ const ruleset: any = {
       description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
       message: "{{error}}",
       severity: "error",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-name-pattern' rule.",
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths'].*.^",
