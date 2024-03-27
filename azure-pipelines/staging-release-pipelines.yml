@@ -1,32 +1,43 @@
-variables:
-  NODE_OPTIONS: '--max-old-space-size=8192'
+extends:
+  template: /azure-pipelines/1es-redirect.yml
+  parameters:  
+    stages:
+    - stage: Staging_Release
+      displayName: Staging Release
 
-jobs:
-- job: 'Staging_Release_Build'
-  pool:
-    name: 'azsdk-pool-mms-ubuntu-2204-general'
-    vmImage: 'ubuntu-22.04'
+      variables:
+        - template: /azure-pipelines/image.yml
+        - name: NODE_OPTIONS
+          value: --max-old-space-size=8192
 
-  steps:
-    - template: common-build.yml
-      parameters: 
-        NodeVersion: "16.x"
-    
-    - script: 'node eng/scripts/prerelease.mjs'
-      displayName: 'bump dev release version'
-    
-    - script: 'node common/scripts/install-run-rush.js pack'
-      displayName: 'rush pack'
+      jobs:
+      - job: 'Staging_Release_Build'
+        displayName: Staging Release Build
+        pool:
+          name: $(LINUXNEXTPOOL)
+          image: $(LINUXNEXTVMIMAGE)
+          os: linux
 
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: dist'
-      inputs:
-        Contents: |
-          packages/**/*.tgz
-          !packages/**/node_modules/**/*.tgz
-        TargetFolder: '$(Build.SourcesDirectory)/dist'
+        steps:
+          - template: common-build.yml
+            parameters: 
+              NodeVersion: "16.x"
+          
+          - script: 'node eng/scripts/prerelease.mjs'
+            displayName: 'bump dev release version'
+          
+          - script: 'node common/scripts/install-run-rush.js pack'
+            displayName: 'rush pack'
 
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathtoPublish: $(Build.SourcesDirectory)/dist
+          - task: CopyFiles@2
+            displayName: 'Copy Files to: dist'
+            inputs:
+              Contents: |
+                packages/**/*.tgz
+                !packages/**/node_modules/**/*.tgz
+              TargetFolder: '$(Build.SourcesDirectory)/dist'
 
+          - template: /azure-pipelines/publish-1es-artifact.yml
+            parameters:
+              ArtifactName: drop
+              ArtifactPath: $(Build.SourcesDirectory)/dist
