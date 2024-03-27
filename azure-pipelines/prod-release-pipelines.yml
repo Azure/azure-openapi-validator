@@ -1,26 +1,37 @@
-variables:
-  NODE_OPTIONS: '--max-old-space-size=8192'
+extends:
+  template: /azure-pipelines/1es-redirect.yml
+  parameters:
+    stages:
+    - stage: Prod_Release
+      displayName: Prod Release
 
-jobs:
-  - job: 'Release_Build'
-    pool:
-      name: 'azsdk-pool-mms-ubuntu-2204-general'
-      vmImage: 'ubuntu-22.04'
+      variables:
+        - template: /azure-pipelines/image.yml
+        - name: NODE_OPTIONS
+          value: --max-old-space-size=8192
 
-    steps:
-      - template: common-build.yml
+      jobs:
+      - job: 'Release_Build'
+        displayName: Prod Release Build
+        pool:
+          name: $(LINUXNEXTPOOL)
+          image: $(LINUXNEXTVMIMAGE)
+          os: linux
 
-      - script: 'node common/scripts/install-run-rush.js pack'
-        displayName: 'rush pack'
+        steps:
+          - template: common-build.yml
 
-      - task: CopyFiles@2
-        displayName: 'Copy Files to: dist'
-        inputs:
-          Contents: |
-            packages/**/*.tgz
-          TargetFolder: '$(Build.SourcesDirectory)/dist'
+          - script: 'node common/scripts/install-run-rush.js pack'
+            displayName: 'rush pack'
 
-      - task: PublishBuildArtifacts@1
-        inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist
+          - task: CopyFiles@2
+            displayName: 'Copy Files to: dist'
+            inputs:
+              Contents: |
+                packages/**/*.tgz
+              TargetFolder: '$(Build.SourcesDirectory)/dist'
 
+          - template: /azure-pipelines/publish-1es-artifact.yml
+            parameters:
+              ArtifactName: drop
+              ArtifactPath: $(Build.SourcesDirectory)/dist
