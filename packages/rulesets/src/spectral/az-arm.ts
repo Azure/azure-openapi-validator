@@ -93,6 +93,8 @@ const ruleset: any = {
       rpcGuidelineCode: "RPC-Async-V1-01, RPC-Put-V1-11",
       description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
       severity: "error",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes' rule.",
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
@@ -157,6 +159,8 @@ const ruleset: any = {
       description: "Location header must be supported for all async operations that return 202.",
       message: "A 202 response should include an Location response header.",
       severity: "error",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-location-header' rule.",
       formats: [oas2],
       given: "$.paths[*][*].responses[?(@property == '202')]",
       then: {
@@ -173,6 +177,8 @@ const ruleset: any = {
       description:
         "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
       severity: "error",
+      disableForTypeSpec: true,
+      disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes' rule.",
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
