@@ -72,9 +72,9 @@ export class LintRunner<T> {
             } catch (error) {
               error.message =
                 `azure-openapi-validator/core/src/runner.ts/LintRunner.runRules/processRule error. ` +
-                `ruleName: ${ruleName} specFilePath: ${document}, ` +
+                `ruleName: ${ruleName}, specFilePath: ${document}, ` +
                 `jsonPath: ${convertJsonPath(openapiDefinition, location as string[])}, ` +
-                `errorMessage: ${error.message}`
+                `errorName: ${error?.name}, errorMessage: ${error?.message}`
               throw error
             }
           }
