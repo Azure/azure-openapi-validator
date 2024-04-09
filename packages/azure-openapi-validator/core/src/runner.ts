@@ -54,31 +54,31 @@ export class LintRunner<T> {
           if (fieldMatch) {
             for (const subSection of nodes(section.value, fieldMatch)) {
               const location: string[] = section.path.slice(1).concat(subSection.path.slice(1))
-              await processRule(rule, subSection.value, location)
+              await processRule(ruleName, rule, subSection.value, targetDefinition, location)
             }
           } else {
             const location: string[] = section.path.slice(1)
-            await processRule(rule, section.value, location)
-          }
-
-          async function processRule(rule: IRule<any>, section: any, location: string[]) {
-            try {
-              const args = getArgs(rule, section, targetDefinition, location)
-              // Note: Legacy rules, like UniqueXmsEnumName, are converted to the 'rule.then.execute' format
-              // via createFromLegacyRules() in packages/rulesets/src/native/rulesets/common.ts
-              for await (const message of (rule.then.execute as any)(...args)) {
-                emitResult(ruleName, rule, message)
-              }
-            } catch (error) {
-              error.message =
-                `azure-openapi-validator/core/src/runner.ts/LintRunner.runRules/processRule error. ` +
-                `ruleName: ${ruleName}, specFilePath: ${document}, ` +
-                `jsonPath: ${convertJsonPath(openapiDefinition, location as string[])}, ` +
-                `errorName: ${error?.name}, errorMessage: ${error?.message}`
-              throw error
-            }
+            await processRule(ruleName, rule, section.value, targetDefinition, location)
           }
         }
+      }
+    }
+
+    async function processRule(ruleName: string, rule: IRule<any>, section: any, targetDefinition: any, location: string[]): Promise<void> {
+      try {
+        const args = getArgs(rule, section, targetDefinition, location)
+        // Note: Legacy rules, like UniqueXmsEnumName, are converted to the 'rule.then.execute' format
+        // via createFromLegacyRules() in packages/rulesets/src/native/rulesets/common.ts
+        for await (const message of (rule.then.execute as any)(...args)) {
+          emitResult(ruleName, rule, message)
+        }
+      } catch (error) {
+        error.message =
+          `azure-openapi-validator/core/src/runner.ts/LintRunner.runRules/processRule error. ` +
+          `ruleName: ${ruleName}, specFilePath: ${document}, ` +
+          `jsonPath: ${convertJsonPath(openapiDefinition, location as string[])}, ` +
+          `errorName: ${error?.name}, errorMessage: ${error?.message}`
+        throw error
       }
     }
 
