@@ -56,7 +56,7 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   } catch (e) {
     initiator.Message({
       Channel: "fatal",
-      Text: `openapiValidatorPluginFunc: Failed validating:` + e,
+      Text: `openapiValidatorPluginFunc: Failed validating: ` + e,
     })
   }
 
