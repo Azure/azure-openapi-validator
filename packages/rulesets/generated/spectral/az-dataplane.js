@@ -991,6 +991,8 @@ const ruleset$1 = {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
             severity: "error",
+            disableForTypeSpec: true,
+            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
