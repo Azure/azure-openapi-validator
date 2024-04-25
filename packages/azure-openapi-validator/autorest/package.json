@@ -22,7 +22,7 @@
     "validator"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "author": "Microsoft Corporation",
   "license": "MIT",
