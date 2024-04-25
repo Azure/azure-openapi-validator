@@ -45,8 +45,8 @@ dependencies:
     specifier: ~3.17.1
     version: 3.17.2
   '@stoplight/json-ref-resolver':
-    specifier: 3.1.3
-    version: 3.1.3
+    specifier: ^3.1.6
+    version: 3.1.6
   '@stoplight/lifecycle':
     specifier: 2.3.2
     version: 2.3.2
@@ -1035,23 +1035,6 @@ packages:
       tslib: 1.14.1
     transitivePeerDependencies:
       - encoding
-    dev: false
-
-  /@stoplight/json-ref-resolver@3.1.3:
-    resolution: {integrity: sha512-SgoKXwVnlpIZUyAFX4W79eeuTWvXmNlMfICZixL16GZXnkjcW+uZnfmAU0ZIjcnaTgaI4mjfxn8LAP2KR6Cr0A==}
-    engines: {node: '>=8.3.0'}
-    dependencies:
-      '@stoplight/json': 3.17.2
-      '@stoplight/path': 1.3.2
-      '@stoplight/types': 12.5.0
-      '@types/urijs': 1.19.25
-      dependency-graph: 0.11.0
-      fast-memoize: 2.5.2
-      immer: 9.0.21
-      lodash.get: 4.4.2
-      lodash.set: 4.3.2
-      tslib: 2.6.2
-      urijs: 1.19.11
     dev: false
 
   /@stoplight/json-ref-resolver@3.1.6:
@@ -4366,20 +4349,12 @@ packages:
     resolution: {integrity: sha512-uHaJFihxmJcEX3kT4I23ABqKKalJ/zDrDg0lsFtc1h+3uw49SIJ5beyhx5ExVRti3AvKoOJngIj7xz3oylPdWQ==}
     dev: false
 
-  /lodash.get@4.4.2:
-    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
-    dev: false
-
   /lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
     dev: false
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: false
-
-  /lodash.set@4.3.2:
-    resolution: {integrity: sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==}
     dev: false
 
   /lodash.topath@4.5.2:
@@ -6139,7 +6114,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-ii+id2qOq7dbfY0lW9tWcPPL2KmXHsOrIJ9xwQczRulTk337i58u5g2sauyAC7Il1JBXwdrPuktek4wUomK/SQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-nRTHkphPK0Wmci8K5UcDUpPw7JIYacpu1CEL/WW3Dz4a+Ar3WH//dKFZ92w+Ywyhhzav4kAxUBb3hOOZj7AZ4w==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -6147,7 +6122,7 @@ packages:
       '@rollup/plugin-commonjs': 21.1.0(rollup@2.79.1)
       '@rollup/plugin-json': 4.1.0(rollup@2.79.1)
       '@rollup/plugin-node-resolve': 13.3.0(rollup@2.79.1)
-      '@stoplight/json-ref-resolver': 3.1.3
+      '@stoplight/json-ref-resolver': 3.1.6
       '@stoplight/spectral-core': 1.11.1
       '@stoplight/spectral-formats': 1.1.0
       '@stoplight/spectral-functions': 1.6.2
@@ -6196,7 +6171,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator.tgz:
-    resolution: {integrity: sha512-bC+nNH9ON7g3VRXDFUAye70wp92hhJ1KnBrHK1J+mxJU2ndfeYpf/tHrov+p8xi4ebNj+1VaTpRJ84Xmn3HcFA==, tarball: file:projects/openapi-validator.tgz}
+    resolution: {integrity: sha512-B42K6wWdaXbogBJFD5l7lNYn8fKoxkonPRk1nXulnW9EyscvvzCKeIaYA9a7NYpST4BLfINL/sLgbiJGc6GAPQ==, tarball: file:projects/openapi-validator.tgz}
     name: '@rush-temp/openapi-validator'
     version: 0.0.0
     dependencies:
@@ -6205,7 +6180,7 @@ packages:
       '@azure-tools/uri': 3.1.1
       '@stoplight/better-ajv-errors': 1.0.1(ajv@8.12.0)
       '@stoplight/json': 3.17.2
-      '@stoplight/json-ref-resolver': 3.1.3
+      '@stoplight/json-ref-resolver': 3.1.6
       '@stoplight/lifecycle': 2.3.2
       '@stoplight/path': 1.3.2
       '@stoplight/spectral-core': 1.11.1
