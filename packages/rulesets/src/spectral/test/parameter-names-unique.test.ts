@@ -69,10 +69,11 @@ test('ParameterNamesUnique should find errors', () => {
   };
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(4);
-    expect(results[0].path.join('.')).toBe('paths./test1/{p1}.parameters.1.name');
-    expect(results[1].path.join('.')).toBe('paths./test1/{p1}.get.parameters.0.name');
-    expect(results[2].path.join('.')).toBe('paths./test1/{p1}.get.parameters.1.name');
-    expect(results[3].path.join('.')).toBe('paths./test1/{p1}.get.parameters.3.name');
+    results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
+    expect(results[0].path.join('.')).toBe('paths./test1/{p1}.get.parameters.0.name');
+    expect(results[1].path.join('.')).toBe('paths./test1/{p1}.get.parameters.1.name');
+    expect(results[2].path.join('.')).toBe('paths./test1/{p1}.get.parameters.3.name');
+    expect(results[3].path.join('.')).toBe('paths./test1/{p1}.parameters.1.name');
   });
 });
 

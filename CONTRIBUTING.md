@@ -60,21 +60,13 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 1. Install [nvm] ([nvm for Windows]), a tool to manage `Node.js` versions.
 2. Restart your terminal so that `nvm` command is recognized.
-3. Using `nvm`, install `Node.js` version `12.22.12`. This is the version used by the [PR CI pipeline] to build `LintDiff`.
-   - `nvm install 12.22.12`
-   - `nvm use 12.22.12`
+3. Using `nvm`, install `Node.js` version `LTS`. This is the version used by the [PR CI pipeline] to build `LintDiff`.
+   - Linux: `nvm install --lts`
+   - Windows: `nvm install lts`
    - `node --version`, to confirm.
 4. Note that installing `Node.js` will also install `npm`.
-5. Install [@Microsoft/Rush](https://rushjs.io/). Note that the [PR CI pipeline] uses version `5.62.1`, so you might want
-   to switch to it in case you run into unexpected issues later on.
-   ```bash
-   # Install latest rush, globally
-   npm install -g @microsoft/rush
-
-   # OR Install specific version, to the local node_modules folder
-   cd "this_repo_local_clone_dir"
-   npm install @microsoft/rush@5.26.1
-   ```
+5. Install [@Microsoft/Rush](https://rushjs.io/).
+   - `npm install -g @microsoft/rush`
 
 [nvm]: https://github.com/nvm-sh/nvm#installing-and-updating
 [nvm for Windows]: https://github.com/coreybutler/nvm-windows
