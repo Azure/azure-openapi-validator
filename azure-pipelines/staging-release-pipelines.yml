@@ -20,8 +20,6 @@ extends:
 
         steps:
           - template: common-build.yml
-            parameters: 
-              NodeVersion: "16.x"
           
           - script: 'node eng/scripts/prerelease.mjs'
             displayName: 'bump dev release version'
