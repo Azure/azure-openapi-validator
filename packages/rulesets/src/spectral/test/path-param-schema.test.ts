@@ -165,15 +165,16 @@ test('PathParameterSchema should find oas3 errors', () => {
   };
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(4);
-    expect(results[0].path.join('.')).toBe('paths./foo/{p1}.parameters.0.schema');
+    results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
+    expect(results[0].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}.get.parameters.0.schema');
     expect(results[0].message).toContain('should specify a maximum length');
-    expect(results[0].message).toContain('and characters allowed');
-    expect(results[1].path.join('.')).toBe('paths./foo/{p1}.parameters.0.schema.type');
-    expect(results[1].message).toContain('should be defined as type: string');
-    expect(results[2].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}.get.parameters.0.schema');
+    expect(results[1].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}.get.parameters.1.schema');
+    expect(results[1].message).toContain('should specify characters allowed');
+    expect(results[2].path.join('.')).toBe('paths./foo/{p1}.parameters.0.schema');
     expect(results[2].message).toContain('should specify a maximum length');
-    expect(results[3].path.join('.')).toBe('paths./bar/{p2}/baz/{p3}.get.parameters.1.schema');
-    expect(results[3].message).toContain('should specify characters allowed');
+    expect(results[2].message).toContain('and characters allowed');
+    expect(results[3].path.join('.')).toBe('paths./foo/{p1}.parameters.0.schema.type');
+    expect(results[3].message).toContain('should be defined as type: string');
   });
 });
 

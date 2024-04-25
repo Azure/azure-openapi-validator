@@ -65,6 +65,7 @@ test("XmsClientName should find errors", () => {
   };
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(2);
+    results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
     expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`);
     expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters.1");
     expect(results[1].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'length' Property/Model.`);

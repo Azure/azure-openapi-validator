@@ -178,9 +178,10 @@ test("PatchBodyParametersSchema should find errors for default value in nested b
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(2)
-    expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0.schema.properties.properties")
+    results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
+    expect(results[0].path.join(".")).toBe("paths./bar.patch.parameters.0.schema.properties.properties")
     expect(results[0].message).toContain("Properties of a PATCH request body must not have default value, property:prop0.")
-    expect(results[1].path.join(".")).toBe("paths./bar.patch.parameters.0.schema.properties.properties")
+    expect(results[1].path.join(".")).toBe("paths./foo.patch.parameters.0.schema.properties.properties")
     expect(results[1].message).toContain("Properties of a PATCH request body must not have default value, property:prop0.")
   })
 })

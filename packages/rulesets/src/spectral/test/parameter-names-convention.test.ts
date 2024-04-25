@@ -71,15 +71,16 @@ test('ParameterNamesConvention should find errors', () => {
   };
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(7);
-    expect(results[0].path.join('.')).toBe('paths./test1/{test-id}.parameters.0.name');
-    expect(results[1].path.join('.')).toBe('paths./test1/{test-id}.parameters.1.name');
-    expect(results[2].path.join('.')).toBe('paths./test1/{test-id}.parameters.2.name');
-    expect(results[3].path.join('.')).toBe('paths./test1/{test-id}.parameters.3.name');
-    expect(results[3].message).toContain("should not begin with '$' or '@'");
-    expect(results[4].path.join('.')).toBe('paths./test1/{test-id}.parameters.4.name');
-    expect(results[4].message).toContain("should not begin with '$' or '@'");
-    expect(results[5].path.join('.')).toBe('paths./test1/{test-id}.get.parameters.0.name');
-    expect(results[6].path.join('.')).toBe('paths./test1/{test-id}.get.parameters.1.name');
+    results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
+    expect(results[0].path.join('.')).toBe('paths./test1/{test-id}.get.parameters.0.name');
+    expect(results[1].path.join('.')).toBe('paths./test1/{test-id}.get.parameters.1.name');
+    expect(results[2].path.join('.')).toBe('paths./test1/{test-id}.parameters.0.name');
+    expect(results[3].path.join('.')).toBe('paths./test1/{test-id}.parameters.1.name');
+    expect(results[4].path.join('.')).toBe('paths./test1/{test-id}.parameters.2.name');
+    expect(results[5].path.join('.')).toBe('paths./test1/{test-id}.parameters.3.name');
+    expect(results[5].message).toContain("should not begin with '$' or '@'");
+    expect(results[6].path.join('.')).toBe('paths./test1/{test-id}.parameters.4.name');
+    expect(results[6].message).toContain("should not begin with '$' or '@'");
   });
 });
 
