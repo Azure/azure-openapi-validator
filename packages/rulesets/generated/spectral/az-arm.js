@@ -1019,7 +1019,7 @@ const ruleset$1 = {
             message: "'{{error}}' is not a known format.",
             severity: "error",
             resolved: false,
-            given: "$..[?(@.hasOwnProperty('format') && (@.type === 'boolean' || @.type === 'integer' || @.type === 'number' || @.type === 'string'))]",
+            given: "$..[?(@property === 'format')]^",
             then: {
                 function: checkSchemaFormat,
             },
