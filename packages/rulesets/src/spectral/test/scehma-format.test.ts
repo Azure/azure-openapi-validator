@@ -191,6 +191,14 @@ test("schema-format should find no errors", () => {
       Model1: {
         type: "object",
         properties: {
+          format: {
+            type: "string",
+            description: "Property happens to be named 'format' but should be ignored by rule"
+          },
+          type: {
+            type: "string",
+            description: "Property happens to be named 'type', but it's value (object) should indicate 'format' should be ignored"
+          },
           propW: {
             type: "number",
             format: "double",
