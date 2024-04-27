@@ -751,7 +751,7 @@ function checkSchemaFormat(schema, options, { path }) {
         "relative-json-pointer",
         "arm-id",
     ];
-    if (schema.type && schema.format) {
+    if ((schema.type === "boolean" || schema.type === "integer" || schema.type === "number" || schema.type === "string") && schema.format) {
         if (!schemaFormats.includes(schema.format)) {
             errors.push({
                 message: `${schema.format}`,

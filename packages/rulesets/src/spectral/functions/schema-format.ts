@@ -54,7 +54,9 @@ function checkSchemaFormat(schema: any, options: any, { path }: { path: JsonPath
     "arm-id",
   ]
 
-  if (schema.type && schema.format) {
+  // Only validate "format" if "type" is ("boolean" | "integer" | "number" | "string")
+  // https://github.com/OAI/OpenAPI-Specification/blob/8a8a9a6b7be4b192612bf01170bbb6974d491be3/versions/2.0.md#data-types
+  if ((schema.type === "boolean" || schema.type === "integer" || schema.type === "number" || schema.type === "string") && schema.format) {
     if (!schemaFormats.includes(schema.format)) {
       errors.push({
         message: `${schema.format}`,
