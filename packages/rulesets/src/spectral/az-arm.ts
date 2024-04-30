@@ -301,8 +301,9 @@ const ruleset: any = {
       disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/no-record' rule.",
       resolved: true,
       formats: [oas2],
+      // In some cases, variable "@" will be "null" when evaluating the expression, so it must be checked before dereferencing
       given:
-        "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @.additionalProperties)]",
+        "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @ && @.additionalProperties)]",
       then: {
         function: falsy,
       },
