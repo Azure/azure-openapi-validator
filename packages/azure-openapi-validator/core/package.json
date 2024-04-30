@@ -50,7 +50,6 @@
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
     "jsonpath-plus": "^6.0.1",
     "dependency-graph": "^0.11.0",
-    "fs": "^0.0.1-security",
     "glob": "^7.2.0",
     "js-yaml": "^3.14.0",
     "jsonc-parser": "3.0.0",
