@@ -302,7 +302,7 @@ const ruleset: any = {
       resolved: true,
       formats: [oas2],
       given:
-        "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @.additionalProperties)]",
+        "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @ && @.additionalProperties)]",
       then: {
         function: falsy,
       },
