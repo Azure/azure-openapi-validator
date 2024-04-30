@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/Azure/azure-openapi-validator/blob/main/README.md",
   "devDependencies": {
-    "@types/jsonpath": "^0.2.0",
     "@types/lodash": "~4.14.178",
     "@types/node": "^14.0.13",
     "@types/jest": "^27.0.6",

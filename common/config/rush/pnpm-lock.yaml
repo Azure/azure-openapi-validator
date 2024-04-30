@@ -5575,13 +5575,12 @@ packages:
     dev: false
 
   file:projects/openapi-validator-core.tgz:
-    resolution: {integrity: sha512-g6v9Wj0xd7lKiuqiIlQihQZDTnVRYSW9C8fA0t7M2GJ9v10f43xTJMsDexuPRd1oMkoTJuHfW215KiXo+VZoZQ==, tarball: file:projects/openapi-validator-core.tgz}
+    resolution: {integrity: sha512-Ki8RNrd2gm5Mb2TQJ6EBcaL+/fzU9UT581xsZYAC2P89F2cxn1qfBa8EOZYjN1lt4H6pQIgkaMkrU6voBSmPPg==, tarball: file:projects/openapi-validator-core.tgz}
     name: '@rush-temp/openapi-validator-core'
     version: 0.0.0
     dependencies:
       '@azure-tools/uri': 3.1.1
       '@types/jest': 27.5.2
-      '@types/jsonpath': 0.2.4
       '@types/lodash': 4.14.202
       '@types/node': 14.18.63
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.57.0)(typescript@4.6.2)
@@ -5659,7 +5658,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-i3aOZvKCer12wqJadKxjLQmGrBptS6zM5GFeAT3vyrR2/2WpOR6PKm7qkKd+VYQEiJt7rGtSLhSWL96lJ4qIlg==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-96aBUFaCek+HWs467IuN1t1jQI5ale3D/EL5oc451L/LAwb8WmvLbRzEpDGC0KZV/BS+DquVOB9BXkDU6rvmWQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -5674,7 +5673,6 @@ packages:
       '@stoplight/types': 14.1.1
       '@types/jest': 27.5.2
       '@types/js-yaml': 3.12.10
-      '@types/jsonpath': 0.2.4
       '@types/lodash': 4.14.202
       '@types/node': 14.18.63
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.57.0)(typescript@4.6.2)
