@@ -11,7 +11,7 @@ import {
 import { Resolver } from "@stoplight/json-ref-resolver"
 import { IResolver } from "@stoplight/json-ref-resolver/types"
 import { Ruleset, Spectral } from "@stoplight/spectral-core"
-import { safeLoad } from "js-yaml"
+import { load } from "js-yaml"
 import { IAutoRestPluginInitiator } from "./jsonrpc/plugin-host"
 import { getOpenapiTypeStr, isCommonTypes } from "./plugin-common"
 import {
@@ -121,9 +121,9 @@ async function validateOpenApiSpecFileUsingSpectral(
   try {
     const openApiSpecFilePath = openApiSpecFile.startsWith("file:///") ? fileURLToPath(openApiSpecFile) : openApiSpecFile
     const openApiSpecContent: string = await readFileUsingCache(initiator, openApiSpecFile)
-    // safeLoad() documented at: https://github.com/nodeca/js-yaml/tree/v3?tab=readme-ov-file#safeload-string---options-
+    // load() documented at: https://github.com/nodeca/js-yaml/tree/4.1.0?tab=readme-ov-file#load-string---options-
     // Empirically confirmed the returned value type is object, not string.
-    const openApiSpecYml: any = safeLoad(openApiSpecContent)
+    const openApiSpecYml: any = load(openApiSpecContent)
     // "x-typespec-generated" is expected to be found at JSONPath of $.info.x-typespec-generated.
     // Example: https://github.com/Azure/azure-rest-api-specs/blob/fca48bec19cc5aab0a45c0769bfca0f667164dbf/specification/edgemarketplace/resource-manager/Microsoft.EdgeMarketplace/stable/2023-08-01/operations.json#L7
     const specIsGeneratedFromTypeSpec = Boolean(openApiSpecYml.info["x-typespec-generated"]) // JSON.stringify(openApiSpecYml).includes("x-typespec-generated")

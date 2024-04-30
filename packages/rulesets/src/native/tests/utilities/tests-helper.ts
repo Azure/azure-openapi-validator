@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { LintResultMessage, OpenApiTypes, LintTester, IRuleSet, RulesObject } from "@microsoft.azure/openapi-validator-core"
-import { safeLoad } from "js-yaml"
+import { load } from "js-yaml"
 import { armRuleset } from "../../rulesets/arm"
 import { commonRuleset } from "../../rulesets/common"
 const assert = require("assert")
@@ -71,7 +71,7 @@ export function getMessagesOfType(messages: LintResultMessage[], validationRule:
 
 // read the open api doc in a usable object
 export function readObjectFromFile(filePath: string): any {
-  return safeLoad(readFileAsString(filePath))
+  return load(readFileAsString(filePath))
 }
 
 export function getFilePath(fileName: string): string {

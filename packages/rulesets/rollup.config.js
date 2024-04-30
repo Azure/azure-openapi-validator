@@ -9,7 +9,7 @@ export default [
     exports: 'default'
   },
   plugins: [commonjs(),json()],
-  external:["@stoplight/spectral-functions","@stoplight/spectral-formats","@stoplight/spectral-rulesets"]
+  external:["@stoplight/spectral-functions","@stoplight/spectral-formats"]
 },
 {
   input: ['esm/spectral/az-dataplane.js'],
@@ -19,7 +19,7 @@ export default [
     exports: 'default'
   },
   plugins: [commonjs(),json()],
-  external:["@stoplight/spectral-functions","@stoplight/spectral-formats","@stoplight/spectral-rulesets"]
+  external:["@stoplight/spectral-functions","@stoplight/spectral-formats"]
 },
 {
   input: ['esm/spectral/az-common.js'],
@@ -29,6 +29,6 @@ export default [
     exports: 'default'
   },
   plugins: [commonjs(),json()],
-  external:["@stoplight/spectral-functions","@stoplight/spectral-formats","@stoplight/spectral-rulesets"]
+  external:["@stoplight/spectral-functions","@stoplight/spectral-formats"]
 }
 ];
