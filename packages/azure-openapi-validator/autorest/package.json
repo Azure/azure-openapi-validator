@@ -49,23 +49,15 @@
     "prettier": "~2.3.1"
   },
   "dependencies": {
-    "@stoplight/spectral-core": "^1.18.3",
-    "@stoplight/spectral-formats": "^1.6.0",
-    "@stoplight/spectral-functions": "^1.7.2",
-    "@stoplight/json-ref-resolver": "^3.1.6",
-    "@stoplight/types": "^14.1.1",
-    "dependency-graph": "^0.11.0",
+    "@azure-tools/uri": "3.1.1",
     "@microsoft.azure/openapi-validator-core": "~1.0.0",
     "@microsoft.azure/openapi-validator-rulesets": "^2.0.0",
-    "@azure-tools/openapi": "^3.3.0",
+    "@stoplight/json-ref-resolver": "^3.1.6",
+    "@stoplight/spectral-core": "^1.18.3",
+    "@stoplight/types": "^14.1.1",
     "js-yaml": "^3.14.0",
     "jsonpath": "^1.1.1",
-    "json-refs": "^3.0.15",
-    "@apidevtools/json-schema-ref-parser": "^9.0.9",
-    "string.prototype.matchall": "^4.0.2",
-    "vscode-jsonrpc": "^3.2.0",
-    "node-fetch": "^3.2.3",
-    "@azure-tools/uri": "3.1.1",
-    "tslib": "^2.3.1"
+    "tslib": "^2.3.1",
+    "vscode-jsonrpc": "^3.2.0"
   }
 }
