@@ -113,6 +113,9 @@ dependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  nimma:
+    specifier: 0.2.2
+    version: 0.2.2
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -5511,7 +5514,7 @@ packages:
     dev: false
 
   file:projects/openapi-validator-rulesets.tgz:
-    resolution: {integrity: sha512-2A92Pq5gv7ztxRKVqQt4JYEo1nvTceEoZNYIegygC5ViUueDYT9xAJycPuUJD+E8OVhgvTP2dioFLvAahhow/w==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-TjNbVtunDYqaupI+T5gs5jixEqf/xFje59hBTCnfnB2QGsvRxeggUivQt+2gVsEV0C1K5cq3zerk6MlNZ1HryQ==, tarball: file:projects/openapi-validator-rulesets.tgz}
     name: '@rush-temp/openapi-validator-rulesets'
     version: 0.0.0
     dependencies:
@@ -5539,6 +5542,7 @@ packages:
       js-yaml: 4.1.0
       jsonpath-plus: 8.1.0
       lodash: 4.17.21
+      nimma: 0.2.2
       prettier: 3.2.5
       rollup: 2.79.1
       string.prototype.matchall: 4.0.11
