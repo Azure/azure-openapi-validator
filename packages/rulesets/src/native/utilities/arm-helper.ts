@@ -560,6 +560,10 @@ export class ArmHelper {
     return resourceCollectMap
   }
 
+  public isPathTenantLevel(path: string) {
+    return path.match(this.OperationApiRegEx)
+  }
+
   public isPathBySubscription(path: string) {
     return !!path.match(this.SubscriptionsWideResourceRegEx)
   }

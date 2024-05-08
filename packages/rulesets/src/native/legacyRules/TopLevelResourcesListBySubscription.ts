@@ -17,6 +17,12 @@ rules.push({
     const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
     const topLevelResources = utils.getTopLevelResourceNames()
     const allCollectionApis = utils.getCollectionApiInfo()
+    for (const path in node.paths) {
+      const hasMatchedTenantLevel = utils.isPathTenantLevel(path)
+      if (hasMatchedTenantLevel) {
+        return
+      }
+    }
     for (const resource of topLevelResources) {
       const hasMatched = allCollectionApis.some(
         (collection) => resource === collection.childModelName && collection.collectionGetPath.some((p) => utils.isPathBySubscription(p))
