@@ -64,7 +64,11 @@ export class ArmHelper {
   armResources: ResourceInfo[] | undefined
   private swaggerUtil: SwaggerHelper
 
-  constructor(private innerDoc: any, private specPath: string, private inventory: ISwaggerInventory) {
+  constructor(
+    private innerDoc: any,
+    private specPath: string,
+    private inventory: ISwaggerInventory,
+  ) {
     this.swaggerUtil = new SwaggerHelper(this.innerDoc, this.specPath, this.inventory)
     this.getXmsResources()
     this.getAllResources()
@@ -185,7 +189,7 @@ export class ArmHelper {
     }
     return Workspace.createEnhancedSchema(
       this.inventory.getDocuments(resourceInfo.specPath).definitions?.[resourceInfo.modelName],
-      resourceInfo.specPath!
+      resourceInfo.specPath!,
     )
   }
 
@@ -256,7 +260,7 @@ export class ArmHelper {
           return true
         }
         return false
-      })
+      }),
     )
   }
 
@@ -269,8 +273,8 @@ export class ArmHelper {
       Array.from(
         this.getTopLevelResources()
           .filter((re) => re.operations.some((op) => this.isPathByResourceGroup(op.apiPath)))
-          .map((re) => re.modelName)
-      )
+          .map((re) => re.modelName),
+      ),
     )
   }
 
@@ -285,17 +289,17 @@ export class ArmHelper {
     }
     const localResourceModels = this.resources.filter((re) => re.specPath === this.specPath)
     const resWithXmsRes = localResourceModels.filter(
-      (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase())
+      (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase()),
     )
     const resWithPutOrPatch = localResourceModels.filter((re) =>
-      re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch")
+      re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"),
     )
     const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
 
     //  remove the resource only return by post , and add the resources return by put or patch
     this.armResources = _.uniqWith(
       resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPatch),
-      _.isEqual
+      _.isEqual,
     )
     return this.armResources
   }
@@ -496,7 +500,7 @@ export class ArmHelper {
               p
                 .substr(p.lastIndexOf("/providers"))
                 .replace(/{[^/]+}/gi, "{}")
-                .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}")
+                .replace(/\/$/gi, "") === possibleCollectionApiPath.replace(/{[^/]+}/gi, "{}"),
           )
           if (matchedPaths && matchedPaths.length >= 1 && this.getOperationIdFromPath(matchedPaths[0])) {
             collectionApis.push({
@@ -558,10 +562,6 @@ export class ArmHelper {
       }
     }
     return resourceCollectMap
-  }
-
-  public isPathTenantLevel(path: string) {
-    return path.match(this.OperationApiRegEx)
   }
 
   public isPathBySubscription(path: string) {
