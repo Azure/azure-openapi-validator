@@ -72,16 +72,167 @@ test("PropertiesTypeObjectNoDefinition if type:object is undefined should find e
         },
         description: "The resource management error additional info.",
       },
+      DeletedUnifiedProtectedItemResource: {
+        type: "object",
+        description: "A DeletedUnifiedProtectedItem represents a protected item by backup or replication solution of deleted resource.",
+        properties: {
+          properties: {
+            $ref: "#/definitions/UnifiedProtectedItemProperties",
+            description: "The resource-specific properties for this resource.",
+            "x-ms-client-flatten": true,
+            "x-ms-mutability": ["read", "create"],
+          },
+        },
+        allOf: [
+          {
+            $ref: "#/definitions/ProvisioningState",
+          },
+        ],
+      },
+      DeletedUnifiedProtectedItemResourceListResult: {
+        type: "object",
+        description: "The response of a DeletedUnifiedProtectedItemResource list operation.",
+        properties: {
+          value: {
+            type: "array",
+            description: "The DeletedUnifiedProtectedItemResource items on this page",
+            items: {
+              $ref: "#/definitions/DeletedUnifiedProtectedItemResource",
+            },
+          },
+          nextLink: {
+            type: "string",
+            format: "uri",
+            description: "The link to the next page of items",
+            readOnly: true,
+          },
+        },
+        required: ["value"],
+      },
+
+      ProvisioningState: {
+        type: "string",
+        description: "The provisioning state of a resource type.",
+        enum: ["Succeeded", "Failed", "Canceled"],
+        "x-ms-enum": {
+          name: "ProvisioningState",
+          modelAsString: true,
+          values: [
+            {
+              name: "Succeeded",
+              value: "Succeeded",
+              description: "Resource has been created.",
+            },
+            {
+              name: "Failed",
+              value: "Failed",
+              description: "Resource creation failed.",
+            },
+            {
+              name: "Canceled",
+              value: "Canceled",
+              description: "Resource creation was canceled.",
+            },
+          ],
+        },
+        readOnly: true,
+      },
+      ProviderSpecificProperties: {
+        type: "object",
+        description: "Definition of provider specific properties.",
+      },
+      SolutionSpecificProtectedItem: {
+        type: "object",
+        description: "Definition of solution specific protected item.",
+        properties: {
+          providerSpecificProperties: {
+            $ref: "#/definitions/ProviderSpecificProperties",
+            description: "Provider specific properties.",
+          },
+        },
+      },
+      SolutionSpecificProtectionProperties: {
+        type: "object",
+        description: "Definition of solution specific protected item.",
+        properties: {
+          allowedOperationsPerSolution: {
+            type: "array",
+            description: "List of allowed operations.",
+            items: {
+              type: "string",
+            },
+          },
+        },
+        required: ["allowedOperationsPerSolution"],
+      },
+      UnifiedProtectedItemProperties: {
+        type: "object",
+        description: "Definition of unified protected item properties.",
+        properties: {
+          solutionSpecificProtectionProperties: {
+            type: "object",
+            description: "Dictionary for solution specific properties.",
+            additionalProperties: {
+              $ref: "#/definitions/SolutionSpecificProtectionProperties",
+            },
+            readOnly: true,
+          },
+          protectedItems: {
+            type: "array",
+            description: "Detail of protected item.",
+            items: {
+              $ref: "#/definitions/SolutionSpecificProtectedItem",
+            },
+            readOnly: true,
+            "x-ms-identifiers": [],
+          },
+        },
+      },
+      UnifiedProtectedItemResource: {
+        type: "object",
+        description: "A UnifiedProtectedItem represents a protected item by backup or replication solution.",
+        properties: {
+          $ref: "#/definitions/UnifiedProtectedItemProperties",
+          description: "The resource-specific properties for this resource.",
+          "x-ms-client-flatten": true,
+          "x-ms-mutability": ["read", "create"],
+        },
+        allOf: [
+          {
+            $ref: "#/definitions/ProvisioningState",
+          },
+        ],
+      },
     },
   }
   return linter.run(oasDoc1).then((results) => {
-    expect(results.length).toBe(3)
-    expect(results[0].path.join(".")).toBe("definitions.ErrorDetail.properties.additionalInfo.items.properties.info")
-    expect(results[1].path.join(".")).toBe("definitions.ErrorResponse.properties.error.properties.additionalInfo.items.properties.info")
-    expect(results[2].path.join(".")).toBe("definitions.ErrorAdditionalInfo.properties.info")
+    expect(results.length).toBe(9)
+    expect(results[0].path.join(".")).toBe(
+      "definitions.DeletedUnifiedProtectedItemResource.properties.properties.properties.protectedItems.items.properties.providerSpecificProperties",
+    )
+    expect(results[1].path.join(".")).toBe(
+      "definitions.DeletedUnifiedProtectedItemResourceListResult.properties.value.items.properties.properties.properties.protectedItems.items.properties.providerSpecificProperties",
+    )
+    expect(results[2].path.join(".")).toBe("definitions.ErrorDetail.properties.additionalInfo.items.properties.info")
+    expect(results[3].path.join(".")).toBe("definitions.ErrorResponse.properties.error.properties.additionalInfo.items.properties.info")
+    expect(results[4].path.join(".")).toBe(
+      "definitions.UnifiedProtectedItemProperties.properties.protectedItems.items.properties.providerSpecificProperties",
+    )
+    expect(results[5].path.join(".")).toBe(
+      "definitions.UnifiedProtectedItemResource.properties.properties.protectedItems.items.properties.providerSpecificProperties",
+    )
+    expect(results[6].path.join(".")).toBe("definitions.ErrorAdditionalInfo.properties.info")
+
+    expect(results[7].path.join(".")).toBe("definitions.ProviderSpecificProperties")
+    expect(results[8].path.join(".")).toBe("definitions.SolutionSpecificProtectedItem.properties.providerSpecificProperties")
     expect(results[0].message).toBe(errorMessageObject)
     expect(results[1].message).toBe(errorMessageObject)
     expect(results[2].message).toBe(errorMessageObject)
+    expect(results[3].message).toBe(errorMessageObject)
+    expect(results[4].message).toBe(errorMessageObject)
+    expect(results[5].message).toBe(errorMessageObject)
+    expect(results[6].message).toBe(errorMessageObject)
+    expect(results[7].message).toBe(errorMessageObject)
   })
 })
 
