@@ -6,10 +6,14 @@
     "description": "HDInsight Management Client"
   },
   "host": "management.azure.com",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "security": [
     {
-      "azure_auth": ["user_impersonation"]
+      "azure_auth": [
+        "user_impersonation"
+      ]
     }
   ],
   "securityDefinitions": {
@@ -26,7 +30,9 @@
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/providers/Microsoft.HDInsight/clusters/{clusterName}": {
       "patch": {
-        "tags": ["Clusters"],
+        "tags": [
+          "Clusters"
+        ],
         "operationId": "Clusters_Update",
         "description": "Patch HDInsight cluster with the specified parameters.",
         "x-ms-examples": null,
@@ -58,11 +64,17 @@
             }
           }
         },
-        "produces": ["application/json"],
-        "consumes": ["application/json"]
-      }, 
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
       "get": {
-        "tags": ["Clusters"],
+        "tags": [
+          "Clusters"
+        ],
         "operationId": "Clusters_Get",
         "description": "Patch HDInsight cluster with the specified parameters.",
         "x-ms-examples": null,
@@ -94,11 +106,17 @@
             }
           }
         },
-        "produces": ["application/json"],
-        "consumes": ["application/json"]
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
       },
       "delete": {
-        "tags": ["Clusters"],
+        "tags": [
+          "Clusters"
+        ],
         "operationId": "Clusters_Delete",
         "description": "Deletes the specified HDInsight cluster.",
         "x-ms-examples": null,
@@ -131,11 +149,17 @@
           }
         },
         "x-ms-long-running-operation": true,
-        "produces": ["application/json"],
-        "consumes": ["application/json"]
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
       },
       "put": {
-        "tags": ["Clusters"],
+        "tags": [
+          "Clusters"
+        ],
         "operationId": "Clusters_Update",
         "description": "Patch HDInsight cluster with the specified parameters.",
         "x-ms-examples": null,
@@ -167,8 +191,198 @@
             }
           }
         },
-        "produces": ["application/json"],
-        "consumes": ["application/json"]
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/providers/Microsoft.PortalServices/copilotSettings/default": {
+      "get": {
+        "operationId": "CopilotSettings_Get",
+        "tags": [
+          "CopilotSettings"
+        ],
+        "description": "Get a CopilotSettingsResource",
+        "parameters": [
+          {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/CopilotSettingsResource"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Copilot Settings": {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        }
+      },
+      "put": {
+        "operationId": "CopilotSettings_CreateOrUpdate",
+        "tags": [
+          "CopilotSettings"
+        ],
+        "description": "Create a CopilotSettingsResource",
+        "parameters": [
+          {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          },
+          {
+            "name": "resource",
+            "in": "body",
+            "description": "Resource create parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CopilotSettingsResource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'CopilotSettingsResource' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/CopilotSettingsResource"
+            }
+          },
+          "201": {
+            "description": "Resource 'CopilotSettingsResource' create operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/CopilotSettingsResource"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create a new Copilot settings or update an existing one": {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "CopilotSettings_Update",
+        "tags": [
+          "CopilotSettings"
+        ],
+        "description": "Update a CopilotSettingsResource",
+        "parameters": [
+          {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          },
+          {
+            "name": "properties",
+            "in": "body",
+            "description": "The resource properties to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CopilotSettingsResourceUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/CopilotSettingsResource"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update Copilot Settings": {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "CopilotSettings_Delete",
+        "tags": [
+          "CopilotSettings"
+        ],
+        "description": "Delete a CopilotSettingsResource",
+        "parameters": [
+          {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource deleted successfully."
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Copilot Settings": {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        }
+      }
+    },
+    "/providers/Microsoft.PortalServices/operations": {
+      "get": {
+        "operationId": "Operations_List",
+        "tags": [
+          "Operations"
+        ],
+        "description": "List the operations for the provider",
+        "parameters": [
+          {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List the operations for the Microsoft.PortalServices provider.": {
+            "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
       }
     }
   },
@@ -194,6 +408,95 @@
           "items": {
             "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
           }
+        }
+      }
+    },
+    "Azure.ResourceManager.ResourceProvisioningState": {
+      "type": "string",
+      "description": "The provisioning state of a resource type.",
+      "enum": [
+        "Succeeded",
+        "Failed",
+        "Canceled"
+      ],
+      "x-ms-enum": {
+        "name": "ResourceProvisioningState",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Succeeded",
+            "value": "Succeeded",
+            "description": "Resource has been created."
+          },
+          {
+            "name": "Failed",
+            "value": "Failed",
+            "description": "Resource creation failed."
+          },
+          {
+            "name": "Canceled",
+            "value": "Canceled",
+            "description": "Resource creation was canceled."
+          }
+        ]
+      },
+      "readOnly": true
+    },
+    "CopilotSettingsProperties": {
+      "type": "object",
+      "description": "The Copilot Settings properties.",
+      "properties": {
+        "accessControlEnabled": {
+          "type": "boolean",
+          "description": "Boolean indicating if role-based access control is enabled for copilot in this tenant."
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/Azure.ResourceManager.ResourceProvisioningState",
+          "description": "The status of the last provisioning operation performed on the resource.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "accessControlEnabled"
+      ]
+    },
+    "CopilotSettingsResource": {
+      "type": "object",
+      "description": "The copilot settings tenant resource definition.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/CopilotSettingsProperties",
+          "description": "The resource-specific properties for this resource.",
+          "x-ms-client-flatten": true,
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./trackedResourceCommon.json#/definitions/Cluster"
+        }
+      ]
+    },
+    "CopilotSettingsResourceUpdate": {
+      "type": "object",
+      "description": "The type used for update operations of the CopilotSettingsResource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/CopilotSettingsResourceUpdateProperties",
+          "x-ms-client-flatten": true
+        }
+      }
+    },
+    "CopilotSettingsResourceUpdateProperties": {
+      "type": "object",
+      "description": "The updatable properties of the CopilotSettingsResource.",
+      "properties": {
+        "accessControlEnabled": {
+          "type": "boolean",
+          "description": "Boolean indicating if role-based access control is enabled for copilot in this tenant."
         }
       }
     }

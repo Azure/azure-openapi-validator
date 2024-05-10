@@ -91,7 +91,8 @@ describe("CompositeAzureTests", () => {
       OpenApiTypes.arm,
       TopLevelResourcesListBySubscription
     )
-    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 1)
+    // There is tenant level api in compute.json file
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 0)
   })
 
   test("get collection response schema should match the ARM specification", async () => {
