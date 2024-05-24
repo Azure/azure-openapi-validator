@@ -6,6 +6,7 @@ export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
   ["privatelinks.json", "v5"],
   ["customermanagedkeys.json", "v5"],
   ["managedidentitywithdelegation.json", "v5"],
+  ["networksecurityperimeter.json", "v5"],
   ["mobo.json", "v5"],
 ])
 
