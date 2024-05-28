@@ -106,32 +106,42 @@ test("EvenSegmentedPathForPutOperation should find errors for invalid paths", ()
           responses: {},
         },
       },
+      "/providers/Microsoft.Music/Songs/test": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(10)
+    expect(results.length).toBe(11)
     expect(results[0].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music",
     )
     expect(results[1].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs",
     )
     expect(results[2].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist",
     )
     expect(results[3].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/addArtistName"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/addArtistName",
     )
     expect(results[4].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong",
     )
     expect(results[5].path.join(".")).toBe("paths.{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong")
     expect(results[6].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong")
     expect(results[7].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/providers/Microsoft.Album/Albums"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}/providers/Microsoft.Album/Albums",
     )
     expect(results[8].path.join(".")).toBe("paths./providers/Microsoft.Music/Songs/{songName}/Artist/{artistName}/addSong")
     expect(results[9].path.join(".")).toBe("paths./providers/Microsoft.Music/Songs")
+    expect(results[10].path.join(".")).toBe("paths./providers/Microsoft.Music/Songs/test")
   })
 })
 
@@ -140,6 +150,15 @@ test("PathForResourceAction should not find errors for valid path", () => {
     swagger: "2.0",
     paths: {
       //valid uri's
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/default": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Songs/{songName}": {
         put: {
           tags: ["SampleTag"],
@@ -196,6 +215,15 @@ test("PathForResourceAction should not find errors for valid path", () => {
         },
       },
       "/providers/Microsoft.Music/Songs/{songName}": {
+        put: {
+          tags: ["SampleTag"],
+          operationId: "Foo_CreateOrUpdate",
+          description: "Test Description",
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/providers/Microsoft.Music/Songs/default": {
         put: {
           tags: ["SampleTag"],
           operationId: "Foo_CreateOrUpdate",
