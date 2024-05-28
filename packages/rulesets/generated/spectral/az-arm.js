@@ -3250,7 +3250,7 @@ const ruleset = {
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}'))].get",
+            given: "$[paths,'x-ms-paths'][?(!@property.endsWith('}') && !@property.endsWith('default'))].get",
             then: {
                 function: xmsPageableForListCalls,
             },
