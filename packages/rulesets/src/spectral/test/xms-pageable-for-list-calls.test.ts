@@ -63,7 +63,7 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
     expect(results[0].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine.get")
     expect(results[0].message).toBe(errorMessage)
     expect(results[1].path.join(".")).toBe(
-      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedVirtualMachine.get",
+      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedVirtualMachine.get"
     )
     expect(results[1].message).toBe(errorMessage)
   })
