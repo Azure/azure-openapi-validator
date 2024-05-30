@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Fix false alarm for EvenSegmentedPathForPutOperation rule",
+      "type": "none"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
