@@ -73,6 +73,27 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/default": {
+        get: {
+          operationId: "Good_List",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                properties: {
+                  value: {
+                    type: "array",
+                  },
+                  nextLink: {
+                    type: "string",
+                  },
+                },
+                required: ["value"],
+              },
+            },
+          },
+        },
+      },
       "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
         get: {
           operationId: "Good_List",
