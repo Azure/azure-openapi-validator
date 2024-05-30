@@ -1,0 +1,40 @@
+parameters:
+  - name: Version
+    type: string
+    default: 'staging'
+    values:
+      - 'staging'
+      - 'prod'
+
+stages:
+  - stage: Release
+    displayName: Release ${{ parameters.Version }}
+    dependsOn: Build
+
+    variables:
+      - template: /eng/templates/variables/image.yml
+
+    # todo: add an environment for user approval prior to release
+    # todo: grab the ESRP config from azure-sdk-for-js
+    jobs:
+      - job: Publish
+
+        pool:
+          name: $(LINUXPOOL)
+          image: $(LINUXVMIMAGE) 
+          os: linux
+
+        steps:
+          - checkout: self
+            submodules: true
+
+          - download: current
+            artifact: oav
+            timeoutInMinutes: 5
+
+          - pwsh: |
+              Get-ChildItem $(Build.ArtifactStagingDirectory) -Recurse | % { Write-Host $_.FullName }
+
+
+
+
