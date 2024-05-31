@@ -28,7 +28,6 @@ extends:
     sdl:
       git:
         longpaths: true
-        submodules: false
       sourceAnalysisPool:
         name: azsdk-pool-mms-win-2022-general
         image: azsdk-pool-mms-win-2022-1espt

@@ -39,4 +39,4 @@ extends:
     - ${{ if and(in(variables['Build.Reason'], 'Manual', ''), eq(variables['System.TeamProject'], 'internal'))}}:
       - template: /.azure-pipelines/release-stage.yml
         parameters:
-          Version: prod
+          Version: latest
