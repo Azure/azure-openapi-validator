@@ -28,11 +28,15 @@ extends:
     sdl:
       git:
         longpaths: true
+        submodules: false
       sourceAnalysisPool:
         name: azsdk-pool-mms-win-2022-general
         image: azsdk-pool-mms-win-2022-1espt
         os: windows
       sourceRepositoriesToScan:
+        include:
+          - repository: self
+            submodule: false
         exclude:
           - repository: azure-sdk-build-tools
       eslint:
