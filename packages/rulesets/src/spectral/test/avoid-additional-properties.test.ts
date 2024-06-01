@@ -143,22 +143,29 @@ test("AvoidAdditionalProperties should find errors", () => {
         },
         required: ["type"],
       },
+      ThisRef: {
+        properties: {
+          $ref: "#/definitions/This",
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(6)
+    expect(results.length).toBe(7)
     expect(results[0].path.join(".")).toBe("definitions.This")
     expect(results[1].path.join(".")).toBe("definitions.That.properties.nonTags")
     expect(results[2].path.join(".")).toBe("definitions.ThaOther.properties")
     expect(results[3].path.join(".")).toBe("definitions.Other.properties")
     expect(results[4].path.join(".")).toBe("definitions.ThisOther.properties.tags.nonTags")
     expect(results[5].path.join(".")).toBe("definitions.UserAssignedIdentitiy")
+    expect(results[6].path.join(".")).toBe("definitions.ThisRef.properties")
     expect(results[0].message).toBe(errorMessage)
     expect(results[1].message).toBe(errorMessage)
     expect(results[2].message).toBe(errorMessage)
     expect(results[3].message).toBe(errorMessage)
     expect(results[4].message).toBe(errorMessage)
     expect(results[5].message).toBe(errorMessage)
+    expect(results[6].message).toBe(errorMessage)
   })
 })
 
