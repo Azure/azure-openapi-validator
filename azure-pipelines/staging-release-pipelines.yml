@@ -2,7 +2,7 @@ extends:
   template: /azure-pipelines/1es-redirect.yml
   parameters:  
     stages:
-    - stage: Staging_Release
+    - stage: Build
       displayName: Staging Release
 
       variables:
@@ -39,3 +39,8 @@ extends:
             parameters:
               ArtifactName: drop
               ArtifactPath: $(Build.SourcesDirectory)/dist
+
+    - ${{ if and(in(variables['Build.Reason'], 'Manual', ''), eq(variables['System.TeamProject'], 'internal'))}}:
+      - template: /azure-pipelines/release-stage.yml
+        parameters:
+          Version: beta
