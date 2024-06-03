@@ -3159,7 +3159,7 @@ const ruleset = {
             message: "{{description}}",
             disableForTypeSpec: true,
             disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/no-record' rule.",
-            resolved: true,
+            resolved: false,
             formats: [oas2],
             given: "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @ && @.additionalProperties)]",
             then: {

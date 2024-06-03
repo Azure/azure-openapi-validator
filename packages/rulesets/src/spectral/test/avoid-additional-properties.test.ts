@@ -143,6 +143,12 @@ test("AvoidAdditionalProperties should find errors", () => {
         },
         required: ["type"],
       },
+      ThisRef: {
+        description: "Ensure error is NOT raised from inside $refs (rule sets resolved:false)",
+        properties: {
+          $ref: "#/definitions/This",
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {

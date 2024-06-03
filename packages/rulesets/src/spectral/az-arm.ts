@@ -299,7 +299,8 @@ const ruleset: any = {
       message: "{{description}}",
       disableForTypeSpec: true,
       disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/no-record' rule.",
-      resolved: true,
+      // Only report errors at the source, not from inside $refs (the resolved document)
+      resolved: false,
       formats: [oas2],
       // In some cases, variable "@" will be "null" when evaluating the expression, so it must be checked before dereferencing
       given:
