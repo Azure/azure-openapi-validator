@@ -1,7 +1,7 @@
 parameters:
   - name: Version
     type: string
-    default: 'staging'
+    default: 'beta'
     values:
       - 'beta'
       - 'latest'
