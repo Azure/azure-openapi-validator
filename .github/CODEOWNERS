@@ -5,8 +5,8 @@
 /* @konrad-jamrozik @mikeharder @weshaggard 
 
 # Any changes to rulesets related to ARM must have @rkmanda as a reviewer and give him
-# at least 2 full business days to review before being merged, with the exception of low-risk urgent rule bugfixes,
-# which can be merged and deployed immediately.
+# at least 2 full business days to review before being merged,
+# with the exception of low-risk urgent rule bugfixes, which can be merged and deployed immediately.
 # In addition, @rkmanda must be informed about any major upcoming planned changes to this repository
 # that would end up impacting any rulesets related to ARM, including rules being modified or
 # disabled/enabled for all or some subset of spec PRs.
