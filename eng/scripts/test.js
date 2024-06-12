@@ -10,6 +10,7 @@ function main () {
         }
     }
     catch(e) {
+        console.log(e)
         errorCnt++
     }
     })
