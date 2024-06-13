@@ -1213,6 +1213,12 @@ Validates that system data is not defined in the properties bag, but rather as a
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
 
+### TagsAreTopLevelPropertiesOnly
+
+Validates that `tags` is not defined in the properties bag, but rather as a top-level property.
+
+Please refer to [tags-are-top-level-properties-only.md](./tags-are-top-level-properties-only.md) for details.
+
 ### TenantLevelAPIsNotAllowed
 
 Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead.

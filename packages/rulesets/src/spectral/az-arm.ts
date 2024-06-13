@@ -47,6 +47,7 @@ import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-sc
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { tagsAreTopLevelPropertiesOnly } from "./functions/tags-are-top-level-properties-only"
 import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
 import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
@@ -728,6 +729,21 @@ const ruleset: any = {
       given: "$.paths.*",
       then: {
         function: consistentResponseSchemaForPut,
+      },
+    },
+
+    // RPC Code: RPC-Put-V1-30
+    TagsAreTopLevelPropertiesOnly: {
+      rpcGuidelineCode: "RPC-Put-V1-30",
+      description: "Tags must be defined as a top-level property, not in the properties bag.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.definitions.*.properties^"],
+      then: {
+        function: tagsAreTopLevelPropertiesOnly,
       },
     },
 
