@@ -76,7 +76,11 @@ async function getRulesets(
 }> {
   const rulesetPayload: SpectralRulesetPayload = await getRulesetPayload(initiator, resolvedOpenapiType)
   const namesOfRulesInStagingOnly: string[] = getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "stagingOnly")
-  const namesOfRulesDisabledForTypespec: string[] = getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "disableForTypeSpec")
+  const namesOfRulesDisabledForTypespec: string[] =
+    // We ignore "disableForTypeSpec" for ARM and RPaaS rulesets.
+    resolvedOpenapiType === OpenApiTypes.arm || resolvedOpenapiType === OpenApiTypes.rpaas
+      ? []
+      : getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "disableForTypeSpec")
 
   // We need two of rulesetPayloads:
   // - The original, to prepare it as argument for spectral Rulesets. See deletePropertiesNotValidForSpectralRules for more.
