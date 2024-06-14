@@ -14,6 +14,13 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 2)
   })
 
+  test("body top level resource with real swagger", async () => {
+    const fileNames = ["body-top-level-properties-real-swagger.json"]
+    const ruleName = "BodyTopLevelProperties"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
   test("tracked resource must have patch", async () => {
     const fileNames = ["armResource/trackedResourceNoPatch.json", "armResource/trackedResourceCommon.json"]
     const ruleName = "TrackedResourcePatchOperation"

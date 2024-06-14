@@ -8,23 +8,23 @@ ARM Error
 
 ARM OpenAPI(swagger) specs
 
-
 ## Related ARM Guideline Code
 
 - RPC-Put-V1-06
 
 ## Description
 
-Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, systemData, extendedlocation.
-As per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties of a resource should be only ones from the allowed set.
+Top level properties should be one of `name`, `type`, `id`, `location`, `properties`, `tags`, `plan`, `sku`, `etag`,
+`managedBy`, `identity`, `systemData`, `extendedlocation`. Per [ARM guidelines](https://github.com/cloud-and-ai-microsoft/resource-provider-contract/blob/master/v1.0/resource-api-reference.md),
+top level properties of a resource should be only ones from the allowed set.
 
 ## How to fix
 
-Either remove or move the extra properties into the "properties" bag of the resource model.
+Either remove the extra properties or move them into the `properties` bag of the resource model.
 
 ## Good example
 
-Notice that "extraProperty" is inside "properties" bag, and not at top level.
+Notice that `extraProperty` is inside `properties` bag, and not at top level.
 
 ```json5
 "VersionedApplicationType": {
@@ -47,7 +47,7 @@ Notice that "extraProperty" is inside "properties" bag, and not at top level.
 
 ## Bad example
 
-"extraProperty" is not allowed at top level of the resource model.
+`extraProperty` is not allowed at top level of the resource model.
 
 ```json5
 "VersionedApplicationType": {
