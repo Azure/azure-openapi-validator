@@ -56,16 +56,41 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
           },
         },
       },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations/config1": {
+        get: {
+          operationId: "test_ListByID",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                properties: {
+                  value: {
+                    type: "array",
+                  },
+                  nextLink: {
+                    type: "string",
+                  },
+                },
+                required: ["value"],
+              },
+            },
+          },
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(3)
     expect(results[0].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine.get")
     expect(results[0].message).toBe(errorMessage)
     expect(results[1].path.join(".")).toBe(
-      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedVirtualMachine.get"
+      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedVirtualMachine.get",
     )
     expect(results[1].message).toBe(errorMessage)
+    expect(results[2].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations/config1.get",
+    )
+    expect(results[2].message).toBe(errorMessage)
   })
 })
 
@@ -206,6 +231,30 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
             },
           },
         },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations/config1": {
+        get: {
+          operationId: "test_ListByID",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                properties: {
+                  value: {
+                    type: "array",
+                  },
+                  nextLink: {
+                    type: "string",
+                  },
+                },
+                required: ["value"],
+              },
+            },
+          },
+          "x-ms-pageable": {
+            nextLinkName: null,
+          },
+        },
+      },
     },
   }
   return linter.run(oasDoc).then((results) => {
