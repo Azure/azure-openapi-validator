@@ -1213,11 +1213,11 @@ Validates that system data is not defined in the properties bag, but rather as a
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
 
-### TagsAreTopLevelPropertiesOnly
+### TagsAreNotAllowedForProxyResources
 
 Validates that `tags` is not defined in the properties bag, but rather as a top-level property.
 
-Please refer to [tags-are-top-level-properties-only.md](./tags-are-top-level-properties-only.md) for details.
+Please refer to [tags-are-not-allowed-for-proxy-resources.md](./tags-are-not-allowed-for-proxy-resources.md) for details.
 
 ### TenantLevelAPIsNotAllowed
 

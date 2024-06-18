@@ -2,17 +2,17 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 let linter: Spectral
-const errorMessage = "Tags must be defined as a top-level property, not in the properties bag."
+const errorMessage = "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead."
 beforeAll(async () => {
-  linter = await linterForRule("TagsAreTopLevelPropertiesOnly")
+  linter = await linterForRule("TagsAreNotAllowedForProxyResources")
   return linter
 })
 
-test("TagsAreTopLevelPropertiesOnly should find errors", () => {
+test("TagsAreNotAllowedForProxyResources should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     definitions: {
-      tags: {
+      Resources: {
         description: "This",
         type: "object",
         properties: {
@@ -28,46 +28,23 @@ test("TagsAreTopLevelPropertiesOnly should find errors", () => {
           },
         },
       },
-      That: {
+      ResourceIdentity: {
         description: "That",
         type: "object",
         properties: {
-          nonTags: {
-            type: "object",
-            additionalProperties: {
-              type: "object",
-              params: {
-                type: "boolean",
-              },
-            },
-          },
-        },
-      },
-      ThaOther: {
-        description: "ThaOther",
-        type: "object",
-        properties: {
-          tags: {
-            type: "object",
-            info: {
-              type: "String",
-            },
-          },
-          additionalProperties: {
-            type: "object",
-            params: {
-              type: "boolean",
-            },
-          },
-        },
-      },
-      Other: {
-        description: "Other object",
-        type: "object",
-        properties: {
           type: "object",
-          additionalProperties: {
-            type: "string",
+          properties: {
+            type: "object",
+            tags: {
+              type: "object",
+              additionalProperties: {
+                type: "string",
+              },
+              description: "Resource tags",
+            },
+            location: {
+              type: "string",
+            },
           },
         },
       },
@@ -78,15 +55,10 @@ test("TagsAreTopLevelPropertiesOnly should find errors", () => {
           type: "object",
           tags: {
             type: "object",
-            nonTags: {
-              type: "object",
-              additionalProperties: {
-                type: "object",
-                params: {
-                  type: "boolean",
-                },
-              },
+            additionalProperties: {
+              type: "string",
             },
+            description: "Resource tags",
           },
         },
       },
@@ -94,32 +66,21 @@ test("TagsAreTopLevelPropertiesOnly should find errors", () => {
         description: "A tenant action group object for the body of patch operations.",
         type: "object",
         properties: {
-          tags: {
+          type: "object",
+          properties: {
             type: "object",
-            additionalProperties: {
+            // nested tags
+            tags: {
               type: "string",
             },
-            description: "Resource tags",
           },
-          identity: {
-            $ref: "#/definitions/ManagedServiceIdentity",
-          },
-        },
-      },
-      UserAssignedIdentitiy: {
-        title: "User-Assigned Identities",
-        description:
-          "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        type: "object",
-        additionalProperties: {
-          "x-nullable": true,
         },
       },
       ManagedServiceIdentity: {
         description: "Managed service identity (system assigned and/or user assigned identities)",
         type: "object",
         properties: {
-          principalId: {
+          tags: {
             readOnly: true,
             format: "uuid",
             type: "string",
@@ -133,28 +94,26 @@ test("TagsAreTopLevelPropertiesOnly should find errors", () => {
             description:
               "The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
           },
-          type: {
-            $ref: "src/spectral/test/resources/lro-provisioning-state-specified.json#/definitions/PrivateEndpointConnection",
-          },
         },
-        required: ["type"],
       },
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(4)
-    expect(results[0].path.join(".")).toBe("definitions.tags.properties.tags")
-    expect(results[1].path.join(".")).toBe("definitions.ThaOther.properties.tags")
+    expect(results.length).toBe(5)
+    expect(results[0].path.join(".")).toBe("definitions.Resources.properties.tags")
+    expect(results[1].path.join(".")).toBe("definitions.ResourceIdentity.properties.properties.tags")
     expect(results[2].path.join(".")).toBe("definitions.ThisOther.properties.tags")
-    expect(results[3].path.join(".")).toBe("definitions.ActionGroupPatchBody.properties.tags")
+    expect(results[3].path.join(".")).toBe("definitions.ActionGroupPatchBody.properties.properties.tags")
+    expect(results[4].path.join(".")).toBe("definitions.ManagedServiceIdentity.properties.tags")
     expect(results[0].message).toBe(errorMessage)
     expect(results[1].message).toBe(errorMessage)
     expect(results[2].message).toBe(errorMessage)
     expect(results[3].message).toBe(errorMessage)
+    expect(results[4].message).toBe(errorMessage)
   })
 })
 
-test("TagsAreTopLevelPropertiesOnly should find no errors", () => {
+test("TagsAreNotAllowedForProxyResources should find no errors", () => {
   const oasDoc1 = {
     swagger: "2.0",
     definitions: {
@@ -162,10 +121,9 @@ test("TagsAreTopLevelPropertiesOnly should find no errors", () => {
       source: {
         type: "string",
       },
-      // top level property
-      tags: {
+      properties: {
         type: "object",
-        additionalProperties: {
+        noTags: {
           type: "object",
           params: {
             type: "boolean",
@@ -176,25 +134,21 @@ test("TagsAreTopLevelPropertiesOnly should find no errors", () => {
         description: "Managed service identity (system assigned and/or user assigned identities)",
         type: "object",
         properties: {
-          principalId: {
+          tags: {
             readOnly: true,
             format: "uuid",
             type: "string",
             description:
               "The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
           },
-          tenantId: {
+          location: {
             readOnly: true,
             format: "uuid",
             type: "string",
             description:
               "The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
           },
-          type: {
-            $ref: "src/spectral/test/resources/lro-provisioning-state-specified.json#/definitions/ManagedServiceIdentityWithDelegation",
-          },
         },
-        required: ["type"],
       },
     },
   }

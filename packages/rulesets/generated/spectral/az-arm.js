@@ -2718,19 +2718,25 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
 
 const TAGS = "tags";
 const PROPERTIES = "properties";
-const ERROR_MESSAGE = "Tags must be defined as a top-level property, not in the properties bag.";
-const tagsAreTopLevelPropertiesOnly = (definition, _opts, ctx) => {
+const NestedPROPERTIES = "properties";
+const ERROR_MESSAGE = "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.";
+const tagsAreNotAllowedForProxyResources = (definition, _opts, ctx) => {
     const properties = getProperties(definition);
-    const path = deepFindObjectKeyPath(properties, TAGS);
-    if (path.length > 0) {
-        return [
-            {
-                message: ERROR_MESSAGE,
-                path: _.concat(ctx.path, PROPERTIES, path[0]),
-            },
-        ];
+    const errors = [];
+    if ("tags" in properties && !("location" in properties)) {
+        errors.push({
+            message: ERROR_MESSAGE,
+            path: _.concat(ctx.path, PROPERTIES, TAGS),
+        });
     }
-    return [];
+    const deepProperties = deepFindObjectKeyPath(definition.properties.properties, TAGS);
+    if (deepProperties.length > 0) {
+        errors.push({
+            message: ERROR_MESSAGE,
+            path: _.concat(ctx.path, PROPERTIES, NestedPROPERTIES, deepProperties[0]),
+        });
+    }
+    return errors;
 };
 
 const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
@@ -3529,9 +3535,9 @@ const ruleset = {
                 function: consistentResponseSchemaForPut,
             },
         },
-        TagsAreTopLevelPropertiesOnly: {
+        TagsAreNotAllowedForProxyResources: {
             rpcGuidelineCode: "RPC-Put-V1-30",
-            description: "Tags must be defined as a top-level property, not in the properties bag.",
+            description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
             severity: "error",
             stagingOnly: true,
             message: "{{error}}",
@@ -3539,7 +3545,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$.definitions.*.properties^"],
             then: {
-                function: tagsAreTopLevelPropertiesOnly,
+                function: tagsAreNotAllowedForProxyResources,
             },
         },
         ParametersInPost: {
