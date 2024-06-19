@@ -14,12 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-Validates that `tags` is not defined in the properties bag, but rather as a top-level property,
 `tags` should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.
 
 ## How to fix the violation
 
-Ensure that any `tags` definitions are as top-level properties, not in the properties bag.
+Either remove the 'tags' property from the properties bag or consider using a tracked resource.
 
 ### Valid/Good Example
 

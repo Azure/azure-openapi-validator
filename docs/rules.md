@@ -1215,7 +1215,7 @@ Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-b
 
 ### TagsAreNotAllowedForProxyResources
 
-Validates that `tags` is not defined in the properties bag, but rather as a top-level property.
+`tags` should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.
 
 Please refer to [tags-are-not-allowed-for-proxy-resources.md](./tags-are-not-allowed-for-proxy-resources.md) for details.
 
