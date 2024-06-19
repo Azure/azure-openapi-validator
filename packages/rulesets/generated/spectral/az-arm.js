@@ -1,6 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
-import _, { isEmpty } from 'lodash';
+import _, { isEmpty, isNull } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -1276,7 +1276,7 @@ const ruleset$1 = {
     },
 };
 
-function matchAnyPatterns$2(patterns, path) {
+function matchAnyPatterns$3(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns$1(patterns, path) {
@@ -1296,17 +1296,17 @@ function verifySubscriptionId(path) {
     }
     return true;
 }
-function verifyResourceGroupScope$1(path) {
+function verifyResourceGroupScope$2(path) {
     const patterns = [
         /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns$2(patterns, path);
+    return matchAnyPatterns$3(patterns, path);
 }
 function verifyResourceType$1(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns$2(patterns, path);
+    return matchAnyPatterns$3(patterns, path);
 }
 function verifyNestResourceType$1(path) {
     const patterns = [
@@ -1380,7 +1380,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         resourceGroupScope: (fullPath) => {
-            if (!verifyResourceGroupScope$1(fullPath)) {
+            if (!verifyResourceGroupScope$2(fullPath)) {
                 errors.push({
                     message: "",
                     path,
@@ -1795,16 +1795,16 @@ const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns$1(patterns, path) {
+function matchAnyPatterns$2(patterns, path) {
     return patterns.every((p) => p.test(path));
 }
 function verifyNestResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 function verifyResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
     var _a;
@@ -2165,18 +2165,18 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns(patterns, path) {
+function matchAnyPatterns$1(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns(invalidPatterns, path) {
     return invalidPatterns.every((p) => !p.test(path));
 }
-function verifyResourceGroupScope(path) {
+function verifyResourceGroupScope$1(path) {
     const patterns = [
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
     ];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
 function verifyNestResourceGroupScope(path) {
     const invalidPatterns = [
@@ -2192,7 +2192,7 @@ function checkTrackedForPut(allParams, path) {
     if (bodyParam) {
         const properties = getProperties(bodyParam.schema);
         if ("location" in properties) {
-            if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+            if (!verifyResourceGroupScope$1(path[1]) || !verifyNestResourceGroupScope(path[1])) {
                 return true;
             }
         }
@@ -2202,7 +2202,7 @@ function checkTrackedForPut(allParams, path) {
 function checkTrackedForGet(allParams, path) {
     const properties = getProperties(allParams);
     if ("location" in properties) {
-        if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+        if (!verifyResourceGroupScope$1(path[1]) || !verifyNestResourceGroupScope(path[1])) {
             return true;
         }
     }
@@ -2950,6 +2950,11 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
         return [];
     }
     const path = paths.path || [];
+    if (!isNull(path[1])) {
+        if (verifyResourceGroupScope(paths.path[1])) {
+            return;
+        }
+    }
     if (swaggerObj["x-ms-pageable"])
         return [];
     else
@@ -2960,6 +2965,16 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
             },
         ];
 };
+function matchAnyPatterns(patterns, path) {
+    return patterns.some((p) => p.test(path));
+}
+function verifyResourceGroupScope(path) {
+    const patterns = [
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
+        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
+}
 
 const ruleset = {
     extends: [ruleset$1],
