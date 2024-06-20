@@ -28,7 +28,7 @@ Either remove the 'tags' property from the properties bag or consider using a tr
     "type": "object",
     "properties": {
     "type": "object",
-      // tope level properties
+      // top level properties
       "tags": {
       "type": "object",
       "additionalProperties": {
