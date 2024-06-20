@@ -179,7 +179,7 @@ export const armRuleset: IRuleSet = {
     },
     ImplementPrivateEndpointAPIs: {
       description: "This rule is to check if all the APIs for private endpoint are implemented.",
-      severity: "error",
+      severity: "warning",
       category: "SDKViolation",
       scope: "Global",
       given: "$.paths",
