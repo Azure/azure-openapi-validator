@@ -7,7 +7,7 @@ export function* trackedResourcesMustHavePut(openapiSection: any, options: {}, c
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
   const allTrackedResources = armHelper.getTrackedResources()
   for (const re of allTrackedResources) {
-    if (!re.operations.some((op) => op.httpMethod === "put")) {
+    if (!re.operations.some((op: any) => op.httpMethod === "put")) {
       yield {
         location: ["definitions", re.modelName],
         message: `The tracked resource ${re.modelName} does not have a corresponding put operation.`,
@@ -21,7 +21,7 @@ export function* trackedResourceBeyondsThirdLevel(openapiSection: any, options: 
   const allTrackedResources = armHelper.getTrackedResources()
   const regex = /^.*\/providers\/microsoft\.\w+(?:\/\w+\/(\w+|{\w+})){4,}/gi
   for (const re of allTrackedResources) {
-    if (re.operations.some((op) => regex.test(op.apiPath))) {
+    if (re.operations.some((op: any) => regex.test(op.apiPath))) {
       yield {
         location: ["definitions", re.modelName],
         message: `The tracked resource ${re.modelName} is beyond third level of nesting.`,
@@ -35,7 +35,7 @@ export function* allResourcesHaveDelete(openapiSection: any, options: { isTracke
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
   const allResources = options.isTrackedResource ? armHelper.getTrackedResources() : armHelper.getProxyResources()
   for (const re of allResources) {
-    const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
+    const apiPath = re.operations.find((op: any) => op.apiPath)?.apiPath
     if (apiPath) {
       if ((options.isTrackedResource || armHelper.findOperation(apiPath, "put")) && !armHelper.findOperation(apiPath, "delete")) {
         yield {
@@ -52,7 +52,7 @@ export function* trackedResourcesHavePatch(openapiSection: any, options: {}, ctx
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
   const allTrackedResources = armHelper.getTrackedResources()
   for (const re of allTrackedResources) {
-    const apiPath = re.operations.find((op) => op.apiPath)?.apiPath
+    const apiPath = re.operations.find((op: any) => op.apiPath)?.apiPath
     if (apiPath) {
       if (!armHelper.findOperation(apiPath, "patch")) {
         yield {
@@ -79,7 +79,7 @@ export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx:
           messages.push(
             `Top level property names should not be repeated inside the properties bag for ARM resource '${resourceName}'. Properties [${propertiesPath
               .concat(p)
-              .join(".")}] conflict with ARM top level properties. Please rename these.`
+              .join(".")}] conflict with ARM top level properties. Please rename these.`,
           )
         }
       }
@@ -104,7 +104,7 @@ export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx:
 
 export function* bodyTopLevelProperties(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allResources = armHelper.getAllResources()
+  const allResources = armHelper.getAllResources(true, false)
   for (const re of allResources) {
     const allowedBodyTopLevelProperties = [
       "name",

@@ -153,8 +153,9 @@ Please refer to [body-properties-names-camel-case.md](./body-properties-names-ca
 
 ### BodyTopLevelProperties
 
-Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, systemData, extendedlocation.
-As per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md), top level properties of a resource should be only ones from the allowed set.
+Top level properties should be one of `name`, `type`, `id`, `location`, `properties`, `tags`, `plan`, `sku`, `etag`,
+`managedBy`, `identity`, `systemData`, `extendedlocation`. Per [ARM guidelines](https://github.com/cloud-and-ai-microsoft/resource-provider-contract/blob/master/v1.0/resource-api-reference.md),
+top level properties of a resource should be only ones from the allowed set.
 
 Please refer to [body-top-level-properties.md](./body-top-level-properties.md) for details.
 
