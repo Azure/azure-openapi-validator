@@ -238,8 +238,8 @@ export class ArmHelper {
     for (const re of fullResources) {
       const operations = re.operations
       operations
-        .filter((op) => op.apiPath.toLowerCase().startsWith("/subscriptions/"))
-        .some((op) => {
+        .filter((op: any) => op.apiPath.toLowerCase().startsWith("/subscriptions/"))
+        .some((op: any) => {
           const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
           if (hierarchy.length > 1) {
             nestedResource.add(re.modelName)
@@ -254,7 +254,7 @@ export class ArmHelper {
   public getTopLevelResources() {
     const fullResources = this.getAllResources()
     return fullResources.filter((re) =>
-      re.operations.some((op) => {
+      re.operations.some((op: any) => {
         const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
         if (hierarchy.length === 1 && !this.isPathOfExtensionResource(op.apiPath)) {
           return true
@@ -272,17 +272,19 @@ export class ArmHelper {
     return _.uniq(
       Array.from(
         this.getTopLevelResources()
-          .filter((re) => re.operations.some((op) => this.isPathByResourceGroup(op.apiPath)))
+          .filter((re) => re.operations.some((op: any) => this.isPathByResourceGroup(op.apiPath)))
           .map((re) => re.modelName),
       ),
     )
   }
 
-  public getAllResources() {
-    if (this.armResources) {
+  public getAllResources(includeGet: boolean = false, useArmResources: boolean = true) {
+    if (useArmResources && this.armResources) {
       return this.armResources
     }
-    this.populateResources(this.innerDoc, this.specPath)
+    if (useArmResources) {
+      this.populateResources(this.innerDoc, this.specPath)
+    }
     const references = this.inventory.referencesOf(this.specPath)
     for (const [specPath, reference] of Object.entries(references)) {
       this.populateResources(reference, specPath)
@@ -291,17 +293,24 @@ export class ArmHelper {
     const resWithXmsRes = localResourceModels.filter(
       (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase()),
     )
-    const resWithPutOrPatch = localResourceModels.filter((re) =>
-      re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"),
-    )
+    const resWithPutOrPatch = includeGet
+      ? localResourceModels.filter((re) =>
+          re.operations.some((op) => op.httpMethod === "get" || op.httpMethod === "put" || op.httpMethod == "patch"),
+        )
+      : localResourceModels.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"))
     const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
 
-    //  remove the resource only return by post , and add the resources return by put or patch
-    this.armResources = _.uniqWith(
+    const resources = _.uniqWith(
       resWithXmsRes.filter((re) => !reWithPostOnly.some((re1) => re1.modelName === re.modelName)).concat(resWithPutOrPatch),
       _.isEqual,
     )
-    return this.armResources
+
+    // remove the resource only return by post , and add the resources return by put or patch
+    if (useArmResources) {
+      this.armResources = resources
+    }
+
+    return resources
   }
 
   public getTrackedResources() {
@@ -310,7 +319,7 @@ export class ArmHelper {
       return !!this.getProperty(enhancedSchema, "location")
     }
     const allTrackedResources = this.getAllResources().filter((re) => {
-      const schema = re.operations.find((op) => op.responseSchema)
+      const schema = re.operations.find((op: any) => op.responseSchema)
       if (schema) {
         return isTrackedResource(schema.responseSchema)
       }
@@ -325,7 +334,7 @@ export class ArmHelper {
       return !this.getProperty(enhancedSchema, "location")
     }
     const allProxyResources = this.getAllResources().filter((re) => {
-      const schema = re.operations.find((op) => op.responseSchema)
+      const schema = re.operations.find((op: any) => op.responseSchema)
       if (schema) {
         return isProxyResource(schema.responseSchema)
       }
@@ -339,7 +348,7 @@ export class ArmHelper {
     const resources = new Set<string>()
     for (const re of fullResources) {
       const operations = re.operations
-      operations.some((op) => {
+      operations.some((op: any) => {
         const hierarchy = this.getResourcesTypeHierarchy(op.apiPath)
         if (hierarchy.length > 0) {
           resources.add(re.modelName)
