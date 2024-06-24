@@ -487,3 +487,69 @@ test("PropertiesTypeObjectNoDefinition should find no errors for type allOf", ()
     expect(results.length).toBe(0)
   })
 })
+
+test("PropertiesTypeObjectNoDefinition should find errors when type:object is not defined", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    info: {
+      version: "4.0",
+      title: "Common types",
+    },
+    paths: {},
+    definitions: {
+      VirtualMachineScaleSetExtension: {
+        properties: {
+          name: {
+            type: "string",
+            description: "The name of the extension.",
+          },
+          type: {
+            readOnly: true,
+            type: "string",
+            description: "Resource type",
+          },
+          properties: {
+            "x-ms-client-flatten": true,
+            $ref: "#/definitions/VirtualMachineScaleSetExtensionProperties",
+          },
+        },
+        description: "Describes a Virtual Machine Scale Set Extension.",
+      },
+      VirtualMachineScaleSetExtensionListResult: {
+        properties: {
+          value: {
+            type: "array",
+            items: {
+              $ref: "#/definitions/VirtualMachineScaleSetExtension",
+            },
+            description: "The list of VM scale set extensions.",
+          },
+          nextLink: {
+            type: "string",
+            description:
+              "The uri to fetch the next page of VM scale set extensions. Call ListNext() with this to fetch the next page of VM scale set extensions.",
+          },
+        },
+        required: ["value"],
+        description: "The List VM scale set extension operation response.",
+      },
+      VirtualMachineScaleSetExtensionProperties: {
+        properties: {
+          settings: {
+            type: "object",
+            description: "Json formatted public settings for the extension.",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(3)
+    expect(results[0].path.join(".")).toBe("definitions.VirtualMachineScaleSetExtension.properties.properties.properties.settings"),
+    expect(results[0].message).toBe(errorMessageObject),
+    expect(results[1].path.join(".")).toBe("definitions.VirtualMachineScaleSetExtensionListResult.properties.value.items.properties.properties.properties.settings"),
+    expect(results[1].message).toBe(errorMessageObject),
+    expect(results[2].path.join(".")).toBe("definitions.VirtualMachineScaleSetExtensionProperties.properties.settings"),
+    expect(results[2].message).toBe(errorMessageObject)
+  })
+})
