@@ -2351,14 +2351,13 @@ const errorMessageObject = "Properties with type:object that don't reference a m
 const errorMessageNull = "Properties with 'type' NULL are not allowed, please specify the 'type' as 'Primitive' or 'Object' referring a model.";
 const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
     const path = ctx.path || [];
+    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
+        return [{ message: errorMessageNull, path }];
+    }
     if (definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.properties) {
         if (definitionObject.properties === null) {
             return [{ message: errorMessageNull, path }];
         }
-    }
-    const values = Object.values(definitionObject);
-    if ((definitionObject === null || definitionObject === void 0 ? void 0 : definitionObject.type) === "") {
-        return [{ message: errorMessageNull, path }];
     }
     if (typeof definitionObject === "object") {
         if (definitionObject.allOf) {
@@ -2370,6 +2369,7 @@ const propertiesTypeObjectNoDefinition = (definitionObject, opts, ctx) => {
             }
         }
     }
+    const values = Object.values(definitionObject);
     for (const val of values) {
         if (typeof val === "object") {
             if (val === null) {
