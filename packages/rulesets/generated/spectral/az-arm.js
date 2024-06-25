@@ -1296,7 +1296,7 @@ function verifySubscriptionId(path) {
     }
     return true;
 }
-function verifyResourceGroupScope$2(path) {
+function verifyResourceGroupScope$1(path) {
     const patterns = [
         /^\/subscriptions\/{subscriptionId}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
@@ -1380,7 +1380,7 @@ const verifyArmPath = createRulesetFunction({
             }
         },
         resourceGroupScope: (fullPath) => {
-            if (!verifyResourceGroupScope$2(fullPath)) {
+            if (!verifyResourceGroupScope$1(fullPath)) {
                 errors.push({
                     message: "",
                     path,
@@ -2171,7 +2171,7 @@ function matchAnyPatterns$1(patterns, path) {
 function notMatchPatterns(invalidPatterns, path) {
     return invalidPatterns.every((p) => !p.test(path));
 }
-function verifyResourceGroupScope$1(path) {
+function verifyResourceGroupScope(path) {
     const patterns = [
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
@@ -2192,7 +2192,7 @@ function checkTrackedForPut(allParams, path) {
     if (bodyParam) {
         const properties = getProperties(bodyParam.schema);
         if ("location" in properties) {
-            if (!verifyResourceGroupScope$1(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+            if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
                 return true;
             }
         }
@@ -2202,7 +2202,7 @@ function checkTrackedForPut(allParams, path) {
 function checkTrackedForGet(allParams, path) {
     const properties = getProperties(allParams);
     if ("location" in properties) {
-        if (!verifyResourceGroupScope$1(path[1]) || !verifyNestResourceGroupScope(path[1])) {
+        if (!verifyResourceGroupScope(path[1]) || !verifyNestResourceGroupScope(path[1])) {
             return true;
         }
     }
@@ -2951,7 +2951,7 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
     }
     const path = paths.path || [];
     if (!isNull(path[1])) {
-        if (verifyResourceGroupScope(paths.path[1])) {
+        if (verifyPointGetScope(paths.path[1])) {
             return;
         }
     }
@@ -2968,10 +2968,11 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
 function matchAnyPatterns(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
-function verifyResourceGroupScope(path) {
+function verifyPointGetScope(path) {
     const patterns = [
-        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
-        /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/\w+\/\w+.*/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
     ];
     return matchAnyPatterns(patterns, path);
 }

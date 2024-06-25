@@ -5,8 +5,12 @@ const xmsPageableForListCalls = (swaggerObj: any, _opts: any, paths: any) => {
     return []
   }
   const path = paths.path || []
+  //path array contains 3 values
+  // 0 - paths
+  // 1 - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations
+  // 2 - get
   if (!isNull(path[1])) {
-    if (verifyResourceGroupScope(paths.path[1])) {
+    if (verifyPointGetScope(paths.path[1])) {
       return
     }
   }
@@ -26,13 +30,15 @@ function matchAnyPatterns(patterns: RegExp[], path: string) {
   return patterns.some((p) => p.test(path))
 }
 
-function verifyResourceGroupScope(path: string) {
+function verifyPointGetScope(path: string) {
   // valid patterns:
-  // 1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/{vmName}
-  // 2 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachine/{vmName}/providers/Microsoft.Billing/extensions/{extensionName}
+  // 1 */providers/Microsoft.Compute/virtualMachine/vmName
+  // 2 */providers/Microsoft.Compute/virtualMachine/vmName/nestedVirtualMachine/nestedvmName
+  // 3 */providers/Microsoft.Compute/virtualMachine/vmName/providers/Microsoft.Billing/extensions/extensionName
   const patterns = [
-    /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
-    /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
+    /^.*\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
+    /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/\w+\/\w+.*/gi,
+    /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
   ]
   return matchAnyPatterns(patterns, path)
 }
