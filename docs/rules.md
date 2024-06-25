@@ -1214,6 +1214,12 @@ Validates that system data is not defined in the properties bag, but rather as a
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
 
+### TagsNotAllowedInPropertiesBag
+
+`tags` should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.
+
+Please refer to [tags-not-allowed-in-properties-bag.md](./tags-not-allowed-in-properties-bag.md) for details.
+
 ### TenantLevelAPIsNotAllowed
 
 Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead.
