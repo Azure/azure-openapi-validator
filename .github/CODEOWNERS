@@ -12,5 +12,5 @@
 # In addition, @rkmanda must be informed about any major upcoming planned changes to this repository
 # that would end up impacting any rulesets related to ARM, including rules being modified or
 # disabled/enabled for all or some subset of spec PRs.
-/packages/rulesets/src/ @rkmanda @konrad-jamrozik @mikeharder @weshaggard
+/packages/rulesets/src/ @rkmanda @konrad-jamrozik @mikeharder @weshaggard @bdefoy @tejaswiMinnu @AkhilaIlla
 
