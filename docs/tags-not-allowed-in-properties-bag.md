@@ -1,4 +1,4 @@
-# TagsAreNotAllowedForProxyResources
+# TagsNotAllowedInPropertiesBag
 
 ## Category
 
@@ -18,7 +18,7 @@ ARM OpenAPI(swagger) specs
 
 ## How to fix the violation
 
-Either remove the 'tags' property from the properties bag or consider using a tracked resource.
+Either remove the `tags` from the properties bag or consider using a Tracked resource, which supports top-level `tags`.
 
 ### Valid/Good Example
 
@@ -27,12 +27,12 @@ Either remove the 'tags' property from the properties bag or consider using a tr
   "Resource": {
     "type": "object",
     "properties": {
-    "type": "object",
-      // top level properties
-      "tags": {
       "type": "object",
-      "additionalProperties": {
+        // top-level properties
+      "tags": {
         "type": "object",
+        "additionalProperties": {
+          "type": "object",
           "params": {
             "type": "boolean",
           },
@@ -52,17 +52,17 @@ Either remove the 'tags' property from the properties bag or consider using a tr
 "definitions": {
   "Resource": {
     "type": "string",
-      "properties": {
+    "properties": {
       "type": "object",
-        "properties": {
+      "properties": {
         "type": "object",
-          // Nested Properties
-          "tags": {
+        // Nested Properties
+        "tags": {
           "type": "object",
           "additionalProperties": {
             "type": "object",
-              "params": {
-                "type": "boolean",
+            "params": {
+              "type": "boolean",
             },
           }
         },

@@ -4,11 +4,11 @@ import linterForRule from "./utils"
 let linter: Spectral
 const errorMessage = "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead."
 beforeAll(async () => {
-  linter = await linterForRule("TagsAreNotAllowedForProxyResources")
+  linter = await linterForRule("TagsNotAllowedInPropertiesBag")
   return linter
 })
 
-test("TagsAreNotAllowedForProxyResources should find errors", () => {
+test("TagsNotAllowedInPropertiesBag should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
     definitions: {
@@ -113,7 +113,7 @@ test("TagsAreNotAllowedForProxyResources should find errors", () => {
   })
 })
 
-test("TagsAreNotAllowedForProxyResources should find no errors", () => {
+test("TagsNotAllowedInPropertiesBag should find no errors", () => {
   const oasDoc1 = {
     swagger: "2.0",
     definitions: {
