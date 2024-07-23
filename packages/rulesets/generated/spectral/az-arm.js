@@ -845,8 +845,8 @@ const ruleset$1 = {
             description: "Operation should have a summary or description.",
             message: "Operation should have a summary or description.",
             severity: "warn",
-            disableForTypeSpec: true,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: [
                 "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
                 "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",

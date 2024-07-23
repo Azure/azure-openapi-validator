@@ -55,7 +55,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
       rulesetPayload,
       rulesetForManualSpecs,
       rulesetForTypeSpecGeneratedSpecs,
-      openApiSpecFile
+      openApiSpecFile,
     )
   }
 
@@ -68,7 +68,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
 async function getRulesets(
   initiator: IAutoRestPluginInitiator,
   resolvedOpenapiType: OpenApiTypes,
-  isStagingRun: boolean
+  isStagingRun: boolean,
 ): Promise<{
   rulesetPayload: SpectralRulesetPayload
   rulesetForManualSpecs: Ruleset
@@ -76,11 +76,11 @@ async function getRulesets(
 }> {
   const rulesetPayload: SpectralRulesetPayload = await getRulesetPayload(initiator, resolvedOpenapiType)
   const namesOfRulesInStagingOnly: string[] = getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "stagingOnly")
-  const namesOfRulesDisabledForTypespec: string[] =
-    // We ignore "disableForTypeSpec" for ARM and RPaaS rulesets.
+  const namesOfRulesDisabledForTypespecDataPlane: string[] =
+    // We ignore "disableForTypeSpecDataPlane" for ARM and RPaaS rulesets.
     resolvedOpenapiType === OpenApiTypes.arm || resolvedOpenapiType === OpenApiTypes.rpaas
       ? []
-      : getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "disableForTypeSpec")
+      : getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "disableForTypeSpecDataPlane")
 
   // We need two of rulesetPayloads:
   // - The original, to prepare it as argument for spectral Rulesets. See deletePropertiesNotValidForSpectralRules for more.
@@ -97,7 +97,7 @@ async function getRulesets(
 
   const rulesetForTypeSpecGeneratedSpecs = new Ruleset(rulesetPayload, { severity: "recommended" })
   ifNotStagingRunDisableRulesInStagingOnly(initiator, namesOfRulesInStagingOnly, isStagingRun, rulesetForTypeSpecGeneratedSpecs)
-  disableRulesInRuleset(rulesetForTypeSpecGeneratedSpecs, namesOfRulesDisabledForTypespec)
+  disableRulesInRuleset(rulesetForTypeSpecGeneratedSpecs, namesOfRulesDisabledForTypespecDataPlane)
   printRuleNames(initiator, rulesetForTypeSpecGeneratedSpecs, resolvedOpenapiType, "TypeSpec-generated OpenAPI specs")
 
   return {
@@ -112,7 +112,7 @@ async function validateOpenApiSpecFileUsingSpectral(
   rulesetPayload: SpectralRulesetPayload,
   rulesetForManualSpecs: Ruleset,
   rulesetForTypeSpecGeneratedSpecs: Ruleset,
-  openApiSpecFile: string
+  openApiSpecFile: string,
 ) {
   if (openApiSpecFile.includes("common-types/resource-management")) {
     initiator.Message({
