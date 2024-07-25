@@ -21,8 +21,11 @@ Tenant level APIs are strongly discouraged and subscription or resource group le
 The error can be fixed in one of the following two ways
 
 1. Do not define tenant level APIs
-2.1. Provide a justification as to why you need the APIs to have the broad tenant scope to the ARM API reviewer. To do this, please attend the ARM API review office hours to have a conversation with the ARM API reviewer. To book a slot, please visit aka.ms\armofficehoursinfo.
-2.2 In addition to modeling the API at the tenant scope, if you also intend to add the API to the "allowUnauthorizedActions" list in your ARM manifest, you must present your design and get an exception from the PAS team. Once you get an approval, please share the evidence of the approval by dropping a screenshot of the written approval as a comment on the PR. Please proceed by adding a suppression for the linter error indicating that the exception has been approved by the PAS team. If you do not intend to add the API to the "allowUnauthorizedActions" list in your ARM manifest, please add a suppression indicating the same.
+2. Address both the sub sections below
+
+    1. Provide a justification as to why you need the APIs to have the broad tenant scope to the ARM API reviewer. To do this, please attend the ARM API review office hours to have a conversation with the ARM API reviewer. To book a slot, please visit aka.ms\armofficehoursinfo.
+
+    2. In addition to modeling the API at the tenant scope, if you also intend to add the API to the "allowUnauthorizedActions" list in your ARM manifest, you must present your design and get an exception from the PAS team. Once you get an approval, please share the evidence of the approval by dropping a screenshot of the written approval as a comment on the PR. Please proceed by adding a suppression for the linter error indicating that the exception has been approved by the PAS team. If you do not intend to add the API to the "allowUnauthorizedActions" list in your ARM manifest, please add a suppression indicating the same.
 
 Please use the following guidance to add a suppression - https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
 
