@@ -47,6 +47,13 @@ export const DeleteResponseCodes = (deleteOp: any, _opts: any, ctx: any) => {
         path: path,
       })
     }
+
+    if (deleteOp.responses["202"]?.schema) {
+      errors.push({
+        message: "202 response for a LRO DELETE operation must not have a response schema specified.",
+        path: path,
+      })
+    }
   } else {
     if (responses.length !== SYNC_DELETE_RESPONSES.length || !SYNC_DELETE_RESPONSES.every((value) => responses.includes(value))) {
       errors.push({

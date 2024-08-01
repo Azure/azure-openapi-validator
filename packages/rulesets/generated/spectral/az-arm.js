@@ -1509,7 +1509,7 @@ const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200
 const LR_ERROR$2 = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
 const EmptyResponse_ERROR$4 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
-    var _a;
+    var _a, _b;
     if (deleteOp === null || typeof deleteOp !== "object") {
         return [];
     }
@@ -1537,6 +1537,12 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
                 message: LR_ERROR$2,
+                path: path,
+            });
+        }
+        if ((_b = deleteOp.responses["202"]) === null || _b === void 0 ? void 0 : _b.schema) {
+            errors.push({
+                message: "202 response for a LRO DELETE operation must not have a response schema specified.",
                 path: path,
             });
         }
@@ -2124,7 +2130,7 @@ const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 
 const LR_ERROR$1 = "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes.";
 const EmptyResponse_ERROR$2 = "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running.";
 const patchResponseCodes = (patchOp, _opts, ctx) => {
-    var _a;
+    var _a, _b;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
@@ -2138,7 +2144,8 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
         });
         return errors;
     }
-    const isAsyncOperation = (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) || patchOp["x-ms-long-running-operation-options"];
+    const isAsyncOperation = (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) ||
+        patchOp["x-ms-long-running-operation-options"];
     if (isAsyncOperation) {
         if (!patchOp["x-ms-long-running-operation"] || patchOp["x-ms-long-running-operation"] !== true) {
             errors.push({
@@ -2150,6 +2157,12 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
         if (responses.length !== LR_PATCH_RESPONSES.length || !LR_PATCH_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
                 message: LR_ERROR$1,
+                path: path,
+            });
+        }
+        if ((_b = patchOp.responses["202"]) === null || _b === void 0 ? void 0 : _b.schema) {
+            errors.push({
+                message: "202 response for a LRO PATCH operation must not have a response schema specified.",
                 path: path,
             });
         }
