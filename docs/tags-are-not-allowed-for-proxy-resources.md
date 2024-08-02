@@ -1,4 +1,4 @@
-# TagsNotAllowedInPropertiesBag
+# TagsAreNotAllowedForProxyResources
 
 ## Category
 
