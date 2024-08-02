@@ -5,6 +5,7 @@ const SYNC_ERROR =
   "Synchronous PATCH operations must have responses with 200 and default return codes. They also must not have other response codes."
 const LR_ERROR =
   "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes."
+const RESPONSE_SCHEMA_202 = "202 response for a LRO PATCH operation must not have a response schema specified."
 
 let linter: Spectral
 
@@ -440,6 +441,9 @@ test("PatchResponseCodes should find errors for lro patch with only 202", () => 
           responses: {
             "202": {
               description: "accepted",
+              schema: {
+                $ref: "#/definitions/FooResource",
+              },
             },
           },
           "x-ms-long-running-operation": true,
@@ -479,9 +483,11 @@ test("PatchResponseCodes should find errors for lro patch with only 202", () => 
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.patch")
     expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.patch")
+    expect(results[1].message).toContain(RESPONSE_SCHEMA_202)
   })
 })
 
