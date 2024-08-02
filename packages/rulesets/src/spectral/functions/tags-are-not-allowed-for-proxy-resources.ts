@@ -6,7 +6,7 @@ const PROPERTIES = "properties"
 const NestedPROPERTIES = "properties"
 const ERROR_MESSAGE = "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead."
 
-export const tagsNotAllowedInPropertiesBag = (definition: any, _opts: any, ctx: any) => {
+export const tagsAreNotAllowedForProxyResources = (definition: any, _opts: any, ctx: any) => {
   const properties = getProperties(definition)
   const errors = []
 

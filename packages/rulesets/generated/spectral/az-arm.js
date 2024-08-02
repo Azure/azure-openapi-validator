@@ -2720,7 +2720,7 @@ const TAGS = "tags";
 const PROPERTIES = "properties";
 const NestedPROPERTIES = "properties";
 const ERROR_MESSAGE = "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.";
-const tagsNotAllowedInPropertiesBag = (definition, _opts, ctx) => {
+const tagsAreNotAllowedForProxyResources = (definition, _opts, ctx) => {
     const properties = getProperties(definition);
     const errors = [];
     if ("tags" in properties && !("location" in properties)) {
@@ -3535,7 +3535,7 @@ const ruleset = {
                 function: consistentResponseSchemaForPut,
             },
         },
-        TagsNotAllowedInPropertiesBag: {
+        TagsAreNotAllowedForProxyResources: {
             rpcGuidelineCode: "RPC-Put-V1-30",
             description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
             severity: "error",
@@ -3545,7 +3545,7 @@ const ruleset = {
             formats: [oas2],
             given: ["$.definitions.*.properties^"],
             then: {
-                function: tagsNotAllowedInPropertiesBag,
+                function: tagsAreNotAllowedForProxyResources,
             },
         },
         ParametersInPost: {
