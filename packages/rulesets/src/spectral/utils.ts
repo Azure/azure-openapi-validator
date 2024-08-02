@@ -52,8 +52,8 @@ function deleteRulesPropertiesNotValidForSpectralRules(rules: { [s: string]: any
   Object.values(rules).forEach((rule: any) => {
     delete rule.stagingOnly
     delete rule.rpcGuidelineCode
-    delete rule.disableForTypeSpec
-    delete rule.disableForTypeSpecReason
+    delete rule.disableForTypeSpecDataPlane
+    delete rule.disableForTypeSpecDataPlaneReason
   })
 }
 

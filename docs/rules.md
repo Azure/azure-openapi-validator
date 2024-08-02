@@ -1222,9 +1222,7 @@ Please refer to [tags-not-allowed-in-properties-bag.md](./tags-not-allowed-in-pr
 
 ### TenantLevelAPIsNotAllowed
 
-Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead.
-If you cannot model your APIs at these levels, you will need to present your design and get an exception from the PAS team.
-Once the exception is granted author would need to suppress the error being flagged by following steps mentioned in https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md#suppress-warnings
+Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. The reason for this guidance is that tenant level APIs have a really broad scope and blast radius. We permit APIs to be at this broad scope under rare conditions. Some ARM feature sets also do not cover tenant level APIs such as the use of AFEC. Additionally, if you intend to bypass the standard RBAC constructs and make the APIs unauthorized, you will need an approval from the PAS team before the open API spec can be merged.
 
 Please refer to [tenant-level-apis-not-allowed.md](./tenant-level-apis-not-allowed.md) for details.
 
