@@ -1,6 +1,6 @@
 import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
-import _, { isEmpty } from 'lodash';
+import _, { isEmpty, isNull } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
@@ -1276,7 +1276,7 @@ const ruleset$1 = {
     },
 };
 
-function matchAnyPatterns$2(patterns, path) {
+function matchAnyPatterns$3(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns$1(patterns, path) {
@@ -1302,11 +1302,11 @@ function verifyResourceGroupScope$1(path) {
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns$2(patterns, path);
+    return matchAnyPatterns$3(patterns, path);
 }
 function verifyResourceType$1(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns$2(patterns, path);
+    return matchAnyPatterns$3(patterns, path);
 }
 function verifyNestResourceType$1(path) {
     const patterns = [
@@ -1801,16 +1801,16 @@ const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns$1(patterns, path) {
+function matchAnyPatterns$2(patterns, path) {
     return patterns.every((p) => p.test(path));
 }
 function verifyNestResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 function verifyResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
     var _a;
@@ -2178,7 +2178,7 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns(patterns, path) {
+function matchAnyPatterns$1(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns(invalidPatterns, path) {
@@ -2189,7 +2189,7 @@ function verifyResourceGroupScope(path) {
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
     ];
-    return matchAnyPatterns(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
 function verifyNestResourceGroupScope(path) {
     const invalidPatterns = [
@@ -2963,6 +2963,11 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
         return [];
     }
     const path = paths.path || [];
+    if (!isNull(path[1])) {
+        if (verifyPointGetScope(paths.path[1])) {
+            return;
+        }
+    }
     if (swaggerObj["x-ms-pageable"])
         return [];
     else
@@ -2973,6 +2978,17 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
             },
         ];
 };
+function matchAnyPatterns(patterns, path) {
+    return patterns.some((p) => p.test(path));
+}
+function verifyPointGetScope(path) {
+    const patterns = [
+        /^.*\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/\w+\/\w+.*/gi,
+        /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
+    ];
+    return matchAnyPatterns(patterns, path);
+}
 
 const ruleset = {
     extends: [ruleset$1],
