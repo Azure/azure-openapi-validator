@@ -25,6 +25,7 @@ Synchronous PATCH must have 200 return code and LRO PATCH must have 200 and 202 
 
 For a synchronous PATCH add 200 and default return codes and make sure they don't have other response codes.
 For LRO PATCH add 200, 202 and default return codes and make sure they don't have other response codes.
+202 response for a LRO PATCH operation must not have a response schema specified.
 
 ### Example
 
