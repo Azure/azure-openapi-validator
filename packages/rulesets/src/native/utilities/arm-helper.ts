@@ -115,13 +115,15 @@ export class ArmHelper {
     return operations
   }
 
-  private populateResources(doc: any, specPath: string) {
-    const operations = this.populateOperations(doc, specPath)
+  private populateResources(doc: any, specPath: string, includeListOperations: boolean = true) {
+    var operations = this.populateOperations(doc, specPath)
     // filter out list operations
 
-    const resourceOperations = operations.filter((op) => !this.isListOperation(op))
+    if (!includeListOperations) {
+      operations = operations.filter((op) => !this.isListOperation(op))
+    }
 
-    for (const op of resourceOperations) {
+    for (const op of operations) {
       const resourceInfo = this.extractResourceInfo(op.responseSchema, specPath)
       // if no response or response with no $ref , it's deemed not a resource
       if (resourceInfo) {
