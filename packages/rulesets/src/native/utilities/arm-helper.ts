@@ -115,8 +115,14 @@ export class ArmHelper {
     return operations
   }
 
-  private populateResources(doc: any, specPath: string) {
-    const operations = this.populateOperations(doc, specPath)
+  private populateResources(doc: any, specPath: string, includeListOperations: boolean = true) {
+    var operations = this.populateOperations(doc, specPath)
+    // filter out list operations
+
+    if (!includeListOperations) {
+      operations = operations.filter((op) => !this.isListOperation(op))
+    }
+
     for (const op of operations) {
       const resourceInfo = this.extractResourceInfo(op.responseSchema, specPath)
       // if no response or response with no $ref , it's deemed not a resource
@@ -132,6 +138,24 @@ export class ArmHelper {
         }
       }
     }
+  }
+
+  private isListOperation(op: Operation) {
+    const path = op.apiPath
+    if (path.includes(".")) {
+      // Get the portion of the api path to the right of the provider namespace by splitting the path by '.' and taking the last element
+      const splitNamespace = path.split(".")
+      if (path.includes("/")) {
+        const segments = splitNamespace[splitNamespace.length - 1].split("/")
+
+        // If the last segment split by '/' has even segments, then the operation is a list operation
+        if (segments.length % 2 == 0) {
+          return true
+        }
+      }
+    }
+
+    return false
   }
 
   private getXmsResources() {
