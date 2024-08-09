@@ -116,7 +116,7 @@ export class ArmHelper {
   }
 
   private populateResources(doc: any, specPath: string, includeListOperations: boolean = true) {
-    var operations = this.populateOperations(doc, specPath)
+    let operations = this.populateOperations(doc, specPath)
     // filter out list operations
 
     if (!includeListOperations) {
