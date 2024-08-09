@@ -755,6 +755,24 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM RPC rules for Arg
+    ///
+
+    // RPC Code: RPC-Arg-V1-01
+    ParametersSchemaAsTypeObject: {
+      rpcGuidelineCode: "RPC-POST-V1-05",
+      description: "For a POST action parameters MUST be in the payload and not in the URI.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$.definitions.*.schema[?(@property === 'type' && @ !=='object')]",
+      then: {
+        function: false,
+      },
+    },
+
+    ///
     /// ARM RPC rules for Uri path patterns
     ///
 
