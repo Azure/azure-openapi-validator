@@ -115,13 +115,8 @@ export class ArmHelper {
     return operations
   }
 
-  private populateResources(doc: any, specPath: string, includeListOperations: boolean = true) {
-    let operations = this.populateOperations(doc, specPath)
-    // filter out list operations
-
-    if (!includeListOperations) {
-      operations = operations.filter((op) => !this.isListOperation(op))
-    }
+  private populateResources(doc: any, specPath: string) {
+    const operations = this.populateOperations(doc, specPath)
 
     for (const op of operations) {
       const resourceInfo = this.extractResourceInfo(op.responseSchema, specPath)
@@ -319,7 +314,9 @@ export class ArmHelper {
     )
     const resWithPutOrPatch = includeGet
       ? localResourceModels.filter((re) =>
-          re.operations.some((op) => op.httpMethod === "get" || op.httpMethod === "put" || op.httpMethod == "patch"),
+          re.operations.some(
+            (op) => (op.httpMethod === "get" && !this.isListOperation(op)) || op.httpMethod === "put" || op.httpMethod == "patch",
+          ),
         )
       : localResourceModels.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"))
     const reWithPostOnly = resWithXmsRes.filter((re) => re.operations.every((op) => op.httpMethod === "post"))
