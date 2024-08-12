@@ -737,9 +737,9 @@ const ruleset: any = {
       },
     },
 
-    // RPC Code: RPC-Put-V1-30
+    // RPC Code: RPC-Put-V1-31
     TagsAreNotAllowedForProxyResources: {
-      rpcGuidelineCode: "RPC-Put-V1-30",
+      rpcGuidelineCode: "RPC-Put-V1-31",
       description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
       severity: "error",
       stagingOnly: true,
