@@ -25,3 +25,4 @@ Synchronous delete operations must have 200, 204, and default responses and long
 
 For synchronous delete operations, specify responses with 200 & 204 return codes.
 For long-running (LRO) delete operations, specify responses with 202 and 204 return codes.
+202 response for a LRO DELETE operation must not have a response schema specified.
