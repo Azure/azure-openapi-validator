@@ -63,6 +63,8 @@ export function run(command, args, options) {
 
   if (process.platform === "win32" && isCmdOnWindows.includes(command)) {
     command += ".cmd";
+    // Required in latest versions of Node when calling batch files on Windows
+    options.shell = true;
   }
 
   const proc = (options.sync ? spawnSync : spawn)(command, args, options);

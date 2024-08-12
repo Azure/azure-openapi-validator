@@ -845,8 +845,8 @@ const ruleset$1 = {
             description: "Operation should have a summary or description.",
             message: "Operation should have a summary or description.",
             severity: "warn",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: [
                 "$.paths[*][?( @property === 'get' && !@.summary && !@.description )]",
                 "$.paths[*][?( @property === 'put' && !@.summary && !@.description )]",
@@ -865,8 +865,8 @@ const ruleset$1 = {
             description: "All schemas should have a description or title.",
             message: "Schema should have a description or title.",
             severity: "warn",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             formats: [oas2, oas3],
             given: ["$.definitions[?(!@.description && !@.title)]", "$.components.schemas[?(!@.description && !@.title)]"],
             then: {
@@ -877,8 +877,8 @@ const ruleset$1 = {
             description: "All parameters should have a description.",
             message: "Parameter should have a description.",
             severity: "warn",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             given: ["$.paths[*].parameters.*", "$.paths.*[get,put,post,patch,delete,options,head].parameters.*"],
             then: {
                 field: "description",
@@ -1193,8 +1193,8 @@ const ruleset$1 = {
             description: "The value of the 'description' property must be descriptive. It cannot be spaces or empty description.",
             message: "'{{property}}' parameter lacks 'description' property. Consider adding a 'description' element. Accurate description is essential for maintaining reference documentation.",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-core/documentation-required' rule.",
             resolved: false,
             formats: [oas2],
             given: ["$.parameters.*"],
@@ -1509,7 +1509,7 @@ const SYNC_ERROR$2 = "Synchronous delete operations must have responses with 200
 const LR_ERROR$2 = "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes.";
 const EmptyResponse_ERROR$4 = "Delete operation response codes must be non-empty. It must have response codes 200, 204 and default if it is sync or 202, 204 and default if it is long running.";
 const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
-    var _a;
+    var _a, _b;
     if (deleteOp === null || typeof deleteOp !== "object") {
         return [];
     }
@@ -1537,6 +1537,12 @@ const DeleteResponseCodes = (deleteOp, _opts, ctx) => {
         if (responses.length !== LR_DELETE_RESPONSES.length || !LR_DELETE_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
                 message: LR_ERROR$2,
+                path: path,
+            });
+        }
+        if ((_b = deleteOp.responses["202"]) === null || _b === void 0 ? void 0 : _b.schema) {
+            errors.push({
+                message: "202 response for a LRO DELETE operation must not have a response schema specified.",
                 path: path,
             });
         }
@@ -2124,7 +2130,7 @@ const SYNC_ERROR$1 = "Synchronous PATCH operations must have responses with 200 
 const LR_ERROR$1 = "Long-running PATCH operations must have responses with 200, 202 and default return codes. They also must not have other response codes.";
 const EmptyResponse_ERROR$2 = "PATCH operation response codes must be non-empty. It must have response codes 200 and default if it is sync or 200, 202 and default if it is long running.";
 const patchResponseCodes = (patchOp, _opts, ctx) => {
-    var _a;
+    var _a, _b;
     if (patchOp === null || typeof patchOp !== "object") {
         return [];
     }
@@ -2138,7 +2144,8 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
         });
         return errors;
     }
-    const isAsyncOperation = (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) || patchOp["x-ms-long-running-operation-options"];
+    const isAsyncOperation = (patchOp["x-ms-long-running-operation"] && patchOp["x-ms-long-running-operation"] === true) ||
+        patchOp["x-ms-long-running-operation-options"];
     if (isAsyncOperation) {
         if (!patchOp["x-ms-long-running-operation"] || patchOp["x-ms-long-running-operation"] !== true) {
             errors.push({
@@ -2150,6 +2157,12 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
         if (responses.length !== LR_PATCH_RESPONSES.length || !LR_PATCH_RESPONSES.every((value) => responses.includes(value))) {
             errors.push({
                 message: LR_ERROR$1,
+                path: path,
+            });
+        }
+        if ((_b = patchOp.responses["202"]) === null || _b === void 0 ? void 0 : _b.schema) {
+            errors.push({
+                message: "202 response for a LRO PATCH operation must not have a response schema specified.",
                 path: path,
             });
         }
@@ -3009,8 +3022,8 @@ const ruleset = {
             rpcGuidelineCode: "RPC-Async-V1-01, RPC-Put-V1-11",
             description: "LRO and Synchronous PUT must have 200 & 201 return codes.",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes' rule.",
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3050,8 +3063,8 @@ const ruleset = {
             description: "ProvisioningState must have terminal states: Succeeded, Failed and Canceled.",
             message: "{{error}}",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-provisioning-state' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-provisioning-state' rule.",
             resolved: false,
             formats: [oas2],
             given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
@@ -3064,8 +3077,8 @@ const ruleset = {
             description: "Location header must be supported for all async operations that return 202.",
             message: "A 202 response should include an Location response header.",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-location-header' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-location-header' rule.",
             formats: [oas2],
             given: "$.paths[*][*].responses[?(@property == '202')]",
             then: {
@@ -3079,8 +3092,8 @@ const ruleset = {
             rpcGuidelineCode: "RPC-Async-V1-11, RPC-Async-V1-14",
             description: "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes' rule.",
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3106,8 +3119,8 @@ const ruleset = {
             description: "This is a rule introduced to validate if provisioningState property is set to readOnly or not.",
             message: "{{error}}",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-provisioning-state' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-provisioning-state' rule.",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*.*.responses.*.schema"],
@@ -3135,8 +3148,8 @@ const ruleset = {
             description: "Synchronous DELETE must have 200 & 204 return codes and LRO DELETE must have 202 & 204 return codes.",
             severity: "error",
             message: "{{error}}",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes' rule.",
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*[delete]"],
@@ -3173,8 +3186,8 @@ const ruleset = {
             description: "Definitions must not have properties named additionalProperties except for user defined tags or predefined references.",
             severity: "error",
             message: "{{description}}",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/no-record' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/no-record' rule.",
             resolved: false,
             formats: [oas2],
             given: "$.definitions..[?(@property !== 'tags' && @property !== 'delegatedResources' && @property !== 'userAssignedIdentities' && @ && @.additionalProperties)]",
@@ -3590,8 +3603,8 @@ const ruleset = {
             description: "This rule ensures that the authors explicitly define these restrictions as a regex on the resource name.",
             message: "{{error}}",
             severity: "error",
-            disableForTypeSpec: false,
-            disableForTypeSpecReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-name-pattern' rule.",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-resource-name-pattern' rule.",
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*.^",

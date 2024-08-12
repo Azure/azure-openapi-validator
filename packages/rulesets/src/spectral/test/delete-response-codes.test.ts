@@ -5,6 +5,7 @@ const LR_ERROR =
   "Long-running delete operations must have responses with 202, 204 and default return codes. They also must have no other response codes."
 const SYNC_ERROR =
   "Synchronous delete operations must have responses with 200, 204 and default return codes. They also must have no other response codes."
+const RESPONSE_SCHEMA_202 = "202 response for a LRO DELETE operation must not have a response schema specified."
 
 let linter: Spectral
 
@@ -567,9 +568,11 @@ test("DeleteResponseCodes should find errors for lro delete with only 202", () =
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.delete")
     expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.delete")
+    expect(results[1].message).toContain(RESPONSE_SCHEMA_202)
   })
 })
 
@@ -663,9 +666,6 @@ test("DeleteResponseCodes should find errors for lro delete without default resp
           responses: {
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             "204": {
               description: "No content",
@@ -738,9 +738,6 @@ test("DeleteResponseCodes should find errors for lro delete with extra response 
           responses: {
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             "204": {
               description: "No content",
@@ -823,9 +820,6 @@ test("DeleteResponseCodes should find no errors for lro delete when all required
           responses: {
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             "204": {
               description: "No content",
@@ -912,9 +906,6 @@ test("DeleteResponseCodes should find errors for async delete with 202 but no x-
             },
             "202": {
               description: "accepted",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             default: {
               description: "Error",
