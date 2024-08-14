@@ -1,4 +1,5 @@
 import { isNull } from "lodash"
+import { isListOperation } from "../../native/utilities/rules-helper"
 
 const xmsPageableForListCalls = (swaggerObj: any, _opts: any, paths: any) => {
   if (swaggerObj === null) {
@@ -10,7 +11,7 @@ const xmsPageableForListCalls = (swaggerObj: any, _opts: any, paths: any) => {
   // 1 - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations
   // 2 - get
   if (!isNull(path[1])) {
-    if (verifyPointGetScope(paths.path[1])) {
+    if (!isListOperation(path[1].toString())) {
       return
     }
   }
@@ -25,20 +26,3 @@ const xmsPageableForListCalls = (swaggerObj: any, _opts: any, paths: any) => {
 }
 
 export default xmsPageableForListCalls
-
-function matchAnyPatterns(patterns: RegExp[], path: string) {
-  return patterns.some((p) => p.test(path))
-}
-
-function verifyPointGetScope(path: string) {
-  // valid patterns:
-  // 1 */providers/Microsoft.Compute/virtualMachine/vmName
-  // 2 */providers/Microsoft.Compute/virtualMachine/vmName/nestedVirtualMachine/nestedvmName
-  // 3 */providers/Microsoft.Compute/virtualMachine/vmName/providers/Microsoft.Billing/extensions/extensionName
-  const patterns = [
-    /^.*\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
-    /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/\w+\/\w+.*/gi,
-    /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
-  ]
-  return matchAnyPatterns(patterns, path)
-}

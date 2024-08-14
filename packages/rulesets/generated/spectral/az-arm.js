@@ -2,6 +2,8 @@ import { oas2, oas3 } from '@stoplight/spectral-formats';
 import { pattern, falsy, truthy } from '@stoplight/spectral-functions';
 import _, { isEmpty, isNull } from 'lodash';
 import { createRulesetFunction } from '@stoplight/spectral-core';
+import 'jsonpath-plus';
+import 'url';
 
 const avoidAnonymousSchema = (schema, _opts, paths) => {
     if (schema === null || schema["x-ms-client-name"] !== undefined) {
@@ -1276,7 +1278,7 @@ const ruleset$1 = {
     },
 };
 
-function matchAnyPatterns$3(patterns, path) {
+function matchAnyPatterns$2(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns$1(patterns, path) {
@@ -1302,11 +1304,11 @@ function verifyResourceGroupScope$1(path) {
         /^\/?{\w+}\/resourceGroups\/{resourceGroupName}\/providers\/.+/gi,
         /^\/?{\w+}\/providers\/.+/gi,
     ];
-    return matchAnyPatterns$3(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 function verifyResourceType$1(path) {
     const patterns = [/^.*\/providers\/\w+\.\w+\/\w+.*/gi];
-    return matchAnyPatterns$3(patterns, path);
+    return matchAnyPatterns$2(patterns, path);
 }
 function verifyNestResourceType$1(path) {
     const patterns = [
@@ -1801,16 +1803,16 @@ const provisioningStateSpecifiedForLROPut = (putOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns$2(patterns, path) {
+function matchAnyPatterns$1(patterns, path) {
     return patterns.every((p) => p.test(path));
 }
 function verifyNestResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}\/\w+.*/gi];
-    return matchAnyPatterns$2(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
 function verifyResourceType(path) {
     const patterns = [/^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+\/{\w+}.*/gi];
-    return matchAnyPatterns$2(patterns, path);
+    return matchAnyPatterns$1(patterns, path);
 }
 const missingSegmentsInNestedResourceListOperation = (fullPath, _opts, ctx) => {
     var _a;
@@ -2178,7 +2180,7 @@ const patchResponseCodes = (patchOp, _opts, ctx) => {
     return errors;
 };
 
-function matchAnyPatterns$1(patterns, path) {
+function matchAnyPatterns(patterns, path) {
     return patterns.some((p) => p.test(path));
 }
 function notMatchPatterns(invalidPatterns, path) {
@@ -2189,7 +2191,7 @@ function verifyResourceGroupScope(path) {
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/.+/gi,
         /^\/subscriptions\/{\w+}\/resourceGroups\/{\w+}\/providers\/\w+\.\w+\/\w+.*/gi,
     ];
-    return matchAnyPatterns$1(patterns, path);
+    return matchAnyPatterns(patterns, path);
 }
 function verifyNestResourceGroupScope(path) {
     const invalidPatterns = [
@@ -2958,13 +2960,154 @@ const verifyXMSLongRunningOperationProperty = (pathItem, _opts, paths) => {
     return;
 };
 
+const parseJsonRef = (ref) => {
+    return ref.split("#");
+};
+
+var Workspace;
+(function (Workspace) {
+    function getSchemaByName(modelName, swaggerPath, inventory) {
+        var _a;
+        const root = inventory.getDocuments(swaggerPath);
+        if (!root || !modelName) {
+            return undefined;
+        }
+        return (_a = root === null || root === void 0 ? void 0 : root.definitions) === null || _a === void 0 ? void 0 : _a[modelName];
+    }
+    Workspace.getSchemaByName = getSchemaByName;
+    function jsonPath(paths, document) {
+        let root = document;
+        for (const seg of paths) {
+            root = root[seg];
+            if (!root) {
+                break;
+            }
+        }
+        return root;
+    }
+    Workspace.jsonPath = jsonPath;
+    function resolveRef(schema, inventory) {
+        function getRef(refValue, swaggerPath) {
+            const root = inventory.getDocuments(swaggerPath);
+            if (refValue.startsWith("/")) {
+                refValue = refValue.substring(1);
+            }
+            const segments = refValue.split("/");
+            return jsonPath(segments, root);
+        }
+        let currentSpec = schema.file;
+        let currentSchema = schema.value;
+        while (currentSchema && currentSchema.$ref) {
+            const slices = parseJsonRef(currentSchema.$ref);
+            currentSpec = slices[0] || currentSpec;
+            currentSchema = getRef(slices[1], currentSpec);
+        }
+        return {
+            file: currentSpec,
+            value: currentSchema,
+        };
+    }
+    Workspace.resolveRef = resolveRef;
+    function getProperty(schema, propertyName, inventory) {
+        let source = schema;
+        const visited = new Set();
+        while (source.value && source.value.$ref && !visited.has(source.value)) {
+            visited.add(source.value);
+            source = resolveRef(source, inventory);
+        }
+        if (!source || !source.value) {
+            return undefined;
+        }
+        const model = source.value;
+        if (model.properties && model.properties[propertyName]) {
+            return resolveRef(createEnhancedSchema(model.properties[propertyName], source.file), inventory);
+        }
+        if (model.allOf) {
+            for (const element of model.allOf) {
+                const property = getProperty({ file: source.file, value: element }, propertyName, inventory);
+                if (property) {
+                    return property;
+                }
+            }
+        }
+        return undefined;
+    }
+    Workspace.getProperty = getProperty;
+    function getProperties(schema, inventory) {
+        let source = schema;
+        const visited = new Set();
+        while (source.value && source.value.$ref && !visited.has(source.value)) {
+            visited.add(source.value);
+            source = resolveRef(source, inventory);
+        }
+        if (!source || !source.value) {
+            return [];
+        }
+        let result = {};
+        const model = source.value;
+        if (model.properties) {
+            for (const propertyName of Object.keys(model.properties)) {
+                result[propertyName] = createEnhancedSchema(model.properties[propertyName], source.file);
+            }
+        }
+        if (model.allOf) {
+            for (const element of model.allOf) {
+                const properties = getProperties({ file: source.file, value: element }, inventory);
+                if (properties) {
+                    result = { ...properties, ...result };
+                }
+            }
+        }
+        return result;
+    }
+    Workspace.getProperties = getProperties;
+    function getAttribute(schema, attributeName, inventory) {
+        let source = schema;
+        const visited = new Set();
+        while (source.value && source.value.$ref && !visited.has(source.value)) {
+            visited.add(source.value);
+            source = resolveRef(source, inventory);
+        }
+        if (!source) {
+            return undefined;
+        }
+        const attribute = source.value[attributeName];
+        if (attribute) {
+            return createEnhancedSchema(attribute, source.file);
+        }
+        return undefined;
+    }
+    Workspace.getAttribute = getAttribute;
+    function createEnhancedSchema(schema, specPath) {
+        return {
+            file: specPath,
+            value: schema,
+        };
+    }
+    Workspace.createEnhancedSchema = createEnhancedSchema;
+})(Workspace || (Workspace = {}));
+
+require("string.prototype.matchall");
+function isListOperation(path) {
+    if (path.includes(".")) {
+        const splitNamespace = path.split(".");
+        if (path.includes("/")) {
+            const segments = splitNamespace[splitNamespace.length - 1].split("/");
+            if (segments.length % 2 == 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
     const path = paths.path || [];
     if (!isNull(path[1])) {
-        if (verifyPointGetScope(paths.path[1])) {
+        if (!isListOperation(path[1].toString())) {
             return;
         }
     }
@@ -2978,17 +3121,6 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
             },
         ];
 };
-function matchAnyPatterns(patterns, path) {
-    return patterns.some((p) => p.test(path));
-}
-function verifyPointGetScope(path) {
-    const patterns = [
-        /^.*\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
-        /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/\w+\/\w+.*/gi,
-        /^.*\/providers\/\w+\.\w+\/\w+\/\w+\/providers\/\w+\.\w+\/\w+\/\w+.*/gi,
-    ];
-    return matchAnyPatterns(patterns, path);
-}
 
 const ruleset = {
     extends: [ruleset$1],

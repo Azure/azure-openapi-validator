@@ -14,7 +14,7 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
   const oasDoc = {
     swagger: "2.0",
     paths: {
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
         get: {
           operationId: "test_ListByID",
           responses: {
@@ -35,7 +35,7 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedVirtualMachine": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines": {
         get: {
           operationId: "test_ListByID",
           responses: {
@@ -56,7 +56,29 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
           },
         },
       },
-      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines/{nestedVirtualMachineInstance}/deeplyNestedvirtualMachines":
+        {
+          get: {
+            operationId: "test_ListByID",
+            responses: {
+              200: {
+                description: "Success",
+                schema: {
+                  properties: {
+                    value: {
+                      type: "array",
+                    },
+                    nextLink: {
+                      type: "string",
+                    },
+                  },
+                  required: ["value"],
+                },
+              },
+            },
+          },
+        },
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
         get: {
           operationId: "Good_List",
           responses: {
@@ -77,7 +99,7 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
           },
         },
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations": {
+      "{scope}/providers/Microsoft.Music/Configurations": {
         get: {
           operationId: "test_ListByID",
           responses: {
@@ -101,19 +123,21 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(4)
-    expect(results[0].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine.get")
+    expect(results.length).toBe(5)
+    expect(results[0].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines.get")
     expect(results[0].message).toBe(errorMessage)
     expect(results[1].path.join(".")).toBe(
-      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedVirtualMachine.get",
+      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines.get",
     )
     expect(results[1].message).toBe(errorMessage)
-    expect(results[2].path.join(".")).toBe("paths./providers/Microsoft.ConnectedVMwarevSphere/virtualMachine.get")
-    expect(results[2].message).toBe(errorMessage)
-    expect(results[3].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations.get",
+    expect(results[2].path.join(".")).toBe(
+      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines/{nestedVirtualMachineInstance}/deeplyNestedvirtualMachines.get",
     )
+    expect(results[2].message).toBe(errorMessage)
+    expect(results[3].path.join(".")).toBe("paths./providers/Microsoft.ConnectedVMwarevSphere/virtualMachines.get")
     expect(results[3].message).toBe(errorMessage)
+    expect(results[4].path.join(".")).toBe("paths.{scope}/providers/Microsoft.Music/Configurations.get")
+    expect(results[4].message).toBe(errorMessage)
   })
 })
 
@@ -121,7 +145,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
-      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/default": {
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/default": {
         get: {
           operationId: "Good_List",
           responses: {
@@ -142,7 +166,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
         get: {
           operationId: "Good_List",
           responses: {
@@ -166,7 +190,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedvirtualMachine": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines": {
         get: {
           operationId: "Good_List2",
           responses: {
@@ -190,7 +214,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{default}": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{default}": {
         get: {
           operationId: "Good_List3",
           responses: {
@@ -211,7 +235,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstance}": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}": {
         get: {
           operationId: "Good_NotList",
           responses: {
@@ -229,7 +253,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/{virtualMachineInstances}/nestedvirtualMachine/{nestedvirtualMachineInstances}":
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines/{nestedvirtualMachineInstance}":
         {
           get: {
             operationId: "Good_List2",
@@ -254,7 +278,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
             },
           },
         },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations": {
+      "{scope}/providers/Microsoft.Music/Configurations": {
         get: {
           operationId: "test_ListByID",
           responses: {
@@ -278,7 +302,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations/config": {
+      "{scope}/providers/Microsoft.Music/Configurations/{configName}": {
         get: {
           operationId: "test_ListByID",
           responses: {
@@ -288,7 +312,17 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Music/Configurations/config/providers/Microsoft.Song/nestedConfigurations/nestedConfig":
+      "{scope}/providers/Microsoft.Music/Configurations/config/providers/Microsoft.Song/nestedConfigurations/nestedConfig": {
+        get: {
+          operationId: "test_ListByID",
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+      "{scope}/providers/Microsoft.Music/Configurations/config/providers/Microsoft.Song/nestedConfigurations/nestedConfig/Microsoft.Voice/deeplyNestedConfigurations/deeplyNestedConfig":
         {
           get: {
             operationId: "test_ListByID",
@@ -299,7 +333,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
             },
           },
         },
-      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine": {
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachiness": {
         get: {
           operationId: "Good_List",
           responses: {
@@ -323,7 +357,7 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/virtualMachineInstances/nestedvirtualMachine/nestedvirtualMachineInstances":
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/virtualMachinesInstances/nestedvirtualMachines/nestedvirtualMachinesInstances":
         {
           get: {
             operationId: "Good_List2",
