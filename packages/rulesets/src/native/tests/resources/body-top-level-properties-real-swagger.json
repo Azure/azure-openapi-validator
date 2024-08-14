@@ -66,6 +66,40 @@
           "nextLinkName": null
         }
       }
+    },
+    "/{resourceUri}/providers/microsoft.insights/metricNamespaces/{metricNamespaces}": {
+      "get": {
+        "tags": [
+          "metricNamespaces"
+        ],
+        "operationId": "MetricNamespaces_List",
+        "description": "Lists the metric namespaces for the resource.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceUriParameter"
+          },
+          {
+            "$ref": "#/parameters/StartTimeParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "Successful request to get the list of metric namespaces",
+            "schema": {
+              "$ref": "#/definitions/MetricNamespaceCollection"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        }
+      }
     }
   },
   "definitions": {
