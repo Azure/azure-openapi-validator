@@ -761,14 +761,14 @@ const ruleset: any = {
     // RPC Code: RPC-Arg-V1-01
     ParametersSchemaAsTypeObject: {
       rpcGuidelineCode: "RPC-POST-V1-05",
-      description: "For a POST action parameters MUST be in the payload and not in the URI.",
-      message: "{{error}}",
+      description: "The schema for body parameters must specify type:object and include a definition for its reference model.",
+      message: "{{description}}",
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: "$.definitions.*.schema[?(@property === 'type' && @ !=='object')]",
+      given: "$.parameters.*.schema[?(@property === 'type' && @ !=='object')]",
       then: {
-        function: false,
+        function: falsy,
       },
     },
 

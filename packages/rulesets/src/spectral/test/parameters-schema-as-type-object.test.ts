@@ -37,8 +37,8 @@ test("ParametersSchemaAsTypeObject should find errors", () => {
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
-    expect(results[0].path.join(".")).toBe("paths./foo.post.parameters")
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("parameters.QuotaBucketNameParameter.schema.type")
     expect(results[0].message).toContain(ERROR_MESSAGE)
   })
 })
