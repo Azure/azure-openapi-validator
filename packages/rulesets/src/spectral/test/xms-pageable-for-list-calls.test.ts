@@ -14,6 +14,63 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
   const oasDoc = {
     swagger: "2.0",
     paths: {
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
+        get: {
+          operationId: "Good_List",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                properties: {
+                  value: {
+                    type: "array",
+                  },
+                  nextLink: {
+                    type: "string",
+                  },
+                },
+                required: ["value"],
+              },
+            },
+          },
+        },
+      },
+      "{scope}/providers/Microsoft.Music/Configurations": {
+        get: {
+          operationId: "test_ListByID",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                properties: {
+                  value: {
+                    type: "array",
+                  },
+                  nextLink: {
+                    type: "string",
+                  },
+                },
+                required: ["value"],
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.ConnectedVMwarevSphere/virtualMachines.get")
+    expect(results[0].message).toBe(errorMessage)
+    expect(results[1].path.join(".")).toBe("paths.{scope}/providers/Microsoft.Music/Configurations.get")
+    expect(results[1].message).toBe(errorMessage)
+  })
+})
+
+test("XmsPageableForListCalls should find errors if x-ms-pagebale property is not defined for resourceUri level.", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
       "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
         get: {
           operationId: "test_ListByID",
@@ -78,27 +135,27 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
             },
           },
         },
-      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
-        get: {
-          operationId: "Good_List",
-          responses: {
-            200: {
-              description: "Success",
-              schema: {
-                properties: {
-                  value: {
-                    type: "array",
-                  },
-                  nextLink: {
-                    type: "string",
-                  },
-                },
-                required: ["value"],
-              },
-            },
-          },
-        },
-      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(3)
+    expect(results[0].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines.get")
+    expect(results[0].message).toBe(errorMessage)
+    expect(results[1].path.join(".")).toBe(
+      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines.get",
+    )
+    expect(results[1].message).toBe(errorMessage)
+    expect(results[2].path.join(".")).toBe(
+      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines/{nestedVirtualMachineInstance}/deeplyNestedvirtualMachines.get",
+    )
+    expect(results[2].message).toBe(errorMessage)
+  })
+})
+
+test("XmsPageableForListCalls should find no errors for scope level", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
       "{scope}/providers/Microsoft.Music/Configurations": {
         get: {
           operationId: "test_ListByID",
@@ -118,54 +175,53 @@ test("XmsPageableForListCalls should find errors if x-ms-pagebale property is no
               },
             },
           },
+          "x-ms-pageable": {
+            nextLinkName: null,
+          },
         },
       },
-    },
-  }
-  return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(5)
-    expect(results[0].path.join(".")).toBe("paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines.get")
-    expect(results[0].message).toBe(errorMessage)
-    expect(results[1].path.join(".")).toBe(
-      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines.get",
-    )
-    expect(results[1].message).toBe(errorMessage)
-    expect(results[2].path.join(".")).toBe(
-      "paths./{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachineInstance}/nestedvirtualMachines/{nestedVirtualMachineInstance}/deeplyNestedvirtualMachines.get",
-    )
-    expect(results[2].message).toBe(errorMessage)
-    expect(results[3].path.join(".")).toBe("paths./providers/Microsoft.ConnectedVMwarevSphere/virtualMachines.get")
-    expect(results[3].message).toBe(errorMessage)
-    expect(results[4].path.join(".")).toBe("paths.{scope}/providers/Microsoft.Music/Configurations.get")
-    expect(results[4].message).toBe(errorMessage)
-  })
-})
-
-test("CollectionObjectPropertiesNaming should find no errors", () => {
-  const oasDoc = {
-    swagger: "2.0",
-    paths: {
-      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/default": {
+      "{scope}/providers/Microsoft.Music/Configurations/{configName}": {
         get: {
-          operationId: "Good_List",
+          operationId: "test_ListByID",
           responses: {
             200: {
               description: "Success",
-              schema: {
-                properties: {
-                  value: {
-                    type: "array",
-                  },
-                  nextLink: {
-                    type: "string",
-                  },
-                },
-                required: ["value"],
-              },
             },
           },
         },
       },
+      "{scope}/providers/Microsoft.Music/Configurations/{config}/providers/Microsoft.Song/nestedConfigurations/{nestedConfig}": {
+        get: {
+          operationId: "test_ListByID",
+          responses: {
+            200: {
+              description: "Success",
+            },
+          },
+        },
+      },
+      "{scope}/providers/Microsoft.Music/Configurations/{config}/providers/Microsoft.Song/nestedConfigurations/{nestedConfig}/providers/Microsoft.Voice/deeplyNestedConfigurations/{deeplyNestedConfig}":
+        {
+          get: {
+            operationId: "test_ListByID",
+            responses: {
+              200: {
+                description: "Success",
+              },
+            },
+          },
+        },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("XmsPageableForListCalls should find no errors for resourceUri level", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
       "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines": {
         get: {
           operationId: "Good_List",
@@ -278,9 +334,31 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
             },
           },
         },
-      "{scope}/providers/Microsoft.Music/Configurations": {
+      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/{virtualMachinesInstances}/nestedvirtualMachines/{nestedvirtualMachinesInstances}":
+        {
+          get: {
+            operationId: "Good_List2",
+            responses: {
+              200: {
+                description: "Success",
+              },
+            },
+          },
+        },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("XmsPageableForListCalls should find no errors", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/default": {
         get: {
-          operationId: "test_ListByID",
+          operationId: "Good_List",
           responses: {
             200: {
               description: "Success",
@@ -297,42 +375,8 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
               },
             },
           },
-          "x-ms-pageable": {
-            nextLinkName: null,
-          },
         },
       },
-      "{scope}/providers/Microsoft.Music/Configurations/{configName}": {
-        get: {
-          operationId: "test_ListByID",
-          responses: {
-            200: {
-              description: "Success",
-            },
-          },
-        },
-      },
-      "{scope}/providers/Microsoft.Music/Configurations/config/providers/Microsoft.Song/nestedConfigurations/nestedConfig": {
-        get: {
-          operationId: "test_ListByID",
-          responses: {
-            200: {
-              description: "Success",
-            },
-          },
-        },
-      },
-      "{scope}/providers/Microsoft.Music/Configurations/config/providers/Microsoft.Song/nestedConfigurations/nestedConfig/Microsoft.Voice/deeplyNestedConfigurations/deeplyNestedConfig":
-        {
-          get: {
-            operationId: "test_ListByID",
-            responses: {
-              200: {
-                description: "Success",
-              },
-            },
-          },
-        },
       "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachiness": {
         get: {
           operationId: "Good_List",
@@ -357,17 +401,6 @@ test("CollectionObjectPropertiesNaming should find no errors", () => {
           },
         },
       },
-      "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/virtualMachinesInstances/nestedvirtualMachines/nestedvirtualMachinesInstances":
-        {
-          get: {
-            operationId: "Good_List2",
-            responses: {
-              200: {
-                description: "Success",
-              },
-            },
-          },
-        },
     },
   }
   return linter.run(oasDoc).then((results) => {
