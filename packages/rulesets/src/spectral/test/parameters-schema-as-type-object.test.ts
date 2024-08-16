@@ -13,9 +13,23 @@ beforeAll(async () => {
 test("ParametersSchemaAsTypeObject should find errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
+    paths: {
+      "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/default": {
+        get: {
+          parameters: [
+            {
+              $ref: "#/parameters/LoadTestNameParameter",
+            },
+            {
+              $ref: "#/parameters/QuotaBucketNameParameter",
+            },
+          ],
+        },
+      },
+    },
     parameters: {
       LoadTestNameParameter: {
-        in: "path",
+        in: "body",
         name: "loadTestName",
         description: "Load Test name.",
         required: true,
@@ -25,7 +39,7 @@ test("ParametersSchemaAsTypeObject should find errors", () => {
         },
       },
       QuotaBucketNameParameter: {
-        in: "query",
+        in: "body",
         name: "quotaBucketName",
         description: "Quota Bucket name.",
         required: true,
@@ -38,7 +52,9 @@ test("ParametersSchemaAsTypeObject should find errors", () => {
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("parameters.QuotaBucketNameParameter.schema.type")
+    expect(results[0].path.join(".")).toBe(
+      "paths./providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/default.get.parameters.1.schema.type",
+    )
     expect(results[0].message).toContain(ERROR_MESSAGE)
   })
 })
@@ -46,6 +62,21 @@ test("ParametersSchemaAsTypeObject should find errors", () => {
 test("ParametersSchemaAsTypeObject should find no errors", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
+    "/providers/Microsoft.ConnectedVMwarevSphere/virtualMachine/default": {
+      get: {
+        parameters: [
+          {
+            $ref: "#/parameters/LoadTestNameParameter",
+          },
+          {
+            $ref: "#/parameters/ResourceGroupName",
+          },
+          {
+            $ref: "#/parameters/QuotaBucketNameParameter",
+          },
+        ],
+      },
+    },
     definitions: {
       ResourceGroup: {
         description: "The ResourceGroup model definition.",
@@ -60,7 +91,7 @@ test("ParametersSchemaAsTypeObject should find no errors", () => {
     },
     parameters: {
       LoadTestNameParameter: {
-        in: "path",
+        in: "body",
         name: "loadTestName",
         description: "Load Test name.",
         required: true,
@@ -70,7 +101,7 @@ test("ParametersSchemaAsTypeObject should find no errors", () => {
         },
       },
       QuotaBucketNameParameter: {
-        in: "query",
+        in: "body",
         name: "quotaBucketName",
         description: "Quota Bucket name.",
         required: true,

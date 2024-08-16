@@ -3544,7 +3544,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: "$.parameters.*.schema[?(@property === 'type' && @ !=='object')]",
+            given: "$[paths,'x-ms-paths'].*.*.parameters.*.schema[?(@property === 'type' && @ !=='object')]",
             then: {
                 function: falsy,
             },
