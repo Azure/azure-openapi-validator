@@ -22,7 +22,7 @@ The schema for body parameters should be defined strictly with the type set as '
 
 ## How to fix the violation
 
-Please set schema "type:object in the parameters and define the reference model of the object.
+Please set schema `"type": "object"` in the parameters and define the reference model of the object.
 
 ## Good Examples
 
