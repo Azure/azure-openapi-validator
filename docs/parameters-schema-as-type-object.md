@@ -24,7 +24,7 @@ The schema for body parameters should be defined strictly with the type set as '
 
 Please set schema `"type": "object"` in the parameters and define the reference model of the object.
 
-## Good Examples
+## Good Example 1
 
 ```json
 ...
@@ -43,6 +43,8 @@ Please set schema `"type": "object"` in the parameters and define the reference 
 }
 ...
 ```
+
+## Good Example 2
 
 ```json
 ...
@@ -64,6 +66,8 @@ Please set schema `"type": "object"` in the parameters and define the reference 
 }
 ...
 ```
+
+## Good Example 3
 
 ```json
 ...
@@ -96,7 +100,7 @@ Please set schema `"type": "object"` in the parameters and define the reference 
 ...
 ```
 
-## Bad Examples
+## Bad Example 1
 
 ```json
 ...
@@ -117,6 +121,8 @@ Please set schema `"type": "object"` in the parameters and define the reference 
 }
 ...
 ```
+
+## Bad Example 2
 
 ```json
 ...
