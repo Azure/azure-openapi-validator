@@ -50,6 +50,7 @@ Please set schema `"type": "object"` in the parameters and define the reference 
   "parameters": {
     "ResourceGroupName": {
       "name": "resourceGroupName",
+      // body parameter
       "in": "body",
       "required": true,
       "schema": {
