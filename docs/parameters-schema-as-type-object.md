@@ -32,9 +32,10 @@ Please set schema `"type": "object"` in the parameters and define the reference 
   "parameters": {
     "ApiVersionParameter": {
       "name": "api-version",
+      // not a body parameter
       "in": "query",
       "required": true,
-      // remove schema
+      // no schema
       "type": "string",
       "description": "The HDInsight client API Version."
     }
