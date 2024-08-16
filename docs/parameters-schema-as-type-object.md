@@ -125,7 +125,7 @@ Please set schema `"type": "object"` in the parameters and define the reference 
       "in": "body",
       "required": true,
       "schema": {
-        // type:string is not recommeneded
+        // type:string is not allowed for body parameters
         "type": "string",
       },
       "description": "The name of the resource group.",
