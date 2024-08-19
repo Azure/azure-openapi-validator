@@ -755,6 +755,24 @@ const ruleset: any = {
     },
 
     ///
+    /// ARM RPC rules for Arg
+    ///
+
+    // RPC Code: RPC-Arg-V1-01
+    ParametersSchemaAsTypeObject: {
+      rpcGuidelineCode: "RPC-POST-V1-05",
+      description: "The schema for body parameters must specify type:object and include a definition for its reference model.",
+      message: "{{description}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths'].*.*.parameters.*.schema[?(@property === 'type' && @ !=='object')]",
+      then: {
+        function: falsy,
+      },
+    },
+
+    ///
     /// ARM RPC rules for Uri path patterns
     ///
 

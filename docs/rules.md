@@ -793,6 +793,12 @@ The rule is to ensure the parameters in the same order as they are ranked in the
 
 Please refer to [parameters-order.md](./parameters-order.md) for details.
 
+### ParametersSchemaAsTypeObject
+
+The schema for body parameters should be defined strictly with the type set as 'object', as ARM does not support other types of definitions. This restriction is in place to ensure a better customer experience.
+
+Please refer to [parameters-schema-as-type-object.md](./parameters-schema-as-type-object.md) for details.
+
 ### PatchBodyParametersSchema
 
 A request parameter of the Patch Operation must not have a required/default/'x-ms-mutability:"create"' value.

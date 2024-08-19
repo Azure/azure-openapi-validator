@@ -3537,6 +3537,18 @@ const ruleset = {
                 function: parametersInPost,
             },
         },
+        ParametersSchemaAsTypeObject: {
+            rpcGuidelineCode: "RPC-POST-V1-05",
+            description: "The schema for body parameters must specify type:object and include a definition for its reference model.",
+            message: "{{description}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.*.parameters.*.schema[?(@property === 'type' && @ !=='object')]",
+            then: {
+                function: falsy,
+            },
+        },
         PathContainsSubscriptionId: {
             rpcGuidelineCode: "RPC-Uri-V1-01",
             description: "Path for resource group scoped CRUD methods MUST contain a subscriptionId parameter.",
