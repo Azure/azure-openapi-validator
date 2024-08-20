@@ -47,6 +47,7 @@ import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-sc
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
+import { tagsAreNotAllowedForProxyResources } from "./functions/tags-are-not-allowed-for-proxy-resources"
 import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
 import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
@@ -733,6 +734,21 @@ const ruleset: any = {
       given: "$.paths.*",
       then: {
         function: consistentResponseSchemaForPut,
+      },
+    },
+
+    // RPC Code: RPC-Put-V1-31
+    TagsAreNotAllowedForProxyResources: {
+      rpcGuidelineCode: "RPC-Put-V1-31",
+      description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
+      severity: "error",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.definitions.*.properties^"],
+      then: {
+        function: tagsAreNotAllowedForProxyResources,
       },
     },
 

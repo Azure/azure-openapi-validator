@@ -2081,7 +2081,7 @@ const patchBodyParameters = (parameters, _opts, paths) => {
     return errors;
 };
 
-const ERROR_MESSAGE$1 = "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.";
+const ERROR_MESSAGE$2 = "A patch request body must only contain properties present in the corresponding put request body, and must contain at least one of the properties.";
 const PARAM_IN_BODY = (paramObject) => paramObject.in === "body";
 const PATCH = "patch";
 const PUT = "put";
@@ -2116,7 +2116,7 @@ const patchPropertiesCorrespondToPutProperties = (pathItem, _opts, ctx) => {
     const patchBodyPropertiesNotInPutBody = _.differenceWith(patchBodyProperties[0], putBodyProperties[0], _.isEqual);
     if (patchBodyPropertiesNotInPutBody.length > 0) {
         patchBodyPropertiesNotInPutBody.forEach((missingProperty) => errors.push({
-            message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE$1,
+            message: `${Object.keys(missingProperty)[0]} property in patch body is not present in the corresponding put body. ` + ERROR_MESSAGE$2,
             path: path,
         }));
         return errors;
@@ -2704,16 +2704,16 @@ const skuValidation = (skuSchema, opts, paths) => {
 
 const SYSTEM_DATA_CAMEL = "systemData";
 const SYSTEM_DATA_UPPER_CAMEL = "SystemData";
-const PROPERTIES = "properties";
-const ERROR_MESSAGE = "System data must be defined as a top-level property, not in the properties bag.";
+const PROPERTIES$1 = "properties";
+const ERROR_MESSAGE$1 = "System data must be defined as a top-level property, not in the properties bag.";
 const systemDataInPropertiesBag = (definition, _opts, ctx) => {
     const properties = getProperties(definition);
     const path = deepFindObjectKeyPath(properties, SYSTEM_DATA_CAMEL);
     if (path.length > 0) {
         return [
             {
-                message: ERROR_MESSAGE,
-                path: _.concat(ctx.path, PROPERTIES, path[0]),
+                message: ERROR_MESSAGE$1,
+                path: _.concat(ctx.path, PROPERTIES$1, path[0]),
             },
         ];
     }
@@ -2721,12 +2721,35 @@ const systemDataInPropertiesBag = (definition, _opts, ctx) => {
     if (pathForUpperCamelCase.length > 0) {
         return [
             {
-                message: ERROR_MESSAGE,
-                path: _.concat(ctx.path, PROPERTIES, pathForUpperCamelCase[0]),
+                message: ERROR_MESSAGE$1,
+                path: _.concat(ctx.path, PROPERTIES$1, pathForUpperCamelCase[0]),
             },
         ];
     }
     return [];
+};
+
+const TAGS = "tags";
+const PROPERTIES = "properties";
+const NestedPROPERTIES = "properties";
+const ERROR_MESSAGE = "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.";
+const tagsAreNotAllowedForProxyResources = (definition, _opts, ctx) => {
+    const properties = getProperties(definition);
+    const errors = [];
+    if ("tags" in properties && !("location" in properties)) {
+        errors.push({
+            message: ERROR_MESSAGE,
+            path: _.concat(ctx.path, PROPERTIES, TAGS),
+        });
+    }
+    const deepPropertiesTags = deepFindObjectKeyPath(definition.properties.properties, TAGS);
+    if (deepPropertiesTags.length > 0) {
+        errors.push({
+            message: ERROR_MESSAGE,
+            path: _.concat(ctx.path, PROPERTIES, NestedPROPERTIES, deepPropertiesTags[0]),
+        });
+    }
+    return errors;
 };
 
 const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
@@ -3523,6 +3546,19 @@ const ruleset = {
             given: "$.paths.*",
             then: {
                 function: consistentResponseSchemaForPut,
+            },
+        },
+        TagsAreNotAllowedForProxyResources: {
+            rpcGuidelineCode: "RPC-Put-V1-31",
+            description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
+            severity: "error",
+            stagingOnly: true,
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions.*.properties^"],
+            then: {
+                function: tagsAreNotAllowedForProxyResources,
             },
         },
         ParametersInPost: {

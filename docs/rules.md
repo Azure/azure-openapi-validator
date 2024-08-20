@@ -1220,6 +1220,12 @@ Validates that system data is not defined in the properties bag, but rather as a
 
 Please refer to [system-data-in-properties-bag.md](./system-data-in-properties-bag.md) for details.
 
+### TagsAreNotAllowedForProxyResources
+
+`tags` should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.
+
+Please refer to [tags-are-not-allowed-for-proxy-resources.md](./tags-are-not-allowed-for-proxy-resources.md) for details.
+
 ### TenantLevelAPIsNotAllowed
 
 Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. The reason for this guidance is that tenant level APIs have a really broad scope and blast radius. We permit APIs to be at this broad scope under rare conditions. Some ARM feature sets also do not cover tenant level APIs such as the use of AFEC. Additionally, if you intend to bypass the standard RBAC constructs and make the APIs unauthorized, you will need an approval from the PAS team before the open API spec can be merged.
