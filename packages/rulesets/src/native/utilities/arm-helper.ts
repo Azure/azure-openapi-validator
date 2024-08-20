@@ -5,6 +5,7 @@
 import { ISwaggerInventory, parseJsonRef } from "@microsoft.azure/openapi-validator-core"
 import _ from "lodash"
 import { nodes } from "./jsonpath"
+import { isListOperation } from "./rules-helper"
 import { SwaggerHelper } from "./swagger-helper"
 import { SwaggerWalker } from "./swagger-walker"
 import { Workspace } from "./swagger-workspace"
@@ -133,24 +134,6 @@ export class ArmHelper {
         }
       }
     }
-  }
-
-  private isListOperation(op: Operation) {
-    const path = op.apiPath
-    if (path.includes(".")) {
-      // Get the portion of the api path to the right of the provider namespace by splitting the path by '.' and taking the last element
-      const splitNamespace = path.split(".")
-      if (path.includes("/")) {
-        const segments = splitNamespace[splitNamespace.length - 1].split("/")
-
-        // If the last segment split by '/' has even segments, then the operation is a list operation
-        if (segments.length % 2 == 0) {
-          return true
-        }
-      }
-    }
-
-    return false
   }
 
   private getXmsResources() {
@@ -315,7 +298,7 @@ export class ArmHelper {
     const resWithPutOrPatch = includeGet
       ? localResourceModels.filter((re) =>
           re.operations.some(
-            (op) => (op.httpMethod === "get" && !this.isListOperation(op)) || op.httpMethod === "put" || op.httpMethod == "patch",
+            (op) => (op.httpMethod === "get" && !isListOperation(op.apiPath)) || op.httpMethod === "put" || op.httpMethod == "patch",
           ),
         )
       : localResourceModels.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"))
