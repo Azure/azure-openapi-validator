@@ -57,9 +57,9 @@ test("LatestVersionOfCommonTypesMustBeUsed should find errors for obsolete versi
     expect(results[0].path.join(".")).toBe("paths./foo.get.parameters.0.$ref")
     expect(results[0].message).toContain("Use the latest version v5 of customermanagedkeys.json.")
     expect(results[1].path.join(".")).toBe("paths./foo.get.parameters.1.$ref")
-    expect(results[1].message).toContain("Use the latest version v5 of managedidentity.json.")
+    expect(results[1].message).toContain("Use the latest version v6 of managedidentity.json.")
     expect(results[2].path.join(".")).toBe("paths./foo.get.responses.200.$ref")
-    expect(results[2].message).toContain("Use the latest version v5 of types.json.")
+    expect(results[2].message).toContain("Use the latest version v6 of types.json.")
   })
 })
 
@@ -73,12 +73,12 @@ test("LatestVersionOfCommonTypesMustBeUsed should find no errors", async () => {
           parameters: [
             {
               $ref: `../../../../../common-types/resource-management/${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(
-                "customermanagedkeys.json"
+                "customermanagedkeys.json",
               )}/customermanagedkeys.json#/parameters/ApiVersionParameter`,
             },
             {
               $ref: `../../../../../common-types/resource-management/${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(
-                "managedidentity.json"
+                "managedidentity.json",
               )}/managedidentity.json#/parameters/ApiVersionParameter`,
             },
           ],
@@ -86,7 +86,7 @@ test("LatestVersionOfCommonTypesMustBeUsed should find no errors", async () => {
             200: {
               description: "Success",
               $ref: `../../../../../common-types/resource-management/${LATEST_VERSION_BY_COMMON_TYPES_FILENAME.get(
-                "types.json"
+                "types.json",
               )}/types.json#/parameters/ApiVersionParameter`,
             },
           },
