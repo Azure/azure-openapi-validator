@@ -459,7 +459,6 @@ const ruleset: any = {
         "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
       message: "{{error}}",
       severity: "error",
-      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*"],
