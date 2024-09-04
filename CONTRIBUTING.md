@@ -390,8 +390,7 @@ Once your PR is merged:
 
 - Schedule a [Prod build] from the `main` branch.
 - **!!! IMPORTANT !!!**: If you are updating [packages/azure-openapi-validator/autorest], see [this section](#synchronize-with-changes-to-openapi-alps-repository).
-- 
-  You may need to get an approval for the release from the appropriate [Azure SDK EngSys team members](https://teams.microsoft.com/l/channel/19%3A59dbfadafb5e41c4890e2cd3d74cc7ba%40thread.skype/Engineering%20System%20%F0%9F%9B%A0%EF%B8%8F?groupId=3e17dcb0-4257-4a30-b843-77f47f1d4121).
+- You may need to get an approval for the release from the appropriate [Azure SDK EngSys team members](https://teams.microsoft.com/l/channel/19%3A59dbfadafb5e41c4890e2cd3d74cc7ba%40thread.skype/Engineering%20System%20%F0%9F%9B%A0%EF%B8%8F?groupId=3e17dcb0-4257-4a30-b843-77f47f1d4121).
 - Verify the release worked by new versions of the appropriate packages being released to npm.
   See [README `packages` section]. You can also look at the release build log.
 
