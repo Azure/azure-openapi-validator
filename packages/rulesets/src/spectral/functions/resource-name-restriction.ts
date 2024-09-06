@@ -31,7 +31,8 @@ export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
         // Get the preceding path segment
         if (param?.match(/^\w+Name+$/) && !EXCEPTION_LIST.includes(param)) {
           const paramDefinition = getPathParameter(paths[pathKey], param)
-          if (paramDefinition && !paramDefinition.pattern) {
+          // resource name param with enum doesnt need to explicitly have pattern specified
+          if (paramDefinition && !paramDefinition.enum && !paramDefinition.pattern) {
             errors.push({
               message: `The resource name parameter '${param}' should be defined with a 'pattern' restriction.`,
               path: [...path, pathKey],

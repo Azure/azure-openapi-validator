@@ -144,3 +144,39 @@ test("ResourceNameRestriction should find no errors for system-defined variables
     expect(results.length).toBe(0)
   })
 })
+
+test("ResourceNameRestriction should find no errors for type enums", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas/{quotaName}": {
+        get: {
+          operationId: "Quotas_Get",
+          tags: ["Quotas"],
+          description: "Get quota by name.",
+          parameters: [
+            {
+              name: "location",
+              in: "path",
+              description: "The location of quota in ARM Normalized format like eastus, southeastasia etc.",
+              required: true,
+              type: "string",
+            },
+            {
+              name: "quotaName",
+              in: "path",
+              description: "The quota name.",
+              required: true,
+              type: "string",
+              enum: ["ScalableExecution", "Reporting"],
+            },
+          ],
+          responses: {},
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})

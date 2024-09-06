@@ -2612,7 +2612,7 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
                 const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
                 if ((param === null || param === void 0 ? void 0 : param.match(/^\w+Name+$/)) && !EXCEPTION_LIST.includes(param)) {
                     const paramDefinition = getPathParameter(paths[pathKey], param);
-                    if (paramDefinition && !paramDefinition.pattern) {
+                    if (paramDefinition && !paramDefinition.enum && !paramDefinition.pattern) {
                         errors.push({
                             message: `The resource name parameter '${param}' should be defined with a 'pattern' restriction.`,
                             path: [...path, pathKey],
@@ -3354,6 +3354,7 @@ const ruleset = {
             rpcGuidelineCode: "RPC-Policy-V1-03",
             description: "Properties with type:object that don't reference a model definition are not allowed. ARM doesn't allow generic type definitions as this leads to bad customer experience.",
             severity: "error",
+            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
@@ -3458,6 +3459,7 @@ const ruleset = {
             description: "PATCH request body must only contain properties present in the corresponding PUT request body, and must contain at least one property.",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: ["$[paths,'x-ms-paths'].*"],
@@ -3673,6 +3675,7 @@ const ruleset = {
             description: "Every Put and Patch operation must have a request body",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths'].*[put,patch].parameters",
@@ -3685,6 +3688,7 @@ const ruleset = {
             description: "A Put operation must return the same schema for 200 and 201 response codes",
             message: "{{error}}",
             severity: "error",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$.paths.*",
