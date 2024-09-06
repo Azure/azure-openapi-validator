@@ -2585,7 +2585,12 @@ const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
     return errors;
 };
 
-const EXCEPTION_LIST = ["resourceGroupName", "privateEndpointConnectionName", "managementGroupName"];
+const EXCEPTION_LIST = [
+    "resourceGroupName",
+    "privateEndpointConnectionName",
+    "managementGroupName",
+    "networkSecurityPerimeterConfigurationName",
+];
 const resourceNameRestriction = (paths, _opts, ctx) => {
     if (paths === null || typeof paths !== "object") {
         return [];

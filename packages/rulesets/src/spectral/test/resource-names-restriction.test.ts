@@ -32,7 +32,7 @@ test("ResourceNameRestriction should find errors on path level", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}",
     )
     expect(results[0].message).toContain("The resource name parameter 'fooName' should be defined with a 'pattern' restriction.")
   })
@@ -61,7 +61,7 @@ test("ResourceNameRestriction should find errors on operation level", () => {
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
     expect(results[0].path.join(".")).toBe(
-      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}"
+      "paths./subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}",
     )
     expect(results[0].message).toContain("The resource name parameter 'fooName' should be defined with a 'pattern' restriction.")
   })
@@ -130,6 +130,31 @@ test("ResourceNameRestriction should find no errors for system-defined variables
               required: true,
               type: "string",
               description: "The name of the private endpoint connection associated with the Azure resource.",
+              "x-ms-parameter-location": "method",
+            },
+          ],
+          get: {
+            parameters: [],
+            responses: {},
+          },
+        },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}/networkSecurityPerimeterConfiguration/{networkSecurityPerimeterConfigurationName}":
+        {
+          parameters: [
+            {
+              name: "fooName",
+              in: "path",
+              required: true,
+              type: "string",
+              pattern: "[a-zA-Z_0-9]+",
+              "x-ms-parameter-location": "method",
+            },
+            {
+              name: "networkSecurityPerimeterConfigurationName",
+              in: "path",
+              required: true,
+              type: "string",
+              description: "The name of the network security perimeter configuration associated with the Azure resource.",
               "x-ms-parameter-location": "method",
             },
           ],
