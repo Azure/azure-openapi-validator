@@ -3697,6 +3697,7 @@ const ruleset = {
             rpcGuidelineCode: "RPC-Put-V1-31",
             description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
             severity: "error",
+            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
