@@ -2612,7 +2612,7 @@ const resourceNameRestriction = (paths, _opts, ctx) => {
                 const param = (_a = v.match(/[^{}]+(?=})/)) === null || _a === void 0 ? void 0 : _a[0];
                 if ((param === null || param === void 0 ? void 0 : param.match(/^\w+Name+$/)) && !EXCEPTION_LIST.includes(param)) {
                     const paramDefinition = getPathParameter(paths[pathKey], param);
-                    if (paramDefinition && !paramDefinition.pattern) {
+                    if (paramDefinition && !paramDefinition.enum && !paramDefinition.pattern) {
                         errors.push({
                             message: `The resource name parameter '${param}' should be defined with a 'pattern' restriction.`,
                             path: [...path, pathKey],
@@ -3697,7 +3697,6 @@ const ruleset = {
             rpcGuidelineCode: "RPC-Put-V1-31",
             description: "Tags should not be specified in the properties bag for proxy resources. Consider using a Tracked resource instead.",
             severity: "error",
-            stagingOnly: true,
             message: "{{error}}",
             resolved: true,
             formats: [oas2],
