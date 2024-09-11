@@ -1,7 +1,12 @@
 // Check conformance to Azure parameter naming conventions:
 
 //system-defined parameters => needs to be excluded from validation
-const EXCEPTION_LIST = ["resourceGroupName", "privateEndpointConnectionName", "managementGroupName"]
+const EXCEPTION_LIST = [
+  "resourceGroupName",
+  "privateEndpointConnectionName",
+  "managementGroupName",
+  "networkSecurityPerimeterConfigurationName",
+]
 export const resourceNameRestriction = (paths: any, _opts: any, ctx: any) => {
   if (paths === null || typeof paths !== "object") {
     return []

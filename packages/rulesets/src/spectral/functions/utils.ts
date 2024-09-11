@@ -1,9 +1,9 @@
 import _ from "lodash"
 
 export const LATEST_VERSION_BY_COMMON_TYPES_FILENAME = new Map([
-  ["types.json", "v5"],
-  ["managedidentity.json", "v5"],
-  ["privatelinks.json", "v5"],
+  ["types.json", "v6"],
+  ["managedidentity.json", "v6"],
+  ["privatelinks.json", "v6"],
   ["customermanagedkeys.json", "v5"],
   ["managedidentitywithdelegation.json", "v5"],
   ["networksecurityperimeter.json", "v5"],
