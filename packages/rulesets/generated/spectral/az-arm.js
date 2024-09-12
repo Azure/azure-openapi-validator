@@ -2539,6 +2539,36 @@ const PutResponseCodes = (putOp, _opts, ctx) => {
     return errors;
 };
 
+const queryParametersInCollectionGet = (pathItem, _opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const uris = Object.keys(pathItem);
+    if (uris.length < 1) {
+        return [];
+    }
+    const GET = "get";
+    const errors = [];
+    for (const uri of uris) {
+        if (!pathItem[uri][GET]) {
+            continue;
+        }
+        const hierarchy = getResourcesPathHierarchyBasedOnResourceType(uri);
+        if (hierarchy.length == 0 && pathItem[uri][GET]) {
+            const params = pathItem[uri][GET]["parameters"];
+            const queryParams = params === null || params === void 0 ? void 0 : params.filter((param) => param.in === "query" && param.name !== "api-version" && param.name !== "$filter");
+            queryParams === null || queryParams === void 0 ? void 0 : queryParams.forEach((param) => {
+                errors.push({
+                    message: `Query parameter ${param.name} should be removed. Collection Get's/List operation MUST not have query parameters other than api version & OData filter.`,
+                    path: [path, uri, GET, "parameters"],
+                });
+            });
+        }
+    }
+    return errors;
+};
+
 const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx) => {
     const errors = [];
     const path = ctx.path;
@@ -3457,6 +3487,18 @@ const ruleset = {
             ],
             then: {
                 function: falsy,
+            },
+        },
+        QueryParametersInCollectionGet: {
+            rpcGuidelineCode: "RPC-Get-V1-15",
+            description: "Collection Get's/List operations MUST not have query parameters other than api-version & OData filter.",
+            severity: "error",
+            message: "{{error}}",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths']",
+            then: {
+                function: queryParametersInCollectionGet,
             },
         },
         PatchPropertiesCorrespondToPutProperties: {

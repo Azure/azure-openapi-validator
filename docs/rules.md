@@ -1040,6 +1040,12 @@ Synchronous and long-running PUT operations must have responses with 200, 201 an
 
 Please refer to [put-response-codes.md](./put-response-codes.md) for details.
 
+### QueryParametersInCollectionGet
+
+Collection Get's/List operations MUST not have query parameters other than api-version & OData filter.
+
+Please refer to [query-parameters-in-collection-get.md](./query-parameters-in-collection-get.md) for details.
+
 ### RepeatedPathInfo
 
 Information in the URI must not be repeated in the request body (i.e. subscription ID, resource group name, resource name).

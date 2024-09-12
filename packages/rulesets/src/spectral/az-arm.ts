@@ -40,6 +40,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseCodes } from "./functions/put-response-codes"
+import { queryParametersInCollectionGet } from "./functions/query-parameters-in-collection-get"
 import { requestBodyMustExistForPutPatch } from "./functions/request-body-must-exist-for-put-patch"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
@@ -446,6 +447,20 @@ const ruleset: any = {
       ],
       then: {
         function: falsy,
+      },
+    },
+
+    // RPC Code: RPC-Get-V1-15
+    QueryParametersInCollectionGet: {
+      rpcGuidelineCode: "RPC-Get-V1-15",
+      description: "Collection Get's/List operations MUST not have query parameters other than api-version & OData filter.",
+      severity: "error",
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: queryParametersInCollectionGet,
       },
     },
 
