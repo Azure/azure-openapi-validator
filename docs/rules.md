@@ -1244,7 +1244,7 @@ Per [ARM guidelines](https://github.com/Azure/azure-resource-manager-rpc/blob/ma
 
 Please refer to [top-level-resources-list-by-subscription.md](./top-level-resources-list-by-subscription.md) for details.
 
-### trackedExtensionResourcesAreNotAllowed
+### TrackedExtensionResourcesAreNotAllowed
 
 Extension resources are always considered to be proxy and must not be of the type tracked.
 
@@ -1343,6 +1343,12 @@ Please refer to [unique-xms-example.md](./unique-xms-example.md) for details.
 Only valid types are allowed for properties.
 
 Please refer to [valid-formats.md](./valid-formats.md) for details.
+
+### ValidQueryParametersForPointOperations
+
+Point operations (GET, PUT, PATCH, DELETE) must not include any query parameters other than api-version.
+
+Please refer to [valid-query-parameters-for-point-operations.md](./valid-query-parameters-for-point-operations.md) for details.
 
 ### ValidResponseCodeRequired
 

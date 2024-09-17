@@ -242,6 +242,25 @@ const providerAndNamespace = "/providers/[^/]+"
 const resourceTypeAndResourceName = "(?:/\\w+/default|/\\w+/{[^/]+})"
 const queryParam = "(?:\\?\\w+)"
 const resourcePathRegEx = new RegExp(`${providerAndNamespace}${resourceTypeAndResourceName}+${queryParam}?$`, "gi")
+/**
+ * Checks if the provided path is a point operation 
+ * i.e, if its a path that can have point GET, PUT, PATCH, DELETE
+ * @param path path/uri
+ * @returns true or false 
+ */
+export function isPointOperation(path: string) {
+  const index = path.lastIndexOf("/providers/")
+  if (index === -1) {
+    return false
+  }
+  const lastProvider = path.substr(index)
+  const matches = lastProvider.match(resourcePathRegEx)
+  if(matches){
+    return true
+  }
+  return false
+}
+
 export function getResourcesPathHierarchyBasedOnResourceType(path: string) {
   const index = path.lastIndexOf("/providers/")
   if (index === -1) {

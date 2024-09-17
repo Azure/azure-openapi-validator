@@ -116,7 +116,7 @@ test("LatestVersionOfCommonTypesMustBeUsed should find no errors", async () => {
     expect(results.length).toBe(0)
   })
 })
-test("ParametersInPointGet should find no errors when common-types ref is not present", async () => {
+test("LatestVersionOfCommonTypesMustBeUsed should find no errors when common-types ref is not present", async () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
