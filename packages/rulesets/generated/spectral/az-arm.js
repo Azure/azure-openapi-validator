@@ -2692,10 +2692,7 @@ const queryParametersInCollectionGet = (pathItem, _opts, ctx) => {
     const GET = "get";
     const errors = [];
     for (const uri of uris) {
-        if (!pathItem[uri][GET]) {
-            continue;
-        }
-        if (isListOperation(uri)) {
+        if (pathItem[uri][GET] && isListOperation(uri)) {
             const params = pathItem[uri][GET]["parameters"];
             const queryParams = params === null || params === void 0 ? void 0 : params.filter((param) => param.in === "query" && param.name !== "api-version" && param.name !== "$filter");
             queryParams === null || queryParams === void 0 ? void 0 : queryParams.forEach((param) => {
@@ -3493,6 +3490,7 @@ const ruleset = {
             description: "Collection Get's/List operations MUST not have query parameters other than api-version & OData filter.",
             severity: "error",
             message: "{{error}}",
+            stagingOnly: true,
             resolved: true,
             formats: [oas2],
             given: "$[paths,'x-ms-paths']",

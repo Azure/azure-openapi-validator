@@ -14,12 +14,8 @@ export const queryParametersInCollectionGet = (pathItem: any, _opts: any, ctx: a
   const errors: any[] = []
 
   for (const uri of uris) {
-    // skip, if GET op isn't defined
-    if (!pathItem[uri][GET]) {
-      continue
-    }
-    // check if the GET op is a collection get/list call
-    if (isListOperation(uri)) {
+    //check if GET op is defined & the GET op is a collection get/list call
+    if (pathItem[uri][GET] && isListOperation(uri)) {
       const params = pathItem[uri][GET]["parameters"]
       const queryParams = params?.filter(
         (param: { in: string; name: string }) => param.in === "query" && param.name !== "api-version" && param.name !== "$filter",

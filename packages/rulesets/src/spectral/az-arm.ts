@@ -456,6 +456,7 @@ const ruleset: any = {
       description: "Collection Get's/List operations MUST not have query parameters other than api-version & OData filter.",
       severity: "error",
       message: "{{error}}",
+      stagingOnly: true,
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths']",
