@@ -1,4 +1,4 @@
-import { getResourcesPathHierarchyBasedOnResourceType } from "./utils"
+import { isListOperation } from "../../native/utilities/rules-helper"
 
 export const queryParametersInCollectionGet = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
@@ -19,8 +19,7 @@ export const queryParametersInCollectionGet = (pathItem: any, _opts: any, ctx: a
       continue
     }
     // check if the GET op is a collection get/list call
-    const hierarchy = getResourcesPathHierarchyBasedOnResourceType(uri)
-    if (hierarchy.length == 0 && pathItem[uri][GET]) {
+    if (isListOperation(uri)) {
       const params = pathItem[uri][GET]["parameters"]
       const queryParams = params?.filter(
         (param: { in: string; name: string }) => param.in === "query" && param.name !== "api-version" && param.name !== "$filter",

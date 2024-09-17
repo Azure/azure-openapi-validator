@@ -24,13 +24,13 @@ Ensure that collection GET/List operations do not include any query parameters o
 
 ```json
       "Microsoft.Music/Songs": {
-        get: {
-          operationId: "Foo_Update",
-          description: "Test Description",
-          parameters: [
+        "get": {
+          "operationId": "Foo_Update",
+          "description": "Test Description",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query"
+              "name": "api-version",
+              "in": "query"
             },
           ],
         },
@@ -39,19 +39,19 @@ Ensure that collection GET/List operations do not include any query parameters o
 
 ```json
       "Microsoft.Music/Songs": {
-        get: {
-          operationId: "Foo_Update",
-          description: "Test Description",
-          parameters: [
+        "get": {
+          "operationId": "Foo_Update",
+          "description": "Test Description",
+          "parameters": [
             {
-              name: "api-version",
-              in: "query"
+              "name": "api-version",
+              "in": "query"
             },
             {
-              name: "$filter",
-              in: "query",
-              required: false,
-              type: "string",
+              "name": "$filter",
+              "in": "query",
+              "required": false,
+              "type": "string",
             },
           ],
         },
@@ -62,15 +62,15 @@ Ensure that collection GET/List operations do not include any query parameters o
 
 ```json
       "Microsoft.Music/Songs": {
-        get: {
-          operationId: "Foo_Update",
-          description: "Test Description",
-          parameters: [
+        "get": {
+          "operationId": "Foo_Update",
+          "description": "Test Description",
+          "parameters": [
             {
-              name: "name",
-              in: "query",
-              required: false,
-              type: "string",
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string",
             },
           ],
         },
