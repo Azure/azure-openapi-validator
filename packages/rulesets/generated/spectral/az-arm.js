@@ -385,6 +385,18 @@ const providerAndNamespace = "/providers/[^/]+";
 const resourceTypeAndResourceName = "(?:/\\w+/default|/\\w+/{[^/]+})";
 const queryParam = "(?:\\?\\w+)";
 const resourcePathRegEx = new RegExp(`${providerAndNamespace}${resourceTypeAndResourceName}+${queryParam}?$`, "gi");
+function isPointOperation(path) {
+    const index = path.lastIndexOf("/providers/");
+    if (index === -1) {
+        return false;
+    }
+    const lastProvider = path.substr(index);
+    const matches = lastProvider.match(resourcePathRegEx);
+    if (matches) {
+        return true;
+    }
+    return false;
+}
 function getResourcesPathHierarchyBasedOnResourceType(path) {
     const index = path.lastIndexOf("/providers/");
     if (index === -1) {
@@ -3013,6 +3025,37 @@ const trackedResourceTagsPropertyInRequest = (pathItem, _opts, paths) => {
     return errors;
 };
 
+const validQueryParametersForPointOperations = (pathItem, _opts, ctx) => {
+    if (pathItem === null || typeof pathItem !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const uris = Object.keys(pathItem);
+    if (uris.length < 1) {
+        return [];
+    }
+    const pointOperations = new Set(["get", "put", "patch", "delete"]);
+    const errors = [];
+    for (const uri of uris) {
+        if (isPointOperation(uri)) {
+            const verbs = Object.keys(pathItem[uri]);
+            for (const verb of verbs) {
+                if (pointOperations.has(verb)) {
+                    const params = pathItem[uri][verb]["parameters"];
+                    const queryParams = params === null || params === void 0 ? void 0 : params.filter((param) => param.in === "query" && param.name !== "api-version");
+                    queryParams === null || queryParams === void 0 ? void 0 : queryParams.map((param) => {
+                        errors.push({
+                            message: `Query parameter ${param.name} should be removed. Point operation '${verb}' MUST not have query parameters other than api-version.`,
+                            path: [path, uri, verb, "parameters"],
+                        });
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const validatePatchBodyParamProperties = createRulesetFunction({
     input: null,
     options: {
@@ -3915,6 +3958,19 @@ const ruleset = {
             given: "$[paths,'x-ms-paths'].*~",
             then: {
                 function: trackedExtensionResourcesAreNotAllowed,
+            },
+        },
+        ValidQueryParametersForPointOperations: {
+            rpcGuidelineCode: "RPC-Uri-V1-13",
+            description: "Point operations (GET, PUT, PATCH, DELETE) must not include any query parameters other than api-version.",
+            message: "{{error}}",
+            stagingOnly: true,
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths']",
+            then: {
+                function: validQueryParametersForPointOperations,
             },
         },
         SystemDataDefinitionsCommonTypes: {

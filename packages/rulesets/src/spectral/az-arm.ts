@@ -52,6 +52,7 @@ import { tagsAreNotAllowedForProxyResources } from "./functions/tags-are-not-all
 import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
 import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
+import { validQueryParametersForPointOperations } from "./functions/valid-query-parameters-for-point-operations"
 import { validatePatchBodyParamProperties } from "./functions/validate-patch-body-param-properties"
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
@@ -956,6 +957,20 @@ const ruleset: any = {
       given: "$[paths,'x-ms-paths'].*~",
       then: {
         function: trackedExtensionResourcesAreNotAllowed,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-13
+    ValidQueryParametersForPointOperations: {
+      rpcGuidelineCode: "RPC-Uri-V1-13",
+      description: "Point operations (GET, PUT, PATCH, DELETE) must not include any query parameters other than api-version.",
+      message: "{{error}}",
+      stagingOnly: true,
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: validQueryParametersForPointOperations,
       },
     },
 

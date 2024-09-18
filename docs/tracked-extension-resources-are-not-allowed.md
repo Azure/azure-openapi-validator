@@ -1,4 +1,4 @@
-# trackedExtensionResourcesAreNotAllowed
+# TrackedExtensionResourcesAreNotAllowed
 
 ## Category
 
