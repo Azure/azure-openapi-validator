@@ -5,7 +5,7 @@
 import { ISwaggerInventory, parseJsonRef } from "@microsoft.azure/openapi-validator-core"
 import _ from "lodash"
 import { nodes } from "./jsonpath"
-import { isListOperation } from "./rules-helper"
+import { isListOperationPath } from "./rules-helper"
 import { SwaggerHelper } from "./swagger-helper"
 import { SwaggerWalker } from "./swagger-walker"
 import { Workspace } from "./swagger-workspace"
@@ -298,7 +298,7 @@ export class ArmHelper {
     const resWithPutOrPatch = includeGet
       ? localResourceModels.filter((re) =>
           re.operations.some(
-            (op) => (op.httpMethod === "get" && !isListOperation(op.apiPath)) || op.httpMethod === "put" || op.httpMethod == "patch",
+            (op) => (op.httpMethod === "get" && !isListOperationPath(op.apiPath)) || op.httpMethod === "put" || op.httpMethod == "patch",
           ),
         )
       : localResourceModels.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"))

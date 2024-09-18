@@ -40,6 +40,7 @@ import { provisioningStateMustBeReadOnly } from "./functions/provisioning-state-
 import putGetPatchSchema from "./functions/put-get-patch-schema"
 import { putRequestResponseScheme } from "./functions/put-request-response-scheme"
 import { PutResponseCodes } from "./functions/put-response-codes"
+import { queryParametersInCollectionGet } from "./functions/query-parameters-in-collection-get"
 import { requestBodyMustExistForPutPatch } from "./functions/request-body-must-exist-for-put-patch"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
@@ -449,6 +450,21 @@ const ruleset: any = {
       },
     },
 
+    // RPC Code: RPC-Get-V1-15
+    QueryParametersInCollectionGet: {
+      rpcGuidelineCode: "RPC-Get-V1-15",
+      description: "Collection Get's/List operations MUST not have query parameters other than api-version & OData filter.",
+      severity: "error",
+      message: "{{error}}",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: queryParametersInCollectionGet,
+      },
+    },
+
     ///
     /// ARM RPC rules for Patch patterns
     ///
@@ -608,7 +624,6 @@ const ruleset: any = {
       then: {
         function: pattern,
         functionOptions: {
-          // match: ".*/providers/[\\w\\.]+(?:/\\w+/(default|{\\w+}))*/\\w+$",
           match: ".*/providers/\\w+.\\w+(/\\w+/(default|{\\w+}))+$",
         },
       },

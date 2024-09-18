@@ -137,7 +137,7 @@ export function stringify(path: string[]) {
   return JSONPath.toPathString(pathWithRoot)
 }
 
-export function isListOperation(path: string) {
+export function isListOperationPath(path: string) {
   if (path.includes(".")) {
     // Get the portion of the api path to the right of the provider namespace by splitting the path by '.' and taking the last element
     const splitNamespace = path.split(".")
