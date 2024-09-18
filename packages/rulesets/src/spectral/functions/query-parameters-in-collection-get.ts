@@ -1,4 +1,4 @@
-import { isListOperation } from "../../native/utilities/rules-helper"
+import { isListOperationPath } from "../../native/utilities/rules-helper"
 
 export const queryParametersInCollectionGet = (pathItem: any, _opts: any, ctx: any) => {
   if (pathItem === null || typeof pathItem !== "object") {
@@ -15,7 +15,7 @@ export const queryParametersInCollectionGet = (pathItem: any, _opts: any, ctx: a
 
   for (const uri of uris) {
     //check if GET op is defined & the GET op is a collection get/list call
-    if (pathItem[uri][GET] && isListOperation(uri)) {
+    if (pathItem[uri][GET] && isListOperationPath(uri)) {
       const params = pathItem[uri][GET]["parameters"]
       const queryParams = params?.filter(
         (param: { in: string; name: string }) => param.in === "query" && param.name !== "api-version" && param.name !== "$filter",

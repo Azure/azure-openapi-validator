@@ -2667,7 +2667,7 @@ var Workspace;
 })(Workspace || (Workspace = {}));
 
 require("string.prototype.matchall");
-function isListOperation(path) {
+function isListOperationPath(path) {
     if (path.includes(".")) {
         const splitNamespace = path.split(".");
         if (path.includes("/")) {
@@ -2692,7 +2692,7 @@ const queryParametersInCollectionGet = (pathItem, _opts, ctx) => {
     const GET = "get";
     const errors = [];
     for (const uri of uris) {
-        if (pathItem[uri][GET] && isListOperation(uri)) {
+        if (pathItem[uri][GET] && isListOperationPath(uri)) {
             const params = pathItem[uri][GET]["parameters"];
             const queryParams = params === null || params === void 0 ? void 0 : params.filter((param) => param.in === "query" && param.name !== "api-version" && param.name !== "$filter");
             queryParams === null || queryParams === void 0 ? void 0 : queryParams.forEach((param) => {
@@ -3161,7 +3161,7 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
     }
     const path = paths.path || [];
     if (!isNull(path[1])) {
-        if (!isListOperation(path[1].toString())) {
+        if (!isListOperationPath(path[1].toString())) {
             return;
         }
     }
