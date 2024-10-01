@@ -11,7 +11,6 @@ import { DeleteResponseCodes } from "./functions/delete-response-codes"
 import { getCollectionOnlyHasValueAndNextLink } from "./functions/get-collection-only-has-value-and-next-link"
 import { getResponseCodes } from "./functions/get-response-codes"
 import hasApiVersionParameter from "./functions/has-api-version-parameter"
-import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
 import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
@@ -155,24 +154,6 @@ const ruleset: any = {
       given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
       then: {
         function: provisioningState,
-      },
-    },
-
-    // RPC Code: RPC-Async-V1-07
-    LroLocationHeader: {
-      rpcGuidelineCode: "RPC-Async-V1-07",
-      description: "Location header must be supported for all async operations that return 202.",
-      message: "A 202 response should include an Location response header.",
-      severity: "error",
-      disableForTypeSpecDataPlane: true,
-      disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-location-header' rule.",
-      formats: [oas2],
-      given: "$.paths[*][*].responses[?(@property == '202')]",
-      then: {
-        function: hasheader,
-        functionOptions: {
-          name: "Location",
-        },
       },
     },
 
