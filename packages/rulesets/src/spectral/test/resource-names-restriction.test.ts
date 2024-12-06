@@ -109,6 +109,78 @@ test("ResourceNameRestriction should find no errors", () => {
   })
 })
 
+test("ResourceNameRestriction should find no errors for enums", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/foo/{fooName}": {
+        parameters: [
+          {
+            name: "fooName",
+            in: "path",
+            required: true,
+            type: "string",
+            enum: ["Foo", "Bar"],
+            "x-ms-enum": {
+              name: "FooType",
+              modelAsString: true,
+              values: [
+                {
+                  name: "Foo",
+                  value: "Foo",
+                  description: "Foo",
+                },
+                {
+                  name: "Bar",
+                  value: "Bar",
+                  description: "Bar",
+                },
+              ],
+            },
+          },
+        ],
+        get: {
+          parameters: [],
+          responses: {},
+        },
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/My.NS/bar/{barName}": {
+        parameters: [
+          {
+            name: "fooName",
+            in: "path",
+            required: true,
+            type: "string",
+            enum: ["Foo", "Bar"],
+            "x-ms-enum": {
+              name: "FooType",
+              modelAsString: true,
+              values: [
+                {
+                  name: "Foo",
+                  value: "Foo",
+                  description: "Foo",
+                },
+                {
+                  name: "Bar",
+                  value: "Bar",
+                  description: "Bar",
+                },
+              ],
+            },
+          },
+        ],
+        get: {
+          responses: {},
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
 test("ResourceNameRestriction should find no errors for system-defined variables", () => {
   const oasDoc = {
     swagger: "2.0",
