@@ -14,8 +14,8 @@ const avoidMsdnReferences = (swaggerObj:any, _opts:any, paths:any) => {
   }
   const path = paths.path || [];
   return [{
-      message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
-      path,
+    message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
+    path,
   }];
 };
 
