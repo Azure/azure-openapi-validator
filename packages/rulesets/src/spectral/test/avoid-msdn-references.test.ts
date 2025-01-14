@@ -49,11 +49,11 @@ test('AvoidMsdnReferences should find no errors', () => {
     definitions:{
       AuthorizationServerCollection:{
         externalDocs: {
-          url: "https://docs.microsoft.com"
+          url: "https://learn.microsoft.com"
         },
         grantTypes:{
           externalDocs:{
-            url: "https://docs.microsoft.com"
+            url: "https://learn.microsoft.com"
           }
         }
       }
