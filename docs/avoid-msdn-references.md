@@ -14,11 +14,11 @@ For better generated code quality, remove all references to "msdn.microsoft.com"
 
 ## Description
 
-The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
+The documentation is being generated from the OpenAPI(swagger) and published at "learn.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" or "docs.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
 
 ## Why the rule is important
 
-Facilitate decoupling of "msdn.microsoft.com" from "docs.microsoft.com".
+Facilitate decoupling of "msdn.microsoft.com" and "docs.microsoft.com" from "learn.microsoft.com".
 
 ## How to fix the violation
 

@@ -129,7 +129,7 @@ Please refer to [avoid-empty-response-schema.md](./avoid-empty-response-schema.m
 
 ### AvoidMsdnReferences
 
-The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
+The documentation is being generated from the OpenAPI(swagger) and published at "learn.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" or "docs.microsoft.com" in the OpenAPI(swagger) and SDK documentations.
 
 Please refer to [avoid-msdn-references.md](./avoid-msdn-references.md) for details.
 
