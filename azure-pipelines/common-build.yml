@@ -1,6 +1,6 @@
 parameters:
 - name: 'NodeVersion'
-  default: '20.x'
+  default: '22.x'
   type: string
 
 steps:
