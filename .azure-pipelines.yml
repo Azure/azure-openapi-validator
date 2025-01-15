@@ -11,7 +11,7 @@ extends:
   parameters:
     stages:
       - stage: Build
-        displayName: Staging Release
+        displayName: Build and Test
 
         jobs:
           - job: 'Build'
