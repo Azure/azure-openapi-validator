@@ -1,6 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Thu, 01 Feb 2024 23:08:29 GMT and should not be manually modified.
+## 2.1.4
+Tue, 14 Feb 2025 19:10:00 GMT
+
+### Patches
+
+- [AvoidMsdnReferences] Disallow "docs.microsoft.com", recommend "learn.microsft.com"
 
 ## 1.3.4
 Thu, 01 Feb 2024 23:08:29 GMT
