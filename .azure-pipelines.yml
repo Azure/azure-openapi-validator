@@ -10,23 +10,24 @@ extends:
   template: /azure-pipelines/1es-redirect.yml
   parameters:
     stages:
-        - stage: Build
-          displayName: Staging Release
+      - stage: Build
+        displayName: Staging Release
 
-          jobs:
-            - job: 'Build'
-              pool:
-                name: 'azsdk-pool-mms-ubuntu-2204-general'
-                vmImage: 'ubuntu-22.04'
+        jobs:
+          - job: 'Build'
+            pool:
+              name: 'azsdk-pool-mms-ubuntu-2204-general'
+              image: ' azsdk-pool-mms-ubuntu-2204-1espt'
+              os: linux
 
-              steps:
-                - template: azure-pipelines/common-build.yml
+            steps:
+              - template: azure-pipelines/common-build.yml
 
-                - script: 'node common/scripts/install-run-rush.js lint'
-                  displayName: 'rush lint'
+              - script: 'node common/scripts/install-run-rush.js lint'
+                displayName: 'rush lint'
 
-                - script: 'node common/scripts/install-run-rush.js test'
-                  displayName: 'rush test'
+              - script: 'node common/scripts/install-run-rush.js test'
+                displayName: 'rush test'
 
-                - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
-                  displayName: 'rush regen-ruleindex'
+              - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
+                displayName: 'rush regen-ruleindex'
