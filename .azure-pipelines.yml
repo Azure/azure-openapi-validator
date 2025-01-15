@@ -21,7 +21,7 @@ extends:
               os: linux
 
             steps:
-              - template: azure-pipelines/common-build.yml
+              - template: /azure-pipelines/common-build.yml
 
               - script: 'node common/scripts/install-run-rush.js lint'
                 displayName: 'rush lint'
