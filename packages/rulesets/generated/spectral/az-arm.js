@@ -28,16 +28,16 @@ const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
-    if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
+    if (typeof swaggerObj === "string" && !(swaggerObj.includes("https://msdn.microsoft.com") || swaggerObj.includes("https://docs.microsoft.com")))
         return [];
     if (typeof swaggerObj === "object") {
         const docUrl = swaggerObj.url;
-        if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
+        if (docUrl === undefined || !(docUrl.startsWith("https://msdn.microsoft.com") || docUrl.startsWith("https://docs.microsoft.com")))
             return [];
     }
     const path = paths.path || [];
     return [{
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
             path,
         }];
 };
@@ -265,7 +265,7 @@ function getRequiredProperties(schema) {
         });
     }
     if (schema.required) {
-        requires = [...schema.required, requires];
+        requires = [...schema.required, ...requires];
     }
     return requires;
 }
@@ -2038,6 +2038,9 @@ const parametersInPost = (postParameters, _opts, ctx) => {
 
 const patchBodyParameters = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
+        return [];
+    }
+    if (parameters.schema.description && parameters.schema.description.includes("Managed service identity")) {
         return [];
     }
     const path = paths.path || [];
