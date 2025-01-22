@@ -28,16 +28,16 @@ const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
-    if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
+    if (typeof swaggerObj === "string" && !(swaggerObj.includes("https://msdn.microsoft.com") || swaggerObj.includes("https://docs.microsoft.com")))
         return [];
     if (typeof swaggerObj === "object") {
         const docUrl = swaggerObj.url;
-        if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
+        if (docUrl === undefined || !(docUrl.startsWith("https://msdn.microsoft.com") || docUrl.startsWith("https://docs.microsoft.com")))
             return [];
     }
     const path = paths.path || [];
     return [{
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
             path,
         }];
 };
@@ -1277,8 +1277,8 @@ const ruleset$1 = {
             },
         },
         AvoidMsdnReferences: {
-            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "learn.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" or "docs.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
             severity: "warn",
             resolved: false,
             formats: [oas2],

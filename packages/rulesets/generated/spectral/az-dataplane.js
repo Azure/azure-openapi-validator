@@ -1061,8 +1061,8 @@ const ruleset$1 = {
             },
         },
         AvoidMsdnReferences: {
-            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "learn.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" or "docs.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
             severity: "warn",
             resolved: false,
             formats: [oas2],
