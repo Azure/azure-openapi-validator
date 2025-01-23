@@ -7,18 +7,18 @@ const patchBodyParameters = (parameters: any, _opts: any, paths: any): IFunction
     return []
   }
 
-  // skip validation for MSI(managed service identity),
-  // as it is being referenced from common-types
-  if (parameters.schema.description && parameters.schema.description.includes("Managed service identity")) {
-    return []
-  }
-
   const path = paths.path || []
 
   const properties: object = getProperties(parameters.schema)
   const requiredProperties = getRequiredProperties(parameters.schema)
   const errors = []
   for (const prop of Object.keys(properties)) {
+    // skip validation for identity property 
+    // as it refers MSI(managed service identity) from common-types
+    if (prop.toLowerCase() === "identity") {
+      continue
+    }
+
     if (properties[prop].default) {
       errors.push({
         message: `Properties of a PATCH request body must not have default value, property:${prop}.`,

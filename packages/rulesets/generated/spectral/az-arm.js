@@ -265,7 +265,7 @@ function getRequiredProperties(schema) {
         });
     }
     if (schema.required) {
-        requires = [...schema.required, ...requires];
+        requires = [...schema.required, requires];
     }
     return requires;
 }
@@ -2040,14 +2040,14 @@ const patchBodyParameters = (parameters, _opts, paths) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
         return [];
     }
-    if (parameters.schema.description && parameters.schema.description.includes("Managed service identity")) {
-        return [];
-    }
     const path = paths.path || [];
     const properties = getProperties(parameters.schema);
     const requiredProperties = getRequiredProperties(parameters.schema);
     const errors = [];
     for (const prop of Object.keys(properties)) {
+        if (prop.toLowerCase() === "identity") {
+            continue;
+        }
         if (properties[prop].default) {
             errors.push({
                 message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
