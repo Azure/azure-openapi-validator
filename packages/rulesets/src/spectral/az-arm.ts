@@ -56,7 +56,6 @@ import { validatePatchBodyParamProperties } from "./functions/validate-patch-bod
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
-import { resolve } from "path"
 import suggestScopeParameter from "./functions/suggest-scope-parameter"
 
 const ruleset: any = {
