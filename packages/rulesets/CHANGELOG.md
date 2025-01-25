@@ -1,14 +1,22 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.1.6
+
+### Patches
+
+- [AllTrackedResourcesMustHaveDelete][TrackedResourcePatchOperation] Skip the api paths if it has PrivateEndpointConnectionProxy
+
+### Patches
+
 ## 2.1.5
-Tue, 14 Feb 2025 19:10:00 GMT
+Tue, 14 Jan 2025 19:10:00 GMT
 
 ### Patches
 
 - [AvoidMsdnReferences] Fix addition of "docs.microsoft.com" to disallow list
 
 ## 2.1.4
-Tue, 14 Feb 2025 19:10:00 GMT
+Tue, 14 Jan 2025 19:10:00 GMT
 
 ### Patches
 
