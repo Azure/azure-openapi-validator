@@ -56,6 +56,8 @@ import { validatePatchBodyParamProperties } from "./functions/validate-patch-bod
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
+import { resolve } from "path"
+import suggestScopeParameter from "./functions/suggest-scope-parameter"
 
 const ruleset: any = {
   extends: [common],
@@ -316,6 +318,20 @@ const ruleset: any = {
       ],
       then: {
         function: propertiesTypeObjectNoDefinition,
+      },
+    },
+
+    SuggestScopeParameter: {
+      description:
+        "Duplicate operations that vary only by scope can be defined with a single operation that has a scope parameter. This reduces the number of operations in the spec.",
+      severity: "warn",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: ["$.paths", "$.x-ms-paths"],
+      then: {
+        function: suggestScopeParameter,
       },
     },
 
