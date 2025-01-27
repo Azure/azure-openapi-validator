@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Update PatchBodyParametersSchema to skip validation for MSI(managed service identity) as it is being referenced from common-types and has the required field & is being referenced in patch body parameter schema by several RP's who are having to get an exception.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
