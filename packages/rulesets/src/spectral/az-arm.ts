@@ -46,6 +46,7 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import suggestScopeParameter from "./functions/suggest-scope-parameter"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import { tagsAreNotAllowedForProxyResources } from "./functions/tags-are-not-allowed-for-proxy-resources"
 import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
@@ -56,7 +57,6 @@ import { validatePatchBodyParamProperties } from "./functions/validate-patch-bod
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
-import suggestScopeParameter from "./functions/suggest-scope-parameter"
 
 const ruleset: any = {
   extends: [common],
