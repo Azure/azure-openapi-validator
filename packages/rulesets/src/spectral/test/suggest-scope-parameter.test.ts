@@ -10,7 +10,7 @@ beforeAll(async () => {
   return linter
 })
 
-test("SuggestScopeParameter should find errors", async () => {
+test("SuggestScopeParameter should find errors for subscription and resource group scopes", async () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -40,18 +40,16 @@ test("SuggestScopeParameter should find errors", async () => {
   }
 
   return await linter.run(oasDoc).then((results) => {
-    const paths = Object.keys(oasDoc.paths)
     expect(results.length).toBe(2)
 
-    // path 0
+    // all errors should have the same message
+    expect(new Set(results.map((r) => r.message)).size).toBe(1)
+
+    // each path should have an error
     expect(results[0].path.join(".")).toBe(
       "paths./subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Bakery/breads",
     )
-    expect(results[0].message).toContain(`Path "${paths[1]}" differs from path "${paths[0]}" only in scope`)
-
-    // path 1
     expect(results[1].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.Bakery/breads")
-    expect(results[1].message).toContain(`Path "${paths[0]}" differs from path "${paths[1]}" only in scope`)
   })
 })
 
@@ -189,189 +187,111 @@ test("SuggestScopeParameter should find errors for billing scope", () => {
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(5)
-    // explicitly not using a loop here to keep the test logic basic
-    //const paths = Object.keys(oasDoc.paths)
-    // path 1
-    // expect(results[0].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    // expect(results[0].message).toContain(`"${paths[1]}" with explicitly defined scope`)
-    // expect(results[0].message).toContain(`"${paths[0]}" that has the scope parameter`)
-    // // path 2
-    // expect(results[1].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    // expect(results[1].message).toContain(`"${paths[2]}" with explicitly defined scope`)
-    // expect(results[1].message).toContain(`"${paths[0]}" that has the scope parameter`)
-    // // path 3
-    // expect(results[2].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    // expect(results[2].message).toContain(`"${paths[3]}" with explicitly defined scope`)
-    // expect(results[2].message).toContain(`"${paths[0]}" that has the scope parameter`)
-    // // path 4
-    // expect(results[3].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    // expect(results[3].message).toContain(`"${paths[4]}" with explicitly defined scope`)
-    // expect(results[3].message).toContain(`"${paths[0]}" that has the scope parameter`)
-    // // path 5
-    // expect(results[4].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-    // expect(results[4].message).toContain(`"${paths[5]}" with explicitly defined scope`)
-    // expect(results[4].message).toContain(`"${paths[0]}" that has the scope parameter`)
+
+    // all errors should have the same message
+    expect(new Set(results.map((r) => r.message)).size).toBe(1)
+
+    // each path besides the one with the scope parameter should have an error
+    expect(results[0].path.join(".")).toBe(
+      "paths.providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Bakery/breads",
+    )
+    expect(results[1].path.join(".")).toBe(
+      "paths.providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Bakery/breads",
+    )
+    expect(results[2].path.join(".")).toBe(
+      "paths.providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Bakery/breads",
+    )
+    expect(results[3].path.join(".")).toBe(
+      "paths.providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Bakery/breads",
+    )
+    expect(results[4].path.join(".")).toBe(
+      "paths.providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}/providers/Microsoft.Bakery/breads",
+    )
   })
 })
 
-// test("NoDuplicatePathsForScopeParameter should not find errors for billing scope", () => {
-//   const oasDoc = {
-//     swagger: "2.0",
-//     paths: {
-//       "providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/BillingAccountIdParameter" }],
-//         },
-//       },
-//       "providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/BillingAccountIdParameter" }, { $ref: "#/parameters/DepartmentIdParameter" }],
-//         },
-//       },
-//       "providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Bakery/breads":
-//         {
-//           get: {
-//             parameters: [{ $ref: "#/parameters/BillingAccountIdParameter" }, { $ref: "#/parameters/EnrollmentAccountIdParameter" }],
-//           },
-//         },
-//       "providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Bakery/breads":
-//         {
-//           get: {
-//             parameters: [{ $ref: "#/parameters/BillingAccountIdParameter" }, { $ref: "#/parameters/BillingProfileIdParameter" }],
-//           },
-//         },
-//       "providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}/providers/Microsoft.Bakery/breads":
-//         {
-//           get: {
-//             parameters: [{ $ref: "#/parameters/BillingAccountIdParameter" }, { $ref: "#/parameters/InvoiceSectionIdParameter" }],
-//           },
-//         },
-//     },
-//     parameters: {
-//       BillingAccountIdParameter: {
-//         name: "billAcc",
-//         in: "path",
-//         required: true,
-//       },
-//       DepartmentIdParameter: {
-//         name: "test",
-//         in: "path",
-//         required: true,
-//       },
-//       EnrollmentAccountIdParameter: {
-//         name: "enrollmentAcc",
-//         in: "path",
-//         required: true,
-//       },
-//       BillingProfileIdParameter: {
-//         name: "billProf",
-//         in: "path",
-//         required: true,
-//       },
-//       InvoiceSectionIdParameter: {
-//         name: "invoiceSection",
-//         in: "path",
-//         required: true,
-//       },
-//     },
-//   }
-//   return linter.run(oasDoc).then((results) => {
-//     expect(results.length).toBe(0)
-//   })
-// })
+test("SuggestScopeParameter should not find errors for list and point get paths", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/{scope}/providers/Microsoft.Bakery/breads": {
+        get: {
+          parameters: [{ $ref: "#/parameters/ScopeParameter" }],
+        },
+      },
+      "/{scope}/providers/Microsoft.Bakery/breads/{breadName}": {
+        get: {
+          parameters: [{ $ref: "#/parameters/ScopeParameter" }],
+        },
+      },
+    },
+    parameters: {
+      ScopeParameter: {
+        name: "scope",
+        in: "path",
+        required: true,
+      },
+    },
+  }
 
-// test("NoDuplicatePathsForScopeParameter should find errors for other scopes", () => {
-//   const oasDoc = {
-//     swagger: "2.0",
-//     paths: {
-//       "/{scope}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/ScopeParameter" }],
-//         },
-//       },
-//       "providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/ManagementGroupIdParameter" }],
-//         },
-//       },
-//       "providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/ExternalBillingAccountNameParameter" }],
-//         },
-//       },
-//       "providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/ExternalSubscriptionNameParameter" }],
-//         },
-//       },
-//     },
-//     parameters: {
-//       ScopeParameter: {
-//         name: "scope",
-//         in: "path",
-//         required: true,
-//       },
-//       ManagementGroupIdParameter: {
-//         name: "billAcc",
-//         in: "path",
-//         required: true,
-//       },
-//       ExternalBillingAccountNameParameter: {
-//         name: "test",
-//         in: "path",
-//         required: true,
-//       },
-//       ExternalSubscriptionNameParameter: {
-//         name: "enrollmentAcc",
-//         in: "path",
-//         required: true,
-//       },
-//     },
-//   }
-//   return linter.run(oasDoc).then((results) => {
-//     expect(results.length).toBe(3)
-//     // explicitly not using a loop here to keep the test logic basic
-//     const paths = Object.keys(oasDoc.paths)
-//     // path 1
-//     expect(results[0].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-//     expect(results[0].message).toContain(`"${paths[1]}" with explicitly defined scope`)
-//     expect(results[0].message).toContain(`"${paths[0]}" that has the scope parameter`)
-//     // path 2
-//     expect(results[1].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-//     expect(results[1].message).toContain(`"${paths[2]}" with explicitly defined scope`)
-//     expect(results[1].message).toContain(`"${paths[0]}" that has the scope parameter`)
-//     // path 3
-//     expect(results[2].path.join(".")).toBe("paths./{scope}/providers/Microsoft.Bakery/breads")
-//     expect(results[2].message).toContain(`"${paths[3]}" with explicitly defined scope`)
-//     expect(results[2].message).toContain(`"${paths[0]}" that has the scope parameter`)
-//   })
-// })
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
 
-// test("NoDuplicatePathsForScopeParameter should not find errors for list and point get paths", () => {
-//   const oasDoc = {
-//     swagger: "2.0",
-//     paths: {
-//       "/{scope}/providers/Microsoft.Bakery/breads": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/ScopeParameter" }],
-//         },
-//       },
-//       "/{scope}/providers/Microsoft.Bakery/breads/{breadName}": {
-//         get: {
-//           parameters: [{ $ref: "#/parameters/ScopeParameter" }],
-//         },
-//       },
-//     },
-//     parameters: {
-//       ScopeParameter: {
-//         name: "scope",
-//         in: "path",
-//         required: true,
-//       },
-//     },
-//   }
+test("SuggestScopeParameter should find errors for tenant level scope", async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/providers/Microsoft.Bakery/breads": {
+        get: {
+          parameters: [
+            {
+              name: "body_param",
+              in: "body",
+              schema: {
+                properties: { prop: { type: "string" } },
+              },
+            },
+          ],
+        },
+      },
+      "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Bakery/breads": {
+        get: {
+          parameters: [{ $ref: "#/parameters/SubscriptionIdParameter" }, { $ref: "#/parameters/ResourceGroupParameter" }],
+        },
+      },
+      "/subscriptions/{subscriptionId}/providers/Microsoft.Bakery/breads": {
+        get: {
+          parameters: [{ $ref: "#/parameters/SubscriptionIdParameter" }],
+        },
+      },
+    },
+    parameters: {
+      SubscriptionIdParameter: {
+        name: "subscriptionId",
+        in: "path",
+        required: true,
+      },
+      ResourceGroupParameter: {
+        name: "resourceGroupName",
+        in: "path",
+        required: true,
+      },
+    },
+  }
 
-//   return linter.run(oasDoc).then((results) => {
-//     expect(results.length).toBe(0)
-//   })
-// })
+  return await linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(3)
+
+    // all errors should have the same message
+    expect(new Set(results.map((r) => r.message)).size).toBe(1)
+
+    // each path should have an error
+    expect(results[0].path.join(".")).toBe("paths./providers/Microsoft.Bakery/breads")
+    expect(results[1].path.join(".")).toBe(
+      "paths./subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Bakery/breads",
+    )
+    expect(results[2].path.join(".")).toBe("paths./subscriptions/{subscriptionId}/providers/Microsoft.Bakery/breads")
+  })
+})
