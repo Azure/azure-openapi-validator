@@ -5,7 +5,6 @@
  * by introducing a scope parameter. It returns suggestions for paths that differ only in scope.
  */
 
-// TODO: this can likely be combined with no-duplicate-paths-for-scope-parameter
 const suggestScopeParameter = (path: any, _opts: any, ctx: any) => {
   const swagger = ctx?.documentInventory?.resolved
 
