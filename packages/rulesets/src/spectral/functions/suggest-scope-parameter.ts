@@ -6,6 +6,8 @@
  */
 import _ from "lodash"
 
+// TODO: this can likely be combined with no-duplicate-paths-for-scope-parameter
+// TODO: only have one error per potential scope parameter, not one per path
 const suggestScopeParameter = (path: any, _opts: any, ctx: any) => {
   const swagger = ctx?.documentInventory?.resolved
 
@@ -14,9 +16,8 @@ const suggestScopeParameter = (path: any, _opts: any, ctx: any) => {
   }
 
   // Find all paths that differ only in scope
-  // TODO: this can also probably check paths that start with scope
   const matchingPaths = Object.keys(swagger.paths).filter(
-    (p: string) => !p.startsWith("{scope}") && p !== path && p.endsWith(path.substring(path.indexOf("/providers"))),
+    (p: string) => !p.startsWith("{scope}") && p !== path && p.endsWith(path.substring(path.lastIndexOf("/providers"))),
   )
 
   return matchingPaths.map((match: string) => {
