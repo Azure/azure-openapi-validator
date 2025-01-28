@@ -328,8 +328,9 @@ const ruleset: any = {
       message: "{{error}}",
       resolved: true,
       formats: [oas2],
-      given: "$[paths,'x-ms-paths'].*",
+      given: "$.paths",
       then: {
+        field: "@key",
         function: suggestScopeParameter,
       },
     },
