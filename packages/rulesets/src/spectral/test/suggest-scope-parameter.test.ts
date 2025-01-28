@@ -3,10 +3,8 @@ import linterForRule from "./utils"
 
 let linter: Spectral
 
-//beforeAll(() => linterForRule("SuggestScopeParameter"))
-
 beforeAll(async () => {
-  linter = await linterForRule("SuggestScopeParameter")
+  linter = linterForRule("SuggestScopeParameter")
   return linter
 })
 
@@ -39,7 +37,7 @@ test("SuggestScopeParameter should find errors for subscription and resource gro
     },
   }
 
-  return await linter.run(oasDoc).then((results) => {
+  return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(2)
 
     // all errors should have the same message
@@ -281,7 +279,7 @@ test("SuggestScopeParameter should find errors for tenant level scope", async ()
     },
   }
 
-  return await linter.run(oasDoc).then((results) => {
+  return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(3)
 
     // all errors should have the same message
