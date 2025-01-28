@@ -600,7 +600,7 @@ While running your test locally, if you run into an error with text:
 > Error running Nimma
 
 Try wrapping the `linter.run()` call in a try/catch block. This might help you determine where the error is coming from.
-Remember to remove the try/catch block afterwards as it will interfere with test logic. E.g.,
+Remember to remove the try/catch block afterwards as it will interfere with test logic. See the code example below:
 
 ```typescript
 let result
@@ -616,6 +616,8 @@ try {
 }
 return result
 ```
+
+This is an error from Spectral, which uses Nimma. See more [here](https://github.com/Azure/azure-sdk-tools/issues/6856).
 
 # How to write a new validation rule using typescript
 
