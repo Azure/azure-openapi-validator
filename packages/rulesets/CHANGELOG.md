@@ -5,6 +5,7 @@
 ### Patches
 
 - [AllTrackedResourcesMustHaveDelete][TrackedResourcePatchOperation] Skip the api paths if it has PrivateEndpointConnectionProxy
+- [SuggestScopeParameter] Added this rule to suggest using the scope parameter if paths can be combined
 
 ### Patches
 
