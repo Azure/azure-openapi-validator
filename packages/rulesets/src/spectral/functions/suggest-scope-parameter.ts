@@ -11,38 +11,31 @@ const suggestScopeParameter = (paths: any, _opts: any, ctx: any) => {
     return []
   }
 
-  const entries = Object.entries(paths)
-  if (
-    !Array.isArray(entries) ||
-    entries.length === 0 ||
-    !entries.every((p) => Array.isArray(p)) ||
-    !entries.every((p) => p.length === 2) ||
-    !entries.every((p) => typeof p[0] === "string") ||
-    !entries.every((p) => typeof p[1] === "object")
-  ) {
+  const keys = Object.keys(paths)
+  if (!Array.isArray(keys) || keys.length === 0 || !keys.every((p) => typeof p === "string")) {
     return []
   }
 
   // Find paths that do not start with the scope parameter
-  const scopedPaths = entries.filter((p: Array<any>) => !p[0].startsWith("{scope}"))
+  const scopedPaths = keys.filter((p: string) => !p.startsWith("{scope}"))
 
   const errors = []
 
   for (const scopedPath of scopedPaths) {
     // Find other paths that differ only in scope
     const otherPaths = scopedPaths.filter(
-      (p: Array<any>) =>
-        p[0] !== scopedPath[0] &&
+      (p: string) =>
+        p !== scopedPath &&
         // Paths have the same "/providers/..." suffix
-        p[0].endsWith(scopedPath[0].substring(scopedPath[0].indexOf("/providers"))),
+        p.endsWith(scopedPath[0].substring(scopedPath.indexOf("/providers"))),
     )
 
     if (otherPaths.length > 0) {
       errors.push(
         otherPaths.map((p) => {
           return {
-            message: `Path "${p}" differs from path "${scopedPath}" only in scope. These paths can be combined by defining a scope parameter.`,
-            path: ctx.path,
+            message: "placeholder error message", //`Path "${p}" differs from path "${scopedPath}" only in scope. These paths can be combined by defining a scope parameter.`,
+            path: "placeholder path", //.concat(p),
           }
         }),
       )
