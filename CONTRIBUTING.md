@@ -604,18 +604,17 @@ Remember to remove the try/catch block afterwards as it will interfere with test
 
 ```typescript
 let result
-
-  try {
-    result = await linter.run(oasDoc).then((results) => {
-      const paths = Object.keys(oasDoc.paths)
-      expect(results.length).toBe(2)
-    })
-  } catch (error) {
-    if (error && error.errors && Array.isArray(error.errors)) {
-      throw new Error(`Errors found. ${error.errors}`)
-    }
+try {
+  result = await linter.run(oasDoc).then((results) => {
+    const paths = Object.keys(oasDoc.paths)
+    expect(results.length).toBe(2)
+  })
+} catch (error) {
+  if (error && error.errors && Array.isArray(error.errors)) {
+    throw new Error(`Errors found. ${error.errors}`)
   }
-  return result
+}
+return result
 ```
 
 # How to write a new validation rule using typescript
