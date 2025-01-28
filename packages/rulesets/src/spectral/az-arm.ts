@@ -46,6 +46,7 @@ import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
 import { securityDefinitionsStructure } from "./functions/security-definitions-structure"
 import skuValidation from "./functions/sku-validation"
+import suggestScopeParameter from "./functions/suggest-scope-parameter"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import { tagsAreNotAllowedForProxyResources } from "./functions/tags-are-not-allowed-for-proxy-resources"
 import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
@@ -316,6 +317,21 @@ const ruleset: any = {
       ],
       then: {
         function: propertiesTypeObjectNoDefinition,
+      },
+    },
+
+    SuggestScopeParameter: {
+      description:
+        "Duplicate operations that vary only by scope can be defined with a single operation that has a scope parameter. This reduces the number of operations in the spec.",
+      severity: "warn",
+      stagingOnly: true,
+      message: "{{error}}",
+      resolved: true,
+      formats: [oas2],
+      given: "$.paths",
+      then: {
+        field: "@key",
+        function: suggestScopeParameter,
       },
     },
 
