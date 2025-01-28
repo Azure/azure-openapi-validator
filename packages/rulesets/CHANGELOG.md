@@ -5,8 +5,6 @@
 ### Patches
 
 - [AllTrackedResourcesMustHaveDelete][TrackedResourcePatchOperation] Skip the api paths if it has PrivateEndpointConnectionProxy
-- Add documentation in CONTRIBUTING.md for running single tests and debugging tests for linter rules
-- Add support for forward slashes in Jest `testMatch` regex
 
 ### Patches
 
