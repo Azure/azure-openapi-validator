@@ -1,6 +1,6 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
-//import { identity } from "lodash"
+import { identity } from "lodash"
 
 let linter: Spectral
 
