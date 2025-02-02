@@ -2,7 +2,7 @@ import type { IFunctionResult } from "@stoplight/spectral-core"
 import { getProperties, getRequiredProperties } from "./utils"
 
 //This rule appears if in the patch body parameters have properties which is marked as required or x-ms-mutability:["create"] or have default
-const patchBodyParameters = (parameters: any, _opts: any, paths: any): IFunctionResult[] => {
+const patchBodyParameters = (parameters: any, _opts: any, paths: any, isTopLevel: boolean = true): IFunctionResult[] => {
   if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
     return []
   }
@@ -13,9 +13,9 @@ const patchBodyParameters = (parameters: any, _opts: any, paths: any): IFunction
   const requiredProperties = getRequiredProperties(parameters.schema)
   const errors = []
   for (const prop of Object.keys(properties)) {
-    // skip validation for identity property 
+    // skip validation for identity property only at the top level
     // as it refers MSI(managed service identity) from common-types
-    if (prop.toLowerCase() === "identity") {
+    if (isTopLevel && prop.toLowerCase() === "identity") {
       continue
     }
 
@@ -50,6 +50,7 @@ const patchBodyParameters = (parameters: any, _opts: any, paths: any): IFunction
           },
           _opts,
           { path: [...path, "schema", "properties", prop] },
+          false,
         ),
       )
     }

@@ -1,5 +1,6 @@
 import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
+//import { identity } from "lodash"
 
 let linter: Spectral
 
@@ -108,7 +109,7 @@ test("PatchBodyParametersSchema should find errors for required/create value", (
   })
 })
 
-test("PatchBodyParametersSchema should skip errors for MSI though has required value", () => {
+test("PatchBodyParametersSchema should skip errors for MSI though has required value only at top level", () => {
   const oasDoc = {
     swagger: "2.0",
     paths: {
@@ -183,6 +184,106 @@ test("PatchBodyParametersSchema should skip errors for MSI though has required v
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(0)
+  })
+})
+
+test("PatchBodyParametersSchema should not skip validation for non top level identity property", () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        patch: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_patch",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/OpenShiftClusterUpdate",
+              },
+            },
+          ],
+          responses: {},
+        },
+      },
+    },
+    definitions: {
+      OpenShiftClusterUpdate: {
+        description: "OpenShiftCluster represents an Azure Red Hat OpenShift cluster.",
+        type: "object",
+        properties: {
+          identity: {
+            $ref: "#/definitions/ManagedServiceIdentity",
+            description: "Identity stores information about the cluster MSI(s) in a workload identity cluster.",
+          },
+          testIdentity: {
+            $ref: "#/definitions/foo",
+          },
+        },
+      },
+      ManagedServiceIdentity: {
+        description: "Managed service identity (system assigned and/or user assigned identities)",
+        type: "object",
+        properties: {
+          principalId: {
+            readOnly: true,
+            format: "uuid",
+            type: "string",
+            description:
+              "The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+          },
+          tenantId: {
+            readOnly: true,
+            format: "uuid",
+            type: "string",
+            description:
+              "The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+          },
+          type: {
+            description: "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+            type: "string",
+          },
+          userAssignedIdentities: {
+            description:
+              "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            type: "object",
+          },
+        },
+        required: ["type"],
+      },
+      TestManagedServiceIdentity: {
+        type: "object",
+        properties: {
+          type: {
+            description: "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+            type: "string",
+          },
+          userAssignedIdentities: {
+            description:
+              "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            type: "object",
+          },
+        },
+        required: ["type"],
+      },
+      foo: {
+        description: "OpenShiftCluster represents an Azure Red Hat OpenShift cluster.",
+        type: "object",
+        properties: {
+          identity: {
+            $ref: "#/definitions/TestManagedServiceIdentity",
+            description: "Identity stores information about the cluster MSI(s) in a workload identity cluster.",
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.patch.parameters.0.schema.properties.testIdentity")
+    expect(results[0].message).toContain("Properties of a PATCH request body must not be required, property:type.")
   })
 })
 
