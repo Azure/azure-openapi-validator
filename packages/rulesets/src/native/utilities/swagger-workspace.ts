@@ -93,8 +93,7 @@ export namespace Workspace {
     }
     if (model.properties) {
       for (const propertyName of Object.keys(model.properties)) {
-        const propertySchema = createEnhancedSchema(model.properties[propertyName], source.file)
-        result[propertyName] = propertySchema
+        result[propertyName] = createEnhancedSchema(model.properties[propertyName], source.file)
       }
     }
     if (model.allOf) {
