@@ -293,7 +293,8 @@ export class ArmHelper {
     }
     const localResourceModels = this.resources.filter((re) => re.specPath === this.specPath)
     const resWithXmsRes = localResourceModels.filter(
-      (re) => this.XmsResources.has(re.modelName) && !this.BaseResourceModelNames.includes(re.modelName.toLowerCase()),
+      (re) => this.XmsResources.has(re.modelName) && 
+      !this.BaseResourceModelNames.includes(re.modelName.toLowerCase()),
     )
     const resWithPutOrPatch = includeGet
       ? localResourceModels.filter((re) =>

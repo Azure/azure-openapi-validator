@@ -2614,10 +2614,17 @@ var Workspace;
             return [];
         }
         let result = {};
-        const model = source.value;
+        let model = source.value;
+        if (model.properties && model.properties.value && model.properties.value.items && model.properties.value.items.$ref) {
+            const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory);
+            if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
+                model = referenceSchema.value;
+            }
+        }
         if (model.properties) {
             for (const propertyName of Object.keys(model.properties)) {
-                result[propertyName] = createEnhancedSchema(model.properties[propertyName], source.file);
+                const propertySchema = createEnhancedSchema(model.properties[propertyName], source.file);
+                result[propertyName] = propertySchema;
             }
         }
         if (model.allOf) {

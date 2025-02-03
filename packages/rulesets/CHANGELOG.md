@@ -5,6 +5,7 @@
 ### Patches
 
 - [AllTrackedResourcesMustHaveDelete][TrackedResourcePatchOperation] Skip the api paths if it has PrivateEndpointConnectionProxy
+- [RequiredPropertiesMissingInResourceModel] Updated the rule to also account for both GET and LIST properties, and also modified the `getProperties` helper method to include LIST.
 
 ### Patches
 

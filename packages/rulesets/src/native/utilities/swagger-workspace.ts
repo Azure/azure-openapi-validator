@@ -72,8 +72,7 @@ export namespace Workspace {
     }
     return undefined
   }
-
-    export function getProperties(schema: EnhancedSchema, inventory: ISwaggerInventory) {
+  export function getProperties(schema: EnhancedSchema, inventory: ISwaggerInventory) {
     let source = schema
     const visited = new Set<any>()
     while (source.value && source.value.$ref && !visited.has(source.value)) {
@@ -83,18 +82,26 @@ export namespace Workspace {
     if (!source || !source.value) {
       return []
     }
-    let result:{[key:string]:EnhancedSchema} = {}
-    const model = source.value
+    let result: { [key: string]: EnhancedSchema } = {}
+    let model = source.value
+    // for list call, the properties are in the value.items.$ref
+    if (model.properties && model.properties.value && model.properties.value.items && model.properties.value.items.$ref) {
+      const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory)
+      if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
+        model = referenceSchema.value
+      }
+    }
     if (model.properties) {
-      for (const propertyName of Object.keys(model.properties)){
-        result[propertyName] = createEnhancedSchema(model.properties[propertyName], source.file)
+      for (const propertyName of Object.keys(model.properties)) {
+        const propertySchema = createEnhancedSchema(model.properties[propertyName], source.file)
+        result[propertyName] = propertySchema
       }
     }
     if (model.allOf) {
       for (const element of model.allOf) {
         const properties: any = getProperties({ file: source.file, value: element }, inventory)
         if (properties) {
-          result = {...properties,...result}
+          result = { ...properties, ...result }
         }
       }
     }
