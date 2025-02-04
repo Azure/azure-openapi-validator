@@ -149,7 +149,7 @@ export function* operationsAPIImplementation(openapiSection: any, options: {}, c
 
 export function* resourcesHaveRequiredProperties(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allResources = armHelper.getAllResources(true)
+  const allResources = armHelper.getAllResources(true, false, true)
   for (const re of allResources) {
     const requiredProperties = ["name", "type", "id"]
     const properties = armHelper.getResourceProperties(re.modelName)

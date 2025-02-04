@@ -94,7 +94,7 @@
       }
     },
     "/providers/Microsoft.Cache/locations/{location}/publishers": {
-      "put": {
+      "get": {
         "tags": [
           "extensions"
         ],
@@ -119,7 +119,7 @@
       }
     },
     "/providers/Microsoft.Cache/locations/{location}/Connectors": {
-      "put": {
+      "get": {
         "tags": [
           "extensions"
         ],
