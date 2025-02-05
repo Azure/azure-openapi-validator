@@ -2607,6 +2607,7 @@ var Workspace;
     }
     Workspace.getProperty = getProperty;
     function getProperties(schema, inventory) {
+        var _a, _b, _c;
         let source = schema;
         const visited = new Set();
         while (source.value && source.value.$ref && !visited.has(source.value)) {
@@ -2617,7 +2618,13 @@ var Workspace;
             return [];
         }
         let result = {};
-        const model = source.value;
+        let model = source.value;
+        if ((_c = (_b = (_a = model.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.items) === null || _c === void 0 ? void 0 : _c.$ref) {
+            const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory);
+            if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
+                model = referenceSchema.value;
+            }
+        }
         if (model.properties) {
             for (const propertyName of Object.keys(model.properties)) {
                 result[propertyName] = createEnhancedSchema(model.properties[propertyName], source.file);

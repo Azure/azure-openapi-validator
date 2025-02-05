@@ -280,7 +280,7 @@ export class ArmHelper {
     )
   }
 
-  public getAllResources(includeGet: boolean = false, useArmResources: boolean = true) {
+  public getAllResources(includeGet: boolean = false, useArmResources: boolean = true, includeListOperationPath: boolean = false) {
     if (useArmResources && this.armResources) {
       return this.armResources
     }
@@ -298,7 +298,10 @@ export class ArmHelper {
     const resWithPutOrPatch = includeGet
       ? localResourceModels.filter((re) =>
           re.operations.some(
-            (op) => (op.httpMethod === "get" && !isListOperationPath(op.apiPath)) || op.httpMethod === "put" || op.httpMethod == "patch",
+            (op) =>
+              (op.httpMethod === "get" && (includeListOperationPath ? true : !isListOperationPath(op.apiPath))) ||
+              op.httpMethod === "put" ||
+              op.httpMethod === "patch",
           ),
         )
       : localResourceModels.filter((re) => re.operations.some((op) => op.httpMethod === "put" || op.httpMethod == "patch"))

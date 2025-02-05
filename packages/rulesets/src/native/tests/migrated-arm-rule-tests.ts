@@ -32,7 +32,7 @@ describe("IndividualAzureTests", () => {
     const fileNames = ["ext-resource-validation.json"]
     const ruleName = "RequiredPropertiesMissingInResourceModel"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
-    assertValidationRuleCount(messages, ruleName, 1)
+    assertValidationRuleCount(messages, ruleName, 3)
   })
 
   test("[positive] required properties in resource model with reference", async () => {
