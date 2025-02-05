@@ -2036,7 +2036,7 @@ const parametersInPost = (postParameters, _opts, ctx) => {
     return errors;
 };
 
-const patchBodyParameters = (parameters, _opts, paths) => {
+const patchBodyParameters = (parameters, _opts, paths, isTopLevel = true) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
         return [];
     }
@@ -2045,6 +2045,9 @@ const patchBodyParameters = (parameters, _opts, paths) => {
     const requiredProperties = getRequiredProperties(parameters.schema);
     const errors = [];
     for (const prop of Object.keys(properties)) {
+        if (isTopLevel && prop.toLowerCase() === "identity") {
+            continue;
+        }
         if (properties[prop].default) {
             errors.push({
                 message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
@@ -2068,7 +2071,7 @@ const patchBodyParameters = (parameters, _opts, paths) => {
             errors.push(...patchBodyParameters({
                 schema: properties[prop],
                 in: "body",
-            }, _opts, { path: [...path, "schema", "properties", prop] }));
+            }, _opts, { path: [...path, "schema", "properties", prop] }, false));
         }
     }
     return errors;
