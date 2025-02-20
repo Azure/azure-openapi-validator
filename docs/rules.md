@@ -514,6 +514,12 @@ A 202 response should include an `Operation-Location` response header.
 
 Please refer to [lro-headers.md](./lro-headers.md) for details.
 
+### LroLocationHeader
+
+Location header must be supported for all async operations that return 202.
+
+Please refer to [lro-location-header.md](./lro-location-header.md) for details.
+
 ### ProvisioningStateSpecifiedForLROPatch
 
 This is a rule introduced to validate if a LRO PATCH operations response schema has "ProvisioningState" property specified for the 200 status code.

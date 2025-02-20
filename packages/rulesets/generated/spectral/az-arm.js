@@ -1677,6 +1677,27 @@ const hasApiVersionParameter = (apiPath, opts, paths) => {
     return messages;
 };
 
+const hasHeader = (response, opts, paths) => {
+    if (response === null || typeof response !== 'object') {
+        return [];
+    }
+    if (opts === null || typeof opts !== 'object' || !opts.name) {
+        return [];
+    }
+    const path = paths.path || [];
+    const hasHeader = Object.keys(response.headers || {})
+        .some((name) => name.toLowerCase() === opts.name.toLowerCase());
+    if (!hasHeader) {
+        return [
+            {
+                message: `Response should include an "${opts.name}" response header.`,
+                path: [...path, 'headers'],
+            },
+        ];
+    }
+    return [];
+};
+
 const httpsSupportedScheme = (scheme, _opts, paths) => {
     if (scheme == null || typeof scheme !== "object")
         return [];
@@ -3288,6 +3309,22 @@ const ruleset = {
             given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
             then: {
                 function: provisioningState,
+            },
+        },
+        LroLocationHeader: {
+            rpcGuidelineCode: "RPC-Async-V1-07",
+            description: "Location header must be supported for all async operations that return 202.",
+            message: "A 202 response should include an Location response header.",
+            severity: "error",
+            disableForTypeSpecDataPlane: true,
+            disableForTypeSpecDataPlaneReason: "Covered by TSP's '@azure-tools/typespec-azure-resource-manager/arm-location-header' rule.",
+            formats: [oas2],
+            given: "$.paths[*][*].responses[?(@property == '202')]",
+            then: {
+                function: hasHeader,
+                functionOptions: {
+                    name: "Location",
+                },
             },
         },
         PostResponseCodes: {
