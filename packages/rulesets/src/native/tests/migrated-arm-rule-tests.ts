@@ -77,15 +77,29 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 2)
   })
 
-  test("resource property bag", async () => {
+  test("resource property bag with tracked resource", async () => {
     const fileNames = ["arm-resource-properties-bag.json"]
     const ruleName = "ArmResourcePropertiesBag"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 1)
   })
 
-  test("resource property bag with reference", async () => {
+  test("resource property bag with reference and tracked resource", async () => {
     const fileNames = ["arm-resource-properties-bag-with-reference.json"]
+    const ruleName = "ArmResourcePropertiesBag"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 2)
+  })
+
+  test("resource property bag with proxy resource", async () => {
+    const fileNames = ["arm-resource-properties-bag-proxy-resource.json"]
+    const ruleName = "ArmResourcePropertiesBag"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
+  test("resource property bag with reference and proxy resource", async () => {
+    const fileNames = ["arm-resource-properties-bag-with-reference-proxy-resources.json"]
     const ruleName = "ArmResourcePropertiesBag"
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
     assertValidationRuleCount(messages, ruleName, 2)
