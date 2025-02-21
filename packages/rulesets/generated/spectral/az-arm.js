@@ -28,16 +28,16 @@ const avoidMsdnReferences = (swaggerObj, _opts, paths) => {
     if (swaggerObj === null) {
         return [];
     }
-    if (typeof swaggerObj === "string" && !swaggerObj.includes("https://msdn.microsoft.com"))
+    if (typeof swaggerObj === "string" && !(swaggerObj.includes("https://msdn.microsoft.com") || swaggerObj.includes("https://docs.microsoft.com")))
         return [];
     if (typeof swaggerObj === "object") {
         const docUrl = swaggerObj.url;
-        if (docUrl === undefined || !docUrl.startsWith("https://msdn.microsoft.com"))
+        if (docUrl === undefined || !(docUrl.startsWith("https://msdn.microsoft.com") || docUrl.startsWith("https://docs.microsoft.com")))
             return [];
     }
     const path = paths.path || [];
     return [{
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
             path,
         }];
 };
@@ -1277,8 +1277,8 @@ const ruleset$1 = {
             },
         },
         AvoidMsdnReferences: {
-            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "docs.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
-            message: 'For better generated code quality, remove all references to "msdn.microsoft.com".',
+            description: 'The documentation is being generated from the OpenAPI(swagger) and published at "learn.microsoft.com". From that perspective, documentation team would like to avoid having links to the "msdn.microsoft.com" or "docs.microsoft.com" in the OpenAPI(swagger) and SDK documentations.',
+            message: 'For better generated code quality, remove all references to "msdn.microsoft.com" and "docs.microsoft.com".',
             severity: "warn",
             resolved: false,
             formats: [oas2],
@@ -2057,7 +2057,7 @@ const parametersInPost = (postParameters, _opts, ctx) => {
     return errors;
 };
 
-const patchBodyParameters = (parameters, _opts, paths) => {
+const patchBodyParameters = (parameters, _opts, paths, isTopLevel = true) => {
     if (parameters === null || parameters.schema === undefined || parameters.in !== "body") {
         return [];
     }
@@ -2066,6 +2066,9 @@ const patchBodyParameters = (parameters, _opts, paths) => {
     const requiredProperties = getRequiredProperties(parameters.schema);
     const errors = [];
     for (const prop of Object.keys(properties)) {
+        if (isTopLevel && prop.toLowerCase() === "identity") {
+            continue;
+        }
         if (properties[prop].default) {
             errors.push({
                 message: `Properties of a PATCH request body must not have default value, property:${prop}.`,
@@ -2089,7 +2092,7 @@ const patchBodyParameters = (parameters, _opts, paths) => {
             errors.push(...patchBodyParameters({
                 schema: properties[prop],
                 in: "body",
-            }, _opts, { path: [...path, "schema", "properties", prop] }));
+            }, _opts, { path: [...path, "schema", "properties", prop] }, false));
         }
     }
     return errors;
@@ -2625,6 +2628,7 @@ var Workspace;
     }
     Workspace.getProperty = getProperty;
     function getProperties(schema, inventory) {
+        var _a, _b, _c;
         let source = schema;
         const visited = new Set();
         while (source.value && source.value.$ref && !visited.has(source.value)) {
@@ -2635,7 +2639,13 @@ var Workspace;
             return [];
         }
         let result = {};
-        const model = source.value;
+        let model = source.value;
+        if ((_c = (_b = (_a = model.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.items) === null || _c === void 0 ? void 0 : _c.$ref) {
+            const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory);
+            if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
+                model = referenceSchema.value;
+            }
+        }
         if (model.properties) {
             for (const propertyName of Object.keys(model.properties)) {
                 result[propertyName] = createEnhancedSchema(model.properties[propertyName], source.file);

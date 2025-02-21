@@ -36,7 +36,7 @@ export function* allResourcesHaveDelete(openapiSection: any, options: { isTracke
   const allResources = options.isTrackedResource ? armHelper.getTrackedResources() : armHelper.getProxyResources()
   for (const re of allResources) {
     const apiPath = re.operations.find((op: any) => op.apiPath)?.apiPath
-    if (apiPath) {
+    if (apiPath && !apiPath.toLowerCase().includes("privateendpointconnectionproxies")) {
       if ((options.isTrackedResource || armHelper.findOperation(apiPath, "put")) && !armHelper.findOperation(apiPath, "delete")) {
         yield {
           location: ["definitions", re.modelName],
@@ -53,7 +53,7 @@ export function* trackedResourcesHavePatch(openapiSection: any, options: {}, ctx
   const allTrackedResources = armHelper.getTrackedResources()
   for (const re of allTrackedResources) {
     const apiPath = re.operations.find((op: any) => op.apiPath)?.apiPath
-    if (apiPath) {
+    if (apiPath && !apiPath.toLowerCase().includes("privateendpointconnectionproxies")) {
       if (!armHelper.findOperation(apiPath, "patch")) {
         yield {
           location: ["definitions", re.modelName],
@@ -66,36 +66,63 @@ export function* trackedResourcesHavePatch(openapiSection: any, options: {}, ctx
 
 export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allResources = armHelper.getTrackedResources()
-  const propertiesBag = ["name", "id", "type", "location", "tags"]
+  // List of top-level properties to track
+  const propertiesBagTracked = [
+    "name",
+    "type",
+    "id",
+    "location",
+    "tags",
+    "plan",
+    "sku",
+    "etag",
+    "managedby",
+    "identity",
+    "kind",
+    "zones",
+    "systemdata",
+    "extendedlocation",
+  ]
+  // Get tracked resources from ARM helper
+  const trackedResources = armHelper.getTrackedResources()
+  // Process tracked resources with the tracked properties bag
+  yield* processResources(armHelper, trackedResources, propertiesBagTracked)
 
-  function checkPropertiesBag(model: any, resourceName: string, propertiesPath: string[]) {
-    let messages: any[] = []
-    const properties = armHelper.getProperty(model!, "properties")
-    if (properties) {
-      propertiesPath.push("properties")
-      for (const p of propertiesBag) {
-        if (armHelper.getProperty(properties, p)) {
-          messages.push(
-            `Top level property names should not be repeated inside the properties bag for ARM resource '${resourceName}'. Properties [${propertiesPath
-              .concat(p)
-              .join(".")}] conflict with ARM top level properties. Please rename these.`,
-          )
-        }
+  // List of proxy properties to track
+  const propertiesBagProxy = ["name", "id", "type", "etag", "systemdata"]
+  // Get proxy resources from ARM helper
+  const proxyResources = armHelper.getProxyResources()
+  // Process proxy resources with the proxy properties bag
+  yield* processResources(armHelper, proxyResources, propertiesBagProxy)
+}
+
+function checkPropertiesBag(armHelper: ArmHelper, model: any, resourceName: string, propertiesBag: string[], propertiesPath: string[]) {
+  let messages: any[] = []
+  const properties = armHelper.getProperty(model!, "properties")
+  if (properties) {
+    propertiesPath.push("properties")
+    for (const p of propertiesBag) {
+      if (armHelper.getProperty(properties, p)) {
+        messages.push(
+          `Top level property names should not be repeated inside the properties bag for ARM resource '${resourceName}'. Properties [${propertiesPath
+            .concat(p)
+            .join(".")}] conflict with ARM top level properties. Please rename these.`,
+        )
       }
-
-      const subResult = checkPropertiesBag(properties, resourceName, propertiesPath)
-      messages = messages.concat(subResult)
     }
-    return messages
+    const subResult = checkPropertiesBag(armHelper, properties, resourceName, propertiesBag, propertiesPath)
+    messages = messages.concat(subResult)
   }
+  return messages
+}
 
-  for (const re of allResources) {
-    const model = armHelper.getResourceByName(re.modelName)
-    const messages = checkPropertiesBag(model, re.modelName, [])
+function* processResources(armHelper: ArmHelper, resources: any[], propertiesBag: string[]) {
+  for (const resource of resources) {
+    const model = armHelper.getResourceByName(resource.modelName)
+    const messages = checkPropertiesBag(armHelper, model, resource.modelName, propertiesBag, [])
     for (const message of messages) {
       yield {
-        location: ["definitions", re.modelName],
+        location: ["definitions", resource.modelName],
         message,
       }
     }
@@ -149,7 +176,7 @@ export function* operationsAPIImplementation(openapiSection: any, options: {}, c
 
 export function* resourcesHaveRequiredProperties(openapiSection: any, options: {}, ctx: RuleContext) {
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
-  const allResources = armHelper.getAllResources()
+  const allResources = armHelper.getAllResources(true, false, true)
   for (const re of allResources) {
     const requiredProperties = ["name", "type", "id"]
     const properties = armHelper.getResourceProperties(re.modelName)

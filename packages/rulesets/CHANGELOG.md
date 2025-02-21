@@ -1,6 +1,28 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-This log was last generated on Thu, 01 Feb 2024 23:08:29 GMT and should not be manually modified.
+## 2.1.6
+
+### Patches
+
+- [AllTrackedResourcesMustHaveDelete][TrackedResourcePatchOperation] Skip the api paths if it has PrivateEndpointConnectionProxy
+- [PatchBodyParametersSchema] Skip validation for MSI (managed service identity) as it is being referenced from common-types and has the required field & is being referenced in patch body parameter schema by several RP's who are having to get an exception.
+- [RequiredPropertiesMissingInResourceModel] Updated the rule to also account for both GET and LIST properties, and also modified the `getProperties` helper method to include LIST.
+
+### Patches
+
+## 2.1.5
+Tue, 14 Jan 2025 19:10:00 GMT
+
+### Patches
+
+- [AvoidMsdnReferences] Fix addition of "docs.microsoft.com" to disallow list
+
+## 2.1.4
+Tue, 14 Jan 2025 19:10:00 GMT
+
+### Patches
+
+- [AvoidMsdnReferences] Disallow "docs.microsoft.com", recommend "learn.microsft.com"
 
 ## 1.3.4
 Thu, 01 Feb 2024 23:08:29 GMT

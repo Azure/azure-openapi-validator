@@ -92,6 +92,56 @@
           }
         }
       }
+    },
+    "/providers/Microsoft.Cache/locations/{location}/publishers": {
+      "get": {
+        "tags": [
+          "extensions"
+        ],
+        "operationId": "ExtensionPublisher_List",
+        "description": "Gets all Extension publishers based on the location",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParamterer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ExtensionPublisherListResult"
+            }
+          }
+        }
+      }
+    },
+    "/providers/Microsoft.Cache/locations/{location}/Connectors": {
+      "get": {
+        "tags": [
+          "extensions"
+        ],
+        "operationId": "ExtensionPublisher_List",
+        "description": "Gets all Extension publishers based on the location",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParamterer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListConnectorsSuccessResponse"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -116,6 +166,92 @@
           "$ref": "#/definitions/Resource"
         }
       ]
+    },
+    "ExtensionPublisherListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ExtensionPublisher"
+          },
+          "description": "The list of extension publishers.",
+          "x-ms-identifiers": []
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URI to fetch the next page of extension publishers."
+        }
+      },
+      "description": "The List of Extension Publishers."
+    },
+    "ExtensionPublisher": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the extension publisher."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the extension publisher."
+        }
+      },
+      "description": "Describes an Extension Publisher."
+    },
+    "ListConnectorsSuccessResponse": {
+      "description": "Result of GET request to list connectors in the cluster of a confluent organization",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of connectors in a cluster of a confluent organization",
+          "type": "array",
+          "x-ms-identifiers": [],
+          "items": {
+            "$ref": "#/definitions/ConnectorResource"
+          }
+        },
+        "nextLink": {
+          "description": "URL to get the next set of connectors records if there are any.",
+          "type": "string"
+        }
+      }
+    },
+    "ConnectorResource": {
+      "description": "Details of connector record",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource",
+          "description": "The resource model definition for an Azure Resource Manager proxy resource."
+        }
+      ],
+      "required": [
+        "properties"
+      ],
+      "properties": {
+        "name": {
+          "description": "Display name of the connector",
+          "type": "string",
+          "readOnly": true
+        },
+        "properties": {
+          "description": "The properties of the Connector",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ConnectorResourceProperties"
+        }
+      }
+    },
+    "ConnectorResourceProperties": {
+      "description": "The resource properties of the Connector",
+      "type": "object",
+      "properties": {
+        "connectorId": {
+          "description": "Connector Id",
+          "type": "string"
+        }
+      }
     }
   },
   "parameters": {

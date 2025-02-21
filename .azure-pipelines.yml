@@ -6,49 +6,28 @@ variables:
   NODE_OPTIONS: '--max-old-space-size=8192'
   Codeql.Enabled: true
 
-jobs:
-  - job: 'Build'
-    pool:
-      name: 'azsdk-pool-mms-ubuntu-2204-general'
-      vmImage: 'ubuntu-22.04'
+extends:
+  template: /azure-pipelines/1es-redirect.yml
+  parameters:
+    stages:
+      - stage: Build
+        displayName: Build and Test
 
-    steps:
-      - template: azure-pipelines/common-build.yml
+        jobs:
+          - job: 'Build'
+            pool:
+              name: 'azsdk-pool-mms-ubuntu-2204-general'
+              image: ' azsdk-pool-mms-ubuntu-2204-1espt'
+              os: linux
 
-      - script: 'node common/scripts/install-run-rush.js lint'
-        displayName: 'rush lint'
+            steps:
+              - template: /azure-pipelines/common-build.yml
 
-      - script: 'node common/scripts/install-run-rush.js test'
-        displayName: 'rush test'
+              - script: 'node common/scripts/install-run-rush.js lint'
+                displayName: 'rush lint'
 
-      - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
-        displayName: 'rush regen-ruleindex'
+              - script: 'node common/scripts/install-run-rush.js test'
+                displayName: 'rush test'
 
-  - job: Windows
-    displayName: credentialScan
-    pool:
-      name: azsdk-pool-mms-win-2022-general
-      vmImage: windows-2022
-
-    steps:
-      - task: ea576cd4-c61f-48f8-97e7-a3cb07b90a6f@2 # CredScan@2  
-        inputs:
-          toolMajorVersion: 'V2'
-
-      - task: f5679091-e6da-4974-a8dc-0eec03a8ea63@1 # PostAnalysis@1
-        inputs:
-          AllTools: false
-          APIScan: false
-          BinSkim: false
-          CodesignValidation: false
-          CredScan: true
-          FortifySCA: false
-          FxCop: false
-          ModernCop: false
-          PoliCheck: false
-          RoslynAnalyzers: false
-          SDLNativeRules: false
-          Semmle: false
-          TSLint: false
-          ToolLogsNotFoundAction: 'Standard'
-
+              - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
+                displayName: 'rush regen-ruleindex'
