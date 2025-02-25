@@ -3311,6 +3311,17 @@ const ruleset = {
                 function: provisioningState,
             },
         },
+        LroAzureAsyncOperationHeader: {
+            rpcGuidelineCode: "RPC-Async-V1-06",
+            description: "Azure-AsyncOperation header must be supported for all async long-running operations.",
+            message: "{{description}}",
+            severity: "error",
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*.headers[?(@property !== 'Azure-AsyncOperation')]",
+            then: {
+                function: falsy,
+            },
+        },
         LroLocationHeader: {
             rpcGuidelineCode: "RPC-Async-V1-07",
             description: "Location header must be supported for all async operations that return 202.",
