@@ -14,11 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-A 202 response should include an Azure-AsyncOperation response header.
+All long-running operations must include an Azure-AsyncOperation response header.
 
 ## Description
 
-Azure-AsyncOperation header must be supported for all async operations that return 202.
+Azure-AsyncOperation header must be supported for all async long-running operations.
 
 ## CreatedAt
 
@@ -26,20 +26,20 @@ Oct 11, 2024
 
 ## How to fix the violation
 
-Adding the Azure-AsyncOperation header schema to the 202 response header schema.
+Adding the Azure-AsyncOperation header to the response..
 
 ## Good Example
 
 ```json
   "/api/configServers": {
-    put: {
-      operationId: "ConfigServers_Update",
-      responses: {
-        202: {
-          description: 'Accepted',
-          headers: {
-            'Azure-AsyncOperation': {
-              type: 'string',
+    "put": {
+      "operationId": "ConfigServers_Update",
+      "responses": {
+        "202": {
+          "description": "Accepted",
+          "headers": {
+            "Azure-AsyncOperation": {
+              "type": "string",
             },
           },
         },
@@ -52,12 +52,12 @@ Adding the Azure-AsyncOperation header schema to the 202 response header schema.
 
 ```json
   "/api/configServers": {
-    put: {
-      operationId: "ConfigServers_Update",
-      responses: {
+    "put": {
+      "operationId": "ConfigServers_Update",
+      "responses": {
         "202": {
-          description: "Success",
-          headers: {
+          "description": "Success",
+          "headers": {
             //No Azure-AsyncOperation header 
           },
         },

@@ -23,6 +23,22 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
             },
             202: {
               description: "Accepted",
+              // no header scenario
+            },
+            default: {
+              description: "Error",
+            },
+          },
+        },
+        post: {
+          operationId: "foo_post",
+          "x-ms-long-running-operation": true,
+          responses: {
+            200: {
+              description: "Success",
+            },
+            202: {
+              description: "Accepted",
               headers: {
                 "Azure-AsyncOperation": {
                   description: "The URL where the status of the asynchronous operation can be checked.",
@@ -35,16 +51,14 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
             },
           },
         },
-        post: {
-          operationId: "foo_post",
+        put: {
+          operationId: "foo_put",
+          "x-ms-long-running-operation": true,
           responses: {
-            200: {
-              description: "Success",
-            },
-            202: {
+            204: {
               description: "Accepted",
               headers: {
-                "Azure-asyncoperation": {
+                "Azure-AsyncOperation": {
                   description: "The URL where the status of the asynchronous operation can be checked.",
                   type: "string",
                 },
@@ -55,20 +69,11 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
             },
           },
         },
-        put: {
+        delete: {
           operationId: "foo_put",
           responses: {
-            200: {
-              description: "Success",
-            },
-            202: {
-              description: "Accepted",
-              headers: {
-                "azure-asyncOperation": {
-                  description: "The URL where the status of the asynchronous operation can be checked.",
-                  type: "string",
-                },
-              },
+            204: {
+              description: "No x-ms-long-running-operation ",
             },
             default: {
               description: "Error",
@@ -90,6 +95,7 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
       "/foo1/operations": {
         get: {
           operationId: "foo_get",
+          "x-ms-long-running-operation": true,
           responses: {
             200: {
               description: "Success",
@@ -98,7 +104,7 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
               description: "Accepted",
               headers: {
                 Location: {
-                  description: "The URL where the status of the asynchronous operation can be checked.",
+                  description: "No Azure-AsyncOperation header",
                   type: "string",
                 },
               },
@@ -110,30 +116,16 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
         },
         post: {
           operationId: "foo_post",
+          "x-ms-long-running-operation": false,
           responses: {
             200: {
               description: "Success",
             },
             202: {
-              description: "Accepted",
-              headers: {},
-            },
-            default: {
-              description: "Error",
-            },
-          },
-        },
-        put: {
-          operationId: "foo_put",
-          responses: {
-            200: {
-              description: "Success",
-            },
-            202: {
-              description: "Accepted",
+              description: "Empty header case",
               headers: {
-                azureasyncOperation: {
-                  description: "The URL where the status of the asynchronous operation can be checked.",
+                Location: {
+                  description: "No Azure-AsyncOperation header",
                   type: "string",
                 },
               },
@@ -143,16 +135,52 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
             },
           },
         },
+        put: {
+          operationId: "foo_put",
+          "x-ms-long-running-operation": true,
+          responses: {
+            200: {
+              description: "Success",
+            },
+            202: {
+              description: "Accepted",
+              headers: {
+                "azure-asyncOperation1": {
+                  description: "check the wrong wording",
+                  type: "string",
+                },
+              },
+            },
+            default: {
+              description: "Error",
+            },
+          },
+        },
+        delete: {
+          operationId: "foo_put",
+          "x-ms-long-running-operation": true,
+          responses: {
+            202: {
+              description: "Accepted",
+              headers: {
+                "azure-asyncOperation": {
+                  description: "Check case sensitive scenario",
+                  type: "string",
+                },
+              },
+            },
+          },
+        },
       },
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(3)
-    expect(results[0].path.join(".")).toBe("paths./foo1/operations.get.responses.202.headers")
+    expect(results[0].path.join(".")).toBe("paths./foo1/operations.get.responses.202.headers.Location")
     expect(results[0].message).toEqual(ERROR_MESSAGE)
-    expect(results[1].path.join(".")).toBe("paths./foo1/operations.post.responses.202.headers")
+    expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers.azure-asyncOperation1")
     expect(results[1].message).toEqual(ERROR_MESSAGE)
-    expect(results[2].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
+    expect(results[2].path.join(".")).toBe("paths./foo1/operations.delete.responses.202.headers.azure-asyncOperation")
     expect(results[2].message).toEqual(ERROR_MESSAGE)
   })
 })
