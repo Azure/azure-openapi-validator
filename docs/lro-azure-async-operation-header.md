@@ -14,11 +14,12 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-All long-running operations must include an Azure-AsyncOperation response header.
+All long-running operations that define the `headers` field must include an `Azure-AsyncOperation` response header.
 
 ## Description
 
-Azure-AsyncOperation header must be supported for all async long-running operations.
+If the headers field is present, the `Azure-AsyncOperation' header must be included in the response headers for
+all asynchronous long-running operations.
 
 ## CreatedAt
 

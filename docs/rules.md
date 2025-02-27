@@ -497,7 +497,8 @@ Please refer to [long-running-response-status-code-data-plane.md](./long-running
 
 ### LroAzureAsyncOperationHeader
 
-Azure-AsyncOperation header must be supported for all async long-running operations.
+If the headers field is present, the `Azure-AsyncOperation' header must be included in the response headers for
+all asynchronous long-running operations.
 
 Please refer to [lro-azure-async-operation-header.md](./lro-azure-async-operation-header.md) for details.
 
