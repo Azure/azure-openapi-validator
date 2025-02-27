@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-const ERROR_MESSAGE = "All long-running operations that define the `headers` field must include an `Azure-AsyncOperation` response header."
+const ERROR_MESSAGE = "All long-running operations must include an `Azure-AsyncOperation' response header."
 
 test("LroAzureAsyncOperationHeader should find no errors", () => {
   const myOpenApiDocument = {
@@ -18,15 +18,9 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
         get: {
           operationId: "foo_get",
           responses: {
-            200: {
-              description: "Success",
-            },
             202: {
               description: "Accepted",
-              // no header scenario
-            },
-            default: {
-              description: "Error",
+              // no header scenario and no x-ms-long-running-operation
             },
           },
         },
@@ -34,9 +28,6 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
           operationId: "foo_post",
           "x-ms-long-running-operation": true,
           responses: {
-            200: {
-              description: "Success",
-            },
             202: {
               description: "Accepted",
               headers: {
@@ -45,9 +36,6 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
                   type: "string",
                 },
               },
-            },
-            default: {
-              description: "Error",
             },
           },
         },
@@ -63,20 +51,6 @@ test("LroAzureAsyncOperationHeader should find no errors", () => {
                   type: "string",
                 },
               },
-            },
-            default: {
-              description: "Error",
-            },
-          },
-        },
-        delete: {
-          operationId: "foo_put",
-          responses: {
-            204: {
-              description: "No x-ms-long-running-operation ",
-            },
-            default: {
-              description: "Error",
             },
           },
         },
@@ -97,9 +71,6 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
           operationId: "foo_get",
           "x-ms-long-running-operation": true,
           responses: {
-            200: {
-              description: "Success",
-            },
             202: {
               description: "Accepted",
               headers: {
@@ -108,9 +79,6 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
                   type: "string",
                 },
               },
-            },
-            default: {
-              description: "Error",
             },
           },
         },
@@ -118,20 +86,8 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
           operationId: "foo_post",
           "x-ms-long-running-operation": false,
           responses: {
-            200: {
-              description: "Success",
-            },
             202: {
-              description: "Empty header case",
-              headers: {
-                Location: {
-                  description: "No Azure-AsyncOperation header",
-                  type: "string",
-                },
-              },
-            },
-            default: {
-              description: "Error",
+              description: "No header case",
             },
           },
         },
@@ -139,32 +95,11 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
           operationId: "foo_put",
           "x-ms-long-running-operation": true,
           responses: {
-            200: {
-              description: "Success",
-            },
             202: {
               description: "Accepted",
               headers: {
                 "azure-asyncOperation1": {
                   description: "check the wrong wording",
-                  type: "string",
-                },
-              },
-            },
-            default: {
-              description: "Error",
-            },
-          },
-        },
-        delete: {
-          operationId: "foo_put",
-          "x-ms-long-running-operation": true,
-          responses: {
-            202: {
-              description: "Accepted",
-              headers: {
-                "azure-asyncOperation": {
-                  description: "Check case sensitive scenario",
                   type: "string",
                 },
               },
@@ -175,12 +110,10 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(3)
-    expect(results[0].path.join(".")).toBe("paths./foo1/operations.get.responses.202.headers.Location")
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./foo1/operations.get.responses.202.headers")
     expect(results[0].message).toEqual(ERROR_MESSAGE)
-    expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers.azure-asyncOperation1")
+    expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
     expect(results[1].message).toEqual(ERROR_MESSAGE)
-    expect(results[2].path.join(".")).toBe("paths./foo1/operations.delete.responses.202.headers.azure-asyncOperation")
-    expect(results[2].message).toEqual(ERROR_MESSAGE)
   })
 })

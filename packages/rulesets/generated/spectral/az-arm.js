@@ -3313,13 +3313,16 @@ const ruleset = {
         },
         LroAzureAsyncOperationHeader: {
             rpcGuidelineCode: "RPC-Async-V1-06",
-            description: "All long-running operations that define the `headers` field must include an `Azure-AsyncOperation` response header.",
+            description: "All long-running operations must include an `Azure-AsyncOperation' response header.",
             message: "{{description}}",
             severity: "error",
             formats: [oas2],
-            given: "$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*.headers[?(@property !== 'Azure-AsyncOperation')]",
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*"],
             then: {
-                function: falsy,
+                function: hasHeader,
+                functionOptions: {
+                    name: "Azure-AsyncOperation",
+                },
             },
         },
         LroLocationHeader: {

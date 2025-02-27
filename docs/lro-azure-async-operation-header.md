@@ -14,12 +14,17 @@ ARM OpenAPI(swagger) specs
 
 ## Output Message
 
-All long-running operations that define the `headers` field must include an `Azure-AsyncOperation` response header.
+All long-running operations must include an `Azure-AsyncOperation' response header.
 
 ## Description
 
-If the headers field is present, the `Azure-AsyncOperation' header must be included in the response headers for
-all asynchronous long-running operations.
+ARM relies on the async operation header to poll for the status of the long running operation. Based on this and the
+final state of the operation, downstream services like ARN and ARG are notified of the current state of the operation
+and the status of the resource. If you are a brownfield service that does not implement this header, you may add a
+suppression using the following TSG indicating the same.
+TSG link - https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md.
+In the description for the suppression, please provide a rough timeline by which the header will be supported by your
+service. More details about this header can be found in the ARM Resource Provider Contract documentation here - https://github.com/cloud-and-ai-microsoft/resource-provider-contract/blob/master/v1.0/async-api-reference.md#azure-asyncoperation-resource-format
 
 ## CreatedAt
 
