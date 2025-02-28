@@ -84,7 +84,7 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
         },
         post: {
           operationId: "foo_post",
-          "x-ms-long-running-operation": false,
+          "x-ms-long-running-operation": true,
           responses: {
             202: {
               description: "No header case",
@@ -125,12 +125,14 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(3)
+    expect(results.length).toBe(4)
     expect(results[0].path.join(".")).toBe("paths./foo1/operations.get.responses.202.headers")
     expect(results[0].message).toEqual(ERROR_MESSAGE)
-    expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
+    expect(results[1].path.join(".")).toBe("paths./foo1/operations.post.responses.202")
     expect(results[1].message).toEqual(ERROR_MESSAGE)
-    expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
-    expect(results[1].message).toEqual(ERROR_MESSAGE)
+    expect(results[2].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
+    expect(results[2].message).toEqual(ERROR_MESSAGE)
+    expect(results[3].path.join(".")).toBe("paths./foo1/operations.delete.responses.202.headers")
+    expect(results[3].message).toEqual(ERROR_MESSAGE)
   })
 })

@@ -1744,15 +1744,13 @@ const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
 };
 
 const lroAzureAsyncOperationHeader = (headers, _opts, ctx) => {
-    if (headers) {
-        if (headers === null || !Object.keys(headers).includes("Azure-AsyncOperation")) {
-            return [
-                {
-                    message: "All long-running operations must include an `Azure-AsyncOperation' response header.",
-                    path: ctx.path,
-                },
-            ];
-        }
+    if (!Object.keys(headers).includes("headers") || !Object.keys(headers.headers).includes("Azure-AsyncOperation")) {
+        return [
+            {
+                message: "All long-running operations must include an `Azure-AsyncOperation' response header.",
+                path: ctx.path.concat("headers"),
+            },
+        ];
     }
     return [];
 };
@@ -3331,12 +3329,9 @@ const ruleset = {
             message: "{{description}}",
             severity: "error",
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*.headers"],
+            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*"],
             then: {
                 function: lroAzureAsyncOperationHeader,
-                functionOptions: {
-                    name: "Azure-AsyncOperation",
-                },
             },
         },
         LroLocationHeader: {

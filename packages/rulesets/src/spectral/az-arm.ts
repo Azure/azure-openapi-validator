@@ -166,12 +166,9 @@ const ruleset: any = {
       message: "{{description}}",
       severity: "error",
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*.headers"],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*"],
       then: {
         function: lroAzureAsyncOperationHeader,
-        functionOptions: {
-          name: "Azure-AsyncOperation",
-        },
       },
     },
 
