@@ -15,6 +15,7 @@ import hasheader from "./functions/has-header"
 import httpsSupportedScheme from "./functions/https-supported-scheme"
 import { latestVersionOfCommonTypesMustBeUsed } from "./functions/latest-version-of-common-types-must-be-used"
 import locationMustHaveXmsMutability from "./functions/location-must-have-xms-mutability"
+import { lroAzureAsyncOperationHeader } from "./functions/lro-azure-async-operation-header"
 import validateOriginalUri from "./functions/lro-original-uri"
 import { lroPatch202 } from "./functions/lro-patch-202"
 import provisioningStateSpecifiedForLROPatch from "./functions/lro-patch-provisioning-state-specified"
@@ -165,9 +166,9 @@ const ruleset: any = {
       message: "{{description}}",
       severity: "error",
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*"],
+      given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*.headers"],
       then: {
-        function: hasheader,
+        function: lroAzureAsyncOperationHeader,
         functionOptions: {
           name: "Azure-AsyncOperation",
         },

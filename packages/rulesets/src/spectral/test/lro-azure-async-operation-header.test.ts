@@ -106,13 +106,30 @@ test("LroAzureAsyncOperationHeader should find errors with no Azure-AsyncOperati
             },
           },
         },
+        delete: {
+          operationId: "foo_delete",
+          "x-ms-long-running-operation": true,
+          responses: {
+            202: {
+              description: "Accepted",
+              headers: {
+                "azure-asyncOperation": {
+                  description: "check the camel case",
+                  type: "string",
+                },
+              },
+            },
+          },
+        },
       },
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(3)
     expect(results[0].path.join(".")).toBe("paths./foo1/operations.get.responses.202.headers")
     expect(results[0].message).toEqual(ERROR_MESSAGE)
+    expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
+    expect(results[1].message).toEqual(ERROR_MESSAGE)
     expect(results[1].path.join(".")).toBe("paths./foo1/operations.put.responses.202.headers")
     expect(results[1].message).toEqual(ERROR_MESSAGE)
   })
