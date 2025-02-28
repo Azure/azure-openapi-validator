@@ -8,7 +8,7 @@ beforeAll(async () => {
   return linter
 })
 
-const ERROR_MESSAGE = "All long-running operations must include an `Azure-AsyncOperation' response header."
+const ERROR_MESSAGE = "All long-running operations must include an `Azure-AsyncOperation` response header."
 
 test("LroAzureAsyncOperationHeader should find no errors", () => {
   const myOpenApiDocument = {

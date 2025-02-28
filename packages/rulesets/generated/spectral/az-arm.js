@@ -1747,7 +1747,7 @@ const lroAzureAsyncOperationHeader = (headers, _opts, ctx) => {
     if (!Object.keys(headers).includes("headers") || !Object.keys(headers.headers).includes("Azure-AsyncOperation")) {
         return [
             {
-                message: "All long-running operations must include an `Azure-AsyncOperation' response header.",
+                message: "All long-running operations must include an `Azure-AsyncOperation` response header.",
                 path: ctx.path.concat("headers"),
             },
         ];
@@ -3325,7 +3325,7 @@ const ruleset = {
         },
         LroAzureAsyncOperationHeader: {
             rpcGuidelineCode: "RPC-Async-V1-06",
-            description: "All long-running operations must include an `Azure-AsyncOperation' response header.",
+            description: "All long-running operations must include an `Azure-AsyncOperation` response header.",
             message: "{{description}}",
             severity: "error",
             formats: [oas2],

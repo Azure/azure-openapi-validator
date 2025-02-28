@@ -162,7 +162,7 @@ const ruleset: any = {
     // RPC Code: RPC-Async-V1-06
     LroAzureAsyncOperationHeader: {
       rpcGuidelineCode: "RPC-Async-V1-06",
-      description: "All long-running operations must include an `Azure-AsyncOperation' response header.",
+      description: "All long-running operations must include an `Azure-AsyncOperation` response header.",
       message: "{{description}}",
       severity: "error",
       formats: [oas2],
