@@ -54,7 +54,7 @@ Adding the Azure-AsyncOperation header to the response.
   },
 ```
 
-## Bad Example
+## Bad Example 1
 
 ```json
   "/api/configServers": {
@@ -71,3 +71,18 @@ Adding the Azure-AsyncOperation header to the response.
     },
   },
 ```
+
+## Bad Example 2
+
+```json
+  "/api/configServers": {
+    "put": {
+      "operationId": "ConfigServers_Update",
+      "responses": {
+        "202": {
+          "description": "Success",
+          //No headers
+        },
+      },
+    },
+  },
