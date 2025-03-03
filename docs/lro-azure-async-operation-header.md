@@ -32,7 +32,7 @@ Oct 11, 2024
 
 ## How to fix the violation
 
-Adding the Azure-AsyncOperation header to the response..
+Adding the Azure-AsyncOperation header to the response.
 
 ## Good Example
 
