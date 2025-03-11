@@ -165,6 +165,7 @@ const ruleset: any = {
       description: "All long-running operations must include an `Azure-AsyncOperation` response header.",
       message: "{{description}}",
       severity: "error",
+      stagingOnly: true,
       formats: [oas2],
       given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*"],
       then: {
