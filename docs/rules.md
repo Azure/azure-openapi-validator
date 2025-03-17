@@ -946,7 +946,7 @@ Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-nam
 
 Using post for a create operation is discouraged.
 
-Please refer to [post-201-response.md](./post-201-response.md) for details.
+Please refer to [post201-response.md](./post201-response.md) for details.
 
 ### PostOperationIdContainsUrlVerb
 
