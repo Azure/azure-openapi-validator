@@ -85,7 +85,13 @@ export namespace Workspace {
     let result: { [key: string]: EnhancedSchema } = {}
     let model = source.value
     // for list call, the properties are in the value.items.$ref
-    if (model.properties?.value?.items?.$ref) {
+    // skip for models in common-types
+    const reference = model.properties?.value?.items?.$ref
+    if (reference?.includes("/common-types/") && reference?.includes("/types.json#/definitions/")) {
+       result["common-types"] = createEnhancedSchema("", "")
+       return result
+    }
+    else if(reference){
       const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory)
       if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
         model = referenceSchema.value

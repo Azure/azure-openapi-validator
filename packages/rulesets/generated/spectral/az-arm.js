@@ -2652,7 +2652,12 @@ var Workspace;
         }
         let result = {};
         let model = source.value;
-        if ((_c = (_b = (_a = model.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.items) === null || _c === void 0 ? void 0 : _c.$ref) {
+        const reference = (_c = (_b = (_a = model.properties) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.items) === null || _c === void 0 ? void 0 : _c.$ref;
+        if ((reference === null || reference === void 0 ? void 0 : reference.includes("/common-types/")) && (reference === null || reference === void 0 ? void 0 : reference.includes("/types.json#/definitions/"))) {
+            result["common-types"] = createEnhancedSchema("", "");
+            return result;
+        }
+        else if (reference) {
             const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory);
             if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
                 model = referenceSchema.value;

@@ -54,6 +54,30 @@
           }
         }
       }
+    },
+    "/providers/Microsoft.Cache/Redis/{resourceName}/operations": {
+      "get": {
+        "tags": [
+          "OperationStatusResult"
+        ],
+        "operationId": "OperationStatusResult_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParamterer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationStatusResultList"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -63,6 +87,29 @@
           "$ref": "./common-types/types.json#/definitions/Resource"
         }
       ]
+    },
+    "OperationStatusResultList": {
+      "description": "The operations list. It contains an URL link to get the next set of results.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "./common-types/types.json#/definitions/OperationStatusResult"
+          },
+          "x-ms-identifiers": [
+            "name"
+          ],
+          "description": "List of operations",
+          "readOnly": true
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to get the next set of operation list results (if there are any).",
+          "readOnly": true
+        }
+      }
     }
   },
   "parameters": {
