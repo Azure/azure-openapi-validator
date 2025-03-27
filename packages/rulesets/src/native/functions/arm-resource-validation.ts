@@ -180,6 +180,10 @@ export function* resourcesHaveRequiredProperties(openapiSection: any, options: {
   for (const re of allResources) {
     const requiredProperties = ["name", "type", "id"]
     const properties = armHelper.getResourceProperties(re.modelName)
+    // skip for common-types
+    if (properties["common-types"]) {
+      continue
+    }
     for (const propName of requiredProperties) {
       const prop = properties[propName]
       if (!prop || armHelper.getAttribute(prop, "readOnly")?.value !== true) {
