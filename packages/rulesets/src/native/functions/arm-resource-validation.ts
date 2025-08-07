@@ -1,5 +1,4 @@
 import { RuleContext } from "@microsoft.azure/openapi-validator-core"
-import _ from "lodash"
 import { ArmHelper } from "../utilities/arm-helper"
 import { getResourceProvider } from "../utilities/rules-helper"
 
@@ -175,6 +174,7 @@ export function* operationsAPIImplementation(openapiSection: any, options: {}, c
 }
 
 export function* resourcesHaveRequiredProperties(openapiSection: any, options: {}, ctx: RuleContext) {
+  // eslint-disable-next-line
   console.log("FINDME");
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
   const allResources = armHelper.getAllResources(true, false, true)
