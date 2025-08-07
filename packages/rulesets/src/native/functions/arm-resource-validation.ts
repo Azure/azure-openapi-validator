@@ -175,6 +175,7 @@ export function* operationsAPIImplementation(openapiSection: any, options: {}, c
 }
 
 export function* resourcesHaveRequiredProperties(openapiSection: any, options: {}, ctx: RuleContext) {
+  console.log("FINDME");
   const armHelper = new ArmHelper(ctx?.document, ctx?.specPath, ctx?.inventory!)
   const allResources = armHelper.getAllResources(true, false, true)
   for (const re of allResources) {
