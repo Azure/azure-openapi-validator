@@ -2,18 +2,6 @@
   "name": "@microsoft.azure/openapi-validator-rulesets",
   "entries": [
     {
-      "version": "3.0.0",
-      "tag": "@microsoft.azure/openapi-validator-rulesets_v3.0.0",
-      "date": "Fri, 08 Aug 2025 18:55:31 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Removed the rule RPC-Uri-V1-11 TenantLevelAPIsNotAllowed"
-          }
-        ]
-      }
-    },
-    {
       "version": "1.3.4",
       "tag": "@microsoft.azure/openapi-validator-rulesets_v1.3.4",
       "date": "Thu, 01 Feb 2024 23:08:29 GMT",
