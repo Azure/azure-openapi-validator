@@ -1,6 +1,13 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-## 2.1.6
+This log was last generated on Fri, 08 Aug 2025 18:55:31 GMT and should not be manually modified.
+
+## 2.1.8
+Fri, 08 Aug 2025 18:55:31 GMT
+
+### Patches
+
+- Removed the rule RPC-Uri-V1-11 TenantLevelAPIsNotAllowed
 
 ### Patches
 
