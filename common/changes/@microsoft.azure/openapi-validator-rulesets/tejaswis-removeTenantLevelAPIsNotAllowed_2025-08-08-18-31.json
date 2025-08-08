@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Removed the rule RPC-Uri-V1-11 TenantLevelAPIsNotAllowed",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
