@@ -2,7 +2,7 @@ import { Spectral } from "@stoplight/spectral-core"
 import linterForRule from "./utils"
 
 const ERROR_MESSAGE =
-  "is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. If you cannot model your APIs at these levels, you will need to present your design and get an exception from PAS team."
+  "is a tenant level api. Tenant level APIs require a review from the security RBAC team during manifest check-in. For details, refer to the Manifest security review process: https://eng.ms/docs/microsoft-security/identity/auth-authz/access-control-managed-identityacmi/policy-administration-service/pas-wiki/livesite/security/manifest"
 
 let linter: Spectral
 

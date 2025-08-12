@@ -950,7 +950,7 @@ const ruleset: any = {
     TenantLevelAPIsNotAllowed: {
       rpcGuidelineCode: "RPC-Uri-V1-11",
       description:
-        "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
+        "Tenant level APIs require a review from the security RBAC team during manifest check-in. For details, refer to the Manifest security review process: https://eng.ms/docs/microsoft-security/identity/auth-authz/access-control-managed-identityacmi/policy-administration-service/pas-wiki/livesite/security/manifest",
       message: "{{error}}",
       severity: "warn",
       resolved: true,
