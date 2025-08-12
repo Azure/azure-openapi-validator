@@ -952,7 +952,7 @@ const ruleset: any = {
       description:
         "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
       message: "{{error}}",
-      severity: "error",
+      severity: "warn",
       resolved: true,
       formats: [oas2],
       given: "$[paths,'x-ms-paths']",

@@ -942,12 +942,6 @@ For more detail, pls refer to https://github.com/microsoft/api-guidelines/blob/v
 
 Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-name-camel-case.md) for details.
 
-### Post201Response
-
-Using post for a create operation is discouraged.
-
-Please refer to [post201-response.md](./post201-response.md) for details.
-
 ### PostOperationIdContainsUrlVerb
 
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
@@ -961,6 +955,12 @@ Long-running POST operations must have responses with 202 and default return cod
 202 response for a LRO POST operation must not have a response schema specified.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
+### Post201Response
+
+Using post for a create operation is discouraged.
+
+Please refer to [post201-response.md](./post201-response.md) for details.
 
 ### PreviewVersionOverOneYear
 

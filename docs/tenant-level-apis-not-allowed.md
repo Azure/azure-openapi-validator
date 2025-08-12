@@ -2,7 +2,7 @@
 
 ## Category
 
-ARM Error
+ARM Warning
 
 ## Applies to
 
