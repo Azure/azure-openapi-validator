@@ -2965,6 +2965,28 @@ const tagsAreNotAllowedForProxyResources = (definition, _opts, ctx) => {
     return errors;
 };
 
+const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
+    if (pathItems === null || typeof pathItems !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const apiPaths = Object.keys(pathItems);
+    if (apiPaths.length < 1) {
+        return [];
+    }
+    const errors = [];
+    for (const apiPath of apiPaths) {
+        if (pathItems[apiPath]["put"] && !apiPath.endsWith("/operations") && apiPath.startsWith("/providers")) {
+            errors.push({
+                message: `${apiPath} is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. If you cannot model your APIs at these levels, you will need to present your design and get an exception from PAS team.`,
+                path: [...path, apiPath],
+            });
+            break;
+        }
+    }
+    return errors;
+};
+
 const trackedExtensionResourcesAreNotAllowed = (apiPath, _opts, ctx) => {
     var _a, _b, _c;
     if (apiPath === null || typeof apiPath !== "string") {
@@ -3950,6 +3972,18 @@ const ruleset = {
             given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
             then: {
                 function: noDuplicatePathsForScopeParameter,
+            },
+        },
+        TenantLevelAPIsNotAllowed: {
+            rpcGuidelineCode: "RPC-Uri-V1-11",
+            description: "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            formats: [oas2],
+            given: "$[paths,'x-ms-paths']",
+            then: {
+                function: tenantLevelAPIsNotAllowed,
             },
         },
         TrackedExtensionResourcesAreNotAllowed: {

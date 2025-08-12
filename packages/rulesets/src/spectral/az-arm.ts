@@ -50,6 +50,7 @@ import { securityDefinitionsStructure } from "./functions/security-definitions-s
 import skuValidation from "./functions/sku-validation"
 import { systemDataInPropertiesBag } from "./functions/system-data-in-properties-bag"
 import { tagsAreNotAllowedForProxyResources } from "./functions/tags-are-not-allowed-for-proxy-resources"
+import { tenantLevelAPIsNotAllowed } from "./functions/tenant-level-apis-not-allowed"
 import { trackedExtensionResourcesAreNotAllowed } from "./functions/tracked-extension-resources-are-not-allowed"
 import trackedResourceTagsPropertyInRequest from "./functions/trackedresource-tags-property-in-request"
 import { validQueryParametersForPointOperations } from "./functions/valid-query-parameters-for-point-operations"
@@ -943,6 +944,20 @@ const ruleset: any = {
       given: ["$.paths[?(@property.match(/.*{scope}.*/))]~))", "$.x-ms-paths[?(@property.match(/.*{scope}.*/))]~))"],
       then: {
         function: noDuplicatePathsForScopeParameter,
+      },
+    },
+    // RPC Code: RPC-Uri-V1-11
+    TenantLevelAPIsNotAllowed: {
+      rpcGuidelineCode: "RPC-Uri-V1-11",
+      description:
+        "Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Design presentation and getting an exception from the PAS team is needed if APIs cannot be modelled at subscription or resource group level.",
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      formats: [oas2],
+      given: "$[paths,'x-ms-paths']",
+      then: {
+        function: tenantLevelAPIsNotAllowed,
       },
     },
     // RPC Code: RPC-Uri-V1-12
