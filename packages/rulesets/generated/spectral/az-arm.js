@@ -2978,7 +2978,7 @@ const tenantLevelAPIsNotAllowed = (pathItems, _opts, ctx) => {
     for (const apiPath of apiPaths) {
         if (pathItems[apiPath]["put"] && !apiPath.endsWith("/operations") && apiPath.startsWith("/providers")) {
             errors.push({
-                message: `${apiPath} is a tenant level api. Tenant level APIs require a review from the security RBAC team during manifest check-in. For details, refer to the Manifest security review process: https://eng.ms/docs/microsoft-security/identity/auth-authz/access-control-managed-identityacmi/policy-administration-service/pas-wiki/livesite/security/manifest`,
+                message: `${apiPath} is a tenant level api. Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Please note that these APIs require a review from the security RBAC team during manifest check-in. For details, refer to the Manifest security review process: https://eng.ms/docs/microsoft-security/identity/auth-authz/access-control-managed-identityacmi/policy-administration-service/pas-wiki/livesite/security/manifest`,
                 path: [...path, apiPath],
             });
             break;
