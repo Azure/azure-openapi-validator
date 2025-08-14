@@ -14,11 +14,11 @@ ARM OpenAPI(swagger) specs
 
 ## Description
 
-This rule checks for th tenant level APIs.
+This rule checks for the tenant level APIs.
 
 ## How to fix the violation
 
- Tenant level APIs require a review from the security RBAC team during manifest check-in. For details, refer to the Manifest security review process: https://eng.ms/docs/microsoft-security/identity/auth-authz/access-control-managed-identityacmi/policy-administration-service/pas-wiki/livesite/security/manifest
+Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. Please note that these APIs require a review from the security RBAC team during manifest check-in. For details, refer to the Manifest security review process: https://eng.ms/docs/microsoft-security/identity/auth-authz/access-control-managed-identityacmi/policy-administration-service/pas-wiki/livesite/security/manifest
 
 ## Good Examples
 

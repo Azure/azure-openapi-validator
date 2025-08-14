@@ -1246,7 +1246,7 @@ Please refer to [tags-are-not-allowed-for-proxy-resources.md](./tags-are-not-all
 
 ### TenantLevelAPIsNotAllowed
 
-This rule checks for th tenant level APIs.
+This rule checks for the tenant level APIs.
 
 Please refer to [tenant-level-apis-not-allowed.md](./tenant-level-apis-not-allowed.md) for details.
 
