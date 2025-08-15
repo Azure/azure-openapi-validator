@@ -192,9 +192,8 @@ const ruleset: any = {
 
     // RPC Code: RPC-Async-V1-11, RPC-Async-V1-14
     PostResponseCodes: {
-      rpcGuidelineCode: "RPC-Async-V1-11, RPC-Async-V1-14",
-      description:
-        "Synchronous POST must have either 200 or 204 return codes and LRO POST must have 202 return code. LRO POST should also have a 200 return code only if the final response is intended to have a schema",
+      rpcGuidelineCode: "RPC-Async-V1-11, RPC-Async-V1-14, RPC-POST-V1-02, RPC-POST-V1-03",
+      description: "Synchronous POST must return 200 when a response body is required or 204 when no body is needed; LRO POST must initially return 202, with the final response returning 200 if a body is expected or 204 if not.",
       severity: "error",
       disableForTypeSpecDataPlane: true,
       disableForTypeSpecDataPlaneReason:
