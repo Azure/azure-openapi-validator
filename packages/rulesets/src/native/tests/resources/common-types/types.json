@@ -698,6 +698,72 @@
       "description": "The name of Azure region.",
       "minLength": 1,
       "x-ms-parameter-location": "method"
+    },
+    "Metric": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The metric Id."
+        },
+        "type": {
+          "type": "string",
+          "description": "The resource type of the metric resource."
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizableString",
+          "description": "The name and the display name of the metric, i.e. it is localizable string."
+        },
+        "displayDescription": {
+          "type": "string",
+          "description": "Detailed description of this metric."
+        },
+        "errorCode": {
+          "type": "string",
+          "description": "'Success' or the error details on query failures for this metric."
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Error message encountered querying this specific metric."
+        },
+        "unit": {
+          "$ref": "#/definitions/Unit",
+          "description": "The unit of the metric."
+        },
+        "timeseries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeSeriesElement"
+          },
+          "x-ms-identifiers": [],
+          "description": "The time series returned when a data query is performed."
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "name",
+        "unit",
+        "timeseries"
+      ],
+      "description": "The result data of a query."
+    },
+    "LocalizableString": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The invariant value."
+        },
+        "localizedValue": {
+          "type": "string",
+          "description": "The display name."
+        }
+      },
+      "description": "The localizable string class."
     }
   }
 }

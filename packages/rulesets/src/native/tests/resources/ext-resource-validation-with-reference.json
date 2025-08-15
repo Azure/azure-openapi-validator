@@ -17,44 +17,6 @@
     "application/json"
   ],
   "paths": {
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}": {
-      "put": {
-        "tags": [
-          "Redis"
-        ],
-        "operationId": "Redis_CreateOrUpdate",
-        "x-ms-long-running-operation": true,
-        "parameters": [
-          {
-            "name": "resourceGroupName",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the resource group."
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the Redis cache."
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParamterer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/MyResource"
-            }
-          }
-        }
-      }
-    },
     "/providers/Microsoft.Cache/Redis/{resourceName}/operations": {
       "get": {
         "tags": [
@@ -73,7 +35,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/OperationStatusResultList"
+              "$ref": "#/definitions/Metric"
             }
           }
         }
@@ -96,6 +58,29 @@
           "type": "array",
           "items": {
             "$ref": "./common-types/types.json#/definitions/OperationStatusResult"
+          },
+          "x-ms-identifiers": [
+            "name"
+          ],
+          "description": "List of operations",
+          "readOnly": true
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to get the next set of operation list results (if there are any).",
+          "readOnly": true
+        }
+      }
+    },
+    "Metric": {
+      "description": "The operations list. It contains an URL link to get the next set of results.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "./common-types/types.json#/definitions/Metric"
           },
           "x-ms-identifiers": [
             "name"
