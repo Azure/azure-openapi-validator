@@ -1,4 +1,4 @@
-name: Staging pipeline to test desired linter rules
+name: Staging Lint Checks
 
 on:
   pull_request:
