@@ -8,6 +8,7 @@ const LR_ERROR =
 const LR_NO_SCHEMA_ERROR_OK =
   "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
 const LR_SCHEMA_ERROR_ACCEPTED = "202 response for a LRO POST operation must not have a response schema specified."
+const LR_SCHEMA_ERROR_NO_CONTENT = "204 response for a Sync/LRO POST operation must not have a response schema specified."
 
 let linter: Spectral
 
@@ -217,9 +218,10 @@ test("PostResponseCodes should find errors for sync post without default respons
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(SYNC_ERROR)
+    expect(results[1].message).toContain(LR_SCHEMA_ERROR_NO_CONTENT)
   })
 })
 
@@ -295,9 +297,10 @@ test("PostResponseCodes should find errors for sync post with extra response cod
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(SYNC_ERROR)
+    expect(results[1].message).toContain(LR_SCHEMA_ERROR_NO_CONTENT)
   })
 })
 
@@ -513,9 +516,6 @@ test("PostResponseCodes should find no errors for sync post when 204, default re
           responses: {
             "204": {
               description: "No-Content",
-              schema: {
-                $ref: "#/definitions/FooResource",
-              },
             },
             default: {
               description: "Error",
