@@ -942,12 +942,6 @@ For more detail, pls refer to https://github.com/microsoft/api-guidelines/blob/v
 
 Please refer to [path-resource-type-name-camel-case.md](./path-resource-type-name-camel-case.md) for details.
 
-### Post201Response
-
-Using post for a create operation is discouraged.
-
-Please refer to [post201-response.md](./post201-response.md) for details.
-
 ### PostOperationIdContainsUrlVerb
 
 A POST operation's operationId should contain the verb indicated at the end of the corresponding url.
@@ -961,6 +955,12 @@ Synchronous POST operations must only use 200 with a default response when a res
 Long-running POST (LRO) operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
+
+### Post201Response
+
+Using post for a create operation is discouraged.
+
+Please refer to [post201-response.md](./post201-response.md) for details.
 
 ### PreviewVersionOverOneYear
 
@@ -1246,7 +1246,7 @@ Please refer to [tags-are-not-allowed-for-proxy-resources.md](./tags-are-not-all
 
 ### TenantLevelAPIsNotAllowed
 
-Tenant level APIs are strongly discouraged and subscription or resource group level APIs are preferred instead. The reason for this guidance is that tenant level APIs have a really broad scope and blast radius. We permit APIs to be at this broad scope under rare conditions. Some ARM feature sets also do not cover tenant level APIs such as the use of AFEC. Additionally, if you intend to bypass the standard RBAC constructs and make the APIs unauthorized, you will need an approval from the PAS team before the open API spec can be merged.
+This rule checks for the tenant level APIs.
 
 Please refer to [tenant-level-apis-not-allowed.md](./tenant-level-apis-not-allowed.md) for details.
 
