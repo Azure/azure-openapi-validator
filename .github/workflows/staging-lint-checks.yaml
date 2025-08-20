@@ -1,0 +1,83 @@
+name: Staging pipeline to test desired linter rules
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, labeled, unlabeled]
+
+env:
+  SPEC_REPO: Azure/azure-rest-api-specs
+  SPEC_CHECKOUT_PATH: specs
+  EXCLUDE_DIRS: '[]' # List of folder substrings to exclude (JSON array), e.g. ["node_modules",".git","specification/common-types"]
+  FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when errors are found
+
+jobs:
+  run-selected-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout validator repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Determine rule names (labels first, fallback to body)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = (context.payload.pull_request?.labels || []).map(l => l.name || "");
+            const body = context.payload.pull_request?.body || "";
+
+            // From labels: expect labels like test-<RuleName>
+            const fromLabels = labels
+              .filter(n => /^test-/i.test(n))
+              .map(n => n.replace(/^test-/i, "").trim())
+              .filter(Boolean);
+
+            // From body: parse a line like "rules: A, B" (case-insensitive)
+            const ruleLine = (body.match(/^\s*rules?\s*:(.*)$/gim) || [])
+              .map(l => l.split(":")[1] || "")
+              .join(",");
+
+            const fromRuleLine = ruleLine
+              .split(/[\n,]/)
+              .map(s => s.trim())
+              .filter(Boolean);
+
+            // Prefer label selection when available; otherwise use body
+            const chosen = (fromLabels.length > 0) ? fromLabels : fromRuleLine;
+            const all = Array.from(new Set(chosen));
+            const value = all.join(',');
+            core.exportVariable('RULE_NAMES', value);
+            core.info(`Selected rules: ${value || "<none>"}`);
+
+      - name: Checkout specs repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SPEC_REPO }}
+          path: ${{ env.SPEC_CHECKOUT_PATH }}
+
+      - name: Install runner dependencies
+        run: |
+          npm --version
+          npm init -y
+          npm i @microsoft.azure/openapi-validator-rulesets @stoplight/spectral-core @stoplight/json-ref-resolver js-yaml
+
+      - name: Run selected rules on specs
+        env:
+          RULE_NAMES: ${{ env.RULE_NAMES }}
+          SPEC_ROOT: ${{ github.workspace }}/${{ env.SPEC_CHECKOUT_PATH }}
+          EXCLUDE_DIRS: ${{ env.EXCLUDE_DIRS }}
+          FAIL_ON_ERRORS: ${{ env.FAIL_ON_ERRORS }}
+          OUTPUT_FILE: ${{ github.workspace }}/artifacts/linter-findings.txt
+        run: |
+          node .github/scripts/run-selected-rules.js
+
+      - name: Upload findings artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linter-findings
+          path: artifacts/linter-findings.txt
+          if-no-files-found: warn
