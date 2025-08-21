@@ -2314,13 +2314,15 @@ const LR_POST_RESPONSES_OK = ["202", "200", "default"];
 const LR_POST_RESPONSES_NO_CONTENT = ["202", "204", "default"];
 const HTTP_STATUS_CODE_OK = "200";
 const HTTP_STATUS_CODE_ACCEPTED = "202";
+const HTTP_STATUS_CODE_NO_CONTENT = "204";
 const SYNC_ERROR = "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. No other response codes are permitted.";
 const LR_ERROR = "Long-running POST operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted.";
 const LR_NO_SCHEMA_ERROR_OK = "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const LR_SCHEMA_ERROR_ACCEPTED = "202 response for a LRO POST operation must not have a response schema specified.";
+const LR_SCHEMA_ERROR_NO_CONTENT = "204 response for a Sync/LRO POST operation must not have a response schema specified.";
 const EmptyResponse_ERROR$1 = "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified.";
 const PostResponseCodes = (postOp, _opts, ctx) => {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     if (postOp === null || typeof postOp !== "object") {
         return [];
     }
@@ -2355,21 +2357,6 @@ const PostResponseCodes = (postOp, _opts, ctx) => {
                 path: path,
             });
         }
-        if (matchesOk) {
-            if (!((_b = postOp.responses[HTTP_STATUS_CODE_OK]) === null || _b === void 0 ? void 0 : _b.schema)) {
-                errors.push({
-                    message: LR_NO_SCHEMA_ERROR_OK,
-                    path: path,
-                });
-            }
-        }
-        if ((_c = postOp.responses[HTTP_STATUS_CODE_ACCEPTED]) === null || _c === void 0 ? void 0 : _c.schema) {
-            errors.push({
-                message: LR_SCHEMA_ERROR_ACCEPTED,
-                path: path,
-            });
-        }
-        return errors;
     }
     else {
         const responseSet = new Set(responses);
@@ -2382,6 +2369,24 @@ const PostResponseCodes = (postOp, _opts, ctx) => {
                 path: path,
             });
         }
+    }
+    if (postOp.responses[HTTP_STATUS_CODE_OK] && !((_b = postOp.responses[HTTP_STATUS_CODE_OK]) === null || _b === void 0 ? void 0 : _b.schema)) {
+        errors.push({
+            message: LR_NO_SCHEMA_ERROR_OK,
+            path: path,
+        });
+    }
+    if ((_c = postOp.responses[HTTP_STATUS_CODE_ACCEPTED]) === null || _c === void 0 ? void 0 : _c.schema) {
+        errors.push({
+            message: LR_SCHEMA_ERROR_ACCEPTED,
+            path: path,
+        });
+    }
+    if ((_d = postOp.responses[HTTP_STATUS_CODE_NO_CONTENT]) === null || _d === void 0 ? void 0 : _d.schema) {
+        errors.push({
+            message: LR_SCHEMA_ERROR_NO_CONTENT,
+            path: path,
+        });
     }
     return errors;
 };
