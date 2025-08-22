@@ -4,13 +4,13 @@
 Lightweight Spectral rules runner
 ---------------------------------
 Purpose:
-- Execute selected ARM OpenAPI validation rules against a set of specs.
+- Execute selected linter rules against a set of specs.
 
 Behavior:
 - Parses RULE_NAMES, SPEC_ROOT, EXCLUDE_DIRS, FAIL_ON_ERRORS, MAX_FILES, OUTPUT_FILE from env.
 - Loads the Spectral ARM ruleset from @microsoft.azure/openapi-validator-rulesets.
 - Disables all rules except the requested ones.
-- Walks SPEC_ROOT for *.json and *.yaml, skipping EXCLUDE_DIRS substrings.
+- Walks SPEC_ROOT for *.json only, skipping EXCLUDE_DIRS substrings.
 - Runs Spectral and prints findings in a compact format.
 
 Outputs:
@@ -24,8 +24,9 @@ const path = require('path')
 // ============
 
 // EXCLUDE_DIRS can be:
-// - JSON array string (e.g., ["a","b"]) — preferred
-// - comma or newline separated string — legacy support
+// - JSON array string — preferred (e.g., ["node_modules",".git","specification/common-types","specification/network/resource-manager/common"]) 
+// - comma or newline separated string — legacy support (e.g., specification/common-types,specification/network/resource-manager/common)
+// Matching is done via simple substring checks against paths relative to SPEC_ROOT.
 function parseExcludeDirs(value) {
   const raw = value || ''
   // Try JSON array
@@ -48,7 +49,7 @@ const SPEC_ROOT = process.env.SPEC_ROOT || ''
 const EXCLUDE_DIRS = parseExcludeDirs(process.env.EXCLUDE_DIRS)
 const FAIL_ON_ERRORS = /^true$/i.test(process.env.FAIL_ON_ERRORS || 'false')
 const OUTPUT_FILE = process.env.OUTPUT_FILE || ''
-const MAX_FILES = parseInt(process.env.MAX_FILES || '20000', 10)
+const MAX_FILES = parseInt(process.env.MAX_FILES || '200', 10)
 // Consider common test/debug environments to avoid hard exits during tests
 const IN_TEST = !!(process.env.JEST_WORKER_ID || process.env.npm_lifecycle_event === 'test' || process.env.VSCODE_PID)
 
@@ -111,7 +112,6 @@ try {
 // ========================================
 // Lazy load heavy deps and init Spectral
 // ========================================
-let yaml = null
 let Spectral = null
 let Ruleset = null
 let Resolver = null
@@ -127,9 +127,6 @@ let spectralInitError = null
 let resolverInstance = null
 
 try {
-  // js-yaml is optional; if missing, YAML files will be skipped
-  try { yaml = require('js-yaml') } catch {}
-
   ;({ Spectral, Ruleset } = require('@stoplight/spectral-core'))
   ;({ Resolver } = require('@stoplight/json-ref-resolver'))
   ;({ pathToFileURL } = require('url'))
@@ -175,8 +172,8 @@ function* walk(dir) {
         yield* walk(p)
       }
     } else if (e.isFile()) {
-      const lower = e.name.toLowerCase()
-      const isSpec = lower.endsWith('.json') || lower.endsWith('.yaml') || lower.endsWith('.yml')
+  const lower = e.name.toLowerCase()
+  const isSpec = lower.endsWith('.json')
       if (isSpec && !shouldSkip(p)) {
         yield p
       }
@@ -211,17 +208,10 @@ function getSeverityLabel(severity) {
 }
 
 function readSpecFile(file) {
-  // Returns { ok: boolean, doc?: any, errorMsg?: string, skipped?: boolean }
+  // Returns { ok: boolean, doc?: any, errorMsg?: string }
   try {
     const content = fs.readFileSync(file, 'utf8')
-    if (file.endsWith('.json')) {
-      return { ok: true, doc: JSON.parse(content) }
-    }
-    // YAML
-    if (!yaml) {
-      return { ok: false, skipped: true, errorMsg: 'Skipping YAML file (js-yaml not available)' }
-    }
-    return { ok: true, doc: yaml.load(content) }
+    return { ok: true, doc: JSON.parse(content) }
   } catch (e) {
     return { ok: false, errorMsg: `Skipping unreadable file: ${e.message}` }
   }
@@ -230,7 +220,6 @@ function readSpecFile(file) {
 // ==============
 // Main routine
 // ==============
-
 async function run() {
   let errorCount = 0
   let warnCount = 0
@@ -253,11 +242,6 @@ async function run() {
     logLine(`WARN | Runner | rules | Unknown rule names: ${unknown.join(', ')}`)
   }
 
-  if (RULE_NAMES.length === 0) {
-    logLine('INFO | Runner | rules | No rules specified; nothing to run.')
-    writeOutputFile([...lines, 'INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0'])
-    return
-  }
   // Determine if SPEC_ROOT is a file or directory
   let rootStat = null
   try {
@@ -272,10 +256,10 @@ async function run() {
   }
 
   const isSingleFile = rootStat.isFile()
-  const isSpecFile = p => /\.(json|ya?ml)$/i.test(p)
+  const isSpecFile = p => /\.json$/i.test(p)
 
   if (isSingleFile && !isSpecFile(SPEC_ROOT)) {
-    logLine(`WARN | Runner | input | SPEC_ROOT is a file but not a .json/.yaml: ${SPEC_ROOT}`)
+    logLine(`WARN | Runner | input | SPEC_ROOT is a file but not a .json: ${SPEC_ROOT}`)
     lines.push(`INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0`)
     writeOutputFile(lines)
     return
@@ -294,7 +278,7 @@ async function run() {
       if (parsed.skipped) continue
       else continue
     }
-  const doc = parsed.doc
+    const doc = parsed.doc
 
     if (SPECTRAL_OK && spectral && pathToFileURL) {
       try {
