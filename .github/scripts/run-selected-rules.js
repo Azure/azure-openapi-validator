@@ -49,7 +49,7 @@ const SPEC_ROOT = process.env.SPEC_ROOT || ''
 const EXCLUDE_DIRS = parseExcludeDirs(process.env.EXCLUDE_DIRS)
 const FAIL_ON_ERRORS = /^true$/i.test(process.env.FAIL_ON_ERRORS || 'false')
 const OUTPUT_FILE = process.env.OUTPUT_FILE || ''
-const MAX_FILES = parseInt(process.env.MAX_FILES || '200', 10)
+const MAX_FILES = parseInt(process.env.MAX_FILES || '20000', 10)
 // Consider common test/debug environments to avoid hard exits during tests
 const IN_TEST = !!(process.env.JEST_WORKER_ID || process.env.npm_lifecycle_event === 'test' || process.env.VSCODE_PID)
 
