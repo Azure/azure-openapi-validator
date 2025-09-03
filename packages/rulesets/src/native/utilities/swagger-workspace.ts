@@ -1,4 +1,4 @@
-import { ISwaggerInventory, JsonPath } from "@microsoft.azure/openapi-validator-core"
+import { JsonPath, ISwaggerInventory } from "@microsoft.azure/openapi-validator-core"
 import { parseJsonRef } from "./ref-helper"
 
 // workspace to manipulate schema which contains remote reference
