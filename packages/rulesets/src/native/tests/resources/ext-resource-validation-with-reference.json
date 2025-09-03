@@ -17,6 +17,7 @@
     "application/json"
   ],
   "paths": {
+    "/todo/add-test-for-array-of-MyResource": {},
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}": {
       "put": {
         "tags": [
