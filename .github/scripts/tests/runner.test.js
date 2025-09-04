@@ -24,11 +24,14 @@ describe('runner', () => {
   const tmpRoot = path.join(repoRoot, '.github', 'scripts', 'tmp-tests')
   const specsDir = path.join(tmpRoot, 'specs')
   const artifactsDir = path.join(tmpRoot, 'artifacts')
+  const allowedDir = path.join(specsDir, 'specification', 'network', 'resource-manager', 'stable')
+  const srcDir = path.join(__dirname, 'specs')
 
   beforeAll(() => {
     fs.rmSync(tmpRoot, { recursive: true, force: true })
     fs.mkdirSync(specsDir, { recursive: true })
     fs.mkdirSync(artifactsDir, { recursive: true })
+    fs.mkdirSync(allowedDir, { recursive: true })
   })
 
   afterAll(() => {
@@ -52,10 +55,10 @@ describe('runner', () => {
     expect(out).toMatch(/Unknown rule names: DoesNotExist/)
   })
 
- test('MAX_FILES limits scanning', () => {
-    // Create many dummy files
+  test('MAX_FILES limits scanning', () => {
+    // Create many dummy files under allowed path so the runner includes them
     for (let i = 0; i < 5; i++) {
-      writeFile(path.join(specsDir, `dummy${i}.json`), '{}')
+      writeFile(path.join(allowedDir, `dummy${i}.json`), '{}')
     }
     const outFile = path.join(artifactsDir, 'maxfiles.txt')
     const res = run({ SPEC_ROOT: specsDir, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, MAX_FILES: '2' })
@@ -65,21 +68,24 @@ describe('runner', () => {
   })
 
   test('LRO POST triggers PostResponseCodes no error', () => {
-    const localSpecRoot = path.join(__dirname, 'specs', 'lro-post-demo.json')
+    // Copy fixture into allowed path
+    const fixture = path.join(srcDir, 'lro-post-demo.json')
+    const target = path.join(allowedDir, 'lro-post-demo.json')
+    writeFile(target, fs.readFileSync(fixture, 'utf8'))
     const outFile = path.join(artifactsDir, 'lro-post.txt')
-    const res = run({ SPEC_ROOT: localSpecRoot, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
-    // IN_TEST gating keeps exit code 0 even if errors are found
+    const res = run({ SPEC_ROOT: target, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
     expect(out).toMatch(/Files scanned:\s*\d+/i)
   })
 
   test('violating LRO POST triggers PostResponseCodes error', () => {
-    // Run directly against only the violating spec file
-    const badSpec = path.join(__dirname, 'specs', 'bad-lro-post.json')
+    // Copy violating spec into allowed path and run against that file
+    const fixture = path.join(srcDir, 'bad-lro-post.json')
+    const badSpec = path.join(allowedDir, 'bad-lro-post.json')
+    writeFile(badSpec, fs.readFileSync(fixture, 'utf8'))
     const outFile = path.join(artifactsDir, 'lro-post-bad.txt')
     const res = run({ SPEC_ROOT: badSpec, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
-    // IN_TEST gating keeps exit code 0 even if errors are found
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
     expect(out).toMatch(/ERROR\s*\|\s*PostResponseCodes/i)
@@ -88,17 +94,17 @@ describe('runner', () => {
 
   test('run multiple rules against multiple specs and flag errors', () => {
     const outFile = path.join(artifactsDir, 'multi-rules.txt')
-    const specRoot = path.join(__dirname, 'specs')
-    // Ensure both violating specs exist
-    expect(fs.existsSync(path.join(specRoot, 'bad-lro-post.json'))).toBe(true)
-    expect(fs.existsSync(path.join(specRoot, 'bad-delete-with-body.json'))).toBe(true)
+    // Copy fixtures into allowed path
+    const badLro = path.join(srcDir, 'bad-lro-post.json')
+    const badDelete = path.join(srcDir, 'bad-delete-with-body.json')
+    writeFile(path.join(allowedDir, 'bad-lro-post.json'), fs.readFileSync(badLro, 'utf8'))
+    writeFile(path.join(allowedDir, 'bad-delete-with-body.json'), fs.readFileSync(badDelete, 'utf8'))
     const res = run({
-      SPEC_ROOT: specRoot,
+      SPEC_ROOT: allowedDir,
       RULE_NAMES: 'PostResponseCodes,DeleteMustNotHaveRequestBody',
       OUTPUT_FILE: outFile,
       FAIL_ON_ERRORS: 'true'
     })
-    // IN_TEST gating keeps exit code 0
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
     expect(out).toMatch(/ERROR\s*\|\s*PostResponseCodes/i)

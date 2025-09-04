@@ -6,11 +6,10 @@ Lightweight Spectral rules runner
 Purpose:
 - Execute selected linter rules against a set of specs.
 
-Behavior:
-- Parses RULE_NAMES, SPEC_ROOT, EXCLUDE_DIRS, FAIL_ON_ERRORS, MAX_FILES, OUTPUT_FILE from env.
+- Parses RULE_NAMES, SPEC_ROOT, FAIL_ON_ERRORS, MAX_FILES, OUTPUT_FILE from env.
 - Loads the Spectral ARM ruleset from @microsoft.azure/openapi-validator-rulesets.
 - Disables all rules except the requested ones.
-- Walks SPEC_ROOT for *.json only, skipping EXCLUDE_DIRS substrings.
+- Walks SPEC_ROOT and only includes JSON specs under resource-manager/stable for selected RPs (network, compute, monitor, sql, hdinsight, resource, storage). EXCLUDE_DIRS is ignored for now.
 - Runs Spectral and prints findings in a compact format.
 
 Outputs:
@@ -23,30 +22,9 @@ const path = require('path')
 // Env parsing
 // ============
 
-// EXCLUDE_DIRS can be:
-// - JSON array string — preferred (e.g., ["node_modules",".git","specification/common-types","specification/network/resource-manager/common"]) 
-// - comma or newline separated string — legacy support (e.g., specification/common-types,specification/network/resource-manager/common)
-// Matching is done via simple substring checks against paths relative to SPEC_ROOT.
-function parseExcludeDirs(value) {
-  const raw = value || ''
-  // Try JSON array
-  if (/^\s*\[/.test(raw)) {
-    try {
-      const arr = JSON.parse(raw)
-      if (Array.isArray(arr)) return arr.map(s => String(s).trim()).filter(Boolean)
-    } catch {}
-  }
-  // Fallback to splitting by comma or newline
-  return raw
-    .split(/[\,\n]/)
-    .map(s => s.trim())
-    .filter(Boolean)
-}
-
 // Inputs
 const RULE_NAMES = (process.env.RULE_NAMES || '').split(',').map(s => s.trim()).filter(Boolean)
 const SPEC_ROOT = process.env.SPEC_ROOT || ''
-const EXCLUDE_DIRS = parseExcludeDirs(process.env.EXCLUDE_DIRS)
 const FAIL_ON_ERRORS = /^true$/i.test(process.env.FAIL_ON_ERRORS || 'false')
 const OUTPUT_FILE = process.env.OUTPUT_FILE || ''
 const MAX_FILES = parseInt(process.env.MAX_FILES || '20000', 10)
@@ -158,9 +136,16 @@ try {
 // Helpers (FS & paths)
 // =====================
 
-function shouldSkip(filePath) {
-  const rel = path.relative(SPEC_ROOT, filePath).replace(/\\/g, '/')
-  return EXCLUDE_DIRS.some(ex => rel.includes(ex))
+// Selected resource providers and path filter (resource-manager + stable)
+const SELECTED_RPS = ['network', 'compute', 'monitor', 'sql', 'hdinsight', 'resource', 'storage']
+
+function isAllowedSpecFile(filePath) {
+  const p = filePath.replace(/\\/g, '/').toLowerCase()
+  if (!p.endsWith('.json')) return false
+  if (!p.includes('/resource-manager/')) return false
+  if (!p.includes('/stable/')) return false
+  const matchesRp = SELECTED_RPS.some(rp => p.includes(`/specification/${rp}/`))
+  return matchesRp
 }
 
 function* walk(dir) {
@@ -168,13 +153,10 @@ function* walk(dir) {
   for (const e of entries) {
     const p = path.join(dir, e.name)
     if (e.isDirectory()) {
-      if (!shouldSkip(p)) {
-        yield* walk(p)
-      }
+      // Descend into all directories
+      yield* walk(p)
     } else if (e.isFile()) {
-  const lower = e.name.toLowerCase()
-  const isSpec = lower.endsWith('.json')
-      if (isSpec && !shouldSkip(p)) {
+      if (isAllowedSpecFile(p)) {
         yield p
       }
     }
@@ -256,10 +238,9 @@ async function run() {
   }
 
   const isSingleFile = rootStat.isFile()
-  const isSpecFile = p => /\.json$/i.test(p)
 
-  if (isSingleFile && !isSpecFile(SPEC_ROOT)) {
-    logLine(`WARN | Runner | input | SPEC_ROOT is a file but not a .json: ${SPEC_ROOT}`)
+  if (isSingleFile && !isAllowedSpecFile(SPEC_ROOT)) {
+    logLine(`WARN | Runner | input | SPEC_ROOT is not an allowed spec (must be JSON in resource-manager/stable for selected RPs): ${SPEC_ROOT}`)
     lines.push(`INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0`)
     writeOutputFile(lines)
     return
