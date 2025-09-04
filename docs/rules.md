@@ -495,18 +495,6 @@ For Data plane spec, the allowed response status codes for a long DELETE operati
 
 Please refer to [long-running-response-status-code-data-plane.md](./long-running-response-status-code-data-plane.md) for details.
 
-### LroAzureAsyncOperationHeader
-
-ARM relies on the async operation header to poll for the status of the long running operation. Based on this and the
-final state of the operation, downstream services like ARN and ARG are notified of the current state of the operation
-and the status of the resource. If you are a brownfield service that does not implement this header, you may add a
-suppression using the following TSG indicating the same.
-TSG link - https://github.com/Azure/autorest/blob/main/docs/generate/suppress-warnings.md.
-In the description for the suppression, please provide a rough timeline by which the header will be supported by your
-service. More details about this header can be found in the ARM Resource Provider Contract documentation here - https://github.com/cloud-and-ai-microsoft/resource-provider-contract/blob/master/v1.0/async-api-reference.md#azure-asyncoperation-resource-format
-
-Please refer to [lro-azure-async-operation-header.md](./lro-azure-async-operation-header.md) for details.
-
 ### LroErrorContent
 
 Error response content of long running operations must follow the error schema provided in the common types v2 and above.
