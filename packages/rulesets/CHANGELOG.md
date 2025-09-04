@@ -11,7 +11,7 @@
 ### Patches
 
 - Modified the rule TenantLevelAPIsNotAllowed RPC-Uri-V1-11 from error to warning
-- Added rule LroAzureAsyncOperationHeader
+- Added rule LroAzureAsyncOperationHeader (#749)
 
 ## 2.1.7
 
