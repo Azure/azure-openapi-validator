@@ -1743,18 +1743,6 @@ const locationMustHaveXmsMutability = (scheme, _opts, paths) => {
         }];
 };
 
-const lroAzureAsyncOperationHeader = (headers, _opts, ctx) => {
-    if (!Object.keys(headers).includes("headers") || !Object.keys(headers.headers).includes("Azure-AsyncOperation")) {
-        return [
-            {
-                message: "All long-running operations must include an `Azure-AsyncOperation` response header.",
-                path: ctx.path.concat("headers"),
-            },
-        ];
-    }
-    return [];
-};
-
 const validateOriginalUri = (lroOptions, opts, ctx) => {
     if (!lroOptions || typeof lroOptions !== "object") {
         return [];
@@ -3326,17 +3314,6 @@ const ruleset = {
             given: ["$.definitions..provisioningState[?(@property === 'enum')]^", "$.definitions..ProvisioningState[?(@property === 'enum')]^"],
             then: {
                 function: provisioningState,
-            },
-        },
-        LroAzureAsyncOperationHeader: {
-            rpcGuidelineCode: "RPC-Async-V1-06",
-            description: "All long-running operations must include an `Azure-AsyncOperation` response header.",
-            message: "{{description}}",
-            severity: "error",
-            formats: [oas2],
-            given: ["$[paths,'x-ms-paths'].*.*[?(@property === 'x-ms-long-running-operation' && @ === true)]^.responses.*"],
-            then: {
-                function: lroAzureAsyncOperationHeader,
             },
         },
         LroLocationHeader: {
