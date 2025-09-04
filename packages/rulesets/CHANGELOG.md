@@ -1,10 +1,17 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.1.9
+
+### Patches
+
+- Removed rule LroAzureAsyncOperationHeader (#788)
+
 ## 2.1.8
 
 ### Patches
 
 - Modified the rule TenantLevelAPIsNotAllowed RPC-Uri-V1-11 from error to warning
+- Added rule LroAzureAsyncOperationHeader
 
 ## 2.1.7
 
