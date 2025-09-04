@@ -25,9 +25,9 @@ Synchronous POST operations must have one of the following combinations of respo
 For Long-running POST operations:
 1. Add responses with 202 and default return codes.
 2. Add 200 response code if only if the final response is intended to have a schema if not add 204 response code.
-1. Ensure no other response codes are specified.
-1. Make sure to define "x-ms-long-running-operation".
-1. 202 response for a LRO POST operation must not have a response schema specified.
+3. Ensure no other response codes are specified.
+4. Make sure to define "x-ms-long-running-operation".
+5. 202 response for a LRO POST operation must not have a response schema specified.
 
 ### Example
 
