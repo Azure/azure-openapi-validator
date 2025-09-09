@@ -19,13 +19,13 @@ stages:
           image: ubuntu-24.04
           os: linux
 
+        templateContext:
+          type: releaseJob
+
         strategy:
           runOnce:
             deploy:
               steps:
-              - checkout: self
-                submodules: false
-
               - download: current
                 artifact: drop
                 timeoutInMinutes: 5
