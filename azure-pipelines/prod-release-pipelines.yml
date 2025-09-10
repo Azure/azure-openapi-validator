@@ -29,6 +29,7 @@ extends:
             inputs:
               Contents: |
                 packages/**/*.tgz
+                 !packages/**/node_modules/**/*.tgz
               TargetFolder: '$(Build.SourcesDirectory)/dist'
 
           - template: /azure-pipelines/publish-1es-artifact.yml
