@@ -2647,7 +2647,7 @@ var Workspace;
         }
         else if (reference) {
             const referenceSchema = resolveRef(createEnhancedSchema(model.properties.value.items, source.file), inventory);
-            if (referenceSchema && referenceSchema.value && referenceSchema.value.properties) {
+            if (referenceSchema && referenceSchema.value && (referenceSchema.value.properties || referenceSchema.value.allOf)) {
                 model = referenceSchema.value;
             }
         }
