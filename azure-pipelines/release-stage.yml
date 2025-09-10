@@ -22,15 +22,14 @@ stages:
         templateContext:
           type: releaseJob
           isProduction: true
+          inputs:
+          - input: pipelineArtifact
+            artifactName: drop
 
         strategy:
           runOnce:
             deploy:
               steps:
-              - download: current
-                artifact: drop
-                timeoutInMinutes: 5
-
               - pwsh: |
                   Write-Host "Will deploy with tag of ${{ parameters.Version }}"
                   Get-ChildItem "$(Pipeline.Workspace)/drop" -Recurse -Force `
