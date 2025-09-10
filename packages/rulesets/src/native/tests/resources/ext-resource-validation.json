@@ -118,6 +118,31 @@
         }
       }
     },
+    "/providers/Microsoft.Cache/locations/{location}/resources": {
+      "get": {
+        "tags": [
+          "resources"
+        ],
+        "operationId": "MyResource_List",
+        "description": "Gets all resources based on the location",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParamterer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MyResourceListResult"
+            }
+          }
+        }
+      }
+    },
     "/providers/Microsoft.Cache/locations/{location}/Connectors": {
       "get": {
         "tags": [
@@ -166,6 +191,25 @@
           "$ref": "#/definitions/Resource"
         }
       ]
+    },
+    "MyResourceListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/MyResource"
+          },
+          "description": "The list of resources.",
+          "x-ms-identifiers": []
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URI to fetch the next page of resources."
+        }
+      },
+      "description": "The List of Extension Publishers."
     },
     "ExtensionPublisherListResult": {
       "type": "object",
