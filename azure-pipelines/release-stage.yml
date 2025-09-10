@@ -38,7 +38,7 @@ stages:
               steps:
               - pwsh: |
                   Write-Host "Will deploy with tag of ${{ parameters.Version }}"
-                  Get-ChildItem "$(ArtifactPath)" -Recurse -Force | % { Write-Host $_.FullName }
+                  Get-ChildItem "$(ArtifactPath)" *.tgz -Recurse | % { Write-Host $_.FullName }
                 displayName: Packages to be published
 
               - task: EsrpRelease@9
