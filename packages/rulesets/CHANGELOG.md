@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.1.10
+
+### Patches
+
+- Bump jsonpath-plus from ^8.1.0 to ^10.3.0
+
 ## 2.1.9
 
 ### Patches

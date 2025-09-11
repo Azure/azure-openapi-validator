@@ -1,6 +1,6 @@
 {
   "name": "@microsoft.azure/openapi-validator-core",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Azure OpenAPI Validator",
   "main": "dist/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "@azure-tools/uri": "^3.1.1",
     "dependency-graph": "^1.0.0",
     "jsonc-parser": "^3.2.1",
-    "jsonpath-plus": "^8.1.0",
+    "jsonpath-plus": "^10.3.0",
     "lodash": "^4.17.21",
     "tslib": "^2.3.1"
   },
