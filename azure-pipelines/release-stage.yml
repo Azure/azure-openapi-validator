@@ -18,27 +18,28 @@ stages:
           name: azsdk-pool
           image: ubuntu-24.04
           os: linux
+          
+        variables:
+        - name: ArtifactPath
+          value: $(Pipeline.Workspace)/drop
 
         templateContext:
           type: releaseJob
           isProduction: true
-
+          inputs:
+          - input: pipelineArtifact
+            artifactName: drop
+            itemPattern: '**/*.tgz'
+            targetPath: $(ArtifactPath)
+            
         strategy:
           runOnce:
             deploy:
               steps:
-              - download: current
-                artifact: drop
-                timeoutInMinutes: 5
-
               - pwsh: |
                   Write-Host "Will deploy with tag of ${{ parameters.Version }}"
-                  Get-ChildItem "$(Pipeline.Workspace)/drop" -Recurse -Force `
-                    | Where-Object { $_.Name -like "*.tgz" } `
-                    | Copy-Item -Destination "$(Build.ArtifactStagingDirectory)"
-
-                  Get-ChildItem "$(Build.ArtifactStagingDirectory)" -Recurse -Force | % { Write-Host $_.FullName }
-                displayName: Move artifact to $(Build.ArtifactStagingDirectory)
+                  Get-ChildItem "$(ArtifactPath)" *.tgz -Recurse | % { Write-Host $_.FullName }
+                displayName: Packages to be published
 
               - task: EsrpRelease@9
                 displayName: 'Publish to ESRP'
@@ -51,7 +52,7 @@ stages:
                   SignCertName: 'azure-sdk-esrp-release-certificate'
                   Intent: 'PackageDistribution'
                   ContentType: 'npm'
-                  FolderLocation: $(Build.ArtifactStagingDirectory)
+                  FolderLocation: $(ArtifactPath)
                   Owners: ${{ coalesce(variables['Build.RequestedForEmail'], 'azuresdk@microsoft.com') }}
                   Approvers: 'azuresdk@microsoft.com'
                   ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
