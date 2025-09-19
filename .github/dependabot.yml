@@ -1,0 +1,31 @@
+version: 2
+updates:
+  # Core validator package
+  - package-ecosystem: "npm"
+    directory: "/packages/azure-openapi-validator/core"
+    schedule:
+      interval: "weekly"
+
+  # AutoRest integration package
+  - package-ecosystem: "npm"
+    directory: "/packages/azure-openapi-validator/autorest"
+    schedule:
+      interval: "weekly"
+
+  # Validation rulesets package
+  - package-ecosystem: "npm"
+    directory: "/packages/rulesets"
+    schedule:
+      interval: "weekly"
+
+  # Regression testing package
+  - package-ecosystem: "npm"
+    directory: "/regression"
+    schedule:
+      interval: "weekly"
+
+  # Build scripts package
+  - package-ecosystem: "npm"
+    directory: "/eng/scripts"
+    schedule:
+      interval: "weekly"
