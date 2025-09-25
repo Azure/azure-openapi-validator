@@ -3246,6 +3246,31 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
         ];
 };
 
+const XMSSecretInResponse = (properties, _opts, ctx) => {
+    if (properties === null || typeof properties !== "object") {
+        return [];
+    }
+    const secretKeywords = ["access", "credentials", "secret", "password", "key", "token", "auth", "connection"];
+    const path = ctx.path || [];
+    const errors = [];
+    for (const prpName of Object.keys(properties)) {
+        if (prpName === "properties" && typeof properties[prpName] === "object") {
+            errors.push(...XMSSecretInResponse(properties[prpName], _opts, { ...ctx, path: [...path, prpName] }));
+        }
+        else {
+            if (secretKeywords.some((keyword) => prpName.toLowerCase().includes(keyword))) {
+                if (properties[prpName]["x-ms-secret"] !== true) {
+                    errors.push({
+                        message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+                        path: [...path, properties, prpName],
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -3746,6 +3771,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.put^"],
             then: {
                 function: putGetPatchSchema,
+            },
+        },
+        XMSSecretInResponse: {
+            rpcGuidelineCode: "RPC-Put-V1-13",
+            description: `Properties contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            given: ["$[paths,'x-ms-paths'].*.[put,get].responses.*.schema.properties"],
+            then: {
+                function: XMSSecretInResponse,
             },
         },
         XmsResourceInPutResponse: {

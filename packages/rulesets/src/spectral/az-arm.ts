@@ -58,6 +58,7 @@ import { validatePatchBodyParamProperties } from "./functions/validate-patch-bod
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
+import XMSSecretInResponse from "./functions/xms-secret-in-response"
 
 const ruleset: any = {
   extends: [common],
@@ -683,6 +684,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.put^"],
       then: {
         function: putGetPatchSchema,
+      },
+    },
+    // RPC Code: RPC-Put-V1-13
+    XMSSecretInResponse: {
+      rpcGuidelineCode: "RPC-Put-V1-13",
+      description: `Properties contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$[paths,'x-ms-paths'].*.[put,get].responses.*.schema.properties"],
+      then: {
+        function: XMSSecretInResponse,
       },
     },
     // RPC Code: RPC-Put-V1-12
