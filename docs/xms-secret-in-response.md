@@ -1,4 +1,4 @@
-# XmsResourceInPutResponse
+# XMSSecretInResponse
 
 ## Category
 
@@ -11,10 +11,6 @@ ARM OpenAPI(swagger) specs
 ## Related ARM Guideline Code
 
 - RPC-Put-V1-13
-
-## Output Message
-
-Properties contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.
 
 ## Description
 
