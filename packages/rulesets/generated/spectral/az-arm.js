@@ -3250,7 +3250,7 @@ const XMSSecretInResponse = (properties, _opts, ctx) => {
                 if (properties[prpName]["x-ms-secret"] !== true) {
                     errors.push({
                         message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
-                        path: [...path, properties, prpName],
+                        path: [...path, prpName],
                     });
                 }
             }
@@ -3763,7 +3763,7 @@ const ruleset = {
         },
         XMSSecretInResponse: {
             rpcGuidelineCode: "RPC-Put-V1-13",
-            description: `Properties contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+            description: `When defining the response model for an ARM PUT or GET operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
             message: "{{error}}",
             severity: "error",
             resolved: true,
